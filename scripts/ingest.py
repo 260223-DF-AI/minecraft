@@ -12,8 +12,14 @@ import argparse
 import os
 
 from dotenv import load_dotenv
-
-
+from typing import List
+from langchain_core.documents import Document
+from langchain_community.document_loaders import PyPDFLoader
+from langchain_text_splitters import SentenceTransformersTokenTextSplitter
+import datetime
+from langchain_aws import ChatBedrock
+from langchain_aws import BedrockEmbeddings
+from langchain_pinecone import PineconeVectorStore
 def parse_args() -> argparse.Namespace:
     """Parse ingestion CLI arguments."""
     parser = argparse.ArgumentParser(description="Ingest documents into Pinecone.")
@@ -42,7 +48,40 @@ def load_documents(input_dir: str) -> list:
     - Return a list of Document objects with content and metadata
       (source filename, page number).
     """
-    raise NotImplementedError
+    docs = [] # stores all our Document objects
+
+    # loop over all files in the input directory and load them
+    for filename in os.listdir(input_dir):
+        if filename.endswith(".pdf"):
+            # load pdf using pypdf or LangChain's PyPDFLoader
+            loader = PyPDFLoader(filename)
+            pages = loader.load()
+            for page in pages:
+                docs.append(
+                    Document(
+                        page_content=page.page_content,
+                        metadata={# metadata for the document (source and page number)
+                            "source": filename,
+                            "page": page.metadata.get("page", None)
+                        }
+                    )
+                )
+        elif filename.endswith(".txt"):
+            # load .txt files
+            with open(filename, "r") as f:
+                text = f.read() # read the contents of the file
+            docs.append(
+                Document(
+                    page_content=text,
+                    metadata={ # metadata for the document (source and page number)
+                        "source": filename,
+                        "page": None
+                    }
+                )
+            )
+        else:
+            raise ValueError(f"Unsupported file format: {filename}")
+    return docs
 
 
 def chunk_documents(documents: list) -> list:
@@ -53,7 +92,26 @@ def chunk_documents(documents: list) -> list:
     - Use RecursiveCharacterTextSplitter or sentence-level splitting.
     - Attach chunk metadata (chunk_id, source, page_number, timestamp).
     """
-    raise NotImplementedError
+    splitter = SentenceTransformersTokenTextSplitter(chunk_size=256) # make splitter 256 tokens per chunk
+
+    chunks = splitter.split_documents(documents)
+
+
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time stamp for meta data
+
+    return [
+        Document(
+            page_content=c.page_content,
+            metadata={
+                **c.metadata,  # keep any existing metadata from splitter
+                "source": c.metadata.get("source",None),
+                "page_number": c.metadata.get("page", c.metadata.get("page_number",None)),
+                "chunk_id": i,
+                "timestamp": timestamp
+            }
+        )
+        for i, c in enumerate(chunks)
+    ]
 
 
 def generate_embeddings(chunks: list) -> list:
@@ -65,7 +123,15 @@ def generate_embeddings(chunks: list) -> list:
       or Bedrock Titan Embeddings.
     - Process in batches for efficiency (see W5 Monday — batch embedding).
     """
-    raise NotImplementedError
+    embeddings_model = BedrockEmbeddings(
+        model_id="amazon.titan-embed-text-v2:0",
+        region_name="us-east-1"
+    )
+
+    texts = [c.page_content for c in chunks]
+    vectors = embeddings_model.embed_documents(texts)
+
+    return vectors
 
 
 def upsert_to_pinecone(embeddings: list, namespace: str) -> None:
@@ -76,7 +142,7 @@ def upsert_to_pinecone(embeddings: list, namespace: str) -> None:
     - Initialize the Pinecone client using env vars.
     - Upsert vectors with rich metadata into the specified namespace.
     """
-    raise NotImplementedError
+    vector_store = PineconeVectorStore(index = "mcdb", namespace = namespace, embeddings = embeddings)
 
 
 def main() -> None:
