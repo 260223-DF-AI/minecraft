@@ -1,0 +1,97 @@
+Jigsaw structures are structures that generate using jigsaw blocks.
+They are used to generate pillager outposts, villages, bastion remnants, ancient cities, trail ruins, and trial chambers.
+The jigsaw structure generation can be customized using data packs in Java Edition or add-ons in Bedrock Edition.
+
+
+== Generation ==
+The generation places a number of pieces. A piece is usually a structure template, but can also be a placed feature. The pieces are organized into template pools. During generation pieces are randomly selected from a given template pool.
+When a structure is generated starting from a given chunk, it generates in a number of steps, detailed below. 
+
+
+=== Step 1: Starting piece ===
+A jigsaw structure defines a [String][NBT Compound / JSON Object] start_pool. A piece is selected from this pool and placed at the starting position. Rotation and the starting template are chosen randomly, based on the chunk coordinates and the world seed. If the selected piece is a minecraft:empty_pool_element, the structure fails to generate.[JE  only] The starting position is the 0, 0 chunk coordinate of the starting chunk. If the [String] project_start_to_heightmap[JE  only]/[String] heightmap_projection[BE  only] is set, the start height is based on the specified heightmap, offset by the values result of [Int][NBT Compound / JSON Object] start_height. Otherwise, [Int][NBT Compound / JSON Object] start_height is used to determine the start height.
+If the structure defines a [String] start_jigsaw_name, then a jigsaw block with that name is randomly selected and then placed at the starting position. If no matching jigsaw block is found, the structure fails to generate. If the structure has [String] start_jigsaw_name unset, the north west corner of the (unrotated) piece is placed at the starting position.
+If the final starting piece position is not at least [Int] dimension_padding.bottom blocks away from the lower build limit and [Int] dimension_padding.top blocks away from the upper build limit, the structure fails to generate.
+Finally, the starting piece is put into a generation queue.
+
+
+=== Step 2: Connecting pieces ===
+The generation queue is processed sequentially. A piece is removed from the queue when it is processed. Of the processed (parent) piece all jigsaw blocks are then used to generate a connecting piece. The jigsaw blocks are handled in order from high to low selection priority set in each jigsaw block and a random order of jigsaw blocks with equal selection priority. 
+
+
+==== Connecting piece selection ====
+The jigsaw block is referencing a "target pool". The "target pool" is used as an alias by the pool aliases referenced in [NBT List / JSON Array] pool_aliases to determine which template pool to use. If no pool alias is used then the "target pool" directly references the template pool to use.
+The connecting piece is determined using that template pool in following order:
+
+All the pieces from the template pool  in random order according to their weight.
+All the pieces from the fallback pool specified in the template pool  in random order according to their weight.
+If the maximum depth (defined by [Int] size[JE  only]/[Int] max_depth[BE  only]) is reached, point 1 is skipped.
+
+
+==== Connecting piece try ====
+From the tried piece a random jigsaw block is selected, that
+
+is facing outside of the bounds of the connecting piece
+has a "name" that matches the "target name" of the parent jigsaw block,
+has an orientation that is compatible with the parent jigsaw orientation (pieces can be rotated horizontally only).
+The piece is placed in the world such that the jigsaw blocks connect to each other. If the currently handled piece or the newly selected piece is set to terrain matching, the piece is moved vertically to align with the terrain.
+
+
+==== Piece placement condition ====
+The placement is then checked for validity. A piece has to:
+
+Not exceed the outer bounding box. If it is placed within another piece, then the bounding box of that piece is the outer bounding box, otherwise the outer bounding box is determined as:
+Horizontal side-length 2 * [Int] max_distance_from_center or [NBT Compound / JSON Object] max_distance_from_center.[Int] horizontal
+Vertical side-length 2 * [Int] max_distance_from_center or [NBT Compound / JSON Object] max_distance_from_center.[Int] vertical
+Centered on the starting position.
+It then gets truncated on the top or bottom such that it is at least [Int] dimension_padding or [NBT Compound / JSON Object] dimension_padding.[Int] bottom[JE  only] blocks away from the lower build limit and [Int] dimension_padding or [NBT Compound / JSON Object] dimension_padding.[Int] top[JE  only] blocks away from the upper build limit.
+Not intersect with any other piece (except those that it is placed inside of)
+If the piece can't be placed, then the placement is retried with the next piece (see #Connecting piece selection). If all pieces can't be placed than no piece is placed for this jigsaw block.
+If the piece can be placed, then the newly placed piece is added to the generation queue according to the placement priority specified in the parent jigsaw block, but behind elements of equal placement priority already in the queue. The generation continues with the next jigsaw block of the parent piece.
+
+
+=== Step 3: Processing ===
+Finally, each piece is processed, changing or removing blocks from the template.
+The processing is done using the processor list specified for each piece in the template pool. Additionally, jigsaw blocks are replaced with the specified "Turns into" final state (using the minecraft:jigsaw_replacement processor in Java Edition). For pieces set to terrain matching each column of blocks is adjusted in height match the terrain (using the minecraft:gravity processor in Java Edition).
+Notes:
+
+
+== Pool aliases ==
+Pool aliases are used to redirect the alias "target pool" referenced in jigsaw blocks to a (different) template pools. The redirections are determined before the generation starts, so in a single structure all references to a specific alias template pool are rewired to the same target template pool. Any alias that is not redirected by a pool alias is used directly as reference to a template pool.
+
+
+=== direct ===
+All references to [String] alias are rewired to [String] target.
+
+
+=== random ===
+A target selected from [NBT List / JSON Array] targets per structure. All references to [String] alias are rewired that target.
+
+
+=== random_group ===
+A alias group is selected from [NBT List / JSON Array] groups per structure. All pool aliases in that group are used.
+
+
+== Data values ==
+
+
+=== ID ===
+Java Edition:
+
+
+=== Config ===
+Java Edition:
+
+Bedrock Edition:
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== Navigation ==

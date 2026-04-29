@@ -1,0 +1,154 @@
+Recipes provide a structured way for players to perform item and block transformations in-game. Every crafting, smelting, blasting, campfire cooking, smoking, stonecutting and smithing recipe uses this system. Recipes are data driven and can be configured by data packs.
+
+
+== Obtaining ==
+Recipes can be obtained in various ways. Acquiring an item from the recipe causes the player to automatically discover it. Recipes can also be granted using the /recipe command. Advancements can be configured to award recipes when triggered; in vanilla, there are many advancements that grant recipes which trigger when, for example, the player obtains an item required in the recipe.
+Once a recipe has been discovered, it is added to the player's recipe book. Discovered recipes are stored in the player's [NBT Compound / JSON Object] recipeBook NBT.
+
+
+== Usage ==
+
+Discovered recipes can be found in the player's recipe book. However, recipes do not need to be discovered for the player to be able to use them, unless the doLimitedCrafting game rule is enabled.
+Recipes appear in the inventory's recipe book if they are 22 in size, otherwise they will only appear if the player is using a crafting table. The recipe book can also be used in the furnace, showing exclusively smelting recipes.
+The anvil, cartography table, loom, brewing stand, and grindstone don't use the recipe system; they use different, hardcoded systems for their mechanics.
+
+
+== JSON format ==
+Vanilla recipes are stored as separate JSON files in the data/minecraft/recipe folder in the .minecraft/versions/<version>/<version>.jar file. This folder can be found by changing the extension of the .jar file to .zip and navigating within it.
+Custom recipe files are stored in the data/<namespace>/recipe folder of a data pack. A recipe with ID foo:path/to/file would have its JSON file located at data/foo/recipe/path/to/file.json within a data pack. Data packs that load later with a recipe file in same resource location replace the existing recipe.
+Recipe JSON files have different structures dependent on their type, but they all have a [String] type tag in its root tag. These types are listed below.
+
+
+=== blasting ===
+Represents a recipe in a blast furnace.
+
+Usage example json:
+
+
+=== campfire_cooking ===
+Represents a recipe in a campfire.
+
+Usage example json:
+
+Even though all vanilla campfire cooking recipes have a cook time of 600 ticks, the default is 100 ticks.
+Campfire recipes do not trigger the recipe_unlocked criteria.
+
+
+=== crafting_dye ===
+Represents an armor dyeing recipe in a crafting table, the survival inventory and the crafter.
+
+Usage example json:
+
+
+=== crafting_shaped ===
+Represents a shaped crafting recipe in a crafting table, the survival inventory and the crafter.
+The key used in the pattern may be any single character except  , the space character, which is reserved for empty slots in a recipe.
+
+Usage example json:
+
+
+=== crafting_shapeless ===
+Represents a shapeless crafting recipe in a crafting table, the survival inventory and the crafter.
+The ingredients list must have at least one and at most nine entries.
+
+Usage example json:
+
+If the recipe contains the same 9 ingredients, it turns into minecraft:crafting_shaped recipe.
+
+
+=== crafting_transmute ===
+
+Represents a crafting recipe in a crafting table, a crafter and the survival inventory.
+When matched, output copies the input item stack, changing the item type but preserving all stack components.
+
+Usage example json:
+
+
+=== crafting_special_* ===
+
+Represents a crafting recipe in a crafting table, a crafter and the survival inventory that is handled with built-in logic instead of being data-driven.
+When the vanilla data pack is disabled, they can be used to re-enable desired built-in crafting recipes.
+
+Unlike most other recipe types, they do not have a group field and cannot be displayed in recipe books.
+
+crafting_special_armordye
+The armor dyeing recipe.
+Regular recipes cannot handle multiple dyes.
+crafting_special_bannerduplicate
+The banner copying recipe.
+Regular recipes cannot copy NBT data associated to the banner item.
+crafting_special_bookcloning
+The written book copying recipe.
+Regular recipes cannot copy NBT data associated to the written book item and cannot control the generation of copies.
+crafting_special_firework_rocket
+The firework rocket recipe using firework stars.
+Regular recipes cannot handle inputs flexibly or add NBT data from a firework star to the firework rocket.
+crafting_special_firework_star
+crafting_special_firework_star_fade
+The firework star crafting recipes and their fade additions.
+Regular recipes cannot handle inputs flexibly or add NBT data to the firework star.
+crafting_special_mapcloning
+The map copying recipe.
+Regular recipes cannot copy NBT data associated to the map item.
+crafting_special_mapextending
+The map zooming recipe.
+Regular recipes cannot update NBT data associated to the map item.
+crafting_special_repairitem
+The item repair recipe.
+Regular recipes cannot update damage data associated to the tool item.
+crafting_special_shielddecoration
+The shield pattern application recipe.
+Regular recipes cannot add NBT data from a banner item to a shield item.
+crafting_special_tippedarrow
+The tipped arrow recipe.
+Regular recipes cannot copy NBT data from a lingering potion item to a tipped arrow item.
+
+
+=== crafting_decorated_pot ===
+The decorated pot recipe in a crafting table and a crafter.
+
+
+=== smelting ===
+Represents a recipe in a furnace.
+
+Usage example json:
+
+
+=== smithing_transform ===
+Represents a upgrading recipe in a smithing table.
+
+The resulting item copies the components of the base item.
+Usage example json:
+
+
+=== smithing_trim ===
+Represents a trimming recipe in a smithing table.
+
+Adds NBT Tags for the trim to the base item.
+Usage example json:
+
+
+=== smoking ===
+Represents a recipe in a smoker.
+
+Usage example json:
+
+
+=== stonecutting ===
+Represents a recipe in a stonecutter.
+
+Usage example json:
+
+
+== History ==
+
+
+== Issues ==
+Issues relating to "Recipe (Java Edition)" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== External links ==
+Recipe Generator on misode.github.io
+
+
+== Navigation ==

@@ -1,5 +1,5 @@
 Ambience (also called ambience sounds or ambient noises) are sounds that can be heard in specific conditions. Ambience is divided into 2 groups: environmental ambience and block ambience.
-All ambience sounds can be played using the /playsound command. The volume of environmental and block ambient sounds can be changed together through the sound settings by changing the "Ambient/Environment"‌[Java Edition  only] or separately by changing the "Environmental audio" or "Block audio" sliders respectively‌[Bedrock Edition  only]. However, certain other sounds are also affected by the settings, such as those made by firework rockets or placed and destroyed blocks.
+All ambience sounds can be played using the /playsound command. The volume of environmental and block ambient sounds can be changed together through the sound settings by changing the "Ambient/Environment"[Java Edition  only] or separately by changing the "Environmental audio" or "Block audio" sliders respectively[Bedrock Edition  only]. However, certain other sounds are also affected by the settings, such as those made by firework rockets or placed and destroyed blocks.
 
 
 == Environmental ambience ==
@@ -44,11 +44,11 @@ Basalt deltas share their mood sounds with the Nether wastes.
 
 == Mood algorithm ==
 Cave ambience and Nether mood play based on "mood", a value ranging from 0 to 100. The mood increases when the player is in a dark place, and decreases otherwise. When the mood reaches 100%, one of the sounds plays and the mood resets back to 0%.
-This process is updated every tick. It involves selecting a random block within a 17×17×17 area centered around the player's eye position and adjusting the mood accordingly:
+This process is updated every tick. It involves selecting a random block within a 171717 area centered around the player's eye position and adjusting the mood accordingly:
 
-If the block has sky light, the mood decreases by 1⁄1000 for each sky light level.
-If the block has a block light level above 1, the mood decreases by (block light level - 1)⁄6000.
-If the block has a block light level of 0, the mood increases by 1⁄6000.
+If the block has sky light, the mood decreases by 11000 for each sky light level.
+If the block has a block light level above 1, the mood decreases by (block light level - 1)6000.
+If the block has a block light level of 0, the mood increases by 16000.
 This is the simplified algorithm for computing this value in pseudocode:
 
 Players in complete darkness will hear cave ambience every 6000 ticks (or 5 minutes).
@@ -118,8 +118,8 @@ The resource location for these sounds is block.sand.idle.
 
 === Mood algorithm ===
 
-In Java Edition, prior to 20w12a, the mood algorithm worked differently.​[more information needed for Bedrock Edition]
-Every 6000 to 18000 ticks (5 to 15 minutes), the game picked one of the following blocks (with the player's feet as the origin, i.e. (0,0,0)): {(x,y,z)∣x,y,z∈{−4,0,4}}
+In Java Edition, prior to 20w12a, the mood algorithm worked differently.[more information needed for Bedrock Edition]
+Every 6000 to 18000 ticks (5 to 15 minutes), the game picked one of the following blocks (with the player's feet as the origin, i.e. (0,0,0)): {(x,y,z)x,y,z{4,0,4}}
 The game then checked these conditions:
 
 If the block is different from the player's feet (i.e. (0,0,0)).
@@ -135,7 +135,7 @@ Issues relating to "Ambience", "Cave ambience", "Underwater ambience", or "Nethe
 
 == Trivia ==
 
-When "Cave 14" is put into a spectrogram, you see a creeper face. Samuel Åberg said that he made this sound with a spectrogram program.
+When "Cave 14" is put into a spectrogram, you see a creeper face. Samuel Aberg said that he made this sound with a spectrogram program.
 "Cave 21" is spelling out "BEHIND" in International Morse code.
 "Warped Forest Additions 1-5" are a mix of vanilla enderman sounds and those of the endermen from Minecraft Dungeons.
 "Warped Forest Addition 6" is the sound of an enderman screaming, slowed down, and in reverse.

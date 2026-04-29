@@ -1,0 +1,229 @@
+23w51a is the first snapshot for Java Edition 1.20.5, released on December 18, 2023, which adds armadillos and wolf armor along with many bug fixes.
+
+
+== Additions ==
+
+
+=== Items ===
+ Armadillo scute
+
+Dropped by armadillos when brushed.
+Dispensers can be used to brush armadillo scutes off armadillos.
+Can be used to craft wolf armor.
+Spawn eggs
+
+ Armadillo spawn egg
+ Wolf armor
+
+Crafted with 6 armadillo scutes in a harness shape.
+Protects wolves from damage.
+Wolf armor gives wolves the same protection level as diamond horse armor.
+Using wolf armor on an adult tamed wolf equips the armor on the wolf, and using shears drops the armor.
+Only a wolf's owner can put on / shear off wolf armor. That also excludes dispensers.
+If a wolf dies while wearing armor, it drops the armor.
+
+
+=== Mobs ===
+ Armadillo
+
+The winner of Minecraft Live 2023's Mob Vote.
+A passive mob that spawns in savanna biomes with the same frequency as chickens and pigs.
+Has 12HP  6 health points.
+Can drop armadillo scutes either periodically or when brushed, but drops no loot when killed.
+Armadillos drop scutes at around the same rate as chickens lay eggs.
+Brushing takes some durability from the brush.
+Can be bred with spider eyes.
+If an armadillo detects a threat, it rolls up.
+Threats include:
+A player sprinting.
+A player in a vehicle or mounted.
+Undead mobs.
+Special cases where an armadillo don't roll up include when it is:
+Fleeing.
+In water or in the air.
+On a leash.
+When an armadillo is rolled up it cannot walk nor eat, and isn't be tempted by food.
+While rolled up, armadillos continuously scan for threats. If no threats are detected for 3 seconds (60 ticks), they unroll.
+
+
+=== General ===
+Attributes
+
+Added the generic.scale attribute.
+Allows changing the size of any mob to anywhere between 0.0625 and 16 times their default size.
+Added the generic.step_height attribute.
+Determines the max height in blocks where a mob can walk above without jumping.
+Default is 0.6, and the valid range is from 0 to 10.
+Added the generic.block_interaction_range and generic.entity_interaction_range attributes.
+Determines the maximum range a player can interact with blocks and entities, respectively.
+They both range between 0 and 64, with the default value being 4.5 for blocks and 3 for entities.
+Subtitles
+
+Added a subtitle for traveling through a Nether portal, "Portal noise fades".
+
+
+== Changes ==
+
+
+=== Items ===
+Turtle scute
+
+Renamed "Scute" to "Turtle Scute".
+
+
+=== Mobs ===
+General
+
+FactorCalculationData has been removed from mob effect instance tags.
+Shulkers
+
+Are no longer able to destroy armor stands.
+
+
+=== Non-mob entities ===
+Llama spits
+
+They now use a new damage type spit instead of mob_projectile.
+Are no longer able to destroy armor stands.
+
+
+=== Gameplay ===
+Advancements
+
+Armadillos are now required for the "Two by Two" advancement.
+The "The Parrots and the Bats" advancement can be granted by breeding armadillos now.
+
+
+=== General ===
+Data pack
+
+The pack format version is now 27.
+Effect
+
+The background texture of the small effect UI has been changed.
+
+
+== Experimental ==
+These changes only take effect when the Update 1.21 experimental data pack is enabled.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Trial spawners
+
+Now have the same two default loot tables as they have in trial chambers.
+
+
+==== Mobs ====
+Breeze
+
+Added sounds for projectile deflection, 'charging up attack', the breeze being in the air, and a 'whirl' idle sound.
+Tweaked the existing sounds.
+Separate eyes textures have merged into the head.
+
+
+==== Non-mob entities ====
+Wind charge
+
+The texture has been changed. However, the in-game appearance is not affected.
+
+
+== Fixes ==
+69 issues fixed
+From released versions before 1.20
+
+MC-100994  Items in hotbar appear on top of tab menu.
+MC-117955  Player teleports to the top when crushed by a piston head.
+MC-130244  When opening chat in F1 mode, previous messages aren't visible.
+MC-153643  Debug overlay is rendered behind hotbar items.
+MC-167375  Baby turtle subtitles are grammatically incorrect.
+MC-169389  End portals sometimes teleport the player to Overworld coordinates.
+MC-171177  The player can enter Nether portals in Creative mode by running against the frame of the portal.
+MC-172898  Equipping armor in Creative via right click causes it to disappear from the hotbar for a frame.
+MC-173672  Title text renders in front of player names in player list.
+MC-184066  Respawn anchors don't produce an ambient sound.
+MC-184622  Sound for exiting a portal/travelling to another dimension does not use its subtitle string despite it existing in en_us.json.
+MC-185379  Baby polar bear subtitle does not explicitly mention it comes from a baby polar bear.
+MC-187267  Title text renders in front of sidebar.
+MC-193460  Inconsistent layering of sidebar and debug screen (F3) text.
+MC-193511  Title text renders in front of narrator text.
+MC-193515  Boss bar text renders in front of narrator text.
+MC-193517  Boss bar text renders in front of sidebar.
+MC-193521  Boss bar text renders in front of F3.
+MC-193524  Boss bar text strikethough/underline renders on  Tab list.
+MC-193753  Respawn anchor ambient sound subtitle refers to it as a portal.
+MC-194948  Block breaking subtitle inconsistent with painting, item frame and lead breaking subtitles.
+MC-198492  Players can be pushed into danger in situations where they wouldn't normally be damaged.
+MC-198787  Inefficient streams in GoalSelector.
+MC-198963  Chat text renders in front of player names in player list.
+MC-216071  Splash text resets if you hit escape on the Multiplayer menu, but not the Singleplayer menu.
+MC-218811  Big dripleaves tilt when touched from the side.
+MC-219899  Bone meal used on rooted dirt causes the particles to appear above it, despite the growth being below it.
+MC-234889  Potion effect icons displayed within the HUD can overlap boss bars.
+MC-238242  There is an unnecessary black pixel in the upper right corner of small potion UI icons in the inventory.
+MC-248961  takenDamage for achievement criteria is calculated wrongly when the player has equipped a helmet.
+MC-249335  Using bone meal on mangrove leaves spawns growth particles at the center of the block instead of below it.
+MC-250432  Esc key always unpauses the game in Demo mode.
+MC-251027  Wearing a helmet doesn't reduce the damage of falling anvils or stalactites by 14.
+MC-252409  Memory statistics within the debug menu contain some unnecessary spaces.
+MC-259587  Negative item durability causes the durability bar to render incorrectly.
+MC-261577  The nether portal overlay is rendered completely opaque when using spyglasses while standing inside of nether portals.
+MC-266990  Maps with the same 'map' tag value, but different 'display' tag data can cause markers to disappear.
+From 1.20
+
+MC-263256  Chat renders on top of  Tab, blocking information.
+From 1.20.1
+
+MC-263641  Boss bar text no longer renders behind potion effect icons.
+MC-264597  F3 debug menu underlined text renders over subtitles.
+MC-264637  Text shaders resource packs cause subtitles to flicker.
+From 1.20.2
+
+MC-265541  player.dat_old won't be read even if player.dat doesn't exist.
+MC-265669  Hotbar text renders above subtitle background but under subtitle text.
+MC-266135  Cached macro commands ignore permission level, allowing limited permission escalation.
+MC-266136  Macro commands ignore function-permisson-level server setting, including when lower than default.
+MC-266334  Shulker bullets destroy armor stands.
+MC-266389  Glow berry particles are barely visible when bonemealed.
+MC-266589  Armor durability is changed when swapping on Creative.
+MC-266628  High polling rate causing stuttering.
+MC-266960  Bossbar text renders in front of player list background and player icons.
+From 1.20.3
+
+MC-265835  The freezing effect is rendered totally opaque when using a spyglass.
+MC-266055  Opening or closing a copper door or trapdoor while holding an axe / honeycomb grants wax-related advancement.
+MC-266144  Copper doors are not part of the #doors item tag.
+MC-266145  Copper trapdoors are not part of the #trapdoors item tag.
+MC-266308  Copper bulbs have unused "turn_off" sound.
+MC-266430  Breeze on top of a non-full block produces particles of the block below it.
+MC-266432  Exposed, weathered and oxidised copper bulbs are unwaxed in trial chambers.
+MC-266469  When attacked, breezes sometimes stop pathfinding, jumping, or firing wind charges.
+MC-266533  Breeze's AI has serious flaws in open terrain.
+MC-266680  The glowing outline isn't applied to the eyes or eyebrows of breezes.
+MC-266685  The entity shadows of breezes are too large in relation to the size of their models.
+MC-266688  Breeze model's glowing eyes are not resource pack-friendly.
+MC-266738  Subtitles string "subtitles.block.trial_spawner.spawn_mob" is misleading and inconsistent.
+MC-266879  Clouds, entity hitboxes, block outlines, specially rendered blocks, and enchantment glints, render through the insides of breezes' eyes and eyebrows.
+MC-266909  Breezes don't have smooth transitions to their idle states when they stop moving.
+MC-266999  Crafter's tooltip buttons can still be visible to players on Spectator mode.
+MC-267133  Breezes can't attack or move when there is no land around them and they are on the same height block as the player.
+MC-267193  A function with /return fail run in chat doesn't indicate failure.
+From 1.20.4
+
+MC-267194  /return run function in combination with a fork and a function that doesn't return has inconsistent behavior.
+
+
+== Trivia ==
+The scale attribute comes from the April fools snapshot 23w13a_or_b mainly taken from the attribute "minecraft:general.scale" or the "transform scale" command.
+23w51a, along with 23w51b, was released on the latest calendar date of all snapshots, on December 18. It beats 15w51a and 15w51b which were released on December 17.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,48 @@
+al_version (AppletLoader version), saved on disc as version, is a number formerly used in versions as a caching identifier, to uniquely identify .jar files to be cached.
+It was used to tell the LWJGL AppletLoader when to clear its cache so LWJGL and client jars could be updated automatically.
+
+
+== Usage ==
+al_version is a number given as a parameter to the LWJGL AppletLoader in the HTML code of minecraft.net/play.jsp.
+It is used to specify a unique version for each jar file to cache them for re-use.
+If the stored al_version matches the latest jar files, those jar files are re-used; otherwise the previously saved jars are removed from the cache and new ones are downloaded.
+From Classic through most of Infdev, the al_version was a positive floating point number. Starting from Infdev 20100629, al_version proper was no longer used, however a caching ID still remained, taking the form of the current timestamp of the version's release.
+
+
+== Storage location ==
+The al_version may be found in the HTML of the game's web applet, as <param name="al_version" value="[al_version_id]" />
+In Classic through Infdev, the al_version may be found on disc in the temporary directory as version. The path differs based on the URL of the web applet being used:
+
+%temp%/Minecraft/
+%temp%/www.minecraft.net/Minecraft/
+%temp%/minecraft.net/Minecraft/
+%temp%/www.minecraft.net/Minecraft_creeper_test/
+%temp%/minecraft.net/Minecraft_creeper_test/
+%temp%/www.minecraft.net/Minecraft_sneakpeek/
+%temp%/minecraft.net/Minecraft_sneakpeek/
+%temp%/www.minecraft.net/Minecraft_infdev/
+%temp%/minecraft.net/Minecraft_infdev/
+%temp%/www.minecraft.net/Minecraft_game/
+%temp%/minecraft.net/Minecraft_game/
+Starting from Infdev 20100629, with the change from float al_version to a timestamped cache ID, it is now located on disc at %appdata%/.minecraft/bin/ (used by www.minecraft.net/game/ and the offline launcher).
+
+
+== List ==
+
+
+== History ==
+
+
+== See also ==
+Protocol version
+Data version
+
+
+== References ==
+
+
+== External links ==
+AppletLoader documentation  Legacy LWJGL Javadocs
+
+
+== Navigation ==

@@ -1,0 +1,2068 @@
+This is a list of Java Edition 1.18 development versions.
+
+
+== 1.18 Experimental Snapshot 1 ==
+1.18 Experimental Snapshot 1 (known as 1_18_experimental-snapshot-1 in the launcher) is the first experimental snapshot for Java Edition 1.18, released on July 13, 2021, which introduces new terrain generation and enables features from the preview data pack. This version is a fork of 1.17.1 Pre-release 1. This is the first experimental snapshot released in 2021.
+
+
+=== Additions ===
+
+
+==== World generation ====
+Caves
+
+Completely overhauled.
+Now stretch down to Y=-59.
+The cavern now generates in 2 layers of different stone bases depending on the depth.
+Cavern layer above Y=0 is made up of regular stone.
+Stone transitions to deepslate from Y=0 to Y=-7.
+Deepslate now completely replaces stone from Y=-8 to bedrock.
+Certain types of ores and structures still generate in the deepslate layer, as well as tuff.
+Dirt, diorite, granite and andesite do not generate in this layer.
+Contain aquifers, bodies of water with different heights, independent of sea level (Y=63).
+Aquifers below Y=0 sometimes generate with lava instead of water.
+Improved old caves, adding more variation.
+New noise caves, coming in 3 forms: cheese, spaghetti, and noodle.
+The original caves still exist with their generation slightly tweaked to better blend in with noise caves.
+Cheese caves have large stone towers stretching from the bottom of the cave to the top.
+Very large, often large enough to fly with elytra.
+Abundant with springs, aquifers and ores.
+Spaghetti caves are long, thin caves that have small aquifers and are more similar to original caves.
+Noodle caves are thinner, squigglier and more claustrophobic variants of spaghetti caves.
+Mountains
+
+Come in 5 sub-biomes:
+Meadow
+A flat but elevated biome that looks like a flowery and colder plains, with an aqua grass color and dark blue water color.
+Generates in plateaus and the lowest layers of some mountains, usually near plains and other temperate biomes.
+Contains grass, tall grass, dandelions, azure bluets, cornflowers, blue orchids, poppies, oxeye daisies and alliums.
+Only rabbits and donkeys spawn in this biome.
+Grove
+Reminiscent of a snowy taiga with snow blocks instead of grass blocks.
+Generates in the slopes of a snowy mountain when next to forested biomes.
+Covered in snow, snow blocks, powder snow and is filled with spruce trees.
+Rabbits, wolves, foxes, sheep, pigs, chickens and cows spawn in this biome.
+Snowy Slopes
+Generates in the slopes of a mountain when next to plains and snowy tundras.
+Covered in snow layers, snow blocks, powder snow and ice.
+Only rabbits and goats spawn in this biome.
+Lofty Peaks
+One of the biomes that generate in the mountain peaks.
+Covered in snow, snow blocks and ice.
+Only goats spawn in this biome.
+Snowcapped Peaks
+One of the biomes that generate in the mountain peaks.
+Generates if the surrounding biomes are too cold for lofty peaks.
+Covered in snow, snow blocks, ice, and packed ice.
+Only goats spawn in this biome.
+Ore Veins
+
+Long and rare ore formations.
+Copper ore veins mixed with granite and raw copper block generate above Y=0.
+Iron ore veins mixed with tuff and raw iron block generate below Y=0.
+
+
+==== Technical ====
+Debug screen
+
+Added two new lines: "Multinoise" and "Terrain".
+Only appear if the dimension where the player is uses the multi-noise biome source type.
+Multinoise lists the parameters used at the player's position in order to place a biome. C is continentalness, E is erosion, T is temperature, H is humidity and W is weirdness.
+Terrain lists values related to terrain generation.[more information needed]
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Sculk sensor
+
+Have been re-added to Creative inventory.
+Snow block
+
+Plants can now be placed on snow blocks.
+
+
+==== Items ====
+Bundle
+
+Have been re-added to Creative inventory.
+Can once again be crafted.
+
+
+==== Mobs ====
+Axolotls
+
+Now only spawn in lush caves.
+Goat
+
+Now only spawn in the new mountain biomes.
+General 
+
+Block light level now must be 0 for many hostile mobs to spawn.
+
+
+==== World generation ====
+Overworld
+
+Now uses the multi-noise biome source type.
+Lush caves and dripstone caves
+
+Now generate naturally underground and inside hills or mountains.
+Azalea trees now generate above lush caves.
+Deep warm ocean
+
+Now generates naturally.
+Swamp
+
+Does not generate correctly. This is fixed in 1.18 experimental snapshot 2.
+Sub-biomes
+
+Wooded hills, birch forest hills, tall birch hills, taiga hills, taiga mountains, gravelly mountains+, desert hills, desert lakes, savanna plateau, shattered savanna plateau, swamp hills, dark forest hills, ice spikes, snowy mountains, snowy taiga hills, snowy taiga mountains, modified jungle, jungle hills, bamboo jungle hills, jungle edge, modified jungle edge, giant tree taiga hills, giant spruce taiga hills, eroded badlands, badlands plateau, modified badlands plateau, modified wooded badlands plateau, and mushroom field shore biomes no longer generate naturally.
+Ice spikes, eroded badlands and savanna plateau were added back in 1.18 experimental snapshot 2.
+Jungle edge was added back in 1.18 experimental snapshot 5.
+
+Ore distribution
+
+Changed ore generation of all ores making them have a spread value like lapis lazuli ore. Some still retain a linear generation alongside a spread generation.
+Coal ore, emerald ore, and copper ore no longer generate below Y=0.
+Copper ore generates between Y=0 and Y=96 and like all other ores, uses spread. It peaks at Y=48.
+Emerald ore generates above Y=32 as a spread, peaking at Y=256 and decreasing in quantity as the altitude decreases.
+Coal ore attempts to generate twice: once, evenly between an altitude of Y=136 and Y=256; and as a spread, peaking at an altitude of Y=96 and generating between an altitude of Y=0 and Y=192.
+Other ores also generate differently.
+Iron ore attempts to generate three times: once as a spread peaking at an altitude of Y=256, generating above Y=128; another as a spread peaking at Y=16 and generating with a minimum height of Y=-24 and a maximum height of Y=57, and a smaller one spreading evenly between the altitudes of Y=-64 and Y=72.
+Gold ore generates between the altitudes of Y=-64 and Y=32, peaking at Y=-16. The extra gold that generates in the badlands biome was left untouched.
+Lapis lazuli ore attempts to generate twice: once, as a spread between the altitudes of Y=32 and Y=-32, peaking at an altitude of 0; and evenly between the altitudes of Y=64 and Y=-64, generating buried like ancient debris.
+Redstone ore attempts to generate twice: once, evenly between an altitude of Y=15 and Y=-64; and as a spread, peaking at an altitude of -64 and generating below an altitude of Y=-32.
+Diamond ore now generate as a spread, generating below Y=16 and peaking at altitudes near Y=-64.
+General
+
+Terrain generation is now independent from biomes, with biomes adapting to whatever terrain they happen to generate throughout.
+This allows for natural variation in the terrain of any individual biome, both in terms of shape and elevation.
+For example, forests and deserts could form up on a hill without needing a special biome just for that purpose.
+This additionally allows for smoother transitions between biomes.
+Terrain is now smoother and more extreme.
+
+
+==== General ====
+Height limit
+
+Has been increased to 384 blocks, expanding 64 blocks up and 64 blocks down, with 320 being the limit upward and -64 being the limit downward.
+World types
+
+"Large Biomes" and "AMPLIFIED" worlds can no longer be created.
+
+
+== 1.18 experimental snapshot 2 ==
+1.18 Experimental Snapshot 2 (known as 1_18_experimental-snapshot-2 in the launcher) is the second experimental snapshot for Java Edition 1.18, released on July 20, 2021, which makes numerous changes to world generation and mob spawning functionality related to monster spawners.
+
+
+=== Additions ===
+
+
+==== General ====
+NBT format
+
+Spawners now have a new [NBT Compound / JSON Object] CustomeSpawnRules [sic] tag, which lets players override the spawn rules of the spawned mob.
+In the tag, players can specify [Int] BlockLightLimit, which indicates the highest block-light the spawner spawns mobs at.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+General 
+
+Zombie, skeleton, spider, and cave spider spawners now spawn mobs up to block-light level 11.
+
+
+==== World generation ====
+Beaches
+
+Beaches are generally wider.
+In some places there is a chance where no beaches generate at all, to provide some variation.
+Extreme hills
+
+Renamed mountains to extreme hills, and gravelly mountains to gravelly hills.
+Mountains
+
+Sheep now spawn in meadows.
+Rabbits now spawn more frequently in meadows.
+Donkeys now spawn less frequently in meadows.
+Blue orchid no longer spawns in meadows.
+Meadows sometimes spawn a lone oak or birch, often with a bee nest.
+Hostile mobs now spawn in the new mountain biomes.
+Infested stone now generate in the new mountain biomes.
+Ore distribution
+
+Emerald ores now generate in the new mountain biomes.
+Ore veins
+
+Made ore veins slightly larger and more frequent.
+Biomes
+
+Ice spikes, eroded badlands, and savanna plateau generate naturally.
+Swamp
+
+Swamps now generate properly.
+Lush caves
+
+Are now slightly smaller and slightly less common.
+General
+
+Biome placement is a bit smoother and less noisy. Fewer microbiomes dotting the terrain. Biomes tend to be a bit larger and less fragmented.
+Underground biomes interfere less with surface biomes. They can still leak out of cave entrances sometimes.
+Increased the height of some of the peaks.
+Now can rarely reach up to Y=260.
+Slightly increased the chance of finding large areas with flat terrain.
+Structures now mostly show up in the right biomes.
+Toned down the megacave entrances a little bit, and made them less likely to go all the way down to deepslate level.
+Made cheese caves a little bit smaller on average, and a bit less likely to intersect the surface.
+Reduced the chance of sand and gravel being placed in such a way that they immediately fall down on generation.
+Some are now replaced with sandstone or stone.
+
+
+==== General ====
+Clouds
+
+Raised cloud level from 128 to 192.
+
+
+== 1.18 experimental snapshot 3 ==
+1.18 Experimental Snapshot 3 (known as 1_18_experimental-snapshot-3 in the launcher) is the third experimental snapshot for Java Edition 1.18, released on August 10, 2021, which makes numerous changes to world generation and fixes bugs from previous experimental snapshots.
+
+
+=== Additions ===
+
+
+==== World generation ====
+Stony Peaks
+
+A new mountains biome that is a variant of lofty/snowcapped peaks that uses stone and strips of gravel, instead of snow and ice.
+Is used to avoid temperature clashes.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+General
+
+Mob spawning is now consistent throughout all altitudes increasing spawn rates in higher altitudes and decreasing spawn rates in lower altitudes.
+The spawning rates are similar to 1.17's spawning rate at y=64.
+
+
+==== World generation ====
+Aquifers
+
+Aquifers can go deeper and are more likely to connect with cave systems further down.
+Added more high-frequency variation to aquifers, to reduce the risk of massively huge areas with waterfilled caves everywhere.
+Underground lakes and flooded regions are more likely to be spread out instead of concentrated in one region.
+Badlands
+
+Tweaked badlands so they sometimes show up in flat areas next to plateaus, and made the red sand generate higher up (to account for the generally higher terrain).
+Eroded badlands no longer create floating pillars on top of the water surface.
+Biomes
+
+Tweaked biome placement to reduce the chance of temperature clashes.
+Tweaked biome placement to allow for more noisiness and diversity.
+This allows for the reintroduction of microbiomes.
+Beaches
+
+Tweaked beaches a bit, to make them more inclined to show up on flat coastlines rather than hilly areas.
+Reduced the amount of stone shores.
+Desert temples
+
+Desert temples spawn on the surface rather than at a fixed y-level.
+Mountains
+
+Made peak biomes and meadows less likely to generate in flat low elevation areas.
+Snowy slopes and snowcapped peaks no longer place dirt under the snow.
+Pillager outposts
+
+Now generate in all the new mountain biomes.
+Swamps
+
+Swamps are less likely to overlap cold or dry biomes, and they no longer place hanging water.
+Villages
+
+Now generate in meadows.
+General
+
+Smoothed out the cliffs in shattered terrain a bit.
+Coastlines and river banks are less likely to be intersected by aquifers.
+Local water levels are mostly used in terrain that doesn't border a river or ocean.
+Cave openings and ravines that intersect an ocean or river mostly use sea level.
+Inland low-elevation areas are less likely to have flooded caves everywhere.
+Grass no longer generates underwater.
+Reduced the chance of incorrect surface placement.
+Reduced the chance of river biome generating in dry mountain gorges.
+
+
+=== Fixes ===
+Fixed goats not spawning in the new mountain biomes.
+Fixed an issue where players in multiplayer can face far more or far fewer enemies than intended, particularly when other players are flying.
+MC-30560 was fixed by this version, although it was not marked as such due to the bug tracker not handling experimental snapshots.
+
+
+== 1.18 experimental snapshot 4 ==
+1.18 Experimental Snapshot 4 (known as 1_18_experimental-snapshot-4 in the launcher) is the fourth experimental snapshot for Java Edition 1.18, released on August 17, 2021, which makes numerous changes and tweaks to world generation.
+
+
+=== Changes ===
+
+
+==== World generation ====
+
+
+===== Biomes =====
+General
+
+Tweaked biome placement in general to reduce the risk of harsh collisions.
+Now biome placement is a bit smoother and less noisy. This should result in fewer microbiomes.
+Removed surface freezing for hot biomes, and raised the altitude at which snow layers are placed.
+Badlands
+
+Now is larger and less likely to show up as microbiome splotches.
+Terracotta bands now go higher.
+Wooded Badlands
+
+Their grass and trees now start higher.
+Desert
+
+Now is larger and less likely to show up as microbiome splotches.
+Desert pyramids now tend to be partially buried and no longer generate on water.
+Extreme Hills
+
+The terrain is now more extreme. Fiddled with the placement of shattered terrain and extreme hills in general to make it fit in with the terrain better.
+Jungle Pyramid
+
+No longer generates on water.
+Ore distribution
+
+Reduced the number of diorite/andesite/granite blobs on the surface.
+Copper ore blobs now are bigger in dripstone caves.
+More iron is generated.
+River
+
+Reduced the likelihood of rivers being cut off and turning into steep dry river gorges in mountainous terrain.
+Rivers tend to either carve a fjord through the mountain range, or raise the terrain to form a saddle valley between the peaks.
+Snowy Slopes
+
+Now have fewer dirt blocks.
+Stone Shore
+
+Sometimes generate layers (strips) of gravel, diorite, andesite, or granite.
+Stony Peaks
+
+Sometimes generate layers (strips) of calcite, andesite, granite, or gravel.
+Swamp
+
+Tweaked swamp placement a bit.
+Are less likely to extend far out from the coastline.
+Rivers in swamps now tend to be shallower.
+
+
+== 1.18 experimental snapshot 5 ==
+1.18 Experimental Snapshot 5 is the fifth experimental snapshot for Java Edition 1.18, released on August 25, 2021, which makes numerous changes and tweaks to world generation.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+General
+
+Removed the height-based spawning change that was made in snapshot 3.
+
+
+==== World generation ====
+Badlands
+
+Slightly decreased the size of Badlands.
+Caves
+
+Carvers can now replace red sand and calcite during world generation.
+Dripstone caves
+
+In world generation, grass is replaced with stone (if generated near grass).
+Jungle edge
+
+Now generates naturally.
+Lush caves
+
+Now generate with springs.
+Were unintentionally made smaller and more fragmented.
+Mountains
+
+Mountain tops are now more jagged and pointy.
+Mountain areas and peak biomes now are slightly larger on average.
+Raised the average mountain height
+Mushroom fields
+
+Tweaked mushroom fields biome, now it matches the shape of the islands better.
+Rivers
+
+Tweaked the depth of rivers and the steepness of river banks.
+They are less likely to be super deep or get cut off in flat areas.
+Rivers integrate better with swamps, the river tends to get shallow and merge with the swamp instead of carving through.
+Swamps
+
+Moved swamps slightly more inland.
+Swamp trees can grow in slightly deeper water than before, populating deeper marshes.
+General
+
+Small lakes features are no longer placed in dry and hot biomes (desert, savanna, badlands).
+Reduced the number of lake feature placements in other biomes.
+Water springs can generate in more types of blocks such as dirt and snow, increasing the likelihood of small mountain streams and waterfalls.
+Reduced the amount of shattered terrain and shattered savanna biome, replacing some of that space with flatter beaches instead.
+
+
+=== Fixes ===
+Fossils with diamonds no longer generate above deepslate level.
+Fixed an unintentional change from snapshot 4 that made mountains lower and smoother.
+Small hills and overhangs (3D noise) generate more often in flat areas, like in the third experimental snapshot.
+Fixed an indent in the code.
+
+
+== 1.18 experimental snapshot 6 ==
+1.18 experimental snapshot 6 is the sixth experimental snapshot for Java Edition 1.18, released on September 1, 2021, which introduces changes to terrain generation and tweaks biome placement.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Horses, mules, and donkeys
+
+Now follow players holding golden carrots, golden apples, and enchanted golden apples.
+Llamas
+
+Now follow players holding hay bales.
+
+
+==== World generation ====
+Aquifers
+
+Aquifers under oceans or rivers are more likely to link to the underground.
+More likely to find cave openings on ocean floors that actually lead somewhere instead of being cut off.
+Caves at Y=0 to Y=40 which under oceans are more likely to be flooded.
+Giant tree taiga and giant spruce taiga
+
+No longer considered as cold climates.
+Decreased the chance of mixed in with snowy biomes, caused a small reshuffle of other biomes to maintain the overall balance.
+Grove and snowy slopes
+
+Decreased the chance of generating on mountain peaks.
+Altered generation so that they tend to spawn farther away from contrasting temperatures.
+Springs
+
+Slightly reduced the number of water springs.
+Swamps
+
+Now generate in dry areas.
+Decreased the chance of being fragmented.
+Canyons
+
+Underwater variants readded.
+No longer use a specific carver for underwater canyons. Instead, they generate on ocean floors, using normal noise caves and carvers.
+Now have more natural variation.
+General
+
+Decreased the chance of generating cold microbiomes.
+Slightly increased the number of underwater magma blocks, to increase the chance of finding air when diving in aquifers.
+Cave carvers can now carve through sand and gravel on ocean floors.
+
+
+=== Fixes ===
+Fixed decreased generation rate of lush caves.
+
+
+== 1.18 experimental snapshot 7 ==
+1.18 experimental snapshot 7 is the seventh and final experimental snapshot for Java Edition 1.18, released on September 8, 2021, which introduces changes to terrain generation and tweaks to elytra due to various server chunk loading issues. This is the final experimental snapshot released in 2021.
+
+
+=== Changes ===
+
+
+==== Items ====
+Elytra
+
+No longer take durability damage when gliding, only when boosting with firework rockets.
+Decreased the firework rocket boost on an elytra from 30 blocks per second to 26 blocks per second.
+Now break when the item reaches 0 durability.
+
+
+==== World generation ====
+Caves
+
+Noodle caves are no longer capped at Y=130, allowing cave openings and cracks in mountain peaks.
+General
+
+Slightly smoothened the terrain by lowering the noise.
+
+
+== 21w37a ==
+21w37a is the first non-experimental snapshot for Java Edition 1.18, released on September 15, 2021, which adds the contents of the previous seven experimental snapshots and brings more parity with Bedrock Edition.
+
+
+=== Additions ===
+
+
+==== General ====
+Commands
+
+/jfr
+When enabled, begins profiling with Java FlightRecorder, as well as the following custom events:
+minecraft.ServerTickTime: Sampling event exposing average server tick times in intervals of a second
+minecraft.ChunkGeneration: Time taken to generate individual chunk stages
+minecraft.PacketRead / minecraft.PacketSent: Network traffic
+minecraft.WorldLoadFinishedEvent: Initial world loading duration
+The profiling can be stopped in-game by using /jfr stop.
+Font
+
+Added illageralt, the rune-like font from Minecraft Dungeons.
+Currently only usable via commands
+Loot tables
+
+Added the type field, which is mandatory.
+Written into BlockEntityTag.id to ensure that the tag can be migrated correctly between versions.
+Options
+
+Can now disable lightning flashes, which prevents lightning from making the sky flash. Lightning bolts themselves still appear.
+The device the game outputs audio to can now be chosen in-game.
+Added "Priority updates" to video settings.
+Determines as to which chunk sections are updated synchronously in a single frame.
+Three options:
+nearby, which corresponds to how chunk sections were updated before 21w37a, by player and none, which reduce stuttering when placing or removing blocks.
+However, the latter two options may cause rare visual delays in world updates. These options also appear to be improperly capitalized.
+Subtitles
+
+Added subtitles for various bundle sounds.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Enchanting table
+
+Now emits a light level of 7.
+Cave vines, kelp, twisting vines and weeping vines
+
+Now stop growing if shears are used on the tip.
+This action changes the age block state of the tip to 25.
+Snow block
+
+Reverted change allowing plants to be placed on snow blocks.
+This reversion results in the lack of vegetation in the grove biome.
+
+
+==== Items ====
+Bundle
+
+Has been removed from the creative inventory once again.
+Can once again no longer be crafted.
+Only accessible through commands once again.
+Crossbow
+
+Durability has been increased to 465.
+Elytra
+
+Reverted changes from experimental snapshot 7.
+
+
+==== Mobs ====
+Axolotls
+
+Now have their own mob cap.
+Now avoid lava.
+Vindicators, pillagers, and evokers
+
+Don't attack baby villagers anymore.
+Goats
+
+Now only spawn in snowy slopes, stony peaks, lofty peaks, and snow capped peaks biomes.
+Rabbits
+
+Can now spawn on snow blocks.
+Feedable mobs
+
+All feedable mobs (except sheep) named "Dinnerbone" now look at the player correctly.
+General
+
+Reverted changes of spawners from experimental snapshot 2.
+
+
+==== World generation ====
+Stone shores
+
+Changes of diorite, andesite, or granite generated as strips in experimental snapshot 4 is reverted.
+Stony peaks
+
+Changes of andesite, granite and gravel generated as strips in experimental 4 is reverted.
+
+
+==== General ====
+Data packs
+
+Version number has been increased to 8.
+Options
+
+Sneak, sprint, and auto-jump options have been moved to the "Controls" menu.
+Render distance now causes chunks to load in a cylinder shape around the player instead of a square.
+Scoreboards
+
+Removed length limits for scoreboards, score holders and team names.
+Splashes
+
+The splash "[this splash text has been delayed until part 2]" has been changed to "[this splash text is now available]".
+Tags
+
+Renamed the lava_pool_stone_replaceables block tag to lava_pool_stone_cannot_replace.
+Other
+
+Worlds last opened before Java Edition 1.2 can no longer be opened.
+These worlds must be opened in a version prior to 21w37a (preferably between Java Edition 1.2 and Java Edition 1.6.4).
+An error is shown when attempting to open these worlds.
+
+
+=== Fixes ===
+69 issues fixed
+From released versions before Java Edition 1.18
+
+MC-7200  Cave/tunnel generation may cut tunnels a bit too soon.
+MC-29274  Withers will not pursue players in survival mode unless attacked.
+MC-30560  River through eroded badlands biome generates floating rock formations at water surface.
+MC-54545  Client render distance doesn't adjust to server render distance if they are different, causing faulty chunk loading.
+MC-65628  Desert pyramids generate underground when using amplified or custom terrain.
+MC-72831  Water lakes can generate in deserts.
+MC-85975  Slimes don't spawn in the swamp hills biome.
+MC-101917  Andesite, diorite and granite won't generate above a height of about 80.
+MC-123277  Too long scoreboard objectives and team names are not detected when commands are parsed.
+MC-125033  Old cave and ravine generation gets cut off unnaturally on chunk borders near water.
+MC-126133  Undercover ravines sometimes generate cut off at chunk borders.
+MC-129266  Jagged ocean transitions and slower biome generation.
+MC-132175  Beaches generate along swamp hills when bordering an ocean.
+MC-132429  Sand beaches generate when bordering gravelly mountains biomes.
+MC-134407  Ocean ravines spawning underground with a stone roof on top.
+MC-138801  The interactions between a biome and another biome and its variants are inconsistent.
+MC-140151  Modified jungle edge biomes only generate when a jungle borders a swamp hills biome.
+MC-140690  Giant spruce taiga hills have no difference with giant spruce taiga.
+MC-159025  Drowned do not spawn in warm ocean biomes.
+MC-160710  Chat messages written while sleeping are deleted after waking up.
+MC-166238  Trees can generate on mycelium.
+MC-166423  Splash water bottles don't damage endermen.
+MC-167277  Swamp hills don't naturally generate seagrass.
+MC-167800  Rabbits do not spawn on snow block, podzol and coarse dirt.
+MC-175929  Ice spikes get cut off below height limit on AMPLIFIED worlds.
+MC-182362  Score callbacks with a too long name break callback chain.
+MC-186042  Plains biome is always generated when a swamp borders a desert, snowy tundra or snowy taiga.
+MC-188096  Gravelly mountains+ is no different than gravelly mountains.
+MC-190363  Some biomes generate as "Single biome" worlds in "Floating islands" world type.
+MC-199298  Strongholds don't generate in bamboo jungles.
+MC-200230  Anomalous stripes/grid ice generation in frozen ocean biome.
+MC-202376  Rabbits, instead of spawning on snow blocks, spawn on snow layers.
+MC-208352  Dark forest hills don't generate small patches of plains or sunflower plains, but dark forest does.
+MC-208353  Several hills biomes do not generate sporadically replacing patches of their regular biome counterparts.
+MC-208601  Axolotls do not avoid danger when pathfinding.
+MC-212113  Glow lichen can spawn underwater whilst not in a cave.
+MC-213779  FPS drops when looking up in a tall world (4064 blocks).
+MC-214335  Flower forest is much steeper than regular forest.
+MC-214783  Oceans generate with stone floors.
+MC-214797  Pointed dripstone can generate floating at transitions between local water levels.
+MC-214799  Aquifers sometimes create air pockets.
+MC-214864  Hard edges when new caves generate near surface.
+MC-215062  Weird aquifer barrier generator and water in incorrect states.
+MC-215296  Mineshafts often don't generate in floating island worlds.
+MC-215876  Dirt can generate below Y=0 from mineshafts.
+MC-216362  Jukeboxes that have been placed don't stack with jukeboxes that have not been placed.
+MC-216448  River generates over a ravine.
+MC-216784  Ruined portals don't generate below Y=0.
+MC-216952  Some chunks interrupting with cave systems filled with blocks.
+MC-216967  Kelp and seagrass can generate in aquifers.
+MC-217136  Random noise pillars generating mid air.
+MC-217465  Unnatural shape looking like a chunk border but appears to be completely unrelated to chunk borders.
+MC-217509  Inefficient generation of aquifers, noise caves and ore veins.
+MC-219774  Magma blocks spawn everywhere underwater in 21w10a.
+MC-219946  Weird flat sections of terrain.
+MC-221679  End fog loses its gradient when under Y=0.
+MC-221777  Horses, donkeys, mules, llamas, and trader llamas do not follow players holding food.
+MC-221815  Flat roofs in underwater caves.
+MC-221917  Dripstone, pointed dripstone, and cave magma generate in oceans.
+MC-222051  Iron ore generation was not increased in 21w13a.
+MC-222379  Magma can spawn under air in underwater caves.
+MC-223044  Floating water can generate in ravines.
+MC-223051  Dripstone can generate in surface lakes.
+MC-223148  Extended height message goes behind the scrolling bar.
+MC-225781  The noise cave lava level and the cave carver lava level generate 1 block apart.
+MC-227244  Ore blocks from ore veins float in underwater magma ravines.
+MC-230343  Parity issue: Enchanting tables do not emit a light level of 7.
+MC-231863  Game crashes when trying to access the Realms settings.
+MC-233050  #lava_pool_stone_replaceables tag name is misleading.
+
+
+== 21w38a ==
+21w38a is the second snapshot for Java Edition 1.18, released on September 23, 2021, which make more performance-related tweaks, reimplements telemetry, and fixes bugs, mostly relating to terrain changes that were accidentally removed in the previous snapshot.
+Any worlds from previous versions cannot be opened in this version.
+
+
+=== Additions ===
+
+
+==== General ====
+Languages
+
+Added Lombard.
+Added Toki Pona.
+Options
+
+Added "Simulation Distance" video setting, a new slider.
+Entities aren't updated outside of simulation distance.
+Allows higher render distance with less CPU load.
+Subtitles
+
+Added a new subtitle for the crop sound of shears.
+server.properties
+
+Added simulation-distance.
+Telemetry
+
+Readded, previously a part of game known as "snooper" until 18w20c.
+Only implemented in world load event now.
+Sent data when loading singleplayer world or connecting to multiplayer server.
+Contains following information:
+Launcher identifier
+User identitifer (XUID)
+Client session ID (changes on restart)
+World session ID (changes per world load, to be reused for later events)
+Game version
+Operating system name and version
+Java runtime version
+If client or server is modded (same information as on crash logs)
+Server type (single player, Realms or other)
+Game mode
+Cannot be disabled. 
+
+
+=== Changes ===
+
+
+==== World generation ====
+Ore distribution
+
+Copper ore now generates up to Y=95, and its amount was increased.
+Lapis lazuli ore now generates in blobs, like other ores, instead of spread out.
+
+
+==== General ====
+Performance
+
+Now, various background tasks including world generation are executed on a background thread pool.
+The size of the thread pool equals Amount of available CPU threads - 1.
+Maximum amount of threads is 255, instead of 7. This limit can be overridden by Java system property max.bg.threads.
+Sprinting
+
+No longer reduced to walking when touching the wall at low angles.
+
+
+=== Fixes ===
+21 issues fixed
+From released versions before Java Edition 1.18
+
+MC-44055  Game fails to switch the audio output from one device to another from the title screen after the game has started.
+MC-128762  Strongholds do not generate in ocean buffet worlds.
+MC-136288  Strongholds don't generate in swamp biomes.
+MC-158410  Strongholds don't generate in beach surface and snowy beaches buffet worlds.
+MC-183184  Sprinting stops as soon as you touch another block.
+MC-202036  Adding a biome to a datapack shifts biome IDs in existing chunks.
+From the previous development version
+
+MC-236611  No sound for using shears on weeping, twisting, cave vines or kelp.
+MC-236618  Strongholds don't generate in 21w37a.
+MC-236621  Liquids sometimes do not propagate.
+MC-236633  Random light level of 0 in sky.
+MC-236656  Crash when changing render distance: java.lang.ArrayIndexOutOfBoundsException: Index 28084 out of bounds for length 26136.
+MC-236665  Memory leak in 21w37a.
+MC-236682  Large and continuous lag spikes sometimes occur when loading or reloading into a world in 21w37a.
+MC-236698  Big spruce trees don't generate in groves.
+MC-236711  Starting and stopping JFR profiling multiple times within the same minute overwrites previous JFR results saved during that minute.
+MC-236718  Dripstone caves generate above the ground.
+MC-236753  Caves and lakes generating too much in desert surface.
+MC-236795  Cannot start with alternate JVM due to JFR requirement.
+MC-236873  Problems with JFR event metadata.
+MC-236967  Too many aquifers on biome surfaces at Y=63 and below.
+MC-237109  Aquifers often generate with harsh straight borders.
+
+
+== 21w39a ==
+21w39a is the third snapshot for Java Edition 1.18, released on September 29, 2021, which adds new advancements and fixes bugs.
+Starting from this snapshot, players can open old worlds again. This does not only mean it is the first version which makes it possible to convert old worlds with lower limit Y=0 to the new Y=-64, but it means also that high caution is needed and backups are recommended when converting important old worlds, because the old chunks do yet not generate anything under their bedrock level: from -64 to -1 it is just void, only the new chunks get the new deep generation.
+
+
+=== Additions ===
+
+
+==== Gameplay ====
+Advancements
+
+Added four new advancements:
+Caves & Cliffs
+Fall from the top to the bottom of the Overworld
+Feels like home
+Ride a strider on lava for 50 blocks in the Overworld
+Star Trader
+Trade with a villager at the build height limit
+Sound of Music
+Play music with a jukebox in a meadow biome
+Added new advancement triggers.
+fall_from_height
+Triggered when a player lands after falling.
+ride_entity_in_lava
+Triggered for every tick when player rides in lava.
+
+
+==== General ====
+Loot tables
+
+Added new loot table function set_potion, to set Potion tag on any item.
+Has following parameters:
+id: Potion ID
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Drowned
+
+Now can spawn in aquifers inside dripstone caves.
+Zombie
+
+No longer spawns in dripstone caves.
+
+
+==== World generation ====
+Lofty peaks, snowcapped peaks and stony peaks
+
+Its small mountains are more jagged now.
+Meadow
+
+Trees in meadows now always contain a bee nest.
+
+
+==== Gameplay ====
+Advancements
+
+"Light as a Rabbit" now has "Sweet Dreams" as its parent instead of "Adventure".
+
+
+==== General ====
+Buried treasure
+
+Chests can now contain Water Breathing potions.
+Chunk format
+
+Paths for the block and biome data have changed:
+Level.Sections[].BlockStates is now Level.Sections[].block_states.data.
+Level.Sections[].Palette is now Level.Sections[].block_states.palette.
+Chunks Level.Biomes are now paletted and live in a similar container structure in Level.Sections[].biomes.palette and Level.Sections[].biomes.data.
+Chunks Level.CarvingMasks[] is now long[] instead of byte[].
+Effects
+
+Redesigned how effects look in the inventory screen.
+Can display while recipe book is showing.
+The list of effects are now shown to the right of the player's inventory, instead of the left side.
+When the inventory effects list is visible, it is hidden from the game view to reduce screen clutter.
+There are now two modes of seeing the effect list: compact and classic.
+Classic is the pre-existing list of effects, one after another.
+Compact is a single icon for each effect, suitable for small screen estate.
+The game automatically switches between the two looks to suit the available screen estate.
+Options
+
+Changed default brightness to 50.
+Resource packs
+
+Resource pack version number is now 8, as the following has been changed:
+inventory.png now contains an extra sprite for a thin-layout version of the effect list in the inventory.
+Server jar
+
+server.jar now bundles individual libraries instead of merging all the files into single archive.
+This change is meant to solve certain problems related to Java modules.
+On startup, server.jar unpacks libraries into a directory configured by bundlerRepoDir (default: working directory).
+To run different main class than server, use bundlerMainClass property.
+
+
+=== Fixes ===
+14 issues fixed
+From released versions before Java Edition 1.18
+
+MC-116359  Status effects aren't displayed in inventory when recipe book is open.
+MC-129485  Certain biome specific plant distribution is completely based on chunks, causing patchy biome generation.
+MC-145376  Bamboo could generate underground when generating in non-bamboo jungles.
+MC-149822  Bottom border on status effect displays in the inventory is missing.
+MC-193348  Status effect bars shift the player's inventory in creative mode.
+MC-196723  Potion effects obtained in creative mode while in inventory do not show up until reopening inventory.
+MC-214894  Bamboo generates in caves under jungles.
+MC-214959  Sugar cane generated in cave.
+MC-218167  Chatting causes lag to occur.
+From the Java Edition 1.18 development versions
+
+MC-236755  "Feature Placement" crash: java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0.
+MC-236903  Naturally generated cave vines have an age between 17-25.
+From the previous development version
+
+MC-237464  Packet sent event is recorded as packet received event.
+MC-237505  Certain Biome Builder debug values do not change.
+Other
+
+Removed generic snapshot tooltips from incompatible worlds (except for worlds created in experimental snapshots).
+
+
+== 21w40a ==
+21w40a is the fourth snapshot for Java Edition 1.18, released on October 7, 2021, that merges and renames some biomes, tweaks world generation, mob spawning, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Copper ore
+
+Now drop 2-5 raw copper when mining instead of 2-3.
+Stonecutter
+
+Block of copper can be converted to 4 cut copper using stonecutter.
+
+
+==== Mobs ====
+Axolotls
+
+Now only spawn in water above clay blocks in lush caves.
+Cod, salmon, pufferfish, tropical fish, squid, and dolphins
+
+Now only spawn in water from Y=50 to Y=64.
+Additionally, tropical fishes now also spawn in lush caves at any height.
+Glow squids
+
+Now only spawn in water blocks under Y=30.
+Goats
+
+No longer spawn in stony peaks.
+Zombies
+
+Now also spawn in dripstone caves again.
+
+
+==== World generation ====
+Biomes
+
+The unused height variation sub-biomes have been removed from the code and merged with their default biome variants, as following:
+
+Some biomes have been renamed:
+
+Non-cave biomes (e.g. savannas) no longer change with height.
+Tweaked the relative size of some biomes, to match 1.17 a bit closer.
+Increased the average size of most biomes.
+
+Ore distribution
+
+Copper ore now generates between Y=-16 and Y=112, generating the most at Y=48, and increased the number of ore blobs.
+Added more unexposed diamonds.
+Decreased minimum generation height of emerald ore from Y=32 to Y=-16, and increased the number of blobs.
+This allows deepslate emerald ore to generate again.
+Extra gold generates below Y=-48.
+Decreased minimum generation height of the upper range of iron ore from Y=112 to Y=80, and increased the number of blobs.
+Monster rooms
+
+Increased the amount of monster rooms, especially below Y=0.
+Gravel
+
+Now generates below Y=0, and increased the number of blobs.
+Lakes
+
+Water lakes were removed, because aquifers could provide local water levels.
+Magma blocks
+
+Slightly increased the frequency of underwater magma.
+Villages
+
+Now slightly more spread out.
+General
+
+Bedrock layers generate dependent on the world seed now.
+
+
+==== Gameplay ====
+Advancements
+
+Due to the removal or merging of sub-biomes, the number of biomes required to visit for the "Adventuring Time" advancement has been reduced from 42 to 31, with the following biomes now being required:
+
+
+==== General ====
+AI
+
+Optimized AI for axolotls, goats, hoglins, zoglins, piglins, piglin brutes and villagers.
+
+
+=== Fixes ===
+47 issues fixed
+From released versions before Java Edition 1.18
+
+MC-128770  Woodland mansions still generate in dark forest hills.
+MC-132306  Snowy grass without snow near lakes in snowy biome.
+MC-133582  Dolphins try to catch up with boat on land.
+MC-137140  Llamas cannot spawn in shattered savanna plateau.
+MC-137956  Lakes still generate in superflat preset "Overworld" after removing its tag.
+MC-138734  Spawn point for seed 0, world type Buffet with badlands plateau biome is under surface,  player dies.
+MC-138782  Stranded dolphin tries to catch the boat on the water and stops beating.
+MC-138939  Fish and dolphins spawn in water above sea level.
+MC-152966  Increase in villages generating in versions after 1.10.
+MC-169523  As of 18w06a, the sand, clay and gravel blocks no longer generate around small lakes.
+MC-177016  Some lakes in frozen biomes generate unfrozen.
+MC-190724  Spawning in solid blocks in single biome "Badlands Plateau" world.
+MC-197688  Mountain edge never generates.
+MC-200640  Despite being a coastal biome, mushroom field shores don't have a warm/unique water color.
+MC-200803  Gravelly mountains+/modified gravelly mountains placed incorrectly in the biome selection.
+MC-217906  Large amounts of axolotls cause performance issues.
+MC-224494  Regular dirt can generate naturally on the surface near pools.
+MC-225030  Dungeons are extremely rare compared to in the past.
+MC-225506  Grass blocks can generate naturally in underground pools.
+MC-225842  Flowers can generate on large plants near lakes.
+MC-225858  Seeds and flowers appear in ponds.
+MC-226000  Pointed dripstone items in underground pools.
+MC-226437  Water lakes generating in snowy tundra's can sometimes contain dark spots.
+MC-226682  World can fail to render/load causing visual issues.
+MC-227064  Floating grass can still generate above water lakes.
+MC-229365  Large amounts of goats cause performance issues.
+MC-231400  Modified badlands plateau and mountain edge don't generate and gives out invalid biome data in single biome worlds.
+MC-233661  In some cases, sand blocks generating over lakes do not cause light updates, resulting in large dark spots.
+MC-238006  Emerald ore and infested blocks do not generate in snowy mountain biomes.
+From the Java Edition 1.18 development versions
+
+MC-236609  New mountain biomes use translations strings in biome selection.
+MC-236614  Adventuring Time advancement still accepts non generating biomes.
+MC-236617  Mountains and gravelly mountains use their 1.17.1 biome ID name.
+MC-236632  Banners without patterns do not render properly.
+MC-236663  Command blocks do not display command in their UI.
+MC-236736  No relief on treasure map or explorer maps.
+MC-236894  Foliage from specific biomes can generate in biomes they aren't meant for.
+MC-236896  Strange mini broken aquifer walls generating commonly on the surface.
+MC-237490  The bottom parts of aquifers aren't always surrounded by blocks which can occasionally cause them to spill into caves in ways that appear bizarre.
+MC-237586  Entities that die outside of simulation distance remain frozen in the death animation.
+MC-237666  Unused biomes still present in game files.
+From the previous development version
+
+MC-237925  Opening world from 1.12.2 (or older) in latest snapshot regenerates random chunks.
+MC-237933  Sweet berries generate much too often.
+MC-237950  Cave vines can generate without tip because prioritize_tip option is negated.
+MC-237951  Cave vines can generate into water.
+MC-237962  Entities bob their head up and down when targeting towards the player.
+MC-238104  Blue orchid generation has decreased.
+MC-238265  version.json contains internal revision ID instead of game version ID.
+
+
+== 21w41a ==
+21w41a is the fifth snapshot for Java Edition 1.18, released on October 13, 2021, that introduces changes to some textures, world generation, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Cave vines
+
+Changed cave vines plant texture from  to .
+Enchanting table
+
+Changed the texture of the lapis lazuli icon in the GUI from  to .
+Redstone comparator
+
+Changed the base texture of lit comparators from   to  .
+
+
+==== Items ====
+Campfire and soul campfire
+
+Changed the item textures from   to  .
+Wooden doors and iron doors
+
+Changed the item textures of all doors except crimson and warped from        to       .
+Item frames and glow item frames
+
+Changed the item textures from   to  .
+Signs
+
+Changed the item textures from         to        .
+
+
+==== Mobs ====
+Wither
+
+Tweaked the wither skull's texture to use the new wither face from the Texture Update.
+Zombie villager
+
+Tweaked the armorer zombie villager's and weaponsmith zombie villager's textures to remove stray villager pixels.
+
+
+==== World generation ====
+Amethyst geodes
+
+Now only generate up to Y=30.
+Rarity has been increased to match 1.17 levels.
+Badlands
+
+Red sandstone now generates naturally once again.
+Mineshafts
+
+Now generate higher up in badlands.
+Mountains
+
+The snowy slopes and jagged peaks surfaces have been fixed to work like they did in the experimental snapshots, where steep sides of the peaks that facing the east or north are exposed stone.
+General
+
+New random number generator is used for Overworld generation.
+
+
+==== General ====
+Chunk render pipeline
+
+Changed the prioritization order.
+Title screen
+
+Main menu background is changed to reflect Caves & Cliffs: Part II.
+Server
+
+Server classes are now signed.
+Sprinting
+
+Slightly increased the angle in which sprinting against a block would not stop the player from doing so.
+
+
+=== Fixes ===
+21 issues fixed
+From released versions before Java Edition 1.18
+
+MC-118134  Item frame texture as an item uses texture of oak planks.
+MC-137950  Signs textures do not correspond to the actual texture of their handle.
+MC-142385  Campfire texture has one pixel extending into hotbar outline.
+MC-148182  The zombie villager "profession" texture uses villager-skin-colored pixels.
+MC-152506  Wither skull projectile has faces with old texture.
+MC-160256  Texture of door items does not match the blocks.
+MC-166508  Glitchy chunk rendering since 1.15 pre-release 2.
+MC-173339  Comparators lit base texture is incorrect.
+MC-203155  Enchanting table GUI uses old lapis texture.
+MC-225949  Parity issue: Different Bedrock and Java sign items textures.
+MC-226313  Lava can generate floating in caves.
+MC-227398  Misplaced pixel on cave vines texture.
+MC-230302  Glow item frame item texture is missing two pixels.
+From the Java Edition 1.18 development versions
+
+MC-236620  Nether biomes don't generate correctly.
+MC-236650  Minecraft in 1.18 has 248 seeds instead of 264 seeds.
+MC-236767  Axolotls are extremely rare in lush caves.
+MC-237330  Worlds created with seed "REDApRES" (0) crash when trying to load new 1.18 mountain biomes: java.lang.NullPointerException: Cannot invoke "dfw.a(double, double, double)" because "this.a" is null.
+MC-237457  Snowy slopes biome no longer generates stone cliff feature from experimental snapshots.
+MC-238003  Stone in jagged peaks is always covered by snow blocks.
+From the previous development version
+
+MC-238561  Axolotls aren't able to spawn at all in lush caves.
+MC-238661  InhabitedTime value/local difficulty doesn't increase.
+
+
+== 21w42a ==
+21w42a is the sixth snapshot for Java Edition 1.18, released on October 20, 2021, which introduces new music, changes to world generation, and many fixes related to spawning.
+
+
+=== Additions ===
+
+
+==== Items ====
+ Music disc
+
+Added the "otherside" music disc, composed by Lena Raine.
+Can be found with a 2.5% chance in stronghold altar chests, or with a 3.1% chance in monster room chests.
+
+
+==== General ====
+Music
+
+Added new music to the Overworld (when playing in Survival mode), distributed to the new biomes, and to the main menu.
+By Lena Raine: "Stand Tall", "Left to Bloom", "One More Day", "Wending" and "Infinite Amethyst":
+"Stand Tall" plays in the snowy slopes, jagged peaks, frozen peaks and stony peaks biomes, as well as the menu screen.
+"Left to Bloom" plays in the meadow and lush caves biomes, as well as the menu screen.
+"One More Day" plays in the meadow, snowy slopes and lush caves biomes, as well as the menu screen.
+"Wending" plays in the grove, jagged peaks, stony peaks and dripstone caves biomes, as well as the menu screen.
+"Infinite Amethyst" plays in the grove and dripstone caves biomes, as well as the menu screen.
+By Kumi Tanioka ( ): "Floating Dream", "Comforting Memories" and "An Ordinary Day":
+"Floating Dream" plays in the jagged peaks and lush caves biomes.
+"Comforting Memories" plays in the grove biome.
+"An Ordinary Day" plays in the snowy slopes, dripstone caves and lush caves biomes.
+Options
+
+Added "Autosave Indicator" to video settings, for singleplayer worlds, which allows to toggle the indicator on / off.
+The indicator appears in the bottom right of the screen whenever the game is saving the world file.
+Defaults to on.
+Particles
+
+Added block_marker, to replace light and barrier.
+Renders with texture declared in particle slot for model assigned to configured block state.
+Summoned with same syntax as block particle (i.e. block_marker wheat[age=2]).
+
+
+=== Changes ===
+
+
+==== World generation ====
+Ore distribution
+
+Increased top height limit of badlands gold generation from Y=79 to Y=256, and increased the number of blobs.
+Springs
+
+Lava springs can now generate amid calcite, dirt, snow, powder snow and packed ice.
+These changes allow lava springs to generate in mountains and snowy terrain.
+Water springs don't generate higher than Y=192, and are slightly less common.
+
+
+==== General ====
+World spawn
+
+Reworked selection algorithm.
+Now is selected according to the same climate parameters that control biome placement and world generation: players should no longer spawn in the ocean or some other inconvenient locations like certain mountain biomes.[needs testing]
+
+
+=== Fixes ===
+15 issues fixed
+From released versions before Java Edition 1.18
+
+MC-73300  "Saving Level..." text not appearing in pause menu.
+MC-80824  Spawning in some biomes causes "Unable to find spawn biome" warning.
+MC-129912  Player no longer spawned at highest level at world spawn.
+MC-131686  Spawn in ground with Buffet generation when creating a new world.
+MC-132347  Spawning inside icebergs.
+MC-133466  Certain world configurations force the player to spawn at X=8 Z=8.
+MC-185033  Underground spawn in single biome world type.
+MC-185034  Always respawning on the same block with no spawnpoint set.
+MC-198232  Music plays less frequently as it normally did.
+MC-202166  "Times Crafted" statistics column doesn't always display data correctly.
+MC-214288  Player does not spawn on the surface of the world when min_y is greater than 0.
+MC-221641  Caves can make ravines generate without water.
+MC-233771  Parity issue: Light blocks do not display their light level when shown via a held light block item.
+From the Java Edition 1.18 development versions
+
+MC-236837  The player can occasionally spawn underground when loading into a new world.
+MC-238582  Beaches generate between desert and ocean.
+
+
+== 21w43a ==
+21w43a is the seventh snapshot for Java Edition 1.18, released on October 27, 2021, which adds the old world upgrading and fixes bugs.
+
+
+=== Additions ===
+
+
+==== World generation ====
+Upgrading of old worlds
+
+Terrain from new chunks now blends with existing terrain from old chunks, preventing glitched borders from occurring.
+The old bedrock layer between Y=0 and Y=4 in old chunks gets replaced with deepslate.
+If there is bedrock at Y=0, lower places in old chunks are filled with deepslate.
+Caves do not generate below Y=0 in old chunks but lava lakes and geodes may generate.
+A new bedrock layer is placed at Y=-64.
+Worlds upgraded in this snapshot have these changes permanently applied.
+
+
+==== General ====
+Tags
+
+Added block tag big_dripleaf_placeable.
+Contains farmland and the #dirt and #small dripleaf placeable block tags.
+Big dripleaf can be placed on blocks in this tag.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+ Big Dripleaf
+
+Restricted big dripleaf placement to clay, coarse dirt, dirt, farmland, grass blocks, moss blocks, mycelium, podzol, and rooted dirt.
+
+
+==== World generation ====
+Aquifers
+
+Water levels change less often (slightly fewer underground waterfalls).
+Lava aquifers are slightly less common.
+Caves
+
+Reduced the amount of flooded caves near river and ocean coastlines.
+Ocean
+
+Removed deep warm ocean biomes.
+Warm ocean biomes now generate in deep waters.
+Seeds
+
+Have been reshuffled again. Worlds don't look like as they did in previous snapshots.
+
+
+==== General ====
+Chunk format
+
+Removed chunks Level and moved everything it contained up.
+Level.Entities has moved to entities.
+Level.TileEntities has moved to block_entities.
+Level.TileTicks and Level.ToBeTicked have moved to block_ticks.
+Level.LiquidTicks and Level.LiquidsToBeTicked have moved to fluid_ticks.
+Level.Sections has moved to sections.
+Level.Structures has moved to structures.
+Level.Structures.Starts has moved to structures.starts.
+Level.Sections[].block_states has moved to sections[].block_states.
+Level.Sections[].biomes has moved to sections[].biomes.
+Added yPos the minimum section y position in the chunk.
+Added below_zero_retrogen containing data to support below zero generation.
+Added blending_data containing data to support blending new world generation with existing chunks.
+Options
+
+The Priority Updates video setting has been renamed to Chunk Builder, added tooltips to its three options, and renamed them:
+"nearby" renamed to "Fully Blocking".
+"by player" renamed to "Semi Blocking".
+"none" renamed to "Threaded".
+Tick
+
+Changed some internal details of block and fluid ticking to improve save times.
+
+
+=== Fixes ===
+11 issues fixed
+From released versions before Java Edition 1.18
+
+MC-49010  Cloning pressure plates or buttons whilst they're activated keeps them pressed forever.
+MC-131930  Deep warm ocean generates without coral and sea pickles.
+MC-156616  Badlands layers not generating properly.
+MC-217379  Pufferfish don't spawn in deep warm ocean.
+MC-224205  Cloned big dripleaves remain tilted forever when their tilt value is not equal to "none".
+MC-228745  Big dripleafs can't be supported by farmland.
+MC-238073  Decorators are independent of world seed.
+From the Java Edition 1.18 development versions
+
+MC-236615  Priority updates setting has improper capitalization.
+MC-236624  Deep warm oceans don't count towards the "Adventuring Time" advancement.
+MC-236970  Badlands strata is covered by orange terracotta at Y=160 and above.
+MC-238939  Stone can generate in the Nether.
+
+
+== 21w44a ==
+21w44a is the eighth and final snapshot for Java Edition 1.18, released on November 3, 2021, which improves the upgrading of old worlds, introduces new options, makes some tweaks, and fixes bugs. This is the final snapshot released in 2021.
+
+
+=== Additions ===
+
+
+==== World generation ====
+Upgrading of old worlds
+
+Caves are now inserted under existing chunks when upgrading a world to the new world height.
+Deepslate and the bedrock layer currently don't generate due to a bug.
+Large biomes and amplified worlds now have an upgrade path, and retain more of their characteristics when upgraded to the new terrain system.
+
+
+==== General ====
+Options
+
+Added "Online Options" as a separate screen:
+The "Realms Notifications" option has been moved to this screen.
+Contains the new "Allow Server Listings" option.
+When deactivated, the player name doesn't show up in server online player listings.
+Contains the new "Server Difficulty" option, to indicate the difficulty of the current server.
+server.properties
+
+Added hide-online-players, which when set to "True", doesn't send a player list on status requests.
+Tags
+
+Added following block tags to decide the corresponding creatures to spawn:
+animals_spawnable_on
+Contains grass block.
+axolotls_spawnable_on
+Contains clay.
+foxes_spawnable_on
+Contains grass block, snow, snow block, podzol, and coarse dirt.
+goats_spawnable_on
+Contains stone, snow, powder snow, snow block, packed ice, and gravel.
+mooshrooms_spawnable_on
+Contains mycelium.
+parrots_spawnable_on
+Contains grass block, air, #leaves, and #logs.
+polar_bears_spawnable_on_in_frozen_ocean
+Contains ice.
+rabbits_spawnable_on
+Contains grass block, snow, snow block, and sand.
+wolves_spawnable_on
+Contains grass block, snow, and snow block.
+
+
+=== Changes ===
+
+
+==== Gameplay ====
+Advancements
+
+All 50 Overworld biomes are now required to be visited for the Adventuring Time advancement, including the following biomes which were previously not required:
+
+Weather
+
+Sleeping now only resets the weather cycle if the weather is rain or a thunderstorm.
+
+
+==== World generation ====
+Deepslate
+
+Now the gradual transition from stone starts at height between Y=0 to Y=8, rather than Y=-8 to Y=0 previously.
+
+
+==== General ====
+JFR profiling
+
+If it is started from an external source, the JFR events for network packets are now aggregated instead of one event per packet.
+Simulation distance
+
+Blocks and fluids are now also affected.
+Increased the lower limit for simulation distance from 2 chunks to 5 chunks.
+General
+
+Optimized entity collisions.
+
+
+=== Fixes ===
+28 issues fixed
+From released versions before Java Edition 1.18
+
+MC-63340  Sleeping always resets time until rain.
+MC-170551  Foxes can't spawn on podzol or coarse dirt.
+MC-187716  Nether biome surface builder types incorrectly assume the world height is 128 blocks.
+MC-190285  "bedrock_roof_position" tag number does not represent height, but height modifier.
+MC-200494  In mineshafts, torches can generate attached to blocks other than the wooden supports.
+MC-216432  Mineshafts can generate with light but without any torches.
+MC-216561  Torches not spawning in abandoned mineshafts under Y=0.
+MC-238877  Deep ocean and ocean are not needed for the "Adventuring Time" advancement.
+MC-238966  Old growth spruce taiga and old growth birch forest aren't a part of the "Adventuring Time" advancement.
+MC-238968  Windswept gravelly hills and windswept savanna aren't a part of the "Adventuring Time" advancement.
+From the Java Edition 1.18 development versions
+
+MC-236701  New mountain biomes don't count towards "Adventuring Time" advancement.
+MC-236938  /jfr stop output does not have a link.
+MC-237986  Mobs specific to structures aren't spawning in their structures.
+MC-238062  Foxes and wolves don't spawn in groves.
+MC-238761  Adventuring Time does not account for the new cave biomes.
+MC-238900  Values of Infinity in noise settings in default worldgen.
+MC-238912  Powder snow strips can't generate exposed to the surface.
+MC-238962  Icebergs go all the way to ocean floor.
+MC-239280  Withers do not move down to follow the player when the wither's health is half or lower.
+MC-239344  All torches in mineshafts are facing the wrong way.
+MC-239359  Wither skeletons can only spawn on Nether bricks.
+MC-239689  The "amplified" boolean in noise settings does nothing.
+From the previous development version
+
+MC-239854  Nether and caves world is missing bedrock.
+MC-239858  Nether decorations can be generated on the original bedrock layer.
+MC-239866  Terrain shaper in noise_settings is not used.
+MC-239876  Maps appear gray when opened in old terrain after conversion.
+MC-239882  Beacons deactivate when upgrading worlds.
+MC-239902  Weather effects appear in caves and structures in 1.17.1 worlds loaded in 21w43a.
+
+
+== 1.18 Pre-release 1 ==
+1.18 Pre-release 1 (known as 1.18-pre1 in the launcher) is the first pre-release for Java Edition 1.18, released on November 11, 2021, which readds AMPLIFIED and large biomes, makes some tweaks, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+World types
+
+Readded "AMPLIFIED" and "Large Biomes". Their implementation has been adapted accordingly to the terrain generation overhaul.
+AMPLIFIED worlds now have terrain with the following characteristics:
+Terrain rounded at Y=320, instead of Y=256.
+Doubled offset above sea level.
+Greatly increased 3D noise values, resulting in lower factor values inversely.
+Doubled peak jaggedness.
+Large biome worlds now have terrain with the following characteristics:
+Most biomes, except mountain peaks and rivers, are four times larger.
+Multinoise slowed down by factor 4 for temperature, vegetation, continentalness, and erosion, but not for ridge noise.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Conduit
+
+Now has an assigned tool, the pickaxe.
+
+
+==== World generation ====
+Lava lakes
+
+Now only generate above Y=0.
+Upgrading of old worlds
+
+Changed transition between old and new terrain to be less cliff-like.
+Surface height, biomes, and caves will now blend much more smoothly.
+Deepslate and bedrock now properly generate in upgraded chunks.
+Cave carvers now properly generate in upgraded chunks.
+Features
+
+Rewrote feature generation system.
+Now feature generations are configured with placed feature files.
+
+
+==== General ====
+Data generator
+
+--report option now creates full worldgen reference files instead of just biomes.
+World creation screen
+
+Removed "Caves" and "Floating islands".
+
+
+=== Fixes ===
+49 issues fixed
+From released versions before Java Edition 1.18
+
+MC-46584  Clicking and dragging MOUSE3 (mouse wheel) over item slots incorrectly attempts to place full stacks in Survival.
+MC-50888  Can get out of 30,000,000 area.
+MC-53444  You can get outside of the world border by mounting a rideable entity (boat, pig, etc.) outside of it.
+MC-54119  Can place/take water/lava/lily pads outside world border and inside spawn protection.
+MC-62550  World border not correctly initialized for the End and Nether.
+MC-96535  Ambient property of potion effects with ShowParticles:0b is not disregarded.
+MC-101334  Required space for placing a boat is too small.
+MC-113425  Player can interact with entities outside the world border.
+MC-117800  Half bed can be placed outside the world border.
+MC-121997  Every dimension's world border is operating independently, and doesn't appear where it actually is.
+MC-131808  Forests don't spawn trees near the positive edges, but overstretch bounds on the negative edges.
+MC-135947  Conduit takes a long time to break when underwater.
+MC-136523  Invisible world border in the End dimension.
+MC-147122  You can set your spawn point outside the world border using a bed or respawn anchor.
+MC-187174  World border does not take Nether coordinates into account.
+MC-206620  Cauldron invisible when crawling in it.
+MC-206660  Stalactites don't fall properly if there are blocks directly below it.
+MC-214963  Mineshaft generation is non-deterministic.
+MC-215139  Some water in caves will not start flowing.
+MC-219035  Fossil structures can't generate in far east and south blocks of a chunk.
+MC-222388  Acacia trees under Y=0 often grow with bare branches.
+MC-229013  Lava lake decorator config is unused.
+MC-229517  Conversion sounds for strays and drowned is controlled by Friendly Creatures mixer, not Hostile Creatures.
+MC-231666  Dragon egg can teleport to outside the world border.
+MC-240021  Cullface arguments in cauldrons are excessive.
+From the Java Edition 1.18 development versions
+
+MC-236610  Lava lakes generate without stone around.
+MC-236628  Lava pools cause sand to fall now instead of putting sandstone beneath it.
+MC-236652  Weather can be incorrect sometimes within a biome.
+MC-236659  Lava lakes spawn more on the surface than usual.
+MC-236803  Extremely low amount of pillager spawns in outpost on jagged peaks, groves, snowy slopes and frozen peaks.
+MC-237040  Falling blocks still sometimes disappear for a moment when landing.
+MC-237598  Projectiles glitch around in the air when exiting simulation distance.
+MC-237621  Missing biome definitions in some peak grid cells cause unintended ocean placement.
+MC-237791  Villager spawn eggs used on grove, frozen peaks, snowy slopes and jagged peaks don't spawn snowy plains villagers.
+MC-237954  The "Sound of Music" and "Feels like home" advancements are internally located in the incorrect tab folder.
+MC-238038  Newly added advancements' namespace ID does not match its translation key.
+MC-238972  Deserts generate with little or no sandstone.
+MC-239714  Doing /locate desert_pyramid on a desert Superflat world freezes the world.
+MC-239851  Upgrading old worlds causes leaves to change to surface builder blocks.
+MC-239852  Lava pools intersecting strongholds can cause end portal frames to be deleted.
+From the previous development version
+
+MC-240481  Deepslate doesn't generate in the new cave generation under old chunks.
+MC-240482  There is no bedrock in the Overworld in old chunks.
+MC-240495  Deepslate does not generate below Y=0 in badlands or wooded badlands biomes.
+MC-240503  Bedrock doesn't generate in badlands or wooded badlands.
+MC-240516  Cave carvers don't generate below old chunks.
+MC-240531  Block simulation distance is always 8 chunks regardless of the slider's value.
+MC-240534  Clicking a JFR link copies full server-side path to clipboard.
+MC-240631  Extremely slow End terrain generation.
+MC-240998  Portals no longer load chunks as non entity processing.
+
+
+== 1.18 Pre-release 2 ==
+1.18 Pre-release 2 (known as 1.18-pre2 in the launcher) is the second pre-release for Java Edition 1.18, released on November 16, 2021, which increased the required minimum Java version from 16 to 17, and fixed bugs.
+
+
+=== Changes ===
+
+
+==== General ====
+Splashes
+
+Changed "Now Java 16!" to "Java 16 + 1 = 17!".
+General
+
+The game now requires Java 17 instead of Java 16.
+When upgrading a world, new caves generate underneath the entire chunk, in all chunks that have any bedrock at height 0.
+
+
+=== Fixes ===
+43 issues fixed
+From released versions before Java Edition 1.18
+
+MC-32813  Floating water / lava above caves / cave carver doesn't update water.
+MC-206303  Minecarts have old textures on the bottom.
+MC-217038  Large dripstone structures can be generated outside the caves.
+MC-217056  Some high-speed particles lag/freeze the game.
+MC-220061  Painting back texture is mirrored.
+MC-223917  Goats on fire do not attempt to pathfind towards water.
+MC-226689  Albert Pastore's name is grey and improperly indented in the credits.
+MC-227163  Credits say "IT Manager" instead of "IT Managers".
+MC-227204  "Explore, dream, discover" quote no longer appears after new credits.
+MC-227206  Random names in the new credits use curly quotes/apostrophes.
+MC-227231  Steven Silvester's name might be misspelt in the credits.
+MC-227239  In the credits, Elizabeth Batson's company name is improperly capitalized.
+MC-227329  The usage and punctuation of "Inc" is still inconsistent in the credits.
+MC-231782  Missing "(" in Frank Criscione credit.
+MC-237608  Server address shown when connection fails during server startup.
+From the Java Edition 1.18 development versions
+
+MC-236756  Biome-exclusive mob spawn rates are reduced.
+MC-236858  Seeds that spawn you in the middle of the ocean cause lag.
+MC-237275  Game crashed when creating a single biome world with a custom biome / java.lang.NullPointerException: Cannot invoke "bze.a()" because the return value of "bzg.a(int, int, int)" is null.
+MC-238049  Passive mobs (cows, pigs, sheep, chickens) sometimes do not spawn.
+MC-238076  UpgradeData in chunk is not migrated to new world height.
+MC-238375  Crash and/or data corruption upon attempting to save a world with a world border center over 30 million blocks.
+MC-238587  Sprinting while flying into a block causes the screen to rapidly zoom in and out.
+MC-239423  Kumi Tanioka isn't under "Music composed by" in the credits.
+MC-239856  Upgrading old worlds causes vines to have the wrong block state.
+MC-239857  Fences, iron bars, and glass panes often use an incorrect block state after conversion.
+MC-239884  Water from old chunks don't properly propagate into new chunks.
+MC-239899  Connected redstone does not properly upgrade from older versions.
+MC-239994  Old worlds with non-bedrock blocks at 0,0,0 do not upgrade chunk column from 0,0,0 to 0,-64,0.
+MC-240030  Infdev and Alpha holes in the world below Y=0 after conversion since 21w43a.
+MC-240494  Duplicated mineshafts with new cave generation.
+MC-240507  Mob Spawning in structures fails in pre-1.18 generated monuments/swamp huts/outposts.
+MC-240570  Biomes in old chunks are not copied to new caves below Y=0 when chunks are extended.
+MC-240610  "Allow Server Listings" option doesn't save its last setting.
+MC-240783  Powder snow does not reduce or negate fall damage.
+MC-241111  Some Mojang employees are not mentioned in the credits.
+From the previous development version
+
+MC-241191  Tripwires occasionally have incorrect block states after upgrading old worlds.
+MC-241194  Crash: java.lang.NullPointerException: Cannot invoke "ddm.a(cao, cps, java.util.Random, gh)" because the return value of "java.util.function.Supplier.get()" is null.
+MC-241199  Double chests have incorrect block states after upgrading old worlds.
+MC-241204  Specific chunks reset each time world is loaded.
+MC-241208  Powered buttons, pressure plates, and tripwire hooks remain powered forever after upgrading old worlds.
+MC-241231  Floating campfire in a village.
+MC-241234  Fossils get cut off at chunk borders.
+MC-241413  Floating water generates around ravines.
+
+
+== 1.18 Pre-release 3 ==
+1.18 Pre-release 3 (known as 1.18-pre3 in the launcher) is the third pre-release for Java Edition 1.18, released on November 17, 2021,  which fixed bugs.
+
+
+=== Changes ===
+
+
+==== General ====
+Server.jar
+
+Starting server.jar with an empty bundlerMainClass will now just validate and extract files, then exit.
+
+
+=== Fixes ===
+16 issues fixed
+From released versions before Java Edition 1.18
+
+MC-109260  Full-width punctuation characters are rendered incorrectly.
+MC-132285  Isolated water block floating in mid-air.
+MC-185263  Non full chunks in cache memory "semi-leak".
+MC-223840  Lava blocks from "Lava Aquifers" don't get updated when a cave cuts through underneath them.
+MC-240229  Rain and snow fall on the same blocks in a certain height range.
+From the Java Edition 1.18 development versions
+
+MC-236740  Server-side lag spike sometimes occurs when attempting to locate a buried treasure or opening/breaking a chest containing a map.
+MC-236764  Lighting lags behind world generation.
+MC-239397  Lava pockets generate in icebergs.
+MC-239610  Severe world corruption due to 1.18 snapshots failing to deserialize chunks that 1.17 loads fine.
+MC-239682  Out of memory crash: World generation exhausts Java heap space.
+MC-239950  Feature placement doesn't check for biomes, causing unnecessary lag.
+MC-240483  Foxes that spawn in grove biomes aren't the snowy variant.
+MC-240589  Game froze for several minutes and then crashed while flying around and loading chunks.
+MC-241245  Generated Deepslate overwrites ore veins (mainly Iron ore veins).
+MC-241255  Gigantic Performance Drop after a couple of minutes.
+MC-241352  Directory structure is not consistent between server and client.
+
+
+== 1.18 Pre-release 4 ==
+1.18 Pre-release 4 (known as 1.18-pre4 in the launcher) is the fourth pre-release for Java Edition 1.18, released on November 17, 2021, which fixes bugs and crashes.
+
+
+=== Fixes ===
+4 issues fixed
+From the Java Edition 1.18 development versions
+
+MC-241172  Rare Datafixer error occurred in old world.
+From the previous development version
+
+MC-241774  Crash when going nether portals or creating a single biome world with nether biomes // java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0.
+MC-241775  Crash when going through end portals or creating a single biome world with end biomes // java.lang.NegativeArraySizeException: -5.
+MC-241778  Game crashes or freeze when loading and upgrading the 1.17.1 version of the Superflat world // java.util.concurrent.CompletionException: z: Biome decoration.
+
+
+== 1.18 Pre-release 5 ==
+1.18 Pre-release 5 (known as 1.18-pre5 in the launcher) is the fifth pre-release for Java Edition 1.18, released on November 19, 2021, which fixes some bugs, many of which are relating to textures issues.
+
+
+=== Additions ===
+
+
+==== General ====
+Tags
+
+Added following block tags:
+azalea_grows_on
+Contains #dirt, #sand, #terracotta, snow_block, and powder_snow.
+azalea_root_replaceable
+Contains #lush_ground_replaceable, #terracotta, and red_sand.
+replaceable_plants
+Contains grass, fern, dead_bush, vine, glow_lichen, sunflower, lilac, rose_bush, peony, tall_grass, large_fern, and hanging_roots.
+terracotta
+Contains terracotta, white_terracotta, orange_terracotta, magenta_terracotta, light_blue_terracotta, yellow_terracotta, lime_terracotta, pink_terracotta, gray_terracotta, light_gray_terracotta, cyan_terracotta, purple_terracotta, blue_terracotta, brown_terracotta, green_terracotta, red_terracotta, and black_terracotta.
+Added following item tags:
+dirt
+Contains dirt, grass_block, podzol, coarse_dirt, mycelium, rooted_dirt, and moss_block.
+terracotta
+Contains terracotta, white_terracotta, orange_terracotta, magenta_terracotta, light_blue_terracotta, yellow_terracotta, lime_terracotta, pink_terracotta, gray_terracotta, light_gray_terracotta, cyan_terracotta, purple_terracotta, blue_terracotta, brown_terracotta, green_terracotta, red_terracotta, and black_terracotta.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Anvil
+
+Slightly changed the hammer texture on its GUI.
+Barrel
+
+Bottom texture was changed.
+Carrot
+
+Texture of crop stage3 was changed from  to , removed an extra pixel.
+Cartography table
+
+Texture was changed from  to , to match the dark oak planks texture after being updated a second time in the Texture Update.
+Cocoa beans
+
+Textures of cocoa pods (stage0 and stage1) were changed. This visually changes only particles.
+Dirt path
+
+Side texture was changed to better match its top texture.
+Door
+
+Changed door's model, to fix spruce door's top/bottom texture.
+Changed textures of oak doors and iron doors to remove a horizontal line.
+Enchanting table
+
+Changed the texture of the lapis lazuli icon in the GUI from  to .
+Glass pane
+
+Top texture was changed to better match its side texture.
+Lectern
+
+Base texture was changed to match the oak planks texture after being updated a second time in the Texture Update.
+Logs
+
+Top textures of crimson stems and warped stems were changed, to match Bedrock Edition.
+Changed the top texture of dark oak log.
+Changed the side texture of stripped dark oak log, to match the color of its top texture.
+Spruce planks
+
+Changed one miscolored pixel on their texture.
+Stained glass
+
+Changed textures of blue stained glass and red stained glass, to match transparency of other types of stained glass.
+
+
+==== Items ====
+Beetroot seeds and melon seeds
+
+Textures were moved down by 1 pixel.
+
+
+==== Mobs ====
+Axolotl
+
+Texture of the wild axolotl was changed.
+Evoker, vindicator and witch
+
+Removed hoods in their textures.
+Illusioner
+
+Removed a few misplaced pixels in its texture.
+Parrot
+
+The bottom texture of all parrots' wings has been flipped.
+
+
+==== Non-mob entities ====
+Armor stand
+
+Smooth stone outline texture was changed.
+
+
+==== World generation ====
+Random patch
+
+Melons are about 10 times more common than in previous snapshots.
+Pumpkins are about 6 times more common than in previous snapshots
+Sweet berry bushes are about 4 times more common than in previous snapshots.
+Upgrading of old worlds
+
+If there is any bedrock at height 0 in a chunk, new world generation will happen under any non-air block at height 0 in that chunk.
+
+
+=== Fixes ===
+60 issues fixed
+From released versions before Java Edition 1.18
+
+MC-138118  Parrot wing texture is reversed on the bottom.
+MC-148422  Stripped dark oak log side texture is too bright.
+MC-150567  Dark oak log top texture bark ring not updated.
+MC-162038  Pillagers have no hood texture.
+MC-162803  Lily Pad mirrors texture when placed.
+MC-170557  Spruce door top/bottom has the incorrect texture.
+MC-176309  Illusioner has a few misplaced pixels left in their texture.
+MC-176824  Red glass and outline of blue glass are slightly more opaque.
+MC-176833  Anvil GUI hammer uses an outdated iron pallet.
+MC-177664  Sound system warning messages are spamming the system log.
+MC-180398  Too many sounds causes client to stall, limit can be easily reached with rabbits.
+MC-194822  Glass pane top texture has not changed with the Texture Update.
+MC-194950  Cactus in potted cactus is vertically squished.
+MC-198007  Villages replace ice with path blocks instead of wood.
+MC-199662  Extra pixels in cocoa pod textures as of Texture Update.
+MC-200046  Cartography table planks texture is incorrect/slightly outdated.
+MC-200137  Lectern base plate texture still uses the old planks texture.
+MC-200956  Beetroot seeds texture is not vertically centered.
+MC-200957  Melon seeds texture is not vertically centered.
+MC-202910  Inconsistent highlight color on armor.
+MC-204901  Side texture for dirt paths hasn't been updated with the texture update.
+MC-219132  Cave vines hang from amethyst buds and clusters.
+MC-221172  Warped and Crimson Stems use different top texture from Bedrock Edition.
+MC-222154  Cave vines can generate hanging on pointed dripstone.
+MC-222763  Armor stands use the old smooth stone slab texture.
+MC-225553  Oak and iron doors have a line in their textures.
+MC-226711  Carrot crop texture has an incorrect pixel.
+MC-227258  Flowering Azalea Leaves are in both #minecraft:mineable/hoe and #minecraft:mineable/axe tags, while regular Azalea Leaves (and all other leaves) are only in #minecraft:mineable/hoe.
+MC-228900  Cave vines can generate floating (Recurrence of MC-218817).
+MC-229977  Breaking blocks with pistons on the east/west direction causes significant lag.
+MC-231219  Cave vines can occasionally generate hanging on fences.
+MC-231272  Cave vines can sometimes generate hanging on cobwebs.
+MC-231818  You can no longer use the up or down arrow to navigate between servers in the multiplayer menu.
+MC-233883  The hide and show messages buttons in the social interactions menu display their hover text regardless of the position of the cursor.
+MC-234039  The back of wild axolotls are off-centered.
+MC-235567  Clusters of dripstone (stalagmites) tend to generate abnormally frequent with thickness "tip" on tall caves.
+MC-241747  Inconsistent Colors in grindstone GUI.
+From the Java Edition 1.18 development versions
+
+MC-236723  The Floating Islands preset does not seem to be generating correctly.
+MC-237500  Azalea trees can generate on top of huge mushrooms, trees & bamboo.
+MC-238360  Rooted dirt cannot replace terracotta.
+MC-238529  Azalea trees can fail to generate.
+MC-238530  Hanging roots can fail to generate.
+MC-238892  Rooted dirt doesn't replace red sand.
+MC-239128  Sweet berry bushes generate extremely rare in comparison with 1.17.1.
+MC-239143  Terracotta generating into caves in eroded badlands.
+MC-239237  Azalea trees can be generated on icebergs.
+MC-239474  Autosaving now causes extreme and gameplay-impacting lag.
+MC-239489  Melons generate rarely in jungle biomes.
+MC-239847  Chunk blending occasionally produces sharp chunk border edges.
+MC-241256  Some feature configs still expect a configured feature instead of a placed feature.
+MC-241278  Azalea trees are no longer generating.
+MC-241539  Stone generates in the side of hoodoos.
+MC-241566  Mossy cobblestone boulders generate in a grid pattern in old-growth spruce taigas.
+MC-241588  Cave vines can sometimes generate hanging on water.
+MC-241672  Mobs don't panic when burning if standing on blocks placed above water.
+MC-241728  Converting world to 1.18 pre-release 2 generates new caves in too many places.
+MC-241784  Some sliders in options menu do not work properly.
+MC-241933  Spore blossoms, cave vines, and pointed dripstones generate indented into the cave surface.
+From the previous development version
+
+MC-241800  Cannot change numbers for gamerules on world creation.
+MC-241847  Floating stone platform doesn't generate in void superflat world preset.
+
+
+== 1.18 Pre-release 6 ==
+1.18 Pre-release 6 (known as 1.18-pre6 in the launcher) is the sixth pre-release for Java Edition 1.18, released on November 22, 2021, which makes tweaks and fixes bugs.
+
+
+=== Changes ===
+
+
+==== World generation ====
+Dripstone caves and lush caves
+
+Features are generated a bit more sparsely.
+Sparse jungle
+
+Melons are now less common.
+Upgrading of old worlds
+
+New cave generation under existing chunks with holes now fits together better with the blocks above it.
+
+
+==== General ====
+General
+
+Chunks are now saved whenever there is spare time to reduce autosave spikes.
+
+
+=== Fixes ===
+18 issues fixed
+From the Java Edition 1.18 development versions
+
+MC-236947  Signature attribute is stripped from java records.
+MC-238930  Soul Sand and Soul Soil generate below the nether ceiling.
+MC-238959  Falling block placing at Y=1 changes into dropped item when landing on Y=0.
+MC-239880  Some chunks have missing blocks below 0.
+MC-239900  Upgrading custom world to 21w43a ignores min_y and height.
+MC-240513  Pandas do not spawn in bamboo jungles with Default world.
+MC-241263  Off-heap memory leak.
+MC-241409  Game crashes when terrain shaper data is missing.
+MC-241630  Temperatures don't properly get converted.
+MC-241636  Snow golems don't take damage in hot biomes when a cave biome is underneath.
+MC-241767  Breaking a vine or ladder block while the player is climbing it while sneaking allows the player to hover in place indefinetly.
+MC-241820  Ocean Monuments upgraded from previous versions appears to have the bounding box shifted to chunk borders north and west.
+MC-241830  Windswept savannas in amplified worlds have the incorrect surface blocks.
+MC-241941  Nether bedrock roof can generate exposed.
+From the previous development version
+
+MC-242016  Dripstone doesn't generate at high y values.
+MC-242022  Game crashes when loading new chunks (Exception generating new chunk, caused by ArrayIndexOutOfBoundsException: Index 268435455 out of bounds for length 32).
+MC-242479  Pointed dripstone makes holes in lava pools.
+MC-242520  Horses, Donkeys and Pigs float above water when dismounted underwater.
+
+
+== 1.18 Pre-release 7 ==
+1.18 Pre-release 7 (known as 1.18-pre7 in the launcher) is the seventh pre-release for Java Edition 1.18, released on November 23, 2021, which makes tweaks and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Dirt path
+
+Slightly changed the side texture, by moving up 1 pixel of the dirt part, to match up with the side of a dirt block.
+Logs
+
+Changed the texture of stripped dark oak log again.
+
+
+==== World generation ====
+Dripstone caves and lush caves
+
+The numbers of features have been increased somewhat again.
+
+
+=== Fixes ===
+6 issues fixed
+From released versions before Java Edition 1.18
+
+MC-218592  Azalea trees can generate in more than two blocks of water.
+From the Java Edition 1.18 development versions
+
+MC-241240  Pointed dripstone can occasionally generate unwaterlogged when generating in water aquifers.
+MC-241277  Server can't generate amplified/large biomes worlds from scratch.
+MC-241327  Render Distance 13 at the world border causes excessive lag.
+MC-242068  Dirt part of the Dirt Path texture is one pixel too low.
+From the previous development version
+
+MC-242546  When optimizing 1.17 world in 1.18, old Level Compound is not deleted, resulting in increased world size.
+
+
+== 1.18 Pre-release 8 ==
+1.18 Pre-release 8 (known as 1.18-pre8 in the launcher) is the eighth and final pre-release for Java Edition 1.18, released on November 24, 2021, which fixes crashes and bugs.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Ravagers
+
+No longer attack baby villagers.
+
+
+=== Fixes ===
+7 issues fixed
+From released versions before Java Edition 1.18
+
+MC-227537  Crash: java.lang.NullPointerException: Cannot invoke "it.unimi.dsi.fastutil.objects.ObjectSet.remove(Object)" because "$$4" is null.
+MC-230866  Eating whilst traveling through a Nether portal prints error in game log.
+From the Java Edition 1.18 development versions
+
+MC-236783  Parity issue: Ravagers still attack baby villagers in Java Edition.
+MC-241991  Game freezes without crash logs when upgrading from 1.12.2 to 1.18 pre-5.
+MC-242375  Cats no longer scare phantoms away.
+From the previous development version
+
+MC-242646  Falling in the void and trying to respawn crashes the game.
+MC-242647  Crash for blocks finding block states: Missing Palette entry for index 6.
+
+
+== 1.18 Release Candidate 1 ==
+1.18 Release Candidate 1 (known as 1.18-rc1 in the launcher) is the first release candidate for Java Edition 1.18, released on November 25, 2021, which increases the size limit for server resource packs and fixes a bug related to a memory leak.
+
+
+=== Changes ===
+
+
+==== General ====
+Resource packs
+
+Size limit for server resource packs has been increased from 100 MB to 250 MB.
+
+
+=== Fixes ===
+1 issue fixed
+From the previous development version
+
+MC-242708  Moving through blocks in spectator mode causes a memory leak.
+
+
+== 1.18 Release Candidate 2 ==
+1.18 Release Candidate 2 (known as 1.18-rc2 in the launcher) is the second release candidate for Java Edition 1.18, released on November 26, 2021, which fixes a bug related to world generation.
+
+
+=== Fixes ===
+1 issue fixed
+From the Java Edition 1.18 development versions
+
+MC-242547  In large caves, the cave generation can't reach Y=-54, not allowing to generate large lava lakes.
+
+
+== 1.18 Release Candidate 3 ==
+1.18 Release Candidate 3 (known as 1.18-rc3 in the launcher) is the third release candidate for Java Edition 1.18, released on November 26, 2021, which fixes a bug.
+
+
+=== Fixes ===
+1 issue fixed
+From the Java Edition 1.18 development versions
+
+MC-242859  Blocks losing the loot inside them after dying.
+
+
+== 1.18 Release Candidate 4 ==
+1.18 Release Candidate 4 (known as 1.18-rc4 in the launcher) is the fourth and final release candidate for Java Edition 1.18, released on November 29, 2021, which fixes an issue with coal ore distribution.
+
+
+=== Fixes ===
+1 issue fixed
+Other
+
+Fixed an issue where coal ore at lower heights (Y=0 to Y=192) is not distributed as intended since 1.18-pre1.
+
+
+== Notes and references ==
+
+
+== Navigation ==

@@ -1,0 +1,160 @@
+Beta 1.20.20.22 (Android) or Preview 1.20.20.22 (Windows, iOS, iPadOS, Xbox) is the third beta/Preview version for Bedrock Edition 1.20.30, released on July 20, 2023, which brings more parity from Java Edition and fixes bugs.
+
+
+== Additions ==
+
+
+=== Technical ===
+JSON
+
+Released the following components out of experimental in JSON formats 1.20.30 and higher:
+minecraft:wearable item component.
+minecraft:digger item component.
+Exposed DimensionType to scripting.
+Exposed the following feature placement rules:
+minecraft:aggregate_feature.
+minecraft:cave_carver_feature.
+minecraft:fossil_feature.
+minecraft:geode_feature.
+minecraft:growing_plant_feature.
+minecraft:multiface_feature.
+minecraft:nether_cave_carver_feature.
+minecraft:ore_feature.
+minecraft:partially_exposed_blob_feature.
+minecraft:scatter_feature.
+minecraft:search_feature.
+minecraft:sequence_feature.
+minecraft:single_block_feature.
+minecraft:snap_to_surface_feature.
+minecraft:structure_template_feature.
+minecraft:surface_relative_threshold_feature.
+minecraft:tree_feature.
+minecraft:underwater_cave_carver_feature.
+minecraft:vegetation_patch_feature.
+minecraft:weighted_random_feature.
+
+
+== Changes ==
+
+
+=== Command format ===
+/camera
+
+Now is available without using the "Experimental Cameras" experimental toggle.
+/recipe
+
+Changed the victim: target argument to player: target.
+
+
+=== Gameplay ===
+Crawling
+
+The ability to crawl is now available without using the "Crawling" experimental toggle.
+
+
+=== General ===
+Experiments
+
+Removed the "Crawling" experimental toggle.
+Settings
+
+Added the "Recipe unlocking" option to the advanced section in the "Create New World" screen. (recipesUnlock game rule)
+"Text to Speech" narrator now read the disconnected message in the game menu when opened without an internet connection.
+Renamed the "Manage" button to "Cancel" in "Options" > "Subscriptions".
+
+
+=== Technical ===
+JSON
+
+Removed the server-authoritative-sound bool from server.properties.
+Deprecate on_dig parameters from minecraft:digger item component in JSON formats 1.20.20 and higher.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs" and "Experimental Cameras" experimental toggles.
+
+
+=== Additions ===
+
+
+==== Technical ====
+API
+
+Added camera scripting APIs for the following APIs:
+setCamera(): to set the camera to a specified preset.
+fade(): to start a camera fade.
+clear(): to clear the current settings on the camera.
+
+
+=== Changes ===
+
+
+==== Technical ====
+API
+
+Removed MinecraftBlockTypes defined in @minecraft/server.
+Moved ItemUseBeforeEvent to 1.4.0.
+Moved ItemUseOnBeforeEvent to 1.4.0.
+Moved ItemUseAfterEvent to 1.4.0.
+Moved ItemUseOnAfterEvent to 1.4.0.
+Moved ItemStartUseOnAfterEvent to 1.4.0.
+Moved ItemStopUseAfterEvent to 1.4.0.
+Moved ItemStopUseOnAfterEvent to 1.4.0.
+Moved ItemCompleteUseAfterEvent to 1.4.0.
+Moved ItemReleaseUseAfterEvent to 1.4.0.
+Moved ItemStartUseAfterEvent to 1.4.0.
+Moved DimensionLocation to 1.4.0.
+Renamed PositionInUnloadedChunkError to LocationInUnloadedChunkError and moved it to 1.4.0.
+Renamed PositionOutOfWorldBoundariesError to LocationOutOfWorldBoundariesError and moved it to 1.4.0.
+Moved getSpawnPoint to 1.4.0.
+Moved setSpawnPoint to 1.4.0.
+Moved getDefaultSpawnLocation to 1.4.0.
+Moved setDefaultSpawnLocation to 1.4.0.
+WorldAfterEvents
+Removed projectileHit.
+Added projectileHitBlock.
+Added projectileHitEntity.
+Added class ProjectileHitBlockAfterEvent export class:
+ProjectileHitBlockAfterEvent { readonly dimension: Dimension; readonly hitVector: Vector3; readonly location: Vector3; readonly projectile: Entity; readonly source?: Entity; getBlockHit(): BlockHitInformation; }
+Added class ProjectileHitEntityAfterEvent export class:
+ProjectileHitEntityAfterEvent { readonly dimension: Dimension; readonly hitVector: Vector3; readonly location: Vector3; readonly projectile: Entity; readonly source?: Entity; getEntityHit(): EntityHitInformation; }
+Released Scoreboard API's from beta to 1.4.0.
+Updated Scoreboard.getObjective, getObjectiveAtDisplaySlot, and clearObjectiveAtDisplaySlot to return '| undefined '.
+Released isValid() from beta to 1.4.0 for the following classes:
+Block
+Container
+Entity
+Player
+SimulatedPlayer
+
+
+== Fixes ==
+9 issues fixed
+From released versions before 1.20.30
+
+MCPE-159217  Vignette overlaps hotbar and other HUD elements with "Fancy Graphics" enabled.
+MCPE-166152  Book and quills text line breaks are erased when previous text is changed [on iOS and iPadOS].
+From 1.20.0
+
+MCPE-168805  Some brushing sounds missing.
+From 1.20.10
+
+MCPE-170969  Swimming mechanics have been altered to where you have to look up at the sky to take a breath.
+From the previous development versions
+
+MCPE-172381  Top snow has inconsistent collision for dropped items.
+MCPE-172402  /recipe target argument is called "victim".
+MCPE-172429  Structure void can't be targetted.
+MCPE-172956  No "Recipes Unlock" option in the "Create New World" screen.
+Others
+
+Xbox: Fixed missing low disk space warning.
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

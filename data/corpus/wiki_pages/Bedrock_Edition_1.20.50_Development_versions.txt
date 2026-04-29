@@ -1,0 +1,562 @@
+This is a list of Bedrock Edition 1.20.50 development versions.
+
+
+== Preview 1.20.50.20 ==
+Beta 1.20.50.20 (Android) or Preview 1.20.50.20 (Windows, iOS, iPadOS, Xbox) is the first beta/Preview version for Bedrock Edition 1.20.50, released on October 11, 2023, which brings more parity with Java Edition and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Gameplay ====
+Game rule
+
+Added showRecipeMessages, to control whether the recipe toasts are displayed. Defaults to true.
+Needs the recipesUnlock game rule set to true to work properly.
+
+
+==== General ====
+Particles
+
+Added new dust_plume particle type.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Andesite, Diorite, Granite, Stone
+
+The different block states for the stone ID have now been split up into their own IDs.
+
+Decorated Pot
+
+Now can store items, up to a single stack of items.
+Players can interact with them and insert items into them.
+Player interactions with them cause them to wobble.
+They have no GUI, and need to be broken to retrieve their content by players.
+Now can be smashed by projectiles, which cause them to shatter and drop their contents.
+Now can stack up to 64.
+Hopper and Dropper
+
+Now can insert and/or extract items from decorated pots.
+Planks
+
+The different block states for the planks ID have now been split up into their own IDs.
+
+Redstone Comparator
+
+Now can read the number of items in decorated pots.
+Sculk Sensor and Calibrated Sculk Sensor
+
+Now can detect players interacting with decorated pots, with frequency 11.
+
+
+==== Command format ====
+/camera
+
+Added a content warning for when the camera is placed outside of the player's chunk radius.
+
+
+==== Gameplay ====
+Raid
+
+Raid mobs can now join existing raids.
+
+
+==== General ====
+Death messages
+
+Updated death message when killed by a bed explosion in The Nether.
+How to Play
+
+Completely remodelled the "How to Play" screen and created a new "Encyclopedia" screen.
+Added netherite related items to how to play descriptions.
+Removed obsolete references to "Old world" in "How to Play" screen.
+Settings
+
+Removed the "Vertical Sync" video option.
+Tags
+
+Deprecated the tag: legacy item component and released the minecraft:tags item component out of experimental in JSON formats 1.20.50 and higher.
+
+
+==== Items ====
+Smithing Templates
+
+Armor trims can now be applied to custom armor.
+
+
+==== Non-mob entities ====
+Minecart with Hopper
+
+Now can insert and/or extract items from decorated pots.
+
+
+==== Technical ====
+Realms
+
+Realms are now available in betas and Previews.
+Any player who has an active Realms subscription is eligible to create a free beta/Preview Realm.
+Beta/Preview Realms will be separate from the regular Realms to prevent any issues from impacting regular Realms.
+The version of the last played world on a Realm is displayed in the Realms list.
+Experiments are available for newly created worlds.
+Players can now download worlds larger than 1GB from Realms on Xbox.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs", "Molang Features", and "Render Dragon Features for Creators" experimental toggles.
+
+
+==== Changes ====
+
+
+===== Technical =====
+API
+
+Added BlockComponentTypeMap, EntityComponentTypeMap, and ItemComponentTypeMap aliases which map component IDs to their TypeScript types.
+Changed Block.getComponent, Entity.getComponent, and ItemStack.getComponent to return the correct derived component type.
+Added BlockComponentTypes, EntityComponentTypes, and ItemComponentTypes enums that enumerate component ID strings.
+Removed CraftingEventPacket.
+Added effectAddBeforeEvent and removed effectState from effectAddAfterEvent.
+JSON
+
+Added minecraft:behavior.melee_box_attack behavior which functions the same as minecraft:behavior.melee_attack but uses bounds based attack reach calculations.
+The reach_multiplier attribute is removed and replaced with box_increase.
+Reach is calculated by increasing the bounds of the attacking mobs in the xz-plane by box_increase blocks to create an "attack box". If the attack box intersects with the target's bounds the attacking mob can reach it.
+Added minecraft:can_join_raid component to allow entities to join existing raids.
+Molang
+
+The following Molang queries are deprecated and will no longer be available in packs with a min_engine_version of 1.20.50 or higher:
+Replaced with query.timer_flag_1, set by behavior.timer_flag_1.
+Replaced with query.timer_flag_2, set by behavior.timer_flag_2.
+Replaced with query.timer_flag_3, set by behavior.timer_flag_3.
+query.is_scenting
+query.is_rising
+query.is_feeling_happy
+query.dash_cooldown_progress
+
+
+=== Fixes ===
+24 issues fixed
+From released versions before 1.20.0
+
+MCPE-64168  Discovered the floor was lava death message grammar issue.
+MCPE-123604  Death messages not appearing correctly.
+MCPE-124736  Vindicators don't become passive to villagers in peaceful.
+MCPE-168574  Attacking the mob in back seat when exiting boat.
+From 1.20.0
+
+MCPE-173492  Suspicious sand generate in ruins (cold).
+From released versions before Bedrock Edition 1.20.50
+
+MCPE-170831  Xbox on-screen keyboard covers command block line.
+MCPE-174298  The search bar is a little bit smaller than the items list below it.
+MCPE-174861  Librarian villagers common enchanted books are never max level enchanted.
+MCPE-175237  Structure void blocks no longer block interactions.
+MCPE-175538  The word "Production" is translated into other languages, which makes the line unreadable in Unicode languages.
+Others
+
+Phantoms will no longer miss players who are gliding.
+Decreased the likelihood of players spawning above leaves
+Witches spawned via spawn eggs now join raids and throw potions at raiders.
+Fixed various spelling mistakes in the "How to Play" screen.
+Fixed tips display for custom vehicles from Marketplace packs when using touch controls with a joystick.
+Improved some of the common scripting error messages to provide better context and information.
+Fixed unreliability around query.is_alive on server.
+Fixed an issue preventing mobs from spawning further than 6 chunks away from the nearest player even if the server's simulation range is larger than 6 chunks.
+Fixed fullscreen overlays not being displayed when being submerged in lava and powder snow in the "Deferred Technical Preview".
+Fixed missing Hoppers within Minecarts in the "Deferred Technical Preview".
+Fixed an issue where certain light emitting blocks (e.g., sea lantern, glowstone, magma, etc...) could not be turned into point lights in the "Deferred Technical Preview".
+Fixed the appearance of rain, snow, and other weather effects in the "Deferred Technical Preview".
+Improved the quality of light sources over large distances in the "Deferred Technical Preview".
+Balanced the brightness of light emitted from emissive-only blocks in the "Deferred Technical Preview".
+
+
+== Preview 1.20.50.21 ==
+Beta 1.20.50.21 (Android) or Preview 1.20.50.21 (Windows, iOS, iPadOS, Xbox) is the second beta/Preview version for Bedrock Edition 1.20.50, released on October 18, 2023, which adds the crafter behind an experimental toggle and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Experiments
+
+Added the "Update 1.21" experimental toggle.
+Contains new features for Minecraft 1.21.
+Particles
+
+Added new white_smoke_particle particle type.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Decorated Pot
+
+Inverted the direction in which decorated pots wobble when unsuccessfully interacted with.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Update 1.21" and "Beta APIs" experimental toggles.
+
+
+==== Additions ====
+
+
+===== Blocks =====
+Crafter
+
+A variant of crafting table, can be crafted with five iron ingots, a crafting table, two redstone dusts, and a dropper in the crafting table.
+Crafters can be oriented in any direction when placed.
+A pickaxe can increase the speed of mining them.
+Have a user interface similar to crafting table.
+Have 33 interactable crafting grid.
+Their crafting grid slots are toggleable, meaning that the player can change the behavior of a slot by clicking or pressing on a slot with an empty hand.
+A toggled slot cannot hold any items and therefore cannot have items placed into it by other blocks such as hoppers and droppers.
+A toggled slot can be toggled off by player, whether clicked directly or holding item(s), pressing slot keys associated with an empty or a not empty hotbar slot.
+Unlike the crafting table, the slots display a preview of the crafted item which will be crafted and ejected on the next redstone pulse, but cannot be manually taken out by the player.
+The user interface is shared between all players interacting with them, meaning that multiple players can interact with them at the same time, similar to chests and hoppers.
+The user interface does not have a recipe book to provide help, so the player must know the recipes.
+The crafter ejects one crafted item at a time when powered by a new redstone pulse, a redstone signal that is not a continuous signal.
+Upon receiving this new signal, crafters eject the recipe result from the front face.
+All the result items will be ejected together when the output result has multiple type of items.
+They can interact with hoppers and droppers, to input/output automatically.
+Hoppers can be used to both insert and pull items out of them.
+Droppers can be used to insert items into them.
+Moving items in from another block with a hopper or a dropper prioritizes filling items into slots, by following these rules:
+If there is a toggled slot, skipped.
+If there is not a toggled slot, crafters prioritize the first empty slot from left-to-right and top-to-bottom.
+If there is not a toggled slot, and there are no empty slots, crafters prioritize the smallest stack of the same item. If there are multiple possible stacks, pick the first from left-to-right and top-to-bottom.
+If failed to select a slot, hoppers and droppers will not take any action.
+When read by a redstone comparator, the redstone signal strength is 0 to 9, where each non-empty or toggled slot adds 1 strength.
+
+
+==== Changes ====
+
+
+===== Technical =====
+API
+
+Events
+Moved PlayerInteractWithBlockAfterEvent from beta to 1.7.0.
+Moved PlayerInteractWithBlockBeforeEvent from beta to 1.7.0.
+Moved PlayerInteractWithEntityAfterEvent from beta to 1.7.0.
+Moved PlayerInteractWithEntityBeforeEvent from beta to 1.7.0.
+Moved PlayerLeaveBeforeEvent from beta to 1.7.0.
+Moved NumberRange interface to minecraft/common.
+Moved heightRange: NumberRange from beta to 1.7.0.
+Moved matches from beta to 1.7.0.
+Moved function clearDynamicProperties from beta to 1.7.0.
+Moved function getDynamicProperties from beta to 1.7.0.
+Moved function getDynamicPropertyIds from beta to 1.7.0.
+Moved function getDynamicPropertyTotalByteCount from beta to 1.7.0.
+Moved function setDynamicProperty from beta to 1.7.0.
+Moved function clearDynamicProperties from beta to 1.7.0.
+Moved function getDynamicProperties from beta to 1.7.0.
+Moved function getDynamicPropertyIds from beta to 1.7.0.
+Moved function getDynamicPropertyTotalByteCount from beta to 1.7.0.
+Moved function setDynamicProperty from beta to 1.7.0.
+TicksPerSecond
+Moved from beta to 1.7.0.
+Moved offset from beta to 1.7.0.
+Moved above from beta to 1.7.0.
+Moved below from beta to 1.7.0.
+Moved north from beta to 1.7.0.
+Moved east from beta to 1.7.0.
+Moved south from beta to 1.7.0.
+Moved west from beta to 1.7.0.
+Moved center from beta to 1.7.0.
+Moved bottomCenter from beta to 1.7.0.
+
+
+=== Fixes ===
+6 issues fixed
+From 1.20.0
+
+MCPE-171597  If the end rod is placed horizontally, it has a hitbox as if placed vertically.
+MCPE-171870  Sniffers, camels, horses, donkeys and mules can get into boats when they are babies and get stuck when they grow up.
+Others
+
+Fixed an issue with upgrading loaded values that have multiple string names.
+Enhanced the bloom pipeline to utilize HDR scene information to more naturally emphasize bright pixels in the "Deferred Technical Preview".
+Fixed an issue where shadows from non-existent mobs would be rendered in the "Deferred Technical Preview".
+Fixed a crash that could occur when switching Dimensions in the "Deferred Technical Preview".
+
+
+== Preview 1.20.50.22 ==
+Beta 1.20.50.22 (Android) or Preview 1.20.50.22 (Windows, iOS, iPadOS, Xbox) is the third beta/Preview version for Bedrock Edition 1.20.50, released on October 25, 2023, which changes mob attack reach calculation, adds copper and tuff family blocks under experimental features, introduces the new look of bats, brings more parity with Java Edition, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Gameplay ====
+Game rule
+
+Added projectilesCanBreakBlocks, to control whether impact projectiles will destroy blocks that are destructible by them (i.e. chorus flowers, pointed dripstone and decorated pots). Defaults to true.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Chorus Flower
+
+Now can be destroyed by any projectile, which will no longer disappear after impact.
+Decorated Pot
+
+Updated the shatter, break, and step sounds to be "smashier".
+
+
+==== General ====
+Loading world screen
+
+Now displays 3 categories of tips based on player progression.
+
+
+==== Mobs ====
+Bat
+
+Their model, animations, and texture have been updated.
+General
+
+Mobs on fire no longer spread fire to their target when holding something in their main hand.
+Changed mob attack reach calculation.
+In horizontal directions, mobs' attack reach are now their bounding box extended in horizontal directions, instead of using horizontal width to determine.
+For example, a ravager won't be able to attack through a few block thick walls.
+In vertical directions, mobs' attack reach are now the exact vertical range of their bounding box. When there's no overlap between their bounding box and their target's bounding box in vertical direction, they can not attack, in specific:
+Riding a medium-sized mob (e.g. horse) can get rid of attacks from short mobs (e.g. baby zombie).
+Riding a tall mob (e.g. camel) can get rid of attacks from standard size mobs (e.g. zombie).
+Some mob's reaching height now extended (e.g. enderman, safety height changed from 1.5 to 3).
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Update 1.21" and "Beta APIs" experimental toggles.
+
+
+==== Additions ====
+
+
+===== Blocks =====
+Chiseled Copper
+
+Have 8 variants in  4 oxidation levels, waxed or not waxed.
+Can be crafted both in crafting table and stonecutter:
+When in crafting table, consume 2 cut copper slabs from the same type, resulting in 1 chiseled copper with the same type.
+When in stonecutter, consume 1 block of copper, resulting in 4 chiseled copper from the same type.
+Chiseled Tuff
+
+Can be crafted from tuff slabs or can be obtained by cutting tuff using a stonecutter.
+Chiseled Tuff Bricks
+
+Can be crafted from tuff brick slabs or can be obtained by cutting tuff, tuff bricks, and polished tuff using a stonecutter.
+Copper Bulb
+
+A light-emitting block that can toggle its light emission through redstone pulses.
+Have 8 variants in  4 oxidation levels, waxed or not waxed.
+Can be crafted in crafting table with a cross pattern, by 3 blocks of copper from the same type, 1 blaze rod in the center slot, and 1 redstone dust in the bottom slot, resulting in 1 copper bulb with the same type.
+They emit less light the more  oxidized they are. From less oxidized to most oxidized, they emit block light levels of 15, 12, 8, and 4, respectively.
+While powered by a redstone signal, a redstone crystal in the center of them will glow.
+They have following properties:
+Only toggle their light on or off when receiveing a  redstone pulse. Their state will not be changed if the source of the redstone pulse is removed.
+When the light is on, redstone comparators will read a redstone signal strength of 15.
+Don't conduct redstone power.
+Copper Door and Copper Trapdoor
+
+Have 8 variants in   4 oxidation levels, waxed or not waxed.
+Works like wooden doors in that they can be opened and closed by the player as well as redstone.
+Can be crafted as other doors, with blocks of copper from the same type.
+Copper Grate
+
+A new type of decorative block unique to the copper family.
+Have 8 variants in  4 oxidation levels, waxed or not waxed.
+Can be crafted both in crafting table and stonecutter:
+When in crafting table, consume 4 blocks of copper from the same type in rhombic pattern, resulting in 1 copper grate with the same type.
+When in stonecutter, consume 1 block of copper, resulting in 4 copper grate from the same type.
+They have the following properties:
+Transparent and allows light to pass through.
+Cannot conduct redstone.
+Hostile mobs cannot naturally spawn on them.
+Polished Tuff
+
+Can be crafted from tuff or can be obtained by cutting tuff using a stonecutter.
+Can be used to craft respective  stairs,  slabs,  walls, and  bricks.
+Tuff Bricks
+
+Can be crafted from polished tuff or can be obtained by cutting tuff using a stonecutter.
+Can be used to craft respective  stairs,  slabs (that can be used to craft  chiseled tuff bricks), and  walls.
+Tuff Stairs, Tuff Slab, and Tuff Wall
+
+Can be crafted from tuff or can be obtained by cutting tuff using a stonecutter.
+Tuff slabs can be used to craft  chiseled tuff.
+
+
+==== Changes ====
+
+
+===== Blocks =====
+Block of Copper (All variants)
+
+Now can be used to craft respective  doors and  trapdoors, as well as the  copper bulb and  copper grate, or any variant of the block of copper cutting it in a stonecutter.
+Tuff
+
+Now can be used to craft a  polished variant and respective  stairs,  slabs, and  walls, or any form and variant of tuff cutting it in a stonecutter.
+
+
+===== General =====
+Tags
+
+Added the copper_door, exposed_copper_door, weathered_copper_door, oxidized_copper_door, waxed_copper_door, waxed_exposed_copper_door, waxed_weathered_copper_door, and waxed_oxidized_copper_door into the minecraft:door item tag.
+
+
+===== Technical =====
+API
+
+Added initial NPC support to scripting with the EntityNpcComponent.
+SimulatedPlayer
+stopUsingItem now returns the item that was being used.
+Fixed target property to be of type Entity or undefined as the entity may not have a target.
+EntityHitInformation
+Fixed entity property to be of type Entity or undefined as the entity may be undefined.
+EntityInventoryComponent
+container member variable now correctly reflects it can be a Container or undefined.
+entity member variable now correctly reflects it can be a Entity or undefined.
+ItemStartUseOnAfterEvent
+itemStack is now optional.
+ItemStopUseAfterEvent
+itemStack is now optional.
+JSON
+
+Renamed minecraft:use_duration to minecraft:use_modifiers and added a movement_modifier parameter in JSON format versions 1.20.50 and higher.
+Deprecated minecraft:chargeable in JSON format versions 1.20.50 and higher.
+
+
+=== Fixes ===
+7 issues fixed
+From released versions before 1.20.0
+
+MCPE-157182  Leads in unloaded chunks break upon re-entering chunk.
+From released versions before Bedrock Edition 1.20.50
+
+MCPE-171346  Shield unable to be used after using trident with/without enchantments that are not riptide.
+MCPE-175530  Going to "Customize Controls" on PC with no touch screen doesn't let you return to the settings.
+MCPE-175790  Sticky piston pulling a retracting piston that pulls a player and another block can crash the game.
+Others
+
+Fixed heightmaps appearing inverted in the "Deferred Technical Preview".
+Fixed @minecraft/server-ui forms not correctly rendering player scoreboard information when embedded in rawtext.
+When a particle emitter is added to an entity but particles simulate in world, particles now correctly collide with the world.
+
+
+== Preview 1.20.50.23 ==
+Beta 1.20.50.23 (Android) or Preview 1.20.50.23 (Windows, iOS, iPadOS, Xbox) is the fourth beta/Preview version for Bedrock Edition 1.20.50, released on November 2, 2023, which brings more parity with Java Edition and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Marketplace
+
+Added the ability to deep link users within a server to dressing room offers.
+
+
+=== Changes ===
+
+
+==== General ====
+Create New World and Main Menu
+
+Added an altered main menu and world creation experience.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Update 1.21" and "Beta APIs" experimental toggles.
+
+
+==== Changes ====
+
+
+===== Blocks =====
+Copper Door and Copper Trapdoor
+
+Updated their block and item textures for all variants.
+Crafter
+
+Its texture has been updated.
+Tuff Bricks, Tuff Brick Slab, Tuff Brick Stairs, and Tuff Brick Wall
+
+Updated their block and item textures.
+
+
+===== Technical =====
+API
+
+Moved Entity.remove from beta to 1.7.0.
+DataDrivenEntityTriggerAfterEvent
+Renamed property id to eventId for clarity.
+Changed getModifier to work in read-only mode.
+Changed DefinitionModifier from a class to an interface with properties.
+Made EntityTypes.get properly reflect that it can return EntityType | undefined instead of just EntityType.
+Dynamic Properties
+NBT change: Dynamic properties are now stored using the behavior pack manifest UUID, rather than the module UUID. Existing worlds using dynamic properties will continue to work, and will be migrated to the new format when properties are read or modified.
+JSON
+
+Deprecated on_dig event triggers from minecraft:digger in format versions 1.20.50 and higher.
+
+
+=== Fixes ===
+14 issues fixed
+From released versions before 1.20.0
+
+MCPE-31014  100% hotbar opacity isn't opaque enough.
+MCPE-41898  Exporting MCWORLD or MCSTRUCTURE file to a OneDrive folder fails silently.
+MCPE-168598  Some in-game UIs have no transparent black background in Pocket UI.
+MCPE-169617  Creator icon hover border is missing.
+From released versions before Bedrock Edition 1.20.50
+
+MCPE-167218  Unable to crouch underwater/in water.
+MCPE-175159  Recipes menu defaults to "All" items.
+MCPE-176184  Firework rockets can't be used to break chorus flowers.
+MCPE-176198  Updating to 1.20.50.21 ejects all mobs too large for boats, even if they were put there prior to the update.
+MCPE-176371  Calcite can no longer be obtained by creative inventory or /give command.
+Others
+
+Added the missing crafting recipes for chiseled copper (all variants), tuff blocks, copper doors, trapdoors, and grates (all waxed variants).
+Fixed possible soft locking when performing different actions within Marketplace.
+Fixed a regression that caused flying players to slow down significantly after touching ground.
+The classic skins info pop now sends you to the correct settings page.
+Fixed a crash when joining a Realm after doing other things for a while.
+
+
+== Preview 1.20.50.24 ==
+Beta 1.20.50.24 (Android) or Preview 1.20.50.24 (Windows, iOS, iPadOS, Xbox) is the fifth and final beta/Preview version for Bedrock Edition 1.20.50, released on November 8, 2023, which fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Realm
+
+Player can now launch Minecraft directly into a Realm using a link, even when the game isn't running.
+Example link: minecraft://connectToRealm?realmId=<Id number>
+
+
+=== Fixes ===
+2 issues fixed
+From the previous development versions
+
+MCPE-176399  Armor renders with solid textures when applying armor trim templates.
+Other
+
+Fixed a crash that would sometimes occur when loading a world with custom items.
+
+
+== Notes and references ==
+
+
+== Navigation ==

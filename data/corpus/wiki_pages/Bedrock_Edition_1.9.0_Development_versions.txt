@@ -1,0 +1,433 @@
+This is a list of Bedrock Edition 1.9.0 development versions.
+
+
+== beta 1.9.0.0 ==
+Beta 1.9.0.0 is the first beta version for Bedrock Edition 1.9.0, released on November 15, 2018, which adds some more Village & Pillage features such as cornflowers, lilies of the valley, and new slabs, stairs, and walls.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+Flowers
+
+Added cornflower.
+Gives blue dye.
+Appears in plains biomes.
+Added lily of the valley.
+Gives white dye.
+Appears in forest biomes.
+Smooth blocks
+
+Added smooth stone, smooth sandstone, smooth red sandstone, and smooth quartz blocks.
+Obtained by smelting their normal block variants in a furnace.
+Signs
+
+Added spruce, birch, acacia, jungle, and dark oak signs.
+Slabs
+
+Added stone, andesite, polished andesite, diorite, polished diorite, granite, polished granite, mossy stone brick, mossy cobblestone, smooth sandstone, smooth red sandstone, smooth quartz, red Nether brick, and end stone brick slabs.
+Added cut sandstone and cut red sandstone slabs.
+Stairs
+
+Added stone, andesite, polished andesite, diorite, polished diorite, granite, polished granite, mossy stone brick, mossy cobblestone, smooth sandstone, smooth red sandstone, smooth quartz, red Nether brick, and end stone brick stairs.
+Walls
+
+Added brick, andesite, diorite, granite, prismarine, stone brick, mossy stone brick, sandstone, red sandstone, Nether brick, red Nether brick, and end stone brick walls.
+
+
+==== Items ====
+Spawn Egg
+
+Pillager
+
+
+==== Mobs ====
+Pillagers
+
+Hostile mobs, considered a subset of illagers.
+Have 24HP  12 health.
+Wield crossbows.
+Drop arrows and their crossbows when killed (affected by Looting).
+They will raid, or take over, villages, killing villagers.
+They cannot equip armor of any type.
+Only available through Experimental Gameplay.
+
+
+==== World generation ====
+Bamboo forests
+
+New biome variant of jungles.
+Jungle pyramids cannot generate here.
+Contain bamboo shoots, podzol, and pandas.
+Only available through Experimental Gameplay.
+
+
+==== Command format ====
+Gamerules
+
+immediateRespawn
+Allows players to respawn immediately without showing the death screen.
+showDeathMessages
+Allows players to select whether a message appears in chat when a player or tamed mob dies.
+/particle
+
+Added the following particles:
+minecraft:test_flipbook
+minecraft:test_vertexrandom
+minecraft:balloon_gas_particle
+minecraft:mobspell_emitter
+minecraft:basic_crit_particle
+minecraft:portal_directional
+minecraft:bubble_column_down_particle
+minecraft:portal_east_west
+minecraft:portal_north_south
+minecraft:bubble_column_up_particle
+minecraft:crit_emitter
+minecraft:splash_spell_emitter
+minecraft:end_chest
+minecraft:totem_particle
+minecraft:evocation_fang_particle
+minecraft:water_splash_particle
+minecraft:evoker_spell
+minecraft:water_wake_particle
+minecraft:magnesium_salts_emitter
+minecraft:wither_boss_invulnerable
+minecraft:mob_portal
+/tellraw
+
+Enables the use of raw text formatting to be able to send translatable text output to chat using JSON.
+
+
+==== General ====
+Splashes
+
+Added new splash texts:
+"Machine learning!"
+"Release the Snord!"
+"Team Mystic!"
+"Living, breathing world!"
+"Innovating innovation!"
+"Change my mind."
+"There's no stopping the Trollmaso."
+"This is good for Realms."
+"High-key!"
+"Funding secured!"
+"Throw yourself at the ground and miss"
+"YANNY OR LAUREL???"
+"Truly gone fishing!"
+"So. You read splash text."
+"Very influential in its circle!"
+"Warning! A huge battleship \"STEVE\" is approaching fast!"
+"Alexander Hamilton!"
+"Yay, puppies for everyone!"
+"You're going too fast!"
+"That's Numberwang!"
+"Thanks for the fish!"
+"Take the elevator to the mezzanine!"
+"Take an egg beater and beat it against a skillet!"
+"Stop being reasonable, this is the Internet!"
+"So sweet, like a nice bon bon!"
+"#Blessed!"
+"Have you finished your homework?"
+"We're working on it!"
+"Like that smash button!"
+"Minecraft 2 unconfirmed!"
+"A circle-free environment!"
+"Llama, llama, duck!"
+"When it's ready!"
+"Make a viral video!!1"
+"Artisinal!"
+"The Floor is Lava!"
+"Savage Dad jokes!"
+"Protec but also attac"
+"Potatoes gonna potate!"
+"Bananas!"
+"zhoolor"
+"mixer.com/minecraft"
+"Oh geez!"
+"Crush it!"
+"Keep your head down, there's two of us in here now. Remember?"
+"Sodium free!"
+"What DOES the fox say?"
+"#gartzkebrokeit"
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Bamboo
+
+A single bamboo shoot can now generate rarely through jungle biomes.
+Moss stone
+
+Has been renamed to "Mossy Cobblestone".
+Nether brick fences
+
+Changed the crafting recipe to 4 Nether brick blocks and 2 Nether brick items.
+Previous crafting recipe is now used to make Nether brick walls.
+Smooth sandstone and smooth red sandstone
+
+Have been renamed to "Cut Sandstone" and "Cut Red Sandstone", respectively.
+Signs
+
+Renamed "Sign" to "Oak Sign".
+Default text color is now white.
+Oak signs now require oak planks to craft instead of any planks.
+Stone slabs
+
+Renamed "Stone Slab" to "Smooth Stone Slab".
+Now require smooth stone to craft instead of normal stone.
+Sandstone slabs and stairs
+
+Now require regular sandstone to craft, not variants.
+Tripwires
+
+Are now activated when broken, unless broken with shears.
+Wool
+
+Has been renamed to "White Wool".
+
+
+==== General ====
+Improved performance when using function commands; they are now pre-compiled on world reload.
+Loading tips
+
+Added several new loading screen tips and trivia suggested by the community.
+Textures
+
+Changed the textures of the Health Boost and Absorption icons.
+
+
+=== Fixes ===
+Fixed a crash that occurred during gameplay.
+Fixed a crash that could occur when replacing a wooden door with an iron one. (MCPE-37941)
+Fixed a crash that could occur when using pick block on a chest filled with written books.
+Updated low disk space error message.
+Held items now show the correct texture when changing resource packs. (MCPE-38302)
+Fixed touch controls so players no longer get stuck in sneak position when underwater. (MCPE-38212)
+Fixed panda feeding animation.
+Crossbows no longer fire accidentally when interacting with blocks or mobs on touch screen devices. (MCPE-38321)
+Crossbows can now be used to hit mobs. (MCPE-38314)
+The trident throwing animation no longer gets mixed up with the new crossbow animation. (MCPE-38358)
+Fixed the issue with breaking blocks when trying to fire a crossbow on touch screen devices. (MCPE-38465)
+Added new notification for worlds that have missing templates, with a prompt to redownload the relevant template from the store if necessary.
+Improved text entry in various fields - text boxes can be highlighted and selected using the keyboard.
+The skin picker menu now only displays progress/loading animation when online.
+Fixed missing "Save to Microsoft account" message when saving purchases on Nintendo Switch in handheld mode.
+Players can no longer change their customized player permissions in multiplayer games.
+Fixed remaining commands that use relative coordinates that are below y3. (MCPE-35130)
+Shulker boxes now push mobs when opening. (MCPE-22480)
+Error messages are now more informative when trying to join an unavailable world.
+Fixed a remaining issue that could cause a sudden change in direction on touch screen devices. (MCPE-35910)
+Falling block entities can now be killed using commands. (MCPE-38300)
+Defeating the ender dragon now drops the correct amount of XP and generates a dragon egg in converted worlds. (MCPE-28864)
+Vines collected with Silk Touch tools can be used correctly in banner designs. (MCPE-35134)
+End gateway portals now work correctly even if the destination area has already been generated. (MCPE-19699)
+Dropped items are now correctly displaced by slabs and glass. (MCPE-12025)
+Improved marketplace navigation when using a controller or keyboard.
+Fixed the swimming animation of the "Syrena" skin in Pirates of the Caribbean Mash-up pack.
+Repeating command blocks now keep their 'always active' state when cloned. (MCPE-36340)
+Clocks and compass items now load in correctly when joining a world. (MCPE-36952)
+
+
+== beta 1.9.0.2 ==
+Beta 1.9.0.2 is the second beta version for Bedrock Edition 1.9.0, released on November 28, 2018, which adds 9 new blocks.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+Barrel, bell, blast furnace, cartography table, fletching table, grindstone, smithing table, and smoker
+
+Currently have no functionality.
+Only available through Experimental Gameplay.
+Lanterns
+
+Act as a new light source.
+Emit a light level of 15.
+Can only be obtained in the Creative inventory with Experimental Gameplay enabled.
+
+
+==== Command format ====
+Functions
+
+Can now be run every tick creating an update loop.
+Gamerules
+
+The number of commands run through functions can now be limited with a new gamerule (defaults to 10,000) to limit performance issues.
+Tags
+
+Custom tags can be applied to entities and players to create more flexible selector groupings.
+Added has_tag filter in components to allow checks to see if an entity has a specified tag.
+Autocomplete can be used for tags.
+
+
+==== General ====
+Pause menu
+
+Added a new "feedback" button.
+Shows links to the Minecraft feedback site, Mojira bug tracker, and Mojang support.
+"How to Play" button is now visible from the in-game settings menu.
+Other
+
+Added unused textures for "fish barrel" blocks.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Cauldrons
+
+Can now be used to hold lava.
+Signs
+
+Changed the default sign text color back to black.
+Sign variants are now grouped in their own inventory category.
+
+
+==== Mobs ====
+Pillagers
+
+Now have the crossbow animations and sounds.
+Passive mobs
+
+Now randomly enter love mode.
+
+
+==== General ====
+Multiplayer
+
+Players can now join and play games with a minor version mismatch. (MCPE-38945)
+
+
+=== Fixes ===
+Shulker boxes in item frames no longer cause the game to crash.
+Fixed an issue with wrong items showing in partnered server stores.
+Corrected the head size of baby zombies.
+Fixed a crash that could occur when pistons pushed blocks.
+Fixed a crash that could happen when suspending and resuming the game.
+Improved the error messages that previously stated the player didn't have a license for the game.
+Fixed the positioning of the snow golem's arms.
+Pandas now stop eating when set on fire.
+Fixed a crash that occurred when resuming the game on Android.
+Fixed mouse selection issues when clicking items or text boxes. (MCPE-39283)
+Fixed an issue with end gateway portals which could generate too closely, preventing travel back to the main island.
+Slimes will once again spawn in slime chunks as expected. (MCPE-38388)
+Endermen now make the scream sound when angered. (MCPE-26719)
+Phantoms now drop membranes correctly if killed with a Fire Aspect sword. (MCPE-38493)
+Auto-jump now works when trying to walk through scaffolding. (MCPE-38342)
+Scaffolding can now be placed on glass.
+More blocks can be placed on scaffolding including mob heads and flower pots. (MCPE-38942)
+Horizontal flowing water will no longer turn into bubble columns over soul sand.
+Fixed a crash that could occur when removing Gear VR headset during gameplay.
+Fixed a crash that occasionally happens when resuming the game.
+Fixed leg geometry for one-legged characters in various skin packs.
+Fixed a crash that could occur when quickly signing in and out of Xbox Live.
+Dragon's breath can now be quickly collected reliably in multiplayer games. (MCPE-37815)
+Pandas now panic when set on fire.
+Animations and sounds can now be heard and seen when pillagers charge their crossbows. (MCPE-39095)
+Cobblestone stairs are generated in jungle temples and villages instead of stone. (MCPE-39102)
+Lit furnaces now show correctly when copied using Ctrl + Pickblock.
+Custom modal forms now support two lines again. (MCPE-38705)
+Special characters now display correctly when using the "/say" command.
+Touch controls now work correctly with scaffolding when using the 'swap jump and sneak' setting. (MCPE-38063)
+Particles produced by witches are now purple rather than black. (MCPE-30234)
+Slabs are no longer labeled "half slabs" in the creative inventory. (MCPE-32542)
+Scaffolding textures no longer z-fight with leaves. (MCPE-38375)
+Mobs in boats no longer shake when trying to turn to look at the player.
+Bubble columns no longer extend up above the surface of the water. (MCPE-39085)
+Fixed an issue with items being repeatedly dropped from the hotbar on touchscreen devices. (MCPE-15010)
+Breaking smooth stone no longer drops cobblestone. (MCPE-39164)
+Doors no longer drop as two items when broken. (MCPE-39165)
+Fixed the scaling of the Mojang splash screen when resuming a split screen game.
+Fixed ghast projectile firing animation.
+Commands from command blocks no longer extend to other dimensions (This fix won't affect existing command blocks). (MCPE-33892)
+Fixed a bug where the game could become unresponsive after being disconnected from a multiplayer game.
+Fixed a crash issue on Xbox One.
+Worlds no longer become stuck in offline mode after toggling the multiplayer option. (MCPE-39194)
+Slabs can be correctly placed on top of each other again after reloading the world. (MCPE-39067)
+Changing game mode and reloading a world no longer removes resource packs.
+Fixed the arm position for mobs in the Mutant Battle Arena marketplace pack.
+
+
+== beta 1.9.0.3 ==
+Beta 1.9.0.3 is the third beta version for Bedrock Edition 1.9.0, released on December 5, 2018, the last of the year, which adds the Minecraft Script Engine. This is the final beta released in 2018.
+
+
+=== Additions ===
+
+
+==== General ====
+Minecraft Script Engine
+
+Uses JavaScript.
+Scripts can be written and bundled with behavior packs to listen and respond to game events, get and modify data in components that entities have, and affect different parts of the game.
+Only available on Windows 10, and through Experimental Gameplay.
+
+
+=== Changes ===
+
+
+==== Items ====
+Crossbow
+
+Now appears bigger in pillager's hand.
+
+
+=== Fixes ===
+Fixed a crash that could occur during gameplay.
+Tamed llamas no longer become bioluminescent creatures when their inventory is opened.
+Fixed items in hand sometimes appearing completely white.
+Fixed a rare instance of players being teleported into a boat while traveling near water.
+Fixed the logo not appearing on the loading screen after suspending and resuming the game.
+Players can no longer respawn in a semi-dead state if killed while in a bed. (MCPE-39410)
+Players no longer occasionally spawn high in the air when loading a world. (MCPE-38374)
+Beacon beams once again use the proper texture. (MCPE-38148)
+Blocks in the inventory once again follow the textures set in blocks.json.
+Optimizations to chunk synchronization between client and server.
+
+
+== beta 1.9.0.5 ==
+Beta 1.9.0.5 is the fourth and final beta version for Bedrock Edition 1.9.0, released on January 10, 2019, the first of the year, which fixes bugs. This is the first beta released in 2019.
+
+
+=== Fixes ===
+Fixed several crashes that occurred during gameplay.
+Dinosaurs are now able to damage players in the Dinosaur Island marketplace map.
+Fixed texel anti-aliasing so that terrain blocks now have sharper textures.
+Archers now raise their arms correctly in the marketplace pack "A Nightmare in Candyworld".
+Fixed a bug that could result in lost items when crafting from the recipe book with a full inventory. (MCPE-39621)
+Marketplace content will now download correctly without getting stuck in the process. (MCPE-37467)
+Signs now show the correct text in the "Infinity Plumber" marketplace map.
+Animated textures now loop at the correct speed.
+Pandas now hold food correctly when eating. (MCPE-39061)
+Empty slots are no longer highlighted in the skin picker for packs with less than 6 skins.
+Players can now join games that have previously had multiplayer turned off.
+Fixed the rabbit model in various packs.
+Fixed pigman arm positioning in the Mutant Battle Arena pack.
+Fixed a crash that could occur when loading in resource packs.
+Fixed a crash that could occur when created a new world with the Halloween Town template.
+The game no longer crashes when hovering over the arrow in the fletching table recipe book. (MCPE-39355)
+Blocks and hotbar items no longer have black textures. (MCPE-39368)
+Taiga biomes now generate correctly with podzol and other associated blocks. (MCPE-39381)
+Fixed the position of riders on mounts that allow multiple passengers.
+Sheep and Cats no longer appear black after being spawned with a spawn egg.
+Fixed a crash that could occur after exiting the settings screen.
+Strays now have correct arm positioning in the "Relics of the Skies" pack.
+Shulkers no longer turn black when attacking a player.
+Strays now have the correct texture layers again. (MCPE-38155)
+Horses will spawn as different variants (rather than just one type) when unspecified in the behavior pack.
+Rideable entities that use the 'minecraft:explode' component longer crash the game.
+The vex mob now holds items correctly in the "Stranded in Space" marketplace pack.
+Skeleton jockeys now sit correctly on spiders and skeleton horses. (MCPE-40057)
+Fixed another instance where the player could spawn in mid-air in Old world types. (MCPE-38374)
+
+
+== Notes and references ==
+
+
+== Navigation ==

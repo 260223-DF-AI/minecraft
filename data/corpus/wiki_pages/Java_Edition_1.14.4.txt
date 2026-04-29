@@ -1,0 +1,151 @@
+1.14.4 is a minor update to Java Edition released on July 19, 2019, which made minor changes to villagers and server permissions, and fixed bugs not fixed in 1.14.3. It is not compatible with 1.14.3 servers.
+
+
+== Additions ==
+
+
+=== Command format ===
+/debug
+
+Added /debug report.
+Used to get more detailed information while debugging performance, such as lists of chunks and block entities in each dimension.
+Saves this information as a .zip file in the .minecraft/debug folder.
+server.properties
+
+Added function-permission-level to server.properties which controls which permission levels functions have.
+
+
+=== General ===
+Splashes
+
+Added "Ping the human!"
+
+
+== Changes ==
+
+
+=== Items ===
+Suspicious stew
+
+Suspicious stews made from poppies now gives the player Night Vision instead of Speed.
+
+
+=== Mobs ===
+Pillagers
+
+Changed arm texture.
+Villagers
+
+Now voluntarily pick up items.
+Trades can now be completed more times before locking.
+Now remember their gossip after becoming a zombie villager.
+Gossip about players who converted a zombie villager now lasts longer.
+Can now work without also restocking at the same time.
+This has no effect other than playing the work sound.
+Improved performance of villager pathfinding.
+
+
+=== Command format ===
+Permissions
+
+/reload and /forceload are now available to permission level 2.
+
+
+=== General ===
+Camera
+
+Removed the camera pivot offset when in first-person view.
+client.jar
+
+Re-integrated Realms code into the client, in package com.mojang.realmsclient.dto.
+Re-added Realms assets to the client.
+Performance
+
+Improved general performance.
+Improved leaf rendering performance.
+Improved chunk loading when traveling at high speeds.
+Minecraft Realms
+
+Removed the "Player Activity" button from the Realms screen.
+
+
+== Fixes ==
+54 issues fixed
+From released versions before 1.14
+
+MC-100946  Bow with mending undraws when receiving XP while drawn.
+MC-113968  Zombies of village siege spawn despite gamerule doMobSpawning being false.
+MC-113970  Zombies of village siege do not spawn centered on a block.
+MC-134811  Undead mobs bob up and down in waterlogged slabs.
+MC-134964  Unexpected error: java.util.NoSuchElementException.
+MC-136318  Floatable mobs are unable to walk when in waterlogged blocks.
+MC-142037  java.lang.NullPointerException: Initializing game.
+From 1.14
+
+MC-143886  Acacia leaves render improperly from a distance.
+MC-145769  Villagers are not shutting doors behind them.
+MC-146289  Farmer villagers do not stop to pick up their crops.
+MC-147844  Pillagers do not pathfind around obstacles and out of water.
+MC-148539  Villagers stuck pathfinding to long destroyed bed
+MC-148613  Aquatic mobs are not spawning./Fish spawned from buckets count toward the aquatic mob cap again.
+MC-149018  High idle CPU usage on server.
+MC-149880  Villager trades wrong book.
+MC-150623  The game crashed whilst rendering overlay: Unable to fit texture.
+MC-156349  Cannot press Enter on direct connect.
+From 1.14.1
+
+MC-151150  Entities (villagers) cause massive lag when attempting to pathfind.
+MC-151282  Villager trade GUI does not show the correct price on servers if trade demand is high.
+MC-151376  Villagers are not pathfinding toward their POI; POI detection range is too small.
+MC-151810  Mobs do not try to avoid fall damage anymore.
+MC-152094  End city/end ship generation gets cut at chunk borders sometimes.
+MC-152908  When a player joins a server, everything that happened during the time offline queued on connecting to the server.
+From 1.14.2
+
+MC-153498  Cyrillic letter  is not included in the Minecraft font.
+MC-153665  Full villager inventory creates invisible items.
+MC-153712  Java using 100200% CPU in macOS.
+MC-153749  Trusting foxes attack player when self-injured.
+MC-153852  Concrete powder deleting waterlogged blocks when falling.
+MC-154668  Invalid characters crash the game in jigsaw block input upon pressing enter.
+MC-154830  All wall signs use oak color on maps.
+From 1.14.3
+
+MC-153766  Rabbits no longer need sand/grass in order to spawn in deserts/tundras.
+MC-153892  Mending slows down breaking blocks.
+MC-154019  Beacon deactivate sound not sounds when you break the base.
+MC-154031  Villagers give away all food if they want to share it.
+MC-154068  Parrots occasionally disappearing when taken from a boat.
+MC-154201  Trying to trade with villager immediately closes trading menu for some villagers.
+MC-154271  Rolling shutter issue on macOS.
+MC-154362  Crossbow has to reload when mending takes place.
+MC-154509  Bashkir letters , , , , , and  are not included in the Minecraft font.
+MC-155092  Zombie sieges can happen on mushroom islands.
+MC-155104  When closing a menu while moving the mouse, the screen will move in that direction.
+MC-155147  Mouse acceleration issue.
+MC-155172  Hostile wolf AI has been broken: wolves can no longer attack enemies efficiently.
+MC-155238  Villagers picking up workstation through wall.
+MC-155345  ConcurrentModificationException when a player leaves an active raid.
+MC-155571  Silverfish and endermite spawners no longer functioning.
+MC-156013  Breaking blocks "re-appear" to nudge player.
+MC-156389  Game crashes when pressing  Shift +  Command +  Delete to remove 18 characters at once on an anvil.
+MC-156395  Villagers use job site blocks already in use.
+Private issues
+
+MC-143755  Arbitrary score/selector/NBT resolution using lectern without operator rights.
+MC-152636  Killing a zombie right as it converts into a drowned will drop the loot from zombie while still converting into a drowned.
+MC-153406  Score JSON component crash in items.
+MC-154214  Chunks refusing to unload due to incorrect player ticket additions.
+MC-155711  Functions capable of running commands they should not be able to (publish, debug ...).
+
+
+== Videos ==
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

@@ -42,7 +42,7 @@ However, there are two situations that can prevent light propagation between blo
 
 Case the block through which the light is trying to propagate is a solid render block or tinted glass.
 Case, when joining the adjacent faces of the blocks, considering their occlusion shape, forms a full square.
-For example, a top slab does not propagate light to a horizontally adjacent bottom slab. Because, by joining the adjacent faces of its occlusion shape, that is, the top 8×16 with the bottom 8×16, it forms a full square.
+For example, a top slab does not propagate light to a horizontally adjacent bottom slab. Because, by joining the adjacent faces of its occlusion shape, that is, the top 816 with the bottom 816, it forms a full square.
 However, not all blocks use their shape to prevent light propagation; in reality, only a select list of blocks uses their occlusion shape for this purpose. All other blocks are considered to have an empty occlusion shape when it comes to light propagation.
 
 Considering solid render blocks with an empty occlusion shape is important for the functioning of light emitters. If, for example, glowstone considered its shape, it could never propagate light to other blocks. This would occur because each of its faces is already a complete square, and when joined with a face of any other block (even if it is empty) would generate a full square. Therefore, solid render blocks do not receive light (due to the first condition at the beginning of the session) but can still emit light (due it to be considered with an empty occlusion shape).
@@ -65,7 +65,7 @@ Stained glass also prevents the rendering of identical blocks next to it. Howeve
 
 Mangrove roots does not render other magoves rootes that are directly above or below it. However, it still renders those that are next to it.
 Iron bars, copper bars, glass pane and stained glass pane don't render the face of adjacent blocks of the same type. Furthermore, these blocks will not render the faces of adjacent blocks if both the block itself and the adjacent block are within the #bars tag. In vanilla, only the iron bar and (all) copper bars are in this tag, however, using data packs it is possible to add the glass pane and stained glass pane.
-When "Options" → "Accessibility Settings" → "See-Through Leaves" is not enabled, leaves don't render other leaves, even if they are of different types.
+When "Options"  "Accessibility Settings"  "See-Through Leaves" is not enabled, leaves don't render other leaves, even if they are of different types.
 Water and lava normally don't render block faces that are in the same fluid. Because the rendering of liquids is more complex, sometimes the faces are rendered. For example, a waterlogged top slab will still have its upper face rendered if there is a block of water on top of it.
 
 
@@ -74,7 +74,7 @@ In Java Edition, the parts of the block that may not render because it is adjace
 elements[n].faces.<face>.cullface. However, there are blocks that are not rendered by models but rather by the associated block entity. These are:
 
 These entity blocks has not a cullface, with the exception of the end portal.
-Most block models do not render the elements' faces that are on the block face. An exception is the beacon, which renders the glass shell.​[more information needed]
+Most block models do not render the elements' faces that are on the block face. An exception is the beacon, which renders the glass shell.[more information needed]
 
 
 === Other uses ===

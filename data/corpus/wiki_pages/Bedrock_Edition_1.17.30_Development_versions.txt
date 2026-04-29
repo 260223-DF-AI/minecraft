@@ -1,0 +1,801 @@
+This is a list of Bedrock Edition 1.17.30 development versions.
+
+
+== beta 1.17.20.20 ==
+Beta 1.17.20.20 is the first beta version for Bedrock Edition 1.17.30, released on June 23, 2021, which added a new gamerule to prevent beds and respawn anchor exploding, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Command format ====
+Gamerules
+
+respawnBlocksExplode
+Used to prevent beds/respawn anchors from exploding in other dimensions. (MCPE-76687)
+Settings
+
+Added new "Respawn Blocks Explode" in the world settings.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Enchantment Tables
+
+Now emits light level 7, instead of 12.
+
+
+==== Mobs ====
+Goats
+
+The model of baby goats no longer has horns.
+
+
+==== World generation ====
+Bastion remnants
+
+Hoglin stable chests may contain an enchanted diamond pickaxe.
+Far Lands
+
+Were removed.
+
+
+==== Experimental ====
+GameTest Framework
+
+GameTest
+Added helper method spawnAtLocation(location : Location) : Entity
+Spawns an entity at the given Location
+Added helper method walkToLocation(mob : Entity, location : Location, speedModifier : number)
+Commands an entity to move to the given Location
+Added method assertCanReachLocation(mob : Entity, location : BlockLocation, bool canReach)
+Asserts that the given mob can reach the target block location
+Events
+Added event World.events.beforeExplosion
+Fires before an explosion occurs
+Added event World.events.explosion
+Fires when an explosion occurs
+Added event World.events.explodeBlock
+Fires when a block breaks due to an explosion
+Added event World.event.beforeActivatePiston
+Fires before a piston is activated
+Added event World.event.activatePiston
+Fires when a piston is activated
+Block
+Added method getDimension() : Dimension
+BlockPistonComponent
+Read-only property attachedBlocks
+Returns an array containing the BlockLocation of each block attached to the piston
+Read-only property isMoving
+Returns true if the piston is expanding or retracting
+Read-only property isExpanded
+Returns true if the piston is fully expanded
+Read-only property isExpanding
+Returns true if the piston is expanding
+Read-only property isRetracting
+Returns true if the piston is retracting
+Read-only property isRetracted
+Returns true if the piston is fully retracted
+
+
+=== Fixes ===
+Caves And Cliffs
+
+Worlds with the Caves & Cliffs experimental toggle enabled are now more likely to have the same default world spawn position as worlds without the experiment using the same seed (MCPE-127708)
+Vanilla Parity
+
+Monster spawning in the Nether has been changed to more closely match Java Edition (MCPE-65762)
+There will now be a maximum of 15 to 20 mobs around the player in the Nether, instead of 30 to 40
+Block interaction "click" sounds are now controlled by the "Blocks" volume slider (MCPE-104983)
+Swapped toggle sounds for levers so that they are now parity with Java Edition (MCPE-30379)
+Pushed the Far Lands beyond the 32 bit integer limit.
+General
+
+Fixed a bug where the contents of a Shulker Box are deleted when dyeing from the recipe tab (MCPE-131809)
+Swords now break Bamboo in a single swing (MCPE-64013)
+Disabled biome tinting for Spruce and Birch Leaves (MCPE-128996)
+Using a Powder Snow Bucket on a Cauldron filled with Powder Snow no longer creates a new Powder Snow block (MCPE-131177)
+Using a Water Bucket on a fully filled Cauldron now produces the correct sound (MCPE-131177)
+Lava Buckets can now be emptied into a Cauldron filled with Lava
+Cave Vines can now be pollinated by Bees (MCPE-127821)
+Enchantment Tables now emit light level 7 (MCPE-130868)
+The falling position of Pointed Dripstone is no longer slightly offset (MCPE-119548)
+Powder Snow can now be collected with a Dispenser (MCPE-127564)
+Placing a Sign on Rooted Dirt now correctly opens the text editor (MCPE-129280)
+Target Blocks now conduct Redstone signals (MCPE-75034)
+Message/tell commands no longer fail when cheats are not activated (REALMS-7760)
+Teleporting a mob between dimensions no longer causes the mob to despawn (MCPE-127414)
+Fixed offhand Shields clipping into players arms while in third-person perspective (MCPE-122672)
+Minecart with Chest will now copy over its chest contents when pick blocked
+Soul Speed Boots can now be unequipped properly after losing durability (MCPE-106367)
+Baby Goats no longer have horns (MCPE-123253)
+Diamond Pickaxes found in Hoglin Stable chests are now enchanted (MCPE-129750)
+Bubble Columns are now placed properly when loaded with a Structure Block (MCPE-97027)
+Sounds
+
+Amethyst walking sounds are now affected by the "Player" audio setting
+Deepslate walking sounds are now affected by the "Player" audio setting
+Moss Block walking sounds are now affected by the "Player" audio setting
+Sounds of moving in/on Powder Snow are now affected by the "Player" audio setting
+Jumping and landing on blocks have now their sounds affected by the "Player" audio slider (MCPE-116135)
+Dripstone drip sounds are now affected by the "Block" audio slider
+Turtle Eggs no longer produce the Bone Meal sound when placed on Sand (MCPE-127189)
+Big Dripleaf now has a distinct tilt up sound (MCPE-123488)
+User Interface
+
+The Sign In dialog is no longer shown on a split-screen game to anyone other than the primary player on PlayStation 4
+A debug string is no longer shown for how to open chat (MCPE-128955).
+Technical
+
+behavior.knockback_roar now has a vertical and horizontal strength value.
+
+
+== beta 1.17.20.21 ==
+Beta 1.17.20.21 is the second beta version for Bedrock Edition 1.17.30, released on June 30, 2021, which added corner mode on structure block, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Structure Block
+
+Added Corner Mode
+Automatically set the area based on the corner when using save mode.
+
+
+==== Experimental ====
+Changes have been made behind the Caves & Cliffs experiments toggle, which gives early access to the world generation coming in Bedrock Edition 1.18.0, as well as GameTest Framework changes behind the "Enable GameTest Framework" experiments toggle.
+Ore distribution
+
+Extended the vertical range of the smaller blobs of iron ore, to make it possible to find iron in caves near the surface.
+GameTest Framework
+
+Renamed helper method worldLocation(location : BlockLocation) to worldBlockLocation(location : BlockLocation)
+Renamed helper method relativeLocation(location : BlockLocation) to relativeBlockLocation(location : BlockLocation)
+Added helper method worldLocation(relativeLocation : Location) : Location
+From a Location with coordinates relative to the GameTest structure block, returns a new Location with coordinates relative to the world
+Added helper method relativeLocation(worldLocation : Location) : Location
+From a Location, returns a new Location with coordinates relative to the current GameTest structure block
+Added helper method spawnWithoutBehaviorsAtLocation(entityIdentifier : string, location : Location) : Entity
+Spawns an entity at a location without any AI behaviors
+Added helper method rotateDirection(direction : Direction) : Direction
+Rotates the given direction relative to the GameTest structure rotation
+Added helper method getTestDirection() : Direction
+Returns the direction the GameTest is facing based on its structure rotation
+
+
+=== Fixes ===
+Commands 
+
+Fixed a crash that could occur if a structure was placed with a command in an unloaded area, and that structure was deleted
+Graphical 
+
+Fixed text from signs drawing on maps when RTX is on
+Items 
+
+Clock and Compass items no longer function in the Recipe Book (MCPE-36354)
+Structure Blocks 
+
+Fixed tamed Wolves being transparent on the Structure Block screen.
+
+
+== beta 1.17.20.22 ==
+Beta 1.17.20.22 is the third beta version for Bedrock Edition 1.17.30, released on July 14, 2021, which made mob spawning changes behind experimental toggle, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Light Block
+
+Light blocks now reveal a particle when the player is holding the item.
+Unlike in Java Edition, the respective item texture is used as the particle instead of four yellow stars.
+
+
+==== Mobs ====
+Axolotls
+
+Axolotls now spawn only where there's a stone block less than 10 blocks below the spawning space.
+
+
+==== General ====
+
+User Interface
+
+Slightly changed the Minecraft logo on the loading screen and main menu (before Beta panorama loaded).
+
+
+==== Technical ====
+Commands 
+
+Target selectors ry and rym now support wrapping around north
+Spawning 
+
+Similar to the spawns_on_block_filter, the spawns_above_block_filter specifies a list of blocks and a distance.
+The mob can then spawn only if the nearest block within the specified distance below the desired spawnpoint is in that list (water and air not included).
+
+
+=== Experimental ===
+These changes are accessible by enabling the "Caves & Cliffs" and "Enable GameTest Framework" experimental toggle.
+
+
+==== Blocks ====
+Glow Lichen
+
+Can now generate below Y=0 to Y=-64.
+
+
+==== Mobs ====
+Axolotl
+
+Now only spawn in lush caves.
+Can now spawn below Y=0 to Y=-64.
+Glow Squid
+
+Can now spawn below Y=0 to Y=-64.
+Goat
+
+Now only spawn in mountain meadow biome.
+General 
+
+Block light level now must be 0 for many hostile mobs to spawn.
+
+
+==== World generation ====
+Dripstone Cluster
+
+Can now generate below Y=0 to Y=-64.
+Dripstone Caves and Lush Caves biome
+
+Can now generate below Y=0 to Y=-64.
+
+
+==== Technical ====
+GameTest Framework
+
+Renamed BlockTypes class to MinecraftBlockTypes
+Renamed Effects class to MinecraftEffectTypes
+Renamed Items class to MinecraftItemTypes
+Events
+Added read-only property currentTick to tick event - Returns the current server tick
+Renamed event createEntity to entityCreate
+Renamed event addEffect to effectAdd
+Renamed event activatePiston to pistonActivate
+Renamed event beforeActivatePiston to beforePistonActivate
+Renamed event explodeBlock to blockExplode
+Renamed event changeWeather to weatherChange
+
+
+=== Fixes ===
+Stability and performance 
+
+Fixed several crashes that could occur during gameplay
+Blocks 
+
+Amethyst cluster block can no longer be placed on grass path.
+Corrected deepslate lapis lazuli ore block name from deepslate lapis ore (MCPE-123605).
+Dispensers now remove bubble columns when removing water (MCPE-56462).
+Sea pickles now change light depending on being in water or not (MCPE-131642).
+Snow layers are now melted by light from torches, etc. (MCPE-131272).
+Vanilla parity: falling gravity blocks will no longer break when landing on certain blocks (MCPE-20109).
+Gameplay 
+
+Vanilla parity: using bone meal on moss blocks now also replaces tuff blocks (MCPE-125922).
+Vanilla parity: fixed light block not being displayed correctly when being held (MCPE-123249).
+Fixed held items not disappearing visually to other players after a player dies when the keep inventory gamerule is enabled (MCPE-64235).
+Nether portals placed between chunks no longer break when leaving the Nether (MCPE-74333).
+Shears now correctly cut vines and glow lichen faster (MCPE-123139).
+Weeping and twisting vines now grow correctly after the player breaks them (MCPE-90932).
+Graphical 
+
+Adjusted padding for HD textures in mipmaps level 1 in texture atlas to fix texture bleeding.
+Half of the enchantment table book doesn't render dark anymore (MCPE-106627).
+Blocks moved by a piston are no longer white while moving (MCPE-66250).
+Mobs 
+
+Axolotl spawns only when there is stone up to 10 blocks under them, and not in bubble columns.
+Armor stands now drop equipped items when destroyed by fire or lava (MCPE-94603).
+Limited the maximum number of phantom mobs that can spawn (MCPE-106557).
+Goats now play their "impact 3" sound (MCPE-127757).
+User interface 
+
+Recipe book crafting estimates no longer differ from the actual results.
+Experimental warning message is no longer displayed inconsistently when loading beta worlds.
+Cursor items no longer count towards recipe ingredient in recipe book.
+Selected recipe is now deselected when the player runs out of ingredients.
+Non-craftable recipes no longer displayed in recipe book when search mechanism is used.
+Nether blocks now appear in the crafting grid if any other ingredient is unavailable.
+Fixed a wireless network connection error message that appeared when players were connected via a wired network.
+Fixed various spelling errors in character creator.
+Hover of widget buttons were showing corrupted appearance before full load was complete.
+Fixed a legibility issue with some Japanese font characters.
+Riding an animal now displays the correct tooltip term when played on a non-touch screen.
+Technical
+
+Killing a custom mob with an unknown loot table entry type will no longer cause a crash, and will now throw a content error (MCPE-129006).
+Rabbit with initialEvent specified now scales properly to adult rabbit size (MCPE-76643).
+
+
+== beta 1.17.20.23 ==
+Beta 1.17.20.23 is the fourth beta version for Bedrock Edition 1.17.30, released on July 22, 2021, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Technical ====
+Gameplay 
+
+Data-driven blocks can now be added to the creative menu.
+Molang 
+
+min_engine_version from Resource Pack and Behavior Pack manifests is now passed into Molang expression parsing.
+This allows for future breaking changes tied to a specific engine version.
+User Interface 
+
+UI bind objects can now utilize the ignore field.
+
+
+=== Experimental ===
+These changes are accessible by enabling the "Caves & Cliffs" and "Enable GameTest Framework" experimental toggle.
+
+
+==== Mobs ====
+General 
+
+Hostile mobs can now spawn in the new mountain and cave biomes.
+
+
+==== Technical ====
+GameTest Framework
+
+Renamed module "Minecraft" to "mojang-minecraft"
+Renamed module "GameTest" to "mojang-gametest"
+Renamed function assertBlockTypePresent to assertBlockPresent
+Renamed function assertEntityData to assertEntityState
+Removed function assertBlockTypeNotPresent
+Removed function assertEntityNotPresent
+Removed function assertEntityNotPresentInArea
+Removed function assertEntityNotTouching
+Removed function succeedWhenEntityNotPresent
+Modified signature of function assertBlockState(blockLocation: BlockLocation, callback: (Block) -> boolean)
+Modified signature of function assertBlockPresent(blockType: BlockType, blockLocation: BlockLocation, isPresent: boolean)
+Modified signature of function assertEntityPresent(entityTypeIdentifier: string, blockLocation: BlockLocation, isPresent: boolean)
+Modified signature of function assertEntityPresentInArea(entityTypeIdentifier: string, isPresent: boolean)
+Modified signature of function assertEntityTouching(entityTypeIdentifier: string, location: Location, isTouching: boolean)
+Modified signature of function succeedWhenEntityPresent(entityTypeIdentifier: string, location: Location, isPresent: boolean)
+Added GameTestExtension function assertBlockProperty(propertyName: string, value: number string boolean, blockLocation: BlockLocation)
+
+
+=== Fixes ===
+Stability and performance 
+
+Fixed several crashes that could occur during gameplay
+Optimized pasting unicode text into Book & Quill (MCPE-119651)
+Fixed a crash that could occur when crafting a Crafting Table with Gameplay Tips enabled
+Gameplay 
+
+Fixed Bed display if the foot of the Bed is in a brighter area than the head (MCPE-123592)
+Fixed Large Chest display so the brightest end of the Chest is chosen (MCPE-123592)
+Travelling through End portals can no longer cause players to take fall damage (MCPE-135226, MCPE-132484)
+Items 
+
+Made projectile items move more smoothly when far from players (MCPE-101102)
+Holding a Shield in Marketplace maps no longer shows a content error
+Strong/long/splash/lingering potions can be placed in the Brewing Stand manually (MCPE-86636)
+Mobs 
+
+Undead mobs standing near Powder Snow now burn normally (MCPE-131005)
+Powder Snow above undead mobs now prevents burning effect
+Multiple Shulkers will no longer be able to spawn in the same position from spawn eggs or End City generation (MCPE-43972)
+Mobs can now pathfind correctly when standing on Amethyst Buds (MCPE-130010)
+Fixed Horses sometimes becoming invisible after players dismount them (MCPE-108568)
+Grown up Goats no longer lose their Horns when reloading a world
+Lightning no longer randomly strikes mobs that are under blocks (MCPE-121688)
+Blocks 
+
+Spore Blossom no longer has a randomly offset hitbox (MCPE-121658)
+Moss Block and Moss Carpet now break when moved by Pistons and Sticky Pistons can no longer pull them (MCPE-121751, MCPE-122004)
+Water dripping from Pointed Dripstone can no longer fill Cauldrons with Potions (MCPE-131180)
+Measurements of hitbox of Spore Blossom now match Java Edition
+Fixed issue causing Slime and Honey Block movement slowdown to not be fully applied to players
+User interface 
+
+Emote wheel no longer appears when pressing Ctrl+B in-game  (MCPE-125246)
+Fixed Input Method Editor (IME) not working after suspending the game on Windows 10 (MCPE-59722)
+Added a new sidebar to Marketplace and Dressing Room related screens to help better improve the experience of navigating these areas
+There is now an item transferring animation when deselecting a recipe
+Commands 
+
+Loading a structure with the /structure command now displays the correct output messages (MCPE-132813)
+The /particle command position argument is now optional (MCPE-128379)
+The /particle command will now output on success (MCPE-80348)
+The /particle command no longer shows an error when run successfully through /execute (MCPE-129001).
+
+
+== beta 1.17.30.20 ==
+Beta 1.17.30.20 is the fifth beta version for Bedrock Edition 1.17.30, released on August 4, 2021, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Ghast
+
+No longer spawn in less than 5x4x5 area.
+Magma Cubes
+
+Medium Magma Cubes now have a larger hitbox (1.04 x 1.04 blocks) to match Slimes.
+No longer spawn in less than 3x3x2 area.
+Zombies, Zombie Villagers, Husks and Drowned
+
+No longer pick up glow ink sacs.
+
+
+==== Gameplay ====
+Settings
+
+Added "Clear Hotbar" option to the controller settings.
+Added "Show Border Effect" in the world settings.
+
+
+==== Technical ====
+Chemistry
+
+New chemistry material reductions can now be defined in the JSON files.
+Chalkboards now appear consistently when being placed.
+Commands
+
+The /clone command now copies signal strength for Levers and Redstone Dust.
+The /structure command can now specify a <to: x y z> position argument with y below 0 as long as it is equal or above the minimum height for that dimension.
+Added functionality for Intellisense options: "d" and "default" in the gamemode command selector.
+Minecart with Command Block can now use the self selector (@s) in its commands to target itself.
+The /time set command now sets the correct time and day when specifying a time above 24000 or below the current time (e.g. /time set 0 sets the day to 0, /time set 28000 sets the day to 1), and /time can now set or add to a negative world time.
+Items
+
+Updated documentation formatting for item components.
+Using water buckets to collect fish has been version locked to prevent breaking old world templates.
+
+
+=== Fixes ===
+Stability and Performance
+
+Fixed several crashes that could occur during gameplay
+Fixed a crash that could sometimes occur when downloading large Marketplace worlds
+Accessibility
+
+Text to Speech now correctly reads item names in the inventory
+Inventory grid slots are no longer double counted for Text to Speech focus controls
+Gameplay
+
+Light blocks are now visible when holding another, and also show brightness value (MCPE-123249)
+Fixed Light Block not being removed when left-clicking it while holding a Light Block (MCPE-123258)
+Fixed Light Block brightness not being adjustable when right-clicking it (MCPE-123387)
+Fixed Light Block hitbox issue (MCPE-135277)
+Fixed Barrier Block being destructible whilst not holding a Barrier Block
+Boats now disappear from inventory correctly after placing it on water in Survival mode (MCPE-136445)
+User Interface
+
+Text to Speech for chat setting once again correctly narrates chat messages (MCPE-129901)
+Sidebar strings are now localized properly when a new language is loaded or the current language changes
+Updated the Achievements button and moved from the Profile screen to the Main Menu and Pause screens
+Enabled new achievements screens for VR (not including PSVR)
+Vanilla Parity
+
+Eating Chorus Fruit while gliding no longer deals fall damage to the player (MCPE-112621)
+Fixed an animation parity issue with Skeletons not using both arms to hold their Bows (MCPE-670)
+Mobs
+
+Fixed an issue where mobs would sometimes render with incorrect geometry when viewed from the Structure Block preview window (MCPE-95183)
+Experimental Features: Wither can now be spawned on negative heights (MCPE-125270)
+Ghasts no longer spawn in less than 5x4x5 area (MCPE-133687)
+Magma Cubes no longer spawn in less than 3x3x2 area (MCPE-46540)
+Medium Magma Cubes now have a larger hitbox (MCPE-132159)
+Shulker boxes now remain in Dispensers when dispensed at world limit (MCPE-130085)
+Blocks
+
+Unicode font now correctly highlights on Signs with glowing text (MCPE-130072)
+Waterlogged blocks no longer occasionally turn into ghost blocks (MCPE-136537)
+Pumpkins placed facing South, East, or West now can now be used to trade with Villagers if they were mined with Silk Touch tools (MCPE-105540)
+More Candles can no longer be added to Candles placed without any support block (MCPE-130810)
+Graphical
+
+Sky no longer renders through walls of a large enclosed area when using fog.
+Technical
+
+Fixed the ability to add launch point positional offset for projectiles spawned with the spawn_entity component.
+Fixed the ability to add angular offset to launch vector for projectiles spawned with the spawn_entity component.
+Fixed offset not working for projectiles summoned through an interaction.
+Fixed projectile angleoffset value only reflected if shooter is riding another entity.
+Fixed rotation of projectile launchpoint around a mob when projectile offset specified.
+Fixed query.item_remaining_use_duration having improperly scaled or inverted results.
+
+
+== beta 1.17.30.21 ==
+Beta 1.17.30.21 is the sixth beta version for Bedrock Edition 1.17.30, released on August 12, 2021, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Monster Spawner
+
+No longer emits light to match Java Edition.
+
+
+==== Gameplay ====
+Experimental Gameplay
+
+Re-added "Experimental Molang Features" toggle to support experimental Molang features.
+
+
+==== Technical ====
+Graphics 
+
+Added DragonFX materials to support rasterized g-buffer pre-pass of raytracing resources.
+Data Driven Items 
+
+Updated documentation for DamageableItemComponent.
+Molang 
+
+Moved experimental Molang queries (other than those related to Actor Properties) to a new 'Experimental Molang Features' toggle.
+
+
+=== Experimental ===
+These changes are accessible by enabling the "Experimental Molang Features" experimental toggle.
+
+
+==== Technical ====
+Data Driven Blocks 
+
+Adds BlockPartVisibilityComponent
+Allows creators to specify Molang conditions for each bone listed in the geometry JSON that turn on/off bones based on the block state
+Molang 
+
+Adds experimental block_neighbor_has_any_tags and block_neighbor_has_all_tags MoLang queries
+Takes a block relative position and a set of tags
+Returns 0/1
+
+
+=== Fixes ===
+Stability and Performance 
+
+Fixed several crashes that could occur during gameplay.
+Fixed an issue that could cause a crash when downloading large marketplace worlds.
+Fixed an issue that could cause a crash or prevent worlds from being accessed or opened on some Android 11 devices (MCPE-137652).
+Vanilla Parity 
+
+Matched respawn from bed behavior with Java by attempting to avoid placing the player on damage-dealing blocks when waking up from a bed.
+Matched respawn from bed behavior with Java by attempting to place the player on the side of the bed they entered from when waking up from a bed (MCPE-118654).
+Mob spawners no longer emit light.
+Mobs 
+
+Staying close to Powder Snow doesn't protect undead mobs from burning under sunlight (MCPE-131005).
+Character Creator 
+
+Infinite loading no longer appears after selecting the "See pack in store" button within the skin pack description section of the dressing room.
+User Interface and HUD 
+
+Fixed an issue where the item category text color did not match the item text color if it was changed in resource packs.
+Fixed an issue where patterns in the loom would not display correctly with some texture packs.
+Technical
+
+Fixed experimental query.bone_orientation_trs to have correct translation Y and scale results.
+Crash will no longer occur when entering a world with a custom resource pack that contains query.armor_color_slot (MCPE-106437).
+Fixed controller support when editing NPC dialog.
+Parsing of UI JSON field "ignored" now throws a content_error if it is invalid.
+
+
+== beta 1.17.30.22 ==
+Beta 1.17.30.22 is the seventh beta version for Bedrock Edition 1.17.30, released on August 18, 2021, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Items ====
+Shulker Boxes
+
+Now when destroyed as an entity, it drops the items it currently has.
+
+
+==== General ====
+Menu Screen
+
+"Profile" button menu to Character Creator has been renamed to "Dressing Room".
+
+
+==== Technical ====
+Commands
+
+Animations and events defined in Behavior Packs can now run commands that require cheats without the player enabling cheats (such as setting certain rules with the /gamerule command).
+Potions
+
+potion.prefix and potion..postfix potion string resources have been renamed to potion..name.
+Potion name string resources have been changed so there are separate "Splash" and "Lingering" string resources.
+The old style of using potion.prefix and potion.*.postfix is still supported.
+User Interface
+
+Content warning message now informs the user of issues with their language file if the format is invalid.
+
+
+=== Fixes ===
+Cartographers
+
+Cartographers will now only give maps to undiscovered monuments (MCPE-29375).
+Enchanting
+
+Enchanting Table's enchantment probability is now weighted (MCPE-101588).
+Vanilla Parity
+
+Fixed Barrier Block hitbox missing when not holding a Barrier Block (MCPE-137646).
+Fixed Barrier Blocks not blocking projectiles (MCPE-137646).
+Fixed Barrier Blocks not blocking player interaction with blocks behind them.
+Shulker Boxes now drop their contents when destroyed as an item (MCPE-129470, MCPE-87877).
+Bows and Tridents are now held more similarly to Java Edition (MCPE-126717, MCPE-44418).
+Grass and water block tint colors are no longer slightly randomized with noise.
+Abandoned villages are now far rarer, more closely matching the Java Edition (MCPE-71769).
+Graphical
+
+Fixed a bug that could cause the Trident, Shield, and Crossbow to render incorrectly when an additional player is connected over the internet using a Marketplace skin (MCPE-118358).
+Fixed a bug which could cause the Spyglass to appear as if it's being thrown when using a custom skin (MCPE-127498).
+Fixed emissive light propagation in ray tracing mode by increasing irradiance cache sample size (MCPE-135157).
+The hotbar is no longer too dark when anti-aliasing is increased (MCPE-54213).
+The crosshair no longer flickers during multiplayer sessions (MCPE-123918).
+Marketplace
+
+Replaced loading bars with new loading spinner in the Marketplace.
+User Interface
+
+Fixed the hotbar being misaligned with XP bar by 1 pixel (MCPE-46975).
+Using the touch interface, holding the output slot on the Stonecutter or Loom will now rapidly craft items (MCPE-128423).
+Fixed an incorrect popup when attempting to activate a pack with a missing dependency (MCPE-130978).
+Fixed translation issues for some keys containing upper case letters.
+
+
+==== Experimental Features ====
+Mobs
+
+Fixed incorrect position when dismounting at a negative world height (MCPE-136622).
+
+
+== beta 1.17.30.23 ==
+Beta 1.17.30.23 is the eighth beta version for Bedrock Edition 1.17.30, released on August 25, 2021, which added multinoise world generation from Java Edition 1.18 Experimental Snapshot 1, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Items ====
+Campfires and Soul Campfires
+
+Can now stack to 64.
+
+
+==== Technical ====
+Molang
+
+Added experimental queries for item cooldowns: 'query.is_cooldown_type', 'query.cooldown_time', and 'query.cooldown_time_remaining'.
+Updated many Molang content errors to specify which operator or query was involved.
+Data-Driven Items
+
+Updated documentation for 'IconItemComponent' and it now provides a list of all IDs for the 'legacy_id' field.
+Data-Driven Sounds
+
+Removed the "replace" element from 'sound_definitions.json' for being ambiguous in its usage (and was never used).
+Gameplay
+
+Data-driven blocks can now be added to the Creative menu.
+Knockback Roar is no longer stronger than it used to be.
+
+
+=== Experimental ===
+These changes are accessible by enabling the "Caves & Cliffs" experimental toggle.
+
+
+==== World generation ====
+Deep Warm Ocean
+
+Now generates naturally.
+Noodle caves
+
+A thinner, squigglier, tighter variant of spaghetti caves.
+These are an improved version of the mesh caves announced around Minecraft Live.
+Overworld
+
+Now uses the multi-noise biome source type.
+Ore veins
+
+Long and rare ore formations.
+Copper ore veins mixed with granite and raw copper block generate above Y=0.
+Iron ore veins mixed with tuff and raw iron block generate below Y=0.
+Sub-biomes
+
+Wooded hills, birch forest hills, tall birch hills, taiga hills, taiga mountains, gravelly mountains+, desert hills, desert lakes,  shattered savanna plateau, swamp hills, dark forest hills, snowy mountains, snowy taiga hills, snowy taiga mountains, modified jungle, jungle hills, bamboo jungle hills, modified jungle edge, giant tree taiga hills, giant spruce taiga hills, eroded badlands, badlands plateau, modified badlands plateau, modified wooded badlands plateau, and mushroom field shore biomes no longer generate naturally.
+It is unknown whetever jungle edge are unused or not, as Java Edition 1.18 experimental snapshot 5 re-added it.
+The same with savanna plateau, as it currently exist in Java Edition latest experimental snapshot.
+Whether any of the biomes listed will be re-added, or if any will be removed from the game outright, is currently unknown.
+General
+
+Terrain generation is now independent from biomes, with biomes adapting to whatever terrain they happen to generate throughout.
+This allows for natural variation in the terrain of any individual biome, both in terms of shape and elevation.
+For example, forests and deserts could form up on a hill without needing a special biome just for that purpose.
+This additionally allows for smoother transitions between biomes.
+Terrain is now smoother and more extreme.
+
+
+=== Fixes ===
+Gameplay
+
+Campfires and Soul Campfires now stack in the inventory (MCPE-67890).
+Candle now drops when Candle Cake is pushed by a Piston (MCPE-130594).
+Collecting Fish or Axolotl no longer immediately releases them (MCPE-44320).
+Renamed Structure Blocks will no longer have the incorrect data mode on creation (MCPE-41625).
+Fall damage is no longer applied when falling into Scaffolding (MCPE-108459).
+Fixed missing rightmost outline pixels on Signs when using l for wide letters and Glow Ink Sac (MCPE-137802).
+The Thorns enchantment now does Knockback to mobs (MCPE-56212).
+Tweaked Iron Golem spawning logic to better match the Java Edition.
+Crimson Roots now have a small chance of growing on Warped Nylium blocks when using Bone Meal (MCPE-83616).
+Commands
+
+The /spawnpoint command can now be used while the player is sleeping and outputs success when setting to the player's existing spawnpoint (MCPE-106720).
+The camera shake command no longer shakes every player's screen when "@s" is used as the selector (MCPE-120383).
+Marketplace
+
+Fixed "CR" characters incorrectly appearing at the end of lines for some display languages.
+User Interface
+
+Fixed a bug that could cause the Sign In button to appear behind the Marketplace button.
+Fixed the Noto Sans Smooth font on Windows and Xbox platforms with the Japanese locale to address legibility and usage of correct characters.
+Technical
+
+Fixed movement prediction interpolating with invalid data in even more scenarios (MCPE-108568).
+Fixed crash after firing a transform item event.
+Fixed particles not emitting when using animation controllers.
+Attachables that are visible in first person will no longer render backwards.
+
+
+== beta 1.17.30.24 ==
+Beta 1.17.30.24 is the ninth beta version for Bedrock Edition 1.17.30, released on September 2, 2021, which fixes bugs.
+
+
+=== Fixes ===
+Blocks
+
+Top Snow now falls correctly after the block underneath is destroyed (MCPE-135499).
+Gameplay
+
+Fixed texts not being translated if the first letter of their corresponding key was uppercase.
+Fixed a bug where the Wither wouldn't drop a Nether Star on death.
+Fixed raycasts being interrupted while standing inside light blocks.
+Stability and Performance
+
+Fixed a bug where an entity might fail to initialize its tag component.
+
+
+==== Experimental ====
+Gameplay
+
+Fixed an issue with Caves & Cliffs Experimental worlds where parts of the world below 0 would become all air on reload of a world (MCPE-139665).
+Fixed "minecraft:geometry" block component to work as intended.
+
+
+== beta 1.17.30.25 ==
+Beta 1.17.30.25 is the tenth and final beta version for Bedrock Edition 1.17.30, released on September 9, 2021, which fixes bugs.
+
+
+=== Fixes ===
+Fixed several crashes that could occur during gameplay.
+Fixed invisible blocks in The End (MCPE-139769).
+
+
+== Notes and references ==
+
+
+== Navigation ==

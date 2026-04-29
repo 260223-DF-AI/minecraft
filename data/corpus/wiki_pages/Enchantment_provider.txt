@@ -1,0 +1,33 @@
+Enchantment providers are used to source one or more enchantments for use in specific scenarios, such as mobs spawning with enchanted equipment.
+Enchantment providers are stored as JSON files within a data pack in the data/<namespace>/enchantment_provider folder.
+
+
+== JSON format ==
+
+
+=== single ===
+Always returns the same enchantment
+
+
+=== enchantments_by_cost ===
+Returns random enchantments from a list of possible enchantments, using a configured cost. Similar[more information needed] to the cost of an enchanting table.
+
+
+=== enchantments_by_cost_with_difficulty ===
+Works the same way as enchantments_by_cost but the cost is determined using the local difficulty of the area.
+The effective cost is calculated by min_cost + rand(0, local_difficulty_factor * max_cost_span). Where:
+
+rand(a,b) refers to a random number between a and b.
+local_difficulty_factor is: local_difficulty/2 - 1 clamped to a value between 0 and 1.
+
+
+== Usage ==
+Enchantment providers are used by the game in specific cases listed below:
+
+
+=== With villager trade rebalance ===
+
+Enchantment providers are used to determine the traded equipment depending on biome, profession, equipment (i.e. the item traded) and trading level. They follow the format minecraft:trades/<biome>_<profession>_<equipment>_<level>. 
+
+
+== Navigation ==

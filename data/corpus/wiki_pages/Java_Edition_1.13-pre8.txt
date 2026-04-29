@@ -1,0 +1,107 @@
+1.13-pre8 is the eighth pre-release for Java Edition 1.13, released on July 13, 2018.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Dead coral fans
+
+Dead variants of coral fans.
+Can be placed on side and top of blocks.
+
+
+=== Command format ===
+Added /team modify <team> displayName
+Added /scoreboard objectives modify <objective> rendertype hearts
+Makes health bars display as hearts, like this: .
+Added /scoreboard objectives modify <objective> rendertype integer
+Makes health bars display as yellow numbers, like this: 12.
+
+
+=== General ===
+Tags
+
+Added the block tag wall_corals.
+Added the block tag impermeable. Blocks in the tag are prevented from showing dripping liquid particles. By default, the tag contains glass and all stained glass blocks.
+Options
+
+Re-added the "Force Unicode Font" option to the language section.
+Splashes
+
+Added the "Truly gone fishing!" splash.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Coral fans
+
+Can now be placed on top of blocks.
+Can now be placed in air.
+Unless adjacent to water, they turn into dead coral fans after a short moment.
+Renamed <variant>_coral_fan into <variant>_coral_wall_fan.
+Added <variant>_coral_fan blocks, which are coral fans placed on top of blocks.
+
+
+=== Mobs ===
+Mobs can now stand in the most shallow form of flowing water.
+
+
+=== Command format ===
+Team names and objective names are now text components, not raw strings.
+/team option is now /team modify.
+
+
+=== General ===
+Worlds
+
+Worlds previously generated with the Customized world type can now be loaded again, but new chunks are generated with the Default world type.
+
+
+== Fixes ==
+28 issues fixed
+From released versions before 1.13
+
+MC-60995  Maps inconsistent over restarts.
+MC-68565  Monsters spawn at daytime at y=256 and don't burn.
+MC-88632  Unable to open command blocks & no particles when opening to LAN.
+MC-109958  Shulkers teleport (and stay) below Y:0.
+From the 1.13 development versions
+
+MC-123265  Spectator mode tooltips not showing.
+MC-123447  Skin not visible in spectator mode GUI.
+MC-124955  Bottoms of large ferns and tall grass are generating in place of regular ferns and grass in taiga biomes.
+MC-128858  Distance given by /locate is inaccurate.
+MC-129169  Coral fan lacks death variants.
+MC-129853  Team and objective names cannot be in JSON.
+MC-130018  Re-creating a Customized world on 1.13 allows it to show up as a world customization option
+MC-132123  Lighting for broken block not updated.
+MC-132174  Tier 4 beacons will not give regeneration effect.
+MC-132466  No enum constant bfz - loading and saving 1.12.2 chunks.
+MC-132603  Bark recipes are not upgraded.
+MC-132635  Placing blocks with off-hand while main hand empty not possible.
+MC-132639  New version of unicode font has some weird characters.
+MC-132649  "Force unicode fonts" option doesn't appear in the language menu.
+MC-132695  Some bold characters have either extra or lack of pixels.
+MC-132835  The right "tail" of the capital  () seems to be a few pixels too long.
+MC-133030  Subtitle subtitles.entity.parrot.imitate.phantom missing translation string.
+MC-133157  Sprinting in shallow water using ctrl will change FOV back and forth.
+MC-133198  Redstone doesn't change direction when connected downward.
+MC-133214  Sticky pistons pull glazed teracotta.
+From the previous development version
+
+MC-133216  Water dripping from transparent blocks.
+MC-133233  Sticky pistons do not update blocks they cannot pull.
+MC-133277  Texts sometimes error if the language is Chinese.
+MC-133325  Double chests becoming invisible or separating with redstone.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

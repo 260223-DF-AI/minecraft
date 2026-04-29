@@ -1,4 +1,4 @@
-A server provides a game environment for players to play multiplayer with others over the Internet or a local area network (LAN). Players are connected to a server using the Minecraft client software, and the server is hosted using the server software, as server.jar‌[JE  only] or Bedrock Dedicated Server‌[BE  only].
+A server provides a game environment for players to play multiplayer with others over the Internet or a local area network (LAN). Players are connected to a server using the Minecraft client software, and the server is hosted using the server software, as server.jar[JE  only] or Bedrock Dedicated Server[BE  only].
 
 
 == Archetypes ==
@@ -18,24 +18,24 @@ Customized: Servers that provide a playing experience very different to the vani
 == Variants ==
 Multiple variants of Minecraft server software exist, and each of them is used for different purposes and has varying levels of setup and features.
 
-The default server software (server.jar in Java Edition and BDS in Bedrock Edition) provides a stable environment for players to play a multiplayer game. It's provided free of charge by Mojang Studios for Windows, macOS‌[JE  only], and Linux systems.
-The game also provides an Open to LAN feature that turns singleplayer worlds into a multiplayer game accessible to people on the local network. Worlds and servers using this feature automatically pop up on the server list‌[JE  only]/worlds list‌[BE  only] without needing to specify the server address.
+The default server software (server.jar in Java Edition and BDS in Bedrock Edition) provides a stable environment for players to play a multiplayer game. It's provided free of charge by Mojang Studios for Windows, macOS[JE  only], and Linux systems.
+The game also provides an Open to LAN feature that turns singleplayer worlds into a multiplayer game accessible to people on the local network. Worlds and servers using this feature automatically pop up on the server list[JE  only]/worlds list[BE  only] without needing to specify the server address.
 In Bedrock Edition, this feature is extended to the Xbox network. Players can join a singleplayer world if they are friends with the world owner on the Xbox network. The owner can also invite other people to join their world through Xbox.
 Minecraft Realms provides a multiplayer server similar to the default software, which is always online. They are provided by Mojang Studios as a paid subscription-based server hosting service. Realms also provides additional features, such as automatic world backup, in-game server and world management, and free minigame maps designed for multiplayer.
 Realms are limited in player slots. A Realms server can only provide up to 10 players playing simultaneously in a multiplayer game (or 2 with a Core subscription). However, this does not apply to the Realm's invite slots, e.g. a Realm can have more than 10 players invited.
-Related tutorials for setting up these kinds of servers also exist, see Tutorials § Server setup.
+Related tutorials for setting up these kinds of servers also exist, see Tutorials  Server setup.
 
 
 == Management ==
 
 Servers are generally managed by administrators and operators. The administrator generally takes responsibility for the server. It may be that the server is running from their machine, or that they simply have jurisdiction over a server. Operators generally assist the administrators in moderating a server and to prevent unruly players and griefers. Both operators and administrators have access to various commands to ensure the smooth running of the server. On a default server, players are assigned as operator or administrator by using the /op <playername> command, or by editing the ops.json in the server directory, then restarting the server.
-Features of a Minecraft server, such as the server's address, port, message of the day (MOTD), and others, can be configured on server.properties file, which contains key-value pairs that enable or disable such features. It's located under the server's working directory, alongside other resources. By default, the server listens to all IP address on 25565 TCP port‌[JE  only] or 19132 UDP port‌[BE  only].
+Features of a Minecraft server, such as the server's address, port, message of the day (MOTD), and others, can be configured on server.properties file, which contains key-value pairs that enable or disable such features. It's located under the server's working directory, alongside other resources. By default, the server listens to all IP address on 25565 TCP port[JE  only] or 19132 UDP port[BE  only].
 Servers do not strictly require access to Minecraft online services, and can be played on an isolated local network without Internet connection. Servers use Minecraft online services to fetch player skins and verify genuine Minecraft accounts, which prevents hackers and griefers from using false names while on such a server. This feature can be enabled or disabled by setting online-mode property in the server.properties.
 The server saves the level in the "world" folder every 30 seconds if chunks have been modified by default.
 
 
 === Whitelist ===
-Whitelist or allowlist‌[BE  only] is a feature provided by the server that allows and blocks specific players from joining a multiplayer game. It works by checking UUID or XUID‌[BE  only] of the players who have been whitelisted on a server. Its configured in whitelist.json or allowlist.json file inside the server.jar's working directory, and can be activated by setting white-list or allow-list server property.
+Whitelist or allowlist[BE  only] is a feature provided by the server that allows and blocks specific players from joining a multiplayer game. It works by checking UUID or XUID[BE  only] of the players who have been whitelisted on a server. Its configured in whitelist.json or allowlist.json file inside the server.jar's working directory, and can be activated by setting white-list or allow-list server property.
 Each entry in whitelist.json or allowlist.json is a JSON object identifying which players the server should allow access.
 
 As well as manually editing the file, the /whitelist command can also be used by operators. When editing the file manually while the server is running, the command /whitelist reload needs to be used for the changes to take effect.
@@ -70,33 +70,33 @@ Disconnect messages are texts that are displayed when an operator kicks the play
 ==== Java Edition ====
 Server or client errors
 
-End Of Stream (Client message) – The server has stopped sending data to the client.
-Internal Server Error:java.net.Minecraft (...) – The server is sending unknown information to the client. If the server is modded, this usually happens when a client with an outdated mod tries to join the server with the updated mod.
-Timed Out – The client has lost connection to the server, likely due to disconnecting from the internet or having Minecraft features blocked by a firewall.
-Internal exception: java.io.IOException: Received string length longer than the maximum allowed <number> – A chat message that the client sent to the server exceeded the maximum character limit (> 256).
-Internal Server Error – The server generated an exception when handling the client's request.
-Illegal characters in chat – The client was denied sending certain characters, such as the "§" section symbol.
-Kicked for spamming (disconnect.spam) – The client is sending chat messages too quickly.
-Read timed out – The server can't find the client's connection. This usually happens when the client has a slow Internet connection.
-Bad login – The client is running in offline mode and can't connect to an authenticated server.
-Out of memory! – This happens when the client or server cannot assign more memory to the game. This can be checked on the debug screen. It also happens if one traveled past X/Z: ±34,359,738,368 in Beta 1.7.3 or lower (see Far Lands).
-Flying is not enabled on this server – The client tried to fly for longer than 5 seconds in Survival or Adventure mode, usually enabled by mods.
-Attempting to attack an invalid entity – This happens when the client tries to hit either themselves, or an entity that can't normally be attacked (e.g. arrow, egg, ender pearl, trident). This is usually possible through mods.
-Illegal stance – This happens when the client's position is extremely high on the sky or low on the void.
-Illegal position – The client is beyond X/Z: ±30,000,000 (or ±32,000,000 in 1.6.4 and lower).
+End Of Stream (Client message)  The server has stopped sending data to the client.
+Internal Server Error:java.net.Minecraft (...)  The server is sending unknown information to the client. If the server is modded, this usually happens when a client with an outdated mod tries to join the server with the updated mod.
+Timed Out  The client has lost connection to the server, likely due to disconnecting from the internet or having Minecraft features blocked by a firewall.
+Internal exception: java.io.IOException: Received string length longer than the maximum allowed <number>  A chat message that the client sent to the server exceeded the maximum character limit (> 256).
+Internal Server Error  The server generated an exception when handling the client's request.
+Illegal characters in chat  The client was denied sending certain characters, such as the "" section symbol.
+Kicked for spamming (disconnect.spam)  The client is sending chat messages too quickly.
+Read timed out  The server can't find the client's connection. This usually happens when the client has a slow Internet connection.
+Bad login  The client is running in offline mode and can't connect to an authenticated server.
+Out of memory!  This happens when the client or server cannot assign more memory to the game. This can be checked on the debug screen. It also happens if one traveled past X/Z: 34,359,738,368 in Beta 1.7.3 or lower (see Far Lands).
+Flying is not enabled on this server  The client tried to fly for longer than 5 seconds in Survival or Adventure mode, usually enabled by mods.
+Attempting to attack an invalid entity  This happens when the client tries to hit either themselves, or an entity that can't normally be attacked (e.g. arrow, egg, ender pearl, trident). This is usually possible through mods.
+Illegal stance  This happens when the client's position is extremely high on the sky or low on the void.
+Illegal position  The client is beyond X/Z: 30,000,000 (or 32,000,000 in 1.6.4 and lower).
 Informational
 
-Disconnected – The player disconnected by using the disconnect button in the pause menu.
-You logged in from another location – Another client has logged in to the server the player is playing on with the player's username.
-Outdated client (Please use <version>) – The server is running a more recent version of Minecraft than the client.
-Outdated server (I'm still on <version>) – The client is running a more recent version of Minecraft than the server.
-You have been idle for too long! – The client was idle for a longer time than allowed.
-Server closed. – The server has been shut down either by closing out of the "Minecraft server" window/pressing Alt + F4, or using the /stop command.
+Disconnected  The player disconnected by using the disconnect button in the pause menu.
+You logged in from another location  Another client has logged in to the server the player is playing on with the player's username.
+Outdated client (Please use <version>)  The server is running a more recent version of Minecraft than the client.
+Outdated server (I'm still on <version>)  The client is running a more recent version of Minecraft than the server.
+You have been idle for too long!  The client was idle for a longer time than allowed.
+Server closed.  The server has been shut down either by closing out of the "Minecraft server" window/pressing Alt + F4, or using the /stop command.
 Operator actions
 
-You are banned from this server (during gameplay) or You are banned from this server. Reason: <reason>. Your ban will be removed on <date> on <time>. (when joined through server list) – The client's Minecraft account is banned and remains banned until pardoned by an admin, or automatically by set duration.
-You have been IP banned from this server (during gameplay) or Your IP address is banned from this server. Reason: <reason>. Your ban will be removed on <date> on <time>. (when joined through server list) – The client's IP has been banned.
-Kicked by an operator. – The client has been disconnected using the /kick command. This message appears when no custom message is entered, otherwise, the custom message is written directly on the disconnect screen.
+You are banned from this server (during gameplay) or You are banned from this server. Reason: <reason>. Your ban will be removed on <date> on <time>. (when joined through server list)  The client's Minecraft account is banned and remains banned until pardoned by an admin, or automatically by set duration.
+You have been IP banned from this server (during gameplay) or Your IP address is banned from this server. Reason: <reason>. Your ban will be removed on <date> on <time>. (when joined through server list)  The client's IP has been banned.
+Kicked by an operator.  The client has been disconnected using the /kick command. This message appears when no custom message is entered, otherwise, the custom message is written directly on the disconnect screen.
 
 
 ==== Bedrock Edition ====
@@ -110,7 +110,7 @@ Issues relating to "Server" are maintained on the bug tracker. Issues should be 
 
 
 == See also ==
-Commands – commonly used in servers to manage configurations and others.
+Commands  commonly used in servers to manage configurations and others.
 
 
 == References ==

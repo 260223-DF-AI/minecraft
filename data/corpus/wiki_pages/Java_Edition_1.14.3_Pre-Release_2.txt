@@ -1,0 +1,81 @@
+1.14.3 Pre-Release 2 (known as 1.14.3-pre2 in the launcher) is the second pre-release for Java Edition 1.14.3, released on June 7, 2019, which makes changes to patrols and villager panic behavior, and fixes bugs.
+
+
+== Changes ==
+
+
+=== Mobs ===
+Villagers
+
+Panicked villagers now have to work and sleep so they cannot be in a state of panic all the time.
+The "last slept" and "last worked" properties for villagers are now saved properly.
+
+
+=== Gameplay ===
+Advancements
+
+Saturation is no longer required for the "How Did We Get Here?" advancement.
+Enchantments
+
+Protection, Projectile Protection, Fire Protection, and Blast Protection are now mutually exclusive again, as they were prior to 1.14.
+Illager patrols
+
+Vindicators are no longer part of patrols.
+Doubled the minimum time to spawn from 5 minutes to 1011 minutes.
+Patrols now follow hostile mob spawning rules.
+Patrols no longer spawn if the block light level disallows monster spawning.
+Patrols are now allowed to spawn in any biome except mushroom biomes.
+
+
+=== General ===
+LWJGL
+
+Updated to 3.2.2.
+
+
+== Fixes ==
+25 issues fixed
+From released versions before 1.14
+
+MC-72390  Rcon is not thread-safe.
+MC-124170  Performance issue with particles causing lag.
+MC-129491  Advancement location trigger works inconsistently for structures added in 1.9 or later.
+From 1.14
+
+MC-139257  Server crash on reload when world border is modified.
+MC-141301  Illager patrols spawning on blocks mobs should not spawn on, such as slabs, carpets, stairs, etc.
+MC-141961  Multiple protection enchantments on a piece of armor
+MC-142360  Pillagers patrols can spawn pillagers on top of trees inside a leaf block.
+MC-144107  Miscalculation of camera position in windowed mode on Linux.
+MC-144929  When there is water above a water source, other water sources adjacent to the water source flow outwards.
+MC-146433  Double chest does not display custom name.
+MC-148354  Guardians require water to spawn from spawners.
+MC-148600  Zombie pigmen will spread their anger forever if they can continuously respawn.
+MC-148986  Low-tier enchants from level 30 standard enchanting setups.
+MC-149207  Water with blocks above will convert to flowing water for no reason.
+MC-149877  Baby foxes suffocate when jumping under blocks.
+MC-150401  Chickens suffocate if jumping while under a solid block.
+MC-150954  Pillager patrol spawning is off: they spawn too close to each other, in odd biomes, and too frequently.
+From 1.14.1
+
+MC-151566  Pillagers patrols can spawn outside world border.
+MC-151989  Players in survival do not get the dolphin's grace effect if the dolphin cannot path to the player.
+MC-152638  Villager trade GUI does not close when a major change happens to the villager, leading to free trades and quick stock refreshing.
+From 1.14.2
+
+MC-152182  Trading halls are non-viable: employed villagers sometimes un-bond from an existing workbench within 2 blocks, apprentice ranks and above cannot re-bond unless moved 96 blocks away and back.
+MC-153221  Dragon fireball causes FPS to crash.
+From the previous development version
+
+MC-153714  Old graphics card warning on Mac despite having recent hardware.
+MC-153730  /reload does not work if there are too many new data packs.
+MC-153734  Vanilla data pack disabled after upgrading a world to 1.14.3 (items do not drop, fishing does not work, no advancements, etc).
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,167 @@
+1.13-pre6 is the sixth pre-release for Java Edition 1.13, released on July 4, 2018.
+
+
+== Additions ==
+
+
+=== General ===
+Debug screen
+
+Added F3 + I to copy targeted block or entity data to clipboard.
+Added information about the time it takes for a tick on the integrated server (singleplayer only), server brand (multiplayer only), number of packets sent by the client (tx), and number of packets received by the client (rx).
+
+Sounds
+
+Added new sound events:
+block.coral_block.break, block.coral_block.fall, block.coral_block.hit, block.coral_block.place, and block.coral_block.step
+Used for the living coral blocks.
+Most of these sound like mixture of rocky and high-pitched slimy sounds.
+block.wet_grass.break, block.wet_grass.fall, block.wet_grass.hit, block.wet_grass.place, and block.wet_grass.step
+Used for seagrass, kelp, coral and coral fans.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Seagrass
+
+Now deleted by kelp and conduits placed within it. Prior to this update, these were the only blocks which could not replace it.
+
+
+=== Mobs ===
+Dolphins
+
+Changed treasure finding behavior to bring the player more accurately to buried treasure.
+
+
+=== General ===
+Title screen
+
+The comma is replaced with a dot in the copyright notice.
+Other
+
+Many non-Latin alphabet characters and some emoji have been given their own "textured" font. However, some characters (such as kanji and script) still use the unicode font.[check the code]
+Some non-alphanumeric ascii characters are slightly tweaked to be less wide.
+
+Fonts are now saved as TrueType font files.
+
+
+== Removals ==
+Entity format
+
+Removed CanFindTreasure tag from dolphins.
+Options
+
+Removed "Force Unicode Font" option.
+Other
+
+Removed skip_existing_chunks from exploration map loot table function.
+
+
+== Fixes ==
+82 issues fixed
+From released versions before 1.13
+
+MC-13308  Waterflow North/South Bug
+MC-14502  Special characters on splash text on title screen rendered wrong.
+MC-20974  Default font is missing characters.
+MC-41410  Random text does not work in unicode.
+MC-64537  Gui zooming out when using some languages (unicode).
+MC-72943  Game freeze after closing an "Open to LAN" single player world.
+MC-81876  Number of characters before line cutoff in chat is not same when unicode mode is enabled and when it is off.
+MC-82703  Block Entities are not properly removed when 64 or more blocks are changed at the same time in a single chunk.
+MC-91727  loot table "spreading large stacks" will overwrite existing items.
+MC-92255  Singleplayer freezes instead of kicking a player.
+MC-94325  Shadow of obfuscated text does not match with displayed character.
+MC-96321  Mob cannot pathfinding in the daylight sensor.
+MC-96524  Language specific letters don't look like they should.
+MC-96564  Mobs can not normal walking(In situ the rotation) on the light sensor.
+MC-103913  Auto jump on world border.
+MC-113127  Putting an item with invalid enchantments in the first slot of an anvil and an item with valid ones in the second one causes a crash.
+MC-121196  Overloaded servers pointlessly wait up to 50 ms every couple ticks.
+MC-121586  Watchdog thread kills the server if average tick time is larger than max-tick-time/(15*20) ms for too long.
+MC-122110  BufferBuilder not expanding under specific conditions.
+MC-123133  Unicode Characters are Improperly Aligned on Different Screen Resolutions.
+MC-124469  GUI scale size 3 displays as size 2 when Unicode font is forced.
+MC-127822  Unicode on/off bug with another languages and english letters.
+MC-129863  "Crawling" underneath glass/grass paths/other transparent blocks causes bugs.
+MC-132579  Inconsistent font.
+From the 1.13 development versions
+
+MC-121798  Can only scroll list in superflat preset selection when it is focused.
+MC-121861  Command argument validation does not work for entity id in /summon.
+MC-122478  It is possible to create a server in the server list with a blank name and/or IP address.
+MC-122495  Cancelling backup screen using ESC opens main menu.
+MC-122597  "Preparing spawn area %s%%" string is hardcoded/not translatable.
+MC-123078  Scoreboard ranges don't work correctly at extreme values.
+MC-123236  Wrong error message when using invalid item in /replaceitem.
+MC-123325  You can no longer use damaged items in advancement icons to display different textures.
+MC-123352  Interaction error with block and GUI, when shift-clicking them with non-block items.
+MC-123363  Occasional crash when changing blocks with a special renderer that uses states.
+MC-123432  Snapshots are leaking tile entity data through to world save.
+MC-124966  Torches in mineshafts/strongholds are not always attached.
+MC-125772  '/execute rotated' uses sender rotation, not context rotation.
+MC-126160  Random sugar cane underwater.
+MC-126507  Magma blocks do not initially generate bubble columns in ruins.
+MC-126685  Bubble columns don't update when placing magma blocks or soul sand above them.
+MC-126708  Advancement trigger "bred_animals" does not trigger for breeding turtles.
+MC-126769  Observers detecting updates from redstone on top of them.
+MC-127112  Flowing water doesn't update properly when sponges soak up a source block.
+MC-128152  Village House Generation.
+MC-128258  You can get in the void using an elytra and a riptide trident.
+MC-128364  You don't take damage in the void while gliding with an elytra.
+MC-128387  Dolphins try to pick up items on land.
+MC-128687  Picking up lava with an empty bucket would play the water picking up sound.
+MC-128736  Dolphin's pectoral (side) fins are flipped over instead of mirrored.
+MC-129287  Items in creative inventory can disappear or duplicate when switching them.
+MC-129318  The "How Did We Get Here?" advancement does not require Dolphin's Grace.
+MC-129768  Conduit can be placed in flowing water, creating a new water source.
+MC-129814  Function ran, title, or tellraw with score or selector component, in translate's with, kicks clients.
+MC-130021  Loading a structure with a rotation doesn't update (mossy_)cobblestone_wall's blockstates.
+MC-130127  Dolphins generate in large amounts with ocean ruin structures.
+MC-130157  Exiting Boat causes boat to vanish.
+MC-130414  Cannot replace seagrass with kelp or conduits.
+MC-130464  Downwards flowing water creating bubble columns.
+MC-131019  Setting and changing data of signs creates unnecessary "extra" tags and causes slow downs.
+MC-131159  Dolphins spawning in frozen/deep frozen oceans!
+MC-131288  Shulker Box can't be opened and disappears when mined.
+MC-131542  Unable to open 1.12 world in 1.13.
+MC-131783  Crash on breaking 1.12.2 -> 1.13-pre5 upgraded banner.
+MC-131903  Banners not dropping as item when broken after unloading.
+MC-132050  Worlds <= 1.8.9 spam errors on conversion.
+MC-132113  1.13-pre4+ crashes caused by invalid gamepad / controller configuration detected by LWJGL 3.1.6 build 14b.
+MC-132242  Upgrading enderman spawn egg causes chunk to regenerate.
+From the previous development version
+
+MC-132252  Player cannot leave the swimming animation underwater.
+MC-132254  Using /effect to give players an effect kicks them from the server.
+MC-132259  Poor TPS in latest pre-release.
+MC-132278  End Crystal beam is missing texture.
+MC-132281  Crash while creating a customized superflat world using capital letters.
+MC-132282  Some commands give an "unexpected error" despite succeeding.
+MC-132292  Some sound events are no longer playing the expected sound.
+MC-132311  Dolphins don't save how long they have been out of water.
+MC-132312  Using bone meal on anything underwater places sea grass on it.
+MC-132316  Dark squares on top of water next to tall sea grass.
+MC-132320  Entities with new IDs disappear when upgrading.
+MC-132335  Shulkers no longer shoot missiles in 1.13-pre5.
+MC-132443  Some advancements are not upgraded from 1.12.2 (to 1.13-pre5+).
+MC-132448  Illager and golem statistics are not upgraded properly.
+MC-132455  Evoker spawn egg disappears when upgrading from 1.12.2.
+
+
+== Videos ==
+
+
+== Trivia ==
+This pre-release was released exactly one month after 1.13-pre1.
+
+
+== Footnotes ==
+
+
+== References ==
+
+
+== Navigation ==

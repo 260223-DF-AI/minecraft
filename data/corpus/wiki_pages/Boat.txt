@@ -46,17 +46,17 @@ In Java Edition, boats can be ridden against a current, but cannot be ridden ups
 
 === Speed ===
 Boats move according to the player's control or water currents, with speed affected by the surface traversed.
-When the forward or backward command is issued, a constant thrust is applied relative to the boat's facing direction, exponentially approaching the top speed at which thrust balances drag. The backward thrust is one-eighth of the forward thrust’s strength.
+When the forward or backward command is issued, a constant thrust is applied relative to the boat's facing direction, exponentially approaching the top speed at which thrust balances drag. The backward thrust is one-eighth of the forward thrusts strength.
 When strafe commands are issued, a constant torque is applied to increase the boat's rotation speed, with the same drag mechanism limiting the maximum rate of rotation. 
 In Bedrock Edition, boats do not have air resistance, meaning that if a boat is launched off a cliff at a certain speed, it will continue flying at that speed until it touches the ground.
 
 
 ===== Motion details =====
 
-Regardless of controls, the boat applies a friction that is proportional to the current horizontal velocity v by multiplying it with a coefficient c at the beginning of every tick: in water, air, or under flowing water, this value is 0.9; underwater, this value is 0.45; on land, this value is the average c (slipperiness) of all solid blocks underneath the boat (e.g. 0.6 for most blocks, 0.98 for ice and 0.989 for blue ice). The same is applied to rotational (angular) velocity. This is equivalent to applying a deceleration af=−μv, where v is the current horizontal velocity and μ=(1−c)tick−1=20(1−c)s−1 is a friction coefficient. As a result, when controls are not pressed, the boat slows to a stop quadratically.
+Regardless of controls, the boat applies a friction that is proportional to the current horizontal velocity v by multiplying it with a coefficient c at the beginning of every tick: in water, air, or under flowing water, this value is 0.9; underwater, this value is 0.45; on land, this value is the average c (slipperiness) of all solid blocks underneath the boat (e.g. 0.6 for most blocks, 0.98 for ice and 0.989 for blue ice). The same is applied to rotational (angular) velocity. This is equivalent to applying a deceleration af=v, where v is the current horizontal velocity and =(1c)tick1=20(1c)s1 is a friction coefficient. As a result, when controls are not pressed, the boat slows to a stop quadratically.
 Slime blocks, honey blocks, and soul sand each apply their special entity-slowing logic to boats on top of this.
-In Java Edition, When the forward key is pressed, the boat accelerate at 0.04 m/tick2, for a real-time acceleration of 16 ms-2 forward assuming no lag. The reverse acceleration is 0.005 m/tick2 for a real-time acceleration of 2 ms-2. When strafe keys are pressed, the boat is given a rotation acceleration of 1°/tick2 (400°/s2), which is so high that no gradual change of turning rate is usually felt.
-The above gives us a way to calculate the maximum speed of a boat on a surface because maximum speed is reached when the player's acceleration ap cancels out with the friction af, vmax=apμ.
+In Java Edition, When the forward key is pressed, the boat accelerate at 0.04 m/tick2, for a real-time acceleration of 16 ms-2 forward assuming no lag. The reverse acceleration is 0.005 m/tick2 for a real-time acceleration of 2 ms-2. When strafe keys are pressed, the boat is given a rotation acceleration of 1/tick2 (400/s2), which is so high that no gradual change of turning rate is usually felt.
+The above gives us a way to calculate the maximum speed of a boat on a surface because maximum speed is reached when the player's acceleration ap cancels out with the friction af, vmax=ap.
 
 The torque and thrust values differ between Java and Bedrock edition, as do the linear drag coefficients of various surfaces, which are proportionally scaled to produce the same top speed/max yaw rate between two editions. 
 
@@ -70,16 +70,16 @@ Dolphins chase players riding a boat in motion, occasionally bumping the boat, c
 
 
 === Destruction ===
-As boats are entities, they have health. In Java Edition, boats effectively have just over 4HP (exactly 4 damage is not enough to destroy a boat), and regenerate 1⁄10 per game tick. Boats in Bedrock Edition have 40HP × 20 health.
+As boats are entities, they have health. In Java Edition, boats effectively have just over 4HP (exactly 4 damage is not enough to destroy a boat), and regenerate 110 per game tick. Boats in Bedrock Edition have 40HP  20 health.
 Boats can be destroyed by explosions, fire and lava (but not magma blocks), cactus, and by being punched/shot by mobs, such as drowned. Boats made invulnerable with commands cannot be broken by any of these, but they still cannot be used to travel on lava because they sink.
 When a boat is destroyed, it drops itself in item form.
 
 
 === Passengers ===
 
-Boats can support two riders, including mobs. A mob cannot exit a boat and is trapped until the boat gets destroyed, or until the player uses a fishing rod or lead to remove the mob. This can be used to transport mobs, although hostile mobs still attack while in boats. Mobs riding a boat don't despawn‌[Java Edition  only] and don't count toward the mob cap.
+Boats can support two riders, including mobs. A mob cannot exit a boat and is trapped until the boat gets destroyed, or until the player uses a fishing rod or lead to remove the mob. This can be used to transport mobs, although hostile mobs still attack while in boats. Mobs riding a boat don't despawn[Java Edition  only] and don't count toward the mob cap.
 In Java Edition, a player cannot both move (row) and use items at the same time. It is still possible to initialize item use (e.g. start eating) and row the boat while the item is still in the middle of the use animation. Although the rowing animation overrides the item use animation, the item can still be successfully consumed.
-Being in a boat limits the player's mouse-look to the forward 210° arc in Java Edition and 180° in Bedrock Edition.
+Being in a boat limits the player's mouse-look to the forward 210 arc in Java Edition and 180 in Bedrock Edition.
 Underwater boats cannot be ridden. When the boat is underwater, all passengers in it are expelled.
 
 
@@ -212,7 +212,7 @@ Transportation
 
 
 == External links ==
-"Taking Inventory: Boat"     by Duncan Geere  – Minecraft.net, October 4, 2019.
+"Taking Inventory: Boat"     by Duncan Geere   Minecraft.net, October 4, 2019.
 
 
 == Navigation ==

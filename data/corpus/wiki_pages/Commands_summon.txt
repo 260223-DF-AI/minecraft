@@ -21,7 +21,7 @@ In Bedrock Edition, only certain entity types are allowed to be summoned. Entity
 JE: <pos>: vec3BE: spawnPos: x y z: CommandPositionFloat
 
 Specifies the position to summon the entity. If not specified, defaults to the position of the command's execution.
-Must be three-dimensional coordinates with double-precision floating-point number‌[Java Edition  only] or single-precision floating-point number‌[Bedrock Edition  only] elements. Accepts tilde and caret notations.
+Must be three-dimensional coordinates with double-precision floating-point number[Java Edition  only] or single-precision floating-point number[Bedrock Edition  only] elements. Accepts tilde and caret notations.
 JE: <nbt>: nbt_compound_tag
 
 Specifies the data tag for the entity, this can include any NBT in Entity format.
@@ -65,7 +65,7 @@ To summon an unbreakable diamond pickaxe:
  summon item ~ ~ ~ {Item:{id:"minecraft:diamond_pickaxe",count:1,components:{"minecraft:unbreakable":{}}}}
 To summon a spider jockey:
 summon spider ~ ~ ~ {Passengers:[{id:"minecraft:skeleton",HandItems:[{id:"minecraft:bow",count:1}]}]}
-To summon an evoker rotated -90° to face east without AI:
+To summon an evoker rotated -90 to face east without AI:
 summon evoker ~ ~ ~ {Rotation:[-90f,0f],NoAI:1}
 To summon a villager that trades 1 dirt block in exchange for 5 diamonds:
 summon villager ~ ~ ~ {Offers:{Recipes:[{buy:{id:"minecraft:dirt",count:1},sell:{id:"minecraft:diamond",count:5},rewardExp:false}]}}
@@ -77,7 +77,7 @@ Bedrock Edition:
 To summon a patrol captain pillager at the current position:
 summon pillager ~ ~ ~ ~ ~ minecraft:spawn_as_patrol_captain
 To summon a dolphin with the name "Dolphin" in a golden color:
-summon dolphin §6Dolphin ~ ~ ~
+summon dolphin 6Dolphin ~ ~ ~
 To summon a boat rotated 180 degrees:
 summon boat ~ ~ ~ 180 180
 
@@ -92,7 +92,7 @@ summon boat ~ ~ ~ 180 180
 
 
 == External links ==
-"/summon Command"     – Microsoft Learn, August 1, 2024.
+"/summon Command"      Microsoft Learn, August 1, 2024.
 
 
 == Navigation ==

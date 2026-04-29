@@ -20,15 +20,15 @@ It is faster to break them with a pickaxe. The pickaxe is also the preferred too
 
 
 === Redstone component ===
-Pistons are always placed facing toward the player. When powered, the piston's wooden surface (the "head") tries to start extending after a start delay. The extension takes 2 game ticks (0.1 seconds) to finish. When it extends, it pushes at most 12 blocks. The piston makes a sound that can be heard within a 31×31×31 cube centered on the activating piston. Any entities in the path of an extending piston (or any block it might be moving) are pushed along, when possible. If the entities cannot be moved, the block is pushed inside them, suffocating mobs when pushed into their eye height (assuming said block is solid).
+Pistons are always placed facing toward the player. When powered, the piston's wooden surface (the "head") tries to start extending after a start delay. The extension takes 2 game ticks (0.1 seconds) to finish. When it extends, it pushes at most 12 blocks. The piston makes a sound that can be heard within a 313131 cube centered on the activating piston. Any entities in the path of an extending piston (or any block it might be moving) are pushed along, when possible. If the entities cannot be moved, the block is pushed inside them, suffocating mobs when pushed into their eye height (assuming said block is solid).
 When a piston loses power, its head retracts. Like the extension, the retraction starts after a start delay and takes 2 game ticks (0.1 seconds) to finish.
-A piston that pushes a slime block bounces any entity that it displaces in the direction the piston is facing. Entities on top of a moving honey block, or any other moving block,‌[BE  only] will also move with it. In addition, when a slime block or a honey block is moved by a piston, any movable block adjacent (not diagonally) to it also moves. See the "Slime blocks and honey blocks" section of this page for more details.
+A piston that pushes a slime block bounces any entity that it displaces in the direction the piston is facing. Entities on top of a moving honey block, or any other moving block,[BE  only] will also move with it. In addition, when a slime block or a honey block is moved by a piston, any movable block adjacent (not diagonally) to it also moves. See the "Slime blocks and honey blocks" section of this page for more details.
 In Bedrock Edition, blocks that require a support (such as levers) can be placed on the back or sides of a piston without being destroyed when that piston extends. In Java Edition, on the other hand, the majority of blocks that require a support are only safe to place on the back of pistons.
 
 
 ==== Soft inversion ====
 
-When a piston that has a redstone torch attached to it is powered, the redstone torch turns off—and when said piston is depowered, the redstone torch turns back on: this mechanic is known by the community as soft inversion. Since soft inversion works even if the piston is being powered indirectly through a block, it can be used to toggle the state of a redstone torch from farther away compared to other powering methods. It's still possible to take advantage of soft inversion even if the piston cannot extend or retract.
+When a piston that has a redstone torch attached to it is powered, the redstone torch turns offand when said piston is depowered, the redstone torch turns back on: this mechanic is known by the community as soft inversion. Since soft inversion works even if the piston is being powered indirectly through a block, it can be used to toggle the state of a redstone torch from farther away compared to other powering methods. It's still possible to take advantage of soft inversion even if the piston cannot extend or retract.
 
 
 ==== Interaction with comparators ====
@@ -70,10 +70,10 @@ In Java Edition, pistons can be powered from one block above compared to most re
 
 === Slime blocks and honey blocks ===
 
-When a slime block is pushed or pulled by a piston, adjacent blocks also move with the slime block, due to its stickiness. These blocks may in turn push other blocks, not just the blocks in the line in front of the piston. For example, a slime block sitting on the ground attempts to move the ground block underneath itself, which in turn has to push additional ground blocks in the direction of motion just as if they were being pushed directly by a piston. The same occurs when a slime block is moved by another adjacent slime block. For example, a 2×2×2 cube of slime blocks may be pushed or pulled as a single unit by a piston acting on any of the blocks in the cube. A slime block adjacent to a block that cannot be moved by pistons or a block that can be broken by piston ignores that block. However, if an adjacent block could be moved, but is prevented to by the presence of an unmovable block, the slime block is prevented from moving as well and the piston does not extend.
-Slime blocks' stickiness is unilateral, as such they can't be pulled by a non-sticky piston and they are not moved if an adjacent (non-slime) block is moved by a piston. The maximum of 12 blocks moved by a piston still applies. For example, a 2×2×3 structure of slime blocks may be pushed by a piston as long as no other movable block is adjacent to it. A piston cannot move itself via a "hook" constructed of slime blocks, but self-propelled contraptions can be created with multiple pistons. For more informations, see the article Tutorial:Flying machines.
+When a slime block is pushed or pulled by a piston, adjacent blocks also move with the slime block, due to its stickiness. These blocks may in turn push other blocks, not just the blocks in the line in front of the piston. For example, a slime block sitting on the ground attempts to move the ground block underneath itself, which in turn has to push additional ground blocks in the direction of motion just as if they were being pushed directly by a piston. The same occurs when a slime block is moved by another adjacent slime block. For example, a 222 cube of slime blocks may be pushed or pulled as a single unit by a piston acting on any of the blocks in the cube. A slime block adjacent to a block that cannot be moved by pistons or a block that can be broken by piston ignores that block. However, if an adjacent block could be moved, but is prevented to by the presence of an unmovable block, the slime block is prevented from moving as well and the piston does not extend.
+Slime blocks' stickiness is unilateral, as such they can't be pulled by a non-sticky piston and they are not moved if an adjacent (non-slime) block is moved by a piston. The maximum of 12 blocks moved by a piston still applies. For example, a 223 structure of slime blocks may be pushed by a piston as long as no other movable block is adjacent to it. A piston cannot move itself via a "hook" constructed of slime blocks, but self-propelled contraptions can be created with multiple pistons. For more informations, see the article Tutorial:Flying machines.
 Honey blocks work like slime blocks when it comes to moving other blocks, however honey blocks and slime blocks do not stick to each other. This allows, by alternating slime blocks and honey blocks, to have redstone contraptions which make use of these sticky blocks stay side by side without interfering with one another.
-Glazed terracotta and the heavy core‌[BE  only] have an interesting property: they do not stick to adjacent slime blocks or honey blocks, even though they can be pushed by pistons.
+Glazed terracotta and the heavy core[BE  only] have an interesting property: they do not stick to adjacent slime blocks or honey blocks, even though they can be pushed by pistons.
 
 
 == Technical components ==
@@ -198,7 +198,7 @@ Mechanics/Redstone/Piston circuits
 
 
 == External links ==
-"Block of the Week: Piston"     by Duncan Geere  – Minecraft.net, October 13, 2017.
+"Block of the Week: Piston"     by Duncan Geere   Minecraft.net, October 13, 2017.
 
 
 == Navigation ==

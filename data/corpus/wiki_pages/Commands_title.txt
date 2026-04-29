@@ -43,7 +43,7 @@ Changes the fade-in, stay, and fade-out times (measured in time durations) of al
 JE: <targets>: entityBE: target: target: CommandSelector<Player>
 
 Specifies the player(s) to display a screen title to.
-Must be a player name, a target selector or a UUID‌[Java Edition  only].  And the target selector must‌[JE  only]/should‌[BE  only] be of player type. In Bedrock Edition, the target selector should be of player type.
+Must be a player name, a target selector or a UUID[Java Edition  only].  And the target selector must[JE  only]/should[BE  only] be of player type. In Bedrock Edition, the target selector should be of player type.
 JE: <title>: component
 BE: titleText: message: CommandMessage or raw json titleText: json: Json::Value
 
@@ -66,17 +66,17 @@ In Java Edition, it must be a single-precision floating-point number suffixed wi
 
 
 == Examples ==
-All of the following displays a bold screen title "Chapter I" with a gray italic subtitle "The story begins…" to all players.
+All of the following displays a bold screen title "Chapter I" with a gray italic subtitle "The story begins..." to all players.
 
 In Java Edition:
 /title @a subtitle {"text": "The story begins...", "color": "gray", "italic": true}
 /title @a title {"text": "Chapter I", "bold": true}
 In Bedrock Edition using plain text:
-/title @a subtitle §7§oThe story begins...
-/title @a title §lChapter I
+/title @a subtitle 7oThe story begins...
+/title @a title lChapter I
 In Bedrock Edition with raw text variants:
-/titleraw @a subtitle {"rawtext": [{"text":"§7§oThe story begins..."}]}
-/titleraw @a title {"rawtext": [{"translate":"§lChapter %%s","with":["I"]}]}
+/titleraw @a subtitle {"rawtext": [{"text":"7oThe story begins..."}]}
+/titleraw @a title {"rawtext": [{"translate":"lChapter %%s","with":["I"]}]}
 
 
 == History ==
@@ -89,8 +89,8 @@ In Bedrock Edition with raw text variants:
 
 
 == External links ==
-"/title Command"     – Microsoft Learn, August 1, 2024.
-"/titleraw Command"     – Microsoft Learn, August 1, 2024.
+"/title Command"      Microsoft Learn, August 1, 2024.
+"/titleraw Command"      Microsoft Learn, August 1, 2024.
 
 
 == Navigation ==

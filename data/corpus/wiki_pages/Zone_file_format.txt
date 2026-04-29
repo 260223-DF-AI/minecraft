@@ -1,0 +1,39 @@
+The Zone file format is the binary file format for storing chunks in Infdev 20100624. Each file stores a group of 3232 chunks called a zone. The format temporarily took the place of the Alpha level format but was reverted in the version immediately after due to the new save format being completely uncompressed and making world files obscenely large compared to those with the Alpha level format. A quick 5 minute walk produces a world size of several hundred megabytes. Later versions cannot read worlds saved in this format, and attempting to open one causes the entire world to regenerate.
+
+
+== World folder structure ==
+An Infdev 20100624 level is actually a single folder containing at least one file named level.dat.
+The level folder will have a data folder containing zone_X_Z.dat and entities_X_Z.dat files where X and Z are the base36 representation of the first chunk position loaded within the zone at the time of saving.
+
+
+=== level.dat format ===
+The level.dat file is a GZip'd NBT file that stores global level data (time of day, player health, inventory, velocity, and position within the map, etc.). Most importantly, it stores the Random Seed that the terrain generator uses to seamlessly generate more terrain on the fly.
+
+This file has this structure:
+
+
+=== Zone format ===
+
+
+=== Entity format ===
+
+
+== Trivia ==
+Code from Zone File Format is in Beta 1.2_02 (20110517) but is unused.
+
+
+== See also ==
+Alpha level format
+Level format for Minecraft 1.0.0
+Region file format
+Anvil file format
+Chunk format
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

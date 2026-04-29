@@ -1,0 +1,109 @@
+17w48a is the eighth snapshot for Java Edition 1.13, released on November 27, 2017.
+
+
+== Changes ==
+
+
+=== Command format ===
+General
+
+Tweaks to the command suggestion UI.
+Reworked tab-completion for coordinates.
+When not targeting a block, tab-completion now inserts the coordinates of the air the player is looking at 6 blocks away instead of ~ ~ ~.
+Coordinates inserted are block (integers) coordinates when the command used relates to blocks.
+
+
+=== General ===
+Crafting
+
+Custom recipes are now loaded from data packs in data/(namespace)/recipes/(name).json.
+Turning off the vanilla data pack also removes all recipes.
+Death messages
+
+Added death message for when the player is blown up by a bed in the Nether or End.
+"Player was killed by [Intentional Game Design]".
+Clicking on "[Intentional Game Design]" opens a link to MCPE-28723.
+Resource packs
+
+Changed format number to 4, due to The "Flattening".
+
+
+== Fixes ==
+58 issues fixed
+From released versions before 1.13
+
+MC-1685  Unable to write in a new blank book and quill after renaming it in an anvil.
+MC-1875  Snow layers don't drop themselves when harvested with a silk touch tool.
+MC-4438  Items dropped on unburnable blocks turn invisible when trying to ignite the block.
+MC-4581  Fishing rod bobbers can go through nether/end portals, but disappear.
+MC-4923  Flint and steel and fire charges can place fire at invalid positions.
+MC-5024  Reticle/Crosshair not centered on the screen.
+MC-5037  Riding a pig/horse with a cape causes it to not behave as expected.
+MC-5305  Burning arrows in ground are not extinguished by rain.
+MC-11138  Creative inventory GUI border are considered as exterior to the inventory.
+MC-31346  When the player lights a cobblestone wall, it turns into a corner piece for a second.
+MC-75279  Cape physics while sprint-flying.
+MC-77570  "And" doesn't get translated when listing entities.
+MC-86980  Placing some blocks at position and side of any replaceable block isn't possible.
+MC-88230  When feeding a tamed horse or llama with a golden apple/carrot or hay bale, the cursor moves to the right.
+MC-115123  Parrots keep moving their legs even if they are on shoulders.
+MC-118408  Torches and redstone torches cannot be placed on top of a jack o'lantern but can be placed on pumpkin.
+MC-122195  Collision box of cauldron and ender portal frame with ender eye inside is slightly wrong.
+From the 1.13 development versions
+
+MC-121379  Functions, advancements and loot tables allow other filetypes than .mcfunction and .json.
+MC-121638  Anvil renaming only works client-side.
+MC-121664  Unable to tab-complete coordinates.
+MC-121713  Players can't press right-click groups in the recipe book.
+MC-121781  execute if block doesn't work when used alone.
+MC-122147  Acacia fences, fence gates, and pressure plates are stored after dark oak ones in creative inventory.
+MC-122182  Inconsistent behavior of autocomplete.
+MC-122211  Boat jitters when the player turn.
+MC-122274  Can't ride saddled pigs.
+MC-122305  Cullface on the tops and bottoms of glass panes causes crashing.
+MC-122414  Pumpkin pie can be crafted with carved pumpkins.
+MC-122472  Fence gates lose pixels, when connected with a fence.
+From the previous development version
+
+MC-122313  Tuning a note block with a block on top emits particle and sound.
+MC-122315  /setblock "forces" player to provide a block state for certain blocks.
+MC-122319  Banners are not stackable.
+MC-122322  Short-pulsed sticky piston pushing a block creates second arm.
+MC-122324  Particles cause frame rate to drop significantly.
+MC-122325  Difficult to place a block on top of hoppers and cauldrons.
+MC-122336  Shields are unaligned to player.
+MC-122340  Spawn egg the spawning destination is one block higher than the original.
+MC-122347  Can't open shulker boxes or chests on LAN world.
+MC-122350  Crafting a lime or magenta banner makes wool instead.
+MC-122363  Wooden pressure plates and buttons aren't grouped in the recipe book.
+MC-122365  Recipes for cut sandstone and chiseled sandstone are reversed.
+MC-122367  Lily pads can't be placed when blocks are highlighted.
+MC-122370  Rain sound does not play.
+MC-122373  Skeleton killing a creeper crashes the game.
+MC-122379  Dyed sheep drop their original wool color.
+MC-122382  Sugar cane replaces blocks when growing.
+MC-122430  Left click with debug stick while shifting does not show property for blocks with only one property.
+MC-122440  Bone blocks under note blocks don't make correct sound.
+MC-122450  Command argument completion suggestion does not appear when not using minecraft namespace prefix.
+MC-122453  Attached melon and pumpkin stems do not break when farmland below is trampled.
+MC-122456  Players can fall through end portal frames.
+MC-122487  Randomized blockstates do not apply full models.
+MC-122495  Cancelling backup screen using ESC opens main menu.
+MC-122496  Missing cancel button on backup screen.
+MC-122497  Pressing ESC while opening world shows main menu for short amount of time.
+MC-122501  Redstone and sugar canes items use the block translation instead of their item translation.
+MC-122570  New trapdoor recipes not showing.
+MC-122577  Mobs get stuck in the cauldron.
+
+
+== Videos ==
+
+
+== Trivia ==
+Unlike most of the first-of-the-week snapshots up to this point, this was released on a Monday instead of Wednesday.
+
+
+== References ==
+
+
+== Navigation ==

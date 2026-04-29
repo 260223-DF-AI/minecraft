@@ -1,0 +1,332 @@
+21w11a is the fourteenth snapshot for Java Edition 1.17 released on March 17, 2021, which fixes numerous bugs, many of which relate to textures and rendering issues as well as adds new mechanics related to copper.
+
+
+== Additions ==
+
+
+=== General ===
+Controls
+
+Added F3 + L shortcut to generate and persist performance metrics from in-game, similar to /debug.
+Metrics are saved in .minecraft/debug/profiling/<timestamp>.zip.
+Particles
+
+Added the electric_spark, scrape, wax_off, and wax_on particles.
+Tags
+
+Added the cluster_max_harvestables item tag.
+Contains all pickaxes.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Amethyst cluster
+
+Breaking by hand, piston, or other means now drops 2 amethyst shards instead of dropping none.
+Breaking with any pickaxe can now be used to drop 4 amethyst shards instead of an iron pickaxe or higher.
+Azalea
+
+Can now be used as fuel in a furnace.
+Big dripleaf
+
+Breaking the stem now drops the block.
+Now can be fertilized with bone meal on the stem to make the dripleaf grow.
+Block of copper, cut copper, and variants
+
+Honeycomb can now be used to wax them, to match Bedrock Edition.
+Yellow particles are formed when waxing the block.
+Using a dispenser with honeycomb waxes them, matching Bedrock Edition.
+Axes can now be used to scrape off wax and oxidation (one stage at a time).
+White particles are formed when scraping off wax from the block.
+Lightning now may clean oxidation, reverting the oxidation process by one or several stages.
+Chances of cleaning and number of reverted stages are higher the closer to the struck block.
+Waxed copper blocks can be crafted into 4 copper ingots, to match Bedrock Edition.
+Brewing stand
+
+Changed potion icon in the brewing stand GUI to reflect the new bottle texture in the Texture Update.
+Removed some stray pixels from the GUI texture.
+Cauldron
+
+Lava buckets and powder snow buckets can now be emptied in the respective filled cauldrons.
+Cave vines
+
+Renamed the parts from "cave vines head" and "cave vines body" to "cave vines" and "cave vines plant", respectively.
+The IDs have also changed.
+Now all parts give a light level of 14.
+Previously, only the bottom-most part gave level 14; others gave only 10.
+Now slow down the player.
+Can now be climbed.
+Gilded blackstone
+
+The texture has changed.
+Glow lichen
+
+Bone meal can no longer be used on it if it has no blocks to spread to.
+Can now be used on a composter.
+Grass block
+
+Changed part of the dirt of the side texture of snowy grass to match regular grass.
+Hanging roots
+
+Now renders randomly offset from the center.
+Removing the support block for it no longer allows it to float.
+Lava
+
+Again replaces air below Y=-55.
+Lectern
+
+Slightly shrunk top part to prevent z-fighting with fire.
+Lightning rod
+
+Can now be waterlogged.
+Now turns completely white when struck by lightning.
+Has a new block state, "powered", used to determine whether the rod turns completely white when struck by lightning.
+Now emits particles when in contact with rain.
+Moss block
+
+Can be combined with cobblestone or stone bricks to make the mossy versions of those blocks.
+Vines can still be used, in addition to moss blocks.
+In addition to axes, hoes are now an appropriate tool to collect it.
+Pumpkin
+
+Changed one pixel on the pumpkin's top texture to remove the possibility for a small swastika to be displayed.
+Rooted dirt
+
+Using bone meal on any side grows hanging roots underneath.
+Signs
+
+Changed the textures of acacia, birch, dark oak, jungle, oak, and spruce signs to reflect new textures in the Texture Update.
+Small dripleaf
+
+The facing direction is now determined by which direction the player is facing when placing it.
+Smoker
+
+Changed the top texture of the smoker.
+Spore blossom
+
+Removing the support block for it no longer allows it to float.
+Tinted glass
+
+No longer causes suffocation.
+Mobs can no longer spawn on top of it.
+
+
+=== Items ===
+Jungle doors
+
+Changed the texture of the jungle door item to reflect the block texture in the Texture Update.
+Spectral arrows
+
+Fired spectral arrows are now entirely golden to reflect the item texture in the Texture Update.
+Sugar cane
+
+Changed the texture of the sugar cane item to better reflect biome tinting added in 1.7.2.
+
+
+=== Mobs ===
+Cats
+
+Changed the texture of the siamese cat type, mostly brightening it.
+Guardian and elder guardian
+
+Removed some stray pixels from the texture file.
+Villagers and zombie villagers
+
+Moved the librarian top overlay texture to correct side of its torso.
+
+
+=== Non-mob entities ===
+Paintings
+
+Changed the back texture to reflect the planks texture in the Texture Update.
+
+
+=== World generation ===
+Caves
+
+Tweaked the cave sizes.
+Lush caves
+
+Reduced the amount of floating water in lush caves.
+Ores
+
+Slightly increased the frequency of diamond ore blobs.
+If any ore replaces tuff, it is now deepslate ore.
+
+
+=== Gameplay ===
+Freezing
+
+Frozen hearts now have a different texture in Hardcore mode to reflect the regular heart texture.
+Spectator mode
+
+It is now possible to see while inside lava and powder snow.
+Subtitles
+
+Added subtitles for amethyst blocks chiming.
+Added subtitles for waxing and removing wax from copper blocks.
+These are "Wax on" and "Wax off", but are not triggered in-game.
+Changed the subtitles for stripping logs and wood from "Axe scrapes" to "Axe strips".
+"Axe scrapes" is now used for copper blocks. However, it is not triggered in-game.
+
+
+=== General ===
+Tags
+
+Added cave vines and cave vines plant to the climbable block tag.
+Added tuff to the deepslate_ore_replaceables block tag.
+Added tinted glass to the impermeable block tag.
+Removed tuff from the stone_ore_replaceables block tag.
+
+
+== Fixes ==
+127 issues fixed
+From released versions before 1.17
+
+MC-1483  Snow covered grass/podzol/mycelium block side texture does not match original block.
+MC-9591  Players are able to create ghost lily pads.
+MC-12363  Lava / water / powder snow bucket desync when using it while rapidly turning.
+MC-70850  False negatives during occlusion culling.
+MC-71530  Spectators can't see through lava.
+MC-86645  Scroll bar goes higher than chat overlay.
+MC-145501  Librarian and zombie librarian torso top texture is incorrect.
+MC-150054  Spectral arrow texture on item and entity aren't consistent.
+MC-150784  Brewing Stand bottle outline incorrect.
+MC-154006  Overworld wood signs use the outdated wood texture on all sides.
+MC-160195  Jungle door inventory texture is outdated.
+MC-160388  Painting back texture has not been updated with the texture update.
+MC-169717  Blocks in recipe book groups are rendered in front of item tooltips.
+MC-195806  Smoker's top and bottom textures have inconsistently colored pixels.
+MC-197561  Carved pumpkins and jack o'lanterns create swastikas.
+MC-197883  Jigsaw Structures causing DataFixer spam.
+MC-198805  Floating pixel in the tailfin of a guardian/elder guardian.
+MC-202186  Houses in Zombie Villages disappear when spawned using /locate.
+MC-202760  area_effect_cloud does not enforce a maximum radius.
+MC-211513  Trident returning to owner not in the same world can cause permanent player kick.
+MC-212123  Player lighting is inconsistent in the inventory and appears darker on the front.
+MC-214568  Setting a lectern on fire causes z-fighting.
+MC-216227  Sugar cane item texture is no longer accurate from 13w36a forward.
+From the 1.17 development versions
+
+MC-203554  block.amethyst_block.chime has no subtitle.
+MC-203561  Amethyst crystal cluster drops items when block is moved directly by a piston without actually breaking the block.
+MC-203623  Inconsistency: Breaking amethyst crystals with hands doesn't drop the item, but breaking the block they are placed on drops them.
+MC-203676  Tinted Glass suffocates entities inside of it.
+MC-203753  Spyglass use statistic never increases.
+MC-203918  Mobs can spawn on tinted glass.
+MC-204016  When filling a lava/powder snow cauldron with lava/powder snow, it is placed on the ground instead of in the cauldron.
+MC-204115  Pushing an amethyst cluster off of a block with a 1-tick pulse using a sticky piston doesn't drop any items.
+MC-204862  Tinted glass is not included in the impermeable tag.
+MC-205913  Lightning rod can spawn skeleton horses with skeletons.
+MC-206588  Blocks dripstone can be attached to are inconsistent.
+MC-206787  World Border is rendered upside down.
+MC-206805  World border texture moves up and down with the player.
+MC-207557  Frozen hearts in hardcore mode look identical to frozen hearts in survival mode.
+MC-208295  Moving water with a piston and amethyst cluster.
+MC-212226  Bone Meal can still be used on a Glow Lichen when it is unable to grow.
+MC-212410  Cannot compost glow lichen.
+MC-213269  Waxed Copper Block cannot be crafted back into ingots.
+MC-213271  Parity issue: Copper blocks cannot be waxed by either using honeycomb items on them or using dispensers with honeycombs.
+MC-213583  Crash upon importing world generation settings with over 256 layers.
+MC-213743  Spectators can't see through powder snow.
+MC-213764  Removing the block supporting a spore blossom allows the spore blossom to float.
+MC-213765  Cave vine blocks are inconsistent in ID from other similar blocks.
+MC-213768  Removing the support block for hanging roots allows it to float.
+MC-213778  Cave vines cannot be climbed.
+MC-213782  Cave vines do not slow you down like other vines.
+MC-213798  Cave vines head and body emit different light levels.
+MC-213816  Hanging roots don't get destroyed by flowing water.
+MC-213886  Bone meal cannot be used on dripleaf stems.
+MC-213911  Cave vines body and cave vines head share the same name.
+MC-213980  Moss appropriate tool is axe rather than hoe.
+MC-214290  Crash upon importing world generation settings with a layer that is less than 0 blocks high.
+MC-214780  It is not possible to create a superflat world with over 256 layers.
+MC-214868  Big dripleaf won't drop the item if the top is underwater.
+MC-214951  Superflat worlds start generating at negative coordinates, causing a dark horizon.
+MC-215036  Snow layers in "Snowy Kingdom" superflat preset generate 64 blocks above the ground.
+MC-215384  Azaleas cannot be used as a fuel.
+MC-215417  Sky going dark y level ignores data pack dimension y axis limits (minecraft:overworld effects).
+MC-216018  Redstone Ready and Water World presets have the default spawn point at wrong Y-level.
+MC-216134  Gilded blackstone texture does not match the new side texture of blackstone.
+MC-216184  Player takes no fall damage on blocks above Y=316.
+MC-216737  When replacing tuff, ores still generate with a "stone" background below Y=0.
+MC-216945  Teams become dysfunctional when any entity leaves the team.
+MC-216965  Flat "slices" of terrain generating in cracks.
+MC-217303  Potential optimization target in DepthBasedReplacingBaseStoneSource.
+MC-217546  stat.fallOneCm is not updated when falling onto a block above Y=316.
+MC-217802  Some blocks generate at wrong Y height in a superflat world.
+From the previous development version
+
+MC-218587  Lightning rod still can't be waterlogged.
+MC-218594  Debug chunk borders don't render properly.
+MC-218596  Debug pie is blacked out.
+MC-218597  Water has no fog anymore.
+MC-218603  Screen turns dark grey when switching dimension.
+MC-218604  Hanging roots can generate hanging on other hanging roots, making them float.
+MC-218609  Mipmapping causes some block faces to become too dark.
+MC-218610  Banners are unimpacted by light levels.
+MC-218626  Cannot enchant items.
+MC-218633  Smooth lighting has brighter outlines.
+MC-218635  With fast graphics, the freezing overlay renders black, and covers the whole screen black in first person.
+MC-218640  Broken spyglass overlay on fast graphics.
+MC-218641  Red vignette shown when outside the world border is too intense.
+MC-218645  The carved pumpkin overlay turns the screen completely black when using fast graphics.
+MC-218652  The green nausea overlay no longer renders.
+MC-218653  Glowing effect no longer changes to team color.
+MC-218655  Floating water generates excessively in lush caves.
+MC-218660  The nether portal overlay no longer renders, whilst using fast graphics.
+MC-218695  Shulkers do not flash red when hurt or killed.
+MC-218712  Debug pie has purple box when moving an enchanted item.
+MC-218713  Right clicking to open alternate recipes does not show the recipes.
+MC-218729  Noise cave entrances cause unnatural, smooth edges in terrain.
+MC-218734  Caves generate with very blocky areas.
+MC-218748  At sunset, a blue line appears in the northern and southern skies.
+MC-218753  Ambient occlusion of the player seen in the survival inventory has changed.
+MC-218793  Two white lines appear on the Mojang loading screen.
+MC-218817  Cave Vines can generate without supporting blocks.
+MC-218825  M1 ARM Macs crash when using Fabulous Graphics mode as was the case in older versions, but no lack of support warning is shown.
+MC-218830  World border is white.
+MC-218834  You can see block hitboxes very clearly under powder snow/lava.
+MC-218845  Mojang logo screen flashes blue before changing to red.
+MC-218852  World border is occasionally shown as a solid color upon being loaded.
+MC-218877  The red flash when a mob is hurt/killed appears to be slightly dimmed.
+MC-218881  When selecting text in the end, the sky gets highlighted.
+MC-218911  The background of hover-event text becomes blue when text is selected in an anvil or chat.
+MC-218945  Spyglass has a gradient effect while freezing.
+MC-218979  Cave ceilings and floors sometimes too flat or blocky.
+MC-218988  Fire is rendered dark in the player/horse/llama UI.
+MC-218990  Transparency buffers start with blue background instead of empty background.
+MC-219002  The wither's wither armor has a blue aura around it.
+MC-219006  The background opacity of subtitles and chat, are affected by a potion effect UI fading out.
+MC-219014  Charged creeper layer makes clouds and entities invisible.
+MC-219036  World border is shown as a solid color when picking up items or experience orbs.
+MC-219039  World border does not render when below the world.
+MC-219049  Reloading resource packs no longer shows the progress bar while the transparent background is shown.
+MC-219105  Entity hitboxes can be seen whilst inside of powder snow/lava.
+MC-219108  Chat scroll bar is offset.
+MC-219111  Social interactions scroll bar appears broken.
+MC-219126  Spyglass allows looking through blocks.
+MC-219180  Slime blocks, honey blocks, stained glass, and ice are fully lit when moved by pistons.
+MC-219208  Using enchanted items allows looking through blocks.
+MC-219212  Entity shadows can be seen whilst inside of powder snow/lava.
+MC-219224  The background opacity of command syntax help is affected when highlighting text.
+MC-219278  Being inside of a block no longer shows the block texture.
+MC-219281  Dying ender dragon is rendered too bright.
+MC-219392  Lead/fishing line is no longer affected by the fog from powder snow/lava.
+MC-219597  End portal and end gateway textures expand as the player travels further from the block.
+
+
+== Videos ==
+
+
+== Trivia ==
+This version has the same data version as Combat Test 7b, even though these versions should not be compatible with each other.
+21w11a held the record for the largest number of bug fixes in a single snapshot, and the second highest of any development version, at 127. This record was beaten by 24w33a.
+
+
+== References ==
+
+
+== Navigation ==

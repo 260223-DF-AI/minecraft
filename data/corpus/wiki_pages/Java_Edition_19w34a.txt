@@ -1,0 +1,163 @@
+19w34a is the first snapshot for Java Edition 1.15, released on August 22, 2019, which adds bees and bee-related items, such as bee hives, honey bottles, and honeycombs.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Bee nests
+
+Spawn naturally in flower forests, plains, and sunflower plains biomes.
+Can house bees.
+Fills up with honey.
+The amount of honey in the bee nest increases as bees gather nectar and return to their nest.
+The player can harvest honeycombs and honey bottles from the nest using shears and glass bottles respectively.
+If the player breaks or harvests honey from the nest, the bees become hostile on the player.
+Bees inside the nest don't turn hostile if it is broken with Silk Touch, but bees outside the nest do.
+Bees don't turn hostile if there is a campfire underneath the nest when honeycombs or honey bottles are harvested.
+Is a block entity and cannot be pushed by pistons.
+ Bee hives
+
+Can be crafted using 6 planks and 3 honeycombs.
+Function the same as bee nests, but don't need Silk Touch to be dropped.
+
+
+=== Items ===
+ Honey bottles
+
+Restores 6 () and 9.6 saturation.
+Can be used to craft 3 sugar.
+Obtained by using a glass bottle on bee hives/nests with a honey_level of 5.
+ Honeycombs
+
+Obtained by using shears on bee hives/nests with a honey_level of 5.
+Can be used to craft bee hives.
+Spawn eggs
+
+ Bee spawn egg
+Spawns bees.
+
+
+=== Mobs ===
+ Bees
+
+Have 10HP health.
+Live in groups near hives and nests.
+If a bee does not have a home nest, it wanders until it finds one.
+Can hide inside hives.
+Maximum of 3 bees per nest.
+When attacked, all bees from the same hive try to attack the original attacker.
+The same happens when their hive/nest is destroyed.
+Placing a campfire under the nest makes the bees passive.
+Have an [Int] Anger data tag, which defaults to zero.
+When the bee is attacked, this tag is set to around 700 ticks.
+When they attack, they give Poison to the target for 10 seconds and then they die 5060 seconds after attacking.
+When bees attack the player, their eyes turn red.
+Can be bred using any type of flower, including wither roses.
+They follow any player holding a small flower.
+If the player holds still, the bees land around them.
+Hover around flowers and enter a "pollinated" state after some time. When pollinated, pale white particles come off them. The bee also has its texture changed to include dots similar in color to the pollen particles.
+Bees try to pollinate wither roses despite the fact that they are harmed by the Wither effect they give.
+When they pollinate flowers, a small popping noise is heard.
+Return to their nest after entering the "pollinated" state.
+A pollinated bee can accelerate the growth of crops and sweet berry bushes it passes.
+After enough bees enter a bee nest in the pollinated state, the bee nest becomes filled with honey.
+Being killed by a bee sting results in new death message: "<player> was stung to death".
+
+
+=== Gameplay ===
+Particles
+
+New particles: dripping_honey, falling_honey, falling_nectar, landing_honey.
+
+
+=== Command format ===
+Loot tables
+
+New function:
+copy_state  Copies state properties from dropped block to [NBT Compound / JSON Object] BlockStateTag in dropped item.
+Parameters:
+[String] block  source of properties (block ID).
+[NBT Compound / JSON Object] properties  list of property names. All must be present on block.
+
+
+=== General ===
+Languages
+
+Added Yiddish language.
+Tags
+
+Added minecraft:bee_growables, minecraft:beehives, minecraft:crops, minecraft:flowers, and minecraft:tall_flowers block tags.
+Added minecraft:flowers and minecraft:tall_flowers item tags.
+Textures
+
+Added textures for a wax block and crystallized honey item.
+These are unobtainable in-game. See history of unused textures.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Crafting table
+
+When the GUI is opened,  Shift + clicking an item or a stack in the inventory now transfers it directly into the crafting grid.
+Dispenser
+
+Can now harvest honeycombs when dispensing shears on bee nests and bee hives filled with honey.
+The honeycomb items are dropped on the ground.
+Can now collect honey bottles when dispensing glass bottles on bee hives.
+Can now collect water bottles when dispensing glass bottles on water.
+Redstone comparator
+
+Can now detect how much honey is inside bee hives and bee nests.
+The output strength is equal to the amount of honey in the hive.
+
+
+=== General ===
+Game library updates
+
+Minecraft now requires OpenGL 2.0.
+Rendering updates
+
+Partially implemented Blaze3D.
+
+
+== Fixes ==
+20 issues fixed
+From released versions before 1.15
+
+MC-74762  Under certain circumstances chunks can swap or reset.
+MC-102267  Certain mobs do not take damage on magma blocks.
+MC-103313  Hitbox of slime and magma cube is offset for some seconds.
+MC-115643  Cannot hear punching blocks with 'Friendly Creatures' volume off.
+MC-133255  Cartographers generate maps for existing Mansions and Monuments rather than unexplored ones.
+MC-142918  The stonecutter does not allow custom recipe inputs to be shift-clicked in.
+MC-148562  Obsidian towers in The End biome are not generated as intended.
+MC-149231  Dragon egg culls the top of cactus.
+MC-150202  Chunks sometimes are dislocated/copied to another location.
+MC-151354  Cannot rearrange servers with shortcut.
+MC-152100  When using a brewing stand, the player cannot put blaze powder into the slot using the shift key.
+MC-152172  Cartography table plays the sound multiple times overlapping on shift-click.
+MC-152173  Loom plays the sound multiple times overlapping on shift-click.
+MC-156276  Cannot shift-click while riding a horse, within inventory.
+MC-156852  Ghost blocks remain when insta-mining; reappearance of MC-5694.
+MC-156876  In desert_small_house_7, one door is open.
+MC-156884  Bows sometimes don't use the correct texture when being drawn in creative mode.
+MC-156952  Village tree center has leaves that are persistent.
+MC-157136  Villagers restocking is not properly tracked.
+MC-158988  Minecraft will remove up to several hundred chunks per region if region file is not exact multiple of 4096 bytes.
+
+
+== Videos ==
+
+
+== Trivia ==
+Unlike most of the first-of-the-week snapshots, this was released on a Thursday instead of Wednesday, similar to the snapshots before 14w26a.
+This snapshot came exactly a year after 1.13.1.
+
+
+== References ==
+
+
+== Navigation ==

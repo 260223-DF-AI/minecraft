@@ -71,7 +71,7 @@ Leather boots, often badly damaged, can be obtained as a junk item from fishing.
 
 
 == Usage ==
-Armor can be worn by a player or mob in order to protect them. See § Mechanics for more details.
+Armor can be worn by a player or mob in order to protect them. See  Mechanics for more details.
 
 
 === Equipping ===
@@ -104,27 +104,27 @@ The following table shows the amount of armor toughness given by armor that can 
 
 ==== Damage formulas ====
 Percent damage reduction
-𝖯𝖾𝗋𝖼𝖾𝗇𝗍 𝖽𝖺𝗆𝖺𝗀𝖾 𝗋𝖾𝖽𝗎𝖼𝗍𝗂𝗈𝗇=min⁡(20,max⁡(𝖺𝗋𝗆𝗈𝗋𝖯𝗈𝗂𝗇𝗍𝗌5, 𝖺𝗋𝗆𝗈𝗋𝖯𝗈𝗂𝗇𝗍𝗌−4×𝖽𝖺𝗆𝖺𝗀𝖾min⁡(𝗍𝗈𝗎𝗀𝗁𝗇𝖾𝗌𝗌,20)+8))25×100
+Percent damage reduction=min(20,max(armorPoints5, armorPoints4damagemin(toughness,20)+8))25100
 Since without commands, the toughness of 20 is impossible, this can be simplified to:
-Damage reduction %=min⁡(80,max⁡(45×𝖺𝗋𝗆𝗈𝗋𝖯𝗈𝗂𝗇𝗍𝗌, 4×𝖺𝗋𝗆𝗈𝗋𝖯𝗈𝗂𝗇𝗍𝗌−16×𝖽𝖺𝗆𝖺𝗀𝖾𝗍𝗈𝗎𝗀𝗁𝗇𝖾𝗌𝗌+8))
+Damage reduction %=min(80,max(45armorPoints, 4armorPoints16damagetoughness+8))
 We can define from this equation a meaningful representation for total armor:
-𝖳𝗈𝗍𝖺𝗅𝖠𝗋𝗆𝗈𝗋=𝖺𝗋𝗆𝗈𝗋𝖯𝗈𝗂𝗇𝗍𝗌×(𝗍𝗈𝗎𝗀𝗁𝗇𝖾𝗌𝗌+8)5
+TotalArmor=armorPoints(toughness+8)5
 This value of total armor represents the amount of damage of an attack required to "break through" the toughness of the armor (so that only regular armor points are used to mitigate the damage). Therefore, the formula above can be rewritten as:
-Damage reduction %={45×𝖺𝗋𝗆𝗈𝗋𝖯𝗈𝗂𝗇𝗍𝗌,if 𝖽𝖺𝗆𝖺𝗀𝖾≥𝖳𝗈𝗍𝖺𝗅𝖠𝗋𝗆𝗈𝗋4×𝖺𝗋𝗆𝗈𝗋𝖯𝗈𝗂𝗇𝗍𝗌−16×𝖽𝖺𝗆𝖺𝗀𝖾𝗍𝗈𝗎𝗀𝗁𝗇𝖾𝗌𝗌+8,if 𝖽𝖺𝗆𝖺𝗀𝖾<𝖳𝗈𝗍𝖺𝗅𝖠𝗋𝗆𝗈𝗋    capped at maximum 80%.
+Damage reduction %={45armorPoints,if damageTotalArmor4armorPoints16damagetoughness+8,if damage<TotalArmor    capped at maximum 80%.
 Note that even without toughness, there is still a "breakthrough" point of damage where the armor just starts being less effective. For armor sets that do not include any armor with toughness (no diamond or netherite), it is simpler to understand as:
-Damage reduction %={45×𝖺𝗋𝗆𝗈𝗋𝖯𝗈𝗂𝗇𝗍𝗌,if 𝖽𝖺𝗆𝖺𝗀𝖾𝖺𝗋𝗆𝗈𝗋𝖯𝗈𝗂𝗇𝗍𝗌≥854×𝖺𝗋𝗆𝗈𝗋𝖯𝗈𝗂𝗇𝗍𝗌−2×𝖽𝖺𝗆𝖺𝗀𝖾,if 𝖽𝖺𝗆𝖺𝗀𝖾𝖺𝗋𝗆𝗈𝗋𝖯𝗈𝗂𝗇𝗍𝗌<85    capped at maximum 80%.
+Damage reduction %={45armorPoints,if damagearmorPoints854armorPoints2damage,if damagearmorPoints<85    capped at maximum 80%.
 Therefore, another way to describe toughness is: A value that decreases the amount of reduction to the reduction of damage caused by higher amounts of damage.
 
 Percent damage reduction with Breach
 The percent damage reduction when attacked with a mace enchanted with Breach:
-Damage reduction %=max⁡(0,(min⁡(20,max⁡(𝖺𝗋𝗆𝗈𝗋 𝗉𝗈𝗂𝗇𝗍𝗌5,𝖺𝗋𝗆𝗈𝗋 𝗉𝗈𝗂𝗇𝗍𝗌−4×𝗐𝖾𝖺𝗉𝗈𝗇 𝖽𝖺𝗆𝖺𝗀𝖾min⁡(𝗍𝗈𝗎𝗀𝗁𝗇𝖾𝗌𝗌,20)+8))25)−𝖡𝗋𝖾𝖺𝖼𝗁 𝗅𝖾𝗏𝖾𝗅×15%)×100
+Damage reduction %=max(0,(min(20,max(armor points5,armor points4weapon damagemin(toughness,20)+8))25)Breach level15%)100
 
 Damage taken
-𝖣𝖺𝗆𝖺𝗀𝖾 𝗍𝖺𝗄𝖾𝗇=𝖽𝖺𝗆𝖺𝗀𝖾×(1−min⁡(20,max⁡(𝖺𝗋𝗆𝗈𝗋 𝗉𝗈𝗂𝗇𝗍𝗌5, 𝖺𝗋𝗆𝗈𝗋 𝗉𝗈𝗂𝗇𝗍𝗌−4×𝖽𝖺𝗆𝖺𝗀𝖾min⁡(𝗍𝗈𝗎𝗀𝗁𝗇𝖾𝗌𝗌,20)+8))25)
+Damage taken=damage(1min(20,max(armor points5, armor points4damagemin(toughness,20)+8))25)
 
 Damage taken with Breach
 The damage taken when attacked with a mace enchanted with Breach:
-𝖣𝖺𝗆𝖺𝗀𝖾 𝗍𝖺𝗄𝖾𝗇=𝗐𝖾𝖺𝗉𝗈𝗇 𝖽𝖺𝗆𝖺𝗀𝖾×(1−(max⁡(0,(min⁡(20,max⁡(𝖺𝗋𝗆𝗈𝗋 𝗉𝗈𝗂𝗇𝗍𝗌5,𝖺𝗋𝗆𝗈𝗋 𝗉𝗈𝗂𝗇𝗍𝗌−4×𝗐𝖾𝖺𝗉𝗈𝗇 𝖽𝖺𝗆𝖺𝗀𝖾min⁡(𝗍𝗈𝗎𝗀𝗁𝗇𝖾𝗌𝗌,20)+8))25)−𝖡𝗋𝖾𝖺𝖼𝗁 𝗅𝖾𝗏𝖾𝗅×15%)))
+Damage taken=weapon damage(1(max(0,(min(20,max(armor points5,armor points4weapon damagemin(toughness,20)+8))25)Breach level15%)))
  
 In tabular form (with a toughness of 0), damages are:
 
@@ -146,14 +146,14 @@ Explosions.
 Fireworks with at least a firework star in the recipe.
 Lightning.
 Getting hit with a falling anvil.
-Getting hit with a snowball from a player​[upcoming: JE Combat Tests] or snow golem.​[more information needed]
-Getting hit with an egg from a player​[upcoming: JE Combat Tests]
+Getting hit with a snowball from a player[upcoming: JE Combat Tests] or snow golem.[more information needed]
+Getting hit with an egg from a player[upcoming: JE Combat Tests]
 The following types of damage are not reduced by armor and have no effect on the armor itself:
 
 Ranged sonic boom attacks from the warden.
 Fall damage (including using ender pearls).
 Ongoing damage from being on fire.
-Suffocating inside a block or due to entity cramming (also includes the world border)‌[JE  only].
+Suffocating inside a block or due to entity cramming (also includes the world border)[JE  only].
 Drowning in water (partially for turtle shells).
 Starvation.
 Colliding with a block while flying with elytra.
@@ -176,7 +176,7 @@ Armor can be enchanted to provide various benefits. Enchantments can provide mor
 As with several enchantments, several different levels of protection are possible. The maximum level of a protection enchantment is IV (4). Protection enchantments from multiple pieces of armor stack together.
 Each protection enchantment protects against specific types of damage. The amount of damage reduction depends on the Enchantment Protection Factor (EPF) provided by that enchantment.
 
-When a player or mob wearing armor is subjected to damage, the EPFs of all applicable enchantments are added together, having a maximum of 20, and a minimum of 0 (when the game is calculating the reduced damage). The damage reduction is resultingEPF / 25, giving a minimum reduction of 0 and a maximum reduction of 20⁄25 or 80%. This means the player cannot be immune to damage from projectile or explosion in a world without cheating, even they wear armors with the maximum level of relative enchantments applied on every part of them.
+When a player or mob wearing armor is subjected to damage, the EPFs of all applicable enchantments are added together, having a maximum of 20, and a minimum of 0 (when the game is calculating the reduced damage). The damage reduction is resultingEPF / 25, giving a minimum reduction of 0 and a maximum reduction of 2025 or 80%. This means the player cannot be immune to damage from projectile or explosion in a world without cheating, even they wear armors with the maximum level of relative enchantments applied on every part of them.
 Because of the caps in the calculation, it is possible to achieve maximum protection against specific types of damage with just three pieces of armor. For example, two pieces of armor with Blast Protection IV (EPF 8 each) and a single piece with Protection IV (EPF 4) would give a total EPF of 20 versus explosions. Any additional EPF would be wasted against explosions (but might be useful against other types of damage, if applicable).
 If the damage is of a type that armor protects against normally, this reduction applies only to the damage that got through the armor. 
 It is possible using /give to obtain armor with an enchantment level higher than what is normally obtainable via normal survival. Using this method, a player could give themselves, for example, a full set of diamond armor with a Protection V enchantment on every piece. Following the algorithm above, we find that, because Protection V has an EPF of 5, the armor reaches the maximum EPF of 20 for all types of damage. Any higher Protection enchantments could be used to reach the cap with just one level XX (20) enchantment, rather than having a full set of enchanted armor, but would be wasted if all pieces shared the same level enchantment.
@@ -253,7 +253,7 @@ Armor can be given trims using an armor trim smithing template, a trim material 
 
 === Armor equipped on mobs ===
 
-Some mobs have a chance to spawn with armor equipped. When a mob spawns with armor, the number of pieces of armor, the type of armor pieces, and whether the armor is enchanted, depends on the difficulty; although, the tier of armor (leather, gold, etc.) has a fixed probability. Mobs can spawn with trimmed armor when spawned from an ominous trial spawner. Some mobs also have a chance to spawn with the ability to pick up armor on the ground and equip it. ​[more information needed]
+Some mobs have a chance to spawn with armor equipped. When a mob spawns with armor, the number of pieces of armor, the type of armor pieces, and whether the armor is enchanted, depends on the difficulty; although, the tier of armor (leather, gold, etc.) has a fixed probability. Mobs can spawn with trimmed armor when spawned from an ominous trial spawner. Some mobs also have a chance to spawn with the ability to pick up armor on the ground and equip it. [more information needed]
 
 It is impossible for zombies, skeletons, and their variants to naturally spawn with turtle shells, netherite armor, or mob heads. 
 The protection provided by armor and armor enchantments works the same for mobs as it does with players.
@@ -261,8 +261,8 @@ The following mobs can spawn with armor:
 
 Zombie
 Baby Zombie
-Zombie Villager‌[JE  only]
-Baby Zombie Villager‌[JE  only]
+Zombie Villager[JE  only]
+Baby Zombie Villager[JE  only]
 Husk
 Baby Husk
 Skeleton
@@ -277,21 +277,21 @@ Gurgle
 Zombified Piglin
 Baby Zombified Piglin
 Wither Skeleton
-Zombie Villager‌[BE  only]
-Baby Zombie Villager‌[BE  only]
+Zombie Villager[BE  only]
+Baby Zombie Villager[BE  only]
 This mob can have armor equipped on it via a dispenser, and the armor does render, but this mob cannot pick up the armor:
 
 Piglin Brute
-These mobs can have armor equipped on them via a dispenser‌[Java Edition  only] or via commands, but the armor does not render, and these mobs cannot pick up the armor:
+These mobs can have armor equipped on them via a dispenser[Java Edition  only] or via commands, but the armor does not render, and these mobs cannot pick up the armor:
 
 Villager
 Baby Villager
 These mobs do not spawn with armor and it cannot be equipped in Survival mode, but if equipped with commands, their armor is visible:
 
-Giant‌[Java Edition  only]
-Pillager‌[Bedrock Edition  only]
-Vindicator‌[Bedrock Edition  only]
-Evoker‌[Bedrock Edition  only]
+Giant[Java Edition  only]
+Pillager[Bedrock Edition  only]
+Vindicator[Bedrock Edition  only]
+Evoker[Bedrock Edition  only]
 All other mobs can be equipped with armor via commands, but the armor cannot be seen.
 A helmet protects a mob that burns in sunlight (mainly undead mobs) from burning, but this depletes the helmet's durability as it absorbs the damage. Eventually, the helmet loses all of its durability and breaks, and then the mob burns in the sunlight. A carved pumpkin, mob head, or anything placed into the head slot using commands, can also protect the mob from burning in sunlight. These do not have a durability and as such cannot break.
 Damage caused by any other source does not cause a mob's armor durability to decrease, unless the armor is wolf armor.

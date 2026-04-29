@@ -50,7 +50,7 @@ There are currently six post-processing effects used in the game:
 
 
 ==== General game rendering ====
-Each frame is rendered in the following order​[more information needed]
+Each frame is rendered in the following order[more information needed]
 
 The world, including entities, blocks, the sky, items, etc is rendered (by core shaders)
 Any Post effects are applied as necessary
@@ -81,7 +81,7 @@ Some shaders may not use all uniforms in a given uniform block, in this case the
 The following uniform blocks are available in both post-processing and core shaders.
 
 Globals
-This uniform block is always bound and has proper values in all shaders. ‌In 26.2​[upcoming] this excludes lightmap, animate_sprite_interpolate and animate_sprite_blit.
+This uniform block is always bound and has proper values in all shaders. In 26.2[upcoming] this excludes lightmap, animate_sprite_interpolate and animate_sprite_blit.
 
 (ivec3) CameraBlockPos Block position of the camera in world-space coordinates.
 (vec3) CameraOffset Fractional position of the camera in world-space coordinates.
@@ -124,7 +124,7 @@ LightmapInfo
 (float) BlockFactor A value that fluctuates randomly, used in the vanilla shader for block light flickering.
 (float) NightVisionFactor A value in a 0-1 range that specifies how much the Night Vision  status effect should brighten the lightmap by.
 (float) DarknessScale A value in a 0-1 range that specifies how much the Darkness  status effect should darken the lightmap by.
-(float) BossOverlayWorldDarkeningFactor A value that specifies how much to darken the lightmap by when a bossbar is visible. This is seemingly only used in the ender dragon fight ​[more information needed].
+(float) BossOverlayWorldDarkeningFactor A value that specifies how much to darken the lightmap by when a bossbar is visible. This is seemingly only used in the ender dragon fight [more information needed].
 (float) BrightnessFactor The value of the brightness video setting in a 0-1 range.
 (vec3) BlockLightTint The color of block light. This value comes from the minecraft:visual/block_light_tint environment attribute.
 (vec3) SkyLightColor The color of sky light. This value comes from the minecraft:visual/sky_light_color environment attribute.
@@ -132,19 +132,19 @@ LightmapInfo
 (vec3) NightVisionColor The color of the Night Vision  status effect. This value comes from the minecraft:visual/night_vision_color environment attribute.
 CloudInfo
 (vec4) CloudColor The color of the clouds.
-(vec3) CloudOffset Offset of the clouds ​[more information needed].
-(vec3) CellSize Size of each individual cloud ​[more information needed].
+(vec3) CloudOffset Offset of the clouds [more information needed].
+(vec3) CellSize Size of each individual cloud [more information needed].
 ChunkSection
 (mat4) ModelViewMat The model-view matrix.
 (float) ChunkVisibility Value that increments from 0 to 1 once a chunk section has been displayed. The amount of time this takes is dependent on the "Chunk Fade" video setting
-(ivec2) TextureSize ​[more information needed]
-(ivec3) ChunkPosition ​[more information needed]
+(ivec2) TextureSize [more information needed]
+(ivec3) ChunkPosition [more information needed]
 SpriteAnimationInfo
 (mat4) ProjectionMatrix The projection matrix
-(mat4) SpriteMatrix ​[more information needed]
-(float) UPadding ​[more information needed]
-(float) VPadding ​[more information needed]
-(int) MipMapLevel ​[more information needed]
+(mat4) SpriteMatrix [more information needed]
+(float) UPadding [more information needed]
+(float) VPadding [more information needed]
+(int) MipMapLevel [more information needed]
 
 
 ==== Post-processing blocks ====

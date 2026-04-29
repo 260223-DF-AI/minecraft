@@ -1,0 +1,110 @@
+1.9.1 is a minor update for Java Edition released on March 30, 2016. 1.9.1 is not compatible with 1.9 servers. Due to a major multiplayer bug, 1.9.1 was replaced with 1.9.2 on the same day.
+
+
+== Additions ==
+
+
+=== Items ===
+Armor
+
+New armor attribute: generic.armorToughness, which includes a new formula for calculating damage:
+totalDamage=damage(1max(defensePoints5,defensePointsdamage2+toughness4)25)
+Increased toughness means less armor defense point reduction from strong attacks.
+Diamond armor has toughness 2, all other armor has toughness 0. A full set of diamond armor, therefore gives a toughness attribute of 8.
+Elytra
+
+Added sound effects while gliding with elytra.
+Sound event item.elytra.flying.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Dispensers
+
+Dispensers with arrows in jungle temples now use loot tables.
+Increased limit per tick for scheduled tile ticks from 1,000 to 65,536.
+Hoppers
+
+Can now push and pull items to and from chests that are blocked from opening.
+
+
+=== Items ===
+Shields
+
+No longer take damage when blocking weak attacks (less than 3HP damage).
+
+
+=== Mobs ===
+General
+
+AI has been improved.[more information needed]
+Skeletons
+
+Now shoot less quickly on Easy and Normal difficulties.
+
+
+=== Non-mob entities ===
+Minecarts with chest & minecarts with hopper
+
+The GUI name is now the same as the item's display name.
+
+
+=== Command format ===
+Target selectors
+
+Entity selector c (count) now sorts on proximity using true coordinates, not coordinates snapped to the grid.
+
+
+=== Gameplay ===
+Combat
+
+Attack cooldown indicator is now enabled by default.
+
+
+=== General ===
+Loot tables
+
+Now work in dispensers and droppers.
+Session IDs
+
+Are no longer printed by the game to the log files or to the launcher.
+
+
+== Fixes ==
+13 issues fixed
+From release versions older than 1.9
+
+MC-7961  Hopper can't fill or empty a chest if the chest is blocked from opening.
+MC-56162  Setting /worldborder damage amount 0 doesn't work.
+MC-95352  Spatial target arguments c, dx, dy, dz behave unexpectedly and inconsistently.
+From release version 1.9
+
+MC-90257  A chain of command blocks may take more than 1 tick to traverse.
+MC-93074  Summoned arrows can't be assigned a scoreboard value (too many arrows/spectral arrows cause command fail).
+MC-96219  Block duplication bug with pistons (ghost blocks).
+MC-96927  Selector c= targeting inaccurate entity position.
+MC-98327  Elytra texture transparency issues.
+MC-98461  Several languages (at least Frisian, Talossan, Ripuarian, Lojban, and LOLCAT) are not selectable, "Eesti (Eesti)" is listed as "Inglise (US)".
+MC-98587  Command block logic sometimes fails arbitrarily.
+MC-99060  Elytra glowing effect is always black.
+MC-99697  Missnamed minecarts with hoppers and chests as "container.minecart".
+From the 1.9.1 development versions
+
+MC-99396  Players attack animation missing.
+Other fixes
+
+Fixed game engine adding non-existent entities (failed mob spawns, etc.) to its internal lists, increasing instability.
+
+
+== Videos ==
+
+
+== Footnotes ==
+
+
+== References ==
+
+
+== Navigation ==

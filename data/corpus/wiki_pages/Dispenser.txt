@@ -30,7 +30,7 @@ In Java Edition, a dispenser cannot be moved by pistons.
 
 A dispenser has 9 slots of inventory space.
 To open the dispenser GUI, use the Use Item control. To move items between the dispenser inventory and the player inventory or hotbar while the dispenser GUI is open, drag or shift-click the items. To exit the dispenser GUI, use the Esc control.
-By default, the GUI of a dispenser is labeled "Dispenser". A dispenser's GUI label can be changed by naming the dispenser in an anvil before placing it, or by using the data command.‌[Java Edition  only] For example, to label a dispenser at (0,64,0) "My Dispenser", use data merge block 0 64 0 {CustomName:'"My Dispenser"'}.
+By default, the GUI of a dispenser is labeled "Dispenser". A dispenser's GUI label can be changed by naming the dispenser in an anvil before placing it, or by using the data command.[Java Edition  only] For example, to label a dispenser at (0,64,0) "My Dispenser", use data merge block 0 64 0 {CustomName:'"My Dispenser"'}.
 A dispenser can be "locked" by setting the dispenser's lock tag. If a dispenser's lock tag is not blank, the dispenser cannot be accessed except by players holding an item that matches the item predicate in the lock tag. A dispenser's lock tag can be set or unset with the data command. For example, to lock a dispenser at (0,64,0) so that only players holding an item named "My Key" can access the dispenser, use data merge block 0 64 0 {lock:{components:{"custom_name":"My Key"}}}.
 
 
@@ -47,7 +47,7 @@ an adjacent powered conductive block (for example, a block with an active redsto
 a powered redstone repeater or redstone comparator facing the dispenser
 powered redstone dust configured to point at the dispenser, or on top of it, or a directionless "cross" next to it; a dispenser is not activated by adjacent powered redstone dust that is configured to point in another direction.
 Some of these methods can activate a dispenser (in the sense of triggering an action) without powering the dispenser (in the sense of whether the dispenser can power adjacent redstone dust, etc.).
-In addition to the methods above, a dispenser can also be activated by quasi-connectivity.‌[Java Edition  only] A dispenser becomes activated if one of the methods above would activate a mechanism component in the block above the dispenser, even if there is no mechanism component there (even if the block above the dispenser is air or a non-conductive block), but only when the dispenser receives a block update (including a redstone update within two blocks of the dispenser). 
+In addition to the methods above, a dispenser can also be activated by quasi-connectivity.[Java Edition  only] A dispenser becomes activated if one of the methods above would activate a mechanism component in the block above the dispenser, even if there is no mechanism component there (even if the block above the dispenser is air or a non-conductive block), but only when the dispenser receives a block update (including a redstone update within two blocks of the dispenser). 
 A dispenser has a 4 game tick (0.2 seconds, barring lag) delay between activation and a response. During this time, additional inputs are ignored.
 In Bedrock Edition, the dispenser can only activate on the input/consumer redstone tick (C-tick).
 
@@ -177,7 +177,7 @@ Quasi-connectivity applies to dispensers.
 
 
 == External links ==
-"Block of the Week: Dispenser"     by Duncan Geere  – Minecraft.net, March 16, 2018.
+"Block of the Week: Dispenser"     by Duncan Geere   Minecraft.net, March 16, 2018.
 
 
 == Navigation ==

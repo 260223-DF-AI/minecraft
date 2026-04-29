@@ -1,0 +1,230 @@
+0.24_SURVIVAL_TEST is a version of Java Edition Classic and the first version of Survival Test, released on September 1, 2009, at 16:54 UTC.
+
+
+== Additions ==
+
+
+=== Mobs ===
+ Creepers
+
+Hostile mob.
+Has 20HP  10 health points.
+Flashes when at low health
+Returns to full brightness when hit.
+Explodes on death, dealing damage and destroying the blocks around it and dropping them as items.
+Pursues and attacks the player, dealing melee damage.
+Deals 2HP to 6HP when attacking and up to 12HP  6 when exploding on death.[verify for Java Edition]
+ Pigs
+
+Passive mob.
+Has 20HP  10 health points.
+Wanders aimlessly around the world.
+ Skeletons
+
+Hostile mob.
+Has 20HP  10 health points.
+Pursues and attacks the player, dealing melee damage.
+Deals 1HP to 6HP damage.
+At the time, skeletons did not shoot arrows, instead, they attack the player directly.
+ Zombies
+
+Hostile mob.
+Has 20HP  10 health points.
+Pursues and attacks the player, dealing melee damage.
+Deals 1HP to 6HP damage.
+
+
+=== Non-mob entities ===
+  Plate armor
+
+Visual feature only.
+Provides no protection.
+Can only be worn as a helmet or chestplate by zombies and skeletons.
+  Chain armor
+
+The model and texture are not used.
+Visual feature only.
+Provides no protection.
+ Arrows
+
+Can be shot by pressing  Tab.
+Deals 3HP damage.
+Does not deal damage after flying for more than 1 second.
+Drops
+
+Blocks and mobs are now able to drop items:
+Most blocks drop themselves, with exceptions:
+Leaves drop saplings (110 chance).
+Grass block drops dirt.
+Logs drop 3-5 planks.
+Player
+
+Added the player's fist in the lower right corner.
+ Signs
+
+Added as an entity.
+Can be spawned by pressing B.
+Cannot be edited.
+Always says: "This is a test of the signs. Each line can be 15 chars!".
+
+
+=== Gameplay ===
+Damage
+
+Mobs and players jump back and flash white when taking damage and have a dying animation.
+Taking damage causes the player's camera to tilt towards the damage source, acting as a directional damage indicator.
+Enemies fall over when killed.
+Damage after falling
+
+The players and mobs take fall damage after falling more than 3 blocks.
+At the same time, they take about 1HP damage for every block fallen over their safe fall distance.
+Drowning
+
+The player can drown and has limited breath indicated by bubbles.
+A player who runs out of air underwater begins drowning, taking 2HP damage per second.
+ Health
+
+Has 20HP  10 health points.
+Each heart is 2 health points.
+When the player reaches 0HP health points, they die and are shown a "Game over!" screen with the option to generate a new level.
+Particles
+
+Re-added sapling particles, although they are now darker than before.[verify for Java Edition]
+Score points
+
+Added score.
+Score can only be seen after death.
+Killing zombies gives 100 points.
+Killing skeletons gives 100 points.
+Killing creepers gives 250 points.
+Killing pigs gives 10 points.
+Survival mode
+
+Players can not respawn and the level needed to be restarted.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Dandelion
+
+No longer decays in darkness.
+Grass block
+
+Now drops dirt when destroyed.
+Lava
+
+Now deals damage.
+Rose
+
+No longer decays in darkness.
+Sapling
+
+Now grows into a tree if there is enough space and if it's placed on grass.
+No longer decays in darkness.
+
+
+=== Items ===
+Brown mushroom
+
+Heals 5HP when eaten.
+No longer decays in darkness.
+Now will decay if not on stone, cobblestone, or gravel. Previously they had to be on dirt or grass blocks.
+Red mushroom
+
+Depletes 3HP when eaten.
+No longer decays in darkness.
+Now will decay if not on stone, cobblestone, or gravel. Previously they had to be on dirt or grass blocks.
+
+
+=== Mobs ===
+ Mob
+
+Texture changed from , adding a second layer of hair.
+Can no longer be spawned by pressing G.
+
+
+=== World generation ===
+General
+
+More cliffs.
+Longer and narrower caves.
+The deeper down in the world, the bigger the caves are.
+A layer of lava now generates above the bedrock layer.
+
+
+=== Gameplay ===
+Controls
+
+Right-click to build and left-click to mine.
+The player can auto-jump again.
+Player reach reduced by 1 block.
+Sky
+
+Changed color from  #7FCCFF to  #99CCFF.
+
+
+=== General ===
+Options menu
+
+Bobbing and the "View Bobbing" option added.
+Anaglyph 3D added.
+Level size options under "Generate New Level" are now closer together.
+
+
+== Technical ==
+Performance
+
+Faster rendering.
+
+
+== Removals ==
+
+
+=== Blocks ===
+General
+
+liquid raising. Sand and gravel now fall through liquids instead of sitting on top of them.
+
+
+=== Gameplay ===
+Creative mode
+
+Removed.
+
+
+=== General ===
+Controls
+
+White block selection box removed.
+Pressing R key no longer sends the player back to spawn point.
+Removed the ability to spawn mobs by pressing G key.
+
+
+== Bugs ==
+11 bugs reported
+
+If a creeper blows up a liquid, the liquid drops itself.
+Cracking animation only shows on one side of a block.
+Skeletons can enter 1-block high holes.[verify for Java Edition]
+Minecraft crashes upon loading for some users.
+OpenGL invalid value bug.
+Arrows do not deal damage after flying for more than 1 second.
+Players cannot damage themselves with arrows.
+Middle-clicking a block (pick-block) adds it into the player's inventory even when they do not yet have that block.
+Only works on blocks that could previously be copied.
+Doing so replaces the block type of whatever you are holding, but not its amount.
+Placing a block at the build limit consumes the block, destroying it without placing anything.
+Looking at glass no longer makes glass textures directly behind it disappear.[verify for Java Edition]
+Walking on the very edge of a block causes the amount of sounds required to play to build up. Once the player stands on a block, those sounds play every 0.125 seconds.
+
+
+== Gallery ==
+
+
+== References ==
+IRC logs on Archive.org; #minecraft.20090901.log. September 1, 2009 (UTC5).
+
+
+== Navigation ==

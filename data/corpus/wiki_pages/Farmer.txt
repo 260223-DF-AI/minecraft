@@ -24,17 +24,17 @@ Pumpkin Pie
 
 In Java Edition, during the "work" portion of their schedule, farmers tend nearby crops.
 
-Farmers sometimes move to random farmland blocks they detect within ±4 on the X and Z axes and ±2 on the Y axis, rather than going to their job site.
-If there are fully-grown crop blocks or air above farmland within ±1 of the farmer on each axis, the farmer spends 10 seconds tending them (not counting time spent walking to the next block), one per second. The block is harvested if necessary and (re-)planted if the farmer has any plantable crop, crop seed, or flower seed items.
+Farmers sometimes move to random farmland blocks they detect within 4 on the X and Z axes and 2 on the Y axis, rather than going to their job site.
+If there are fully-grown crop blocks or air above farmland within 1 of the farmer on each axis, the farmer spends 10 seconds tending them (not counting time spent walking to the next block), one per second. The block is harvested if necessary and (re-)planted if the farmer has any plantable crop, crop seed, or flower seed items.
 If /gamerule mobGriefing is false, farmers cannot farm.
 Harvesting is done regardless of the farmer's current inventory, even if they lack space to pick up the results.
 Planting takes the item from the first eligible inventory slot, independently of any previously harvested crop type.
-If there is at least one non-fully-grown crop block within ±1 of the farmer on each axis, the farmer has bone meal, and it has been at least 8 seconds since the farmer last did some fertilization, then the farmer fertilizes up to four crop blocks (one every two seconds).
+If there is at least one non-fully-grown crop block within 1 of the farmer on each axis, the farmer has bone meal, and it has been at least 8 seconds since the farmer last did some fertilization, then the farmer fertilizes up to four crop blocks (one every two seconds).
 When the farmer works at their composter, it can perform all of the following tasks in this order in the same work session. The composter always plays the composting sound as the workstation sound, even if nothing is actually put into the composter.
 If the farmer has at most 36 bread and enough wheat, it crafts up to 3 bread from the available wheat. Any bread that does not fit into the farmer's inventory is dropped as item entity.
 If possible, the farmer extracts a bone meal item to empty the composter. The item drops as usual and may be picked up separately later.
 If wheat seeds or beetroot seeds are available, the farmer composts excess seeds. Up to 20 total seeds are composted in one work session, but at least 10 of each type of seed are retained. Inventory slots are checked in reverse order. (Sniffer seeds are never composted.)
-In Bedrock Edition, farmers tend crops within the village boundary. Farmers far enough outside the boundary of any village also tend nearby crops. Farmland to be tended is found by seeking for certain blocks up to 9 blocks away from the farmer in the X and Z coordinates and up to 1 away in the Y coordinate (a 19×19×3 volume total).
+In Bedrock Edition, farmers tend crops within the village boundary. Farmers far enough outside the boundary of any village also tend nearby crops. Farmland to be tended is found by seeking for certain blocks up to 9 blocks away from the farmer in the X and Z coordinates and up to 1 away in the Y coordinate (a 19193 volume total).
 
 If a farmer does not have enough food in one stack in its inventory (15 bread, 60 carrots, 60 potatoes, 60 beetroots, or 45 wheat) and finds fully-grown wheat, carrots, potatoes, or beetroot, the farmer moves to the crop block and harvests it.
 If a farmer has any seeds, carrots, potatoes, or beetroot seeds in its inventory and finds an air block above farmland, the farmer moves to it and plants a crop. They always plant from the first eligible slot in their inventory.

@@ -9,7 +9,7 @@ Hoppers constantly try to search for items above them. Covering a hopper with an
 Redstone components (especially redstone dust), as they can cause excessive amounts of block updates and/or light updates. Disabling redstone contraptions and clocks when not in use can help mitigate this.
 Mob AI. Large amounts of mobs. To mitigate this, torches can be used to prevent hostile mob spawning. As for animal farms-related lag, make sure to use entity-efficient farm designs.
 Random Tick Speed. If the random tick speed is set too high, it can cause the MSPT to rise unusually.
-The MSPT value is displayed in the F3 debug screen as "ms ticks" in Java Edition. The frame time graph (F3 + 2) shows the TPS value. Both displays are available only as a multiplayer host or singleplayer since the stats come from the integrated server of your Minecraft game.
+The MSPT value is displayed in the F3 debug screen as "ms ticks" in Java Edition. The frame time graph (F3 + 2) shows the TPS value. Both displays are available only as a multiplayer host or singleplayer since the stats come from the integrated server of your Minecraft game.
 In Java Edition, tick rates can be controlled by the command /tick.
 
 
@@ -59,8 +59,8 @@ In Bedrock Edition, all chunks inside simulation distance (or specified in the /
 In both editions, the following things happen when a chunk gets ticked:
 
 Mobs naturally spawn.
-During a thunderstorm, lightning may strike somewhere in the chunk (1⁄100000 chance).
-1⁄16 chance that one column is chosen for weather checks on the topmost block:
+During a thunderstorm, lightning may strike somewhere in the chunk (1100000 chance).
+116 chance that one column is chosen for weather checks on the topmost block:
 If in a cold biome, water freezes into ice if possible.
 If snowing, a snow layer is placed if possible.
 Additionally, cauldrons can be filled with powder snow.
@@ -69,7 +69,7 @@ A certain number of blocks within the chunk receive random block ticks, as descr
 
 
 === Random tick ===
-Chunks consist of one subchunk per 16 blocks of height, each one being a 16×16×16=4096 block cube. Subchunks are distributed vertically starting at the lowest y level. Every chunk tick, some blocks are chosen at random from each subchunk in the chunk. The blocks at those positions are given a "random tick". Subchunks that do not contain at least one block that can react to random ticks are skipped.  All blocks are a possible target of a random tick, including air.
+Chunks consist of one subchunk per 16 blocks of height, each one being a 161616=4096 block cube. Subchunks are distributed vertically starting at the lowest y level. Every chunk tick, some blocks are chosen at random from each subchunk in the chunk. The blocks at those positions are given a "random tick". Subchunks that do not contain at least one block that can react to random ticks are skipped.  All blocks are a possible target of a random tick, including air.
 In Java Edition, the number of blocks chosen from each subchunk is specified by /gamerule random_tick_speed (defaults to 3), and one block can be chosen multiple times in one chunk tick. In Bedrock Edition, it also depends on randomTickSpeed (defaults to 1), but it specifies only relative speed instead of the exact number.
 Most blocks ignore this tick, but some use it to do something:
 
@@ -94,11 +94,11 @@ Budding amethyst may grow an amethyst bud on any of its sides as longs as there 
 Copper blocks (or any of its non-oxidized variants) may advance one stage in oxidation.
 Pointed dripstone may fill a cauldron below.
 Pointed dripstone may grow a stalagmite/stalactite if the conditions are met.
-Because random block ticks are granted randomly, there is no way to predict when a block can receive its next tick. In Java Edition, the median time between ticks is 47.30 seconds (log4096−34096(0.5)≈ 946.03 game ticks). That is, there is a 50% chance for the interval to be equal or shorter than 47.30 seconds and a 50% chance for it to be equal or longer than 47.30. However, sometimes it is much longer or shorter: for example, there is a 1.38% chance for the interval to be less than one second and a 1.23% chance for the interval to be over five minutes. On average, blocks are updated every 68.27 seconds (40963≈ 1365.33 game ticks). For the math behind these numbers, see the Wikipedia entries for the geometric distribution.
+Because random block ticks are granted randomly, there is no way to predict when a block can receive its next tick. In Java Edition, the median time between ticks is 47.30 seconds (log409634096(0.5) 946.03 game ticks). That is, there is a 50% chance for the interval to be equal or shorter than 47.30 seconds and a 50% chance for it to be equal or longer than 47.30. However, sometimes it is much longer or shorter: for example, there is a 1.38% chance for the interval to be less than one second and a 1.23% chance for the interval to be over five minutes. On average, blocks are updated every 68.27 seconds (40963 1365.33 game ticks). For the math behind these numbers, see the Wikipedia entries for the geometric distribution.
 
 
 == Scheduled tick ==
-Some blocks can request a tick sometime in the future. These "scheduled ticks" are used for things that have to happen in a predictable pattern—for instance, redstone repeaters schedule a tick to change state in Java Edition, water schedules a tick when it needs to flow.
+Some blocks can request a tick sometime in the future. These "scheduled ticks" are used for things that have to happen in a predictable patternfor instance, redstone repeaters schedule a tick to change state in Java Edition, water schedules a tick when it needs to flow.
 During the scheduled tick phase, each block position that had previously requested a scheduled tick for this game tick gets ticked.
 In Java Edition, there are two types of scheduled ticks: block ticks and fluid ticks. Block ticks are executed first based on priority, and then based on scheduling order. A lower value for priority results in earlier execution during the scheduled tick phase. If a redstone repeater is facing the back or side of another diode, its block tick has a priority of -3. If a redstone repeater is depowering, it has a priority of -2. Otherwise, the repeater has a priority of -1. If a redstone comparator is facing the back or side of another diode, it has a priority of -1. All other block ticks have a priority of 0. Then, each block with a scheduled fluid tick get a tick. Fluid ticks do not use priorities and are ordered based on scheduling order.
 In Java Edition, the maximum number of scheduled ticks per game tick is 65,536. In Bedrock Edition, the maximum number of scheduled ticks in a chunk per game tick is 100.
@@ -106,7 +106,7 @@ In Java Edition, the maximum number of scheduled ticks per game tick is 65,536. 
 
 == Redstone tick ==
 
-Redstone tick is a unit of time that describes a delay of two game ticks, creating a 1⁄10 of a second delay.
+Redstone tick is a unit of time that describes a delay of two game ticks, creating a 110 of a second delay.
 The redstone system is calculated on concurrent threads, meaning that redstone updates are processed independently of the main game loop. This architecture utilizes a two-phase tick system, known as produce ticks (P-Ticks) and consume ticks (C-ticks), or alternatively as Output Ticks and Input Ticks.
 These two phases form a single redstone tick, which spans 2 game ticks. There are 10 redstone ticks per standard 20-game-tick second.
 Tick cycle

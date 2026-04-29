@@ -1,0 +1,29 @@
+Bedrock Editor v1.2.7 is a minor release for the Bedrock Editor released on February 11, 2026.
+
+
+== Additions ==
+Added IListPaneViewControlPane API for list pane to create a view control with buildViewControl function. When the view control is set to visible, it will be displayed at the bottom of the root pane.
+
+
+== Changes ==
+Updated Jigsaw Tool UX
+Converted Jigsaw Tool UI from dropdown-based to CollectionTree component (pools displayed as folders with pieces as entries).
+Added localized error logging when jigsaw files can't be saved (file locked by another program).
+Moved checkboxes (Reuse Seed, Skip Validation) into a wrapping row layout.
+Updated Jigsaw UI strings.
+The farm generator now places crop block on tilled dirt and not water blocks.
+
+
+== Fixes ==
+Fixed a bug that entities can't spawn in the center of the cursor position for Summon Tool.
+Fixed a bug where most double slab blocks were missing from the Block Picker menu, preventing users from adding them to the Hotbar or using them in Brush Block filters.
+Large volume trim operations now do not freeze the UI screen and keyboard/mouse.
+Fixed a bug where players were unable to create a selection volume using the  Enter key in Marquee mode.
+Fixed the /structure load command placing structures at a different position in Editor mode compared to Test World.
+Fixed a bug where exporting a world did not display the file path in the Log Panel.
+
+
+== References ==
+
+
+== Navigation ==

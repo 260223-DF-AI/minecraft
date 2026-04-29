@@ -34,7 +34,7 @@ In Bedrock Edition, chests can be moved by pistons. Water and lava flow around c
 === Container ===
 
 A small chest has 27 slots of inventory space, and a large chest has twice that amount, at 54 slots. In the Java Edition interface, the top three rows for a large chest correspond to the left half of the chest when facing it, and the bottom three rows correspond to the right half. In Bedrock Edition, the top three rows correspond to whichever half was placed first and the bottom three to the other half.
-Chests open when used. To move items between the chest inventory and the player inventory or hotbar while the chest GUI is open, drag or shift-click the items. In Java Edition, holding ⇧ Shift and double-clicking while holding an item moves all items of the type clicked on in or out of the chest, to the extent that space is available for them. To exit the chest GUI, use the Esc control.
+Chests open when used. To move items between the chest inventory and the player inventory or hotbar while the chest GUI is open, drag or shift-click the items. In Java Edition, holding  Shift and double-clicking while holding an item moves all items of the type clicked on in or out of the chest, to the extent that space is available for them. To exit the chest GUI, use the Esc control.
 A chest cannot be opened if there is a conductive block above it (in Bedrock Edition, bottom slabs prevent chests from being opened). Solid faces do not prevent chests from opening, so the lid of the chest can phase through blocks such as bottom-half slabs, stairs, and non-conductive full cubes such as glass and ice. Cats sitting on chests prevent them from opening. Because chests themselves are non-conductive, two chests can be stacked on top of one another while still allowing the lower chest to be opened. Players can open chests when they are being hurt (effect of Instant Damage, Poison, Wither, on fire, damaged by other players or mobs, etc.).
 By default, the GUI of a chest is labeled "Chest" and the GUI of a large chest is labeled "Large Chest". A chest's GUI label can be changed by naming the chest in an anvil before placing it, or, in Java Edition, by using the /data command (for example, to label a chest at (0,64,0) as "Bonus Chest!", use /data modify block 0 64 0 CustomName set value "Bonus Chest!"). If half of a large chest is renamed, that name is used to label the GUI of the entire large chest, but if the named half is destroyed the other half reverts to the default label. If both halves of a large chest have different names, the GUI uses the name of the northernmost or westernmost half.
 In Java Edition, a chest can be "locked" by setting its [NBT Compound / JSON Object] lock tag using the /data command. If a chest's [NBT Compound / JSON Object] lock tag is not blank, the chest cannot be opened unless the player is holding an item that matches the item predicate in the lock tag. For example, to lock a chest at (0,64,0) so that the chest cannot be opened unless the player is holding an item named "Chest Key", use /data modify block 0 64 0 lock set value {components:{"minecraft:custom_name":"Chest Key"}}.
@@ -43,7 +43,7 @@ The capacity of a chest varies greatly, depending on its size, whether the items
 
 === Donkey, mule, or llama pack ===
 A chest can be added to a donkey, a mule, or a llama by pressing use on the animal.
-A chest attached to a donkey or mule has only 15 slots. A chest attached to a llama has anywhere from 3 to 15 slots depending on its "Strength" value (see Llama § Data values). The chest cannot be removed except by killing the carrier. The chest can be opened by holding sneak and pressing use, or by riding the carrier and pressing inventory.
+A chest attached to a donkey or mule has only 15 slots. A chest attached to a llama has anywhere from 3 to 15 slots depending on its "Strength" value (see Llama  Data values). The chest cannot be removed except by killing the carrier. The chest can be opened by holding sneak and pressing use, or by riding the carrier and pressing inventory.
 If shulker boxes are again used, each donkey, mule or strength value 5 llamas with a chest attached to it can carry up to 405 stacks of items (up to 25920 items), and with strength value 5 llamas, each caravan of 10 llamas with inventories full of shulker boxes can carry up to 4050 stacks of items (up to 259200 items).
 
 
@@ -186,7 +186,7 @@ Locked chest, a joke block from an April Fools' Day joke
 
 
 == External links ==
-"Block of the Week: Chest"     by Duncan Geere  – Minecraft.net, July 28, 2017.
+"Block of the Week: Chest"     by Duncan Geere   Minecraft.net, July 28, 2017.
 
 
 == Navigation ==

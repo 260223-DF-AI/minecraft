@@ -1,0 +1,147 @@
+21w08a is the eleventh snapshot for Java Edition 1.17, released on February 24, 2021, which renames grimstone to deepslate, adds deepslate ores, and makes changes to cave generation.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Cobbled deepslate
+
+Drops from deepslate when mined with a pickaxe without Silk Touch.
+Functions identically to cobblestone and blackstone in that it can be used to craft basic tools, furnaces, and brewing stands.
+Is used to craft all the deepslate variant blocks instead of regular deepslate.
+Renamed regular deepslate stairs, slabs and walls to cobbled variants.
+ Deepslate ores
+
+Added deepslate variants of diamond, iron, gold, lapis lazuli, and redstone ores.
+Take twice as long to mine as normal ores.
+Have the texture of deepslate replacing the normal stone texture.
+Take place of ores that generate in deepslate.
+Normal stone ores may still generate deep underground if they replace a different block, such as tuff.
+Can be used in blasting and smelting recipes like normal ores.
+These recipes can be unlocked in the recipe book with deepslate ores as well.
+ Smooth basalt
+
+Generates in place of the tuff layer on amethyst geodes.
+Can be obtained by smelting basalt.
+
+
+=== World generation ===
+Crack carvers
+
+Deep, long cracks in the ground that are thinner and straighter than canyons.
+Can reach over 90 blocks in depth.
+They are very similar to canyons in Bedrock Edition.
+
+
+=== General ===
+Tags
+
+Added the deepslate_ore_replaceables block tag.
+Contains deepslate.
+Added the diamond_ores, iron_ores, lapis_ores, and redstone_ores block and item tags.
+Contain the normal and deepslate variants of each ore type.
+Added the stone_ore_replaceables block tag.
+Contains stone, granite, diorite, andesite, and tuff.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Blackstone, deepslate, polished deepslate, chiseled deepslate, deepslate bricks, deepslate tiles and stair, slab and wall variants
+
+Textures have been tweaked slightly.
+Gold ore
+
+Tweaked texture.
+Is now once again unique from nether gold ore.
+Coal ore, copper ore, emerald ore, iron ore, lapis lazuli ore, redstone ore
+
+Tweaked texture.
+Deepslate
+
+Renamed from "Grimstone".
+Is no longer used to craft or repair any blocks or items.
+Has new unique breaking, placing, and footstep sounds.
+Can only be mined with a Silk Touch pickaxe.
+Lava
+
+Now replaces air below Y=-55.
+Spore blossoms
+
+Particles now appear in the air around the block.
+
+
+=== World generation ===
+Amethyst geodes
+
+Can no longer generate fully in midair.
+The tuff layer has been replaced with smooth basalt.
+Andesite
+
+No longer generates below Y=0.
+Caves
+
+Tweaked cave sizes.
+Ravines and regular cave carvers now generate below Y=0.
+Added more variation to carvers.
+Caves are now more filled with water.
+Glow lichen
+
+Generates almost twice as often.
+Lava
+
+Once again generates at the bottom of the world starting at Y=-54.
+Lava springs can now generate below Y=0.
+Water
+
+Water springs can now generate below Y=0.
+
+Mineral distribution
+
+Ore distribution has been changed again.
+Iron now generates below Y=0, but in smaller blobs and not as frequently.
+This was determined to be a bug, which was fixed in snapshot 21w08b.
+Gold is a little more common, but with 50% of blocks exposed to air skipped.
+Diamond is the same, but with 50% blocks exposed to air skipped as well.
+Increased frequency of buried lapis.
+Copper is now less common.
+Mineshafts
+
+Now generate again in the open air in caves.
+No longer appear floating.
+Tuff
+
+Now generates in ore blobs below Y=0.
+
+
+=== General ===
+
+Creative inventory
+
+Slime blocks and honey blocks have been moved to the "Redstone" tab.
+The categories of the recipes for these blocks in the recipe book have moved as well.
+Lectern position within the "Redstone" tab has been moved out of the "essential" group.
+Tags
+
+Added tuff to the base_stone_overworld block tag.
+Added deepslate gold ore to the gold_ores block and item tags.
+
+
+== Fixes ==
+3 issues fixed
+From the 1.17 development versions
+
+MC-213926  Rooted dirt footstep sounds are considerably quieter than normal dirt footstep sounds.
+MC-214782  Geodes can generate floating in caves.
+MC-214843  Old-style caves do not generate past Y=0.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

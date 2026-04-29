@@ -1,0 +1,99 @@
+1.13-pre3 is the third pre-release for Java Edition 1.13, released on June 21, 2018.
+
+
+== Changes ==
+Major memory usage optimizations.
+The resource pack folder textures/blocks got renamed to textures/block.
+The resource pack folder textures/items got renamed to textures/item.
+Blockstate files.
+"normal" for blocks without block states changed to an empty string ("").
+Item frames now have "map=false" instead of "normal" and "map=true" instead of "map".
+Model references no longer start at the models/block/ folder, but instead at models/.
+The minecraft:overworld Superflat preset has been changed.
+(Undocumented) Bubble pop particle and sound effects have been removed.
+
+
+== Fixes ==
+
+64 issues fixed
+From released versions before 1.13
+
+MC-258  Most text boxes / chat / scroll bars revert when the window changes size, fullscreen mode is toggled, or fullscreened game is tabbed into.
+MC-17851  Blocks requiring any support block (carpets, signs) placed on piston head break when sticky piston retracts.
+MC-31038  Double-tall plants do not cause updates when broken.
+MC-35856  Multiple background /title songs playing at one time / automatic music overlap (not Jukebox music).
+MC-48089  When destroyed, end portal giving "missing texture" particles.
+MC-87587  Server kicks client when executing: /title @a title [] or /tellraw @a [].
+From the 1.13 development versions
+
+MC-121721  /spreadplayers for one entity gives huge number as result for average distance.
+MC-121748  /data merge command feedback when nothing was changed is not meaningful.
+MC-121797  Cursor remains in text fields when clicking on some buttons or scroll lists.
+MC-122282  V-sync automatically turned off each time the game starts.
+MC-122351  Crash when exiting a world: java.lang.ArrayIndexOutOfBoundsException: -1.
+MC-122498  Some advancements and recipes are not upgraded when opening world in 17w47+.
+MC-122538  Iron Golems no longer spawn.
+MC-123011  Scores on scoreboard objectives created with old stats causes scoreboards to not store changes to scoreboard.dat.
+MC-123362  SuccessCount of command blocks use the "result" return value of a command instead of "success".
+MC-124025  Terracotta, spawn egg and entity statistics are lost on world upgrade.
+MC-124174  Game crash when give yourself an item with empty name.
+MC-124325  Nested /execute commands can only store success/result once.
+MC-124701  "Unknown criteria" (argument.criteria.invalid) is not translated.
+MC-124876  Villagers requesting tools with no damage provided specifically want Damage:0.
+MC-125644  Dispenser filled with bone meal cannot create sea grass.
+MC-126030  Horse saddle texture uses chest texture.
+MC-126038  Observers getting moved in "on" state rather than "off" state.
+MC-126133  Undercover ravines sometimes generate cut off at chunk borders.
+MC-126138  No rain sound in ocean.
+MC-126388  Horse reigns float when not riding horse.
+MC-126809  minecraft:exploration_map loot table function only works on block containers.
+MC-126976  Water adjacent farmland and grass path graphical errors.
+MC-127038  Sea plants generate directly under or cut off by ocean ruins.
+MC-127044  Waterlogged blocks don't move entities if the water in them is flowing.
+MC-127109  Nether caves under lava oceans don't fill up with lava properly.
+MC-127230  Water in waterlogged blocks can be picked up only by clicking on the waterlogged block itself.
+MC-127326  Rain splash particles don't appear on the surface of the water.
+MC-127611  The archived icons are created in the wrong position.
+MC-127720  Baby horses have long necks.
+MC-128071  Desert rabbits were the wrong color, but now they are missing.
+MC-128154  Some waterlogged blocks have rain going through them.
+MC-128237  Conduits, kelp, coral (fans), and tall grass have full hitboxes.
+MC-128558  Swamp Hills (mutated_swampland) biomes have wrong colored water (light yellow).
+MC-128852  Floating lava and soulsand formation caused by nether cave generation.
+MC-129383  Loading 18w16a worlds in 18w19b: [WorldGen-Worker-1/ERROR]: Couldn't load chunk.
+MC-129526  Grass and ferns don't show up on a map.
+MC-129629  1.13 worlds isn't loading for sometimes.
+MC-129725  All solid blocks can pass light when converting a world from 18w16a to 18w20+.
+MC-129980  Some users cannot use F3-related features properly.
+MC-130020  piston_inventory.json is outside of the block models file.
+MC-130169  Enchanted items with capitals in enchantment ID cause crash (path of location: minecraft:Cookie).
+MC-130374  vSync turns off in fullscreen mode.
+MC-130475  Boats immediately sink when placed on water.
+MC-130486  Side of water and lava not rendered besides non-full-height blocks.
+MC-130554  Waterlogged blocks have a full cube hitbox.
+MC-130615  Using a resource pack with a block model with itself as a parent removes all textures.
+MC-130667  Flowing water freezes in frozen biomes.
+MC-130690  EntityTag for spawn eggs is not working.
+MC-130778  End return portals don't return you to the center End Island.
+From the previous development version
+
+MC-131343  Crash when clicking on a recipe in the recipe book without sufficient ingredients.
+MC-131344  Texture z-fighting on baby horse legs.
+MC-131416  Conversion of a 2013 world crashes as of 1.13.
+MC-131419  Squids, fish, and dolphins don't suffocate on land.
+MC-131458  Cobwebs don't appear on maps.
+MC-131633  Mobs get stuck on carpet.
+MC-131706  Water doesn't destroy carpet.
+Private issues
+
+MC-131154  Resource locations allow empty path pieces
+MC-131400  Structure names allow trailing dots for folder names
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

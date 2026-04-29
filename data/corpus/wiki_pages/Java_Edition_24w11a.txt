@@ -1,0 +1,315 @@
+24w11a is the twelfth snapshot for Java Edition 1.20.5, released on March 14, 2024, which adds breeze rods, heavy cores, the mace, 3 new pottery sherds, 2 new smithing templates and 2 new banner patterns behind experimental toggles, and fixes bugs.
+
+
+== Changes ==
+
+
+=== Items ===
+Wolf armor
+
+Changed the crack textures.
+
+
+=== Mobs ===
+Bees and parrots
+
+Adjusted their flying behavior to keep them from overshooting their position when flying up and down.
+Wolf
+
+When summoned using spawn eggs or commands, the variant selection now follows the natural spawning biome rules with the following extensions:
+Rusty wolf is selected in jungles and bamboo jungles.
+Spotted wolf is selected in savannas and windswept savannas.
+Striped wolf is selected in badlands and eroded badlands.
+
+
+=== Command format ===
+Predicates
+
+Removed any entity sub-predicate.
+Added slot name contents for single-slot entities like item frames and item displays.
+Contents of item entity can now be accessed through contents slot name.
+Component-specific item predicate properties have been moved to separate field predicates.
+Some fields from item predicate have been moved to a map in an optional field predicates.
+The new field is similar to the components field on item stacks.
+This was done to simplify addition for future predicates and to allow sub-predicates to more closely resemble names of components they match.
+The following fields have been moved:
+enchantments - field moved to sub-predicate minecraft:enchantments
+stored_enchantments - field moved to sub-predicate minecraft:stored_enchantments
+potions - field moved to sub-predicate minecraft:potion_contents
+custom_data - field moved to sub-predicate minecraft:custom_data
+durability field has been expanded to minecraft:damage predicate:
+This check now works for any item that has minecraft:damage component
+An item that does not have a minecraft:damage component can never match
+To check for unbreakable items, query value of minecraft:unbreakable component
+Fields:
+damage - optional bounds for value of minecraft:damage component
+durability - optional bounds for durability (max damage minus value of minecraft:damage)
+Predicates minecraft:enchantments, minecraft:stored_enchantments, minecraft:potion_contents and minecraft:damage require matching component to exist on item
+That means that, for example, matching for empty enchantment list doesn't pass on items without minecraft:damage component
+Note: some components, like minecraft:enchantments have default values, so they always match
+
+
+=== General ===
+Background
+
+Menu background blur has been updated to look better and improve performance.
+Data packs
+
+The data pack version is now 35.
+Added set_fireworks loot function.
+New function for setting the details of the minecraft:fireworks component.
+Fields:
+conditions: list of conditions (default: []):
+Conditions to check before applying the function
+flight_duration: Optional integer, 0-255:
+The flight duration measured in number of gunpowder.
+If omitted, the flight duration of the item is left untouched - or set to 0 if the component did not exist before.
+explosions: List of firework_explosion data - same format as the explosion field in the minecraft:fireworks component:
+The explosion data to set
+mode: enumerated value deciding function for explosions:
+replace_all: fully replace the explosions list
+replace_section: replace a section of the explosions. Arguments:
+offset: optional non-negative integer:
+Start of replaced range.
+If omitted, 0 is used.
+size: optional non-negative integer:
+Size of range to be replaced in explosions.
+If omitted, the size of explosions field is used.
+insert: insert explosions, moving existing explosions to after the inserted section. Arguments:
+offset: optional non-negative integer:
+Index before which explosions are inserted.
+If omitted, 0 (before first explosion) is used.
+append: append explosions at the end of the list.
+Added set_firework_explosion loot function.
+New function for setting the details of the minecraft:firework_explosion component.
+Fields:
+conditions: list of conditions (default: []):
+Conditions to check before applying the function
+shape: optional explosion shape:
+The explosion shape to set.
+If omitted, the original shape is kept (or small_ball is used if there was no component)
+colors: optional integer array, RGB values:
+List of initial particle colors to replace the ones on the existing explosion with
+If omitted, the original colors are kept (or [] is used if there was no component)
+fade_colors: optional integer array, RGB values:
+List of fade-to particle colors to replace the ones on the existing explosion with
+If omitted, the original colors are kept (or [] is used if there was no component)
+trail: optional boolean:
+Set whether the explosion should have a trail or not.
+If omitted, the original has_trail value is kept (or false is used if there was no component)
+twinkle: optional boolean:
+Set whether the explosion should have a twinkle or not.
+If omitted, the original has_twinkle value is kept (or false is used if there was no component)
+Added set_book_cover loot function.
+New function for setting the cover details of the minecraft:written_book_content component. If present, any pages in the book are left untouched.
+Fields:
+conditions: list of conditions (default: []):
+Conditions to check before applying the function.
+title: optional filterable text (same format as title on the minecraft:written_book_content component):
+The title to set.
+If omitted, the original title is kept (or an empty string is used if there was no component)
+author: optional string:
+The author to set.
+If omitted, the original author is kept (or an empty string is used if there was no component)
+generation: optional integer [0; 3]:
+The generation value to set.
+If omitted, the original generation is kept (or 0 is used if there was no component)
+Added set_writable_book_pages loot function.
+New function for manipulating the pages of the minecraft:writable_book_content component.
+Fields:
+conditions: list of conditions (default: []):
+Conditions to check before applying the function.
+pages: list of filterable strings (same format as pages on the minecraft:writable_book_content component):
+The pages to apply.
+mode: enumerated value deciding function:
+replace_all: fully replace the book contents.
+replace_section: replace a section of the book. Arguments:
+offset: optional non-negative integer:
+Start of replaced range.
+If omitted, 0 is used.
+size: optional non-negative integer:
+Size of range to be replaced in book.
+If omitted, the size of pages field is used.
+insert: insert pages, moving existing pages to after the inserted section. Arguments:
+offset: optional non-negative integer:
+Index before which pages are inserted.
+If omitted, 0 (before first page) is used.
+append: append pages at the end of the book.
+Added set_written_book_pages loot function.
+New function for manipulating the pages of the minecraft:written_book_content component. Same format as set_writable_book_content but the pages field contains filterable components instead of strings (same format as pages on the minecraft:writable_book_content component).
+Any cover data is left untouched, and the page content components are set to resolve next time a player opens the book.
+Particles
+
+Status effect particle colors are no longer blended into one particle color.
+All active visible status effect particles are now rendered separately.
+The frequency of emitting status effect particles has been lowered to clutter the screen less.
+Resource packs
+
+The resource pack version is now 29.
+Added gui/inworld_menu_background, gui/inworld_menu_list_background, gui/inworld_header_separator, and gui/inworld_footer_separator textures to allow menus accessed from the pause menu to look different from menus accessed from the title screen.
+Added gui/tab_header_background texture, which is rendered behind the tab buttons in the "Create World" screen.
+Added misc/credits_vignette texture, which is rendered behind the poem and the credits.
+The blur post-processing shader has been renamed to box_blur.
+Added optional boolean field use_linear_filter to post-processing passes which when set to true switches texture sampling mode from nearest-neighbor sampling to linear interpolation for that pass.
+Added entity_outline_box_blur post-processing shader.
+
+
+== Experimental ==
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Heavy core
+
+A mysterious, dense block which can be combined with a breeze rod to craft a mace.
+Can be found as a loot reward in vaults with a chance of 2.2%.
+When placed, it has the same size as a player head, and can be oriented in 12 directions.
+Mining a heavy core is pretty slow - it takes 45 seconds to mine and has no correct tool.
+Are fully resistant to explosions.
+Pop off immediately if pushed by a piston.
+
+
+==== Items ====
+Banner patterns
+
+Added two new banner patterns:
+ Flow banner pattern
+ Guster banner pattern
+ Breeze rod
+
+Dropped by the breeze.
+Can be crafted into 4 wind charges.
+Can be used with the heavy core to craft a mace.
+ Mace
+
+A new heavy weapon that can be crafted from a breeze rod and a heavy core.
+Using the weapon while falling can increase the damage output. The higher the player falls, the more damage is dealt.
+This can be done by jumping towards the target and hitting them before the player hits the ground.
+Successfully striking a target in this way negates any damage accumulated from the fall, similar to how a wind charge works.
+Other entities near the struck enemy receive knockback.
+Can not be enchanted.
+Can be repaired with breeze rods using an anvil.
+Can be used to mine cobwebs, dropping string.
+Players can use a mace in combination with wind charges to launch up and deliver devastating smash attacks on their enemies.
+Pottery sherds
+
+Added 3 new pottery sherds, that can be found on decorated pots inside of trial chambers:
+ Flow pottery sherd
+ Guster pottery sherd
+ Scrape pottery sherd
+Smithing templates
+
+Added two new smithing templates, that are exclusively obtained from vaults:
+  Bolt armor trim
+  Flow armor trim
+
+
+=== Changes ===
+
+
+==== Blocks ====
+ Trial spawners
+
+Now appear more frequently in the trial chambers corridors.
+ Vaults
+
+Their loot tables have been updated to address some inventory management issues.
+The player now gets no more than 1 unstackable item per vault.
+The player more often gets rewards which can stack together.
+Horse armor and saddles have been removed from the loot table.
+Can now eject:
+Wind charges
+Bolt armor trim
+Flow armor trim
+Flow banner pattern
+Guster banner pattern
+Heavy core
+Honey bottle
+Arrow
+Arrow of Poison
+Golden apple
+
+
+==== Mobs ====
+ Breeze
+
+Drops 1-2 breeze rods instead of wind charges when killed by a player.
+The number of breeze rods dropped is affected by Looting.
+
+
+==== World generation ====
+ Trial chambers
+
+Added new chambers and variations, with new challenges.
+
+Remade chamber_9, and renamed it to slanted.
+Remade chamber_3, and renamed it to pedestal.
+Added flow, guster, and scrape pottery sherds to the decorated pots in the decor structure pool.
+Changed the layout of the blocks around vaults.
+
+
+== Fixes ==
+42 issues fixed
+From released versions before 1.20
+
+MC-153329  Leashing an iron golem breaks its pathfinding until reloading the world.
+MC-165948  Bees can be lured into dangerous blocks.
+MC-168407  Bees can get stuck in a lantern.
+MC-170000  Hand lighting / lighting of held items changes drastically in first-person mode when looking around.
+MC-172047  Wolves try to attack armor stands.
+MC-173303  Leashed pets teleport to the player when reloaded.
+MC-186626  /weather not working in custom dimensions.
+MC-208528  Feeding tamed baby wolves and cats causes them to sit down/stand up.
+MC-221754  Leashed wolves no longer attack when unleashed.
+MC-229919  Bees don't recognize beehives or bee nests with a campfire directly below and a block on top.
+MC-232560  Tamed wolf movement speed decreases when unleashed from a fence.
+MC-260921  Data is focused last on the statistics screen when using keyboard navigation.
+MC-261749  Tamed cats don't emit mob interaction vibrations for entering sitting/standing mode.
+From 1.20.1
+
+MC-263873  Elements within the statistics menu are not selected in order when using the  Tab key.
+From 1.20.4
+
+MC-268110  Deleting world results in a file directory error.
+MC-268624  "Saving world" message is rendered behind pause menu background, instead of on top.
+MC-269279  The "Normal user" button within the Realms player menu is improperly capitalized.
+From the 1.20.5 development versions
+
+MC-267923  The "Done" button doesn't always deselect when you close out of a sign UI, making typing spaces difficult.
+MC-267930  No element is focused when opening the statistics screen using keyboard navigation.
+MC-268282  Picking up lava, powder snow or water using a bucket can be desynced.
+MC-268405  Wind charges can move in unusual ways.
+MC-268408  Game crashes when a wind charge hits an entity after disabling update_1_21 data pack.
+MC-268582  Facing direction no longer affects shading of the first-person arm.
+MC-268796  "Saving world" text is blurred when pausing.
+MC-268805  panorama_overlay.png no longer works.
+MC-268811  Clicking 'Done' for language settings is ineffective; changes apply after double-clicking the language option.
+MC-268812  Dirt background is used in the pause menu and some other menus in Programmer Art; black background used in High Contrast resource pack.
+MC-268816  Credits background texture no longer scrolls in Programmer Art and other such resource packs.
+MC-268819  Programmer Art, High Contrast, other resource packs: Top of "Create New World" screen is transparent/not dirt.
+MC-268855  Typing /function then space closes the internal server.
+MC-268862  The End is incredibly dark with the "High Contrast" resource pack enabled.
+MC-268902  Low FPS when blurred menu background is visible.
+MC-268908  Trying to navigate to the Font Settings menu using the  Tab key exits the language menu.
+MC-268953  Layout of gamerules screen breaks when toggling fullscreen mode or changing resolution.
+MC-268956  Command blocks, structure blocks and jigsaw blocks use menu_background.png.
+MC-268967  Night vision does not work properly in High Constrast mode.
+MC-269032  Blur shader runs when menu blurriness is 0 %.
+MC-269077  Sign editing screen uses menu_background.png.
+MC-269081  Some Realms icons are rendered behind the button in the main menu, instead of not being rendered at all.
+MC-269122  Editing signs causes background blur.
+From the previous development version
+
+MC-269134  Baby wolves can no longer be fed to make them grow up faster.
+MC-269136  Incorrect weapon.* command suggestions.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

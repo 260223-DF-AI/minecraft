@@ -1,0 +1,165 @@
+Screen effects encompass a variety of effects applied alongside or beneath the heads-up display as augmentations to the player's point of view as a method of conveying further information about a player's current state. They are not to be confused with visual effects caused by the game's shaders, which are applied directly in the game rendering.
+
+
+== Summary ==
+
+
+=== Overlays and vignettes ===
+
+
+=== Animated sprites ===
+
+
+=== Visual transformations ===
+
+
+== Overlays ==
+
+
+=== Suffocation ===
+
+This effect manifests when an applicable mob or player's eye level intersects specific blocks; generally those that are full solid cubes and block both vision and movement, with the exception of ice.
+In Java Edition this effect involves a darkened version of the block texture covering the entire area of the screen.
+In Bedrock Edition, the block's texture is instead arranged into a cube around the player in which the camera can move. This is the case regardless of the player's placement inside the block; the player can be at the edge of it (such that the player's view is partially outside it and the outside texture is clearly visible) and the player can still be rendered as if at the exact center of the cube.
+
+
+=== On fire ===
+
+When the player is on fire, this animated effect is applied to the screen. This is caused by being inside of fire or lava (even in Creative mode, although not in Spectator), after exiting such a block (except in Creative/Spectator), or being set on fire through the attack of a burning mob or a burning arrow.
+This overlay always displays as fire, even if the player in question is inside of soul fire.
+In Java Edition this effect involves two intersecting texture planes being rendered across the bottom half of the screen with the fire texture.
+In Bedrock Edition, the fire texture is rendered as a cubemap around the player with only the front and a small part of the sides visible.
+
+
+=== Nether portal ===
+
+Note: this section discusses the Nether portal texture overlay. The Nether portal/nausea wobble effect effect is discussed in the Distortion effect/Nausea sickness overlay sections.
+When the player is inside of a Nether portal, this effect is applied to the screen. It always coincides with either the distortion effect and/or its overlay.
+In Java Edition this effect involves the Nether portal texture being stretched across the entirety of the screen.
+In Bedrock Edition, the texture is instead arranged into a cube around the player in which the camera can move.
+
+
+=== Underwater ===
+
+The underwater effect is a blue vignette.
+
+
+=== Nausea sickness overlay ===
+
+This effect is a green vignette.
+This effect appears only when the player has Nausea, and the distortion effect is set to 0%. The effect becomes more transparent as the slider is turned up, until 100% distortion, in which it disappears.
+
+
+=== Darkness vignette ===
+
+This effect is a black circular blur at the corners. This effect is similar to a regular vignette. This effect appears usually in caves; however, it can appear in any dark place. It also appears when players are inside the structure of trial chambers.
+In Bedrock Edition, the vignette gradually fades in as the sky darkens below Y=32, and at Y=-12, it suddenly turns into it's full opacity.
+
+
+=== World border overlay ===
+
+The world border effect is a red vignette. This effect becomes more intense as the player moves closer to the world border. The effect reaches its maximum strength when the player goes past the world border.
+
+
+=== Freezing overlay ===
+
+The freezing overlay is a circular formation of crystals and snow flakes that appears when the player is freezing in powder snow. This effect slowly fades in until it is at full opacity.
+If the player equips leather armor while freezing, this overlay fades out slowly, then disappears.
+
+
+=== Pumpkin blur ===
+
+The pumpkin blur is a cut-out shape of the carved pumpkin's face that appears when wearing a carved pumpkin. In Java Edition, the texture is stretched to the edges of the screen; in Bedrock Edition, the texture is placed in the middle of the screen, with dark edges filling the rest.
+
+
+=== Spyglass scope ===
+
+The spyglass scope is a brown square in the middle of the screen that appears when using a spyglass. This scope effect quickly zooms in when using a spyglass, until the top and bottom are partly covered.
+
+
+== Animated sprites and models ==
+
+
+=== Mining Fatigue ===
+
+When within a spherical radius of 50 blocks of an elder guardian, the player is inflicted with Mining Fatigue III. This is indicated by a ghost of an elder guardian appearing in the player's view, which moves from the top of the screen to the bottom.
+In Java Edition, this occurrence is considered a particle effect; it can be summoned with the /particle minecraft:elder_guardian command.
+In Bedrock Edition, this occurrence is caused by a separate mob called the elder guardian ghost. However, when it is summoned using /summon minecraft:elder_guardian_ghost, it is invisible and rises to the sky.
+The model of the elder guardian is used for this effect. This means that changing the texture and model associated with the elder guardian also changes what appears on the player's screen.
+
+
+=== Totem of Undying ===
+The effect appears when a totem of undying is used. The totem spins to the middle of the screen and disappears. 
+In Java Edition, the totem of undying effect is a full 3D model. 
+In Bedrock Edition, the totem of undying effect is a 2D texture.
+
+
+=== Hero of the Village ===
+
+This effect appears when the player obtains Hero of the Village from defeating a raid. This effect does not happen when the effect is given through commands. It is similar to the totem of undying effect.
+
+
+=== Raid Omen ===
+
+This screen effect appears when the player enters a village while under the Bad Omen effect, converting it into Raid Omen. This effect does not appear when giving Raid Omen through commands, and it looks similar to the totem of undying effect.
+
+
+== Transformations ==
+
+
+=== Damage tilt ===
+
+In Java Edition, when the player receives damage, the screen tilts to the direction opposite of the entity or block who damaged the player. 
+In Bedrock Edition, when the player receives damage, the screen tilts to the right regardless of the damage direction.
+The strength of damage tilting can be adjusted in the settings.
+
+
+=== View bobbing ===
+View bobbing is a toggleable feature that adds a slight movement of the screen from left to right when walking. It also affects items and blocks in the player's hand.
+
+
+=== Distortion effects ===
+These effects are seen when the player either goes through a nether portal or has the nausea status effect. Different levels do not affect the distortion. However, the effect can be affected by changing the distortion effect setting.[Java Edition  only]
+
+
+=== FOV based changes ===
+While sprinting, flying, swimming or while affected by a speed effect, the FOV (field of view) increases. The FOV decreases when being affected by the slowness effect, while using a spyglass, by using a bow, or by going into water or powder snow. The FOV can be changed in settings with a minimum of 30, and a maximum of 110. Different levels of slowness or speed affect the FOV more than others.
+FOV effects can be toggled in the settings.
+
+
+=== Camera shake ===
+
+With the /camerashake command, a player's camera can perform a shaking effect. This can be either positional (shaking the camera position) or rotational (shaking the camera direction). The effect can be disabled in the settings.
+
+
+== History ==
+
+
+=== Overlays ===
+
+
+=== Animated sprites ===
+
+
+==== Java Edition ====
+
+
+==== Bedrock Edition ====
+
+
+==== Legacy Console Edition ====
+
+
+=== Transformations ===
+
+
+==== Java Edition ====
+
+
+==== Bedrock Edition ====
+
+
+== References ==
+
+
+== Navigation ==

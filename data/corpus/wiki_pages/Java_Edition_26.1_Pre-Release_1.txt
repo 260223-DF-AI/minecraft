@@ -1,0 +1,145 @@
+26.1 Pre-Release 1 (known as 26.1-pre-1 in the launcher) is the first pre-release for Java Edition 26.1, released on March 10, 2026, which updates the panorama and makes technical changes. This is the first pre-release released in 2026, and the first pre-release to be released with only an unobfuscated build.
+
+
+== Additions ==
+
+
+=== General ===
+Number providers
+
+Added minecraft:environment_attribute
+Fetches and provides the value of an environment attribute (that can be represented as a number).
+This provider requires a context with an origin position set as long as the environment attribute can vary positionally.
+Format: object with fields:
+attribute  environment attribute ID to fetch.
+e.g. {type: 'environment_attribute', attribute: 'gameplay/sky_light_level'}
+Predicates
+
+Added the minecraft:environment_attribute_check loot predicate.
+Exactly matches the value of an environment attribute at a given position.
+This predicate requires a context with an origin position set as long as the environment attribute can vary positionally.
+Format: object with fields:
+attribute  environment attribute ID to test
+value  Exact value of the environment attribute to match
+e.g. {condition: 'environment_attribute_check', attribute: 'gameplay/piglins_zombify', value: true}
+Tags
+
+Added the #can_spawn_from_bone_meal configured feature tags.
+Contains features that, when added in a biome, can be spawned when using bone meal in that biome.
+
+
+== Changes ==
+
+
+=== Command format ===
+/time
+
+Syntax:
+/time [of <clock>] rate <rate>  sets the rate multiplier at which the clock should advance.
+This only changes the rate at which the world clock and any timelines dependent on it advance their internal timers.
+For example, in the case of the minecraft:overworld clock, the day/night cycle will pass quicker with a larger value, but actual game simulation will not speed up (as would happen with /tick rate).
+A rate of 1 corresponds to normal speed.
+rate is a float between 0 (exclusive) and 1000 (inclusive).
+
+
+=== General ===
+Data component format
+
+minecraft:provides_banner_patterns
+The component now also accepts an ID or a list of IDs in addition to a tag.
+minecraft:blocks_attacks
+The field bypassed_by now also accepts an ID or a list of IDs in addition to a tag.
+minecraft:damage_resistant
+The field types now also accepts an ID or a list of IDs in addition to a tag.
+Data pack
+
+The pack format version is now 101.0.
+The "Default Components" report generator no longer outputs files for entries without any components.
+Items model definition
+
+minecraft:end_cube special model type
+New special model type that renders a cube with the same texture effects as the end portal and the end gateway blocks.
+Fields:
+effect  texture effect to apply, one of: portal, gateway
+Loot functions
+
+minecraft:set_instrument
+The options field now also accepts an ID and a list of IDs in addition to a tag.
+Panorama
+
+Updated the panorama to reflect Tiny Takeover.
+Rendering
+
+End gateway and end portal should now look the same when rendered on a block display as they look when placed in world.
+Resource pack
+
+The version is now 84.0.
+Updated textures for Pup to fix issues with overlapping textures.
+Shaders
+
+The core/rendertype_translucent_moving_block shaders have been removed in favor of core/block.
+Text component format
+
+minecraft:object
+Added a new optional field named fallback that contains a text component to be used when object component itself can't be displayed (for example when printing messages in server logs or during narration).
+Objects of type player (player heads) no longer can be used in server status messages (MotD).
+All components of that type will be replaced by a fallback text.
+World generation
+
+Flower features
+Features spawned from Bone Meal are no longer restricted to the flower feature type, and instead controlled by the #can_spawn_from_bone_meal configured feature tag.
+The flower, flower_no_bonemeal, and random_patch feature types have been removed.
+Instead, patches can be expressed as a sequence of count and random_offset placement modifiers.
+Int Providers
+Added the trapezoid int provider
+Selects a random value with a trapezoid distribution, similar to the trapezoid float provider.
+Format: object with fields:
+min: integer, the minimum value to generate.
+max: integer, the maximum value to generate.
+plateau: integer, the width of the "plateau" of the distribution in which all values are equally likely to occur.
+A value of 0 is equivalent to a triangle distribution.
+A value of max-min is equivalent to a uniform distribution.
+
+
+== Fixes ==
+25 issues fixed
+From released versions before 26.1
+
+MC-195237  End portals and End gateways held by endermen or as block display entities are not rendered, but Nether portals are.
+MC-230746  Pointed dripstone does not grow with a waterlogged block 2 blocks above it but does fill cauldrons.
+MC-306427  Certain mobs holding items with empty "kinetic_weapon" components crash the game whenever target acquisition succeeds.
+From the 26.1 development versions
+
+MC-305518  Baby wolves' tail uses an incorrect UV map.
+MC-305702  Zombies and their variants have lost their special animation when holding spears.
+MC-305914  /swing does not swing players' arms on their perspective.
+MC-306056  The selected difficulty does not visually update when going into and out of the game rules menu.
+MC-306232  The block breaking animation on banners is now amplified.
+MC-306315  The left side of wolf pups' heads is misaligned, causing a gap and texture error.
+MC-306338  Baby zombified piglins' snout texture was made for a 431 cube model, even though the snout model is actually a 331 cube.
+MC-306341  Helmets on baby humanoids shift off-center when their heads rotate.
+MC-306532  The error that occurred when a resource pack used textures that were too large is now incomprehensible.
+MC-306571  CommandEncoder#copyTextureToBuffer has incorrect parameter validation statements.
+MC-306612  Baby zombies, baby husks, and gurgles now hold items like players do.
+MC-306624  Various translucent geometry is now invisible behind name plates.
+MC-306631  Baby zombies, husks, drowned, and zombified piglins spawned by using spawn eggs on normal ones can't pick up items.
+MC-306633  The "Toggle GUI" key bind doesn't work when set to a mouse button.
+MC-306653  Name plates are no longer visible through opaque blocks.
+From the previous development version
+
+MC-306705  Copper golem statues with a pose now appear upside down as items.
+MC-306706  The game hangs/freezes upon losing focus.
+MC-306708  Block state rendering of chests for the left and right block states uses the single chest texture.
+MC-306713  The most transparent pixels of the gradient banner patterns are no longer visible.
+MC-306742  Rendering an empty item model with oversized_in_gui causes a crash.
+MC-306748  Profiler tick ended before path was fully popped (remainder: 'root'). Mismatched push/pop?.
+MC-306796  Text displays with see_through set to 1 now z-fight with themselves.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

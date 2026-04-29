@@ -1,0 +1,134 @@
+15w38a is the twenty-fourth snapshot for Java Edition 1.9, released on September 16, 2015, which adds skeleton horsemen.
+
+
+== Additions ==
+
+
+=== Mobs ===
+ Skeleton horsemen
+
+Added "skeleton trap" horses. When a player approaches to within 10 blocks, the following happens:
+The SkeletonTrap flag is cleared.
+Lightning strikes the horse.
+The horse becomes skeletal if it isn't already.
+The horse becomes tamed.
+The horse becomes fully grown (if a baby) and the breeding cooldown is reset.
+A skeleton is spawned riding the horse.
+If on Peaceful, the skeleton doesn't spawn, while the horse does.
+The skeleton has damage immunity for 3 seconds.
+The skeleton doesn't despawn, since it has the tag PersistenceRequired set to true.
+The skeleton is wearing an iron helmet, unless it randomly spawned with some other headgear.
+The skeleton's bow and helmet are enchanted as if on an enchantment table at level 522.
+The level is higher depending on regional difficulty; on Easy it is always a level-5 enchantment.
+Three additional skeletal horses with riders are spawned in the vicinity.
+
+
+=== Command format ===
+NBT format
+
+SkeletonTrap (byte): Indicates whether the horse is a skeleton trap (i.e. whether or not the horse will spawn 4 undead horsemen in its place when a player gets within 10 blocks of it).
+/summon EntityHorse ~ ~1 ~10 {SkeletonTrap:1b}.
+SkeletonTrapTime (integer), incremented each tick when SkeletonTrap is set to 1. The mob automatically de-spawns when it reaches 18000 (15 minutes). This will prevent the hostile horses from overflowing the world, similar to chicken jockeys.
+/summon EntityHorse ~ ~1 ~10 {SkeletonTrap:1b,SkeletonTrapTime:17980}.
+Statistics
+
+Added "Times Slept in a Bed" (stat.sleepInBed) to track the amount of times a player has used a bed.
+
+
+== Changes ==
+
+
+=== Blocks ===
+All sloped rail types
+
+Hitbox heights are decreased from 10 pixels of block to about 2.5 pixels of a block.
+Crops
+
+Improved drop chances for seeds (average 1 57 per crop harvested instead of 1 35), potatoes and carrots (average 2 57 per crop harvested instead of 2 35), and beetroot seeds (average 2 per crop harvested instead of 45).
+End rod
+
+The player can no longer step up onto an end rod as if it was a slab or stairs.
+Fire
+
+Goes out less often under the rain.
+The chance of going out each fire tick is reduced from 100% to 045%, depending on the age property.
+
+
+=== Mobs ===
+General
+
+Improvements to mob AI.
+Skeletons
+
+Have new idle sounds.
+Skeletons can now walk, strafe and shoot at the same time.
+They walk away from players that are too close and toward players that are too far.
+They also sprint toward the player when very far away.
+Now can spawn riding "skeletal horses" through the new "skeleton trap" horse.
+Tamed ocelots & wolves
+
+Deaths (and killers) are now announced to their owners on chat, even if unnamed.
+Villagers
+
+Now pick up and plant beetroot seeds.
+Now pick up beetroot and use it in the same way as they do carrots and potatoes.
+
+
+=== Non-mob entities ===
+Lightning
+
+Natural lightning strikes may spawn a "skeleton trap" style skeletal horses.
+Chance is calculated from the regional difficulty score: 5% * raw regional difficulty score.
+3.757.5% chance on Easy, 7.520% chance on Normal, 11.2533.75% chance on Hard.
+
+
+== Fixes ==
+29 issues fixed
+From released versions before 1.9
+
+MC-1230  Players and mobs can fall through extending/retracting pistons.
+MC-1635  Hitboxes for some blocks are broken.
+MC-1720  Dropped items bounce on stairs, cauldrons, carpets, and full/locked hoppers.
+MC-32850  Server GUI text box is empty (.exe only).
+MC-69652  Mobs de-aggro after punching them.
+MC-73302  Block collision box issues (mobs glitch through blocks and more).
+MC-77972  No large red mushrooms in mushroom biomes 1.8.2 onwards.
+MC-78759  Hopper splitting items into "Minecart with chest"s next to each other.
+MC-79995  Too many banners items (in chests) will become invisible after 6-7 chests.
+MC-81738  Crash: IndexOutOfBoundsException on Tesselating block in world.
+MC-88101  Retracting blocks don't move/bounce entities correctly.
+MC-88480  Minecarts accept items from hopper 2 blocks above.
+From the 1.9 development versions
+
+MC-83002  Villagers don't pick up beetroots or beetroot seeds.
+MC-83266  Beetroot farming non-sustainable.
+MC-86253  In multiplayer, when a player is blocking with a shield, other players see the shield as the normal state.
+MC-86845  Minecart command blocks kick players from servers.
+MC-87802  Excessive banners (as blocks) do not render.
+MC-87946  Monsters can see the player through walls.
+From the previous development version
+
+MC-88357  Crash when going outside height limit or into the void with F3.
+MC-88365  Shift-clicking combined shields+banners moves the whole banner stack to the inventory, but only removes one banner from the crafting grid, duplicating the rest.
+MC-88377  Crash when crafting an empty shield with a banner.
+MC-88396  Pistons do not move unextended pistons.
+MC-88428  Pistons can push obsidian.
+MC-88438  Vines cannot be placed on blocks in Creative or Survival mode.
+MC-88446  Unconditional impulse command blocks interact unexpectedly with conditionMet.
+MC-88470  Joining a multiplayer game within render distance of player causes "invisibility".
+MC-88499  Breaking top vine growing ON jungle tree stem removes all lower vines.
+MC-88812  Hopper: java.lang.NullPointerException: Rendering screen.
+MC-88815  Can't place paintings bigger than 2x2.
+
+
+== Videos ==
+
+
+== Trivia ==
+15w38a was previously removed from the launcher for some time, but was added back in September 2018.
+
+
+== References ==
+
+
+== Navigation ==

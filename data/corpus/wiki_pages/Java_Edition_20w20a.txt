@@ -1,0 +1,118 @@
+20w20a is the sixteenth snapshot for Java Edition 1.16, released on May 13, 2020, which adds several new advancements and fixes bugs.
+
+
+== Additions ==
+
+
+=== Command format ===
+entity_properties
+
+Now has vehicle and targetedEntity properties, which match the vehicle or the entity targeted by a mob.
+
+
+=== Gameplay ===
+Advancements
+
+Added ten new advancements:
+Hidden in the Depths
+Obtain ancient debris.
+Cover Me in Debris
+Get a full suit of netherite armor.
+Country Lode, Take Me Home
+Use a compass on a lodestone.
+Who is Cutting Onions?
+Obtain crying obsidian.
+Not Quite "Nine" Lives
+Charge a respawn anchor to the maximum.
+This Boat Has Legs
+Ride a strider with a warped fungus on a stick.
+Hot Tourist Destinations
+Explore all Nether biomes.
+Those Were The Days
+Enter a bastion remnant.
+War Pigs
+Open a chest in a bastion remnant.
+Oh Shiny
+Distract an aggressive piglin with any item piglins "love" while not wearing any golden armor.
+All of these advancements are located in the "Nether" tab.
+"Cover Me in Debris" and "Hot Tourist Destinations" are challenge advancements, while the others are normal advancements.
+Added a smokey property to the location trigger which checks if the location is closely above a campfire.
+Added thrown_item_picked_up_by_entity advancement trigger.
+item matches the thrown item which was picked up.
+entity matches the entity which picked up the item.
+Added player_generates_container_loot advancement trigger.
+loot_table matches the resource location of the generated loot table.
+Added item_used_on_block advancement trigger.
+location matches the location at the center of the block the item was used on.
+item matches the item used on the block.
+
+
+=== General ===
+Game mode toggling
+
+Added the game mode switcher, allowing quick game mode switching functionality using the F3 debug key.
+Hold F3 and press F4 to open the menu. Pressing F4 or using the mouse cycles the game mode. Release F3 to apply.
+The last game mode is remembered and is the first selected option, so it is possible to quickly toggle between two game modes with a single press of F3 + F4.
+F3 + N now toggles between spectator mode and the previous game of the player.
+Tags
+
+Added piglin_loved item tag.
+Contains gold ingots, gold tools, gold armor, golden apples, enchanted golden apples, golden horse armor, golden carrots, blocks of gold, gold ore, nether gold ore, gilded blackstone, light weighted pressure plates, bells, glistering melon slices, and clocks.
+Piglins "love" items in this tag, meaning they actively seek them out. They also view players holding an item in this tag as holding a "loved" item.
+Used in the "Oh Shiny" advancement.
+
+
+== Changes ==
+
+
+=== Mobs ===
+Shulkers
+
+Shulkers with NoAI can now be summoned with rotation.
+
+
+=== Gameplay ===
+Advancements
+
+The "Bullseye" advancement has been changed.
+Now unlocks when hitting the center of a target block from at least 30 blocks away.
+Is now a challenge advancement and rewards 50 experience.
+Changed the description from "Hit the bullseye of a Target block with an arrow" to "Hit the bullseye of a Target block from at least 30 meters away."
+The "Serious Dedication" advancement has been changed.
+Is now awarded for obtaining a netherite hoe.
+Changed the description from "Completely use up a diamond hoe, and then reevaluate your life choices" to "Use a Netherite ingot to upgrade a hoe, and then reevaluate your life choices."
+Striders are now required for "Two by Two."
+Obtaining blackstone now also counts for the "Stone Age" advancement.
+Changed the description of "Not Today, Thank You" from "Deflect an arrow or trident with a shield" to "Deflect a projectile with a shield."
+Changed the description of "Ice Bucket Challenge" from "Form and mine a block of obsidian" to "Obtain a block of obsidian."
+Removed the safely_harvest_honey advancement trigger as it was made redundant by item_used_on_block.
+Bartering
+
+Piglins can no longer give netherite hoes.
+
+
+== Fixes ==
+6 issues fixed
+From released versions before 1.16
+
+MC-118234  Advancement "Not Today, Thank You" can be triggered by non-arrow projectiles.
+From the 1.16 development versions
+
+MC-173207  Bullseye advancement can be made when using a non-arrow projectile, even though the description explicitly mentions arrows.
+MC-173756  Ice Bucket Challenge advancement can be obtained by collecting obsidian from bartering.
+MC-175992  Striders are not part of the "Two by Two" advancement challenge.
+MC-179481  Structure block offset cannot be bigger than 32.
+MC-181482  Dying while riding an entity respawns the player next to that entity if the gamerule doImmediateRespawn is true.
+
+
+== Videos ==
+
+
+== Trivia ==
+This version was released 11 years after the first public showcase of Minecraft in the video "Cave game tech test ".
+
+
+== References ==
+
+
+== Navigation ==

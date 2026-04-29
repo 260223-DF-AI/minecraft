@@ -1,0 +1,1017 @@
+This is a list of Bedrock Edition 1.21.0 development versions.
+
+
+== Preview 1.21.0.20 ==
+Beta 1.21.0.20 (Android) or Preview 1.21.0.20 (Windows, iOS, iPadOS, Xbox, PlayStation) is the first beta/Preview version for Bedrock Edition 1.21.0, released on April 34, 2024, which adds ominous events and some new effects under experimental gameplay, new UI, and Hardcore mode, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Gameplay ====
+Hardcore
+
+Added hardcore mode.
+Can be enabled when creating a new world.
+In this mode, the player has only one life and the maximum difficulty is turned on.
+After death, the player can either leave the world or switch to Spectator mode.
+Game rules
+
+Added a new game rule to control decay of drops from TNT explosions, named tntExplosionDropDecay.
+The rule can be set to true to re-enable the previous behavior where not all blocks would drop when exploded by TNT.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Grass and Fern
+
+The different block states for the tallgrass ID have now been split up into their own IDs.
+
+
+==== General ====
+Settings
+
+Changed the default "Anti Aliasing" video setting to "2" instead of "4" for better performance with minimal visual degradation.
+Updated Edit World Screen
+
+Export World or Export as Template if clear player data is set it will be applied in a copy and then exported. (Preview only)
+Profile Screen
+
+Profile screen is being updated with improved navigation.
+In the new Play Screen UI you can access Profile from the Play menu.
+Open the Friends Drawer and click on your friends to see their profiles, or click Search for Players from the Friends Drawer to find new profiles.
+In the old UI, click Add Friends from the Friends tab and search for friends. Click on them to view their profiles.
+
+
+==== Technical ====
+API
+
+ScreenDisplay
+Moved getHiddenHudElements(): HudElements[] from beta to 11.0.
+Moved isForcedHidden(hudElement: HudElements): boolean from beta to 11.0.
+Moved resetHudElements(): void from beta to 11.0.
+Moved setHudVisibility(visible: HudVisibility, hudElements?: HudElements[]): void from beta to 11.0.
+Moved hideAllExcept(hudElements?: HudElements[]): void from beta to 11.0.
+HudElement
+Moved HudElementenum from beta to 11.0.
+Moved HudElementsCount from beta to 11.0.
+HudVisibility
+Moved HudVisibilityenum from beta to 11.0.
+Moved HudVisibilityCount from beta to 11.0.
+Moved WeatherChangeBeforeEvent from beta to 11.0.
+BlockPermutation
+Removed function clone.
+Creator Settings UI
+Watchdog settings.
+Increase script hang threshold.
+Disable/Enable slow script warnings and adjust threshold.
+Disable/Enable script spike warnings and adjust threshold.
+Removed disableWatchdogmethod.
+Added disableWatchdogTimingWarnings to disable spike and slow warnings per behavior pack.
+Released ItemEnchantableComponent from beta to 11.0.
+Released Enchantment APIs from beta to 11.0.
+interface Enchantment.
+enum EnchantmentSlot.
+class EnchantmentType.
+class EnchantmentTypes.
+Added new interface EntityFilter with many of the existing options from EntityRaycastOptions.
+EntityRaycastOptions now inherits from EntityFilter.
+EntityQueryOptions now inherits from EntityFilter.
+Removed property blockFilter (and several others, now moved to EntityFilter) from BlockRaycastOptions.
+BlockRaycastOptions now inherits from BlockFilter.
+Released BlockFilter to 4.0.
+Released volume from beta to v1.11.0.
+Molang
+
+Added Molang state_time -> number for animation controllers, which returns the time in seconds spent in the current controller state (inclusive of blend time). Requires "Upcoming Creator Features" experimental toggle.
+server.properties
+
+Removed server-authoritative-block-breaking from the default server.properties.
+Removed server-authoritative-sound from server.properties.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Update 1.21" and "Beta APIs" experimental toggles.
+
+
+==== Additions ====
+
+
+===== Blocks =====
+Ominous Trial Spawner
+
+A more powerful active phase of the Trial Spawner with unique challenges and rewards.
+Provides a more challenging experience that players can opt into for better rewards.
+If a Trial Spawner detects a player that has the Trial Omen effect, the spawner will become Ominous if:
+It is not in cooldown.
+It is in cooldown but was not Ominous during its last activation.
+Making it Ominous this way will bypass the cooldown.
+While active, it will:
+Glow blue instead of orange.
+Emit soul flames instead of normal flames.
+More commonly spawn mobs with equipment if they can wear it.
+The equipment these mobs wear have Armor Trims applied from the Trial Chambers.
+Periodically spawn potions and projectiles on top of unsuspecting players and mobs.
+Becoming Ominous will despawn any existing mobs it spawned and reset its challenge.
+It will stay Ominous until it has been defeated and its cooldown has finished.
+When defeated, it will eject a different set of loot than normal Trial Spawners.
+Ominous Vault
+
+A variant of Vaults that have a different texture and emit soul flames instead of normal flames.
+These can be found throughout the Trial Chambers in harder to find places and require an Ominous Trial Key to unlock.
+These Vaults hold a more valuable set of rewards than the standard Vaults unlocked by Trial Keys.
+
+
+===== Gameplay =====
+Ominous Events
+
+Bad Omen has been expanded to give access to an optional experience in Trial Chambers.
+These optional experiences accessed through Bad Omen are now known as Ominous Events.
+They are more challenging than usual, and are designed to shake up the experience in unique ways.
+Illager Raids are an example of an existing Ominous Event.
+Bad Omen is getting some changes with this redesign:
+It has a new, shadowy icon and a sound for being applied to the player.
+It is no longer given to players that defeat a Raid Captain outside a Raid.
+Instead, players can gain access to Bad Omen by consuming a new Ominous Bottle.
+Ominous Trials
+
+A new Ominous Event that can be accessed by exploring a Trial Chamber with Bad Omen.
+This event will have players facing more powerful Trial Spawners.
+Effects
+
+The following effects have been added:
+Wind Charged
+Affected entities will emit a wind burst upon death.
+Weaving
+Affected entities will spread Cobweb blocks upon death.
+Non-player entities with this effect can walk through Cobweb at normal speeds.
+Oozing
+Affected entities will spawn two Slimes upon death.
+Infested
+Affected entities have a 5% chance to spawn 1-2 Silverfish when hurt.
+These effects can be encountered while taking on an Ominous Trial Spawner.
+Spawners in an area will select a unique effect for the duration of their challenge, and drop them as lingering potions onto mobs and players nearby.
+Trial Omen
+A variant that Bad Omen can transform into if the player is within detection range of a Trial Spawner that is not Ominous.
+The Trial Omen has a duration of 15 minutes multiplied by the transformed Bad Omen's level.
+Players that have Trial Omen are surrounded by ominous particles.
+Some mobs are immune to these effects.
+Slimes are immune to Oozing.
+Silverfish are immune to Infested.
+
+
+===== Items =====
+Ominous Bottle
+
+An item which can be consumed by players to receive the Bad Omen effect for 1 hour and 40 minutes.
+Comes in 5 variations, one for each Bad Omen level.
+The bottle breaks when consumed.
+Can be stacked to 64.
+Can be found uncommonly in any Vaults that are unlocked with Trial Keys, and is dropped by Raid Captains when defeated outside a Raid.
+Ominous Trial Key
+
+A new variant of the Trial Key which can only be obtained by defeating an Ominous Trial Spawner.
+They can be used to unlock Ominous Vaults.
+Potions
+
+The following potions have been added:
+Potion of Wind Charging
+Affected entities will emit a wind burst upon death.
+Brewed with an Awkward Potion and a Breeze Rod.
+Potion of Weaving
+Affected entities will spread Cobweb blocks upon death.
+Non-player entities with this effect can walk through Cobweb at normal speeds.
+Brewed with an Awkward Potion and a Cobweb block.
+Potion of Oozing
+Affected entities will spawn two Slimes upon death.
+Brewed with an Awkward Potion and a Slime Block.
+Potion of Infestation
+Affected entities have a 5% chance to spawn 1-2 Silverfish when hurt.
+Brewed with an Awkward Potion and a Stone block.
+
+
+==== Changes ====
+
+
+===== Blocks =====
+Trial Spawner
+
+Trial Spawner activates only if it is in the line of sight of a player.
+Ominous Trial Spawners in the same room are more likely to spawn the same selection of projectiles.
+Becoming Ominous will despawn any existing mobs it spawned and reset its challenge.
+Trial Spawner in Ominous state spawns mobs with equipment they can wear.
+That equipment will have Armor Trims from the Trial Chambers.
+Heavy Core
+
+Pushing a heavy core with a piston now moves the block, instead of popping it off.
+Heavy cores can now be pulled by sticky pistons.
+The base color of heavy cores on maps is now METAL.
+
+
+===== World generation =====
+Trial Chambers
+
+Trial chambers now generate slightly more rarely and a bit more spaced out from each other.
+
+
+===== Technical =====
+API
+
+Added ItemComponentMineBlockEvent for beta.
+Event Signals
+Unsubscribe is no longer marked as @throws. It does not throw exceptions and never has.
+Added getAll to beta.
+Added PlayerInputPermissions and inputPermissions for enabling & disabling categories of player input permissions.
+Added InputPermissionCategory.
+Added afterEvents.playerInputPermissionCategoryChange for listening to changes to a players input permissions.
+Added ignoreBlockCollision to EntityRaycastOptions which when true, will make the raycast not stop on block collision.
+Added includePassableBlocks to EntityRaycastOptions which when true, passable blocks like vines and flowers will be considered as blocks that stop the raycast.
+Added includeLiquidBlocks to EntityRaycastOptions which when true, liquid blocks will be considered as blocks that stop the raycast.
+Added ItemComponentHitEntityEvent and ItemComponentBeforeDurabilityDamageEvent for beta.
+Deferred Rendering Pipeline
+
+Extended Texture Set support to particles in the Deferred Technical Preview.
+NBT data
+
+Added optional equipment_loot_table to the spawn data present in spawn_potentials of trial spawner configs.
+If present, rolled items from the specified loot table will be equipped to the mob that spawns.
+
+
+=== Fixes ===
+46 issues fixed
+From released versions before Bedrock Edition 1.21.0
+
+MCPE-44845  Crossbow missing "Draw" and "Release" tooltips
+MCPE-44848  Lectern missing "Read Book" tooltip when not holding an item
+MCPE-56036  TNT Does Not Have 100% Drop Rate
+MCPE-99315  Mobs cannot spawn on south or east slopes or in 1-wide tunnels made of solid blocks
+MCPE-105535  Sinking through boat when jumping out the boat
+MCPE-120687  Player sinks through boat when standing on it while it moves up.
+MCPE-157688  Switch can't place doors
+MCPE-159959  Ui / Menu shrinks when switch is put back into the docking station
+MCPE-163023  Xbox: No response when pressing some or all buttons on the controller
+MCPE-170890  Pressing  Enter in chat doesn't send messages or commands on Xbox
+MCPE-175550  Game freezes at 35-41% after newest update
+MCPE-176505  ALT key does not work on Android[,] iOS[, and iPadOS]
+MCPE-176878  Right  Shift key is not registering
+MCPE-177037  Breezes do not avoid dangerous blocks when jumping
+MCPE-178507  Sniffer, Camel, Breeze sound effects do not play when off-screen
+MCPE-178858  The 1.20.60 update changed player sprint-jump behavior.
+MCPE-178900  Wind charges can hit breezes.
+MCPE-179193  Wind charges can collide with eachother.
+MCPE-179304  Wind charges can destroy end crystals.
+MCPE-179910  Heavy core will be broken when pushed by a piston.
+MCPE-179911  Heavy core cannot be pulled by a sticky piston.
+MCPE-180109  Cobweb Placing and breaking sounds does not have new sounds.
+Others
+
+Cauldrons filled with potions now keep the color of the potion when pushed by a Piston.
+Containers being cloned over no longer keep their container screens open and cause crashes.
+Items drops from blocks destroyed in an explosion now get merged into bigger item stacks before spawning in the world.
+On touch devices players can once again distribute a selected item stack over multiple slots by dragging it over them.
+The Game Tip for sneaking now resolves itself properly when the player sneaks.
+Fixed an issue where the Let It Go trophy did not unlock on PlayStation4.
+When using an item on an entity, it is now necessary to release the use button before being able to use it again, which prevents players from inadvertently consuming items themselves when interacting with entities.
+Fixed crashes that could occur when creating worlds on new Realms and backing out at the Online Safety dialog box.
+Updated the "Are you sure you want to opt out?" Realms Stories modal to ensure players know they can opt in later. (Preview only)
+Fixed inconsistent displaying of unread badges for new posts in the Story Feed tab. (Preview only)
+The Realms Stories New Post screen now enumerates its active buttons with text-to-speech on. (Preview only)
+Support prevention of app/flow restart when dark mode toggled on or off on across Android devices.
+Removed faulty hotbar scale setting for Pocket UI.
+Fixed a crash when entity identifier was too complex.
+Fixed a problem where teleporting while using an item with a long use duration could leave it in an unresponsive state until the use duration elapsed.
+Fixed bug where users could not navigate through inventory using keyboard in touch devices.
+Fixed banner staffs not being lit while held in hand from first-person view in the Deferred Technical Preview.
+Fixed hunger element so that its visibility can be changed with the /hud command.
+Added missing indentation to list items in some models, which should make those lists easier to read.
+On touch devices, when moving items between different slots, the icon no longer appears as duplicated between the moving item and the destination slot.
+On touch devices, when moving enchanted items between different slots, the moving icon is now rendered correctly.
+On touch devices, stack-splitting UI no longer appears for unstackable items.
+On touch devices, items from Creative Inventory are now unselectable.
+On touch devices, it is now possible to swap two identical items.
+1 issue fixed
+From released versions before Bedrock Edition 1.21.0
+
+REALMS-11707  Blocks reappear after breaking in Creative if "delayed block breaking" is turned off
+
+
+== Preview 1.21.0.21 ==
+Beta 1.21.0.21 (Android) or Preview 1.21.0.21 (Windows, iOS, iPadOS, Xbox, PlayStation) is the second beta/Preview version for Bedrock Edition 1.21.0, released on April 10, 2024, which adds new enchantments for the mace and 5 new paintings under experimental gameplay, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Coral Block and Dead Coral Block
+
+The different block states for the coral_block ID have now been split up into their own IDs.
+
+
+==== General ====
+Accessibility features
+
+Added text-to-speech support for member search results in the Realms Stories Member tab. (Preview Only)
+The Realms Stories Opt In screen now enumerates its active buttons with text-to-speech on. (Preview Only)
+Controls
+
+Added slide-off persistence to new d-pad touch control scheme.
+Changes positioning and scale of default new touch d-pad control scheme.
+Also allows for moving the dpad closer to the hotbar when customizing touch controls.
+Education edition toggle
+
+Chemistry items now appear in the Creative inventory when the Education edition toggle is on.
+
+
+==== Technical ====
+API
+
+Moved typeId and Block.matches from beta to stable.
+@minecraft/server.BlockType
+Moved id API from beta to stable v1.11.0.
+@minecraft/server.BlockTypes
+Moved BlockTypes API from beta to stable v1.11.0.
+Moved typeAPI from beta to stable v1.11.0.
+@minecraft/server.Block
+Moved type API from beta to stable v1.11.0.
+Blocks
+
+Updated block geometry to allow UV rotations.
+This allows to rotate the specified UV rect in 90 degree increments before applying it to a block face.
+Supported from minecraft:geometry format version 1.21.0 and up.
+Added pivot for scale in the Block Transformation Component.
+Added pivot for rotation in the Block Transformation Component.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Update 1.21" and "Beta APIs" experimental toggles.
+
+
+==== Additions ====
+
+
+===== Gameplay =====
+Effects
+
+Added Raid Omen.
+Instead of triggering a Raid directly, Bad Omen will transform into a Raid Omen variant with a duration of 30 seconds.
+Once the Raid Omen expires, a Raid will start at the location the player gained the Raid Omen.
+Like any other effect, players can drink a Bucket of Milk to clear the Raid Omen to prevent the Raid from starting.
+Added activation sounds to Bad Omen, Trial Omen, and Raid Omen.
+Enchantments
+
+The mace now has three brand new enchantments available for use:
+Wind Burst generates a burst of wind when successfully striking enemies, launching the wielder in the air.
+Density makes the already heavy mace even heavier, adding additional heft to its smash attack.
+Breach allows the mace to bypass a portion of an enemy's armor, striking fear into the hearts of even the most protected enemies.
+
+
+===== Items =====
+Paintings
+
+Added five new paintings by the artist Sarah Boeving:
+
+
+==== Changes ====
+
+
+===== Blocks =====
+Ominous Trial Spawner
+
+Ominous Trial Spawners now show a preview of the item that is about to be dropped.
+
+
+===== Items =====
+Mace
+
+Added a new explosive particle effect when executing a smash attack with the mace to really show the player's power when using it.
+
+
+===== World generation =====
+Trial Chambers
+
+Trial Chambers are now more consistently buried by terrain when found underground.
+
+
+===== Technical =====
+API
+
+API get will now handle items whose names have changed so that scripts referencing old names will still work as intended.
+Added ItemComponentUseOnEvent for beta.
+Updated JavaScript engine:
+BigInt support.
+hasOwn.
+Array findLast and at.
+Miscellaneous bug fixes.
+
+
+=== Fixes ===
+9 issues fixed
+From released versions before Bedrock Edition 1.21.0
+
+MCPE-174648  Unable to navigate to previously sent messages using keyboard arrow keys [on Xbox]
+MCPE-179440  Moving block cause crash
+MCPE-179689  With the new control UI, it is impossible to continuously move and down in water without switching where fingers are touching on the screen
+MCPE-180142  Armadillos get stuck when constantly receiving damage from environment.
+From the previous development version
+
+MCPE-180287  Respawn button appears on the Hardcore mode death screen
+Others
+
+Fixed a crash that could occur when the player begins losing air.
+Fixed several instances of periods being narrated as "dot" on the Realms Stories "Opt In" screen. (Preview only)
+Fixed some places in documentation generation where elements were accidentally overwritten. This caused a minor amount of documentation to appear or move in the Animations, Blocks, Entities, and Particles files.
+Fixed heightmap textures not rendering correctly in the Deferred Technical Preview.
+
+
+== Preview 1.21.0.22 ==
+Beta 1.21.0.22 (Android) or Preview 1.21.0.22 (Windows, iOS, iPadOS, Xbox, PlayStation) is the third beta/Preview version for Bedrock Edition 1.21.0, released on April 18, 2024, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Sunflower, Lilac, Double Tallgrass, Large Fern, Rose Bush, and Peony
+
+The different double plant type block states for the double_plant ID have now been split up into their own IDs.
+
+
+==== General ====
+Experiments
+
+Removed the "Update 1.21" experimental toggle.
+The features that were previously under experimental toggle "Update 1.21" have been "de-experimentified" and are now available during normal gameplay.
+Removed the "Experimental Cameras" experimental toggle.
+Player Profile
+
+Updated the player Profile page.
+Added the ability to view and manage:
+Achievements
+Friends
+Followers
+Stats
+In the new Play Screen UI you can access Profile from the Play menu.
+Open the Friends Drawer and click on your friends to see their profiles, or click "Search for Players" from the Friends Drawer to find new profiles.
+In the old UI, click "Add Friends" from the Friends tab and search for friends. Click on them to view their profiles.
+
+
+==== Mobs ====
+Breeze
+
+The Breeze now slides during combat.
+
+
+==== Technical ====
+API
+
+GameRules
+Released GameRules from beta to 1.11.0.
+Released GameRuleChangeAfterEvent from beta to 1.11.0.
+Released GameRuleChangeAfterEventSignal from beta to 1.11.0.
+Released World.gameRules from beta to 1.11.0.
+Released WorldAfterEvents.gameRuleChange from beta to 1.11.0.
+EntityTameableComponent
+Changed return type of getTameItems to ItemStack[]
+Changed tame to take a player.
+Added method tamedToPlayer, tamedToPlayerId, isTamed.
+Released EntityColor2Component from beta to 1.11.0.
+Released PaletteColor from beta to 1.11.0.
+Released ItemStack.matches from beta to 1.11.0.
+Released EntityNavigationComponent from beta to 1.11.0.
+Released EntityNavigationClimbComponent from beta to 1.11.0.
+Released EntityNavigationFloatComponent from beta to 1.11.0.
+Released EntityNavigationFlyComponent from beta to 1.11.0.
+Released EntityNavigationGenericComponent from beta to 1.11.0.
+Released EntityNavigationHoverComponent from beta to 1.11.0.
+Released EntityNavigationWalkComponent from beta to 1.11.0.
+Moved setType API from beta to stable 1.11.0.
+Added function waitTick(ticks?: number): Promise where the returned promise is resolved after "ticks" number of ticks or 1 tick if no ticks parameter is supplied.
+Removed argument waterlogged from function setBlockPermutation and moved it from beta to 1.11.0.
+Moved function saveToWorld from beta to 1.11.0.
+Moved function saveAs from beta to 1.11.0.
+Updated signature of createFromWorld and moved it from beta to 1.11.0.
+Renamed function getIds to getWorldStructureIds and moved it from beta to 1.11.0.
+Entities 
+
+Updated entity geometry to allow UV rotations. This allows you to rotate the specified UV rect in 90 degree increments before applying it to a cube face of an entity model. Supported from minecraft:geometry format version 1.21.0 and up.
+Items 
+
+Unlocking requirements are now sent to clients for minecraft:recipe_shapeless and minecraft:recipe_shaped.
+It allows the UI to suggest recipes that are always unlocked when the game rule dolimitedcrafting is ON.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs" and "Render Dragon Features for Creators" experimental toggles.
+
+
+==== Changes ====
+
+
+===== Technical =====
+API
+
+Changed function from fillBlocks(begin: Vector3, end: Vector3, block: BlockPermutation | BlockType | string, options?: BlockFillOptions): number to fillBlocks(volume: BlockVolumeBase | CompoundBlockVolume, block: BlockPermutation | BlockType | string, options?: BlockFillOptions): ListBlockVolume
+BlockFillOptions
+Removed member matchingBlock?: BlockPermutation.
+Added member blockFilter?: BlockFilter.
+Added member ignoreChunkBoundErrors?: boolean.
+Added ItemComponentUseCompleteEvent for beta.
+Deferred Rendering Pipeline 
+
+Added a new feature to the Deferred Technical Preview: Color Grading and Tone Mapping.
+This new capability allows resource packs to define their own color post processing for conveying distinct moods and themes.
+New experimental toggle added in video settings menu to remove texture limit and load textures instead of using the "pink texture" called "Remove Texture Limit". Textures will continue to load until the system exhausts all available graphics memory.
+Added light pre-exposure to the Deferred Technical Preview.
+This new feature is enabled by default and cannot be disabled. While this wont result in any immediate visual difference for players, creators now have the freedom to specify sun or atmospheric intensities with values larger than 65,000.
+
+
+=== Fixes ===
+20 issues fixed
+From released versions before Bedrock Edition 1.21.0
+
+MCPE-173632  Mobile stack splitting bar is slightly offset
+MCPE-173919  Black sun when using deferred pipeline technical preview
+MCPE-175449  Unable to Increase Fireworks Duration while DoLimitedCrafting is on
+MCPE-176613  Some Copper / Tuff recipes still missing
+MCPE-177064  Decorated pots in trial chambers drop loot after replaced by player
+MCPE-178672  Upper Copper Trapdoor moves to the bottom of block when waxing and unwaxing
+MCPE-178882  Bogged has the same attack interval as normal skeletons and strays and not in parity with Java
+MCPE-179260  Vault always generate facing south in trial chambers
+MCPE-179358  The off front of Vault texture is inconsistent
+MCPE-179686  Respawn Radius Still Defaults to 5 in Certain Circumstances
+MCPE-179777  The "Play on Realms server" Button Text on the New Edit World Screen Does Not Match the Create New World Screen
+MCPE-179883  Content Log error "[RuntimeCamera][warning]-Chunks will not load when the camera is moved outside the player chunk radius..." - when teleport to unloaded area
+MCPE-179904  Switching perspectives while moving will briefly flash incorrect camera position and player animations
+MCPE-179920  Cartographer doesn't sell Trial Chamber Exploration Map when enabling Villager Trade Rebalancing and Update 1.21 experiments toggle together
+From the previous development version
+
+MCPE-180273  Trial Omen, Wind Charged, Weaving, Oozing, and Infestation effect doesn't have their unique particle effects
+Others
+
+When a player dies in a Nether Portal, they no longer spawn with a shaky camera.
+Status effect particle colors are no longer blended into one particle color. Up to 8 active visible status effect particles are now rendered separately.
+Made potion duration of the Wind Charged, Infested, Weaving, and Oozing effects match Java Edition (3 minutes).
+Fixed the game inconsistently advertising free Realms trial based on multiple sources.
+Fixed mob animations not playing when mobs were unloaded in split screen.
+
+
+== Preview 1.21.0.23 ==
+Beta 1.21.0.23 (Android) or Preview 1.21.0.23 (Windows, iOS, iPadOS, Xbox, PlayStation) is the fourth beta/Preview version for Bedrock Edition 1.21.0, released on April 24, 2024, which fixes bugs.
+
+
+=== Additions ===
+
+
+==== Gameplay ====
+Game rules
+
+Added showDaysPlayed, to control whether show a HUD overlay that displays the number of days played in a world.
+
+
+==== General ====
+Ambience
+
+Added 4 new ambient cave sounds.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Smooth Stone Slab, Sandstone Slab, Cobblestone Slab, Bricks Slab, Stone Bricks Slab, Quartz Slab, and Nether Brick Slab
+
+The different stone slab type block states for the stone_block_slab ID have now been split up into their own IDs.
+
+Trial Spawner
+
+Now emit trial omen particles instead of sculk soul particles when becoming ominous.
+Adjusted loot tables for projectiles dropped when in ominous state to match Java Edition.
+
+
+==== Items ====
+Ominous Bottle
+
+Changed the sounds when breaking after use.
+Mace
+
+Can now be enchanted with Unbreaking, Smite, Fire Aspect, and Bane of Arthropods.
+Tweaked the cost of applying the Mace's exclusive enchantments in the enchantment table.
+Splash Potions
+
+Now have the same duration as drinkable potions.
+Trial Chambers Map
+
+The "Trial Chambers Map" has been renamed to "Trial Explorer Map".
+
+
+==== Mobs ====
+Breeze
+
+Now aims slightly higher when shooting at the player.
+
+
+==== Non-mob entities ====
+Breeze Wind Charge
+
+Can now hurt mobs in boats and minecarts.
+
+
+==== Gameplay ====
+Effects
+
+Bad Omen
+Will no longer emit particles around the player when drinking it from an ominous bottle.
+Changed the sounds when applied.
+Infested
+Now has a 10% chance to spawn 1-2 silverfish instead of 5%.
+Silverfish will now spawn at the center of the entity's bounding box and fling out in the direction the entity is facing.
+Raid Omen
+Changed the sounds when converted/applied from Bad Omen.
+Weaving
+Now more consistently spawns 2-3 cobwebs on death.
+Players are now affected by the movement buff through cobwebs, affecting 50% of their normal speed instead of 25%.
+Ominous Trials
+
+Players are now chosen 50% of the time when an ominous trial spawner chooses which entity to drop projectiles on top of.
+
+
+==== World generation ====
+Trial Chambers
+
+Remade 'Chamber 6' with variations, and renamed it to 'Assembly'.
+Added a new trap dispenser style to chambers.
+Added new intersection variation.
+Fixed various broken jigsaw connections in the corridors.
+Chamber Eruption:
+Added missing water bucket to the dispenser.
+Added new wall dispenser style.
+
+
+==== Technical ====
+API
+
+Fixed GameRules rule property-setters so that changes are propagated to clients.
+Moved startItemCooldown and player.getItemCooldown from beta to 1.11.0.
+Released playSound from beta to 1.11.0.
+playSound is now deprecated and will be removed in a future major version. Use Dimension.playSound as the alternative.
+Released ListBlockVolume from beta to 1.11.0.
+Released BlockVolumeBase from beta to 1.11.0
+Released BlockLocationIterator from beta to 1.11.0.
+Moved method getGameMode(): GameModefrom from  beta to 1.11.0.
+Moved method setGameMode(gameMode?: GameMode): void from beta to 1.11.0.
+Moved member playerGameModeChange: PlayerGameModeChangeAfterEventSignal from beta to 1.11.0.
+Moved member playerGameModeChange: PlayerGameModeChangeBeforeEventSignal from beta to 1.11.0.
+Moved class PlayerGameModeChangeAfterEvent from beta to 1.11.0.
+Moved class PlayerGameModeChangeAfterEventSignal from beta to 1.11.0.
+Moved class PlayerGameModeChangeBeforeEvent from beta to 1.11.0.
+Moved class PlayerGameModeChangeBeforeEventSignal from beta to 1.11.0.
+Change waitTick(ticks?: number) to system.waitTicks(ticks: number);.
+Renamed property selectedSlot to selectedSlotIndex and moved it from beta to 1.11.0.
+Components
+
+The default values for the damage_sources field of behavior.panic have been updated.
+This change only affects entities with a format version of 1.21.0 or higher.
+Multiple items with the same custom component will now correctly trigger custom component logic.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs" and "Render Dragon Features for Creators" experimental toggles.
+
+
+==== Changes ====
+
+
+===== Technical =====
+API
+
+Added ItemComponentConsumeEvent for beta.
+EntityTameMountComponent
+Added method tameToPlayer.
+Added properties isTamed, isTamedToPlayer, tamedToPlayer, and tamedToPlayerId.
+GameRules
+Added property showDaysPlayed to beta.
+Fixed PlayerInputPermissionsinput-lock category property-setters so that changes are propagated to clients.
+Deferred Rendering Pipeline
+
+Fixed a bug with volumetric fog shading in the Deferred Technical Preview that was causing fog to be much brighter than it should have been. Volumetric fog in the Deferred Technical Preview now matches the look of volumetric fog in RTX much more closely. Fog definitions in resource packs developed for the Deferred Technical Preview will need to be updated after this change. To maintain a similar look, the values for either max_density or scattering should be increased by a factor of 12.
+
+
+=== Fixes ===
+15 issues fixed
+From released versions before Bedrock Edition 1.21.0
+
+MCPE-167513  Various mobs panic when taking falling damage
+MCPE-176613  Some Copper / Tuff recipes still missing
+MCPE-178878  Powder Snow block doesn't negate fall damage caused by using wind charge
+MCPE-178891  Wind Charge's fall damage is not canceled by the slime block
+MCPE-178910  "min_engine_version" causes vanilla resource pack of entities to not work correctly with entities that only have one file
+MCPE-179679  Mace cannot be enchanted with Unbreaking, Smite, Bane of Arthropods and Fire Aspect
+From the previous development version
+
+MCPE-180279  Spectator mode does not work properly after re-entering the world after die in hardcore mode.
+MCPE-180291  No loot when using trial key on trial vault
+MCPE-180380  Decorated Pots made with Pottery Sherds in Trial Chambers are not oriented correctly
+MCPE-180417  Flower forest biome only generates poppies, rose bushes, peonies, and lilacs
+MCPE-180499  Enchanted books with breach, density, or wind burst enchantment cannot be obtained by ominous vaults
+MCPE-180527  Torches are centered in slots
+Others
+
+Copper trapdoor now oxidizes with time.
+Fixed a recipe bug where any type of stone slab could be used to craft a grindstone with crimson, mangrove, or warped planks. It can now only accept the actual normal stone slab, no other type of stones.
+When using touch controls, nether portals can once again be destroyed by destroying the portal surface.
+
+
+== Preview 1.21.0.24 ==
+Beta 1.21.0.24 (Android) or Preview 1.21.0.24 (Windows, iOS, iPadOS, Xbox, PlayStation) is the fifth beta/Preview version for Bedrock Edition 1.21.0, released on May 1, 2024, which adds 15 new paintings, 3 new music discs, 9 new music tracks, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Items ====
+Music Discs
+
+Added 3 new music discs, which play songs with the same names from the Minecraft: Tricky Trials (Original Game Soundtrack):
+ "Precipice" by Aaron Cherof.
+Can be found rarely in standard vaults.
+Has a comparator output of 13 when played in a jukebox.
+ "Creator" by Lena Raine.
+Can be found rarely in ominous vaults.
+Has a comparator output of 12 when played in a jukebox.
+ "Creator (Music Box)" by Lena Raine.
+Can be found rarely in decorated pots broken in trial chambers.
+Has a comparator output of 11 when played in a jukebox.
+Paintings
+
+Added fifteen new paintings by artist Kristoffer Zetterstrand:
+
+
+==== Music ====
+Added 9 new background music tracks. These can all play on the menu screens.
+
+"Featherfall" can play in every "other" biome, but it also plays in the specific biomes listed above.
+Removed "A Familiar Room", "Bromeliad", "Crescent Dunes", and "Echo in the Wind" from the menu screens.
+
+
+==== General ====
+Player Profile
+
+The updated Player Profile page is now available for all platforms. (Preview only)
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Tuff blocks
+
+The tuff wall, polished tuff wall, and tuff brick wall are now visible on maps.
+The tuff brick slab and polished tuff slab now have the correct blast resistance values.
+Copper Doors and Copper Trapdoors
+
+Copper doors and trapdoors are now crafted from copper ingots instead of copper blocks.
+Only copper doors and copper trapdoors can now be crafted; other variants are no longer craftable.
+Ominous Trial Spawner
+
+Now correctly ejects ominous trial keys instead of trial keys.
+Mobs spawned with equipment that is part of an ominous trial no longer have a chance to drop that equipment upon death.
+Mobs that can wear equipment now usually spawn with enchanted weapons and armor.
+Armor enchantments include Protection IV, Projectile Protection IV, and Fire Protection IV.
+Weapon enchantments include Sharpness I, Knockback I, Power I, and Punch I.
+Doubled the total number of mobs that ominous trial spawners can spawn when they spawn mobs that are unable to wear equipment (i.e. double the total mob count).
+Increased the number of simultaneous mobs that those spawners can have by 1 (i.e. increased the simultaneous mob count by 1).
+Trial Spawner
+
+Trial spawners no longer spawn mobs when the doMobSpawning game rule is set to false.
+Ominous trial spawner does not spawn potions and projectiles when there are no valid players in its range.
+The rewards that trial spawners and ominous trial spawners eject is now in parity with Java Edition.
+Projectiles spawned by ominous trial spawner can no longer spawn inside solid blocks.
+
+
+==== Gameplay ====
+Ominous Trials
+
+Removed the bottle o' enchanting from the possible projectiles that can be spawned by an ominous trial spawner.
+Oxygen bar
+
+Added an empty state for air bubbles () along with a wobble when the player is drowning.
+Added a popping sound when bubbles pop on the oxygen bar.
+Trial Chambers
+
+Decorated pots in trial chambers now drop less types of items, in order to ease inventory management.[more information needed]
+Trial spawner mob distribution:
+Spider spawners have been moved from the "small melee" category to the "melee" category.
+Slime spawners have been moved to the "melee" category to the "small melee" category.
+Adjusted the drop chance of the Precipice music disc.
+Removed the TNT trap in the Eruption chamber (chamber/eruption).
+Fixed the seams in corridors so they now match.
+Added new variants of the entrance chamber (corridor/entrance_1).
+Added empty chests to the entrances of some chambers.[more information needed]
+
+
+==== General ====
+Game Tips
+
+Improved game tip interruption handling. Different kinds of interruptions can now be tracked separately.
+Added interruption for when player is in lava.
+Added interruption when input mode is switched.
+Added interruption when mobs are nearby.
+Changed base timing for camera game tip to 15 seconds.
+Changed base timing for movement game tip to 30 seconds.
+Changed base timing for break block game tip to 2 minutes.
+Changed base timing in survival for place block game tip to 5 minutes.
+Deactivated swimming game tip for touch devices.
+Main Menu
+
+Added new cubemap background for 1.21.
+
+
+==== Items ====
+Mace
+
+The mace smash attack no longer creates dirt particles when hitting a target whose center is in the air.
+Doubled the mace's durability from 250 to 500.
+Density is no longer as powerful and the mace now does less damage when falling from great heights.
+See the  New mace damage formula below.
+Reduced the mace's base damage to 5HP. This means the player will do 6HP damage when attack with it.
+Reduced the damage per block per level of Density from 1HP to 0.5HP  0.25 (a quarter heart).
+Increased the mace smash attack's damage for shorter falls, and decreased the damage for longer falls:
+The first 3 blocks fallen increase the damage by 4HP per block
+The next 5 blocks fallen increase the damage by 2HP per block
+Each block fallen after that increases the damage by 1HP
+Density, Breach, Smite, and Bane of Arthropods are now all incompatiable with each other. Each mace can only have 1 of these enchantments.
+
+
+===== New mace damage formula =====
+f(h)={6+(4+0.5D)h,if 0h312+(2+0.5D)h,if 3<h820+(1+0.5D)h,if 8<h
+f(h) is the damage done by the mace when falling from a height of h blocks
+Here is a graph of what that formula means:
+
+
+==== Technical ====
+API
+
+Moved entity from beta to 1.11.0
+Moved EntityTameMountComponent and method tame from beta to 1.11.0.
+Add-Ons and Script Engine
+
+Changed biome documentation to generate with a different system, which will cause the layout and order of those documentation elements to change.
+General
+
+The free camera experiment has been deprecated and the toggle removed as this feature has shipped.
+Future improvements to the free camera preset will be found in new experimental toggles as those capabilities become available. Samples can be found in the document for the camera command.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs" experimental toggle.
+
+
+==== Changes ====
+
+
+===== Technical =====
+API
+
+Added new interface VectorXZ.
+Added method getTopmostBlockwhich will perform a raycast from the top of the world downwards, trying to find the first solid block.
+Added method getBlockAbovewhich will perform a raycast from a given position, trying to find the first solid block above.
+Added method getBlockBelowwhich will perform a raycast from a given position, trying to find the first solid block below.
+EntityAddRiderComponent
+Moved property readonly entityType: string from beta to 1.11.0.
+Moved property readonly spawnEvent: string from beta to 1.11.0.
+EntityRideableComponent
+Moved property readonly setCount: number from beta to 1.11.0.
+Moved property readonly crouchingSkipInteract: boolean from beta to 1.11.0.
+Moved property readonly interactText: string from beta to 1.11.0.
+Moved property readonly controllingSeat: number from beta to 1.11.0.
+Moved property readonly passengerMaxWidth: number from beta to 1.11.0.
+Moved property readonly pullInEntities: boolean from beta to 1.11.0.
+Moved property readonly riderCanInteract: boolean from beta to 1.11.0.
+Moved property readonly seatCount: number from beta to 1.11.0.
+Moved function addRider(rider: Entity): boolean from beta to 1.11.0.
+Moved function ejectRider(rider: Entity): void from beta to 1.11.0.
+Moved function ejectRiders(): void from beta to 1.11.0.
+Moved function getFamilyTypes(): string[] from beta to 1.11.0.
+Moved function getRiders(): Entity[] from beta to 1.11.0.
+Moved function getSeats(): Seat[] from beta to 1.11.0.
+Seat
+Moved property readonly lockRiderRotation: number from beta to 1.11.0.
+Moved property readonly maxRiderCount: number from beta to 1.11.0.
+Moved property readonly minRiderCount: number from beta to 1.11.0.
+Moved property readonly position: Vector3 from beta to 1.11.0.
+Moved property readonly seatRotation: number from beta to 1.11.0.
+EntityRidingComponent
+Moved property readonly entityRidingOn: Entity from beta to 1.11.0.
+
+
+=== Fixes ===
+21 issues fixed
+From released versions before Bedrock Edition 1.21.0
+
+MCPE-37112  Thrown trident hurts perched ender dragon
+MCPE-118433  "Castaway" achievement cannot be unlocked
+MCPE-128908  Large Marketplace Content Creator Hats Display when wearing Mob Heads
+MCPE-139168  Tamed wolfs float when sliding down honey from a high place
+MCPE-176362  Tuff slabs, stairs, and walls use stone sounds instead of tuff sounds
+MCPE-176434  Polished Tuff Slab and Tuff Brick Slab breaks instantly
+MCPE-178574  Navigating to previous chat messages is glitched on iOS and Android
+MCPE-178894  Exiting the water using wind charge causes fall damage
+MCPE-178902  Bogged doesn't retaliate against attacks from other mobs
+MCPE-179379  Breeze's wind charge negates fall damage
+MCPE-180190  Tuff Slabs do not appear on maps
+From the previous development version
+
+MCPE-179928  Fixed issue where block with custom components could not have a block placed onto them without crouching.
+MCPE-180271  Status effect name in the potions of wind charging and infestation tooltip uses a different name on Bedrock, compared to Java
+MCPE-180485  Wind charges can harm the ender dragon while it perches on top of the end portal, unlike arrows
+MCPE-180764  Wind Burst enchantment is obtainable from villager trading
+Others
+
+Crafters now show the correct particle when broken.
+Player-shot Wind Charges' burst sound is no longer affected by the "Hostile Creatures" sound setting.
+Mobs under the Infested status effect no longer spawn Silverfish when blocking damage with a Shield.
+The Breeze can now pathfind close to fire.
+Fixed various broken or incorrect jigsaw data in Trial Chambers.
+Fixed a bug where, if a block and item are registered with the same identifier, the block returns a null item when "picked".
+
+
+== Preview 1.21.0.25 ==
+Beta 1.21.0.25 (Android) or Preview 1.21.0.25 (Windows, iOS, iPadOS, Xbox, PlayStation) is the sixth beta/Preview version for Bedrock Edition 1.21.0, released on May 8, 2024, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Trial Spawner
+
+Mobs removed by trial spawner converting to ominous state now drop the items that they previously picked up from the ground.
+Trial spawners that are configured to spawn baby zombies now spawn them correctly.
+Petrified Oak Slab
+
+Flattened the ID. It now has the ID petrified_oak_slab instead of stone_block_slab with the value of 2.
+
+
+==== General ====
+Server tab
+
+Added the Message of the Day below each of the available servers. (MOTD)
+
+
+=== Fixes ===
+3 issues fixed
+From released versions before Bedrock Edition 1.21.0
+
+MCPE-180918  "There was a problem loading one of your packs"
+From the previous development version
+
+MCPE-180964  Petrified oak ("wooden") slabs are not converted properly
+Others
+
+Fixed an issue that could cause missing textures when placing paintings in some Marketplace worlds. Painting motifs from a version above the current session's will not be selected when placing a painting.
+
+
+== Preview 1.21.0.26 ==
+Beta 1.21.0.26 (Android) or Preview 1.21.0.26 (Windows, iOS, iPadOS, Xbox, PlayStation) is the seventh and final beta/Preview version for Bedrock Edition 1.21.0, released on May 15, 2024, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Loot table
+
+The chances for mob equipment to drop has been brought closer to Java Edition.
+Enchanted mob equipment no longer has double the chance to drop.
+Each level of the Looting enchantment now gives a +1% chance for mob equipment to drop, down from +4%.
+
+
+=== Fixes ===
+13 issues fixed
+From released versions before Bedrock Edition 1.21.0
+
+MCPE-179323  The bogged skeleton variant is inconsistent with its other variants in texture location
+MCPE-179650  Banners no longer appear in the recipe book
+MCPE-181000  Diving with a Riptide Trident and then switching to a Mace mid-flight performs a smash attack upon landing on a mob
+MCPE-181228  Selecting "none" option for eyes in character creator corrupts the character and other character slots
+From the previous development version
+
+MCPE-176986  Monsters and other underground mobs can naturally spawn in Trial Chambers
+MCPE-180653  Differences in Vault loot from Java Edition
+MCPE-181209  Trial Spawner cannot be triggered after turning the domobspawning gamerule off and on again
+Others
+
+Fixed a bug where the Arrow projectiles randomly shot down in an Ominous Trial would have Harming II or Slow Falling as their effect instead of Poison or Slowness IV.
+Fixed a bug where Arrows of Slow Falling could be found in Ominous Vaults instead of Arrows of Slowness IV.
+Fixed a bug where the Looting enchantment could cause mob equipment with a 0% drop chance to still drop, such as Vex swords or equipment from Ominous Trials.
+Fixed error that could sometimes occur when opening Realms Stories.
+Fixed issue where particle effect lifetime event timeline did not trigger events as expected.
+
+
+== Notes and references ==
+
+
+== Navigation ==

@@ -1,0 +1,207 @@
+Beta 1.20.60.23 (Android) or Preview 1.20.60.23 (Windows, iOS, iPadOS, Xbox) is the fourth beta/Preview version for Bedrock Edition 1.20.60, released on December 13, 2023, which adds the armadillo mob, armadillo scutes and wolf armor behind an experimental toggle and fixes bugs. This is the final beta/Preview released in 2023.
+
+
+== Additions ==
+
+
+=== General ===
+Realms Stories
+
+Realms Stories is a new social hub for your Realm
+Realms Stories features include:
+The Story Feed  lets you share your greatest gameplay moments with your fellow Realm members
+The Timeline  lets you see when other members are playing on the Realm
+The Members tab  shows a list of all Realm members and their permission levels
+Realms Stories will not be accessible the first time you launch 1.20.60.23. To use Realms Stories, launch the game, close it, and then launch it again.
+Inbox Screen
+
+Added Inbox Screen is being updated with improved navigation.
+
+Experiments
+
+Added the "Armadillo and Wolf Armor" experimental toggle.
+Contains new armadillo mob, armadillo scutes and wolf armor for Minecraft 1.21.
+
+
+== Changes ==
+
+
+=== Graphical ===
+Added 4K resolution support for Xbox Series X|S consoles
+
+
+=== General ===
+Play Screen
+
+The friends drawer in the new Play screen now allows joining a friends world with a join button.
+Edit World Screen
+
+Edit World is being updated with improved navigation, more descriptions, and a new look and feel that matches the new Create New World Screen. (Preview only)
+
+
+=== Technical ===
+Add-ons and Script Engine
+
+The minecraft:geometry.full_block identifier for the minecraft:geometry block component has been added
+The minecraft:geometry.full_block identifier provides a centered 1x1x1 cube geometry
+When combined with a material_instances component with render_layer: opaque, it enables rendering-only capabilities previously included in the minecraft:unit_cube component including:
+Occludes both vanilla and custom neighboring full blocks
+Culls faces that neighbor vanilla and custom neighboring full blocks to improve rendering performance
+General
+
+Updated listed values for the Vanilla orientation block state in documentation
+API
+
+Added Biome Registry biome names and StructureFeatureType enum to vanilla metadata generation
+Components
+
+Added an interact_filters field to the ageable component, which allows to specify conditions on when the actor can be fed
+Molang
+
+Released Molang queries from experimental
+query.is_cooldown_type
+query.cooldown_time
+query.cooldown_time_remaining
+query.relative_block_has_any_tag
+query.relative_block_has_all_tags
+query.block_neighbor_has_any_tag
+query.block_neighbor_has_all_tags
+query.block_has_any_tag
+query.block_has_all_tags
+query.bone_orientation_trs
+query.bone_orientation_matrix
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Armadillo and Wolf Armor", "Update 1.21", "Beta APIs", "Molang", and "Upcoming Creator Features" experimental toggles.
+
+
+=== Additions ===
+
+
+==== Mobs ====
+Armadillo
+
+Added the Armadillo
+The Armadillo is a neutral mob.
+Drops Armadillo Scutes periodically
+Drops Armadillo Scutes when brushed
+Spawns in Savannas
+Favorite food is Spider Eyes
+When an Armadillo detects a threat, it rolls up
+Threats are:
+Players who are sprinting
+Players on a mount or in a vehicle
+Undead mobs
+It does not roll up if it is fleeing, in water, in the air, or if being led
+When an Armadillo is rolled up it does not walk, cannot eat, and will not be tempted by food
+It continues to scan for threats, and if there are no threats detected for 3 seconds, it will unroll
+
+
+==== Items ====
+Armadillo Scutes
+
+Can be used to craft Wolf Armor
+Dropped by Armadillos
+Dispensers can be used to brush Armadillo Scutes off Armadillos
+Wolf Armor
+
+Using Wolf Armor on an adult tamed Wolf will equip the armor on the Wolf
+Only a Wolf's owner can put Wolf Armor on their tamed Wolf, and with this in mind, Dispensers cannot put Wolf Armor on Wolves
+Using Shears on a Wolf that is wearing armor will make it drop the armor
+Only a Wolf's owner can shear a Wolf Armor from it, and with this in mind, Dispensers cannot remove Wolf Armor from Wolves
+Wolf Armor gives the same protection as Diamond Horse Armor
+If a Wolf dies while wearing armor, it will drop the armor
+
+
+==== Command format ====
+Added a new /hud command that will hide and reset HUD elements visibility.
+/hud hide <hud element>
+/hud reset <hud element>
+The HUD elements available are:
+paperdoll
+armor
+tooltips
+touch_controls
+crosshair
+hotbar
+health
+progress_bar
+hunger
+air_bubbles
+horse_health
+all
+
+
+==== Technical ====
+API
+
+Added item dynamic properties
+Added function clearDynamicProperties(): void - Removes all dynamic properties from the item stack
+Added function getDynamicProperty(identifier: string): boolean number string Vector3 undefined - Returns the value of the dynamic property with the given identifier if it exists, otherwise returns undefined
+Added function getDynamicPropertyIds(): string[] - Returns an array of all dynamic property identifiers on the item stack
+Added function getDynamicPropertyTotalByteCount(): number - Returns the total byte count of all dynamic properties on the item stack
+Added function setDynamicProperty(identifier: string, value?: boolean number string Vector3): void - Sets the value of the dynamic property with the given identifier. If the value is undefined, the dynamic property will be removed.
+Added class EntityProjectileComponent. This component is used to shoot a projectile entity and modify its properties
+Added interface ProjectileShootOptions. This interface is used with function EntityProjectileComponent.shoot to optionally modify the accuracy of the projectile when shot
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Trial Spawner
+
+Trial Spawner randomizes the loot table only once each combat, for all players
+
+
+==== Mobs ====
+Breeze
+
+Updated sounds.
+
+
+==== Technical ====
+Add-ons and Script Engine
+
+The minecraft:unit_cube block component has been deprecated. Using it in content marked 1.20.60 and beyond will provide a content error
+Using content marked prior to 1.20.60 will have their minecraft:unit_cube block component upgraded to a minecraft:geometry block component with a minecraft:geometry.full_block identifier, but will maintain backwards compatibility with all behaviors
+API
+
+Updated function addEffect to return the added effect (or undefined if it failed).
+Molang
+
+Changed cooldown query slot IDs to be required for container slots with more than one index, logging content errors if not provided
+query.cooldown_time(slotName,slotId)
+query.cooldown_time_remaining(slotName,slotId)
+query.is_cooldown_type(cooldownName,slotName,slotId)
+
+
+== Fixes ==
+12 issues fixed
+From released versions before 1.20.0
+
+MCPE-120140  Taking "fall damage" when not falling
+MCPE-166934  Dimension teleport causes game to freeze after using the repeating command block
+MCPE-168518  Player takes fall damage if they stand on an opened chest at Y=63 or Y=62
+From 1.20.0
+
+MCPE-177045  Boolean Block States beyond the first 16 in the list do not get applied
+From released versions before 1.20.60
+
+MCPE-176949  Almost all copper bulbs that are generated inside trial chambers are weathered/oxidized and unwaxed
+MCPE-177171  Waxed Copper Grates have missing transparency/show black textures on the holes
+Others
+
+Breeze wind and wind charge rendering have been tweaked.
+Fixed an issue where mobs, such as Zombies, were unable to pick up full stacks of items from the ground.
+The player's body will now cast a shadow in first person mode in the Deferred Technical Preview.
+The loading screen will no longer turn black on Android when entering a PBR-capable world with the Deferred Technical Preview enabled.
+Hoppers in Minecarts no longer exhibit ghosting artifacts during camera motion when the Deferred Technical Preview is enabled.
+The game no longer crashes when exiting a world with the Deferred Technical Preview enabled.
+
+
+== References ==
+
+
+== Navigation ==

@@ -42,8 +42,8 @@ Horizontally, the beam is visible from any loaded chunk, which can be up to 512 
 
 
 ==== Colors ====
-The color of the beam may be changed by placing blocks of stained glass or stained glass panes anywhere above the beacon block. The beam changes colors according to the colors of glass placed above it: the first block sets the beam color, while each additional block sets the color by averaging the red, green, and blue components of the current beam color and the block's color. The color values are the same as those for the corresponding dye. This also works using hardened stained glass and hardened stained glass panes.‌[Bedrock Edition and Minecraft Education  only] Stained glass panes have the same effect on the beam as stained glass blocks.
-The resulting beam color can be found as C→=12n(c0→+∑i=1n2i−1ci→) where ci→ is the sequence of glass colors (c0→ corresponds to the lowest block and cn→ to the highest one).
+The color of the beam may be changed by placing blocks of stained glass or stained glass panes anywhere above the beacon block. The beam changes colors according to the colors of glass placed above it: the first block sets the beam color, while each additional block sets the color by averaging the red, green, and blue components of the current beam color and the block's color. The color values are the same as those for the corresponding dye. This also works using hardened stained glass and hardened stained glass panes.[Bedrock Edition and Minecraft Education  only] Stained glass panes have the same effect on the beam as stained glass blocks.
+The resulting beam color can be found as C=12n(c0+i=1n2i1ci) where ci is the sequence of glass colors (c0 corresponds to the lowest block and cn to the highest one).
 Beacon beams cannot go through most blocks, but can go through bedrock (to allow beacons to be used in the Nether) and end portal frames.
 
 
@@ -69,12 +69,12 @@ select a primary power in the left panel
 select the Level II option in the right panel
 select the second desired power back in the left panel
 Only one of the two powers appears to be selected, although both effects are active.
-Every 4 seconds, the selected powers are applied with a duration of 9 seconds, plus 2 seconds per pyramid level, to all players in range. Thus, when powers are changed or a player travels outside the area of effect, the powers persist for 5–9 seconds, or 13–17 seconds with a full pyramid.
+Every 4 seconds, the selected powers are applied with a duration of 9 seconds, plus 2 seconds per pyramid level, to all players in range. Thus, when powers are changed or a player travels outside the area of effect, the powers persist for 59 seconds, or 1317 seconds with a full pyramid.
 
 
 ==== Range ====
 The effects of a beacon constitutes within a cuboid region, which reaches downward and out to each side at a range determined by the size of the pyramid base (see table below), and upward a distance of that range + the height of this dimension blocks.
-The effect duration from the beacon is also determined by the size of the pyramid base (Pyramid size × 2 + 9).
+The effect duration from the beacon is also determined by the size of the pyramid base (Pyramid size  2 + 9).
 The range of the beacon effect is limited by the simulation distance. As such, on simulation distance of 4 with a level 4 pyramid, the effect does not reach the chunks on the corners of the beacon range.
 The distance from the player to the beacon block does not affect the intensity of the status effect.
 Beacon pyramid effects in Java Edition:
@@ -156,9 +156,9 @@ Issues relating to "Beacon" are maintained on the bug tracker. Issues should be 
 
 == Trivia ==
 
-The texture of the beacon is 16×16 but renders only the 10×10 area in the center.
+The texture of the beacon is 1616 but renders only the 1010 area in the center.
 It is possible to see the beacon beam on the bottom of an activated beacon.
-A fully powered beacon can fit within the upper level of the desert pyramid with the beacon’s beam perfectly being placed in the hole at the top.
+A fully powered beacon can fit within the upper level of the desert pyramid with the beacons beam perfectly being placed in the hole at the top.
 
 
 == Gallery ==

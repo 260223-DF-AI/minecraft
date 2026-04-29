@@ -1,0 +1,868 @@
+This is a list of Bedrock Edition 1.20.60 development versions.
+
+
+== Preview 1.20.60.20 ==
+Beta 1.20.60.20 (Android) or Preview 1.20.60.20 (Windows, iOS, iPadOS, Xbox) is the first beta/Preview version for Bedrock Edition 1.20.60, released on November 15, 2023, which adds the breeze mob and trial chambers behind an experimental toggle and fixes bugs.
+
+
+=== Changes ===
+
+
+==== General ====
+Profile Screen
+
+In horizontal split screen, second player can now navigate to the profile screen, and both players can now see each others' character changes
+Realms
+
+Increased the maximum render distance in Preview on Realms to 20 chunks.
+Add an unread post count indicator to the Feed button on the play screen and slots screen
+
+
+==== Technical ====
+API
+
+Changed itemStack in ItemReleaseUseAfterEvent to be optional
+Released DataDrivenEntityTriggerAfterEvent from beta to 1.8.0
+Released DataDrivenEntityTriggerAfterEventSignal from beta to 1.8.0
+Released DataDrivenEntityTriggerAfterEventSignalOptions from beta to 1.8.0
+Released DefinitionModifier from beta to 1.8.0
+Released WorldAfterEvents.dataDrivenEntityTriggerEvent from beta to 1.8.0
+Improved error messages for "Unsupported or out of bounds value." errors to include the bounds
+Entity
+
+Entity event response run_command has been renamed to queue_command and has been released out of experimental.
+Commands run via queue_command may be deferred until the next tick.
+If the entity is removed before the command is run, the command will not execute.
+Content using run_command under experimental will still work for now but the experimental feature is now considered deprecated
+Items
+
+Unrecognized fields in component item jsons will now give a warning to the content log in format versions 1.20.60 and higher
+Loot Tables
+
+Decorated Pots now support the use of loot tables
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Update 1.21" and "Beta APIs" experimental toggles.
+
+
+==== Additions ====
+
+
+===== Mobs =====
+Breeze
+
+The Breeze is a cunning, hostile mob that can spawn via Trial Spawner in some rooms within the Trial Chambers
+The Breeze moves primarily by leaping around the target, sometimes jumping quite long distances
+An aggressive adversary, the Breeze shoots volatile wind energy in the form of wind charge projectiles at its target
+Wind charges deal a small amount of damage when colliding directly with an entity
+After colliding with an entity or a block, wind charge projectiles produce a wind burst, which knocks back entities in the area by several blocks
+Wind bursts also have the effect of 'activating' certain blocks:
+Non-Iron Doors and Trapdoors are flipped
+Fence Gates are flipped
+Buttons are pressed
+Levers are flipped
+Bells are rung and swung
+Lit Candles (both standalone and on cake) are extinguished
+Wind bursts do not have any effect on Iron Doors, Iron Trapdoors, or any block being held in its position by a Redstone signal
+
+
+===== Blocks =====
+Trial Spawner
+
+Trial Spawner is a new variant of Monster Spawners that ejects rewards upon completion and can have variable levels of challenge in multiplayer
+The challenge level will increase for each new player a Trial Spawner notices nearby
+Challenge level will not decrease until it is reset during a Trial Spawner's cooldown
+Unlike normal spawners, a Trial Spawner will spawn a limited number of mobs proportional to its current challenge level
+It can only spawn a mob at positions that are within line of sight
+It can spawn a mob regardless of any light level requirement the mob has
+Spawned mobs are persistent
+Once all mobs are defeated, the Trial Spawner will eject a set of rewards proportional to the current challenge level
+After the rewards have been ejected, the Trial Spawner goes into cooldown for 30 minutes during which it will no longer spawn mobs
+Trial Spawners cannot be crafted nor obtained by players in Survival - instead, they can be found naturally placed throughout Trial Chambers
+Trial Spawners are extremely slow to mine and resistant to explosions, and will not drop even with Silk Touch
+When placed in Creative, Trial Spawners have no mob type set by default
+The mob type can be set by interacting with it while holding a Spawn Egg
+Creative and Spectator players cannot be detected or noticed by Trial Spawners
+
+
+===== Structures =====
+Trial Chambers
+
+Trial Chambers are a new structure in the Overworld where players can explore and take on combat challenges during the mid-game
+Trial Chambers are made out of a variety of Copper and Tuff blocks and can be found in different sizes from large to small
+Trial Chambers are a relatively common find throughout the Deepslate layer of the underground
+The layout of each Trial Chamber is procedurally generated, and can include traps, reward chests and a variety of combat spaces
+Supply chests can be found between the different rooms, and give the player blocks and items which help them navigate their trials
+Reward chests are guarded by challenges in each room, and can be a source of enchanted books and equipment
+Each Trial Chamber will include Trial Spawners with a melee, small melee, or ranged category:
+Melee
+Zombie
+Husk
+Slime
+Small Melee
+Spider
+Cave Spider
+Baby Zombie
+Silverfish
+Ranged
+Skeleton
+Stray
+Each Trial Spawner category will only use one mob for the entire structure when generated, and these mobs are randomized for each Trial Chamber
+For example, one Trial Chamber might only spawn Zombies, Cave Spiders and Strays, while another might only spawn Slimes, Silverfish and Skeletons
+The exceptions to this are some Trial Spawners in unique rooms which always spawn Breezes
+
+
+===== Items =====
+Trial Key
+
+An item that can only be obtained from Trial Spawners
+Trial Keys do not currently have any functionality
+
+
+==== Changes ====
+
+
+===== Blocks =====
+Crafter
+
+Updated Crafter textures
+Tuff Bricks
+
+Updated Tuff Bricks texture
+
+
+===== Technical =====
+Graphical
+
+Improved performance by fixing a GPU resource allocation bug that resulted in constant reallocations every frame in the Deferred Technical Preview
+API
+
+PlayerPlaceBlockBeforeEvent
+Removed itemStack: ItemStack from event
+Added readonly permutationBeingPlaced: BlockPermutation to event
+Updating createExplosion(location: Vector3, radius: number, explosionOptions?: ExplosionOptions) to return a boolean. True if the explosion is successful and false if the explosion is unsuccessful or is cancelled.
+Class Player
+Added method spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void;.
+
+
+=== Fixes ===
+11 issues fixed
+From released versions before 1.20.0
+
+MCPE-41898  Exporting MCWORLD or MCSTRUCTURE file to a OneDrive folder fails silently
+MCPE-65038  Oudated information about conduits in the How To Play section
+MCPE-120140  Taking "fall damage" when not falling
+From the 1.20.50 versions
+
+MCPE-170522  When entering spectator mode while standing on the ground, the player moves down a bit, which makes you fall down
+MCPE-175791  Instant death when pillaring during auto-save
+MCPE-175929  Encyclopedia on beacon doesn't include netherite blocks
+MCPE-176556  If the player is eating an apple, they will still walk at normal speed
+Others
+
+Fixed an issue that made Boats clip through blocks when placed.
+Container blocks triggered with Redstone (e.g. hopper, dispenser) can now be interacted with consistently when powered by a fast Redstone clock
+Improved delay between 100% Loaded and when main menu appears on console platforms
+Fixed a bug where certain chat messages would briefly be incorrectly shown on the new death screen
+
+
+== Preview 1.20.60.21 ==
+Beta 1.20.60.21 (Android) or Preview 1.20.60.21 (Windows, iOS, iPadOS, Xbox) is the second beta/Preview version for Bedrock Edition 1.20.60, released on November 29, 2023, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Frosted Ice
+
+No longer leave water in the world when mined with a Silk Touch tool
+Beehive and Bee Nest
+
+Can no longer be silk touched by an Enchanted Book with Silk Touch
+Ice, Packed Ice, Frosted Ice and Top Snow
+
+Now send vibrations when mined
+Nether Gold Ore
+
+Can now drop up to 6 Gold Nuggets (previously 5) when mined with an unenchanted tool, or up to 24 with Fortune Level 3 (previously 20)
+Lapis Lazuli Ore
+
+Can now drop up to 9 Lapis Lazuli (previously 8) when mined with an unenchanted tool, or up to 36 with Fortune Level 3 (previously 32)
+
+
+==== General ====
+Loading Screen
+
+The loading screen now displays 3 categories of tips based on player progression
+ Friends Screen 
+
+Added the first iteration of the new Friends drawer feature (Online/offline friends as a list, Add friends button renamed Search for players, you have no friends empty state and improved text to speech)
+
+
+==== Technical ====
+Add-ons and Script Engine
+
+Added a Project Through Liquid property to the 3D Block Cursor
+AI Goals
+
+"behavior.breed" now interrupts navigation on stop for content using engine version 1.20.60 or higher
+API
+
+Released DataDrivenEntityTriggerAfterEvent from beta to 1.8.0
+Released DataDrivenEntityTriggerAfterEventSignal from beta to 1.8.0
+Released DataDrivenEntityTriggerAfterEventSignalOptions from beta to 1.8.0
+Released DefinitionModifier from beta to 1.8.0
+Released WorldAfterEvents.dataDrivenEntityTrigger from beta to 1.8.0
+Moved EffectAddBeforeEvent from beta to 1.8.0
+Moved EffectAddAfterEvent from beta to 1.8.0
+Moved EffectAddAfterEvent from beta to 1.8.0
+Moved getTags from beta to 1.8.0
+Moved hasTag from beta to 1.8.0
+RGBA interface now inherits from RGB
+Biomes
+
+Biome JSON files no longer support inheriting fields from other Biome JSON files. If this affects any content those files should be updated by manually copying the desired JSON text
+Components
+
+The "entity_sensor" component now supports multiple "subsensors":
+"event", "require_all", "minimum_count", "maximum_count", "range" and "event_filter" are now individually configurable fields of each subsensor
+Subsensors also have a new "cooldown" field, which defines how often each subsensor should sense for entities
+All these changes require a "format_version" of 1.20.60 or higher
+Entity Filters
+
+Added new entity filter "is_panicking", which checks if the entity is executing "behavior.panic"
+Added new entity filter "is_sprinting", which checks if the entity is sprinting
+Molang
+
+Improved the context of content logs when an evaluated Molang expressions results in an error
+Performance and Stability
+
+Require block_id for each block in the StartGamePacket blockProperties
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Deferred Technical Preview" and "Beta APIs" experimental toggles.
+
+
+==== Additions ====
+Graphical
+
+Added Volumetric Fog and Light Shafts to the Deferred Technical Preview.
+
+
+==== Changes ====
+API
+
+Updated SimulatedPlayer so it can continuously build
+Updated SimulatedPlayer so it can Move and look in different directions
+ChatSendAfter & ChatSendBeforeEvent
+Changed message and sender to readonly properties
+Removed setTargets, getTargets, sendToTargets and replaced with an optional player list property targets
+Class ItemDurabilityComponent
+Renamed unbreaking to unbreakingEnchantmentLevel
+Renmaed getDamageRange to getDamageChanceRange
+EntityTypes
+Changed getAll return type from EntityTypeIterator to EntityType[]
+
+
+=== Fixes ===
+23 issues fixed
+From released versions before 1.20.0
+
+MCPE-54855  Continuous slab placing causes slabs to change from upper to lower
+MCPE-101740  "Enchantment Cost" text in anvil is missing shadow and dark gray background when using Pocket UI
+MCPE-107031  Controlled horses/donkeys/mules don't take fall damage
+MCPE-109471  Music discs don't have blue text when held
+MCPE-128532  Floating Durability Bar when opening inventory on Pocket UI
+MCPE-159894  Campfire drops 4 charcoal now instead of 2
+MCPE-170184  Trade Tables no longer support custom entity Spawn Eggs
+From the 1.20 versions
+
+MCPE-173649  Input slot in the Beacon screen goes outside the window in Pocket UI when the GUI is 0 or -1
+MCPE-175727  Blocks appear bright in dark areas after exiting water with the "Improved Input Response" option enabled
+MCPE-176784  "water_spash_manual.json" misspelt in resource_packs\vanilla\particles
+From the 1.20.50 versions
+
+MCPE-176373  Copper grate turns into waxed block of copper after being waxed
+MCPE-176379  Copper grates cannot be waterlogged
+MCPE-176595  Chiseled copper cannot be stonecut from cut copper blocks
+Others
+
+Destroying a Bed through the bottom block now properly clears the spawn point.
+Fixes a bug where the hotbar disappeared if you exited out of the customize touch controls screen with a non-touch controller input.
+Fixed the issue that prevented the inventory from being navigated when using only a keyboard on mobile.
+Fixed the issue prevented stack splitting from being used when using a keyboard in touch mode.
+A bug making the "technical details" button on resource packs not leading to the technical details screen has been fixed.
+Fixed texture z-fighting issues in Deferred Technical Preview.
+Fixed a bug where the world would sometimes fail to properly shut down and disconnect clients during an unrecoverable script watchdog error.
+Fixed an issue where functions getEquipment and getEquipmentSlot could not be called within "before" event handlers.
+Fixed a bug where an ItemStack could not be stacked after clearing its lore.
+Turtle egg, frogspawn, coral, and coral fan no longer spawn double the particles when mined.
+
+
+== Preview 1.20.60.22 ==
+Beta 1.20.60.22 (Android) or Preview 1.20.60.22 (Windows, iOS, iPadOS, Xbox) is the third beta/Preview version for Bedrock Edition 1.20.60, released on December 6, 2023, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Technical ====
+API
+
+Made the display name parameter optional in Scoreboard addObjective.
+Components
+
+Added a "drop_item_slot" field to the "interact" component, which allows to specify an inventory slot to remove and drop items from
+Stability and Performance
+
+Send "material" for vanilla data-driven blocks in the StartGamePacket blockProperties. "block_id" is also moved to the "vanilla_block_data" object
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Update 1.21" and "Beta APIs" experimental toggles.
+
+
+==== Changes ====
+
+
+===== Blocks =====
+Copper Door
+
+Updated Copper Door textures, including oxidized variations.
+Copper Doors and Trapdoors have now correct breaking time and blast resistance.
+
+
+===== Mobs =====
+Breeze
+
+Breeze ground particles now stop playing when they're riding other entities.
+Separated the Breeze diffuse and emissive textures.
+
+
+==== Technical ====
+API
+
+Added method eatItem(itemStack: ItemStack): void;.
+BlockSignComponent
+Changed signature of function setWaxed to setWaxed(waxed: boolean)
+Removed event/property pistonActivate
+Added enum BlockPistonState export enum BlockPistonState { Expanded = "Expanded", Expanding = "Expanding", Retracted = "Retracted", Retracting = "Retracting" }
+Class BlockPistonComponent
+Removed property isExpanded
+Removed property isExpanding
+Removed property isRetracted
+Removed property isRetracting
+Added property readonly state: BlockPistonState
+Changed function getAttachedBlocks to return type Block[]
+Added function getAttachedBlocksLocations(): Vector3[]
+Removed class PistonActivateBeforeEvent
+Removed class PistonActivateBeforeEventSignal
+Types
+Moved BlockType from beta to 1.8.0
+Moved FluidType from beta to 1.8.0
+Moved NavigationResult from @minecraft/server to @minecraft/server-gametest
+Graphical
+
+Adjusted the falloff of point light sources (e.g., torches, lanterns, etc...) to use a square, Manhattan-based distance metric in the Deferred Technical Preview.
+Tinted ambient light color with point light color for better multi-colored lighting over large distances in the Deferred Technical Preview
+
+
+=== Fixes ===
+9 issues fixed
+From released versions before 1.20.0
+
+MCPE-167836  Cannot change brightness_gamma setting in blocks.json
+MCPE-170377  Buttons can be accidentally clicked, when clicking out of window and into the background of game
+Others
+
+Containers being cloned over no longer keep their container screens open and no longer cause crashes.
+Fixed a rare crash that could occur with the Seven Seas achievement.
+Fixed a bug that kept the previewed item on the paper doll even after navigating back using the sidebar.
+All unowned and owned emotes should now be discoverable within the emotes section of Dressing Room.
+The Friends drawer on the Play screen now makes sounds when opened and closed.
+Fixed a crash that could occur when players placed or destroyed any block and then Save & Quit with Ray Tracing enabled.
+Fixed issue where ActionFormData buttons could not be clicked if there were more than 255 buttons in the form
+
+
+== Preview 1.20.60.23 ==
+Beta 1.20.60.23 (Android) or Preview 1.20.60.23 (Windows, iOS, iPadOS, Xbox) is the fourth beta/Preview version for Bedrock Edition 1.20.60, released on December 13, 2023, which adds the armadillo mob, armadillo scutes and wolf armor behind an experimental toggle and fixes bugs. This is the final beta/Preview released in 2023.
+
+
+=== Additions ===
+
+
+==== General ====
+Realms Stories
+
+Realms Stories is a new social hub for your Realm
+Realms Stories features include:
+The Story Feed  lets you share your greatest gameplay moments with your fellow Realm members
+The Timeline  lets you see when other members are playing on the Realm
+The Members tab  shows a list of all Realm members and their permission levels
+Realms Stories will not be accessible the first time you launch 1.20.60.23. To use Realms Stories, launch the game, close it, and then launch it again.
+Inbox Screen
+
+Added Inbox Screen is being updated with improved navigation.
+
+Experiments
+
+Added the "Armadillo and Wolf Armor" experimental toggle.
+Contains new armadillo mob, armadillo scutes and wolf armor for Minecraft 1.21.
+
+
+=== Changes ===
+
+
+==== Graphical ====
+Added 4K resolution support for Xbox Series X|S consoles
+
+
+==== General ====
+Play Screen
+
+The friends drawer in the new Play screen now allows joining a friends world with a join button.
+Edit World Screen
+
+Edit World is being updated with improved navigation, more descriptions, and a new look and feel that matches the new Create New World Screen. (Preview only)
+
+
+==== Technical ====
+Add-ons and Script Engine
+
+The minecraft:geometry.full_block identifier for the minecraft:geometry block component has been added
+The minecraft:geometry.full_block identifier provides a centered 1x1x1 cube geometry
+When combined with a material_instances component with render_layer: opaque, it enables rendering-only capabilities previously included in the minecraft:unit_cube component including:
+Occludes both vanilla and custom neighboring full blocks
+Culls faces that neighbor vanilla and custom neighboring full blocks to improve rendering performance
+General
+
+Updated listed values for the Vanilla orientation block state in documentation
+API
+
+Added Biome Registry biome names and StructureFeatureType enum to vanilla metadata generation
+Components
+
+Added an interact_filters field to the ageable component, which allows to specify conditions on when the actor can be fed
+Molang
+
+Released Molang queries from experimental
+query.is_cooldown_type
+query.cooldown_time
+query.cooldown_time_remaining
+query.relative_block_has_any_tag
+query.relative_block_has_all_tags
+query.block_neighbor_has_any_tag
+query.block_neighbor_has_all_tags
+query.block_has_any_tag
+query.block_has_all_tags
+query.bone_orientation_trs
+query.bone_orientation_matrix
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Armadillo and Wolf Armor", "Update 1.21", "Beta APIs", "Molang", and "Upcoming Creator Features" experimental toggles.
+
+
+==== Additions ====
+
+
+===== Mobs =====
+Armadillo
+
+Added the Armadillo
+The Armadillo is a neutral mob.
+Drops Armadillo Scutes periodically
+Drops Armadillo Scutes when brushed
+Spawns in Savannas
+Favorite food is Spider Eyes
+When an Armadillo detects a threat, it rolls up
+Threats are:
+Players who are sprinting
+Players on a mount or in a vehicle
+Undead mobs
+It does not roll up if it is fleeing, in water, in the air, or if being led
+When an Armadillo is rolled up it does not walk, cannot eat, and will not be tempted by food
+It continues to scan for threats, and if there are no threats detected for 3 seconds, it will unroll
+
+
+===== Items =====
+Armadillo Scutes
+
+Can be used to craft Wolf Armor
+Dropped by Armadillos
+Dispensers can be used to brush Armadillo Scutes off Armadillos
+Wolf Armor
+
+Using Wolf Armor on an adult tamed Wolf will equip the armor on the Wolf
+Only a Wolf's owner can put Wolf Armor on their tamed Wolf, and with this in mind, Dispensers cannot put Wolf Armor on Wolves
+Using Shears on a Wolf that is wearing armor will make it drop the armor
+Only a Wolf's owner can shear a Wolf Armor from it, and with this in mind, Dispensers cannot remove Wolf Armor from Wolves
+Wolf Armor gives the same protection as Diamond Horse Armor
+If a Wolf dies while wearing armor, it will drop the armor
+
+
+===== Command format =====
+Added a new /hud command that will hide and reset HUD elements visibility.
+/hud hide <hud element>
+/hud reset <hud element>
+The HUD elements available are:
+paperdoll
+armor
+tooltips
+touch_controls
+crosshair
+hotbar
+health
+progress_bar
+hunger
+air_bubbles
+horse_health
+all
+
+
+===== Technical =====
+API
+
+Added item dynamic properties
+Added function clearDynamicProperties(): void - Removes all dynamic properties from the item stack
+Added function getDynamicProperty(identifier: string): boolean number string Vector3 undefined - Returns the value of the dynamic property with the given identifier if it exists, otherwise returns undefined
+Added function getDynamicPropertyIds(): string[] - Returns an array of all dynamic property identifiers on the item stack
+Added function getDynamicPropertyTotalByteCount(): number - Returns the total byte count of all dynamic properties on the item stack
+Added function setDynamicProperty(identifier: string, value?: boolean number string Vector3): void - Sets the value of the dynamic property with the given identifier. If the value is undefined, the dynamic property will be removed.
+Added class EntityProjectileComponent. This component is used to shoot a projectile entity and modify its properties
+Added interface ProjectileShootOptions. This interface is used with function EntityProjectileComponent.shoot to optionally modify the accuracy of the projectile when shot
+
+
+==== Changes ====
+
+
+===== Blocks =====
+Trial Spawner
+
+Trial Spawner randomizes the loot table only once each combat, for all players
+
+
+===== Mobs =====
+Breeze
+
+Updated sounds.
+
+
+===== Technical =====
+Add-ons and Script Engine
+
+The minecraft:unit_cube block component has been deprecated. Using it in content marked 1.20.60 and beyond will provide a content error
+Using content marked prior to 1.20.60 will have their minecraft:unit_cube block component upgraded to a minecraft:geometry block component with a minecraft:geometry.full_block identifier, but will maintain backwards compatibility with all behaviors
+API
+
+Updated function addEffect to return the added effect (or undefined if it failed).
+Molang
+
+Changed cooldown query slot IDs to be required for container slots with more than one index, logging content errors if not provided
+query.cooldown_time(slotName,slotId)
+query.cooldown_time_remaining(slotName,slotId)
+query.is_cooldown_type(cooldownName,slotName,slotId)
+
+
+=== Fixes ===
+12 issues fixed
+From released versions before 1.20.0
+
+MCPE-120140  Taking "fall damage" when not falling
+MCPE-166934  Dimension teleport causes game to freeze after using the repeating command block
+MCPE-168518  Player takes fall damage if they stand on an opened chest at Y=63 or Y=62
+From 1.20.0
+
+MCPE-177045  Boolean Block States beyond the first 16 in the list do not get applied
+From released versions before Bedrock Edition 1.20.60
+
+MCPE-176949  Almost all copper bulbs that are generated inside trial chambers are weathered/oxidized and unwaxed
+MCPE-177171  Waxed Copper Grates have missing transparency/show black textures on the holes
+Others
+
+Breeze wind and wind charge rendering have been tweaked.
+Fixed an issue where mobs, such as Zombies, were unable to pick up full stacks of items from the ground.
+The player's body will now cast a shadow in first person mode in the Deferred Technical Preview.
+The loading screen will no longer turn black on Android when entering a PBR-capable world with the Deferred Technical Preview enabled.
+Hoppers in Minecarts no longer exhibit ghosting artifacts during camera motion when the Deferred Technical Preview is enabled.
+The game no longer crashes when exiting a world with the Deferred Technical Preview enabled.
+
+
+== Preview 1.20.60.24 ==
+Beta 1.20.60.24 (Android) or Preview 1.20.60.24 (Windows, iOS, iPadOS, Xbox) is the fifth beta/Preview version for Bedrock Edition 1.20.60, released on January 4, 2024, which fixes bugs. This is the first beta/Preview released in 2024.
+
+
+=== Additions ===
+
+
+==== General ====
+Tags
+
+Added the trapdoors block tag: contains all trapdoors. (iron_trapdoor, trapdoor, spruce_trapdoor, birch_trapdoor, jungle_trapdoor, acacia_trapdoor, dark_oak_trapdoor, mangrove_trapdoor, cherry_trapdoor, bamboo_trapdoor, crimson_trapdoor, warped_trapdoor, copper_trapdoor, exposed_copper_trapdoor, weathered_copper_trapdoor, oxidized_copper_trapdoor, waxed_copper_trapdoor, waxed_exposed_copper_trapdoor, waxed_weathered_copper_trapdoor, waxed_oxidized_copper_trapdoor)
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Hardened Stained Glass (EDU-only)
+
+The different block states for the hard_stained_glass ID have now been split up into their own IDs.
+
+Hardened Stained Glass Pane (EDU-only)
+
+The different block states for the hard_stained_glass_pane ID have now been split up into their own IDs.
+
+
+==== Items ====
+Potato, Carrot, Melon, Sweet Berries, Nether Wart, Sunflower, Lilac, Rose Bush, Peony, Glowstone Dust, and Gravel
+
+No longer have increased chance of drops when mined with an enchanted book of Fortune.
+Turtle Scute
+
+Renamed "Scute" to "Turtle Scute".
+
+
+==== Structures ====
+Trail Ruins
+
+Trail ruins will now be placed in the same location and configuration as in Java Edition.
+
+
+==== Technical ====
+AI Goals
+
+behavior.follow_parent now interrupts navigation on stop for content using engine version 1.20.60 or higher.
+Biomes
+
+Biome tags in JSON files are now specified under a minecraft:tags component, in a tags array, rather than as loose JSON objects, for files with a format_version of 1.20.60 or higher.
+Components
+
+The interact component now supports the additional entity_act value for the vibration field.
+Entity Event Responses
+
+Added the emit_vibration entity event response, which allows the entity to emit a vibration having the entity itself as its source.
+The vibration field allows to specify the vibration to be emitted.
+The allowed values are shear, entity_act, and entity_interact.
+Molang
+
+Added content errors that state query.remaining_durability and query.max_durability are only to be used with Item contexts.
+Performance
+
+Feature toggle Enable New Geometry Tessellation Pipeline defaults to true.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Armadillo and Wolf Armor", "Update 1.21", and "Beta APIs" experimental toggles.
+
+
+==== Additions ====
+
+
+===== Technical =====
+Add-ons and Script Engine
+
+The block component minecraft:random_ticking is now supported again.
+API
+
+system.runJob()
+system.clearJob()
+Added runJob and clearJob for optimizing long running tasks using JavaScript generators. system.runJob takes a generator function and returns a jobId.
+@minecraft/server.BlockPermutation
+Moved getState and withStates APIs from beta to stable.
+Scripting
+
+Added ScriptBiomeTypes and ScriptBiomeType to allow Scripting API to enumerate the BiomeRegistry.
+Added a findClosestBiome function to Dimension to find the closest biome of a specified type, to a given position in the world.
+
+
+==== Changes ====
+
+
+===== Mobs =====
+Armadillo
+
+Armadillo now emits vibrations when rolling up and when unrolling.
+Baby armadillos no longer move towards their parents after rolling up.
+Breeze
+
+The Breeze can now jump when standing in water.
+The Breeze now avoids trapdoors when pathfinding.
+
+
+===== Blocks =====
+Trial Spawner
+
+Improved trial spawner particles.
+
+
+===== Non-mob entities =====
+Wind Burst
+
+Removed the darkening tint in wind burst particle to uphold parity.
+
+
+===== Items =====
+Wolf Armor
+
+Volume of sounds for equipping and removing wolf armor is now controlled by the Friendly Creatures slider.
+
+
+=== Fixes ===
+24 issues fixed
+From released versions before Bedrock Edition 1.20.60
+
+MCPE-105457  Villager's profession skin may not match its workstation and trades.
+MCPE-173386  Going through Nether/End portal causes game to get stuck on "Building Terrain", and restarting the game teleports player to the same coordinates of the dimension that they left from.
+MCPE-175206  Pistons pushing/pulling/breaking blocks may teleport player to 0 on one axis.
+MCPE-176365  Cannot speed up after landing on blocks in Creative.
+MCPE-176528  Villagers link to the same job block/bed even if it is already claimed, and game crashes if you break that job block/bed.
+From the previous development version
+
+MCPE-176926  Double pressing jump button makes the play jump while disabling flying.
+MCPE-177283  Boat disappears when placed at the player's feet or next to another boat.
+MCPE-177551  Armadillo's legs will sometimes flicker when rolled up.
+MCPE-177560  Wolf armor duplicates when dropped.
+MCPE-177562  Armadillo has no roll sound/unused sound.
+MCPE-177593  Pillager outposts doesn't spawns pillagers.
+Others
+
+Fixed a bug where the player would exit a vehicle at an incorrect height if the vehicle was over a fire block.
+Fix font glyph boundary artifacts (spotty pixels at the edge of each character) with italic text rendering at certain resolution.
+Pufferfish no longer inflate and deflate repeatedly when a player is at a specific distance from them.
+Mobs that have partial blocks (e.g. Trapdoors, Slabs, etc.) specified as part of their list of blocks to avoid in their Navigation Component should now avoid them properly.
+Realms Tab in new Play Screen should no longer be stuck in a loading state.
+Fixed crash that could occur in the Play menu whilst looking at Realms.
+Corrected translations about "posting" and "liking" on Realms Stories.
+Fixed issue where shadows for alpha tested geometry (doors, leaves, etc.) were no longer rendering in the Deferred Technical Preview.
+Banner shields now render when equipped in both left and right hands in the Deferred Technical Preview.
+Fixed an issue where light emitting items glowed in the player's hand in dark rooms during the day in the Deferred Technical Preview.
+Improved upscaling stability on Android in the Deferred Technical Preview.
+On Android, pixelated artifacts are no longer visible on the right half of the screen when upscaling is turned on in the Deferred Technical Preview.
+Fixed unstable and incorrect light clustering results in the Deferred Technical Preview.
+
+
+== Preview 1.20.60.25 ==
+Beta 1.20.60.25 (Android) or Preview 1.20.60.25 (Windows, iOS, iPadOS, Xbox) is the sixth beta/Preview version for Bedrock Edition 1.20.60, released on January 10, 2024, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Large Chest and Large Trapped Chest
+
+Slightly changed their texture.
+
+
+==== World generation ====
+Trees
+
+The limitations on which blocks can be replaced by Dark Oak and Acacia trees now also apply to their branches, not just their trunks.
+
+
+==== Technical ====
+API
+
+Changed "Unsupported or out of bounds value.." errors to use ArgumentOutOfBoundsError Error type
+Blocks
+
+Added the ability for data-driven blocks to remove faces in the geometry when abutting a full and opaque block.
+A new field has been added to the Block Geometry Component, which references a new Culling .json file (found in the resource pack block_culling directory) that sets up culling rules for the tessellated geometry.
+Dimension API
+
+setWeather method argument duration now uses ArgumentOutOfBoundsError Error type.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Update 1.21", and "Beta APIs" experimental toggle.
+
+
+==== Changes ====
+
+
+===== Blocks =====
+Trial Spawner
+
+If the Trial Spawner has less than two seconds remaining to spawn a mob when detecting a player, the spawn delay is set to two seconds.
+
+
+===== Mobs =====
+Breeze
+
+The Breeze now reflects all projectiles.
+The Breeze now reflects projectiles back toward the shooting entity, with a 40-degree spread.
+The pixels at the bottom of the Breeze's torso rods now match with their surrounding colors.
+
+
+===== Technical =====
+API
+
+PropertyOutOfBoundsError
+Added a new PropertyOutOfBoundsError that throws when a property that is bounded is set out of bounds.
+ContainerSlot APIs now throw an InvalidContainerSlotError if the container slot is invalid, or if a property is set on an empty slot.
+Property typeId no longer returns undefined for empty slots, but instead throws an InvalidContainerSlotError.
+Added function hasItem - Returns whether the slot contains an item.
+Added function getCanPlaceOn - Returns an array of block identifiers that the item can be placed on.
+Added function getCanDestroy - Returns an array of block identifiers that the item can destroy when used.
+
+
+=== Fixes ===
+18 issues fixed
+From released versions before Bedrock Edition 1.20.60
+
+MCPE-43391  Banners that are mined/broken don't stack with banners that have never been mined/broken
+MCPE-55878  Wither roses deal damage every 2 seconds instead of half second
+MCPE-79480  Zoglins can spawn in peaceful mode
+MCPE-87711  Experience orbs push mobs
+MCPE-114689  Bees get damaged by sweet berry bushes
+MCPE-122491  Suspicious stew cannot be consumed with full hunger
+MCPE-142321  When grass and flowers spawn in a snow biome, they replace the snow
+MCPE-147656  Wolves doesn't spawn on snow block in the grove biome
+MCPE-169495  Double chest texture has miscolored pixels
+MCPE-170540  Experience (XP) orbs scattering more than before
+MCPE-177409  Need a Mint achievement received through crafting
+From the previous development version
+
+MCPE-177195  /execute if blocks succeeds when given unloaded coordinates
+MCPE-177696  Health bar of rideable animals disappear
+Others
+
+Containers being cloned no longer keep their container screens open or cause crashes.
+Fixed a bug that could cause infinite loading while joining a Realm
+Hud command now works as expected  the /hud command allows creators to show/hide each element individually as well as show/hide all. Hiding one element no longer hides 'all' elements.
+Fixed an issue causing caves to appear illuminated by the sun (aka Light Leaking) in the Deferred Technical Preview
+Volumetric fog is no longer affected by sunlight in enclosed spaces in the Deferred Technical Preview
+
+
+== Preview 1.20.60.26 ==
+Beta 1.20.60.26 (Android) or Preview 1.20.60.26 (Windows, iOS, iPadOS, Xbox) is the seventh and final beta/Preview version for Bedrock Edition 1.20.60, released on January 18, 2024, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Command format ====
+/me, /say, /tell, and /title
+
+Reduced max length for output message to 512 characters.
+/kill
+
+Reduced max length for reason message to 512 characters.
+
+
+=== Fixes ===
+2 issues fixed
+Others
+
+Made various performance and stability improvements.
+Fixed an issue with multiplayer sessions sometimes not appearing in available LAN games.
+
+
+== Notes and references ==
+
+
+== Navigation ==

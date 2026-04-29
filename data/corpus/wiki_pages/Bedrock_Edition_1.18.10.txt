@@ -1,0 +1,385 @@
+1.18.10 is a minor update to Bedrock Edition released on February 8, 2022, which brought more parity with Java Edition and fixes bugs. This is the first version released in 2022.
+
+
+== Additions ==
+
+
+=== Items ===
+Banner patterns
+
+Added a new "Globe" banner pattern.
+
+
+=== Command format ===
+/damage
+
+Used for players to deal damage to entities.
+/loot
+
+Used to drop the given loot table into the specified inventory or into the world.
+
+
+=== General ===
+Experiments
+
+Added new "Wild Update" toggle.
+Settings
+
+Added "Thumbstick Opacity" option to the touch controls settings.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Barrel
+
+Changed the bottom texture to match the spruce planks.
+Big Dripleaf
+
+Restricted big dripleaf placement to clay, coarse dirt, dirt, farmland, grass blocks, moss blocks, mycelium, podzol and rooted dirt.
+Cartography Table
+
+Texture was changed from  to , to match the dark oak planks in the Texture Update.
+Cave Vines
+
+Changed cave vines plant texture from  to .
+Cocoa Beans
+
+Textures of cocoa pods (stage0 and stage1) were changed.
+Dirt Path
+
+Side texture was changed to better match its top texture.
+Door
+
+Changed spruce door's model,[verify for Bedrock Edition] to fix top/bottom texture.
+Changed textures of oak doors and iron doors to remove a horizontal line.
+Glass Pane
+
+Top texture was changed to better match its side texture.
+Glow Lichen
+
+Now emits with light level 7, instead of 10.
+Lectern
+
+Base texture was changed to match the oak planks texture after being updated a second time in the Texture Update.
+Logs
+
+Changed the top texture of dark oak log.
+Changed the side texture of stripped dark oak log, to match the color of its top texture.
+Redstone Comparator
+
+Changed the base texture of lit comparators from   to  .
+Stained Glass
+
+Changed textures of blue stained glass and red stained glass, to match transparency of other types of stained glass.
+
+
+=== Items ===
+Beetroot Seeds and Melon Seeds
+
+Textures were moved down by 1 pixel.
+Boats
+
+Changed item textures from      to     . The paddles now represent their respective wood color (except spruce) and the inside rims of the boats are darker.
+Campfire and Soul Campfire
+
+Changed the item textures from   to  .
+Wooden Doors and Iron Door
+
+Changed the item textures of all doors except crimson and warped from        to       .
+Item Frames and Glow Item Frames
+
+Changed the item textures from   to  .
+Signs
+
+Changed the item textures from         to        .
+
+
+=== Mobs ===
+Axolotl
+
+Texture of the wild axolotl was changed.
+Evoker, Vindicator and Witch
+
+Removed hoods in their textures.
+Vindicator now has blue eyes, instead of green.
+Parrot
+
+The bottom texture of all parrots' wings has been flipped.
+Slimes
+
+Now attack snow golems again.
+Iron Golem
+
+Now starts cracking upon losing health.
+A sound plays on every cracking stage.
+There are 4 stages, from uncracked to fully cracked, before the golem dies.
+Can be healed using iron ingots.
+A sound plays each time the golem is repaired.
+One iron ingot restores 25HP  12.5.
+It takes 4 iron ingots to repair an iron golem from 1 HP to full health.
+Villagers and Wandering Traders
+
+Removed the emerald icon above their head when trading.
+
+
+=== Non-mob entities ===
+Armor Stand
+
+Smooth stone outline texture was changed.
+
+
+=== World generation ===
+Deepslate
+
+Now the gradual transition from stone starts at height between Y=0 to Y=8, rather than Y=-8 to Y=0 previously.
+Fossils
+
+The fossils in the deepest part of the underground generate with Deepslate Diamond Ore instead of Coal Ore.
+Grove biome
+
+Now has more variety of trees.
+
+
+=== Gameplay ===
+Trading
+
+Updated trade tables for Butchers, Cartographers, Librarians, and Wandering Traders.
+
+
+=== General ===
+Splashes
+
+The splash "[this splash text has been delayed until part 2]" has been changed to "[this splash text is now available]".
+Added the "Don't feed chocolate to parrots!" splash text.
+
+
+=== Technical ===
+Data-Driven Blocks
+
+Added support for blocks having the same name, as long as they belong to different namespaces
+Updated documentation for several components:
+BlockExplosionResistance
+BlockFrictionComponent
+BlockMaterialInstances
+BlockBreathabilityComponent
+CraftingTableComponent
+BlockLightFilterComponent
+Changed BlockLightDescription JSON name from "minecraft:block_light_absorption" to "Minecraft:block_light_filter" and field name from "block_light_absorption" to "block_light_filter"
+Data-Driven Entities
+
+The random chance for a wild adult Ocelot to spawn with two children is now handled by components added in the entity JSON definition
+Added AI Goals documentation for "behavior.move_to_liquid" and "behavior.move_to_block"
+Added AI Goals documentation for missing parameters of "behavior.tempt", "behavior.rise_to_liquid_level", and "behavior.random_fly"
+Added Components documentation for missing parameters of "movement.sway"
+Data-Driven Items
+
+Added nine new shapeless recipe JSON files, replacing hard-coded Smithing Table crafting recipes
+Updated documentation for BlockCollisionComponentDescription
+Changed BlockCollisionComponentDescription JSON name from "entity_collision" to "block_collision"
+Updated documentation for FuelItemComponent
+Renamed DamageableItemComponent to DurabilityItemComponent
+Updated documentation for BlockRaycastComponent
+Updated documentation for FoodItemComponent
+Changed SaturationModifier in FoodItemComponent to take a float instead of a string
+
+
+== Experimental ==
+
+These additions and changes are accessible by enabling the "Wild Update" and "Enable GameTest Framework" experimental toggles.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+Frog Egg
+
+Non-solid blocks that can be placed on water.
+Laid by frogs after mating.
+Froglight
+
+Added froglights, with 3 variants: Ochre, Pearlescent and Verdant.
+Emit a light level of 15.
+Dropped when frogs eat small magma cubes.
+When eaten by Swamp frogs, drop Ochre Froglight.
+When eaten by Tundra frogs, drop Verdant Froglight.
+When eaten by Tropical frogs, drop Pearlescent Froglight.
+
+
+==== Items ====
+Spawn Eggs
+
+Frog spawn egg added.
+Tadpole spawn egg added.
+Bucket of Tadpole
+
+Obtained by using a water bucket on a tadpole, similar to obtaining a bucket of fish or axolotl.
+Can be used to transport tadpoles as with fish and axolotls.
+
+
+==== Mobs ====
+Frogs
+
+Can croak, jump, swim, and walk on land
+Come in three variants: default, tropical, and snowy.
+The default variant is orange, the tropical variant is white, and the snowy variant is green.
+Can be tempted and bred using seagrass.
+Lay eggs on water after mating.
+Grow from tadpoles.
+Variants depend on the temperature of the biome it turns from a tadpole to a frog in.
+Eat small slimes and magma cubes.
+Tadpoles
+
+Jump around like fish when on land, and eventually die.
+Grow up into frogs.
+Can be held in a water bucket.
+Frog type dependent on which temperature a tadpole grows in.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Sculk, Sculk Catalyst, Sculk Sensor, Sculk Shrieker, Sculk Vein
+
+Moved from "Vanilla Experiments" to "Wild Update" experimental toggle.
+
+
+==== Gameplay ====
+Effects
+
+Moved Darkness effects from "Vanilla Experiments" to "Wild Update" experimental toggle.
+
+
+== Fixes ==
+Performance / Stability
+
+Fixed an issue that could cause entities in a chunk to not save when exiting a world (MCPE-144208)
+The game now loads certain seeds and worlds around Mesa biomes without crashing (MCPE-149659)
+Fixed a crash that could occur when trading Maps with Cartographer Villagers (MCPE-142388)
+Fixed a crash that could occur when shift-clicking Armor in the Crafting Table while using Pocket UI (MCPE-144863)
+Fixed issue where breaking blocks, opening chests, and entering portals would be delayed/not work when there are lots of mobs nearby (MCPE-149214)
+Optimized the placement of geode features in the world
+Reduced the amount of network packets sent with the subchunk request system and packet optimizations
+Fixed a crash that could occur when setting the width or height of a mob's hitbox to a negative value
+Fixed an issue where ticking areas would occasionally skip a tick
+Fixed a bug that caused performance drops when using the '/tag' command (MCPE-139609)
+The Content Log History panel is now accessible from the second player in split-screen without crashing the game
+Fixed a crash that could occur when an animation controller referenced itself as one of its "animations"
+The game no longer crashes when nesting schedule commands in functions (MCPE-144730)
+Added log messages to help identify the cause of the BDS crash (BDS-12751)
+Improved performance of RandomStrollGoal
+Reduced memory and load times for ticking areas
+Gameplay
+
+Boats no longer disappear when getting out of them after a long ride (MCPE-108568)
+Players can now use emotes while standing on Scaffolding (MCPE-147624)
+Capped the freezing range of the Frost Walker enchantment to 8 blocks to avoid server unresponsiveness
+The 'Iron Belly' achievement can once again be unlocked (MCPE-146036)
+Players can no longer be hurt by their own armor enchantments such as Thorns
+Fixed a camera issue when entering a Bed while still in glide mode (MCPE-117339)
+Pillager Outposts now spawn the correct number of Pillagers and Iron Golems (MCPE-141499)
+World Generation
+
+Large Dripstone feature does not generate floating on top of lava anymore (MCPE-141131)
+Pointed Dripstone clusters no longer have a chance of spawning only stalagmites of height one (MCPE-148588)
+Pointed Dripstone now sometimes generate on large stalactites and stalagmites (MCPE-128128)
+Lava pools now only generate in positive Y coordinates (MCPE-146459)
+Lava pools that generate close to Y=0 will have Deepslate and Stone blocks casing
+Coral now generates in the deeper depths of Warm Oceans (MCPE-147399)
+The Grove biome now has more variety of Spruce Trees (MCPE-148361)
+Fixed Mesa and Frozen Ocean biomes having inconsistent generation on Realms
+The Bedrock layer in old world chunks is now replaced with Deepslate between y=0 and y=8 (MCPE-147373)
+Copper Ore can now generate in Deepslate variant in Dripstone Caves (MCPE-144800)
+Ruined Portals under Ocean and Swamp biomes are no longer waterlogged and will spawn dry
+Chests and Monster Spawners once again generate correctly in structures (MCPE-23416, MCPE-48622, MCPE-97295)
+The bottoms of hoodoos in Eroded Badlands biomes no longer make flat ceilings in caves underneath (MCPE-146984)
+Lily Pads no longer generate in aquifers under Swamp biomes (MCPE-125913)
+Fossils can now be generate below Y=0, with Deepslate Diamond Ore Blocks instead of Coal Ore Blocks (MCPE-144065)
+Fossils will no longer generate floating in caves or water
+Mineshafts now always generate above the Bedrock layer (MCPE-147575)
+Iceberg features no longer replace Snow Blocks of Igloo structures (MCPE-147690)
+Water in open air mountain caves no longer generates unevenly (MCPE-149417)
+Aquifers no longer generate with missing water blocks (MCPE-146452)
+Mobs
+
+Villagers, Rabbits, and Foxes spawned in the Frozen and Jagged Peaks biomes now spawn as their respective snowy variants (MCPE-119561)
+Goats now spawn in the Jagged Peaks and Frozen Peaks biomes (MCPE-146886)
+Axolotl walk animations are now affected by speed (MCPE-131322)
+Slimes are once again aggressive towards Snow Golems (MCPE-146651)
+Fixed a bug where the Ender Dragon would become invisible when flying towards the portal fountain after dying (MCPE-149119)
+When using the Education Edition toggle, Axolotls, Bees, Boats, Cats, Dolphins, Glow Squids, Goats, Hoglins, Iron Golems, Ocelots, Pandas, Parrots, Pigs, Polar Bears, Squids, Striders, Wolves, and Zoglins can now have Balloons attached to them.
+Skeleton Horsemen now pathfind correctly (MCPE-147521)
+Farmer Villagers no longer pick up more than 8 stacks of items (MCPE-123412)
+Untamed Cats can now be leashed
+Guardians and Elder Guardians no longer sink while targeting an enemy or the player
+Blocks
+
+Fire can no longer be placed on top of Lightning Rods
+The width of Walls connecting to Candles is now correct (MCPE-141156)
+Improved the animation of falling block entities (e.g. Sand and Gravel) (MCPE-142010)
+Amethyst Clusters are now properly destroyed when the supporting block is destroyed (MCPE-126076)
+Copper Blocks and variants now oxidize in the Nether (MCPE-134954)
+Big Dripleaf placement has been restricted to Clay, Grass, Dirt, Farmland, Moss, Rooted Dirt, Podzol, and Mycelium (MCPE-123392)
+Water blocks near edges should now flow properly
+Fixed Monster Spawners that sometimes stopped spawning mobs when the chunks they were placed in were reloaded (MCPE-142285)
+Fixed End Crystal beams not rendering when an End Crystal was out of the players sight (MCPE-149159)
+Fixed Structure Blocks infinitely spawning the same entities when loading a structure (MCPE-137617)
+Structure Block structures now correctly transform (rotate and/or mirror) multiface blocks, like Glow Lichen
+Big Dripleaf, Amethyst Buds, and Amethyst Clusters no longer break in Structure Blocks
+Pointed Dripstone can now only be placed on full faces of blocks
+Glow Lichen is now oriented the correct way when placed
+Magma Blocks no longer deal damage when the Fire Damage game rule is disabled (MCPE-99718)
+Flower blocks are now properly destroyed by explosions when inside snow layers (MCPE-146492)
+Portal blocks are no longer obtainable in Survival mode (MCPE-138819)
+Primed TNT will no longer explode when spawned using '/summon' and the TNT Explodes game rule is disabled (MCPE-49044)
+Cocoa Pods placed on chunk borders no longer break upon reloading a world (MCPE-67479)
+Fixed Observer Block retaining its lit state while in the inventory if destroyed while blinking (MCPE-114173)
+Fixed an issue where Paintings could overlap with Glow Item Frames, Signs, Banners, and Torches
+Light Block light intensity can now be incremented periodically while holding right-click/interact (MCPE-137647)
+Light Block light intensity can now be changed on touch-input devices
+Light Blocks can now be placed on other Light Blocks while sneaking (MCPE-137744)
+Fixed Light Block's brightness not being adjustable when playing in VR
+Fixed Light Block not being continuously placed while holding the 'Place' button (MCPE-135669)
+Light Blocks can now be waterlogged (MCPE-148391)
+Items
+
+Furnaces now consistently output the expected number of items after completing a smelt (MCPE-126004)
+Stored experience in a Furnace can no longer be duplicated (MCPE-71777)
+The Bows shaking animation now only appears when the Bow is fully drawn
+Food once again applies status effects when eaten
+Offset the position of Maps held in hand relative to the screen's aspect ratio so they always stay close to the screen's edge and remain fully visible
+Item data no longer gets corrupted when items are placed in mobs' hands (MCPE-145034)
+Fixed first person off-hand Shield blocking animation (MCPE-125340)
+Accessibility
+
+Fixed an issue with Screen Reader on the Save purchase to a Microsoft Account screen
+Screen Reader now correctly reads the names of experimental toggles
+User Interface
+
+Added appropriate padding to the "Item Text Name" box on the user interface for when players have Armor equipped in Survival mode and select items via the hotbar (MCPE-143928)
+Fixed an issue where text shadows had a reduced offset when text message contains button glyph
+Fixed an issue with getting a faulty purchase page for Realms when the maximum number of Realms are already owned on the current platform
+Fixed the Achievements button not being accessible when scrolling up on the Pause Screen
+Fixed the food cooldown visual not being semi-transparent on the HUD (MCPE-55206)
+The "Invite to game" and player role buttons on the Pause Screen now have a white border when focused with custom resolution
+The "Invite to Game" button on the pause screen now disables correctly when a server is full
+Fixed tab order on the Settings menu when navigating with gamepad bumpers
+Fixed the height of the scrolling content panel on the Marketplace sidebar navigation to display the scrolling bar for varying device resolutions
+Fixed a redundant " - " beside player usernames after adding them to the friends list (MCPE-105464)
+Fixed item tooltip freezing in place on the Creative menu when switching between gaze selection and controller selection on PS VR
+Fixed player camera perspective not being respected when changing from Immersive Mode to Living Room Mode in PS VR
+Boss bar info no longer disappears after changing VR display mode on PS VR
+Fixed coin purchases not updating displayed coin amount until after relaunching the game
+Removed double space spelling issues on several screens, including the Feedback prompt (MCPE-104037)
+Fixed the player visual on the inventory screen while gliding. It was previously off-center and could hide elements of the interface
+Fixed issue where up and down arrow buttons in the Resource Pack Settings screen became bigger when highlighted (MCPE-147708)
+Fixed Realms buttons disappearing after the Minecraft window lost and regained focus on the Create World on Realm screen
+
+
+== References ==
+
+
+== Navigation ==

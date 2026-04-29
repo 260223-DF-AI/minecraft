@@ -1,0 +1,70 @@
+Data component predicates (historically known as item sub-predicates) are used to check conditions about data components. They are used in minecraft:item_predicate argument type, item modifiers, loot predicates, advancement criteria, and entity and block predicates. They return a pass or fail result to the invoker, who acts differently based on this result.
+
+
+== List of data component predicate types ==
+
+
+== Formats ==
+
+
+=== attribute_modifiers ===
+Checks modifiers in the attribute_modifiers data component.
+
+
+=== bundle_contents ===
+Checks item stacks in the bundle_contents data component.
+
+
+=== container ===
+Checks item stacks in the container data component.
+
+
+=== custom_data ===
+Checks custom_data data component. See NBT format  Testing NBT tags and NBT format  Conversion from JSON.
+Either as a JSON object or an NBT compound tag, or a string. If a string, it is resolved into an NBT compound tag.
+
+
+=== damage ===
+Checks remaining durability or damage value. Damage value is from the damage data component; remaining durability is the value max_damage data component minus damage value.
+
+
+=== enchantments ===
+Checks enchantments on the item (enchantments in the enchantments data component).
+
+
+=== firework_explosion ===
+Checks the firework_explosion data component.
+
+
+=== fireworks ===
+Checks explosion effects in the fireworks data component.
+
+
+=== jukebox_playable ===
+Checks jukebox song in the jukebox_playable data component.
+
+
+=== potion_contents ===
+Checks [String] potion field in the potion_contents data component. Fails if there is no [String] potion field in the component.
+
+
+=== stored_enchantments ===
+Checks enchantments on an enchanted book (enchantments in the stored_enchantments data component).
+
+
+=== trim ===
+Checks the trim data component.
+
+
+=== writable_book_content ===
+Checks pages in the writable_book_content data component. Raw texts are checked instead of filtered texts.
+
+
+=== written_book_content ===
+Checks written_book_content data component.
+
+
+== History ==
+
+
+== Navigation ==

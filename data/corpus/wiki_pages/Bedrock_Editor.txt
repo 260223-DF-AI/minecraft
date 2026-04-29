@@ -1,0 +1,334 @@
+The Bedrock Editor, also referred to as Minecraft: Bedrock Editor or simply the Editor, is an in-game tool that can be used to edit worlds through projects. It is customizable through the use of scripting.
+
+
+== Launching ==
+
+The Bedrock Editor uses the same app as Minecraft and Minecraft Preview, in the "Editor" state. It can be opened from the "Creator Tools" tab in the Bedrock Edition section of the Minecraft Launcher. A desktop shortcut can be created to launch the Editor directly without opening the Minecraft Launcher. This should be an internet shortcut with minecraft://creator/?Editor=true for the stable version, or minecraft-preview://creator/?Editor=true for Preview.
+Opening the Bedrock Editor can also be done by pressing  Windows + R, and entering minecraft://creator/?Editor=true for the stable version, or minecraft-preview://creator/?Editor=true for Preview.
+Bedrock Dedicated Server can also enable the Editor for clients. To launch BDS with the Editor, enter bedrock_server.exe Editor=true in a command prompt. This will create a new project on the server, and only works if the server doesn't contain any worlds. An existing project can be applied to a server by adding the project to the server's worlds folder and specifying the world name in server.properties. Only players on an Editor client can join compatible servers with a project to edit on the server.
+
+
+== Usage ==
+
+Using the tool starts with creating a new Project. A project is similar to a world, but a project is not "played" until it is exported, and stays in the initial creation state during editing, meaning that several world options such as the bonus chest can still be enabled after editing. Achievements are always disabled for projects and worlds created with the project.   
+New projects can be created from the main menu. All existing projects are shown in the "Projects" list, with the options to edit a project, create a new project, or import a world file. The player can join multiplayer projects from the "Friends" tab or join external servers from the "Servers" tab. The settings icon in the top-right opens the same settings menu as in regular gameplay. Pressing a project in the list opens the editor for that world.  
+Creating a new project has the same options as a new world in Minecraft, with the exception of Hardcore mode and Marketplace add-ons. The world type option has one additional preset, "Void world", which generates an empty world across all dimensions with a small grass block platform in the Overworld. 
+Editing a project has the same options as the regular edit world screen (see World Options  Classic UI), but these options affect the world only in test mode or for exporting. The edit world screen allows add-ons and experiments to be enabled, which can't be done from the Editor. A project can also be exported as project file to import it in the Editor, as world file to import it in Minecraft, or as template to import its world settings and add-ons.
+
+
+=== GUI ===
+
+The Editor GUI uses Ore UI, and consists of several bars on the sides. Windows and pop-up bars can be closed and adjusted in scale and position towards the world preview. Several options and buttons have blue tooltips that appear when hovering over the option. These show hotkeys, a short description of the option, and sometimes a video explaining the feature.
+The statistics bar at the bottom shows some coordinates[more information needed] and the ID of the hovered block.
+The menu bar on the top has five tabs with options. Unless stated else, each of these buttons opens the respective window on the right side. See the respective sections below for more information about the functions.
+File
+Contains a list of actions and settings that handle the project. 
+
+Test World
+Export
+Publish to Realms
+Settings
+Save & Quit
+Saves the project and returns to the main menu.
+Edit
+Contains a list of actions used to add and remove things from the world.
+
+Undo (Ctrl + Z)
+Undos the latest action performed in the Editor.
+Redo (Ctrl + Y)
+Reverts an undo action.
+Cut (Ctrl + X)
+Copies the selected blocks/entities to the clipboard and removes them.
+Copy (Ctrl + C)
+Copies the selected blocks/entities to the clipboard.
+Delete (Del)
+Deletes the selected blocks/entities. Blocks are replaced with air.
+Deselect (Ctrl + D)
+Deselects a selected area.
+Fill (Ctrl + F)
+Fills the selected area with the block selected in the hotbar.
+View
+Contains a list of options to show menus in the Editor.
+
+Game menu (Ctrl + Q)
+Closes the Editor GUI and opens the pause menu. The pause menu looks similar to the pause menu in Minecraft but the Marketplace, profile screen and Dressing Room are inaccessible.
+Log Panel (Ctrl + H)
+Jigsaws
+World
+Contains a list of options that change the attributes of the world.
+
+Pause Entities
+Toggles to pause all entity movements and suspend their AI.
+Navigation Panel
+Locate (Ctrl +  Shift + L)
+Time of Day
+Weather
+Opens a sub-menu to set the current weather to clear, rain, or thunder.
+Dimensions
+Opens a sub-menu to teleport the player to the Overworld, the Nether, or the End.
+Vibrant Visuals Settings
+Help
+Contains a list of resources and information to teach about the Editor.
+
+Tutorial
+Quick start
+Documentation
+Opens the official documentation page for the Editor.
+Feedback
+Opens the feedback post about the Editor.
+Samples
+Opens the Editor samples page on GitHub.
+
+
+==== Action bar ====
+The action bar is located below the menu bar and contains buttons on the left and right side. On both sides, a set of buttons can be selected for quick actions. If there are more buttons than space on one side, a button appears to switch between pages. Right-clicking a button or selecting the triangle in the bottom-right opens the button selection panel with an option to remove the button. Most of these buttons are also available from the menu bar above. The available buttons are:
+
+
+===== Hotbar =====
+
+In the middle of the action bar is the block hotbar, which is used for several placing and filling actions. A block in the hotbar can be selected using the 1-9 hotkeys, or by selecting a block. Double-clicking a slot opens a pop-up to pick a block. 
+The block picker shows in which block the slot changes, with a list of all blocks below. The list shows the inventory icon as well as the ID, and can be filtered with a searchbar above. The list can also be sorted by color, and the exact color can be picked with a HEX graphical color picker. There is also a recently used tab below.
+The block picker allows to switch the hotbar slot to a list of blocks. Lists are shown in the "Hotbar" window on the right, per hotbar slot. When performing an action with a list, such as filling, the blocks will be randomly selected from the list. The weight of each block can be adjusted, and blocks can be added or removed to a list.
+With the menu button next to the hotbar, a set hotbar can be saved to a name. Saved hotbars can be selected from this menu or with the arrow buttons next to the hotbar. A saved hotbar can be overwritten with the selected hotbar with the "Save to Hotbar" option. The "Hotbar" window on the right can be opened to change hotbars and lists.
+
+
+==== World preview ====
+The world preview can be highlighted with Ctrl +  Tab (viewport focus). The camera can be moved by moving the mouse while holding right click. Horizontal movement is done through W, A, S, and D. Vertical movement is done through E (up) and Q (down).
+Scrolling on the mouse moves the camera in the facing direction. The camera can be dragged over the world by holding the middle mouse button and moving the mouse. 
+Selecting blocks and areas can be done with the selection tool by left-clicking. See  Tools below for more information.
+
+
+===== Crosshair mode =====
+Crosshair mode can be enabled on the action bar or with Ctrl +  Tab twice, and simply opens the world in regular Creative mode. Crosshair mode can be left by pressing Esc or Ctr +  Tab. All features from Creative mode are available, including the hotbar and Creative inventory, but not certain GUIs and commands. Additionally, the player can phase through blocks like players in Spectator mode.
+
+
+==== Quick Start and Tutorial ====
+
+Upon first launch, the player is welcomed with a "Quick Start" window and a tutorial. Both can be opened at any time from the menu bar.
+The Quick Start window has four tabs with a small overview of the GUI. The first tab shows links to the official documentation, feedback site, and Discord channel.
+The tutorial consists of several pop-ups with tasks. After completion of all tasks (marked with a checkbox), the next tutorial pop-up opens. This tutorial shows some information about the GUI, controls, and the selection and brush tools.
+
+
+=== World options ===
+
+
+==== Navigation Panel ====
+
+The Navigation Panel is used for the location of the camera in the world previewer. At the top, the "Show Map" option enables a map preview. The map preview uses the same layout and colors as in-game maps, but it is always centered around the player, with a marker. The map size can be adjusted between 64x64, 128x128, and 256x256 blocks. The map can be refreshed with a button below.
+The players current XYZ location is shown below the map. By entering different values for the location, the player can teleport to any coordinates.
+The Navigation Panel allows to store locations. The current location of the player can be stored with a custom name with the buttons at the bottom. Saved locations show as markers on the map, with a customizable color using a HEX graphical color picker. A single location can be selected in the panel, with the options to instantly teleport to that location or delete it.
+
+
+==== Locate ====
+
+The Locate window, opened with Ctrl +  Shift + L, allows to quickly perform the /locate biome command. A biome searchbar allows to quickly find a biome with the ID or display name.
+
+
+==== Time of Day ====
+
+The Time of Day Settings are used to quickly change the current in-game time. The time can be set to any integer or clock value, depending on the clock type used. The daylight cycle option can also be changed here. Below, a time preset (e.g. noon, sunset, midnight) can be selected, or the time can quickly be adjusted with a slider.
+See  Test world below for more information about specific time options.
+
+
+=== Tools ===
+Tools can be selected from the left toolrail. 
+
+
+==== Selection ====
+
+
+==== Brush Paint ====
+
+
+==== Pencil ====
+
+
+==== Paste Preview ====
+
+
+==== Line ====
+
+
+==== Ruler ====
+
+
+==== Smart Fill ====
+
+
+==== Terrain ====
+
+
+==== Extrude ====
+
+
+==== Repeater ====
+
+
+==== Summon ====
+
+
+==== Entity Inspector ====
+
+
+==== Workbench ====
+
+
+==== Farm Generator ====
+
+
+==== Block Inspector ====
+
+
+==== Scale ====
+
+
+=== Test world ===
+
+With the test world feature, the player can playtest the world with regular gameplay. Changes won't be saved (including options changed in the pause menu), and test world is only available in singleplayer. Cheats are enabled for test mode, and some settings can be changed before playing. The pause menu has an option to return to the Editor instead of leaving the game. 
+
+
+=== Export ===
+
+The project can be exported as a world file from inside the Editor. There are several export options, some of which can also be changed from the pause menu or edit world screen. Options exclusive to the Editor are listed here. World options that are usually disabled after world creation are also available, including Hardcore, Starting Map, and Bonus Chest. Add-ons or experiments cannot be changed.
+The /project command can also be used to export the project, with the world settings defined in the edit world screen.
+Export Type
+Allows the file extension to be changed, influencing how the world is imported in the Editor or in Minecraft. This can only be set to regular "Playable World" for now.
+
+
+==== Initial Play Settings ====
+
+
+==== Advanced Settings ====
+
+
+==== Cheats Settings ====
+These settings are only available when cheats are enabled.
+
+The "Export" button below instantly exports the world to the regular Minecraft world list. All options can be reset to their default state with a button next to it.
+
+
+==== Publish to Realms ====
+
+Projects can be exported as worlds to owned Realms servers. The "Publish to Realms" window has the same exportation options as when exporting a world, and the Realm and world slot can be selected. "Download" downloads the world currently stored on that slot to the device, and "Publish" replaces the selected slot with the world.
+
+
+=== Settings ===
+
+In addition to the game settings accessible from the main menu and the pause menu, some settings related to the Editor GUI can be changed here.
+
+
+=== Vibrant Visuals Settings ===
+
+Vibrant Visuals can be completely customized with resource packs, and the Bedrock Editor provides an interface to easily create Vibrant Visuals resource packs.
+From the Vibrant Visuals Settings window, Vibrant Visuals can be enabled for the world previewer. Closing the window might reset some settings, so it is recommended to export the settings to the clipboard regularly. Vibrant Visuals settings are not saved for a project.
+The Vibrant Visuals Settings has six tabs: Water, Global Lighting, Atmospheric Scattering, Color Grading, Cubemaps, Shadows, and Local Lights.
+The water settings allow the water color and fog color to be changed with three particle effects. Water caustics can be enabled and adjusted in length, power, and scale. An additional feature called "Waves" can be enabled and customized. This is not enabled in the default Vibrant Visuals and creates detailed animated wave effects on water surfaces. Many settings, such as depth, frequency, pull, shape, and speed can be adjusted.
+Global lighting settings allows for customization of global light sources, including the sun, moon, and End flashes. The color spectrum, illuminance, and orbital offset can be adjusted and is previewed with graphical projections. Non-directional light sources, including emissiveness, ambient lighting, and sky lighting, can be customized in saturation, color, and intensity, respectively.
+Atmospheric scattering allows customization of some atmospheric effects for the default atmospherics (excludes certain biomes), such as different sky colors. The strength, shape, and blending of scattering from directional light sources can also be adjusted.
+Color grading changes how some color effects are changed as a post-processing effect. RGB values for different color grading aspects can be adjusted. The tone mapping operator can be selected from preset curves.
+Cubemap textures are always rendered around the player and can be reflected by water. It can be affected by various types of lighting, which is customziable.
+Shadow effects can be selected between the default "blocky" shadows and regular soft shadows. The texel size can be adjusted which changes the size of the shadow pixels.
+Light settings for every block with configurations in the resource packs can be customized.
+For more information about individual options and key frame graphs, see Vibrant Visuals  Customization.
+All adjustments can be exported into a resource pack. The game automatically generates a resource pack which can be applied to the project, or other worlds without further modification.
+Configurations per setting group can be assigned to every biome in the game (including custom biomes). Each setting group allows to create a configuration file, or modify existing ones, with a customizable namespace and name. To quickly import settings, or add more options to key frames or local lighting, the raw JSON contents of a configuration file can be inported. The entire settings window can be exported to mctools.dev, allowing to create a complete resource pack, or every settings file can be copied to the clipboard.
+
+
+=== Log Panel ===
+
+
+=== Structures ===
+
+
+=== Jigsaws ===
+
+
+=== Keyboard Settings ===
+
+Keybinds for almost all functions in the Editor can be customized. The Kyeboard Settings window can be opened only from the action bar, and lists all keybinds in several tabs. To change a keybind, select the input box and press a key to change it into that key. Right-clicking the keybind or clicking the button on the right clears the keybind. The second button on the right resets the keybind to the default state. Changes need to be saved with a button at the bottom, and all keybinds can be restored to their default state, or reset to the previously saved state.
+Next to each keybind is an option to make the keybind "exclusive". This makes single-key actions activate only if no other modifiers are present, or if the specified modifier is used alongside the key. By default, all single keybinds are marked as exclusive.
+
+
+==== Project ====
+
+
+==== Core Contexts ====
+
+
+==== Modal Tools ====
+The following keybinds are only available when the corresponding tool is activated.
+
+
+== Version history ==
+
+
+== Trivia ==
+In the first build (0.3), a link referenced as an example scripting pack was jokingly put in the code. The link redirects to Rick Astley's song "Never Gonna Give You Up".
+
+
+== Gallery ==
+
+
+=== Screenshots ===
+
+
+==== Main menu ====
+
+
+==== Create new project ====
+
+
+==== Edit world ====
+
+
+=== Projects tool mode ===
+
+
+=== Editor entity ===
+
+
+== See also ==
+Ore UI, the Bedrock Edition UI refresh
+Add-on
+Resource pack
+
+
+== References ==
+
+
+== External links ==
+
+
+=== Documentation ===
+Editor Overview
+Installation Guide
+Tutorial
+Action Bar
+Vibrant Visuals
+Keyboard Inputs
+Paste Preview
+Tool Mode
+Workflow
+World Options
+Building Editor Extensions
+More topics
+Script API
+Editor API
+
+
+=== GitHub ===
+Minecraft Editor
+Editor Extension Starter Kit
+Extension Samples
+
+
+=== Minecraft.net ===
+Editor Feedback
+How to Get the Minecraft: Bedrock Editor
+
+
+=== Other ===
+Discord channel
+
+
+== Navigation ==

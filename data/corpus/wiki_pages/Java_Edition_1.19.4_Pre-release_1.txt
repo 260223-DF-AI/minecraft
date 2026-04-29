@@ -1,0 +1,233 @@
+1.19.4 Pre-release 1 (known as 1.19.4-pre1 in the launcher) is the first pre-release for Java Edition 1.19.4, released on February 22, 2023, which fixes bugs. This is the first pre-release released in 2023.
+
+
+== Additions ==
+
+
+=== General ===
+Options
+
+Added "High Contrast" accessibility option, which enhances the contrast of UI elements.
+Realms
+
+Added a notification system for Realms to notify the player about important information about their Realm.
+
+Resource packs
+
+Added a built-in "High Contrast" resource pack that enhances the contrast of UI elements.
+The resource pack can be enabled in the accessibility options screen or manually in the resource pack screen.
+Only available in the menus for now.
+Tags
+
+Added following block and item tag:
+#smelts_to_glass: contains sand, and red_sand.
+Items with this tag give glass when smelted in a furnace.
+Added following entity tag:
+#fall_damage_immune: contains iron_golem, snow_golem, shulker, allay, bat, bee, blaze, cat, chicken, ghast, phantom, magma_cube, ocelot, parrot, and wither.
+Entity types with this tag do not take fall damage.
+Added following damage type tags:
+#always_hurts_ender_dragons: contains #is_explosion.
+Damage types with this tag always hurt the ender dragon.
+#bypasses_cooldown: empty in vanilla.
+Damage types with this tag bypass the regular invincibility time after taking damage.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Froglight
+
+Sounds when placing or breaking the block are now less loud.
+Sculk sensor
+
+The item_interact_finish event now has a vibration frequency of 2 instead of 14.
+
+
+=== Items ===
+Potions
+
+No longer have an enchantment glint due to it obscuring the color of the potion contents.
+General
+
+The enchantment glint for items in the inventory has been made more visible.
+
+
+=== Command format ===
+/execute
+
+New sub-command positioned over, for finding positions on top of a heightmap. Changes the height of the execution position to be on top of the given heightmap. Syntax:
+... positioned over <heightmap> -> execute
+<heightmap>: A heightmap records the highest position in a column of blocks according to some criteria. Available options:
+world_surface: Any non-air block.
+motion_blocking: Any motion blocking material (e.g. ignores flowers and grass).
+motion_blocking_no_leaves: Any non-leaf motion blocking material.
+ocean_floor: Any non-fluid motion blocking material.
+
+
+=== General ===
+Create New World
+
+The appearance of the tab bar has been updated.
+Tabs now have unique visuals instead of being traditional buttons.
+The tabs now align to the center of the screen.
+The content has been aligned to the top of the screen.
+Options
+
+The default value of the "Glint Strength" setting has been reduced to 75%.
+The scrolling animation for texts in options buttons which are too large to fit is now slower.
+Resource packs
+
+The resource pack version is now 13.
+The enchantment glint now has two separate texture files: enchanted_glint_entity.png and enchanted_glint_item.png.
+Tags
+
+Added thorns, and #is_explosion into the #avoids_guardian_thorns damage type tag.
+
+
+== Experimental ==
+These changes only take effect when the 1.20 experimental data pack is enabled.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Pink petals
+
+Now mine instantly.
+Torchflower
+
+Can now be used to craft suspicious stew, giving the player Night Vision.
+Can now be used to tempt and breed bees.
+
+
+==== Items ====
+Brush
+
+Crafting recipe now uses a feather, copper ingot and stick in a vertical line.
+Spawn Eggs
+
+Updated the color of sniffer spawn egg, to distinguish it from the salmon spawn egg.
+Torchflower seeds
+
+Can now be used to tempt and breed chickens and parrots.
+Are now next to other seeds in the Creative inventory.
+
+
+==== World generation ====
+Cherry grove
+
+Pigs can now spawn in this biome.
+Donkeys no longer spawn in this biome.
+
+
+==== Gameplay ====
+Advancements
+
+The "A Seedy Place" advancement can be granted by planting torchflower seeds now.
+The "The Parrots and the Bats" advancement can be granted by breeding sniffers now.
+The "Two by Two" advancement now requires breeding a sniffer.
+
+
+==== General ====
+Recipe book
+
+The recipe for the decorated pot made of all bricks can now be found in the recipe book.
+Tags
+
+Moved the #breaks_decorated_pots item tag into the experimental 1.20 data pack.
+Added torchflower_crop into the #crops block tag.
+Added torchflower into the #small_flowers block and item tags.
+Added cherry_leaves, and pink_petals into the #flowers item tag.
+Added cherry_leaves into the #leaves item tag.
+Added the #cherry_logs item tag into the #logs_that_burn item tag.
+Added suspicious_sand into the #sand item tag.
+Added cherry_sapling into the #saplings item tag.
+
+
+== Fixes ==
+62 issues fixed
+From released versions before 1.19
+
+MC-106484  Some potions are indistinguishable by color.
+MC-132200  Ghost block hoppers appear if summoned by command to powered location.
+MC-175299  Player falls out of bed if entering from a mount.
+MC-188163  Abnormally very high RAM usage since 1.13 (client side).
+MC-189383  Baby striders aren't shivering when riding an adult strider.
+From 1.19
+
+MC-253210  Goats will panic when receiving fall damage.
+MC-253211  Frogs will panic when receiving fall damage.
+From 1.19.2
+
+MC-258242  Checkerboard biome sources using biome tags do not generate features, and structures cannot be located.
+From 1.19.3
+
+MC-256484  Sitting camels don't stand up and begin following players that are tempting them with their favorite food.
+MC-256489  Sitting camels that are in love don't attempt to stand up and approach one another to breed.
+MC-256530  The camel's AI is slower to find its way after being hurt than other creatures.
+MC-256731  The sounds of camels recovering aren't controlled by the "Friendly Creatures" sound slider.
+MC-256861  Camels panic when receiving fall damage.
+MC-257009  When creating a Debug Mode world, there is no Data Packs option.
+MC-259920  The ITEM_INTERACT_FINISH game event overrides other game events causing several actions to not produce their intended vibration frequency.
+From the 1.19.4 development versions
+
+MC-259192  Server/client position desync when running /ride too fast and manually dismounting.
+MC-259246  Passengers on an ender dragon ride too high.
+MC-259576  Passenger's riding position is too high on a phantom.
+MC-259613  Enchantment glint is hardly noticeable on some items, even when the Glint Strength is set to 100%.
+MC-259630  Camels, horses and mules bounce high into the air when being ridden across water.
+MC-259882  Axolotls no longer give the Regeneration effect to nearby players after they kill a mob, and do not grant "The Healing Power of Friendship!" advancement.
+MC-259893  Long texts on buttons scroll too fast.
+MC-259917  Entities immune to fall damage are damaged when using minecraft:fall damage type in /damage.
+MC-259918  Text scrolling speed isn't accessible-friendly.
+From the previous development version
+
+MC-260030  Starting data.Main for data generation crashes.
+MC-260033  Torchflowers cannot be used to craft suspicious stew.
+MC-260035  Chickens and parrots are not tempted by torchflower seeds.
+MC-260051  Bees are not tempted by or attempt to pollinate Pink Petals and Torchflowers.
+MC-260059  Pigs do not seem to spawn in Cherry Grove biome
+MC-260071  Sniffer Digging Sounds can be heard from way too far.
+MC-260089  Sniffers panic when receiving fall damage.
+MC-260092  Sniffers' hitboxes are too small resulting in sniffers not being rendered from certain angles despite being visible on the screen.
+MC-260098  Sniffers aren't required for the "Two by Two" advancement.
+MC-260102  Torchflower seeds don't contribute to the "A Seedy Place" advancement.
+MC-260107  Sniffers don't swim properly and their walking animations freeze when in water.
+MC-260109  Sniffers do not rotate their head to look at the player.
+MC-260118  Disabling experimental features on the world creation screen causes pack validation to fail.
+MC-260121  Hoppers are ghost blocks for other players when placed on jukeboxes that are playing music.
+MC-260125  Sniffer's head occasionally disappears.
+MC-260126  Using pick block function on grown torchflower crop gives torchflower seeds instead of the plant item.
+MC-260149  Cherry logs can't be used to craft campfires.
+MC-260156  The sound of the torchflower being broken after growing is different than the sound of it breaking after being placed.
+MC-260157  On existing snapshot servers, cherry grove biomes cannot be found with /locate, nor do they generate.
+MC-260168  Torchflower crop aren't part of the #crops block tag.
+MC-260171  Cherry Leaves and Pink Petals aren't part of the #flower block tag.
+MC-260172  Torchflower isn't part of the #flowers block or item tags.
+MC-260181  Torchflower seeds are not grouped with other seeds in the creative inventory.
+MC-260185  Pink Petals aren't insta-mined
+MC-260189  Cherry Sapling is not part of the #saplings item tag.
+MC-260191  Cherry Leaves aren't part of the #leaves, and #complete_find_tree_tutorial item tags.
+MC-260192  You can't make Charcoal with Cherry Logs or Wood.
+MC-260193  Cherry wood, logs and saplings can't be used as fuel in furnaces.
+MC-260194  Create new world screen appears even when world is created; clicking on button causes freeze or crash.
+MC-260195  Cherry Logs and Wood are missing from the #log, #logs_that_burn, and #complete_find_tree_tutorial item tags.
+MC-260209  breaks_decorated_pots Item Tag is in the Vanilla datapack, not 1.20.
+MC-260210  Brush Recipe is in the Vanilla datapack, not 1.20.
+MC-260223  Torchflowers seeds and Torchflowers hitboxes are different.
+MC-260227  When re-creating the superflat world, the customize content is lost.
+MC-260234  Sniffers jump multiple times when attempting to climb blocks.
+MC-260262  Cherry Saplings can be obtained in world with experimental settings turned off.
+MC-260355  The server process crashes when making a slime ride a iron golem.
+MC-260367  Crash when damaging a Guardian using a command block: java.lang.StackOverflowError: Executing command block.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,247 @@
+20w15a is the eleventh snapshot for Java Edition 1.16, released on April 8, 2020, which adds a new Nether biome, new music tracks, new blocks, and other changes and fixes.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Blackstone
+
+Generates in basalt deltas.
+Can be used in place of cobblestone to craft furnaces and stone tools.
+Has a slab, stair, and wall variant.
+ Blackstone slab, blackstone stairs, blackstone wall
+
+Decorative blocks crafted from blackstone.
+ Polished blackstone
+
+Crafted with 4 blackstone.
+Has a chiseled, slab, stair, and wall variant.
+Can be crafted into buttons and pressure plates.
+ Polished blackstone slab, polished blackstone stairs, and polished blackstone wall
+
+Decorative blocks crafted from polished blackstone.
+ Polished blackstone bricks
+
+Crafted with 4 polished blackstone.
+Has a cracked, slab, stair, and wall variant.
+ Polished blackstone brick slab, polished blackstone brick stairs, polished blackstone brick wall
+
+Decorative blocks crafted from polished blackstone bricks.
+ Polished blackstone button and polished blackstone pressure plate
+
+Redstone blocks crafted from polished blackstone.
+Work like their stone counterparts.
+ Chiseled Nether bricks
+
+New variant of Nether bricks.
+Crafted from 2 Nether brick slabs.
+ Chiseled polished blackstone
+
+Decorative block crafted from polished blackstone.
+ Cracked Nether bricks
+
+New variant of Nether bricks.
+Obtained by smelting Nether bricks in a furnace.
+ Cracked polished blackstone bricks
+
+Decorative blocks crafted from polished blackstone.
+ Gilded blackstone
+
+Has a chance of dropping 25 gold nuggets (increased with Fortune), or it drops itself instead.
+Currently only available via the Creative inventory or by using commands.
+ Quartz bricks
+
+A decorative block crafted from 4 blocks of quartz.
+ Soul campfire
+
+Has a blue flame instead of orange.
+Has a light level of 10.
+Does the same amount of damage as a regular campfire.
+Crafted with soul sand or soul soil instead of coal.
+Piglins are repelled by soul campfires.
+
+
+=== Items ===
+ Piglin banner pattern
+
+New pattern for banners, the "Piglin".
+Used in the loom to apply the piglin pattern to the banner.
+Currently unobtainable in Survival mode.
+
+
+=== World generation ===
+Biomes
+
+Basalt deltas
+A volcanic biome in the Nether. Fog effects have flakes of volcanic ash.
+Filled with pillars of basalt and large areas of blackstone.
+Ghasts, magma cubes, and striders spawn in this biome.
+
+
+=== General ===
+Accessibility
+
+Chat line spacing can now be adjusted.
+A chat delay can be set between 0 (default) and 6 seconds.
+Music
+
+Added 3 new soundtracks to the Nether, composed by Lena Raine: "Rubedo", "Chrysopoeia" and "So Below."
+"Rubedo" plays in the Nether wastes biome.
+"Chrysopoeia" plays in the crimson forest biome.
+"So Below" plays in the soul sand valley and basalt deltas biomes.
+Sound
+
+Added 31 ambient sounds for the basalt deltas.
+Tags
+
+Added campfires block tag.
+Contains campfires and soul campfires.
+Bees, parrots, and turtles view blocks in this tag as dealing fire damage, and pathfind accordingly.
+Campfires use this tag to determine if they are lit or not.
+Flint and steel uses this tag to determine if it can light campfires.
+Added guarded_by_piglins block tag.
+Contains container blocks (chests, trapped chests, ender chests, barrels, the shulker_boxes block tag) and gold blocks (blocks of gold, gilded blackstone, and the gold_ores block tag).
+Piglins become hostile toward a player that destroys or use a block in this tag.
+Added furnace_materials item tag.
+Contains cobblestone and blackstone.
+Items in this tag can be used to craft furnaces and unlock the recipe in the recipe book.
+Added stone_tool_materials item tag.
+Contains cobblestone and blackstone.
+Items in this tag can be used to craft stone tools and unlock the recipes in the recipe book.
+Added soul_fire_base_blocks item tag.
+Parallels the block tag.
+Contains soul sand and soul soil.
+Items in this tag can be used to craft soul fire torches and soul campfires and unlock the recipes in the recipe book.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Dispensers
+
+Can now saddle pigs, striders, and tamed horses, donkeys and mules.
+Can now put horse armor on tamed horses.
+Can now put carpets on tamed llamas.
+Can now put chests on tamed llamas, donkeys, and mules.
+Can now shear mooshrooms and snow golems.
+Furnaces
+
+Can now be crafted with blackstone.
+Soul fire torches
+
+Can now also be crafted with soul sand.
+Walls
+
+Now connect to the bottom and sides of glass panes and iron bars.
+Now connect to the bottom of sea pickles.
+
+
+=== Items ===
+Stone axes, hoes, pickaxes, shovels, and swords
+
+Can now be crafted with blackstone.
+Hoes
+
+Are now the default tool for mining leaves.
+Shears are still used for collecting leaf blocks.
+Nether fungus, Nether sprouts, crimson roots, warped roots, Nether wart, Nether wart blocks, warped wart blocks, twisting vines, and weeping vines
+
+Can now be composted.
+
+
+=== Mobs ===
+General
+
+Mobs now avoid walking on magma blocks and lit campfires.
+Hoglins
+
+Baby hoglins no longer drop loot (but still drop experience).
+Magma cubes
+
+Spawn commonly in basalt deltas.
+Piglins
+
+Now avoid soul campfires.
+Now become hostile toward any player that breaks a chest, trapped chest, ender chest, barrel, gold ore, Nether gold ore, gilded blackstone, or a gold block.
+Striders
+
+Now turn blueish-purple outside of lava.
+When outside lava, their facial expression becomes a more prominent frown.
+Can now only spawn if the block above the lava is air.
+Baby striders ride on top of bigger striders.
+Zoglins
+
+Are now considered undead.
+
+
+=== General ===
+Tags
+
+Added polished blackstone, and (where applicable) blackstone blocks and items to the buttons, slabs, stairs, and walls block and item tags.
+Added soul campfires to the piglin_repellents block tag.
+Added the #signs block tag and removed lanterns and soul fire lanterns from the wall_post_override block tag.
+
+
+=== Textures ===
+Strider
+
+Changed strider texture from  to  to remove an unused fin. The fin itself was not vieweable in-game.
+
+
+== Fixes ==
+33 issues fixed
+From released versions before 1.16
+
+MC-105292  falling_block lighting inconsistency with Smooth Lighting on.
+MC-111493  Fireworks do not cause knockback to either the player or mobs.
+MC-166358  Inconsistency with sounds of dispensers using shears.
+MC-172517  Walls don't behave normally when next to soul sand.
+MC-178029  Chunks get scrambled by logging in twice on solo world.
+From the 1.16 development versions
+
+MC-171273  Fungi and roots (both crimson and warped) as well as weeping vines, twisting vines and warped wart blocks, etc. can't be composted
+MC-171463  Iron bars do not fully connect to walls.
+MC-172120  Hoglins do not try to avoid fire.
+MC-172226  Baby animals, villagers, and zombie villagers spawned with a spawn egg on an adult entity always are of the same variant.
+MC-172250  Piglin and zombified piglin model does not use textures for left arm or leg.
+MC-172268  Bartering with a piglin by right-clicking does not display a hand animation.
+MC-174542  Killing baby hoglins drops leather and porkchop.
+MC-174559  Baby hoglins/zoglins uses the same attack damage as an adult when spawned in some cases.
+MC-175030  Curse of Binding does not affect piglins.
+MC-175169  Respawn anchor can create ghost blocks when it explodes.
+MC-175176  Using return portal in the End softlocks the game if /spawnpoint was used in the End.
+MC-175256  Screen is overlaid with a gray opaque texture when inside of a transparent block.
+MC-175274  "Quartz pillar" is translated as "White wool" ("Lana blanca" instead of "Pilar de cuarzo") in Spanish (Spain).
+MC-175348  Respawn anchor explosion knocks back flying creative players.
+MC-175356  Piglins and hoglins do not avoid magma blocks.
+MC-175402  Soul fire torches cannot be crafted with soul sand.
+MC-175452  Respawn anchor can be used infinitely if right clicked above world build limit.
+MC-175538  Fish/swimming sounds are louder than they should be.
+MC-175566  Piglins with full inventories drop the items they receive.
+MC-176095  Striders have an unused fin in the strider.png texture file.
+MC-176384  [NBT Compound / JSON Object] CompassItem checks twice if the [NBT Compound / JSON Object] LodestonePos tag exists.
+MC-176517  Striders spawn in underground lava pockets.
+MC-176633  Lime carpets are named "acacia slab" in Spanish (Spain).
+MC-177069  Dispenser will not drop glowstone as item when not connected to a respawn anchor.
+From the previous development version
+
+MC-177081  Zoglins are attacked by the wither.
+MC-177085  Missing UUID field in attributes crash the game.
+MC-177102  Zoglins are not considered an undead mob.
+MC-177225  Tag minecraft:water used before it was bound.
+
+
+== Videos ==
+
+
+== Trivia ==
+The word "Rubedo" is Latin for "redness", it was adopted by alchemists to refer to the final stage of creating the philosopher's stone, it is also likely associated with the red-colored environment of the Nether.
+The word "Chrysopoeia" is an alchemical term that describes the creation of the philosopher's stone, or the transmutation of a given object into gold.
+
+
+== References ==
+
+
+== Navigation ==

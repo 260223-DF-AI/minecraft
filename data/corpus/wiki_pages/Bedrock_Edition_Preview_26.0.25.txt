@@ -1,0 +1,145 @@
+Beta 26.0.25 (ChromeOS, Android) or Preview 26.0.25 (iOS, iPadOS, Xbox, PlayStation, Windows) is the second beta/Preview version for Bedrock Edition 26.0, released on December 10, 2025, which adds parties and fixes bugs. This is the final beta released in 2025.
+
+
+== Additions ==
+
+
+=== Gameplay ===
+Party system
+
+Players can now create and join "parties", which are groups of people found in the social drawer where all members automatically join any world the leader is in.
+Members don't need to be in the leader's world and can still be in the menus or a different world while in a party.
+Parties can contain up to 15 members.
+The leader can choose what type of privacy setting the party has: "Invited only" requires the leader to send an invite to in-game friends to join, or "Open" makes the party accessible for any friends.
+The leader can promote other members to leader.
+A new settings tab allows the player to change which invites are shown, whether members can also send invites, and the default party privacy setting.
+
+
+== Changes ==
+
+
+=== Blocks ===
+ Bamboo
+
+Bamboo stalks will now have no transparency from a distance (except on simple graphics).
+
+
+=== Mobs ===
+Camel Husk
+
+No longer panic when hit.
+ Skeleton Horses
+
+No longer panic when hit.
+Can now be ridden by mobs in the zombie family, instead of mobs in the baby_husk and baby_zombie families.
+This means that baby zombie villager jockeys can now mount skeleton horses, but only them and no other mob.
+This change was not mentioned in the changelog.
+ Zombie Horse
+
+Babies can no longer be ridden or equipped with a saddle or horse armor.
+No longer panic when hit.
+
+
+=== General ===
+Changed updating logic for mob effects to match Java Edition.
+The description and storage bar labels under the "Free up space" popup dialog are now treated as two separate objects for narration instead of one.
+The description of the Reset and Replace confirmation modals have been updated in the Realms Edit World screen.
+Pause menu
+
+Changed settings button on the game menu back to being a text button.
+
+Settings Screen
+
+Updated the Keyboard & Mouse and Account settings tab with Ore UI.
+
+
+=== Technical ===
+API
+
+Added getComponents to Block into beta.
+Added hasComponent to Block into beta.
+Biomes
+
+Enabled the Biome Replacement feature in the Nether.
+Biome Replacement in the Nether can only be used with minecraft:surface_builder of types:
+minecraft:overworld
+minecraft:frozen_ocean
+minecraft:capped
+minecraft:the_end
+Block components
+
+Released the component minecraft:connection_rule from experimental for block format versions 26.0 or higher.
+Released the component minecraft:support from experimental for block format versions 26.0 or higher.
+The block component minecraft:leashable can be used with format_version 26.0 and higher without the "Upcoming Creator Features" toggle.
+General
+
+Added minecraft:village_type biome component that determines the type of the village in the biome.
+Network Protocol
+
+ActorDamageCause modified: deprecated ActorDamageCause::Dehydration.
+UI
+
+Added default_size_scales_to_ratio Boolean to image controls so that a size of "default" will resize to maintain the texture's aspect ratio.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs" and "Upcoming Creator Features" experimental toggles.
+
+
+=== Changes ===
+
+
+==== Technical ====
+API
+
+Added the privilege with which a closure will be called to API metadata.
+Added World.seed as a property to expose the world seed to beta.
+Added before & after script events for when an entity picks up an item in the world.
+Added class EntityItemPickupAfterEvent to beta.
+Added class EntityItemPickupBeforeEvent to beta.
+Added class EntityItemPickupAfterEventSignal to beta.
+Added class EntityItemPickupBeforeEventSignal to beta.
+Added interface EntityItemPickupEventOptions to beta.
+Added interface ItemFilter to beta.
+Added property WorldAfterEvents.entityItemPickup to beta.
+Added property WorldBeforeEvents.entityItemPickup to beta.
+Blocks
+
+Blocks can handle the entity execute_event_on_home_block event via custom components in scripting, being beta features.
+
+
+== Fixes ==
+18 issues fixed
+From released versions before 26.0
+
+MCPE-165899  Breeding horses gives empty health hearts that cant be filled.
+MCPE-184973  Beds tell you that you can sleep during a thunderstorm at night.
+MCPE-187288  Creaking walking and attacking animation differs between Bedrock and Java.
+MCPE-227680  Typo in Minecoins page in the encyclopedia.
+MCPE-228203  Navigation section of Minecraft Encyclopedia refers to Cartographer villager as "He" instead of "They".
+MCPE-229652  Multiple typos on the Worlds page in the encyclopedia.
+MCPE-230229  Non-Marketplace Resource Packs, Behavior Packs, and Skin Packs were not migrated to the new directory location.
+MCPE-230918  Ambient mob effect does not update according to the source.
+MCPE-230921  Moving your mouse, then scrolling to a different hotbar slot, snaps the camera to a random direction.
+MCPE-232054  /reload all no longer reloads the content of resource packs
+MCPE-232061  Water breathing fails to stop nautiluses from suffocating.
+MCPE-232370  Drowned riders cannot control the movement of their zombie nautilus.
+From the 26.0 development versions
+
+MCPE-232633  Minecraft and Minecraft Preview now use the same local cache folder.
+MCPE-232700  Golden horse armor was incorrectly given 2 armor toughness instead of diamond horse armor.
+Other
+
+Gameplay closed captions should now function as expected.
+Fixed a bug that would sometimes allow sunlight to shine through walls, e.g. near cave entrances, in Vibrant Visuals.
+Fixed a bug where some low memory Android devices would crash at startup.
+Fixed a bug that was causing crashes when using the NPC component.
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

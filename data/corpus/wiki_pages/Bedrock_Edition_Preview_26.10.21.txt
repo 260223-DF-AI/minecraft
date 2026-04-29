@@ -1,0 +1,131 @@
+Beta 26.10.21 (ChromeOS, Android), Preview 26.10.21 (Windows, Xbox, PlayStation), or Preview 26.10.22 (iOS, iPadOS) is the second beta/Preview for Bedrock Edition 26.10, released on February 3, 2026, which adds golden dandelions, retextures several baby mobs, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Golden Dandelion
+
+Crafted with a dandelion and 8 gold nuggets:
+
+When used on a baby mob, it will stop aging. This sets NBT attribute GrowthPaused to 1.
+When used again, it will continue to age again. This sets NBT attribute GrowthPaused to 0.
+Cannot be used on monsters (including undead mounts) and villagers.
+Can be placed and potted like other flowers.
+
+
+=== General ===
+Settings
+
+Added a setting for texture streaming on some devices to the Video settings, which will reduce the GPU memory for some textures, especially with more add-ons.
+Added an option on Windows to disable pausing when the application loses focus.
+Controls
+
+Added a keybind, F4 by default, to open the social drawer in-game.
+
+
+== Changes ==
+
+
+=== Mobs ===
+Baby mobs
+
+Changed the textures of the following baby mobs:
+ Armadillo
+ Bee
+ Camel
+ Fox
+ Goat
+ Llama
+ Polar Bear
+ Trader Llama
+Added unique animations for baby foxes, camels, and armadillos.
+
+
+=== General ===
+UI
+
+Updated the inventory and SDL screens to properly reflect purchases made when navigating back to it from a related page.
+Updated the interact button design for touch controls.
+
+
+=== Technical ===
+AI Goals
+
+Made the schema for minecraft:behavior.ram_attack stricter when parsing, now will fail to load an entity json that has invalid data in versions 26.10 and newer.
+Float Range field cooldown_range now only accepts an object with min and max values.
+Other formats will fail to parse.
+Made the schema for minecraft:behavior.celebrate stricter when parsing, now will fail to load an entity json that has invalid data in versions 26.10 and newer.
+Float Range fields sound_interval and jump_interval now only accepts an object with min and max values.
+Other formats will fail to parse.
+API
+
+Added isSuperset parameter to world.containsBiomes.
+Moved world.containsBiomes to stable.
+Removed superset property from BiomeFilter.
+Moved ScriptBiomeFilter to stable.
+Released BlockComponentRedstoneUpdateEvent.previousPowerLevel from beta to v2.6.0.
+Released property ItemDurabilityComponent.unbreakable from beta to v2.6.0.
+Character Creator
+
+Added check for usage of banned skin in persona delegate and added case to display default appearance and inform user when banned skin is detected.
+Exiting the game after changing your appearance will immediately cache all changes.
+Entity components
+
+Added the ability to pause and reset growth of entities in minecraft:ageable using specified items.
+Introduced fields pause_growth_items and reset_growth_items, which are a list of items that can be fed to the entity to pause or reset growth for baby entities.
+Introduced ActorDefinitionTrigger fields pause_growth and reset_growth to trigger an event when aging is paused or reset for baby entities.
+Scripting
+
+Added new widget render primitive types to the @minecraft/server-editor module:
+WidgetComponentRenderPrimitiveTypeCylinder - Cylinder primitive with elliptical cross-section (radiusX, radiusZ, height)
+WidgetComponentRenderPrimitiveTypeCone - Cone primitive with elliptical base (radiusX, radiusZ, height)
+WidgetComponentRenderPrimitiveTypeCuboid - Cuboid primitive with independent dimensions (lengthX, lengthY, lengthZ)
+WidgetComponentRenderPrimitiveTypePyramid - Pyramid primitive with rectangular base (xWidth, zWidth, height)
+WidgetComponentRenderPrimitiveTypeEllipsoid - Ellipsoid primitive with Vector3 radii
+Added corresponding PrimitiveType enum values: Cone, Cuboid, Cylinder, Ellipsoid, and Pyramid.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs" experimental toggle.
+
+
+=== Changes ===
+
+
+==== Technical ====
+API
+
+Introduced new UI capabilities called Data-Driven UI (DDUI).
+These APIs introduce a new way to create modal forms with new capabilities and an all new look.
+Reload command now closes all the Data Driven UI screens as part of the execution.
+ScriptSetBannerDetailsFunction now includes base color and pattern data.
+
+
+== Fixes ==
+14 issues fixed
+From released versions before 26.10
+
+MCPE-158584  Chat command completion on new iOS keyboard does not work when cursor at end of partial parameter.
+MCPE-183866  Villager names appear in a different font when the language is set to English (United Kingdom).
+MCPE-191027  Pick Block button opacity cannot be adjusted when customizing. controls.
+MCPE-225207  Wolf Armor & Undyed Bundle render incorrectly in Shelves and Item Frames if their textures are higher than 16x.
+MCPE-234684  Adult mooshroom's head mushroom floating.
+MCPE-234733  Baby skeleton horses grow up, unlike baby zombie horses.
+MCPE-235095  Party icon doesn't match the old UI style in the new settings screen.
+MCPE-235400  Go to Settings button opens JSON Settings menu instead of Ore UI.
+MCPE-235419  Game Crashes When Writing High-Data-Volume Text (e.g., Chinese/Japanese) on Single Book Page Due to New Character Limit in Beta 26.0.29.
+Other
+
+Fixed a crash that sometimes happened when players were climbing.
+Fixed a crash when opening Realms tab with 150+ joined realms.
+Fixed client crash on world load from out of bounds minecraft:geometry in the minecraft:item_visual component.
+Fixed an issue with DebugBox where the position was being used as the bottom-left corner, instead of the centre.
+Fixed an issue with DebugShape.attachedTo where the attachment position was unintentionally using the height offset of the entity.
+
+
+== References ==
+
+
+== Navigation ==

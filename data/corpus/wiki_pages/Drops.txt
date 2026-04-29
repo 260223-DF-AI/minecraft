@@ -2,12 +2,12 @@ Drops are items that appear when mobs and some other entities die or when most k
 
 
 == Types of drops ==
-Mobs do not drop any of the following if the game rule mob_drops‌[JE  only] or domobloot‌[BE  only] is set to false.
+Mobs do not drop any of the following if the game rule mob_drops[JE  only] or domobloot[BE  only] is set to false.
 
 
 === Common drops ===
 Common drops may appear at the location of a mob at the moment it receives fatal damage. Most mobs have certain items that they may drop when killed. Some common drops, such as leather, don't always drop, but have a large chance (at least 50%, depending on the drop range) to do so. Some common drops, such as blaze rods, don't drop at all if the mob was not killed by the player.
-Each of these items has a drop range, which is a random uniform distribution of numbers of items that drop. For example, a cow drops 0–2 leather items and 1–3 raw beef items. Because the range for leather includes 0, there is a 1⁄3 chance of no leather being dropped.
+Each of these items has a drop range, which is a random uniform distribution of numbers of items that drop. For example, a cow drops 02 leather items and 13 raw beef items. Because the range for leather includes 0, there is a 13 chance of no leather being dropped.
 A baby animal does not drop any common drops upon death. 
 
 
@@ -15,21 +15,21 @@ A baby animal does not drop any common drops upon death.
 Some common and uncommon drops are affected by the Looting enchantment. At most, a number of additional items equal to enchantment level are dropped.
 More specifically, the game generates a fractional number ranging from 0 to the Looting level, which is then rounded to the nearest integer. This causes the numbers in the middle of drop range to occur twice as often. The probabilities are as follows:
 
-A stray's tipped arrow is a special case: while Looting can attempt to increase arrow drop amount, the final number of dropped arrows is capped at 1. So, Looting effectively increases arrow dropping odds, up to 11⁄12 with Looting III.
+A stray's tipped arrow is a special case: while Looting can attempt to increase arrow drop amount, the final number of dropped arrows is capped at 1. So, Looting effectively increases arrow dropping odds, up to 1112 with Looting III.
 
 
 === Rare drops ===
-Rare drops normally appear if the monster is killed by a player (see § Player kills below), although some rare drops can also be obtained by other means. Rare drops are always a single item, but may appear in conjunction with other common drops. A drop is considered rare if they are accompanied by the random_chance_with_looting condition in the mob's loot table.
+Rare drops normally appear if the monster is killed by a player (see  Player kills below), although some rare drops can also be obtained by other means. Rare drops are always a single item, but may appear in conjunction with other common drops. A drop is considered rare if they are accompanied by the random_chance_with_looting condition in the mob's loot table.
 Rare drops typically have a 2.5% chance of dropping, plus 1 percentage point per level of Looting on the weapon used (up to a maximum of 5.5% with Looting III). An exception to this is that a rabbit drops a rabbit's foot with a 10% chance, plus 3 percentage points per level of Looting (to a maximum of 19% with Looting III). in Bedrock Edition there are other exceptions: a wither skeleton drops a wither skeleton skull with a 2.5% chance plus 2 percentage points per level of Looting (to a maximum of 8.5% with Looting III), and a drowned drops a copper ingot with an 11% chance plus 2 percentage points per level of looting (to a maximum of 17% with Looting III).
 Note that in case of multiple rare drops (guardian and zombie types) the 2.5% chance is split between them, instead of being rolled for each item.
-The shulker shell is technically also a rare drop, only ever dropping in singles from shulkers, although they don't require a player kill, have a 50% base chance, and increase by 6.25% per Looting level.‌[JE  only]
+The shulker shell is technically also a rare drop, only ever dropping in singles from shulkers, although they don't require a player kill, have a 50% base chance, and increase by 6.25% per Looting level.[JE  only]
 
 
 === Equipped items ===
 
 When killed by a player or a tamed wolf, a mob can drop equipment and armor that it spawned with. Each piece of equipment the mob was spawned with is dropped with an 8.5% chance in Java Edition or 25% chance in Bedrock Edition. Potions and milk buckets temporarily held by witches or wandering traders also have a 8.5% chance of dropping if the mob is killed while holding one; a vex's iron sword, and carved pumpkins and jack o'lanterns worn during Halloween in Java Edition have a 0% chance instead. This value is determined by the mob's drop_chances tag.
 The Looting enchantment increases this chance by 1% per level (up to 11.5% in Java Edition or 28% in Bedrock Edition with Looting III). The chance is rolled for each piece of equipment, so it is possible for a mob to drop more than one piece of equipment upon death.
-If the item has durability, its damage is defined by the formula: MaxDamage – randomInt(1+ randomInt(Max(MaxDamage–3,1))) where MaxDamage is the item's maximum damage and randomInt(x) is an random integer between 0 and x–1. Thus the damage varies between 4 and the maximum damage, being more likely to have greater damage (if the maximum damage is less than 4, the damage is always equal to the maximum damage). More specifically, the chance of having the chance of having durability 0≤d≤M, where M = Max(MaxDamage–3,1), is given by the formula 1⁄M(HM–Hd), where Hn= 1+1/2+1/3+...+1/n, which would be the harmonic number n, with H0=0.
+If the item has durability, its damage is defined by the formula: MaxDamage  randomInt(1+ randomInt(Max(MaxDamage3,1))) where MaxDamage is the item's maximum damage and randomInt(x) is an random integer between 0 and x1. Thus the damage varies between 4 and the maximum damage, being more likely to have greater damage (if the maximum damage is less than 4, the damage is always equal to the maximum damage). More specifically, the chance of having the chance of having durability 0dM, where M = Max(MaxDamage3,1), is given by the formula 1M(HMHd), where Hn= 1+1/2+1/3+...+1/n, which would be the harmonic number n, with H0=0.
 There are also some equipped items that are guaranteed to drop. In all of these cases, the items are dropped even if the mob is not killed by a player or a tamed wolf.
 
 All items a mob picks up after spawning are always dropped, even when it isn't killed by a player and even if it is a baby zombie.
@@ -43,7 +43,7 @@ Horses, donkeys, mules, llamas, camels, happy ghasts, pigs, and striders drop an
 === Experience orbs ===
 
 Experience orbs drop only if a mob dies less than three seconds after being attacked (melee, bow, snowballs, eggs, and potions causing instant damage) by a player or by a player's pet wolf, though not by a player-activated dispenser. Their total value is the specific amount of experience granted by killing that mob. They are also dropped from a thrown bottle o' enchanting. Collected experience accumulates into levels which can be used for enchanting or repairing, or is split equally between accumulating levels and repairing the held tool if said tool is enchanted with mending.
-Unlike other drops, such as items, experience orbs appear at the location of the mob's corpse at the moment it disappears in a puff of smoke.‌[BE  only] Experience orbs move toward any nearby players.
+Unlike other drops, such as items, experience orbs appear at the location of the mob's corpse at the moment it disappears in a puff of smoke.[BE  only] Experience orbs move toward any nearby players.
 
 
 == Mob drops ==
@@ -97,7 +97,7 @@ Where noted, Fortune can increase the number of dropped items or multiply it. In
 Fortune I: 33% * 2 (33% more on average)
 Fortune II: 25% * 2, 25% * 3 (75% more on average)
 Fortune III: 20% * 2, 20% * 3, 20% * 4 (120% more on average)
-Container blocks (barrels, blast furnaces, brewing stands, campfires, chests, chiseled bookshelves, decorated pots, dispensers, droppers, flower pots, furnaces, glow item frames‌[BE  only], hoppers, item frames‌[BE  only], jukeboxes, lecterns, smokers, soul campfires, and trapped chests) drop themselves when broken along with their content.
+Container blocks (barrels, blast furnaces, brewing stands, campfires, chests, chiseled bookshelves, decorated pots, dispensers, droppers, flower pots, furnaces, glow item frames[BE  only], hoppers, item frames[BE  only], jukeboxes, lecterns, smokers, soul campfires, and trapped chests) drop themselves when broken along with their content.
 
 
 == Videos ==

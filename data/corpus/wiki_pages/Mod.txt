@@ -5,7 +5,7 @@ A mod (short for modification) is a piece of unofficial code that is injected in
 The term mod is short for modification. Within the Minecraft community, the term is conventionally used in a strict sense to refer to unofficial, community-made code alterations that require third-party mod loaders. Under this definition, "mods" are distinct from officially supported game customization features, such as data packs, resource packs, and add-ons.
 In the broader video game industry, the term "mod" is often used as an umbrella term for any user-created content that alters a game's look or behavior. Because Minecraft is a unique case that supports both unofficial modification and official modification APIs simultaneously, the community generally maintains a practical distinction to avoid confusion between the two methods.
 Despite this distinction, Mojang Studios occasionally uses the terms "mod" and "modding" more broadly in official marketing and documentation to include official features. For example, the official Minecraft.net's Creator homepage refers to the use of add-ons as a way to "mod Minecraft". Similarly, an official promotional material has referred to a data pack and resource pack combination, Phantom Frames, as a "Java mod". This varying usage between the community, the broader gaming industry, and Mojang Studios themselves can occasionally lead to ambiguity regarding what officially constitutes a "mod" in the context of the game.
-Additionally, in Java Edition, the term "modded" can be determined in the game's code as the game running with a custom client brand or an invalidated signature file (likely coming from a modified Java class), see § Modded flag.
+Additionally, in Java Edition, the term "modded" can be determined in the game's code as the game running with a custom client brand or an invalidated signature file (likely coming from a modified Java class), see  Modded flag.
 
 
 == Overview ==
@@ -20,7 +20,7 @@ Mods are usually designed for specific release versions of the game. When the ga
 Java Edition is written in Java and runs on JVM, which for technical reasons makes creating mods relatively easy. Modding strongly depend on decompilation to see the game's source code. Because Java compiles to bytecode rather than machine code, it is highly susceptible to decompilation, allowing modders to reverse-engineer the game logic easily. Due to this, a prolific modding scene exists for that edition, which has matured over a decade, and has created several programs and tools for modding, notably mod loaders.
 For older versions, obfuscation maps provided by Mojang and the community which ease the process of reverse-engineering the game. The unobfuscated versions of the game also lets modders directly see the game's source code without obfuscation maps.
 Bedrock Edition is written in C++ and runs as machine code, which makes it technically challenging to mod. Mods for that edition exist, but are much less common and less complex, both due to technical challenges, and other reasons such as low interest from the community, and add-ons, which is supported by Mojang Studios, providing official means of adding content to the game.
-Add-ons is the official modding API in Bedrock Edition, they can add new content and modify existing features and customization in the game. In comparison to Java Edition mods, add-ons may be limited in terms of features and customization, but are far more friendly and less complex for creators. An official modding API was planned for Java Edition, called "Plugin API" (dubbed "Workbench"), but was subsequently abandoned, with no further mentions or developments of it after Java Edition 1.9 (see Mentioned features § Workbench (Plugin API)).
+Add-ons is the official modding API in Bedrock Edition, they can add new content and modify existing features and customization in the game. In comparison to Java Edition mods, add-ons may be limited in terms of features and customization, but are far more friendly and less complex for creators. An official modding API was planned for Java Edition, called "Plugin API" (dubbed "Workbench"), but was subsequently abandoned, with no further mentions or developments of it after Java Edition 1.9 (see Mentioned features  Workbench (Plugin API)).
 In Bedrock Edition 1.21.20, Mojang Studios removed debug information (bedrock_server.pdb file) from Bedrock Dedicated Server, making modding more difficult for Bedrock Edition.
 While there are other ways to change the experience of Minecraft, such as resource packs and data packs, the ability to load these is part of the vanilla game and usually not considered modding (see Game customization).
 
@@ -34,7 +34,7 @@ Historically, the modification of features such as advancements, enchantments, d
 
 
 === Client-based ===
-Client mods are direct modifications of the Minecraft game files. They control and add custom content for mobs, particles, items, and blocks, such as models, sounds, textures, and GUIs, but require the server to implement the game mechanics behind them (see § Server-based). They usually modify the client software, or client.jar file.
+Client mods are direct modifications of the Minecraft game files. They control and add custom content for mobs, particles, items, and blocks, such as models, sounds, textures, and GUIs, but require the server to implement the game mechanics behind them (see  Server-based). They usually modify the client software, or client.jar file.
 Functional client mods like Sodium and OptiFine modify and enhance client side features of the game, such as graphics fidelity and rendering, while not adding or changing any gameplay features, making them perfectly compatible with vanilla server without any modifications.
 
 
@@ -61,9 +61,9 @@ If Minecraft crashes, a modified game is flagged in the crash report. This is po
 The signature file that comes from the vanilla build of the game is named MOJANGCS.SF, and stored on the META-INF directory like any other signature files. The creator of the signature file is listed as Microsoft.
 The crash report text includes one of these lines near the bottom:
 
-Is Modded: Probably not. <environment> jar signature and brand is untouched – the environment (either client or server) brand is unaltered and the signature file is validated.
-Is Modded: Very likely; <environment> jar signature invalidated – the environment (either client or server) is unaltered but the signature file is invalidated.
-Is Modded: Definitely; <environment> brand changed to <custom brand> – the environment (either client or server) brand is changed to a custom brand specified by the mod loader, such as 'forge', 'neoforge', 'quilt', or 'fabric', which are for Forge, NeoForge, Quilt, and Fabric respectively. However, the game does not check the signature file any further.
+Is Modded: Probably not. <environment> jar signature and brand is untouched  the environment (either client or server) brand is unaltered and the signature file is validated.
+Is Modded: Very likely; <environment> jar signature invalidated  the environment (either client or server) is unaltered but the signature file is invalidated.
+Is Modded: Definitely; <environment> brand changed to <custom brand>  the environment (either client or server) brand is changed to a custom brand specified by the mod loader, such as 'forge', 'neoforge', 'quilt', or 'fabric', which are for Forge, NeoForge, Quilt, and Fabric respectively. However, the game does not check the signature file any further.
 A shortened example crash report is given below:
 
 
@@ -84,7 +84,7 @@ Add-ons, a feature in Bedrock Edition that allows modders to more easily add con
 Data packs and resource packs, features in Java Edition which allow the addition of specific content to the game without the use of code modification.
 Tutorial:Programs and editors/Modding showcases tools for installing and making mods.
 Feed The Beast Wiki for looking up information about specific mods.
-MCW:Hey Wiki § Supported wikis for a list of wikis for specific mods.
+MCW:Hey Wiki  Supported wikis for a list of wikis for specific mods.
 Minecraft modding on Wikipedia, which includes extensive history of Minecraft modding, from alpha to release era.
 Video game modding on Wikipedia, which explains general video game modding.
 ModJam, a form of community event where participants create fan-made content for Java Edition within a set period of time. Typically focuses on mod-related content, but maps, resource packs, and mod packs have all been included to various degrees.

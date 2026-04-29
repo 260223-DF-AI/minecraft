@@ -2,8 +2,8 @@ Displays the coordinates for the closest generated structure or biomes of a give
 
 
 == Usage ==
-For /locate structure ..., the vertical coordinate of structure is ignored when finding. In Java Edition, the horizonal search range is 201x201 units of the Structure's spacing (see Default structure sets for values). For example, Mansions have a spacing of 80 chunks, so it can search out ±128,000 blocks before failure. For concentric ring structures like Strongholds, there is no set max distance. Structures in the Anvil chunk region of the command's execution are prioritized over others due to a bug, meaning the found structure is not necessarily the closest.
-For /locate biome ..., the horizonal search resolution is 32 blocks, and vertical resolution is 64 blocks, which means biomes that are too narrow may not be found. The horizonal search range is 12801×12801 blocks in Java Edition.​[more information needed]
+For /locate structure ..., the vertical coordinate of structure is ignored when finding. In Java Edition, the horizonal search range is 201x201 units of the Structure's spacing (see Default structure sets for values). For example, Mansions have a spacing of 80 chunks, so it can search out 128,000 blocks before failure. For concentric ring structures like Strongholds, there is no set max distance. Structures in the Anvil chunk region of the command's execution are prioritized over others due to a bug, meaning the found structure is not necessarily the closest.
+For /locate biome ..., the horizonal search resolution is 32 blocks, and vertical resolution is 64 blocks, which means biomes that are too narrow may not be found. The horizonal search range is 1280112801 blocks in Java Edition.[more information needed]
 In Java Edition, for /locate poi ..., the search range is a sphere with a radius of 256 blocks.
 When locating structure or POI, if successful, the following message is sent to chat: "The nearest <requested thing(s)> is at [<x> ~ <z>] (<distance> blocks away)", in which <distance> is the horizontal distance from the executor. 
 When locating biome, if successful, the following message is sent to chat: "The nearest <requested biome(s)> is at [<x> <y> <z>] (<distance> blocks away)", in which <distance> is the distance from the executor to the biome. 
@@ -52,10 +52,10 @@ This argument also supports point of interest type tags, as following:
 
 == Examples ==
 To obtain the coordinates of the nearest woodland mansion: /locate structure mansion
-To obtain the coordinates of the nearest pillager outpost in new chunks only: /locate structure pillager_outpost true‌[Bedrock Edition  only]
-To obtain the coordinates of the nearest village of any kind: /locate structure #village‌[Java Edition  only]//locate structure village‌[Bedrock Edition  only]
+To obtain the coordinates of the nearest pillager outpost in new chunks only: /locate structure pillager_outpost true[Bedrock Edition  only]
+To obtain the coordinates of the nearest village of any kind: /locate structure #village[Java Edition  only]//locate structure village[Bedrock Edition  only]
 To obtain the coordinates of the nearest desert biome: /locate biome desert
-To obtain the coordinates of the nearest point of interest used by villagers: /locate poi #village‌[Java Edition  only]
+To obtain the coordinates of the nearest point of interest used by villagers: /locate poi #village[Java Edition  only]
 
 
 == History ==
@@ -71,7 +71,7 @@ To obtain the coordinates of the nearest point of interest used by villagers: /l
 
 
 == External links ==
-"/locate Command"     – Microsoft Learn, June 10, 2025.
+"/locate Command"      Microsoft Learn, June 10, 2025.
 
 
 == Navigation ==

@@ -13,8 +13,8 @@ Rotation is visualized by entity_hitboxes debug renderer as a long blue tint pla
 
 Rotation is internally represented with two float values in degrees.
 
-Y-rotation varies from -180° (facing due north) to -90° (facing due east) to 0° (facing due south) to +90° (facing due west) to +180° (facing due north again).
-For X-rotation, horizontal is 0°, with positive values looking downward and negative values looking upward. It does not exceed positive or negative 90°.
+Y-rotation varies from -180 (facing due north) to -90 (facing due east) to 0 (facing due south) to +90 (facing due west) to +180 (facing due north again).
+For X-rotation, horizontal is 0, with positive values looking downward and negative values looking upward. It does not exceed positive or negative 90.
 
 
 == Debug screen ==
@@ -25,7 +25,7 @@ The player's own rotation can be seen in the debug screen under Facing. First th
 
 == Y-rotation (Yaw Angle) ==
 A change in the Y-rotation angle changes the direction it is facing, to the left or right of its direction of motion. They are represented in the debug screen correct to 1 decimal place. (The X and Z coordinates are represented correct to 3 decimal places.)
-Here, "anticlockwise angle from +X in a 2D system" is thought of as anything in (-180°, 180°], or -180° < x ≤ 180°, where x is one of the angles.
+Here, "anticlockwise angle from +X in a 2D system" is thought of as anything in (-180, 180], or -180 < x  180, where x is one of the angles.
 
 
 == Algorithm for the Y-rotation angle ==
@@ -39,33 +39,33 @@ The angle transformation to get the correct Y-rotation angle will not only requi
 Think of this part as the top half of a semicircle standing on the +X axis. It will be rotated for getting the outputs as in the yaw table (and we will check if we need to flip). 
 
 
-==== Adding 90° ====
+==== Adding 90 ====
 
 Reflecting the semicircle along the (imaginary) horizontal diameter will produce the desired angles (Top will be changed to bottom and vice-versa).
 
 
-==== Subtracting 90° ====
+==== Subtracting 90 ====
 
 Reflecting the semicircle along the vertical diameter will produce the desired angles (Right will be changed to left and vice-versa).
 
 
 === Wrapping back ===
-For the yaw, the range is (-180°, 180°], which means that anything greater than the absolute value of 180 degrees must be wrapped back inside the yaw table. However, after the angle transformations, all the angles beyond the range will have to be wrapped. 
+For the yaw, the range is (-180, 180], which means that anything greater than the absolute value of 180 degrees must be wrapped back inside the yaw table. However, after the angle transformations, all the angles beyond the range will have to be wrapped. 
 There can be many more approaches for wrapping other than the ones stated below. 
 
 
 ==== Approach 1: Using the modulus ====
 Required: the size and the minimum and the maximum values.
-The size is 360° because the whole circle is being considered.
+The size is 360 because the whole circle is being considered.
 Therefore,
-−190≡170(mod360)181≡−179(mod360)
+190170(mod360)181179(mod360)
 In various programming languages, the mod(a, n) operator is used. When exactly one of the operands is negative, the basic definition breaks down, and programming languages differ in how these values are defined. Here, n = 360. Therefore, 'a' should be changed to a positive value before performing the modulo operation.
 
 
 ==== Approach 2: Adding or subtracting by 360 degrees ====
 360 degrees is a full revolution. Moving by positive or negative 360 degrees is the same thing as not moving inside the orbit.
 Thus, we can use:
-f(x)={x−360,if x>180x+360,if x≤−180x,otherwise
+f(x)={x360,if x>180x+360,if x180x,otherwise
 
 This has been achieved using the following code in JavaScript:Here, angle is the variable x.
 

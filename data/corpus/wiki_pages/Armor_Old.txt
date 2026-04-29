@@ -15,15 +15,15 @@ Each protection enchantment protects against specific types of damage. The amoun
 
 The EPFs for each enchantment and level are the result of the following formula:
 
-EPF=⌊(6+level2)×TypeModifier3⌋
-where ⌊⌋ is the floor() (rounding down) operation.
+EPF=(6+level2)TypeModifier3
+where  is the floor() (rounding down) operation.
 When a player or mob wearing armor is subjected to damage, the EPFs of all applicable enchantments are added together, capped at 25, multiplied by a random value between 50% and 100%, rounded up, and capped again at 20. The damage is then reduced by 4% per point of total effective EPF (for example, a total effective EPF of 20 reduces damage by 80%).
 Because of the caps in the calculation, it's possible to max out protection against specific types of damage with only three pieces of armor. For example, two pieces of armor with Blast Protection IV (EPF 11 each) and a single piece with Protection III (EPF 3) would give a total EPF of 25 versus explosions (before the remainder of the calculation). Any additional EPF would be wasted against explosions (but might be useful against other types of damage, if applicable).
-If the damage is of a type that armor protects against normally, this reduction applies only to the damage that got through the armor. For example, a full suit of diamond armor reduces damage from attacks by 80%—if each piece of armor also had a Protection IV enchantment (EPF 5 each), the enchantments would further reduce damage by 40% to 80% each time, for a total damage reduction of 88% to 96% (i.e., 80%, plus 40%-80% of the remaining 20%).
+If the damage is of a type that armor protects against normally, this reduction applies only to the damage that got through the armor. For example, a full suit of diamond armor reduces damage from attacks by 80%if each piece of armor also had a Protection IV enchantment (EPF 5 each), the enchantments would further reduce damage by 40% to 80% each time, for a total damage reduction of 88% to 96% (i.e., 80%, plus 40%-80% of the remaining 20%).
 It is possible, using the /give command, to obtain armor with an enchantment level higher than what is normally obtainable via normal survival. Using this method, a player could give themselves, for example, a full set of diamond armor with a Protection V enchantment on every piece. Following the algorithm above, we find that, since Protection V has an EPF of 7, only 3 pieces of the armor need to have Protection V in order to reach the maximum 25 EPF for all types of damage (with 3 pieces of armor with Protection V and one piece with Protection IV, one's EPF is still 26, but the step between Protection IV and Protection V is 2 EPF, so the cap would not be reached without the third piece of Protection V armor). Any higher Protection enchantments could be used to allow the cap to be reached with only one enchantment, rather than having a full set of enchanted armor, but would be wasted if all pieces shared the same level enchantment.
 To calculate the average amount of extra protection given by a set of armor, use the following formula:
 
-[100−(total defense points of armor set×4)]×total EPF of armor set×4%×0.0075
+[100(total defense points of armor set4)]total EPF of armor set4%0.0075
 Note: This formula is simplified and thus not fully correct due to the rounding and capping performed after the random percentage multiplication.
 To find the total protection of the armor set, simply add the extra protection to the standard percentage.
 

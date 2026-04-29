@@ -1,0 +1,14 @@
+Five-way crossings are naturally generated components of strongholds, up to 5 per stronghold can generate.
+They have up to 6 exits (including the entrance to the room), of which only the entrance generates one of the doors at random. The forward exit is always generated as a plain 33 opening (and attempts to generate a further room), while the other four side exits (two for each side, one near and one far from the entrance) have a 50% chance (66% in case of the far exit to the right) to attempt at further generation. Only in case of making an attempt at generating further rooms, those side exits are considered proper exits and generate like plain 33 opening, otherwise they result as normal stone bricks walls.
+Currently due to a bug, if the player enters this room facing north (-Z) or west (-X) there is a chance for rooms in the stronghold to be hidden from sight, because the side exits swap roles, so that the near exit behaves like the far exit and vice-versa. For example, the near right side exit has generated a room behind, but the far right one has not: in this case the near exit will result in a stone bricks wall, while the far one is the plain 33 opening (onto nothing) 
+In total there can be 4 outcomes for each side exit: the exit is open but there is no room behind, the exit is walled up and there is nothing behind, the exit is open and there is a room behind, the exit is walled up but there is a room behind.
+These rooms are composed of stone bricks, smooth stone slabs and a torch
+
+
+==== Materials ====
+
+
+==== Blueprint ====
+
+
+== References ==

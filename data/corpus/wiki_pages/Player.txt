@@ -3,7 +3,7 @@ There are nine default skins for the player: Alex, Ari, Efe, Kai, Makena, Noor, 
 
 
 == Appearance ==
-A new player can choose from Steve, Alex, Zuri, Sunny, Noor, Makena, Kai, Efe, or Ari as their main skin. They can also choose the skin from an image file in the Minecraft Launcher‌[JE  only] or Character Creator‌[BE  only]. They can choose between "classic" and "slim" shapes, which makes their arm models wide or slim.
+A new player can choose from Steve, Alex, Zuri, Sunny, Noor, Makena, Kai, Efe, or Ari as their main skin. They can also choose the skin from an image file in the Minecraft Launcher[JE  only] or Character Creator[BE  only]. They can choose between "classic" and "slim" shapes, which makes their arm models wide or slim.
 In Bedrock Edition, the game allows the usage of skin packs, each of which has a selection of free skins. The game also features a character creation system with free and purchasable apparel and features from the Marketplace. On console devices, these are the only equippable skin models, and players cannot choose custom skin models imported from an image file.
 In Java Edition, playing in the demo or offline makes the game randomly choose any of the nine skins as the current skin.
 The player's appearance can be obscured by equipping armor, such as turtle shell, helmets, chestplates, leggings, and boots, as well as other equippable items such as elytra, carved pumpkin, and heads of mobs and other players. Players are also the only entity capable of having capes, as well as other cosmetics from their character creation.
@@ -24,7 +24,7 @@ A player's interaction range (reach) differs. The area forms a three-dimensional
 
 == Health and hunger meters ==
 
-The player has 10 full hearts or 20 health points. One full heart represents two health points. When the player's hunger bar is at 18 ( × 9) or higher, health slowly regenerates by 1HP every four seconds, but when it is at 20 ( × 10) with saturation remaining, health regenerates by 1HP every half second.‌[JE  only] The hunger bar depletes faster from energy-intensive activities like sprinting, jumping, attacking mobs, and mining, and it can be refilled by eating food. If the hunger bar is at 17 ( × 8.5) or lower, the player does not regenerate health unless in Peaceful difficulty (or under the effect of certain potions). While the hunger bar is at 0 (), the player is starving and proceeds to lose health. On Hard and Hardcore difficulties, starvation kills the player. On Normal difficulty, it brings health down to 1HP. On Easy difficulty, it brings health down to 10HP. On Peaceful difficulty, the health bar recovers regardless of hunger, but still depletes from starvation damage, and the hunger bar does not lose any points even when under the effect of hunger.
+The player has 10 full hearts or 20 health points. One full heart represents two health points. When the player's hunger bar is at 18 (  9) or higher, health slowly regenerates by 1HP every four seconds, but when it is at 20 (  10) with saturation remaining, health regenerates by 1HP every half second.[JE  only] The hunger bar depletes faster from energy-intensive activities like sprinting, jumping, attacking mobs, and mining, and it can be refilled by eating food. If the hunger bar is at 17 (  8.5) or lower, the player does not regenerate health unless in Peaceful difficulty (or under the effect of certain potions). While the hunger bar is at 0 (), the player is starving and proceeds to lose health. On Hard and Hardcore difficulties, starvation kills the player. On Normal difficulty, it brings health down to 1HP. On Easy difficulty, it brings health down to 10HP. On Peaceful difficulty, the health bar recovers regardless of hunger, but still depletes from starvation damage, and the hunger bar does not lose any points even when under the effect of hunger.
 
 
 == Movement ==
@@ -35,11 +35,11 @@ The most basic movement the player can perform is walking. The player can walk a
 
 
 === Sprinting ===
-The player can move faster by sprinting, but at the cost of draining the hunger bar considerably while doing so. The player sprints approximately 5.612 blocks per second, as opposed to the regular pace of 4.317 blocks per second. The maximum distance a player can jump when sprinting is approximately 4.225 blocks. The Speed effect increases momentum. The player cannot sprint if the hunger bar is at 6 () or less. Sprinting is activated by double-tapping the forward key (default W), then holding it, or by holding the sprint key (Ctrl by default, ⌘ Command if using a Mac) while pressing the forward key. Holding the sprint key in Creative mode while flying causes the player to fly faster.
+The player can move faster by sprinting, but at the cost of draining the hunger bar considerably while doing so. The player sprints approximately 5.612 blocks per second, as opposed to the regular pace of 4.317 blocks per second. The maximum distance a player can jump when sprinting is approximately 4.225 blocks. The Speed effect increases momentum. The player cannot sprint if the hunger bar is at 6 () or less. Sprinting is activated by double-tapping the forward key (default W), then holding it, or by holding the sprint key (Ctrl by default,  Command if using a Mac) while pressing the forward key. Holding the sprint key in Creative mode while flying causes the player to fly faster.
 
 
 === Sneaking ===
-Sneaking is a feature activated by pressing and holding the sneak key (default is ⇧ Shift). Sneaking prevents players from falling more than half a block, making it highly useful for building horizontally outward over space. Going past the edge of a block and stopping sneaking does not result in falling off that block. The player can still dismount blocks while sneaking by jumping over the block's edge. In multiplayer, a player's name tag is grayed out in Java Edition or completely disappears in Bedrock Edition when they sneak, to relate to the fact that sneaking makes them harder to see.
+Sneaking is a feature activated by pressing and holding the sneak key (default is  Shift). Sneaking prevents players from falling more than half a block, making it highly useful for building horizontally outward over space. Going past the edge of a block and stopping sneaking does not result in falling off that block. The player can still dismount blocks while sneaking by jumping over the block's edge. In multiplayer, a player's name tag is grayed out in Java Edition or completely disappears in Bedrock Edition when they sneak, to relate to the fact that sneaking makes them harder to see.
 
 
 === Jumping ===
@@ -55,11 +55,11 @@ Crawling occurs when the player is in an area less than 1.5 blocks high and prev
 
 
 == Movement speed ==
-There isn't a simple hard-coded maximum velocity for walking, sprinting, etc. The maximum is a result of a base acceleration countered by "friction" or air resistance. The base acceleration for walking is 0.098, and sprinting is 30% faster than that. Velocity is increased by this acceleration value every tick (1/20th of a second), then the player is moved by the resulting velocity, then the velocity is multiplied by the friction value of the block they are walking on. For most blocks, the friction value is 0.546. As the player walks forward, each tick their velocity goes +0.098, *0.546, +.098, *0.546, +0.098, and so on. The result is that eventually, the 0.546 multiplier counteracts the 0.098 increase, so the player doesn't go any faster. The formula for this "terminal velocity" is a/(1-r), where a is the acceleration, and r is the block's friction. 0.098/(1-0.546) ≈ 0.2159 meters/tick = 4.317 meters/second. Sprinting is 30% faster than that, at about 5.612 meters/second. Flying is similar, but the base acceleration is 0.049 and the "friction" is 0.91, which comes out to ~10.89 m/s.
+There isn't a simple hard-coded maximum velocity for walking, sprinting, etc. The maximum is a result of a base acceleration countered by "friction" or air resistance. The base acceleration for walking is 0.098, and sprinting is 30% faster than that. Velocity is increased by this acceleration value every tick (1/20th of a second), then the player is moved by the resulting velocity, then the velocity is multiplied by the friction value of the block they are walking on. For most blocks, the friction value is 0.546. As the player walks forward, each tick their velocity goes +0.098, *0.546, +.098, *0.546, +0.098, and so on. The result is that eventually, the 0.546 multiplier counteracts the 0.098 increase, so the player doesn't go any faster. The formula for this "terminal velocity" is a/(1-r), where a is the acceleration, and r is the block's friction. 0.098/(1-0.546)  0.2159 meters/tick = 4.317 meters/second. Sprinting is 30% faster than that, at about 5.612 meters/second. Flying is similar, but the base acceleration is 0.049 and the "friction" is 0.91, which comes out to ~10.89 m/s.
 
 
 == Gameplay HUD ==
-The onscreen heads-up display (HUD) consists of the player's health bar, hunger bar, experience bar, and hotbar. The armor rating bar appears above the health bar if the player is wearing armor and the oxygen bar appears if the player is submerged in water or is suffocating in a block‌[BE  only]. The HUD also contains the crosshair and a held object or fist. The HUD can also be toggled by F1.
+The onscreen heads-up display (HUD) consists of the player's health bar, hunger bar, experience bar, and hotbar. The armor rating bar appears above the health bar if the player is wearing armor and the oxygen bar appears if the player is submerged in water or is suffocating in a block[BE  only]. The HUD also contains the crosshair and a held object or fist. The HUD can also be toggled by F1.
 As mentioned in the Game modes section, when the player is in Creative mode, the health, hunger, experience, armor, and oxygen bars are hidden, and only the hotbar is visible. Despite this, the player can still collect experience and wear armor. The screen tilting animation (the animation for taking damage) still plays when dying from /kill or the void. In Spectator mode, the hotbar, crosshair, and held object/fist are also hidden; in Java Edition, the hotbar appears as a player spectating list when a number is pressed or the mouse wheel is scrolled.
 
 
@@ -156,7 +156,7 @@ The player's legs do not line up perfectly with the torso to prevent z-fighting 
 In Bedrock Edition, a dead player can still collect experience orbs near their death location until they choose to respawn.
 Before Java Edition 1.14, the camera was located at the player's feet; the world is therefore rendered 1.8 blocks below what it should be at to counteract this.
 Likewise, when the player slept in a bed, the world revolved around the player during the animation instead of the player's camera rotating, which led to some visual bugs.
-With a length of 3 to 16 characters and 63 characters to choose from, the total number of possible player usernames in Java Edition is ∑n=31663n≈6.257×1028 or more than 62 octillion.
+With a length of 3 to 16 characters and 63 characters to choose from, the total number of possible player usernames in Java Edition is n=31663n6.2571028 or more than 62 octillion.
 
 
 == Gallery ==
@@ -188,7 +188,7 @@ Mob of Me
 
 
 == External links ==
-"Introducing New Default Minecraft Skins"     by Sophia Dankis  – Minecraft.net, October 19, 2022.
+"Introducing New Default Minecraft Skins"     by Sophia Dankis   Minecraft.net, October 19, 2022.
 
 
 == Notes ==

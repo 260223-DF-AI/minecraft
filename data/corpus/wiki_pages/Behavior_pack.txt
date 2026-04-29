@@ -1,0 +1,94 @@
+The behavior pack system is a data-driven framework used to define behaviors, characteristics, and logic of various things in a Minecraft world.
+
+
+== Overview ==
+Behavior pack serves as the foundational layer for many aspects of the game, dictating entity behaviors, loot tables, spawn rules, item behaviors, item recipes, biome characteristics, world generation, and much more. These definitions are written in JSON files, which are organized in multiple folders by their features. This system allows users to override and modify certain features in the base game, or add unique features with their own behavior pack. Behavior packs are often used in conjunction with resource packs as part of an add-on, which enable them to use custom resources, such as models, animations, textures, sounds, and more.
+Behavior pack provides a component-based system that makes up most entities (and other game objects) in the game by describing their unique properties and behaviors  like health, collision box, movement, mob behaviors, and physics  through multiple components. These components are hard coded in the game, but are commonly shared among entities, and can be used extensively to create or modify existing entities in a behavior pack. Molang can be used to quickly determine dynamic values from other objects or calculations. A similar feature in Java Edition would be entity attributes, but they only store numeric properties of entities compared to components, which may store other multi value properties.
+The component-based system is also used to define custom items, blocks, and biomes. There are four sets of components that define behaviors for different game objects: entity components, item components, block components, and biome components.
+
+
+== Usage ==
+
+Similar to resource packs, behavior packs can be created and imported in Bedrock Edition. Users can download external behavior packs with the .mcpack file extension, if the game's platform allows file import feature. When these files are opened, they are automatically imported into the behavior_packs folder in com.mojang without accessing the file system. Behavior packs can also be placed manually in the development_behavior_packs folder. Each behavior pack must either be a sub-folder or a .zip file.
+One or more behavior packs can be applied to a world from the Create New World and Edit World screens. These behavior packs will be imported into the world files, and are kept when exporting the world. Players joining a multiplayer world with behavior packs get an option to download only the required assets from the behavior pack, or all assets. The game loads behavior packs based on the order of the packs on the list. The bottom-most pack loads first, then each pack placed above are loaded sequentially.
+Custom behavior packs permanently disable achievement unlocking for the world. Custom behavior packs cannot be applied to worlds on Realms, but worlds uploaded to Realms or Bedrock Dedicated Server keep the behavior packs applied to the world.
+In Bedrock Dedicated Server, behavior packs also can be stored outside of worlds. Packs need to be enabled in the world_behavior_packs.json file in a world file.
+Behavior packs cannot be edited while the game is active, except for the packs in the development_behavior_packs folder. They will update themselves when joining a world or changing active behavior packs.
+
+
+=== Settings ===
+Behavior packs and resource packs can contain custom settings that affect features in the pack. Settings need to be specified in manifest.json, with the options to create an on/off toggle, or a slider with specific values. The settings menu for custom and Marketplace behavior packs can be opened with a button next to the pack button in the edit world screen, and all settings affect the whole world. Custom labels for each setting can be applied, which support text formatting.
+How each setting affects the behavior pack can be modified with scripting.
+The settings menu can also be used to change the memory tier, which affects the sub-packs being used. The memory tier can be set to any specified value from the device's memory tier and lower. Sub-packs are behavior packs within the root of the behavior pack, with the same directory structure. They can be added to the pack in manifest.json.
+
+
+=== Marketplace behavior packs ===
+Add-ons and worlds from the Marketplace often contain or consist entirely of a behavior pack. These packs are stored internally and can't be accessed from com.mojang. Players can only access Marketplace behavior packs or play on worlds with behavior packs applied when they own the pack, by purchasing it in the Marketplace or by owning the Marketplace Pass. Which packs a player owns is stored in the online player profile, so behavior packs can only be accessed when signed in. Marketplace packs can be applied the same way as custom resource packs, and also to Realms, but not to worlds in external servers.
+When a player joins a multiplayer world or Realm with Marketplace packs, the player is offered to download these packs to apply them, even when the player does not own the pack.
+Marketplace behavior packs update automatically depending on the "Auto Update Unlocked Packs" settings, or can be updated manually from the purchase screen.
+
+
+== Contents ==
+
+
+=== Directory structure ===
+
+
+== Internal behavior packs ==
+Most entities, biomes, loot tables, and various things from the base game are defined by the vanilla behavior pack, which is built inside the game itself and can be found at game directory\data\behavior_packs. Mojang Studios releases the Bedrock Add-On Sample Files with every new update of Bedrock Edition, which provide the latest vanilla behavior and resource packs from the game.
+Multiple internal behavior packs exist for different situations. Each experiment has its own behavior pack, in addition to Minecraft Education features and Minecraft Preview. Each behavior pack contains the same structure and assets as custom behavior packs, defined for the whole game. Some packs also have an icon or description, which is not visible in-game.
+Bedrock Editon supports backward compatibility for add-ons and old worlds. This is done for the vanilla and chemistry behavior packs since 1.14 and 1.20.50 respectively, with the regular behavior pack supporting the latest version before. Each update with changes to features defined in behavior packs has its own behavior pack, with all the features that changed. Some Marketplace add-ons can lock a world in an older version by disabling internal behavior packs from higher versions.
+
+
+== Videos ==
+Tutorials from the official Minecraft Creator Channel
+
+
+== History ==
+
+
+== See also ==
+Mod
+Commands
+Data pack
+Resource pack
+
+
+== References ==
+
+
+== External links ==
+
+
+=== Official documentation ===
+Addons JSON Documentation
+Animation JSON Documentation
+Biome Documentation
+Block JSON Documentation
+Entity JSON Documentation
+Features JSON Documentation
+Item JSON Documentation
+Molang Documentation
+Recipe JSON Documentation
+Schema Documentation
+
+
+=== Official tutorials ===
+Getting Started With Minecraft Add-Ons
+Introduction to Behavior Packs
+
+
+=== Tools and libraries ===
+Commonly Used Tools
+Minecraft Creator Tools
+
+
+=== Unofficial resources ===
+Bedrock Wiki
+
+
+=== Templates ===
+Bedrock Add-On Sample Files
+
+
+== Navigation ==

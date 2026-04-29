@@ -6,7 +6,7 @@ A warden is a hostile mob summoned by sculk shriekers located in the deep dark. 
 Wardens do not follow the standard mob spawning rules. Instead, a warden is spawned when a player in Survival, Adventure or Creative mode activates any number of naturally generated sculk shriekers four times (see details below).
 Each player has a warning level, which increases every time that player activates a naturally generated sculk shrieker. This is not specific to any sculk shrieker. A sculk shrieker that has already been activated by a player before activates the same way it does normally, and the warning level does not reset if the player were to activate a new sculk shrieker. The distance between the shriekers doesn't matter. The shrieker spawns a warden 4.5 seconds after the warning level reaches 4, or immediately if the sculk shrieker is destroyed. If the warning level is already at 4, it stays at 4 and spawns another warden.
 The light level does not have an effect on shrieker activation or warden spawning, regardless of the warning level.
-When a shrieker attempts to spawn a warden, it makes up to 20 attempts to spawn the warden within an 11×13×11 cubic area centered on the shrieker. During each attempt, the game picks a random column (i.e. a stack of blocks parallel to the Y axis), and then picks the highest valid block in that column. A valid block is any block that has a complete top surface (i.e. the top face is a grid-aligned square meter surface with no holes), and that a warden can be placed directly on top of without having the warden collide with any existing blocks or entities. A warden can't spawn if the bottom block that it would occupy has a liquid inside it, but it can spawn with 1 or more liquids in the blocks above that. So, a pressure plate with water flowing on top would be a valid location for the shrieker to spawn the warden (this would place the warden with its feet in the water, one block above the pressure plate).
+When a shrieker attempts to spawn a warden, it makes up to 20 attempts to spawn the warden within an 111311 cubic area centered on the shrieker. During each attempt, the game picks a random column (i.e. a stack of blocks parallel to the Y axis), and then picks the highest valid block in that column. A valid block is any block that has a complete top surface (i.e. the top face is a grid-aligned square meter surface with no holes), and that a warden can be placed directly on top of without having the warden collide with any existing blocks or entities. A warden can't spawn if the bottom block that it would occupy has a liquid inside it, but it can spawn with 1 or more liquids in the blocks above that. So, a pressure plate with water flowing on top would be a valid location for the shrieker to spawn the warden (this would place the warden with its feet in the water, one block above the pressure plate).
 In Java Edition, warden spawning can be toggled on or off with the game rule spawn_wardens.
 
 
@@ -28,12 +28,12 @@ Similar to sculk, the bright blue parts of the warden's texture are emissive wit
 A warden can fit inside any space that is 1 block wide and 3 blocks tall, allowing it to chase players and mobs through small corridors.
 Wardens are immune to damage from fire or lava, and are immune to knockback. They pursue through blocks that are usually avoided by other mobs, including rails, cacti, or magma blocks.
 A warden listens to all vibrations within a 15 block radius ovoid shape, except those from other wardens, armor stands, dying mobs, and players in Creative or Spectator mode. Like with sculk sensors, they cannot detect vibrations from a sneaking player that is moving, jumping, falling or shooting a projectile. A warden has a 2-second cooldown between detecting vibrations.
-A warden is aware of all targetable entities within a 49×51×49 box around itself. If the warden has a targetable entity, is not investigating any disturbances, and is otherwise idle, it pathfinds toward the closest entity, prioritizing players over mobs. While pathfinding, the warden can begin a 'sniff' behavior and animation. This takes around 4.2 seconds and has a 5-10 seconds cooldown. A warden can still sniff out sneaking players, despite not being able to detect vibrations from them.
+A warden is aware of all targetable entities within a 495149 box around itself. If the warden has a targetable entity, is not investigating any disturbances, and is otherwise idle, it pathfinds toward the closest entity, prioritizing players over mobs. While pathfinding, the warden can begin a 'sniff' behavior and animation. This takes around 4.2 seconds and has a 5-10 seconds cooldown. A warden can still sniff out sneaking players, despite not being able to detect vibrations from them.
 A warden prefers to track down the most suspicious targets, rather than the ones closest to it.
 
 
 === Inflicting Darkness ===
-A warden, whether angered or not, gives 13 seconds of Darkness to all players within a 20 block ovoid radius of it every 6 seconds. The souls in its chest make a low heartbeat that occurs in tandem with the Darkness effect.​[more information needed] The heartbeat speeds up as the warden becomes increasingly agitated.
+A warden, whether angered or not, gives 13 seconds of Darkness to all players within a 20 block ovoid radius of it every 6 seconds. The souls in its chest make a low heartbeat that occurs in tandem with the Darkness effect.[more information needed] The heartbeat speeds up as the warden becomes increasingly agitated.
 
 
 === Suspense ===
@@ -43,19 +43,19 @@ When it finishes sniffing, a warden adds 35 anger to the nearest mob or player w
 
 Once a warden reaches 80 anger with a target, it roars for 4.2 seconds, adds another 20 anger, and pursues the target. In this angered state, the warden chases the target normally despite being blind. A warden also enters its hostile state and adds 100 anger if directly attacked by a mob. If the attacking player or mob is within 5 blocks, it skips its roaring animation altogether and immediately gives chase.
 A warden is biased toward player vibrations, attacks, and contact - even if a warden is angrier at another mob, it still attacks the player first as long as they have angered the warden as well. This is not true of any other mob.
-After 60 seconds of being "calm" and not detecting any vibrations or sniffing any mobs, as well as immediately after being spawned by a command block with status effects, a warden burrows back into the ground and despawns. If the warden is floating on a liquid, it instead immediately despawns without any burrowing animation. During its emerging/burrowing animation, a warden cannot detect any vibrations and can take damage only from /kill, though it can still be pushed by entities, pistons, or liquids.‌[JE  only] Named wardens do not despawn.
+After 60 seconds of being "calm" and not detecting any vibrations or sniffing any mobs, as well as immediately after being spawned by a command block with status effects, a warden burrows back into the ground and despawns. If the warden is floating on a liquid, it instead immediately despawns without any burrowing animation. During its emerging/burrowing animation, a warden cannot detect any vibrations and can take damage only from /kill, though it can still be pushed by entities, pistons, or liquids.[JE  only] Named wardens do not despawn.
 Unlike most hostile mobs, wardens do not despawn randomly when more than 32 blocks from a player, nor do they immediately despawn when more than 128 blocks from a player.
 
 
 === Attacks ===
-A warden's melee attack has a cooldown of 36 ticks (1.8 seconds) and disables shields for 5 seconds, dealing 16HP × 8 to 45HP × 22.5 health points depending on the difficulty.
+A warden's melee attack has a cooldown of 36 ticks (1.8 seconds) and disables shields for 5 seconds, dealing 16HP  8 to 45HP  22.5 health points depending on the difficulty.
 
 If a warden cannot reach its target, it switches to its ranged attack: a sonic boom. It does so when the following are true:
 
 It has been 10 seconds since the warden detected the target
 It has been 5 seconds since the warden last used a melee or ranged attack
 The target is within a 14-block radius horizontally and 20 blocks vertically of the warden in an ovoid shape.
-The sonic boom aims directly at the only target, making it impossible to dodge, passing through all blocks and entities. A warden takes 1.7 seconds to charge and unleashes the attack, which instantly hits the target as long as the target is within attack range. The attack takes an additional 1.3 seconds to cool down before the warden can use melee attacks again for a total of 3 seconds. The sonic boom is visible via teal particles that are projected out of the warden's chest. This attack bypasses most forms of armor, including shields, armor enchantments (such as Protection), and the natural armor that some mobs possess. Only wolf armor, the 85%‌[Java Edition  only] or 95%‌[Bedrock Edition  only] magic damage resistance of a witch, and the Resistance effect can reduce the damage from a sonic boom. Wolf armor loses durability when hit by a sonic boom, but normal armor does not.
+The sonic boom aims directly at the only target, making it impossible to dodge, passing through all blocks and entities. A warden takes 1.7 seconds to charge and unleashes the attack, which instantly hits the target as long as the target is within attack range. The attack takes an additional 1.3 seconds to cool down before the warden can use melee attacks again for a total of 3 seconds. The sonic boom is visible via teal particles that are projected out of the warden's chest. This attack bypasses most forms of armor, including shields, armor enchantments (such as Protection), and the natural armor that some mobs possess. Only wolf armor, the 85%[Java Edition  only] or 95%[Bedrock Edition  only] magic damage resistance of a witch, and the Resistance effect can reduce the damage from a sonic boom. Wolf armor loses durability when hit by a sonic boom, but normal armor does not.
 
 
 == Sounds ==
@@ -201,8 +201,8 @@ He also said that the warden is inspired by the mystery creature heard at the en
 
 
 == External links ==
-"Meet the Warden"     by Per Landin  – Minecraft.net, June 3, 2022.
-"Mob Menagerie: Warden"     by Duncan Geere  – Minecraft.net, April 9, 2024.
+"Meet the Warden"     by Per Landin   Minecraft.net, June 3, 2022.
+"Mob Menagerie: Warden"     by Duncan Geere   Minecraft.net, April 9, 2024.
 
 
 == Navigation ==

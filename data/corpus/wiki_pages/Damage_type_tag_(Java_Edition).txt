@@ -1,0 +1,166 @@
+A damage type tag is a group of damage types. Damage type tags can be used when testing for damage type arguments with #<resource location>, which succeeds if the damage type matches any of the damage types specified in the tag.
+
+
+== List of tags ==
+
+
+=== always_hurts_ender_dragons ===
+Damage from these types is always dealt to Ender Dragons, even if not dealt by a player
+
+
+=== always_kills_armor_stands ===
+Destroys armor stands in one hit.
+
+
+=== always_most_significant_fall ===
+Used to show the correct death message
+
+
+=== always_triggers_silverfish ===
+Damage from these types always makes silverfish notify nearby hidden silverfishes.
+
+
+=== avoids_guardian_thorns ===
+Damage from these types does not trigger the guardian Thorns damage for the attacker.
+
+
+=== burns_armor_stands ===
+[more information needed]
+
+
+=== burn_from_stepping ===
+Damage from these types are ignored by the frost walker enchantment.
+
+
+=== bypasses_armor ===
+Damage from these types ignores armor reduction.
+Used in the #bypasses_shield tag.
+
+
+=== bypasses_cooldown ===
+Damage types with this tag bypass the regular invincibility time after taking damage.
+
+
+=== bypasses_effects ===
+Damage from these types bypasses any damage reduction (Resistance effect and enchantments).
+
+
+=== bypasses_enchantments ===
+Damage from these types bypasses enchantments damage reduction.
+
+
+=== bypasses_invulnerability ===
+Damage from these types bypasses invulnerabilities like creative one.
+Used in the #bypasses_wolf_armor tag.
+
+
+=== bypasses_resistance ===
+Damage from these types bypasses Resistance effect damage reduction.
+
+
+=== bypasses_shield ===
+Damage from these types does not get blocked by shields.
+
+
+=== bypasses_wolf_armor ===
+Damage from these types does not get absorbed by wolf armor.
+
+
+=== can_break_armor_stand ===
+Destroys armor stands in two consecutive hits.
+
+
+=== damages_helmet ===
+Damage from these types damages helmets by the amount of damage and then reduced by 25%.
+
+
+=== ignites_armor_stands ===
+Damage from these types ignites armor stands for 5 seconds.
+
+
+=== is_drowning ===
+Damage types with this tag are ignored if the drowningDamage game rule is set to false, or if the player has the Water Breathing potion effect.
+
+
+=== is_explosion ===
+Damage from these types is reduced by the Blast Protection enchantment.
+Used in the #always_hurts_ender_dragons, and #avoids_guardian_thorns tags.
+
+
+=== is_fall ===
+Damage types with this tag are ignored if the fallDamage game rule is set to false, or if the player has the Slow Falling potion effect. Damage from these types is reduced by the Feather Falling enchantment.
+
+
+=== is_fire ===
+Damage types with this tag are ignored if the fireDamage game rule is set to false, or if the player has the Fire Resistance potion effect. Any damage received is reduced by the Fire Protection enchantment.
+
+
+=== is_freezing ===
+Damage types with this tag are ignored if the freezeDamage game rule is set to false, or if the player is wearing any piece of leather armor.
+
+
+=== is_lightning ===
+Used to make turtles drop bowls when killed by lightning.
+
+
+=== is_player_attack ===
+This tag is not directly referenced by the game.
+Used in the #can_break_armor_stand, and #panic_causes tags.
+
+
+=== is_projectile ===
+Used in many advancements
+Used to check if Endermen should teleport
+Used to check if Shulkers were hit by a projectile (then checked if the projectile is a shulker bullet to duplicate them)
+Damage from these types is reduced by the Projectile Protection enchantment.
+
+
+=== mace_smash ===
+Damage from these types is valid for the Over-Overkill advancement.
+
+
+=== no_anger ===
+Prevents entities from storing the last entity that hurt them, thus preventing anger.
+
+
+=== no_impact ===
+Prevents entities from being hurt marked, preventing the server from syncing the velocity to the client.
+
+
+=== no_knockback ===
+Prevents entities from getting velocity from damage.
+
+
+=== panic_causes ===
+[more information needed]
+
+
+=== panic_environmental_causes ===
+[more information needed]
+Used in the #panic_causes tag.
+
+
+=== sulfur_cube_with_block_immune_to ===
+[more information needed]
+
+
+=== witch_resistant_to ===
+Damage types with this tag reduce the amount of damage dealt to witches by 85%.
+
+
+=== wither_immune_to ===
+Prevents the Wither from taking these damage types.
+
+
+== Removed tags ==
+
+
+=== breeze_immune_to ===
+[more information needed]
+Version added: 23w45a. Version removed: 24w21a.
+
+
+== History ==
+
+
+== Navigation ==

@@ -1,0 +1,227 @@
+Beta 1.21.110.20 (ChromeOS, Android) or Preview 1.21.110.20 (Windows, iOS, iPadOS, Xbox, PlayStation) is the first beta/Preview version for Bedrock Edition 1.21.111, released on July 22, 2025, which adds shelves and copper golem statues, changes dye textures, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Copper Golem Statue
+
+Copper golem statue is a new type of decorative block which has waxed and oxidized variants.
+Copper golem statue oxidizes over time and can be waxed like copper blocks.
+The pose of the block can be changed by interacting with it.
+If the copper golem statue has no oxidation when interacted with using an axe, the block will turn into a copper golem again.
+When connected to a redstone comparator, the copper golem statue block emits a redstone signal based on its current pose.
+ Shelf
+
+The shelf is a new type of decorative block which comes in all wood variants.
+The shelf can be crafted from six matching blocks of any stripped log, stripped stem, or block of stripped bamboo, filling the top and bottom row.
+This recipe produces 6 shelves.
+
+The shelf can store up to 3 item stacks:
+Interacting with any of the 3 slots on its front swaps the player's main hand item with the content of that slot.
+The shelf displays all items it contains in front of it, similar to an item frame.
+While a shelf is powered by redstone, its front texture changes to reflect that it's powered; when placed next to each other, up to 3 powered shelves will connect.
+Interacting with a single powered shelf swaps all its contents with the 3 rightmost items in the player's hotbar.
+Interacting with two connected shelves swaps their contents with the 6 rightmost items in the player's hotbar.
+Interacting with three connected shelves swaps their contents with all items in the player's hotbar.
+It does not matter which of the connected shelves the player interacts with.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Fire
+
+Some blocks that could catch fire with flint and steel, like the top stone slab or wood stair, will now also catch fire during fire explosion, such as those from fireballs.
+Glass blocks will now catch fire with flint and steel or fire explosion.
+
+
+=== Items ===
+Copper armor and tools
+
+Hostile monsters now have a chance to spawn with copper armor equipped.
+Hostile monsters can pick up and use copper weapons and armor.
+ Dyes
+
+Dye colors now have updated icons.
+The goal with these is to enhance visual cohesion across the dye set while maintaining distinct shapes to support colorblind accessibility.
+
+
+=== Mobs ===
+Wolf
+
+Wolves no longer start shaking off water if they are already shaking off water.
+Copper Golem
+
+If the copper golem has fully oxidized it will turn into a copper golem statue block.
+When turned into a copper golem statue block, it will freeze in a random pose.
+When turned into a copper golem statue the copper golem will drop any item it may be holding.
+A copper golem turned into a copper golem statue will keep its name if named with a name tag.
+
+
+=== General ===
+Experiments
+
+Removed the "Drop 3 2025" experimental toggle.
+Graphical
+
+Update volumetric fog configs for PC to have more consistent steps in performance impact, while also maximizing image quality for cost.
+Added support for subsurface scattering on particle textures.
+Updated max render distance to 28 on PC for Vibrant Visuals.
+Increased thickness on block selection wireframe to make it more visible in Vibrant Visuals especially with TAAU enabled.
+Realms
+
+New Edit World page available to try:
+To access, click "Settings" on the Realms tab to go to the Slots page. Then, select a world and click "Edit World." There will be a button at the top of the page that you can click to try the new design.
+You can flip back and forth between the old and new designs as much as you want.
+Resource and behavior packs will still have to be configured in the old design for now.
+
+
+=== Technical ===
+Add-Ons and Script Engine
+
+Moved the properties ash, red_spores, blue_spores, and white_ash from the minecraft:climate biome component to the new client biome component minecraft:precipitation.
+API
+
+@minecraft/server
+Added @minecraft/server version 2.3.0-beta.
+Added @minecraft/server version 2.2.0.
+Enabled Player.applyImpulse and Player.clearVelocity.
+class AimAssistRegistry
+Added readonly property DefaultCategoryId.
+Updated System.sendScriptEvent to be able to be called in "before" events.
+Biomes
+
+Added content errors in server side biome components that were missing them to more easily identify issues and how to fix them.
+Blocks
+
+Custom block geometry no longer produces a warning when fully contained within the first or last 1/16ths of the unit cube volume in any axis.
+A warning is still produced if the geometry doesn't have at least one corner overlapping the unit cube volume, not counting its boundary.
+Components
+
+Content warnings will log missing references in Jigsaw Structure, Processor List, Template Pool, and Structure Sets JSON.
+Content warnings will log missing references in Camera Preset, Camera List, Aim Assist Preset, and Aim Assist Categories JSON.
+Content warnings will log missing item references in Crafting Items Catalog JSON.
+Changes to minecraft:input_air_controlled.
+Renamed to minecraft:free_camera_controlled.
+Removed upward movement behavior when holding the jump action from this component.
+Added new component minecraft:vertical_movement_action.
+Adds the functionality of upward or downward movement when holding the jump action.
+This component is automatically added to any entity that uses the old minecraft:input_air_controlled with format version 1.21.100 or older.
+Updates to minecraft:dash.
+Renamed to minecraft:dash_action to improve clarity.
+Entity Components
+
+Added slot.weapon.mainhand and slot.weapon.offhand as valid slots for minecraft:interact component operations.
+Entity Event Responses
+
+Added the drop_item entity event response, which allows an entity to drop its item in a given slot.
+Graphical
+
+Changed defaults for color grading contrast and saturation fields to 1. Previously the defaults were 1.2 and 1.05 respectively.
+Items
+
+Setting the minecraft:use_modifiers component's movement_modifier field to 1.0 now allows using the item while sprinting, and starting to sprint while using the item.
+poly_mesh is no longer treated or documented as an experimental feature.
+texture_meshes is no longer treated or documented as an experimental feature.
+The scale field can now adjust the depth of texture_meshes, since its value is no longer ignored.
+Added the use_pixel_depth option to texture_meshes to control how geometry depth relates to texture resolution.
+If set to true, the geometry will have a depth of one pixel (in entity space, not texture space).
+This causes textures with a resolution different from 1616 to appear stretched.
+If set to false, the geometry will be built from perfectly cubic voxels, regardless of the texture's aspect ratio.
+Defaults to true to ensure backward compatibility.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs", and "Custom Biomes" experimental toggles.
+
+
+=== Additions ===
+
+
+==== Technical ====
+API
+
+@minecraft/server
+Added methods to Dimension scripting API that allows creators to get the total light level and the sky light level at a specific position.
+@minecraft/diagnostics
+Added method captureException to Sentry which allows capturing of exceptions that are gracefully caught with a try/catch block.
+Biomes
+
+Added max_puddle_depth_below_sea_level to the surface_builder biome component for the swamp builder type. The component will set the search depth for how far below sea level to search for a surface to add a puddle.
+
+
+=== Changes ===
+
+
+==== Technical ====
+API
+
+@minecraft/server-gametest
+GameTest objects will now throw a GameTestCompletedError if accessed after completion for support functions or during clean up for test based functions.
+@minecraft/diagnostics
+Renamed enum SentryBreadcrumbLevel to SentryEventLevel.
+Updated methods on Sentry to be callable in all contexts, including read-only (before events).
+Biomes
+
+Removed support for loading custom biomes for base game versions 1.21.100 and below.
+Removed the 1.20.60 format version for server side biome JSON files. All server side biome JSON files should be version 1.21.110 or higher.
+Updated the server side biome file format version to be 1.21.110.
+
+
+== Fixes ==
+39 issues fixed
+From released versions before 1.21.111
+
+MCPE-181306  Paintings randomly breaking after reloading chunks
+MCPE-181924  Scrolling Down the List of Any Featured Server Brings You Back to the Very Top When Message of the Day Updates
+MCPE-189106  Upon loading dimension, Nether Portal offsets player toward NW
+MCPE-218044  Using a bucket on a waterlogged block does not pick up the water server side
+MCPE-218184  Breaking particles render too dark when they are inside of a block
+MCPE-221341  Vibrant Visuals: Nether Portal screen effect is black in the Overworld
+MCPE-223147  Some Camera Easing Types Cause a Massive Lag-Spike or Crashes Game
+MCPE-223746  Copper Golems saved from death with a Totem of Undying will stop working
+MCPE-223755  Copper Golem will not match an item with a different durability
+MCPE-223758  Copper golems ignore trapped chests
+MCPE-223764  Copper golem chest animation won't stop if hit
+MCPE-223790  Upper part of the bottom of copper chest has a wooden texture
+MCPE-223825  All copper chests' inner textures are incorrectly mirrored
+MCPE-223833  Copper Golem does not sort empty bundles
+MCPE-223910  Grass color in the Swamp and Mangrove Swamp biomes is now much more green than it should be
+Other
+
+Unwaxing or scraping the copper golem using an axe now affects the durability of the axe.
+Copper golem now sorts differently named items of the same type together.
+Copper golem chest interaction sounds now match the animation more closely.
+The copper golem now turns its head when looking at the player.
+Fixed an issue where the player sleeping animation would start before the player climbed into bed.
+Fixed rain and snow lighting up far above the light source in Vibrant Visuals.
+Fixed an issue causing chests to appear desaturated while held in hand in Vibrant Visuals.
+Fixed an issue causing attachables such as bows to appear desaturated in Vibrant Visuals.
+Fixed a bug where vanilla mob flame textures are missing.
+Progress of leaves turning white in snow is now correctly set when entering a world, and this color change now works correctly in custom biomes.
+Fixed unlit candles not casting shadows.
+Fixed unlit cake candles not casting shadows.
+Fixed glass block depth issues with candles.
+Fixed water depth buffer issues with cake candles.
+Fixed infinite duration blindness effect visuals.
+The RTX and Marketplace Pass icon will no longer show up on the same item.
+The RTX Chevron will now show up correctly on the Marketplace search screen.
+Recipe book can no longer show duplicate icons if user has recipe book hidden when acquiring new recipes.
+Fixed Marketplace pass chevron priority on hero row items.
+Fixed Blade row missing Marketplace pass chevron.
+Fixed a bug that caused default editor movement speed to initialize incorrectly.
+Fixed the documentation of minecraft:on_death claiming the component only works on the Ender dragon, it works on all entities.
+Fixed an issue where the player behaved incorrectly with the fixed boom camera when using the locked_player_relative_strafe control scheme. Player movement is now consistent with the free camera in this scenario.
+Fixed andles not casting point light shadows.
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

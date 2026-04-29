@@ -1,0 +1,78 @@
+Pistons and sticky pistons have 2 technical blocks that cannot be obtained. These include the piston head and moving piston blocks.
+
+
+== Piston head ==
+
+The piston head (in Java Edition) or (sticky) piston arm collision (in Bedrock Edition) is a technical block that appears as the front part of an extended piston. It is not available in the Creative inventory and does not drop anything when removed.
+Normally, piston heads are created automatically when a piston extends. However, they can also be placed manually using the /setblock command. Alternatively a debug stick[Java Edition  only] can be used to change the facing direction of a piston head that's currently attached to a piston base. Piston heads that do not have a valid support block behind them will be removed when receiving a shape update from behind in Java Edition, or when receiving a block update from any direction in Bedrock Edition. 
+In rare cases, a client-side, duplicate piston head can appear when placing a piston next to a power source in Java Edition, due to client-server desync issues. These client-side piston heads cannot be broken directly but can be removed by placing another block in the same location.
+In Java Edition, normal and sticky piston heads are distinguished by a block state. In Bedrock Edition, they use separate block IDs. The normal and sticky piston heads can be obtained as items in Bedrock Edition with the commands /give @s pistonarmcollision and /give @s stickypistonarmcollision. They face down when placed.
+In Bedrock Edition, piston head blocks do not actually have a texture, as the piston arm texture is part of the piston block entity, and piston heads that aren't connected to a piston base have neither collisions nor an interaction box.
+
+
+=== Natural generation ===
+Heads of sticky pistons powered with redstone generate in jungle pyramid and ancient city.
+
+
+=== Block states ===
+
+Java Edition:
+
+Bedrock Edition:
+Piston Head:
+
+Sticky Piston Head:
+
+
+== Moving piston ==
+
+The moving piston (in Java Edition) or moving block (in Bedrock Edition), also known as block 36 due to its pre-flattening block ID, is an unobtainable technical block that holds a block entity (unless it was placed with a command) which contains the block the piston is currently moving. Since moving blocks vary in how much of each grid cell they occupy, they can't be stored as normal blocks and are instead stored as block entity data. Multiple moving piston blocks may be used during the extension/retraction process, depending on how many blocks the piston is moving. At the end of the piston stroke, the moving piston blocks are replaced with either the carried block, the piston head (during extensions), or the piston itself (during retractions); but if it is placed with the use of commands it remains indefinitely.[Java Edition  only]
+When placed by commands, the game does not assign a block entity to the moving piston block,[verify] therefore its properties are different than usual: it's invisible, has no collisions, and cannot be broken without the use of TNT, commands, or a structure generating over it (such as the end platform). Although it is non-solid, fluids cannot pass through it. It also prevents players from building at its location. Mobs can see through it, but cannot walk through it. The game treats the block as a stone block when it comes to the player's footstep sounds. It is similar to invisible bedrock in properties with the exception that the player can walk through the moving piston but not invisible bedrock.
+
+
+=== Block states ===
+
+Java Edition:
+
+
+=== Block data ===
+The moving piston has a block entity associated with it that holds additional data about the block.
+Java Edition:
+
+Bedrock Edition:
+
+See Bedrock Edition level format/Block entity format.
+
+
+== Data values ==
+
+
+=== ID ===
+Java Edition:
+
+Bedrock Edition:
+
+
+== History ==
+
+
+=== Data history ===
+
+
+==== Java Edition ====
+
+
+==== Bedrock Edition ====
+
+
+== Trivia ==
+Mobs can spawn inside the piston head block.
+In Bedrock Edition, the piston head is invisible and non-solid when placed with commands. The moving piston disappears shortly after being placed with commands in this edition.
+The moving_piston is transparent and does not emit light.
+If a light-emitting block is moved, the player can see it turn dark briefly. If an opaque block is moved, the player may see light passing through it.
+
+
+== References ==
+
+
+== Navigation ==

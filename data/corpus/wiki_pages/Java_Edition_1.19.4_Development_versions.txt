@@ -1,0 +1,1684 @@
+This is a list of Java Edition 1.19.4 development versions.
+
+
+== 23w03a ==
+23w03a is the first snapshot for Java Edition 1.19.4, released on January 18, 2023, which adds the /ride command and new interaction methods in options screen, makes technical changes, and fixes bugs. This is the first snapshot released in 2023.
+
+
+=== Additions ===
+
+
+==== Command format ====
+Game rule
+
+Added commandModificationBlockLimit, defaults to 32768.
+Controls the maximum number of blocks changed in one execution of /clone, /fill, and /fillbiome commands.
+/ride
+
+A new command to allow entities to start or stop riding other entities, syntaxes:
+/ride <target> mount <vehicle>: makes a single target mount a single vehicle, fails if:
+vehicle is a player;
+target is already riding a vehicle;
+target and vehicle are the same entity;
+vehicle is already a passenger (direct or indirect) of target.
+/ride <target> dismount: dismounts target from any vehicle it is riding, fails if target is not riding anything.
+
+
+==== General ====
+
+Title screen
+
+Added an accessibility onboarding screen for players launching the game for the first time.
+Added arrow key navigation.
+Menu screens can now be navigated by using the arrow keys.
+When navigating with arrow keys, sliders need to be activated by pressing  Enter or Space to start changing the value.
+Options
+
+Added a new "Notification Display Time" accessibility option, to change how long the notifications such as unlocked recipes, advancements, subtitles and selected item names are visible.
+Protocol
+
+Added a network protocol feature for forcing bundle of packets to be processed within same client tick.
+Added new delimiter packet to clientbound game protocol.
+All packets between two delimiters are guaranteed to be processed within same tick.
+For security reasons this feature is not supported in serverbound direction.
+Tag
+
+Added following biome tags:
+#increased_fire_burnout: contains bamboo_jungle, mushroom_fields, mangrove_swamp, snowy_slopes, frozen_peaks, jagged_peaks, swamp, and jungle.
+Fire burns out faster in these defined biomes.
+#snow_golem_melts: contains badlands, basalt_deltas, crimson_forest, desert, eroded_badlands, nether_wastes, savanna, savanna_plateau, soul_sand_valley, warped_forest, windswept_savanna, and wooded_badlands.
+Snow golems melt in these defined biomes.
+#spawns_snow_foxes: contains snowy_plains, ice_spikes, frozen_ocean, snowy_taiga, frozen_river, snowy_beach, frozen_peaks, jagged_peaks, snowy_slopes, and grove.
+Snow foxes spawn in these defined biomes.
+#spawns_white_rabbits: contains snowy_plains, ice_spikes, frozen_ocean, snowy_taiga, frozen_river, snowy_beach, frozen_peaks, jagged_peaks, snowy_slopes, and grove.
+White rabbits spawn in these defined biomes.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Donkeys, mules, skeleton horses, and zombie horses
+
+Changed their textures.
+Vexes
+
+Now use a separate charging animation when empty-handed.
+
+
+==== Non-mob entities ====
+Armor stand
+
+Now preserve custom names when placed and broken.
+Minecart with hopper
+
+No longer have TransferCooldown data.
+
+
+==== Command format ====
+Chat component
+
+Added an optional fallback field to translate text components.
+The new field is a string that is used in place of translation if it is missing.
+If fallback is missing, the old behavior (i.e. using the key itself as the translation) is preserved.
+Out-of-bound arguments in translate formats are no longer silently ignored.
+/clone
+
+Now supports specifying the source and target dimensions, new syntax:
+/clone [from <sourceDimension>] <begin> <end> [to <targetDimension>] <destination> ...
+sourceDimension: ID of dimension to clone from.
+targetDimension: ID of dimension to clone to.
+/data
+
+New source string available, to read a value as text and resulting in a string value, syntax:
+... (insert <index>|prepend|append|set|merge) string (block <sourcePos>|entity <source>|storage <source>) [<sourcePath>] [<start>] [<end>]
+start: index of first character to include at the start of the string.
+end: index of the first character to exclude at the end of the string.
+/execute
+
+On (if|unless), new conditions available:
+... loaded <pos>: checks if the position given is fully loaded (in regard to both blocks and entities).
+pos: block position to check.
+... dimension <dimension>: checks if the execution is in a matching dimension.
+dimension: a dimension ID.
+New sub-command: on, for selecting entities based on relation to the current executing entity, syntax:
+... on (attacker|controller|leasher|owner|passengers|target|vehicle) -> execute
+attacker: last entity that damaged the executing entity in the previous 5 seconds.
+controller: entity that is controlling the executing entity (for example: first passenger in a boat).
+leasher: entity leading the executing entity with a leash (might be a leash knot in case of being attached to a fence).
+owner: owner of the executing entity, if it is a tameable animal (like cats, wolves or parrots).
+passengers: all entities directly riding the executing entity (no sub-passengers).
+target: attack target for the executing entity.
+vehicle: entity that the executing entity is riding.
+If the relation is not applicable to the executing entity or there are no entities matching it, selector returns zero elements.
+/title
+
+All time arguments to /title times are now time durations and work with t, s, and d suffixes.
+/weather
+
+The duration of the weather change now matches the game's regular weather cycle if not specified.
+The duration parameter is now a time duration in ticks and works with t, s, and d suffixes.
+To retain existing functionality, you need to add an s suffix to pre-existing commands.
+
+
+==== General ====
+Data pack
+
+The pack format version is now 11.
+Custom biome
+
+Removed precipitation precipitation type field.
+Added has_precipitation boolean field.
+Options
+
+Auto-jump is now off by default.
+The resource pack screen is now keyboard-navigatable.
+Protocol
+
+Clients now reset their secure chat session state when receiving the login packet.
+Tag
+
+Added #animals_spawnable_on to the #goats_spawnable_on block tag.
+Renamed #only_allows_snow_and_gold_rabbits biome tag to the #spawns_gold_rabbits.
+UI
+
+Slightly moved the search icon on the recipe book UI.
+Sliders can now be textured individually from buttons.
+
+
+=== Experimental ===
+These additions and changes only take effect when the 1.20 experimental data pack is enabled.
+
+
+==== Additions ====
+
+
+===== General =====
+Tag
+
+Added following item tag:
+#noteblock_top_instruments: contains zombie_head, skeleton_skull, creeper_head, dragon_head, wither_skeleton_skull, piglin_head, and player_head.
+
+
+==== Changes ====
+
+
+===== Blocks =====
+Head
+
+They can be placed on top of note blocks without sneaking now.
+
+
+=== Fixes ===
+49 issues fixed
+From released versions before 1.19
+
+MC-26678  Damage wobble no longer shows direction of incoming damage.
+MC-30403  Sprinting isn't canceled when dismounting rideable entities while sprinting.
+MC-120488  Sprint particles may be visible while the player is riding an entity and pressing the sprint keys.
+MC-121048  When an entity dies, the combat tracker only records the killing blow.
+MC-122595  /weather command with duration 0 has the same weather for longer time.
+MC-136534  All command blocks think they're facing south with caret notation.
+MC-146605  Cannot (de-)select or reorder data and resource packs using the keyboard only.
+MC-147939  It's possible to select multiple buttons in command block and structure block.
+MC-149144  Multiple buttons can be selected by pressing another button and  Tab.
+MC-155433  Minecart with hopper not picking matching items from a mixed pile.
+MC-163266  When the target in /spectate command is too far, the player's movement will not be restricted at client-side.
+MC-165595  Guardian beam does not render when over a certain Time in level.dat.
+MC-181832  The /spreadplayers command doesn't spread entities in the specified dimension.
+MC-184029  Clicking into the language list does not remove focus from the focused button.
+MC-184030  Clicking into the language list does not set focus for the purpose of navigating using the  Tab key.
+MC-187458  World outline on the menu screen rendered completely white when clicking away.
+MC-189692  Dying by other means than mobs when knocked back by a bee sting does not mention the bee in the death message.
+MC-191942  The buttons in the multiplayer menu are not evenly spaced.
+MC-222518  Skeleton/Zombie Horse's & Donkey/Mule's saddles and chests are outdated/have errors.
+MC-224960  The /spectate command does not work between dimensions.
+MC-230678  Cauldron fills with powder snow in frozen ocean biome while it's visually raining.
+MC-233893  Burning mobs won't get extinguished by rain in warm patches of Frozen Ocean biome.
+MC-235260  Hopper minecart at (0, 0, 0) transfers items slower than normal.
+MC-238904  Rain is silent in Frozen Oceans.
+MC-247836  Riptide doesn't work in rain within a frozen ocean biome.
+MC-254132  Wolves do not get wet when raining in Frozen Oceans.
+MC-257082  Sprinting whilst riding an entity or flying with elytra changes your field of view.
+From 1.19
+
+MC-252461  Goat not shown in extended death message.
+MC-252773  Goat Horn without instrument NBT and with other NBT data (such as text) does not play.
+MC-254615  First-person fire renders behind water.
+From 1.19.2
+
+MC-255545  Magma Cube shadows do not change with size.
+MC-255811  Level#isRainingAt(BlockPos) always returns false for snowy and frozen biomes, even when it is raining.
+MC-256292  Goats don't spawn on grass after initial world generation.
+MC-257028  Eating chorus fruit and looking down in a boat desynchronizes player position.
+MC-257755  Elements within the Realms menu are not selected in order when using the  Tab key if you're not currently a member of any realm.
+From 1.19.3
+
+MC-256555  Camel sits down for a split second when spawned.
+MC-256576  Players become the controlling passengers of unsaddled camels when mounting them while other players are already riding them.
+MC-256838  The facing direction of the camel doesn't match.
+MC-257346  Vexes with empty hand make obscene gesture.
+MC-257418  Camels sometimes sit down for a split second when receiving damage.
+MC-257875  Fire charges aren't consumed when igniting creepers using them in survival or adventure mode.
+MC-258163  ClientboundSectionBlocksUpdatePacket serialization breaks after 2^19 block states.
+MC-258173  Entering an End Portal whilst sleeping causes the bed to be occupied permanently.
+MC-258246  "Telemetry Data" button is missing an ellipsis.
+MC-258295  Villager AI broken when workstation is nearby.
+MC-258430  Camels with large LastPoseTime values offset the player view model strangely.
+MC-258592  You can select multiple text fields inside the gamerules menu.
+MC-258625  Client-side death messages disappear as soon as the "Respawn" button is pressed even if the player remains on the death screen due to lag.
+MC-258953  Out of memory screen has raw message in the title.
+
+
+== 23w04a ==
+23w04a is the second snapshot for Java Edition 1.19.4, released on January 24, 2023, which adds smithing templates and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/execute
+
+Added a new relation origin for /execute on, which can select:
+Shooter, if the executing entity is a projectile (like arrow, fireball, trident, firework, thrown potion, etc.)
+Thrower, if the executing entity is an item.
+Source of effects, if the executing entity is an area effect cloud.
+Igniter, if the executing entity is a primed TNT.
+Summoner, if the executing entity is evoker fangs or a vex.
+
+
+=== Changes ===
+
+
+==== Items ====
+General
+
+Enchantment glint on items and armor is now more subtle.
+
+
+==== General ====
+User interface
+
+Placeholder icons for empty slots such as armor or in a brewing stand have been lightened.
+Change has not been applied to the loom menu.
+Setting the resource pack to programmer art does not revert this change (despite the change being made to the textures themselves).
+
+
+=== Experimental ===
+These additions and changes only take effect when the 1.20 experimental data pack is enabled.
+
+
+==== Additions ====
+
+
+===== Items =====
+Smithing Templates
+
+New item series for armor trimming and netherite upgrading, with twelve of them.
+ Netherite Upgrade
+Armor trims:
+ Coast Armor Trim
+ Dune Armor Trim
+ Eye Armor Trim
+ Rib Armor Trim
+ Sentry Armor Trim
+ Snout Armor Trim
+ Spire Armor Trim
+ Tide Armor Trim
+ Vex Armor Trim
+ Ward Armor Trim
+ Wild Armor Trim
+They can be obtained randomly from chests generated in structures accordingly.
+Exceptions:
+While randomly generated in other rooms, a netherite upgrade smithing template is also guaranteed in every treasure room in a bastion remnant.
+A single tide armor trim smithing template is sometimes dropped by elder guardians upon death.
+Some armor trims are rarer.
+Consumed when used to upgrade an item in the smithing table.
+Can not be crafted directly, but can make a copy of them by crafting in crafting tables as following pattern:
+7 diamonds, shaped as iron ingots in cauldron crafting recipe.
+1 block of material that the template is made out of, placed in the center slot of the crafting grid.
+1 smithing template, placed in the remaining slot.
+
+
+===== General =====
+Data pack
+
+Added registry trim_pattern and trim_material, which defines trim patterns and materials respectively, to allow add them via data packs.
+These are synchronized to clients when they join the server, but the accompanying resource pack is required on client to make them visible.
+The paths to these textures are inferred based on the filename of the pattern json, and try to find the textures within the same namespace as the trim pattern's name field.
+trim_pattern defines following data:
+asset_id: a namespaced ID used to infer texture locations and localization.
+template_item: the ID of the smithing template item used to apply the trim pattern.
+description: a text component used for displaying the pattern name of an armor trim when hovering an armor itemstack.
+trim_material defines following data:
+asset_name: a string used as a suffix for armor trim texture locations.
+ingredient: the ID of the ingredient item used to apply the trim material.
+item_model_index: a float number which defines the item model override each armor item model should target to change their visuals for this material.
+incompatible_armor_material: an optional ID of the armor material this trim material cannot be applied to.
+description: a text component used for displaying the material name of an armor trim when hovering an armor itemstack.
+The style defined in this description is applied to the armor trim pattern description as well.
+player.dat format
+
+Added new flag (value 128) to HideFlags NBT field for hiding armor trim item tooltips.
+Recipe
+
+Added smithing_transform and smithing_trim recipe serializers for the updated netherite upgrade and the new armor trim recipe respectively.
+Resource pack
+
+Added paletted_permutations, which is a new type of atlas configuration source used to dynamically generate new textures in memory based on a set of color palettes.
+Color palettes allows to swap out the colors of a texture without having to supply all files for the variants of a texture in a resource pack.
+This is useful for things like armor trims. It can change the their color directly without create a new texture for each color.
+The paletted_permutations source has a set of required parameters:
+textures: a list of namespaced locations of base textures.
+These textures are used to generate variants of them that have been modified by color palettes.
+palette_key: a namespaced location of a color palette key file.
+A color palette key is used to define the set of key pixel colors we want to swap out with the color palettes defined below.
+permutations: a map of permutations from suffix to a namespaced location of a color palette file.
+The suffix is appended at the beginning to the resource location of the output variant textures, with a _ character separating the suffix and the base texture name.
+The color palette is a texture file with a set of pixels that are used for replacing pixels that match the color palette key in each base texture.
+The number of pixels in each color palette must be the same as that of the palette_key defined for this source.
+Key matching is done by comparing the RGB values of each pixel in the palette_key to the RGB values of each pixel in the color palette.
+Alpha channel is ignored for key matching, but in the resulting texture the alpha channel is multiplied with the color palette's alpha channel.
+Pixels that do not match the palette_key are copied over to the resulting texture as-is.
+After defining a paletted_permutations source, those namespaced output textures can be referenced in other resources in resource pack.
+For example, if the following paletted_permutations source exists:
+
+The resulting textures can be referenced in other resources like this:
+
+Tags
+
+Added following item tags:
+#trim_materials: contains amethyst_shard, copper_ingot, diamond, emerald, gold_ingot, iron_ingot, lapis_lazuli, netherite_ingot, quartz, and redstone.
+#trim_templates: contains coast_armor_trim_smithing_template, dune_armor_trim_smithing_template, eye_armor_trim_smithing_template, rib_armor_trim_smithing_template, sentry_armor_trim_smithing_template, snout_armor_trim_smithing_template, spire_armor_trim_smithing_template, tide_armor_trim_smithing_template, vex_armor_trim_smithing_template, ward_armor_trim_smithing_template, and wild_armor_trim_smithing_template.
+#trimmable_armor: contains chainmail_boots, chainmail_chestplate, chainmail_helmet, chainmail_leggings, diamond_boots, diamond_chestplate, diamond_helmet, diamond_leggings, golden_boots, golden_chestplate, golden_helmet, golden_leggings, iron_boots, iron_chestplate, iron_helmet, iron_leggings, netherite_boots, netherite_chestplate, netherite_helmet, netherite_leggings, and turtle_helmet.
+
+
+==== Changes ====
+
+
+===== Items =====
+Armor
+
+Now can be visually customized with a variety of unique trims at the smithing table, except leather armor.
+Purely visual with no gameplay benefits, and can only be applied to helmets, chestplates, leggings and boots.
+All trim patterns are visually the same on an armor's item icon, but the color still changes based on the trim material.
+The name of the trim pattern is displayed on the item's tooltip.
+Armor trim has 2 properties: pattern and material.
+Pattern: Defined by the smithing template used to apply the trim, and represents the visual pattern of the trim.
+Material: Defined by what ingredient is used to apply the trim, and represents the color of the trim.
+Available ingredients:
+Amethyst shard
+Copper ingot
+Diamond
+Emerald
+Gold ingot
+Iron ingot
+Lapis lazuli
+Nether quartz
+Netherite ingot
+Redstone dust
+Armor cannot have the same material it is made of applied to it as a trim, except for diamond armor with netherite trim being upgraded to netherite armor.
+
+
+===== Gameplay =====
+Smithing Table functionality
+
+Redesigned: it is now a workstation for physical equipment upgrades and modifications.
+Added a slot used by smithing templates to the left of the old 2 slots.
+Smithing templates define what type of upgrade is made to equipment.
+It specifies both what type of items that can upgrade, and which ingredients are valid to customize the upgrade.
+Netherite equipment crafting now also requires a netherite upgrade smithing template.
+Two menu types:
+Old menu without the smithing template slot has been renamed to legacy_smithing, and will be removed when armor trims are no longer an experimental feature.
+New menu with smithing template slot was added, called smithing.
+
+
+=== Fixes ===
+4 issues fixed
+From released versions before 1.19
+
+MC-198809  Blast Protection does not reduce explosion knockback except at very high levels.
+From the previous development version
+
+MC-259189  Narrator: Not Available isn't grayed out on accessibility splash.
+MC-259204  All goat horns display as Ponder goat horns and play the Ponder instrument.
+MC-259211  You cannot select incompatible resource packs within the resource packs menu via keyboard navigation.
+
+
+== 23w05a ==
+23w05a is the third snapshot for Java Edition 1.19.4, released on February 1, 2023, which introduces a new design for the "Create New World" screen, makes all armor trimmable, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Options
+
+Added the "Glint Speed" and the "Glint Strength" accessibility options for adjusting the speed and transparency of enchantment glints.
+
+
+=== Changes ===
+
+
+==== Items ====
+Armor and elytra
+
+Now it is possible to swap an equipped piece of gear with another one by using the latter.
+
+
+==== Command format ====
+/effect
+
+infinite is now a valid option for effect durations.
+Infinite effect durations show up as "" in the player inventory view.
+
+
+==== General ====
+
+"Create New World" screen
+
+Now organized into three tabs:
+The Game tab allows to set the world name, gamemode, difficulty, and whether to allow cheats.
+The World tab allows to set the world type and world seed, and to toggle the generation of structures and the bonus chest.
+The More tab provides access to game rules, experiments, and the data pack selection screen.
+Removed the Import Settings button and the corresponding Export Settings button in the Edit World screen.
+Options
+
+Changed how tooltips in the menu UI are positioned.
+
+
+=== Experimental ===
+These changes only take effect when the 1.20 experimental data pack is enabled.
+
+
+==== Changes ====
+
+
+===== Items =====
+Smithing templates
+
+The following common armor trim smithing templates now always generate 2 each in a chest when found:
+Dune armor trim
+Coast armor trim
+Wild armor trim
+Sentry armor trim
+Netherite upgrade smithing templates have been made twice as common.
+1 eye armor trim is now guaranteed to generate in every stronghold library chest.
+Woodland mansions now have a greatly increased chance of generating the vex armor trim.
+Across the board, smithing templates have been made slightly more common.
+The texture of the dune armor trim has been tweaked, so that the symbol on the chestplate is moved up a few pixels.
+
+
+===== Gameplay =====
+Armor
+
+Armor trims can now be applied to leather armor.
+Armor can now have trims of the same material it is made out of.
+
+
+===== General =====
+Data pack
+
+The following data is now also defined by a trim material:
+override_armor_materials: an optional map of armor material to overridden color palette.
+Map key is the armor material that this trim material wants to override with a different color palette.
+Map value is the name of the color palette that will be used when this trim material is applied to an armor piece with the corresponding armor material.
+The following data is no longer defined by a trim material: incompatible_armor_material
+Tags
+
+Added leather_helmet, leather_chestplate, leather_leggings, and leather_boots to #trimmable_armor item tag.
+
+
+=== Fixes ===
+21 issues fixed
+From released versions before 1.19
+
+MC-127749  Cape is jittering; movement way sharper than in snapshot 18w03b.
+MC-147711  Drowned no longer have a different swimming animation.
+MC-190146  Game mode descriptions are grammatically incorrect/inconsistent.
+MC-211194  Debug worlds are shown as being created in the incorrect game mode.
+MC-216270  It's not possible to replace armor by right clicking while holding the armor item.
+From 1.19
+
+MC-252625  Frogs play a running animation after the NoAI NBT is applied.
+MC-254074  Frogs don't play their walking animation when they take damage.
+From 1.19.2
+
+MC-256650  Frogs don't have smooth transitions to their idle states when they stop moving.
+MC-257464  Axolotl walking animation stutters when moving slowly.
+From 1.19.3
+
+MC-256479  Camels don't play their walking animations when they are damaged.
+MC-256493  Camels don't have smooth transitions to their idle states when they stop moving.
+MC-256664  Camels play their walking animations after the NoAI NBT tag is applied to them.
+MC-258669  Warning Menu when import generation data for a new world does not react when click "Yes".
+From the Java Edition 1.19.4 development versions
+
+MC-259206  The accessibility onboarding screen can not display any language other than English (US).
+From the previous development version
+
+MC-259357  Text inside the smithing table GUI renders behind the armor stand model in some languages.
+MC-259362  The item.minecraft.smithing_template.netherite_upgrade.additions_slot_description string is missing an article before the word "Netherite".
+MC-259370  Stronghold library loot table has been replaced by stronghold altar loot table.
+MC-259389  Incompatible crafting arrow overlay in the new smithing GUI uses the position of the legacy smithing GUI.
+MC-259399  The armor stand model within the smithing table GUI doesn't render the output item after resizing the game window.
+MC-259418  Camels with large LastPoseTick NBT values still behave strangely and cause a variety of issues.
+MC-259420  Pixels not present in the palettes get erased, not kept.
+
+
+== 23w06a ==
+23w06a is the fourth snapshot for Java Edition 1.19.4, released on February 8, 2023, which introduces display entities, /damage command, damage types and tags, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Non-mob entities ====
+Display entities
+
+Including block display, item display, and text display.
+Like markers, don't tick and have no collisions or physics.
+Models render at entity position, with normal rotation around X and Y axis (so it can be controlled by teleport commands), but also with additional arbitrary model transform.
+2 new data types added, each of them has 2 forms, but only one for saving, as following:
+rotation
+Quaternion form (used for saving): array of 4 numbers, describing components (x, y, z, w).
+Axis-angle form: object with following fields:
+axis: 3D vector.
+angle: Angle in radians.
+transformation: Arbitrary affine transform, composed as following fields and following order:
+Matrix form: array of 16 numbers, describing row-major matrix.
+Decomposed form (used for saving): object with following fields:
+translation: 3D vector.
+left_rotation: rotation object.
+scale: 3D vector.
+right_rotation: rotation object.
+Some properties of display entities can be interpolated, to create gradual changes over time for clients, instead of instantaneous jumps.
+Display entities keep track of current and previous values of interpolated values:
+All properties marked as "interpolated" are part of a single interpolation set.
+Any update to interpolated property cause all values of interpolation set to be saved as "current".
+Data command executions that do not change value of property (even if it's present in NBT) do not count as updates.
+Updates are synchronized to clients at most once per tick, so multiple updates within command still count as single update.
+Previous current values are saved as "previous".
+If interpolation is enabled, entity transitions between "previous" and "current" values over time.
+Start of interpolation (entity fully in "previous" state) is defined by field interpolation_start (game time, in ticks).
+Set to -1 to load current game time instead.
+End of interpolation (entity fully in "current" state) is defined as interpolation_start + interpolation_duration (in ticks).
+Every entity in family has the following fields:
+transformation: transformation applied to model (after normal entity orientation). Defaults to identity. Interpolated.
+billboard: option to control if entity should pivot to face player when rendered:
+fixed: No rotation (default).
+vertical: Entity can pivot around vertical axis.
+horizontal: Entity can pivot around horizontal axis.
+center: Entity can pivot around center point.
+brightness: If present, overrides light values used for rendering. Omitted by default (which means rendering uses values from entity position). Object has two fields:
+sky: Value of skylight, from 0 to 15.
+block: Value of block light, from 0 to 15.
+view_range: Maximum view range of this entity. Actual distance depends on client-side render distance and entity distance scalling. Default value 1.0 (roughly the same as fireball).
+shadow_radius: Size of shadow. Defaults to 0 (no shadow). Interpolated.
+shadow_strength: Strength of the shadow. Controls the opacity of the shadow as a function of distance to block below. Defaults to 1. Interpolated.
+width, height: Describe size of culling bounding box. Bounding box spans vertically y to y+height and horizontally width/2 in all directions from entity position. If either field is set to 0, culling is disabled. Both default to 0.
+glow_color_override: Override glow border color. Defaults to 0 (use team color).
+Besides common fields, these entity types also have some exclusive fields for their different usages:
+Item display (item_display): Displays a single item stack (stack can be changed with commands by setting slot inventory.0).
+item: Item stack to display. Same format as in inventory.
+Example: {id: "minecraft:dirt", Count: 1}
+item_display: Describes item model transform applied to item (as defined in display section in model JSON)
+Values: none (default), thirdperson_lefthand, thirdperson_righthand, firstperson_lefthand, firstperson_righthand, head, gui, ground, fixed.
+Block display (block_display): Displays a block state, does not display block entities, even if they would normally be created on block placement (like chest).
+block_state: Block state to display. Same format as item held by endermen.
+Example: {Name:"minecraft:dirt"}.
+Text display (text_display): Displays a text component (backgrounds uses new shader types rendertype_text_background and rendertype_text_background_see_through).
+text: Text to display. Components are resolved with the context of the display entity.
+line_width: Line width used to split lines (note: new line can be also added with \n characters). Defaults to 200.
+text_opacity: Opacity (alpha component) of rendered text. Defaults to 255. Interpolated.
+background: Color of background. Includes alpha channel. Defaults to 0x40000000. Interpolated.
+default_background: If true, rendering uses default text background color (same as in chat). Defaults to false.
+shadow: Should text be displayed with shadow. Defaults to false.
+see_through: Should text be visible through blocks. Defaults to false.
+alignment: How text should be aligned.
+Values: center (default), left, right.
+
+
+==== Command format ====
+Game rule
+
+Added doVinesSpread.
+Defaults to true.
+Determines if vines spread to nearby blocks.
+Does not affect cave vines, twisting vines and weeping vines.
+/damage
+
+A new command to apply damage to entities, with following syntaxes:
+/damage <target> <amount> [<damageType>] [at <location>]
+/damage <target> <amount> [<damageType>] [by <entity>] [from <cause>]
+Parameters:
+target: The entity to damage.
+amount: Amount of damage to inflict.
+damageType: The type of damage to inflict.
+This determines how the damage affects the entity as well as which death message is displayed.
+location: The location the damage originated at (when no entity caused the damage).
+For instance, it might represent the location of a bed exploding in the Nether.
+entity: The entity inflicting the damage.
+cause: The cause of the damage, in the case of indirect damage.
+Example: When shot by an arrow, the entity is the arrow projectile while cause might be a skeleton.
+/execute
+
+Added /execute summon sub-command, with the following syntax:
+/execute summon <entity> -> execute
+This sub-command is for summoning new entity and binding context (@s) to it. Meant to simplify entity setup and reduce need for raw NBT editing.
+
+
+==== General ====
+Data pack
+
+Added damage types, which are a new registry.
+Determines how damage is handled by the game.
+Includes which attributes the damage has as well as which death message is used when an entity dies due to that type of damage, example: 
+Fields:
+message_id: The message id used for deaths caused by this damage type.
+Combined with other string fragments to form a translation key.
+exhaustion: The amount of hunger exhaustion caused by this damage type.
+scaling: Whether this damage type scales with difficulty levels. Possible values:
+never: Damage is always the same.
+always: Damage always scales with difficulty.
+when_caused_by_living_non_player: Damage scales with difficulty if it was caused by a living entity who is not a player.
+effects: Optional field controlling how damage manifests when inflicted on players. Possible values:
+hurt (default): The default hurt sound.
+thorns: Thorns hurt sound.
+drowning: Drowning sound.
+burning: A single tick of burning sound.
+poking: Berry bush poke sound.
+freezing: Freeze tick sound.
+death_message_type: Optional field that controls if special death message variants are used. Possible values:
+default (default): No special death message logic is applied.
+fall_variants: Show a variant of fall damage death instead of a regular death message, e.g. death.fell.assist.item.
+intentional_game_design: Show the intentional game design message instead of a regular death message.
+Damage type tags control many aspects of how damage from different sources are interpreted.
+Options
+
+Added "Damage Tilt" accessibility option, for controlling the amount of camera shake when being hurt.
+Added a tooltip in the Key Binds screen that specifies which keybinds are conflicting.
+Tag
+
+Added following damage type tags:
+#always_most_significant_fall: contains out_of_world.
+#always_triggers_silverfish: contains magic.
+#avoids_guardian_thorns: contains magic.
+#burns_armor_stands: contains on_fire.
+#bypasses_armor: contains on_fire, in_wall, cramming, drown, fly_into_wall, generic, wither, dragon_breath, freeze, starve, fall, freeze, stalagmite, magic, indirect_magic, out_of_world, and sonic_boom.
+#bypasses_effects: contains starve.
+#bypasses_enchantments: contains sonic_boom.
+#bypasses_invulnerability: contains out_of_world.
+#bypasses_resistance: contains out_of_world.
+#damages_helmet: contains falling_anvil, falling_block, and falling_stalactite.
+#ignites_armor_stands: contains in_fire.
+#is_drowning: contains drown.
+#is_explosion: contains fireworks, explosion, player_explosion, and bad_respawn_point.
+#is_fall: contains fall and stalagmite.
+#is_fire: contains in_fire, on_fire, lava, hot_floor, unattributed_fireball, and fireball.
+#is_freezing: contains freeze.
+#is_lightning: contains lightning_bolt.
+#is_projectile: contains arrow, trident, mob_projectile, unattributed_fireball, fireball, wither_skull, and thrown.
+#no_anger: contains mob_attack_no_aggro.
+#no_impact: contains drown.
+#witch_resistant_to: contains magic, indirect_magic, sonic_boom, and thorns.
+#wither_immune_to: contains drown.
+General
+
+Added --pidFile argument to dedicated server command line for printing Process ID (PID) to file.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Jukebox
+
+Now emits a note particle above them while playing a music disc, to match Bedrock Edition.
+Sculk sensor
+
+Are now able to detect more actions included in several existing and new game events, such as the following:
+block_change:
+Using shears on cave vines, kelp, twisting vines and weeping vines.
+Picking an item from a cave vine or a lectern.
+Interacting with items placed on both types of item frames.
+Trampling farmland into regular dirt.
+Charging up a respawn anchor.
+Interacting with a composter.
+block_place:
+Turtle and frogs laying eggs.
+container_close:
+Closing a minecart with chest or a boat with chest.
+entity_dismount (new game event, with signal 6):
+Dismount any passenger from any vehicle.
+entity_interact:
+Dyeing a sheep.
+Attaching or removing a lead from an entity.
+entity_mount (new game event, with signal 7):
+Mount any passenger to any vehicle.
+
+
+==== Items ====
+Shield
+
+A sound is now played when a shield is placed into the offhand slot.
+
+
+==== Non-mob entities ====
+Minecart with hopper
+
+No longer aggravates piglins when opened.
+
+
+==== General ====
+"Create New World" screen
+
+Tabs can be switched with the keyboard by pressing Ctrl +  Tab and Ctrl +  Shift +  Tab.
+Specific tabs can also be navigated to by pressing Ctrl + Tab Number.
+Added a screen to easily enable/disable experimental features.
+Can always be found under the "More" tab.
+In snapshots, a shortcut button can be found under the "Game" tab.
+Creative inventory
+
+Added painting variants to "Functional Blocks" tab.
+Paintings with pre-defined variant now display author, title and size in description when hovered over.
+The "Operator Utilities" tab contains the four paintings that are not available in Survival mode.
+Added fire charge to the "Ingredients" tab.
+Data pack
+
+Increased data pack version to 12.
+Options
+
+Renamed "Notification Display Time" accessibility option to "Notification Time".
+Texts in options buttons now have a scrolling animation whenever they are too large to fit.
+options.txt
+
+Removed heldItemTooltips.
+Predicate
+
+Removed is_projectile, is_explosion, bypasses_armor, bypasses_invulnerability, bypasses_magic, is_fire, is_magic, and is_lightning fields from damage type predicates.
+A new tags array has been added. Each entry has two fields:
+id: The ID of a damage type tag.
+expected: Whether the damage is expected to have or not have the tag for the predicate to match.
+
+
+=== Experimental ===
+These changes only take effect when the 1.20 experimental data pack is enabled.
+
+
+==== Changes ====
+
+
+===== Item =====
+Trimmed armor
+
+Swapped iron and iron_darker palette, then made iron_darker darker overall.
+Added a darkest pixel to chestplate_trim trim item texture.
+
+
+=== Fixes ===
+45 issues fixed
+From released versions before 1.19
+
+MC-12729  Z-fighting can be seen on leggings and boots worn by entities.
+MC-145765  Both "Text Background" settings strings are overflowing the buttons.
+MC-156443  In some languages, text is too long and escapes buttons.
+MC-198874  Opening a Minecart with Hopper provokes Piglins, even though opening a Hopper doesn't provoke them.
+MC-209622  Sculk sensors do not detect item frame / glow item frame interactions.
+MC-209896  Sculk sensors are not activated upon placing glowstone into respawn anchors.
+MC-209907  Sculk sensors are not activated upon attaching or removing leads from fences.
+MC-209929  Sculk sensors are not activated upon filling composters.
+MC-210276  Sculk sensors are not activated upon trampling farmland.
+MC-210294  Sculk sensors are not activated upon mounting or dismounting any non-biological entities.
+MC-210334  Sculk sensors are not activated upon sheep being dyed.
+MC-210707  Sculk sensors are not activated upon closing chest boats, chest rafts, or chest minecarts.
+MC-210715  Sculk sensors are not activated upon attaching or removing leads from entities.
+MC-212501  Sculk sensors are not activated upon collecting books from lecterns.
+MC-213803  Sculk sensors are not activated upon harvesting glow berries from cave vines.
+MC-215767  Sculk sensors do not detect turtles laying an egg.
+MC-233972  Text can appear outside of buttons in the key binds menu when assigning keys to functions or when multiple functions are assigned to the same key.
+MC-236988  Sculk sensors are not activated upon using shears on cave/twisting/weeping vines or kelp.
+MC-237450  The "Simulation Distance" text can appear outside of its slider.
+MC-237879  Sculk sensors are not activated upon villagers working with composters.
+MC-249878  Text can appear outside of the "Device" button within the music and sound options menu.
+From 1.19
+
+MC-251917  No gear equipping sound or subtitle when a shield is placed into the offhand slot.
+MC-251934  Sculk sensors are not activated upon frogs laying frogspawn.
+MC-252434  Sculk sensors are activated when interacting with fences while holding leads.
+From 1.19.2
+
+MC-257558  Sculk sensors are activated upon interacting with minecarts with hoppers.
+MC-257873  Swapping an armor piece with an armor piece of the same type doesn't play its equipping sound.
+MC-258156  The Warden does not deal the same amount of damage to the player and entities in difficult mode.
+From 1.19.3
+
+MC-258622  Fire charge isn't in the Ingredients tab in creative inventory.
+From the Java Edition 1.19.4 development versions
+
+MC-259193  The "Notification Display Time" text can appear outside of its slider.
+MC-259195  Using /ride on an entity in another dimension causes client/server desync.
+MC-259197  The damage tilt effect isn't accessible-friendly.
+MC-259221  Using the /ride command on invalid entities teleports players to their position.
+MC-259224  Blocking attacks with shields causes the damage tilt to play and red damage tint to show.
+MC-259227  /execute if loaded <pos> alone always fails.
+MC-259233  Argument error messages for low values are inconsistently spelled.
+MC-259245  An enderman ridden with /ride constantly teleports if the player looks at the enderman's eyes.
+MC-259247  The /execute on owner sub-command does not select the owner of a horse, donkey, llama, or mule.
+MC-259360  The selectWorld.mapFeatures.info string is missing a comma after the word "Shipwrecks".
+MC-259432  Single missing pixel in chestplate_trim item texture.
+MC-259442  Can't shift click items into second anvil slot.
+MC-259454  Loot table for hoglin stable chests uses the loot table for bridge chests instead.
+MC-259468  empty_slot_amethyst_shard does not show in Smithing Table slot.
+From the previous development version
+
+MC-259599  Curse of Binding armor can be removed by swapping armor with right click in hotbar.
+MC-259635  The color palettes for iron and iron_darker trims are flipped.
+MC-259640  The lightest three colors of iron and iron_darker color palettes are identical.
+
+
+== 23w07a ==
+23w07a is the fifth and final snapshot for Java Edition 1.19.4, released on February 15, 2023, which adds the sniffer, cherry groves, and archaeology under experimental features, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Non-mob entities ====
+Interaction
+
+A new type of entity that records attacks and interactions. Interactions (interaction) are invisible and of a custom size, with following fields:
+width: Width of the entity's bounding box (default is 1).
+height: Height of the entity's bounding box (default is 1).
+attack: An action object, records the last attack action on the entity.
+interaction: An action object, records the last interaction action on the entity.
+response: Boolean specifying if interacting should trigger a response (arm swing, sound effects, etc - default false).
+Introduced action object accordingly. When an action is stored, it always has two fields:
+player: The UUID (in standard integer array format) of the player performing the action.
+timestamp: The timestamp of the game tick when the event happened (stored as a long).
+This made following command usage possible:
+Execute command as the last player who attacked the entity when using /execute on attacker.
+Execute command as the last player who interacted with the entity when using /execute on target.
+Advancement triggers also got triggered, when:
+Interacting with an interaction entity: player_interacted_with_entity.
+Attacking an interaction entity: player_hurt_entity.
+
+
+==== General ====
+Recipe
+
+Added a new recipe serializer crafting_decorated_pot for the new decorated pot recipe.
+Added show_notification field to recipes.
+Accepts a boolean which determines if a notification is shown when unlocking this recipe.
+Defaults to true if isn't specified.
+Tags
+
+Added following item tags:
+#axes: contains diamond_axe, stone_axe, golden_axe, netherite_axe, wooden_axe, and iron_axe.
+#breaks_decorated_pots: contains #tools.
+#hoes: contains diamond_hoe, stone_hoe, golden_hoe, netherite_hoe, wooden_hoe, and iron_hoe.
+#pickaxes: contains diamond_pickaxe, stone_pickaxe, golden_pickaxe, netherite_pickaxe, wooden_pickaxe, and iron_pickaxe.
+#shovels: contains diamond_shovel, stone_shovel, golden_shovel, netherite_shovel, wooden_shovel, and iron_shovel.
+#swords: contains diamond_sword, stone_sword, golden_sword, netherite_sword, wooden_sword, and iron_sword.
+#tools: contains #axes, #hoes, #pickaxes, #shovels, #swords, and trident.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Jukebox
+
+Now emits a redstone signal of 15 while playing a music disc.
+Droppers and hoppers can now interact with it.
+
+
+==== Gameplay ====
+Horse breeding
+
+When breeding horses and the like, the babies' speed, jump height and health are no longer biased toward the average.
+This change is intended to make horse breeding a viable way of getting great horses, if a player starts with good parents and puts in enough time and golden carrots.
+
+
+==== General ====
+Realms
+
+Updated the "Realms" screen to be more in line with the "Singleplayer" and "Multiplayer" screens.
+Recipe
+
+The crafting table recipe is unlocked immediately on creating a new world.
+The crossbow and soul campfire recipes are no longer unlocked by sticks.
+Resource pack
+
+The vanilla resource pack en_us language file is now sorted alphanumerically by key.
+
+
+=== Experimental ===
+These additions and changes only take effect when the 1.20 experimental data pack is enabled.
+
+
+==== Additions ====
+
+
+===== Blocks =====
+ Cherry leaves
+
+A new type of leaves.
+Have pink particles falling underneath.
+  Cherry log
+
+A new type of log, as well as a stripped variant.
+Can be used to craft cherry woods and planks.
+The stripped variant can be used to craft cherry hanging sign.
+ Cherry planks
+
+A new type of plank.
+Can be used to craft cherry  buttons,  doors,  fences,  fence gates,  pressure plates,  signs,  slabs,  stairs, and  trapdoors.
+ Cherry sapling
+
+A new type of sapling.
+Can be placed in flower pots.
+  Cherry wood
+
+A new type of wood, as well as a stripped variant.
+Can be used to craft cherry planks.
+ Decorated pot
+
+Can be crafted with any 4 pottery shards or brick items, shaped rhombic.
+The type of crafting material decides which picture would occur on each side of the crafted decorated pot.
+The possible pictures are decided by the type of pottery shard which is used to craft.
+The brick item doesn't have a picture.
+Very fragile, and easy to break.
+Break apart into its crafting materials when broken using any block-breaking tool.
+Drop itself when broken using an empty hand or a block-breaking tool with Silk Touch, or when moved by pistons.
+ Pink petals
+
+A new type of a flower, which generates naturally in cherry groves.
+Renewable when applying a bone meal to an existing one or to the ground of cherry groves.
+Similar to sea pickle, can be placed up to 4 in one dirt-related block.
+Can be placed directionally.
+Can be crafted into a pink dye.
+ Suspicious sand
+
+Looks like sand, but rougher.
+Affected by gravity, vanishes when landing.
+Drops nothing when mined or moved, even if mining with Silk Touch.
+Generates naturally in desert pyramids and desert wells, with different archaeological loot tables.
+Brushing the suspicious sand with a brush extracts objects.
+Has 4 stages of extracting, recovers gradually when stop brushing.
+Turns to regular sand when extraction is done.
+An item can be extracted only from suspicious sand with a valid archaeological loot table.
+ Torchflower
+
+A new type of flower, grows from torchflower seeds after 2 stages (3 stages in total).
+Doesn't emit light.
+If grown fully, it drops itself only when broken, otherwise drop the seed.
+Can be crafted into an orange dye.
+Can be planted in a flower pot.
+
+
+===== Items =====
+ Brush
+
+A tool which can be used to brush things.
+Can be crafted with 3 string and 2 sticks, like the shape of crafting pickaxes.
+Consumes 1 durability when extracting an item from a suspicious sand successfully.
+Does nothing when brushing anything other than suspicious sand.
+    Pottery shards
+
+Have pictures on them.
+Cannot be crafted and are only found by brushing suspicious sand.
+Spawn eggs
+
+ Sniffer spawn egg
+ Torchflower seeds
+
+A new type of seed, which can be planted on farmland and grows into a torchflower.
+Can only be obtained if a sniffer it digs up.
+
+
+===== Mobs =====
+ Sniffers
+
+A new passive friendly mob, which is the mob vote winner of Minecraft Live 2022, and considered as the first "ancient" mob.
+Very large (22 full blocks).
+Have 14HP  7 points of health.
+Cannot spawn naturally.
+Cannot be tempted or tamed.
+Often sniff in the air and occasionally dig for torchflower seeds.
+The digging has a cooldown of 8 minutes.
+The last 20 dug blocks are remembered with a sniffer_explored_positions memory, and are not eligible for digging again.
+Can be bred with torchflower seeds.
+Drop moss block when killed.
+
+
+===== Non-mob entities =====
+ Cherry boat
+
+A new type of boat, crafted with cherry planks.
+ Cherry boat with chest
+
+A new type of boat with chest, crafted with a cherry boat and a chest.
+
+
+===== World generation =====
+Cherry tree
+
+A new type of tree which can be grown from cherry saplings.
+Occasionally generated with a bee nest.
+Tree trunks fork or bend high up, and are then covered up in large, round canopies of cherry leaves.
+Cherry grove
+
+A new biome which contains pretty cherry blossom trees.
+Located in the mountains, like meadows.
+Sheep, donkeys, and bees can spawn here.
+
+
+===== General =====
+Particles
+
+Added dripping_cherry_leaves, falling_cherry_leaves, and landing_cherry_leaves, which appear underneath the cherry leaves.
+Tags
+
+Added following block tags:
+#cherry_logs: contains cherry_log, cherry_wood, stripped_cherry_log, and stripped_cherry_wood.
+#sniffer_diggable_block: contains dirt, grass_block, podzol, coarse_dirt, rooted_dirt, moss_block, mud, and muddy_mangrove_roots.
+Added following item tags:
+#cherry_logs: contains cherry_log, cherry_wood, stripped_cherry_log, and stripped_cherry_wood.
+#decorated_pot_shards: contains brick, pottery_shard_archer, pottery_shard_prize, pottery_shard_arms_up, and pottery_shard_skull.
+#sniffer_food: contains torchflower_seeds.
+
+
+==== Changes ====
+
+
+===== World generation =====
+Desert pyramid
+
+Now includes a new room filled with sand and suspicious sand.
+Some sand appear exposed, and can be found at the same height as blue terracotta.
+Desert well
+
+Now includes suspicious sand underwater.
+
+
+===== Gameplay =====
+Advancement
+
+The cherry grove is now required to be visited for the "Adventuring Time" advancement.
+
+
+===== General =====
+Tags
+
+Added cherry_boat into the #boats item tag.
+Added cherry_button into the #wooden_buttons block and item tags.
+Added cherry_chest_boat into the #chest_boats item tag.
+Added cherry_door into the #wooden_doors block and item tags.
+Added cherry_fence_gate into the #fence_gates block and item tags.
+Added cherry_fence into the #wooden_fences block and item tags.
+Added cherry_grove into the #is_mountain biome tag.
+Added cherry_hanging_sign into the #ceiling_hanging_signs block tag and #hanging_signs item tag.
+Added cherry_leaves into the #leaves block tag.
+Added cherry_leaves and pink_petals into the #flowers and #mineable/hoe block tags.
+Added cherry_log into the #overworld_natural_logs block tag.
+Added #cherry_logs into the #logs_that_burn block tag.
+Added cherry_planks into the #planks block and item tags.
+Added cherry_pressure_plate into the #wooden_pressure_plates block and item tags.
+Added cherry_sapling into the #saplings block tag.
+Added cherry_sign into the #standing_signs block tag and #signs item tag.
+Added cherry_slab into the #wooden_slabs block and item tags.
+Added cherry_stairs into the #wooden_stairs block and item tags.
+Added cherry_trapdoor into the #wooden_trapdoors block and item tags.
+Added cherry_wall_hanging_sign into the #wall_hanging_signs block tag.
+Added cherry_wall_sign into the #wall_signs block tag.
+Added pink_petals into the #inside_step_sound_blocks block tag.
+Added suspicious_sand into the #sand block tag.
+
+
+=== Fixes ===
+36 issues fixed
+From released versions before 1.19
+
+MC-16533  Horse Breeding never exceeds egg/spawn horse attributes.
+MC-64522  Server show as "Old" in server list while starting.
+MC-84633  Resource packs: ambientocclusion flag only respects topmost parent.
+MC-134448  Drowned animation glitch.
+MC-181412  Removing a jukebox with a command while it's playing a music disc won't stop playing the music disc.
+MC-194080  Elytra model stutters by flying and turning.
+MC-209409  Sitting cats sink in water.
+MC-226729  Memory leakage problem in native operations.
+MC-238920  Soul campfire recipe unlocks when obtaining a stick.
+MC-248249  minecraft:forest_rock feature does not work correctly when used with /place.
+From 1.19.3
+
+MC-256465  Baby camels can enter boats despite adult camels not being able to.
+MC-257282  Allays sometimes have a several-second delay before deciding to follow the player.
+MC-258457  Resource Pack won't load if it contains reference to non-existing particles.
+MC-258459  Invalid forced resource pack can cause infinite reload loop on client.
+MC-258580  Player is kicked from a server for flying in death screen when dying on a Horse or Camel.
+MC-258624  The Title Screen Warning menu doesn't disappear after the player respawns.
+MC-258697  Invalid translation of translationKey=narration.suggestion in command block GUI.
+MC-258902  Opening a lectern on Adventure mode and closing it causes inventory desyncs.
+MC-258907  Advancement trigger player_interacted_with_entity doesn't work with area_effect_cloud entity when used glass_bottle item on it.
+MC-259107  Opening the crafting recipe book selects the recipe that appears under the mouse cursor.
+MC-259241  Turtles can spawn inside each other causing them to get stuck and play constant sounds.
+MC-259797  Z-fighting occurs on the bottom of boots.
+From the Java Edition 1.19.4 development versions
+
+MC-259218  Onboarding isn't resumed after restarting Minecraft.
+MC-259240  The game crashes when navigating with arrow keys after changing key binds.
+MC-259489  Experimental "disabled items" can still be suggested as fuel by the recipe book.
+MC-259573  Blast Protection does not reduce explosion knockback in creative game mode.
+MC-259675  Capes occasionally jitter when moving and adjusting your rotation.
+MC-259691  Drowned that are swimming render outside of their hitboxes when looking up or down.
+MC-259729  "Falling Block" can appear in death messages.
+From the previous development version
+
+MC-259796  Creeper does not flash white and expand before exploding.
+MC-259805  Players cannot dismount when riding item_display, block_display, and text_display using the /ride command.
+MC-259808  Allay wing animation skips frames/loops incorrectly as of 23w06a.
+MC-259816  Odd behavior when an item_display, block_display, or text_display entity mounts another entity.
+MC-259819  Z-fighting on the text of text displays.
+MC-259999  Entities mounted on display entities do not visually update until after resync.
+MC-260000  Saved Y Pos of entities mounted on display entities does not update internally in NBT.
+
+
+== 1.19.4 Pre-release 1 ==
+1.19.4 Pre-release 1 (known as 1.19.4-pre1 in the launcher) is the first pre-release for Java Edition 1.19.4, released on February 22, 2023, which fixes bugs. This is the first pre-release released in 2023.
+
+
+=== Additions ===
+
+
+==== General ====
+Options
+
+Added "High Contrast" accessibility option, which enhances the contrast of UI elements.
+Realms
+
+Added a notification system for Realms to notify the player about important information about their Realm.
+
+Resource packs
+
+Added a built-in "High Contrast" resource pack that enhances the contrast of UI elements.
+The resource pack can be enabled in the accessibility options screen or manually in the resource pack screen.
+Only available in the menus for now.
+Tags
+
+Added following block and item tag:
+#smelts_to_glass: contains sand, and red_sand.
+Items with this tag give glass when smelted in a furnace.
+Added following entity tag:
+#fall_damage_immune: contains iron_golem, snow_golem, shulker, allay, bat, bee, blaze, cat, chicken, ghast, phantom, magma_cube, ocelot, parrot, and wither.
+Entity types with this tag do not take fall damage.
+Added following damage type tags:
+#always_hurts_ender_dragons: contains #is_explosion.
+Damage types with this tag always hurt the ender dragon.
+#bypasses_cooldown: empty in vanilla.
+Damage types with this tag bypass the regular invincibility time after taking damage.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Froglight
+
+Sounds when placing or breaking the block are now less loud.
+Sculk sensor
+
+The item_interact_finish event now has a vibration frequency of 2 instead of 14.
+
+
+==== Items ====
+Potions
+
+No longer have an enchantment glint due to it obscuring the color of the potion contents.
+General
+
+The enchantment glint for items in the inventory has been made more visible.
+
+
+==== Command format ====
+/execute
+
+New sub-command positioned over, for finding positions on top of a heightmap. Changes the height of the execution position to be on top of the given heightmap. Syntax:
+... positioned over <heightmap> -> execute
+<heightmap>: A heightmap records the highest position in a column of blocks according to some criteria. Available options:
+world_surface: Any non-air block.
+motion_blocking: Any motion blocking material (e.g. ignores flowers and grass).
+motion_blocking_no_leaves: Any non-leaf motion blocking material.
+ocean_floor: Any non-fluid motion blocking material.
+
+
+==== General ====
+Create New World
+
+The appearance of the tab bar has been updated.
+Tabs now have unique visuals instead of being traditional buttons.
+The tabs now align to the center of the screen.
+The content has been aligned to the top of the screen.
+Options
+
+The default value of the "Glint Strength" setting has been reduced to 75%.
+The scrolling animation for texts in options buttons which are too large to fit is now slower.
+Resource packs
+
+The resource pack version is now 13.
+The enchantment glint now has two separate texture files: enchanted_glint_entity.png and enchanted_glint_item.png.
+Tags
+
+Added thorns, and #is_explosion into the #avoids_guardian_thorns damage type tag.
+
+
+=== Experimental ===
+These changes only take effect when the 1.20 experimental data pack is enabled.
+
+
+==== Changes ====
+
+
+===== Blocks =====
+Pink petals
+
+Now mine instantly.
+Torchflower
+
+Can now be used to craft suspicious stew, giving the player Night Vision.
+Can now be used to tempt and breed bees.
+
+
+===== Items =====
+Brush
+
+Crafting recipe now uses a feather, copper ingot and stick in a vertical line.
+Spawn Eggs
+
+Updated the color of sniffer spawn egg, to distinguish it from the salmon spawn egg.
+Torchflower seeds
+
+Can now be used to tempt and breed chickens and parrots.
+Are now next to other seeds in the Creative inventory.
+
+
+===== World generation =====
+Cherry grove
+
+Pigs can now spawn in this biome.
+Donkeys no longer spawn in this biome.
+
+
+===== Gameplay =====
+Advancements
+
+The "A Seedy Place" advancement can be granted by planting torchflower seeds now.
+The "The Parrots and the Bats" advancement can be granted by breeding sniffers now.
+The "Two by Two" advancement now requires breeding a sniffer.
+
+
+===== General =====
+Recipe book
+
+The recipe for the decorated pot made of all bricks can now be found in the recipe book.
+Tags
+
+Moved the #breaks_decorated_pots item tag into the experimental 1.20 data pack.
+Added torchflower_crop into the #crops block tag.
+Added torchflower into the #small_flowers block and item tags.
+Added cherry_leaves, and pink_petals into the #flowers item tag.
+Added cherry_leaves into the #leaves item tag.
+Added the #cherry_logs item tag into the #logs_that_burn item tag.
+Added suspicious_sand into the #sand item tag.
+Added cherry_sapling into the #saplings item tag.
+
+
+=== Fixes ===
+62 issues fixed
+From released versions before 1.19
+
+MC-106484  Some potions are indistinguishable by color.
+MC-132200  Ghost block hoppers appear if summoned by command to powered location.
+MC-175299  Player falls out of bed if entering from a mount.
+MC-188163  Abnormally very high RAM usage since 1.13 (client side).
+MC-189383  Baby striders aren't shivering when riding an adult strider.
+From 1.19
+
+MC-253210  Goats will panic when receiving fall damage.
+MC-253211  Frogs will panic when receiving fall damage.
+From 1.19.2
+
+MC-258242  Checkerboard biome sources using biome tags do not generate features, and structures cannot be located.
+From 1.19.3
+
+MC-256484  Sitting camels don't stand up and begin following players that are tempting them with their favorite food.
+MC-256489  Sitting camels that are in love don't attempt to stand up and approach one another to breed.
+MC-256530  The camel's AI is slower to find its way after being hurt than other creatures.
+MC-256731  The sounds of camels recovering aren't controlled by the "Friendly Creatures" sound slider.
+MC-256861  Camels panic when receiving fall damage.
+MC-257009  When creating a Debug Mode world, there is no Data Packs option.
+MC-259920  The ITEM_INTERACT_FINISH game event overrides other game events causing several actions to not produce their intended vibration frequency.
+From the Java Edition 1.19.4 development versions
+
+MC-259192  Server/client position desync when running /ride too fast and manually dismounting.
+MC-259246  Passengers on an ender dragon ride too high.
+MC-259576  Passenger's riding position is too high on a phantom.
+MC-259613  Enchantment glint is hardly noticeable on some items, even when the Glint Strength is set to 100%.
+MC-259630  Camels, horses and mules bounce high into the air when being ridden across water.
+MC-259882  Axolotls no longer give the Regeneration effect to nearby players after they kill a mob, and do not grant "The Healing Power of Friendship!" advancement.
+MC-259893  Long texts on buttons scroll too fast.
+MC-259917  Entities immune to fall damage are damaged when using minecraft:fall damage type in /damage.
+MC-259918  Text scrolling speed isn't accessible-friendly.
+From the previous development version
+
+MC-260030  Starting data.Main for data generation crashes.
+MC-260033  Torchflowers cannot be used to craft suspicious stew.
+MC-260035  Chickens and parrots are not tempted by torchflower seeds.
+MC-260051  Bees are not tempted by or attempt to pollinate Pink Petals and Torchflowers.
+MC-260059  Pigs do not seem to spawn in Cherry Grove biome
+MC-260071  Sniffer Digging Sounds can be heard from way too far.
+MC-260089  Sniffers panic when receiving fall damage.
+MC-260092  Sniffers' hitboxes are too small resulting in sniffers not being rendered from certain angles despite being visible on the screen.
+MC-260098  Sniffers aren't required for the "Two by Two" advancement.
+MC-260102  Torchflower seeds don't contribute to the "A Seedy Place" advancement.
+MC-260107  Sniffers don't swim properly and their walking animations freeze when in water.
+MC-260109  Sniffers do not rotate their head to look at the player.
+MC-260118  Disabling experimental features on the world creation screen causes pack validation to fail.
+MC-260121  Hoppers are ghost blocks for other players when placed on jukeboxes that are playing music.
+MC-260125  Sniffer's head occasionally disappears.
+MC-260126  Using pick block function on grown torchflower crop gives torchflower seeds instead of the plant item.
+MC-260149  Cherry logs can't be used to craft campfires.
+MC-260156  The sound of the torchflower being broken after growing is different than the sound of it breaking after being placed.
+MC-260157  On existing snapshot servers, cherry grove biomes cannot be found with /locate, nor do they generate.
+MC-260168  Torchflower crop aren't part of the #crops block tag.
+MC-260171  Cherry Leaves and Pink Petals aren't part of the #flower block tag.
+MC-260172  Torchflower isn't part of the #flowers block or item tags.
+MC-260181  Torchflower seeds are not grouped with other seeds in the creative inventory.
+MC-260185  Pink Petals aren't insta-mined
+MC-260189  Cherry Sapling is not part of the #saplings item tag.
+MC-260191  Cherry Leaves aren't part of the #leaves, and #complete_find_tree_tutorial item tags.
+MC-260192  You can't make Charcoal with Cherry Logs or Wood.
+MC-260193  Cherry wood, logs and saplings can't be used as fuel in furnaces.
+MC-260194  Create new world screen appears even when world is created; clicking on button causes freeze or crash.
+MC-260195  Cherry Logs and Wood are missing from the #log, #logs_that_burn, and #complete_find_tree_tutorial item tags.
+MC-260209  breaks_decorated_pots Item Tag is in the Vanilla datapack, not 1.20.
+MC-260210  Brush Recipe is in the Vanilla datapack, not 1.20.
+MC-260223  Torchflowers seeds and Torchflowers hitboxes are different.
+MC-260227  When re-creating the superflat world, the customize content is lost.
+MC-260234  Sniffers jump multiple times when attempting to climb blocks.
+MC-260262  Cherry Saplings can be obtained in world with experimental settings turned off.
+MC-260355  The server process crashes when making a slime ride a iron golem.
+MC-260367  Crash when damaging a Guardian using a command block: java.lang.StackOverflowError: Executing command block.
+
+
+== 1.19.4 Pre-release 2 ==
+1.19.4 Pre-release 2 (known as 1.19.4-pre2 in the launcher) is the second pre-release for Java Edition 1.19.4, released on February 27, 2023, which updates models and textures of some items and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Tag
+
+Added following entity tag:
+#dismounts_underwater: contains camel, chicken, donkey, horse, llama, mule, pig, ravager, spider, strider, trader_llama, and zombie_horse.
+Only mobs in this tag now force the rider to dismount when underwater.
+
+
+=== Changes ===
+
+
+==== Command format ====
+/damage
+
+Striders and blazes now have a weakness to freezing damage.
+/execute
+
+A zombie or spider jockey is now considered the controller for the purpose of the on controller sub-command.
+
+
+==== General ====
+Create New World
+
+The save location for the new world now shows up in a tooltip when placing the cursor over the world name.
+Options
+
+It is now possible to scroll using the arrow keys in the telemetry screen.
+
+
+=== Experimental ===
+These changes only take effect when the 1.20 experimental data pack is enabled.
+
+
+==== Changes ====
+
+
+===== Blocks =====
+Cherry door
+
+Changed its block and item textures.
+Cherry sapling and pink petals
+
+Changed their textures.
+Decorated pot
+
+Updated the neck of the model.
+The pot's neck now clip with blocks.
+Now uses the new and more complex block model.
+
+
+===== Non-mob entities =====
+Cherry boat with chest
+
+Changed its item texture.
+
+
+=== Fixes ===
+23 issues fixed
+From released versions before 1.19
+
+MC-137552  Loaded crossbows look unloaded in item frames and when dropped on the ground.
+MC-153838  Entities that don't require air dismount each other in water.
+MC-229293  Casting issue: Broken blocks drop items in the wrong position at high distances.
+From the Java Edition 1.19.4 development versions
+
+MC-259208  Zombie riding chicken or skeleton riding spider not considered controllers by /execute on controller command.
+MC-259609  Tooltips from selected buttons and sliders don't disappear when expected.
+MC-259831  UI Buttons break certain resource packs as of 23w06a.
+MC-259839  Duplicated minecraft:freeze in damage_type tag bypasses_armor.
+MC-259885  Upon entering the credits screen while in F1 mode, the Minecraft: Java Edition logo does not display correctly.
+MC-259961  item_display does not take some nbt tags into account.
+MC-259979  Striders and blazes do not take five times the damage when using /damage with freeze type.
+MC-260066  Z-fighting when placing several blocks on a decorated pot.
+MC-260208  Display entities in spawn chunks with interpolation_duration greater than 0 visually reset to default transformation on rejoin.
+MC-260268  Can't scroll using arrows in "Telemetry Data Collection" screen.
+MC-260324  Cherry Boat with Chest item texture has a misplaced pixel.
+MC-260335  Clicking with an item that is out of stock in the villager trading menu with sufficient payment will allow purchase of the item regardless.
+MC-260364  Cherry Door inconsistent item texture.
+MC-260434  There is no "Will be saved in..." text in the new world creation menu.
+From the previous development version
+
+MC-260427  Button text is visible outside menus.
+MC-260436  Item Tags in 1.19.4-pre1 have extra entries.
+MC-260438  Items are not rendered in the bundle UI.
+MC-260443  Loading a snapshot 23w07a experimental world says it can be opened in "safe mode" and clicking "safe mode" does nothing.
+MC-260445  Player can climb up one block while riding a boat or raft.
+MC-260461  Water mobs cannot be ridden in water.
+
+
+== 1.19.4 Pre-release 3 ==
+1.19.4 Pre-release 3 (known as 1.19.4-pre3 in the launcher) is the third pre-release for Java Edition 1.19.4, released on March 1, 2023, which changes colors of potions and tipped arrows, adds the functionality to dump contents of dynamic textures, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Items ====
+Effects
+
+Changed colors of following effects, along with their potions (all forms) and tipped arrows:
+
+
+==== General ====
+Debug screen
+
+Pressing F3 + S now dumps all dynamic textures (like atlases, maps, etc.) to screenshots/debug/.
+
+
+=== Experimental ===
+These changes only take effect when the 1.20 experimental data pack is enabled.
+
+
+==== Changes ====
+
+
+===== Items =====
+Archer pottery shard
+
+Changed its pattern when applying on a decorated pot and its item texture.
+
+
+===== General =====
+Tag
+
+Changed flower_pot in the #flower_pots block tag to potted_cherry_sapling.
+
+
+=== Fixes ===
+13 issues fixed
+From released versions before 1.19
+
+MC-148458  Ridable mobs aren't knocked back upon death.
+From 1.19
+
+MC-250486  Error saving GUI scale option when toggling fullscreen while fullscreen resolution is changed.
+From 1.19.3
+
+MC-258561  Endermen teleport away instead of taking damage from end crystal, TNT and wither skull explosions.
+MC-259666  Reloading a resource pack that has a custom texture atlas for a second time causes severe FPS lag on the client.
+From the Java Edition 1.19.4 development versions
+
+MC-260277  potted_cherry_sapling, and potted_torchflower not part of #flower_pots block tag.
+MC-260451  Inventory character with semi-transparent outer skin layer not rendered correctly when looking right.
+MC-260456  Certain potions are still indistinguishable by color.
+MC-260470  Endermen can't dodge arrows fired from a dispenser.
+MC-260474  Players and mobs are no longer affected by knockback upon death.
+MC-260501  Cannot delete previous snapshot world in launcher.
+MC-260579  Crash when a guardian deals damage to itself after removing thorns from avoids_guardian_thorns.
+MC-260605  Repeating command block summoning piglins/villagers causes memory usage to constantly increase.
+From the previous development version
+
+MC-260627  Dolphins with passengers either accelerate to ludicrous speed or are immobilized completely.
+
+
+== 1.19.4 Pre-release 4 ==
+1.19.4 Pre-release 4 (known as 1.19.4-pre4 in the launcher) is the fourth and final pre-release for Java Edition 1.19.4, released on March 8, 2023, which updates textures for cherry leaves and cherry signs, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Options
+
+Added "Credits & Attribution" button in the options menu.
+Minecraft's credits, attribution, and licenses can be accessed.
+Tag
+
+Added following damage type tag:
+#bypasses_shield: contains #bypasses_armor, falling_anvil, and falling_stalactite.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Sculk sensor
+
+Is now activated upon breaking shulker bullets.
+
+
+==== Non-mob entities ====
+Display entity
+
+When a new interpolation is started, it now starts from the current state instead of the final state.
+
+
+=== Experimental ===
+These changes only take effect when the 1.20 experimental data pack is enabled.
+
+
+==== Changes ====
+
+
+===== Blocks =====
+Cherry leaves and cherry sign
+
+The textures have been updated.[more information needed]
+
+
+=== Fixes ===
+32 issues fixed
+From released versions before 1.19
+
+MC-172305  Some words within /clear command feedback messages are always pluralized.
+MC-193497  Tall Grass & Large Fern are rendered incorrectly when an Enderman is holding them.
+MC-210816  Sculk sensors are not activated upon breaking shulker bullets.
+MC-211071  Some words within /spreadplayers command feedback messages are always pluralized.
+From 1.19.2
+
+MC-255060  Some words within /function and /schedule command feedback messages are always pluralized.
+MC-255087  Some words within /worldborder command feedback messages are always pluralized.
+MC-256270  Some words within some multiplayer command feedback messages are always pluralized.
+MC-257784  Some words within some realms strings are always pluralized.
+From 1.19.3
+
+MC-259259  Hostile mobs can't replace armor they're wearing with better armor.
+MC-259702  The death.attack.hotFloor.player string is missing an article before the word "danger".
+MC-259714  Death messages relating to dragons' breath aren't possessive.
+MC-259715  The death.attack.message_too_long string is missing an article before the word "message".
+MC-260764  Right-clicking will focus text fields.
+MC-260765  Right-clicking will move packs in the pack edit screen.
+MC-260774  Players are kicked from server environments due to chat message validation failures when attempting to type in chat after having previously altered chat settings.
+From the Java Edition 1.19.4 development versions
+
+MC-259603  The selectWorld.gameMode.hardcore.info string displayed within the create new world GUI is improperly capitalized.
+MC-259610  Gamemode information strings consist of inconsistent concluding punctuation.
+MC-259637  Natural spider potion effects still last max int instead of infinity.
+MC-259792  The selectWorld.experimental.message string is missing a serial comma.
+MC-259853  block_display transform breaks when shearing.
+MC-259896  item_display has a wrong default value.
+MC-260068  The sounds of using brushes don't show any subtitles.
+MC-260196  Entities don't recognize decorated pots as obstacles when pathfinding.
+MC-260214  Entities will often spin while pathfinding on top of decorated pots.
+MC-260215  Water within waterlogged decorated pots doesn't flow.
+MC-260265  Lighting does not transform with display entities.
+MC-260321  Sniffers in the distance have lots of Z-fighting on their body.
+MC-260429  The texture of the Cherry Sign post has an inconsistency with the other Signs.
+MC-260497  Villager trade button interferes with the slider.
+MC-260642  tall_grass, and large_fern display gray as block_display entities.
+From the previous development version
+
+MC-260681  UI click sounds in Create New World menu tabs are louder than they should be.
+MC-260735  You can block falling anvils and dripstone with a shield.
+
+
+== 1.19.4 Release Candidate 1 ==
+1.19.4 Release Candidate 1 (known as 1.19.4-rc1 in the launcher) is the first release candidate for Java Edition 1.19.4, released on March 9, 2023, which fixes bugs. This is the first release candidate released in 2023.
+
+
+=== Changes ===
+
+
+==== Non-mob entities ====
+Display
+
+Changes to interpolation:
+Interpolation always starts at the beginning on client tick.
+Field interpolation_start is replaced with start_interpolation, with a different meaning.
+start_interpolation describes amount of ticks from the start of next client tick after receiving an update to start of interpolation.
+For example, value 0 means that interpolation starts at the beginning of next client tick after receiving the update.
+start_interpolation is not stored in entity data.
+When using /data commands, if interpolated value is updated, but start_interpolation is not present in modified tag, interpolation continues from the time of previous update, but with new values.
+
+
+=== Fixes ===
+1 issue fixed
+From the previous development version
+
+MC-260857  Display entities summoned with initial transformation interpolate incorrectly from default transformation during next transformation.
+
+
+== 1.19.4 Release Candidate 2 ==
+1.19.4 Release Candidate 2 (known as 1.19.4-rc2 in the launcher) is the second release candidate for Java Edition 1.19.4, released on March 10, 2023, which fixes bugs.
+
+
+=== Fixes ===
+3 issues fixed
+From the Java Edition 1.19.4 development versions
+
+MC-260677  Advancement icons handle translucent textures wrong.
+From the previous development version
+
+MC-260878  Guardians apply Thorns damage when hit by projectiles.
+MC-260881  Transparent 3D models don't render properly in the GUI/Hotbar.
+
+
+== 1.19.4 Release Candidate 3 ==
+1.19.4 Release Candidate 3 (known as 1.19.4-rc3 in the launcher) is the third and final release candidate for Java Edition 1.19.4, released on March 13, 2023, which fixes a bug.
+
+
+=== Fixes ===
+1 issue fixed
+From the previous development version
+
+MC-260901  Guardians deal thorns damage even while their spikes are retracted.
+
+
+== Notes and references ==
+
+
+== Navigation ==

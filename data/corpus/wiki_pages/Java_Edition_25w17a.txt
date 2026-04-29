@@ -1,0 +1,143 @@
+25w17a is the third snapshot for Java Edition 1.21.6 released on April 22, 2025, which makes the locator bar available in normal gameplay and fixes bugs.
+
+
+== Additions ==
+
+
+=== Gameplay ===
+Locator bar
+
+Added waypoint style for changing waypoints' icon on specific distances in a resource pack.
+Setting the style of a waypoint is possible using the new /waypoint modify ... style arguments.
+The default implementation is as such:
+near_distance and far_distance are optional and default to the values 128 and 332 respectively.
+far_distance distance must be greater than near_distance
+Each sprite is searched within the prefix of hud/locator_bar_dot/ (the directory textures/gui/sprites/hud/locator_bar_dot).
+
+
+=== General ===
+Options
+
+Added new video setting "Cloud Distance" to reduce the cloud range.
+Tag
+
+Added the #happy_ghast_avoids block tag.
+Contains blocks that happy ghasts avoid getting close to.
+Added the #triggers_ambient_dried_ghast_block_sounds block tag.
+Contains blocks that can trigger ambient dried ghast sounds to play when a dried ghast block is placed on them.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Dried Ghast
+
+Dried ghast's rarity has been changed from Uncommon to Common.
+
+
+=== Items ===
+Harness
+
+Can now be equipped on a happy ghast using a dispenser.
+
+
+=== World generation ===
+Woodland Mansion
+
+The room "1x1_b5.nbt" generates again.
+
+
+=== Command format ===
+/waypoint
+
+Replaced fade argument by style: For changing the icon spriteset and selection distances.
+set <waypoint_style/resource> changes the style to a specific asset under waypoint_style/
+reset will restore the default icon behavior of the Locator Bar.
+
+
+=== Gameplay ===
+Locator Bar
+
+Waypoints' icon now use different sprites based on how far away the player is to their locations instead of the fade effects previously implemented.
+
+
+=== General ===
+Game rule
+
+Renamed game rule useLocatorBar to locatorBar, consistent with Bedrock Edition.
+Realms
+
+Changed the layout of the Realms configuration screen to use tabs.
+A Worlds tab containing changes to any of the world slots, creating new worlds and changing their settings.
+A Players tab to manage the players that have access and their level of access to the Realm.
+A Subscription tab to manage the Realms subscription.
+A Settings tab to change the settings of the Realm.
+Introduced a Region Preference setting that allows for more granular control over what region a Realm is started.
+Changed the wording for Close/Open Realm to Temporarily close/Reopen Realm.
+
+
+== Technical ==
+Data pack
+
+The pack format version is now 74.
+Resource pack
+
+The pack format version is now 58.
+Shaders
+
+Added two new core shaders; stars, and sky which are used to render the stars and upper portion of the sky respectively.
+Post-process effects
+Fog uniform block.
+FOG_IS_SKY has been removed in favor of splitting up the sky shader.
+
+
+== Experimental ==
+All features previously behind the "Locator Bar" experimental toggle have been de-experimentified and are now available during normal gameplay.
+
+
+== Fixes ==
+28 issues fixed
+From released versions before 1.21
+
+MC-240121  "1x1_b5.nbt" piece does not generate in woodland mansions.
+From the 1.21.6 development versions
+
+MC-296369  Dispensers cannot equip harnesses onto happy ghasts.
+MC-296421  Right-clicking a happy ghast equipped with a harness while crouching will play hand animation.
+MC-296438  The "display" field on Attribute Modifiers is not optional, despite the changelog saying it is.
+MC-296443  Happy ghasts dont avoid pathfinding into dangerous blocks.
+MC-296511  Gamemode Switcher icons become invisible when using resource pack with opaque or translucent selection.png.
+MC-296516  Tooltips are incorrectly rendered below nearby elements when holding your mouse cursor over players that are online on realms.
+MC-296538  Rarity of Dried Ghast is inconsistent with its crafting ingredients.
+MC-296542  Waypoints on locator bar do not adjust to 3rd person front camera.
+MC-296567  Waypoints on locator bar do not respect team colors.
+MC-296583  Applying the waypoint_transmit_range attribute to an entity at the same time it is summoned makes it not show on the locator bar.
+From the previous development version
+
+MC-296750  The game crashes after startup on some systems (predominantly Linux systems) with AMD graphics.
+MC-296755  Resource Packs: The panorama overlay now renders in front of everything in the title screen.
+MC-296756  Clouds do not render at render distance 2 & 3.
+MC-296764  The text cursor renders behind command auto-complete text.
+MC-296766  GUIs of rideable mobs are missing their slots as of 25w16a.
+MC-296770  Strikethrough text in the villager interface is rendered behind characters.
+MC-296774  Player messages within the "Select Chat Messages to Report" menu arent rendered while selected.
+MC-296775  Some elements within the "Select Chat Messages to Report" menu are rendered darker while player messages are selected.
+MC-296777  Lead shift right-clicking doesn't work on Boats with Chests.
+MC-296779  The social interactions menu is rendered darker than normal.
+MC-296782  Player models within the Report Player Skin menu are rendered darker and lower than normal.
+MC-296794  Furnaces, blast furnaces, and smokers sometimes do not show the burn progress and lit progress animations.
+MC-296805  The game crashes when holding your mouse cursor over players that are online on realms.
+MC-296806  Cloud rendering has a considerable impact on performance as of 25w16a.
+MC-296807  The titles of selected tabs within the "Create New World" menu are rendered behind the background.
+MC-296808  The titles of lists within the resource pack and data pack menus are rendered behind the background.
+MC-296984  The "No pending invites!" text within the realms invitation menu is rendered behind the background.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

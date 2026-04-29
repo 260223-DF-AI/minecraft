@@ -1,0 +1,235 @@
+20w12a is the seventh snapshot for Java Edition 1.16, released on March 18, 2020, which adds respawn anchors and polished basalt, as well as several other changes and fixes.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Polished basalt
+
+Obtained by smelting normal basalt.
+Purely decorative and directional, like normal basalt.
+ Respawn anchor
+
+Crafted with 6 crying obsidian and 3 glowstone.
+Can be used to set spawn points using glowstone as charges.
+A maximum of 4 charges can be set at once, and one charge is depleted with each respawn.
+Emits a slight amount of light, which gets stronger for each charge added.
+Using it in the Overworld or the End causes it to explode and set fire to surrounding blocks.
+When charged, a redstone comparator gives a signal depending on the number of charges.
+
+
+=== Gameplay ===
+Sounds
+
+Added ambient, interaction and other sounds for the respawn anchor.[more information needed]
+
+
+=== General ===
+Tags
+
+Added the soul_fire_base_blocks block tag.
+Contains soul sand and soul soil.
+Determines what blocks can support soul fire.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Nether gold ore
+
+Can now be mined with any pickaxe.
+Now drops 26 gold nuggets, instead of itself, when mined.
+This is affected by Fortune the same way other ores are, for a maximum possible drop of 24 golden nuggets with Fortune III.
+Nether gold ore, obtained with Silk Touch, can still be smelted into a single gold ingot.
+Soul fire
+
+Now burns on soul sand in addition to soul soil.
+Twisting vines and weeping vines
+
+Are no longer replaced when an attempt is made to place another block in the same spot.
+
+
+=== Items ===
+Nether fungus, crimson roots, warped roots, and nether sprouts
+
+Can appear if bone meal is used on a nylium block.
+Crimson nylium grows vegetation from the crimson forest.
+Warped nylium grows vegetation from both the crimson forest and warped forest.
+Hoes
+
+Are now the appropriate tools for mining sponges and wet sponges.
+
+
+=== Mobs ===
+Bees
+
+Reduced the maximum distance a bee can wander away from its home hive when randomly wandering to around 22 blocks.
+Hoglins
+
+Tweaked attack range.
+Parrots
+
+Imitate hostile mobs less often.
+Don't randomly imitate hostile mobs on Peaceful difficulty.
+Piglins
+
+Baby piglins can now sit on other baby piglins riding hoglins, up to a stack of 3 baby piglins.
+
+
+=== Command format ===
+/spawnpoint
+
+Now supports being run in any dimension.
+
+
+=== Gameplay ===
+Advancements
+
+Hoglins are now required for the Two by Two advancement.
+The "Sweet Dreams" advancement's description has changed from "Change your respawn point" to "Sleep in a bed to change your respawn point."
+Ambience
+
+New mood detection algorithm for cave sounds.
+Aims to make ambient cave sounds play at more appropriate moments.
+Mood increases the longer a player remains underground.
+Mood increases the longer a player remains without or in low sky light or block light.[more information needed]
+Mood decreases and eventually resets the longer a player is neither underground nor in the absence of light.
+Player can check the percentage of the mood in the sounds info section in the debug screen.
+When the mood percentage reaches 100%, an ambient cave sound plays.
+Fishing
+
+When fishing, treasure loot can now only be obtained by fishing in open waters.
+A fishing location is considered to be open water if the following conditions are met:
+There is at least a 515 area of water beneath the bobber and a 525 area of air above (for a combined 535 free area required).
+Waterlogged blocks that have no collision, such as signs and coral, count as water. However, bubble columns do not.
+Recipe book
+
+The sign recipes are now grouped.
+The netherite ingot recipes are now grouped.
+Farming chorus plants, bamboo, sugar cane and other plants
+
+0-tick farm functionality is removed.
+
+
+=== General ===
+Chat messages
+
+Changed "Your home bed was missing or obstructed" to "You have no home bed or respawn anchor, or it was obstructed".
+Loot tables
+
+Added fishing_hook sub-predicate.
+Checks properties of the fishing hook.
+in_open_water parameter matches whether the fishing location is open water fishing or not.
+Materials
+
+Weeping and twisting vines now use the "plant" material.
+Shroomlights now use the "grass" material.
+Particles
+
+Bone meal particles now use 64-bit floats for spawning, not 32-bit.
+This means that using bone meal at high distances from the world origin (notably greater than 17 million) causes the particles to appear in expected places, and not far away from the target.
+Tags
+
+The gold_ores block tag is no longer used in setting the required pickaxe tier.
+UUIDs
+
+UUIDs stored in NBT are now represented as an array of four integers, rather than UUIDMost/UUIDLeast.
+Example: {UUID:[I;1498693494,1027158888,1898994005,860320107]}
+Renamed a couple of fields:
+OwnerUUID of tamed animals, area effect clouds, evoker fangs and projectiles is now simply Owner.
+TrustedUUIDs of foxes is now Trusted.
+target_uuid of conduits is now Target.
+
+
+== Fixes ==
+71 issues fixed
+From released versions before 1.16
+
+MC-3328  Dismounting an entity places riding entity/player half block too high.
+MC-64242  Silent tag is not working for some entities.
+MC-76810  Casting issue: Bone meal particles break at high coordinates (floating-point precision).
+MC-100342  Several non-ticking blocks are marked as ticking forcing the growth-algorithm to check chunks needlessly.
+MC-113809  Chorus flower plant, bamboo, sugarcane, cactus, and other plants grow instantly when supporting block is replaced with same block type.
+MC-114000  Mouse click in cat hissing sounds.
+MC-118096  Incorrect position of particles when using bone meal on grass block.
+MC-118327  Parrots cannot teleport onto non-full cube / transparent blocks.
+MC-122128  Recipe book resets itself to closed state after death.
+MC-129137  Parrots are able to imitate hostile mobs in Peaceful difficulty.
+MC-130137  Grass and mycelium do not decay underwater.
+MC-135849  Grass and mycelium do not decay under waterlogged blocks.
+MC-140545  Pathfinding prefers north (negative Z) direction.
+MC-147368  Pillager outpost can generate in water.
+MC-148360  Cave ambience sounds play no matter where you are.
+MC-148936  Parrot summoned with negative Age has smaller hitbox.
+MC-149081  Entering a bed from a mount causes the player to bounce up and down.
+MC-149375  Camera can be positioned inside of snow layers.
+MC-160959  Clicking onto a bed in daytime does not grant the advancement "Sweet Dreams".
+MC-163918  Bees not animating their pollen gathering.
+MC-166980  Bees become stuck wandering to the north-west after completing a task, or randomly in large numbers.
+MC-168384  NBT-Tag Silent:1b does not work for bees.
+MC-169965  Potion effect timers for higher levels can remain at 0:00 after the higher level has run out if multiple levels of the same effect were applied in descending order.
+MC-170584  Structure taiga_meeting_point_2 from zombie villages has 1 misrotated log.
+MC-170591  Misrotated floor blocks in desert_tool_smith_1 basement.
+MC-170773  Recipe book and filtering craftable do not stay open for blast furnace and smoker when (re)loading the world.
+MC-173828  Village church entrance does not generate correctly.
+MC-174071  Roof of savanna_mason_1 is cut off.
+MC-174072  Structure savanna_temple_2 contains one misrotated block.
+MC-174073  Two misrotated blocks in savanna_small_house_5.
+MC-174075  Misrotated block in savanna_butchers_shop_1.
+MC-174076  Inconsistent rotation of logs under windows in savanna_small_house_4.
+MC-174077  Structure snowy_library_1 no longer has snow under the roof.
+MC-174078  Three misrotated blocks in snowy_armorer_house_2.
+MC-174079  Misrotated block at snowy_weapon_smith_1.
+MC-174082  Three misrotated blocks in snowy_small_house_2.
+MC-174083  Three misrotated blocks in snowy_butchers_shop_1.
+MC-174234  Village structure snowy_masons_house_1 has two misrotated blocks.
+From the 1.16 development versions
+
+MC-170937  Bone meal spreading nylium spawns the particles inside the block.
+MC-170940  Netherite ingot recipes are not grouped.
+MC-171133  Camera can be positioned inside of soul sand.
+MC-172188  Hoglins are not required by 'Two by Two' advancement.
+MC-172233  Bone meal does not spawn nether plants on nylium
+MC-172690  Smelting netherite scraps do not provide the right amount of experience.
+MC-172820  Piglins can turn into adult chicken jockeys in the Overworld.
+MC-173199  Fossils in the Nether cause caves or floating islands to generate, and can break through the Nether roof.
+MC-173220  Dismounting passenger moves to a nearby block when ridden entity dies.
+MC-173420  Sign crafting recipes of various wood types are not grouped.
+MC-173487  Falling out of water death message still does not seem to appear.
+MC-173783  Weeping and twisting vines can replaced by any block.
+MC-173832  Crimson and warped hyphae and stripped hyphae are switched in Creative inventory.
+MC-173837  Removing fire and soul fire with shears will reduce the shears' durability.
+MC-174049  Fireworks shot from a crossbow do not explode instantly when hitting a solid block.
+MC-174174  Arrow animation stuck on loop when a flame bow is used to detonate TNT.
+MC-174258  Fixed item frames do not take void damage.
+MC-174391  Several misrotated blocks at snowy_medium_house_2.
+MC-174429  Chorus flowers remove arrow and trident velocity.
+From the previous development version
+
+MC-174464  Soul speed decreases durability on boots in Creative mode.
+MC-174466  Soul speed particles are spawned in Spectator mode.
+MC-174467  Placing fire on soul sand does not place soul fire.
+MC-174476  Soul fire torch is in the piglin_repellents item tag twice.
+MC-174480  Piglins are not attracted to Nether gold ore.
+MC-174489  Shroomlight preferred tool is now both axe and hoe.
+MC-174498  Game crashes when an adult hoglin with generic.attackDamage < 1 tries to attack something.
+MC-174502  Soul Speed 3 on soul soil in water keeps and increases player momentum.
+MC-174513  Soul Speed enchanted books from bartering with piglins do not work in an anvil.
+MC-174518  Game freezes when walking using Soul Speed in water.
+MC-174522  Soul Speed does not break boots.
+MC-174690  Soul Speed enchantment books can be found in chests.
+MC-174785  Mining speed of crimson and warped wall signs is not affected by an axe.
+Private issue
+
+MC-161754  Item duplication with chested donkeys, mules, and llamas.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

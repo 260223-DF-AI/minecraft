@@ -1,0 +1,807 @@
+This is a list of Pocket Edition v0.8.0 alpha development versions.
+
+
+== v0.8.0 alpha build 1 ==
+v0.8.0 alpha build 1 (labelled v0.8.0 alpha in-game and 0.8.0_test1 internally) is the first build version for v0.8.0 alpha and the first ever build compiled in 2013. It was never officially released to the public; however, the client was uploaded on Google Play. There are two uploads that are functionally identical.
+Since this version contains commands, which would not be officially added to the game until v0.16.0 alpha, it is likely to be a developer build.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Wood planks, slabs, and stairs
+
+Added spruce, birch, and jungle varieties.
+Each one can only be crafted with their respective wood type.
+Jungle variants do not have associated crafting recipes and are unobtainable in Survival mode.
+ Block of coal
+
+Can be crafted with nine coal.
+Can be used as fuel in a furnace, smelting up to 80 items.
+ Carpets
+
+Thin blocks that can be used as decoration.
+Are unobtainable in Survival mode.
+ Walls
+
+Decorative blocks that can be used to create boundaries.
+Comes in cobblestone and mossy cobblestone variants.
+Cobblestone walls can be crafted with six cobblestone.
+Mossy cobblestone walls are unobtainable in Survival mode.
+ Hay bales
+
+Decorative, flammable blocks that serve as compact storage of wheat.
+Can be crafted with nine wheat.
+ Iron bars
+
+Serve a similar purpose to glass panes.
+Can be crafted with six iron ingots.
+ Pumpkins
+
+Fruit blocks that grow from fully-grown pumpkin stems.
+Can be crafted into jack o'lanterns, pumpkin pie, or pumpkin seeds.
+ Jack o'lanterns
+
+Solid blocks that provide light.
+Can be crafted with a pumpkin and a torch.
+ Rails
+
+Serves as a decorative block due to minecarts not being added.
+Is unobtainable in Survival mode.
+ Powered rails
+
+Serves as a decorative block due to minecarts not being added.
+Is unobtainable in Survival mode.
+Crops
+
+ Carrot crops
+ Potato crops
+ Pumpkin stems
+ Jungle wood
+
+Serves as a decorative block.
+Is unobtainable in Survival mode.
+ Jungle leaves
+
+Serve as a decorative block.
+Are unobtainable in Survival mode.
+ Ferns
+
+Aesthetic plants that have the same characteristics as grass.
+Are unobtainable in Survival mode.
+ Dead bushes
+
+Aesthetic plants that can only be placed on sand.
+Are unobtainable in Survival mode.
+ Sponges
+
+Currently serve no purpose.
+Are unobtainable in Survival mode.
+Bark
+
+Currently serves no purpose.
+Is not available through normal means and can only be obtained via /give.
+
+
+==== Items ====
+ Pumpkin seeds
+
+Obtained from the nether reactor.
+ Redstone
+
+Drops from redstone ore when mined with an iron or diamond pickaxe.
+Can be used to craft clocks and compasses.
+Foods
+
+ Carrots
+Restore 3HP when eaten.
+ Potatoes
+Restore 1HP when eaten.
+ Pumpkin pie
+Restores 8HP when eaten.
+ Baked potatoes
+Restore 5HP when eaten.
+
+
+==== Gameplay ====
+Breeding
+
+Feeding animals their respective food items makes them enter "love mode."
+Hearts come out of animals while in love mode.
+When two animals of the same species are in love mode, they pathfind toward each other and produce a baby animal.
+
+
+==== Command format ====
+General
+
+While this is the first known version to contain developer commands, they may have been added in an earlier, unreleased build. Later publicly released builds lack all commands, as they were only included in developer versions.
+All of the 11 commands are freely accessible in both Creative and Survival mode.
+No target selectors are available; a player's name has to be entered in order to target them.
+Boolean arguments do not accept strings as valid input. "0" is considered "false" and all other integers are considered "true."
+Strikethrough text indicates arguments which the player is unable to specify due to a bug.
+Command arguments do not have known names. Unofficial names are provided in the syntax below for readability.
+Commands
+
+/timeset
+Changes the world's game time.
+Syntax: /timeset <amount: int>
+The game time does not change if the daylight cycle is locked.
+/timeadd
+Adds the specified number of ticks to the world's game time.
+Syntax: /timeadd <amount: int>
+The game time does not change if the daylight cycle is locked.
+/timelock
+Stops or resumes time.
+Syntax: /timelock [lock: Boolean]
+/timestop
+Has seemingly identical functionality to /timelock, but with different output messages on execution.
+Syntax: /timestop [lock: Boolean]
+/give
+Gives a specified amount of a certain item to a player.
+Syntax:
+/give <itemName: Item> [amount: int] [data: int]
+/give <player: target> <itemName: Item> [amount: int] [data: int]
+itemName accepts both numeric IDs and in-game displayed names as valid input.
+/player
+Enables or disables the specified ability flag on a player.
+Syntax:
+/player <ability: Ability> [value: Boolean]
+/player <player: target> <ability: Ability> [value: Boolean]
+Valid inputs for ability are fly, instabuild, and nodamage.
+/health
+Changes a player's health to the specified value.
+Syntax: /health <amount: int>
+/getpos
+Provides the X, Y, and Z coordinates of a player.
+Syntax: /getpos [player: target]
+/gethealth
+Provides the health of a player.
+Syntax: /gethealth [player: target]
+/tp
+Teleports the player.
+Syntax: /tp <destination: x y z>
+All integers are accepted for coordinates, though values above the 32-bit integer limit overflow and loop back around. Tilde and carat notation are not accepted as valid inputs.
+/clearInventory
+Clears a player's inventory.
+Syntax: /clearInventory [player: target]
+The command name must be capitalized as specified in order for it to execute.
+This command always fails if no target player is specified, despite that argument being optional.
+
+
+==== General ====
+Settings
+
+Added far (8 chunks) and farthest (1212 chunks) render distances.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+The textures of some blocks are now randomly rotated, for a more natural effect. This includes:
+Grass blocks (top and bottom sides only)
+Dirt
+Bedrock
+Sand
+Leaves
+Sponges
+TNT (top and bottom sides only)
+Obsidian
+Snow blocks
+Snow layers
+Clay
+Netherrack
+Glowstone
+Sandstone (top and bottom sides only)
+Blocks of coal
+Wood
+
+Is now rotatable, with the wood placed with the inner side facing the player.
+TNT
+
+Can now be ignited by fire and lava.
+Redstone ore
+
+Now drops redstone dust when mined with an iron or diamond pickaxe.
+Signs and chests
+
+Improved synchronization lag in multiplayer.
+Chests
+
+Items being moved to/from a chest is now correctly rendered.
+Saplings
+
+Can now be used as furnace fuel, smelting 0.5 items each.
+Torches
+
+Have been made an opaque block.
+This change has no known effect on gameplay or the block's appearance.
+Grass block
+
+Changed texture from  to .
+Inventory icon changed from  to .
+Oak leaves
+
+Changed texture from  to .
+Birch leaves
+
+Changed texture from  to .
+Oak sapling
+
+Changed texture from  to .
+Wool
+
+Changed textures from  to .
+White Wool
+
+Can now be crafted with white wool and bone meal.
+Furnace
+
+Changed texture from  to .
+Gravel
+
+Changed texture from  to .
+Lapis lazuli block
+
+Changed texture from  to .
+Sandstone
+
+Changed texture from  to .
+Sandstone slab
+
+Changed texture from  to .
+Grass
+
+Changed texture from  to .
+info_update
+
+Changed texture from  to .
+info_update2
+
+Changed texture from  to .
+reserved6
+
+Changed texture from  to .
+Ice
+
+Changed texture from  to .
+Inventory icon changed from  to .
+
+
+==== Items ====
+ Eating particles
+
+Are shown to look like the food being eaten rather than random pixels from the food.
+Bone meal
+
+No longer fully grows crops when applied to them.
+Magenta dye
+
+Can now additionally be crafted with pink dye and purple dye, or with lapis lazuli, rose red, and pink dye.
+Gray dye
+
+Can now be crafted with bone meal and an ink sac.
+Is still unobtainable in Survival mode due to ink sacs not being obtainable.
+Light gray dye
+
+Can now be crafted with bone meal and gray dye, or with two bone meal and an ink sac.
+Is still unobtainable in Survival mode due to ink sacs and gray dye not being obtainable.
+Cocoa beans
+
+Can now be crafted with orange dye and an ink sac, or with dandelion yellow, rose red, and an ink sac.
+Is still unobtainable in Survival mode due to ink sacs not being obtainable.
+Changed texture from  to .
+Bow
+
+New rendering and animated items.
+Changed texture from  to .
+Leather armor
+
+Changed textures from  to .
+Apple
+
+Changed texture from  to .
+Bread
+
+Changed texture from  to .
+Raw porkchop
+
+Changed texture from  to .
+Cooked porkchop
+
+Changed texture from  to .
+Raw chicken
+
+Changed texture from  to .
+Cooked chicken
+
+Changed texture from  to .
+Raw beef
+
+Changed texture from  to .
+Steak
+
+Changed texture from  to .
+Coal and charcoal
+
+Changed texture from  to .
+Clocks
+
+Changed texture from  to .
+Inventory icon changed from  to .
+Now display the current position of the sun and moon.
+Can now be crafted with gold ingots and redstone dust.
+Compasses
+
+Changed texture from  to .
+Inventory icon changed from  to .
+Now point to the world spawn point.
+Can now be crafted with iron ingots and redstone dust.
+Arrows
+
+Have updated sounds.
+
+
+==== Mobs ====
+All mobs
+
+New visual effect for burning mobs.
+Zombies
+
+Now rarely drop carrots and potatoes.
+AI
+
+System has been improved.
+Mobs can now swim over deep water.
+Hostile mobs are now more intelligent.
+Animals
+
+Follow the player when holding wheat (cows and sheep), seeds (chickens), or potatoes/carrots (pigs).
+Baby animals
+Now follow adult animals of their species.
+Spiders
+
+Now move faster.
+
+
+==== Gameplay ====
+Crafting
+
+Craftable recipes are now shown first in the crafting screen.
+If there is 99+ of an item in the inventory, the actual quantity is now shown in the list of craftable items, rather than 99+.
+Inventory
+
+Changed the flow of the inventory for the armor/crafting screens so that the back button goes back to the inventory.
+Items that are not supposed to be obtainable no longer have a red background.
+Removed the Xperia Play variant.
+Cannot be navigated with the Xperia Play controller.
+Hotbar
+
+Is now transparent.
+When selecting an item in the inventory, it replaces the one in the selected hotbar slot instead of placing it in the leftmost slot and shifting everything to the right.
+Tapping the inventory button now closes the inventory while open.
+Items that are not supposed to be obtainable no longer have a red background.
+Creative
+
+The hotbar is now saved when exiting a world.
+Mining speed increases at/near mining distance limit (8 blocks per second).
+
+
+==== General ====
+Clouds
+
+Are now 3D.
+Have a new tessellation algorithm.
+Options
+
+Smooth lighting is now always on, and can no longer be disabled.
+Fancy graphics are now on by default.
+Graphics
+
+Held items are now rendered in 3D, and bob up and down slightly when idle and sway to the side when turning.
+Lighter colored sky that changes slightly depending on the biome.
+Refactored most of the rendering to use indexed VBOs.
+Remade the arrow model.
+Inventory is now rendered using cached VBOs.
+New sky rendering using a triangle fan.
+Separated far and near chunks into two queues for performance reasons.
+Fog only on far chunks.
+Transparency only on near chunks.
+Alpha-test-only layers are hidden in far chunks.
+Lighting
+
+All entities now produce circular stencil shadows on blocks below them.
+Lighting on entities is now dynamic and is no longer the same light level on all sides.
+Lighting on each entity is now tinted based on how much sky light and block light is on it.
+Light direction on entities now depends on the position of the sun. This does not affect stencil shadows.
+All lighting changes are only visible when fancy graphics is turned on.
+Textures
+
+Block textures are now generated with terrain-opaque.png instead of terrain.png.
+Item textures are now generated with items-opaque.png instead of items.png.
+Inventory icons are now generated with their respective texture atlases instead of gui_blocks.png.
+Other
+
+Remade text formatting (e.g. in chat).
+Refactored OpenGL usage to avoid costly state leaks (e.g. animals are not alpha tested anymore).
+
+
+=== Fixes ===
+11 issues fixed
+From released versions before 0.8.0
+
+MCPE-28  Xperia Play Creative Scrolling, PTAB7200 Or Other Tablets Gamepad Small
+MCPE-61  Water flows downward next to farmland (visual glitch)
+MCPE-347  Weird textures: Moire pattern on bricks
+MCPE-992  Mobs can't move through deep water
+MCPE-1524  Graphical glitch when looking down above clouds.
+MCPE-2804  Fire does not ignite tnt
+MCPE-2937  Chat crash
+MCPE-4140  breeding
+MCPE-4736  Spiders Have no abdomen
+MCPE-4887  Skeletons missing lower part of body.
+MCPE-5411  Falling in creative at world load
+
+
+=== Gallery ===
+
+
+== v0.8.0 alpha build 2 ==
+v0.8.0 alpha build 2 is the second build and first public build version released for v0.8.0.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+Beetroots
+
+
+==== Items ====
+Beetroots seeds
+Beetroot soup
+
+
+==== Entities ====
+Minecarts
+
+
+==== General ====
+New Creative inventory with tabs.
+
+
+=== Changes ===
+Leaves
+
+Side textures are no longer randomly rotated.
+Rails
+
+Are now craftable with six iron ingots and a stick.
+Powered rails
+
+Are now craftable with six gold ingots, a stick, and redstone dust.
+
+
+=== Removals ===
+Main menu
+
+Re-removed "Play on Realms" button.
+Settings
+
+Removed "Show craftable recipes first" toggle.
+Is now always on by default.
+Removed "Smooth lighting" toggle.
+Is now always on by default.
+Commands
+
+Removed the commands that were present in v0.8.0 alpha build 1.
+
+
+=== Fixes ===
+
+9 issues fixed
+From released versions before 0.8.0
+
+MCPE-5572  Shooting a bow, throwing eggs/snowballs, and eating require block proximity.
+Other
+
+With the removal of the smooth lighting toggle, the textures of all blocks in a world are no longer randomly rotated when smooth lighting is off.
+Fixed the displayed names of blocks of coal, wood, and wooden slabs.
+Blocks of coal have been given their own numeric ID (173) and no longer override the ID of nether bricks (112).
+Blocks of coal are no longer listed twice in the creative inventory.
+Blocks of coal can no longer be crafted with four nether brick items.
+Nether bricks once again have an associated block and item form.
+Blocks of coal from build 1 are automatically converted to nether bricks.
+Fixed the icons for all items in the inventory screen frequently becoming invisible.
+Fixed the appearance of clocks and compasses in the inventory.
+Fixed zombies, skeletons, creepers, and zombie pigmen moving significantly faster on land than intended.
+Animals now consume five items per second instead of 20 per second when being fed.
+The particles produced by eating food and breaking projectiles are once again affected by gravity.
+
+
+== v0.8.0 alpha build 3 ==
+v0.8.0 alpha build 3 is the second build version released for v0.8.0.
+
+
+=== Additions ===
+Added shears, dyes, and bedrock to Creative mode.
+
+
+=== Changes ===
+Spiders are now much slower.[more information needed]
+Carrots, potatoes, and beetroot seeds now drop from grass blocks when tilled with a 115 chance each.
+Remade painting rendering, which was completely forgotten.[more information needed]
+Thrown eggs now spawn baby chickens.
+Rails are now dropped when the tile they rest on is destroyed.
+Changed the flow of Inventory  Armor / Crafting screens so that back goes back to Inventory.
+  Sheep now have the color overlay of their wool around their faces and when sheared.
+
+
+=== Fixes ===
+48 issues fixed
+From released versions before 0.8.0
+
+MCPE-5409  No snow cover in creative
+From the previous development version
+
+MCPE-5727  Graphics don't properly reload after apps is resumed
+MCPE-5740  Minecarts crash when they are destroyed
+MCPE-5743  All wooden slab appears as jungle wooden slab
+MCPE-5745  spiders are too fast
+MCPE-5750  Inventory items invisible
+MCPE-5756  Crash when Minecraft says saving chunks
+MCPE-5757  when I hit pig the screen messes up
+MCPE-5758  My world seems stuck at midday
+MCPE-5759  Black world after throwing eggs!
+MCPE-5765  The armor gui is really bad, like, its all glitched
+MCPE-5766  Crash when TNT blows a minecart
+MCPE-5773  Chests gray out
+MCPE-5777  Spruce slabs revert to oak
+MCPE-5781  When you place a sideways wood block, destroy, and pick it up, it shows up as its own item. When you try to craft with it, it crashes the game. (Survival only)
+MCPE-5784  Sword Corner
+MCPE-5794  Game goes dark/black screen when hitting mobs
+MCPE-5802  Sword PNG
+MCPE-5803  Clouds
+MCPE-5832  Reloaded Minecart is not rendered
+MCPE-5837  Unable to open world when left with a moving minecart
+MCPE-5840  Crash with side ways blocks
+MCPE-5845  Sign is invisible
+MCPE-5851  Placing sideways logs then breaking them stay that way
+MCPE-5852  Armor menu no steve
+MCPE-5853  CRASH!
+MCPE-5858  The mobs are moving too slow
+MCPE-5902  Crafting table graficul glitch
+MCPE-5924  after the flint and steel run out,when you click it again,it crashes
+MCPE-5933  Lava on Ice causes crash upon contact with the water.
+MCPE-5962  Box problems
+MCPE-5979  Golden shovel appears as diamond shovel
+MCPE-5982  When you put items in a chest they are invisible
+MCPE-5985  Thrown eggs are invisible
+MCPE-6005  World Won't Open after Placing Animals on Minecarts
+MCPE-6018  When you update from 0.7.6 to 0.8.0 it will delete some worlds
+MCPE-6028  The game stuck in saving chunks screen
+MCPE-6041  TExture Mapping glitch
+MCPE-6050  If you use more than ten times minecart. The eleventh cart will disappear
+MCPE-6055  TNT crash
+MCPE-6056  View box shows incorrect armor type
+From the current version, hotfixed
+
+MCPE-5733  shooting issues
+Other
+
+Fixed sheep not being dyable.
+Fixed bedrock having randomly rotated texture.
+Paintings have no shadows anymore.
+Fixed flint and steel having durability in Creative.
+The particles produced by lit redstone ore are once again tinted red.
+Fixed sandstone slab textures.
+
+
+== v0.8.0 alpha build 4 ==
+v0.8.0 alpha build 4 is the third build version released for v0.8.0 alpha.
+
+
+=== Additions ===
+Added red carpets to the survival crafting menu.
+Added a version watermark to help tell the build from screenshots.
+
+
+=== Changes ===
+Lava and fire now trigger TNT much more aggressively.
+Faster switching from background on Android.
+Potatoes and carrots aren't dropped anymore by tilling grass.
+In creative mode, players stop being on fire as soon as they exit fire or lava.
+
+
+=== Fixes ===
+24 issues fixed
+From the 0.8.0 development versions
+
+MCPE-5792  Liquids not showing up at sight level.
+MCPE-5794  Game goes dark: black screen when hitting mobs.
+MCPE-5799  Rendering issue with armor page.
+MCPE-5810  Sideways logs randomly have the wrong texture.
+MCPE-5816  Items leave trail on chest UI.
+MCPE-5821  Two issues related to breeding chickens and pigs.
+MCPE-5862  Not possible to make carpets in survival mode.
+MCPE-5869  Minecarts don't ride smoothly going up or down mountains.
+MCPE-5876  Animals turn black.
+MCPE-5901  Issue with TNT explosion.
+MCPE-5903  MCPE 0.8.0 beta build 2 chest issue.
+MCPE-5904  MCPE 0.8.0 beta build 2 incorrect armor selection.
+MCPE-5924  After the flint and steel runs out, when you click it again, it crashes.
+MCPE-5940  An issue related to beds.
+MCPE-5964  An issue related to eggs.
+Other
+
+Fixed a crash in the "Manage Realms" section.
+Added baked potato description.
+Added charcoal description.
+Fixed typo in iron bars description.
+Fixed arrow smoke being very fast when the arrow is stuck.
+Fixed top cactus texture.
+Fixed crash when picking up an arrow on fire.
+Fixed the bad graphics bug.
+Removed one bone meal from the creative inventory.
+
+
+== v0.8.0 alpha build 5 ==
+v0.8.0 alpha build 5 is the fourth build version released for Alpha 0.8.0.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Lava
+
+Now creates stone when it flows vertically into water.
+Flowers
+
+Position on the block is now randomized.
+
+
+==== Items ====
+Bone meal
+
+Now works like in Java Edition.
+Can grow ferns and grass in Survival and Creative.
+Pumpkin and melon stems only grow by one when bone meal is used.
+Flowers now spawn other flowers when bone meal is used.
+Version exclusive: Grows sugar cane to maximum height.
+
+
+==== Non-mob entities ====
+Minecarts
+
+Now ride smoother.
+
+
+=== Fixes ===
+16 bugs fixed
+From the 0.8.0 development versions
+
+MCPE-5730 - Extreme Lag underwater
+MCPE-5808 - Water can't break carpet
+MCPE-5817 - Falling sand causes dropped item discoloration
+MCPE-5822 - Creepers move too slowly
+MCPE-5834 - Stairs turn upside down when placed on snow
+MCPE-5897 - Igniting TNT in creative crashes the game
+MCPE-5899 - Placing a wooden slab automatically changes it to a jungle wood slab
+MCPE-5934 - The player gets stuck in a lava lake if it is deeper than two blocks.
+MCPE-5935 - Tools appear upside-down in third-person view
+MCPE-5947 - you fall when you destroy the minecart
+MCPE-5977 - visual glitch in furnace
+MCPE-5997 - while under water the rest of water is transparent .
+MCPE-6063 - Bone meal appears twice in the creative inventory
+MCPE-6133 - Mobs don't spawn at night
+From the previous development version
+
+MCPE-6120 - Shadows appear below signs when placed on the side of a block
+MCPE-6124 - When breaking birch slab I get an oak slab
+
+
+== v0.8.0 alpha build 6 ==
+v0.8.0 alpha build 6 is the fifth build version released for 0.8.0.
+
+
+=== Changes ===
+Added cobwebs to Creative mode.
+
+
+=== Fixes ===
+1 bug fixed
+
+Can write on Android 4.3 and custom keyboards
+
+
+== v0.8.0 alpha build 7 ==
+v0.8.0 alpha build 7 is the sixth build version released for 0.8.0.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Ice
+
+Changed texture from  to .
+Inventory icon changed from  to .
+Powered rail
+
+Inventory icon changed from  to .
+
+
+==== Items ====
+Bows, bowls, and wooden tools
+
+Can now be used as fuel in a furnace, smelting 1 item each.
+
+
+==== Non-mob entities ====
+Minecarts
+
+The UI message "Tap Jump to leave the minecart" now appears when a minecart has been boarded.
+The left, right, and down buttons on the d-pad are no longer visible when riding a minecart.
+
+
+==== Gameplay ====
+Creative inventory
+
+Light gray wool's inventory slot has been moved to be in between white wool and gray wool.
+AI
+
+Performance has been improved.
+
+
+=== Fixes ===
+10 bugs fixed
+
+Fixed text input on Android.
+Fixed spruce and birch leaves being swapped.
+Fixed furnace side texture.
+Fixed sandstone slab side texture.
+Fixed red hurt overlay on skeletons and chickens.
+Fixed an artifact over the flame in the furnace screen.
+TNT doesnt send you into orbit anymore.
+Fixed armor slots having no health bar.
+Fixed autojumping while in minecarts.
+Fixed falling into the ground when exiting a minecart thats on rails.
+
+
+== v0.8.0 alpha build 8 ==
+v0.8.0 alpha build 8 is the seventh and final build version released for 0.8.0, as well as the final build released in 2013.
+
+
+=== Changes ===
+Falling blocks
+
+Now drop their item form when falling onto blocks they cannot replace, such as torches.
+Creative inventory
+
+All wool and carpet variants are now sorted based on their color rather than their block data.
+
+
+=== Fixes ===
+10 issues fixed
+From the 0.8.0 development versions
+
+MCPE-5987  Light gray wool is not in correct place.
+MCPE-5994  Minecart stuck after certain depth (underground level near bedrock).
+MCPE-6035  What I expected to happen was for the light gray wool to be with the other wool in the creative inventory what actually happened was the light gray wool was separated from the other wool.
+MCPE-6194  Birch and spruce textures.
+MCPE-6242  Explosions are too powerful.
+MCPE-6312  TNT blows me out of the world.
+MCPE-6337  Tile Entities are not correctly sent in multiplayer.
+Other
+
+Fixed double chests becoming unpaired.
+Added back hurt and fire color overlay for mobs.
+The chest inventory now refreshes when two players change the content at the same time.
+
+
+== Notes and references ==
+
+
+== Navigation ==

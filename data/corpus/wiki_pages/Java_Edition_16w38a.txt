@@ -1,0 +1,141 @@
+16w38a is the sixth snapshot for Java Edition 1.11, released on September 20, 2016.
+
+
+== Additions ==
+
+
+=== Gameplay ===
+Gamerules
+
+doWeatherCycle
+Determines whether the weather changes.
+Defaults to true.
+maxEntityCramming
+Defaults to 24.
+If one entity tries to push more than 24 other entities, it starts to suffocate. (Note that pushing entities like minecarts also count towards this, although minecarts don't suffocate, mobs or players who push one, do suffocate)
+The death message is (playername) suffocated in a wall.
+Setting to 0 disables the rule.
+Affects mobs and players only.
+
+
+== Changes ==
+
+
+=== Blocks ===
+ Cobblestone Walls and Mossy Cobblestone Walls
+
+Are now in the "Decoration Blocks" tab in the Creative inventory rather than the "Building Blocks" tab.
+ Farmland
+
+Using pick block gives the player farmland itself instead of dirt.
+
+
+=== Command format ===
+Target selectors
+
+Invalid selectors (such as @e[Type=creeper] instead of @e[type=creeper], @e[asdf] or @e[foo=nonexistent]) now generate an error instead of being silently ignored.
+Removed implicit target selectors (such as @e[167,28,454]).
+
+
+=== Gameplay ===
+Chat
+
+Messages can now be 256 characters long instead of 100.
+Fishing
+
+Ink sacs are now caught in stacks of 10 with a weight of 1, rather than in stacks of 1 with a weight of 10.
+
+
+=== General ===
+Sounds
+
+Walking underwater no longer produces a step sound for the block the player is walking on.
+
+
+=== Items ===
+ Potions
+
+Potions that have missing or invalid potion-effect tags now default to the uncraftable potion, which now has no glint, and is now magenta in color.
+This also applies to lingering potions, splash potions and tipped arrows.
+Due to the water bottle without tags being changed to uncraftable potion, the brewing icon is also changed to uncraftable potion in the Creative inventory.
+ Elytra
+
+Visible when equipped on skeletons, zombies and armor stands.
+
+
+=== Mobs ===
+ Guardians and Elder Guardians
+
+Their common drop of raw fish will now be cooked fish if they die while on fire.
+Their rare drops from player kills, which match fishing loot and are sometimes fish, are unaffected.
+ Rabbits
+
+Their raw rabbit drop is now affected by the Looting enchantment.
+ Skeleton Horses and Zombie Horses
+
+Their bone and rotten flesh drops (respectively) now yield 02, and are now affected by Looting.
+
+
+== Fixes ==
+39 issues fixed
+From released versions before 1.11
+
+MC-3841  Attacking an unsaddled pig while holding a saddle saddles the pig.
+MC-8673  Players killed by Wither Skeletons are shown to have been killed by a Skeleton
+MC-36927  Durability of golden swords occasionally dropped by zombie pigmen is not random (always 25).
+MC-46456  Written books given by command crashes when copied in crafting table if Author is missing
+MC-61997  Squids spawn in lava.
+MC-66946  2-block tall hitbox on small armor stands.
+MC-67406  Small armor stands display items differently than normal ones.
+MC-70424  Baby zombie pigmen's sword is slightly tilted forward.
+MC-80551  You can place redstone, doors, rails etc. onto 78 layers of snow.
+MC-86130  Shields change their base color when damaged & repaired / Crafting different in colors results in damage.
+MC-87159  Dragon breaks blocks in far-off locations.
+MC-88533  Marker armorstands cannot properly be tested for with target argument "r=0".
+MC-89921  Elytra not rendered on entities/mobs.
+MC-91383  Horses (now only skeleton horses and zombie horses) drop different amount of loot than before.
+MC-92772  Saddled pigs don't drop saddle with doMobLoot=false.
+MC-92776  Ink sacs are fished in stacks of 1 instead of 10.
+MC-93435  Cobblestone walls are listed in the "Building Blocks" tab.
+MC-93609  Player is floating above the saddle of a mule.
+MC-93824  Feeding golden carrot to breed horse works if InLove is greater than 0.
+MC-94476  Killing rabbits with Looting does not give more raw rabbit.
+MC-94947  Chicken "stepping" sound still works when the chicken is swimming.
+MC-95450  Villager loot table missing.
+MC-95469  Middle click / pick block on farmland gives dirt.
+MC-96499  Boats collide with any entity (arrows, paintings, etc.) even if Marker:1b is on (armor stand).
+MC-98146  Marker armor stand does not render in some cases.
+MC-98260  Water bottles have inconsistent NBT tag depending on how you obtain them.
+MC-99602  Impossible to detect water bottles filled from the ocean in player's inventory.
+MC-100950  Boats can travel / remain on the fog of lingering potion / dragon's breath.
+MC-101615  Silverfish do more damage to players on easy difficulty than on normal difficulty.
+MC-101642  Iron golem / VillagerGolem is holding red flower client side 400 ticks too long.
+MC-103339  Mushroom cows do not path to mycelium, but grass. Causes unintended spawning requirements.
+MC-103726  Marker armor stands are not saved with structures.
+MC-105071  Random green/gray dot in anvil GUI.
+MC-106747  Wither bosses break structure blocks / structure voids.
+MC-106842  Target selector stops parsing its arguments if an entry is not <argument>=<value>.
+MC-107054  lit_furnace item model but no item.
+MC-107055  2 models for old wooden slab's item
+From the 1.11 development versions
+
+MC-106485  Banner applied to a shield doesn't change the shield correctly.
+From the previous development version
+
+MC-106896  Crash when using backspace after deleting all the characters in the name of anything with a custom name.
+
+
+== Videos ==
+
+
+== Trivia ==
+16w38a was previously removed from the launcher for some time, but was added back in September 2018.
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

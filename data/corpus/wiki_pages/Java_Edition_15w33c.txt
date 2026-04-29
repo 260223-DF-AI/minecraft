@@ -1,0 +1,121 @@
+15w33c is the ninth snapshot for Java Edition 1.9, released on August 14, 2015, which added shields, changed various features, and fixed some bugs and crashes from the previous two snapshots.
+
+
+== Additions ==
+
+
+=== Items ===
+Shields
+
+Used for blocking incoming attacks.
+Holding right click while being attacked reduces damage on the player and the durability of the shield.
+This works when the shield is either in the main hand or in the offhand.
+The player can hold 2 shields at once, but it does not affect the damage taken.
+Can be combined with banners of the same base color to transfer its pattern.
+This does not consume the banner.
+The player cannot attack while blocking.
+Crafting recipe: One column of wool (of the same color), one column of planks (any kind), an iron ingot in the middle of the last column.
+Can only be repaired on the anvil.
+Requires planks to repair.
+Cannot be enchanted on the enchanting table, but can have Unbreaking added via an enchanted book.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Brewing stands
+
+Can now accept splash potions into the lower slots.
+Before, the only way to get splash potions in a brewing stand was to brew them from normal potions and leave them in the slots.
+Ender crystals
+
+New BeamTarget tag.
+Used to specify a custom target for the beam.
+Example: /summon EnderCrystal ~ ~1 ~ {BeamTarget:{X:1,Y:2,Z:3}}.
+
+
+=== Items ===
+Fire charges
+
+Now shoot as ender dragon fireballs when ejected from a dispenser, appearing purple and casting dragon's breath.
+Before this, they had shot as blaze fireballs.
+This was reverted in 15w44b to shoot as blaze fireballs once again.
+Swords
+
+Can no longer be used for blocking, since shields now serve that function.
+
+
+=== Mobs ===
+Ender dragon
+
+Respawned dragons now drop 500 experience.
+Respawning the dragon now regenerates the circle of pillars, including the ender crystals and iron bars.
+Explosion particles appear at the tops of the pillars as they are being rebuilt.
+All end gateways are left intact.
+Creepers, skeletons, & zombies
+
+Detection range for players wearing the corresponding head adjusted to be 37.5% of the normal range.
+
+
+=== World generation ===
+End ships
+
+No longer generate with a pumpkin.
+The middle iron block has been replaced with a hopper.
+Inside, there is a book written by Searge, which reads "We will have something else here soon..."
+
+
+=== General ===
+Non-player entities can no longer regenerate the obsidian platform when entering an end portal.
+A non-player entity going through a nether portal no longer causes a return portal to generate on the other side if none exists already.
+Pick block
+
+Respects the tags of items in item frames while holding Ctrl.
+
+
+== Fixes ==
+22 issues fixed
+From released versions before 1.9
+
+MC-10447  Pick up framed enchanted items with "Pick Block (MOUSE 3)" doesn't give player the enchanted item.
+MC-68399  Pressing the '<' key takes screenshot on certain keyboard layouts.
+MC-73474  Rail duplication glitch.
+From the 1.8 development versions
+
+MC-48732  Ctrl plus pick block overwrites selected item.
+From the 1.9 development versions
+
+MC-82855  Invisible shulker shows white box until relog.
+MC-82875  Right-clicking with sword still blocks.
+MC-82986  Stackable items of same id and meta value but different NBT tags will stack in Creative menu.
+MC-83350  Entities teleporting through a portal disappear instead of teleporting.
+MC-83945  Item counts can go negative when interacting with entities, allowing duplication.
+MC-84320  Respawned ender dragon doesn't drop experience.
+MC-84681  If in block when you log out, you spawn 1 block lower.
+MC-85500  Syntax for '/scoreboard players' doesn't include 'tag' parameter.
+MC-85801  Ender dragon dying randomly at portal.
+MC-85834  Pick-Block on mobs gives you a blank spawn egg.
+MC-85865  Can't put splash potions in brewing stands.
+MC-86007  Both the bottle and dragon's breath are consumed when making lingering potions.
+From the previous development version
+
+MC-85925  Problems while loading NBT [AreaEffectCloud].
+MC-85973  Modifying the 'Age' tag of an 'AreaEffectCloud' entity will result in the 'Effects' tag being duplicated.
+MC-85999  NBT Tag "Peek" is broken.
+MC-86066  Mob spawner spawns skeletons without bow.
+MC-86082  Cannot summon an entity with a custom UUID.
+MC-86085  Potions and spawn eggs still show data values in tooltips.
+
+
+== Videos ==
+
+
+== Trivia ==
+This version was previously removed from the launcher for some time, but was added back in September 2018.
+
+
+== References ==
+
+
+== Navigation ==

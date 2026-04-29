@@ -1,0 +1,1017 @@
+This is a list of Bedrock Edition 1.21.90 development versions.
+
+
+== Preview 1.21.90.20 ==
+Beta 1.21.90.20 (ChromeOS, Android) or Preview 1.21.90.20 (Windows, iOS, iPadOS, Xbox, PlayStation) is the first beta/Preview version for Bedrock Edition 1.21.90, released on April 22, 2025, which improves lead functionality and makes Vibrant Visuals the default graphics mode on supported devices.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Dried Ghast
+
+The rarity is now common, matching its ingredients.
+Has been moved from experimental features and is now available during normal gameplay.
+
+
+==== Items ====
+Lead
+
+Using a firework rocket to boost while flying with an elytra now causes leashed mobs to unleash.
+Entities can now be leashed to a pre-existing leash knot by interacting with it.
+Players can retrieve entities tied to a leash knot by interacting with it.
+Shears can now be used to remove leash knots.
+Any leashable entity can now be leashed to any other leashable entity.
+To leash an entity to another entity, the player must:
+Have the entity already leashed to themselves.
+Sneak and interact with the target entity while holding the lead.
+Leashed entities can now be "stolen" by leashing them again, transferring ownership to the player.
+If re-leashing an entity would result in immediate leash snapping due to distance, the re-leashing cannot be done.
+To prevent erratic behavior when leashed to each other, llamas that are leashed no longer attempt to form caravans.
+A leashed entity cannot be leashed to itself.
+Baby mobs can only be leashed one way - to another entity; they cannot have other mobs leashed to them.
+When leashed to a happy ghast, horses, camels, donkeys, mules, boats, chest boats, and sniffers now adjust their position gradually over time, aligning smoothly with their leash holder when suspended mid-air.
+In all other cases, entities align to the direction they are being pulled and no longer behave erratically when suspended mid-air.
+Mid-air friction now applies to Boats just like any other entity, meaning they can no longer orbit the player or behave excessively bouncily.
+The distance at which leads break has been increased to 12 blocks, except for the happy ghast, which has a break distance of 16 blocks.
+When the lead is pulled, leashed objects will now orient themselves towards the player who has the lead.
+The distance between centers of entities bounding boxes is used to determine the distance between two leashed entities.
+Boats and large leashable mobs that cannot fit in a boat (horses, donkeys, mules, camels, and sniffers) when leashed to a happy ghast are rendered with four leashes instead of one.
+In this configuration, the happy ghast also features a rope layer wrapping around it.
+Shears can now be used on leashed entities to unleash them, removing both incoming and outgoing leash connections.
+Players cannot cut other players' leashes.
+Dispensers can now use shears to unleash leashed entities.
+Harness
+
+Has been moved from experimental features and is now available during normal gameplay.
+
+
+==== Mobs ====
+Happy Ghast
+
+The happy ghast now turns more smoothly.
+Harness goggles will now always be down as long as the harnessed Happy Ghast has at least one mounted player.
+Has been moved from experimental features and is now available during normal gameplay.
+
+
+==== General ====
+Graphical
+
+Made Vibrant Visuals the default graphics mode for supported devices.
+Added the ability to data-drive some of the Vibrant Visuals / Deferred Graphics related settings per biome. Creators can provide multiple versions of atmospherics, color grading, lighting and/or water configurations as long as each has a unique identifier and file name. The reserved JSON names for each group of settings (e.g., lighting/global.json) will continue to function as before. Creators can utilize the minecraft:atmosphere_identifier, minecraft:color_grading_identifier, minecraft:lighting_identifier, and minecraft:water_identifier in Client Biome JSONs to connect particular rendering settings to a given biome. Note that certain parameters, such as tone mapping operators, caustics and wave simulation on/off cannot be customized per biome at this time. Parameters will be spatially blended as players move between biomes.
+Increased back-scattering of light underwater in Vibrant Visuals.
+Cloud shadows no longer pop in and out of view when looking around using Vibrant Visuals on Android devices.
+Painting now renders with correct PBR properties, shadows and illumination when using Vibrant Visuals.
+Added MERS texture support for signs in Vibrant Visuals.
+Added new texture assets for a variety of trims, particles, spawn eggs, water and the dark oak boat in Vibrant Visuals.
+Updated the appearance of metals for a variety of block textures in Vibrant Visuals.
+Updated the cave vines, chorus flower, pumpkin, fire fly bush and a variety of other plant textures in Vibrant Visuals.
+Updated the bee, dolphin, ghast, pig saddle and strider textures in Vibrant Visuals.
+
+
+==== Technical ====
+API
+
+@minecraft/server-ui 2.0.0 is now released, 2.1.0-beta is the new beta version for @minecraft/server-ui.
+Added integer overflow detection in ScoreboardObjective.addScore. Original value will be retained when overflow is detected.
+NamespaceNameError now has better error information and the name property value will now be set to NamespaceNameError.
+BlockComponentPlayerDestroyEvent renamed to BlockComponentPlayerBreakEvent.
+PlayerPlaceBlockBeforeEvent
+permutationBeingPlaced renamed to permutationToPlace.
+BlockCustomComponent
+onPlayerDestroy renamed to onPlayerBreak.
+Added lookAt method on Entity.
+Added customComponentParameters: CustomComponentParameters to ItemCustomComponentInstance.
+Added customComponentParameters: CustomComponentParameters to BlockCustomComponentInstance.
+Custom components V2 now support assigning string, array, object, bool, or number.
+GameMode enum member names changed:
+survival renamed to Survival.
+creative renamed to Creative.
+adventure renamed to Adventure.
+spectator renamed to Spectator.
+Blocks
+
+Added a parameter to the culling rules schema to disable culling against full and opaque blocks.
+condition field is now optional.
+removed default as a value for condition field in the culling rules schema.
+added new optional cull_against_full_and_opaque boolean field in the culling rules schema.
+if not specified, it will be set to true.
+if set to false culling against full and opaque blocks will not be considered.
+When custom components v2 experiment is enabled, custom components can be assigned string, array, object, bool, or number:
+
+Custom components v2 experiment no longer required to use custom components v2.
+Custom components v2 is available in JSON versions 1.21.90 and higher
+minecraft:custom_components deprecated in 1.21.90.
+The minecraft:material_instances component will no longer produce a content error if the * material is missing.
+Commands
+
+Added integer overflow detection in /scoreboard players operation for +=, -=, *=, /= and %=. Original value will be retained when overflow is detected.
+Components
+
+Added the minecraft:remove_in_peaceful component:
+Determines whether an entity should despawn on "Peaceful" difficulty
+Content warnings will log missing texture references for minecraft:material_instances block component.
+Added the minecraft:leashable_to component:
+Allows players to leash entities to the owner entity, retrieve those already leashed, or free them using shears.
+Players can leash entities to the owner entity by sneaking and interacting while having entities leashed to themselves.
+The can_retrieve_from field determines whether players can retrieve entities leashed to the owner entity.
+Added new fields to the minecraft:leashable component:
+can_be_cut: Determines whether players can cut both incoming and outgoing leashes by using shears on the entity.
+spring_type: A presets subfield that defines the type of spring-like force pulling the entity toward its leash holder.
+Available values:
+bouncy: Simulates a highly elastic spring that never reaches equilibrium if the leashed entity is suspended mid-air.
+dampened: Simulates a dampened spring attached to the front of the leashed entitys collision that reaches equilibrium if the entity is suspended mid-air and aligns with its movement direction.
+quad_dampened: Simulates four dampened springs connected to the center of each side of the entity's collision that reaches equilibrium if the entity is suspended mid-air and gradually aligns with the leash holder over time.
+rotation_adjustment: A presets subfield that adjusts the rotation at which the entity reaches equilibrium.
+Entity Components
+
+Added minecraft:body_rotation_always_follows_head entity component:
+Ensures the entity's body is always aligned with the head.
+Does not override the minecraft:body_rotation_blocked component.
+Experiments
+
+Custom Components v2 experiment removed. Custom Components v2 is enabled when using @minecraft/server version 2.0.0 and above.
+Items
+
+When using Custom Components v2, custom components can be assigned string, array, object, bool, or number:
+
+Custom components v2 experiment no longer required to use custom components v2.
+Custom components v2 is available in JSON versions 1.21.90 and higher
+minecraft:custom_components deprecated in 1.21.90.
+Network Protocol
+
+Added ActorFlags::BODY_ROTATION_ALWAYS_FOLLOWS_HEAD.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs" and "Locator Bar" experimental toggles.
+
+
+==== Additions ====
+
+
+===== Technical =====
+API
+
+@minecraft/server 2.1.0-beta
+Added class PlayerHotbarSelectedSlotChangeAfterEvent. This will be triggered every time the hotbar slot changes.
+Added enum PlayerInventoryType.
+Added class PlayerInventoryItemChangeAfterEvent. This will be triggered every time an item changes in the player's inventory. This includes the 27 inventory slots and 9 for hotbar.
+Added stopSound and stopAllSounds to Dimension and Player.
+@minecraft/debug-utilities 1.0.0-beta
+Added new Debug Drawing feature:
+Added new classes: DebugArrow, DebugBox, DebugCircle, DebugDrawer, DebugLine, DebugShape, DebugSphere, DebugText.
+Added new global object for accessing and using this new feature: debugDrawer: DebugDrawer.
+
+
+==== Changes ====
+
+
+===== General =====
+UI
+
+The jump and dash bars no longer take precedence over the locator bar while inactive in Creative Mode.
+The interaction button in Creative Mode is now moved up for Touch devices so that it no longer covers the locator bar.
+Player dots on the locator bar now show correctly while using split-screen.
+The item name tooltip is no longer cut off while the locator bar is enabled in Creative Mode.
+Player dots on the locator bar now show correctly in third person view while using split-screen.
+
+
+===== Technical =====
+API
+
+Custom command registration will create an alias from the command name without the namespace.
+If the name has already been claimed, then the alias will not be created and a content log warning will appear.
+Removed unused classes: EntityIterator, EntityTypeIterator, FilterGroup, and PlayerIterator.
+Updated class Container:
+reverseFind has been renamed to findLast.
+contains now returns undefined if it fails to find the item.
+firstEmptySlot now returns undefined if it fails to find an empty slot.
+firstItem now returns undefined if it fails to find the item.
+find now returns undefined if it fails to find the item.
+reverseFindnow returns undefined if it fails to find the item.
+
+
+=== Fixes ===
+28 issues fixed
+From released versions before Bedrock Edition 1.21.90
+
+MCPE-79331  Text Background Opacity doesn't work for most text
+MCPE-80066  Crimson and warped roots can be lit on fire and burn
+MCPE-88837  Piglin brutes do not despawn in Peaceful mode
+MCPE-181002  Trident isn't grouped next to tools/weapons in the creative tab
+MCPE-184566  /playsound leaks across dimensions
+MCPE-187171  Bundle tootip was overlaps with the item tooltip
+MCPE-189370  Pressing up on the left thumbstick or D-pad while in the Graphics Mode dropdown menu takes the user to the top of the Video Settings menu
+MCPE-190647  Item breathing animation is not smooth when a world's Days Played count is high
+MCPE-191029  Block breaking animations do not stop after pausing the game
+MCPE-194367  The top layer of the Snowy Kingdom Preset uses full snow blocks instead of snow layers
+MCPE-199213  New items added in 1.21.80.25 preview have extra spaces in their names
+MCPE-201851  Happy ghast can be pushed too easily
+MCPE-212378  Baby Happy Ghast does not grow up naturally
+Other
+
+Fixed a bug where directional lighting cut out 8 blocks under the water surface while using Vibrant Visuals.
+Non-waterlogged Dried Ghast blocks now only play ambient sounds when on top of a Soul Sand or a Soul Soil block.
+Fixed an issue where jungle leaves did not become transparent when setting all leaf types to be transparent.
+Fixed a crash that would sometimes occur when using command blocks.
+Players mounted on the Happy Ghast no longer appear invisible to other players when the Happy Ghast is immobile.
+Players mounted on the Happy Ghast no longer have their hitbox displaced when the Happy Ghast is immobile.
+Happy Ghast no longer becomes a platform when a Player is standing next to it.
+Fixed a bug where piloted Happy Ghast could be moved while non-riding players were standing on it.
+Fixed a bug where Happy Ghast would keep looking at you after no longer being tempted.
+Bundle UI now correctly disappears when switching Inventory tabs with controller input.
+Tapping on the Bundles Tooltip on Touch devices no longer interacts with the UI behind it.
+Fixed an issue where only changing the access of PlayStation friends to your world would not be saved when exiting the menu.
+Fixed incorrect warnings for using valid older block ids with minecraft:block_placer component.
+Fixed query.health in resource packs to return 0 for the Wither once it has died.
+Fixed the Nether having overworld fog in Vibrant Visuals.
+
+
+== Preview 1.21.90.21 ==
+Beta 1.21.90.21 (ChromeOS, Android), or Preview 1.21.90.21 (Windows, Xbox, PlayStation), or Preview 1.21.90.22 (iOS, iPadOS), is the second beta/Preview version for Bedrock Edition 1.21.90, released on April 29, 2025, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Beacon
+
+Maximum beacon beam height is now 2048.
+Dead Bush
+
+Dead bush ambient sounds now have a slightly increased chance of playing.
+Dried Ghast
+
+The recipe for the dried ghast block has been updated to now require a soul sand block rather than a bone block.
+
+Sand, Red Sand, Terracotta
+
+Ambient sand sounds no longer requires sky access to play.
+Ambient sand sounds now have a slightly decreased chance to play.
+Ambient sand sounds can now play in all biomes.
+The frequency and conditions for the sounds are now completely independent of the biome the blocks are in.
+Sand, red sand, and terracotta blocks no longer make ambient wind sounds (block.sand.wind).
+They still make sand sounds (block.sand.idle).
+Short Dry Grass and Tall Dry Grass
+
+Short dry grass and tall dry grass can now make ambient wind sounds (block.sand.wind) when above 2 sand, red sand, or terracotta blocks.
+
+
+==== Items ====
+Lead
+
+The slimeball in the recipe has been replaced with a string.
+
+
+==== Mobs ====
+Blaze
+
+Increased blaze attack sound distance to 32 to match Java Edition.
+Blaze's attack distance has been increased from 16 to 48 blocks to match its target detection range.
+Ghastling
+
+Ghastlings can now follow happy ghasts.
+Piglin
+
+Piglins can now give dried ghast blocks when bartered with.
+Zoglin
+
+Decreased zoglin speed when chasing the player to match Java Edition.
+Zombified Piglin
+
+Baby zombified piglins can no longer have golden swords equipped.
+Decreased the speed of zombified piglins when chasing the player to match Java Edition.
+
+
+==== Gameplay ====
+Accessibility
+
+Text to speech will select an appropriate voice if available when changing in-game language on Android, iOS, and Windows 10/11.
+
+
+==== General ====
+Multiplayer
+
+Gamertags are used on all platforms to identify players in cross-platform multiplayer games.
+Graphics
+
+The local player's vehicle will now always be eligible for rendering, no matter the orientation of the model compared to the render bounding box.
+
+
+==== Technical ====
+API
+
+@minecraft/server 2.0.0
+Added isValid property on Camera from beta to stable.
+Moved TicksPerDay from beta to stable.
+Moved enum ScriptTintMethod from beta to stable.
+Moved enum ScriptBlockMapColorComponent from beta to stable.
+Blocks
+
+Replaced emitter_intensity with emitter_particle_count in block_destruction.json and block_slide.json. This is to go in line with the particle count field in the BlockDestructionParticlesComponent. emitter_intensity will still be used in the previous versions of these files.
+Components
+
+The minecraft:input_air_controlled component no longer requires use_beta_features.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs", "Upcoming Creator Features" and "Locator Bar" experimental toggles.
+
+
+==== Additions ====
+
+
+===== Technical =====
+API
+
+@minecraft/server 2.1.0-beta
+Added enum LiquidSettings in beta.
+Added optional property liquidSettings to scripting interfaces JigsawPlaceOptions and JigsawStructurePlaceOptions in beta. Defaults to ApplyWaterlogging.
+New cheatsRequired property on CustomCommand interface.
+If undefined or true (default is true), custom command execution requires that cheats are enabled. If false, then the custom command can execute without cheats enabled.
+Removed Player.isOp().
+Added read-only property layerPermissionLevel to Player.
+Added property commandPermissionLevel to Player.
+Added PlayerPermissionLevel enum with Visitor, Member, Operator values.
+Block Components
+
+Added field uv_lock to minecraft:geometry block component behind Upcoming Creator Features experiment.
+UV locking will allow faces to have the same texture orientations as the default geometry state, regardless of how minecraft:transformation component rotates the geometry.
+Commands
+
+Added optional property liquidSettings to /place structure and /place jigsaw commands. Defaults to apply_waterlogging.
+Components
+
+The BlockDestructionParticles component has a new field allowing creators to determine the amount of particles that are generated on the destruction of the block.
+Jigsaw
+
+Added optional property liquid_settings to minecraft:jigsaw JSON to allow control over handling liquids when placing structures. Defaults to apply_waterlogging.
+
+
+==== Changes ====
+
+
+===== Gameplay =====
+Locator Bar
+
+The distance of players now modifies the size of the locator bar player dot instead of the opacity.
+
+
+=== Fixes ===
+20 issues fixed
+From released versions before Bedrock Edition 1.21.90
+
+MCPE-35647  Blazes attack range too low
+MCPE-64477  Can't use various items while looking at interactive blocks while sneaking
+MCPE-166103  Piglins, brutes and hoglins of the bastions doesn't drop xp when killed
+MCPE-174465  Player is teleported to the void when using an end gateway
+MCPE-174826  Sponges can absorb water from waterlogged barriers
+MCPE-178295  Lava disappears when placed or dispensed into a waterlogged block
+MCPE-185829  Wind Burst now launches much less blocks
+MCPE-194838  Frozen Peaks, Jagged Peaks & Snowy Slopes replace all water under Y=63 with ice
+MCPE-200797  Player shadow appears on happy ghast face
+MCPE-212398  Vibrant Visuals: Deep black pixels trigger graphical artifacts when the player stops moving if TAAU is enabled
+MCPE-216867  You no longer start to swim automatically when you double tab forward button to sprint jump into water
+Other
+
+Dispensing a lava bucket on a waterlogged Dried Ghast no longer duplicates the Dried Ghast.
+Fixed an issue where swapping item slots during an attack against a mob would re-select the original item slot used during the attack instead of staying on the new inventory slot item.
+Fixed a bug in Vibrant Visuals where materials with certain properties rendered black.
+Mobs will no longer clip through blocks sometimes when viewing them at a distance when they auto step up a block.
+Pigs saddled by hand no longer drop two saddles when killed. (All pigs saddled by hand between 1.21.70 and now will still drop their duplicated saddles on death.)
+Fixed a bug with the minecraft:geometry component where the full block geometry identifier minecraft:geometry.full_block was being ignored for several behaviors, including:
+Mob spawning (mobs with custom spawn rules can now spawn on blocks using full block geometry)
+Chest obstruction (blocks with full block geometry will now obstruct Chests)
+Grass and Farmland survival (Grass and Farmland will turn into Dirt with a block using full block geometry above them)
+Nylium survival (Nylium will turn into Netherrack with a block using full block geometry above it)
+Vine growth (Vines will now spread to blocks using full block geometry)
+Breathability (Mobs and actors can no longer breathe in blocks using full block geometry)
+Fixed incorrect warning for using valid entity with event identifier in minecraft:entity_placer component.
+Fixed query.health to work for the Wither to properly reflect the elapsed ticks since it started dying.
+Jigsaw structures being placed in water no longer replace water incorrectly.
+
+
+== Preview 1.21.90.23 ==
+Beta 1.21.90.23 (ChromeOS, Android), or Preview 1.21.90.23 (Windows, iOS, iPadOS, Xbox, PlayStation) is the third beta/Preview version for Bedrock Edition 1.21.90, released on May 7, 2025, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Gameplay ====
+Vibrant Visuals
+
+Updated a variety of MERS textures in Vibrant Visuals:
+Made Glass Blocks more reflective
+Tweaked metallics on Cauldrons and Ancient Debris
+Tweaked emissives on Eyeblossom
+Added emissive to the Ender Crystal Block to match item icon
+Added MERS textures for Happy Ghast and Harnesses
+Adjusted the Glow Lichen block emissive
+Improved Snell's window effect when looking up from underwater in Vibrant Visuals.
+The End flash is now visible again in the End in Vibrant Visuals.
+
+
+==== General ====
+Locator Bar
+
+The Locator Bar has been de-experimentified and is now available in non-experimental worlds.
+UI
+
+Chat background opacity can now be controlled with a new accessibility setting.
+
+
+==== Technical ====
+API
+
+@minecraft/server 2.0.0
+Released getBlockBelow and getBlockAbove on Dimension to 2.0.0.
+Changed players property on PlayAnimationOptions to an array of Player objects, instead of string names in 2.0.0.
+Released error ContainerRulesError to 2.0.0.
+Removed CameraDefaultOptions for V2.0.
+Added setDefaultCamera(cameraPreset: string, easeOptions?: CameraEaseOptions): void to V2.0. This will replace passing the CameraDefaultOptions into the Camera.setCamera function. Will also now reset the position and rotation of third-person cameras back to the values defined in the JSON.
+Components
+
+Added validation for asset references in particle effect Json:
+texture reference in basic_render_parameters
+block references in minecraft:particle_expire_if_in_blocks
+block references in minecraft:particle_expire_if_not_in_blocks
+Goals
+
+minecraft:rideable component's dismount_mode is now correctly applied when passengers are forced to dismount by the minecraft:behavior.float goal.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs" and "Upcoming Creator Features" experimental toggles.
+
+
+==== Additions ====
+
+
+===== Technical =====
+API
+
+@minecraft/server 2.1.0-beta
+Added enum ContainerRulesErrorReason to beta. Contains the reasons that ContainerRulesError can fail.
+Added interface ContainerRules to beta. Contains rules that if broken on container operations will throw a ContainerRulesError.
+Container
+Added optional propertyreadonly containerRules?: ContainerRules to beta. If the rules of the container are broken will throw a ContainerRulesError.
+Added property readonly weight: number to beta. The total weight of all ItemStacks in the container.
+ItemStack
+Added property readonly weight: number to beta. The total weight all the items in the ItemStack.
+Added class ItemInventoryComponent to beta. This component will be on all items that contain a minecraft:storage_item component and will allow access to its container.
+Blocks
+
+Added minecraft:random_offset component under the Upcoming Creator Features toggle. This allows for blocks to randomly offset like foliage does in the Vanilla game. Example:
+
+
+==== Changes ====
+
+
+===== Technical =====
+API
+
+Updated error messaging when imports can't be found.
+Removed content warning when a custom component was registered without closures for custom components V2:
+This allows data-only components to be registered in script and added to blocks and items that only contain parameters without functionality.
+Experimental
+
+The /controlscheme command no longer requires the "Experimental Creator Camera" toggle.
+The camera_relative_strafe control scheme remains experimental and still requires the toggle.
+
+
+=== Fixes ===
+38 issues fixed
+From released versions before Bedrock Edition 1.21.90
+
+MCPE-79331  Text Background Opacity doesn't work for most text
+MCPE-80319  Parrots imitate mobs way too often
+MCPE-114701  Magma cubes and slimes jump when changing goals
+MCPE-166394  Slime and Magma Cube can still attack player during death animation
+MCPE-174857  Some Wither Skeleton related sounds still outdated
+MCPE-188353  Unable to put specific amount of items inside of a bundle using touch controls
+MCPE-189501  Attacking a mob or player while sprint jumping randomly removes all of the player's momentum, sometimes even teleporting the player backwards
+MCPE-200698  Vibrant Visuals: Textures turn pink after suspend and resume, opening Settings, or exiting world
+MCPE-201604  Ghasts and Happy Ghasts are not affected by splash potions that hit their top
+MCPE-201832  Hitting blocks while swimming will slow you down
+MCPE-201849  Ghast stays completely still when shooting fireballs with the Drop 2 2025 experiment enabled
+MCPE-206642  Vibrant Visuals: Static water looks clearer than flowing water
+MCPE-206924  Vibrant Visuals: Reflections flicker severely on higher than default FOV
+MCPE-212409  Vibrant Visuals: Artifacts on clouds when viewing them up close
+MCPE-216825  The faceLocation property of custom component player interact events is not relative to the block
+From the previous development version
+
+MCPE-217768  Particles with material particles_blend do not render correctly with Vibrant Visuals
+Other
+
+Harness is no longer invisible on a Happy Ghast when equipped by a Dispenser.
+Empty open Bundle icon now renders correctly when Bundles are tapped with Touch Controls.
+Marking read only structures for deletion along with editable ones no longer disables the delete button.
+Saving a large structure from a selection on the Structure Panel no longer makes the game unresponsive.
+Fixed projectiles not being fired in the correct direction when using custom cameras and touch input.
+Using a custom equippable block item in creative mode will no longer duplicate the item and equip it; it will simply place the block in the world.
+Fixed an issue with Leather armor having a stripe of emissive across the texture.
+Fixed a z-fighting issue between water and leaf blocks in Vibrant Visuals.
+Fixed an issue where Vibrant Visuals would sometimes apply to worlds that do not correctly support it.
+Fixed Enderman held blocks not being shaded correctly in Vibrant Visuals.
+Fixed an issue with moving blocks (e.g. blocks held by Endermen, TNT inside of minecarts) not casting shadows in Vibrant Visuals.
+Fixed a crash happening on PS5 when loading a world with leashed entities.
+Fixed a bug where Parrots imitating a Drowned used Zombie sounds.
+Fixed a bug where sliders move super fast when using gamepad. Added a timeout to avoid this problem.
+Fixed a crash when blocks that specify non-existent textures as carried_textures are held in hand.
+Fix for incorrect normals and/or crashes when holding certain items in hand with Vibrant Visuals enabled.
+Fixed an issue where entities are rendering and animating twice.
+Fixed a crash with the Debug Drawing system after using the /reload command.
+Fixed an issue where Debug Drawing primitives wouldn't be visible after using the /reload command.
+Fixed an issue where Debug Drawing primitives wouldn't be visible for new players joining the world.
+Fixed the minecraft:follow_orbit camera not having the correct control scheme in its allow list.
+The touch screen d-pad control now shows the correct buttons when using camera relative control schemes.
+
+
+== Preview 1.21.90.25 ==
+Beta 1.21.90.25 (ChromeOS, Android), or Preview 1.21.90.25 (Windows, iOS, iPadOS, Xbox, PlayStation) is the fourth beta/Preview version for Bedrock Edition 1.21.90, released on May 13, 2025, which makes saddles craftable, adds new music, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Items ====
+Music Disc
+
+ Added the "Tears" music disc by Amos Roddy.
+Obtained by killing a ghast with a fireball deflected by a player.
+Has a comparator output of 10 when played in a jukebox.
+
+
+==== Gameplay ====
+Music
+
+Added 5 new background music tracks by Amos Roddy to Cherry Groves, Forest, Desert, Grove, and Lush Caves Biomes:
+"Below and Above"
+"Broken Clocks"
+"Fireflies"
+"Lilypad"
+"O's Piano"
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Dried Ghast
+
+It will now block flowing water instead of popping.
+Updated dried ghast block sounds for step, place and fall from wood-sounds to custom sounds. Changed the ambient and break sound to sound less alive. Removed the hit-sound and sound event for that since it breaks immediately.
+Grass Block
+
+Sound files for breaking and placing Grass blocks are now slightly louder.
+
+
+==== Items ====
+Lead
+
+Attaching a leashed entity to another entity and using Shears to cut leashes now take precedence over other interactions
+Example: Attempting to shear a leashed Sheep will now un-leash it instead of shearing it
+Leash break distance is now calculated between the centers of the two entities' collision boxes, aligning with the rest of the leash physics calculations
+Leather
+
+Can now be found in monster room, ancient city, desert temple, jungle temple and stronghold altar chests in quantities 1-5.
+Saddle
+
+Can be removed from mobs wearing them by using shears on the mob.
+Cannot be removed this way from ravagers or mobs with riders.
+Shears in a dispenser don't work.
+Saddles can now be crafted with 3 leather and 1 iron ingot.
+The recipe unlocks when a player picks up their first leather.
+
+No longer found in chests in monster rooms, ancient cities, desert temples, jungle temples and in stronghold altar chests.
+Shears
+
+Can now remove saddles, horse armor, harnesses and carpets from mobs.
+They cannot be removed if the mob has a rider.
+They cannot be removed if the player is crouching.
+Saddles cannot be removed from ravagers.
+Dispensers with shears cannot remove saddles, horse armor, harnesses and carpets equipped on mobs.
+Spawn Egg
+
+Now the mooshroom spawn egg uses its own colors and no longer has two pixels that are the same as the cow spawn egg texture.
+
+
+==== Mobs ====
+Happy Ghast
+
+Its detection of players now extend 1 block outwards from themselves in x,z direction and 2 blocks above them.
+
+
+==== General ====
+UI
+
+The Text Background Opacity accessibility setting now defaults to 60% opacity.
+The vertical angle upon which the locator bar arrow icons become visible now corresponds to the player's FOV setting.
+Title screen
+
+The panorama has changed to reflect the Chase the Skies drop.
+The above change has not been mentioned in the change log.
+
+
+==== Technical ====
+API
+
+Added a new condition damaged_by_entity that allows checking which entity type applied damage to an entity that is dropping loot.
+Similar to the killed_by_entity and entity_killed conditions, allows specifying an entity_type field to check against when deciding which entry in a loot table to select.
+Block Components
+
+UV locking will not be supported for geometry using Box UVs if the box sides are not equal, in other words the box has non square UVs. Geometry with per-face UVs and non square faces will be supported.
+UV locking will not be supported if Block Json format_version is less than 1.19.80.
+Blocks
+
+culling_layer field in the block's geometry component has been moved out of experimental.
+condition field in rules for culling has been moved out of experimental.
+Camera
+
+Unlocked over the shoulder is now unlocked by using the camera_relative control scheme with the follow_orbit preset.
+Components
+
+Content warnings will log missing block and biome references in Biome JSON.
+The minecraft:interact component's spawn_items field now has a y_offset subfield, which allows to adjust the vertical spawn position of items.
+The minecraft:remove_in_peaceful component was removed from vanilla hostile mobs, making them despawn on peaceful difficulty hardcoded again, however it still exists.
+This change was not mentioned in the changelog.
+Entity Filters
+
+Added the new is_riding_self entity filter
+Returns true if the subject entity is riding the calling entity on which the filter is used.
+Graphical
+
+Changed shadows in Vibrant Visuals so that they cast further at sunrise and sunset. Prior to this change, shadows were clamped at a 30 degree angle relative to the horizon. This clamp has now been reduced to 10 degrees. This also improves an issue where specular highlights, light rays and volumetric fog were not properly occluded when the sun or moon was behind a mountain at a low angle.
+Added temperature grading settings to the color grading json files for Vibrant Visuals. Schemas must specify a format version of 1.21.90 to access this new setting.
+New temperature object added to color_grading
+enabled set to true or false controls if temperature grading is enabled
+type set to either white_balance or color_temperature controls the type of grading applied
+white_balance uses the temperature value to adjust the camera's white point. Lower temperature values will cause the scene to appear more blue.
+color_temperature is the inverse of the white balance operation. Lower temperature values will cause the scene to appear more red.
+temperature sets the temperature in kelvin
+Example:
+
+Particles rendered without the minecraft:particle_appareance_lighting component are now renderered as expected in Vibrant Visuals.
+Removed ; debug feature for toggling graphics modes.
+Items
+
+Extended minecraft:wearable item component to allow hiding players' locations, similar to mob heads and the carved pumpkin.
+The new hides_player_location boolean field defines whether players are hidden on the locator bar and locator maps when eqipped in the appropriate wearable slot, defined by the slot field.
+The default value of hides_player_location is false.
+All minecraft:wearable item components defined previously will have the value of hides_player_location default to false.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs" experimental toggle.
+
+
+==== Changes ====
+
+
+===== Technical =====
+API
+
+@minecraft/diagnostics
+Updated SentryOptions properties:
+dsn: Updated to allow the usage of SecretString, allowing for secrets from @minecraft/server-admin to be used to initialize Sentry.
+(new) maxBreadcrumbs: The maximum number of breadcrumbs to store and report per error event to Sentry. Default is 20, supported values range from 0 (no breadcrumbs) to 100.
+(new) sampleRate: A number between 0 and 1 that indicates the percentage of events that should be sent to Sentry. For example, a value of 0.5 means that 50% of events will be sent. Default is 1 (100% of events). 0 means no events will be sent.
+(new) debug: When set to true, additional content logging from the Sentry system will be enabled. Defaults to false.
+Experimental
+
+Deprecated align_target_and_camera_forward. Use control_scheme to switch between control schemes instead.
+
+
+=== Fixes ===
+24 issues fixed
+From released versions before Bedrock Edition 1.21.90
+
+MCPE-74632  Nether fossils spawn infrequently
+MCPE-127677  Placing Water Onto A Spore Blossom Deletes The Spore
+MCPE-174465  Player is teleported to the void when using an end gateway
+MCPE-177722  Long /tellraw Commands cause the Game to Freeze when run in Chat
+MCPE-194284  /testforblock ignoring block states after 1.21.70 update
+MCPE-199256  Vibrant Visuals: The adjust brightness slider doesn't work properly
+MCPE-203239  Vibrant Visuals: Water disappears above Y coordinate 190
+MCPE-216786  Happy Ghast will spin when tied to fence
+MCPE-217394  "Game is paused" text can overflow
+From the previous development version
+
+MCPE-217604  Leash is not connected properly to happy ghasts
+MCPE-217870  Hotbar tooltip text does not have shadows, making the text difficult to see when setting Text Background Opacity to 0
+Other
+
+Fixed sculk vein block looking small and elongated when held or in an item frame.
+Now the cold cow variant has the correct mirroring of its horn texture.
+Flying mobs no longer make footstep sounds when moving close to the ground.
+Happy Ghasts will now correctly detect players on a different mount on top of them.
+Fix a crash in split-screen mode when a player would destroy a chest or book an other player had open.
+Fixed an issue where a resource pack error could be encountered when transfering between servers that use different versions of the same resource pack.
+Fixed an issue where downloading server resources would infinitely hang if another device requested to download the same resources at the same time.
+Fixed blocks in minecarts not being lit properly.
+Fixed a crash that could occur when a block's textures are configured to point to an empty atlas entry.
+Fixed incorrect content warnings for missing block textures in minecraft:material_instances component.
+Fixed an issue with the player_relative control scheme that made it really hard to travel directly forward or directly backwards.
+Fixed an issue where the player's head would sometimes jitter when using certain control schemes.
+Fixed the camera_relative_strafe control scheme.
+
+
+== Preview 1.21.90.26 ==
+Beta 1.21.90.26 (ChromeOS, Android), or Preview 1.21.90.26 (Windows, iOS, iPadOS, Xbox, PlayStation) is the fifth beta/Preview version for Bedrock Edition 1.21.90, released on May 20, 2025, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Beacon
+
+Now render from any chunk loaded in worlds opened in at least 1.21.90.
+
+
+==== Command format ====
+The camera default command will now properly reset third person camera view offset values
+The /controlscheme command no longer requires the "Experimental Creator Camera" toggle.
+
+
+==== Gameplay ====
+Sounds
+
+the_end_light_flash sound effect now triggers when the light flashes in the End dimension in Vibrant Visuals.
+Leashing, unleashing, collecting leashed mobs, and leashing mobs to other mobs now play custom sounds.
+Removing saddles, horse armor, harnesses, and carpets using shears now plays custom sounds.
+The Overworld
+
+Re-enabled Overworld chunk blending which was disabled in the last preview.
+Graphical
+
+Customized atmospherics, color grading, fog and lighting for the End, the Nether, the Overworld dimensions and a variety of biomes in Vibrant Visuals.
+Some issues exist with atmospherics in End and Nether dimensions.
+Recalibrated all emissive values in MERS textures in Vibrant Visuals.
+Update shadow configurations for "Favors Performance" targets on all Xbox platforms in Vibrant Visuals mode.
+Update Volumetric configs for "Prefers Performance" targets on Xbox One and Xbox One X in Vibrant Visuals mode.
+Reduced the intensity and speed of the caustics animation in Vibrant Visuals.
+Increased emissive intensity and adjusted tone mapping parameters in Vibrant Visuals.
+Added henyey_greenstein_g settings to the fog json files.
+New section henyey_greenstein_g allows specifying value for both air and water.
+Example:
+
+Updated the clouds texture.
+
+
+==== General ====
+Realms
+
+Realm owners can now choose to require members to opt into the Timeline in order to play on the Realm.
+To turn this feature on, go to Realms Stories --> Settings and enable "Require opt in to Timeline".
+The feature can be turned on and off at will.
+While the feature is on, Realm members who have not opted in will remain members of the Realm, but will not be able to play until they opt in.
+If a Realm member who previously opted in chooses to opt out, they will not be able to play on the Realm until they opt in again.
+Realm owners will be able to play on the Realm regardless of whether they have opted in.
+UI
+
+The animated up and down arrows on the locator bar have been repositioned to be closer to the player dot.
+Closing an anvil or an enchanting table now results in the experience bar being shown for 5 seconds instead of the locator bar.
+While using the "Joystick & tap to interact" touch mode, the "Joystick Visibility Option" is now forced into "Visible Joystick" while using the player_relative_strafe or camera_relative_strafe control scheme.
+
+
+==== Mobs ====
+General
+
+Mobs' and players' legs are now positioned more horizontally when riding, reducing clipping into the ridden entity.
+Boat
+
+Boats are now able to be pulled out of water using a lead.
+Ghastling
+
+The ghastling model is now slightly smaller than before and closer in size to its collision box, though the two still differ.
+The model is intentionally smaller than the collision to prevent z-fighting.
+This is intentionally not in parity with Java Edition, which doesn't require this workaround.
+Happy Ghast
+
+The visual size of the happy ghast has been slightly reduced to prevent z-fighting with water and other adjacent blocks.
+This change is purely visual and does not affect the happy ghast's collision.
+Happy ghast now immediately loses its ability to collide with entities upon death.
+Horse, Donkey, and Mule
+
+They can now be fed carrots to heal, grow, and improve their temper.
+Zombified Piglin
+
+Baby variants are once again equipped with golden swords.
+This change was not mentioned in the changelog
+
+
+==== Non-mob entities ====
+Projectiles
+
+Projectiles now have a tolerance margin that changes over time.
+Previously, all projectiles had a fixed 0.3 blocks tolerance margin added to the collision.
+Now, all projectiles start with no margin for the first two ticks of their flight.
+After that, the target margin will expand by 0.05 blocks per tick until it reaches the target margin of 0.3 blocks.
+This allows for more precise collision on targets close to the shooting player or entity, while still allowing for some collision leeway for targets further away.
+
+
+==== Technical ====
+API
+
+@minecraft/server
+Added localizationKey read only property to Dimension, which is the key for localization of a dimension's name used in language files.
+Added EntityHungerComponent, EntitySaturationComponent, EntityExhaustionComponent that allows read and write access to hunger, saturation, and exhaustion values on player objects.
+Added totalArmor and totalToughness read only properties to EntityEquippableComponent.
+BlockMovableComponent APIs have been added to beta.
+BlockMovableComponent::movementType
+BlockMovableComponent::stickyType
+Renamed CameraEaseOptions to just EaseOptions to for V2.0 scripting.
+Improved the naming used for the name property of several custom error classes.
+Block custom component event beforeOnPlayerPlace is now called when an item using replace_block_item is set to true for V2.0.0 and higher custom components.
+In 2.0.0, when using setCurrentValue of an EntityAttributeComponent, the desired value is checked against the effectiveMin and effectiveMax. If the value is out of bounds, an error is thrown.
+Enabled Player.applyImpulse and Player.clearVelocity in beta, which no longer throw errors.
+@minecraft/server-admin
+Updated transferPlayer to support NetherNet transfers. It now takes either a hostname/port combination or a NetherNet ID.
+Dedicated Server
+
+Exposed a new parameter for dedicated server to disallow usage of Vibrant Visuals while connected.
+Molang
+
+Added the query.is_riding_any_entity_of_type Molang query, which checks whether an entity is riding another entity of any specified type.
+UI
+
+Added warning pop-up for some Android devices when switching to Vibrant Visuals graphics mode.
+Added a toggle to video settings to enable in-game graphics mode switching. Enabling in-game graphics mode switching may impact texture quality.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Upcoming Creator Features" experimental toggle.
+
+
+==== Additions ====
+
+
+===== Technical =====
+Blocks
+
+Added minecraft:movable component under the "Upcoming Creator Features" toggle. This allows for blocks to configure how they should react when moved by a piston.
+movement_type (Required): Specifies how the block should react when moved by a piston.
+push_pull: Will allow a block to be pushed by a piston/sticky piston and pulled by a sticky piston (e.g. grass).
+push: Will allow a block to be pushed by a piston/sticky piston (e.g. glazed terracotta).
+immovable: Will not allow a block to be pushed or pulled by a piston/sticky piston (e.g. bedrock).
+popped: Will pop a block when pushed by a piston/sticky piston (e.g. leaves).
+sticky (Optional): Specifies how the block should handle adjacent blocks when moved by a piston.
+none: Default. Will not add any additional behavior.
+same: Will move adjacent blocks along with it when moved by a piston. It will not move different blocks with "sticky": "same" (e.g. a honey block can move another honey block but not a slime block).
+NOTE: This field only works when used with:
+
+
+==== Changes ====
+
+
+===== Technical =====
+World generation
+
+Namespaces can now be used in template pool element location and jigsaw block identifiers.
+
+
+=== Fixes ===
+37 issues fixed
+From released versions before Bedrock Edition 1.21.90
+
+MCPE-21743  Punching a leash knot uses the generic punch sound
+MCPE-68841  'Loading...' text says 'EMPTY' in the loading screen.
+MCPE-89549  Strays and wither skeletons cannot spawn as riders of spider jockeys
+MCPE-172657  A player sits too high in the boat
+MCPE-187962  Storage management UI does not allow access to all controls for mobile devices
+MCPE-188934  When playing splitscreen and second player looks up then down, the clouds for the first player disappear
+MCPE-190716  Arm detaches from body and shield in off-hand slot floats above shoulder when game is paused
+MCPE-201608  Happy Ghast takes Friendly Fire Damage from Players standing on top
+MCPE-201809  Vibrant Visuals: Night Vision effect is extremely dark instead of bright
+MCPE-201984  Vibrant Visuals: Standing near a lightsource illuminates the sky
+MCPE-203972  Vibrant Visuals: Screen appears black
+MCPE-204062  Vibrant Visuals: Water has blue fog trail following it
+MCPE-212932  Music immediately cuts off instead of fading out when exiting the world with pause feature disabled
+MCPE-217551  Player Locator Bar doesn't show player locations correctly in split screen multiplayer
+MCPE-218740  Happy ghast is not scaled down properly when harnessed
+From the previous development version
+
+MCPE-217634  Breeze and Blaze spawn eggs do not match Java Edition spawn eggs
+MCPE-218297  Ghast fireballs have a green glint like XP orbs
+MCPE-218652  Death Screen shows keyboard hints below
+MCPE-219598  Wandering Traders have leash connected to their feet after Leashing Updates.
+Other
+
+Fixed an issue with dried ghast block where replacing a dried ghast block in the same location would keep the random tick of the old, removed block, causing it to age faster than expected.
+Fixed a bug where entities that should not be moving were moving slightly.
+The back faces of transparent items held in hand, like stained glass, are no longer visible in Vibrant Visuals.
+Clouds no longer have a pink or yellow tint, during sunrise and sunset respectively, in Vibrant Visuals.
+Fixed inconsistent pixels on the pale oak boat and pale oak boat with chest items to match other boat items.
+The green harness item no longer uses the gray harness texture when Vibrant Visuals is enabled.
+Happy ghast and ghastlings no longer z-fight with adjacent blocks.
+Ghastlings are no longer rotated sideways when riding boats or chest boats.
+Happy ghast and ghast shadows are no longer cast on their tentacles when Fancy Graphics are enabled.
+Ropes wrapping a happy ghast are now rendered when certain entities are attached to it and it is harnessed.
+Cows and mooshrooms no longer render with four ropes when leashed to a happy ghast.
+Ghasts can no longer spawn in areas that are too small, preventing suffocation on spawn.
+Large entities attached by a leash to the happy ghast now properly render with four leashes when using simple graphics.
+The player dot now correctly decreases to the smallest size for the stationary player when another player moves linearly away from them.
+Fixed an issue where some on-screen UI elements would let the user interact with the world under them.
+Fixed a bug where the includeLiquidBlocks property on BlockRaycastOptions would not correctly result in hits on flowing water. This affects the following API methods in all versions: entity.getBlockFromViewDirection, dimension.getBlockFromRay, dimension.getBlockBelow, and dimension.getBlockAbove.
+Fixed a crash when adding or changing priority of resource packs in the create new world screen.
+Terrain matching jigsaw template pools will no longer create floating islands.
+
+
+== Preview 1.21.90.27 ==
+Beta 1.21.90.27 (ChromeOS, Android), or Preview 1.21.90.27 (Windows, iOS, iPadOS, Xbox, PlayStation) is the sixth beta/Preview version for Bedrock Edition 1.21.90, released on May 27, 2025, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Happy Ghast
+
+Updated ghastling speed to slow it down.
+The happy ghast's player detection area has been reverted to a single box: it now extends 2 blocks above its top, 1 block below, and 1 block to each side.
+The happy ghast no longer jitters when a player is detected at the edge of its detection area.
+
+
+==== Graphical ====
+Vibrant Visuals
+
+Temporarily reverted weather-related changes to sky color in Vibrant Visuals while some issues are sorted out.
+
+
+==== Technical ====
+Blocks
+
+alpha_test_to_opaque, alpha_test_single_sided_to_opaque, and blend_to_opaque will not shift to opaque in the distance.
+
+
+=== Fixes ===
+14 issues fixed
+From the Bedrock Edition 1.21.90 development versions
+
+MCPE-219640  Mule doesn't adjust facing direction when leashed to a happy ghast.
+MCPE-219652  Carried Items (Compass, Clock) Do Not Render Direction/Time in Hand.
+MCPE-220034  Ocelot's lead hold position is offset.
+MCPE-220035  Allay's lead hold position is incorrect.
+MCPE-220039  Squid's lead hold position is incorrect.
+MCPE-220040  Player can not leash other mobs to a glow squid.
+MCPE-220041  Snow golem's lead hold position is incorrect.
+From the previous development version
+
+MCPE-220308  Vibrant Visuals: Everything appears green on Android.
+Other
+
+Fixed ambient lighting levels in the Nether in Vibrant Visuals.
+Fixed fog settings in warm and humid biomes in Vibrant Visuals.
+Fixed black screen issues on some Android devices when in Vibrant Visuals.
+Fixed items with empty icon textures displaying as garbled pixels when held in hand.
+Fixed the default control schemes for all cameras.
+Fixed the leash attach positions for the parrot and the glow squid.
+
+
+== Preview 1.21.90.28 ==
+Beta 1.21.90.28 (ChromeOS, Android), or Preview 1.21.90.28 (Windows, iOS, iPadOS, Xbox, PlayStation) is the seventh and final beta/Preview version for Bedrock Edition 1.21.90, released on June 2, 2025, which fixes bugs and makes it so Vibrant Visuals is no longer used by default on some consoles.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Happy Ghast
+
+Players riding happy ghasts no longer cause nearby happy ghasts to stop.
+This prevents players from blocking each other when flying happy ghasts too close together.
+Happy ghasts can now be pushed by other mobs even while being ridden, except when made immobile by a player standing on it.
+
+
+==== Graphical ====
+Vibrant Visuals
+
+Turned off Vibrant Visuals by default on some console devices (Xbox One, Xbox One S, PlayStation 4).
+
+
+==== Technical ====
+Entity Filters
+
+Added the is_vehicle_family entity filter, which returns true when the subject entity is riding a vehicle with the specified family.
+
+
+=== Fixes ===
+3 issues fixed
+From the Bedrock Edition 1.21.90 development versions
+
+MCPE-220333  Vibrant Visuals: The screen no longer turns bright white upon leaving the End in Vibrant Visuals
+MCPE-220606  Ghast is not centered vertically on its hitbox
+Other
+
+Fixed a crash that could occur when viewing the friends drawer.
+
+
+== Notes and references ==
+
+
+== Navigation ==

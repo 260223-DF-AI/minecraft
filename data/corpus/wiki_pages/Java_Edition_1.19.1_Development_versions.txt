@@ -1,0 +1,509 @@
+This is a list of Java Edition 1.19.1 development versions.
+
+
+== 22w24a ==
+22w24a is the first and only snapshot for Java Edition 1.19.1, released on June 15, 2022, which adds allay duplication and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Social interactions screen
+
+It is now possible to report a player for sending abusive messages in the chat on the social interactions screen.
+Multiple chat messages can be selected for reporting.
+The category of the chat report can be selected from a list of Chat Report Categories, as following:
+Child sexual exploitation or abuse
+Someone is talking about or otherwise promoting indecent behavior involving children.
+Defamation, impersonation, or false information
+Someone is damaging someone else's reputation, pretending to be someone they're not, or sharing false information.
+Drugs or alcohol
+Someone is talking about or otherwise promoting drugs or alcohol.
+Extreme violence or gore
+Someone is talking about, sharing, or otherwise promoting extreme violence, weapons, or bloody gore.
+Harassment or bullying
+Someone is shaming, attacking, or bullying you or someone else. This includes when someone is repeatedly trying to contact you or someone else without consent.
+Hate speech
+Someone is attacking you or another player based on characteristics of their identity, like religion, race, or sexuality.
+Imminent harm - Self-harm or suicide
+Someone is threatening to harm themselves in real life, or talking about harming yourself in real life.
+Imminent harm - Threat to harm others
+Someone is threatening to harm you or someone else in real life.
+Non-consentual [sic] intimate imagery
+Someone is talking about, sharing, or otherwise promoting private and intimate images.
+Nudity or pornography
+Someone is talking about, sharing, or otherwise promoting nudity or pornography.
+Profanity
+Someone is using or otherwise promoting bad language.
+Terrorism or violent extremism
+Someone is talking about, promoting, or threatening with acts of terrorism or violent extremism for political, religious, ideological, or other reasons.
+Additional comments can be entered to provide more details and information regarding the report.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Sculk sensor
+
+Added the jukebox_play and jukebox_stop_play game event that the sculk sensor reacts to, with frequency value 0.
+
+
+==== Mobs ====
+Allays
+
+Can now dance when a nearby jukebox is playing.
+If an allay is given an amethyst shard while dancing, it can "duplicate", creating another allay and consuming the shard.
+It has a 2.5 minute cooldown between each duplication.
+The newly created allay does not share the original allay's properties (such as custom name).
+Controlled by a [Byte] CanDuplicate tag (set to true by default).
+
+
+==== General ====
+Chat styling
+
+The style field default value is no longer present in the JSON file for chat types.
+game_info.json now contains a narration setting by default.
+Pause menu
+
+The social interactions screen is now available via the pause screen when in a multiplayer game.
+Resource pack
+
+Added 3 new icon for the report chat function in social_interactions.png.
+Tags
+
+Added jukebox_play and jukebox_stop_play game events into the #vibrations and #warden_can_listen game event tags.
+
+
+=== Fixes ===
+12 issues fixed
+From released versions before 1.19
+
+MC-72687  There are no shadows on text displayed within the action bar.
+MC-144043  Trader llamas continue to spit after their target died.
+MC-146891  Nitwit villager can have a profession.
+MC-177505  Cured Villager can work at wrong workstation.
+MC-252082  Loading server resource packs reloads twice when one is already loaded.
+From 1.19
+
+MC-249523  Sky color is visible for a brief moment after applying Night Vision under Darkness effect.
+MC-250261  Frogs can lay spawn on flowing water.
+MC-250267  Frogs don't lay their spawn on waterlogged blocks.
+MC-252363  Mobs that naturally spawn in with equipment will play the respective equipping noise.
+MC-252439  Cured Villager trades are not refreshing.
+MC-252539  Commands sending messages use formatting of regular chat in server logs.
+MC-252683  Unexpected exception in the selector loop causing server lag.
+
+
+== 1.19.1 Pre-release 1 ==
+1.19.1 Pre-release 1 (known as 1.19.1-pre1 in the launcher) is the first pre-release for Java Edition 1.19.1, released on June 21, 2022, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Sculk sensor
+
+No longer reacts to the jukebox_play, and jukebox_stop_play game event.
+
+
+==== Mobs ====
+Allay
+
+Allay duplication now has a 5-minute cooldown.
+
+
+==== General ====
+
+Social interactions screen
+
+Reported players can now be banned from online play and Realms after moderator review.
+The game shows a notice screen on startup if a player has been banned from online play.
+The reason and the duration of the ban is shown on this screen.
+Tags
+
+Removed jukebox_play, and jukebox_stop_play game events from the #vibrations, and #warden_can_listen game event tags.
+
+
+=== Fixes ===
+20 issues fixed
+From 1.19
+
+MC-249973  Loading resource packs is significantly slower in 1.19.
+MC-252327  World list fails to load after restarting game and deleting a world.
+MC-252508  Realms worldgen type missing language string.
+MC-253055  Resource packs causing each WeighedSoundEvents to duplicate Sounds
+From the previous development version
+
+MC-253102  Chat reporting uses "Messages" for one message
+MC-253105  Chat report category scroll bar intersects the selected option outline
+MC-253108  Selection boxes within the "Select Report Category" menu aren't vertically centered with the text inside them
+MC-253109  The descriptions of report categories can overlap the "Description:" subtitle
+MC-253110  Text within the "Discard report and comments?" menu isn't horizontally centered
+MC-253111  You cannot use Ctrl + Home or Ctrl + End to navigate to the beginning or end of text within the "Report Chat" menu
+MC-253113  Chat message content can extend past the outline of a button and past the scroll bar
+MC-253123  The button within the "Sending your report" menu changes upon resizing the game window
+MC-253126  The scroll bar within the "Select Chat Messages to Report" menu sometimes resets its position to the bottom of the list after scrolling upwards
+MC-253127  Reason is not provided when chat report creation is not able to be started
+MC-253134  Allays from older worlds dont duplicate
+MC-253176  The character indicator symbol within the Report Chat menu is untranslatable
+MC-253178  The word Non-consensual is spelled as Non-consentual within the gui.abuseReport.reason.non_consensual_intimate_imagery string
+MC-253183  The word Unrelated within the gui.chatSelection.fold string is incorrectly capitalized
+MC-253185  The Esc cannot be used to exit the Sending your report menu
+MC-253191  Particles produced from allays duplicating cannot be seen by other players
+
+
+== 1.19.1 Pre-release 2 ==
+1.19.1 Pre-release 2 (known as 1.19.1-pre2 in the launcher) is the second pre-release for Java Edition 1.19.1, released on June 30, 2022, which adds chat trust status, makes changes to chat types, enforces secure profiles by default, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Chat
+
+Messages that are not signed with the secure chat system, or have been tampered with by the server are now marked.
+Messages with missing or invalid signatures are marked as "Not Secure".
+Messages that are detected as modified are marked as "Modified".
+The trust status of messages are displayed with both a colored indicator and an icon.
+The colored indicator is always visible.
+The icon is only visible when the chat screen is open.
+Hovering over the icon provides more information about the trust status.
+For modified messages, the original secure text is also displayed in the tooltip.
+
+
+=== Changes ===
+
+
+==== General ====
+Chat
+
+Chat types added to the chat_types registry are now only used for player chat, and not system messages.
+The system and game_info chat types have been removed.
+Chat types have been simplified and are now only required to define chat and narration decorations.
+Chat types no longer support overlays.
+A system message should instead be used to display overlays.
+server.properties
+
+enforce-secure-profile is now defaulted to true for dedicated servers.
+
+
+=== Fixes ===
+7 issues fixed
+From the Java Edition 1.19.1 development versions
+
+MC-253112  The game output console is logged with warnings regarding chat packets with invalid signatures when using entity selectors within commands.
+MC-253121  Entities and other non-player chat message sources appear as players on the Select Chat Messages to Report screen.
+From the previous development version
+
+MC-253493  The descriptions of report categories can once again overlap the "Description:" subtitle.
+MC-253495  Selection boxes of fields within the "Select Report Category" menu list don't contain white outlines when selected using the  Tab key.
+MC-253497  Entities and other non-player chat message sources appear in the Social Interactions menu.
+MC-253501  Long messages within the "Select Chat Messages to Report" menu can extend beyond selection boxes and past the scroll bar.
+MC-253517  Online players cannot connect to offline server because "invalid profile public key signature".
+
+
+== 1.19.1 Pre-release 3 ==
+1.19.1 Pre-release 3 (known as 1.19.1-pre3 in the launcher) is the third pre-release for Java Edition 1.19.1, released on July 6, 2022, which adds a splash commemorating Technoblade, makes tweaks to chats, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Splash
+
+Added the splash "Technoblade never dies!" for the commemoration of Technoblade.
+
+
+=== Changes ===
+
+
+==== General ====
+Chat
+
+Moved the chat scrollbar to the right of the chat window.
+System messages are now displayed with a gray color indicator.
+The msg_command chat type has been split apart into msg_command_incoming and msg_command_outgoing.
+The team_name chat type parameter has been renamed to target.
+This chat type parameter is now used by msg_command_outgoing.
+Protocol
+
+Custom servers can set their own auto-completion options for regular chat via a new network packet.
+Social interactions screen
+
+The list of players on the Social Interactions screen now places entries for players with recently seen messages at the top of the list.
+Updated descriptions of the following report categories:
+Harassment or bullying
+Someone is shaming, attacking, or bullying you or someone else. This includes when someone is repeatedly trying to contact you or someone else without consent or posting private personal information about you or someone else without consent ("doxing").
+Imminent harm - Threat to harm others
+Someone is threatening to harm you or someone else themselves in real life or talking about harming themselves in real life.
+Terrorism or violent extremism
+Someone is talking about, promoting, or threatening to commit with acts of terrorism or violent extremism for political, religious, ideological, or other reasons.
+
+
+=== Fixes ===
+6 issues fixed
+From 1.19
+
+MC-253214  Tooltips will become offset in certain cases.
+From the Java Edition 1.19.1 development versions
+
+MC-253182  The second instance of a reflexive pronoun is used incorrectly within the gui.abuseReport.reason.self_harm_or_suicide.description string.
+MC-253223  A preposition is incorrectly used within the gui.abuseReport.reason.terrorism_or_violent_extremism.description string.
+MC-253496  /execute as player run say counts to the report system.
+From the previous development version
+
+MC-253742  The chat scroll bar overlaps the colored indicators used to show the trust status of messages.
+MC-253773  Whispers appear as modified by the server.
+
+
+== 1.19.1 Pre-release 4 ==
+1.19.1 Pre-release 4 (known as 1.19.1-pre4 in the launcher) is the fourth pre-release for Java Edition 1.19.1, released on July 8, 2022, which makes tweaks to chats, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== General ====
+Chat
+
+Insecure chat messages logged in the server are prefixed with a [Not Secure] tag.
+The order of chat messages are now cryptographically verified.
+This is used for validating the context of chat messages for player reports.
+Protocol
+
+Custom servers can hide player chat messages from display via a new network packet.
+This does not delete player chat messages from chat logs.
+
+
+=== Fixes ===
+2 issues fixed
+From the Java Edition 1.19.1 development versions
+
+MC-253743  The server console doesn't state if chat messages aren't secure or have been modified.
+MC-253813  Chat commands with entity selectors often reported as "This message is not secure".
+
+
+== 1.19.1 Pre-release 5 ==
+1.19.1 Pre-release 5 (known as 1.19.1-pre5 in the launcher) is the fifth pre-release for Java Edition 1.19.1, released on July 15, 2022, which makes tweaks to chats and fixes bugs.
+
+
+=== Changes ===
+
+
+==== General ====
+Chat
+
+When writing chat messages, the signing status of the displayed chat messages is shown with a colored indicator.
+The indicator either appears to the left of the chat input field, or to the left of the chat preview if chat preview is being used.
+The indicator is green when the displayed message is signed.
+The indicator is orange when chat preview is enabled and a preview is waiting to be signed.
+The team_msg_command chat type has been split apart into team_msg_command_incoming and team_msg_command_outgoing.
+Chat preview
+
+The background of the chat preview also displays slightly faded when a preview is waiting to be signed.
+The "On Modified" mode no longer displays previews if the message has not been modified by the server.
+Chat preview is now enabled in singleplayer, and is displayed when using commands that have selector substitution such as /say.
+Previewed hover events and click events are now highlighted with a solid background.
+Options
+
+Added "On Send" chat preview option for updating chat previews only when attempting to send a message.
+To confirm sending a message, a second hit of the  Enter/ Enter key is required.
+The previous "ON" setting has been renamed to "On Modified".
+Social interactions screen
+
+Updated descriptions of the following report categories:
+Imminent harm - Self-harm or suicide
+Someone is threatening to harm themselves in real life, or talking about harming yourself themselves in real life.
+Imminent harm - Threat to harm others
+Someone is threatening to harm themselves in real life or talking about harming themselves you or someone else in real life.
+Terrorism or violent extremism
+Someone is talking about, promoting, or threatening with to commit acts of terrorism or violent extremism for political, religious, ideological, or other reasons.
+
+
+=== Fixes ===
+11 issues fixed
+From released versions before 1.19
+
+MC-130243  /debug stop message uses OS locale specific number formatting.
+MC-149047  Scroll Sensitivity slider label uses OS locale for number formatting.
+From 1.19
+
+MC-250034  Standing on top of mud as it converts to clay causes the player to fall through or be pushed out of the block.
+MC-252546  Poor audio quality compared to 1.18.2.
+MC-252702  Game crashes when trying to launch 1.19 when system is in Arabic, Persian, or adjacent formats.
+MC-253888  Messages that servers have tampered with through chat reporting are signed and reportable.
+MC-254228  Client data generator crashes due to locale-dependent String.format.
+From the Java Edition 1.19.1 development versions
+
+MC-253223  A preposition is incorrectly used within the gui.abuseReport.reason.terrorism_or_violent_extremism.description string.
+MC-253950  Sending a chat message too fast after typing it fails to sign the eventual proper chat preview.
+MC-253997  The current description of "Imminent harm - Threat to harm others" report category seems not matching its title.
+From the previous development version
+
+MC-254089  Chat Preview components allow server to "hide" content.
+
+
+== 1.19.1 Pre-release 6 ==
+1.19.1 Pre-release 6 (known as 1.19.1-pre6 in the launcher) is the sixth and final pre-release for Java Edition 1.19.1, released on July 20, 2022, which makes small tweaks to sculk sensors and sculk catalysts and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Sculk catalysts
+
+Now drop 5 XP instead of 20 XP.
+
+
+==== Command format ====
+General
+
+The run_command click event for text components no longer supports any commands that send chat messages.
+/tellraw should be used instead.
+
+
+==== General ====
+Chat
+
+Colors of the signing indicators for sending a message have been adjusted for improved accessibility.
+The indicator is light blue instead of green when the displayed message is signed.
+The indicator is light yellow instead of orange when chat preview is enabled and a preview is waiting to be signed.
+
+
+=== Fixes ===
+11 issues fixed
+From released versions before 1.19
+
+MC-148149  Linux game crash when opening links.
+MC-207077  Crash on loading pre-1.13 world with noteblock + note NBT in inventory.
+MC-235614  Reference to unexisting predicate in a datapack causes java.lang.NullPointerException.
+MC-252265  --server argument causes java.lang.NullPointerException crash on some servers.
+From 1.19
+
+MC-252190  Player-dropped items creating vibrations depends on you sneaking at the moment the item hits the ground, instead of when you threw the item.
+MC-252258  Wool block/carpet items generate vibrations unless thrown by crouching players.
+MC-253402  Game crash when you  Shift right-click on an item in your hotbar to the chest at the same time as you die.
+MC-254349  Crash when putting dye into a loom on a modded server.
+From the previous development version
+
+MC-254255  Unable to text in chat with Chat Preview On send while sleeping.
+MC-254261  The background opacity box of the chat preview field renders behind the "Leave Bed" button when sleeping in beds.
+MC-254284  Sending chat packets with invalid message type id crashes the game.
+
+
+== 1.19.1 Release Candidate 1 ==
+1.19.1 Release Candidate 1 (known as 1.19.1-rc1 in the launcher) is the first release candidate for Java Edition 1.19.1, released on June 23, 2022, which updates the categories for chat reporting and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Command format ====
+General
+
+The run_command click event for text components no longer supports sending chat messages directly.
+Only commands are supported, so a command such as /say should be used instead.
+This means values now always need to be /-prefixed.
+
+
+==== General ====
+Debug screen
+
+The "Blending" row now disappears when chuck that the player is in uses the new method, instead of displaying "Blending: New".
+Social interactions screen
+
+Updated the categories for chat reporting.
+Removed the "Extreme violence or gore", "Nudity or pornography", and "Profanity" categories.
+Updated descriptions of the following categories:
+Defamation, impersonation, or false information
+Someone is damaging someone else's reputation, pretending to be someone they're not, or sharing false information with the aim to exploit or mislead others.
+Drugs or alcohol
+Someone is talking about or otherwise promoting drugs or alcohol encouraging others to partake in illegal drug related activities or encouraging underage drinking.
+Harassment or bullying
+Someone is shaming, attacking, or bullying you or someone else. This includes when someone is repeatedly trying to contact you or someone else without consent  or posting private personal information about you or someone else without consent.
+Terrorism or violent extremism
+Someone is talking about, promoting, or threatening with to commit acts of terrorism or violent extremism for political, religious, ideological, or other reasons.
+Decreased the maximum number of selected messages from 10 to 4, and changed the amount of chat context sent with each chat report from 4 older messages and 2 newer messages to 7 older messages and 2 newer messages.
+
+
+=== Fixes ===
+10 issues fixed
+From 1.19
+
+MC-93254  Color in text prompt using commands.
+MC-250020  Allay doesn't ignore items when mobGriefing is set to false.
+MC-252511  Bedrock not generating on the new blending border between old and new blending.
+MC-252987  Illegal character \n in text component clickEvent.
+MC-253336  Using the eye of ender "crashes" game in the seed: -3721742095548798177.
+From the Java Edition 1.19.1 development versions
+
+MC-253114  Selection boxes within the "Select Chat Messages to Report" menu don't disappear when deselecting fields after reentering the menu.
+MC-253188  Selection boxes within the "Select Chat Messages to Report" menu differ in size ever so slightly depending on how they're selected.
+MC-253225  Selection boxes of fields within player reporting menu lists don't contain white outlines when selected using the  Tab key.
+MC-253227  Players can only be reported using the reporting system if they're present within the world.
+From the previous development version
+
+MC-253422  The selection of the "Please report breaches of our Community Standards" text within the "Select Report Category" menu is slightly confusing due to the words "Community Standards" being underlined by default.
+
+
+== 1.19.1 Release Candidate 2 ==
+1.19.1 Release Candidate 2 (known as 1.19.1-rc2 in the launcher) is the second release candidate for Java Edition 1.19.1, released on July 21, 2022, which makes tweaks and fixes bugs.
+
+
+=== Changes ===
+
+
+==== General ====
+Chat
+
+Added a warning toast when connecting to a server that doesn't enforce secure chat.
+Options
+
+Tweaked the names of the chat preview options.
+Renamed "On Modified" to "While Typing".
+Renamed "On Send" to "When Sending".
+
+
+=== Fixes ===
+5 issues fixed
+From 1.19
+
+MC-254355  Key binds set to mouse buttons of number greater than 8 switch over by 1 when the game starts.
+From the previous development version
+
+MC-254405  Debug messages aren't prefixed with gray color indicators.
+MC-254417  Screenshot messages aren't prefixed with gray color indicators.
+MC-254419  Local game hosting messages aren't prefixed with gray color indicators.
+MC-254421  Social interaction messages aren't prefixed with gray color indicators.
+
+
+== 1.19.1 Release Candidate 3 ==
+1.19.1 Release Candidate 3 (known as 1.19.1-rc3 in the launcher) is the third and final release candidate for Java Edition 1.19.1, released on July 26, 2022, which makes a change to chat, and fixes a bug.
+
+
+=== Changes ===
+
+
+==== General ====
+Chat
+
+The chat input box no longer applies to custom font glyphs with negative advances, or glyphs with advances greater than 32.
+
+
+=== Fixes ===
+1 issue fixed
+From the previous development version
+
+MC-254529  Warning and information toasts can overlap one another.
+
+
+== Notes and references ==
+
+
+== Navigation ==

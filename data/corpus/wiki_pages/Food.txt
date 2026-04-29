@@ -11,7 +11,7 @@ Eating (or drinking) a consumable takes 32 game ticks (1.6 seconds), with the ex
 
 
 === Eating while at full hunger ===
-In Survival, food cannot be eaten while already at full hunger, with the exception of chorus fruit, golden apples, enchanted golden apples, honey bottles, and suspicious stew. This also applies to potions, water bottles, and milk buckets. In Creative mode and Peaceful difficulty‌[Bedrock Edition  only], any food can be consumed at any time.
+In Survival, food cannot be eaten while already at full hunger, with the exception of chorus fruit, golden apples, enchanted golden apples, honey bottles, and suspicious stew. This also applies to potions, water bottles, and milk buckets. In Creative mode and Peaceful difficulty[Bedrock Edition  only], any food can be consumed at any time.
 
 
 == Hunger ==
@@ -79,7 +79,7 @@ The Hunger effect removes 1 () hunger or 1 () saturation point every 40level sec
 
 === Saturation effect ===
 
-The Saturation effect replenishes 1 () hunger point and 2 () saturation points every 0.05 seconds (1 tick)‌[Java Edition  only] per level. It is applied exclusively through suspicious stew crafted with a blue orchid or dandelion.
+The Saturation effect replenishes 1 () hunger point and 2 () saturation points every 0.05 seconds (1 tick)[Java Edition  only] per level. It is applied exclusively through suspicious stew crafted with a blue orchid or dandelion.
 
 
 == Food sources ==
@@ -90,11 +90,11 @@ The following items cannot be eaten on their own. Instead, they are used to craf
 
 
 == Internal variables ==
-Food uses four variables, the values of which are stored in the player.dat format. Variables can be queried in-game with the following command: /data get entity <player's name> <variable>‌[Java Edition  only].
+Food uses four variables, the values of which are stored in the player.dat format. Variables can be queried in-game with the following command: /data get entity <player's name> <variable>[Java Edition  only].
 
-foodLevel: The player's current hunger level, shown on the hunger bar. Its initial value on world creation or respawn is 20 ( × 10).
+foodLevel: The player's current hunger level, shown on the hunger bar. Its initial value on world creation or respawn is 20 (  10).
 foodSaturationLevel: The player's current saturation level, which determines how fast foodLevel depletes and is controlled by the kinds of food the player has eaten. Its maximum value always equals foodLevel's value and decreases with foodLevel. Its initial value on world creation or respawn is 5.
-foodTickTimer: This variable is used when foodLevel either exceeds 17 (), or is at zero. It increases on every tick, and whenever it reaches 80 (4 seconds), it resets to zero and 1HP is added or deducted, depending on whether the player is saturated or starving. If the player has a full 20 ( × 10), 1⁄6 of 1HP times the player's foodSaturationLevel is restored, up to a maximum of 1HP, when foodTickTimer reaches 10 (1⁄2 second), and foodTickTimer is reset to zero.
+foodTickTimer: This variable is used when foodLevel either exceeds 17 (), or is at zero. It increases on every tick, and whenever it reaches 80 (4 seconds), it resets to zero and 1HP is added or deducted, depending on whether the player is saturated or starving. If the player has a full 20 (  10), 16 of 1HP times the player's foodSaturationLevel is restored, up to a maximum of 1HP, when foodTickTimer reaches 10 (12 second), and foodTickTimer is reset to zero.
 foodExhaustionLevel: The player's current exhaustion level, which determines how fast the foodSaturationLevel depletes. Its value is increased by the player's actions (see Exhaustion level increase for specific values). The initial value is zero. When it reaches a value of at least 4, the total value is decreased by 4 and one point is subtracted from foodSaturationLevel, or foodLevel if foodSaturationLevel is at zero.
 
 

@@ -1,0 +1,2107 @@
+This is a list of Java Edition 1.21.2 development versions.
+
+
+== 24w33a ==
+24w33a is the first snapshot for Java Edition 1.21.2, released on August 15, 2024, which updates bundles, adds the Minecart Improvements and Redstone Experiments experimental data packs, makes various changes, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Items ====
+Banner patterns
+
+Added two new banner patterns for parity with Bedrock Edition:
+ Field masoned banner pattern
+ Bordure indented banner pattern
+
+
+==== Mobs ====
+Dolphins, glow squid, squid
+
+Now have a baby variant.
+Due to a bug, baby dolphins do not spawn naturally.
+Salmon
+
+Now have small and large variants.
+
+
+==== Non-mob entities ====
+TNT and minecart with TNT
+
+Added optional field explosion_power.
+Defaults to 4.
+For TNT minecarts, field value is added to speed-based explosion power.
+
+
+==== Gameplay ====
+Attributes
+
+Added tempt_range attribute which can be used to change the range at which temptable mobs can be tempted.
+Death messages
+
+Added a new death message for when killed by a mace smash attack.
+<player/mob> was smashed by <player>
+<player/mob> was smashed by <player> with <item>
+Sounds
+
+Added unique break, fall, hit, place, and step sounds for the monster spawner.
+
+
+==== General ====
+Data component format
+
+Added minecraft:repairable item stack component.
+
+Items with this component can be repaired, if damageable, in an anvil using the specified ingredient.
+e.g. repairable={items:'stick'}
+Added minecraft:enchantable item stack component.
+
+If present, and applicable enchantments are available, items with the component can be enchanted in an enchanting table.
+e.g. enchantable={value:15}
+Experiments
+
+Added the Minecart Improvements and Redstone Experiments experimental data packs.
+Goat horn instrument definition
+
+Goat horn instruments are now data-driven.
+They are now defined in a data pack registry folder called instrument.
+Like other registries, changing this content in data packs is considered experimental and requires a full world re-load to take effect.
+Fields:
+sound_event: the sound event the instrument plays.
+range: the maximum range (in blocks) at which the sound can be heard.
+use_duration: the amount of time (in seconds) the instrument is considered in use after triggering, which also serves as its cooldown.
+description: a text component used as the description of the instrument in item tooltips.
+Options
+
+Added new video setting "Reduce FPS when" which controls when the game limits its maximum frame rate.
+Options include:
+AFK: FPS limited to 30 if the game hasn't received input for 1 minute, and further limits FPS to 10 after 9 minutes. Also limits FPS to 10 when the game is minimized.
+Minimized: only limits FPS to 10 when the game is minimized.
+Defaults to AFK.
+Painting variant definition
+
+Added new optional fields author and title, holding text components to be displayed in the creative menu tooltip.
+This replaces previous mechanism where those values were derived from variant name.
+Author tooltip has been removed for earth, wind, fire, water and wither variants.
+Tags
+
+Added following item tags:
+furnace_minecart_fuel: items that can be used to refuel a furnace minecart.
+villager_picks_up: items that a villager tries to pick up from the ground.
+Added new tags to control which items can be used to craft and repair various tool sets:
+wooden_tool_materials
+iron_tool_materials
+gold_tool_materials
+diamond_tool_materials
+netherite_tool_materials
+Added mace_smash damage tag.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Loom
+
+Now requires field masoned banner pattern and bordure indented banner pattern to craft corresponding banners.
+Nether portal
+
+Reduced teleport cooldown for minecarts and boats from 15 seconds to 0.5 seconds.
+Reduced teleport cooldown for projectiles from 15 seconds to 0.1 seconds.
+Redstone comparators and redstone repeaters
+
+The powered models have changed.
+
+
+==== Items ====
+Banner patterns
+
+Added unique item textures for each banner pattern.
+Each banner pattern item now includes their pattern in their name instead of as a subtitle.
+Bundle
+
+Updated textures, models and sounds for bundles.
+Bundle icon has new models and textures.
+The bundle UI has new textures and scaling.
+Added a new sound for when failing to add an item to a bundle.
+Redstone torch
+
+The textures and models were updated.
+Shield
+
+Enchanted shields now have the same reduced glint as enchanted armor.
+Smithing templates
+
+Are now named after their template type instead of the generic "Smithing Template" name.
+They instead specify that they are a smithing template through a subtitle in the hover text.
+The coast armor trim is unaffected by this change.
+Suspicious stew
+
+Recipes for it are now shown in recipe book.
+
+
+==== Mobs ====
+Bat
+
+Can now spawn at any height, not just below sea level, as long as it is dark enough and there is a solid block to spawn on.
+Bees
+
+Now wander around randomly for less time after exiting a nest/hive.
+If a bee has a known nest/hive, it travels less far from it, thus being less likely to get lost.
+Significantly increased the amount of time a bee can take to return to a known nest/hive before it gives up trying to return home.
+Bees are now a lot less likely to get stuck on corners or when they are close to a nest/hive they are trying to return to.
+Bees are also now a lot less likely to try and pathfind to a flower they cannot reach.
+Breeze
+
+No longer have a minimum distance required to attack a target.
+Wolves
+
+Can now also be fed cod, cooked cod, salmon, cooked salmon, tropical fish, pufferfish and rabbit stew to heal, breed them or speed up their growth.
+
+
+==== World generation ====
+Feature
+
+Removed unused seagrass_simple feature.
+Trial chambers
+
+Added new variations to the hallways, including "encounters": short challenges leading to a larger chamber.
+Numerous changes are made, such as removing the oak tree in corridor/entrance_1 and tweaking corridor/straight_6 
+Beds in intersections now have their colors randomized.
+Replaced the empty chests at the entrance of chamber with a hopper and barrel to better show the players that these are meant for disposal and inventory management.
+
+
+==== Gameplay ====
+Advancements
+
+The Over-Overkill advancement now requires a smash attack.
+Attribute
+
+Attribute IDs no longer have generic., player. and zombie. prefixes.
+Raid
+
+No longer starts if the raiders cannot find a place to spawn within a reasonable distance of the village they are trying to raid.
+Rarity
+
+Reevaluated rarity values for the following items:
+Common
+End Crystal
+Golden Apple
+Uncommon
+
+Rare
+
+Epic
+
+
+==== General ====
+Data component format
+
+The title specified in the written_book_content component is now prioritized over custom_name and item_name for any item with a non-empty title in this component.
+Data pack
+
+The pack format version is now 49.
+Debug screen
+
+The value "B" in the row "E" has been removed from the debug screen.
+Enchantment definition
+
+Added support for enchantment trigger projectile_spawned in the following items:
+Snowballs
+Tridents
+Small fireballs
+Thrown potions
+Ender pearls
+Fishing rod
+Firework rocket
+Wind charge
+Eggs
+Loot table
+
+Sheep shearing is now controlled by loot tables found as shearing/sheep/<color>.
+Mooshroom shearing is now controlled by loot tables found as shearing/mooshroom/<variant>.
+Snow golem shearing is now controlled by a loot table found as shearing/snow_golem.
+Network protocol
+
+Added minecraft:client_tick_end serverbound packet during play phase, sent when the client finishes processing its current tick.
+Added ability for custom servers to override the order that players appear in the 'tab list'.
+This is controlled by a non-negative ordering index that is sorted highest to lowest.
+The client now shares the state of the 'Particles' limiter option to be used by custom servers.
+Performance
+
+Improved server performance when the render distance is high.
+Reduced performance impact when loading and generating chunks.
+Raw JSON text format
+
+Invalid selector patterns in chat components now causes commands to fail to parse, instead of resolving to an empty string.
+Realms
+
+Extended the text-filtering-config in order to support an internal migration for Realms profanity filtering.
+Servers currently utilizing the text-filtering-config are able to continue to do so without any changes.
+Recipes
+
+The crafting_special_suspiciousstew recipe type has been removed.
+The format used for recipe ingredients has been simplified and aligned with other fields that accept item lists (like item predicates):
+For items: { "item": "<item id>" } now becomes "<item id>".
+For tags: { "tag": "<tag id>" } now becomes "#<tag id>".
+Lists of items are still allowed, but tags can no longer appear in such list.
+Remaining restrictions:
+minecraft:air can't appear anywhere in ingredient.
+ingredient must have at least one tag or item.
+Fields template, base and addition in smithing_transform and smithing_trim recipes are now optional instead of accepting empty list.
+Reporting
+
+Added skin reporting reason "Sexually inappropriate" for skins that are graphic in nature relating to sexual acts, sexual organs, and sexual violence.
+Removed skin reporting reason "Defamation" due to lack of relevance for skins.
+Removed skin reporting reason "Threat of harm to others" due to already being covered by "Harassment or bullying" reporting reason
+Added a text label above the name reporting description box to clarify that only the name of the player is subject to the report
+Resource pack
+
+The pack format version is now 35.
+Removals and renames of some deprecated translations is now automatically applied at startup.
+Packs that used those translations need to re-add them manually.
+The full list is available in /assets/minecraft/lang/deprecated.json file inside the game's JAR file.
+Updated the format of post-processing effect definitions.
+The ChunkOffset uniform in terrain shaders has been renamed to ModelOffset
+intarget and auxtargets have been merged into a single inputs list, as specified by the input format below.
+outtarget has been renamed to output with the same format.
+targets is now a map between target name and target definition, as opposed to a list.
+Inline target names are replaced with an empty object.
+For example, ["swap"] becomes {"swap": {}}
+Target definitions with a specific size remain the same, with the name field moved into the map key.
+For example, [{"name": "potato", "width": 16, "height": 16}] becomes {"potato": {"width": 16, "height": 16}}
+Added support for emissive layers for block models.
+Added an optional light_emission field to block model elements.
+Integer value between 0 and 15, with 0 being the default value (no light emission).
+If specified and non-zero, this behaves as the minimum light level that the element can receive.
+The texture map for the arrow and bee stinger models have been updated.
+The model and UV mapping of the dragon egg have been updated.
+server.properties
+
+Added the option pause-when-empty-seconds.
+When set to a positive value, causes the server to pause when no player has been online for that many seconds.
+Defaults to 60.
+Removed the options: spawn-animals and spawn-npcs
+Telemetry
+
+Added some information about data pack structure (for example, data-driven registries) to generated reports.
+
+
+=== Experimental ===
+Note:
+
+The additions and changes to bundles only take effect when the 'Bundles' experimental data pack is enabled.
+The additions and changes to redstone only take effect when the 'Redstone Experiments' experimental data pack is enabled.
+The additions and changes to minecarts only take effect when the 'Minecart Improvements' experimental data pack is enabled.
+
+
+==== Changes ====
+
+
+===== Items =====
+Bundles
+
+The crafting recipe for bundles have been changed to one string and one leather.
+Now have a tooltip that shows the items inside.
+If a bundle has less than 8 item types inside, the tooltip shows all of them.
+Otherwise the tooltip shows the top two rows of items and the others are hidden below.
+When selecting an item to remove, the bundle icon shows that item poking out of the bundle.
+When holding a bundle in hand, the player can empty it onto the ground by right-clicking.
+It is possible to select any of the visible items to pull out of the bundle.
+Right-clicking takes the first item.
+Using the number keys or scroll wheel to select a different item, then right-click to take it.
+Redstone dust
+
+The performance impact of redstone wire (connected blocks of redstone dust) has been improved.
+Redstone wire now only triggers block updates on blocks that may receive power from the wire.
+Before a line of wire causes block updates, the new signal strength of all connected wires is set.
+The update order around redstone wire has been changed.
+
+
+===== Non-mob entities =====
+Minecarts
+
+Articulate their movement better when going fast, riding on the rail all the time.
+Now smoothly turn along with the track and are less likely to halt or derail.
+Can now jump better.
+They keep their vertical momentum when the track ends with a slope.
+Tilt to visually articulate while in the air.
+No rail grinding sound is played when minecarts are flying through the air.
+Can no longer be placed within another minecart by the player or a dispenser.
+Can now consistently be placed next to each other along a track.
+Can now pick up mobs more consistently when moving along a track.
+
+
+===== General =====
+Game rule
+
+Added new gamerule minecartMaxSpeed that changes the maximum speed of minecarts.
+Defaults to 8 and goes up to 1000 blocks per second.
+Setting it to a specific value does not guarantee that a minecart can reach that particular max speed - there are built in air resistances and similar effects that the speed added through slopes or powered rails need to overcome.
+This gamerule only exists in worlds with the experiment Minecart Improvements enabled.
+Options
+
+Added a new accessibility setting that makes players follow the rotation of minecarts they ride.
+Defaults to off.
+Only has effect when within a world with the experiment Minecart Improvements enabled.
+
+
+=== Fixes ===
+225 issues fixed
+From released versions before 1.21
+
+MC-379  spawn-animals and spawn-npcs=false removes all villagers and prevents summoning new mobs.
+MC-1673  Several mobs can pop off paintings, item frames and leads and destroy minecarts, armor stands and anything in item form even when mobGriefing is turned off.
+MC-3266  The player's experience level overflows once it exceeds the integer limit.
+MC-3697  TNT submerged in water can destroy item frames, paintings, armor stands, and other similar entities.
+MC-4665  Anvil consuming two unbroken items of the same kind when renaming them.
+MC-14800  When zombie villagers, husks, drowned or zombified piglins are damaged, they spawn regular zombie reinforcements.
+MC-39263  Cannot set horizontal motion for squid on land.
+MC-49628  When in Spectator mode, the head overlay shows even if it is set not to show in the skin customization options.
+MC-53602  Projectiles don't collide with the world border.
+MC-58294  Squids and glow squids do not collide properly with solid blocks.
+MC-59471  String can be duplicated using tripwire hooks.
+MC-72494  In Statistics screen "m" is the same unit for both minutes and meters.
+MC-75494  Lead item drop is not affected by doEntityDrops gamerule.
+MC-86252  Shields can continue to block after entity changes dimensions due to client and server desync.
+MC-89883  Squid and glow squid collision error and rubberbanding.
+MC-101376  Elytra appearance doesn't update in first-person mode; only in third-person.
+MC-112257  Some NBT tags require the correct suffix.
+MC-120417  The dragon egg block model is incorrect.
+MC-121013  "follow_range" attribute only targets mobs on (roughly) the same Y level.
+MC-125642  Bone meal is consumed when used on fern, grass and seagrass even if it cannot grow.
+MC-127995  The player can use bone meal on sea pickles in situations where no sea pickles will grow.
+MC-129055  Issues breaking tripwire with shears.
+MC-129826  ["shade": false] is missing from potted cross models, resulting in most potted plants appearing darker than they should.
+MC-130097  Tropical fish fin UV mapping is wrong.
+MC-132804  Low follow range attribute also affects mobs' idle wandering range.
+MC-133862  Optimize world screen backup button has inaccurate text.
+MC-135971  Can't use Ctrl+Q in crafting table.
+MC-137053  The player cannot set the "CanBreakDoors" NBT tag of drowneds to "1b".
+MC-144761  Animated texture interpolation ignores alpha channel during transition from/to transparent pixels.
+MC-145656  Attribute "follow_range" is not working for hostile mobs before they find the target.
+MC-148041  Two separate translation lines for the same thing, "Bells Rung" statistic.
+MC-151828  Woodland mansion structure "1x1_b3" has dark oak leaf block with persistent tag set to "false".
+MC-156579  Creative players can fly through portals when going quickly enough using elytra or Riptide trident.
+MC-158389  Raid results in victory if it cannot find a valid spawn point.
+MC-161913  Misalignment on edges/corners of clouds.
+MC-162713  Clouds are generated with offset to east and south.
+MC-165182  Inventory/GUI textures no longer handle translucent pixels correctly.
+MC-166880  Pufferfish spikes model seems to be broken.
+MC-170863  Dropping item stacks from the player's hotbar in any creative inventory tab other than "Survival Inventory" deletes items.
+MC-174732  Semi-transparent status effect textures do not render correctly in the inventory or beacon UI.
+MC-176937  Deleting items using the drop key while a tab is open in the Creative inventory plays hand animation, even if the item isn't dropped.
+MC-177452  Unneeded faces inside repeater models.
+MC-177453  Unneeded faces inside comparator models.
+MC-179629  Faces in between cloud "blocks" can still render from outside of the cloud.
+MC-180272  en_us.json contains unused strings.
+MC-182478  Mob armor generates starting with boots rather than helmet.
+MC-182877  Piglins use one hand to hold a loaded crossbow.
+MC-183518  High CPU usage on hypervisor host possibly due to excessive syscall usage by Minecraft server.
+MC-183636  follow_range attribute not working for piglins.
+MC-187920  Bees sometimes give up when returning home.
+MC-188217  Bees circle above flowers that are covered by all sides.
+MC-190163  Zoglin spawn eggs don't occasionally spawn baby zoglins on their own accord.
+MC-190484  Sneaking players' name tags are partly invisible depending on what angle you're facing.
+MC-195754  Illagers in raids continuously try and fail to pick up ominous banners if they can't reach them.
+MC-199238  Unneeded faces and missing cullface in dragon egg model.
+MC-203748  Filled lava cauldrons are able to be put under water.
+MC-206074  Survival tab of Creative inventory desyncs if changed manually after an external change.
+MC-209947  minecraft:block/scaffolding_unstable has incorrect cullfaces.
+MC-212213  Squids unable to be affected by Knockback enchantment.
+MC-214662  Redstone torches on repeaters and comparators are shaded differently from normal redstone torches.
+MC-215332  Glow squids lack a baby variant.
+MC-215752  Z-fighting with paintings and item frames in solid blocks.
+MC-224035  Small dripleaf's model is inconsistent.
+MC-224454  Entities don't recognize azaleas or flowering azaleas as obstacles when pathfinding.
+MC-225270  Goats can move armor stands even with mobGriefing turned off.
+MC-225422  Squids and glow squids do not move smoothly in the water compared to other aquatic mobs.
+MC-226038  Scheduled functions are part of weather in profile results.
+MC-226687  Sea Level is assumed to be Y=63 in numerous parts of Minecraft.
+MC-227139  Sky fog stutters.
+MC-227169  The main hand is positioned incorrectly when holding a loaded crossbow in your offhand.
+MC-233603  HUD / Hotbar rendering can heavily impact frame rate performance.
+MC-234318  Small dripleaf stems intersect its leaves.
+MC-239581  Bees do not become angry at the closest player when hive is exploded.
+MC-240948  Filled powder snow cauldrons are able to be put under water.
+MC-241873  Ravagers can move armor stands even with mobGriefing turned off.
+MC-243413  Some explorer maps are missing their icon.
+MC-244720  "Erased cached data" button in Optimize World is not labeled in the right order when using  Tab.
+MC-245510  Piglin brute's generic.follow_range attribute functions oddly.
+MC-247238  Sky fog is not cylindrical.
+MC-249067  Ominous banners lose their rarity color when renamed using anvils.
+MC-249901  Frogs don't play the frog eating sound when given a slime ball.
+MC-256422  Some words within some strings use right single quotation marks instead of apostrophes.
+MC-257309  Monster spawner tries to spawn wardens and zoglins when the difficulty is Peaceful.
+MC-257318  Non-transparent toasts and some buttons that should be transparent in custom Resource Pack.
+MC-258971  ClientboundUpdateRecipesPacket breaks after multiple recipes use big tags.
+MC-259687  "Distance by Elytra" statistic is approximately doubled.
+MC-259798  Block hitboxes cause semi-transparent blocks not to render behind them in lower than "Fabulous" graphics settings.
+MC-260013  Baby llama's head has incorrect scale method.
+MC-260858  The word "ticks" within a "/schedule" command feedback message is always pluralized.
+MC-260859  Some words within a tick profiling feedback message are always pluralized.
+MC-260860  Some words within some chat delay strings are always pluralized.
+MC-260913  The word "blocks" within some "/spreadplayers" command feedback messages is always pluralized.
+MC-260914  "/spreadplayers" strings for entities consist of inconsistent noun usage.
+MC-261691  Bees get stuck while trying to pathfind to inaccessible flowers.
+MC-262112  Wither skull's bounding box is wrongly positioned in the first tick, and cannot be selected with volume checks in commands.
+MC-262175  The "advancements.adventure.trim_with_any_armor_pattern.description" text contains incorrect English grammar.
+MC-262498  Underground seagrass feature files exist despite never generating.
+MC-262652  Dragon egg's side texture is mapped strangely as of 1.8 (and the model is also unoptimized).
+MC-263838  doLimitedCrafting gamerule does not work on suspicious stew.
+MC-263858  Text displays are rendered differently compared to name tags.
+MC-264886  Geode features ignore the invalid_blocks field.
+MC-264986  Item count of fuel slot affects the way smelting recipe book moves ingredients.
+MC-265554  Aaron Cherof listed as "Aaron Cherof\u00a0" in credits.json.
+MC-265693  Movement does not reset a player's last action time.
+MC-265695  The feedback for setting the idle timeout to 0 minutes does not reflect the actual behavior.
+MC-265703  BrushableBlock's codec misspells "completed" as "comleted".
+MC-265990  Burning arrows can light candles and cakes with candles outside the world border.
+MC-266441  Multiple trial chambers templates have missing or incorrect blocks.
+MC-266949  Monster spawner tries to spawn breezes when the difficulty is Peaceful.
+MC-267006  The "Distance Flown" statistic rapidly increases when standing in ender dragon's hitbox.
+MC-267107  Spawners unsuccessfully try to summon hostile entities on Peaceful difficulty.
+MC-267308  Profiling with F3 + L while game is frozen spams output with errors.
+MC-267401  All the player skin report's category descriptions use the chat message ones.
+MC-267838  Projectile yaw rotations have incorrect interpolation, causing flickering.
+MC-267889  The "blocked_slot" bundle texture has a miscolored pixel.
+MC-268045  The name of entity argument is plural in query literal node of the /experience command.
+MC-268220  Zoglins ignore monster spawning requirements when spawning naturally.
+MC-268241  The bottom faces of vaults aren't culled when covered by blocks.
+MC-268518  Attribute generic.luck only affects players.
+MC-268528  Cave vines can be pollinated infinitely (instead of limit of 10).
+MC-268645  Scheduling a macro function silently fails.
+MC-268929  pack.png does not support translucent pixels.
+MC-269083  Effect background texture in inventory renders translucent pixels as opaque.
+MC-269152  nine_slice texture scaling will cause ridiculous levels of lag when used on small textures.
+MC-269352  The breeze rod uses an incorrect model for holding.
+MC-269375  Breeze's wind charge attack can move or break armor stands when mobGriefing is disabled.
+MC-269428  Mace fall damage multiplier does not apply to mobs.
+MC-269440  Text fields render translucent pixels as opaque.
+MC-269441  Difficulty lock button renders translucent pixels as opaque.
+MC-269445  Some empty slot icons render translucent pixels as opaque.
+MC-269528  Recipe book tabs are rendered over items held by the mouse cursor.
+MC-269549  Items held in cursor are rendered behind recipe book UI elements.
+MC-269622  Previous/Next Page buttons render translucent pixels as opaque.
+MC-269627  Toasts render translucent pixels as opaque.
+MC-269656  Feeding parrots poison while holding mace grants Over-Overkill challenge.
+MC-269738  Recipe book cannot quick-move oversized item stacks into applicable recipe slots.
+MC-269751  Advancement frames render translucent pixels as opaque.
+MC-269814  Cant feed fish to wolves.
+MC-269832  Gamemode switcher sprites render translucent pixels as opaque.
+MC-269834  Statistics screen sprites render translucent pixels as opaque.
+MC-269895  Breezes missing higher fidelity jump animation from Bedrock Edition.
+MC-269936  Transferable list (resource pack, data pack) screen buttons render translucent pixels as opaque.
+MC-269937  World list buttons render translucent pixels as opaque.
+MC-269996  Custom names of interaction entities render at wrong location.
+MC-270051  Recipe book button renders translucent pixels as opaque.
+MC-270299  New data pack component crafting doesn't work with suspicious stews.
+MC-270314  "Use a Bundle" toast pops up repeatedly if player constantly left-clicks on a bundle while holding an item.
+MC-270348  Some slime trial spawners in trial chambers won't spawn slimes without player intervention.
+MC-270510  youJustLostTheGame is not the first item in the mappings.
+MC-270518  Scrollers in block UIs render translucent pixels as opaque.
+MC-270519  "Error" textures in block/entity GUIs do not support translucent textures.
+MC-270527  "tile" texture scaling also causes incredible lag with small textures.
+MC-270563  Furnace, blast furnace and smoker smelting progress and burn time indicators do not support translucent textures.
+MC-270564  Brewing stand fuel, bubbles and progress sprites do not support translucent textures.
+MC-270570  TPS chart uses OS locale specific number formatting.
+MC-270571  /tick command uses OS locale specific number formatting.
+MC-270614  A trapdoor in chamber_8 is rotated the wrong way.
+MC-270640  Anvil text field does not support translucent textures.
+MC-270641  Crafter UI sprites do not support translucent pixels.
+MC-270678  Tabs in recipe book and Creative inventory do not support translucent pixels.
+MC-270680  Buttons in the beacon GUI do not support translucent pixels.
+MC-270692  Textures for empty slots do not support translucent pixels.
+MC-270696  Traps are generated behind walls in trial chambers.
+MC-270697  Stonecutter recipe buttons render translucent pixels as opaque.
+MC-270698  Loom recipe buttons render translucent pixels as opaque.
+MC-270726  Advancement backgrounds render translucent pixels as opaque.
+MC-270741  Realms main menu icons do not render translucent pixels correctly, but accessibility/language icons do.
+MC-270764  Recipe book buttons and icons do not render translucent pixels correctly.
+MC-270765  Bundle background does not handle translucent pixels correctly.
+MC-270775  Ominous vaults sometimes fail to generate.
+MC-271113  Bees occasionally freeze right before they enter the hives.
+MC-271191  Poor saving performance due to large amount of item frames.
+MC-272020  Players' capes don't move with the yaw of their bodies when swinging.
+MC-272414  Redundant calculation causes 2x lag during explosions.
+MC-272506  Fast switching between servers causes disconnect.
+From 1.21
+
+MC-271486  The tree in the "entrance_1" room of trial chambers is not removed.
+MC-271628  Enchantment effect "projectile_spawned" doesn't trigger for fishing rods and tridents.
+MC-272207  Trial chambers no longer generate a bed in the secret room nearing the entrance.
+MC-272327  Attribute effects not properly postfixed with slot name.
+MC-272603  Riding an entity into the end fountain skips the credits.
+MC-272649  After a chest with the item component "container_loot" is opened, it will appear on the subsequent pick block.
+MC-272670  Crash while saving entity NBT - Cannot encode empty ItemStack.
+MC-272766  When riding a minecart through a portal, the direction the player is facing after they go through the portal is not the same as when they entered.
+MC-272802  Ender pearls deal no damage to their owners after switching dimensions and landing.
+MC-272804  The mining fatigue animation plays in reverse.
+MC-272805  Command blocks made from pick block still do not activate when placed near sources of power.
+MC-272821  Wind charges incorrectly negate fall damage.
+MC-272932  Auto-save text in the pause menu is rendered at the wrong position.
+MC-273076  Breeze immediately forgets the player once line of sight is lost, even through transparent blocks.
+MC-273239  Trial spawners rapidly change block state when switching gamerule "doMobSpawning" from false to true.
+MC-273263  Attributes are retained even if destroyed by "damage_item".
+MC-273281  "projectile_spawned" enchantment component runs predicates and effects on projectiles before all of their data has been assigned.
+MC-273288  Dropping a stack of items while in the Creative mode inventory deletes them.
+MC-273311  Taking near Float.MAX_VALUE damage from mob attack through commands on Hard causes NaN Absorption and Health.
+MC-273328  Stars are smaller than supposed to.
+MC-273361  Entities teleported to the player from a force loaded chunk are not rendered.
+MC-273377  Blocks can be edited without having a debug stick in the player's hand.
+MC-273400  Baby zombified piglin chicken jockeys immediately teleport.
+MC-273427  Respawn anchor loses charges when returning from the End.
+MC-273464  Incorrect partial tick during screen render.
+MC-273489  Sneaking players' name tags are barely visible.
+MC-273578  Interaction entities position passengers incorrectly.
+MC-273662  Trial spawners cannot spawn silverfish at all/have unusually long delays between spawns.
+MC-273672  When spectatorsGenerateChunks is set to false, the player cannot stop spectating an entity without running /spectate.
+MC-273758  Ominous item spawner's animation breaks if the level.dat "Time" value is over a certain number.
+MC-273771  Passengers can glitch into walls when their mounts are killed.
+MC-273811  Ender pearls don't teleport the player if they haven't been in the pearl's dimension after relog.
+MC-273822  The words "forwards" and "backwards" within two movement key bind strings aren't spelled in American English.
+MC-273828  Movement predicate is incorrect for stationary players until either mouse is moved or one second elapses.
+MC-273850  Shield enchantment glint is too bright to clearly see banner patterns.
+MC-273914  Client game options that do not constitute sending a network packet will send one anyway.
+MC-273939  Capes clip through the player when taking knockback.
+MC-273960  The NBT data stored in the world affects copying a decorated pot in Creative mode.
+MC-274030  Item stacks with a count over 99 cause the player to get kicked from their world in Creative mode.
+MC-274244  minecraft:villager_plantable_seeds tag does not allow farmer villagers to pick up items.
+MC-274371  Depleting a respawn anchor doesn't play any sound.
+MC-274372  using_item advancement trigger keeps being activated even after the item stops being used, after teleporting to another dimension.
+MC-274400  Dispensers firing a wind charge play the crafter crafting world event, showing incorrect particles beneath the block.
+MC-274519  Minecraft resaves all maps with every autosave.
+MC-274657  Ominous banner's orange name is handled as a custom text color, rather than as a rarity.
+MC-274708  Exiting the end portal first time removes player attribute modifiers.
+MC-274852  "item_name" component has priority over signed book title.
+MC-274911  If the raid begins more than 112 blocks above the ground, all illagers will be summoned and the player wins.
+MC-274960  Registries allow duplicate entries.
+Private bugs
+
+MC-273555  Using a crossbow enchanted with Quick Charge 0 crashes the game.
+
+
+== 24w34a ==
+24w34a is the second snapshot for Java Edition 1.21.2, released on August 21, 2024. It contains some tweaks to experimental features, as well as some technical changes and optimizations.
+
+
+=== Additions ===
+
+
+==== Command format ====
+Data component format
+
+Added minecraft:consumable item stack component.
+
+e.g. consumable={consume_seconds:3.0, animation:'eat', sound:'entity.generic.eat', has_consume_particles:true, on_consume_effects:[{type:'minecraft:clear_all_effects'}]}
+
+Added minecraft:use_cooldown item stack component.
+
+e.g. use_cooldown={seconds:1.5, cooldown_group:"minecraft:custom_weapon"}
+
+Added minecraft:use_remainder item stack component.
+
+e.g. use_remainder={id:'minecraft:stick', count:1}
+
+
+=== Changes ===
+
+
+==== Items ====
+General
+
+Drinking a milk bucket in Creative mode no longer gives the player an empty bucket.
+
+
+==== Mobs ====
+Blaze
+
+Changed the texture for the bottom face of a blaze's rods were changed from  to .
+
+
+==== Non-mob entities ====
+Projectiles
+
+Arrows, tridents and fishing bobbers now bounce on the world border if hit.
+Other projectiles such as ender pearls and snowballs no longer go through the world border.
+
+
+==== Command format ====
+Data component format
+
+food item stack component
+The food component has been changed to become a data container which only holds the food stats applied when the item is consumed.
+This component no longer gives it the ability to be consumed, and can be done instead with the new consumable component.
+Removed the eat_seconds, using_converts_to and effects fields.
+
+
+==== Gameplay ====
+Recipe book
+
+Now repeats the last selected recipe when a "selected" key is pressed (space or enter key).
+
+
+==== General ====
+Data pack
+
+The pack format version is now 50.
+Performance
+
+Framerate has been improved when using higher render distances.
+Significantly reduced the performance impact when turning the camera.
+Resource pack
+
+The pack format version is now 36.
+Shaders
+
+Shader program configurations can now specify preprocessor define directives to apply to their linked shaders.
+Many shader implementations have been merged by making use of this.
+The format of core shader and post-processing shader configurations have been consolidated.
+The rendertype_entity_glint_direct shader has been removed (replaced by rendertype_entity_glint)
+The rendertype_entity_translucent_cull shader has been removed (replaced by rendertype_item_entity_translucent_cull)
+
+
+=== Experimental ===
+Bundles
+
+The tooltip now fits 3 rows and can always show at least 8 item types.
+Redstone Experiments
+
+Redstone wire updates now have a left-first preference, meaning the left side is updated first if both sides of a fork have equal power.
+This removes most of the random behavior.
+The remaining edge cases which are still random are situations where the wire gets powered from above or below without enough context.
+Minecart Improvements
+
+Minecarts no longer forcefully snap to the center of a block when landing on a rail.
+Minecarts snap to corners along the diagonal, and snap after being pushed by a piston.
+This allows for piston bolts and similar contraptions.
+Dispensers are allowed to stack minecarts again.
+Minecarts now more easily come to rest at opposing slopes.
+Minecarts no longer tilt during a short fall, or when they are falling straight down.
+Minecarts are now placed (or dispensed) with the correct rotation straight away when put on rails.
+They are also placed with the correct rotation onto slopes.
+Minecarts no longer phase through blocks on slopes when going up or down, they collide instead.
+
+
+=== Fixes ===
+65 issues fixed
+From released versions before 1.21
+
+MC-73178  Villagers' "CanPickUpLoot" tag cannot be set to zero.
+MC-144327  The bottom face texture of a blaze's rods is the same as their top face texture.
+MC-191431  Player spectator head is invisible/does not render in the inventory after switching to "Fabulous!".
+MC-249414  The "Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program." warning is logged in the game output console when launching the game.
+MC-269376  Breeze fires wind charge from center of hitbox.
+MC-269715  Food won't be eaten when the component food.eat_seconds is less than 0.05.
+From 1.21
+
+MC-272643  Items containing using_converts_to cannot be stacked with the original items after restarting the world.
+MC-273329  Drinking milk buckets in Creative mode gives empty buckets.
+MC-273629  Adding effects with an effects_changed advancement causes a packet error (ConcurrentModificationException) if it was triggered by milk.
+MC-276936  Foxes eat soup won't leave the bowl.
+From 1.21.1
+
+MC-275998  Menu blur turns glowing outlines black.
+From the previous development version
+
+MC-275203  Minecarts always spawn facing east/west and move upward slightly when being placed on rails.
+MC-275209  It's impossible to put water in a cauldron underwater.
+MC-275210  Minecarts can phase through blocks when travelling diagonally upwards.
+MC-275211  The enchantment glint isn't visible on dropped items.
+MC-275213  Hand animation still plays when trying to put lava or powder snow in an underwater cauldron.
+MC-275218  "Minecart rolls" sound does not play when on tracks after de-railing then re-railing.
+MC-275219  Hand animation still plays in Creative when trying to use minecarts inside each other on the same rail.
+MC-275221  Baby polar bear model is messed up in 24w33a.
+MC-275224  Minecart items desync when using them on a rail with a minecart above it.
+MC-275226  Enchantment glint is not visible on items held by player and mobs in third-person.
+MC-275229  Minecarts behave strangely on bubble columns.
+MC-275230  The game crashes when opening the inventory while in Spectator mode.
+MC-275232  The mining fatigue animation appears too close.
+MC-275236  Gamerule minecartMaxSpeed doesn't affect downward velocity.
+MC-275237  Cannot rename written book in an anvil.
+MC-275241  Minecarts continue to produce sound for a short while after being stopped.
+MC-275246  Crash after attempting to move item from off-hand in Creative inventory.
+MC-275248  Torches no longer have bottom faces.
+MC-275249  "FOV Effects" slider incorrectly modifying zoom values on the spyglass.
+MC-275252  Player head angle when crawling is now strange.
+MC-275270  Minecart not oriented correctly when placed on a sloped unpowered powered rail.
+MC-275271  Crash after attempting to move item to hotbar slot in Creative inventory.
+MC-275273  Baby mooshroom uses wrong scale.
+MC-275276  Minecarts can phase through blocks at the bottom of a slant.
+MC-275277  Trial chambers' encounter_4 trap often does not hit the player.
+MC-275289  There are empty chests in some chambers even after 24w33a.
+MC-275293  Internal exception when picking blocks not in hotbar but in inventory in Survival mode.
+MC-275296  Emissive textures are not emissive in the player's hand.
+MC-275297  Failing selectors and fake players in "score" selector result in an unexpected error.
+MC-275307  Hand doesn't show up when switching from Spectator mode.
+MC-275310  Cannot enchant armor in enchanting table.
+MC-275319  End crystals in 24w33a appear to be slightly smaller than in previous versions.
+MC-275323  Pressing F3 + A to reload chunks crashes the game.
+MC-275328  Enchantment glint is not visible on items in item frames.
+MC-275329  As of 24w33a zombie villagers no longer raise their arms to attack.
+MC-275332  The rotation of a wall/ceiling lever and buttons does not affect the update order of wire in Redstone Experiment.
+MC-275343  Projectiles stuck in the world border can float in the air if the border size is changed.
+MC-275361  Baby zombie variant arms disconnect from their body when attacking.
+MC-275377  Derailed minecarts snap onto nearby rails after falling down.
+MC-275397  Redstone dust doesn't update properly.
+MC-275436  Cannot enchant books in enchanting table.
+MC-275467  Minecarts can launch the player hundreds of thousands of blocks upwards if they derail inside cobwebs or powdered snow.
+MC-275473  Slim model's arms are now lower than the torso by 0.5 pixels.
+MC-275479  Dispensers cannot place minecarts onto rails if there is a minecart one block away.
+MC-275482  Minecarts do not pick up mobs like they used to.
+MC-275486  Enchantable data component doesn't work with items that only have enchantments through a data pack.
+MC-275498  Clocks, compasses and recovery compasses don't function in item frames.
+MC-275553  Minecarts which exit the End onto no rails are left permamentally tilted.
+MC-275554  Minecarts between two downward slopes will shake violently and never settle.
+MC-275566  Game crash when trying to open various GUIs with Fabulous graphics.
+MC-275569  Outer layer of the skin shows when disabled until going into third-person.
+MC-275628  Minecarts transitioning from even to downward rails, derail above a certain speed.
+MC-275631  You cannot stop a minecart by standing in the way if it's on an ascending track.
+MC-275677  Minecarts sometimes aren't affected by cobwebs when moving upwards.
+
+
+== 24w35a ==
+24w35a is the third snapshot for Java Edition 1.21.2, released on August 28, 2024. It contains improvements to bundle interactions, as well as some technical changes and bug fixes.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Bee nests and beehives
+
+Now show information about their level of honey and number of bees.
+Now use their "full" texture when held or in the inventory, and they are at max level of honey.
+
+
+==== Gameplay ====
+Raids
+
+Raiders must find a place to spawn no more than 96 blocks vertically above or below the village center, or a raid cannot start.
+It is now much less likely for raiders to not find a valid place to spawn when raiding.
+
+
+==== General ====
+Data packs
+
+The pack format version is now 51.
+Trial spawner configurations in fields normal_config and ominous_config are now defined in registry trial_spawner.
+This allows for easier customization of trial spawner configurations in data packs.
+Inlined configuration data is still supported.
+Entities' rotation on the x axis is now clamped between -90 and 90.
+/loot command now returns an error when trying to drop from a block without a loot table (like air).
+The cooldownGroup field in food item stack component has been renamed to cooldown_group.
+Loot tables
+
+Special loot table empty has been removed and is no longer defined in vanilla data pack.
+Sheep now always uses a single loot table entities/sheep.
+Wool drops are still defined in sub-tables in entities/sheep/<color>, but they are now just dispatched from the main table.
+Note: mutton drop is now controlled by the main table, while sub-tables are responsible only for wool drop.
+Sheep shearing is now controlled by loot table found as shearing/sheep.
+Mooshroom shearing is now controlled by loot table found as shearing/mooshroom.
+Predicate
+
+New entity sub-predicate for testing sheep wool.
+Fields:
+sheared - optional boolean.
+color - optional wool dye color.
+
+
+=== Experimental ===
+Bundles 
+
+The number keys can no longer be used to select items in a bundle.
+The bundle fullness bar and its fill color now have new separate textures that can be overridden in a resource pack.
+
+
+=== Fixes ===
+45 issues fixed
+From released versions before 1.21
+
+MC-124331  Redstone lamps do not show on maps.
+MC-129298  Drowned don't chase the player if they are in 1 block deep water.
+MC-146805  Trader Llamas don't attack zombies, drowned, husks, zombie villager and illagers.
+MC-148982  Map color for wheat is incorrect.
+MC-167906  Beehive items at full honey level do not appear with honey in inventory/as item/in hand.
+MC-168329  Bees do not leave their hives in the Nether/End in some cases.
+MC-168546  Bee nest/hive items have no lore.
+MC-270113  Trial spawner ominous_config doesn't save setting values to default.
+MC-270742  Displays don't rotate properly between 179 and 180.
+From 1.21
+
+MC-272345  Some trial spawners don't have an extra breeze out at once when ominous.
+MC-273601  The Channeling enchantment no longer functions on tridents without an owner.
+MC-273745  Soul Speed momentum resets when jumping on soul sand.
+From the Java Edition 1.21.2 development versions
+
+MC-275204  Coast armor trim has generic "Smithing Template" name.
+MC-275208  The player cannot move bundles into or around the inventory using hotkeys.
+MC-275220  Picking up a salmon in a bucket doesn't keep its size.
+MC-275222  Salmons always have the same hitbox regardless of their size.
+MC-275256  Snow golem shoots to the sky/floor instead of at mobs.
+MC-275275  Footsteps on monster spawners create missing subtitle.
+MC-275279  Raiders do not spawn on small islands even though there are close enough places around the village.
+MC-275322  "Subspace Bubble" is granted when exiting and entering some nether portals.
+MC-275353  Item frame/glow item frame "Fixed" tag behaving strangely since 24w33a.
+MC-275358  Renamed bundle's contents are not centered.
+MC-275409  Stuffing too many items into a bundle through commands will cause the capacity bar to overflow.
+MC-275410  Flying in Creative mode no longer resists the thrust of the bubble column.
+MC-275417  Creepers can destroy vehicles even if mobGriefing is set to false.
+MC-275521  Tall seagrass can now generate when bone mealing one-high water.
+MC-275523  Reduced shield glint applies to the shield's item appearance.
+MC-275586  Renamed items highlighted in the bundle are not in italics.
+MC-275612  Items with rarity values highlighted in bundles do not display their rarity colors.
+MC-275838  Drowned holds trident upside down.
+From the previous development version
+
+MC-275752  Villagers indefinitely stand around items when their "CanPickUpLoot" tag is set to "0b".
+MC-275754  Random stack trace sometimes appears.
+MC-275755  Attempting to swap armor by right-clicking deletes it.
+MC-275757  Using a bucket deletes the bucket in most cases.
+MC-275774  Observers no longer detect redstone dust powering/unpowering.
+MC-275778  Bundle fullness bar texture and color are hardcoded.
+MC-275800  Translucency sorting is broken.
+MC-275801  Use cooldown triggers without item consumption.
+MC-275828  Game crashes when there is an invalid shader path.
+MC-275837  The use_cooldown component uses field cooldownGroup instead of cooldown_group.
+MC-275843  Using an empty map (single item in stack) doesn't create a filled map in Survival mode.
+MC-275851  diameter in teleport_randomly consume effect is ignored.
+MC-275958  Selected item in inventory drops at target dimension's nether portal's coordinates when travelling through them without delay.
+MC-275959  Drowned no longer raise their arms to attack.
+MC-276053  Glass bottles are deleted when used on a water source block.
+
+
+== 24w36a ==
+24w36a is the fourth snapshot for Java Edition 1.21.2, released on September 4, 2024.
+
+
+=== Additions ===
+
+
+==== General ====
+Data component format
+
+Added minecraft:item_model item stack component.
+
+e.g. item_model="minecraft:diamond_sword"
+
+Added minecraft:equippable item stack component.
+
+e.g. equippable={slot:'chest',equip_sound:'item.armor.equip_chain'}.
+
+Added minecraft:glider item stack component.
+
+e.g. glider={}.
+
+Added minecraft:tooltip_style item stack component.
+
+e.g. tooltip_style='minecraft:special_sword'.
+
+Predicates
+
+Added a new field in the player sub-predicate, input, that can be used to detect which movement keys the player is pressing.
+If specified the predicate matches with the corresponding keybind that the player is pressing; it supports detecting the following input:
+forward: boolean (optional).
+backward: boolean (optional).
+left: boolean (optional).
+right: boolean (optional).
+jump: boolean (optional).
+sneak: boolean (optional).
+sprint: boolean (optional).
+Tags
+
+Added the bats_spawnable_on block tag.
+Controls the blocks that bats can spawn on.
+Added the following item tags:
+repairs_leather_armor
+repairs_iron_armor
+repairs_chain_armor
+repairs_gold_armor
+repairs_diamond_armor
+repairs_netherite_armor
+repairs_turtle_helmet
+repairs_wolf_armor
+Control which items can be used to repair various armor sets.
+Added the piglin_safe_armor item tag.
+Controls what items, when worn by a player, prevents piglins from getting angry.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Dolphin
+
+Baby dolphin now spawns naturally at 5% chance.
+Squid
+
+Squid spawn eggs now only spawn adult squid.
+There is a 5% chance of squid spawned in groups in the wild to be a baby.
+General 
+
+When a mob converts from one type to another (e.g. piglin to zombified piglin), the health of the converted mob is set to the same percentage of max health as the original mob had before conversion.
+The calculation for the duration of the effect from splash potions has been changed. Splash potions thrown at the player's feet now apply the effect for almost the same duration as when thrown at the head.
+
+
+==== General ====
+Data component format
+
+minecraft:item_name
+This component is now always present on every item.
+Data pack
+
+The pack format version is now 52.
+Models
+
+All item models can now use the broken property in model overrides that was previously limited to just the elytra.
+This has a value of 1 if the item has 1 durability left, or 0 otherwise.
+The appearance of equipment when equipped by players or certain mobs can now be customized by defining 'equipment models' in the resource pack.
+Equipment model definitions are loaded from assets/<namespace>/models/equipment/<path>.json.
+These can then be referenced by the equippable component with a model id of namespace:path.
+The model definition is an object with fields: wolf_body, horse_body, llama_body, humanoid, humanoid_leggings, wings
+All fields are optional, and can be used to specify a list of layers for the given model layer type.
+Each field contains list of layer objects:
+texture: namespaced texture location for this layer.
+namespace:path resolves to assets/<namespace>/textures/entity/equipment/<layer_type>/<path>.png
+dyeable: object with fields (optional), specifying how this layer behaves when dyed (in the dyeable item tag, and has dyed_color component)
+color_when_undyed: RGB color int (optional)
+If specified, this layer is tinted by the color contained in the dyed_color component.
+If the item is not dyeable or not dyed, it is tinted based on the color specified by color_when_undyed.
+If color_when_undyed is not specified and the item is not dyed, the layer is hidden.
+use_player_texture: boolean (default: false), true if this layer texture should be overridden by a texture given by the player.
+Only used for wings layers, which overrides with the player's custom elytra texture.
+Resource pack
+
+The pack format version is now 37.
+The tooltip background and frame may now be customized by replacing sprites:
+tooltip/background: The background of the tooltip.
+tooltip/frame: The frame appearing around the tooltip.
+Items with a custom tooltip_style component uses sprites with IDs:
+<namespace>:tooltip/<path>_background and <namespace>:tooltip/<path>_frame
+The nine_slice GUI sprite scaling mode has a new optional boolean (true or false, yes or no) property: stretch_inner.
+If true, the inner parts of the texture (i.e. not the corners) are stretched instead of tiled.
+If not specified, defaults to false as before.
+Textures
+
+All equipment-related textures were moved to subfolders of the textures/entity/equipment directory.
+Player armor textures were moved to textures/entity/equipment/humanoid and textures/entity/equipment/humanoid_leggings
+<material>_layer_1 textures were renamed to <material>, and moved into the humanoid subdirectory.
+<material>_layer_2 textures were renamed to <material>, and moved into the humanoid_leggings subdirectory.
+leather_layer_1_overlay and leather_layer_2_overlay textures were renamed to leather_overlay in their respective subdirectories.
+wolf_armor and wolf_armor_overlay textures have moved to textures/entity/equipment/wolf_body/ and were renamed to armadillo_scute and armadillo_scute_overlay respectively.
+turtle_layer_1 has been renamed to turtle_scute.
+Llama decor textures were moved to textures/entity/equipment/llama_body
+Horse armor textures were moved to textures/entity/equipment/horse_body
+The elytra texture has been moved to textures/entity/equipment/wings/elytra
+Armor trim textures have also been moved to match the folder structure of the regular equipment textures.
+Textures in textures/trims/models/armor were divided between textures/trims/entity/humanoid and textures/trims/entity/humanoid_leggings
+For leggings textures, the _leggings suffix is dropped.
+Trims
+
+All equippable items with an equipment model defined support rendering trims, based on the trim component.
+Trim textures are loaded from the appropriate folder in the textures/trims/entity directory.
+For example, armor with wolf_body layers fetch trims from textures/trims/entity/wolf_body
+
+
+=== Experimental ===
+Bundles
+
+When a bundle is used in the hotbar, one group of items is emptied at a time instead of everything being emptied at once.
+
+
+=== Fixes ===
+52 issues fixed
+From released versions before 1.21
+
+MC-16829  The horse armor model does not show the enchantment glint effect.
+MC-38022  Order of rendering translucent block faces fails to update with camera position.
+MC-88967  Most NBT tags are not kept when a mob converts to another mob.
+MC-92875  Collisionless blocks ignore entities with high velocity.
+MC-135898  Teams are not retained when a mob converts to another mob.
+MC-154053  Trader llama spitting far distance when attacked.
+MC-167242  Bed stays occupied after a lightning turns the villager sleeping in it into a witch.
+MC-186362  Casting issue: Translucent block rendering breaks down at high distances.
+MC-196556  When projectiles (such as arrows and tridents) move too fast, they can't be teleported by portals and end gateways.
+MC-196736  Hoglins break their leash when zombifying, despite zoglins being leashable.
+MC-196964  Fall damage is reset when an entity converts to another entity.
+MC-207101  When a lingering potion lands on top of a player/mob, the area effect cloud spawns above the player/mob instead of inside it, rendering the lingering potion useless.
+MC-230317  Lead disappears when mooshroom cow is sheared.
+MC-250924  Goat horns are missing sounds.
+MC-259376  ServerboundMovePlayerPacket's xRot can have invalid value.
+MC-259936  Equipping armor in hand via right-click equips entire stack.
+MC-261666  Armor given to villagers is lost when they convert to zombie villagers.
+MC-262598  Tripwire textures in the tripwire hook "attached: true" state have a wrong black rendering when the tripwire hook is attached to a non-transparent block.
+MC-269447  Hover text background box cannot be retextured.
+MC-270183  Lingering potions do not give effects when hit on the target's head.
+MC-271826  Armor default attribute modifier component can't be removed.
+From 1.21
+
+MC-273300  Horse armor and wolf armor swap from off-hand to main hand upon pressing the Use Item/Place Block key.
+From 1.21.1
+
+MC-275919  issues with hit detection/registration in PvP since server switch to 1.21.
+From the Java Edition 1.21.2 development versions
+
+MC-275228  The player can duplicate items in the Creative hotbar.
+MC-275239  Item duplication while a screen is opened (Creative mode).
+MC-275298  Blocks with special collision behavior have a larger detection range than previously.
+MC-275299  Crafting using Ctrl + Drop key crafts the incorrect amount of items.
+MC-275344  Sweet berry bushes deal damage inconsistently.
+MC-275345  Inventory bug that causes items to be constantly shuffled.
+MC-275418  Feeding baby dolphins won't speed up their growth.
+MC-275437  Fast moving entities freeze the server which causes watchdog crash.
+MC-275445  Specifying the size of a target in post effect shaders fails.
+MC-275450  Player motion data no longer updates while riding another entity.
+MC-275455  Player motion is no longer retained on relative teleportation.
+MC-275462  Bats can spawn in unusual places, such as in woodland mansions and beneath trees.
+MC-275497  The repairable data component does not exist in armor items by default.
+MC-275537  Sliding down honey blocks is slower than in previous versions.
+MC-275622  Minecarts with TNT are more volatile than in previous releases.
+MC-275624  Redstone wire with custom model unexpectedly appears green.
+MC-275638  It is still possible to go through portals without being teleported when going quickly enough by throwing Riptide tridents.
+MC-275642  Baby dolphins do not spawn naturally.
+MC-275655  Entity rotation does not visually update when using the /teleport command until the world is reloaded.
+MC-275745  A scoreboard objective with display mode below_name renders right behind the player's name.
+MC-275767  Camera is shaky when riding an entity that is being constantly teleported.
+MC-275770  Guardian beam attacks stay yellow and do not shift colors anymore.
+MC-276027  Chestplates and boots on armor stands render the helmet overlay texture.
+MC-276030  The blue highlighted text background for signs is gone.
+MC-276064  Tall grass generated from bone mealing a grass block will delete the second block above it.
+From the previous development version
+
+MC-276122  Soul sand and magma block bubble columns don't move the player vertically in Creative mode when not flying.
+MC-276132  Translucency sorting seems to be slightly broken.
+MC-276179  Zombie villagers don't raise their arms to attack again.
+MC-276204  Dolphins and axolotls keep trying to swim into the seabed.
+
+
+== 24w37a ==
+24w37a is the fifth snapshot for Java Edition 1.21.2, released on September 11, 2024.
+
+
+=== Additions ===
+
+
+==== General ====
+Data component format
+
+Added minecraft:death_protection item stack component.
+
+Loot tables
+
+Chickens laying eggs is now controlled by a loot table found at gameplay/chicken_lay.
+Armadillos randomly dropping scutes is now controlled by a loot table found at gameplay/armadillo_shed.
+The loot given by villagers is now controlled by two additional loot tables:
+gameplay/hero_of_the_village/unemployed_gift - used if the villager is unemployed.
+gameplay/hero_of_the_village/baby_gift - used if the villager is a baby.
+Predicates
+
+Added minecraft:salmon entity sub-predicate.
+Fields:
+variant: one of small, medium, large.
+Tags
+
+Added the duplicates_allays item tag.
+Controls what items can be used to duplicate allays when dancing.
+Added the panda_eats_from_ground item tag.
+Controls what items a panda picks up from the ground and eats.
+Added the brewing_fuel item tag.
+Controls what items that can be used as fuel in a brewing stand.
+
+
+=== Changes ===
+
+
+==== Items ====
+Ender pearl
+
+Ender Pearls now ensure that the chunk they are in or travel into is always loaded and ticking.
+They also load chunks when crossing to a new dimension, so that they can always continue to travel.
+This ensures that Ender Pearls can always land, and makes cross dimensional ender pearl traveling more predictable.
+Ender Pearls now unload when a player logs out, and reappear whenever that player logs back in, similar to how mounts currently behave
+Each Ender Pearl creates a ticket for chunk loading any time it moves into a new chunk, and also periodically every 10 seconds.
+
+
+==== Mobs ====
+General
+
+Some changes introduced in 24w36a related to which data gets transferred between mobs when converted have been reverted (health, attributes, loot tables):
+AbsorptionAmount
+active_effects
+Age
+AngerTime
+AngryAt
+ArmorDropChances
+ArmorItems
+Brain.memories.minecraft: angry_at.ttl
+Brain.memories.minecraft: angry_at.value
+CanBreakDoors
+CanPickUpLoot
+CustomNameVisible
+CustomName
+fall_distance
+FallFlying
+Fire
+ForcedAge
+HandDropChances
+HandItems
+HurtByTimestamp
+HurtTime
+Invulnerable
+IsBaby
+Leash
+LeftHanded
+Motion
+NoAI
+NoGravity
+OnGround
+Passengers
+PersistenceRequired
+PortalCooldown
+Position
+RootVehicle
+Rotation
+Silent
+SleepingX
+SleepingY
+SleepingZ
+Tags
+Team
+Mobs that split into several mobs rather than converting from one type into another do not transfer the following properties:
+ArmorDropChances
+ArmorItems
+fall_distance
+FallFlying
+HandDropChances
+HandItems
+HurtByTimestamp
+HurtTime
+Leash
+Motion
+OnGround
+Passengers
+Position
+Rotation
+SleepingX
+SleepingY
+SleepingZ
+Some properties mentioned in MC-88967 are intentionally not transferred in any conversion:
+Attributes
+Gossips
+Health
+Loot tables
+VillagerData
+Xp
+
+
+==== General ====
+Advancements
+
+The trigger minecraft:killed_by_crossbow has been renamed to minecraft:killed_by_arrow.
+Now trigger whenever an arrow kills an entity, not just when fired from a crossbow.
+Has a new optional item predicate field, fired_from_weapon.
+Can be used to match the item used to shoot the arrow.
+Data component format
+
+minecraft:fire_resistant has been renamed to minecraft:damage_resistant
+Has a new field: types, hash-prefixed damage type tag.
+Items with this component, when in entity form, is resistant to the damage types included in the tag.
+This component also affects whether the equipped item is damaged when the wearer is hurt by a given damage type.
+minecraft:item_name
+Name provided by this component always has the lowest priority.
+That means it gets overridden by components like minecraft:potion_contents.
+minecraft:potion_contents
+Added optional string field custom_name.
+When present, it is used to generate containing stack name.
+For example, if value is foo and item is minecraft:lingering_potion, the name of item is translation of item.minecraft.lingering_potion.effect.foo.
+minecraft:equippable
+Added the following fields.
+swappable: boolean (default: true), whether the item can be equipped into the relevant slot by right-clicking.
+damage_on_hurt: boolean (default: true), whether this item is damaged when the wearing entity is damaged.
+Data pack
+
+The pack format version is now 53.
+Loot tables
+
+The tool value (used for functions like match_tool) is now available for some additional loot table types.
+archaeology - used brush.
+vault - inserted key (not available when displaying items).
+shearing - shears.
+Resource pack
+
+The pack format version is now 38.
+The appearance of a highlighted slot can now be customized by replacing sprites (this supports the use of animated textures):
+container/slot_highlight_front: The sprite to render in front of highlighted slots.
+container/slot_highlight_back: The sprite to render behind highlighted slots.
+Likewise, the appearance of a highlighted item within the Bundle can be customized with the following sprites:
+container/bundle/slot_highlight_front.
+container/bundle/slot_highlight_back.
+
+
+=== Known issues ===
+
+
+==== Languages ====
+MC-276603 - No High Norwegian language option
+
+
+=== Fixes ===
+74 issues fixed
+From released versions before 1.21
+
+MC-119369  Boats crash/break and can kill their passengers when falling certain distances.
+MC-162551  When shooting an arrow on top of a player in Creative mode, a closed shulker, or an invincible mob, the arrow glitches around on top of the entity.
+MC-174214  Fireworks for crossbow go through an entity if it is close to a player.
+MC-206436  Stonecutter ignores anything over 64 when shift-clicking.
+MC-220360  Gifts given by baby villagers, nitwits and unemployed villagers when under the Hero of the Village effect are hardcoded.
+MC-260537  Tree growth can replace leaves that have the persistent block state set to true.
+MC-265399  Players' heads are incorrectly positioned while exiting the swimming/crawling state when other players are on screen.
+MC-269873  Egg laying drop from chickens is hardcoded.
+MC-270254  Item slot highlight effect cannot be retextured.
+From 1.21.1
+
+MC-275792  Bottom faces of torches and soul torches are not culled against solid blocks.
+MC-276134  Can't scroll in Creative inventory while hovered over the bundle.
+MC-276433  set_enchantments function removes enchantments component from books.
+From the Java Edition 1.21.2 development versions
+
+MC-275205  The hand animation is delayed and doesn't play all the time.
+MC-275300  Mace smash attack damage does not work with mobs, even though particles and sounds happen.
+MC-275302  The animation speed of end crystals is no longer constant.
+MC-275352  Spectral arrow texture is not updated properly for Programmer Art.
+MC-275406  Grammatical error in options.rotateWithMinecart.tooltip
+MC-275451  Bundles do not use data for textures when the item in the bundle is rendered in the inventory.
+MC-275468  Gamerule minecartMaxSpeed can't be set through functions.
+MC-275504  Custom model data is not applied to open bundle.
+MC-275538  Breeze still do not attack when super close to them.
+MC-275750  Redstone torch still doesn't have a bottom face.
+MC-275751  Head snaps when coming out of crawling.
+MC-275765  Missing full stop in string gamerule.minecartMaxSpeed.description
+MC-275833  Hand animation plays higher than before.
+MC-275857  Minecarts become invisible if a lot of them are in the same area.
+MC-275883  Riding a minecart cluster into a wall freezes the game.
+MC-275909  Wrong death message is displayed when being killed by a mob's smash attack.
+MC-275964  Bundles can remain in the open state when held by the mouse cursor via swapping items.
+MC-275990  Bundles can remain in the open state through the crafting table.
+MC-276025  Model overrides are not applied to items shown in an open bundle.
+MC-276111  Salmon spawned from a bucket are the wrong size for one tick.
+MC-276127  Fractions in bee nest tooltip are not padded with whitespace.
+MC-276263  explosion_power nbt does not work for minecarts with tnt.
+MC-276463  Armor on piglins detach from their bodies while bartering.
+From the previous development version
+
+MC-276293  Mobs no longer get damaged by sweet berry bushes.
+MC-276295  Zombies always kill villagers.
+MC-276296  Worn chainmail armor has a missing texture.
+MC-276297  Worn netherite armor appears as diamond armor.
+MC-276299  Horse armor doesn't render properly in horse inventory.
+MC-276301  Item tooltip padding is gone.
+MC-276304  Carved pumpkins and skulls can be equipped through right-clicking.
+MC-276310  Players' capes detach from their bodies when wearing non-chestplate items in the chest slot.
+MC-276311  Players' capes illogically point upward when flying with non-elytra items.
+MC-276314  Wind charges, wither skulls and fireballs cause entities to be launched extremely high when directly hit by them.
+MC-276315  /teleport command runs at the entity's position and ignores location from execution context.
+MC-276316  Ender pearls no longer teleport entities to the point of impact.
+MC-276317  Projectiles visually update slowly when their motion is changed.
+MC-276320  Shields no longer block incoming projectiles.
+MC-276321  Elytra loses durability when taking damage.
+MC-276322  Boats don't drop as items when destroyed.
+MC-276326  Air item lost its name
+MC-276327  The item_name component no longer overrides potion names.
+MC-276335  Cured villagers have the wrong movement speed.
+MC-276338  Converted mob keeps the same loot table of the first mob.
+MC-276339  Witches converted from villagers move very fast.
+MC-276344  Hovered items in bundles do not reflect any tooltip_style component.
+MC-276364  Non-armor items with equippable tag cannot be given to wolves.
+MC-276365  Armor sleeves do not follow arms when switching to and from items and on item use animations.
+MC-276370  Golden armor pieces have wrong max durabilities.
+MC-276376  /teleport command cannot teleport to the correct facing angles.
+MC-276378  Converted witches lose their armor yet are still protected by it.
+MC-276383  Middle-clicking on boats in Creative mode crashes the game.
+MC-276384  Players' capes detach from their bodies when moving.
+MC-276394  Some specially rendered elements are no longer affected by fog of any type.
+MC-276415  Turtle helmet does not give water breathing effect when equipped on any slot other than the head.
+MC-276429  Projectiles move after hitting a block.
+MC-276476  Crash when a boat is destroyed by a hazard.
+MC-276480  Projectile no longer moves correctly when it is deflected.
+MC-276484  Fireballs and wither skulls do too much damage.
+MC-276495  Creative player can go through nether portal without being teleported when throwing riptide trident.
+MC-276501  Returning tridents get stuck on blocks and spam sounds
+MC-276527  Duplicate UUID error causes player to teleport to origin when riding on a pig after it is converted by lightning.
+MC-276533  Game crashes when three or more skeletons are about to release their arrows.
+
+
+== 24w38a ==
+24w38a is the sixth snapshot for Java Edition 1.21.2, released on September 18, 2024.
+
+
+=== Additions ===
+
+
+==== General ====
+Language
+
+Added support for High Norwegian.
+Recipe
+
+Added the crafting_transmute recipe type.
+When matched, output copies the input item stack, changing the item type but preserving all stack components.
+This completely replaces crafting_special_shulkerboxcoloring.
+Used for shulker boxes and bundles.
+Fields:
+category - crafting book category, one of building, redstone, equipment, misc
+group - optional string
+input - ingredient for item to copy
+material - additional ingredient to use
+result - item type to use for output
+Tags
+
+Introduced new item tag shulker_boxes which includes all shulker boxes.
+
+
+=== Changes ===
+
+
+==== Gameplay ====
+Creative mode
+
+Throwing items out of the inventory very quickly is now throttled.
+Recipe book
+
+Shulker box coloring recipes are now shown in the recipe book.
+
+
+==== General ====
+Data pack
+
+The pack format version is now 54.
+Realms
+
+Now uses the normal, fully featured world creation screen.
+Enables game rule customization.
+Enables data pack customization.
+Hardcore mode is now available in Realms and is accessible by creating a new world or recreating an existing one [more information needed]
+Resource pack
+
+The pack format version is now 39.
+The models and UV mapping related to the torch and blocks containing redstone torch have been updated.
+The "inverted" model now uses 6 separate faces creating the same effect as a model with a negative size.
+The UV layout for the inverted model was updated.
+Server
+
+Temporary option for ignoring connection errors on client side (strictErrorHandling) has been removed.
+
+
+=== Experiments ===
+
+
+==== Additions ====
+
+
+===== General =====
+Tags
+
+Introduced new item tag bundles which includes all bundles.
+
+
+==== Changes ====
+
+
+===== Items =====
+Bundles
+
+ Now dyeable into 16 colors.
+
+
+=== Fixes ===
+25 issues fixed
+From released versions before 1.21
+
+MC-13246  On certain enchanted items, the anvil will display a "too expensive" message before attempting to repair, combine, or rename them.
+MC-116618  Dropping items rapidly inside the "Survival Inventory" tab in creative mode deletes items.
+MC-134626  Squids/glow squids bounce up and down in bubble columns, teleporting high up in the air.
+MC-164258  Recipe book search field is not selected when clicking on the search icon.
+MC-169660  /teleport without <targets> can change the entity's rotation
+MC-204050  Subtitle for shooting amethyst blocks is "Block breaking".
+MC-214625  Unlit redstone torches are unaffected by block shading / are evenly lit on all sides.
+MC-216016  Launching fireworks into a crystal sound block will make the breaking noise.
+MC-225060  Burning entity sound repeats every tick.
+MC-225417  Squids and glow squids can break free from leads when attacked.
+MC-228070  Name tags rendered in blocks have letters brighter depending on your angle.
+From 1.21.1
+
+MC-276007  Players' name tags that are behind blocks or entities are rendered invisible or partly invisible depending on the angle you're facing.
+MC-276459  Item display rotation wrapping does not interpolate cleanly.
+From the Java Edition 1.21.2 development versions
+
+MC-275347  Minecart with furnace does not travel correctly over curves.
+MC-275413  Squids and glow squids are not affected by the thrust of the bubble column.
+MC-276292  Shift-clicking the "destroy item" slot in the Creative inventory deletes the items server-side but not client-side, causing a desync.
+MC-276372  Player drops 2 items from the hotbar at once when the Survival Inventory tab is not selected.
+MC-276373  Items dropped from the hotbar are sometimes lost when the Survival Inventory tab is not selected.
+MC-276428  Player cannot drink honey bottles when they're not hungry.
+MC-276539  Name tags and text displays render brighter in dark areas when behind blocks or entities.
+MC-276573  Spruce boat item translation key misspells minecaft.
+From the previous development version
+
+MC-276603  No High Norwegian language option.
+MC-276621  Game crashes when opening inventory that renders entity with both Invisibility and Glowing effects.
+MC-276704  Not using a selector in a /teleport command breaks rotation from a completely different /teleport command.
+MC-276722  Teleporting to your current position every tick sometimes doesn't let you move properly.
+
+
+== 24w39a ==
+24w39a is the seventh snapshot for Java Edition 1.21.2, released on September 25, 2024, which adds bundles to normal gameplay and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Tags
+
+Added the map_invisibility_equipment item tag, for items that can be equipped to hide the player marker on other players maps.
+Added the #boat entity type tag.
+
+
+=== Changes ===
+
+
+==== Items ====
+Bundles
+
+Are no longer experimental.
+Carved pumpkin
+
+Equipping it on the player's head now removes the player marker from other players' maps.
+
+
+==== Non-mob entities ====
+Boats and boats with chests
+
+The entity IDs for boats and boats with chests have been split into separate types, one per existing variant, instead of Type field.
+
+
+==== General ====
+Container locks
+
+The Lock field of containers has been renamed to lock and is now an item predicate.
+Any items which match the predicate can open the container.
+The lock data component is now also an item predicate.
+Data pack
+
+The pack format version is now 55.
+Removed the bundle feature flag and built-in data pack.
+Predicates
+
+Removed the minecraft:boat entity sub-predicate, since boats no longer have variants.
+UI
+
+Updated slot highlight so item texture has better visibility.
+The previous textures have been added to Programmer Art resource pack.
+
+
+=== Fixes ===
+23 issues fixed
+From released versions before 1.21
+
+MC-219083  Hunger client/server desync when natural regeneration is off in peaceful mode.
+MC-235953  Entity eyes render type doesn't blend non-black transparent pixels properly.
+MC-240001  The white and red highlights from recipe book previews render above potion tooltips.
+From the 1.21.2 development versions
+
+MC-275216  Bowl is consumed when feeding a rabbit stew to a wolf.
+MC-275544  Drowned do not summon reinforcements anymore.
+MC-276305  Bundles no longer available without enabling feature flag.
+MC-276341  The time how long you remain on fire no longer increases while being in the fire.
+MC-276426  Slimes or magma cubes spawned by splitting synchronize inherited status effects.
+MC-276588  Boat with chest inventory names no longer are suffixed with 'with Chest'.
+MC-276598  The slot_highlight_front texture renders incorrectly behind with missing recipe items.
+MC-276610  Ender pearl interaction with bubble columns is broken.
+MC-276611  Converted mobs do not keep CanBreakDoors tag.
+MC-276615  Cured Zombie Villagers keep CanPickUpLoot:0b.
+MC-276638  The server console or LAN game output spammed with "PLAYER moved too quickly!" after a player dies and respawns.
+MC-276646  Unique Horse Armor sound event is no longer used.
+MC-276674  Entities with emissive eyes aren't properly affected by fog of any kind.
+MC-276707  Underwater fireballs constantly play fire extinguishing sound.
+MC-276724  Arrows and potions resist upward flowing bubble columns.
+MC-276727  Projectiles are choppy while moving after hitting blocks or entities.
+MC-276807  All blocks and entities flicker at night or at lower light levels than 15.
+From the previous development version
+
+MC-276817  Teleport command offsets are applied incorrectly.
+MC-276843  Touching an end portal while in spectator mode teleports the player when they exit spectator mode.
+MC-276919  /tp teleports twice the relative distance if there's a block on the teleport point.
+
+
+== 24w40a ==
+24w40a is the eighth and final snapshot for Java Edition 1.21.2, released on October 2, 2024, which introduced experimental features for the Winter Drop announced at Minecraft Live 2024 four days before, as well as the /rotate command.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/rotate
+
+New command to rotate entities.
+Syntax:
+/rotate <target> <rotation>
+/rotate <target> facing <facingLocation>
+/rotate <target> facing entity <facingTarget> [<facingAnchor>]
+Parameters:
+target: The entity to rotate.
+rotation: Two rotation values in degrees denoting horizontal and vertical rotation.
+May use relative (~) coordinate notation to specify rotation relative to current context rotation.
+facingLocation: The coordinates of a location in the world for the rotated entity to face.
+facingTarget: An entity for the rotated entity to face.
+facingAnchor: Specifies the anchor of the facingTarget entity to rotate toward - feet or eyes (by default feet).
+
+
+==== Gameplay ====
+Particles
+
+Added particles block_crumble and trail.
+block_crumble has the following options:
+block_state: The block states of the block.
+trail has the following options:
+color: Color of the trail.
+target: Where the trail points at.
+
+
+==== General ====
+Experiments
+
+Added the Winter Drop experimental data pack.
+Options
+
+Added the "High Contrast Block Outlines" accessibility option, to make targeted block's outlines more visible.
+Tag
+
+Added item tag #gaze_disguise_equipment for items that can be equipped to disguise the player looking for other mobs.
+
+
+=== Changes ===
+
+
+==== Items ====
+Dyed shulker boxes and bundles
+
+Can no longer be dyed twice with the same color.
+
+
+==== Command format ====
+/ride
+
+No longer makes players ride leash knots, lightning bolts and fishing bobbers.
+
+
+==== Gameplay ====
+Recipe book
+
+Dyeing recipe for bundles are now unlocked when dyes are obtained instead of undyed bundle.
+
+
+==== General ====
+Data pack
+
+The pack format version is now 56.
+Enchantment definition
+
+Entity effect damage_item has been renamed to change_item_damage and now allows a negative value.
+Realms
+
+The game mode for the last active world on a realm is now visible on the main Realms screen if applicable.
+Resource pack
+
+The pack format version is now 40.
+
+
+=== Experimental ===
+The listed additions and changes are only present when the "Winter Drop" experimental data pack is enabled.
+
+
+==== Additions ====
+
+
+===== Blocks =====
+  Creaking heart
+
+A living block generating in pale oak trees, covered on all sides by pale oak wood logs.
+It can spawn a creaking mob when it is nighttime, and it is placed between two correctly aligned pale oak log blocks.
+Is active during night and dormant during day.
+Sends a trail of particles toward the connected creaking when the creaking gets hit by the player.
+Particle speed is affected by the distance of the creaking from the heart block.
+Mining the block is most efficiently done with an axe, but it only drops when using a Silk Touch tool.
+When creaking heart block is destroyed, the connected creaking is removed.
+ Pale hanging moss
+
+Generates naturally in the pale garden biome under the foliage of pale oaks.
+Does not grow randomly, but can be bonemealed to grow down.
+ Pale moss block
+
+Generates naturally in the pale garden biome As part of pale moss patches.
+Can be bonemealed to spread to compatible blocks.
+ Pale moss carpet
+
+Generates naturally in the pale garden biome As part of pale moss patches.
+When placed, grows up to two blocks on the solid faces of any block that borders it.
+Can be bonemealed to grow to full on all solid faces of any block that borders it.
+ Pale oak leaves
+
+A new type of leaves.
+  Pale oak log
+
+A new type of log, as well as a stripped variant.
+Can be used to craft pale oak wood and planks.
+ Pale oak planks
+
+A new type of plank.
+Can be used to craft  boats,  boats with chests,  buttons,  doors,  fences,  fence gates,  hanging signs,  pressure plates,  signs,  slabs,  stairs, and  trapdoors.
+ Pale oak sapling
+
+A new type of sapling.
+Can be placed in flower pots.
+  Pale oak wood
+
+A new type of wood, as well as a stripped variant.
+Can be used to craft pale oak planks.
+
+
+===== Items =====
+Spawn egg
+
+ Added the creaking spawn egg.
+
+
+===== Mobs =====
+ Creaking
+
+Spawns at night in the pale garden biome if there is a creaking heart block that has been generated in a pale oak tree.
+Is not affected by light levels but spawns and despawns based on day/night cycle.
+It follows and attacks players up to 32 blocks away from its creaking heart block.
+An activated creaking don't move if a player is looking at it.
+A player wearing a carved pumpkin on their head can look at creaking without it freezing in place.
+Is invulnerable to damage.
+When hit, a particle trail is shown between the creaking and the creaking heart block it is connected to.
+When the creaking heart block the creaking is connected to is destroyed, the creaking is removed, with no loot or experience dropped from the mob.
+Cannot enter boats.
+If spawned from a creaking heart, it can not go through portals.
+The creaking spawn egg spawns a creaking mob that is not connected to a creaking heart. The creaking mob persists through day and night, loads and saves, and takes damage from attacks and other damage sources. It has one point of health (half a heart).
+Creaking summoned from the creaking heart cannot be spawned with a spawn egg, nor can it be summoned with commands. It can only exist as a part of the creaking heart block.
+
+
+===== World generation =====
+Pale garden
+
+A new biome which contains pale oaks and pale moss blocks/carpet.
+It is a variation of the dark forest biome, with pale oak trees instead of dark oak trees.
+Animal mobs do not spawn naturally.
+The grass in the pale garden has a desaturated, grayish look, the sky is a smoky gray, and water is a pale light blue.
+Any tinted leaves places in the biome also get a desaturated, gray look.
+Pale oak
+
+A new type of tree which can be grown from pale oak saplings in a 2x2 configuration.
+Generates naturally in the pale garden biome.
+Pale moss patch
+
+A large patch consisting of pale moss, a pale moss carpet, and grass.
+
+
+===== General =====
+Sounds
+
+Ambient sounds in the pale garden biome do not come from the biome settings but are generated by blocks found in the biome.
+Pale hanging moss emits subtle atmospheric sounds when it is attached to pale oak logs and pale oak leaves.
+Creaking heart block emits a set of eerie sounds when it is active during night and surrounded by Logs on all sides.
+Tags
+
+Added the #pale_oak_logs block and item tags.
+
+
+==== Changes ====
+
+
+===== Mobs =====
+Illagers and ravagers
+
+Are now afraid of the creaking.
+Parrots
+
+Can now imitate the creaking.
+
+
+===== Gameplay =====
+Advancements
+
+The pale garden is now a requirement for "Adventuring Time".
+The creaking grants "Monster Hunter", and is now a requirement for "Monsters Hunted".
+
+
+===== General =====
+Tags
+
+Added pale_garden to the #is_forest, and #stronghold_biased_to biome tags.
+Added the pale oak wood types to their respective tags.
+
+
+=== Fixes ===
+29 issues fixed
+From released versions before 1.21
+
+MC-64265  Teleporting passengers does not dismount them.
+MC-108323  Underlines in chat and /title command intersect each other, causing an ugly effect when fading.
+MC-131215  Cannot teleport an entity which is in a boat.
+MC-185144  Item durability bar and all items render incorrectly in the villager trade UI.
+MC-259651  updateSkyBrightness() is not used client-side, causing multiple issues.
+From 1.21
+
+MC-272946  The block outline is nearly invisible for some blocks.
+MC-273848  Players can spawn underwater again in 1.21.
+From 1.21.1
+
+MC-276005  The text of sneaking players' name tags is rendered completely invisible or barely visible when the "Text Background Opacity". accessibility option is set to high values.
+MC-276852  Shulker boxes can be colored in the same color they are made of.
+From the 1.21.2 development versions
+
+MC-275505  The /tp command forces a mounted entity to dismount.
+MC-275706  Vanilla clients can't display items with components in recipe book anymore.
+MC-275790  Non-existent entries in certain tags that are not required causes validation error.
+MC-276330  Bundles no longer play a sound when being emptied.
+MC-276387  Bundles can remain in the open state when using hotkeys to move them into different slots.
+MC-276391  The item durability and bundle fullness bars render incorrectly when held over recipe book elements.
+MC-276440  Items within bundle tooltips can be unselected by scrolling despite only one item being present.
+MC-276596  Damageable horse armor with "damage_on_hurt" enabled doesn't take damage when the horse wearing it is hurt.
+MC-276640  Riding an entity constantly teleported with relative coordinates produces jittery camera movement.
+MC-276651  damage_item does not repair items when the value is negative.
+MC-276669  Pausing the game spams "Trying to save removed ender pearl, skipping" to log if ender pearls have landed.
+MC-276806  The text of name tags behind blocks or entities is rendered completely invisible or barely visible when the "Text Background Opacity" accessibility option is set to high values.
+MC-276850  Bundles can be colored in the same color they are made of.
+MC-276876  Lava cauldrons deal less damage to boats and minecarts than before.
+From the previous development version
+
+MC-276947  Command server output in singleplayer is printed into chat.
+MC-276948  Split boat entity types have capitalized 'With'.
+MC-276949  Old boat entity type translation keys are not deprecated.
+MC-276956  Cannot access registries in container block entity "lock" field.
+MC-276980  Projectiles on the wall in the water will continue to produce bubble trails.
+MC-277020  Arrows produce bubble particles when on a block in water, and retain those particles when the water is removed.
+
+
+== 1.21.2 Pre-Release 1 ==
+1.21.2 Pre-Release 1 (known as 1.21.2-pre1 in the launcher) is the first pre-release for Java Edition 1.21.2, released on October 8, 2024, which fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Game rule
+
+Added the disablePlayerMovementCheck game rule.
+Controls the player movement speed restriction.
+This behaves the same as the disableElytraMovementCheck rule, but applies irrespective of flying with elytra.
+Default to false.
+
+
+=== Changes ===
+
+
+==== Gameplay ====
+Oxygen bar
+
+Added an empty state for air bubbles () along with a wobble when the player is drowning.
+Added a popping sound for when bubbles pop on the oxygen bar, increasing in pitch depending on the oxygen left.
+
+
+==== General ====
+Data pack
+
+The pack format version is now 57.
+Item components
+
+minecraft:equippable
+Added field camera_overlay (optional): namespaced ID of the overlay texture to use when equipped.
+If not specified, no overlay is used.
+The ID addresses a texture under the textures/ folder and automatically assumed to be .png.
+For instance, misc/pumpkinblur addresses textures/misc/pumpkinblur.png.
+Resource pack
+
+The pack format version is now 41.
+Added texture and sound for tweaked air bubble UI.
+New texture added for empty air bubble.
+Sound added for when air bubble pops.
+Particles
+
+The format of color fields in particle options is now more standardized:
+RGB fields can always be encoded either as a vector of floats (order: [R,G,B]) or as a single packed integer (order: RGB).
+ARGB fields can always be encoded either as a vector of floats (order: [R,G,B,A] or as a single packed integer (order: ARGB).
+Changed fields:
+minecraft:trail.color (previously accepted only integer).
+minecraft:dust.color (previously accepted only vector of floats).
+minecraft:dust_color_transition.from_color (previously accepted only vector of floats).
+minecraft:dust_color_transition.to_color (previously accepted only vector of floats).
+Enchanting
+
+Carpets and wolf armor now show the enchantment glint on llamas and wolves.
+
+
+=== Experimental ===
+The listed changes are only present when the "Winter Drop" experimental data pack is enabled.
+
+
+==== Changes ====
+
+
+===== Blocks =====
+Creaking heart
+
+A comparator that is attached to the creaking heart block outputs a signal strength dependent on the distance to the connected creaking.
+
+
+===== Mobs =====
+Creaking
+
+Doesn't activate or freeze around players in Creative mode.
+Cannot be named with a name tag if summoned via a creaking heart.
+
+
+===== General =====
+Tags
+
+Added pale_garden to the #is_overworld biome tag.
+
+
+=== Fixes ===
+29 issues fixed
+From released versions before 1.21
+
+MC-271961  Parity Issue: No empty bubbles on the oxygen bar and popping sound.
+From the 1.21.2 development versions
+
+MC-276360  Repeating command block data is often lost when moving it around in inventory.
+MC-276604  Horse Armor no longer has enchantment glint.
+MC-276815  Dyed bundles are missing the "filled" predicate.
+MC-276965  Post shader ColorModulate uniform not reset properly after spectating spiders.
+MC-276979  Lock field on containers and minecraft:lock data component do not get datafixed correctly when a \ is present.
+MC-277017  Flaming arrows no longer extinguish when water or powder snow is placed in its location.
+MC-277019  Execute command teleporting across dimensions does not use correct relative coordinates.
+MC-277027  Shapeless recipes accept anything if one of their ingredients is an empty tag.
+MC-277028  Bundles do not empty smoothly.
+From the previous development version
+
+MC-277067  The high contrast and programmer art resource packs are displayed as being incompatible.
+MC-277075  Pale hanging moss is all destroyed at the same time when its supporting block is removed.
+MC-277078  Trim advancements use recipe registry key.
+MC-277108  The "below_name" scoreboard display mode renders with dark parts when custom colors are set.
+MC-277111  Wandering traders can sell pale oak saplings even when they're disabled.
+MC-277118  Creakings can spawn with doMobSpawning set to false.
+MC-277131  Pale garden missing from #minecraft:is_overworld biome tag.
+MC-277141  /rotate command is not restricted to permission level 2.
+MC-277143  Horse armor has damage-related components.
+MC-277144  Furnaces, blast furnaces, and smokers delete all of their contents inside them once reloaded after smelting items.
+MC-277148  Pack filters removing recipes that the player has unlocked causes data pack loading to fail.
+MC-277160  Pale hanging moss is often immediately destroyed when placed using the /fill command.
+MC-277163  Map color for pale oak saplings is incorrect.
+MC-277176  Team affixes have dark lines between them and the username in player name tags.
+MC-277215  The game crashes when attempting to accept or reject already accepted or rejected realm invitations.
+MC-277301  The enchantment glint isn't visible on thrown tridents that are enchanted or held in the hand in third person when using Fabulous graphics.
+MC-277302  The enchantment glint isn't visible on shields that are enchanted in third person when using Fabulous graphics.
+MC-277335  Pale moss carpet can be swapped without destroying the upper vine.
+MC-277371  Pale moss carpet is often immediately destroyed when placed using the /fill command.
+
+
+== 1.21.2 Pre-Release 2 ==
+1.21.2 Pre-Release 2 (known as 1.21.2-pre2 in the launcher) is the second pre-release for Java Edition 1.21.2, released on October 10, 2024, which fixes bugs.
+
+
+=== Changes ===
+
+
+===== Blocks =====
+Slime block
+
+Now cancel fall damage when sneaking.
+
+
+=== Experimental ===
+The changes listed below are only present when the "Winter Drop" experimental data pack is enabled.
+
+
+==== Changes ====
+
+
+===== Blocks =====
+Pale hanging moss
+
+Now only drops when cut with shears or destroyed using a tool with Silk Touch.
+Pale moss carpet
+
+Is now more efficient to destroy with a sword.
+Now plays the correct step sound when walked on.
+
+
+===== General =====
+Tags
+
+Added pale_moss_block and pale_moss_carpet to the #mineable/hoe block tag.
+Added pale_moss_carpet to the #combination_step_sound_blocks and #sword_efficient block tags.
+Replaced #pale_oak_logs with pale_oak_log in the #overworld_natural_logs block tag.
+Replaced pale_oak_boat with pale_oak_chest_boat in the #chest_boats item tag.
+Added pale_garden to the #has_structure/trial_chambers biome tag.
+
+
+=== Fixes ===
+38 issues fixed
+From released versions before 1.21
+
+MC-54532  Sneaking while falling on Slime Blocks inflicts fall damage.
+MC-266480  Breeze can jump on top of honey blocks.
+MC-266494  Jump Boost does not affect the breeze's jump.
+MC-269851  Breeze idle animations are different than Bedrock Edition.
+From the Java Edition 1.21.2 development versions
+
+MC-275834  Jumping when falling onto a slime block no longer cancels the bounce effect.
+MC-275941  Consumable item components with inlined sound event definitions cause undefined behavior.
+MC-276072  Tridents enchanted with Loyalty fly around drowned upon returning to them.
+MC-276605  Throwing an ender pearl through a portal or gateway often results in the player being placed slightly too low.
+MC-276624  Nether portal can send you back when your ender pearl land in the portal.
+MC-276716  Thrown ender pearl teleport position is inconsistent.
+MC-276813  Minecraft no longer prints an error to the game log when trying to render a character without a defined glyph in the loaded fonts.
+MC-276825  Transmute recipes allow air as output.
+MC-276906  Specifying a block tag in an item's can_place_on or can_break component in a recipe or loot table causes validation error.
+MC-276954  Ender pearl interaction with bubble columns is still broken.
+MC-276963  Mobs standing inside both lava and water produce the fire extinguishing sound every tick.
+MC-276978  Mobs produce the fire extinguishing sound every tick while standing in lava in rain.
+MC-277000  Entities can be damaged by fire without being ignited.
+MC-277073  Pale moss and pale moss carpets cannot be broken faster using hoes.
+MC-277081  Creakings summoned via spawn eggs disappear when entering end portals.
+MC-277091  Pale oak boats are in the chest boats tag in place of pale oak chest boats.
+MC-277096  When selecting a biome in the single biome world type, there is no translation for the pale garden.
+MC-277135  Entity collision order is now locational.
+MC-277165  Particles produced upon creakings spawning are spawned one block too far to the east.
+MC-277175  #overworld_natural_logs block tag contains #pale_oak_logs instead of pale_oak_log.
+MC-277212  The "options.accessibility.high_contrast_block_outline.tooltip" string is missing an article before the word "targeted".
+MC-277309  Missing translations for Pale Oak Wall (Hanging) Signs.
+MC-277376  Consumable block animation inherits shield behaviors.
+MC-277389  Armor stand in the smithing table interface no longer render armor when appropriate.
+MC-277392  The realms description text and the game mode text within the realms menu can intersect one another.
+From the previous development version
+
+MC-277398  The horse armor equipping sound is unusually loud.
+MC-277402  Horse armor doesn't render properly in horse inventory again.
+MC-277404  Entities' limbs are incorrectly positioned for a brief second when entities are damaged while riding entities.
+MC-277405  Mounts no longer receive damage when riding them through sweet berry bushes.
+MC-277409  Text on glowing signs no longer looks different to text on normal signs.
+MC-277417  /tp no longer works when run from a command block without context from "/execute as".
+MC-277424  The pale garden can prevent trial chambers from spawning.
+MC-277438  Wolf Armor no longer shows cracks when damaged.
+MC-277452  Player idle timeout does not kick players.
+
+
+== 1.21.2 Pre-Release 3 ==
+1.21.2 Pre-Release 3 (known as 1.21.2-pre3 in the launcher) is the third pre-release for Java Edition 1.21.2, released on October 11, 2024, which fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+High Contrast resource pack
+
+Added textures for the following:
+Frame and background textures for tooltips.
+Slot background and highlight textures for the bundle tooltip (however, it's an empty transparent texture, and has no mcmeta file next to it).
+
+
+=== Changes ===
+
+
+==== General ====
+Resource pack
+
+The pack format version is now 42.
+Added container/bundle/slot_background texture for bundle slot background.
+
+
+=== Fixes ===
+4 issues fixed
+From the Java Edition 1.21.2 development versions
+
+MC-277316  Passengers dismount minecarts/boats when converting.
+MC-277453  Projectiles visually fall when shot in a wall with high tick rate.
+From the previous development version
+
+MC-277488  Mobs in their death animations produce the fire extinguishing sound every tick while being in lava while it's raining.
+MC-277491  Mobs in their death animations that are inside both water and lava produce the fire extinguishing sound every tick.
+
+
+== 1.21.2 Pre-Release 4 ==
+1.21.2 Pre-Release 4 (known as 1.21.2-pre4 in the launcher) is the fourth pre-release for Java Edition 1.21.2, released on October 15, 2024, which fixes bugs.
+
+
+=== Fixes ===
+9 issues fixed
+From the Java Edition 1.21.2 development versions
+
+MC-277496  Text on maps that are in item frames render through blocks.
+MC-277502  Compasses do not point in correct direction when in left hand.
+MC-277505  Clocks are mirrored and spin in the wrong direction when in left hand.
+MC-277513  Item cooldowns of item stacks greater than 1 render in front of item tooltips.
+MC-277517  Arrows' landing points are lower than in previous versions.
+MC-277518  Crafting an item that has not yet been crafted removes all tabs in the recipe book other than the topmost one.
+From the previous development version
+
+MC-277548  Invisible block entities and items disappearing.
+MC-277552  Wandering traders look smaller than in previous versions.
+MC-277559  Sliding down honey blocks is still different from previous versions.
+
+
+== 1.21.2 Pre-Release 5 ==
+1.21.2 Pre-Release 5 (known as 1.21.2-pre5 in the launcher) is the fifth and final pre-release for Java Edition 1.21.2, released on October 16, 2024, which fixes bugs.
+
+
+=== Fixes ===
+2 issues fixed
+From the previous development version
+
+MC-277630  Recipe book is not updated when one of the available recipes is used
+MC-277634  Arrows shot at walls when facing south sometimes end up vertical instead of horizontal
+
+
+== 1.21.2 Release Candidate 1 ==
+1.21.2 Release Candidate 1 (known as 1.21.2-rc1 in the launcher) is the first release candidate for Java Edition 1.21.2, released on October 17, 2024, which fixes bugs.
+
+
+=== Fixes ===
+3 issues fixed
+From 1.21
+
+MC-273812  Intersection chests in trial chambers not generating correctly.
+From the previous development version
+
+MC-277636  Projectiles visually fall when relogging.
+MC-277638  Client sometimes rejects a set passengers packet.
+
+
+== 1.21.2 Release Candidate 2 ==
+1.21.2 Release Candidate 2 (known as 1.21.2-rc2 in the launcher) is the second and final release candidate for Java Edition 1.21.2, released on October 21, 2024, which fixes bugs.
+
+
+=== Fixes ===
+4 issues fixed
+From the Java Edition 1.21.2 development versions
+
+MC-277625  Player's OnGround tag doesn't update when riding a vehicle
+From the previous development version
+
+MC-277708  The sound of breaking leaves on a riding mob is not played In survival
+MC-277718  Minecart behavior altered even with experiments disabled
+MC-277732  Block break block updates can stop working in a chunk
+
+
+== Notes and references ==
+
+
+== Navigation ==

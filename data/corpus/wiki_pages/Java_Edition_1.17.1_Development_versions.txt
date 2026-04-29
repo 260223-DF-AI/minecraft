@@ -1,0 +1,201 @@
+This is a list of Java Edition 1.17.1 development versions.
+
+
+== 1.17.1 Pre-release 1 ==
+1.17.1 Pre-release 1 (known as 1.17.1-pre1 in the launcher) is the first pre-release for Java Edition 1.17.1, released on June 18, 2021, which tweaks some game mechanics and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Cauldrons
+
+Powder snow now fills cauldrons twice as fast as before.
+
+
+==== Items ====
+Spyglass
+
+Tweaked held model texture to include glass on the backside.
+
+
+==== Mobs ====
+Axolotl
+
+Blue axolotls now only spawn through breeding.
+Drowned
+
+Increased the drop probability of copper ingot from 5% to 11%, and increased the drop rate boost with each level of the Looting enchantment from 1% to 2%.
+This change is to match Bedrock Edition's drop rates.
+Goats
+
+Breeding common goats now has a chance to produce screaming goats.
+Status effects applied to goats now also apply when the goat is jumping or ramming.
+Zombies, zombie villagers, husks and drowned
+
+No longer pick up glow ink sacs.
+This prevents zombies from persisting after picking up the loot of a dead glow squid.
+
+
+==== General ====
+Protocol
+
+Handshake packet padding method for "hostname" and "port" field has reverted to pre-1.17 when the server address which used is a SRV record.
+Now, data padded in these field will use the address and port which SRV record pointed at, instead of using "server address" as "hostname" and 25565 as "port".
+Fonts
+
+Some new characters have been added.
+Includes several currency symbols and some new emoji.
+The new characters are: 
+
+
+=== Fixes ===
+30 issues fixed
+From released versions before 1.17
+
+MC-123654  Sun, moon, and/or clouds are not showing if render distance is below 4.
+MC-131290  Enchantments are saved as shorts, but are loaded as and function with integer values.
+MC-156155  Turkish lira sign () appears as  in the game.
+MC-156977  When TNT is powered at the moment it's pushed, it creates a ghost block.
+MC-194736  Duplicate text mapping for U+00B7.
+MC-196999  U+1FEC is wrong in Minecraft's font.
+MC-223350  Loaded chunks sometimes don't render until the player moves their head slightly.
+From 1.17
+
+MC-213986  Pistons and dispensers can be used to create ghost blocks using powder snow.
+MC-219018  Ghost items can be created using /item (server doesn't update client inventory correctly).
+MC-223368  Strength and weakness potions / custom attack damage attributes does not change damage from goats.
+MC-225816  Hanging roots appear large when an item entity.
+MC-226461  Logs can be replaced with stone near lava pools.
+MC-226505  Goat's long jump is not affected by the jump boost effect.
+MC-226512  Goats do not use the damage of held items when ramming entities.
+MC-226948  Withers are now affected by potion effects.
+MC-227387  World gen datapacks will likely crash or softlock the game.
+MC-227435  Lag when placing heads of non-existent players when on servers.
+MC-227483  root_system feature config's codec uses a wrong field.
+MC-227520  Overworld Fossils always generate at bedrock level.
+MC-227557  End portal texture appears stretched after world conversion.
+MC-227618  Small dripleaf is consumed without being placed when used on tall seagrass.
+MC-227651  Group for lapis lazuli ore smelting and blasting recipes is misspelled.
+MC-227821  Client crash when trying to create/edit realm immediately after deleting previous one.
+MC-227891  Ender pearls despawn when a player logs out of a server.
+MC-228219  Thrown ender pearls disappear upon entering the exit end portal.
+MC-228343  java.lang.NullPointerException when random_selector default feature isn't found.
+MC-228430  Very long loading pause while booting the game ("Failed to add PDH Counter", caused by oshi).
+MC-228828  Specifying the --server parameter when starting the game, causes the game to crash.
+MC-229299  Blue axolotls can spawn naturally.
+Other
+
+Duplication exploit with anvils.
+
+
+== 1.17.1 Pre-release 2 ==
+1.17.1 Pre-release 2 (known as 1.17.1-pre2 in the launcher) is the second pre-release for Java Edition 1.17.1, released on June 29, 2021, which adds the feature for the logging of named mobs' deaths and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Languages
+
+Added Classical Chinese.
+
+
+=== Changes ===
+
+
+==== General ====
+Languages
+
+Removed the following languages due to incomplete translations:
+East Allgovian German
+Manx
+Sicilian
+Logging
+
+Deaths of named mobs are now logged.
+
+
+=== Fixes ===
+8 issues fixed
+From 1.17
+
+MC-219290  Calcite is too quiet compared to other blocks.
+MC-221656  Creative mode obtained bucket of axolotl/tropical fish only spawns one kind axolotl/tropical fish.
+MC-226926  Emerald ore generates too often.
+MC-228599  Attempting to walk through flowing water constantly switches the player from swimming into normal mode.
+MC-229191  Diamond ore distribution changed between 1.16.5 and 1.17.
+MC-229441  You can steal the item a villager is holding for trade by killing it.
+MC-229614  Wandering Trader obtained tropical fish are only white kob.
+From the previous development version
+
+MC-229983  /clear command doesn't clear certain stacks after dropping items from them.
+
+
+== 1.17.1 Pre-release 3 ==
+1.17.1 Pre-release 3 (known as 1.17.1-pre3 in the launcher) is the third and final pre-release for Java Edition 1.17.1, released on June 30, 2021, which fixes bugs.
+
+
+=== Fixes ===
+8 issues fixed
+From released versions before 1.17
+
+MC-224894  Light tickets are released too early.
+From 1.17
+
+MC-222731  Captured axolotl constantly tries to leave water.
+MC-228802  Chunks not loading on a server / Cannot invoke cmq.a(int, int, int) because  is null.
+MC-228858  Axolotls despawning though named and on leashes.
+MC-229169  Piglins can no longer hear players breaking protected blocks through walls.
+MC-229246  Piglins and piglin brutes no longer call other piglins after attacking one of them behind walls.
+From the Java Edition 1.17.1 development versions
+
+MC-229475  Placing a small dripleaf results in the top half of water getting deleted.
+MC-229887  "Unable to create a jar-filesystem" warning logged upon starting the game.
+
+
+== 1.17.1 Release Candidate 1 ==
+1.17.1 Release Candidate 1 (known as 1.17.1-rc1 in the launcher) is the first release candidate for Java Edition 1.17.1, released on July 1, 2021, which fixes bugs and crashes.
+
+
+=== Additions ===
+
+
+==== General ====
+Death messages
+
+Two previously untranslated death messages for some underwater mobs have been given messages:
+<Name> died from dehydration;
+<Name> died from dehydration whilst trying to escape <Name>.
+
+
+=== Fixes ===
+2 issues fixed
+From 1.17
+
+MC-230716  death.attack.dryout and death.attack.dryout.player display raw translation strings (are untranslated).
+Other
+
+Fixed crashes.
+
+
+== 1.17.1 Release Candidate 2 ==
+1.17.1 Release Candidate 2 (known as 1.17.1-rc2 in the launcher) is the second and final release candidate for Java Edition 1.17.1, released on July 5, 2021, which fixes some critical issues.
+
+
+=== Fixes ===
+2 issues fixed
+Private issues
+
+A private issue was fixed.
+Other
+
+Fixed some critical issues.
+
+
+== Notes and references ==
+
+
+== Navigation ==

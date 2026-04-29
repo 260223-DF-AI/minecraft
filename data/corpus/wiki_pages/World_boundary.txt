@@ -1,0 +1,141 @@
+The world boundary is the area defining the intended spatial edges of a Minecraft dimension. It is distinct from hard limits, which are defined by limitations of the programming language itself.
+
+
+== General information ==
+
+
+=== Java Edition ===
+
+
+==== Horizontal limits ====
+
+There are several different intended horizontal boundaries in the game.
+The first layer is the world border, which lies at X/Z 29,999,984 by default, and establishes an arbitrary (but capped at this default value) blockade to prevent the player from advancing. There are several methods of bypassing this border.
+The next layer lies exactly one chunk further, at X/Z: 30,000,000. At this point, there is an invisible "wall" preventing the player from advancing by setting any players' positions beyond it to it, even in spectator mode. Using commands like /teleport does not work, since the game does not accept any value beyond X/Z: 29,999,999.5. This value is hard-coded into the game's source code. Other block interactions, such as water flowing, affects blocks outside this limit. By using a minecart (in a superflat preset with the top layer as rails), the player can go even further, up to X/Z: 30,000,208, which is considered as the third layer in recent versions. At that point, the player is frozen in place until the minecart is destroyed, then they are teleported back to X/Z: 29,999,999. By using a boat (in a superflat world), the player can still go even further, up to X/Z: 30,000,544. At that point, the player is frozen in place with the camera shaking uncontrollably, until the boat is destroyed, then they are teleported back to X/Z: 29,999,999.
+As the server thinks the player is still at X/Z: 30,000,000, no more chunks generate past X/Z: 30,000,544. This is considered to be the absolute edge of the Minecraft world.
+By editing the source code for the game, it is possible to extend the terrain generation and world border past X/Z: 30,000,544 (up to X/Z: 2,147,483,647) and experience the game quite normally (no ghost chunks; mobs can spawn alright; commands accept higher values). The game performs normally even at distances of X/Z: 2,000,000,000, as in modern versions, most distance effects have been patched out of the game. It is advisable to take note of what distance effects do exist, as well as the hard limits present - notably the 33,554,432 lighting stop and hard limit of 2,147,483,647.
+
+
+==== Vertical limits ====
+Each dimension has what is called a build limit. This is the maximum and minimum heights where a player can place and break blocks. These numbers are controlled by files in a data pack's data/<namespace>/dimension_type folder. The minimum build height is controlled by the JSON value [Int] min_y, which must be between -2032 and 2031 and be a multiple of 16. The minimum build heights in the vanilla data pack are Y=-64 in the Overworld and Y=0 in the Nether and End. The maximum build height is controlled by [Int] height, which dictates the total height within which a player may break or place blocks. It must be between 16 and 4064 and be a multiple of 16. The maximum build heights (not the [Int] height values) in the vanilla data pack are Y=320 in the Overworld and Y=256 in the Nether and the End. Regardless of what [Int] min_y and [Int] height are set to, the minimum build height cannot be below Y=-2032, and the maximum build height cannot exceed Y=2031.
+These limits do not apply to entities, which are allowed to travel to and exist above the maximum and below the minimum build heights.
+The space beyond the build limit is often referred to as the void. Any mob (besides the ender dragon) that is 64 blocks or further below the minimum build height takes damage at a rate of 4HP every 10 game ticks (0.5 seconds).
+
+
+=== Bedrock Edition ===
+
+
+==== Horizontal limits ====
+Bedrock Edition technically has no hard boundary, and the world at far distances is far too ravaged by several distance effects to provide any semblance of reasonable gameplay. Nonetheless, there exists one intentional defined limit for command usage at X/Z 30,000,000. 
+This is the maximum teleportation distance for the /tp command, and it is impossible to teleport beyond this distance in the vanilla game. Any attempts to teleport farther put the player back at this coordinate, and using commands at this point causes an "Unable to fill, summon, more object" error message, because it is an Illegal position in the command. Players who write certain commands on these coordinates (either with chat or a command block) get an error message. Attempting to use any block placement command results in an error message. Despite this, it is still possible to use structure blocks and the /locate command.
+The maximum distance that can be reached in the Overworld using teleportation, is by entering a Nether portal in the Nether at X/Z 31,999,872.
+
+
+==== Vertical limits ====
+The player is able to go as far up or down as desired, although at further distances more types of movement become impossible, and the game may eventually crash due to vertical distance effects. There are a few defined limitations for vertical movement.
+
+A bedrock floor prevents players in Survival and Adventure mode to travel to the void below Y=-62 in the Overworld or Y=1 in the Nether. A bedrock ceiling also exists in the Nether at Y=128. However, there are several glitches players can use to enter the void behind the bedrock wall.
+Players, in any game mode, cannot place blocks above or below the build limits. This is Y=-64/320 in the Overworld and Y=0/128 in the Nether and the End.
+Below Y=-82 in the Overworld or Y=-18 in the Nether and the End, players in Survival or Adventure mode and all mobs take 4HP damage every half second.
+At Y=-105 in the Overworld or Y=-41 in the Nether and the End, a floor made of invisible bedrock prevents all entities from falling further down. It can be bypassed by teleporting below this distance, or utilizing horizontal distance effects to disable it's hitbox.
+The build limit can be extended to Y=512 through behavior packs, which will reset world generation to void.
+Teleporting is limited to Y=30,000,000 blocks.
+
+
+=== Walking to the boundary ===
+Legitimate terrestrial journeys to the various world boundaries have been done across different versions of Minecraft. The 30M world border in Java Edition has been reached by Figonometry in 1.17. The world boundary in Beta 1.7.3 has been reached by MysticalMidget, who reached the Far Lands before continuing the journey to 32M. One other player, DumbName, has attempted to reach the world boundary in Bedrock Edition but ceased at 2.1M due to "lots of storage problems plus the jitter point at 2,097,152 blocks"
+For players who have reached the Far Lands legitimately, see the Far Lands page. 
+Time-wise, the walking (not sprinting) speed is 4.3 blocks per second. Walking for 6 hours per day is equal to 21,600 seconds, giving a travelled distance of 92,880 blocks every day. Walking to the 12.5M Far Lands would take just under 136 days at this pace. The boundary is almost 3x further out.
+
+
+== Effects ==
+
+
+=== Java Edition ===
+
+Generally, long server response times caused by massive distances produce unintended results, but most blocks and entities behave normally, with a few exceptions:
+
+Pistons may sometimes not extend or retract until they receive another block update.
+Beyond the X/Z 30,000,000 mark:
+Mobs do not spawn at all.
+Lighting does not update (with exception to sunlight and moonlight).
+Items may jitter slightly.
+Beyond this, most of the unintended behavior of blocks and entities is caused by either the world border (as detailed here) or being sufficiently far from the world origin (see this page). Some odd effects that are attributed to the boundary itself are as follows:
+
+Attempting to walk into the boundary still displays a walking animation, walking sounds, and cause view bobbing, effects that are not present for walking into the world border or solid walls.
+Using elytra to fly into the border causes the flying sound to continue to play at full volume rather than quietly or not at all.
+Rain particles always hit the ground at exactly sea level regardless of the actual shape of terrain beyond 30 million blocks.
+
+
+== History ==
+
+
+=== Horizontal boundaries ===
+
+
+==== Java Edition ====
+
+
+==== Bedrock Edition ====
+
+Indev era
+
+Infdev-Alpha era
+
+Alpha-Beta era
+
+Beta 1.8-1.6.4 era
+
+1.7.2-1.7.10 era
+
+1.9+ era
+
+
+=== Vertical boundaries ===
+
+
+==== Java Edition ====
+
+
+==== Bedrock Edition ====
+
+
+=== Older version effects ===
+
+
+==== Infdev ====
+On February 27, 2010, version of Infdev, many side effects would occur as the player walked thousands or even millions of blocks away. 
+
+X/Z 5121,024: Clouds stop rendering.
+In Infdev 20100327, walking off the edge would cause the player to become stuck in a glitched position, unable to escape.
+In previous versions of the game, if the player teleported as high as they possibly could, they were sent to a Y-Axis of 3.41038. In this zone, the player floats without a purpose, and dropped items that slide with what appears to be no friction before suddenly stop after about 20 blocks. It has been reported that the X and Z-Axis sometimes flicker randomly in this zone. The memory pie chart also sometimes randomly jumps to 100% undefined memory usage, and then disappears upon re-entering the debug menu.
+
+
+==== Fake chunks ====
+As the player journeys even deeper into the Far Lands, the effects worsen to the point where the game is unplayable. At X/Z 32,000,000, blocks are treated as permanently nonexistent, and do not generate even though they may appear to. When Minecraft generates and loads chunks, it loads an empty version of the terrain, complete with grass, stone and water textures that cannot be walked on. This map generates out to the 32-bit integer limit. The game can load chunks only out to X/Z: 32,000,000, causing a problem between the noise map and the chunk generator. To fix this problem, Minecraft removes the chunks generated beyond X/Z: >32,000,000 and generates only the noise map. If the player tries to walk on this map, they fall into the void. This value is hard-coded in the source code of Minecraft, meaning that it cannot be changed without editing the source files. Because chunks technically do not generate beyond X/Z: 32,000,000, things like trees, falling gravel, falling sand, mobs, grass, and other entities do not generate either. This can make the map relatively stable and crashes can be somewhat rare; however, crashes can happen on low-end computers. In rare cases, if the player performs the "ghost spawn glitch" that worked in versions between Beta 1.6 Test Build 3 and Beta 1.7.3, the player can cause trees and plants to generate beyond 32,000,000. However the framerate was actually much better the further one went because of no entities.
+
+
+==== Console info ====
+In the Xbox 360 Edition, PlayStation 3 Edition, PlayStation Vita Edition, and Wii U Edition, the Overworld is limited to 864864 blocks. Additionally, in the Xbox One Edition, PlayStation 4 Edition and Nintendo Switch Edition, the player is able to further select the size of their worlds, from Small (10241024), Medium (30723072), and Large (51205120, except Nintendo Switch Edition). The edges of these worlds are surrounded by an invisible barrier with an endless sea of water beyond it. Before being patched out over time, there were often several exploits that could be used to glitch past the border, such as using boats, or using hundreds of TNT Minecarts to blow the player above the world height ceiling.
+
+
+== Issues ==
+Issues relating to "World boundary" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Trivia ==
+
+Traveling from one edge of the world to the opposite edge by powered rail would take  35 days and 10 hours. Building the rails for such a trip would require enough iron and/or gold to fill over  723 double chests, even when packed into blocks, as well as sticks made from enough wood to fill over  135 double chests (as log blocks, not as planks, and excluding the redstone torches). (53 stacks of logs would be required just to make enough chests to hold all the building materials for this rail track.) If already crafted, the rails required would fill  17,361 double chests. If the player had to gather the materials to make all those rails, they would wear out  14,404 diamond pickaxes and  300 diamond axes (on average, about  3,601 diamond pickaxes and  75 diamond axes, both enchanted with Unbreaking 3).
+Even if one were to amass all these materials, actually laying said track would require the player to travel the entire distance through other means anyway.
+Factoring in the need for powering the track and assuming the player were to use redstone torches, the player would require 3,529,412 torches for the full track, since a torch can optimally light 17 blocks. That requires 55,148 sticks and bits of redstone dust, which requires 2042 large chests, which requires 128 stacks of log blocks to make the chests (which requires 3 large chests).
+From -29999984, 0, -29999984 to 29999984, 255, 29999984 there is a total of 921,599,016,960,262,144 (921 quadrillion) blocks in the default world border (Including air blocks)
+It is possible to generate trees and vegetation beyond 30,000,000 by loading a version of Minecraft after Java Edition 1.9, then load a few chunks beyond the world border. Then, close the world and load a version of Minecraft between Beta 1.8 - Release Java Edition 1.6-pre[verify] and load the same world. If the players travel to the world barrier, there are a few chunks that generate beyond 30,000,000 that have trees and grass.
+It is possible to even generate Far Lands chunks using this method. Load a world in release Beta 1.8 - Release 1.6 and teleport to X/Z: 30,000,000. Close the world before the fake chunks generate and load the world in Beta 1.7.3. The Far Lands chunks load and then, the player can load as many chunks as they want. Then close the world and load it in a newer version, and the player has Far Lands chunks in the 30,000,000 block area.
+Spiders can climb the border, continuing to climb upward indefinitely.[verify]
+In Minecraft 4k, there is a barrier on the bottom of the map, which is unbreakable by any means.
+
+
+== References ==
+
+
+== Navigation ==

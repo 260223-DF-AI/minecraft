@@ -1,0 +1,82 @@
+15w32a is the fourth snapshot for Java Edition 1.9, released on August 5, 2015.
+
+
+== Additions ==
+
+
+=== General ===
+Keyboard shortcuts
+
+F3+N now toggles between Creative and Spectator mode, when the player is in either of them.
+The player needs to be allowed to use /gamemode for this to work.
+Statistics
+
+sneakTime
+Tracks the amount of ticks the player has held the sneak key, regardless if the player was moving.
+Data versions
+
+Worlds now display and store the version it was last played in, or "unknown" if the version was older than snapshot 15w32a.
+If the world has not been opened in one of the 1.9 snapshots yet, there will be an exclamation mark (!) next to the world's name on the far right that displays text when hovered over: "Don't forget to backup this world before you load it in this snapshot."
+
+
+== Changes ==
+
+
+=== Mobs ===
+ Creepers, Skeletons, and Zombies
+
+Must be closer to notice players wearing their corresponding head.
+Specifically, the detection range is halved.
+This reduction stacks with the reductions from sneaking and Invisibility.
+Does not apply to wither skeletons.
+ Ender Dragon
+
+No longer stops its attack on a single hit.
+Now flies back to portal before finishing its death animation.
+No longer takes damage from snowballs, eggs, or fishing rods.
+Now immediately charges at the player after finishing its dragon breath attack.
+Fireballs now spread ender acid upon exploding.
+No longer light the ground on fire.
+The charge attack has been given a great amount of knockback.
+Dragon wings and tail now damage the player, prevent side and back melee attacks when the dragon lands on the portal.
+Dragon's breath now shoots out farther.
+ Shulker
+
+Projectiles no longer follow the player in Spectator mode.
+
+
+=== Command format ===
+NBT format
+
+Tags and DataVersion tag can now be applied on entities.
+Changed the Fuse tag's type for the PrimedTnt entity from "Byte" to "Short".
+
+
+== Fixes ==
+7 issues fixed
+From released versions before 1.9
+
+MC-48730  Nametags still show while player is invisible and on a team.
+From the 1.9 development versions
+
+MC-82833  Shulker projectiles follows player in spectator mode and Creative mode.
+MC-83951  Ender dragon movement stutters in dimensions other than the End.
+MC-84078  When fishing rod is cast, all fishing rods look like they were cast out to sea, too.
+From the previous development version
+
+MC-84253  Almost all potion and tipped arrows are black.
+MC-84515  Particles don't show when a beacon is running / splash potion is thrown.
+MC-84584  Placing end rod on end rod sends "hslsdjfksdlk" to output log twice.
+
+
+== Videos ==
+
+
+== Trivia ==
+15w32a was previously removed from the launcher for some time, but was added back in September 2018.
+
+
+== References ==
+
+
+== Navigation ==

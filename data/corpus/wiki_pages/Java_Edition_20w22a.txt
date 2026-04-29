@@ -1,0 +1,308 @@
+20w22a is the nineteenth and final snapshot for Java Edition 1.16, released on May 29, 2020, which adds a piglin dance and fixes many bugs.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Jigsaw blocks
+
+Added a new "Keep Jigsaws" option that controls whether jigsaw blocks in the resulting structure after using "Generate" remain jigsaw blocks or are replaced by their "Turns Into" block.
+Defaults to "ON."
+
+
+=== Mobs ===
+ Piglins
+
+Now have a 10% chance to "dance" after killing a hoglin.
+If they have a sword, they now raise it while aggressive.
+
+
+=== Gameplay ===
+Death messages
+
+Added a new death message for being killed by an entity's wither skull projectile, "<player> was shot by a <entity>'s skull."
+
+
+=== General ===
+Shaders
+
+Added assets\minecraft\shaders\post\transparency.json.
+Tags
+
+Added new fence_gates block tag.
+Contains all 8 fence gate types.
+Added new unstable_bottom_center block tag.
+Contains the #fence_gates block tag.
+Blocks in this tag cannot support lanterns or bells on their bottom side even if they would otherwise be able to.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Bells
+
+Now follow the same placement rules as lanterns when being placed on the undersides of blocks. As a result, they can now be hung from the bottom of the following blocks:
+Anvils (all stages)
+Brewing stands
+Chains
+Chests
+Ender chests
+End rods (facing up or down)
+Fences (all types)
+Flower pots (including potted objects)
+Glass panes (including stained)
+Grindstones (ceiling attached)
+Hoppers (downward facing)
+Iron bars
+Mob heads
+Pistons (sideways facing extended)
+Trapped chests
+Walls (all types)
+Campfires
+
+Now drop food being cooked when put out with a shovel or water bottle.
+Nylium
+
+Now drop netherrack unless broken with Silk Touch, in which case they drop themselves.
+Smithing tables
+
+The hammer in the UI has been shifted to the left slightly, and the text has moved up.
+Soul campfires
+
+Now deal double the damage that normal campfires deal.
+
+
+=== Mobs ===
+General
+
+Players can no longer mount another entity when the crouch key is held down.
+Bees
+
+Now grow up and count down their breeding cool down when inside a beehive.
+Endermen
+
+No longer despawn when holding a block.
+Villagers
+
+Workstation logic changes.
+Villagers no longer try to work at the same workstation.
+When a workstation is placed, the most experienced nearby villager for that corresponding profession gets the workstation.
+Villagers now have to walk to and reach the workstation before they can acquire the profession/work there.
+Villagers check and make sure their workstation is valid at all times of day as long as they are within 16 blocks of their workstation.
+The experience bar now accurately reflects how much experience villagers have and need.
+Clocks and compasses no longer function in the villager trading UI.
+Witches
+
+When a villager that was traded with is struck by lightning, the witch it converts to no longer despawns.
+Zombified piglins
+
+Now hold their arms forward, similar to zombies.
+Texture has been tweaked.
+
+
+=== World generation ===
+Basalt pillars
+
+Now end in the top layer of the lava ocean instead of directly above it.
+Chest loot
+
+Is no longer randomized across the same seed.
+Structures
+
+Fossils no longer overlap desert temples.
+Intersecting dungeons no longer replace spawners with cobblestone.
+Fossils, ocean ruins, and dungeons no longer overlap end portals.
+
+
+=== Command format ===
+/clear
+
+Now works properly with the inventory crafting grid.
+
+
+=== Gameplay ===
+Advancements
+
+"Bee Our Guest" can now be unlocked with both beehives and bee nests, instead of only beehives.
+Repairing
+
+Blackstone can now be used to repair stone tools.
+
+
+=== General ===
+Collision
+
+Minor optimizations in collision detection.
+Data packs
+
+Slightly changed data pack loading to prevent custom data packs from crashing.
+If data pack reload fails, changes are not applied and the game continues using the previous data.
+Changes to data pack list are stored only after a successful reload.
+If existing data packs prevents the world from loading, the game offers the option to load the world in safe mode, which loads only the vanilla data pack.
+Added --safeMode option for servers to load only the vanilla data pack.
+Game now detects any critical data pack issues, such as required tags being missing, and prevents the world from being loaded.
+Materials
+
+Whether or not a block requires a tool is now no longer a property of a material and is now assigned on a block-by-block basis.
+Pathfinding
+
+Cached repeated block type lookups and collisions during pathfinding for increased performance.
+Predicates
+
+Top-level element in predicate file can now be array (all contents are ANDed).
+Rendering
+
+Made experimental changes to graphics rendering.
+Added shader support for accessing the depth buffer.
+The renderer now uses per-pixel blending layers for some transparent elements.
+
+
+== Fixes ==
+124 issues fixed
+From released versions before 1.16
+
+MC-667  Lily pads can be placed intersecting entities.
+MC-4065  Messages/commands sent while in a bed are not remembered in sent history.
+MC-101374  Endermen don't dodge melee attacks if the player isn't aiming at their head.
+MC-112131  Intersecting dungeons: spawner replaced by cobblestone.
+MC-118594  Removal of Log4J2Plugins.dat causing a slowdown of 3 secs on startup while it has to rescan all classes.
+MC-120805  Pig rotation is wrong when you see a player riding them with a carrot on a stick.
+MC-121932  Villager trade with same items but different NBT data.
+MC-124812  Endermen holding a block can despawn.
+MC-125006  Stronghold and dungeon generate over each other.
+MC-134637  Comparators on slabs drop when loading them with structure blocks.
+MC-134755  All short mobs drown just below the surface of water.
+MC-136760  A passenger of a boat is not saved if the passenger is in a different chunk than the boat.
+MC-137102  Hoe doesn't lose durability if used to mine blocks.
+MC-143443  Redstone dust block states do not update properly if the wire is broken by a piston.
+MC-148893  Fox spawners do not render the fox inside of the block.
+MC-150806  Multiple villagers are attached to the same profession block.
+MC-153787  Zombie reinforcements can spawn on glass.
+MC-156161  Some chest loot is randomized across the same seed, unlike before 1.14.
+MC-156866  Villagers level from Apprentice to Journeyman with less experience than shown by the XP bar.
+MC-157303  Villagers wake up and seek a new "home" (bed) while living in a 2 high house.
+MC-157436  Player position is constantly reset when clicking with a sword or a trident onto the ground in creative mode.
+MC-161899  Clouds do not render behind transparent blocks.
+MC-161917  Particles do not render underwater, behind water, or behind other transparent blocks.
+MC-162340  World border is rendered behind transparent blocks.
+MC-162341  World border is rendered behind clouds.
+MC-162346  Clouds do not render behind transparent particles.
+MC-162428  Rain and snow cannot be seen through transparent blocks.
+MC-162665  Food does not drop from a campfire when it is put out with a shovel/water bottle.
+MC-163910  Hand animation sometimes plays for a second time with high ping.
+MC-164047  Moving transparent blocks cause transparent blocks behind them to not render.
+MC-164056  Clouds do not render behind moving transparent blocks.
+MC-164111  Transparent falling blocks make entities and block entities invisible.
+MC-164233  "Skilled" villagers without job sites do not get precedence over unemployed villagers.
+MC-165549  Arm swing animation is still playing when drinking an item.
+MC-165958  Clouds, transparent blocks, and other semi-transparent textures do not render behind semi-transparent entities.
+MC-165962  Some transparent items make transparent blocks and beacon beams do not render behind them when dropped (again).
+MC-165966  Shadows do not render behind experience orbs.
+MC-165968  Transparent blocks do not render behind experience orbs.
+MC-166135  Bees inside a nest/hive do not grow up or get their breeding timer reset.
+MC-166297  Items do not render behind experience orbs.
+MC-166398  Mobs do not render behind experience orbs.
+MC-166576  Player head shakes when loading world in F5.
+MC-166717  Block outlines/hitboxes render behind all translucent blocks and clouds.
+MC-166725  Entity hitboxes render behind all translucent blocks and clouds.
+MC-166729  Fishing lines render behind water, other transparent blocks, and clouds.
+MC-167039  Right-clicking on a spawner with the same mob spawn egg as in spawner plays hand animation.
+MC-167090  Entity hitboxes are rendered behind item frames.
+MC-167273  Some special rendering blocks render in front of entity hitboxes.
+MC-167342  Structure block outline renders behind clouds and translucent blocks.
+MC-168137  Entities sometimes do not render behind semi-transparent entities.
+MC-168311  Fishing line disappears when in front of entities and blocks entities.
+MC-168485  Chests do not render behind experience orbs.
+MC-169079  Held items do not render behind semi-transparent entities.
+MC-169683  Bells cannot be hung from certain blocks that have a wide enough base.
+MC-169891  Zombie reinforcements can spawn in regardless if the light level is higher than 9 in nether (hard difficulty).
+MC-174404  Arrows are rendered in front of the world border.
+MC-174932  Right-to-left text appears left-to-right after the game start until the language is changed.
+MC-177075  Taking product out of stonecutter produces no subtitle.
+MC-178441  Endermen do not avoid the wither's skull projectiles.
+MC-178576  Projectile protection has no effect on wither skulls, unlike ghast fireballs
+MC-181108  Right-to-left text is displayed left-to-right at all times.
+MC-181827  Northwest bias in bee movement.
+MC-182336  Entities sometimes do not render behind the wither armor effect of the Wither.
+MC-182888  Compasses and clocks work like normal in villager trading GUI.
+MC-183718  Stronghold end portal can be overwritten by ocean ruins.
+From the 1.16 development versions
+
+MC-171553  Basalt can generate inside nether fortresses.
+MC-172079  The /clear command output does not count items in the inventory crafting grid.
+MC-172142  Items are invisible while being picked up.
+MC-172197  Nylium is not dropping netherrack when it is broken by pickaxe.
+MC-172272  /clear removes all items from the crafting grid regardless of item type.
+MC-172479  Hoglins immediately attack invisible players.
+MC-172980  Light does not propagate across chunk borders properly.
+MC-173032  Fossils can overwrite the stronghold end portal.
+MC-173063  Redstone wire does not update connections going up or down when being placed by commands.
+MC-173197  Zombified piglin does not hold its arms upward like a zombie.
+MC-173552  Nether fossil support islands are sometimes cut off at chunk borders.
+MC-174307  Nether fossils stop basalt pillars from generating.
+MC-174325  Mushrooms or nether fungi can replace the stem of large nether fungi (trees).
+MC-174692  Shroomlights, wart blocks, and vines can overwrite the stem of large nether fungi.
+MC-174956  Some entities behind the world border are rendered in front of it instead of behind it.
+MC-174957  Held items are rendered in front of the world border.
+MC-175553  Piglins do not drop their inventories when converted to zombified piglins.
+MC-176020  If a player is riding a strider, other players can not see the animation of the strider.
+MC-176051  Glowstone in the offhand sets spawn point and charges respawn anchor at the same time.
+MC-176147  Basalt randomly gets cut off.
+MC-176628  Frost Walker protects player from fire.
+MC-177150  Ticking entity java.lang.IllegalStateException: Tag minecraft:fire used before it was bound.
+MC-177265  Piglin and zombified piglin right arm/leg/loincloth textures are identical to the left ones.
+MC-177626  Spruce generation is broken.
+MC-177870  Soul campfire does not deal twice the amount of damage as a normal campfire.
+MC-177888  Blackstone cannot be used to repair stone tools and weapons using an anvil.
+MC-177962  Giant fungi can replace waterlogged blocks when growing.
+MC-177970  Player can occasionally be forced into crawling in one-block tall spaces.
+MC-178003  Fossils can generate inside desert temples.
+MC-179020  Jigsaw blocks do not disappear post-gen when the structure is spawned using the 'Generate' action from an initial jigsaw.
+MC-179890  Fire stops ticking forever if gamerule doFireTick is set to false once.
+MC-179909  22 trees sometimes fail to grow, but if they grow, they always grow on the surface.
+MC-180098  Farmer villagers' farming behavior is broken.
+MC-180771  Observer not updating when a tree grows leaves in front of it.
+MC-180877  Fire does not spread from netherrack to other blocks.
+MC-181464  When a piglin picks up a shield the gear equip sound is infinitely spammed.
+MC-181529  Ctrl + Pick Block no longer copies skull/head NBT data properly.
+MC-181555  When replacing a snow layer with a grass block, podzol, or mycelium, the block has the "snowy=true" blockstate.
+MC-182666  Parity issue: Piglins do not have a dancing animation when celebrating their victory.
+MC-182919  Horse armor stops rendering if you equip the horse with a saddle by right-clicking.
+MC-182967  Throwing ender pearl whilst mounted does not teleport you.
+MC-183275  Basalt pillars end above the lava in Java Edition but inside of the lava in Bedrock Edition.
+MC-183298  Piglins crash game when reloaded if a block tag called within the piglin_repellents tag cannot be read.
+MC-183374  Text on signs stops rendering while still in view.
+MC-183496  Enchantment glint does not render in boat interior.
+MC-183808  "Bee Our Guest" advancement does not trigger when harvesting honey from bee nests.
+MC-183860  Zombie villager converted from villager gets PersistenceRequired depending on whether attacking zombie had it.
+MC-184482  End gateways do not generate after defeating the ender dragon.
+From the previous development version
+
+MC-184609  Text renders in the wrong order.
+MC-184619  Piglins riding on other entities float.
+MC-184629  Piglins riding on hoglins or other piglins automatically dismount them.
+MC-184640  Only one piglin can ride on a boat while the other piglin dismounts the boat.
+MC-184730  Crash: java.lang.NullPointerException: mouseClicked event handler  Some Superflat presets crash immediately when trying to generate them.
+MC-184740  Structures generated in previous versions are not recognized as valid structures, causing mobs not to spawn.
+MC-184778  Redstone dust can be toggled between cross and dot in adventure mode.
+MC-184907  [Crash] java.lang.UnsupportedOperationException - Some villages cause crashes.
+MC-184936  Old Minecraft logo in the end poem/credits.
+MC-185141  Opacity of the new Minecraft logo when fading in the main menu is inconsistent with other elements.
+MC-185156  Worldgen settings are not validated and can cause crashes.
+
+
+== Trivia ==
+This snapshot, being the last for 1.16, was released in the same week of the year as the last snapshot for 1.13, 18w22c.
+Just like 20w07a, 20w22a came out on Friday, which almost never happens to the first-of-the-week snapshot.
+20w22a contained the largest number of bug fixes in a single snapshot, with at least 123, beating 19w14a by at least 18. The record was, however, beaten by 21w11a and 23w31a.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

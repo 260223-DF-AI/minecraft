@@ -12,8 +12,8 @@ Dyed bundles are the dyed variants of bundles.
 
 
 == Usage ==
-Bundles are used to store different item types in the same inventory slot. This does not however increase the total capacity of the slot, as bundles can store only what would otherwise  add up to a single slot. Items that can normally stack up to 64 take up 1⁄64 of a bundle, items that can normally stack up to 16 (e.g. eggs, ender pearls) take up 1⁄16 of a bundle, and items that do not stack take up the entirety of a bundle (e.g. swords with an exception of bundles themselves). In Java Edition, the space that an item takes up in a bundle is equal to the reciprocal of its max_stack_size component, even if it is different from the standard 1, 16, and 64.
-Bundles are not stackable, but they are able to be placed (nested) inside another. Each bundle placed inside another bundle consumes 1⁄16 of the space of the outer bundle plus the space occupied by the inner bundle's contents. In Java Edition, the space taken up by a bundle is not affected by its max_stack_size component.
+Bundles are used to store different item types in the same inventory slot. This does not however increase the total capacity of the slot, as bundles can store only what would otherwise  add up to a single slot. Items that can normally stack up to 64 take up 164 of a bundle, items that can normally stack up to 16 (e.g. eggs, ender pearls) take up 116 of a bundle, and items that do not stack take up the entirety of a bundle (e.g. swords with an exception of bundles themselves). In Java Edition, the space that an item takes up in a bundle is equal to the reciprocal of its max_stack_size component, even if it is different from the standard 1, 16, and 64.
+Bundles are not stackable, but they are able to be placed (nested) inside another. Each bundle placed inside another bundle consumes 116 of the space of the outer bundle plus the space occupied by the inner bundle's contents. In Java Edition, the space taken up by a bundle is not affected by its max_stack_size component.
 Shulker boxes cannot be placed inside of bundles. However, bundles can be placed inside of shulker boxes.
 
 

@@ -1,0 +1,280 @@
+23w14a is the third snapshot for Java Edition 1.20, released on April 5, 2023, which changes the logo and panorama and fixes bugs.
+
+
+== Additions ==
+
+
+=== General ===
+Tags
+
+Added enchantment_power_provider block tag.
+Contains bookshelf.
+Added enchantment_power_transmitter block tag.
+Contains #replaceable.
+Contains blocks that do not invalidate enchanting bonuses when placed between a enchanting table and bookshelves.
+Added replaceable block tag.
+Contains air, water, lava, grass, fern, dead_bush, seagrass, tall_seagrass, fire, soul_fire, snow, vine, glow_lichen, light, sunflower, lilac, rose_bush, peony, tall_grass, large_fern, structure_void, void_air, cave_air, bubble_column, warped_roots, nether_sprouts, crimson_roots, and hanging_roots.
+Contains blocks on which another block can be placed
+Added replaceable_by_trees block tag.
+Contains #leaves, grass, fern, dead_bush, vine, glow_lichen, sunflower, lilac, rose_bush, peony, tall_grass, large_fern, hanging_roots, pitcher_plant, water, seagrass, tall_seagrass, warped_roots, nether_sprouts, and crimson_roots.
+Contains changeable blocks that growing trees can replace.
+Added sword_efficient block tag.
+Contains #leaves, #saplings, #small_flowers, #crops, grass, fern, dead_bush, vine, glow_lichen, sunflower, lilac, rose_bush, peony, tall_grass, large_fern, hanging_roots, pitcher_plant, brown_mushroom, red_mushroom, sugar_cane, pumpkin, carved_pumpkin, jack_o_lantern, melon, attached_pumpkin_stem, attached_melon_stem, lily_pad, cocoa, pitcher_crop, sweet_berry_bush, cave_vines, cave_vines_plant, spore_blossom, moss_carpet, pink_petals, big_dripleaf, big_dripleaf_stem, small_dripleaf, nether_wart, warped_fungus, warped_roots, nether_sprouts, crimson_fungus, weeping_vines, weeping_vines_plant, twisting_vines, twisting_vines_plant, crimson_roots, chorus_plant, and chorus_flower.
+Contains blocks that break faster with a sword.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Block of amethyst
+
+Sculk shriekers and wardens are now triggered by vibrations emitted by a resonating amethyst block.
+Added to the "Redstone Blocks" tab in the creative inventory.
+ Buttons
+
+Changed their UV texture map.
+Calibrated sculk sensor
+
+Now glows when it triggers, just like a regular sculk sensor.
+Now detects vibrations up to 16 blocks radius instead of 8 blocks.
+Now has a 1 second active cooldown instead of 2 seconds.
+Now accepts signals into the calibration input side more consistently with other Redstone components.
+For example, signals can now be received through a block.
+Default redstone output has been modified to be more reliable for distance calculations.
+Now strongly powers the block they are placed on.
+Can now be activated by sniffers digging.
+Decorated pot
+
+Now can be waterlogged normally.
+Enchanting table
+
+A replaceable block between them and bookshelves no longer invalidates bonuses.
+ Hopper
+
+Changed the texture of bottom.
+ Large chest and large trapped chest
+
+Slightly changed their texture.
+Pitcher plant and pitcher crop
+
+Can now be destroyed by ravagers.
+Their hitbox now changes according to their age.
+Moved near other large plants in the creative inventory.
+Can now be crafted into two cyan dye instead of one.
+Sculk sensor
+
+Default redstone output has been modified to be more reliable for distance calculations.
+Now strongly powers the block they are placed on.
+Can now be activated by sniffers digging.
+Sculk shrieker
+
+Scream sounds are no longer heard if block is waterlogged.
+Added to the "Redstone Blocks" tab in the creative inventory.
+Signs
+
+Signs with click commands can now be interacted with, even if the sign is not waxed.
+Signs with non-text chat components can no longer be edited, even if the sign is not waxed.
+Now save text even if the edit screen is closed by the player being moved far away.
+Suspicious gravel
+
+Now has an assigned tool (shovel).
+Can now have bamboo planted on it.
+ Suspicious sand
+
+Now has an assigned tool (shovel).
+Can now have cacti and sugar cane planted on it.
+Can no longer be replaced by sculk when a sculk catalyst triggers.
+Torchflower
+
+Moved near other small flowers in the creative inventory.
+
+
+=== Items ===
+Brush
+
+The brushing sound is now controlled by the "Blocks" sound slider instead of the "Players" sound slider.
+Torchflower seeds
+
+Can now be picked up by farmer villagers.
+
+
+=== Mobs ===
+Sniffer
+
+Can now be tempted using torchflower seeds.
+If it has a given name, it now appears in the correct place.
+Previously the name tag appeared in the model.
+Can now dig mud.
+Now emits a sound when laying a sniffer egg.
+Snifflets scenting sounds now use a pitched volume like the other baby mobs.
+ Villager
+
+Slightly changed the texture of desert villagers' arms and sandals.
+ Zombie villager
+
+Changed the texture of desert zombie villagers' arms.
+
+
+=== World generation ===
+Desert pyramid
+
+Suspicious sand is now visible on the top layer of the newly added room.
+
+
+=== General ===
+Loot tables
+
+Added new loot table function called reference.
+New function reference allows functions to call sub-functions (similar to reference condition).
+Fields: name - location of function to call.
+Resource pack
+
+The pack format version is now 14.
+Updated the sprite layout of minecraft.png.
+Removed the overriding minecraft.png from the "Programmer Art" resource pack.
+Updated the sprite layout of invite_icon.png.
+Tags
+
+Added suspicious gravel to the #bamboo_plantable_on and #overworld_carver_replaceables block tags.
+Added suspicious gravel and suspicious sand to the #mineable/shovel block tag.
+Removed the #sand block tag from the #sculk_replaceable block tag, replacing it with sand, and red_sand.
+Removed replaceable_plants in favor of replaceable_by_trees.
+Title screen
+
+The panorama was changed to showcase a cherry grove biome.
+The Minecraft logo was changed.
+Made "Java Edition" text bigger.
+Made "Minecraft" text smaller.
+The Minceraft easter egg now has its own logo texture.
+The format of the invite icon was slightly changed.
+The Minecraft Realms logo was changed.
+Other
+
+Removed the server & port arguments as their functionality has been replaced by Quick Play.
+Added support for four new command line arguments that allow the game to be launched directly into a world.
+quickPlayPath takes a specified path for logging (relative to the run directory).
+If a path is provided, the following is logged upon joining a world:
+type: is either singleplayer, multiplayer, or realms.
+identifier: represents the world player wants to join.
+For singleplayer, the folder name of the world.
+For multiplayer, the IP address of the server.
+For realms, the Realms ID.
+port: The server port, only logged for multiplayer.
+name: The name of the world.
+gamemode: The gamemode of the world.
+lastPlayedTime: The time player joined the world.
+Example:
+--quickPlayPath "quickPlay/log.json" resolves into .minecraft/quickPlay/log.json
+quickPlaySingleplayer, quickPlayMultiplayer and quickPlayRealms all take their respective identifier.
+If one of these arguments is provided, the game tries to launch directly into the given world.
+Examples:
+--quickPlaySingleplayer "New World"
+--quickPlayMultiplayer "localhost:25565"
+--quickPlayRealms "1234"
+
+
+== Fixes ==
+82 issues fixed
+From released versions before 1.20
+
+MC-2474  Transparent blocks placed between bookshelves and enchanting tables negate bonuses received from bookshelves.
+MC-58961  Back button and kick message can overlap.
+MC-138358  Levers on top of item frames Z-fighting with blocks in item frames.
+MC-155084  Horses' armor, reins, and bridles experience z-fighting.
+MC-165773  /execute run does not cause syntax error when arguments are missing.
+MC-176309  Illusioner has a few misplaced pixels left in their texture.
+MC-203399  Hoppers use the side texture on the bottom.
+MC-203406  Kelp and seagrass models appear to reference biome tints despite not using any.
+MC-212271  Glow squid and squid show Z-fighting.
+MC-212892  Right-clicking a non-glowing sign using an ink sac (or vice versa) doesn't fire the clickEvent.
+MC-224433  Clouds texture contains semi-transparent background.
+MC-224648  Pressed buttons placed on painting can cause z-fighting.
+MC-230792  Cat's tail shows Z-Fighting.
+MC-236117  Music disc texture isn't centered properly.
+MC-237556  Legs of black cat model are white at the top.
+MC-241314  Filled cauldrons' bottom faces are still culled when they should not be.
+MC-241347  Purple glazed terracotta still uses old sword design.
+MC-241850  Miscolored pixels on double chest.
+MC-246459  Drowned have some transparent pixels within their inner body texture.
+MC-249047  The minecraft:ui.button.click sound isn't played when joining realms through double-clicking on them.
+MC-249514  Button UV appears to be upside-down.
+MC-251536  Desert zombie villager feet still mismatch the sides of the feet.
+MC-251537  Desert (zombie) villager has solid-color on inner of arm, unlike other villagers.
+MC-251538  Desert villager missing some pixels for the sandals.
+MC-252099  Incorrect texture mapping in potted mangrove propagule (mirror effect).
+MC-254588  Miscolored pixel on slowness effect icon.
+MC-256419  Incomplete commands run through aliases don't produce errors.
+MC-256540  The top texture of the camel's front left leg contains some redundant gray pixels.
+MC-256688  Birch wall hanging sign uses "snare" instrument when placed under note block, instead of "bass" as other hanging signs.
+MC-258939  Non-atomic cached state can cause multithreaded crashes.
+MC-259574  Crash trading with a custom villager: java.lang.NullPointerException: Cannot invoke "cdp.S_()" because the return value of "cdt.c()" is null.
+MC-259873  Skeleton/Zombie Horse's chests are outdated.
+MC-260036  Can't plant cactus and sugar cane on suspicious sand.
+MC-260042  Cannot waterlog a decorated pot by using a water bucket or dispenser.
+MC-260105  The name tags of sniffers are partly inside their models.
+MC-260152  Sculk sensors are not activated by sniffers digging.
+MC-260202  The sound of using the brush isn't affected by blocks.
+MC-260233  Suspicious Sand has no assigned tool.
+MC-260240  Sniffers that are in love sometimes don't attempt to approach one another to breed.
+MC-260347  Falling suspicious sand does not break when reopening the world.
+MC-260348  Sniffers will never dig in normal mud despite being a "sniffer_diggable" block.
+MC-260401  When Brush is broken in offhand, the broken Particle is the Item in mainhand.
+MC-260459  Baby sniffers don't sound high pitched when sniffing.
+MC-260467  Torchflower is not grouped with other small flowers in the creative inventory.
+MC-260478  Torchflower crop hitboxes don't change in size according to their age.
+MC-260527  The coordinates of the sniffer "minecraft:sniffer_explored_positions" tag do not check the dimension.
+MC-260778  Sniffer tries to sniff out blocks outside the world border.
+MC-260779  Sniffers can dig into blocks outside the world border.
+MC-260810  Villagers can't pick up torchflower seeds, despite being able to farm torchflowers.
+MC-260992  Cannot return to title screen from Realms screen (except using ESC).
+MC-261020  Double-clicking on a Realm to join it no longer works.
+MC-261029  Progress bar for uploading a world to Realms is much larger than normal.
+MC-261487  Z-fighting occurs on the backs of sniffers' heads.
+From the 1.20 development versions
+
+MC-261167  Suspicious gravel does not have an assigned tool.
+MC-261171  You can't plant bamboo on suspicious gravel.
+MC-261172  Pitcher crop hitboxes don't change in size according to their age.
+MC-261174  Suspicious gravel is not part of the #overworld_carver_replaceables tag, causing carvers to not cut through it.
+MC-261176  Pitchers don't maintain the farmland used to grow it.
+MC-261179  Attempting to interact with a waxed sign plays a sound but displays no subtitle.
+MC-261183  Sniffer egg sound events are listed under "entity" instead of "block".
+MC-261186  Entities don't recognize sniffer eggs as obstacles when pathfinding.
+MC-261187  Entities will often spin while pathfinding on top of sniffer eggs.
+MC-261189  Inconsistent naming of block states for sniffer and turtle eggs.
+MC-261196  Torchflowers and pitcher plants can't burn.
+MC-261197  Players can edit signs in adventure mode.
+MC-261198  Calibrated sculk sensors don't glow like original sculk sensors.
+MC-261201  Pitcher plant can be replaced by the use of placed blocks, which is not consistent with other tall flowers.
+MC-261208  Pitcher Plant has unused bottom texture.
+MC-261222  Unsneaking while standing still for a long time or after moving while sneaking triggers sculk sensor.
+MC-261226  Calibrated sculk sensors have to be 'hard' powered by redstone from the side.
+MC-261235  Sign editing GUI forcibly closing does not save entered text in some cases.
+MC-261253  Sculk sensor no longer triggers the advancement "Sneak 100" by just sneaking.
+MC-261255  Amethyst Block isn't in "Redstone" tab in creative inventory.
+MC-261297  Pitcher plant doesn't craft into two dyes, which is inconsistent with other two block tall flowers
+MC-261298  Pitcher plant is not next to other two tall plants in the creative inventory.
+MC-261304  Cyan dye crafting recipes are not grouped.
+MC-261346  Sniffers have no egg laying sound, despite laying them like chickens.
+MC-261356  Sculk shriekers and wardens aren't triggered by vibrations emitted by a resonating amethyst block.
+MC-261365  Players being hurt is not detected by a calibrated sculk sensor set to 7.
+From the previous development version
+
+MC-261423  Pitcher pod crop with a block on top consumes bone meal despite being unable to grow.
+MC-261503  Ravager cannot destroy pitcher crop.
+MC-261547  Suspicious Sand on Java Edition can be replaced with Sculk by a Sculk Catalyst, unlike in Bedrock Edition or its gravel counterpart.
+
+
+== Videos ==
+
+
+== Trivia ==
+The last logo change in the game was in the 20w21a snapshot (3 years 19 days in between).
+The 1.20 update earned the title of the fastest changing panorama with this snapshot from its first snapshot (14 days).
+
+
+== References ==
+
+
+== Navigation ==

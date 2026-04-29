@@ -1,0 +1,437 @@
+26.2-snapshot-1 (also known as 26.2 Snapshot 1) is the first snapshot for Java Edition 26.2, released on April 7, 2026, which adds the sulfur caves, sulfur cube, sulfur and cinnabar block sets, and an experimental Vulkan renderer.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Cinnabar
+
+A red-colored block that generates in sulfur caves.
+Can be crafted or cut into the following blocks:
+Cinnabar  stairs,  slabs,  walls.
+ Polished cinnabar,  stairs,  slabs,  walls.
+ Cinnabar bricks,  brick stairs,  brick slabs,  brick walls.
+ Chiseled cinnabar.
+ Potent sulfur
+
+Generates naturally in water pools inside the sulfur caves biome.
+Produces bubbles which rise up to 4 water source blocks above it.
+When placed underneath up to 4 water source blocks, it generates a cloud of nausea-causing gas on the water surface.
+This cloud spreads across adjacent water with a maximum radius of 3 blocks.
+Can be crafted from 9 sulfur blocks.
+The potent sulfur block can be crafted into 4 sulfur blocks.
+ Sulfur
+
+A yellow-colored block that generates in sulfur caves.
+Can be crafted or cut into the following blocks:
+Sulfur  stairs,  slabs,  walls.
+ Polished sulfur,  stairs,  slabs,  walls.
+ Sulfur bricks,  brick stairs,  brick slabs,  brick walls.
+ Chiseled sulfur.
+
+
+=== Items ===
+ Bucket of sulfur cube
+
+Can be obtained by using a bucket on an adult sulfur cube.
+ Sulfur cube spawn egg
+
+Added sulfur cube spawn egg.
+
+
+=== Mobs ===
+ Sulfur cube
+
+Spawns in the new sulfur caves biome.
+Is a passive mob, although it spawns like a hostile mob (it belongs to the hostile mob cap, and competes with hostile mobs for spawning space). It also despawns when no player is near.
+Has 8HP health points.
+They move by jumping around, like slimes and magma cubes.
+When a player interacts with it while holding a block, the sulfur cube will absorb the block and disable its AI.
+With a block inside, a player can also interact with the sulfur cube while holding shears to shear the block.
+This enables its AI.
+The sulfur cube will follow a player holding a block it can absorb.
+The sulfur cube can also look for block items nearby and move towards them to absorb them.
+When killed, the sulfur cube splits into two smaller sulfur cubes.
+They have no loot drops when killed.
+The small sulfur cube can be tempted and fed with slimeballs to grow them into large sulfur cubes.
+With a block inside, the sulfur cube will not take any fall or player damage and will become a physical object that players can interact with by punching and pushing.
+However, it can still take damage from lava.
+A large sulfur cube can be picked up using an empty bucket.
+Dispensers can now equip and swap blocks inside a sulfur cube, as well as shear it with shears to remove the block it is holding.
+Dispensers can spawn a sulfur cube from a bucket of sulfur cube, but not pick them back up.
+With a block inside, it will assume one of the archetypes (listed below) and change its physical properties to match the block it absorbs:
+Each archetype is characterized by the speed of the ball when hit, how bouncy it is when colliding with blocks and collidable entities, as well as its ground friction, air drag and if it floats in liquids
+There are the following archetypes:
+Regular: medium speed, medium bounciness, medium ground friction and low air drag.
+It is buoyant.
+Used when absorbing stone and mineral blocks.
+Bouncy: fast speed, high bounciness, medium ground friction and low air drag.
+It is buoyant.
+Used when absorbing wooden blocks.
+Slow Flat: slow speed, low bounciness, medium ground friction and medium air drag.
+Used when absorbing metal blocks.
+Fast Flat: fast speed, low bounciness, medium ground friction and low air drag.
+Used when absorbing organic blocks.
+Light: slow speed, high bounciness, medium ground friction and high air drag.
+It is buoyant.
+Used when absorbing all wool blocks.
+Fast Sliding: fast speed, no bounciness, low ground friction and low air drag.
+Used when absorbing icy blocks.
+Slow Sliding: slow speed, no bounciness, low ground friction and low air drag.
+Used when absorbing shroom blocks.
+There are also two special archetypes:
+High Resistance: very slow, low drag with low bounce with high friction.
+Used when absorbing soul sand and soul soil.
+Sticky: same properties as a golf ball, but sticks with extremely high ground friction and no bounce to simulate stickiness.
+Used when absorbing honeycomb block.
+
+
+=== World generation ===
+Sulfur caves
+
+Added sulfur caves underground biome.
+Generates naturally underground and inside hills or mountains.
+Has bands of sulfur and cinnabar.
+Spawns the sulfur cube mob, as well as cave spiders instead of regular spiders.
+Generates with sulfur pools which contain potent sulfur.
+Sulfur spring
+
+Is a new feature which generates naturally above the sulfur caves biome.
+Consists of sulfur, potent sulfur and magma blocks.
+Sulfur springs come in 4 different size variants:
+Small
+Medium
+Large
+Extra Large
+
+
+=== General ===
+Attributes
+
+Added minecraft:air_drag_modifier
+Determines how much drag is applied to an entity while in the air.
+Accepts values between 0.0 and 2048.0.
+Default value: 1.0  the entity uses existing drag when moving in the air.
+Minimum value: 0.0  no drag is applied to the entity.
+Values higher than 1.0 increase the drag applied to the entity when moving through the air.
+Added minecraft:bounciness
+Determines what portion of the velocity is restituted after the entity collides with blocks and collidable entities.
+When landing on bouncy blocks, like beds and slime blocks, the higher bounciness (of the block or the entity) is applied.
+Accepts values between 0.0 and 1.0
+Default value: 0.0  no velocity is restituted.
+Maximum value: 1.0  full velocity is restituted, collisions with blocks and collidable entities will have no effect on lowering the velocity.
+Added minecraft:friction_modifier
+Determines how much ground friction is applied to the entity with regards to the block it is on.
+Accepts values between 0.0 and 2048.0
+Default value: 1.0  friction of blocks is not modified.
+Minimum value: 0.0  friction of blocks is reduced to zero.
+Values higher than 1.0 increase the friction applied to the entity from the blocks it is on.
+Data component format
+
+Added minecraft:sulfur_cube_content
+Represents the item that is absorbed by the sulfur cube.
+Format: item that is absorbed by the sulfur cube.
+e.g. minecraft:sulfur_cube_content=green_wool
+Game events
+
+Added minecraft:bounce
+Emitted when an entity collides with a block or a collidable entity with non-zero bounciness.
+Has a vibration frequency of 2.
+Identifiers
+
+Added minecraft:sulfur_cube_archetype registry with the following values:
+regular
+bouncy
+slow_flat
+fast_flat
+light
+fast_sliding
+slow_sliding
+high_resistance
+sticky
+Entry format: Object with fields:
+items: item tag that contains all items that can be fed to Sulfur Cubes of this archetype
+buoyant: boolean indicating if the Sulfur Cube of this archetype floats in liquids
+attribute_modifiers: a list of objects with fields:
+attribute: attribute to modify
+id: unique identifier for the modifier
+amount: amount to modify the attribute by
+operation: how to modify the attribute, one of add_value, add_multiplied_base and add_multiplied_total
+Options
+
+Added "Graphics API" in the video settings.
+There are three values: Default, Prefer Vulkan and Prefer OpenGL.
+"Default" is the recommend rendering engine the game will use unless there is issues.
+Currently, it is the same as "Prefer Vulkan"
+"Prefer Vulkan" will attempt to render using Vulkan, but fall back to OpenGL if it doesn't work.
+"Prefer OpenGL" will attempt to render using OpenGL, but fall back to Vulkan if it doesn't work.
+Particles
+
+Added sulfur_cube_goo
+Particles showing on a sulfur cube mob when hopping around.
+Splashes
+
+Added "Now on Vulcan 1.2!".
+Tags
+
+Block tags
+Added #suppresses_bounce
+Contains all blocks that suppress the bounciness of entities when colliding with them.
+Added #glazed_terracotta and #concrete blocks collection tags
+Added #shears_extreme_breaking_speed
+Contains blocks that can be broken with shears with speed 15.
+Added #shears_major_breaking_speed
+Contains blocks that can be broken with shears with speed 5.
+Added #shears_minor_breaking_speed
+Contains blocks that can be broken with shears with speed 2.
+Damage Type Tags
+Added minecraft:sulfur_cube_with_block_immune_to for all damage types that sulfur cubes are immune to when having a block absorbed.
+Item tags
+Added #glazed_terracotta, #concrete, and #concrete_powders items collection tags.
+Added #sulfur_cube_food
+Contains all items that can be fed to small sulfur cube.
+Added #sulfur_cube_swallowable
+Contains all items that can be placed inside a large sulfur cube.
+Added the following tags for items that can be placed inside a sulfur cube to determine its archetype:
+#sulfur_cube_archetype/regular
+#sulfur_cube_archetype/bouncy
+#sulfur_cube_archetype/slow_flat
+#sulfur_cube_archetype/fast_flat
+#sulfur_cube_archetype/light
+#sulfur_cube_archetype/fast_sliding
+#sulfur_cube_archetype/slow_sliding
+#sulfur_cube_archetype/high_resistance
+#sulfur_cube_archetype/sticky
+Vulkan support
+
+As previously announced, it is intended to switch the game from OpenGL to Vulkan.
+Vulkan is not supported by older hardware or drivers  OpenGL will be used as a fallback on those cases.
+The current requirement is Vulkan 1.2 with dynamic rendering and push descriptors, but this requirement may increase or decrease over time.
+Currently an experimental rendering backend, and may not be as performant or stable.
+Under Vulkan, it is preferred the player's dedicated graphics card over any integrated graphics, which is a change from OpenGL.
+The player can see which backend is being used in the F3 debug overlay (in the system_specs section).
+On macOS, MoltenVK is used to translate Vulkan to Metal.
+
+
+== Changes ==
+
+
+=== Mobs ===
+Hoglin and zoglin
+
+Fixed their babies' left ear texture so they are properly mirrored.
+
+
+=== Command format ===
+General
+
+When granting or revoking several advancements, the command output will now report how many advancements changed state across all players.
+When granting or revoking advancements or a criterion on several players, the command output will now report the number of players that any change applied to.
+
+
+=== Gameplay ===
+Advancements
+
+"Adventuring Time" now requires visiting the sulfur cave.
+Vibration
+
+When an entity bounces off of a block or other collidable entity, it emits a vibration of frequency 2.
+
+
+=== General ===
+General
+
+Profiling the game with Tracy (launching with --tracy) now includes GPU timings.
+Rendering now uses a reversed depth buffer, which helps with Z-fighting on most hardware.
+Attributes
+
+The minimum value of minecraft:knockback_resistance is now -2.0.
+Configured features
+
+minecraft:geode
+The fields cannot_replace and invalid_blocks in blocks section of feature configuration now also accept an ID and a list of IDs in addition to a tag.
+minecraft:root_system
+The field root_replaceable in the feature configuration now also accepts an ID or a list of IDs in addition to a tag.
+minecraft:vegetation_patch
+The field replaceable in the feature configuration now also accepts an ID and or a list of IDs in addition to a tag.
+minecraft:waterlogged_vegetation_patch
+The field replaceable in the feature configuration now also accepts an ID and or a list of IDs in addition to a tag.
+Data pack
+
+The pack format version is now 101.2.
+Debug screen
+
+The entity_spawn_counts debug entry now refers to the ambient mob count as AM and the axolotl mob count as AX instead of referring to both as A.
+Dimension types
+
+The field infiniburn now also accepts an ID and a list of IDs in addition to a tag.
+Resource pack
+
+The version is now 85.0.
+Shaders
+
+The core/rendertype_text, core/rendertype_text_see_through, core/rendertype_text_intensity, core/rendertype_text_intensity_see_through, core/rendertype_text_background, and core/rendertype_text_background_see_through shaders have been replaced by core/text and core/text_background
+Variants are now controlled by shader defines: IS_GUI, IS_SEE_THROUGH, and IS_GRAYSCALE
+Sounds
+
+Added sounds for sulfur block:
+block.sulfur.break
+block.sulfur.hit
+block.sulfur.place
+block.sulfur.step
+block.sulfur.fall
+Added sounds for potent sulfur:
+block.potent_sulfur.break
+block.potent_sulfur.hit
+block.potent_sulfur.place
+block.potent_sulfur.step
+block.potent_sulfur.fall
+block.potent_sulfur.noxious_gas
+Added sounds for cinnabar:
+block.cinnabar.break
+block.cinnabar.hit
+block.cinnabar.place
+block.cinnabar.step
+block.cinnabar.fall
+Added sounds for sulfur cube:
+entity.sulfur_cube.jump
+entity.sulfur_cube.squish
+entity.sulfur_cube.hurt
+entity.sulfur_cube.death
+entity.sulfur_cube.absorb
+entity.sulfur_cube.eject
+entity.sulfur_cube.bounce
+entity.sulfur_cube.hit
+entity.sulfur_cube.push
+Added sounds for small sulfur cube:
+entity.small_sulfur_cube.jump
+entity.small_sulfur_cube.squish
+entity.small_sulfur_cube.hurt
+entity.small_sulfur_cube.death
+Structure processors
+
+minecraft:protected_blocks
+The field value now also accepts an ID or a list of IDs in addition to a tag.
+Tags
+
+Biome Tags
+Added sulfur_caves to #is_overworld, #stronghold_biased_to, #has_structure/mineshaft, #has_structure/ruined_portal_standard, and #has_structure/trial_chambers tags.
+Block Tags
+#concrete_powder collection tag has been renamed to #concrete_powders.
+Added cinnabar, sulfur, and potent_sulfur to #overworld_carver_replaceables tag.
+Added cinnabar, and sulfur to #sculk_replaceable tag.
+Added cinnabar_slab, polished_cinnabar_slab, cinnabar_brick_slab, sulfur_slab, polished_sulfur_slab, and sulfur_brick_slab to #slabs tag.
+Added cinnabar_stairs, polished_cinnabar_stairs, cinnabar_brick_stairs, sulfur_stairs, polished_sulfur_stairs, and sulfur_brick_stairs to #stairs tag.
+Added cinnabar_wall, polished_cinnabar_wall, cinnabar_brick_wall, sulfur_wall, polished_sulfur_wall, and sulfur_brick_wall to #walls tag.
+Added cinnabar, cinnabar_slab, cinnabar_stairs, cinnabar_wall, polished_cinnabar, polished_cinnabar_slab, polished_cinnabar_stairs, polished_cinnabar_wall, cinnabar_bricks, cinnabar_brick_slab, cinnabar_brick_stairs, cinnabar_brick_wall, chiseled_cinnabar, sulfur, potent_sulfur, sulfur_slab, sulfur_stairs, sulfur_wall, polished_sulfur, polished_sulfur_slab, polished_sulfur_stairs, polished_sulfur_wall, sulfur_bricks, sulfur_brick_slab, sulfur_brick_stairs, sulfur_brick_wall, and chiseled_sulfur to #mineable/pickaxe tag.
+Entity Tags
+Added minecraft:sulfur_cube to non_controlling_rider, and not_scary_for_pufferfish tags.
+Game Event Tags
+Added bounce to #vibrations, and #warden_can_listen tags.
+Item Tags
+Added cinnabar_slab, polished_cinnabar_slab, cinnabar_brick_slab, sulfur_slab, polished_sulfur_slab, and sulfur_brick_slab to #slabs tag.
+Added cinnabar_stairs, polished_cinnabar_stairs, cinnabar_brick_stairs, sulfur_stairs, polished_sulfur_stairs, and sulfur_brick_stairs to #stairs tag.
+Added cinnabar_wall, polished_cinnabar_wall, cinnabar_brick_wall, sulfur_wall, polished_sulfur_wall, and sulfur_brick_wall to #walls tag.
+Textures
+
+Block sprites
+Added new block textures:
+block/chiseled_cinnabar.png
+block/chiseled_sulfur.png
+block/cinnabar.png
+block/cinnabar_bricks.png
+block/polished_cinnabar.png
+block/polished_sulfur.png
+block/potent_sulfur.png
+block/sulfur.png
+block/sulfur_bricks.png
+Item sprites
+Added new Item sprites:
+item/sulfur_cube_bucket.png
+item/sulfur_cube_spawn_egg.png
+Entity textures
+Added new entity textures:
+entity/sulfur_cube/sulfur_cube_outer.png
+entity/sulfur_cube/sulfur_cube_inner.png
+World generation
+
+Dripstone features
+Renamed the feature type pointed_dripstone to speleothem
+Added the field base_block  Block State, describes the block forming the base of the speleothem.
+Added the field pointed_block  Block State, describes the block creating the columns of the speleothem.
+Added the field replaceable_blocks  Block ID, list of Block IDs, or hash-prefixed Block Tag describing which blocks this feature can generate on.
+Renamed the field chance_of_taller_dripstone to chance_of_taller_generation
+Renamed the feature type dripstone_cluster to speleothem_cluster.
+Added the field base_block  Block State, describes the block forming the base of the speleothem.
+Added the field pointed_block  Block State, describes the block creating the columns of the speleothem.
+Added the field replaceable_blocks  Block ID, list of Block IDs, or hash-prefixed Block Tag describing which blocks this feature can generate on.
+Renamed the field dripstone_block_layer_thickness to speleothem_block_layer_thickness.
+Renamed the field chance_of_dripstone_column_at_max_distance_from_center to chance_of_speleothem_at_max_distance_from_center
+Renamed the field max_distance_from_edge_affecting_chance_of_dripstone_column to max_distance_from_edge_affecting_chance_of_speleothem.
+Adjusted the feature type large_dripstone.
+Added the field replaceable_blocks  Block ID, list of Block IDs, or hash-prefixed Block Tag describing which blocks this feature can generate on.
+Added the noise_gradient surface rule.
+Replaces blocks based on the specified noise and gradient list.
+Format: object with fields:
+noise  noise id, the noise to sample.
+gradient  non-empty list of objects with fields, the list to sample based on the noise value:
+state (optional)  the block state to select at this index.
+If this field is not defined, the surface rule will not replace any block when sampling this entry.
+Added the sequence feature type
+Generates a list of placed features in order. If any feature in the list is not placed, the following features will also be skipped.
+Format: object with fields:
+features  list of Placed Features or hash-prefixed placed feature tag, the features to generate.
+Added the template feature type
+Places one template randomly chosen from the given Weighted List of Identifiers. By default, the template will be spawned randomly rotated, centered around the origin.
+Format: object with fields:
+templates  Weighted List of structure template entries. Each structure template entry is composed of an Identifier and a list of rotations to randomly choose from.
+id  The template Identifier.
+rotations  Optional list of rotations to choose from and apply to this template if it is picked.
+Allowed values: none, clockwise_90, 180, counterclockwise_90
+If not specified, defaults to all allowed values.
+
+
+== Fixes ==
+30 issues fixed
+From released versions before 26.2
+
+MC-236770  The "Ambient" and "Axolotl" mob caps both display as "A" in the debug overlay.
+MC-252814  The clamp density function takes a direct input and doesn't allow a reference.
+MC-269520  The game freezes when using /locate in a world without structures enabled.
+MC-269786  "ID" is not capitalized in some strings.
+MC-277395  The "options.screenEffectScale.tooltip" string displayed when holding your mouse cursor over the "Distortion Effects" slider is improperly capitalized.
+MC-277396  Strings referencing nether portals are inconsistently capitalized.
+MC-279122  Some strings that contain the abbreviation "id" are improperly capitalized.
+MC-279125  Some /locate strings are missing articles before the word "reasonable".
+MC-279126  The "mco.configure.world.restore.download.question.line1" string incorrectly spells the word "singleplayer" as "single player".
+MC-279137  The "options.directionalAudio.on.tooltip" string is missing a hyphen between the words "HRTF" and "compatible".
+MC-279138  The "command.failed" string is missing a conjunction.
+MC-279154  The "advancements.story.enter_the_nether.description" string is missing a serial comma.
+MC-279156  The titles within some player reporting and punishment menus are improperly capitalized.
+MC-279158  The "I know what I'm doing!" button is improperly capitalized.
+MC-279182  Strings used to describe water and lava conversion game rules are missing commas.
+MC-279183  The "options.allowServerListing.tooltip" string is missing a comma.
+MC-279184  The "datapackFailure.title" string is missing an article and always pluralizes the word "pack".
+MC-279186  The "build.tooHigh" string is missing an article before the word "Height".
+MC-279189  The "mco.configure.world.leave.question.line1" string is missing a comma.
+MC-302488  Strings that contain the term "Safe Mode" are inconsistently capitalized.
+MC-302628  Dolphins don't dismount minecarts when passing over activator rails.
+MC-304113  Underwater fog is not applied correctly at low render distances.
+MC-304873  The "options.textureFiltering.rgss.tooltip" string is missing a hyphen between the words "shader" and "based".
+MC-304874  The "options.textureFiltering.anisotropic.tooltip" string is missing a hyphen between the words "hardware" and "based".
+MC-305467  The ender dragon's death animation effects render in front of worn armor.
+MC-306064  Mobs can be forced to look like they're dying while they aren't by using commands.
+MC-306399  The Spectator mode 'Teleport to Player' action only updates the list of valid targets after the Spectator menu is hidden.
+MC-306890  Campfires cause bees to work much more slowly.
+MC-306903  Cubic Bezier easing functions sometimes produce wrong values.
+MC-306946  The block light transition from level 1 to 0 under the night sky is not smooth when Smooth Lighting is enabled.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,180 @@
+Beta 1.20.20.21 (Android) or Preview 1.20.20.21 (Windows, iOS, iPadOS, Xbox) is the second beta/Preview version for Bedrock Edition 1.20.30, released on July 12, 2023, which brings more parity from Java Edition and fixes bugs.
+
+
+== Additions ==
+
+
+=== Gameplay ===
+Game rules
+
+Added playersSleepingPercentage, set to 100 by default.
+Controls what percentage of players must sleep to skip the night.
+When set to 0 or a negative value, a single player is sufficient to skip the night, and night is skipped immediately without the falling asleep transition.
+When set over 100, the night cannot be skipped.
+Added recipesUnlock, controlling whether the player needs to collect items to unlock recipes in the recipe book, defaults to true.
+
+
+=== General ===
+Settings
+
+Added "Recipes Unlock" game option. (recipesUnlock game rule)
+For enable/disable the new recipe unlocking system and its features.
+Added alerts for iOS and iPadOS users who have run out of disk space.
+
+
+=== Technical ===
+Add-on
+
+Move PlacementDirection (minecraft:placement_direction) and PlacementPosition (minecraft:placement_position) block traits out of experimental. These traits can be used for blocks with format_version >= 1.20.20.
+JSON
+
+Released the following components in JSON formats 1.20.30 and higher:
+minecraft:use_animation item component.
+minecraft:allow_off_hand item component.
+minecraft:should_despawn item component.
+minecraft:liquid_clipped item component.
+minecraft:damage item component.
+Added support for Efficiency enchantment for data driven items using the minecraft:digger component.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Block Breaking
+
+Changed the hardness and blast resistance of 188 blocks to match Java Edition.
+
+Stained Glass
+
+The IDs of stained_glass have now been split up into their own IDs.
+
+Stained Glass Pane
+
+The IDs of stained_glass_pane have now been split up into their own IDs.
+
+
+=== Command format ===
+/recipe
+
+Now is available without using the "Recipe Unlocking" experimental toggle.
+
+
+=== Gameplay ===
+Recipe book
+
+The new recipe unlocking system and its features are now available without using the "Recipe Unlocking" experimental toggle.
+Now are behind the "Recipes Unlock" game option.
+The recipe book search has been updated when playing in Survival, with the following changes:
+The search will only match the beginning of any word in the item's name. For example, searching for "tor" will now show torch and redstone torch but not the daylight detector.
+Recipes that haven't been unlocked will show up in search results.
+
+
+=== General ===
+Experiments
+
+Removed the "Recipe Unlocking" experimental toggle.
+Settings
+
+Renamed the "Extra Large GUI Scaling" accessibility and video option to "Extra Large New UI".
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs" and "Molang Features" experimental toggle.
+
+
+=== Changes ===
+
+
+==== Technical ====
+API
+
+Moved Direction to 1.4.0.
+Moved EntityDamageSource to 1.4.0.
+Moved EntityDieAfterEvent to 1.4.0.
+Moved EntityEventOptions to 1.4.0.
+Moved EntityHitBlockAfterEvent to 1.4.0.
+Moved EntityHitEntityAfterEvent to 1.4.0.
+Moved EntityHurtAfterEvent to 1.4.0.
+Moved EntityHealthChangedAfterEvent to 1.4.0.
+Moved Dimension.getBlockFromRay method to 1.4.0.
+Moved Dimension.getEntitiesFromRay method to 1.4.0.
+Moved Entity.getBlockFromViewDirection method to 1.4.0.
+Moved Entity.getEntitiesFromViewDirection method to 1.4.0.
+Moved BlockRaycastHit to 1.4.0.
+Moved BlockRaycastOptions to 1.4.0.
+Moved EntityRaycastHit to 1.4.0.
+Moved EntityRaycastOptions to 1.4.0.
+Moved PressurePlatePushEvent to 1.4.0.
+Moved PressurePlatePopEvent to 1.4.0.
+Moved TripWireTripEvent to 1.4.0.
+Moved TargetBlockHitEvent to 1.4.0.
+Made property id accessible even if entity is not valid.
+Made property typeId accessible even if entity is not valid.
+Changed item event source properties from type Entity to Player.
+JSON
+
+minecraft:entity_placer will now content error when invalid blocks are named in the use_on and dispense_on lists.
+Removed MinecraftEntityTypes from @minecraft/server and replaced with version from @minecraft/vanilla-data.
+Exposed MoonPhase and World.getMoonPhase to script.
+Removed the minecraft:animates_in_toolbar component.
+Removed the minecraft:explodable component.
+Extra damage hover text now appears on all component items that have an applied Sharpness enchantment.
+The minecraft:shooter component now supports the Quick Charge enchantment with minecraft:enchantable when charge_on_draw is true.
+Remove nonfunctional entity slot options from minecraft:wearable component, ie. saddle, entity armor, and chest.
+Custom items with minecraft:wearable component auto-equip when dropped from a dispenser, matching parity with vanilla armor items.
+Added Scoreboard.addScore and improved Scoreboard.setScore to return the updated score.
+Molang
+
+Renamed block_property and has_block_property to block_state and has_block_state.
+
+
+== Fixes ==
+30 issues fixed
+From released versions before 1.20.30
+
+MCPE-52452  Coral blocks take too long to break.
+MCPE-68721  Scaffolding and sweet berry bushes cannot be broken instantly in Survival.
+MCPE-101180  Hyphae mining speed is faster than stems.
+MCPE-101644  Crimson and warped stems/hyphae lower blast resistance than other types of wood.
+MCPE-114425  There is no /gamerule playerssleepingpercentage in Bedrock Edition.
+MCPE-114602  The mining speed of end stone bricks does not match the speed of end stone.
+MCPE-130070  Stuck swimming down/falling issue.
+MCPE-132408  Deepslate variants have a significantly lower blast resistance than stone variants.
+MCPE-137449  End stone bricks has a lower blast resistance, compared to normal end stones.
+MCPE-138995  Potion trajectory is broken.
+MCPE-139242  Copper and cut copper blocks have a weaker blast resistance compared to Java Edition.
+MCPE-139246  Copper ore blast resistance is weaker compared to other ores.
+MCPE-154428  Large enchants on table are blocked by overlayed items.
+MCPE-160889  Warden does not detect falling items.
+MCPE-161165  Sculk sensor does not send a signal to shrieker when player drops item.
+MCPE-163050  Xbox: Error says I'm out of storage space, quits to menu with weird background.
+MCPE-163497  Camels don't make sand sounds on red sand or concrete powder.
+MCPE-166565  Crouching and then swimming makes player constantly descend.
+From 1.20.0
+
+MCPE-170033  Campfires are lit up instead of extinguished inside the trail ruins structure.
+MCPE-171254  Character creator features do not match preview icon.
+MCPE-171383  Bone meal not working underwater after 1.20.
+MCPE-171461  Sleep fade black screen turns completely black.
+MCPE-171560  Pink petals cannot be farmed using bone meal in a dispenser.
+From 1.20.10
+
+MCPE-171112  Recipe unlocking UI can appear in pause menu or world settings.
+MCPE-171141  Translated toast recipe unlocked content is cut off and unreadable.
+Others
+
+Fixed an issue where players would disappear temporarily when joining a game for the first time.
+Fixed crash in blocks JSON loading on iOS and iPadOS.
+Fixed a crash that could occur when the game lost focus while entering a world.
+Fixed an issue where screen narration would read recipe book folder items as the first item in the folder.
+Fixed held map not being centered when playing on narrow aspect ratio screens.
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

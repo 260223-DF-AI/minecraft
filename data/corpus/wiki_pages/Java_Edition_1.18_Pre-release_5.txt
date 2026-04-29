@@ -1,0 +1,188 @@
+1.18 Pre-release 5 (known as 1.18-pre5 in the launcher) is the fifth pre-release for Java Edition 1.18, released on November 19, 2021, which fixes some bugs, many of which are relating to textures issues.
+
+
+== Additions ==
+
+
+=== General ===
+Tags
+
+Added following block tags:
+azalea_grows_on
+Contains #dirt, #sand, #terracotta, snow_block, and powder_snow.
+azalea_root_replaceable
+Contains #lush_ground_replaceable, #terracotta, and red_sand.
+replaceable_plants
+Contains grass, fern, dead_bush, vine, glow_lichen, sunflower, lilac, rose_bush, peony, tall_grass, large_fern, and hanging_roots.
+terracotta
+Contains terracotta, white_terracotta, orange_terracotta, magenta_terracotta, light_blue_terracotta, yellow_terracotta, lime_terracotta, pink_terracotta, gray_terracotta, light_gray_terracotta, cyan_terracotta, purple_terracotta, blue_terracotta, brown_terracotta, green_terracotta, red_terracotta, and black_terracotta.
+Added following item tags:
+dirt
+Contains dirt, grass_block, podzol, coarse_dirt, mycelium, rooted_dirt, and moss_block.
+terracotta
+Contains terracotta, white_terracotta, orange_terracotta, magenta_terracotta, light_blue_terracotta, yellow_terracotta, lime_terracotta, pink_terracotta, gray_terracotta, light_gray_terracotta, cyan_terracotta, purple_terracotta, blue_terracotta, brown_terracotta, green_terracotta, red_terracotta, and black_terracotta.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Anvil
+
+Slightly changed the hammer texture on its GUI.
+Barrel
+
+Bottom texture was changed.
+Carrot
+
+Texture of crop stage3 was changed from  to , removed an extra pixel.
+Cartography table
+
+Texture was changed from  to , to match the dark oak planks texture after being updated a second time in the Texture Update.
+Cocoa beans
+
+Textures of cocoa pods (stage0 and stage1) were changed. This visually changes only particles.
+Dirt path
+
+Side texture was changed to better match its top texture.
+Door
+
+Changed door's model, to fix spruce door's top/bottom texture.
+Changed textures of oak doors and iron doors to remove a horizontal line.
+Enchanting table
+
+Changed the texture of the lapis lazuli icon in the GUI from  to .
+Glass pane
+
+Top texture was changed to better match its side texture.
+Lectern
+
+Base texture was changed to match the oak planks texture after being updated a second time in the Texture Update.
+Logs
+
+Top textures of crimson stems and warped stems were changed, to match Bedrock Edition.
+Changed the top texture of dark oak log.
+Changed the side texture of stripped dark oak log, to match the color of its top texture.
+Spruce planks
+
+Changed one miscolored pixel on their texture.
+Stained glass
+
+Changed textures of blue stained glass and red stained glass, to match transparency of other types of stained glass.
+
+
+=== Items ===
+Beetroot seeds and melon seeds
+
+Textures were moved down by 1 pixel.
+
+
+=== Mobs ===
+Axolotl
+
+Texture of the wild axolotl was changed.
+Evoker, vindicator and witch
+
+Removed hoods in their textures.
+Illusioner
+
+Removed a few misplaced pixels in its texture.
+Parrot
+
+The bottom texture of all parrots' wings has been flipped.
+
+
+=== Non-mob entities ===
+Armor stand
+
+Smooth stone outline texture was changed.
+
+
+=== World generation ===
+Random patch
+
+Melons are about 10 times more common than in previous snapshots.
+Pumpkins are about 6 times more common than in previous snapshots
+Sweet berry bushes are about 4 times more common than in previous snapshots.
+Upgrading of old worlds
+
+If there is any bedrock at height 0 in a chunk, new world generation will happen under any non-air block at height 0 in that chunk.
+
+
+== Fixes ==
+60 issues fixed
+From released versions before 1.18
+
+MC-138118  Parrot wing texture is reversed on the bottom.
+MC-148422  Stripped dark oak log side texture is too bright.
+MC-150567  Dark oak log top texture bark ring not updated.
+MC-162038  Pillagers have no hood texture.
+MC-162803  Lily Pad mirrors texture when placed.
+MC-170557  Spruce door top/bottom has the incorrect texture.
+MC-176309  Illusioner has a few misplaced pixels left in their texture.
+MC-176824  Red glass and outline of blue glass are slightly more opaque.
+MC-176833  Anvil GUI hammer uses an outdated iron pallet.
+MC-177664  Sound system warning messages are spamming the system log.
+MC-180398  Too many sounds causes client to stall, limit can be easily reached with rabbits.
+MC-194822  Glass pane top texture has not changed with the Texture Update.
+MC-194950  Cactus in potted cactus is vertically squished.
+MC-198007  Villages replace ice with path blocks instead of wood.
+MC-199662  Extra pixels in cocoa pod textures as of Texture Update.
+MC-200046  Cartography table planks texture is incorrect/slightly outdated.
+MC-200137  Lectern base plate texture still uses the old planks texture.
+MC-200956  Beetroot seeds texture is not vertically centered.
+MC-200957  Melon seeds texture is not vertically centered.
+MC-202910  Inconsistent highlight color on armor.
+MC-204901  Side texture for dirt paths hasn't been updated with the texture update.
+MC-219132  Cave vines hang from amethyst buds and clusters.
+MC-221172  Warped and Crimson Stems use different top texture from Bedrock Edition.
+MC-222154  Cave vines can generate hanging on pointed dripstone.
+MC-222763  Armor stands use the old smooth stone slab texture.
+MC-225553  Oak and iron doors have a line in their textures.
+MC-226711  Carrot crop texture has an incorrect pixel.
+MC-227258  Flowering Azalea Leaves are in both #minecraft:mineable/hoe and #minecraft:mineable/axe tags, while regular Azalea Leaves (and all other leaves) are only in #minecraft:mineable/hoe.
+MC-228900  Cave vines can generate floating (Recurrence of MC-218817).
+MC-229977  Breaking blocks with pistons on the east/west direction causes significant lag.
+MC-231219  Cave vines can occasionally generate hanging on fences.
+MC-231272  Cave vines can sometimes generate hanging on cobwebs.
+MC-231818  You can no longer use the up or down arrow to navigate between servers in the multiplayer menu.
+MC-233883  The hide and show messages buttons in the social interactions menu display their hover text regardless of the position of the cursor.
+MC-234039  The back of wild axolotls are off-centered.
+MC-235567  Clusters of dripstone (stalagmites) tend to generate abnormally frequent with thickness "tip" on tall caves.
+MC-241747  Inconsistent Colors in grindstone GUI.
+From the 1.18 development versions
+
+MC-236723  The Floating Islands preset does not seem to be generating correctly.
+MC-237500  Azalea trees can generate on top of huge mushrooms, trees & bamboo.
+MC-238360  Rooted dirt cannot replace terracotta.
+MC-238529  Azalea trees can fail to generate.
+MC-238530  Hanging roots can fail to generate.
+MC-238892  Rooted dirt doesn't replace red sand.
+MC-239128  Sweet berry bushes generate extremely rare in comparison with 1.17.1.
+MC-239143  Terracotta generating into caves in eroded badlands.
+MC-239237  Azalea trees can be generated on icebergs.
+MC-239474  Autosaving now causes extreme and gameplay-impacting lag.
+MC-239489  Melons generate rarely in jungle biomes.
+MC-239847  Chunk blending occasionally produces sharp chunk border edges.
+MC-241256  Some feature configs still expect a configured feature instead of a placed feature.
+MC-241278  Azalea trees are no longer generating.
+MC-241539  Stone generates in the side of hoodoos.
+MC-241566  Mossy cobblestone boulders generate in a grid pattern in old-growth spruce taigas.
+MC-241588  Cave vines can sometimes generate hanging on water.
+MC-241672  Mobs don't panic when burning if standing on blocks placed above water.
+MC-241728  Converting world to 1.18 pre-release 2 generates new caves in too many places.
+MC-241784  Some sliders in options menu do not work properly.
+MC-241933  Spore blossoms, cave vines, and pointed dripstones generate indented into the cave surface.
+From the previous development version
+
+MC-241800  Cannot change numbers for gamerules on world creation.
+MC-241847  Floating stone platform doesn't generate in void superflat world preset.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

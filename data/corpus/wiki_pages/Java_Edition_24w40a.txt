@@ -1,0 +1,260 @@
+24w40a is the eighth and final snapshot for Java Edition 1.21.2, released on October 2, 2024, which introduced experimental features for the Winter Drop announced at Minecraft Live 2024 four days before, as well as the /rotate command.
+
+
+== Additions ==
+
+
+=== Command format ===
+/rotate
+
+New command to rotate entities.
+Syntax:
+/rotate <target> <rotation>
+/rotate <target> facing <facingLocation>
+/rotate <target> facing entity <facingTarget> [<facingAnchor>]
+Parameters:
+target: The entity to rotate.
+rotation: Two rotation values in degrees denoting horizontal and vertical rotation.
+May use relative (~) coordinate notation to specify rotation relative to current context rotation.
+facingLocation: The coordinates of a location in the world for the rotated entity to face.
+facingTarget: An entity for the rotated entity to face.
+facingAnchor: Specifies the anchor of the facingTarget entity to rotate toward - feet or eyes (by default feet).
+
+
+=== Gameplay ===
+Particles
+
+Added particles block_crumble and trail.
+block_crumble has the following options:
+block_state: The block states of the block.
+trail has the following options:
+color: Color of the trail.
+target: Where the trail points at.
+
+
+=== General ===
+Experiments
+
+Added the Winter Drop experimental data pack.
+Options
+
+Added the "High Contrast Block Outlines" accessibility option, to make targeted block's outlines more visible.
+Tag
+
+Added item tag #gaze_disguise_equipment for items that can be equipped to disguise the player looking for other mobs.
+
+
+== Changes ==
+
+
+=== Items ===
+Dyed shulker boxes and bundles
+
+Can no longer be dyed twice with the same color.
+
+
+=== Command format ===
+/ride
+
+No longer makes players ride leash knots, lightning bolts and fishing bobbers.
+
+
+=== Gameplay ===
+Recipe book
+
+Dyeing recipe for bundles are now unlocked when dyes are obtained instead of undyed bundle.
+
+
+=== General ===
+Data pack
+
+The pack format version is now 56.
+Enchantment definition
+
+Entity effect damage_item has been renamed to change_item_damage and now allows a negative value.
+Realms
+
+The game mode for the last active world on a realm is now visible on the main Realms screen if applicable.
+Resource pack
+
+The pack format version is now 40.
+
+
+== Experimental ==
+The listed additions and changes are only present when the "Winter Drop" experimental data pack is enabled.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+  Creaking heart
+
+A living block generating in pale oak trees, covered on all sides by pale oak wood logs.
+It can spawn a creaking mob when it is nighttime, and it is placed between two correctly aligned pale oak log blocks.
+Is active during night and dormant during day.
+Sends a trail of particles toward the connected creaking when the creaking gets hit by the player.
+Particle speed is affected by the distance of the creaking from the heart block.
+Mining the block is most efficiently done with an axe, but it only drops when using a Silk Touch tool.
+When creaking heart block is destroyed, the connected creaking is removed.
+ Pale hanging moss
+
+Generates naturally in the pale garden biome under the foliage of pale oaks.
+Does not grow randomly, but can be bonemealed to grow down.
+ Pale moss block
+
+Generates naturally in the pale garden biome As part of pale moss patches.
+Can be bonemealed to spread to compatible blocks.
+ Pale moss carpet
+
+Generates naturally in the pale garden biome As part of pale moss patches.
+When placed, grows up to two blocks on the solid faces of any block that borders it.
+Can be bonemealed to grow to full on all solid faces of any block that borders it.
+ Pale oak leaves
+
+A new type of leaves.
+  Pale oak log
+
+A new type of log, as well as a stripped variant.
+Can be used to craft pale oak wood and planks.
+ Pale oak planks
+
+A new type of plank.
+Can be used to craft  boats,  boats with chests,  buttons,  doors,  fences,  fence gates,  hanging signs,  pressure plates,  signs,  slabs,  stairs, and  trapdoors.
+ Pale oak sapling
+
+A new type of sapling.
+Can be placed in flower pots.
+  Pale oak wood
+
+A new type of wood, as well as a stripped variant.
+Can be used to craft pale oak planks.
+
+
+==== Items ====
+Spawn egg
+
+ Added the creaking spawn egg.
+
+
+==== Mobs ====
+ Creaking
+
+Spawns at night in the pale garden biome if there is a creaking heart block that has been generated in a pale oak tree.
+Is not affected by light levels but spawns and despawns based on day/night cycle.
+It follows and attacks players up to 32 blocks away from its creaking heart block.
+An activated creaking don't move if a player is looking at it.
+A player wearing a carved pumpkin on their head can look at creaking without it freezing in place.
+Is invulnerable to damage.
+When hit, a particle trail is shown between the creaking and the creaking heart block it is connected to.
+When the creaking heart block the creaking is connected to is destroyed, the creaking is removed, with no loot or experience dropped from the mob.
+Cannot enter boats.
+If spawned from a creaking heart, it can not go through portals.
+The creaking spawn egg spawns a creaking mob that is not connected to a creaking heart. The creaking mob persists through day and night, loads and saves, and takes damage from attacks and other damage sources. It has one point of health (half a heart).
+Creaking summoned from the creaking heart cannot be spawned with a spawn egg, nor can it be summoned with commands. It can only exist as a part of the creaking heart block.
+
+
+==== World generation ====
+Pale garden
+
+A new biome which contains pale oaks and pale moss blocks/carpet.
+It is a variation of the dark forest biome, with pale oak trees instead of dark oak trees.
+Animal mobs do not spawn naturally.
+The grass in the pale garden has a desaturated, grayish look, the sky is a smoky gray, and water is a pale light blue.
+Any tinted leaves places in the biome also get a desaturated, gray look.
+Pale oak
+
+A new type of tree which can be grown from pale oak saplings in a 2x2 configuration.
+Generates naturally in the pale garden biome.
+Pale moss patch
+
+A large patch consisting of pale moss, a pale moss carpet, and grass.
+
+
+==== General ====
+Sounds
+
+Ambient sounds in the pale garden biome do not come from the biome settings but are generated by blocks found in the biome.
+Pale hanging moss emits subtle atmospheric sounds when it is attached to pale oak logs and pale oak leaves.
+Creaking heart block emits a set of eerie sounds when it is active during night and surrounded by Logs on all sides.
+Tags
+
+Added the #pale_oak_logs block and item tags.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Illagers and ravagers
+
+Are now afraid of the creaking.
+Parrots
+
+Can now imitate the creaking.
+
+
+==== Gameplay ====
+Advancements
+
+The pale garden is now a requirement for "Adventuring Time".
+The creaking grants "Monster Hunter", and is now a requirement for "Monsters Hunted".
+
+
+==== General ====
+Tags
+
+Added pale_garden to the #is_forest, and #stronghold_biased_to biome tags.
+Added the pale oak wood types to their respective tags.
+
+
+== Fixes ==
+29 issues fixed
+From released versions before 1.21
+
+MC-64265  Teleporting passengers does not dismount them.
+MC-108323  Underlines in chat and /title command intersect each other, causing an ugly effect when fading.
+MC-131215  Cannot teleport an entity which is in a boat.
+MC-185144  Item durability bar and all items render incorrectly in the villager trade UI.
+MC-259651  updateSkyBrightness() is not used client-side, causing multiple issues.
+From 1.21
+
+MC-272946  The block outline is nearly invisible for some blocks.
+MC-273848  Players can spawn underwater again in 1.21.
+From 1.21.1
+
+MC-276005  The text of sneaking players' name tags is rendered completely invisible or barely visible when the "Text Background Opacity". accessibility option is set to high values.
+MC-276852  Shulker boxes can be colored in the same color they are made of.
+From the 1.21.2 development versions
+
+MC-275505  The /tp command forces a mounted entity to dismount.
+MC-275706  Vanilla clients can't display items with components in recipe book anymore.
+MC-275790  Non-existent entries in certain tags that are not required causes validation error.
+MC-276330  Bundles no longer play a sound when being emptied.
+MC-276387  Bundles can remain in the open state when using hotkeys to move them into different slots.
+MC-276391  The item durability and bundle fullness bars render incorrectly when held over recipe book elements.
+MC-276440  Items within bundle tooltips can be unselected by scrolling despite only one item being present.
+MC-276596  Damageable horse armor with "damage_on_hurt" enabled doesn't take damage when the horse wearing it is hurt.
+MC-276640  Riding an entity constantly teleported with relative coordinates produces jittery camera movement.
+MC-276651  damage_item does not repair items when the value is negative.
+MC-276669  Pausing the game spams "Trying to save removed ender pearl, skipping" to log if ender pearls have landed.
+MC-276806  The text of name tags behind blocks or entities is rendered completely invisible or barely visible when the "Text Background Opacity" accessibility option is set to high values.
+MC-276850  Bundles can be colored in the same color they are made of.
+MC-276876  Lava cauldrons deal less damage to boats and minecarts than before.
+From the previous development version
+
+MC-276947  Command server output in singleplayer is printed into chat.
+MC-276948  Split boat entity types have capitalized 'With'.
+MC-276949  Old boat entity type translation keys are not deprecated.
+MC-276956  Cannot access registries in container block entity "lock" field.
+MC-276980  Projectiles on the wall in the water will continue to produce bubble trails.
+MC-277020  Arrows produce bubble particles when on a block in water, and retain those particles when the water is removed.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

@@ -24,6 +24,8 @@ from langchain_pinecone import PineconeVectorStore
 from langchain_ollama import OllamaEmbeddings
 from pinecone import Pinecone
 from pinecone import ServerlessSpec
+import re
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 load_dotenv() # load environment variables from .env file
 def parse_args() -> argparse.Namespace:
@@ -76,8 +78,10 @@ def load_documents(input_dir: str) -> list:
         elif filename.endswith(".txt"):
             # load .txt files
             filepath = os.path.join(input_dir, filename)
-            with open(filepath, "r") as f:
+            with open(filepath, "r", encoding="utf-8") as f:
                 text = f.read() # read the contents of the file
+                if not text:
+                    continue # empty document
             docs.append(
                 Document(
                     page_content=text,
@@ -92,34 +96,74 @@ def load_documents(input_dir: str) -> list:
     return docs
 
 
+
+def split_by_sections(text: str):
+    pattern = r"(==+ .*? ==+)"
+    parts = re.split(pattern, text)
+
+    chunks = []
+    current_section = "intro"
+
+    for part in parts:
+        part = part.strip()
+        if not part:
+            continue
+
+        if part.startswith("=="):
+            current_section = part
+        else:
+            chunks.append((current_section, part))
+
+    return chunks
+
+def is_valid_text(text: str) -> bool:
+    text = text.strip()
+
+    if not text:
+        return False
+    if len(text) < 30:  # filter tiny junk chunks
+        return False
+
+    return True
 def chunk_documents(documents: list) -> list:
-    """
-    Split documents into smaller chunks for embedding.
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-    TODO:
-    - Use r or sentence-levRecursiveCharacterTextSplitteel splitting.
-    - Attach chunk metadata (chunk_id, source, page_number, timestamp).
-    """
-    splitter = SentenceTransformersTokenTextSplitter(chunk_size=700) # make splitter 700 tokens per chunk
+    final_docs = []
 
-    chunks = splitter.split_documents(documents)
+    token_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=1200,
+        chunk_overlap=150
+    )
 
+    for doc in documents:
+        sections = split_by_sections(doc.page_content)
 
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S") # time stamp for meta data
+        for i, (section, content) in enumerate(sections):
 
-    return [
-        Document(
-            page_content=c.page_content,
-            metadata={
-                **c.metadata,  # keep any existing metadata from splitter
-                "source": c.metadata.get("source","1"),
-                "page_number": c.metadata.get("page", c.metadata.get("page_number","1")),
-                "chunk_id": i,
-                "timestamp": timestamp
-            }
-        )
-        for i, c in enumerate(chunks)
-    ]
+            if len(content) < 1200:
+                chunks = [content]
+            else:
+                chunks = token_splitter.split_text(content)
+
+            for j, chunk in enumerate(chunks):
+                if not is_valid_text(chunk): # dont add junk chunks
+                    continue
+                chunk = chunk.strip()
+                final_docs.append(
+                    Document(
+                        page_content=f"{section}\n{chunk}",
+                        metadata={
+                            "text": f"{section}\n{chunk}",  # need it to be called text
+                            "source": str(doc.metadata.get("source", "unknown")),
+                            "page_number": str(doc.metadata.get("page", "1")),
+                            "section": section,
+                            "chunk_id": f"{i}_{j}",
+                            "timestamp": timestamp
+                        }
+                    )
+                )
+
+    return final_docs
 
 
 def generate_embeddings(chunks: list) -> list:
@@ -204,8 +248,11 @@ def main() -> None:
     args = parse_args()
 
     documents = load_documents(args.input_dir)
+    print("docs loaded...")
     chunks = chunk_documents(documents)
+    print("done splitting chunks...")
     embeddings = generate_embeddings(chunks)
+    print("finished embedding")
     upsert_to_pinecone(embeddings, args.namespace, chunks)
 
     print(f"✅ Ingested {len(chunks)} chunks into namespace '{args.namespace}'.")

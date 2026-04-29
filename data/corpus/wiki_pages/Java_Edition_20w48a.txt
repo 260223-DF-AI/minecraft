@@ -1,0 +1,147 @@
+20w48a is the third snapshot for Java Edition 1.17, released on November 25, 2020, which adds dripstone blocks and pointed dripstone.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Dripstone block
+
+Decoration block.
+Does not generate anywhere currently, is only available from the Creative inventory.
+ Pointed dripstone
+
+Can be placed on the floor or ceiling, creating stalagmites or stalactites respectively.
+Can be combined to form longer stalactites and stalagmites.
+Stalagmites break if not attached to something below, and hurt entities which fall on top of them.
+Enemies that fall on the stalagmites deal three times more fall damage
+Stalactites fall if unsupported, and hurt entities they fall on.
+Damage is relative to height: For example, one falling from 2 blocks deals 2HP of damage, and one falling from 3 blocks deal 4HP of damage.
+They drip water or lava into cauldrons if a source block is placed above the stalactite, and gradually fill the cauldron. Water drips even without any water above the block, but does not fill the cauldron.
+Thrown tridents break pointed dripstone.
+
+
+=== Command format ===
+Gamerules
+
+freezeDamage
+Whether entities take damage from freezing inside of powder snow.
+
+
+=== General ===
+Tags
+
+Added new freeze_immune_wearables item tag.
+Contains leather boots, leather pants, leather tunic, and leather cap.
+Having an item in this tag in an armor slot prevents players from freezing.
+Particles
+
+Added new particle types: dripping_dripstone_lava, dripping_dripstone_water, falling_dripstone_lava, and falling_drip_water.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Budding amethyst
+
+The texture has been changed. Has a more prominent "X" in its center.
+Block of amethyst
+
+The texture has been changed. It is now slightly less busy, striking a middle ground between the 20w45a and 20w46a textures.
+Candles
+
+Can now only be placed on solid surfaces.
+If the block a candle is placed on is broken, the candle stays floating.
+Cut copper slabs
+
+Crafting all variants of cut copper into slabs now gives 6 slabs instead of 4.
+Powder snow
+
+Players in Creative mode can now freeze.
+
+
+=== Items ===
+Bundle
+
+Now show fullness as a number when advanced tooltips are enabled.
+Right-clicking a bundle in the inventory now empties one item from the bundle.
+Using a bundle now throws out its entire content into the world.
+Candle
+
+The item textures have been changed to only have one candle.
+Clock
+
+The texture has been changed. The gold is now more vibrant and better matches other instances of gold in the Texture Update textures.
+Compass and lodestone compass
+
+The texture has been changed. The iron is now more vibrant and better matches other instances of iron in the Texture Update textures.
+Leather armor
+
+Wearing any piece of leather armor now prevents freezing entirely.
+Spyglass
+
+Now a 3D model instead of a flat sprite.
+Using the spyglass now better anchors it to the player's "eye" when viewed in 3rd person.
+
+
+=== Gameplay ===
+Recipe book
+
+Some recipe-unlocking advancements had criteria names changed.
+The chiseled nether bricks recipe is now unlocked by having a nether brick slab instead of a nether bricks block.
+
+
+=== General ===
+Tags
+
+The snow_step_sound_blocks block tag was renamed to inside_step_sound_block.
+
+
+== Fixes ==
+30 issues fixed
+From released versions before 1.17
+
+MC-3615  Lava and water are completely transparent at certain height levels.
+MC-8017  Arrows and tridents are not being slowed down by webs but eggs and snowballs are.
+MC-173745  Lower part of end gateway block beam renders incorrectly.
+MC-176614  Swimming and doing certain actions make the player look very odd/does not have animations for swimming + doing certain actions.
+MC-189885  New byte previousGamemode is read incorrectly.
+MC-198864  World border does not render below y0 / above y255.
+MC-200696  Clock's texture does not match the new gold color pallete.
+From the 1.17 development versions
+
+MC-203602  Spyglass animation is wrong when swimming.
+MC-203645  Spyglass wobbles when walking while in use.
+MC-203824  Weird Hand animation when attacking and using spyglass at the same time.
+MC-203925  Items inside of a bundle disappear if you empty the bundle in the inventory when in Creative mode while the inventory is full.
+MC-203951  The elder guardian particle moves when an elder guardian moves.
+MC-204323  Inconsistency: Crafting copper blocks into slabs only yields 4 slabs instead of 6.
+MC-204424  Using a spyglass while gliding with an elytra points the spyglass down in third person view.
+From the previous development version
+
+MC-205041  Full leather armor does not prevent freezing damage.
+MC-205069  Powdered snow does not give you frozen effect in creative mode.
+MC-205072  Snow Ambient Effect sometimes do not show correctly on the edge of a Powder Snow Block.
+MC-205145  Compass with nothing to point to will spin very rapidly when in bundle.
+MC-205197  Creating a map from an empty map no longer plays a sound.
+MC-205220  Cannot manipulate horse.saddle using /item command.
+MC-205228  Player arms still move when using a spyglass while flying.
+MC-205269  Chest closing sounds desynced with closing animations.
+MC-205321  Item modifiers that change the item type do not work on entities.
+MC-205445  The Fabulous graphics warning is shown at the wrong time.
+MC-205454  Bundles can be used to duplicate items in the crafting grid.
+MC-205455  Bundles cannot pick up items in certain slots.
+MC-205492  The 'Include entities' option in the structure block UI is the opposite of the actual behavior.
+MC-205567  TNT flashes are translucent once again.
+MC-205627  Item modifiers that change the count to 0 do not completely remove the item.
+MC-206058  /item modify does not visually update the model of an item in an item frame.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

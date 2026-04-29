@@ -14,7 +14,7 @@ The block light level decreases by one for each meter (block) of taxicab distanc
 
 If a torch with light level 14 is placed on the floor, the light level of the adjacent floor blocks in all four directions is 13, while the diagonal blocks in all four directions have a light level of 12 (14 minus 1 south, minus 1 east).
 If a torch with light level 14 is placed on a wall one block above the floor, then the block on the floor that is one block southeast of and below the torch has a light level of 11 (14 - 1 (south) - 1 (east) - 1 (down)).
-On a surface, this effect produces a diamond-shaped pattern of illumination around the light source. An image of this can be seen in the section § Light-emitting blocks.
+On a surface, this effect produces a diamond-shaped pattern of illumination around the light source. An image of this can be seen in the section  Light-emitting blocks.
 In Java Edition, when calculating lighting, the shapes of some blocks are detected: pistons, daylight detectors, enchanting tables, farmland, lecterns, stonecutters, dirt paths, snow, end portal frames, slabs and stairs, so that the light passing through them can spread only in specific directions. For example, dirt paths prevent the light from propagating downward, but the light can propagate in other directions.
 
 
@@ -49,7 +49,7 @@ In other dimensions, due to the lack of sky light in them, the internal sky ligh
 === Internal sky light ===
 In the Overworld, the game uses sky light, time, and weather to calculate an internal sky light value (also known as darkening sky light). This value is an integer with a maximum level of 15; it can also be negative.
 As the Overworld becomes darker, the internal sky light gets lower. Rendered brightness is what dictates the illumination of the Overworld, not internal sky light.
-Below there are two charts that explain how internal sky light is affected by the time and weather at sky light level 15. To obtain an internal sky light for a sky light level s less than 15, take the internal level L at 15 and subtract from it the difference between 15 and s: L−(15−s).
+Below there are two charts that explain how internal sky light is affected by the time and weather at sky light level 15. To obtain an internal sky light for a sky light level s less than 15, take the internal level L at 15 and subtract from it the difference between 15 and s: L(15s).
 
 
 == Effects of light ==
@@ -58,7 +58,7 @@ Keep in mind that light level is only one of the considerations that apply to mo
 
 
 === Mobs ===
-Passive mobs, and some friendly neutral mobs can spawn at both day and night. However, they require a block light level of 9 or higher when the block is not exposed to the sky.‌[Java Edition  only]. In Bedrock Edition, they can only spawn during the day as they require a light level of 7 or more.
+Passive mobs, and some friendly neutral mobs can spawn at both day and night. However, they require a block light level of 9 or higher when the block is not exposed to the sky.[Java Edition  only]. In Bedrock Edition, they can only spawn during the day as they require a light level of 7 or more.
 Most hostile mobs spawn in the Overworld when it gets dark at night, thunderstorms, or in caves, but torches and other light-emitting blocks prevent the mobs' spawn. These mobs need a maximum internal sky light level of 7 (however, the smaller the value, the more successful spawn attempts happen) and a block light level of 0 to spawn.
 Several undead mobs are set on fire for 8 seconds when hit by sunlight; these mobs try to avoid such areas and do not burn while in water, in the rain, wearing a helmet, or in the shade.
 The following chart describes the spawning and behavior of various mobs in function of the block light, in different worlds.
@@ -70,7 +70,7 @@ In the nether:
 In Java Edition, most types of plants can grow at night, even if not supplied sufficient light from a light-emitting block, as long as plants of certain types are receiving a sufficient sky light value. This is because those types use the client light formula. In other words, those types do not grow in extremely dark areas where the value of sky light that reaches them is not sufficient. Unlike internal sky light, regular sky light used by the client light formula does not change with the time of day or weather. In Bedrock Edition, more types of plants need a light-emitting block to grow throughout the night than the amount of types that need light at night in Java Edition.
 In Java Edition, insufficiently illuminated crops break (uproot) in the next block update, and planting crops is not possible in such conditions. In Bedrock Edition, crops don't break and can always be planted due to a bug.
 Light level is checked at the block's position, even for crops and ice blocks. The block above is checked instead for bamboo, saplings, grass blocks, and mycelium.
-Below is a chart that explains how various blocks react to different types of light (see § Light level and § Internal light level, above). It is intended for Java Edition. The main differences with Bedrock Edition not seen in the chart are:
+Below is a chart that explains how various blocks react to different types of light (see  Light level and  Internal light level, above). It is intended for Java Edition. The main differences with Bedrock Edition not seen in the chart are:
 
 All plants and mushrooms in the chart are affected in Bedrock Edition by internal light instead of client light.
 Mycelium in Bedrock Edition is affected by client light instead of internal light.
@@ -80,13 +80,13 @@ Blocks and plants that are not listed on the chart (for example, sugar cane and 
 == Rendered brightness ==
 
 In classic graphics modes, the game uses the light level (instead of internal light level), time, and weather to compute the rendered brightness of a given object in the world. Light is completely monochromatic and cannot be truly colored.
-As mentioned above, sky light is not reduced at night, instead, the brightness curve itself changes based on the time. Entities cast circular‌[Java Edition  only] or tridecagonal‌[Bedrock Edition  only] shadows (except on Simple graphics); however, these are unrelated to the rendering of blocks.
+As mentioned above, sky light is not reduced at night, instead, the brightness curve itself changes based on the time. Entities cast circular[Java Edition  only] or tridecagonal[Bedrock Edition  only] shadows (except on Simple graphics); however, these are unrelated to the rendering of blocks.
 In general, lighting due to blocks results in a higher brightness, which is balanced by the fact that light due to blocks effectively starts at 14 (solid light source blocks emit a level of 15, but that applies to the light source block itself) while sky light brightness is 15 outdoors. Light due to blocks also tends toward orange in the middle ranges, while sky light in the Overworld daytime is white.
 
 In the Overworld with the lowest brightness setting, full daylight reaches 98% brightness, while at night brightness is reduced to about 17% and is shaded blue. Full darkness is about 5% brightness. In Bedrock Edition, brightness during sunrise and sunset is dynamically tinted orange.
 In the Nether, sky lighting doesn't play a role since there is no source of sky light (although if there were, it would reach about 99% brightness.) Full darkness with the lowest brightness setting is at about 25% brightness, slightly darker than a block light level of 7 and no sky light in the Overworld, and is shaded orange like block light.
 In the End, sky lighting wouldn't play a role even if there were a source of sky light; this can also be seen if lightning is summoned in the End (there is no flash of brightness like there is in other dimensions). Full darkness in the End with the lowest brightness setting is about 28% brightness, and is shaded toward a bluish-green rather than the orange of the Nether and of block lighting. During End flashes in Java Edition, the lighting gets tinted purple.
-Regardless of graphics settings, all top faces of a three-dimensional object are rendered with full brightness, the north/south sides are slightly darkened, and the bottom and east/west sides are more darkened. This is not applied to entities and objects on the HUD in Simple graphics.‌[BE  only]
+Regardless of graphics settings, all top faces of a three-dimensional object are rendered with full brightness, the north/south sides are slightly darkened, and the bottom and east/west sides are more darkened. This is not applied to entities and objects on the HUD in Simple graphics.[BE  only]
 
 
 === Smooth lighting ===
@@ -117,7 +117,7 @@ Dark forests have a maximum intensity of 70 lux.
 Cold biomes have slightly brighter sunlight at dusk and dawn.
 At midnight, the moon has an intensity of 0.4 lux, which gradually fades during dusk and dawn.
 End flashes have an intensity of 3 lux, with hard-coded fading at the start and the end.
-See Vibrant Visuals/Configurations § Lighting for all exact values.
+See Vibrant Visuals/Configurations  Lighting for all exact values.
 Global directional lighting illuminates objects through direct diffuse with Lambertian BRDF. Depending on the object's roughness and metalness textures, light illuminates the object and gets reflected with its tint. Subsurface scattering allows direct diffuse to slightly penetrate through objects like leaves.
 On metallic surfaces like water, global directional lighting also creates specular highlights using the Cook-Torrance model. This reflects light more bundled in one position at higher illuminance, as a stretched spot on the surface.
 The tinting of direct diffuse and direct specular, as well as the tinting of bloom, volumetric fog, and mie scattering, depends on the light source's color:
@@ -131,13 +131,13 @@ Pale gardens use  217, 225, 255.
 Most warm biomes use  88, 129, 255.
 Deserts use  62, 108, 255.
 End flashes are colored  228, 93, 255.
-See Vibrant Visuals/Configurations § Lighting for all exact values.
+See Vibrant Visuals/Configurations  Lighting for all exact values.
 Surfaces not illuminated by directional lighting are shadows, with the exact border calculated through shadow mapping. The game applies additional calculations to remove smooth borders and make them align with the pixel grid. Clouds also create shadows, but do not get shadowed as they are technically transparent.
 Point lighting
 Point lights are local directional light sources available only in experimental. They are assigned to the center of a block, creating the same effects as global directional lighting. Their intensity depends on the block's light level, and the color is defined per block. Direct diffuse from point lighting is only visible within the block's light radius, see below.
 Block lighting
 Block lighting simulates the classic light model from light-emitting blocks. Instead of using an intensity, the illuminance in lumen is calculated at every pixel around the block, resulting in much smoother light decrease. Specifically, the illumination linearly decreases with the light level, with one block light unit converting to 90.190359 lumen.
-This illuminates the environment through plain, indirect diffuse, using default light colors. Point lights or custom static light colors can override this color. For all vanilla experimental light colors, see § Light-emitting blocks.
+This illuminates the environment through plain, indirect diffuse, using default light colors. Point lights or custom static light colors can override this color. For all vanilla experimental light colors, see  Light-emitting blocks.
 
 Sky lightSimilarly to block light, the internal light level from sky light in the Overworld is used to apply illumination through indirect diffuse, with a white color. This also linearly corresponds to the light level. However, when the sky light level hits 0, global directional lighting is disabled, notably volumetric fog and direct diffuse.
 Sky light reduces the contrast between shadows created by directional lighting and direct diffuse. The effect is noticable in cave openings where the sky light level decreases while directional light still illuminates the environment, or during thunderstorms when sky light decreases.

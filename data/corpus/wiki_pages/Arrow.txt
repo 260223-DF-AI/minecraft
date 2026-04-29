@@ -1,4 +1,4 @@
-An arrow serves as ammunition for bows, crossbows, and dispensers. Arrows can be crafted into spectral arrows‌[Java Edition  only] and tipped arrows to give status effects to players and mobs.
+An arrow serves as ammunition for bows, crossbows, and dispensers. Arrows can be crafted into spectral arrows[Java Edition  only] and tipped arrows to give status effects to players and mobs.
 
 
 == Obtaining ==
@@ -35,7 +35,7 @@ In Java Edition, arrows can be obtained as a reward item from fletcher villagers
 
 
 === Bartering ===
-In Bedrock Edition, arrows can be obtained through bartering with piglins, and have a ~8.53% (40⁄469) chance to give the player 6-12 arrows.
+In Bedrock Edition, arrows can be obtained through bartering with piglins, and have a ~8.53% (40469) chance to give the player 6-12 arrows.
 
 
 == Usage ==
@@ -61,13 +61,13 @@ An arrow entity spawns when an arrow item is shot out of a bow, crossbow, dispen
 
 The direction of the velocity is set as the facing vector of the entity that shot it, or the vector pointing straight out of a dispenser.
 The magnitude of the velocity is set as 0 to 3 for bows depending on how far they're drawn, 3.15 for crossbows, and 1.1 for dispensers.
-A random vector is added to the previously determined velocity. This vector ranges from −0.0172275⋅inaccuracy to 0.0172275⋅inaccuracy on every axis. Inaccuracy is 1 for bows and crossbows, and 6 for dispensers.
+A random vector is added to the previously determined velocity. This vector ranges from 0.0172275inaccuracy to 0.0172275inaccuracy on every axis. Inaccuracy is 1 for bows and crossbows, and 6 for dispensers.
 Because crossbows shoot slightly faster arrows than bows but have the same inaccuracy, crossbows are actually more accurate because their randomness is smaller in proportion to their total velocity.
 
 
 ==== Critical arrow ====
 
-Arrows fired by players from crossbows (or bows at critical charge) leave a trail of crit particles behind them. Critical arrows deal random damage, between 6HP and 11HP × 5.5 for bows at critical charge, and between 7HP and 11HP × 5.5 for crossbows.
+Arrows fired by players from crossbows (or bows at critical charge) leave a trail of crit particles behind them. Critical arrows deal random damage, between 6HP and 11HP  5.5 for bows at critical charge, and between 7HP and 11HP  5.5 for crossbows.
 
 
 === Movement ===
@@ -82,16 +82,16 @@ Its velocity vector is added to its position vector.
 Its velocity vector is multiplied by 0.99 if it's in air or 0.6 if it's in water (this is the "drag").
 0.05 is subtracted from its velocity vector's y component (this is the "gravity").
 The arrow movement (when not stuck in a block) can be solved as a recurrence relation to obtain the following formulas:
-Vt→=0.99t⋅(V0→+[050])−[050]
-Pt→=P0→+100⋅(1−0.99t)⋅(V0→+[050])−[05t0]
-Where Vt→ is the velocity at tick t and Pt→ is the position at tick t. These formulas can quickly calculate the position and velocity at a future tick t given an initial position and velocity. To make them work for arrows in water instead, change 0.99 with 0.6 and 100 with 2.5.
+Vt=0.99t(V0+[050])[050]
+Pt=P0+100(10.99t)(V0+[050])[05t0]
+Where Vt is the velocity at tick t and Pt is the position at tick t. These formulas can quickly calculate the position and velocity at a future tick t given an initial position and velocity. To make them work for arrows in water instead, change 0.99 with 0.6 and 100 with 2.5.
 
 
 === Damage ===
 The damage an arrow inflicts on an entity depends on the damage NBT tag, the crit NBT tag, and the arrow's speed. However, in Bedrock Edition, arrows shot from a dispenser do not scale damage with speed.
 The damage NBT tag is determined by the item that shot it: It is 2 for everything except bows enchanted with Power, in which case it's 2.5+power level2.
 The crit NBT tag is given to all arrows shot out of crossbows or fully charged bows.
-The damage inflicted on an entity is damage NBT tag ⋅ speed, rounded up to a whole number. If the arrow has the crit NBT tag, it does an additional random amount of damage between 0 and damage2+2.
+The damage inflicted on an entity is damage NBT tag  speed, rounded up to a whole number. If the arrow has the crit NBT tag, it does an additional random amount of damage between 0 and damage2+2.
 
 
 === Common properties ===
@@ -210,7 +210,7 @@ Arrows stuck in blocks vibrate upon a world reload.
 
 
 == External links ==
-"Taking Inventory: Arrow"     by Duncan Geere  – Minecraft.net, February 4, 2021.
+"Taking Inventory: Arrow"     by Duncan Geere   Minecraft.net, February 4, 2021.
 
 
 == Navigation ==

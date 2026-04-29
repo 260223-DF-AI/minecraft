@@ -1,0 +1,65 @@
+22w05a is the second snapshot for Java Edition 1.18.2, released on February 2, 2022, which reverts changes to badlands in the previous snapshot, and fixes bugs.
+
+
+== Changes ==
+
+
+=== World generation ===
+Badlands
+
+Reverted changes in 22w03a to avoid causing generation changes and chunk borders.
+This change will be re-introduced later.
+Superflat
+
+"Redstone Ready" preset's top layer of blocks has increased to height Y=55 instead of Y=-9 in order to prevent slimes from spawning.
+
+
+=== General ===
+Tags
+
+Removed dirt from the #dripstone_replaceable_blocks block tag.
+
+
+== Fixes ==
+24 issues fixed
+From released versions before 1.18
+
+MC-4533  Water graphical glitch when connecting diagonally.
+MC-70848  Water looks like it flows up.
+MC-214289  Pointed dripstone can replace blocks when generating.
+MC-216004  Wood pillars from mineshafts are generating on pointed dripstones.
+MC-216589  Abandoned Mineshafts don't delete dripstone in certain situations.
+MC-221312  Decorations can occasionally replace logs that support mineshafts when generating.
+MC-227358  Baby goats do not avoid powder snow on the same y level as them.
+MC-227995  Goats can't pathfind through open doors.
+MC-232290  Foxes will lay down in powder snow and not try to escape even when taking damage.
+MC-248225  Incorrect BlockPos getSquaredDistance() calculation.
+From 1.18
+
+MC-236775  Biome selector is disordered in other languages.
+MC-241232  Pointed dripstone doesn't properly maintain its shape when falling directly over a block.
+MC-243152  Slimes spawn in "Redstone Ready" Superflat worlds.
+From 1.18.1
+
+MC-245772  Outdated chests' loot tables get deleted when updating to 1.18.1.
+MC-245817  Server constantly writes to disk at about 500kB/s.
+MC-245910  Campfires and hoppers cause constant chunk saving.
+MC-247636  Deleting a world no longer logs that a world is being deleted.
+MC-248163  Horrible server performance since changes to auto-saving in 1.18-pre6.
+From the previous development version
+
+MC-248181  The player disappears at certain heights.
+MC-248182  Falling pointed dripstones no longer maintain their shape / thickness.
+MC-248189  Teleporting below level 0 from the Overworld to another dimension freezes the game on the loading screen until player dies.
+MC-248195  Typing /placefeature crashes client when connected to a server.
+MC-248210  Harsh chunk borders appear when upgrading to 22w03a.
+MC-248230  Players get stuck on the "Loading terrain..." screen after rejoining the world whilst above or below the build limit.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

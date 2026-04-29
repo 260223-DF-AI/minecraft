@@ -1,0 +1,189 @@
+Density functions make up mathematical expressions to obtain a number from a position, stored as JSON files within a data pack in the path data/<namespace>/worldgen/density_function. They are referenced from the noise router in noise settings.
+
+
+== JSON format ==
+A density function can be a constant number or an object.
+
+If the [String] type is constant, a shorthand format is:
+
+
+== Marker functions ==
+
+
+=== interpolated ===
+Interpolates at each block in one cell based on the input density function value of some cells around. The size of each cell is size_horizontal * 4 and size_vertical * 4. Used often in combination with flat_cache.
+
+
+=== flat_cache ===
+Calculate the value per 44 column (Value at each block in one column is the same). And it is calculated only once per column, at Y=0. Used often in combination with interpolated.
+
+
+=== cache_2d ===
+Only computes the input density once per horizontal position.
+
+
+=== cache_once ===
+If this density function is referenced twice, it is only computed once per block position.
+
+
+=== cache_all_in_cell ===
+Used by the game onto final_density and should not be referenced in data packs.
+
+
+== Mapped density functions ==
+
+
+=== abs ===
+Calculates the absolute value of the input density function.
+
+
+=== square ===
+Squares the input. (x^2)
+
+
+=== cube ===
+Cubes the input (x^3).
+
+
+=== half_negative ===
+If the input is negative, returns half of the input. Otherwise returns the input. (x < 0 ? x/2 : x)
+
+
+=== quarter_negative ===
+If the input is negative, returns a quarter of the input. Otherwise returns the input. (x < 0 ? x/4 : x)
+
+
+=== squeeze ===
+First clamps the input between 1 and 1, then transforms it using x/2 - x*x*x/24.
+
+
+=== invert ===
+Inverts the input (1/x).
+
+
+== Functions with two arguments ==
+
+
+=== add ===
+Adds two density functions together.
+
+
+=== mul ===
+Multiplies two inputs.
+
+
+=== min ===
+Returns the minimum of two inputs.
+
+
+=== max ===
+Returns the maximum of two inputs.
+
+
+== Other density functions ==
+
+
+=== blend_alpha ===
+Used in vanilla for smooth transition to chunks generated in old versions.[more information needed]
+
+
+=== blend_offset ===
+Used in vanilla for smooth transition to chunks generated in old versions.[more information needed]
+
+
+=== blend_density ===
+Used in vanilla for smooth transition to chunks generated in old versions.[more information needed]
+
+
+=== beardifier ===
+Adds beards for structures (see the terrain_adaptation field in structures). Its value is added to the final_density in noise setting by the game. Should not be referenced in data packs.
+
+
+=== old_blended_noise ===
+Samples a legacy noise. [more information needed]
+
+
+=== noise ===
+Samples a noise.
+
+
+=== end_islands ===
+Samples at current position using a noise algorithm used for end islands. Its minimum value is 0.84375 and its maximum value is 0.5625.
+
+
+=== weird_scaled_sampler ===
+ 
+According to the input value, scales and enhances (or weakens) some regions of the specified noise, and then returns the absolute value.
+
+
+=== shifted_noise ===
+Similar to noise, but first shifts the input coordinates.
+
+
+=== range_choice ===
+Computes the input value, and depending on that result returns one of two other density functions. Basically an if-then-else statement.
+
+
+=== shift_a ===
+Samples a noise at (x/4, 0, z/4), then multiplies it by 4.
+
+
+=== shift_b ===
+Samples a noise at (z/4, x/4, 0), then multiplies it by 4.
+
+
+=== shift ===
+Samples a noise at (x/4, y/4, z/4), then multiplies it by 4.
+
+
+=== clamp ===
+Clamps the input between two values.
+
+
+=== spline ===
+Computes a cubic spline.
+
+
+=== constant ===
+A constant value.
+
+
+=== y_clamped_gradient ===
+Clamps the Y coordinate between from_y and to_y and then linearly maps it to a range.
+
+
+=== find_top_surface ===
+Scans through a column of an input density and returns the topmost y-level that is above 0. If no such position exists withing the bounds, the [Int] lower_bound is returned.
+
+
+== Removed density functions ==
+
+
+=== slide ===
+Removed in 22w12a
+
+
+=== The legacy "spline" ===
+Removed in 22w11a
+
+
+=== terrain_shaper_spline ===
+Removed in 22w11a
+Calculate the spline from the noise settings.
+
+
+== History ==
+
+
+== Issues ==
+Issues relating to "Density function" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== References ==
+
+
+== External links ==
+Density Function Generator on misode.github.io
+
+
+== Navigation ==

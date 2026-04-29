@@ -1,0 +1,187 @@
+20w11a is the sixth snapshot for Java Edition 1.16, released on March 11, 2020, which adds nether gold ore, twisting vines and the Soul Speed enchantment.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Nether gold ore
+
+Found in the Nether, at any height.
+Behaves exactly like normal gold ore.
+ Twisting vines
+
+Another variant of vines found in warped forests.
+Grows upward, unlike weeping vines.
+Can be climbed.
+
+
+=== Gameplay ===
+Enchanting
+
+Added Soul Speed enchantment.
+A new treasure enchantment only obtainable via bartering with piglins. However if obtained through bartering the book cannot be applied to boots due to a bug.
+Only available on boots.
+Allows faster walking on soul sand and soul soil.
+There is a 4% chance that the durability of the boots goes down for each soul sand or soul soil block stepped on.
+Cannot be obtained from enchanting tables, fishing, or trading. However, can be found in chest loot in this snapshot due to a bug.
+
+
+=== General ===
+Particles
+
+Added a new particle type: soul.
+Used when walking on Soul Sand or Soul Soil when wearing boots with the new Soul Speed enchantment
+Tags
+
+Added the gold_ores block and item tags.
+Contains gold ore and nether gold ore.
+Blocks in this tag require an iron pickaxe or better to be mined.
+Many recipes use this tag.
+Added the piglin_repellents item tag.
+Already existed in the prior snapshots as a block tag, but now extends to items.
+Contains soul fire torches and lanterns.
+Piglins don't attempt to pick up items in this tag.
+Added the soul_speed_blocks block tag.
+Contains soul sand and soul soil.
+The Soul Speed enchantment uses this tag to test for which blocks increase speed.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Bells
+
+Now rings when hit by any projectile.
+Campfires
+
+Now ignites when hit by any burning projectile.
+Crying obsidian
+
+Can no longer be pushed by pistons.
+Can no longer be destroyed by the ender dragon.
+Now requires a diamond or netherite pickaxe to be mined.
+Fire and soul fire
+
+No longer has a breaking animation.
+No longer sounds like wool when broken.
+Now have loot tables.
+Potted bamboo
+
+Model change to remove a useless face at the bottom that caused z-fighting.
+Before: 
+After: 
+Smithing table
+
+Now plays a sound when used.
+Snow
+
+Doors, rails, buttons, torches, pressure plates and redstone can now be placed on a full-block of snow layers.
+Soul sand
+
+Doors, rails, buttons, torches, pressure plates and redstone can be placed on it once again.
+Soul sand with a rail on top no longer slows down minecarts.
+TNT
+
+Now ignites when hit by any burning projectile.
+Vines
+
+Now play a sound when climbed.
+Weeping vines
+
+Now have a 13 chance to drop 1 item, with the maximum increased by 2 per level of Fortune.
+Now play a sound when climbed.
+
+
+=== Items ===
+Bone meal
+
+Can now be used to grow kelp, weeping vines, and twisting vines.
+Hoe
+
+Are now the appropriate tools for mining targets, dried kelp blocks, and shroomlights.
+Due to a bug, axes still mine shroomlights faster.
+
+
+=== Gameplay ===
+Bartering
+
+Piglins can now offer iron boots and enchanted books with the Soul Speed enchantment.
+Commands
+
+/locate can now be used to locate nether fossils.
+
+
+=== General ===
+Tags
+
+Added twisting vines to the climbable block tag.
+Added crying obsidian to the dragon_immune block tag.
+Added potted warped fungus to the hoglin_repellents block tag.
+
+
+== Fixes ==
+47 issues fixed
+From released versions before 1.16
+
+MC-81659  Fireball and witherskull hitboxes are frequently invisible for some seconds.
+MC-104900  Skeletons, illusioners and piglins with crossbows have broken agility reaction when hit or walking on certain blocks when provoked.
+MC-104949  Mobs cannot jump shorter than half of the blocks.
+MC-128247  Dolphins can jump way too far causing them to hit on land.
+MC-134900  server.properties generator-settings for level-type FLAT not implemented; property is stored in ignored flat_world_options NBT.
+MC-145140  Fireballs cannot be interacted with when summoned.
+MC-146928  Cannot place doors, rails, buttons, pressure plate, redstone, etc. on soul sand.
+MC-148935  Zombies with no AI still convert into drowned.
+MC-170836  Cannot set the top of soul sand on fire.
+MC-173732  Fire and soul fire do not have loot tables
+From the 1.16 development versions
+
+MC-171079  Comparators no longer work as expected reading containers through powered blocks.
+MC-171213  Blocks that are affected by gravity do not destroy Nether sprouts when dropped from above.
+MC-171589  Fire makes block burned noise before the block disappears.
+MC-171756  Weird fire bug.
+MC-171860  Nether fossils have code implying an unimplemented /locate function.
+MC-172266  Crossbow wielding piglins do not properly walk backwards to target the player when very close.
+MC-172323  Game crashes when summoning a hoglin with the attack damage attribute set to 0 or giving a hoglin Weakness with a very high level (255).
+MC-172374  Can teleport to invalid y coordinates and crash the game.
+MC-172428  Piglins and hoglins do not look at their target.
+MC-172470  When the piglin holds the bow, it will try to attack and follow the enemy eventually stood there not moving.
+MC-172530  Piglins indefinitely stand around dropped golden items if mobGriefing is disabled.
+MC-172903  Piglins which convert into zombified piglins delete armor if equipped.
+MC-173050  Hoglins cannot hit some mobs with large hitboxes.
+MC-173156  Z-fighting at bottom of potted bamboo; bottom texture of bamboo is exposed.
+MC-173160  Weeping vines plants can be replaced by weeping vines "sapling" (small block) by just right-clicking.
+MC-173167  Netherite sword/tools not sorted with other swords/tools.
+MC-173180  Hoglins are not scared of warped fungus in flower pots.
+MC-173219  No sound when climbing weeping vines.
+MC-173243  Crying obsidian is movable by pistons.
+MC-173283  Piglin admiring held gold ingot does not drop it when killed.
+MC-173302  Crying obsidian can be harvested with any pickaxe.
+MC-173384  Crying obsidian can be destroyed by the ender dragon.
+MC-173433  Killing a baby hoglin does not yield experience.
+MC-173462  Baby piglins can hold soul fire torches.
+MC-173467  Piglins admiring bartering gold ingot drop nothing when converting to zombified piglin.
+MC-173484  Death message from falling off a trapdoor does not mention it by name.
+MC-173485  Death message from falling off scaffolding does not mention it by name.
+MC-173706  NullPointerException in server tick loop when trying to load a flatland world with Nether biome.
+From the previous development version
+
+MC-173725  Anvil name field does not automatically receive focus anymore and is unclickable.
+MC-173731  Fire and soul fire play a sound and produce particles when extinguished.
+MC-173739  Missing sound for event: minecraft:block.smithing_table.use.
+MC-173766  Thrown tridents disappear after hitting and damaging a mob or entity.
+MC-173776  Hoes do not mine targets faster.
+MC-173792  End gateways do not work using ender pearls.
+MC-173829  Lava and fire randomly make extinguishing sound.
+MC-173858  Unable to set LeftHanded to 1b for piglins.
+MC-174326  Mobs do not spawn on soul sand, causing weird mob spawning in soul sand valleys.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

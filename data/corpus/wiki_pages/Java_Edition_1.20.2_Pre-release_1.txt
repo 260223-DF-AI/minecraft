@@ -1,0 +1,167 @@
+1.20.2 Pre-release 1 (known as 1.20.2-pre1 in the launcher) is the first pre-release for Java Edition 1.20.2, released on September 5, 2023, which adds further experimental changes to villagers and village explorer maps.
+
+
+== Additions ==
+
+
+=== General ===
+Game rule
+
+Added enderPearlsVanishOnDeath, controlling whether thrown ender pearls vanish when the player that threw them dies, defaults to true.
+Tags
+
+Added the following structure tags:
+#on_desert_village_maps: contains village_desert.
+#on_jungle_explorer_maps: contains jungle_pyramid.
+#on_plains_village_maps: contains village_plains.
+#on_savanna_village_maps: contains village_savanna.
+#on_snowy_village_maps: contains village_snowy.
+#on_swamp_explorer_maps: contains swamp_hut.
+#on_taiga_village_maps: contains village_taiga.
+
+
+== Changes ==
+
+
+=== Items ===
+Explorer map
+
+Updated structure icons on explorer maps sold by cartographers.
+
+
+=== Gameplay ===
+Recipe book
+
+The recipe book search has been updated.
+The search only matches the beginning of any word in the item's name.
+For example, searching for "tor" still shows torch and redstone torch, but not daylight detector anymore.
+All recipes, including those that have not been unlocked, now show up in search results.
+Trading
+
+When villagers unlock new trades, the order of those trades in the UI is now always random instead of sometimes being deterministic.
+
+
+=== Command format ===
+Functions
+
+Numbers used as macro arguments are now always inserted without suffixes, regardless of numeric type.
+/execute
+
+Temporarily removed syntax /execute (if|unless) function.
+/return
+
+Temporarily removed syntax /return run.
+
+
+=== General ===
+Data pack
+
+The data pack version is now 18.
+Protocol
+
+Client options are now sent during the configuration network phase when joining a server.
+
+
+== Experimental ==
+
+
+=== Changes ===
+These changes are accessible by enabling the "Villager Trade Rebalance" experimental data pack.
+
+
+==== World generation ====
+Ancient city
+
+Increases the chance of generating enchanted books with Mending.
+Desert temple
+
+Increases the chance of generating enchanted books with Unbreaking (level I to III).
+Jungle temple
+
+Increases the chance of generating enchanted books with Unbreaking (level I to III).
+Mineshaft
+
+Increases the chance of generating enchanted books with Efficiency (level I to V).
+Pillager outpost
+
+Increases the chance of generating enchanted books with Quick Charge (level I to III).
+
+
+==== Gameplay ====
+Trading
+
+Added seven new maps which cartographers can sell, depending on the biome they come from.
+Jungle and swamp villages do not generate naturally. Thus, players must breed villagers or cure zombie villagers in these biomes to access their trades.
+Village maps points to a village in a specific biome. Jungle explorer map points to a jungle pyramid. Swamp explorer map points to a swamp hut.
+
+Changed trades of armorers:
+Buying diamond armor now also requires a small amount of diamonds.
+Most master-level armorers buy iron blocks and pay 4 emeralds for them.
+Chainmail armor is exclusively sold by jungle and swamp armorers.
+The savanna armorer sells cursed diamond armor at reduced prices.
+The taiga armorer can swap one piece of diamond armor for another.
+
+
+== Fixes ==
+41 issues fixed
+From released versions before 1.20
+
+MC-70127  Some block state changes aren't communicated to clients.
+MC-72721  Chat messages show after death independent of chat setting.
+MC-103800  Sometimes armor stands won't update their visual rotation.
+MC-119873  The text used for the credits button within the title screen is untranslatable.
+MC-154827  Typo in splash text "Verlet intregration!".
+MC-177172  Dash in villager/trader UI is hardcoded / untranslatable.
+MC-193457  Dropper/Dispenser 'Triggered' block state not updating without player interaction.
+MC-201166  A summoned minecart can stay visually tilted.
+MC-248778  The item count symbol within shulker box tooltips is untranslatable.
+MC-248833  The parentheses used before and after the warning label within the language menu are untranslatable.
+MC-248844  The page indicator symbol within the recipe book GUI is untranslatable.
+MC-248846  The colon used within the death screen to show the player's score is untranslatable.
+MC-249355  The hyphen used within the statistics menu to show a null value is untranslatable.
+MC-252295  The word "whilst" within several death messages isn't spelled in American English.
+MC-252298  Death messages relating to the Thorns enchantment don't contain conjunctions where appropriate.
+MC-252316  The word "burnt" within some death messages isn't spelled in American English.
+MC-253241  The player count indicator symbol within the multiplayer menu is untranslatable.
+MC-253269  The advancement progress indicator symbol within the advancements menu is untranslatable.
+MC-253270  The hyphen used within boss bars for raids is untranslatable.
+MC-253278  The percentage symbol used within the level loading screen to show the loading progress of the world is untranslatable.
+MC-253281  Text within filled map tooltips when advanced tooltips are hidden is untranslatable.
+MC-253283  The percentage and chunk indicator symbols used within the optimize world menu are untranslatable.
+MC-253638  The symbols used within shulker box tooltips to show random loot table contents are untranslatable.
+MC-255263  Players' positions are desynced after stopping movement while moving the camera.
+MC-255418  Vertical redstone dust placed against dropper/dispenser/hopper doesn't visually disappear when the dust above is removed.
+MC-256777  The two characters used within the tab list to show players' health are untranslatable.
+MC-260819  The death.attack.message_too_long string is missing an article before the word "stripped".
+MC-263133  Inconsistent word usage in Out of Memory screen.
+From 1.20.1
+
+MC-264233  Player is shown as Anonymous after dying and respawning.
+MC-264574  symlink does not work for root world folder.
+MC-264809  Redstone comparators cause redstone dust connection issue.
+MC-265151  The "(Unknown)" string that's displayed when being banned from a server for an unknown reason is untranslatable.
+From the 1.20.2 development versions
+
+MC-264615  It takes several seconds for the absorption effect icon to display after obtaining the effect.
+MC-264656  Regular golden apples don't increase the number of gold hearts if you previously ate an enchanted golden apple and then took damage.
+MC-264657  Absorption gold heart refilling is determined by whether the low level and the high level have the same hideParticles parameter.
+MC-264658  Only integer numeric data type can be used in macro.
+MC-265053  Programmer Art lapis lazuli outline texture in enchanting table UI incorrectly uses the old formatting.
+MC-265060  Missing sprite for error in Loom GUI (loom.png).
+From the previous development version
+
+MC-265126  requirements field can no longer be skipped in advancements.
+MC-265209  Switching to protocol "CONFIGURATION" causes race condition.
+MC-265213  The chat message from the /random command says "between 1 and 6" instead of "1 to 6".
+
+
+== Videos ==
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

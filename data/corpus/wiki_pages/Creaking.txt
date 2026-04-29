@@ -21,18 +21,18 @@ Creakings do not drop any items or experience on death.
 
 === Unalerted or idle ===
 Newly spawned creakings begin in an unalerted state. While in this state, their eyes are dimly lit and they walk around aimlessly.
-Idle creakings are not immediately hostile to the player, but become hostile once they enter the player’s field of vision.
+Idle creakings are not immediately hostile to the player, but become hostile once they enter the players field of vision.
 
 
 === Alerted or attacking ===
 
-When a creaking within approximately 12 blocks enters a player's field of vision, it becomes alerted. This is signified by an “activation” sound and its eyes glowing a brighter orange. While alerted, the creaking attempts to move toward and attack the player, moving only when outside of the player's field of vision (such as behind the player or hidden behind blocks). An alerted creaking moves quickly, faster than an attacking vindicator, able to close distances in a matter of seconds.
+When a creaking within approximately 12 blocks enters a player's field of vision, it becomes alerted. This is signified by an activation sound and its eyes glowing a brighter orange. While alerted, the creaking attempts to move toward and attack the player, moving only when outside of the player's field of vision (such as behind the player or hidden behind blocks). An alerted creaking moves quickly, faster than an attacking vindicator, able to close distances in a matter of seconds.
 When within a player's field of vision, the creaking becomes completely immobile and can no longer attack, nor can it be pushed or knocked back by player attacks. If all nearby players leave the creaking's detection range (or enter Creative or Spectator mode), the creaking returns to its unalerted state.
-Creakings inflict 2.5HP × 1.25 melee damage in Easy difficulty, 3HP in Normal difficulty, and 4HP in Hard difficulty.
+Creakings inflict 2.5HP  1.25 melee damage in Easy difficulty, 3HP in Normal difficulty, and 4HP in Hard difficulty.
 
 
 === Field of view detection ===
-If a Survival or Adventure mode player's facing direction (both pitch and yaw) is within 60° of the creaking without blocks obstructing, the creaking becomes immobile. Changing the field of view (FOV) or entering third person view does not affect this detection. Glass, stained glass, tinted glass, iron bars, copper bars, and powder snow do not count toward the obstruction.
+If a Survival or Adventure mode player's facing direction (both pitch and yaw) is within 60 of the creaking without blocks obstructing, the creaking becomes immobile. Changing the field of view (FOV) or entering third person view does not affect this detection. Glass, stained glass, tinted glass, iron bars, copper bars, and powder snow do not count toward the obstruction.
 If a player is wearing a carved pumpkin, any creakings within their first-person FOV can still move. Wearing a carved pumpkin does not prevent an unalerted creaking from becoming alerted.
 
 
@@ -43,18 +43,18 @@ Each creaking heart has a 32-block Euclidean radius surrounding it, where its li
 
 
 === Other attributes ===
-Creakings cannot enter minecarts‌[Bedrock Edition  only] or boats.
+Creakings cannot enter minecarts[Bedrock Edition  only] or boats.
 While an immobilized creaking cannot be moved or pushed directly by players, it can still be moved via other methods. This includes water, lava, explosions, pistons, falling blocks, wind charges and attacks from some mobs. Iron golems, hoglins, zoglins, ravagers and wardens are able to fling the creaking into the air, and shulker bullets can give creakings the Levitation effect.
 Creakings can naturally swim and float on the surface of water or lava, but sink when they are immobilized from being observed.
 Creakings spawned from creaking hearts are not subject to the Infested, Oozing, Wind Charged or Weaving status effects. However, creakings spawned using a spawn egg or commands are affected by these status effects as expected.
-Pillagers, evokers, vindicators, and illusioners‌[JE  only] flee from creakings when within 8 blocks. Vindicators with the name tag "Johnny" alternate between fleeing from creakings and attempting to attack them. Ravagers do not flee from creakings.
+Pillagers, evokers, vindicators, and illusioners[JE  only] flee from creakings when within 8 blocks. Vindicators with the name tag "Johnny" alternate between fleeing from creakings and attempting to attack them. Ravagers do not flee from creakings.
 With Vibrant Visuals, the eyes of creakings are emissive similar to eyeblossoms. Combined with the dense fog in the pale garden and nighttime, the emissive eyes are often the only part visible from a distance.
 
 
 === Redstone component ===
 Because a creaking sinks in water (or lava) while being observed, but float while not being observed, a pressure plate or similar means can be used to produce a redstone signal while a creaking is being looked at, due to it sinking down and activating it. An unobserved creaking bobs up and down in liquid, which can cause it to activate a pressure plate even if not being looked at. Giving a creaking enough space to bob prevents this.
 Additionally, a redstone comparator can produce a signal by reading a creaking heart linked to a currently-spawned creaking. The produced signal strength is based on the Euclidean distance between the creaking and its heart, which is calculated as follows: 
-output=15−⌊distance32×15⌋
+output=15distance3215
 In other words, the closer a creaking is to its heart, the stronger the signal.
 
 

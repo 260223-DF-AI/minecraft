@@ -1,0 +1,111 @@
+1.21.4 Pre-Release 1 (known as 1.21.4-pre1 in the launcher) is the first pre-release for Java Edition 1.21.4, released on November 20, 2024, which fixes bugs.
+
+
+== Additions ==
+
+
+=== General ===
+Items model definitions
+
+Boolean property
+Added minecraft:view_entity
+When not spectating, returns true if context entity is the local player entity, i.e. one controlled by client.
+When spectating, returns true if context entity is the spectated entity.
+If context entity is not present, returns false.
+No fields.
+Item model type
+Added minecraft:empty
+Does not render anything.
+No fields.
+Property types
+Added minecraft:context_dimension
+Returns the ID of the dimension in context, if any.
+No fields.
+Values: namespaced dimension ID (like minecraft:overworld).
+Tint source type
+Added minecraft:team
+Returns team color of context entity, if any.
+Fields:
+default - RGB value to return when there is no context entity, entity is not in a team or team has no color.
+
+
+== Changes ==
+
+
+=== Effects ===
+Water Breathing and Conduit Power effects now increase the oxygen while underwater instead of only preventing it from decreasing.
+
+
+=== Items ===
+Spawn eggs
+
+Similar to block items, spawn eggs for entities that could execute operator-only commands now have a warning in tooltip.
+
+
+=== General ===
+Items model definitions
+
+A new field has been added to the client-side item info format (i.e. files in /assets/*/items/*.json).
+hand_animation_on_swap - boolean field describing if down-and-up animation should be played in first-person view when item stack is changed (either type, count or components)
+Default: true
+Only value from new item is taken into account.
+Does not control "pop" animation in GUI when item is picked or changes count.
+Numeric property types
+minecraft:compass
+Added value none to field target which always returns an invalid target.
+minecraft:time
+Removed field natural_only.
+Added field source - time source, possible values:
+daytime - time of day
+moon_phase - moon phase
+random - random value
+Property types
+minecraft:holder_type was renamed to minecraft:context_entity_type.
+Special model types
+minecraft:head
+Added field animation - float controlling head animation (like Piglin ears or Ender Dragon jaw)
+Default: 0.0
+Fonts
+
+GNU Unifont
+Updated to version 16.0.01.
+Resource pack
+
+The pack format version is now 46.
+
+
+== Fixes ==
+16 issues fixed
+From released versions before 1.21
+
+MC-128225  '/data remove' can't remove the NBT "CustomName".
+MC-138100  /data remove doesn't work for the Jukebox's RecordItem tag.
+MC-179815  Data command doesn't remove leash from a mob.
+MC-207605  /data remove entity [tamed wolf] Owner does not remove ownership of the wolf.
+MC-248264  /data remove can't remove ArmorItems.
+MC-265788  The "Start free Snapshot Realm" element can be selected or remain selected causing its tooltip to erroneously be visible when other interfaces are open.
+From 1.21.3
+
+MC-278257  Oxygen bar animation can be interrupted by applying water breathing.
+From the 1.21.4 development versions
+
+MC-278134  The TAB key cannot be used to select messages to report after clicking the "X message(s) hidden" element.
+MC-278193  Baby piglins can't decide between crossbows and golden items.
+MC-278390  Opening shulkers no longer trigger tripwire or pressure plates.
+From the previous development version
+
+MC-278290  Using items while swimming or walking underwater doesn't slow the player down.
+MC-278300  Creakings struck by lightning show visual fire.
+MC-278302  Bundle always takes out first item and ignores selected item.
+MC-278311  Respawned creakings from creaking hearts don't persist when the world is reloaded.
+MC-278312  Creakings spawned from a creaking heart can be name-tagged once again.
+MC-278387  Creaking respawns when going to the nether and back.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

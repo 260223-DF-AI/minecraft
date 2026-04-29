@@ -25,17 +25,17 @@ JE: <center>: vec2
 BE: x: value: RelativeFloat and z: value: RelativeFloat
 
 Specifies the center of the region to spread targets to.
-Must be two-dimensional coordinates with double-precision floating-point number‌[Java Edition  only] or single-precision floating-point number‌[Bedrock Edition  only] elements. Accepts tilde notations.
+Must be two-dimensional coordinates with double-precision floating-point number[Java Edition  only] or single-precision floating-point number[Bedrock Edition  only] elements. Accepts tilde notations.
 JE: <spreadDistance>: floatBE: spreadDistance: float: float
 
 Specifies the minimum distance between each two targets.
-Must be a [Float]Single-precision floating-point number (from -(2-2-23)×2127 (≈-3.4×1038) to (2-2-23)2×127 (≈3.4×1038) ). And it should be at least 0.0.
+Must be a [Float]Single-precision floating-point number (from -(2-2-23)2127 (-3.41038) to (2-2-23)2127 (3.41038) ). And it should be at least 0.0.
 JE: <maxRange>: floatBE: maxRange: float: float
 
 Specifies the maximum distance on each horizontal axis from the center of the area to spread targets (thus, the area is square, not circular).
-Must be a [Float]Single-precision floating-point number (from -(2-2-23)×2127 (≈-3.4×1038) to (2-2-23)2×127 (≈3.4×1038) ). In Java Edition, it must be greater than or equal to 1.0. In Bedrock Edition, it should be at least 1.0 greater than spreadDistance: float.
+Must be a [Float]Single-precision floating-point number (from -(2-2-23)2127 (-3.41038) to (2-2-23)2127 (3.41038) ). In Java Edition, it must be greater than or equal to 1.0. In Bedrock Edition, it should be at least 1.0 greater than spreadDistance: float.
 JE: <maxHeight>: integer
-BE：maxHeight: value: RelativeFloat
+BE:maxHeight: value: RelativeFloat
 
 Specifies the maximum height for the target positions.
 In Java Edition, must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ).
@@ -47,7 +47,7 @@ Must be a [Boolean]Boolean (either true or false).
 JE: <targets>: entityBE: victim: target: CommandSelector<Actor>
 
 Specifies the targets to spread.
-Must be a player name, a target selector or a UUID‌[Java Edition  only]. 
+Must be a player name, a target selector or a UUID[Java Edition  only]. 
 
 
 == Result ==
@@ -57,10 +57,10 @@ Must be a player name, a target selector or a UUID‌[Java Edition  only].
 
 
 == Examples ==
-In Java Edition, to teleport all players by team to random surface locations in a 1,000×1,000-block area centered on (0,0), with a minimum distance between teams of 200 blocks:
-spreadplayers 0 0 200 500 true @a‌[Java Edition  only]
-In Java Edition, to teleport one random player from each of three teams (Red, Blue, and Green), as well as Alice and Bob, to random surface locations in a 200×200-block area centered on (0,0), with a minimum distance between players of 50 blocks:
-spreadplayers 0 0 50 100 false @r[team=Red] @r[team=Blue] @r[team=Green] Alice Bob‌[Java Edition  only]
+In Java Edition, to teleport all players by team to random surface locations in a 1,0001,000-block area centered on (0,0), with a minimum distance between teams of 200 blocks:
+spreadplayers 0 0 200 500 true @a[Java Edition  only]
+In Java Edition, to teleport one random player from each of three teams (Red, Blue, and Green), as well as Alice and Bob, to random surface locations in a 200200-block area centered on (0,0), with a minimum distance between players of 50 blocks:
+spreadplayers 0 0 50 100 false @r[team=Red] @r[team=Blue] @r[team=Green] Alice Bob[Java Edition  only]
 
 
 == History ==
@@ -73,14 +73,14 @@ spreadplayers 0 0 50 100 false @r[team=Red] @r[team=Blue] @r[team=Green] Alice B
 
 
 == See also ==
-/tp and /teleport — different commands that teleport a single player or entity to a specific position (even underground).
+/tp and /teleport  different commands that teleport a single player or entity to a specific position (even underground).
 
 
 == References ==
 
 
 == External links ==
-"/spreadplayers Command"     – Microsoft Learn, August 1, 2024.
+"/spreadplayers Command"      Microsoft Learn, August 1, 2024.
 
 
 == Navigation ==

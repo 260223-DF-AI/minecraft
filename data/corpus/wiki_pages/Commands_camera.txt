@@ -64,15 +64,15 @@ Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231
 fadeInSeconds: float: float, holdSeconds: float: float, and fadeOutSeconds: float: float
 
 Specifies the camera fade in, hold, and fade out duration, the unit is seconds.
-Must be a [Float]Single-precision floating-point number (from -(2-2-23)×2127 (≈-3.4×1038) to (2-2-23)2×127 (≈3.4×1038) ). And must be between 0.0 and 10.0 (inslusive).
+Must be a [Float]Single-precision floating-point number (from -(2-2-23)2127 (-3.41038) to (2-2-23)2127 (3.41038) ). And must be between 0.0 and 10.0 (inslusive).
 fov_value: float: float
 
 Specifies the camera FOV.
-Must be a [Float]Single-precision floating-point number (from -(2-2-23)×2127 (≈-3.4×1038) to (2-2-23)2×127 (≈3.4×1038) ). Due to game restrictions, the actual valid values range is between 30 and 110 (inslusive).
+Must be a [Float]Single-precision floating-point number (from -(2-2-23)2127 (-3.41038) to (2-2-23)2127 (3.41038) ). Due to game restrictions, the actual valid values range is between 30 and 110 (inslusive).
 fovEaseTime: float: float
 
 Specifies the duration of the camera FOV smooth transition (seconds), the default is 0.
-Must be a [Float]Single-precision floating-point number (from -(2-2-23)×2127 (≈-3.4×1038) to (2-2-23)2×127 (≈3.4×1038) ).
+Must be a [Float]Single-precision floating-point number (from -(2-2-23)2127 (-3.41038) to (2-2-23)2127 (3.41038) ).
 fovEaseType: Easing: enum
 
 Specifies an easing function/type to use for the camera FOV, the default is linear.
@@ -83,27 +83,27 @@ Specifies the spline ID. Only valid when using minecraft:free preset.
 Must be a string. And it must be a single word that has no space or a double-quoted string (When quoted, \ can be used to escape characters).
 preset: string: basic_string
 
-​[more information needed]
+[more information needed]
 A camera view/preset.
 Must be one of the following:
-minecraft:control_scheme_camera — Control scheme camera.‌["Experimental Creator Camera Features" Experiment  only]
-minecraft:first_person — First Person View.
-minecraft:fixed_boom — Fixed boom view's orbit camera.
-minecraft:follow_orbit — Orbit camera.
-minecraft:free — Free View.
-minecraft:third_person — Third Person View Back.
-minecraft:third_person_front — Third Person View Front.
+minecraft:control_scheme_camera  Control scheme camera.["Experimental Creator Camera Features" Experiment  only]
+minecraft:first_person  First Person View.
+minecraft:fixed_boom  Fixed boom view's orbit camera.
+minecraft:follow_orbit  Orbit camera.
+minecraft:free  Free View.
+minecraft:third_person  Third Person View Back.
+minecraft:third_person_front  Third Person View Front.
 easeTime: float: float
 
 Specifies the duration of the camera smooth transition (seconds). Only valid when using minecraft:free preset.
-Must be a [Float]Single-precision floating-point number (from -(2-2-23)×2127 (≈-3.4×1038) to (2-2-23)2×127 (≈3.4×1038) ).
+Must be a [Float]Single-precision floating-point number (from -(2-2-23)2127 (-3.41038) to (2-2-23)2127 (3.41038) ).
 easeType: Easing: enum
 
 Specifies an easing function/type to use for the camera. Only valid when using minecraft:free preset.
 Must be one of in_back, in_bounce, in_circ, in_cubic, in_elastic, in_expo, in_out_back, in_out_bounce, in_out_circ, in_out_cubic, in_out_elastic, in_out_expo, in_out_quad, in_out_quart, in_out_quint, in_out_sine, in_quad, in_quart, in_quint, in_sine, linear, out_back, out_bounce, out_circ, out_cubic, out_elastic, out_expo, out_quad, out_quart, out_quint, out_sine, and spring.
 default: default: enum
 
-Specifies change the position and facing of free view to the default value (camera position (0,0,0), rotation xRot=0, yRot=0) ​[more information needed]. Only valid when using minecraft:free preset.
+Specifies change the position and facing of free view to the default value (camera position (0,0,0), rotation xRot=0, yRot=0) [more information needed]. Only valid when using minecraft:free preset.
 Must be default.
 lookAtEntity: target: CommandSelector<Actor>
 
@@ -128,11 +128,11 @@ Must be a [Float] float. Accepts tilde notation.
 xViewOffset: float: Float and yViewOffset: float: Float
 
 Specifies the offset of the camera. Only valid when using minecraft:follow_orbit preset.
-Must be a [Float]Single-precision floating-point number (from -(2-2-23)×2127 (≈-3.4×1038) to (2-2-23)2×127 (≈3.4×1038) ). And must be between -64 and 64 (inslusive).
+Must be a [Float]Single-precision floating-point number (from -(2-2-23)2127 (-3.41038) to (2-2-23)2127 (3.41038) ). And must be between -64 and 64 (inslusive).
 xEntityOffset: float: Float, yEntityOffset: float: Float, and zEntityOffset: float: Float
 
 Specifies the offset of the camera from an entity. Only valid when using minecraft:follow_orbit preset.
-Must be a [Float]Single-precision floating-point number (from -(2-2-23)×2127 (≈-3.4×1038) to (2-2-23)2×127 (≈3.4×1038) ). And must be between -64 and 64 (inslusive).
+Must be a [Float]Single-precision floating-point number (from -(2-2-23)2127 (-3.41038) to (2-2-23)2127 (3.41038) ). And must be between -64 and 64 (inslusive).
 entity: target: CommandSelector<Actor>
 
 Specifies the entity to focus the camera on. Only valid when using minecraft:free preset.
@@ -140,7 +140,7 @@ Must be a player name or a target selector.
 xTargetCenterOffset: float: Float, yTargetCenterOffset: float: Float, and zTargetCenterOffset: float: Float
 
 Specifies the offset of the camera from the center of a focused/targeted entity. Only valid when using minecraft:free preset.
-Must be a [Float]Single-precision floating-point number (from -(2-2-23)×2127 (≈-3.4×1038) to (2-2-23)2×127 (≈3.4×1038) ).
+Must be a [Float]Single-precision floating-point number (from -(2-2-23)2127 (-3.41038) to (2-2-23)2127 (3.41038) ).
 
 
 == Result ==
@@ -165,7 +165,7 @@ Cooperate with the /execute command, assign "Over Shoulder View" for nearest pla
 
 
 == External links ==
-"/camera Command"     – Microsoft Learn, April 3, 2025.
+"/camera Command"      Microsoft Learn, April 3, 2025.
 
 
 == Navigation ==

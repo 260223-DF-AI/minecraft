@@ -1,0 +1,85 @@
+Beta 1.19.60.26 (Android) or Preview 1.19.60.26 (Windows, iOS, iPadOS, Xbox) is the sixth beta/Preview version for Bedrock Edition 1.19.60, released on January 11, 2023, which fixes bugs.
+
+
+== Changes ==
+
+
+=== Technical ===
+Graphical
+
+Fix text being slightly off-centered to the left for Furnace, Blast Furnace, and Smoker Screen UIs. (MCPE-151597)
+User Interface
+
+Resource packs will now be applied to the world after navigating to another screen before creation.
+Fixed an issue where some resource packs prompted an error after being downloaded.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs" and "Next Major Update" experimental toggle.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Hanging Sign
+
+Placing a hanging sign under an axis-aligned hanging sign with V-shaped chains will now result in a hanging sign with double chains, if the player is not sneaking.
+
+
+==== Technical ====
+API
+
+RawMessage
+Changed the signature of property withfrom (string[] | RawMessage)[]?  to (string[] | RawMessage)?.
+EntityHealthComponent
+Fixed a bug where health could be modified on dead entities. (MCPE-130687)
+Scoreboard
+Added setScore(ScoreboardObjective, ScoreboardIdentity, Number).
+Added getScore(ScoreboardObjective, ScoreboardIdentity).
+ScoreboardObjective
+Added setScore(ScoreboardIdentity, Number).
+Added getScore(ScoreboardIdentity).
+Added removeParticipant(ScoreboardIdentity).
+ScoreboardIdentity
+Added setScore(ScoreboardObjective, Number).
+Added getScore(ScoreboardObjective).
+Added removeFromObjective(ScoreboardObjective).
+Commands
+
+Reverted an experimental change to animation controller command deferral within the Upcoming Creator Features experiment.
+JSON
+
+Release BlockPlacementFilterComponent outside of experimental toggle in JSON formats 1.19.60 and higher.
+
+
+== Fixes ==
+Commands
+
+Fixed a bug causing players to not wake up when teleported while sleeping. (MCPE-162346)
+Gameplay
+
+Fixed an issue where the "Inception" achievement would not be awarded.
+Graphical
+
+The UI no longer flickers on Android when the keyboard pops up. (MCPE-142356)
+Highlight selection no longer highlights entire card for transparent objects like saplings.
+V-sync settings are properly configured in options (non-ARM devices). (MCPE-110006)
+Resource packs will now be applied to the worlds after navigating to another screen before creation.
+Fixed an issue where some resource packs prompted the user with an error after being downloaded.
+Performance and Stability
+
+Fixed a potential crash when gliding through an End Gateway.
+The game no longer crashes when killing an entity with invalid conditions, functions, or pools entries in its loot table. (MCPE-164623)
+Vanilla Parity
+
+Levers now produce the same sound effect as Stone Buttons. (MCPE-163335)
+Touch Controls
+
+Fixed the stack splitting feature in non-touch mode.
+
+
+== References ==
+
+
+== Navigation ==
