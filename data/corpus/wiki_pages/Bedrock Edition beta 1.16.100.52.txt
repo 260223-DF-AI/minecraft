@@ -1,0 +1,84 @@
+Beta 1.16.100.52 is the third beta version for Bedrock Edition 1.16.100, released on August 19, 2020, which added new commands, more parity features from Java Edition, technical changes, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Command format ===
+/playanimation
+
+Used to run a one-off animation.
+/ride
+
+Used to make entities ride other entities, stop entities from riding, make rides evict their riders, or summon rides or riders.
+/structure
+
+Used to save and load structures without having to use structure blocks.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Brewing Stands
+
+Can now be crafted with Blackstone.
+Farmland
+
+Now gives itself when pickblocked, instead of normal dirt.
+Can now be obtained using /give command.
+
+
+=== General ===
+Technical
+
+Updated Actor Properties. Two fields that were invalid and appeared in some vanilla content will now give a content error. The field 'value' on minecraft:can_fly and the property minecraft:foot_size should simply be removed from any entity files.
+Make boat use the Buoyancy Component. Added two new components, the inside_block_notifier component, which fires specified events when the actor enters or exits specified blocks, and the out_of_control component, which sets a corresponding actor flag, in order to make this possible.
+Added error checks to parsing of minecraft shareables items. Displays content log if item name is invalid or the array is empty.
+Attempting to load a custom material that is not defined no longer causes a crash. A proper content error is now thrown.
+Exposed new data parameters to control the behavior of Drop Item For Goal. This includes: seconds_before_pickup, cooldown, minimum_teleport_distance, max_head_look_at_height, teleport_offset, and entity_types.
+Exposed new data parameters to control the behavior of Harvest Farm Block Goal, including max_seconds_before_search, search_cooldown_max_seconds, and seconds_until_new_task.
+Updated the format_versionfield in geometry, particles, and animation files to behave as entity behavior files do.
+Aseprite
+The UI now supports using aseprite JSON files for animations, which allows more advanced animations than simple flip books.
+Format Version Checks
+Updated the format_versionfield in geometry, particles, and animation files to behave as entity behavior files do.
+SetBannerDetailsFunction
+Now supports customizing non-Illager banners
+Up to 6 patterns and colors can be specified.
+
+
+== Fixes ==
+Vanilla Parity
+
+Brewing Stand can now be crafted with Blackstone (MCPE-90465)
+Players can now spawn farmland with the /give command and pick it with Pick Block (MCPE-25691)
+Cod and Salmon killed by fire damage now drop cooked fish (MCPE-30693)
+Performance and Stability
+
+Fixed a crash that occurred when entering a game with specific texture packs enabled
+Adding tags to the Ender Dragon will no longer crash the game when reloading the world (MCPE-89076)
+Blocks
+
+Fence gates now align with Blackstone Walls (MCPE-78002)
+Placing blocks on Crimson Roots and Warped Roots will now properly remove the roots (MCPE-81521)
+Target blocks no longer power additional blocks above them (MCPE-85455)
+Cocoa Beans can now be placed on and survive on all jungle wood variants (MCPE-46638)
+Experience Orb
+
+The Experience Orb now ignores world lighting, allowing it to always be at max brightness (MCPE-67448)
+Items
+
+Dropped items no longer float too low to the ground
+Dragon Egg now always drops when it is destroyed by an explosion (MCPE-52632)
+Mobs
+
+Mobs in lava were not able to find a path out. This fix makes it so they can enter a lava block if they are already in lava
+Pathfinding will now account for minecraft:scale component
+Updated BrewingStand, ButtonBlock, ChestBlock, EnderChestBlock, SlabBlock, and SoulSandBlockblock types to allow path-finding and navigation (MCPE-47075)
+
+
+== References ==
+
+
+== Navigation ==

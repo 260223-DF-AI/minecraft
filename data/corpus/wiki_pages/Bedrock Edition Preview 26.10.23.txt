@@ -1,0 +1,167 @@
+Beta 26.10.23 (ChromeOS, Android) or Preview 26.10.23 (Windows, iOS, iPadOS, Xbox, PlayStation) is the third beta/Preview for Bedrock Edition 26.10, released on February 11, 2026, which adds new textures and models for baby zombies, their variants, piglins, and villagers. It also adds the trumpet note block sound, adds the "Describe" keybind, and fixes bugs.
+
+
+== Additions ==
+
+
+=== General ===
+Controls
+
+Added a key binding for Describe, a feature that displays with text or text to speech which block or mob is in front of the player.
+
+
+=== Sounds ===
+ Note Block
+
+Added the trumpet instrument.
+It can be heard when a note block is placed on top of a block of copper.
+The sound is different based on the oxidation level of the copper block.
+
+
+== Changes ==
+
+
+=== Items ===
+ Golden Dandelion
+
+Can now be crafted into yellow dye.
+Can now be used to craft suspicious stew.
+Can now be used to distract piglins.
+Can now be picked up by endermen and mobs who can pick up items.
+Can now be sold by the wandering trader.
+Now produces particles and sounds on use.
+Bone meal can no longer be used on it to spawn more flowers around it.
+
+
+=== Mobs ===
+Baby mobs
+
+Changed the textures and models of the following baby mobs:
+ Drowned
+ Husk
+ Piglin
+ Villager
+ Zombie
+ Zombie Villager
+ Zombified Piglin
+Horse
+
+Updated adult horse's blackdot markings to match the new baby horse markings.
+
+
+=== General ===
+Game Menu
+
+Added a Beta Feedback button in Preview and betas, which opens the feedback site.
+This replaces the Browse Add-ons! button, which has been moved to the small buttons below.
+The small buttons now show a tooltip similar to hotbar tooltips on hover.
+Play screen
+
+Hardcore worlds now show the amount of days played if the game rule showdaysplayed is enabled.
+Settings
+
+Updated the Controller and Touch settings tabs with Ore UI.
+
+
+=== Technical ===
+AI Goals
+
+Made the schemas for the following goals stricter when parsing and will fail to load an entity json that has invalid data in versions 26.10 and newer:
+minecraft:behavior.celebrate_survive
+minecraft:behavior.random_search_and_dig
+minecraft:behavior.swim_with_entity
+minecraft:behavior.take_flower
+minecraft:behavior.trade_with_player
+minecraft:behavior.teleport_to_owner
+minecraft:behavior.work
+minecraft:behavior.work_composter
+The following float range fields now only accepts an object with min and max values.
+fireworks_interval in minecraft:behavior.celebrate_survive.
+cooldown_range and digging_duration_range in minecraft:behavior.random_search_and_dig.
+API
+
+Included the built in math functions in generated metadata for molang.
+Changed resultItem on EntityDefinitionFeedItem and FeedItem to be of type string undefined.
+Released resultItem on EntityDefinitionFeedItem and FeedItem from beta to v2.6.0.
+Released EntityItemDropAfterEvent from beta to v2.6.0.
+Released EntityItemDropAfterEventSignal from beta to v2.6.0.
+Released EntityItemDropEventOptions from beta to v2.6.0.
+Released WorldAfterEvents.entityItemDrop from beta to v2.6.0.
+Item components
+
+The minecraft:block_placer item component has a new boolean field, aligned_placement.
+When true, block placement through this item will be aligned while holding the interaction button down.
+Defaulted to false.
+JSON Schema
+
+Updated the canopy_decoratorschema to support placing several blocks in a row as a decorator.
+New schema includes decoration_blocks_sequence as a list of blocks and a count per block to be placed.
+Rendering
+
+Armor attachables for players now use a new render controller called controller.render.armor.player.
+UI
+
+Changed screen narration to not read the Marketplace Pass banner.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs" and "Upcoming Creator Features" experimental toggles.
+
+
+=== Changes ===
+
+
+==== Technical ====
+API
+
+Added the Observable class that fires change events when the data it is wrapping changes.
+CustomForm and MessageBox use these to sync data between the client and the server and you can use observables to get notifications if data changes.
+Localizable messages can be provided by using the interface UIRawMessage.
+Blocks
+
+Added block trait minecraft:multi_block behind the "Upcoming Creator Features" experiment.
+Graphical
+
+Removed the legacy format for specifying light colors in the "Render Dragon for Creators" experiment.
+point_lights/global.json will no longer be loaded.
+Server-UI DDUI
+
+Renamed the interface LabelOptions to TextOptions.
+Class CustomForm:
+Added the method label(text: Observable<string> string UIRawMessage, options?: TextOptions): CustomForm.
+Class MessageBox:
+Removed the method title(text: Observable<string> string UIRawMessage): MessageBox.
+Added the parameter title to static method create:
+static create(player: Player, title: Observable<string> string UIRawMessage): MessageBox.
+
+
+== Fixes ==
+16 issues fixed
+From released versions before 26.10
+
+MCPE-119736 – Villagers sleep on the floor.
+MCPE-232736 – All Back navigation options stop functioning in the Profile page after viewing another player’s Profile page through the friends list.
+MCPE-234686 – “Fast bridging” disabled when replacing a custom block’s item
+MCPE-234762 – Icons inside the Ore UI screen become invisible when the UI scale is set to small.
+MCPE-235009 – Villager trading items overlap with arrow and lock icon when using Pocket UI.
+MCPE-235141 – Marketplace content (add-ons, mash-ups, skin packs, etc.) is unable to be downloaded.
+From the 26.10 development versions
+
+MCPE-235767 – Baby Sea Turtle mers mapping is incorrect.
+Other
+
+Fixed warm baby chicken texture not being symmetrical.
+Fixed incorrect baby brown rabbit texture.
+Corrected baby turtle texture colors.
+Fixed incorrect baby British shorthair cat texture.
+Corrected baby pig texture colors.
+Fixed a bug where some light source blocks held in hand would appear unlit when near other light source blocks in Vibrant Visuals.
+Fixed a bug where isValid could return false for a valid SimulatedPlayer after it had been spawned.
+Fixed an issue with images for the Marketplace Pass and Realms FAQs pages being excessively large.
+Fixed gamma encoding of the sun, moon, weather, and end sky in Vibrant Visuals.
+
+
+== References ==
+
+
+== Navigation ==

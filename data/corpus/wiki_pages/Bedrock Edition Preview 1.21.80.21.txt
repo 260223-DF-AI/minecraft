@@ -1,0 +1,110 @@
+Beta 1.21.80.21 (ChromeOS, Android) or Preview 1.21.80.21 (Windows, iOS, iPadOS, Xbox, PlayStation) is the second beta/Preview version for Bedrock Edition 1.21.80, released on March 18, 2025, which fixes bugs.
+
+
+== Changes ==
+
+
+=== General ===
+UI
+
+Adding "Manage Storage" button if download fails due to lack of space with instructions on what needs to be cleared out.
+Adding "Clear Download Cache" button to storage for clearing files that got stuck due to a downloading error.
+Auto clearing the download cache on startup if it detects that it is running out of space.
+VR
+
+Removed access to virtual and mixed reality gameplay.
+
+
+=== Mobs ===
+General
+
+A recent change that caused "invincible pet" mobs to despawn have reverted.
+Mobs in worlds opened during Preview may have despawned, but players updating to the upcoming 1.21.70 release should be unaffected.
+
+
+=== Technical ===
+API
+
+Moved the following player methods from beta to v1.18.0:
+setPropertyOverrideForEntity
+removePropertyOverrideForEntity
+clearPropertyOverridesForEntity
+Biomes
+
+Added music_definition field to minecraft:biome_music component in client_biome json files to control the music played in the biome. The default music will be determined by the dimension if the biome_music component or music_definition property is left off. An empty string can be used if the biome is intended to be silent.
+Blocks
+
+Blocks using the minecraft:block_placer component now can get added as loose items in the creative inventory and recipe book again.
+Components
+
+Content errors will log missing texture references in the minecraft:icon item component.
+The minecraft:rideable component's Seat definition now has two additional fields:
+third_person_camera_radius can be used to set a different camera radius when in third person or third person front camera. The value needs to be in the range [1.0, 64.0]. Value 0.0 is ignored.
+camera_relax_distance_smoothing adds springiness to the camera movement when the camera moves back to its radius after being pushed closer to the player by and obstacle. A higher value means a stiffer spring. The value needs to be in the range [1.0, 32.0]. Value 0.0 is ignored.
+The minecraft:leashable component now support multiple presets:
+A list of presets can be defined in the new presets field.
+Each preset determines how the entity behaves when leashed to another entity.
+A preset is selected when the entity is leashed and remains active until it is leashed to something else.
+The first preset whose filter conditions are met will be applied.
+If no presets match, a default configuration is used instead.
+The following fields are now part of each preset:
+filter: Defines the condition that selects this preset out of all the presets upon leashing.
+soft_distance: Distance at which the spring effect begins.
+hard_distance: Distance at which the leash stiffens.
+max_distance: Distance at which the leash breaks.
+can_be_stolen: Determines if a player can steal the leashed entity using a lead.
+Molang
+
+Added the query.leashed_entity_count Molang query, which allows querying how many entities have the given entity as their leash holder.
+Stability and performance
+
+Make friends drawer and play screen more performant using a cached view.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs" and "Locator Bar" experimental toggles.
+
+
+=== Changes ===
+
+
+==== Gameplay ====
+Player Locator Bar
+
+Player dots on the locator bar now show correctly regardless of simulation distance.
+
+
+==== Technical ====
+API
+
+EntityMarkVariantComponent has been changed to read-only in version 2.0 beta.
+Blocks
+
+Always add a missing Destruction Particles component to blocks that have a Material Instances component, using the down material as reference:
+The texture field in minecraft:destruction_particles is now optional; if not provided or empty, it will be populated from the Material Instances component.
+Graphical
+
+Enforced minimum Android, iOS, and iPadOS requirements for devices running the Deferred Technical Preview for maintained performance, stability, and visuals moving forward. For Android, a Adreno 640, Mali-G68, Mali-G77, or Xclipse 530 GPU or higher is required. On iOS devices, an A12 Bionic chip or later is required. On iPadOS devices, an A12 Bionic or M1 chip or later is required.
+Disabled local exposure on all platforms because of a bug that can cause massive visual corruption in the Deferred Technical Preview. Developers will re-enable the technology in a future update once the issue has been resolved.
+
+
+== Fixes ==
+8 issues fixed
+From released versions before 1.21.80
+
+MCPE-188731 – Spawn Under Nether Portal after traveling to the overworld
+MCPE-190620 – Custom spawn eggs no longer appear under spawn eggs
+MCPE-190750 – Cold variants of cows, chickens, and pigs spawn in Mangrove Swamp instead of warm variants
+Other
+
+Fixed ambient occlusion issue for non 1x1x1 blocks. When a block around any of these smaller non 1x1x1 blocks is broken, the AO computation is correctly applied to the face in the direction of that broken block. Previously the wrong face could be seen getting lightened/darkened. A list of blocks affected: stairs, walls, gates, buttons, cakes, plates, fences, anvil, grindstone, hopper, bell, lectern, eggs, brewing stand.
+Worlds are no longer missing from the storage menu.
+Bundle tooltip no longer sometimes renders as if having a different amount of items.
+Block using the minecraft:destruction_particles component will now correctly be sent to player connecting to a host.
+Fixed a bug that caused the Editor to crash when the Deferred Technical Preview was enabled.
+
+
+== References ==
+
+
+== Navigation ==

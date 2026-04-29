@@ -1,0 +1,55 @@
+Molang is an expression-based language designed for fast, data-driven calculation of values at run-time, and with a direct connection to in-game values and systems. It is used in Bedrock Edition in their Add-on system with its purpose being to enable low-level systems like animation to support flexible data-driven behavior for both internal and external creators, while staying highly performant. Molang's syntax is based off the C language.
+Mojang Studios provides official documentation which goes into details of how the language works and where it is used. The Bedrock Wiki provides more areas of Molang where the official documentation may not cover.
+
+
+== Usage ==
+Molang expressions are used to output values, usually numbers, that can dynamically change. This allows for more complex behavior to be coded for within the restrictions of JSON. Molang can be used in various places within the JSON files of both resource packs (the client) and behavior packs (the server):
+
+Values in particle components
+Values in the scripts and part_visibility fields of entity definitions
+Values in the scripts field of attachables
+Values in animations
+Conditions in the transitions fields of animation controllers
+Conditions in the permutations field of block behaviors
+Arrays and resource allocations in render controllers
+Values within certain entity components
+Data fields in recipe objects
+
+
+== Guide ==
+Molang expressions are stored as plain text strings in JSON files, enclosed with ". As such, ' must be used instead for any string definitions within the expression. Unlike commands, expressions are case-insensitive, meaning capitalization will not affect how they are interpreted. 
+For expressions with only a single statement, the terminating symbol ; can be removed. Expressions with multiple statements need ; in order to separate individual statements.
+
+
+=== Operators ===
+
+
+=== Variables ===
+Variables, prefixed with variable. or v., are values that can be stored for later use within an expression. Most variables can be declared and reassigned using the = operator, for example in v.<name> = <value>;. Variables declared this way can be read and written for the lifetime of their entity or particle and are not maintained when a world is saved and reloaded. 
+Temporary variables, prefixed with either temp. or t., only exist while the expression they are declared under is executed.
+Context variables, prefixed with context. or c., are read-only variables that are only available under the context of where the expression reading the variable is defined. For example, context.owning_entity can only be read from molang expressions added to an attachable file, since the variable returns the entity which has the attachable equipped. 
+
+
+=== Functions ===
+
+
+==== Queries ====
+Queries, prefixed with q. or query., return information about the world, entity, etc. as either a boolean or numeric value. They are read-only and cannot be modified.
+For example, query.health returns the current entity's health, or 0 is not used within an entity.
+Certain queries can also take arguments, which are placed within enclosed brackets after the query name and separated by commas if there are multiple inputs. Arguments can be read as numbers or as strings, where they can be further used as identifiers for objects such as tags, slots, and entities.
+For example, q.is_item_name_any('slot.weapon.mainhand', 0, 'minecraft:iron_ingot') evaluates to either 1 (true) or 0 (false) based off whether or not the item name (or rather type ID) of the current entity's first slot of their mainhand (the mainhand only has one slot, unlike the inventory or hotbar. Slot indexes start at 0) matches any of the arguments put after the 2nd one.
+While some queries are consistent over both behavior and resource packs, some are exclusive to only one or the other, an example being query.remaining_durability, which can only be used server-side for the item component minecraft:repairable.
+
+
+==== Math functions ====
+Math functions, prefixed with math. without a single-letter alias, perform specific mathematic operations, taking data in the same way as certain queries.
+For example, math.floor(3.8) evaluates the input value rounded down as 3.0.
+
+
+== History ==
+
+
+== References ==
+
+
+== Navigation ==

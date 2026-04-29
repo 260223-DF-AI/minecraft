@@ -1,0 +1,49 @@
+Sends a JSON message to players.
+
+
+== Syntax ==
+Java Edition
+tellraw <targets> <message>
+Bedrock Edition
+tellraw <target: target> <raw json message: json>
+
+
+== Arguments ==
+JE: <targets>: entityBE: target: target: CommandSelector<Player>
+
+Specifies the player(s) to send the message to.
+Must be a player name, a target selector or a UUID‌[Java Edition  only].  And the target selector must‌[JE  only]/should‌[BE  only] be of player type. In Bedrock Edition, the target selector should be of player type.
+JE: <message>: componentBE: raw json message: json: Json::Value
+
+Specifies the message to send.
+In Java Edition, must be a valid text component. In Bedrock Edition, must be a JSON [NBT Compound / JSON Object]Object.
+
+
+== Result ==
+
+
+== Output ==
+
+
+== Examples ==
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== See also ==
+/say — send a plain text message to all players
+/tell — send a plain private text message to specific players
+
+
+== External links ==
+"/tellraw Command"     – Microsoft Learn, October 11, 2023.
+
+
+== Navigation ==

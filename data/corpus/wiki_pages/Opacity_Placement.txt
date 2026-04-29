@@ -1,0 +1,187 @@
+Many transparent blocks exhibit unique behavior when it comes to being placed or being placed on. This page covers only those blocks that exhibit unique behavior. For example, glass is not covered as everything can be placed on it. In addition, only blocks that need some sort of support are covered in the columns.
+
+
+== Placement on top of blocks ==
+
+Everything can support:
+
+Carpet
+Flower Pot
+Grindstone
+Everything can be placed on:
+
+Beacon
+Blue Ice
+Trapdoors  (top, closed)
+Observer
+Glass
+Tinted Glass
+Soul Sand
+
+
+== Placement on the side of blocks ==
+
+Everything can be placed on the side of:
+
+Beacon
+Glass
+Tinted Glass
+Glowstone
+Ice
+Sea Lantern
+Doors
+Trapdoors (top or bottom, open)
+Barrier
+Composter
+Observer
+Everything cannot be placed on the side of:
+
+Azalea
+Scaffolding
+End Rod
+Snow Layer (2-7)
+Heads
+Chorus Plant
+
+
+== Placement on bottom of blocks ==
+
+
+== Doors and trapdoors ==
+Doors and trapdoors behave in unique ways. The flat side of each block acts as a solid surface, allowing anything to be placed on it. However, all other sides act as non-solid blocks. Because of this, many blocks that can be placed on doors and trapdoors do not stay in place if the door or trapdoor is opened or closed.
+Signs and banners can be placed anywhere on a door or a trapdoor and cannot be destroyed unless the door or trapdoor itself is destroyed. Cakes and sea pickles can be placed on the tops of doors and trapdoors and are not destroyed when the door or trapdoor opens and closes. Rails, redstone dust, redstone repeaters, and redstone comparators can be placed only on a closed trapdoor in the top half of a block, but are not destroyed if the trapdoor is opened until the block is updated. All other blocks are destroyed when the door or trapdoor changes states.
+
+
+== Shulker boxes ==
+Shulker boxes typically act as a solid block in that they allow everything to be placed on them. However, many of these blocks are destroyed when the shulker box is opened. This behavior is also dependent on the rotation of the shulker box.
+
+
+=== Upward-facing shulker boxes ===
+Upward-facing shulker boxes do not destroy most transparent blocks placed on their tops or bottoms when opened. However, some blocks stop the opening of the box.
+
+Cake
+Doors
+Lantern (top only)
+Redstone Repeater
+Comparator
+Bell (top only)
+Scaffolding
+Sea Pickle
+While most blocks can be placed on top of upward-facing shulker boxes, the same is not true for blocks placed on the sides. Signs are not destroyed, but the following blocks are.
+
+Ladder
+Buttons
+Lever
+Torch
+Vines
+Bell
+Tripwire Hook
+
+
+=== Sideways-facing shulker boxes ===
+The following blocks stop a sideways shulker box from opening when placed on their front
+
+Ladder
+Bell
+Sideways facing shulker boxes destroy the following blocks when opened.
+
+Buttons (top, side, and bottom only)
+Lever (top, side, and bottom only)
+Snow Layer
+Torch (side only)
+Doors
+Ladder (side only)
+Vines (side and bottom only)
+Bell (top, side, and bottom only)
+Scaffolding
+Tripwire Hook (side only)
+
+
+=== Downward-facing shulker boxes ===
+The following blocks stop downward-facing shulker boxes from opening. 
+
+Bell (bottom only)
+Lantern (bottom only)
+Downward-facing shulker boxes do not destroy any blocks placed on their tops or bottoms when opened. However, they do destroy some when placed on the sides.
+
+Ladder
+Buttons
+Lever
+Torch
+Vines
+Bell
+Tripwire Hook
+
+
+== Pistons ==
+All transparent blocks can be placed on unextended pistons. However, on Java, many blocks cannot be placed on extended pistons and/or are destroyed when pistons extend or retract.
+
+
+=== Upward-facing pistons ===
+All blocks (except for vines) can be placed on the top or bottom of an extended upward-facing pistons. Only signs and banners can be placed on the sides of extended upward-facing pistons. However, they destroy most blocks when extending or retracting.
+
+
+=== Sideways-facing pistons ===
+The following blocks can be placed on extended sideways pistons.
+
+Pressure Plates
+Signs
+Torch  (top, head, and back of piston only)
+Cake
+Lantern
+Ladder (head and back of piston only)
+Buttons (head and back of piston only)
+Lever (head and back of piston only)
+Vines (head and back of piston only)
+Bell (head and back of piston only)
+Sea Pickle
+Banners
+Tripwire Hook (head and back of piston only)
+
+
+=== Downward-facing pistons ===
+All blocks (except vines) can be placed on the top and bottom of extended downward facing pistons. The only blocks that can be placed on the sides of extended downward facing pistons are signs.
+
+
+== Block placement mechanics ==
+Most blocks can be attached to any surface (top, bottom, or side) of any other block, even blocks with irregular shapes such as pointed dripstone; this is the default block placement behavior. Some blocks override this default behavior and will only attach to specific blocks, or blocks with a particular type of surface.
+
+
+=== Block types ===
+
+
+==== Block support shape ====
+Most blocks have a support shape that matches their collision shape; however, there are some exceptions. A notable exception is leaves, which have a full block collision shape but an empty support shape. Some exceptions have a support shape that matches their normal shape, for example the soul sand, which which have a full block normal shape but the collision shape is slightly smaller. The table below shows all the exceptions in Java Edition:
+
+
+==== Solid block ====
+A block is considered solid for placement purposes if it satisfies at least one of the following conditions:
+1. The block is explicitly listed as solid (see list below).
+
+2. Considering its collision box, the sum of the extents along the X, Y, and Z axes — where each extent is measured as the distance between the minimum and maximum coordinates on that axis — is at least 35 pixels.
+3. The vertical extent of the collision box, measured as the vertical distance between its highest and lowest points, is at least 16 pixels.
+A block is not considered solid for placement purposes if it is listed below, regardless of whether it satisfies any of the conditions above.
+
+
+==== Opaque block ====
+Full solid blocks that do not allow light to pass of another block to them. See Opacity § Solid render. 
+
+
+=== Surface types ===
+Full square solid surface
+A solid surface with a square-shaped support shape that is a full block wide.
+
+Small square solid surface
+A solid surface with a square-shaped support shape that covers a smaller surface than a full block (e.g. fence post). Any block that can be placed on a small square solid surface can also be placed on a full square solid surface.
+
+Hollow square surface
+A surface with a support shape perimeter, but hollow interior (e.g. composter or hopper). Blocks that can be placed on a surface with a hollow square can also be placed on a full square solid surface.
+
+
+=== Blocks and placement surfaces ===
+
+
+== References ==
+
+
+== Navigation ==

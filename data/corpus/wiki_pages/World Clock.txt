@@ -1,0 +1,31 @@
+A world clock is a feature that contains an internal time that increases every tick.
+
+
+== Format ==
+World clocks can be defined in data packs under the world_clock registry (i.e. found under data/<namespace>/world_clock/<id>.json)
+
+World clocks can be paused or resumed, and the time of the clock can be changed or queried from the /time command.
+Format: object with no fields
+By default, there are two world clocks, named minecraft:overworld and minecraft:the_end.
+
+
+== Behavior ==
+The world clock is loaded once only when the client is started. Using /reload cannot reload the world clock; The client must be restarted.
+The world clock itself does not contain any data; The game differentiates world clocks by recognizing their IDs. Every world clock represents an internal time, and during that, every game tick will increase. The settings of the world clock and whether it is paused is controlled by the /time command.
+If the advance_time game rule is set to false, the world clock will not increase even if it is not paused.
+In a world, every dimension will get their own world clock and the default value of a certain world clock shown by the /time command according to their dimension type, and confirm which time markers are used according to the timeline that uses this world clock.
+The time that a world has run is not controlled by the world clock.
+
+
+=== Time marker ===
+The time marker gives a specific name to the specific ticks in the world clock. Time marker is defined in [NBT Compound / JSON Object] time_markers in a timeline. It will be registered to the world clock used by this timeline when the client is started.
+The time marker can be used in the /time command. Besides this, the game defines the following time markers that control the game events, they are usually not shown in the tips of commands:
+
+wake_up_from_sleep: When the player wakes up, the tick that the game advances the time to. The time will not advance if this time marker does not exist.
+roll_village_siege: The time that the game starts to determine whether a zombie siege has happened. If this time marker does not exist, the game will not determine if a zombie siege has happened.
+
+
+== History ==
+
+
+== Navigation ==

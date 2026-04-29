@@ -1,0 +1,57 @@
+Beta 1.17.20.21 is the second beta version for Bedrock Edition 1.17.30, released on June 30, 2021, which added corner mode on structure block, and fixes bugs.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Structure Block
+
+Added Corner Mode
+Automatically set the area based on the corner when using save mode.
+
+
+=== Experimental ===
+Changes have been made behind the Caves & Cliffs experiments toggle, which gives early access to the world generation coming in Bedrock Edition 1.18.0, as well as GameTest Framework changes behind the "Enable GameTest Framework" experiments toggle.
+Ore distribution
+
+Extended the vertical range of the smaller blobs of iron ore, to make it possible to find iron in caves near the surface.
+GameTest Framework
+
+Renamed helper method worldLocation(location : BlockLocation) to worldBlockLocation(location : BlockLocation)
+Renamed helper method relativeLocation(location : BlockLocation) to relativeBlockLocation(location : BlockLocation)
+Added helper method worldLocation(relativeLocation : Location) : Location
+From a Location with coordinates relative to the GameTest structure block, returns a new Location with coordinates relative to the world
+Added helper method relativeLocation(worldLocation : Location) : Location
+From a Location, returns a new Location with coordinates relative to the current GameTest structure block
+Added helper method spawnWithoutBehaviorsAtLocation(entityIdentifier : string, location : Location) : Entity
+Spawns an entity at a location without any AI behaviors
+Added helper method rotateDirection(direction : Direction) : Direction
+Rotates the given direction relative to the GameTest structure rotation
+Added helper method getTestDirection() : Direction
+Returns the direction the GameTest is facing based on its structure rotation
+
+
+== Fixes ==
+Commands 
+
+Fixed a crash that could occur if a structure was placed with a command in an unloaded area, and that structure was deleted
+Graphical 
+
+Fixed text from signs drawing on maps when RTX is on
+Items 
+
+Clock and Compass items no longer function in the Recipe Book (MCPE-36354)
+Structure Blocks 
+
+Fixed tamed Wolves being transparent on the Structure Block screen.
+
+
+== Trivia ==
+The release date of this beta coincides with the day that Minecraft Earth has been discontinued.
+
+
+== References ==
+
+
+== Navigation ==

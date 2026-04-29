@@ -1,0 +1,31 @@
+Bedrock Editor v1.2.5 is a minor release for the Bedrock Editor released on January 27, 2026.
+
+
+== Additions ==
+Added variant and layout section support for IListPanePropertyItem API.
+Added IStringPropertyItem API will now support multiline string if multilineHeight optional property is defined.
+Added hasClearButton optional API property to IStringPropertyItemOptions for modifying clear button visibility.
+Added a feature to keep player data on export for any player that had previously played in that world.
+Added an option to creator options to enable or disable editor metrics collection. Those metrics can be viewed in the VSCode live diagnostics view.
+Added an option to the Bedrock Dedicated Server configuration to enable or disable editor metrics collection when running an Editor server.
+
+
+== Changes ==
+Updated Selection Tool to displays toast notifications when Quick Actions (Fill, Delete) or Trim Actions (Trim Selection, Remove Air, Hollow) cannot be performed due to no selection or when they result in no changes.
+Updated jigsaw tool to save registry when the editor is closed or tool is changed.
+Updated API type ListPaneSlotLayout to ListPaneSlotConfiguration, and updated IListPanePropertyItemOptions property layout to slotConfig.
+Improved performance of Editor in Vibrant Visuals mode by preventing extra deferred rendering call.
+
+
+== Fixes ==
+Fixed a bug that made players not be able to select any volumes using Enter key while in Line Tool.
+Fixed a bug that caused the "New from Clipboard" button to be inactive outside of Paste Preview tool.
+Fixed a bug causing the tutorial dimmer to render misaligned relative to the viewport.
+Fixed a bug where the flood tool would not close the modal dialog when block change limit was exceeded.
+Fixed changing between Crosshair and Tool modes to no longer cause world geometry to get re-created.
+
+
+== References ==
+
+
+== Navigation ==

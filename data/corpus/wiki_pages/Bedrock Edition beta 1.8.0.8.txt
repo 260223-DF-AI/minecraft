@@ -1,0 +1,214 @@
+Beta 1.8.0.8 is the first beta version for Bedrock Edition 1.8.0, released on October 10, 2018, which adds some Village & Pillage features and fixes bugs.
+
+
+== Additions ==
+
+
+=== Blocks ===
+Bamboo 
+
+Can be found while fishing in jungles and appear in jungle temple and shipwreck chests.
+Currently do not generate naturally in the world.
+Scaffolding
+
+A new climbable block that can be crafted using bamboo and string.
+Climb by pressing the jump key and go down by pressing the sneak key.
+
+
+=== Items ===
+Spawn Eggs
+
+Cat
+Panda
+
+
+=== Mobs ===
+Pandas 
+
+Spawn in jungles.
+Will seek out bamboo and cake items and eat them.
+Can have different personalities: either normal, aggressive, lazy or playful.
+Baby pandas will sometimes sneeze, making nearby pandas jump: when they sneeze, they have a chance to drop a slime ball.
+Have a chance of spawning as a brown panda, which is very rare.
+Sometimes roll and sit on hind legs.
+Stray cats
+
+Spawn in villages.
+Can be tamed using fish.
+Added seven new skins.
+
+
+=== Command format ===
+/gamerule
+
+Added randomtickspeed.
+/particle
+
+Ported from Java Edition.
+Only the following particles are available (prefix minecraft: is necessary):
+minecraft:mobflame_emitter
+minecraft:test_beziercurve
+minecraft:test_bounce
+minecraft:test_catmullromcurve
+minecraft:test_colorcurve
+minecraft:test_combocurve
+minecraft:test_highrestitution
+minecraft:test_linearcurve
+minecraft:test_mule
+minecraft:test_smoke_puff
+minecraft:test_sphere
+minecraft:test_spiral
+minecraft:test_watertest
+/reload
+
+Reloads all function files from all behavior packs.
+/summon
+
+Added minecraft: prefix to separate vanilla entities and add-on entities.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Command blocks
+
+Now have the default name of "!" instead of "@".
+
+
+=== Items ===
+Sticks
+
+Can now be crafted from bamboo.
+
+
+=== Mobs ===
+Camera
+
+Re-added, but can only be spawned with an NBT editor.
+NPC
+
+Re-added, but can only be summoned using the /summon command.
+Ocelots
+
+Are no longer tamable.
+Players can now feed ocelots fish to gain their trust.
+Phantoms
+
+Are now afraid of cats and will not swoop while cats are around.
+Skeleton horses and zombie horses
+
+Foals now have a chance of being spawned using a spawn egg.
+Tropical fish
+
+Increased size. (MCPE-35877)
+
+
+=== World generation ===
+Witch huts
+
+Black cats now spawn in witch huts.
+
+
+=== Gameplay ===
+Fishing
+
+Fishing loot has now been changed in jungles. When fishing in a jungle biome, the fish rewarded are now raw cod and raw salmon only.
+Bamboo and cocoa beans are now obtainable as a junk item when fishing in jungles.
+
+
+=== Command format ===
+Auto-complete
+
+The auto-complete list for player mentions now work in slash commands.
+/gamerule
+
+The following rules can now be run in game without turning on cheats:
+showcoordinates
+dofiretick
+tntexplodes
+domobloot
+naturalregeneration
+dotiledrops
+pvp
+
+
+=== General ===
+Marketplace
+
+The user can now send links to their favorite Marketplace content using the share button.
+Menu screen
+
+More skin packs are now shown in the skin picker menu, and each pack can be opened and viewed in its own page.
+Splash screen
+
+Now has an animated loading bar.
+
+
+== Fixes ==
+Fixed several crashes that occurred during gameplay.
+Fixed a crash that would occur if the player was disconnected while loading resource packs.
+Fixed a crash that would occur on Xbox One if the player signed out too quickly after signing in.
+Fixed a crash that could occur during the splash loading screen on Windows 10 Mobile.
+Fixed a crash that could occur on startup for Gear VR.
+Fixed a crash that would occur when using lava buckets on fish.
+Fixed a bug where multiple UI screens could be opened at once, causing the game to crash.
+Fixed a crash that could occur due to a recently added Windows 10 feature. (MCPE-36274)
+Fixed the bug where players on Realms could be instantly killed in one shot by a Blaze fireball attack. (MCPE-19535)
+Planting crops continuously will no longer skip blocks. (MCPE-35857)
+Tamed wolves will now tilt their heads when the player is holding meat. (MCPE-17144)
+Magma cubes no longer inflict damage during their death animation. (MCPE-14426)
+Mobs in minecarts no longer activate adjacent detector rails. (MCPE-21863)
+Ghast sounds are no longer repeated when they are shooting fireballs. (MCPE-19156)
+Crafting multiple cakes using the recipe book will now return the correct number of empty buckets to the player. (MCPE-37387)
+Wall signs no longer show different types of wood particles when being broken. (MCPE-16141)
+Explosions will now drop blocks if the default game mode is Creative and Tile Drops are enabled. (MCPE-23498)
+Flower pots that contain saplings will once again drop the correct type when broken. (MCPE-37328)
+Players will now face forwards when entering a boat. (MCPE-36795)
+Removed "MCPE!" from the list of splash screen messages. (MCPE-36741)
+Water now renders correctly when surrounded by barrier blocks.
+Fixed an issue that would sometimes cause black visual glitches to appear around blocks when riding a horse.
+Players will no longer teleport when standing against a non-full block and reloading the game. (MCPE-31242)
+Fixed incorrect interact buttons appearing briefly for certain mobs on touch screen devices.
+The achievement button no longer appears in the pause menu if not signed into Xbox Live.
+Fixed a bug where players could see through solid blocks when swimming.
+The multiplayer toggle is now accurately shown when using platform restricted content on Xbox One and Nintendo Switch.
+Double wooden slabs can now be placed regardless of crosshair position. (MCPE-13799)
+Pistons no longer drop as items when being pushed or pulled. (MCPE-37492)
+Large slimes and magma cubes now have the correct sized hitbox based on their size. (MCPE-18518)
+Kelp will now only grow into water source blocks or full downward flowing water, and no longer creates a new source block. (MCPE-37155)
+Fixed an exploit where rails could be duplicated. (MCPE-36917)
+Lightning no longer strikes if the destination is in a cold biome. (MCPE-19015)
+Fixed mobs not always taking fall damage when they should. (MCPE-37257)
+The "Body Guard" achievement can now be unlocked after creating an iron golem. (MCPE-33686)
+Fixed rare enchantments being too hard to get at higher levels.
+The right bumper button now correctly scrolls through the tabs in the game menu on Nintendo Switch.
+The hitbox of piston arms now matches the size and shape correctly. (MCPE-13758)
+Players no longer fall through shulker boxes as they open. (MCPE-28812)
+Improved the loading time of various game files.
+Fixed the buttons used on the startup message for players using Windows Mixed Reality.
+Worlds larger than 1GB can now be copied and exported on Windows 10. (MCPE-37269)
+Added an underscore to frozen_river in the biomes_client.json so it matches the other vanilla Resource Pack entries. (MCPE-36799)
+The player locator map marker now faces the right direction when aboard a boat.
+Fixed an issue with custom player permissions that might not apply correctly in multiplayer. (MCPE-34864)
+Potion of slow falling will now slow down elytra descent. (MCPE-34926)
+Multiple items can be collected when trading with villagers again when using touch controls. (MCPE-32635)
+Fixed a bug where only white firework stars could be crafted.
+The player's hands are now properly rotated and positioned when aboard a boat and holding a bow.
+Lava blocks no longer appear green in the command autocomplete area. (MCPE-33788)
+Fixed a crash that occurred when killing and summoning a salmon with its navigation component removed.
+Reassigned Page Up and Page Down keys are now labeled correctly on the Settings screen.
+Controller hints now show the correct usage of "Open" and "Use" when looking at containers.
+Player names that are made up of only numbers are now surrounded with quotation marks when using autocomplete for slash commands
+Fixed a crash that could occur when kelp grows.
+Fixed a crash that could occur in worlds that contained locator maps.
+Shulker boxes that contain tropical fish buckets no longer cause lag. (MCPE-27167)
+
+
+== Gallery ==
+
+
+== References ==
+
+
+== Navigation ==

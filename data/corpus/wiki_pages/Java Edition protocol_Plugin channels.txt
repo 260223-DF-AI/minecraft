@@ -1,0 +1,193 @@
+Plugin channels allow client mods and server plugins to communicate without cluttering up chat. This post by Dinnerbone is a good introduction and basic documentation.
+
+
+== Definitions ==
+
+
+=== Data Types ===
+
+
+==== Entity Path ====
+Represents calculated path of entity.
+
+You can read more at A* search algorithm.
+
+
+==== Path Node ====
+Represents single point in path
+
+Node type can be one of the following values:
+
+
+==== Block Box ====
+Represents a box with integer precision
+
+
+==== Chunk Section Position ====
+Represents a box with integer precision
+Note: What you are seeing here is the latest version of the Data types article, but the position type was different before 1.14.
+64-bit value split into three signed integer parts:
+
+x: 22 MSBs
+z: 22 middle bits
+y: 20 LSBs
+For example, a 64-bit position can be broken down as follows:
+Example value (big endian): 0000000000000000000000 0000000000000000000000 00000000000000000000
+
+The red value is the X coordinate, which is 0 in this example.
+The blue value is the Z coordinate, which is 0 in this example.
+The green value is the Y coordinate, which is 0 in this example.
+Encoded as follows:
+
+((x & 0x3FFFFF) << 42) | ((z & 0x3FFFFF) << 20) | (y & 0xFFFFF)
+
+And decoded as:
+
+val = read_long();
+x = val >> 42;
+z = val << 20 >> 42;
+y = val << 42 >> 42;
+
+Note: The above assumes that the right shift operator sign extends the value (this is called an arithmetic shift), so that the signedness of the coordinates is preserved. In many languages, this requires the integer type of val to be signed.
+
+
+== Channels internal to Minecraft ==
+These are channels used by Minecraft. Most of them are debugging-related except for brand.
+
+
+=== Brand ===
+Announces the server and client implementation name right after a player has logged in.
+These brands are used in crash reports and a few other locations. It's recommended that custom clients and servers use their own brand names for the purpose of identification. The brand is not processed in any other way, and Notchian clients will connect to servers with different brands with no issue (the brand is not used to validate).
+The Notchian server sends a minecraft:brand packet right after it sends a Login (play) packet, and the Notchian client sends it right after receiving a Login (play) packet. However, some modified clients and servers will not send this packet (or will take longer to send it than normal), so it is important to not crash if the brand has not been sent. Additionally, the brand may change at any time (for instance, if connected through a BungeeCord instance, you may switch from a server with one brand to a server with another brand without receiving a Login (play) packet).
+
+
+=== Debug/Path ===
+
+Never sent by the Notchian server. Requires modifications to the client to render.
+
+The current node is rendered red; the others are rendered blue. The target position is rendered as a green cube.
+
+
+=== Debug/Neighbors Update ===
+Never sent by the Notchian server. Requires modifications to the client to render.
+
+
+=== Debug/Redstone Update Order ===
+Never sent by the Notchian server. Requires modifications to the client to render.
+
+
+=== Debug/Structures ===
+Used to debug structures. Never sent by the Notchian server. Requires modifications to the client to render.
+Adds a single new structure, which will always be rendered if the player is in the same dimension.
+
+
+=== Debug/World Generation Attempt ===
+Used to debug something with world generation. Never sent by the Notchian server. Requires modifications to the client to render.
+Adds a colored cube of the list of things to render. This cube is never removed.
+
+
+=== Debug/Add POI ===
+Used to add debugging POI. Never sent by the Notchian server. Requires modifications to the client to render.
+
+
+=== Debug/Remove POI ===
+Used to remove debugging POI. Never sent by the Notchian server. Requires modifications to the client to render.
+
+
+=== Debug/Update POI ===
+Used to set amount of free tickets for a given POI. Never sent by the Notchian server. Requires modifications to the client to render.
+
+
+=== Debug/Village Sections ===
+Used to add/remove Village Sections. Never sent by the Notchian server. Requires modifications to the client to render.
+
+
+=== Debug/Goal Selector ===
+Used to debug goals of entities. Never sent by the Notchian server. Requires modifications to the client to render.
+Adds multiple lines of text on the given location, spaced by 0.25 units upward on the Y-axis.
+
+
+=== Debug/Brain ===
+Used to debug villagers but renders on any entity with a brain. Never sent by the Notchian server. Requires modifications to the client to render.
+
+
+=== Debug/Bee ===
+Used to debug bee pathfinding to hives and flowers. Never sent by the Notchian server. Requires modifications to the client to render.
+
+
+=== Debug/Hive ===
+Used to debug hives. Never sent by the Notchian server. Requires modifications to the client to render.
+
+
+=== Debug/Add Game Test Marker ===
+Used to set different debug markers in the world. Never sent by the Notchian server. This interestingly renders without problems since 1.16.5.
+
+
+=== Debug/Clear Game Test Markers ===
+Clears all debug markers.
+
+
+=== Debug/Raids ===
+Used to set debug raid centers. Never sent by the Notchian server. Requires modifications to the client to render.
+
+
+=== Debug/Game Event ===
+Never sent, but used to debug game events. Never sent by the Notchian server. Requires modifications to the client to render.
+
+
+=== Debug/Add Game Event Listener ===
+Used to add game event listeners. Never sent by the Notchian server. Requires modifications to the client to render.
+
+Listener data for a block:
+
+Listener data for an entity:
+
+
+== Notable community plugin channels ==
+Channels listed in this section are not used by the vanilla Minecraft client or server. This is just a likely-incomplete list of channels used by mods/plugins popular within the Minecraft community.
+
+
+=== Register ===
+
+Allows the client or server to register for one or more custom channels, indicating that data should be sent on those channels if the receiving end supports it too. This format is used on Bukkit, BungeeCord, Velocity and Fabric API.
+
+
+=== Unregister ===
+
+Allows the client or server to unregister from one or more custom channels, indicating that the receiving end should stop sending data on those channels. This format is used on Bukkit, BungeeCord, Velocity and Fabric API.
+
+
+=== "Common" standard ===
+The common standard was created by the FabricMC, NeoForged, PaperMC and SpongePowered team because the current register channel lacked the game phase. It is currently used by Fabric API and NeoForge. The current version of the standard is 1, which contains the following payloads:
+
+
+==== Supported Versions ====
+
+
+==== Register ====
+
+Note: this standard only supports registering channels, not unregistering.
+
+
+=== BungeeCord ===
+bungeecord:main
+Formerly BungeeCord; additionally, note that the channel name is remapped by spigot so that the old name can still be used in plugins.
+See here
+
+
+=== Forge ===
+
+fml:handshake, fml:play
+Previously FML|HS, FML
+Used by Minecraft Forge to negotiate required mods, among other things.
+fml:handshake and fml:play
+
+
+=== Fabric API ===
+fabric:accepted_attachments_v1, fabric:attachment_sync_v1, fabric:custom_ingredient_sync and much more
+
+
+=== WorldEdit CUI ===
+
+worldedit:cui
+Used by the server-side WorldEdit and the client-side WorldEditCUI to coordinate selections.

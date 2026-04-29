@@ -1,0 +1,824 @@
+This is a list of Bedrock Edition 1.20.0 development versions.
+
+
+== Preview 1.20.0.20 ==
+Beta 1.20.0.20 (Android) or Preview 1.20.0.20 (Windows, iOS, iPadOS, Xbox) is the first beta/Preview version for Bedrock Edition 1.20.0, released on April 12, 2023, which adds pitcher plants, sniffer eggs, brought more parity from Java Edition, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Pitcher Plant
+
+A type of plant which grows from the pitcher pod after 4 stages (5 stages in total).
+Can be obtained by breaking a fully grown pitcher crop.
+Can be crafted into a cyan dye.
+Cannot be placed in a flower pot.
+ Sniffer Egg
+
+The sniffer egg can be found in the suspicious sand loot table found at warm ocean ruins.
+The sniffer egg is dropped when two sniffers breed.
+The sniffer egg hatches into a snifflet.
+When placed above a moss block, it will hatch after approximately 10 minutes.
+On all other blocks, it will hatch in approximately 20 minutes.
+
+
+==== Items ====
+ Pitcher Pod
+
+Can be planted on farmland and grows into a pitcher plant.
+Can only be obtained if a sniffer digs up a pitcher pod.
+Drops pitcher plant when fully grown, otherwise drops itself.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Carpet
+
+The different block states for the carpet ID have now been split up into their own IDs.
+
+Coral
+
+The different block states for the coral ID have now been split up into their own IDs.
+
+Torchflower
+
+Now available without the "Sniffer" experimental toggle.
+
+
+==== General ====
+UI
+
+Changed the overlay color on the new death screen in full VR.
+Added a new camera effect on the new death screen.
+Doubled the resolution of the world thumbnails.
+Experiments
+
+Removed the "Sniffer" experimental toggle.
+Settings
+
+Screen reader now describes function of "delete world" button in storage menu.
+Tweaked the contrast of the text inside of header for list of worlds in storage settings menu.
+Splashes
+
+Added the "Enter the Render Dragon!" splash text.
+
+
+==== Items ====
+Shield
+
+Can now be combined with banner on crafting grid to apply patterns on it.
+The banner is consumed on use.
+A Shield can be combined with a banner only if no pattern was previously applied.
+
+
+==== Mobs ====
+Sniffer
+
+Now available without the "Sniffer" experimental toggle.
+Now spawns an sniffer egg when bred, instead of producing a snifflet.
+Now you can also find the pitcher pods of the pitcher plant.
+
+
+==== Technical ====
+JSON
+
+Custom items using JSON formats 1.16.100 and formats past 1.17.0 can be loaded without the "Holiday Creator Features" toggle if there are no holiday components used.
+The minecraft:friction component is no longer ignored when calculating ground friction.
+Items with the entity placer item component will now successfully create the actor on air blocks if the dispense_on field is empty.
+Items with the entity placer item component can now be used on a monster spawner to change the spawner's actor spawn type. The item must have a format version of at least 1.19.80.
+Removed the non-functional on_repaired parameter from the minecraft:repairable item component.
+Molang
+
+There is now a limit on the amount of nested sub-expressions each molang expression can have.
+General
+
+Added spawn_item_event event to minecraft:spawn_entity. This event is called when an item is spawned.
+Added a progress handler when loading into a world that will wait up to a total of 15 seconds for the primary users appearance to load.
+Lowered the time it takes to start up and load into the start screen.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs", and "Upcoming Creator Features" experimental toggles.
+
+
+==== Additions ====
+
+
+===== Technical =====
+Add-ons and script engine
+
+Added experimental support for BlockTraits in block JSON. BlockTraits are a shortcut for creators to add vanilla block states and setter functions to data-driven blocks.
+Can parse PlacementDirection ("minecraft:placement_direction") BlockTrait (adds the "minecraft:cardinal_direction" BlockState and onPlayerPlace setter function).
+Can access the minecraft:cardinal_direction state on blocks that apply the placement_direction trait in block_property molang queries and set_block_property event responses.
+
+
+==== Changes ====
+
+
+===== Technical =====
+Scripting
+
+System Events
+Further separation of events into distinct before* and after* handling, with some restrictions on the execution of state updates in a before event.
+Renamed Scripting Events
+Before Events renamed to *BeforeEvent and event signals renamed to *BeforeEventSignal.
+Example: BeforeItemUseEvent renamed to ItemUseBeforeEvent and BeforeItemUseEventSignal renamed to ItemUseBeforeEventSignal.
+Other events renamed to *AfterEvent and event signals renamed to *AfterEventSignal.
+Example: WeatherChangedEvent renamed to WeatherChangedAfterEvent and WeatherChangedEventSignal renamed to WeatherChangedAfterEventSignal.
+chat event renamed to chatSend.
+events.beforeChat renamed to world.events.beforeChatSend.
+events.chat renamed to world.events.chatSend.
+BeforeChatEvent renamed to ChatSendBeforeEvent.
+BeforeChatEventSignal renamed to ChatSendBeforeEventSignal.
+ChatEvent renamed to ChatSendAfterEvent.
+ChatEventSignal renamed to ChatSendAfterEventSignal.
+Fixed a bug where resolve() would fail to resolve custom block properties.
+Renamed scoreboard to Entity.scoreboardIdentity.
+Item Events
+The ItemStartUseOnEvent now only fires for the first block that is interacted with when performing a build action.
+The ItemUseOnEvent now only fires if the item is successfully used on a block.
+ItemUseOnEvent property blockLocation: Vec3 has been changed to block: Block.
+ItemStartUseOnEvent property blockLocation: Vec3 has been changed to block: Block.
+ItemStopUseOnEvent property blockLocation: Vec3 has been changed to block: Block.
+ProjectileHitEvent property faceLocation: Vec2 has been changed to faceLocation: Vec3 - This position is relative to the bottom north-west corner of the block.
+ItemUseOnEvent property faceLocation: Vec2 has been changed to faceLocation: Vec3 - This position is relative to the bottom north-west corner of the block.
+Entity
+Added interface teleportOptions {dimension?: Dimension, rotation?: Vector2, keepVelocity?: boolean, facingLocation?: Vector3, checkForBlocks?: boolean}.
+Added interface Vector2 {x: number, y: number}.
+Added function tryTeleport(location: Vector3, teleportOptions?: teleportOptions) : boolean - Attempts to teleport the entity and returns false if the entity is unable to teleport safely (blocks surrounding teleport location or unloaded chunk).
+Changed function teleport to teleport(location: Vector3, teleportOptions?: teleportOptions) : void - Teleports an entity.
+Changed function setRotation to setRotation(rotation: Vector2) : void - Sets the entity's rotation.
+Changed function getRotation to getRotation() : Vector2 - Gets the entity's rotation.
+Updated function addTag(tag: string): boolean - The tag must be less than 256 characters.
+Updated method kill to return boolean instead of void. If return value is true, entity can be killed, otherwise false.
+Added interface EntityApplyDamageOptions. Additional options about the source of damage to use as input in applyDamage.
+Added interface EntityApplyDamageByProjectileOptions. Additional options about the source of damage to use as input in applyDamage in case of projectile damage.
+Updated method applyDamage. Renamed parameter source to options. Parameter type also changed from EntityDamageSource to EntityApplyDamageOptions EntityApplyDamageByProjectileOptions.
+SimulatedPlayer.
+Changed function getHeadRotation to getHeadRotation() : Vector2 - Gets the simulated players head rotation.
+TitleDisplayOptions will now accept floating point values.
+Added new WorldSoundOptions and PlayerSoundOptions interface types for use with the playSound and player.playSound respectively.
+playSound now requires a location argument.
+When calling playMusic and queueMusic, an error will now be thrown if volume is less than 0.0.
+When calling playMusic and queueMusic, an error will now be thrown if fade is less than 0.0.
+When calling playSound, an error will now be thrown if pitch is less than 0.01.
+When calling playSound, an error will now be thrown if volume is less than 0.0.
+When calling playSound, an error will now be thrown if pitch is less than 0.01.
+When calling playSound, an error will now be thrown if volume is less than 0.0.
+Removed dye_powder item component.
+Entity objects now persist across dimension changes and chunk reloading. This means that if you have a reference to an invalid entity, it will become usable once the entity has been transferred or reloaded. You can check whether an entity is loaded or unloaded by reading its lifetimeState property.
+Added read-only property lifetimeState - Returns the lifetime state of the entity. Valid values include loaded and unloaded.
+ItemDefinitionTriggeredEvent
+Renamed property item to itemStack.
+ItemStartUseOnEvent
+Renamed property item to itemStack.
+Replaced function getBlockLocation with read-only property blockLocation: Vector3.
+Removed function getBuildBlockLocation.
+ItemStopUseOnEvent
+Renamed property item to itemStack.
+Replaced function getBlockLocation with read-only property blockLocation: Vector3.
+ItemUseEvent
+Renamed property item to itemStack.
+BlockHitInformation
+Replaced properties faceLocationX and faceLocation with read-only property faceLocation: Vector2.
+
+
+=== Fixes ===
+71 issues fixed
+From released versions before Bedrock Edition 1.20.0
+
+MCPE-19700 – Wrong Elytra Texture in Item Frame and Hand
+MCPE-35202 – Fireball is not correctly positioned when shot by ghast
+MCPE-39974 – lava_cauldron can be placed via commands
+MCPE-64745 – Iron bars and glass panes do not connect with any kind of pistons
+MCPE-118898 – Moon Lighting Originates From The Opposite Angle Relative To The Moon At Night Underwater
+MCPE-125931 – Dead bushes cannot be placed on grass block
+MCPE-152485 – Falling or flying through floating water sometimes doesn't reset fall damage
+MCPE-153446 – Cape when riding a boat changes its position (folds up) when you turn the camera
+MCPE-156773 – Weighted pressure plates always output signal strength 1 for 1/2 second before they output the correct signal strength
+MCPE-159261 – Loading animation is to big when adding friend
+MCPE-159970 – Command block menu missing command block texture (icon)
+MCPE-161096 – Sugar cane generates in water
+MCPE-162455 – "World upload failed" when I save and quit to the title screen
+MCPE-163337 – Hanging signs allow more characters than on Java
+MCPE-163416 – Bamboo fence gate are not flammable
+MCPE-163475 – Can't see camel dash bar on mobile
+MCPE-163501 – Camel neck appeared when it up and sniff the ground.
+MCPE-163554 – Hanging Sign Sounds are Very Quiet
+MCPE-164246 – Hanging nether and bamboo signs don't have new sounds
+MCPE-164249 – Arrows and tridents get stuck shaking when shot at Hanging Signs
+MCPE-164632 – Hanging signs placement is not like in Java
+MCPE-164677 – Standing on top of some incomplete blocks as it converts to complete blocks causes the player to fall through or be pushed out of the block
+MCPE-164719 – The camel's head looks high up disturbing the player's eyesight
+MCPE-166505 – Camels has an error text in action hint
+MCPE-166791 – Black terracotta uses white terracotta map color
+MCPE-167045 – Player collision box incorrect after returning to main menu from death screen
+MCPE-167163 – When Suspicious Sand is dropped onto some blocks, it drops
+MCPE-167176 – Torchflowers placed by the player do not have a random location in the block
+MCPE-167177 – The hitbox of Torchflowers seeds is too big and not the same as in Java
+MCPE-167200 – Torchflower seeds cannot be composted
+MCPE-167217 – Using pick block function on torchflower crop gives torchflower seeds instead of the plant item
+MCPE-167220 – Bees are not tempted by or attempt to pollinate Torchflowers
+MCPE-167226 – Trying to break the block while brushing stops brushing
+MCPE-167263 – Brush's durability are used up incorrectly
+MCPE-167264 – Enchantments cannot be applied to the brush
+MCPE-167975 – Chickens and parrots are not tempted by torchflower seeds
+MCPE-167977 – Torchflowers cannot be used to craft suspicious stew
+MCPE-168041 – Placement of blocks on a Decorated pot is not the same as in Java
+MCPE-168055 – Block state autocomplete suggests states that were already typed
+MCPE-168075 – Cherry groves can generate regular flowers
+MCPE-168280 – Unable to place blocks on interactable blocks when sneaking
+MCPE-168357 – Potions and tipped arrow colors don't match the particles
+MCPE-168387 – Woodland mansion, wooden logs face the wrong way
+MCPE-168548 – Interaction with the armor stand depends on whether the player is sneaking or not, and not on pressing the shift button
+MCPE-168817 – Reloading the world causes signs and hanging signs to use incorrect texture in editing screen
+MCPE-168829 – Glitched tall grass block can generate inside or above pink petal flowers
+MCPE-168836 – Shelter Pottery Shard is missing a space in its name
+MCPE-168921 – Miner pottery shard cannot be obtained by brushing suspicious sand in desert pyramid
+MCPE-169038 – Woodland mansion entrance uses smooth stone slabs
+Other
+
+The Brush now displays a tooltip when aimed at Suspicious Blocks on touch devices.
+Brushing other non-Suspicious blocks will now produce a generic brushing sound.
+Suspicious Sand and Suspicious Gravel do not drop anymore when falling on top of Sculk Sensors or Calibrated Sculk Sensors.
+Untrimmed armor pieces now render correctly in-hand and in the world when carrying an equivalent armor piece with trim.
+When swapping a trimmed armor piece with an equivalent piece without trims, both items now render correctly in the HUD hotbar.
+When swapping a trimmed armor piece with an equivalent piece without trims, both items now render correctly in UI-slots.
+Mobs are now correctly positioned above the surface of Bamboo Rafts when riding them.
+Fixed an issue where a Piston could become invisible in rare cases.
+Players no longer fall through Farmland Blocks after jumping on them.
+The sounds emitted by players and mobs stepping, falling, jumping, or landing on top of sculk sensors are now affected by the "Players" sound slider.
+Fixed an issue where a locally hosted dedicated server was not found by clients on the same machine.
+Boots do not z-fight anymore when worn by humanoid mobs and Armor Stands
+The "leg" and "belt" parts of Leggings do not z-fight anymore when worn by humanoid mobs and Armor Stands.
+iOS now requests Local Network access in order to find games on the local network.
+Screen UI now always has a focus in control when using a controller.
+Fixed a bug where the crosshair could be visible on the new death screen.
+Fixed a bug where text formatting codes would be shown on the new death screen.
+Fix bug where respawning in VR sometimes softlocked the player on the death screen.
+Changed the world tag to no longer display "-experimental" on worlds that only use the Holiday Creator Features experiment.
+Improved performance when preparing commands, most noticeable when opening the command window for the first time in a world, but also when loading Command Blocks for old command versions.
+Any item use, like using a Brush or Spyglass or eating an Apple now send item interact events that cause vibrations picked up by Sculk Sensors and Wardens.
+Fixed a crash affecting some Marketplace packs preventing them from loading.
+
+
+== Preview 1.20.0.21 ==
+Beta 1.20.0.21 (Android) or Preview 1.20.0.21 (Windows, iOS, iPadOS, Xbox) is the second beta/Preview version for Bedrock Edition 1.20.0, released on April 19, 2023 which bring more parity with Java Edition and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+ Sculk Sensor
+
+Vibration frequencies of many actions in the game have been tweaked and greatly simplified to prevent unwanted interference, as following:
+
+
+==== General ====
+Experiments
+
+All Trails & Tales content has now been “de-experimentified” and is available during normal gameplay.
+Removed the Next Major Update toggle, since it has no active experimental content.
+Accessibility
+
+The four Creative Inventory tabs now have their names read out by text-to-speech.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs" experimental toggle.
+
+
+==== Changes ====
+Add-ons
+
+Added minecraft:facing_direction state to the minecraft:placement_direction block trait.
+minecraft:facing_direction is a six value integer state (down, up, south, west, north, east).
+Can enable and access this state on blocks through the minecraft:placement_direction trait.
+Can access the minecraft:cardinal_direction state on blocks that apply the minecraft:placement_direction trait in block_property Molang queries and set_block_property EventResponses.
+Pumpkin blocks use state minecraft:cardinal_direction instead of direction.
+API
+
+@minecraft/server
+Renamed BlockProperties to BlockStates.
+Renamed getAllProperties to BlockPermutation.getAllStates.
+Renamed getProperty to BlockPermutation.getState.
+
+
+=== Fixes ===
+31 issues fixed
+From released versions before Bedrock Edition 1.20.0
+
+MCPE-133778 – Dyes and glow ink sacs are consumed when used on a sign with no text
+MCPE-147711 – Arrows don't appear in the Character Creator while the Hide Controller Hints setting is on
+MCPE-152926 – Door top and bottom textures flip incorrectly & illogically when opened and closed
+MCPE-153909 – Filter has_equipment cannot test for an empty string ("") or air
+MCPE-164424 – minecraft:boostable component has no effect on speed
+MCPE-167191 – Decorated Pot's brightness is affected by daytime and not by surrounding lighting
+MCPE-168717 – Stone Block Slab Recipe Duplication Content Log Errors and they are NOT Dupes
+MCPE-168805 – Some brushing sounds missing
+MCPE-168807 – Interacting with a waxed sign / hanging sign doesn't play a sound
+MCPE-168818 – Sign editing screen ignores added effects
+MCPE-168834 – Decorated pot is missing top row of pixels
+MCPE-168838 – Interacting with editable signs when holding certain items can break the sign or trigger item-specific interactions
+MCPE-168894 – Game crashes when enabling RTX while in a world
+MCPE-169423 – Z-fighting occurs on the sniffers' heads and ears
+MCPE-169563 – Sculk shriekers aren't muted/silenced when waterlogged
+From the previous development version
+
+MCPE-169490 – Pitcher Plant has unused bottom texture
+MCPE-169531 – Calibrated sculk sensor's active cooldown is the same as the normal sculk sensor
+MCPE-169532 – Calibrated sculk sensor doesn't detect vibration up to 16 blocks
+MCPE-169534 – The Pitcher Crop hitbox is incorrect and doesn't match Java
+Other
+
+Calibrated Sculk Sensors now power the block below them when active.
+Fixed fall damage accumulating when player jumps on roofed Soul Sand Bubble Column.
+Conduit block now respects the lighting conditions when held in hand or dropped.
+Interacting with an unwaxed Sign while holding an item that cannot be used on the sign now opens the sign for editing.
+When using gamepad or touch input, correct tooltips are now shown if interacting with the Sign is possible.
+It is now possible to attach a hanging sign to another without sneaking.
+Sculk Sensors now power the block below them when active.
+Fixed the multiplayer toggle in the Create New World screen sometimes wasn't greyed out even though the setting would have no effect.
+Coordinates are now shown on the new death screen if the "Show Coordinates" setting is enabled.
+Fix get_equipped_item_name Molang query not being able to return the old name of some flattened items, eg. red_wool to wool.
+Custom items with minecraft:durability and minecraft:repairable can be combined to repair them without requiring a custom item entry.
+Fixed a bug where modified equipment and container slots were not being synced to clients.
+
+
+== Preview 1.20.0.22 ==
+Beta 1.20.0.22 (Android) or Preview 1.20.0.22 (Windows, iOS, iPadOS, Xbox) is the third beta/Preview version for Bedrock Edition 1.20.0, released on April 26, 2023 which adds a new music disc, new /camera command, new music, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Experiments
+
+Added the "Experimental Cameras" experimental toggle.
+Enable the /camera command.
+Loading tips
+
+Added the following loading screen tips:
+Explore structures throughout the Minecraft world to find smithing templates to trim your armor pieces.
+Need more smithing templates? Try to copy them.
+The sniffer egg seems to like moss blocks.
+Mob heads make sounds, try them out on note blocks!
+Some sand might be suspicious. Use your brush on it to find some good stuff!
+Two players can ride together on a camel.
+The camels jump... horizontally!
+Music
+
+Added new ambient soundtracks, all by Aaron Cherof.
+"A Familiar Room" plays in survival mode (all biomes).
+"Bromeliad" plays in bamboo jungle, cherry grove, flower forest, forest, jungle, sparse jungle.
+"Crescent Dunes" plays in desert, all types of badlands.
+"Echo in the Wind" plays in cherry grove, flower forest, lush caves, all types of badlands.
+Splashes
+
+Added the following splashes:
+This sand is sus
+Remember to brush your... ...teeth
+Has working bookshelves!
+Sniff sniff...
+Place hanging sign here
+
+
+==== Items ====
+Music Disc
+
+Added a new music disc by Aaron Cherof titled "Relic".
+Can only be obtained when brushing suspicious gravels within trail ruins, with 1⁄12 chance appeared as a rare loot.
+Emits a redstone signal of 14.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Sculk Sensor and Calibrated Sculk Sensor
+
+Sculk Sensors and Calibrated Sculk Sensors now have three phases: Inactive, Active, and Cooldown
+The default phase is Inactive
+This phase lasts indefinitely until the block receives a vibration
+During this phase, the block is able to listen to nearby vibrations until one has been scheduled
+When a scheduled vibration is received, the block switches to the Active phase
+This phase lasts 30 game ticks for Sculk Sensors, and 10 game ticks for Calibrated Sculk Sensors
+During this phase, the block stops listening to nearby vibrations, wiggles its tendrils, and emits a Redstone signal and light
+After the Active phase has finished, the block switches to a Cooldown phase
+This phase lasts for 10 game ticks
+During this phase, the block keeps wiggling its tendrils, but no longer emits a Redstone signal nor light
+Finally, once this phase is finished, the block will switch back to the Inactive phase
+Previously, these phases had different timings:
+The Active phase lasted 40 game ticks for Sculk Sensors and 20 game ticks for Calibrated Sculk Sensors
+There was no Cooldown phase
+These phase timings were tweaked so that it is less common for activated contraptions to recursively activate the Sculk Sensor that powered them.
+Sniffer Egg
+
+Can now be found in the suspicious sand loot table found at warm ocean ruins.
+Now emits particles only when placed on moss blocks.
+
+
+==== General ====
+Death screen
+
+Reverted changes when the "Show Coordinates" setting is enabled.
+
+
+==== Items ====
+Pottery Sherd
+
+Renamed from Pottery Shard to Pottery Sherd.
+
+
+==== Mobs ====
+Sniffer
+
+Can now be tempted using torchflower seeds.
+Sniffer now rather breeds than search and dig for items or be tempted.
+Camels
+
+The tooltip for dismounting Camels has been updated to match the one for other rideable mobs.
+
+
+==== World generation ====
+Trail Ruins
+
+Reworked and added more variants.
+No longer generates with sand.
+Tweaked the amount of gravel and dirt.
+Tweaked the amount of suspicious gravel.
+Split the archaeological loot tables for the suspicious gravel within the structure.
+Rare loot items and common loot items now each have their own dedicated archaeological loot table.
+
+
+==== Technical ====
+Add-Ons and Script Engine
+
+Pumpkin blocks use the string type state minecraft:cardinal_direction instead of the int type direction state.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs" and "Experimental Cameras" experimental toggles.
+
+
+==== Additions ====
+
+
+===== Command format =====
+/camera
+
+A new command that can switch to custom camera perspectives and fade the screen.
+Syntax: (Simplified)
+camera <players: target> . . .
+... clear
+... fade . . .
+... color <red: float> <green: float> <blue: float>
+... time <fadeInSeconds: float> <holdSeconds: float> <fadeOutSeconds: float> . . .
+... color <red: float> <green: float> <blue: float>
+... set <preset: string> . . .
+... [default: default]
+... ease <easeTime: float> <easeType: Easing> . . .
+... [default: default]
+... pos <position: x y z> . . .
+... rot <xRot: value> <yRot: value>
+... rot <xRot: value> <yRot: value>
+... pos <position: x y z> . . .
+... rot <xRot: value> <yRot: value>
+... rot <xRot: value> <yRot: value>
+
+
+==== Changes ====
+
+
+===== Technical =====
+Add-ons
+
+Changed minecraft:cardinal_direction and minecraft:facing_direction states from int to string type.
+minecraft:cardinal_direction has four values ["north", "south", "east", "west"].
+minecraft:facing_direction has six values ["down", "up", "north", "south", "east", "west"].
+Removed knockback_resistance item component.
+API
+
+New APIs moved from beta to stable @minecraft/server 1.2.0:
+Moving applyDamage(amount: number, options?: EntityApplyDamageByProjectileOptions EntityApplyDamageOptions): boolean to 2.0.
+Moving kill(): boolean to 2.0.
+Moving EntityApplyDamageOptions to 2.0.
+Moving EntityApplyDamageByProjectileOptions to 2.0.
+Moving EntityDamageCause to 2.0.
+Moving addTag(tag: string) to 2.0.
+Moving removeTag(tag: string) to 2.0.
+Moving hasTag(tag: string) to 2.0.
+Moving getTags() to 2.0.
+Moved "Containerand" BlockInventoryComponent and EntityInventoryComponent to 2.0.
+Moved Music APIs from beta to stable.
+Moved Sound APIs from beta to stable.
+Moved ModalFormData, MessageFormData, and ActionFormData to 0.0.
+Moved ItemStackconstructor and getter APIs to 2.0.
+Moved EntityItemComponent, ItemComponent, ItemTypeand, and ItemLockMode to 2.0.
+Moving applyImpulse(vector: Vector3): void to 2.0.
+Moving applyKnockback(directionX: number, directionZ: number, horizontalStrength: number, verticalStrength: number): void to 2.0.
+Moving clearVelocity(): void to 2.0.
+Moved runCommand from beta to 2.0.
+Enchantments
+Removed MinecraftEnchantmentTypes class. Use MinecraftEnchantmentTypes from @minecraft/vanilla-data module for minecraft version specific information.
+Added support for strings in all enchantment methods for specifying the enchantment type.
+source on ExplosionBeforeEvent is now an optional property because explosions may not have a source.
+Tameable component
+Removed unimplemented and tameEvent from TameableComponent.
+Updated API to better handle operations outside of loaded and ticking areas.
+PositionInUnloadedChunkError: Exception thrown when trying to interact with a block object that isn't in a loaded and ticking chunk anymore.
+PositionOutOfWorldBoundariesError: Exception thrown when trying to interact with a position outside of dimension height range.
+Dimension
+getBlock now returns an optional Block to reflect it might return 'undefined' if asking for a block at an unloaded chunk.
+Signs
+Added optional SignSide parameter to functions setText, getText, getRawText, setTextDyeColor, and getTextDyeColor on BlockSignComponent to support getting and setting text and colors on both sides of signs.
+Added isWaxed property to BlockSignComponent indicating whether players can edit the sign or not.
+Added setWaxed method to BlockSignComponent to block players from editing the sign.
+runCommand and runCommandAsync on Dimension and Entity can now fail with a CommandError.
+runCommand can throw a CommandError exception.
+runCommandAsync will pass a CommandError into the reject handler.
+
+
+=== Fixes ===
+20 issues fixed
+From released versions before Bedrock Edition 1.20.0
+
+MCPE-163399 – Greek Mythology Mashup / Items in Frames
+MCPE-165962 – Some splashes are written without "!" in Bedrock
+MCPE-167193 – Sniffer digging doesn't have digging particles playing
+MCPE-168856 – The loot table for suspicious blocks generated in trail ruins has two identical entries for bricks
+MCPE-168869 – Trail Ruins structure aren't completely buried underground
+MCPE-168934 – Raiser and Wayfinder smithing template texture are offset by 1 Pixel
+MCPE-168999 – Flight mode is disabled when flying under stairs and hoppers
+MCPE-169141 – You can't plant bamboo on suspicious gravel
+MCPE-169142 – Can't plant bamboo, cactus, sugar cane and dead bush on suspicious sand
+MCPE-169567 – Bees still make player eat sound
+MCPE-169607 – Torchflowers cannot be used to feed brown mooshrooms
+From the previous development version
+
+MCPE-169498 – The pitcher plant recipe does not craft two dyes, which is inconsistent with other two block tall flowers
+Other
+
+Custom items with minecraft:record show the correct sound description in hover text and on playing in a jukebox.
+Has item command selector now correctly detects whether or not an actor has a filled map or firework star in their inventory.
+The /inputpermission command now has a description displayed in the command dialogue preview.
+Fixed an issue where the plant textures appeared darker.
+Sugar Cane and Bamboo can now be placed on Moss Block.
+Sniffer can no longer search and dig in water.
+Made Sniffer walk cycle smoother.
+Fixed bug in response of MessageFormResponse where selection was inverted from which button was selected. button1 now refers ** to the left button and results in a selection of 0 and button2 now refers to the right button and results in a selection of 1.
+
+
+== Preview 1.20.0.23 ==
+Beta 1.20.0.23 (Android) or Preview 1.20.0.23 (Windows, iOS, iPadOS, Xbox) is the fourth  beta/Preview version for Bedrock Edition 1.20.0, released on May 3, 2023 which brings more parity from Java Edition and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Gameplay
+
+Added new achievements:
+Planting the past
+Plant any Sniffer seed
+Careful restoration
+Make a Decorated Pot out of 4 Pottery Sherds
+
+
+=== Changes ===
+
+
+==== General ====
+Title screen
+
+The panorama was changed to showcase a cherry grove biome.
+Changed the panorama rotation to clockwise.
+
+
+==== Technical ====
+Bedrock Dedicated Server
+
+Content logs now show in dedicated server console window with a configurable log level using these new server properties:
+content-log-level - Sets the minimum level for content logs to output. Allowed values: verbose, info, warning, error. Default: info.
+Note: This log level also affects content logs written to disk when using content-log-file-enabled=true.
+content-log-console-output-enabled - Enables or disables content log output to the console window. Default: info.
+Entities
+
+Custom entities with internal-only components or AI goals will fail to load in game.
+Custom entities are restricted to overriding Vanilla entities released before 1.20. Invalid entities used in the identifier or runtime_identifier field will result in content errors.
+Items
+
+Released the following item components out of experimental in json formats 1.20.0 and higher:
+minecraft:display_name
+minecraft:durability
+minecraft:fuel
+minecraft:entity_placer
+minecraft:icon
+Accessibility
+
+Added new "Chat Message Duration" accessibility setting to change how long chat messages remain on screen (3 seconds by default).
+Renamed "Notification Duration" to "Toast Notification Duration".
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs" experimental toggle.
+
+
+==== Changes ====
+
+
+===== Technical =====
+Add-Ons and Script Engine
+
+Added PlacementPosition (minecraft:placement_position) BlockTrait block trait.
+Adds states minecraft:block_face and/or minecraft: vertical_half.
+minecraft:block_face is a six value string state (down, up, north, south, east, west) that contains info on which block face the player clicked on when the block was placed.
+minecraft:vertical_half is a 2 value string state (bottom, top) with info on whether the block was placed in the lower or upper half of the block position.
+Both of these states are set when the block is placed (onPlayerPlace).
+API
+
+Moving getComponent(componentId: string): EntityComponent undefined method to 1.2.0.
+Moving getComponents(): EntityComponent[] method to 1.2.0.
+Moving hasComponent(componentId: string): boolean method to 1.2.0.
+Moving EntityComponent class to 1.2.0.
+Moving EntityBaseMovementComponent class to 1.2.0:
+Moving readonly maxTurn: number property to 1.2.0.
+Moving the following additional EntityBaseMovementComponent subclasses to 1.2.0:
+EntityMovementAmphibiousComponent
+EntityMovementBasicComponent
+EntityMovementFlyComponent
+EntityMovementGenericComponent
+EntityMovementHoverComponent
+EntityMovementJumpComponent
+EntityMovementSkipComponent
+Renamed EntityIsDyableComponent class to EntityIsDyeableComponent and moved to 1.2.0.
+Moving the following additional EntityComponent subclasses to 1.2.0:
+EntityCanClimbComponent
+EntityCanFlyComponent
+EntityCanPowerJumpComponent
+EntityColorComponent
+EntityFireImmuneComponent
+EntityFloatsInLiquidComponent
+EntityFlyingSpeedComponent
+EntityFrictionModifierComponent
+EntityGroundOffsetComponent
+EntityIsBabyComponent
+EntityIsChargedComponent
+EntityIsChestedComponent
+EntityIsHiddenWhenInvisibleComponent
+EntityIsIgnitedComponent
+EntityIsIllagerCaptainComponent
+EntityIsSaddledComponent
+EntityIsShakingComponent
+EntityIsShearedComponent
+EntityIsStackableComponent
+EntityIsStunnedComponent
+EntityIsTamedComponent
+EntityMarkVariantComponent
+EntityPushThroughComponent
+EntityScaleComponent
+EntitySkinIdComponent
+EntityVariantComponent
+EntityWantsJockeyComponent
+Added class EffectTypes
+Added function get(identifier: string): EffectType - Returns the effect type if it exists.
+Added function getAll(): EffectType[] - Returns all of the effects.
+Updated class Effect.
+Updated duration property. Is the duration of the effect in ticks.
+Added property typeId. Returns the effect’s type id.
+Added interface EntityEffectOptions { amplifier?: number, showParticles?: boolean }
+Added function removeEffect(effectType: EffectType string): boolean - Removes an effect from an entity. Returns false if the effect is not found or does not exist.
+Updated function getEffect(effectType: EffectType string): Effect undefined - Gets the effect if it exists on the entity. Otherwise returns undefined.
+Updated function addEffect(effectType: EffectType string, duration: number, options?: EntityEffectOptions): boolean - Adds an effect to the entity. Returns false if the effect cannot be added (the effect does not exist, the duration is negative).
+Items using the minimum duration for the minecraft:fuel component now work in the Blast Furnace and Smoker.
+Items
+
+Items with the minecraft:throwable component now trigger the throw sound effect when used
+Scripting
+
+After Events
+All non-before events have been moved from world.events to world.afterEvents.
+events has been removed from the world object.
+After events do not execute immediately, instead they are deferred until a later point in the tick when they are flushed. It is guaranteed that all events fired in a tick are flushed within a tick.
+
+
+=== Fixes ===
+33 issues fixed
+From released versions before Bedrock Edition 1.20.0
+
+MCPE-141124 – Inactive scroll buttons can still play scroll sounds
+MCPE-156331 – The title on the Behavior pack dialogue box is not capitalized correctly
+MCPE-166581 – Camera goes black when sneaking in a space that is 1.5 blocks high
+MCPE-167247 – Experience orbs do not merge
+MCPE-168885 – Calibrated sculk sensor ignores some redstone inputs
+MCPE-169423 – Z-fighting occurs on the sniffers' heads and ears
+From the previous development version
+
+MCPE-168805 – Some brushing sounds missing
+MCPE-169491 – Sniffer eggs can be destroyed by fluids, which is different from turtle eggs
+MCPE-169492 – Pitcher Plant can be farmed with bone meals on the plant
+MCPE-169497 – Sniffer egg crack uses "block.turtle_egg.crack" sound event despite "block.sniffer_egg.crack" existing
+MCPE-169522 – Sign in Xbox screen image is upside-down.
+MCPE-169530 – Calibrated sculk sensors doesn't receive redstone signals going through blocks
+MCPE-169540 – Banner Shield and Trimmed Armor persists when placed in the bottom Grindstone slot instead of the top slot (java parity)
+MCPE-169562 – Amethyst resonance doesn't work when block of amethyst is placed above or below the sculk sensor
+MCPE-169654 – Crash when brush breaks
+MCPE-169929 – Relic Music Disc doesn't generate as an archeology loot in the trail ruins
+Other
+
+Screen reader now properly reads description in popping window after disabling "Require Encrypted Websockets".
+Screen reader now properly reads description in popping window after disabling "Allow mobile data for online play".
+Sculk Sensors, Calibrated Sculk Sensors, and Sculk Shriekers will no longer lose in-flight vibrations when leaving the world.
+Fixed an issue where the Calibrated Sculk Sensor tendrils were not lighting uniformly.
+Fixed custom textures that override vanilla blocks with aux metadata as a list of textures.
+Breaking Pitcher Plants with Fortune enchanted tools will now not drop more than one flower.
+Bone Meal now can’t be used on Torchflowers to spawn other flowers.
+Using Bone Meal on a Torchflower Crop will now always make it grow one stage.
+Sniffer Egg can now be placed in water and lava.
+Screen fade effect when sleeping or using camera fade command will no longer appear when a picture is taken.
+Sculk Sensors and Calibrated Sculk Sensors now play their "power off" sound at the end of the Cooldown phase instead of the Active phase.
+Fixed issues with keyboard navigation on some menu screens on iOS and Android.
+Fixed a bug where respawning in VR sometimes softlocks the player in the death screen.
+Text shadowboxes now have the correct opacity on interactable block screens.
+Distinct green particles are now emitted by the player under effect of Hero of the Village status effect.
+Fixed a graphical issue where a gamepad icon would display over another screen.
+Fixed an issue were the setting had no affect on how long toasts remained on display.
+1 issue fixed
+From released versions before Bedrock Edition 1.20.0
+
+REALMS-11276 – When playing split screen, if the second player logs out, it disconnects both players from realm
+
+
+== Preview 1.20.0.24 ==
+Beta 1.20.0.24 (Android) or Preview 1.20.0.24 (Windows, iOS, iPadOS, Xbox) is the fifth beta/Preview version for Bedrock Edition 1.20.0, released on May 11, 2023 which fixes bugs.
+
+
+=== Additions ===
+
+
+==== Gameplay ====
+Achievements
+
+Added a new achievement:
+Smithing with Style
+Apply these smithing templates at least once: Spire, Snout, Rib, Ward, Silence, Vex, Tide, Wayfinder
+
+
+=== Changes ===
+
+
+==== General ====
+Seed Templates
+
+Updated the seed templates with a Cherry Grove biome option.
+User Interface
+
+The main menu background in now tilted downwards on all platforms.
+
+
+=== Fixes ===
+7 issues fixed
+From released versions before Bedrock Edition 1.20.0
+
+MCPE-170184 – Trade Tables no longer support custom entity Spawn Eggs.
+From the 1.20.0 development versions
+
+MCPE-169604 – Pitcher Plants and Sniffer Eggs do not support HD resolution textures.
+MCPE-169733 – No sound when Sniffers lay eggs after breeding with Torchflower seeds.
+MCPE-169748 – Trimmed armors in the toolbar are not rendered correctly on custom texture packs with higher resolution.
+MCPE-170021 – Game crashes when fishing rod breaks
+MCPE-170070 – Teleporting players to unloaded chunks while flying causes the fly mode to get disabled
+MCPE-170275 – Pigs do not spawn naturally in most biomes
+Other
+
+Game no longer crashes when an item starts/stops being used if the item is not available
+
+
+== Preview 1.20.0.25 ==
+Beta 1.20.0.25 (Android) or Preview 1.20.0.25 (Windows, iOS, iPadOS, Xbox) is the sixth and final beta/Preview version for Bedrock Edition 1.20.0, released on May 18, 2023, which fixes bugs.
+
+
+=== Fixes ===
+5 issues fixed
+From released versions before Bedrock Edition 1.20.0
+
+MCPE-168409 – BlockPermutation.matches() and blockPermutation.withProperty() methods do not work with custom blocks. Script API.
+MCPE-168908 – Minecraft for chromebook cursor sensitivity.
+From the 1.20.0 development versions
+
+MCPE-169504 – Aiming in circle mode is not properly focused.
+MCPE-170070 – Teleporting players to unloaded chunks while flying causes the fly mode to get disabled.
+MCPE-170643 – Cherry Grove biome option is missing
+
+
+== Notes and references ==
+
+
+== Navigation ==

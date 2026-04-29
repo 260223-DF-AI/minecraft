@@ -1,0 +1,108 @@
+This article documents the protocol which Pocket Edition used before it was replaced by the Bedrock Edition protocol.[when?] It was preceded by an earlier protocol.
+The protocol currently uses UDP for communication, different from Java Edition (which uses TCP). The usual UDP issues are still here (lost packets, wrong order, etc.), but the protocol solves a few of those problems using special packet encapsulation, based on TCP. The Pocket Edition client uses RakNet as its networking library. Even though it uses RakNet, it is still possible to write software without the library.
+Currently, the game's default port is 19132. It is recommended to use this when possible because processes such as server discovering will not work otherwise.
+
+
+== Data Types ==
+Minecraft packets use different data types to communicate with each other. The documented ones are listed below:
+
+
+== Packet format ==
+All packets in Minecraft: Pocket Edition start with their ID, which is an unsigned byte. If you are using a language which does not support unsigned types such as Java, you can do (byte & 0xFF) to get the unsigned version.
+
+
+== RakNet protocol ==
+The source code for the RakNet Library can be found here.
+Other implementations exist, such as JRakLibPlus and RakLib.
+
+
+=== Connected Ping ===
+
+
+=== Unconnected Ping ===
+
+0x02 is only replied to if there are open connections to the server. Note: as of 0.15.6 it seems that the game refreshes it's LAN world list every 4-5 seconds, however it seems the game will still ping in 1 second intervals.
+
+
+=== Connected Pong ===
+
+
+=== Offline Connection Request 1 ===
+
+The client sends these to the target server with ever decreasing MTU until the server responds. This is used to discover the MTU size for the connection. If the RakNet protocol does not match your own, respond with the Incompatible protocol packet
+
+
+=== Offline Connection Response 1 ===
+
+
+=== Offline Connection Request 2 ===
+
+
+=== Offline Connection Response 2 ===
+
+
+=== Online Connection Request ===
+
+
+=== Online Connection Request Accepted ===
+
+
+=== Incompatible protocol ===
+
+
+=== Unconnected Ping ===
+
+
+=== Frame Set Packet ===
+
+The reliability types are as follows:
+
+Sequenced implies ordered.
+
+
+=== Game Packet ===
+
+
+=== NACK ===
+
+
+=== ACK ===
+
+
+== RakNet Reliability ==
+RakNet reliability and ordering is handled on multiple levels.
+
+
+=== Frame set reliability ===
+FrameSetPackets carry a unique index. This index may only appear once in a connection (per direction). Getting the same index twice means you have received a duplicate datagram - ignore one.
+Upon receiving a frame set, an ACK packet for that frame set is sent back. Since the frame set index is a sequential counter, you can deduce which frame sets are missing, for which a NACK packet is sent. For every received frame set, RakNet sends at most one NACK and one ACK.
+Frame sets consist of frames. Internally, raknet uses a "resend queue" (priority heap / priority queue) of frames it needs to send. This queue is ordered by targeted send time. Whenever possible, raknet takes the top few sendable frames from this resend queue and combines them into a frame set smaller than the MTU. It then moves the reliable frames further down the queue by setting their resend time to a bunch of milliseconds in the future. unreliable frames are discarded after being first sent.
+When an ACK is received, all frames of the container indices in that ACK packet are removed from the resend queue because they arrived safely on the client and don't need a resend.
+When a NACK is received, all frames of the container indices in that NACK packet are moved to the top of the resend queue by setting their targeted resend time to the present or past.
+To send a frame, raknet simply adds it to the resend queue with the present as the targeted send time. It is then intermixed with normal resends and other frames for the next frame set packet.
+
+
+=== Fragmentation ===
+Some packets (notably chunks) are larger than the MTU. These are split up into a compound. You need to consider the frame and frame set overhead when fragmenting frames. A fragmented frame contains the compound ID (reusable when compound is complete), compound size (in fragments) and index (0 up to compound size exclusive). All fragments of a compound share the same order and sequencing information, if any. All fragmented frames are also reliable.
+
+
+=== Order and Sequencing ===
+Some frames are ordered or sequenced. For order and sequencing, there exist order channels. These act independently. Since all sequenced reliability types are also ordered, an order channel is present for every ordered or sequenced frame.
+Ordered means that frames with higher order indices are always handled after frames with lower order indices. Higher order index frames are withheld until their lower peers arrive and it's their turn.
+Sequenced means that frames with lower sequence indices are never handled after frames with higher sequence indices. Lower sequence index frames are discarded if their higher index frames have already been handled.
+Sequenced frames also include an order index. It is unknown how the order index influences handling, and this should be researched at some point.
+
+
+== Game Protocol ==
+The game protocol is described here: https://confluence.yawk.at/display/PEPROTOCOL and an autoatically generated version for 0.15 is also available in from MiNET at https://github.com/NiclasOlofsson/MiNET/blob/master/src/MiNET/MiNET/Net/MCPE%20Protocol%20Documentation.md
+
+
+== References ==
+RakNet datagram and message header information: http://jenkinssoftware.com/raknet/manual/systemoverview.html
+Packets can be found in the Dragonet server code  https://github.com/DragonetMC/Dragonet/tree/master/src/main/java/org/dragonet/net/packet
+There is also an automatically generated specification of many of the packages can be found in the MiNET server code  https://github.com/NiclasOlofsson/MiNET/blob/master/src/MiNET/MiNET/Net/MCPE%20Protocol%20Documentation.md
+The MiNET wiki also contain development notes around some functionality https://github.com/NiclasOlofsson/MiNET/wiki These will be migrated to this wiki in due time.
+https://confluence.yawk.at/display/PEPROTOCOL
+
+
+== Navigation ==

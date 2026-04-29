@@ -1,0 +1,273 @@
+Attributes control certain numeric properties of players, mobs, and armor stands. Every entity has a base value for each of its attributes, and modifiers that determine the final value.
+
+
+== List of attributes ==
+Each attribute is identified with a namespaced identifier, and has a default, minimum, and maximum value.
+Most attributes are present on all living entities, but some attributes only apply to specific entity types. Additionally, some entity types have a base value other than the default.
+
+
+=== Air Drag Modifier ===
+
+This attribute determines the air drag an entity experiences.​[more information needed]​[upcoming: JE 26.2]
+
+
+=== Armor ===
+
+This attribute determines the number of armor points an entity has.
+
+
+=== Armor Toughness ===
+
+This attribute determines an entity's armor toughness.
+
+
+=== Attack Damage ===
+
+This attribute determines the damage dealt by an entity's melee attack. Only the entities listed below have this attribute.
+
+
+=== Attack Knockback ===
+
+This attribute determines additional knockback applied to an entity's melee attack.​[more information needed]
+
+
+=== Attack Speed ===
+
+This attribute determines the rate at which a player's attack cooldown recharges. Its value is the number of full-strength attacks per second. Only players have this attribute.
+
+
+=== Nameplate Score Distance ===
+
+This attribute determines the distance within which a scoreboard objective with a below_name display slot is visible above an entity.​[upcoming: JE 26.2]
+
+
+=== Block Break Speed ===
+
+This attribute multiplies the speed at which a player breaks blocks. Only players have this attribute.
+
+
+=== Block Interaction Range ===
+
+This attribute determines the block interaction range for players. Only players have this attribute.
+
+
+=== Bounciness ===
+
+This attribute determines the restitution of motion an entity is given when landing on the ground.​[upcoming: JE 26.2]
+
+
+=== Burning Time ===
+
+This attribute multiplies the duration for which an entity should remain on fire after being ignited.
+
+
+=== Camera Distance ===
+
+This attribute determines the distance at which the camera is placed away from the player or spectated entity when in a third-person view. This distance is multiplied by the scale attribute to get a final target camera distance. If the entity being ridden has a larger camera_distance attribute, that distance will be used.
+
+
+=== Entity Interaction Range ===
+
+This attribute determines the entity interaction range for players.
+
+
+=== Explosion Knockback Resistance ===
+
+This attribute determines the proportion of knockback from explosions an entity resists. A value of 1 eliminates the knockback.
+
+
+=== Fall Damage Multiplier ===
+
+This attribute multiplies the amount of fall damage an entity receives.
+
+
+=== Flying Speed ===
+
+This attribute determines the flying speed of an entity.​[more information needed] Only the entities listed below have this attribute.
+
+
+=== Mob Follow Range ===
+
+This attribute determines the range in blocks within which a mob targets players or other mobs to track. Exiting this range causes the mob to cease following the player/mob. Only mobs have this attribute.
+
+
+=== Friction Modifier ===
+
+This attribute determines the friction experienced by an entity.​[more information needed]​[upcoming: JE 26.2]
+
+
+=== Gravity ===
+
+This attribute determines the gravity affecting an entity in blocks per tick squared.
+
+
+=== Jump Strength ===
+
+This attribute determines the initial vertical velocity of an entity when they jump, in blocks per tick.
+
+
+=== Knockback Resistance ===
+
+This attribute determines the proportion of horizontal knockback from attacks and projectiles an entity resists. A value of 1 eliminates the knockback. Vertical knockback is not affected. It does not affect explosions.
+
+
+=== Luck ===
+
+This attribute affects the results of loot tables, with a higher attribute value increasing the amount and quality of results.
+The number of rolls is increased by the pools "bonus rolls"-value times this attributes value, rounded down, and the weight of each entry is increased by its quality times this attributes value, also rounded down.
+Only players have this attribute.
+
+
+=== Max Absorption ===
+
+This attribute determines an entity's maximum absorption.
+
+
+=== Max Health ===
+
+This attribute determines an entity's maximum health. It determines the highest health they may be healed to.
+
+
+=== Mining Efficiency ===
+
+This attribute increases the speed at which a player breaks blocks. Only players have this attribute.
+
+
+=== Movement Efficiency ===
+
+This attribute is a factor to improve walking on terrain that slows down movement, such as soul sand. A value of 1 removes the slowdown.
+
+
+=== Speed ===
+
+This attribute determines the speed at which an entity moves. It represents a multiplier for acceleration per tick. A mob's actual speed in blocks/second is approximately 43 times this value (see Entity#Formulas.)
+
+
+=== Nameplate Distance ===
+
+This attribute determines the distance within which an entity's custom name is visible.​[upcoming: JE 26.2]
+
+
+=== Oxygen Bonus ===
+
+This attribute determines the chance that an entity's remaining air decreases while underwater in any given game tick. The chance is given by 1⁄(oxygen_bonus + 1).
+
+
+=== Safe Fall Distance ===
+
+This attribute determines the distance in blocks an entity can fall before fall damage starts to accumulate.
+
+
+=== Scale ===
+
+This attribute multiplies an entity's size and hitbox dimensions.
+
+
+=== Sneaking Speed ===
+
+This attribute multiplies a player's movement speed when sneaking or crawling. Only players have this attribute.
+
+
+=== Zombie Reinforcements ===
+
+This attribute determines the chance for a zombie to spawn another zombie when attacked. Only the entities listed below have this attribute.
+
+
+=== Step Height ===
+
+This attribute determines the maximum number of blocks that an entity can step up without jumping. Sneaking prevents drops from heights that are higher than this value.
+
+
+=== Submerged Mining Speed ===
+
+This attribute multiplies a player's mining speed when underwater. Only players have this attribute.
+
+
+=== Sweeping Damage Ratio ===
+
+This attribute determines the proportion of the base attack damage dealt to secondary targets when a player performs a sweep attack. This is in addition to the base damage of the sweep damage itself. Only players have this attribute.
+
+
+=== Mob Tempt Range ===
+
+This attribute determines the range in blocks in which a mob can be tempted, following a player holding a specific item.
+
+
+=== Water Movement Efficiency ===
+
+This attribute determines movement speed and drag when submerged.​[more information needed]
+
+
+=== Waypoint Receive Range ===
+
+This attribute determines the maximum distance from a player to a waypoint at which the waypoint is displayed on the locator bar. Only players have this attribute.
+
+
+=== Waypoint Transmit Range ===
+
+This attribute determines the distance at which an entity displays as a waypoint on the locator bar.
+
+
+== Modifiers ==
+Attribute modifiers are persistent increases or decreases to an attribute's base value by preset operations.
+Each modifier has a namespaced identifier to uniquely identify it. Modifiers affect exactly one attribute, increasing or decreasing its value depending on the modifier's operation and value. The resulting value after modification is capped by the attribute's minimum and maximum limits.
+
+
+=== Operations ===
+A modifier may perform one of three possible operations:
+
+If multiple modifiers are applied to an attribute, the game first executes all add_value modifiers, then  all add_multiplied_base modifiers, and finally all add_multiplied_total modifiers. The Total value is always carried as the Base for the next set of modifiers.
+The final value is clamped to fit the attribute's minimum and maximum value range.
+
+
+=== Applying modifiers ===
+Various systems in the game add and remove modifiers.
+
+
+==== Commands ====
+The /attribute command can add or remove specific modifiers, including custom ones.
+
+
+==== Items ====
+The attribute_modifiers item component defines modifiers that are automatically added to an entity when the item is equipped in a certain slot, and removed when it is removed.
+All vanilla weapons and armor use this component to add and remove modifiers with the following IDs:
+
+
+==== Enchantments ====
+Enchantment attribute effects define modifiers that are automatically added to an entity when the enchanted item is equipped in a certain slot, and removed when it is removed.
+Some vanilla enchantments use this effect to add and remove modifiers with the following IDs. The listed IDs are appended with / followed by the name of the slot the enchantment is active in.
+
+
+==== Effects ====
+Some status effects apply modifiers when the effect is applied, and remove them when the effect runs out.
+
+
+==== Sulfur Cube Archetypes ====
+Sulfur cube archetype definitions define modifiers that are automatically added to a sulfur cube when one of the specified items is given to it, and removed when it is removed.
+The vanilla archetypes add and remove modifiers with the following IDs:
+
+
+==== Hardcoded ====
+Other parts of the game add and remove additional modifiers.
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+=== Legacy Console Edition ===
+
+
+== Issues ==
+Issues relating to "Attribute" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== References ==
+
+
+== Navigation ==

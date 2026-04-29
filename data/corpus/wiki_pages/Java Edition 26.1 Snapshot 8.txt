@@ -1,0 +1,127 @@
+26.1 Snapshot 8 (known as 26.1-snapshot-8 in the launcher) is the eighth snapshot for Java Edition 26.1, released on February 17, 2026, which adds new textures and models for the remaining baby mobs: the hoglin, panda, sniffer, strider, and zoglin. It also adds new stonecutter recipes for existing blocks, and fixes bugs.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Stonecutter
+
+Deepslate can now be directly crafted into its cobbled, polished, brick, and tile variants in the stonecutter.
+Stone can now be directly crafted into its cobblestone variants in the stonecutter.
+
+
+=== Mobs ===
+Baby mobs
+
+Adjusted the hitboxes of the baby versions of zombies, piglins, villagers, and their variants to fit in 1 block high or 0.5 block wide spaces.
+Changed the models and textures of the following baby mobs:
+Hoglin
+Panda
+Sniffer
+Strider
+Zoglin
+
+Horse
+
+ Adult horse's blackdot markings have been updated to be visually closer to the new baby horse markings.
+
+
+=== Command format ===
+/fetchprofile
+
+Added a new entity subcommand that will print profile information from entity in world.
+Syntax: /fetchprofile entity <single entity selector>
+If targeted entity does not have profile (currently only Players and Mannequins do) this command will fail.
+
+
+=== General ===
+General
+
+Tweaked default JVM options.
+Decreased the initial heap size to 2GB.
+Creative Mode
+
+Using Ctrl + Pick input as an operator on players and mannequins will now show the same results as executing the /fetchprofile.
+Data pack
+
+The pack format version is now 99.2.
+Debug screen
+
+Added a new entry called detailed_memory with additional information about used memory.
+Resource pack
+
+The version is now 81.1.
+Text component format
+
+minecraft:nbt
+Tags resolved with the minecraft:nbt text component when the interpret field is set to false are now pretty-printed instead of being flattened into a single text component.
+Contents of the nbt and block fields are no longer silently rejected when parsing fails.
+The field entity no longer accepts trailing data after a selector.
+A new option called plain has been added to remove styling from pretty-printed text.
+The plain and interpret options can't both be enabled at the same time.
+minecraft:selector
+The field selector no longer accepts trailing data after a selector.
+Textures
+
+Added new entity textures:
+entity/hoglin/hoglin_baby.png
+entity/hoglin/zoglin_baby.png
+entity/strider/strider_baby.png
+entity/strider/strider_cold_baby.png
+entity/sniffer/snifflet.png
+entity/panda/aggresive_panda_baby.png
+entity/panda/brown_panda_baby.png
+entity/panda/lazy_panda_baby.png
+entity/panda/playful_panda_baby.png
+entity/panda/weak_panda_baby.png
+entity/panda/worried_panda_baby.png
+entity/panda/panda_baby.png
+UI Sprites
+
+Added new UI sprites: gui/sprites/widget/preedit.png for IME preedit overlay background.
+User interface
+
+Input Method Editors (IME) candidates will now be shown in-game (on supported platforms, currently Windows and macOS) above currently edited text field.
+Fullscreen no longer uses exclusive mode.
+
+
+== Fixes ==
+21 issues fixed
+From released versions before 26.1
+
+MC-98631 – The heights of shields in first person are different depending on what hand you have them held in.
+MC-99647 – The "below_name" scoreboard display slot doesn't work with non-player entities.
+MC-129886 – Trying to place a block underneath min_y does not give an error message.
+MC-178713 – Bone meal can be used on certain plants at build height, but they don't grow.
+MC-184432 – There is no warning when plants are bonemealed, but cannot grow above or below world height limits.
+MC-184433 – When applying bone meal to grass / ferns / nether fungi at the upper build limit, there is no warning, and the taller part of the plant is cut off.
+MC-254785 – Bone meal is used when clicked on a bamboo stalk with a block above it.
+MC-264155 – Bone meal doesn't work on grass blocks beneath cave air or void air.
+From the 26.1 development versions
+MC-305103 – The panorama sometimes spins too fast when saving or loading a world.
+MC-305714 – /time set is unable to decrease time.
+MC-305989 – Golden dandelions do not stop baby brown mooshrooms from aging.
+MC-306019 – Items added to #cauldron_can_remove_dye by datapacks can't be undyed.
+MC-306196 – Age-locked baby bees age while in the hive.
+From the previous development version
+MC-306314 – The glowing effect is no longer visible.
+MC-306319 – The content of the chat restrictions screen can shift off-center and overflow the edge of the game window when the game window is shrunken horizontally while the chat restrictions screen is open.
+MC-306321 – The chat and chat restrictions screen don't update when changing the client chat option from that screen.
+MC-306326 – Various block animations and particles in motion now jitter while the game is frozen.
+MC-306333 – Grass blocks in dark forests no longer have a side overlay if Biome Blend is disabled.
+MC-306342 – Stray adult cats play incorrect sounds.
+MC-306345 – Baby zombies, gurgles, baby husks, and baby zombie villagers can no longer traverse one-block-high passages.
+MC-306364 – Blocks rendered as block entities are now invisible in sections without regularly rendered blocks.
+Other
+
+Fix a bug where Cat variant sounds stray_ambient and purreow weren't played
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

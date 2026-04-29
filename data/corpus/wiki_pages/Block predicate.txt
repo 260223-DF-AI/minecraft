@@ -1,0 +1,60 @@
+A block predicate is a test for the state of a block at a given position in the world. They are used by placement modifiers in placed features, numerous configured features, and enchantments.
+
+
+== JSON Format ==
+Block predicated are defined using the following format:
+
+
+== Types ==
+The following block predicate types exist:
+
+
+=== true ===
+Always matches, independent of the block.
+
+
+=== all_of ===
+Combined multiple block predicates. Matches if all specified block predicates match.
+
+
+=== any_of ===
+Combined multiple block predicates. Matches if at least one of the specified block predicates matches.
+
+
+=== not ===
+Inverts a given block predicate. Matches if the specified other block predicate does not match.
+
+
+=== has_sturdy_face ===
+Checks if the block at the specified offset has a full block supporting surface in the specified direction.
+
+
+=== inside_world_bounds ===
+Checks if the positions y-level (with specified offset) is within the height limits of the world.
+
+
+=== matching_block_tag ===
+Checks if the block at the specified offset is in the given block tag.
+
+
+=== matching_blocks ===
+Checks if the block at the specified offset is one of the specified blocks.
+
+
+=== matching_fluids ===
+Checks if the fluid at the specified offset is one of the specified fluid.
+
+
+=== replaceable ===
+Checks if the block at the specified offset can be replaced by placing blocks.
+
+
+=== solid ===
+Checks if the block at the specified offset is solid.
+
+
+=== would_survive ===
+Checks if a specified block state is a valid placement at the given offset.
+
+
+== Navigation ==

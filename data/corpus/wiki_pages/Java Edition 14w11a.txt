@@ -1,0 +1,115 @@
+14w11a is the seventeenth snapshot for Java Edition 1.8, released on March 13, 2014, which adds endermites.
+
+
+== Additions ==
+
+
+=== Items ===
+Spawn eggs
+
+Added endermite spawn eggs.
+
+
+=== Mobs ===
+ Endermites
+
+Appearance is similar to a silverfish's appearance, except they are purple and emit ender particles.
+Endermen are hostile toward them.
+Sometimes spawn in place of an enderman teleporting away.
+Despawn after 2 minutes.
+Spawn with a 5 percent chance when an ender pearl lands.
+Model will be changed in the next snapshot.
+
+
+== Changes ==
+
+
+=== Blocks ===
+General
+
+Now internally use states instead of metadata.
+Metadata will still be used for a while.
+Block states of the block being looked at are now displayed on the debug screen - examples: redstone, door.
+Internally, metadata no longer needs to be calculated out of the 4-bit data value, instead, the values of specified properties can now be easily gotten and set.
+Block models
+
+Converted fence gates, brewing stands.
+Lighting now works with models (most models for some users).
+Graphics
+
+Dropped items now face the player in all three directions on fast graphics.
+Fence gates
+
+Show two holes in their item icon.
+
+
+=== Mobs ===
+Creepers, skeletons, witches, zombies, zombie pigmen
+
+Now run away from exploding creepers.
+Endermen
+
+Walk slightly faster.
+Silverfish
+
+Occasionally stop before moving again (similar to most mobs).
+Slime
+
+Seem to jump a bit more randomly.
+
+
+=== Non-mob entities ===
+Minecarts
+
+Changed minecart physics.
+Minecarts now go faster and farther.
+Improved collision and position handling.
+Minecarts can derail at corners if going too fast, as well as refuse to go uphill.
+Minecarts with furnaces
+
+They now give a much greater boost to other minecarts.
+When powered, they can move on non-powered rails without decelerating.
+Minecart with TNT
+
+Explosions no longer stack.
+
+
+=== General ===
+Debug screen
+
+On the right hand side, a display shows up if you are looking at a block, giving various pieces of information and NBT data about it.
+Looking at a door and redstone shows you the state of the block.
+Door: which way it is facing, if it is open, which half you are looking at, if it is powered, and what side the hinge is.
+Redstone: power direction (up, down, side, none) for all compass directions (north, south, east, west) and power level.
+Not 100% complete, data for a lot of blocks still missing.
+
+
+== Fixes ==
+6 issues fixed
+From released versions before 1.8
+
+MC-36822 – Minecart with command block merging.
+From the 1.8 development versions
+
+MC-47695 – Minecart hitbox is too tall.
+MC-50413 – Custom UUIDLeast/UUIDMost pair yields error.
+From the previous development version
+
+MC-50452 – Rails don't render from below.
+MC-50838 – Entity UUID WitherSkull.
+MC-50904 – ender man acting weird.
+
+
+== Gallery ==
+Pictures of fix to in block faces.
+
+
+== Trivia ==
+14w11a was previously removed from the launcher for some time, but was added back in September 2018.
+Endermites were said at this time that they "may have something to do with dragon eggs".
+
+
+== References ==
+
+
+== Navigation ==

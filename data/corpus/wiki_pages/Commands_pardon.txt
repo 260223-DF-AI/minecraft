@@ -1,0 +1,52 @@
+These commands remove a single or multiple players from the ban list by their game profile or IP address.
+To add players into the ban list, operator may use /ban or manually adding it into the banned-players.json.
+
+
+== pardon ==
+
+Removes profiles from the ban list, allowing anyone to connect into the server with UUIDs of these profiles.
+
+
+=== Syntax ===
+pardon <targets>
+
+
+=== Arguments ===
+<targets>: game_profile
+
+Specifies the player profile(s) to remove from the ban list.
+Specifies one or more game profiles (player profiles). Must be a player name (should be a real one if the server is in online mode) or a player-type target selector.
+
+
+=== Result ===
+
+
+=== Output ===
+
+
+== pardon-ip ==
+
+Removes an IP address from the ban list, allowing anyone to connect to the server from that IP address.
+
+
+=== Syntax ===
+pardon-ip <target>
+
+
+=== Arguments ===
+<target>: string
+
+Specifies the IP address to remove from the ban list. Should be a valid IP address.
+Must be a string. And it must be in a single word (Allowed characters include: -, +, ., _, A-Z, a-z, and 0-9).
+
+
+=== Result ===
+
+
+=== Output ===
+
+
+== History ==
+
+
+== Navigation ==

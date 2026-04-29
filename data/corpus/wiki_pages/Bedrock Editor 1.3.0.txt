@@ -1,0 +1,41 @@
+Bedrock Editor v1.3.0 (initially released as v1.2.9) is a release for the Bedrock Editor released in Preview on February 24, 2026, and in retail on March 24, 2026.
+
+
+== Additions ==
+Added a confirmation dialog when deleting a Jigsaw Collection.
+Added a validation to prevent generating a Jigsaw when all elements in the starting pool are empty.
+
+
+== Changes ==
+Updated the Editor Landing Page with Ore UI.
+Jigsaw Editor Collection dropdown no longer automatically opens the New Collection dialog when the tool is first opened.
+Canceling the New Collection dialog now correctly reverts the dropdown to no selection.
+Add Pool, Export, and Delete buttons are now hidden when no collection is selected.
+Updated the Primitive tool localization for block filter mode and placement progress dialog strings.
+Collection tree is now hidden when no collection is selected.
+Cinematic Tool now supports undo/redo for control point position and rotation changes via the Editor's transaction system.
+Added speed dots to the Cinematic Tool to visualize camera travel speed along the spline path.
+Cinematic Tool now hides control points, spline, and speed dots during cinematic preview playback.
+Cinematic Tool Import JSON button now opens a modal dialog for pasting exported cinematic data.
+Cinematic Tool now uses Redistribute Evenly to properly distribute control point times across the total duration.
+Cinematic Tool Export JSON button now copies cinematic data to the clipboard for sharing between sessions.
+
+
+== Fixes ==
+Fixed a bug that prevented graphs from rendering inside the Vibrant Visuals pane.
+Fixed a bug where the Brush dropdown should be hidden in Elevation mode for Terrain tool.
+Fixed a bug where clearing the name of a stored location in the Navigation panel caused it to alternate between "Location" and "Location {1}" on each edit.
+Fixed a bug that caused sliders with invalid ranges to show an error, instead they will get disabled now.
+Fixed a bug where the selection volume would not be updated in Marquee mode after deselecting items in the Block Manifest Table.
+Fixed tool names to make them align with existing patterns.
+Fixed an issue where the Texel Size slider in Vibrant Visuals Shadow settings displayed decimal values instead of integers.
+Fixed a bug where the "Spawn at Current Location" checkbox in Test World settings was always treated as enabled, causing the player to always spawn at the Editor camera's location regardless of the checkbox state.
+Fixed an issue where switching to the Extrude Tool would remove any active selection volumes.
+Fixed Farm Generator's preview displaying one block lower than the actual farm placement position.
+Fixed 'Update' and 'Move to' Camera Point referring to different y levels in the Cinematic Tool.
+
+
+== References ==
+
+
+== Navigation ==

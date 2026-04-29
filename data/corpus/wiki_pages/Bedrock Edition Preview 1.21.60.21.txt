@@ -1,0 +1,194 @@
+Beta 1.21.60.21 (ChromeOS, Android) or Preview 1.21.60.21 (Windows, iOS, iPadOS, Xbox, PlayStation) is the first beta/Preview version for Bedrock Edition 1.21.60, released on November 20, 2024, which adds the ability to pause the game in singleplayer worlds and fixes bugs.
+
+
+== Additions ==
+
+
+=== Gameplay ===
+Pause menu
+
+Added ability to pause the game in singleplayer worlds when entering the pause screen, the feature can be turned on/off from the settings in the general section.
+
+
+=== General ===
+Accessibility
+
+Added narration in the Realms plan picker screen informing the player they can navigate below the "buy" button to get more information about a given plan.
+Filter Profanity Toggle
+
+Introduced a new "Filter Profanity" setting on Windows. When on, all text content including chat will perform as it always has; profanities will be filtered for you and others. When off, most profanities, with the exception of some potentially harmful content, will be unfiltered for player and all others who also have the toggle off. The setting is default on for all players and cannot be changed for child accounts or players not signed in. Player can toggle it off in Settings under "General".
+
+
+== Changes ==
+
+
+=== Blocks ===
+Torchflowers, Pitcher Plants, Open Eyeblossoms and Closed Eyeblossoms 
+
+They now increase the probability of a nearby sapling growing into a tree with a bee nest.
+
+
+=== Mobs ===
+Cat
+
+Breeding cats with compatible collar colors gives the baby a collar with a mixture of the colors.
+Creaking
+
+Creakings now crumble if their creaking heart is forcibly deactivated through commands.
+Drowned
+
+Baby drowned now move with the same speed as baby zombies and baby zombie villagers.
+Fox
+
+Foxes now periodically play their "mad" sound while defending a player.
+Sheep
+
+Breeding sheep with compatible wool colors gives the baby a mixture of the colors.
+Wolf
+
+Breeding wolves now produce offspring with one the parents' collar colors or a mixture of the parents' collar colors if the colors are compatible.
+
+
+=== Gameplay ===
+Collision
+
+Slightly improved the collision detection between moving blocks and mobs in some cases.
+Sleeping
+
+Changed wording for lowest number required for player sleeping to skip the night.
+
+
+=== General ===
+Realms
+
+Removed unnecessary duplicate calls to the Realms API.
+At the Realms world select screen, when a world slot is selected, the focus will change to the edit world button if it is present, or activate world if not.
+Added logic to check for Realms trial offer availability on top of the client's trial eligibility before presenting it to players.
+Realms Stories
+
+Player profile pics in Realms Stories will now load in more reliably.
+Disabling Realms Stories badge notifications via the Stories settings screen now hides badges in the story feed as well as the play screen.
+UI
+
+Updated the location, labeling and icon usage for achievements across multiple screens.
+For the achievement % counter, a new book asset replaced the potion bottle and supports multi-tier visual states to celebrate progress, including a delightful animation for 100% completion.
+Consolidated the fancy graphics toggle and ray tracing toggle into a single Graphics Mode dropdown. Fancy and Ray Tracing mode are equivalent to having the previous Fancy and Ray Tracing toggles enabled, and the Simple mode is equivalent to having neither of the previous toggles enabled.
+
+
+=== Technical ===
+API
+
+Updated numeric JavaScript enums now properly handle and support reverse value mappings.
+InputPermissions
+Moved the following InputPermissionCategory enum values to 1.17.0: LateralMovement, Sneak, Jump, Mount, Dismount, MoveForward, MoveBackward, MoveLeft, and MoveRight.
+Moved the following methods on PlayerInputPermissions to 1.17.0:
+isPermissionCategoryEnabled(permissionCategory: InputPermissionCategory): boolean;
+setPermissionCategory(permissionCategory: InputPermissionCategory, isEnabled: boolean): void;
+Removed the compostingChance available from the ItemStack API. The composting chance for Vanilla items can now be accessed via the singular CompostableItemComponent-.
+Blocks
+
+Removed "Upcoming Creator Feature" toggle requirement for minecraft:item_visual component.
+Updated minecraft:material_instances component
+Removed "Upcoming Creator Features" experiment requirement for ambient_occlusion field to be float type.
+Components
+
+The strider now makes use of the minecraft:movement_sound_distance_offset component for its movement sound distance offset.
+Entity Components
+
+The minecraft:breedable component now has a field that enables the offspring's minecraft:color attribute to be a blend of the parents' minecraft:color.
+combine_parent_colors, If a color mutation will not happen, the baby will get a combination of the parents' colors if the colors are compatible. Color combinations follow the rules of DyeItem combinations. If the colors are not compatible the baby will get one of the parents colors chosen randomly.
+Valid values: true, false.
+Entity Filters
+
+Added new entity filter home_distance, which checks the distance of an entity from its home.
+Requires the subject entity to have a minecraft:home component.
+Returns false if the subject has no home or if the home is in a different dimension.
+Added new entity filter is_bound_to_creaking_heart, which checks if the creaking heart that spawned the subject creaking still exists.
+Graphical
+
+Improved logic for handling very large textures within atlases. Textures that are guaranteed to overflow the maximum atlas size will now have mips dropped individually rather than forcing the entire atlas to drop mips.
+Items
+
+Added a content warning to the minecraft:durability_sensor item component's particle_type when an invalid value is provided.
+Sounds
+
+Added base parameter to block sounds specifying another block sound they should use sounds for if they do not define a sound themselves.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs", "Upcoming Creator Features", "Creator Camera: New Third Person Presets", and "Aim Assist" experimental toggles.
+
+
+=== Changes ===
+
+
+==== Technical ====
+Add-Ons and Script Engine
+
+Updated Aim Assist, now it can only be used in third person camera perspectives. Switching to a unsupported camera type will disable aim assist.
+Commands
+
+Added support for input glyph replacement for /me and /tell commands. For example, using input string :_input_key.jump: will be replaced with "JUMP" when using keyboard, or an emoji in case of using a gamepad.
+Components
+
+Removing a waterlogged custom block using the minecraft:liquid_detection component with stopsLiquidFlowingFromDirection enabled for all directions now results in flowing water rather than a stagnant block of water.
+Gameplay
+
+Added easing between two moving cameras when "Creator Camera: New Third Person Presets" experiment is enabled.
+Graphical
+
+Sub Surface Scattering is now affected by point lights in the Deferred Technical Preview.
+UI
+
+Added a new radio button to allow players to select if they want Deferred Video Settings to favor performance or favor visuals.
+Added support for input glyph replacement for signs, signed books, and NPC dialogs. For example, using input string :_input_key.jump: will be replaced with "JUMP" when using keyboard, or an emoji in case of using a gamepad.
+
+
+== Fixes ==
+32 issues fixed
+From released versions before 1.21.60
+
+MCPE-19862 – Baby Sheep do not mix colors when born (if available)
+MCPE-34574 – Baby drowned does not have the same speed as other baby zombies
+MCPE-40646 – Cross models are displayed wrongly from east and west sides
+MCPE-51809 – TNT/Creepers flash solid white when exploding
+MCPE-60826 – Lily pad hitbox is too large
+MCPE-60827 – Sugar cane hitbox is too large
+MCPE-75292 – Gold swords dropped by piglins and zombified piglins all have the same durability
+MCPE-95543 – Axes dropped by piglin brutes all have the same durability
+MCPE-105343 – Helpful Lingering potions causing neutrals mobs to attack
+MCPE-120237 – Player world spawn is sometimes underwater
+MCPE-130585 – Lit candles doesn't play ambient sound
+MCPE-141497 – Can't use shears to stop plant growth
+MCPE-156469 – Opaque mangrove leaves have an inconsistent texture
+MCPE-158736 – Mangrove Swamp spawns wrong Zombie Villager type (Parity)
+MCPE-170183 – Monsters do not spawn in mangrove swamps (except slimes and bogged)
+MCPE-177105 – Exposed Copper Bulb has inconsistent pixels
+MCPE-178313 – Horses & Donkeys dont make idle Sounds
+MCPE-183944 – Sneak button on D-Pad acts like the forward button when flying or when the HUD is hidden via /hud
+MCPE-187777 – Certain blocks have inconsistent/outdated ambient_occlusion_exponent values in blocks.json
+MCPE-188187 – Baby wolves/cats do not mix collar colors when born (if available)
+MCPE-188216 – ambient_occlusion_exponent field in blocks.json disappeared from all vanilla resources
+MCPE-188221 – ambient_occlusion_exponent field in blocks.json does nothing in-game
+MCPE-188260 – Sculk sensors are not activated upon resin clumps spawning from creaking hearts
+MCPE-188352 – Parity issue: Creakings from creaking hearts despawn on world reload
+Other
+
+Creaking no longer plays ambient sounds when aggravated, only when idle.
+Fixed an issue where users could sometimes not rejoin a Realm they left by using an invite code.
+Fixed players needed to skip night slider on the edit world screen to be able to go to 0%.
+Fixed a bug where calling Player.hideAllExcept could crash the server.
+Fixed edge cases where ModalFormData scrolls to the bottom when UI is opened.
+Fixed a bug that caused a black screen on some PowerVR-based Android devices when using the Deferred Technical Preview. Some PowerVR devices are still known to experience issues.
+Fixed a bug that caused blocks moved by a piston to flicker with the Deferred Technical Preview enabled.
+Fixed a bug where the seams of certain cubemap faces would be visible in sky reflections in the Deferred Technical Preview.
+
+
+== Trivia ==
+This preview was initially incorrectly announced as 1.21.60.20.
+
+
+== References ==
+
+
+== Navigation ==

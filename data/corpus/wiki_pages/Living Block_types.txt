@@ -1,0 +1,188 @@
+Living block types are an internal classification that controls the § Behavior, § Collision, § Interactions (response to interact and hurt), § Movement, and § Fire immunety of the living block.
+Almost all of these properties are uniquely defined (each block has only one of each) with the exception of behavior, where the same type can have more than one behavior or none.
+Each living block has only one type, and this type is uniquely defined by the ID of the item associated with the living block. Each item in the game can correspond to a maximum of one type. Some types are shared by more than one item.
+Blocks whose item does not correspond to a type, receives the type default block or default item.
+
+
+== Types ==
+
+
+=== Presets ===
+Some types of living blocks share properties that are predefined. Below is a list of presets and the property of each.
+
+More complete presets
+
+Some presets are also types in themselves, which can be used as a living block type or presets in a registry.
+
+If a property is not defined for a block type, it uses its default value, that is:
+
+Behavior: Empty list
+Collision: Block
+On interact: Consume item
+On hurt: Do nothing
+Movement: Rolling
+Fire immune: False
+
+
+=== Register ===
+The living blocks of an item in the list below always receive the type associated with the item. For other living blocks, it depends. If the item is associated with a block (i.e., it is an instance of BlockItem) and is not in the #block_placers tag, it receives the type default block; otherwise, it receives the type default item.
+
+
+== Behavior ==
+Behavior controls certain actions of living blocks, such as when they will perform and stop performing the action, what happens when they die, and other things.
+Below is a summary of the living block behaviors, using the class name in the code:
+
+
+=== Absorb snow ===
+If the living block don't have 8 layers of snow, passing over a snow increases its layer by one and decreases the block's layer by one (transforming the block into air if it only has one layer). Passing over a snow block transforms it into snow with seven layers. With some additional conditions:
+
+The distance from the last absorbed block must be greater than one in some horizontal axis.
+When the internal data from the living block is loaded, for example when it is summoned or loaded into the world, consider that the last block absorbed was at position 0, 0, 0.
+The last absorbed block must have been more than 20 ticks away.
+
+
+=== Act on desire ===
+
+
+=== Annoying click clack ===
+Within a 10-tick interval, A random number between 0 and 1 is generated:
+
+If the number is lass to 0.25 (25%) and the living block is powered, it producing a particle dust{color:16711680,scale:0.5} 
+The particle's position is the same as a lever block in that block and has the same facing and face. Since the living block rarely goes to this same position as the block, the particle ends up appearing in a random place. However, unmoved living floor levers regularly produce particles.
+If the number is lass to 0.10 (10%) living block changing its powered state.
+Note that whenever a powered living block changing, it will emit a particle first, and whenever a living block  producing a particle, it has a 40% chance of changing its powered status.
+
+
+=== Attack entity ===
+
+
+=== Avoid being in the way of crafting ===
+
+
+=== Back away from attack ===
+
+
+=== Barrel roll ===
+
+
+=== Be crafting ingredient ===
+
+
+=== Build ===
+
+
+=== Combine into 9x9 ===
+
+
+=== Combine into buildable entity ===
+
+
+=== Combine into copper golem ===
+
+
+=== Combine into end portal ===
+
+
+=== Combine into house ===
+
+
+=== Combine into portal ===
+
+
+=== Combine with ===
+
+
+=== Consume nearby living block ===
+
+
+=== Damage entities on touch ===
+
+
+=== Enchantment table ===
+
+
+=== Equip on entity ===
+
+
+=== Falling attack ===
+
+
+=== Fire at entity ===
+
+
+=== Grow tree ===
+
+
+=== Launch colliding block ===
+
+
+=== Living block container ===
+
+
+=== Living block mob container ===
+
+
+=== Mine specific block ===
+
+
+=== Primes TNT ===
+
+
+=== Protect position ===
+
+
+=== Random ignition ===
+
+
+=== Randomly use item ===
+
+
+=== Show crafting grid ===
+
+
+=== Smelt ===
+
+
+=== Smelt nearby living block ===
+
+
+=== Target nearest living block ===
+
+
+=== Target nearest player ===
+
+
+=== Teleport randomly when attacked ===
+
+
+=== Transform when intersecting ===
+
+
+=== Trap player ===
+
+
+=== Use item on condition ===
+
+
+== Interactions ==
+
+
+=== On interact ===
+
+
+=== On hurt ===
+
+
+== Other properties ==
+
+
+=== Movement ===
+
+
+=== Collision ===
+
+
+=== Fire immunety ===
+
+
+== Notes ==

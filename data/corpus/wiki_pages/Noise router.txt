@@ -1,0 +1,29 @@
+The noise router is a collection of density functions. Density functions compute a value for each block position. They are used for terrain generation, biome layout, aquifers, ore veins, and more. A noise router is a part of a dimension's noise settings.
+
+
+== JSON format ==
+The different density functions of the noise router and their uses.
+
+
+== Final density ==
+final_density is the main density function that determines whether a block position should be solid or air. If the function returns a value greater than 0, the noise settings' default_block is placed. Otherwise, either air or the default_fluid is placed, decided by the aquifer logic. Only afterward, the default_block is replaced with other blocks using the surface rules.
+Setting the final density is set to 0 results in a void dimension, similarly setting it to 1 would completely fill the world with stone.
+
+
+=== Flat world ===
+
+Using the y_clamped_gradient density function, a flat world can be created. In the following example positions at Y=-64 get a density of 1 and positions at Y=320 get a density of -1.
+
+
+=== Noises ===
+
+To bring some variety to the world, a noise is needed. By adding the previous y_clamped_gradient to a noise, the height of the terrain is based on a noise that varies along the X and Z coordinates.
+
+The noise can be scaled to alter the results. Using "xz_scale": 0.5 makes the terrain smoother.
+To get overhangs, the noise also needs to vary along the Y coordinate. This can be done with "xz_scale": 1 and "y_scale": 1.
+
+
+== History ==
+
+
+== Navigation ==

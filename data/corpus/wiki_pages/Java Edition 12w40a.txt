@@ -1,0 +1,92 @@
+12w40a is the tenth snapshot for Java Edition 1.4.2, released on October 4, 2012.
+
+
+== Additions ==
+
+
+=== World generation ===
+Swamp huts
+
+New generated structure.
+Located in swamp biomes.
+Spawn witches.
+
+
+=== General ===
+NBT format
+
+Custom items can now be named using NBT data (intended for custom map makers).
+Using the NBT, it is possible to add custom [String] Name to items, as well as a [NBT List / JSON Array] Lore list for that item.
+Superflat
+
+Added preset "Redstone Ready" with 52 layers of sandstone, 3 layers of stone and 1 layer of bedrock.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Beacons
+
+Texture has been altered.
+Beam texture has also been changed.
+Fire
+
+Spreading has been nerfed to prevent infinitely spreading fires.
+
+
+=== Items ===
+Eye of ender
+
+Can now be used in superflat worlds, if the stronghold generation is enabled.
+
+
+=== Mobs ===
+Slimes
+
+Now spawn in swamp biomes at low light level.
+
+
+=== Gameplay ===
+Inventory
+
+Better management.
+The pick block action now works on blocks that are represented as items in the inventory (e.g.: redstone repeater, redstone dust, and tripwire).
+Pressing the 1-9 hotkeys while hovering over an item puts that item into the corresponding hotbar slot.
+If there is already an item in the assigned hotbar slot, the hotbar item and the selected item swap position.
+When in Creative inventory, a full stack of that item is transferred to that hotbar slot.
+In Creative mode, players can now shift-click items between the hotbar and the Survival inventory.
+The left-click action no longer opens doors, pulls levers, pushes buttons or opens trapdoors.
+When in Creative mode, pick block on an item picks up a stack of that item.
+
+
+=== General ===
+Superflat
+
+Configuration now allows the player to generate trees, strongholds etc.
+Now pumpkins, short grass, ferns, flowers, trees, mineshafts, dungeons, strongholds, lakes, desert wells, ravines and ores spawn on superflat maps.
+
+
+== Fixes ==
+13 bugs fixed
+
+Fixed the wither's starting explosion not being disabled by the mobGriefing gamerule
+Fixed a few crash bugs related to world generation, map item expansion, and other things.
+Reverted lighting changes that had been introduced in snapshot 12w39a. This change corrected such bugs as:
+The Nether being extremely CPU intensive.
+Map generation taking extremely long.
+Fixed mob AI considering cobblestone walls as blocks of normal height.
+Fixed a few texture oddities with the witch.
+Fixed entities in water producing glitchy water sound.
+Gaining multiple levels at a time no longer plays the leveling up sound over itself as many times as leveled.
+Fixed the "A 64 bit Java installation is recommended for 'Far' render distance (you have 32 bit)" message being covered by the bottom 2 buttons.
+Fixed pets teleporting around randomly.
+Fixed being unable to place paintings larger than 1x2 and them popping off if they have been placed before.
+Fixed destroying blocks under the player with efficiency-enchanted gear.
+Fixed potion spawners crashing the game.
+
+
+== References ==
+
+
+== Navigation ==

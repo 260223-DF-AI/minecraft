@@ -1,0 +1,111 @@
+1.4.4 is a minor update to Java Edition that was released on November 14, 2012, primarily to fix bugs from 1.4.2.
+A pre-release version of 1.4.4 was released on November 8, 2012, though the full release of 1.4.4 is identical to this pre-release.
+
+
+== Additions ==
+
+
+=== Items ===
+ Music disc
+
+Implemented the music disc "wait".
+This music disc was originally added to the game's files in Beta 1.9 Prerelease 2 named "where are we now", but could not be implemented due to issues with the spaces in its name, so it has been renamed to "wait".
+
+
+=== Command format ===
+/enchant
+
+Used to give specific enchantments to tools and weapons.
+
+
+=== General ===
+Debug screen
+
+F3 + B now shows the hitbox around entities.
+At this point, the hitbox is white and opaque and does not have an outline.
+
+
+== Changes ==
+
+
+=== Blocks ===
+ Cobwebs
+
+When in creative mode, flying through cobwebs does not slow the player down, but walking through them will.
+ Walls
+
+Now have a bigger hitbox; previously they shared the fence hitbox.
+ Water
+
+Water now completely negates all fall damage.
+
+
+=== Mobs ===
+Baby mobs
+
+Spawnable by right-clicking a mob with a corresponding spawn egg.
+ Creepers
+
+Can now drop music disc "11" when killed by a skeleton.
+ Squid
+
+Now die when they are not underwater.
+
+
+== Removals ==
+
+
+=== General ===
+Distance effects
+
+Wall block collision boxes no longer lose precision at extreme coordinates.
+This is likely due to the fixing of MC-1332.
+
+
+== Fixes ==
+31 issues fixed
+From released versions before 1.4.4
+
+MC-334 – Tab key not working for any function on Mac.
+MC-450 – Chicken head movement is inverted.
+MC-527 – "seed" command does not work in Minecraft server command line.
+MC-984 – Internal exception: java.io.IOException: Bad packet id 249.
+MC-1079 – Killing animals with fire aspect on the first hit does not cook the drops.
+MC-1153 – Torch texture is rendered incorrectly.
+MC-1478 – Walking from ground level onto anvil.
+MC-1622 – Enderchest does not have the right hitbox.
+MC-1793 – Nether Brick Fence has an incorrect texture.
+MC-1860 – Block and item duplication.
+MC-2229 – Fences are not rendered correctly from underneath.
+MC-2362 – Item frames disappear without drop when a block is placed in their position.
+MC-2422 – Pistons are invisible and make blocks invisible while pushing.
+From the 1.4.4 pre-releases
+
+MC-1608 – Iron golems crash the player when they walk.
+MC-1611 – Torches do not place properly, get adjacent to wall.
+MC-1612 – Water current too strong / cannot swim up in deep water.
+MC-1647 – Cannot fall into void.
+MC-1661 – Crash when placing minecart on powered rail.
+MC-1741 – Loading a world that has been moved or deleted causes a crash.
+MC-1745 – player can jump over cobblestone walls.
+MC-1789 – Squids do not suffocate on land.
+MC-1845 – Crash when rendering entities.
+MC-1871 – Running on leaves produces gray particles.
+MC-2304 – Redstone repeaters above 1 tick do not receive a pulse at all when sent a 1-tick pulse from redstone wire or repeaters.
+MC-2400 – Mobs and items become invisible after the player dies.
+MC-2447 – Cannot break block behind gravel, sand, dirt with Efficiency V diamond pickaxe.
+Other issues
+
+Random falling damage due to lag fixed.
+Falling damage when riding minecarts fixed.
+Slimes have correct collision box.
+Signs no longer lose their text client-side on servers.
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

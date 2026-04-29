@@ -1,0 +1,239 @@
+Beta 1.11.0.1 is the first beta version for Bedrock Edition 1.11.0, released on February 21, 2019, which adds illager banners, illager captains, pillager patrols, raids, and the Bad Omen and Hero of the Village status effects.
+
+
+== Additions ==
+
+
+=== Blocks ===
+Illager banners
+
+A unique type of banner dropped by illager captains.
+
+
+=== Mobs ===
+Illager captains
+
+Spawn in pillager patrols, raids, and around pillager outposts
+Are pillagers, vindicators or evokers that wear illager banners on their heads.
+Give the player the Bad Omen status effect when killed.
+
+
+=== Game play ===
+Pillager patrols
+
+A group of 2–5 random illagers that spawn in the world.
+One of the illagers are a illager captain.
+Raids
+
+Triggered when a player enters a village with the Bad Omen status effect applied to them.
+A large group of pillagers that come to attack villages and kill the villagers.
+Mobs appear in waves – the amount of mobs and length of waves is increased per Bad Omen level.
+A raid boss bar shows the player how many enemies are left.
+A sound similar to a battle horn goes off before each raid wave.
+Status effects
+
+Added Bad Omen and Hero of the Village status effects.
+Hero of the Village is currently unused.
+Sounds
+
+Added new sounds for bells, campfires, grindstones, lanterns, raids, ravagers, and sweet berry bushes.
+Villagers
+
+Updated the villager trading UI for pocket and classic UI profiles.
+Added villager economy supply system:
+The supply of trades is only restored when the villager is given the opportunity to work at their job site block.
+When the villager's trades are restored to full, it takes whatever supply was used up (number of trades), and converts that into a price increase called "demand". Demand goes up by the amount of supply used, and down by the amount of supply not used.
+When villagers make trades, they gain experience. When they gain enough experience, they level up. Leveling up unlocks new trades, which are locked until the villager is at the appropriate level.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Barrels, bells, blast furnaces, composters, smokers, and stonecutters
+
+Added functionality.
+Cartography tables and grindstones
+
+Added functionality.
+Can now be crafted with multiple wood types.
+Campfires
+
+Updated texture and model.
+Added smoke particles, sounds, and extinguishing.
+Added cooking functionality.
+Added missing recipes.
+Lecterns
+
+Lecterns holding a book now emit a redstone signal when a page is turned.
+Stonecutters
+
+Moved all stonecutter recipes to the normal recipe list with tags.
+Wood, stripped wood, and stripped logs
+
+Added missing recipes.
+
+
+=== Mobs ===
+Evokers, pillagers, and vexes
+
+No longer attack baby villagers.
+Illager beasts
+
+Renamed illager beast to ravager.
+Added ravager bite and roar attacks.
+Ravagers now get stunned when their attack is blocked.
+Ravagers can now be ridden by vindicators and pillagers
+Added sounds for the ravager.
+Now destroy crops and leaves, and avoid cacti and sweet berry bushes.
+No longer attack baby villagers.
+Iron golems
+
+Now properly spawn in pillager outpost cages.
+An iron golem now spawns in each village.
+Villagers
+
+Old villagers in existing worlds now convert to new villagers.
+Villagers no longer teleport through or get stuck in walls when trying to sleep.
+Farmers now choose their profession based on composter blocks rather than farmland blocks.
+Vindicators
+
+Can now break down doors.
+No longer attack baby villagers.
+
+
+=== World generation ===
+Bamboo forests
+
+Are no longer only available through Experimental Gameplay.
+Pillager outposts
+
+Gray banners now generate instead of black banners.
+Are now less common.
+Are no longer embedded in the ground too much.
+Villages
+
+Village chests now all contain loot.
+
+
+=== General ===
+Map making and add-ons
+
+Added data-driven furnace recipes.
+Custom furnace recipes can be added to the game using JSON.
+Furnace recipes are one per file, like other craft recipes.
+Added tags to furnace recipes and made the UI screens use them to filter the recipes down.
+Recipes now have tags so they can be filtered by crafting type.
+Leash positions now use vanilla positions if not specified in the pack.
+Baby zombie pigmen now properly scale their sword in Marketplace content.
+Sound-event is now displayed in the scripting documentation.
+Renamed blocks in resource packs now keep their custom names.
+Particles
+
+Removed all the particles including prefix example_.
+
+
+== Fixes ==
+Crashes
+
+Fixed several crashes that could occur during gameplay.
+Fixed a crash that could occur when enabling texel anti-aliasing.
+Fixed a crash that could occur if a villager trade was too expensive.
+Fixed a crash that could occur when spawning a villager in the Luxury Life Marketplace pack.
+Fixed a crash that could occur when generating the new villages.
+Fixed a crash that could occur when trading with the wandering trader.
+Fixed a crash that could occur when replacing a world with an unsynced world.
+Fixed a crash that could occur when loading in mob geometry.
+Fixed a crash that could occur when interacting with villagers with custom trades.
+General
+
+Global resource packs now stay applied even after restarting the game.
+The shield hotbar item now only shakes when durability is lost.
+The fishing float now sits slightly higher in water. (MCPE-32976)
+The "Treasure Hunter" achievement now unlocks when the map is placed in the off-hand slot. (MCPE-33382)
+Global resource reset message now shows up if the load screen is taking too long on some devices.
+The "No Available Space" message no longer shows unexpectedly when downloading Marketplace bundles.
+Renamed empty maps now stay named after becoming a filled map.
+Gameplay
+
+Players on split-screen no longer have limited visibility underwater. (MCPE-39539)
+Scaffolding that is placed over the void now supports the player. (MCPE-38064)
+Chorus fruits now play the teleporting sound properly after players eat them.
+Farmer villagers no longer produce infinite amounts of bread after players give them certain items. (MCPE-33608)
+Signs can now be used as fuel in furnaces.
+Players can now climb vines and ladders using the jump button again.
+Lightning no longer has a downward area of effect when hitting blocks, therefore, no longer striking mobs sheltering underneath blocks.
+Creative players no longer get additional buckets when collecting water or lava.
+Renaming items using an anvil no longer increases the prior work penalty. (MCPE-36931)
+Sweet berry bushes no longer supply infinite amounts of berries. (MCPE-41211)
+World generation
+
+Fixed mineshaft generation to no longer generate in a giant cluster that causes them to cross over each other, and should more closely resemble those found in the Java Edition. (MCPE-28485)
+Mesa plateau biomes now generate more like those in the Java Edition.
+Mobs
+
+Fixed panda eating animation being too slow. (MCPE-40743)
+Shulker shells now have a greater chance to drop with a bigger amount when shulkers are killed with swords with a looting enchantment applied. (MCPE-39893)
+Vexes no longer attack baby villagers.
+Vindicators no longer become passive when renamed. (MCPE-27927)
+Fixed baby villagers showing their trades when a player holds a certain item in their hand.
+Fixed guardians being able to spawn out of the water. (MCPE-39941)
+Fixed villager scheduling: Villagers now spend less time standing around doing nothing.
+Grass, bell, and trapdoor placement fixes.
+Village town centers now generate at or above water level.
+Sand blocks now have supportive sandstone blocks underneath.
+Fixed a bug causing some village elements to be buried underground.
+Balanced the number of job sites generated in villages.
+Flowing water is no longer generated in villages.
+Lava in village blacksmiths is no longer a fire hazard.
+Animals can spawn in villages again.
+Fixed the rotation of terracotta blocks.
+Balanced sea pickle generation.
+Bell block and crop block fixes.
+Fixed an issue with snow layer generation.
+Fixed an issue with ravines near desert villages.
+Playful pandas no longer roll into dangerous blocks when spawned.
+Fixed a bug related to the polar bear attack animation.
+Fixed polar bear hitbox being offset, and is positioned properly when riding a boat. (MCPE-41299)
+Fixed wither boss armor geometry.
+Creepers now flash white during their pre-explosion animation. (MCPE-41258)
+Fixed polar bear model size being too small.
+Snow golems now take damage when walking over campfires.
+Creepers can now spawn in a 1.8 high space. (MCPE-24120)
+Farmers and librarians now properly go to work.
+Villager work goal is properly cleaned up between schedule changes.
+Fixed villager work goal to have a cooldown, max active time, and better ranges.
+Villagers no longer get launched when waking up from their beds.
+Blocks
+
+Grindstones can no longer support scaffolding.
+Grass now spreads to normal dirt blocks, not coarse dirt. (MCPE-41198)
+Items
+
+Renamed firework stars and firework rockets now display their new names.
+Leather horse armor is now properly colored. (MCPE-40124)
+Banners no longer render as wall variants when held. (MCPE-41228)
+Shields held in the off-hand are no longer upside-down.  (MCPE-41221)
+Graphical
+
+Fixed issues with the armorer and cleric textures.
+Fixed armorer villager arm texture.
+Surrounded leaves are now the correct color.
+User interface
+
+Items can now be split if they are spread in a crafting grid on touch devices.
+Stonecutters now only make a noise when there's something to take.
+Commands
+
+Different cauldron types no longer overwrite each other in the player's inventory when using the /give command.
+Add-ons and script engine
+
+A component group is now correctly removed on the second activation of minecraft:damage_sensor.
+Target selectors are no longer case-specific.
+Scoreboard scores are no longer saved earlier than other information when exiting a world.
+
+
+== References ==
+
+
+== Navigation ==

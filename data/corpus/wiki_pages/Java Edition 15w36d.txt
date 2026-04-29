@@ -1,0 +1,75 @@
+15w36d is the twenty-second snapshot for Java Edition 1.9, released on September 4, 2015 to fix some bugs and crashes from the previous 15w36 snapshots, along with some balances and minor changes.
+
+
+== Additions ==
+
+
+=== General ===
+Attributes
+
+Armor protection is now an attribute (generic.armor), ranging from 0 (no protection) to 30.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Command blocks
+
+Each command block type now appears as a different color on maps.
+
+
+=== Items ===
+Armor
+
+Removed armor durability decreasing defense points.
+Armor defense points are now shown in the tooltip.
+
+
+=== Command format ===
+General
+
+The player can now edit the offhand slot of mobs via /replaceitem.
+The item displays according to the dominant hand of the mob.
+
+
+=== Gameplay ===
+Enchanting
+
+Sharpness has been nerfed, as the buff in 15w36a was mistakenly introduced due to a typo in the new damage formula.
+Each Sharpness level now adds 1HP damage to the base damage at level I and an additional 0.5HP × 0.25 for each additional level, down from an additional 1.5HP × 0.75 for each additional level, using the formula 1 + 0.5 * (Level - 1).
+
+
+== Fixes ==
+10 issues fixed
+From released versions before 1.9
+
+MC-78716 – Summoned entities have invalid / wrong dimension tag.
+MC-81586 – Entities duplicate on server when no players are logged in due to fire at the edge of spawn chunks.
+From the 1.8 development versions
+
+MC-57508 – Sign with /tellraw score storaged in NBT in inventory cause no update when placed.
+From the 1.9 development versions
+
+MC-83040 – Two Handed Map Bug: Offhand map doesn't update.
+MC-83841 – /replaceitem slot.weapon.offhand not working for mobs.
+MC-86923 – Holes in the ground.
+MC-87871 – Iron golem attacks peaceful mobs and player for no reason.
+MC-87878 – End Void does not deal damage to the player/can't fall into the void.
+From the previous development version
+
+MC-87916 – Server warning: Tried to assign a mutable BlockPos to tick data.
+MC-87979 – Hopper: java.lang.NullPointerException: Starting integrated server.
+
+
+== Videos ==
+
+
+== Trivia ==
+This version was previously removed from the launcher for some time, but was added back in September 2018.
+
+
+== References ==
+
+
+== Navigation ==

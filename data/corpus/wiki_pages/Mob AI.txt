@@ -1,0 +1,88 @@
+This article describes the various components of a mob's AI that control the mob's behavior.
+
+
+== Brain ==
+Some mobs use a complex AI system called a brain. A mob's brain stores memories (data), a list of tasks that can be performed, and a list of sensors used to determine which tasks it can perform.
+
+
+=== Sensor ===
+Sensors are used to detect if a mob with a brain can perform certain tasks. Examples of sensors include, a sensor to detect if an armadillo should be scared, a sensor to detect the nearest player, and a sensor to detect if a mob is in water.
+
+
+==== Sensor classes ====
+
+
+=== Task ===
+Tasks are activities that mobs with brain AI systems can perform. Sensors are used to determine if a task can be performed, and tasks may use information stored in memories. Examples of tasks include a villager walking to its jobsite, a piglin admiring an item, or a warden emerging. Tasks have priorities, so tasks with a higher priority will over run tasks with lower priority, for example, if a zombie is wandering and  it sees a player, it will switch tasks to attacking.
+
+
+=== Memory ===
+Memories are used to store data, and are used when mobs perform tasks. Examples of memories include a list of all visible mobs in range, the location of a villager's jobsite block, and any cooldowns the mob may have.
+
+
+== Control ==
+
+
+=== Walking ===
+
+Mobs movement on land varies wheter it's hostile or passive. Hostile mobs will try to approach and attack the player when within their detection range, while most passive mobs will attempt to run away when attacked. Some mobs will also try to attack or run away from certain blocks or mobs.
+
+
+=== Swimming ===
+
+Mobs swimming works the same way as walking, but in water. While most mobs will just float on water or sink, some can properly swim like fish, drowned, dolphins, turtles, guardians and elder guardians.
+
+
+=== Flying ===
+
+Mobs flying works the same way as walking, but in air. Most mobs will just fall when suspended in air, with a few exceptions. Mobs with Slow Falling, levitation and the chicken don't fly normally but are able to float in mid-air. Category:Flying mobs contains a list of all mobs that can pathfind in air.
+
+
+== Goals ==
+Goals are a simple AI system used primarily by mobs already existed before the brain AI. However, there are recent mobs that use both AIs simultaneously, for example, the happy ghast.
+Goals can range from wandering around, opening doors, attacking another mob, and more. Each type of mob that uses goals has its own defined list of goals, and each goal has a priority. Mobs attempt to perform the lowest priority goal they can, and may switch goals if there is an opportunity to pursue a lower priority goal. For example, if a zombie is targeting and chasing a villager (priority of 3) and a player comes within the detection range of the zombie, the zombie may target and chase the player (priority of 2) instead.
+
+
+=== List of goals ===
+List of goals that are used by many different mobs.
+
+
+=== Lists of mob goals ===
+Lists of goals and associated priorities for individual mobs.
+
+
+== Pathfinding ==
+
+
+=== Pathfinding penalties ===
+
+When pathfinding to a target, mobs will sometimes avoid certain blocks (usually blocks that cause damage or slow the mob down). These blocks have a penalty associated with them. Generally, mobs try to path through blocks with the smallest penalty. There are some blocks that most mobs cannot path through; these all have a penalty of -1.
+The following table is a list of all pathfinding penalties and their default values. Each type of pathfinding (land, water, air) uses its own subset of these penalties. Some mobs override these default values.
+
+Mob pathfinding penalty overrides
+The following mobs override the default pathfinding penalty for some blocks:
+
+
+=== Pathfinding on land ===
+All entities Move based off of random targets that are generated every tick with a priority toward their entity specific goals.
+These targets can be located anywhere in 3D space within the entity range and are only every generated when wandering or when they have no goals.
+For every target a path is generated; with the entity preferring the path with the lowest score regarding the Pathfinding penalties.
+If an entity cannot take any paths with a low enough score, or any paths without a score of -1 the entity will not move until one is found.
+If an entity's target is located inside a block (including water), the target is moved to the nearest air block above it.
+This means, every entitiy when wandering will always prefer to pathfind to a block with the most blocks below it within range.
+Due to the higher chance that a target will be generated within the blocks below it and moved up to the nearest air block above before generating a path.
+
+
+=== Pathfinding in water ===
+Pathfinding in water is roughly the same as land, however, most entities, excluding fish and drowned, will bounce on the surface preferring land due to the Pathfinding penalties of water.
+
+
+=== Pathfinding in air ===
+Pathfinding in air is roughly the same as land, however, there are few entities that can pathfind to air.
+
+
+== See also ==
+Mob infighting
+
+
+== Navigation ==

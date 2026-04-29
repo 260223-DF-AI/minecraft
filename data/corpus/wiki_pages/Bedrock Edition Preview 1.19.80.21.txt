@@ -1,0 +1,229 @@
+Beta 1.19.80.21 (Android) or Preview 1.19.80.21 (Windows, iOS, iPadOS, Xbox) is the second beta/Preview version for Bedrock Edition 1.19.80, released on March 15, 2023, which adds suspicious gravel and smithing templates behind experimental gameplay, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Command format ===
+/inputpermission
+
+Allows for query or change the player's camera or movement permissions as enabled or disabled:
+For query the permission(s): /inputpermission query <targets: target> <permission: permission> [state: state]
+For change the permission(s): /inputpermission set <targets: target> <permission: permission> <state: state>
+Target selectors
+
+Added the haspermission target selector argument, which allows for selection based on player permissions.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Fences
+
+The ID's of fence have now been split up into their own ID's.
+
+
+=== Command format ===
+/clone, /fill and /setblock
+
+The block state arguments are now optional.
+
+
+=== Items ===
+Potions and Tipped Arrows
+
+Changed the particle colors of the following potion effects:
+Fire Resistance
+Harming
+Invisibility
+Leaping
+Night Vision
+Poison
+Slowness
+Strength
+Swiftness
+Turtle Master
+Water Breathing
+Potions no longer have an enchantment glint due to it obscuring the color of the potion contents.
+
+
+=== Technical ===
+AI Goals
+
+Added cooldown field to target descriptors in minecraft:behavior.nearest_attackable_target goal.
+Recipes
+
+Removed 'data' key to recipe json format.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Next Major Update", and "Beta APIs" experimental toggle.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+Suspicious Gravel
+
+Looks like gravel, but rougher.
+Affected by gravity, vanishes when landing.
+Drops nothing when mined or moved, even if mining with silk touch.
+Generates naturally in ocean ruins.
+Brushing the suspicious gravel with a brush will extract objects.
+Has 4 stages of extracting, will recover gradually when stop brushing.
+Turns to regular gravel when extraction is done.
+Only suspicious gravels with a valid archaeological loot table can extract an item.
+
+
+==== Items ====
+Smithing Templates
+
+New item series for armor trimming and netherite upgrading, with twelve of them.
+ Netherite Upgrade
+Armor Trim:
+ Coast Armor Trim
+ Dune Armor Trim
+ Eye Armor Trim
+ Rib Armor Trim
+ Sentry Armor Trim
+ Snout Armor Trim
+ Spire Armor Trim
+ Tide Armor Trim
+ Vex Armor Trim
+ Ward Armor Trim
+ Wild Armor Trim
+They can be obtained randomly from chests generated in structures accordingly.
+Exceptions:
+While randomly generated in other rooms, a netherite upgrade smithing template is also guaranteed in every treasure room in a bastion remnant.
+1 eye armor trim is guaranteed in every stronghold library chest.
+A single tide armor trim smithing template is sometimes dropped by elder guardians upon death.
+Some armor trims are rarer.
+The following common armor trims always generate 2 templates in a chest when found:
+Dune
+Coast
+Wild
+Sentry
+Consumed when used to upgrade an item in the smithing table.
+Can not be crafted directly, but can make a copy of them by crafting in crafting tables as following pattern:
+7 diamonds, shaped as iron ingots in cauldron crafting recipe.
+1 block of material that the template is made out of, placed in the center slot of the crafting grid.
+1 smithing template, placed in the remaining slot.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Cherry Leaves and Cherry Sign
+
+Their textures have been updated.
+Piglin Head
+
+Their ears now flap when the wearer is riding a vehicle.
+Stripped Cherry Wood
+
+Can now be crafted from stripped cherry logs. (MCPE-168053)
+Suspicious Sand
+
+Now generates naturally in warm ocean ruins.
+
+
+==== Items ====
+Armor
+
+Now can be visually customized with a variety of unique trims at the smithing table.
+Purely visual with no gameplay benefits, and can only be applied to helmets, chestplates, leggings and boots.
+All trim patterns are visually the same on an armor's item icon, but the color will still change based on the trim material.
+The name of the trim pattern will be displayed on the item's tooltip.
+Armor trim has 2 properties: pattern and material.
+Pattern: Defined by the smithing template used to apply the trim, and represents the visual pattern of the trim.
+Material: Defined by what ingredient is used to apply the trim, and represents the color of the trim.
+Available ingredients:
+Amethyst Shard
+Copper Ingot
+Diamond
+Emerald
+Gold Ingot
+Iron Ingot
+Lapis Lazuli
+Nether Quartz
+Netherite Ingot
+Redstone Dust
+
+
+==== Mobs ====
+Frogs
+
+Frogs born in the cherry grove biome are now the temperate variant instead of the cold variant. (MCPE-168083)
+
+
+==== Gameplay ====
+Smithing Table functionality
+
+Redesigned: it is now a workstation for physical equipment upgrades and modifications.
+Added a slot used by smithing templates to the left of the old 2 slots.
+Smithing templates define what type of upgrade that will be making to equipment.
+It specifies both what type of items that can upgrade, and which ingredients are valid to customize the upgrade.
+Netherite equipment crafting now also requires a netherite upgrade smithing template.
+
+
+==== World generation ====
+Ocean Ruins
+
+Now includes suspicious sand and suspicious gravel.
+
+
+==== Technical ====
+API
+
+ItemStack
+Added function getTags(): string[] - Returns all tags for the item.
+Added function hasTag(tag: string): boolean - Returns true if the item has the specified tag.
+EntityEquipmentInventoryComponent
+
+This component is used to manipulate the equipment of mobs and players. To use it, call getComponent('equipment_inventory')
+Added function getEquipment(equipmentSlot: EquipmentSlot): ItemStack undefined - Returns the item in the given equipment slot.
+Added function getEquipmentSlot(equipmentSlot: EquipmentSlot): ContainerSlot - Returns the container slot for the given equipment slot.
+Added function setEquipment(equipmentSlot: EquipmentSlot, itemStack?: ItemStack): void - Sets the item in the given equipment slot.
+ItemDurabilityComponent
+
+The ItemDurabilityComponent now works with all damageable items, not just custom items.
+Removed property damageRange.
+Setting damage will now throw an exception if it is outside of the range [0, maxDurability].
+GameTest Framework
+
+Updated specific GameTest exceptions to be thrown as GameTestError error objects.
+Scripting
+
+Form promises are now rejected using typed errors, vs. strings as used previously.
+
+
+== Fixes ==
+Gameplay
+
+Fixed experience orb position desync after teleport. (MCPE-59584)
+Going into lava in third person view no longer causes the camera to turn black. (MCPE-166861)
+Fixed an issue where players load incorrect data when loading a local game after connecting to a server or Realm. (MCPE-164765)
+Fixed an issue where the player camera height was incorrect with or without the sneak toggle. (MCPE-167559)
+Graphical
+
+LevelChunks no longer flicker in The End dimension when Clientside Chunk Generation is enabled.
+User Interface
+
+Corrected toggle navigation in Edit World menu while using gamepad or keyboard that were previously skipped.
+Updated designs for sign in and sign up screens in preview.
+Search bar in Creative inventory screen is now automatically selected while using a keyboard.
+Blocks
+
+Sponges no longer emit water drop particles underwater. (MCPE-122138)
+Mobs
+
+Villagers will now wake up in a valid position and will not phase though blocks. (MCPE-142544)
+
+
+== References ==
+
+
+== Navigation ==

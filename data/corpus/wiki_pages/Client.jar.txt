@@ -1,0 +1,38 @@
+client.jar is a JAR file containing the Minecraft program and some default resources. It is launched by the user using the Minecraft Launcher.
+The client.jar file is named using the version number after download, e.g., 1.21.5.jar. The name client.jar is used on the distribution server, and commonly as a general term for all versions of the file. It is located at .minecraft/versions/version/version.jar, next to the client.json file.
+It can be opened with a file archiving program that supports ZIP files.
+
+
+== Contents ==
+The file contains the Minecraft program in form of compiled Java class files. It also contains some, but not all, default resources; for instance, textures from the vanilla resource pack are stored here, but sound files are stored separately.
+
+
+=== Directory structure ===
+The client.jar file has the following directory structure. Note that Java class files have been omitted for brevity.
+
+ version.jar META-INF: Information for the JVM, including signature information, which may be used to check if the game is modified.
+ LICENSE MANIFEST.MF MOJANGCS.RSA MOJANGCS.SF assets: The vanilla resource pack.
+ .mcassetsroot: Empty file identifying the vanilla resource pack. com
+ mojang
+     blaze3d realmsclient math data: The vanilla data pack.
+ .mcassetsroot: Empty file identifying the vanilla data pack. net
+ minecraft
+     client data obfuscate server util flightrecorder-config.jfc pack.png: Vanilla resource pack and data pack icon. version.json
+
+
+=== Blaze3D ===
+Blaze3D is a private library that provides the graphics backend for LWJGL/OpenGL and Vulkan​[upcoming: JE 26.2] used in the game's rendering, while also providing some low-level abstraction for OpenAL and glyph typographic information for audio control and fonts respectively.
+When used for rendering, Blaze3D sets up the render system and the graphics backend, managing the program's window, GPU devices, memory buffers, view states, and other resources. When used for audio, it provides audio devices, channeling, and playback control for the game's own sound engine.
+In the future, Mojang Studios plans to rework the codebase, which includes separating the game's rendering and gameplay codebase, and a dedicated thread for rendering.
+
+
+== History ==
+
+
+== See also ==
+Bedrock Edition installation files, which contain the game client executable for Bedrock Edition.
+.minecraft
+server.jar
+
+
+== Navigation ==

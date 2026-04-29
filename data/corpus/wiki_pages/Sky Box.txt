@@ -1,0 +1,35 @@
+A sky box is an item added in 25w14craftmine.
+
+
+== Obtaining ==
+The sky box item can be found in one of the rooms unlocked with a shimmering key, known as the boiler room. 
+
+
+== Usage ==
+A sky box is used to set the look of the sky in the current dimension. It can be used in a dimension control block, which will change the skybox of the world the player is currently in. Seven different skyboxes can be accessed by opening a shimmering door with the boiler room key (accessible with /give @s shimmering_key[instant_room={"structure": boiler}]) which will give the player the skyboxes with following skies: 
+
+"Hub (Classic)", which is a pure bedrock sky, can be given with: /give @s sky_box[sky={repeats: 16, size:400.0f, texture: "block/bedrock", name: {translate: "sky.classic_hub"}, type: "cube"}]
+"Overworld", which is a normal sky, can be given with: /give @s sky_box[sky={type: "overworld"}]
+"Missing", which is a sky with the missing texture, can be given with: /give @s sky_box[sky={repeats: 16, size: 400.0f, texture: "missing", name: {translate: "sky.missing"}, type: "cube"}]
+"The End", which is the End sky, can be given with: /give @s sky_box[sky={type: "end"}]
+"Smol", which is a sky with a panorama from inside a mine entrance, can be given with: /give @s sky_box[sky={type: "panorama"}]
+"Bad Idea", which is the entirety of blocks.png-atlas, can be given with: /give @s sky_box[sky={repeats: 1, size: 400.0f, texture: "atlas/blocks", name: {translate: "sky.atlas"}, type: "cube"}]
+"True Sky", which is a sky with the tiled texture of the block "Sky", can be given with: /give @s sky_box[sky={repeats: 8, size:400.0f, texture: "block/sky", name: {translate: "sky.actual_sky"}, type: "cube"}]
+There also exists an 8th sky, which can be taken out in the Overworld, called "Dev Mode", can be given with: /give @s sky_box[sky={type: "code"}]
+The player can make a sky out of any texture when "block_name" in this command is replaced with the name of any block. The player can also change "repeats" to be any integer. /give @s sky_box[sky={repeats: 1, size:400.0f, texture: "block/block_name", name: {translate: "sky.classic_hub"}, type: "cube"}]
+
+
+== Data values ==
+
+
+=== ID ===
+
+
+== Gallery ==
+
+
+== Issues ==
+Issues relating to "Sky Box" are not maintained on the bug tracker because it is an April Fools' joke, and is therefore not in the newest stable version or snapshot. Issues reported there are closed as "Invalid".
+
+
+== Navigation ==

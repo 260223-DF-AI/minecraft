@@ -1,0 +1,175 @@
+20w14a is the tenth snapshot for Java Edition 1.16, released on April 2, 2020, which adds zoglins, makes some changes to striders, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Items ===
+Spawn eggs
+
+ Zoglin spawn egg
+Spawns zoglins.
+
+
+=== Mobs ===
+ Zoglins
+
+Created when a hoglin is brought into the Overworld.
+Unlike hoglins, they can't be bred or fed, and they don't flee from warped fungus.
+Attack most mobs on sight, except for creepers and other zoglins.
+
+
+=== Gameplay ===
+Sounds
+
+Added various sounds to zoglins.​[more information needed]
+Subtitles
+
+Added a lot of previously missing subtitles.:
+Added "Beacon activates", "Beacon hums", "Beacon deactivates", and "Beacon power selected".
+Added "Conduit activates", "Conduit pulses", "Conduit attacks", and "Conduit deactivates".
+Added "Enchanting table used".
+Added "End Portal opens!" and "Eye of Ender attaches".
+Added "Shears carve".
+Added "Smithing Table used".
+Added "Rowing" subtitle for boats.
+Added "Cat begs", "Cat eats", and "Cat hisses".
+Added drowned's underwater ambient sound, "Drowned gurgles".
+Added "Eye of Ender falls".
+Added "Bobber retrieved".
+Added "Hoglin converts to Zoglin".
+Added "Horse lands".
+Added player attacking subtitles: "Critical attack", "Knockback attack", "Strong attack", "Sweeping attack", and "Weak attack".
+Added player damaging subtitles: "Player drowning" and "Player burns".
+Added "Strider dies", "Strider eats", "Strider warbles", "Strider hurts", "Strider chirps", and "Strider retreats".
+Added "Tropical Fish dies", "Tropical Fish flops", and "Tropical Fish hurts".
+Added "Wandering Trader disappears", "Wandering Trader drinks milk", "Wandering Trader drinks potion", and "Wandering Trader appears".
+Added "Zoglin growls", "Zoglin growls angrily", "Zoglin attacks", "Zoglin dies", "Zoglin hurts", and "Zoglin steps".
+Added "Turtle Egg stomped".
+Added "Bottle empties".
+Added "Fish captured".
+
+
+== Changes ==
+
+
+=== Items ===
+Compass
+
+Now has LodestonePos, LodestoneDimension, and LodestoneTracked data fields. If LodestoneTracked is zero, the game skips checking for a lodestone in the specified position.
+Can now be enchanted with Curse of Vanishing.
+Warped fungus on a stick
+
+Now has 100 durability instead of 25.
+Takes 1 damage whenever the strider's speed is boosted.
+
+
+=== Mobs ===
+Hoglins
+
+Now become zoglins in the Overworld.
+Now avoid nether portals and respawn anchors.
+Piglins
+
+Now avoid zoglins in the same way they avoid zombified piglins.
+Striders
+
+Riding speed has now been significantly increased to be even faster than that of a boat.​[more information needed]
+
+
+=== General ===
+Advancements
+
+The advancements "Monster Hunter" and "Monsters Hunted" now include elder guardians, ender dragons, endermites, vexes, withers, and zoglins.
+Attributes
+
+Items and entities no longer keep unknown attributes.
+Names of some attributes have been renamed to meet resource location requirements (i.e., lowercase separated by underscores instead of camel case).
+Changed generic.maxHealth to generic.max_health.
+Changed zombie.spawnReinforcements to zombie.spawn_reinforcements.
+Changed horse.jumpStrength to horse.jump_strength.
+Changed generic.followRange to generic.follow_range.
+Changed generic.knockbackResistance to generic.knockback_resistance.
+Changed generic.movementSpeed to generic.movement_speed.
+Changed generic.flyingSpeed to generic.flying_speed.
+Changed generic.attackDamage to generic.attack_damage
+Changed generic.attackKnockback to generic.attack_knockback
+Changed generic.attackSpeed to generic.attack_speed
+Changed generic.armorToughness to generic.armor_toughness.
+Main menu
+
+The main menu background is now in the Nether.
+Since this was an asset update, all of the 1.16 snapshots have the new backdrop.
+Statistics
+
+General statistics are now ordered alphabetically in the statistics menu.
+Tags
+
+Added nether portals and respawn anchors to the hoglin_repellents block tag.
+World save files
+
+Region files are now read/written in synchronous mode to help prevent data loss and corruption after crash.
+Dedicated servers can disable that by changing sync-chunk-writes inside server.properties.
+
+
+== Fixes ==
+39 issues fixed
+From released versions before 1.16
+
+MC-83039 – End City chests generate destroyed, items on the ground.
+MC-91893 – Missing subtitles for various sounds.
+MC-109248 – Extended piston head is not removed when /setblock is used to place a different piston base.
+MC-115750 – Advancement "Monster Hunter" (kill_a_mob) is not granted for killing certain hostile mobs.
+MC-116756 – Reversed and inconsistent subtitles for iron trapdoor.
+MC-124428 – Firework star crashes game if there is an int array but no colors.
+MC-125055 – Igloo generates with brewing stand and flower pot contents dropped (and placed).
+MC-127316 – General statistics out of order.
+MC-133049 – Compasses do not point to the correct location when in an item frame on the ground or on the ceiling.
+MC-135501 – Invalid tag inside another tag silently fails to reload data packs.
+MC-150405 – Client handling of unknown entity attributes is bugged.
+MC-150455 – Ignored lava hitbox level.
+MC-154427 – Villagers only pick up four stacks of items.
+MC-161128 – Piston head left behind when base is quickly broken and replaced.
+MC-164129 – Ender dragon inner hitboxes are rendered offset by approximately 200 blocks.
+MC-164446 – Tags do not load if one of their values is invalid, causing all data packs to unload.
+MC-167608 – Item frames are destroyed after respawning.
+MC-169975 – Highlight players (spectators) key does not affect any players other than the user.
+MC-175201 – Misrotated floor block in savanna_small_house_1, savanna_small_house_2, savanna_small_house_3 and savanna_small_house_7.
+MC-176644 – Observers do not trigger when a fence connects to a newly grown tree.
+From the 1.16 development versions
+
+MC-172069 – Piston arms are not deleted when the base of a pulsing piston is replaced with another piston.
+MC-173158 – Zombified piglin's overlay texture is not rendered.
+MC-173192 – Fluid collision is too high.
+MC-173684 – Spawning under the portal when using a nether portal.
+MC-173774 – Shulker bullets do not act as a projectile.
+MC-173875 – Item frames cannot be interacted with after unloading and reloading the chunk.
+MC-174231 – Ocelots are no longer spawning.
+MC-174838 – Target detection of fireworks is unreliable.
+MC-175434 – Fireworks launched from upwards-facing dispensers explode inside of the dispenser block.
+MC-175985 – Lodestone compass needle does not have animation.
+MC-175990 – Lodestone compass needle spins around quickly when the lodestone has been destroyed or is not in the same dimension.
+MC-176052 – Using a compass on a lodestone plays no hand animation.
+MC-176059 – Scoreboard criteria for using compasses does not increase score after using a compass on a lodestone.
+MC-176195 – Many mountable mobs and vehicles can still be shot by the rider's arrows.
+MC-176231 – Compasses with custom enchantments do not display enchantment glint.
+MC-176269 – Right-clicking lodestone with compass also uses offhand item.
+From the previous development version
+
+MC-176387 – Fishing rod can reel in vehicle of player.
+MC-176391 – Basalt can generate on nether trees.
+MC-176420 – Lodestone compass sound is in the friendly creatures option.
+
+
+== Videos ==
+
+
+== Trivia ==
+Unlike most of the first-of-the-week actual snapshots, this was released on a Thursday instead of Wednesday, similar to the snapshots before 14w26a.
+This is because an April Fools' joke snapshot Java Edition 20w14infinite was released on April 1, 2020, which is a Wednesday.
+
+
+== References ==
+
+
+== Navigation ==

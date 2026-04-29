@@ -1,0 +1,51 @@
+Specify the operation for the player's input permission status, such as player movements, camera movements, and more.
+
+
+== Syntax ==
+inputpermission query <targets: target> <permission: permission> [state: state]
+Queries the status of the specified privilege of the target.
+inputpermission set <targets: target> <permission: permission> <state: state>
+Modifies the status of the specified privilege of the target.
+
+
+== Arguments ==
+targets: target: CommandSelector<Player>
+
+Specifies the owner of the permission.
+Must be a player name or a target selector. 
+permission: permission: enum
+
+Specifies the authority for the operation.
+Must be one of the following:
+camera — Turn the camera view
+dismount — Dismount
+jump — Jump and fly upward
+lateral_movement — Move
+mount — Mount
+move_backward — Move backward
+move_forward — Move forward
+move_left — Move left
+move_right — Move right
+movement — Move, sneak, jump, and fly
+sneak — Sneak and fly downward
+state: state: enum
+
+The status of the specified permission.
+Must be forenabled (Enable) ordisabled (Disable).
+For... query ..., If not specified, all states are queried.
+
+
+== Results ==
+
+
+== Output ==
+
+
+== History ==
+
+
+== External links ==
+"/inputpermission Command"     – Microsoft Learn, October 9, 2024.
+
+
+== Navigation ==

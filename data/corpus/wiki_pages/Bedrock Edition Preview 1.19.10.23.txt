@@ -1,0 +1,93 @@
+Beta 1.19.10.23 (Android) or Preview 1.19.10.23 (Windows, iOS, iPadOS, Xbox) is the fourth beta/Preview version for Bedrock Edition 1.19.10, released on June 15, 2022, which added biome and structure subcommand to /locate, bringing more parity changes from Java Edition, and fixed some bugs.
+
+
+== Additions ==
+
+
+=== Command format ===
+/locate
+
+Added /locate biome, which can locate specific biomes.
+
+
+== Changes ==
+
+
+=== Items ===
+Pufferfish
+
+The strength of the poison effect has been decreased from IV to II.
+
+
+=== Mobs ===
+Cod, salmon, pufferfish, and tropical fish
+
+Reduced the health from 6HP to 3HP to match Java Edition.
+
+
+=== Command format ===
+/locate
+
+Split from /locate -> /locate structure.
+The original /locate still exists however.
+
+
+== Fixes ==
+Allay
+
+Items held by Allays now glow in darkness (MCPE-153533)
+Blocks
+
+Mangrove Signs now use Mangrove Plank textures for breaking particles (MCPE-156568)
+Mangrove Propagule is now placed at a random offset (MCPE-153735)
+Iron Bars and Glass Panes now connect to Mangrove Roots (MCPE-153871)
+Darkness
+
+Darkness effect now works in the Nether and the End dimensions
+Lava and Powder Snow fogs now take priority over Darkness and Blindness fogs (MCPE-154928)
+Sculk Shrieker
+
+Sculk Shrieker now detects players when riding all types of entities, including Striders, Skeleton Horses, Pigs, and Llamas (MCPE-153814)
+Gameplay
+
+Bell now rings when hit by any type of projectile
+Hit sound is now played when Amethyst block is hit by projectiles (MCPE-137090)
+Fixed Bottles not usable on water and Boats not placeable on water (MCPE-156451)
+Warden
+
+Warden's hurt animation no longer differs between Bedrock Edition and Java Edition (MCPE-153967)
+General
+
+Fixed a bug on certain flat worlds where below-0 terrain was accidentally being removed on level load, if there was bedrock at y=0 (MCPE-156679, MCPE-156698)
+User Interface
+
+Fixed a typo in notification duration label for accessibility settings (MCPE-156901)
+Mangrove Swamp
+
+Mangrove Swamps are now denser to more closely match Java Edition (MCPE-153748)
+Grass blocks in Mangrove Swamps now have Dirt blocks underneath them (MCPE-155414)
+Mobs
+
+Fixed a bug causing tamed mobs to disappear when they go through a Nether portal in a multiplayer world (MCPE-88322)
+Edited fish health points of Cod, Pufferfish, Salmon, and Tropical fish to be 3 to match Java Edition
+Fixed an issue that broke Slime spawn behavior and prevented Slimes from spawning in Swamp biomes that were also Slime chunks (MCPE-156411)
+Wandering Trader
+
+Fixed a bug that prevented Trader Llamas from becoming aggressive towards entities that attack the Wandering Trader (MCPE-94996)
+Stability
+
+The game no longer crashes when entering the Coin Starter Bundle Screen
+Vanilla Parity
+
+Shulker projectile now adds effect "Levitation" instead of "Levitation II" on hit
+Pufferfish now gives Poison II effect instead of Poison IV when consumed (MCPE-105392)
+Technical
+
+Fixed a bug that prevented the owner of the "minecraft:angry" component from broadcasting anger to its friends if it has no target. A mob with this component will now be able to get angry if it both does not have a target and the component's "filters" list is empty (MCPE-94996)
+Mobs can now be hit by projectile when their hitboxes are outside the mob's bounds
+
+
+== References ==
+
+
+== Navigation ==

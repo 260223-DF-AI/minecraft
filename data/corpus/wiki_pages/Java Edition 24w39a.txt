@@ -1,0 +1,90 @@
+24w39a is the seventh snapshot for Java Edition 1.21.2, released on September 25, 2024, which adds bundles to normal gameplay and fixes bugs.
+
+
+== Additions ==
+
+
+=== General ===
+Tags
+
+Added the map_invisibility_equipment item tag, for items that can be equipped to hide the player marker on other players maps.
+Added the #boat entity type tag.
+
+
+== Changes ==
+
+
+=== Items ===
+Bundles
+
+Are no longer experimental.
+Carved pumpkin
+
+Equipping it on the player's head now removes the player marker from other players' maps.
+
+
+=== Non-mob entities ===
+Boats and boats with chests
+
+The entity IDs for boats and boats with chests have been split into separate types, one per existing variant, instead of Type field.
+
+
+=== General ===
+Container locks
+
+The Lock field of containers has been renamed to lock and is now an item predicate.
+Any items which match the predicate can open the container.
+The lock data component is now also an item predicate.
+Data pack
+
+The pack format version is now 55.
+Removed the bundle feature flag and built-in data pack.
+Predicates
+
+Removed the minecraft:boat entity sub-predicate, since boats no longer have variants.
+UI
+
+Updated slot highlight so item texture has better visibility.
+The previous textures have been added to Programmer Art resource pack.
+
+
+== Fixes ==
+23 issues fixed
+From released versions before 1.21
+
+MC-219083 – Hunger client/server desync when natural regeneration is off in peaceful mode.
+MC-235953 – Entity eyes render type doesn't blend non-black transparent pixels properly.
+MC-240001 – The white and red highlights from recipe book previews render above potion tooltips.
+From the 1.21.2 development versions
+
+MC-275216 – Bowl is consumed when feeding a rabbit stew to a wolf.
+MC-275544 – Drowned do not summon reinforcements anymore.
+MC-276305 – Bundles no longer available without enabling feature flag.
+MC-276341 – The time how long you remain on fire no longer increases while being in the fire.
+MC-276426 – Slimes or magma cubes spawned by splitting synchronize inherited status effects.
+MC-276588 – Boat with chest inventory names no longer are suffixed with 'with Chest'.
+MC-276598 – The slot_highlight_front texture renders incorrectly behind with missing recipe items.
+MC-276610 – Ender pearl interaction with bubble columns is broken.
+MC-276611 – Converted mobs do not keep CanBreakDoors tag.
+MC-276615 – Cured Zombie Villagers keep CanPickUpLoot:0b.
+MC-276638 – The server console or LAN game output spammed with "PLAYER moved too quickly!" after a player dies and respawns.
+MC-276646 – Unique Horse Armor sound event is no longer used.
+MC-276674 – Entities with emissive eyes aren't properly affected by fog of any kind.
+MC-276707 – Underwater fireballs constantly play fire extinguishing sound.
+MC-276724 – Arrows and potions resist upward flowing bubble columns.
+MC-276727 – Projectiles are choppy while moving after hitting blocks or entities.
+MC-276807 – All blocks and entities flicker at night or at lower light levels than 15.
+From the previous development version
+
+MC-276817 – Teleport command offsets are applied incorrectly.
+MC-276843 – Touching an end portal while in spectator mode teleports the player when they exit spectator mode.
+MC-276919 – /tp teleports twice the relative distance if there's a block on the teleport point.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

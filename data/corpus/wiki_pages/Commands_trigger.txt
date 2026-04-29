@@ -1,0 +1,36 @@
+Changes the executor player's score in a scoreboard objective with a "trigger" criterion, and un-enables the objective for this player. Allows non-operator players to modify their own scoreboard objectives under tightly controlled conditions. Often used to let players activate systems controlled by data packs or command blocks.
+
+
+== Syntax ==
+trigger <objective>
+
+Adds 1 to the current value of <objective>.
+trigger <objective> add <value>
+
+Adds <value> to the current value of <objective>.
+trigger <objective> set <value>
+
+Sets the value of <objective> to <value>.
+
+
+== Arguments ==
+<objective>: objective
+
+An enabled scoreboard objective with the "trigger" criterion.
+It must be a single word. (Allowed characters include: -, +, ., _, A-Z, a-z, and 0-9) It resolves into a scoreboard objective during command execution.
+<value>: integer
+
+Specifies the value to be set to or added to the objective.
+Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ).
+
+
+== Result ==
+
+
+== Output ==
+
+
+== History ==
+
+
+== Navigation ==

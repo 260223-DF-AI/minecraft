@@ -1,0 +1,93 @@
+12w07a is the sixth snapshot for Java Edition 1.2.1, released on February 15, 2012, which adds redstone lamps and updates the world type from Region to Anvil, which increases the height limit from 128 blocks to 256.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Redstone lamp
+
+Crafted using glowstone and redstone.
+If powered by redstone, the lamp turns on.
+
+
+=== General ===
+World file format
+
+Worlds now use the new Anvil file format instead of Region.
+World files now save with .mca suffixes instead of .mcr.
+World height is now 256 blocks instead of 128 blocks.
+Up to 4096 block IDs can now be used.
+Maltese language
+
+Re-added after being removed in 12w01a.
+Server.properties
+
+New setting:
+max-build-height
+
+
+== Changes ==
+
+
+=== Blocks ===
+Glass
+
+No longer drops itself when broken using a tool with Silk Touch.
+Redstone torches
+
+Can now be placed on the top of glass.
+Torches
+
+Can now be placed on the top of glass.
+Water
+
+Now only two blocks are required to break a fall from the maximum build height to y = 0 instead of four.
+
+
+=== Items ===
+Hoe
+
+No longer tills dirt or grass blocks when they have another block on top of them.
+
+
+=== Mobs ===
+Drops
+
+Decreased chance for the rare mob drops.
+Added zombie sieges, a rare event where a horde of zombies attacks a village at midnight.
+AI
+
+All animals now use the new AI system.
+Animals can now move their heads when walking.
+Baby animals now follow wheat.
+Villagers
+
+Added baby villagers.
+Villagers can now breed in order to repopulate villages based on how many houses there are available.
+
+
+=== World generation ===
+Villages
+
+The player may add houses to villages, provided they are enclosed with a roof and wooden door.
+
+
+=== General ===
+Multiplayer
+
+Multiplayer light recalculations no longer cause affected blocks to be transmitted to clients; instead the clients recalculate the effects when it is updated client-side.
+
+
+== Fixes ==
+3 bugs fixed
+
+Fixed wolf AI: they no longer teleport huge distances when the player is hit.
+Removed zombies' ability to break iron doors.
+Fixed cows breeding with mooshrooms.
+
+
+== References ==
+
+
+== Navigation ==

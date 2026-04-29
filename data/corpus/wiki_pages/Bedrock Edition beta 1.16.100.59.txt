@@ -1,0 +1,88 @@
+Beta 1.16.100.59 is the tenth beta version for Bedrock Edition 1.16.100, released on October 8, 2020, which adds a new command, re-adds RenderDragon, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Command format ===
+/schedule
+
+Used to set an action on a certain schedule.
+Works differently than Java Edition counterparts.
+
+
+== Changes ==
+
+
+=== Command format ===
+/camerashake
+
+Added the ability to pick between different shake types
+
+
+=== General ===
+RenderDragon
+
+Re-enabled in the beta.
+Technical
+
+Add Block
+Add Block content is not allowed to use Vanilla Block identifiers to avoid content collisions
+SetBlockAtPos does not modify the block position from incoming parameters
+Components
+Added a Lock in Inventory (minecraft:lock_in_inventory) component that can be applied to an item via the /give and /replaceitem commands. This prevents the item from being removed from the player's inventory, dropped, or crafted with.
+Added a Lock in Slot (minecraft:lock_in_slot) component that can be applied to an item via the /give and /replaceitem commands. This prevents the item from being moved or removed from its slot in the player's inventory, dropped, or crafted with.
+Added a Keep on Death (minecraft:keep_on_death) component which can be applied to an item via the /give and /replaceitem commands. This component prevents the item from being dropped when the player dies.
+Item Icon Component
+Items now have an easy way to set the icon for an item for displaying in the user interface
+Component Variables
+texture: Full path to icon image to use as item's icon. No default
+frame: Molang script to be executed at runtime to determine the icon's current frame. Can be a constant, defaults to: 0
+legacy_texture_id: The name of the texture used on legacy items. No default
+legacy_frame: Molang script to be executed at runtime to determine the icon's current frame. Can be a constant, defaults to: 0
+Data Driven Blocks
+Added the BlockDisplayNameComponent to allow display names to be configured in the localization table
+Made entity_collision and pick_collision take into account the rotation on a block
+Added support for the on_interact trigger component
+Improved support for on_interact modifying the item used, e.g. change durability or set into another item
+
+
+== Fixes ==
+Performance and Stability
+
+Fixed several crashes that occurred during gameplay
+Fixed a crash that could occasionally occur while flying or moving around the game world
+Blocks
+
+Signs can no longer be placed on end rods
+Blocks that can only be obtained with commands no longer have a placeholder tooltip (MCPE-100760)
+Fixed Crimson Roots, Warped Roots and Nether Sprouts not generating in the Nether (MCPE-100614)
+Walls converted from Console Edition saves are now joined properly
+Items
+
+Item lock icon and tooltip no longer appear when the Show Tags game rule is false
+Fixed an issue that was causing some item recipes to be missing from the crafting window (MCPE-100257)
+Armor no longer gets stuck in the hot bar after interacting with an armor stand (MCPE-84368)
+Added Book & Quill back to the Creative item inventory (MCPE-100361)
+User Interface
+
+Fixed the 'Profile' button in the Pause Menu not being sized correctly.
+Technical
+
+Fixed an issue where custom items were not added to the Creative item inventory and therefore could not be used with commands
+Fixed a bug where a request queued with /schedule would not clear out when executed and would execute when re-entering a level
+Fixed issues with the /schedule command that would consider an area loaded before it was actually loaded, and the command now respects which dimension it is queued in
+Fixed issue with Blocks sync
+Fixed animations not running on mobs spawned with custom events
+Fixed issue where on_interact would duplicate the item used if an event response killed the player
+Fixed custom items functioning or rendering correctly on the client in a client/server scenario
+
+
+== Trivia ==
+Beta 1.16.100.59 has the same protocol version as beta 1.16.30.56, which means these versions are cross-compatible with each other.
+
+
+== References ==
+
+
+== Navigation ==

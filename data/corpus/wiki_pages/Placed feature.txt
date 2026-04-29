@@ -1,0 +1,21 @@
+A placed feature determines where a configured feature should be attempted to be placed using placement modifiers. They can be referenced in biomes.
+Placed features are stored as JSON files within a data pack, in the data/<namespace>/worldgen/placed_feature folder.
+
+
+== JSON format ==
+
+
+== Placement modifiers ==
+When a placed feature is referenced through a biome file, the placed feature tells the configured feature in the feature field to place once on the northwest corner of each chunk at the bottom layer of the world. When a placed feature is referenced from a configured feature file or through the /place command, the placed feature tells the configured feature in the feature field to place once where the original feature/player is located respectively. Placement modifiers can change the position of the feature and the amount of placements. 
+Placed features are applied in order to determine where feature placement attempt(s) should occur. This can include moving the placement's position, number of positions, and filtering out positions based on given conditions. Each placement attempt applies placement modifiers separately.
+The possible values for [String] type and associated additional fields:
+
+
+== History ==
+
+
+== External links ==
+Placed feature Generator on misode.github.io
+
+
+== Navigation ==

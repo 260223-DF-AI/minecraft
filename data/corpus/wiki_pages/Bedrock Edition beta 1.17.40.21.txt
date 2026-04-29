@@ -1,0 +1,98 @@
+Beta 1.17.40.21 is the second beta version for Bedrock Edition 1.17.40, released on September 22, 2021, which allows old worlds to upgrade to the new world generation behind experimental toggle, and fixes bugs.
+
+
+== Changes ==
+
+
+=== General ===
+RenderDragon
+
+As part of continued testing, removed RenderDragon engine support on Android devices (ARMv7) (MCPE-141319)
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Caves & Cliffs" and "Enable GameTest Framework" experimental toggle.
+
+
+=== World generation ===
+Dripstone Caves
+
+In world generation, grass is replaced with stone (if generated near grass).
+Mountains
+
+Mountain tops are now more jagged and pointy.
+Mountain areas and peak biomes now are slightly larger on average.
+Stone shores
+
+Sometimes generate layers (strips) of gravel.
+Stony peaks
+
+Sometimes generate layers (strips) of calcite.
+General 
+
+Added new world/cave generation when upgrading saved chunks below Y=0 using the Caves and Cliffs experimental toggle.
+Chunks previously upgraded with Bedrock underneath will not see this change.
+Upgrades older flat worlds to the new extended heights available with the Caves & Cliffs experimental toggle
+New flat worlds using the Caves & Cliffs experimental toggle will generate starting at "y=-64"
+
+
+=== Technical ===
+GameTest Framework
+
+Updated the GameTest Framework interface and added a new SimulatedPlayer capability:
+Added 'SimulatedPlayer'class to GameTest. This class enables GameTest to simulate a variety of player behaviors such as movement, using items, and interacting with blocks and entities. See the GameTest API reference documentation for more details.
+Added function spawnSimulatedPlayer(blockLocation: BlockLocation, name: string): SimulatedPlayer
+Added function removeSimulatedPlayer(simulatedPlayer: SimulatedPlayer): void
+mojang-gametest.Test type
+Changed signature of function assertEntityInstancePresent(entity: Entity, blockLocation: BlockLocation, isPresent: boolean = true)
+mojang-minecraft components
+Component inventory now works with Player inventories
+
+
+== Fixes ==
+Experimental
+
+Fixed an issue in beta builds where flying above the world limit (255 for non-Caves & Cliffs experimental, 319 for Caves & Cliffs experimental) would be prohibited (MCPE-141360).
+Copper Ore now generates up to y=96 instead of y=64 (MCPE-125233).
+General
+
+Holding Top Snow in hand while hovering over Grass Blocks no longer causes incorrect behavior (MCPE-140659, MCPE-140660).
+Bee Nests now generate correctly in the world (MCPE-141324, MCPE-132195).
+Non-fireproof mobs now avoid pathing through fire (MCPE-23835).
+Gameplay
+
+Vanilla Parity: Players are now able to activate Elytra gliding while moving upward (MCPE-59580).
+Using Dye on Signs that contain formatted color text will overwrite the formatted color text.
+World Generation
+
+Fossils are now much less likely to generate in, and destroy structures.
+Dungeons are no longer misplaced or missing outside of the Caves & Cliffs experimental toggle (MCPE-121708).
+Mobs
+
+Iron Golem now spawns only on solid blocks (MCPE-140145).
+Wielded weapons now render properly on Pillagers and Vindicators (MCPE-141321).
+User Interface
+
+Riding an animal now displays the correct button prompt when playing with non-touch controls.
+Character Creator
+
+Back appearance pieces will no longer cover the left and right arrows in the profile screen.
+Fixed featured items in the profile screen not opening the featured catalog in the Dressing Room.
+Fixed default clothes changing color if another item’s color was edited previously.
+Sidebar options can now be selected in expanded view after navigating back from previously selected sidebar option while using controller.
+Sidebar no longer opens upon expanding any of the classic skin packs in the Dressing Room.
+Improved the navigation flow for Character Creator so that it always switches to the selected Character Creator profile (MCPE-139022).
+Skins that are equipped from Marketplace while in-game now apply to character.
+Technical
+
+Fixed a bug that caused animations to be restarted when changing render controllers.
+Fixed text on Signs losing their formatting when new lines or word-wrapping are encountered. Formatting will now persist until the reset code or an overriding code is found. This is not retroactive and previously created Signs will not be changed.
+Molang expressions that contain capital letters are properly evaluated now.
+'query.get_equipped_item_name' will now recognize Sea Lantern (MCPE-67893).
+Add new compile errors for expressions like 1 + (9 10), which were previously ignored (This is a Versioned Change as of engine version 1.17.40).
+
+
+== References ==
+
+
+== Navigation ==

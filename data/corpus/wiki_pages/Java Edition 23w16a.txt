@@ -1,0 +1,189 @@
+23w16a is the fourth snapshot for Java Edition 1.20, released on April 20, 2023, which adds a new command and fixes bugs.
+
+
+== Additions ==
+
+
+=== Command format ===
+/return
+
+A new command that can be used to control execution flow inside functions and change their return value. Effects:
+Skip remaining separate top-level commands in the currently executing function (if any).
+The result value of the function command that triggered the execution is changed from the number of commands executed to the value.
+The result value of the return command is also the value.
+Syntax: /return <value>
+value: An integer return value.
+
+
+=== Gameplay ===
+Advancements
+
+Added recipe_crafted advancement trigger; triggered when crafting a recipe.
+Conditions:
+recipe_id: The resource location of the recipe crafted.
+ingredients: An array of predicates for the item stacks used in the recipe.
+A single item stack can only be used to fulfill one predicate.
+Each predicate needs to be fulfilled to trigger the advancement. This allows for seperation between recipes that have same identifier but use different ingredients.
+This field is optional. When not provided, or left empty, only the recipe_id dictates the success of the trigger.
+
+
+=== General ===
+Splashes
+
+Added splashes:
+This sand is sus
+Remember to brush your... ...teeth
+Has working bookshelves!
+Sniff sniff...
+Place hanging sign here
+Tags
+
+Added block tags:
+#maintains_farmland: contains pumpkin_stem, pumpkin, attached_pumpkin_stem, melon_stem, melon, attached_melon_stem, beetroots, carrots, potatoes, torchflower_crop, torchflower, pitcher_crop, and wheat
+Blocks that don't cause farmland to be converted into dirt when placed on top of it.
+Added item tags:
+#villager_plantable_seeds: contains wheat_seeds, potato, carrot, beetroot_seeds, torchflower_seeds, and pitcher_pod.
+Seeds that villagers use to farm.
+Added block and item tags:
+#stone_buttons: contains stone_button and polished_blackstone_button.
+
+
+== Changes ==
+
+
+=== Blocks ===
+ Polished Blackstone Button
+
+Now breaks in the same time as other buttons.
+ Calibrated Sculk Sensor
+
+The model has been changed from : the top of the amethyst is now unshadowed and stretched to match the model of the amethyst cluster.
+ Pitcher Crop
+
+Hitbox shape has been changed for each stage of its growth.
+ Pitcher Plant
+
+Is now flammable.
+  Sculk Sensor and sculk Shrieker
+
+If a vibration is scheduled to be received by a sculk sensor or sculk shrieker, they stay queued until all adjacent chunks are loaded and ticking.
+This prevents vibration resonance setups from breaking when unloading their chunks from a distance.
+ Torchflower
+
+No longer makes farmland turn into dirt.
+Is now flammable.
+ Decorated Pot
+
+Tag for pot decorations renamed from shards to sherds (to match items).
+
+
+=== Items ===
+ Pottery Sherd
+
+Renamed from "Pottery Shard".
+
+
+=== Mobs ===
+ Sniffers
+
+No longer sniff while panicking.
+No longer dig while having the Levitation effect.
+Can now enter minecarts.
+ Villagers
+
+Can now plant torchflower seeds and pitcher pods.
+
+
+=== Non-mob entities ===
+Display
+
+item_display items have been rotated 180 degrees around Y axis to better match transformation applied when rendering items on armor stand head and in item frames.
+For reference, order of transformations applied to model (starting from innermost) is item_transform, rotate Y 180, transformation field, entity orientation (billboard option + Rotation field + Pos field).
+
+
+=== World generation ===
+ Trail Ruins
+
+Reworked and added more variants.
+No longer generates with sand and suspicious sand.
+Tweaked the amount of gravel, dirt, and suspicious gravel.
+Split the archaeological loot tables for the suspicious gravel within the structure.
+Rare loot items and common loot items now each have their own dedicated archaeological loot table.
+
+
+=== General ===
+Data packs
+
+Version is now 14.
+Loading world screen
+
+Changed chunk colormap a little.
+Tags
+
+Removed stone_button and polished_blackstone_button from the #buttons block and item tags, newly added #stone_buttons is used instead.
+Removed stone_button from the #mineable/pickaxe block tag, newly added #stone_buttons is used instead.
+Removed sand, dirt, and coarse_dirt from the #trail_ruins_replaceable block tag.
+Renamed #decorated_pot_shards item tag to #decorated_pot_sherds, and renamed all its members accordingly.
+General
+
+The game's application icon has been changed from crafting table to grass block.
+Uses dirt icon for snapshots.
+Added native support for ARM64 machine architecture on Windows.
+Needs to manually specify a native Java Executable in the launcher currently.
+
+
+== Fixes ==
+36 issues fixed
+From released versions before 1.20
+
+MC-117125 – Narrator still crashes on Linux, flite installed.
+MC-128011 – F3 toggles debug menu while viewing inventory.
+MC-151882 – Favicon in game window shows old crafting table texture.
+MC-162253 – Lag spike when crossing certain chunk borders.
+MC-169498 – Empty top subchunks don't update skylight in some cases.
+MC-170010 – Sky-lightmaps not properly initialized.
+MC-170012 – Lightmaps are missing for initial skylight.
+MC-188295 – Placing fallling blocks using /setblock can cause a client-side lag spike in some circumstances.
+MC-199752 – Polished Blackstone Button takes longer to break than other buttons.
+MC-207251 – Sculk sensors and shriekers do not work correctly when cloned, generated on superflat worlds or placed with custom structures.
+MC-249450 – Sculk shriekers placed with NBT don't receive signals from nearby sculk sensors.
+MC-252786 – SculkSensorBlockEntity and SculkShriekerBlockEntity leak VibrationListeners on update.
+MC-254410 – /setidletimeout set to a timer longer than 35791 disconnects idle player immediately.
+MC-257178 – Chiseled Bookshelf redstone behavior is inconsistent.
+MC-260038 – Sniffer does not have smooth animation transitions for some of its animations, like sniffing.
+MC-260219 – Sniffer eating sounds aren't played when feeding them the last item of torchflower seeds within a stack.
+MC-260221 – Sniffers can still dig when floated by levitation status effect.
+MC-260237 – Sniffers can sniff while panicking.
+MC-260466 – Torchflower doesn't maintain farmland used to grow it.
+MC-260849 – Sniffer can't get into minecart.
+MC-261804 – Expired Key preventing players from logging in on servers.
+MC-261857 – Using the "/setblock", "/fill", or "/clone" commands to create little amounts of blocks in completely isolated areas causes large client-side stutters.
+From the 1.20 development versions
+
+MC-261214 – Amethyst in calibrated sculk sensor is shaded and not stretched.
+MC-261286 – Walking near liquids causes stone footstep sounds to play.
+MC-261515 – You can't brush blocks if a dropped item is between you and the block.
+From the previous development version
+
+MC-261605 – Splash text sometimes covers several letters of "Java Edition".
+MC-261608 – Sculk sensors and calibrated sculk sensors lack a cooldown state.
+MC-261609 – The subtitle 'subtitles.block.sign.waxed_interact_fail' isn't displayed
+MC-261620 – Crash when modifying age property of a pitcher crop.
+MC-261625 – "Programmer Art" and "High contrast" built-in Resource Packs are incompatible.
+MC-261643 – Villagers can't plant torchflower seeds or pitcher plant pods, despite picking them up.
+MC-261646 – Subtitle for Sniffers laying eggs is "Chicken plops".
+MC-261740 – Feeding a Sniffer while it is digging causes it to lay motionless for a while then dig again with no animation.
+MC-261746 – Incorrect sound event ID spelling for "block.sniffer.egg_crack" and "block.sniffer.egg_hatch".
+From the current version, hotfixed
+
+MC-261981 – Click any buttons on the Accessibility Onboarding Screen crashes the game.
+MC-261984 – Clicking the Narrator button on the Accessibility settings menu causes crash.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

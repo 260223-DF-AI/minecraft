@@ -1,0 +1,72 @@
+Altitude is a measurement of vertical distance, or distance along the Y-axis.
+
+
+== Definition ==
+Altitude is often expressed as the bottom face of a block layer, where the lowest block that can be placed is at layer -64 and has a Y-coordinate of -64. For instance, sea level is at layer 62, while clouds appear at layer 191.
+This is not to be confused with altitude when otherwise expressed as the top face of a block layer, where the lowest block that can be placed is at layer -63 and has a Y-coordinate of -63. For example, sea level is at layer 63, while clouds appear at layer 192. This is akin to calling the ground level story the "first floor" (top face of a block layer), rather than the "ground floor" (bottom face of a block layer). The player can press F3 to see the Y-coordinate of the top face of a block they are on top of.‌[Java Edition  only]
+Altitude expressed as the bottom face of a block layer is most useful for identifying the position of blocks, such as when using /fill to replace block(s). Expressing altitude as the top face of a block layer is more useful for identifying the position of entities, such as when using /tp to teleport or /summon to spawn an entity/entities. For instance, the topmost block of water in an ocean biome has a Y-coordinate of 62; in a frozen ocean biome, ice replaces water at sea level, and the lowest height where terrestrial mobs can spawn is at layer 63.
+
+
+== Features and effects by height ==
+
+
+== Natural resources and altitude ==
+Features in the landscape of the Overworld are found at different altitudes, as shown in the graph below for Java Edition 1.20.2.
+
+Note that these charts utilize the logarithmic scale, which means a slight difference in the Y-coordinate represents a large change in the relative frequency of a block type. Also note that normal and deepslate ore variants have been combined in the chart. Interactive versions of these graphs containing all blocks can be found here.
+
+
+=== The Nether ===
+A similar graph, showing the distribution of blocks unique to the Nether (Java Edition 1.20.2):
+
+
+=== The End ===
+A similar graph, showing the distribution of blocks unique to the End (Java Edition 1.20.2):
+
+
+== Achievements ==
+
+
+== Advancements ==
+
+
+== Videos ==
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== Issues ==
+Issues relating to "Altitude" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Trivia ==
+The highest possible altitude the player can legitimately climb to is Y = 320, although explosions, elytra launchers, piston slime block bounces, Riptide tridents, and wind burst launchers can all propel the player far beyond this limit.
+In Java Edition, mushrooms can appear on the Nether's bedrock ceiling.
+Block generation and player construction below and above the build limits can be achieved only through modifying the dimension properties, or mods, such as the Cubic Chunks mod.
+The reasoning behind Custom worlds having height limits of ±2032 rather than ±2048 (a binary number notated as 211) is because the lighting system still applies 16 blocks above and below the world, but the Y-coordinates of blocks (which are also used in the lighting calculation) are stored internally using only 12 bits. Therefore, having limits of ±2048 would prevent the lighting system from functioning correctly.
+
+
+== Gallery ==
+
+
+=== Screenshots ===
+
+
+== See also ==
+Chunk
+Coordinates
+Void
+Amplified
+
+
+== References ==
+
+
+== Navigation ==

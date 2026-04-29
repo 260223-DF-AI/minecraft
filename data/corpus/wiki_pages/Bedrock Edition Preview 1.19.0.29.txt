@@ -1,0 +1,159 @@
+Beta 1.19.0.28 (Windows, Xbox, Android), Preview 1.19.0.29 (Windows, iOS, iPadOS), or Preview 1.19.0.64 (Xbox) is the fourth beta/Preview version for Bedrock Edition 1.19.0, released on April 28, 2022, which added the music disc 5, makes changes to allays, sculks and wardens and fixes bugs.
+
+
+== Additions ==
+
+
+=== Items ===
+Disc fragment
+
+Added a new music disc fragment titled "5".
+Can only be obtained from the chests in the ancient cities. They are extremely rare and hard to obtain.
+Music disc
+
+Added a new music disc by Samuel Åberg titled "5".
+Can only be obtained through crafting by using 9 "Disc Fragment 5"s.
+
+
+=== General ===
+Experiments
+
+Added "Spectator Mode" experimental toggle.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Carpets
+
+Carpets, like wool blocks, will now dampen the vibrations caused by their placing, breaking or dropping as items.
+Carpets now also dampen the vibrations caused by running and jumping over them.
+Mangrove leaves
+
+Are now dropped as an item when using shears.
+
+
+=== Items ===
+Goat horns
+
+Now available without enabling experimental gameplay.
+
+
+=== Mobs ===
+Allay
+
+Added new sound effects for throwing items
+Shulker
+
+Now immune to fire damage
+Warden
+
+Ranged attack now:
+Bypasses shields and armor.
+Deals damage of 6HP (Easy) / 10HP (Normal) / 15HP × 7.5 (Hard) instead of 16HP × 8 (Easy) / 30HP × 15 (Normal) / 45HP × 22.5 (Hard).
+Has a reduced cooldown of 2 seconds instead of 5 seconds.
+Displays a new death message: "<player> was obliterated by a sonically-charged shriek"
+Now drops a sculk catalyst upon death.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Spectator Mode" experimental toggle.
+
+
+=== Changes ===
+
+
+==== Gameplay ====
+Spectator mode
+
+Moved behind the experimental toggle.
+
+
+== Fixes ==
+Warden
+
+Warden now increases anger (10 for non-frequent projectiles and 35 for frequent projectiles) when being distracted by projectiles.
+Warden now reacts to non-arrow type projectiles.
+Warden can now correctly be distracted by non-arrow projectiles (MCPE-153549).
+Warden now gets angry at all mobs that bump into it (MCPE-153839).
+Sculk
+
+Sculk catalysts and shriekers have the same blast resistance as on Java (MCPE-153208).
+Restored some sculk-related sounds that were mistakenly removed (MCPE-153296).
+The sculk shrieker's shrieking sound is now categorized properly as a block sound (MCPE-154130).
+The sculk sensor's activation and deactivation sounds are now categorized properly as block sounds (MCPE-115395).
+Sculk sensor can now properly detect a player using a fishing rod.
+The sculk shrieker no longer exhibits z-fighting on any faces when held in hand or placed in item frames (MCPE-145580).
+Piston will not be able to push sculk shrieker, sculk sensor and sculk catalyst (MCPE-154056).
+Cracking animation no longer appears around tendrils while mining sculk sensor (MCPE-121492).
+Mangrove
+
+Mangrove propagule can no longer be fertilized indefinitely (MCPE-153707).
+Mangrove trees no longer grow if the area above them is obstructed.
+Merged mangrove_propagule_hanging into mangrove_propagule block and used a hanging block state instead.
+Mangrove wood/log types now properly prevent leaf decay (MCPE-153948).
+Brought mangrove tree foliage into parity with Java Edition.
+Fixed an issue where mangrove trees were generating without logs in the branches (MCPE-153948).
+Fixed a bug that caused most of the mangrove wood blocks to be unaffected by fire.
+Non-mangrove saplings can now grow into full trees when bone-mealed on mud.
+Mangrove leaves now drop leaf blocks when harvested by shears (MCPE-153787).
+Campfires and smokers can now be crafted out of all variants of mangrove wood (MCPE-153811).
+Allay
+
+It is now possible to take a stackable item from the allay and add it to an existing stack (MCPE-153540).
+Allay now has a new throw sound.
+Frog
+
+Frogs no longer have trouble pathfinding on mud blocks. To fix this, until a proper pathfinding-fix has been implemented, mud blocks will no longer sink entities down into them slightly (MCPE-153961).
+Fixed a bug where the frog's mouth Z-fights with their head when eating slimes or magma cubes (MCPE-151539).
+Froglight
+
+Froglight is now correctly dropped when destroyed by any tool.
+Froglight blocks now have the correct map colors (MCPE-154315).
+Froglight blocks now has the correct breaking time.
+Frogspawn
+
+Frogspawn now gets broken by flowing water.
+Gameplay
+
+Mobs can no longer spawn on buttons again (MCPE-153897).
+Amethyst clusters can no longer be placed on top of sculk shriekers and other blocks with no top support, and can now be placed on blocks with bottom support, as intended (MCPE-145676).
+Fixed a bug where an undamaged tool, such as pickaxe, when name changed on an anvil, would fail to work correctly when used for the first time (MCPE-152637).
+The recipes for minecarts with chests, minecarts with hopper, and minecarts with TNT are now shapeless.
+Fixed an issue where taking large fatal damage with the Absorption effect on could cause a soft lock.
+Vanilla parity
+
+Shulkers are now fire immune (MCPE-33236).
+Shulkers now remain in upright position in vehicles (MCPE-115269).
+Shulkers no longer fail to spawn when there’s another shulker at relative negative y and x axis.
+Touch controls
+
+The player can now slide from movement directions to jump and not get interrupted when jump and sneak are swapped on the 'Classic’ touch controls (MCPE-151149).
+Graphical
+
+Fixed sun direction not updating in RTX worlds (MCPE-153958).
+Trader llama
+
+Trader llamas can now breed after being fed hay bales.
+Trader llamas will no longer be persistent after being unleashed from the Wandering Trader (MCPE-102302).
+Stability and performance
+
+Fixed a crash which could occur when trading with a villager that last traded with a disconnected player.
+Fixed a crash that would occasionally occur in villages on iOS.
+User Interface
+
+Fixed bug where items can be dropped by clicking in the dark gray area of the left side of player inventory when using furnace, blast furnace, smoker, enchanting table, grindstone, brewing stand, anvil, beacon, and smithing table.
+Featured servers message text is no longer centered.
+Commands
+
+Added the 'replace entity' overload to the '/loot' command.
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

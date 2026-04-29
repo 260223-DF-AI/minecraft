@@ -1,0 +1,43 @@
+Counts entities (players, mobs, items, etc.) matching specified conditions.
+
+
+== Syntax ==
+testfor <victim: target>
+
+
+== Arguments ==
+victim: target: CommandSelector<Actor>
+
+Specifies the entities to test.
+Must be a player name or a target selector. 
+
+
+== Result ==
+
+
+== Output ==
+
+
+== Examples ==
+To test if Alice is online: testfor Alice
+To count the number of players in Survival mode within a 3-block radius of (0,64,0): testfor @a[x=0,y=64,z=0,r=3,m=0]
+To count the number of zombies within a 20-block radius of (0,64,0): testfor @e[x=0,y=64,z=0,r=20,type=zombie]
+To check if a random player has iron ingots in their inventory  testfor @r[hasitem={item=iron_ingot}]
+To check if a random player does not have iron ingots in their inventory  testfor @r[hasitem={item=iron_ingot},quantity=0]
+To check if a random is holding iron ingots in their inventory  testfor @r[hasitem={item=iron_ingot},location=slots.weapon.mainhand]
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== External links ==
+"/testfor Command"     – Microsoft Learn, October 11, 2023.
+
+
+== Navigation ==

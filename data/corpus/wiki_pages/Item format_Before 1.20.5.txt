@@ -1,0 +1,104 @@
+Items are used both in the player's inventory and ender chest, in container block entities, in some item entities, and in structure files.
+
+
+== NBT structure ==
+Items are stored in the NBT format. Sometimes a [Byte] Slot tag is used to specify the slot the item is in, such as with chests; other times there is no [Byte] Slot tag, such as with dropped items.
+
+
+=== Display Properties ===
+All items can have custom display names and lore, as well as a custom model data. Various tooltips can also be hidden.
+
+
+=== Attribute Modifiers ===
+All items can be given Modifiers which affect various Attributes of the player or mob wearing or holding them. Note that if an item has default attribute modifiers, these cease to exist if this tag is added (e.g. a diamond sword given an empty AttributeModifiers list no longer provides a boost to damage). Also note that default attribute modifiers do not use this tag, and as such, it does not appear on a natural item.
+
+
+=== Enchantments ===
+There are two ways enchantments are associated with items; the first way is that the item is actually enchanted and the enchantment affects the behavior of the item, and the second way is that the item is an enchanted book which simply stores the enchantments without actually affecting the behavior of the item. There is also the RepairCost tag which tracks anvil usage for items, making them more costly with every use of the anvil.
+
+StoredEnchantments tooltips are not displayed if edited onto an item other than an enchanted book. Enchantments stored in Enchantments, however, are always displayed in the tooltip and cause the item to glow, even if they cannot have any effect.
+
+
+=== Block Tags ===
+All items can have specifications for Adventure mode, to describe which blocks may be broken with them. Block items can also be given tags to specify what blocks they may be placed against in Adventure mode, and to specify what Tile Entity NBT tags to apply to them when placed.
+
+
+=== Durability ===
+Items with durability (tools and armors) can be made unbreakable and never lose any durability.
+
+
+=== Potion Effects ===
+Potions, splash potions, lingering potions, and tipped arrows can have multiple, customized effects via the custom_potion_effects tag. These effects are added to the default effect under the Potion tag if present. In addition the color can be overridden with the CustomPotionColor tag.
+
+
+=== Armors ===
+Every armor can be trimmed. Additionally, leather armor can be colored.
+
+
+=== Armor Stands, Spawn Eggs, Item Frames and Paintings ===
+Armor stands, spawn eggs, item frames and paintings may contain potential entity data.
+
+
+=== Book and Quills ===
+Book and quills use NBT data to save their contents.
+
+
+=== Written Books ===
+Written books use NBT data to save their contents as well as miscellaneous extra information.
+
+
+=== Knowledge Books ===
+Knowledge books use NBT data to indicate the recipes they contain.
+
+
+=== Buckets of Aquatic Mob ===
+Buckets of aquatic mob may contain potential entity data.
+
+
+=== Bundle ===
+Bundles use NBT data to save what item is stored.
+
+
+=== Compasses ===
+When used as a lodestone compass, compasses store information about their targeted lodestone.
+
+
+=== Crossbows ===
+Crossbows use NBT data to save what item is charged in the crossbow
+
+
+=== Debug Sticks ===
+Debug sticks use the NBT to save the block state to edit for each block.
+
+
+=== Firework Rockets ===
+Firework rockets use the tag tag to store information about their effects.
+
+
+=== Firework Stars ===
+Firework stars use the tag tag to store information about their effects.
+
+
+=== Goat Horns ===
+Goat horns use the instrument tag to control which sound can be played when using them.
+
+
+=== Maps ===
+Maps may be scaled, locked and contain icons.
+
+
+=== Player Heads ===
+Heads of the player variety can be associated with a specific username to take on the skin of that player when placed. The hand-held item is also updated with the new skin. Within this section, the "owner" of a head means the player whose head it is a copy of, and a player whose inventory contains a head is called the "holder".
+
+
+=== Suspicious Stew ===
+Suspicious stews store their potion effects.
+
+
+== History ==
+
+
+== References ==
+
+
+== Navigation ==

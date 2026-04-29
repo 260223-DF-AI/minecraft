@@ -1,0 +1,360 @@
+22w42a is the first snapshot for Java Edition 1.19.3, released on October 19, 2022, which added the first scheduled features for 1.20 and made bundles available again in the respective built-in experimental data packs, and fixes bugs.
+
+
+== Additions ==
+
+
+=== General ===
+Data packs
+
+Added a subsection called chat_type.
+Added a subsection called datapacks.
+Contains vanilla data packs that enable certain features.
+The vanilla world generation data pack is now visible within the game's jar.
+This means categories such as dimension_type and worldgen are now visible, along with their contents.
+Feature flags
+
+Option to enable or disable certain groups of game elements (i.e. blocks, entities, and items).
+Enabled via data packs.
+New pack metadata section called features, containing enabled feature flags in list named enabled.
+Game elements controlled by feature flags are hardcoded and stored per world.
+Built-in data packs now enable features and provide other things such as associated recipes and advancements.
+Feature flags can affect:
+Blocks
+Disabled blocks are not recognized by commands, won't spawn in structures, won't be loaded as part of entities, and can't be interacted with by players.
+Entities
+Disabled entities are not recognized by commands, don't spawn or load in the world, and spawn eggs for disabled entities don't function.
+Items
+Disabled items are not recognized by commands, are hidden from the creative menu, can't be used by players for interacting or attacking, and recipes and loot tables cannot create disabled items.
+Options
+
+Added a new "Panorama Scroll Speed" accessibility option.
+server.properties
+
+Added initial-enabled-packs and initial-disabled-packs.
+Allows for which packs to be selected to load during world creation.
+initial-enabled-packs contains a list of packs to be enabled (feature packs need to be explicitly enabled).
+initial-disabled-packs contains a list of packs that are not enabled automatically.
+Data packs added after world creation are disabled if they require features that are not enabled for the loaded world.
+Splashes
+
+Added the following splash texts:
+"You are valid!"
+"I'm glad you're here!"
+"You are welcome here!"
+"Your gender is valid!"
+"Contains infinite genders!"
+Tags
+
+Added the invalid_spawn_inside block tag.
+Contains end portal and end gateway.
+Added the stripped_log block and item tags.
+Includes all stripped logs and stems.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Chorus flower and scaffolding
+
+Mobs no longer spawn on them.
+Frogspawn
+
+No longer has transparent model.
+Invisible blocks
+
+Barriers and structure voids no longer produce particles when broken, for consistency with the light block.
+
+
+=== Mobs ===
+Rabbits
+
+Now always drop one raw rabbit when killed, or one cooked rabbit when killed by fire.
+
+
+=== World generation ===
+Stronghold
+
+The placement code has been changed to be more efficient, causing stronghold positions to shift.
+They are still placed in concentric rings, but their positions in the rings may change by a few degrees.
+
+
+=== Gameplay ===
+Advancements
+
+The advancement "Birthday Song" is now a regular advancement instead of a challenge.
+Chat
+
+Removed chat preview.
+Chat messages deleted by server moderators are no longer completely hidden, but rather replaced with text stating "This chat message has been deleted by the server."
+Deleted chat messages are now displayed in the chat window for at least 3 total seconds before being hidden.
+The chat trust status indicators have been tweaked:
+The 'Modified' tag no longer displays for server-modified messages where only style has been changed.
+The 'Modified' tag icon and indicator is now dark gray.
+The 'Not Secure' tag is now light gray and does not have an icon.
+Partially filtered chat messages now show the filtered text as gray hashes with a hover text saying that it was filtered.
+Creative inventory
+
+The ordering of tabs and the contents in the creative inventory have been tweaked to make the experience of finding relevant blocks and items easier.
+Blocks and items have been moved into categories that fit them better.
+Blocks are now ordered by their material as much as possible.
+For example, all oak blocks and variants are now next to each other.
+Some items can now be found in more than one tab.
+Various tabs have been renamed or collapsed into others.
+The new tabs for blocks are "Building Blocks", "Nature Blocks", "Functional Blocks" and "Redstone Blocks".
+The new tabs for items are "Tools & Utilities", "Combat", "Consumables", "Crafting" and "Spawn Eggs".
+The search tab now lists items sequentially grouped by the other tabs.
+For example, items found in building blocks always appear before items in redstone blocks.
+Petrified oak slab has been removed from the creative inventory, but can still be accessed through commands.
+Protocol
+
+The network protocol now supports adding player entities to the world without being added to the 'tab' player list.
+Servers can now lazily distribute players' profile public keys along with their first chat packet.
+Message 'headers' within the secure chat protocol no longer need to be distributed when private messages are sent.
+Contextual message references are now deduplicated for efficiency within the secure chat network protocol.
+Realms
+
+The "Realms News" button now shows a confirmation screen before opening the link.
+Recipes
+
+Crafting book categories/tabs can now be controlled by recipe definitions.
+Categories available for shaped/shapeless and various special crafting recipes:
+building
+redstone
+equipment
+misc (default)
+Categories available for smelting, blasting, smoking, campfire_cooking
+food
+blocks
+misc (default)
+Some crafting books collapse multiple categories into a single tab.
+The exact mappings might change in the future.
+Resource packs
+
+The pack format version is now 11.
+Removed "fixers" for resource packs with versions 3 and 4 (pre-flattening).
+The game no longer tries to adapt packs with those versions to the current version.
+Sound
+
+Various wood types now have unique sounds when placed, broken, or walked on.
+There are three sets of unique sounds: Overworld wood types, Nether wood types, and bamboo.
+
+
+=== General ===
+Tags
+
+Added crimson and warped hanging signs to the non_flammable_wood item tag.
+
+
+== Experimental ==
+These additions only take effect when the 1.20 experimental data pack is enabled, the exception to this is the re-addition of bundles, which only takes effect when enabling its respective experimental data pack.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Bamboo mosaics
+
+A variant exclusive to the bamboo plank set.
+Crafted by arranging 2 bamboo slabs in a vertical strip.
+Can be used to craft respective stairs and slabs variant.
+ Bamboo planks
+
+Crafted by arranging 4 bamboo in a 2×2 pattern.
+Can be used to craft respective  buttons,  doors,  fences,  fence gates,  pressure plates,  signs,  slabs,  stairs, and  trapdoors.
+Can be used to craft  bamboo rafts and  bamboo raft with chests.
+Can be used to craft wooden blocks or items (eg. chest).
+       Chiseled bookshelves
+
+Crafted with 6 planks and 3 wooden slabs.
+Can store up to 6 books, book and quills, and/or enchanted books.
+Interacting with the bookshelf while holding a book puts the book to the first empty slot.
+Interacting with the bookshelf while not holding a book takes the last book out of the shelf.
+Can interact with redstone comparators, which gives a signal strength matching that of the slot that was last interacted with.
+Don't interact with hoppers.
+Don't increase the power of enchanting tables.
+The correct tools to break them is an axe.
+Breaking them with any method drops any books inside. Silk Touch is required for the bookshelf itself to drop in addition to the books.
+ Hanging signs
+
+Can be crafted with 2 chains and 6 stripped logs, resulting 6 of them.
+The only exception is the bamboo hanging sign, which can be crafted with 2 chains and 6 bamboo planks, resulting 2 hanging signs.
+Can be hung up in the following ways:
+Underneath a block that can provide support in the center.
+When the hanging sign is placed underneath a full block, the chains are on parallel sides of the sign. Signs in this configuration can be placed in 4 cardinal directions (North, South, East, and West)
+When the hanging sign is placed underneath a non-full block, such as a fence, or when placed while sneaking, the chains take on an upside-down v-shape. Signs in this configuration can be placed in 16 different angles.
+Signs that are placed in this way break when the supporting block is removed.
+Underneath another hanging sign.
+When the hanging sign is placed in an angle that is the same or the opposite of the supporting hanging sign, the chains are on parallel sides of the sign.
+When the hanging sign is placed in any other angle, or when placed while sneaking, the chains take on an upside-down v-shape.
+Signs that are placed in this way break when the supporting block is removed.
+Attached to the solid side of a block.
+When the hanging sign is placed in this way, an additional support appears, which is a horizontal wood bar matching the wood type of the sign. The chain is on parallel sides of the sign, connected to the stick. Signs in this configuration can be placed in 4 cardinal directions (North, South, East, and West).
+Signs that are placed in this way remain hanging in the air when the supporting block is removed.
+Just like regular signs, the text on the hanging signs is on the front, and the back side is blank.
+Just like regular signs, the text on the hanging signs can be dyed.
+Just like regular signs, hanging signs can be waterlogged.
+Unlike regular signs, hanging signs have a much smaller space available for the text.
+Unlike regular signs, hanging signs can't be placed directly on the ground without support from the side or above.
+
+
+==== Items ====
+Spawn eggs
+
+ Camel spawn egg
+Bundle
+
+Moved behind its own data pack.
+
+
+==== Mobs ====
+ Camels
+
+Have 32HP × 16 health points.
+Spawn naturally in desert villages.
+Can be bred with cactus, and follow players holding a cactus on hand.
+Can be equipped with a saddle and ridden by up to two players.
+Can either walk slowly, sprint quickly, or dashing.
+Can walk over 1.5 block tall obstacles (such as fences and blocks with a slab on top).
+Dash can be done by pressing the jump key.
+After dashing, they lose stamina, leaving them unable to sprint or dash for a while.
+A dash can extend more than 10 blocks when executed perfectly.
+Mobs that are 2 blocks tall and lower cannot reach the player (except spiders) when the player is riding it.
+Randomly sit down.
+While sitting, it is difficult to convince them to move.
+
+
+==== Non-mob entities ====
+Boats and boat with chests
+
+Added  bamboo raft and  bamboo raft with chest.
+Can be crafted with bamboo planks instead.
+They function the same as regular boats, but have a unique look to them.
+
+
+==== General ====
+Tags
+
+Added the all_hanging_signs block tag.
+Contains the ceiling_hanging_signs and wall_hanging_signs tags.
+Added the ceiling_hanging_signs block tag.
+Contains all ceiling versions of hanging sign blocks.
+Added the wall_hanging_signs block tag.
+Contains all wall versions of hanging sign blocks.
+Added the bookshelf_books item tag.
+Contains book, written book, enchanted book, and book and quill.
+Added the hanging_signs item tag.
+Contains all hanging sign items.
+Added relevant bamboo blocks to the planks, wooden_buttons, wooden_doors, wooden_fences, wooden_pressure_plates, wooden_slabs, wooden_stairs, and wooden_trapdoors block and item tags.
+Added relevant bamboo blocks to the fence_gates, standing_signs, and wall_signs block tags.
+Added relevant bamboo items to the boats, chest_boats, and signs item tags.
+
+
+== Fixes ==
+83 issues fixed
+From released versions before 1.19
+
+MC-14167 – Mobs build up fall damage when dangling on a lead.
+MC-26757 – Large item tooltips can get cut off at the edges of the screen.
+MC-75699 – Villager restock hover text is not automatically wrapped making it cut off at edge of screen.
+MC-96449 – Rabbits sometimes don't drop any raw rabbit upon being killed.
+MC-130754 – Jumping on farmland pushes the player a bit.
+MC-135973 – Can't hold Q to drop items rapidly from container inventories.
+MC-145748 – Clicking a settings button when there's a slider under the mouse in the next screen plays the click sound twice.
+MC-146930 – The "Programmer Art" resource pack is internally called programer_art.
+MC-150488 – Mobs can spawn on scaffolding.
+MC-152752 – Jukebox music sound originates from north-west edge of the block.
+MC-160610 – Mobs are able to spawn on Chorus Flowers.
+MC-170457 – Chest latch doesn't rotate properly.
+MC-170817 – Click sound of sliders in the video settings noticeably louder than anywhere else.
+MC-175313 – Composter filling sounds originate from the bottom northwest corner of the block.
+MC-176597 – Petrifried oak slab isn't under #non_flammable_wood in creative menu.
+MC-177738 – Spawnpoint set on respawn anchor using /spawnpoint depletes glowstone charge, and doesn't stay on respawn anchor if its charge is depleted.
+MC-182708 – Nether and warped wart blocks do not come after leaves in the Creative inventory.
+MC-183069 – Donkeys, mules and undead horses cannot be saddled by right-clicking.
+MC-183502 – The sounds for collecting honey in a bottle and collecting honeycomb with shears is categorised under friendly creatures.
+MC-183831 – Villagers breed when not standing up.
+MC-183899 – You can set your spawn point inside an end portal, causing the player to become stuck in the End.
+MC-195060 – Right-clicking a tamed, ridden horse while sneaking plays the hand-swinging animation and doesn't use held items.
+MC-197150 – Horse armor and carpets cannot be equipped onto horses or llamas by right-clicking them whilst having these items held in your hand.
+MC-197476 – Some hover texts are wrapped too late making them cut off at edge of screen.
+MC-199162 – One farmland block in plains_large_farm_1 has moisture level 0.
+MC-201684 – Torches and soul torches aren't grouped together in the creative inventory.
+MC-201759 – Obsidians aren't grouped together in Creative.
+MC-202607 – Cat can get off lead by teleporting when it gives a gift after sleeping.
+MC-216733 – Basalt and blackstone are not grouped together with other "polishable" stone types in the Creative inventory.
+MC-217644 – Wart blocks and shroomlights are in different Creative tabs.
+MC-218534 – Blackstone stairs & slabs are not grouped with the other stone type stairs & slabs.
+MC-220489 – Beds and respawn anchors are not grouped in the Creative inventory.
+MC-221568 – Inconsistency: Barriers and structure voids produce particles when broken, but light blocks do not.
+MC-222879 – Netherite scrap comes after netherite ingot in the creative inventory.
+MC-224921 – Mob pathfinding fails under certain circumstances / mobs fall on closed turns.
+MC-226184 – Axolotls pathfinding to water can sometimes fall in wide holes.
+MC-226566 – Inconsistency: Blocks are not placed correctly in Creative inventory.
+MC-228475 – Pointed dripstone is not grouped with dripstone blocks in the creative inventory.
+MC-234446 – Moss Block appears in the wrong creative inventory tab.
+MC-239465 – Emerald block in creative inventory looks out of place.
+MC-242663 – Melons can generate underwater.
+MC-243458 – Worldgen data packs don't work on servers at first launch.
+MC-248753 – Pressure plates don't activate even though visually they should.
+MC-249294 – Rabbits ignore the MoreCarrotTicks value, causing them to always try to eat carrots.
+From 1.19
+
+MC-249106 – Water rendering incorrectly through frogspawn hitbox/model.
+MC-249232 – Frogs can sometimes fall into deep holes when pathfinding to entities.
+MC-249257 – The sounds of splashing when creating mud aren't controlled by the "Blocks" sound slider.
+MC-249419 – Map color for mud brick slab is no longer consistent with map color for other mud brick blocks.
+MC-249463 – Shulkers in boats with chests are lowered.
+MC-249513 – Frogspawn is not grouped with turtle eggs in the Creative inventory.
+MC-249720 – Allay's wings are not attached to its body.
+MC-249765 – Allays don't render semi-transparent when invisible where appropriate.
+MC-249806 – Allay renders too low in boat, boat with chest, minecart and entities.
+MC-249842 – Allays attempt to pathfind to items that are outside of the world border.
+MC-249875 – Parity Issue: Allays hesitate for a few seconds before following, throwing items, or doing other actions in Java.
+MC-249935 – New advancement "Birthday Song" grants no experience.
+MC-250113 – Muddy mangrove roots are not grouped with mud in the Creative inventory.
+MC-250212 – Custom world import settings always fails with "Error Importing Settings".
+MC-250249 – Parity Issue: Allays pick up arrow/potion items with other effects than the ones they're holding.
+MC-250311 – The minecraft:entity.tadpole.grow_up sound event doesn't have a translation key.
+MC-250423 – Frog frequently fails to long jump to small blocks.
+MC-250943 – minecraft.used:minecraft.goat_horn doesn't increase when using goat horns.
+MC-251296 – Allay has a transparent texture but it is not transparent in game.
+MC-251688 – Chat preview can overlap chat contents if the message is long enough.
+MC-252089 – The chat preview warning menu is forcibly closed when the player dies or changes dimensions.
+MC-252239 – Sculk Shrieker count resets when entering exit end portal.
+MC-252415 – Bedrock Edition's new 1.19.10 splash text is not available on Java 1.19.
+MC-253076 – Allay duplicates Items when its NBT data is updated every tick.
+MC-253367 – The screen is sometimes flashed with the "Loading terrain..." screen after proceeding with the chat preview warning when all nearby chunks are loaded.
+MC-253738 – Vibration particle faces at a constant pitch of about 60 degs, not pointing towards the target.
+MC-254119 – Breeding a Screaming Goat and a Regular Goat never results in a screaming goat.
+MC-254189 – Parity issue: Allay cannot be interacted with while it is inside a boats or minecarts in Java.
+MC-254535 – Nether portals cannot replace snow layers.
+From 1.19.1
+
+MC-253125 – Allays can dance while panicking.
+MC-253189 – Allays with NoAI can dance.
+MC-254395 – Command suggestions can overlap the chat preview field when the chat preview option is set to "When Sending".
+MC-254427 – Secure chat warning toast can appear on singleplayer worlds.
+MC-254695 – "Narrator Disabled" pop-up doesn't render fully.
+MC-254774 – Crash when a villager with a gossip of value 0 shares gossips.
+From 1.19.2
+
+MC-255151 – net.minecraft.client.Camera#getMaxZoom(double) issue.
+MC-255164 – Sculk Shrieker warning level resets to 0 after player's death.
+MC-255715 – Menu panorama stops spinning after several days.
+MC-256217 – Explosions create ghost blocks on servers at high coordinates.
+
+
+== Videos ==
+
+
+== Trivia ==
+This snapshot was released 75 days after 1.19.2 was released, the longest time between the releases of any two consecutive versions of Java Edition.
+
+
+== References ==
+
+
+== Navigation ==

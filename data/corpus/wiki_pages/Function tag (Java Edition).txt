@@ -1,0 +1,20 @@
+A function tag is a group of functions. They can be called in the /function command with #<resource location>, which runs all the functions specified in the tag in the order of their first appearance in a tag. If a function is referenced multiple times in a tag and its sub-tags, it is run once.
+Moreover, functions tagged in the minecraft:tick tag run every tick at the start of the tick and functions tagged in minecraft:load run once at the start of the tick after a server (re)load.
+
+
+== List of tags ==
+This is a list of all function tags used directly by Minecraft. They are in the minecraft namespace. Adding a function to these tags has a direct effect.
+
+
+=== load ===
+Functions in this tag run when the world loads, or after a reload.
+
+
+=== tick ===
+Functions in this tag run at the beginning of every tick.
+
+
+== History ==
+
+
+== Navigation ==

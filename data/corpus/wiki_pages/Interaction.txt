@@ -1,0 +1,39 @@
+Interaction entities are a technical entity, useful for map or data pack creators to see who the last player to click on a certain spot is. They can only be created with the /summon or /execute summon commands.
+Interaction entities are invisible, invincible and of a custom size. Their bounding box can be viewed via the F3 + B debug shortcut.
+
+
+== Behavior ==
+Interaction entities record the UUID of the last player that left-clicked and right-clicked them, and the time at which the interaction happened. If response is set to true, left-clicking an interaction entity plays a punching sound, and right-clicking it makes the player's arm swing.
+
+
+== Usage ==
+You can check information on who last left-clicked and right-clicked on the interaction entity with the /data get entity command. This information can be useful in datapack and map creation. You can also change their size to match the area you want to be checked.
+
+
+=== Advancement triggers ===
+Interacting with (right-clicking) an interaction entity triggers player_interacted_with_entity.
+Attacking (left-clicking) an interaction entity triggers player_hurt_entity.
+
+
+=== Commands ===
+The interaction entity targets the player who last interacted with it. That makes the following possible:
+
+/execute on attacker execute as the last player who attacked (left-clicked) the entity.
+/execute on target execute as the last player who interacted with (right-clicked) the entity.
+
+
+== Data values ==
+
+
+=== ID ===
+
+
+=== Entity data ===
+
+Interaction entities have entity data associated with them that contain various properties of the entity.
+
+
+== History ==
+
+
+== Navigation ==

@@ -1,0 +1,43 @@
+Bedrock Editor v0.7.4 is a minor alpha release for the Bedrock Editor released on October 9, 2024.
+
+
+== Changes ==
+Brush tool
+
+Selection now has a freehand select that uses brushes to paint.
+Updated general brush functionality:
+Brush shapes are visualized as grey wireframes, and show only affected blocks in yellow.
+Cursor Control / Mouse Mode is now using a common control which is shared across extensions.
+Brush Selection, Masking and Brush Properties is now using a custom control which is shared across extensions.
+Brush Painting now visualizes only affected blocks.
+Added support for brush shape offsets.
+API
+
+Added addToggleGroup function to IPropertyPane API to create toggle groups with selectable icon buttons.
+Added an optional infoTooltip: TooltipInteractiveContent property to IRootPropertyPane API, displayed as an icon in the drawer header. Interactive tooltips remain active on hover and support links and paragraphs.
+Added serialize(obj) and deserialize(string) functions. These act like JSON.stringify/JSON.parse but will use custom serializers/deserializers registered with registerSerializationForType.
+CompoundBlockVolume and BlockVolume are able to be serialized and deserialized with these functions.
+Added registerSerializationForType<T>(constructor, name, serializer, deserializer) which registers any type with custom serialization/deserialization for serialize and deserialize.
+Updated Block Masks to work when empty (always match).
+Added cancel property to endPainting().
+Added mouse button event data to the widget state change event so that server scripts can track mouse button events (press, release, drag) and the state of modifier keys (⇧ Shift, ctrl).
+Changed deleted fillColor and outlineColor in CursorProperties so that causes the Cursor colors to return back to the colors of those keys in the currently-selected theme.
+Other
+
+Added a new settings screen in View > View Settings to configure certain view related settings (like invisible block visibility and chunk boundaries).
+Added control buttons next to the hotbar to switch the active palette and manage other palettes.
+Updated Selection Volume and Cursor colors to default to the colors of those keys in the currently-selected theme.
+Changed Client Widget X, Y, and Z arrows to always be the colors of those keys in the currently-selected theme.
+
+
+== Fixes ==
+Fixed issues with selection being cleared on tool focus change.
+
+
+== Gallery ==
+
+
+== References ==
+
+
+== Navigation ==

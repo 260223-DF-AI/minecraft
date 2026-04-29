@@ -1,0 +1,30 @@
+Bedrock Editor v0.7.1 is a minor alpha release for the Bedrock Editor released on September 4, 2024, which adds the Middle Mouse Block Selector and fixes bugs.
+
+
+== Additions ==
+Added block picking for the current block palette on middle mouse click.
+Added custom block textures to now support in block images.
+Added resource access protocol block://<block_name> to retrieve block images.
+
+
+== Changes ==
+Added new API interface IStatusBar to manage IStatusBarItem objects. It can be accessed from statusBar property on IPlayerUISession.
+Added IStatusBarItemCreationParams for status bar item initialization.
+Removed text property from IStatusBarItem in favor of getText and setText functions. Added localization support for text content.
+Renamed EditorStatusBarAlignment to StatusBarAlignment.
+Renamed "Input Mapping" to "Keyboard Settings" action bar item and improved modal panel visuals.
+
+
+== Fixes ==
+Fixed a bug related to losing the block palette setting of simple blocks in hotbar between suspend/resume of application.
+Fixed a bug where Quick Start panel visibility was not persisted correctly.
+Fixed a bug so the hotbar fills with a list of default blocks rather than all air when creating a new editor world.
+
+
+== Gallery ==
+
+
+== References ==
+
+
+== Navigation ==

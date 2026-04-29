@@ -1,0 +1,48 @@
+Changes the rotation of an entity.
+
+
+== Syntax ==
+rotate <target> <rotation>
+Change the entity's rotation to the specified rotation.
+rotate <target> facing <facingLocation>
+Rotates the entity to face a specified block position.
+rotate <target> facing entity <facingEntity> [<facingAnchor>]
+Rotates the entity to face another entity.
+
+
+== Arguments ==
+<target>: entity
+
+Specifies the entity to rotate.
+Must be a player name, a target selector or a UUID.  And the target selector must be in single type.
+<rotation>: rotation
+
+Specifies the rotation.
+Must be a rotation consisting of two double number elements, including yaw and pitch, measured in degrees.For the horizontal rotation (yaw), -180.0 for due north, -90.0 for due east, 0.0 for due south, 90.0 for due west, to 179.9 for just west of due north, before wrapping back around to -180.0.For the vertical rotation (pitch), -90.0 for straight up to 90.0 for straight down.Tilde notation can be used to specify a rotation relative to the execution rotation.
+<facingLocation>: vec3
+
+Specifies the coordinates to make the target entity face towards.
+Must be three-dimensional coordinates with double-precision floating-point number elements. Accepts tilde and caret notations.
+<facingEntity>: entity
+
+Specifies the entity to make the target entity face towards.
+Must be a player name, a target selector or a UUID.  And the target selector must be in single type.
+<facingAnchor>: entity_anchor
+
+Specifies whether to face towards the entity'eyes or feet. If not specified, defaults to feet.
+Must be either eyes or feet.
+
+
+== Result ==
+
+
+== Output ==
+
+
+== History ==
+
+
+== References ==
+
+
+== Navigation ==

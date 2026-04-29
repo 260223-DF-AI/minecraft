@@ -1,0 +1,112 @@
+1.20.5 Pre-Release 2 (known as 1.20.5-pre2 in the launcher) is the second pre-release for Java Edition 1.20.5, released on April 15, 2024.
+
+
+== Changes ==
+
+
+=== Command format ===
+Item modifier
+
+set_fireworks
+Fields explosions and mode have been grouped together as a sub-object.
+{ "explosions": <list>, "mode": <mode>, <mode-dependent fields>} becomes {"explosions": {"values": <list>, "mode": <mode>, <mode-dependent fields>}}.
+explosions field is now optional, while value field inside it is now mandatory.
+
+
+=== Gameplay ===
+Advancements
+
+Snip it! advancement is renamed to Shear Brilliance.
+
+
+=== General ===
+Background
+
+The animated nether portal texture is displayed when changing dimension to or from The Nether.
+The animated end portal effect is displayed when changing dimension to or from The End.
+Controls
+
+Using Ctrl or ⌘ Command + pick block no longer lists "(+NBT)" in the item tooltip.
+Data pack
+
+The data pack version is now 40.
+Protocol
+
+Invalid data in packets sent from a server now cause the game client to disconnect.
+
+
+== Fixes ==
+52 issues fixed
+From released versions before 1.20
+
+MC-117637 – World is visible for a short moment after credits before respawn.
+MC-132380 – The "Joining world..." message shows up when you enter a nether/end portal.
+MC-172447 – Leaving the End shows loading screen with overlapping text.
+MC-199973 – Wet wolf is rendered too dark compared to past versions.
+MC-259355 – Game crashes because /place sometimes does not check whether position is loaded and out of world.
+From 1.20.2
+
+MC-265585 – Waterlogged barriers do not diffuse sky light.
+MC-265709 – Stonecutter outputs are broken past the 32nd row in the GUI (server only).
+MC-265741 – Waterlogged barriers don't show up on maps.
+MC-266997 – Sky light doesn't update when breaking a shulker box while its (closing) animation is playing.
+From 1.20.3
+
+MC-267103 – Client crashes when receiving inconsistent network registries.
+From 1.20.4
+
+MC-267352 – Singleplayer worlds don't load the player.dat when the "Player" tag is absent from level.dat.
+MC-269472 – Crash when table_bonus loot condition has empty chances list.
+MC-269755 – Scroller in Report Player screen renders translucent pixels as opaque, unlike elsewhere.
+MC-269763 – Scroller in Realms screen renders translucent pixels as opaque, unlike elsewhere.
+From the 1.20.5 development versions
+
+MC-267381 – Moving while sneaking is impossible with high generic.step_height attribute.
+MC-267414 – Scale attribute causes extreme TPS loss with the ender dragon.
+MC-268015 – Shulker bullets shot from shulkers don't account for the scale attribute.
+MC-268035 – True Type Font when changing language causes error with rendering overlay.
+MC-268064 – Armadillos that aren't rolled up can roll up during their death animation.
+MC-268257 – Equipping a carpet on a llama doesn't play a sound.
+MC-268804 – Wolves attacked while wearing wolf armor resets eating timer despite being at full health.
+MC-268810 – Ctrl+Picking chests still says (+NBT) even though NBT is replaced by components.
+MC-268854 – Firework explosions in items without a 'Type' field are not correctly upgraded.
+MC-268858 – Wolf armor can be placed in an enchanting table.
+MC-268984 – Running /give command throws EncoderException.
+MC-269123 – Enabling or disabling a resource pack that changes a shader will not affect that shader until the resource pack is reloaded.
+MC-269161 – Stonecutter does not support multiple recipes with the same result item type.
+MC-269171 – The client is disconnected when receiving the system_chat packet containing deeply nested NBT data.
+MC-269173 – The server cannot send the client the system_chat packet containing deeply nested NBT data.
+MC-269300 – The "Alternatively, here's some we made earlier!" text is positioned too close to the header separator.
+MC-269304 – Horse armor renders incorrectly when worn by wolves.
+MC-269415 – set_fireworks "mode" is required even when "explosions" is optional.
+MC-269619 – Scroller in telemetry data screen renders translucent pixels as opaque, unlike elsewhere.
+MC-269660 – arguments.item.predicate.unknown quotes are different.
+MC-269802 – Selecting a villager trade merges items with different components.
+MC-269932 – Item disappears when trying to trade using items with lower max stack count.
+MC-270003 – Ominous banners are not "pick block"-ed properly.
+MC-270049 – Enchanting table buttons and level icons render translucent pixels as opaque.
+MC-270116 – The minecraft:generic.fall_damage_multiplier attribute does not function for many mobs with nonstandard fall damage behavior.
+MC-270117 – The calculation of fall damage for horses, donkeys, mules, zombie horses, skeleton horses, camels, llamas, trader llamas, and foxes disregards the minecraft:generic.safe_fall_distance.
+MC-270262 – You can see the world loading while in the process of entering it.
+MC-270265 – Blur slider does not say "OFF" when set to 0%.
+MC-270413 – A nbt copy of a block is absolutely the same as the first nbt copy of the original and n (+nbt) display for tooltip of (a copy of)×n a block having an "Items" block data.
+MC-270559 – FreeType error: Unrecognized error: 0x62 (Loading glyph).
+From the previous development version
+
+MC-270590 – Dropped items from Creative mode get deleted when inventory is open.
+MC-270603 – Crash updating world: ClassCastException: RegularImmutableList cannot be cast to class com.mojang.datafixers.util.Pair.
+MC-270610 – Some new advancement titles are incorrectly capitalized.
+MC-270648 – Wolf armor with the Curse of Binding enchantment cannot be removed from wolves using shears in Creative mode.
+MC-270679 – Clicking on text with run_command can cause EncoderException and will exit to Multiplayer menu.
+MC-270712 – Cannot move while sneaking if attribute generic.step_height is set to 0.
+MC-270748 – In the air (not flying) players behave the same as on the ground while sneaking if there is a block in the space equal to the hit height extending from generic.step_height=n≦10→(n),n>10→10 blocks below.
+MC-270767 – Leather horse armor no longer prevents horses from freezing in powder snow.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,67 @@
+Starts or stops a time profiler session. Gets more detailed information of function execution.
+
+
+== Syntax ==
+debug start
+
+Starts a new debug time profiler session.
+debug stop
+
+Stops the active debug time profiler session.
+debug function <name>
+
+Used the same way as /function to get more detailed information of commands' execution. Could not be called directly or indirectly by /return run or another /debug function.
+
+
+== Arguments ==
+<name>: function
+
+It must be a resource location or one prefixed with a #, which resolves into a function or a function tag during command execution.
+
+
+== Result ==
+
+
+== Output ==
+
+
+== File structure ==
+
+
+=== Function trace ===
+When using /debug function, a txt file titled debug-trace-yyyy-MM-dd_HH.mm.ss.txt is created in .minecraft/debug.
+In this file,
+
+[C] <command> means the <command> is executed.
+[M] <message> means a message is returned.
+[E] <message> means a failure message is returned.
+[R = <num>] <command> means the <command> returns a brigadier return value.
+[C] <command> -> <num> means the <command> is executed and returns a brigadier return value.
+[F] <function> size=<num> means a function is called.
+For most commands, the brigadier return value is equal to the result value that can be stored with /execute store result.
+But for /execute ... with one or more of the following subcommands, each branch returns its success value as its brigadier return value:
+
+... if ... (not at the end)
+... unless ... (not at the end)
+... as <targets> ...
+... at <targets> ...
+... positioned as <targets> ...
+... rotated as <targets> ...
+... facing entity <targets> <anchor> ...
+Some commands like /return and /function have no brigadier return value.
+
+
+=== Profile result ===
+
+When using /debug stop, a txt file titled profile-results-yyyy-MM-dd_HH.mm.ss.txt is created in .minecraft/debug, which includes the result of profile dump.
+
+
+=== Report ===
+
+When using /debug report, a ZIP file is created with in .minecraft/debug/profiling the following structure:
+
+
+== History ==
+
+
+== Navigation ==

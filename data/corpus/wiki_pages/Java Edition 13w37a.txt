@@ -1,0 +1,111 @@
+13w37a is the third snapshot for Java Edition 1.7.2, released on September 12, 2013, which adds the /setblock and /testforblock commands and increases the command block length limit.
+
+
+== Additions ==
+
+
+=== Command format ===
+/setblock 
+
+Places blocks without the use of FallingSand.
+Syntax: /setblock <x> <y> <z> <TileName> [dataValue] [oldBlockHandling] [dataTag].
+Valid values for oldBlockHandling: "replace" places the specified block (throws error message if the same block exists already), "keep" only places blocks in air, and "destroy" mines the existing block and drops an item before placing the new block.
+/testforblock 
+
+Check for blocks in specific locations.
+Syntax: /testforblock <x> <y> <z> <TileName> [dataValue] [dataTag].
+All blocks beyond X/Z 30 million (±30,000,000) from origin now act as solid blocks, and cannot be targeted with the crosshair.
+This includes air blocks, essentially creating an invisible wall which extends infinitely, even above and below the chunks.
+As all blocks function as solid, if the player is moved outside the boundary via external tools, they are unable to move outside the block space they are within.
+Despite the above, the camera can still move normally.
+This reveals that ghost chunks still generate, as the camera can pass through normally solid blocks beyond the boundary.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Command blocks
+
+Increased the character limit to "many thousand characters".
+Lava
+
+Lava source blocks can no longer be destroyed by explosions.
+Technical blocks
+
+Removed the item forms of many blocks: bed (26), piston head and extension (34 & 36), redstone wire (55), wheat crops (59), standing and wall sign (63 & 68), wooden and iron door (64 & 71), lit redstone ore (74), unlit redstone torch (75), sugar cane (83), cake (92), unpowered and powered repeater (93 & 94), locked chest (95), pumpkin and melon stem (104 & 105), nether wart (115), brewing stand (117), cauldron (118), lit redstone lamp (124), tripwire (132), flower pot (140), skull (144), and unpowered and powered comparator (149 & 150).
+They can no longer be obtained with /give, but can be created with /setblock.
+Because the game is still told to drop a lit redstone lamp when mining a lit lamp with Silk Touch, doing so results in a java.lang.NullPointerException crash as such an item no longer exists.
+This removal has been done by adding method Sets.newHashSet(new Block[] {unobtainable blocks here}), and manual removal of blocks from Sets.newHashSet would restore ItemBlocks of aforementioned blocks.
+
+
+=== World generation ===
+Mesa
+
+Slightly changed mesa biome generation to appear more layered.
+
+
+=== Gameplay ===
+Nether portals
+
+Planned to have odd width to allow for design variations.
+Can be built large enough so that ghasts can enter the Overworld.
+Portals can now be activated from any block within the portal, not just the bottom (when any fire block appears inside the frame).
+New nether portal building rules: any size from 4×5 to 23×23, but rectangular.
+
+
+=== Command format ===
+/give
+
+Now prints renamed items' name in chat and show tooltips when hovered over.
+Block/item IDs
+
+Can now be referred to with names instead of IDs.
+
+
+=== General ===
+Chat
+
+Improved the chat system.
+"Useful to map makers, modders, players and server admins".
+Added a way to do things when clicking things in chat, like executing a command.
+Other actions include opening a URL and showing an item tooltip when hovered on.
+"Saved screenshot as" messages can now be clicked to open the screenshot, takes players to the .minecraft folder.
+Names can now be clicked to PM people.
+Added /tellraw <player> <raw json message> to send chat messages with custom functionality to players - sender does not appear.
+Syntax example: /tellraw @p {text:"Daytime? ",color:"green",extra:[{text:"Click here!",color:"blue",clickEvent:{action:"run_command",value:"/time set day"}},{text:" Nighttime? "},{text:"Click here!",color:"blue",clickEvent:{action:"run_command",value:"/time set night"}},{text:" Have fun!"}]}.
+
+
+== Fixes ==
+15 issues fixed
+From released versions before 1.7.2
+
+MC-4973 – Zombie pigman from Nether portal still spawns even if doMobSpawning is false.
+MC-10077 – Adjacent obsidian blocks prevent Nether portal appearing.
+MC-28400 – Breeding animals gives xp even if doMobLoot gamerule is false.
+MC-28768 – Horse breeding doesn't produce markings correctly on foal.
+MC-29088 – Shearing sound does not play when shearing a mooshroom.
+MC-30070 – Flowing lava can be blown up by TNT.
+From the 1.7.2 development versions
+
+MC-29432 – Water and ice no longer transparent on fast graphics.
+MC-29493 – Minecraft crash near 30 million blocks.
+MC-29505 – Some plants not working properly with flowerpots.
+MC-29530 – All the new flowers give only 1 of their respective dye whereas dandelions and 'roses' (now poppies) still give 2.
+MC-29866 – Thorns enchantment backfires.
+MC-30405 – Flint and steel sound and hand animation do not play when igniting a creeper.
+From the previous development version
+
+MC-30181 – Statistics and achievements un-pause the game.
+MC-30465 – Ender crystals in the overworld cause non-reasonable amount of lag.
+MC-30615 – Sugar cane can be placed on ground without a water source.
+
+
+== Trivia ==
+13w37a was previously removed from the launcher for some time, but was added back in September 2018.
+
+
+== References ==
+
+
+== Navigation ==

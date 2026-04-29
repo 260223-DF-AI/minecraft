@@ -1,0 +1,261 @@
+Beta 1.21.70.23 (ChromeOS, Android) or Preview 1.21.70.23 (Windows, iOS, iPadOS, Xbox, PlayStation) is the third beta/Preview version for Bedrock Edition 1.21.70, released on February 12, 2025, which integrates Spring to Life features and parts of the Villager Trade Rebalance experiment into normal gameplay, changes sheep spawning patterns, and fixes bugs.
+
+
+== Changes ==
+
+
+=== General ===
+Experiments
+
+Removed the "Drop 1 2025" and "Aim Assist" experimental toggles.
+Integrated the Villager Trade Rebalance experiment changes to the cartographer and wandering trader.
+UI
+
+Players can now also find the friends drawer in create new world, edit world and player profile, in addition to the play screen, main menu and game menu, in the top right of the screen.
+
+
+=== Blocks ===
+Bush
+
+Has been moved from experimental features and is now available during normal gameplay.
+Can now be replaced by other blocks.
+Now drops itself when broken with shears or with a tool that is enchanted with Silk Touch, otherwise it drops nothing.
+Cactus flower
+
+Has been moved from experimental features and is now available during normal gameplay.
+Can now be picked up by endermen.
+Firefly bush
+
+Has been moved from experimental features and is now available during normal gameplay.
+Tweak firefly bush world generation:
+Lowered chance of them being attempted to be placed by water.
+Reduce patch size when placed to be from 2-5.
+Now has the same bonemealing properties as the bush block.
+Leaf litter
+
+Has been moved from experimental features and is now available during normal gameplay.
+Is now replaceable.
+Can only be placed on blocks which provide full surface support.
+Short dry grass, tall dry grass and wildflowers
+
+Have been moved from experimental features and is now available during normal gameplay.
+
+
+=== Items ===
+Blue egg and brown egg
+
+Have been moved from experimental features and is now available during normal gameplay.
+
+
+=== Mobs ===
+Sheep
+
+Changed the rules for sheep coloring to be based on which biome they spawn in:
+Temperate Biomes:
+Common:
+ White sheep
+Uncommon:
+ Black sheep
+ Gray sheep
+ Light gray sheep
+ Brown sheep
+Rare:
+ Pink sheep
+Cold Biomes:
+Common:
+ Black sheep
+Uncommon:
+ Light gray sheep
+ Light blue sheep
+ Blue sheep
+ Cyan sheep
+Rare:
+ Pink sheep
+Warm Biomes:
+Common:
+ Brown sheep
+Uncommon:
+ Gray sheep
+ Yellow sheep
+ Orange sheep
+ Red sheep
+Rare:
+ Pink sheep
+Sheep colors for temperate biomes is unchanged from current behavior.
+Camel 
+
+Now generate anywhere in the desert and not only in desert villages.
+Villagers
+
+The changes to cartographer trades have been moved from experimental features and are now available during normal gameplay.
+Added seven new maps which cartographers can sell, each pointing to a different village or other structures in a different biome, depending on the biome they come from. These maps can help players who want to quickly find a specific location.
+Village maps points to a village in a specific biome. Jungle explorer map points to a jungle pyramid. Swamp explorer map points to a swamp hut.
+Cartographers from different village types will sell a different range of maps and colored banners.
+Some prices and quantities have also been adjusted.
+
+Wandering Traders
+
+The changes to wandering trader trades have been moved from experimental features and are now available during normal gameplay.
+The Wandering Trader now has better prices, more trades and a larger amount of stock for many items.
+They will also now buy basic supplies from players.
+The Wandering Trader will offer to buy two items from this list:
+Water Bottle
+Water Bucket
+Milk Bucket
+Fermented Spider Eye
+Baked Potato
+Hay Bale
+Wandering Traders now have a chance of selling these items (in addition to their previous trades):
+Logs (Acacia, Birch, Dark Oak, Jungle, Oak, Spruce, Pale Oak or Cherry)
+Enchanted Iron Pickaxe
+Potion of Invisibility
+Trade list now made up by following trades, in order:
+Buying Trade (new) × 2
+Special Selling Trade × 2
+Ordinary Selling Trade × 5
+Added new buying trades, some selling trades, and changed some existing selling trades:
+
+Mooshrooms
+
+Their textures have been changed, and the nose now extrudes from their models.
+Chicken, cow and pig variants
+
+Have been moved from experimental features and are now available during normal gameplay.
+
+
+=== World generation ===
+Villages
+
+Chests in several village buildings now have a 33% chance of containing a bundle. These include:
+Cartographer
+Tannery
+Weaponsmith
+Desert House
+Plains House
+Snowy House
+Savanna House
+Taiga House
+
+
+=== Gameplay ===
+Death
+
+Players no longer keep their inventory by default on Peaceful and Easy difficulties.
+Keep inventory is back to being a cheat on all difficulties.
+
+
+=== Command format ===
+/aimassist
+
+Has been moved from experimental features and is now available during normal gameplay.
+
+
+=== Technical ===
+Components
+
+Added validation for asset references in components.
+Content errors will log missing references for the following fields:
+item references.
+block reference in item component in minecraft:block_placer.
+loot table reference in block component minecraft:loot.
+The entity_sensor component's find_players_only field now functions correctly, properly restricting searches to Players only and affecting all subsensors.
+Dedicated Server
+
+Exposed two new parameters for dedicated server when in server-auth-with-rewind. These will make the server more strict on player positions. Look in server.properties for more information on what these do.
+server-authoritative-movement-strict default to false and can be set to true. Will affect Player position acceptance.
+server-authoritative-dismount-strict default to false and can be set to true. Will affect Player position when dismounting.
+Entity Event Responses
+
+Added the stop_movement entity event response, which stops the entity's movement.
+The stop_vertical_movement field specifies whether vertical movement should be stopped.
+The stop_horizontal_movement field specifies whether horizontal movement should be stopped.
+This response does not stop navigation or prevent future movement.
+If that's the desired outcome, also remove the components responsible for that.
+Added the set_home_position entity event response, which sets the entity's home position to its current position.
+For this to have any effect, the entity must already have a minecraft:home component.
+Entity Events
+
+Added first_valid event type, it will evaluate every filter in order and execute the first valid one.
+Entity Filters
+
+The in_clouds entity filter now succeeds when an entity's bounding box intersects the cloud layer, rather than only when its bottom is within it.
+Mobs
+
+Added aquatic family-type for all aquatic mobs.
+Normal minecart is no longer considered a mob.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs" experimental toggle.
+
+
+=== Additions ===
+
+
+==== Technical ====
+@minecraft/server-net
+
+Added new error InternalHttpRequestError.
+An error thrown when a platform-level HTTP error occurs. Information provided in this class may be useful for diagnostics purposes but will differ from platform to platform.
+Added new error MalformedHttpRequestError.
+An error thrown when a malformed HTTP request is attempted to be sent.
+@minecraft/server-ui
+
+Added method divider(): ActionFormData;. It adds a section divider into the form.
+Added method divider(): ModalFormData;. It adds a section divider into the form.
+Blocks
+
+minecraft:material_instances component has a new experimental boolean field isotropic for format version 1.21.70 and higher, this field controls rotating the face UVs randomly based on BlockPos.
+
+
+=== Changes ===
+
+
+==== Technical ====
+Behavior packs
+
+Removed unused experimental json field peaks_factor from minecraft:mountain_parameters in the behavior pack biome file.
+@minecraft/server-net
+
+Updated the execution privilege of most APIs to allow them to be called in read-only contexts ("before" events).
+
+
+== Fixes ==
+24 issues fixed
+From released versions before 1.21.70
+
+MCPE-69522 – Pufferfish no longer trigger inflate/deflate logic against minecarts.
+MCPE-149129 – Pufferfish no longer only poison players and monsters. Now they poison axolotls, all non-aquatic mobs excluding undead monsters, and players that aren't in Creative mode.
+MCPE-188457 – Hand bobbing no longer occurs while the game is paused.
+MCPE-188461 – Fix so data driven particles pause properly when game is paused.
+MCPE-188490 – Players fall momentum is no longer reset after exiting and re-entering the world.
+From the previous development version
+
+MCPE-190253 – Fixed leaf litter being able to be bonemealed.
+MCPE-190264 – Fixed block breaking sounds not playing.
+MCPE-190294 – Bushes and firefly bushes can now be snowlogged.
+MCPE-190308 – Touch controls: Fixed a bug where a player could stay moving diagonally after opening a menu.
+MCPE-190387 – Short and tall dry grass are now randomly offset, like regular short and tall grass.
+MCPE-190389 – Warped and crimson fungi no longer z-fight.
+MCPE-190391 – Cactus flowers can now be placed on farmland blocks.
+Other
+
+Fixed cactus flower growth so they only grow if a cactus block itself would survive to avoid breaking cactus farms.
+In Server Authoritative movement, when Player is corrected, the movement will not have easing anymore. This is a better feel, as can be seen with upward, repeating, pistons.
+Fixed typos in music definitions and sound definitions that were causing the wrong music to play for soulsand valley, desert mutated, and jungle mutated biomes.
+Pufferfish no longer only trigger inflate/deflate logic against monsters and players. Now triggers inflate/deflate logic against axolotls, all non-aquatic mobs, and players.
+Pufferfish no longer only attack players and monsters. Now they attack axolotls, all non-aquatic mobs, and players that aren't in Creative mode.
+Pufferfish no longer only poison players and monsters. Now they poison axolotls, all non-aquatic mobs excluding undead monsters, and players that aren't in Creative mode.
+Fixed an issue where other players in multiplayer scenarios would sometimes get stuck in their dying animation after respawning.
+Player characters no longer rotate sideways when moving forward.
+Fixed the Minecraft logo being misaligned on the progress screen.
+Fixed gaps from appearing between data-driven jigsaw structure pieces.
+Fixed a bug where call methods on Player.inputInfo, Player.inputPermissions, or Player.aimAssist on a player that left and rejoined the world would throw an error.
+Fixed a crash on dedicated server when submitting error reports to Sentry.
+Fixed the behavior of the Darkness status effect in the Deferred Technical Preview.
+
+
+== References ==
+
+
+== Navigation ==

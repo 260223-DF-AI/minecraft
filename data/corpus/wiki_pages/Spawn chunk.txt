@@ -1,0 +1,41 @@
+Spawn chunks were chunks found around the world spawn in Java Edition, prior to 1.21.9. Spawn chunks were always loaded, unlike normal chunks, which unload when no players are nearby.
+
+
+== Usage ==
+Normally, all chunks beyond the player's chunk loading distance unload. This means the game stops processing those chunks and they are frozen in time. This prevents redstone mechanisms and farms in unloaded chunks from running in the background. Since spawn chunks remained loaded, events occurring in them continued to process, even if no players were nearby. This mechanic could have been a detriment to the game's performance if sources of lag (e.g. lots of entities or large redstone contraptions) were present in the spawn chunks, as they would always be processing and lagging the game.
+
+
+== Behavior ==
+
+The spawn chunks behavior arose from a dedicated chunk ticket that was created for the chunk that contained the world spawn. This ticket had a level of 30 with the spawnChunkRadius game rule set to the default value of 2, which propagated to neighboring chunks. Each time the level propagated, it increased its level by 1 until the maximum of 44 was reached.
+Different levels of propagation had different behaviors. These levels were divided into 4 load types.
+
+
+=== Limitations ===
+
+There were some limitations which could affect the behavior of spawn chunks.
+
+Idle timeout
+Each dimension had a 300 game tick idle timeout on entity processing. When a player was present in the dimension, a forceloaded chunk was present in the dimension, or an entity travelled to the dimension through a portal, the idle timeout was reset. When the timeout expired, entities and block entities would stop processing for spawn chunks and the rest of the dimension. This mechanic was removed in the same version that removed spawn chunks.
+
+Entities
+
+Hostile mobs more than 128 blocks from a player would still despawn in spawn chunks.
+Mob spawning only occurred around players.
+Passive mobs present in the spawn chunks counted towards the mob cap. This often prevented passive mobs from naturally spawning elsewhere in the world as the passive mob cap is very low.
+
+
+== Changing location ==
+A new world spawn point could be set using /setworldspawn. If no coordinates were provided, the block position that the player was currently standing on became the spawn point. The chunk where the world spawn was located would then be given a start ticket, and the ticket for the old world spawn would be cleared.
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Legacy Console Edition ===
+
+
+== Navigation ==

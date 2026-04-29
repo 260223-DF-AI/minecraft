@@ -1,0 +1,36 @@
+When starting the Java Edition client, the Minecraft Launcher passes various command line arguments to the Java virtual machine, such as the path to the game itself and account login information. These arguments are chosen based on the contents of the client.json file corresponding to the selected version, options set in the launcher, and the current operating system.
+
+
+== Command line parts ==
+The complete command line used to start the JVM consists of the following parts:
+
+Location of the JVM executable. Defaults either to a JVM provided by the system, or a JVM automatically downloaded by the launcher. May be changed in installation options in the launcher.
+Arguments to configure the JVM, such as -cp (classpath) to specify the locations of required libraries and the main client.jar. Generated based on arguments.jvm in client.json.
+Additional JVM arguments specified in installation options in the launcher.
+Name of the main class. Specified as mainClass in client.json.
+Arguments to the game itself, such as --gameDir to specify the base directory for user-generated game files. Generated based on arguments.game in client.json.
+Additional game arguments specified in installation options in the launcher.
+
+
+== JVM arguments ==
+
+
+== Game arguments ==
+
+
+== Legacy arguments ==
+
+
+== Main class ==
+A versions default main class is in it's version.json under mainClass.
+
+
+== Assets ==
+
+The launcher downloads additional required resources and saves them to  .minecraft/assets to be used by the game.
+Minecraft requires several arguments when launched.
+Since 1.12.2, they are defined in client.json under arguments.
+Before that, the game arguments were defined in client.json under minecraftArguments while the JVM arguments were defined directly in the launcher.
+
+
+== References ==

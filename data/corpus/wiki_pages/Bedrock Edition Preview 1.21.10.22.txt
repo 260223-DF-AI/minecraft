@@ -1,0 +1,183 @@
+Beta 1.21.10.22 (ChromeOS, Android) or Preview 1.21.10.22 (Windows, iOS, iPadOS, Xbox, PlayStation) is the third beta/Preview version for Bedrock Edition 1.21.20, released on June 5, 2024, which makes breaking changes to multiple aspects of the add-on system and fixes bugs.
+
+
+== Additions ==
+
+
+=== Gameplay ===
+Game Tips
+
+Added emote game tip. The tip appears when there are remote players close to the player and the player has spent at least 30 seconds with other players in the world.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Doors
+
+Doors of different materials will now be able to form a double door.
+Double Slabs
+
+The different stone slab type block states for the double_stone_block_slab2, double_stone_block_slab3, and double_stone_block_slab4 IDs have now been split up into their own IDs.
+
+Prismarine, Dark Prismarine, and Prismarine Bricks
+
+The different block states for the prismarine ID have now been split up into their own IDs.
+
+Prismarine Double Slab, Dark Prismarine Double Slab, Prismarine Bricks Double Slab, Andesite Double Slab, Polished Andesite Double Slab, Diorite Double Slab, Polished Diorite Double Slab, Granite Double Slab, Polished Granite Double Slab, and Mossy Stone Brick Double Slab 
+
+They now have a hardness of 1.5.
+End Stone Brick Double Slab 
+
+It now has a hardness of 3.
+Vault
+
+Added sound effect to help players understand that they have already looted this vault.
+
+
+=== Entities ===
+Drowned
+
+Now spawn individually in rivers instead of in groups of two, like in Java Edition.
+Now spawn in aquifers in dripstone caves, like in Java Edition.
+Wind Charge
+
+The model now correctly renders within its bounding box.
+No longer burst when removed by commands.
+
+
+=== Items ===
+Banner Patterns
+
+"Thing" is now considered of Epic rarity (magenta color).
+"Flow" and "Guster" are now considered of Rare rarity (aqua color).
+"Creeper Charge", "Skull Charge", and "Snout" are now considered of Uncommon rarity (yellow color).
+Heavy Core, Mace, and Trident
+
+Are now considered of Epic rarity (magenta color).
+Wind Charge
+
+Increased player-fired wind charge speed by 50%, bringing it into parity with Java Edition.
+
+
+=== General ===
+Touch controls
+
+Buttons can now slide completely to the right when customizing controls on iOS and iPadOS.
+When customizing touch controls, the safe zones on the left and right side are now ignored.
+Gameplay
+
+Tweaked the way the dismount position is calculated to better align with moving vehicles. This could result in minor differences when dismounting fast vehicles.
+Realms
+
+Added a new reporting flow that lets players add more context and information about why the report is being made.
+
+
+=== Technical ===
+API
+
+Released WorldInitializeBeforeEvent from beta to 1.12.0.
+Released WorldInitializeBeforeEventSignal from beta to 1.12.0.
+Released ItemComponentRegistry from beta to 1.12.0.
+Released ItemCustomComponent from beta to 1.12.0.
+Released ItemComponentBeforeDurabilityDamageEvent from beta to 1.12.0.
+Released ItemComponentCompleteUseEvent from beta to 1.12.0.
+Released ItemComponentConsumeEvent from beta to 1.12.0.
+Released ItemComponentHitEntityEvent from beta to 1.12.0.
+Released ItemComponentMineBlockEvent from beta to 1.12.0.
+Released ItemComponentUseEvent from beta to 1.12.0.
+Released ItemComponentUseOnEvent from beta to 1.12.0.
+Moved EntityTameableComponent from beta to 1.12.0 with properties getTameItems, isTamed, probability, tamedToPlayer, tamedToPlayerId and function tame.
+Moved EntityAgeableComponent from beta to 1.12.0 with properties duration, growUp, transformToItem and function getDropItems, getFeedItems, EntityDefinitionFeedItem, Trigger.
+Enabled the server-net module to be usable in local editor extensions.
+Cameras
+
+Added the view offset to the 3rd person camera for the experimental follow_orbit preset
+The view offset is anchored to a pivot point at the center of the screen. When applied to the follow_orbit preset, the player is shifted to be at a distance from center specified by the offset.
+The range for this offset is -100 to 100
+This can be set by both commands and JSON
+/camera @s set minecraft:follow_orbit view_offset viewX viewY
+Added starting radius and rotation to the follow_orbit and 3rd person boom camera presets
+The starting radius (distance from player) is fixed right now at 10 blocks from the player position.
+The starting rotation (pitch and yaw) are fixed right now at 45x and 45y.
+Exposed radius component to behavior packs to be overwritten by creator cameras. Also added minecraft:third_person and minecraft:third_person_front to the allow list of presets that can be inherited from
+This allows the making of a 3rd person camera based on the vanilla 3rd person cameras but with a variable radius.
+The radius (distance from player) is not limited but render distance and other constraints still exist.
+This does not allow modifications to the vanilla cameras.
+Entities
+
+Added a wind_burst_on_hit subcomponent for projectiles which creates a wind burst upon collision with an entity or block before being removed from the world.
+Features
+
+minecraft:scatter_feature now has a distribution field like minecraft:feature_rules to define the scattering settings. Features now use schema version 1.21.10.
+Item
+
+Released minecraft:custom_components item component out of experimental in json formats 1.21.10 and higher.
+Introduced slot.armor.body as an extra armor slot for entities, like horses, limited to a single armor item but needing the effects of a full armor set.
+Introduced the minecraft:damage_absorption item component, enabling items to absorb damage intended for their wearer.
+The absorbable_causes field allows to specify which damage causes to absorb.
+Absorbed damage depletes the item’s durability, and surplus damage is ignored.
+Requires equipping the item in an armor slot for damage to be absorbed.
+When multiple damage absorbing items are equipped, a suitable one is selected at random to absorb incoming damage.
+Introduced the minecraft:durability_sensor item component, enabling items to emit sounds and particles when damage causes them to lose durability.
+The durability_thresholds field allows to define a list of both durability thresholds and the effects to emit when they are met.
+When the item receives enough damage to meet multiple thresholds at the same time, only the one corresponding to the lowest durability is considered.
+
+
+== Experimental ==
+
+
+=== Additions ===
+API
+
+Added playerEmote which fires after a player uses an emote.
+Graphical
+
+Added a Brightness / Gamma calibration screen for Deferred Technical Preview.
+The calibration screen can be found under Deferred Graphics Settings within the Video settings menu.
+
+
+=== Changes ===
+Upcoming Creator Features
+
+Deprecated entity permutations.
+Permutations can no longer be parsed and applied to entities via their JSON file under the flag permutations.
+Deprecated Volume and /volumearea command.
+Entity aliases is deprecated when a format_version of 1.21.10 or higher is specified.
+API
+
+Use of the onTick event requires the block has the minecraft:tick component to configure how the block ticks
+Blocks that are world generated, and have the minecraft:tick component, will now tick.
+
+
+== Fixes ==
+15 issues fixed
+From released versions before 1.21.20
+
+MCPE-42310 – Players can spawn in and take damage or die before the world loads correctly.
+MCPE-144066 – Drowned doesn't spawn inside aquifers in the dripstone caves.
+MCPE-179656 – Heavy core's inventory icon is too small.
+MCPE-180810 – Crawl mode activated when sneak and jump onto bed.
+MCPE-181155 – Heavy Core "floats" relative to Item Frame.
+MCPE-181211 – Breeze wind charges can change activation blockstates of redstone components when mobGriefing gamerule is disabled.
+MCPE-182277 – Heavy cores, maces and tridents has different rarity name color from Java.
+Other
+
+Fixed a bug where items from certain Add-ons could appear without textures or names when joining Realms.
+Fixed a bug that caused Crafter to be audible from more than five blocks away.
+Fixed Ancient City entrance using a single Deepslate tile slab instead of a double slab.
+Fixed a bug where a user could not create a new realm via the “Free Beta/Preview Realm Available” button in the Worlds tab due to an infinite loading screen and non-functioning “Create Preview/Beta Realm” button.
+Fixed an issue on Fire tablets where game would occasionally crash when joining a world.
+Fixed a bug where the wrong text could be shown on the death screen while using Hardcore mode in split screen.
+Fixed a bug that prevented two back-to-back error screens when the client was out of date and a Realm had a pending update.
+Fixed a crash when enabling the Deferred Technical Preview experiment on Android devices with an Arm Mali GPU.
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

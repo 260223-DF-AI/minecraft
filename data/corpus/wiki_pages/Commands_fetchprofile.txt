@@ -1,0 +1,39 @@
+Fetches the contents of a player profile from Minecraft servers.
+
+
+== Usage ==
+Fetches the profile of the target. It works asynchronously as the operation might take some time.
+After successful completion, a message will be printed that lets users copy the contents of a fully resolved minecraft:profile component or /give @s minecraft:player_head with said component.
+
+
+== Syntax ==
+fetchprofile name <name>
+fetchprofile id <id>
+fetchprofile entity <entity>
+
+
+== Arguments ==
+<name>: string
+
+Specifies a player name (player does not need to be online), case-insensitive.
+Must be a string.
+<id>: uuid
+
+Specifies UUID of a player (player does not need to be online).
+Must be a UUID in the hyphenated hexadecimal format. Allowed characters include: -, A-F, a-f, and 0-9.
+<target>: entity
+
+Specifies an entity (player must be online).
+Must be a player name, a target selector or a UUID.  And the target selector must be in single type.
+
+
+== Result ==
+
+
+== Output ==
+
+
+== History ==
+
+
+== Navigation ==

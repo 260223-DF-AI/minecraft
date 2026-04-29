@@ -1,0 +1,85 @@
+22w07a is the fourth and the final snapshot for Java Edition 1.18.2, released on February 16, 2022, which fixes bugs.
+
+
+== Additions ==
+
+
+=== World generation ===
+Custom world generation
+
+Added biomes field in configured structure files, which is a tag.
+
+
+=== General ===
+Tags
+
+Added biome tags in vanilla data packs, as follows:
+#is_badlands: badlands, eroded_badlands, and wooded_badlands.
+#is_beach: beach and snowy_beach.
+#is_deep_ocean: deep_frozen_ocean, deep_cold_ocean, deep_ocean, and deep_lukewarm_ocean.
+#is_forest: forest, flower_forest, birch_forest, old_growth_birch_forest, dark_forest, and grove.
+#is_hill: windswept_hills, windswept_forest, and windswept_gravelly_hills.
+#is_jungle: bamboo_jungle, jungle, and sparse_jungle.
+#is_mountain: meadow, frozen_peaks, jagged_peaks, stony_peaks, and snowy_slopes.
+#is_nether: nether_wastes, basalt_deltas, soul_sand_valley, crimson_forest, and warped_forest.
+#is_ocean: #is_deep_ocean, frozen_ocean, ocean, cold_ocean, lukewarm_ocean, and warm_ocean.
+#is_river: river and frozen_river.
+#is_taiga: taiga, snowy_taiga, old_growth_pine_taiga, and old_growth_spruce_taiga.
+Added biome tags to determine which biomes a structure can generate in, stored in tags/worldgen/biome/has_structure.
+values field in these files can accept both biome IDs and biome tags.
+
+
+== Changes ==
+
+
+=== General ===
+Debug screen
+
+Merged the "Terrain" and "Multinoise" row into the "NoiseRouter" row, with the format NoiseRouter T: data H: data C: data E: data D: data W: data PV: data AS: data N: data.
+T, H, C, E, and W are the same with data from the former "Multinoise" row.
+PV is the same as data from the former "Terrain" row.
+D, AS, and N are the depth, initial density without jaggedness, and final density value used during terrain generation.
+Tags
+
+Removed #lush_ground_replaceable, and added #base_stone_overworld, #dirt, clay, gravel, and sand block tags to the #azalea_root_replaceable block tag.
+
+
+=== Mobs ===
+Glow squid
+
+Now require complete darkness to spawn.
+Tropical fish
+
+Now only spawn if the block above is a full water block.
+
+
+== Fixes ==
+11 issues fixed
+From released versions before 1.18
+
+MC-53850 – Invulnerable item entities and experience orbs are removed client-side when they take damage.
+From 1.18
+
+MC-237110 – Grass blocks can generate underwater.
+MC-238977 – Glow squids spawn in villager farms and wells in Superflat worlds.
+MC-243190 – Rooted dirt can replace cave vines.
+MC-244683 – Tropical Fish in lush caves spawn in bubble columns.
+From 1.18.1
+
+MC-245857 – Enchanting table registers block diagonally above the bookshelves as blocking said bookshelf.
+MC-245925 – Falling block visual glitch when dying with doImmediateRespawn.
+MC-246465 – Lava can burn, damage, and destroy entities client-side and lead to de-sync.
+MC-248095 – Active repeating command blocks stop running after world conversion to 1.18.
+From the previous development version
+
+MC-248523 – The game crashes when attempting to open the beacon GUI.
+MC-248617 – Loading data pack crashes client: java.lang.IllegalStateException: Trying to access unbound value.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,475 @@
+18w43a is the first snapshot for Java Edition 1.14, released on October 24, 2018, which adds the first Village & Pillage features and changes most textures in the game.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Bamboo
+
+Can be found in jungles and bamboo jungles.
+Can be found in jungle pyramids and supply chests of shipwrecks.
+Dropped by pandas when killed, or can be obtained when fishing in jungle biomes.
+Can be farmed and grow up to 12–16 blocks tall.
+Grows 1–2 bamboo on the top when given bone meal.
+Breaks instantly using swords.
+Can be eaten by pandas, used as fuel (enough to smelt 0.25 items), or planted inside a flower pot.
+Can be used to craft sticks: two bamboos for one stick.
+ Flowers
+
+Added cornflower.
+Can be crafted into blue dye.
+Appear in plains biomes.
+Added wither rose.
+Can be crafted into black dye.
+Inflicts 1 second of Wither to players and mobs around it, when in any difficulty besides Peaceful.
+Is dropped or planted from any non-undead mob killed by the wither.
+Added lily of the valley.
+Can be crafted into white dye.
+Appear in forest biomes.
+ Loom
+
+Can be crafted with 2 string on top of 2 planks.
+Easier way to apply patterns to banners: the purpose is to color and design banners, which was previously done in the crafting grid.
+Has a slot for a banner, a dye and a banner pattern.
+Generic patterns now only require 1 dye.
+Removed existing banner recipes.
+Special banner patterns can now be crafted into a new item, banner patterns.
+Craftable using paper and the special pattern items.
+These patterns don't consume the pattern item when used in the loom.
+Available banner patterns are shown as a list.
+ Signs
+
+Added spruce, birch, acacia, jungle and dark oak signs.
+ Slabs
+
+Added stone, andesite, polished andesite, diorite, polished diorite, granite, polished granite, mossy stone brick, mossy cobblestone, smooth sandstone, smooth red sandstone, smooth quartz, red nether brick, and end stone brick slabs.
+ Stairs
+
+Added stone, andesite, polished andesite, diorite, polished diorite, granite, polished granite, mossy stone brick, mossy cobblestone, smooth sandstone, smooth red sandstone, smooth quartz, red nether brick, and end stone brick stairs.
+ Walls
+
+Added brick, andesite, diorite, granite, prismarine, stone brick, mossy stone brick, sandstone, red sandstone, nether brick, red nether brick, and end stone brick walls.
+
+
+=== Items ===
+ Banner patterns
+
+Added flower charge banner patterns, creeper charge banner patterns, skull charge banner patterns, and thing banner patterns.
+Crafted with paper and the item previously used to imprint the associated pattern (enchanted golden apple + paper = "Thing" banner pattern, etc).
+ Crossbow
+
+Crafted from strings, iron ingots, sticks, and tripwire hooks.
+Can be used as a weapon similar to bows.
+More damage, more range, takes longer to charge.
+Hold to charge, click to release.
+Charge is saved in inventory, can be used later.
+Can shoot firework rockets holding the crossbow in one hand and the fireworks in the other.
+Can be enchanted with new enchantments:
+Multishot: Fires three arrows at once in different directions; not compatible with Piercing.
+Quick Charge: Increases the reload speed. 3 levels; 0.25 seconds faster each level.
+Piercing: Projectiles pierce through mobs. 4 levels; not compatible with Multishot.
+ Suspicious stew
+
+Found in shipwreck supply chests.
+Can be crafted with a red and brown mushroom, a bowl and any flower.
+It restores 6 () and 7.2 saturation points, and gives roughly 5 seconds of a status effect.
+The effect given upon eating depends on which flower is used, as does the exact duration of the effect.
+Oxeye daisy gives Regeneration.
+Cornflower gives Jump Boost.
+Lily of the valley gives Poison.
+Wither rose gives Wither.
+Tulip gives Weakness.
+Azure bluet gives Blindness.
+Allium gives Fire Resistance.
+Blue orchid and dandelion give Saturation.
+Poppy gives Speed.
+ Dyes
+
+Added white dye, black dye, brown dye and blue dye.
+Separated bone meal, ink sacs, cocoa beans and lapis lazuli into their own items; they can no longer be used to dye directly.
+New dyes craftable from respective ingredients.
+Spawn eggs
+
+ Panda spawn egg
+Spawns pandas.
+ Pillager spawn egg
+Spawns pillagers.
+ Illager beast spawn egg
+Spawns illager beasts.
+
+
+=== Mobs ===
+ Pandas
+
+Do not spawn naturally, at the moment.
+Have 20HP × 10 health.
+Drop 1 bamboo when killed (not affected by Looting).
+Seek out bamboo and cake items and eat them.
+Breedable.
+Baby pandas sometimes sneeze, making nearby pandas jump: when they sneeze, they have a chance to drop a slimeball.
+Variants are inherited by a special panda inheritance system.
+Can have different personalities: either normal, aggressive, lazy, weak, worried, or playful (defined by two tags, HiddenGene and MainGene).
+Have a chance of spawning as a brown panda, which is very rare (both main and hidden gene have to be brown for a panda to appear brown).
+Sometimes roll and sit on hind legs.
+When hit, nearby villagers display the angry villager particles.
+ Pillagers
+
+Raid villages.
+Have 24HP × 12 health.
+Drop emeralds and their crossbows when killed (affected by Looting).
+They cannot equip armor of any type.
+ Illager beasts
+
+Destroy crops and attack villagers.
+Have 100HP × 50 health.
+Drop a saddle when killed (100% of the time, not affected by Looting).
+Flee from rabbits if one is too close.
+
+
+=== World generation ===
+Bamboo jungle
+
+Contains bamboo and podzol.
+
+
+=== Command format ===
+/drop
+
+Drops items in various contexts.
+Syntax: /drop <target> <source>.
+Sources:
+award: advancement award context.
+fish: fishing context.
+loot: loot chest context.
+kill: entity drops.
+mine: block drops.
+Targets:
+world: drops in world.
+player: puts in player inventory.
+entity: sets entity slots like /replaceitem.
+block: puts (distribute, as if shift-clicked) or replaces/merges (insert) items in container.
+/schedule
+
+Schedules functions or tags to run in gametime ticks.
+Any tag/function can be scheduled only once.
+Calling for an already scheduled function/tag replaces the oldest record.
+
+
+=== General ===
+Advancements
+
+Added 4 new advancements:
+Ol' Betsy: Shoot a crossbow.
+Who's the Pillager Now?: Give a pillager a taste of their own medicine.
+Two Birds, One Arrow: Kill two phantoms with a piercing arrow.
+Arbalistic: Kill five unique mobs with one crossbow arrow.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Chorus flower
+
+Chorus flowers now break and drop themselves when shot by arrows and tridents.
+Cocoa beans
+
+Now play a sound when placed.
+Can no longer be placed inside entities.
+Dispenser
+
+Shears can now be dispensed and shear sheep.
+Leaves
+
+Now drop 0–2 sticks.
+Lapis Lazuli Ore
+
+Now drops 4-9 lapis lazuli.
+Nether brick fence
+
+Recipe changed to include nether brick items rather than just nether bricks blocks.
+Nether brick fences now require 4 nether brick blocks and 2 nether brick items.
+The old recipe is now used to craft nether brick walls.
+Signs
+
+Renamed "Sign" to "Oak Sign".
+The default text color changed from black to pure white.
+This color is not affected by lighting.
+Smooth quartz, smooth sandstone, smooth red sandstone and smooth stone
+
+Obtainable from smelting blocks of quartz, sandstone, red sandstone and stone, respectively.
+Smooth stone slabs
+
+Stone slabs have been renamed to smooth stone slabs.
+Are now crafted with smooth stone instead of stone.
+
+
+=== Items ===
+Beetroot soup
+
+Recipe changed to be shapeless.
+Book and quill
+
+Rewrote editing to be more intuitive:
+Movable cursor for free text editing.
+Selection support.
+Copy/paste support.
+Keyboard and mouse handling.
+Improved page filling and line wrapping.
+Double-click to highlight a word, triple-click to highlight a page.
+Can now go up to 100 pages.
+Dead bushes
+
+Can now be used as fuel.
+Dye
+
+Unified all dye names.
+Rose red, dandelion yellow, and cactus green have been renamed to red, yellow and green dye, respectively.
+Lapis lazuli, cocoa beans, bone meal and ink sac can no longer be used as dyes.
+Added recipes to obtain colored stained glass panes and colored carpet.
+Rabbit stew
+
+Recipe changed to be shapeless.
+
+
+=== Mobs ===
+Creepers
+
+Can now drop music discs from strays, in addition to skeletons again.
+
+
+=== World generation ===
+Dungeons
+
+Renamed to "Monster Room".
+Ravines
+
+Renamed to "Canyon".
+
+
+=== Gameplay ===
+Lighting system
+
+Has been rewritten.
+Moved light storage from chunks to a separate structure.
+Moved light calculation from all over the code to a self-contained place.
+Moved light computation off the main thread on the server.
+Performance Improvements
+
+Fish.
+Mobs that would spawn and then despawn from being too far away from the player the next tick no longer spawn.
+Redstone dust depowering performance increase.
+
+
+=== Command format ===
+Advancements
+
+Entity type predicates now accept tags (#baz).
+The damage source predicate now has option: is_lightning.
+The entity predicate now accepts a flag field.
+Available tests: is_on_fire, is_sneaking, is_sprinting, is_swimming, is_baby.
+Commands/NBT data
+
+Extended NBT path syntax.
+New chat component for displaying values from NBT.
+Block variant {"nbt": <path>, "block":{"x":<x>, "y":<x>, "z":<z>}}.
+Entity variant {"nbt": <path>, "entity":<selector>} .
+If interpret is present and true, contents of selected tags are interpreted as chat components.
+Item lore tag now uses chat component syntax.
+Time arguments in /time set, /time add and /schedule function can now have units.
+t for ticks, s for seconds, d for days.
+Fractions are allowed as long as the result is integer (for example 0.5d).
+Creative menu
+
+Search box now accepts tags (starting with #).
+Tooltip in creative search menu now lists item's tags.
+Loot tables
+
+Block drops are now controlled by loot tables.
+Tables and pools accept functions.
+New loot table entry types: dynamic, tag, alternatives, sequence, group.
+New loot table functions: apply_bonus, explosion_decay, copy_name, limit_count, set_contents, set_loot_table.
+New loot table conditions: entity_present, survives_explosion, block_state_property, table_bonus, match_tool, tool_enchantment, and two special modifiers: inverted, and alternative.
+Integer values can now specify random number generator.
+Constant, uniform (default), binomial.
+Optional type used to validate function usage.
+empty, chest, fishing, entity, advancement_reward, block.
+Using function that references data not available in given context causes warning.
+Entity parameters in predicates: direct_killer_entity - allows access to projectiles etc.
+entity_properties condition now uses same predicate syntax as advancements (like player_killed_entity).
+Parameters are now described in the predicate field.
+New conditions
+alternative: joins conditions from parameter terms with "or".
+block_state_property: check properties of block state, parameters:
+block: id of block; test fails if broken block doesn't match.
+properties: map of property:value pairs.
+damage_source_properties: checks damage source.
+Same syntax as entity_properties, but uses damage source predicate (see player_hurt_entity advancement trigger).
+entity_present: returns true if entity is set.
+See entity_properties for list of entities.
+inverted: inverts condition from parameter term.
+location_check: applies advancement location predicate, parameters:
+predicate: predicate applied to location, uses same structure as advancements.
+match_tool: checks tool (only available for block breaking and fishing). Parameters are:
+predicate: predicate applied to item, uses same structure as advancements.
+survives_explosion: returns true with 1/explosion radius probability.
+table_bonus: passes with probability picked from table, indexed by enchantment level. Parameters are:
+enchantment: id of enchantment.
+chances: list of probabilities for enchantment level, indexed from 0.
+weather_check with these parameters:
+raining - optional boolean.
+thundering - optional boolean.
+New entries:
+alternatives
+Tests conditions of child entries and executes first that can run, has no weight or quality, but may have conditions.
+dynamic
+Gets block specific drops.
+minecraft:contents: block entity contents.
+minecraft:self: for banners and player skulls.
+group: Executes child entries when own conditions pass, has no weight or quality.
+sequence: Executes child entries until first one that can't run due to conditions, has no weight or quality, but may have conditions.
+tag: adds contents of item tag;fields:
+name: id of tag.
+expand: if false, entry returns all contents of tag, otherwise entry behaves as multiple item entries (all with same weight and quality).
+New functions
+apply_bonus: applies one of predefined bonus formulas.
+Common fields:
+enchantment: id for enchantment level used for calculation.
+formula: type of used bonus formula.
+parameters: values required for formula (depend on type).
+Formulas based on existing fortune bonuses.
+Formula binomial_with_bonus_count, parameters are:
+probability : float
+extraRounds : int
+Adds random value using binomial distribution with n <- level + extraRounds and p <- probabilty.
+Formula uniform_bonus_count, parameters are:
+bonusMultiplier
+Adds random value using uniform distribution from 0 to bonusMultiplier *level.
+Formula ore_drops, no parameters.
+Applies formula count *(max(0, random(0..1) - 1) + 1).
+copy_name
+Copies display name from block entity to item (see enchanting table behavior).
+explosion_decay
+Applies flat chance (equal to 1/explosion radius) for every item to be destroyed (items in stack are processed separately).
+limit_count, parameters are:
+limit
+min - optional
+max - optional
+Limits count of every item stack to range.
+set_contents, parameters:
+entries list of entries (same as in pool).
+Populates BlockEntityTag.Items with items from entries.
+set_loot_table, parameters are:
+name: id of loot table.
+seed: seed; if omitted or 0, LootPoolSeed isn't set.
+Sets BlockEntityTag.LootTable, and BlockEntityTag.LootPoolSeed tags.
+NBT paths
+
+Can now return multiple values.
+When used as target, modification is applied to every element.
+When setting location and no elements are found, new matching element are created:
+Add [{k1:v1,k2:v2}] to match objects in list that have matching fields.
+Add {k1:v1,k2:v2} to match objects.
+Selects 0 or 1 elements, mostly as safeguard against mismatched entries.
+Allows negative indices as [index] to index elements in reverse from end.
+Add [] to select all elements from list.
+World generator registries.
+
+Most of the biome related features now have a registry and their configuration can be serialized.
+Added a feature registry.
+Added a registry for decorators.
+Added a registry for carvers.
+Added a registry for surface builders.
+Other
+
+/execute <if or unless> data <block or entity> <path>
+Returns count of matched elements when used as command.
+Continues on non-zero(if) or zero(unless) count when used as part of command.
+Item frame contents can now be modified with /replaceitem.
+/data modify <block or entity> <path> <operation> <source>
+Applies an operation to selected fields.
+Operations:
+Are set on all types.
+Are inserted before index, insert after index, prepend, append on lists.
+Merge on objects.
+Sources:
+From <block or entity> <path> to copy a value from an existing tag.
+Value <nbt>.
+Added entity type tags.
+Work like other tags, stored in tags\entity_types\.
+The type field in @ selectors now accepts entity type tags.
+Changing item models based on item NBT.
+New item model property: custom_model_data, backed directly by CustomModelData integer NBT field.
+
+
+=== General ===
+Credits
+
+Updated the credits list.
+Pause screen
+
+Added "Give Feedback" and "Report Bugs" buttons.
+Textures
+
+All textures have been updated.
+New consistent set of block, item, mob, effect, GUI, etc. textures made by Jasper Boerstra.
+Old textures will be offered as a resource pack.
+Advancements
+
+"How Did We Get Here?" now requires Saturation and Blindness as these effects can now be obtained through suspicious stew.
+
+
+== Fixes ==
+29 issues fixed
+From released versions before 1.14
+
+MC-1578 – Cannot move backwards in Books while writing / Cannot copy anything from the book
+MC-1692 – Excessive lag on lamp de/activation across chunk borders
+MC-3329 – Naturally generated light sources (fire, glowstone, torches etc.) sometimes do not emit light
+MC-3961 – Water, Cobwebs, Magma, Leaves and other blocks save sunlight
+MC-4686 – Client movement when teleported
+MC-9188 – Fires can leave ghost lighting behind
+MC-11571 – Huge lighting updates lag the game.
+MC-76278 – Lighting not updating until walked up or block update
+MC-80966 – Light calculation of ChunkSelection faulty implemented resulting in client bugs (empty chunks don't show light/render dark)
+MC-88097 – Snow blocks receive (useless) random updates and can get destroyed when there is a light glitch
+MC-91136 – Lighting update is delayed at chunk borders
+MC-95044 – Graphics Card and Sign Colors
+MC-101127 – The Wither effect harm the "Wither" Skeleton
+MC-102162 – Some light-emitting blocks (magma, lit furnace, lit redstone ore) 'save' block light
+MC-112579 – Creepers don't drop disc when killed by Stray or wither skeleton holding a bow
+MC-117067 – Trees/leaves too bright under big platform
+MC-119932 – Light-emitting solid blocks (lit furnaces, magma blocks, glowstone, lit redstone ore) let light (sunlight, block light) through
+MC-123772 – The Lore strings cannot be formatted in json
+MC-124395 – Beacon block entity contains code for custom names, despite not storing it to NBT and the beacon GUI not having one
+MC-124926 – Blocks don't retain custom names when dropped with /setblock destroy
+MC-129090 – Bottom faces of blocks at the bottom of the world always renders as if it's fully lit
+MC-131320 – Lighting errors in newly generated world
+MC-132283 – Ponds are generated too dark
+MC-134282 – Game crash with "Unexpected error" if display is turned off then on again
+MC-135453 – Crash while rendering block entity
+MC-136526 – Crash when generating near top of world
+MC-137229 – Book corruption when 1.8 world is loaded in 1.13
+MC-137276 – Turtles dropping bowls when killed by lightning bolt is hardcoded.
+MC-137300 – ConcurrentModificationException thrown when upgrading world
+
+
+== Videos ==
+
+
+== Trivia ==
+The first snapshot of Java Edition 1.13, 17w43a, was released in the same week of the year as 18w43a.
+In the minecraft.net blog post introducing 18w43a, Adrian Östergård captioned the section describing loom using the phrase "Bröther, may I have some lööm?". This is a reference to the cat wanting fruit loops internet meme.
+18w43a holds the record as having the most content in one developmental release, adding nearly 3 times as much content as the entirety of Java Edition 1.4.2 did in October 2012.
+The previous record for most content added in one developmental release was held by 15w31a for Java Edition 1.9.
+As with 18w43b, 18w43a was released exactly 6 years after the Minecraft issue tracker.
+
+
+== Gallery ==
+
+
+== References ==
+
+
+== Navigation ==

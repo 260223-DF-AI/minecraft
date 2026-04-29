@@ -1,0 +1,26 @@
+v0.9.0 alpha build 12 (RC4) is the twelfth build version and fourth release candidate for v0.9.0. It is the final build version and final release candidate for this version.
+
+
+== Changes ==
+Batched SetEntityMotion, EntityPos and HeadRotation packages together (down from 3000 packages per second to 150)
+
+
+== Fixes ==
+13 bugs fixed
+
+Crash with deleted chunks
+A memory corruption
+Issue on Android that didn't reuse graphics buffers correctly, caused weird triangles and holes
+Crash when loading a world where the player was riding
+Crash with exiting worlds while riding
+Synchronization issues with multiple players in multiplayer
+Entities was incorrectly added on the client
+Multiple bugs with tile entities on clients
+Spawn location on clients
+Reseting spawn location would put players on roofs
+Interact buttons now work in multiplayer
+Placing rails was broken on clients (wrong direction)
+Chests have been fixed for clients
+
+
+== Navigation ==

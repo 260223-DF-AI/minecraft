@@ -1,0 +1,63 @@
+1.9.3 is a minor update to Java Edition released on May 10, 2016, which adds the /stopsound command, limits the Y-value of /tp, and improves Minecraft 's networking libraries. It is not compatible with 1.9.2 servers. However, due to an incorrect snapshot warning when loading a world saved in an older version, 1.9.3 was replaced by 1.9.4 on the same day.
+
+
+== Additions ==
+
+
+=== Commands ===
+/stopsound
+
+Permits the player to choose which specific sounds should be stopped from playing.
+Syntax: /stopsound <targets> [<source>] <sound>.
+
+
+== Changes ==
+
+
+=== Commands ===
+/tp
+
+No longer teleports the player to a y-coordinate outside the range −512 to 512.
+
+
+=== General ===
+Networking
+
+As of the release of this version, the Netty networking library that Minecraft uses, now checks sessionserver.mojang.com/blockedservers when connecting to a multiplayer server, and if the server is on the blocked server list, it reports to the user that the server is unavailable.
+The blocklist consists of servers in violation of the Minecraft EULA (End User License Agreement).
+This affects all versions that depend on the Netty library, back to version 1.7.2 snapshot 13w41a.
+Better memory use of pathfinding and biome caching.
+This prevents memory leaking.
+
+
+== Fixes ==
+12 issues fixed
+From released versions before 1.9
+
+MC-17630 – Zombie pathfinding to unreachable targets causes server lag.
+MC-82464 – Colored 'dead' skin template parts cause in-game issues.
+From 1.9
+
+MC-87907 – Endermen do not become aggressive when players look at their head/feet.
+MC-88357 – Crash when going outside height limit or into the void with F3.
+MC-89760 – Skin's jacket parts do not show up under specific conditions.
+MC-94438 – Server: Mob pathfinding induced massive lag in any versions 15w49a and later.
+MC-96526 – Crash caused by StackOverflowError when trading too many items at once.
+MC-98994 – Chunk generation performance regressed by 20–30%.
+From 1.9.1
+
+MC-100692 – Collisions cause extreme lag.
+From 1.9.2
+
+MC-100382 – Pathfinding memory leak.
+MC-100410 – Corrupting world by teleporting to y=±infinity.
+MC-100442 – DEV – navigation listener very slow code.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

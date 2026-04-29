@@ -1,0 +1,143 @@
+Nearly all video games (including Minecraft) are driven by one big program loop. Just as every gear in a clock is synchronized with the pendulum, every task involved in advancing a game simulation is synchronized with the game loop. Appropriately, one cycle of the game loop is called a tick.
+
+
+== Game tick ==
+A game tick is where Minecraft's game loop runs once. The game normally runs at a fixed rate of 20 ticks per second, so one tick happens every 0.05 seconds (50 milliseconds or 1/20 seconds), making an  in-game day last exactly 24 000 ticks (20 minutes). However, if the computer is unable to keep up with this speed, the amount of game ticks per second (TPS) decreases. As the vast majority of actions are timed based on tick count rather than on real time, this means that many things take longer on a slower computer.
+A statistic related to ticks per second (TPS) is milliseconds per tick (MSPT), the time a server actually uses to compute a tick. The TPS can be maintained at 20 only if the MSPT is no higher than 50. The following often contribute to server-side lag:
+
+Hoppers constantly try to search for items above them. Covering a hopper with any solid block (except bee nests and beehives), stops this check for items; composters can also be used for this purpose and are even better for performance compared to solid blocks. Alternatively, use water flow-based transport which is faster in bulk.
+Redstone components (especially redstone dust), as they can cause excessive amounts of block updates and/or light updates. Disabling redstone contraptions and clocks when not in use can help mitigate this.
+Mob AI. Large amounts of mobs. To mitigate this, torches can be used to prevent hostile mob spawning. As for animal farms-related lag, make sure to use entity-efficient farm designs.
+Random Tick Speed. If the random tick speed is set too high, it can cause the MSPT to rise unusually.
+The MSPT value is displayed in the F3 debug screen as "ms ticks" in Java Edition. The frame time graph (F3 + 2) shows the TPS value. Both displays are available only as a multiplayer host or singleplayer since the stats come from the integrated server of your Minecraft game.
+In Java Edition, tick rates can be controlled by the command /tick.
+
+
+== Game process ==
+In Java Edition, in each game loop the following actions are processed in order:
+
+Reset next tick time if lagging 2s behind expected tick time
+Compute next tick time
+Increment tick count
+Functions with tick or load tags are executed
+Send time every 20 game ticks to players
+Each dimension is ticked in order of Overworld, the Nether, the End, and custom dimensions. For each dimension:
+Update world border bounds
+Advance weather cycle
+Update daylight cycle time
+Player sleeping logic
+Run scheduled commands
+Execute Scheduled block ticks
+Execute Scheduled fluid ticks
+Raid logic
+Update chunks load level
+For all chunks in random order:
+Spawn mobs
+Tick ice and snow
+Random ticks
+Send block changes to players
+Update points of interest
+Unloads chunks
+Execute block events
+Tick dragon fight
+For all non-passenger entities:
+Check if it can despawn
+Tick entity
+Tick passengers
+Tick block entities
+Handle game events
+Send queued packets and handle incoming packets for each player
+Send player info to players
+Autosave every 6000 ticks
+Run pending tasks and wait for next tick
+
+
+== Chunk tick ==
+As a part of a game tick, specific chunks are ticked on every game tick.
+In Java Edition, chunks with loading type of entity ticking (see Chunk#Level and load type) are ticked on every game tick. This primarily includes chunks in the simulation distance, but chunks loaded through other methods are also random-ticked. Mob spawning and lightning strikes require a player within 8 chunks to occur, even if the chunk is fully loaded. Precipitation-related actions and all other random tick actions (such as crop growth) do not require any player to be near the chunk.
+In Bedrock Edition, all chunks inside simulation distance (or specified in the /tickingarea command) are ticked on every game tick.
+In both editions, the following things happen when a chunk gets ticked:
+
+Mobs naturally spawn.
+During a thunderstorm, lightning may strike somewhere in the chunk (1⁄100000 chance).
+1⁄16 chance that one column is chosen for weather checks on the topmost block:
+If in a cold biome, water freezes into ice if possible.
+If snowing, a snow layer is placed if possible.
+Additionally, cauldrons can be filled with powder snow.
+If raining, a cauldron is filled with water.
+A certain number of blocks within the chunk receive random block ticks, as described below.
+
+
+=== Random tick ===
+Chunks consist of one subchunk per 16 blocks of height, each one being a 16×16×16=4096 block cube. Subchunks are distributed vertically starting at the lowest y level. Every chunk tick, some blocks are chosen at random from each subchunk in the chunk. The blocks at those positions are given a "random tick". Subchunks that do not contain at least one block that can react to random ticks are skipped.  All blocks are a possible target of a random tick, including air.
+In Java Edition, the number of blocks chosen from each subchunk is specified by /gamerule random_tick_speed (defaults to 3), and one block can be chosen multiple times in one chunk tick. In Bedrock Edition, it also depends on randomTickSpeed (defaults to 1), but it specifies only relative speed instead of the exact number.
+Most blocks ignore this tick, but some use it to do something:
+
+Crops may grow or uproot.
+Mushrooms may spread or uproot.
+Vines may spread.
+In Bedrock Edition, fire may burn out or spread.
+Ice and snow layers may melt.
+Leaves may decay.
+Farmland hydration is updated.
+Cacti, sugar cane, kelp, bamboo, chorus flowers, mangrove propagules and sweet berry bushes may grow.
+Grass blocks and mycelium may spread.
+Grass blocks, mycelium, and nylium may decay (only if the condition is met).
+Saplings may grow into a tree.
+Lava may set fires nearby.
+Mud may turn into clay if placed on top of a block with pointed dripstone underneath.
+Lit redstone ore turns off.
+Nether portal blocks may spawn a zombified piglin.
+Turtle eggs crack or hatch.
+Campfire smoke appears.
+Budding amethyst may grow an amethyst bud on any of its sides as longs as there is no solid block.
+Copper blocks (or any of its non-oxidized variants) may advance one stage in oxidation.
+Pointed dripstone may fill a cauldron below.
+Pointed dripstone may grow a stalagmite/stalactite if the conditions are met.
+Because random block ticks are granted randomly, there is no way to predict when a block can receive its next tick. In Java Edition, the median time between ticks is 47.30 seconds (log4096−34096(0.5)≈ 946.03 game ticks). That is, there is a 50% chance for the interval to be equal or shorter than 47.30 seconds and a 50% chance for it to be equal or longer than 47.30. However, sometimes it is much longer or shorter: for example, there is a 1.38% chance for the interval to be less than one second and a 1.23% chance for the interval to be over five minutes. On average, blocks are updated every 68.27 seconds (40963≈ 1365.33 game ticks). For the math behind these numbers, see the Wikipedia entries for the geometric distribution.
+
+
+== Scheduled tick ==
+Some blocks can request a tick sometime in the future. These "scheduled ticks" are used for things that have to happen in a predictable pattern—for instance, redstone repeaters schedule a tick to change state in Java Edition, water schedules a tick when it needs to flow.
+During the scheduled tick phase, each block position that had previously requested a scheduled tick for this game tick gets ticked.
+In Java Edition, there are two types of scheduled ticks: block ticks and fluid ticks. Block ticks are executed first based on priority, and then based on scheduling order. A lower value for priority results in earlier execution during the scheduled tick phase. If a redstone repeater is facing the back or side of another diode, its block tick has a priority of -3. If a redstone repeater is depowering, it has a priority of -2. Otherwise, the repeater has a priority of -1. If a redstone comparator is facing the back or side of another diode, it has a priority of -1. All other block ticks have a priority of 0. Then, each block with a scheduled fluid tick get a tick. Fluid ticks do not use priorities and are ordered based on scheduling order.
+In Java Edition, the maximum number of scheduled ticks per game tick is 65,536. In Bedrock Edition, the maximum number of scheduled ticks in a chunk per game tick is 100.
+
+
+== Redstone tick ==
+
+Redstone tick is a unit of time that describes a delay of two game ticks, creating a 1⁄10 of a second delay.
+The redstone system is calculated on concurrent threads, meaning that redstone updates are processed independently of the main game loop. This architecture utilizes a two-phase tick system, known as produce ticks (P-Ticks) and consume ticks (C-ticks), or alternatively as Output Ticks and Input Ticks.
+These two phases form a single redstone tick, which spans 2 game ticks. There are 10 redstone ticks per standard 20-game-tick second.
+Tick cycle
+
+Output/produce tick (P-tick): Occurs first on odd-numbered game ticks. During this phase, components output or send their signal.
+Input/consume tick (C-tick): Occurs second on even-numbered game ticks. During this phase, components read or react to signals they are receiving.
+Component Behavior
+
+Power components (repeaters, comparators, redstone torchs, observers, etc.): These components read their input side during an output/produce tick. After their configured delay, they update their output side and produce an input/consume tick.
+Mechanism components (pistons, redstone lamps, doors, etc.): These components are activated during an input/consume tick and change their block state, which then creates block updates processed in the subsequent output/produce tick.
+Redstone dust updates its power state on every game tick (20 times per second), independently of the dedicated redstone tick system. This allows it to transmit pulses with a duration of only 1 game tick. A dust line powered on an odd game tick serves as an output for components processing on P-Ticks, while one powered on an even game tick serves as an output for components on C-Ticks. This makes redstone dust one of the few components that can be "1-ticked" and used to create phase-specific pulses. Redstone dust only updates visually on output/produce ticks, meaning on input/consume tick while technically on looks visually off.
+Armor stands update on both input and output ticks meaning they are one of the few redstone components that utilizes all 20 ticks. Minecarts with hoppers and minecarts with TNT might also be able to utilize all 20 game tick instead of being tied to P or C ticks.[needs testing]
+The transmission and timing of redstone signals are determined by these ticks, which govern when redstone devices output power and when they respond to input.
+
+
+== Piston tick ==
+
+The piston tick is a different way to divide the game tick, based on the Immediate Update Theory by Sancarn and Selulance. It was created by the Chinese redstone community in order to simplify the calculation of piston timings, but it never gained popularity in the Western community.
+The piston tick starts in the entity phase of the game tick and ends in the block event phase, therefore a piston always takes 3 piston ticks to extend or retract, without any start delay. Redstone components that use scheduled ticks lose 1 piston tick of delay depending on how they are powered (for example this happens when a repeater gets powered by a redstone block that was pushed by a piston).
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== References ==
+
+
+== Navigation ==

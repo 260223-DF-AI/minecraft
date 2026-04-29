@@ -1,0 +1,100 @@
+Beta 1.17.20.23 is the fourth beta version for Bedrock Edition 1.17.30, released on July 22, 2021, which fixes bugs.
+
+
+== Changes ==
+
+
+=== Technical ===
+Gameplay 
+
+Data-driven blocks can now be added to the creative menu.
+Molang 
+
+min_engine_version from Resource Pack and Behavior Pack manifests is now passed into Molang expression parsing.
+This allows for future breaking changes tied to a specific engine version.
+User Interface 
+
+UI bind objects can now utilize the ignore field.
+
+
+== Experimental ==
+These changes are accessible by enabling the "Caves & Cliffs" and "Enable GameTest Framework" experimental toggle.
+
+
+=== Mobs ===
+General 
+
+Hostile mobs can now spawn in the new mountain and cave biomes.
+
+
+=== Technical ===
+GameTest Framework
+
+Renamed module "Minecraft" to "mojang-minecraft"
+Renamed module "GameTest" to "mojang-gametest"
+Renamed function assertBlockTypePresent to assertBlockPresent
+Renamed function assertEntityData to assertEntityState
+Removed function assertBlockTypeNotPresent
+Removed function assertEntityNotPresent
+Removed function assertEntityNotPresentInArea
+Removed function assertEntityNotTouching
+Removed function succeedWhenEntityNotPresent
+Modified signature of function assertBlockState(blockLocation: BlockLocation, callback: (Block) -> boolean)
+Modified signature of function assertBlockPresent(blockType: BlockType, blockLocation: BlockLocation, isPresent: boolean)
+Modified signature of function assertEntityPresent(entityTypeIdentifier: string, blockLocation: BlockLocation, isPresent: boolean)
+Modified signature of function assertEntityPresentInArea(entityTypeIdentifier: string, isPresent: boolean)
+Modified signature of function assertEntityTouching(entityTypeIdentifier: string, location: Location, isTouching: boolean)
+Modified signature of function succeedWhenEntityPresent(entityTypeIdentifier: string, location: Location, isPresent: boolean)
+Added GameTestExtension function assertBlockProperty(propertyName: string, value: number string boolean, blockLocation: BlockLocation)
+
+
+== Fixes ==
+Stability and performance 
+
+Fixed several crashes that could occur during gameplay
+Optimized pasting unicode text into Book & Quill (MCPE-119651)
+Fixed a crash that could occur when crafting a Crafting Table with Gameplay Tips enabled
+Gameplay 
+
+Fixed Bed display if the foot of the Bed is in a brighter area than the head (MCPE-123592)
+Fixed Large Chest display so the brightest end of the Chest is chosen (MCPE-123592)
+Travelling through End portals can no longer cause players to take fall damage (MCPE-135226, MCPE-132484)
+Items 
+
+Made projectile items move more smoothly when far from players (MCPE-101102)
+Holding a Shield in Marketplace maps no longer shows a content error
+Strong/long/splash/lingering potions can be placed in the Brewing Stand manually (MCPE-86636)
+Mobs 
+
+Undead mobs standing near Powder Snow now burn normally (MCPE-131005)
+Powder Snow above undead mobs now prevents burning effect
+Multiple Shulkers will no longer be able to spawn in the same position from spawn eggs or End City generation (MCPE-43972)
+Mobs can now pathfind correctly when standing on Amethyst Buds (MCPE-130010)
+Fixed Horses sometimes becoming invisible after players dismount them (MCPE-108568)
+Grown up Goats no longer lose their Horns when reloading a world
+Lightning no longer randomly strikes mobs that are under blocks (MCPE-121688)
+Blocks 
+
+Spore Blossom no longer has a randomly offset hitbox (MCPE-121658)
+Moss Block and Moss Carpet now break when moved by Pistons and Sticky Pistons can no longer pull them (MCPE-121751, MCPE-122004)
+Water dripping from Pointed Dripstone can no longer fill Cauldrons with Potions (MCPE-131180)
+Measurements of hitbox of Spore Blossom now match Java Edition
+Fixed issue causing Slime and Honey Block movement slowdown to not be fully applied to players
+User interface 
+
+Emote wheel no longer appears when pressing Ctrl+B in-game  (MCPE-125246)
+Fixed Input Method Editor (IME) not working after suspending the game on Windows 10 (MCPE-59722)
+Added a new sidebar to Marketplace and Dressing Room related screens to help better improve the experience of navigating these areas
+There is now an item transferring animation when deselecting a recipe
+Commands 
+
+Loading a structure with the /structure command now displays the correct output messages (MCPE-132813)
+The /particle command position argument is now optional (MCPE-128379)
+The /particle command will now output on success (MCPE-80348)
+The /particle command no longer shows an error when run successfully through /execute (MCPE-129001).
+
+
+== References ==
+
+
+== Navigation ==

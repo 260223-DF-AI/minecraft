@@ -1,0 +1,359 @@
+Items models, commonly referred to as Client Items, Item definitions or Itemstates, are processor files used by the game to define and select which model to use for rendering items, depending of various criteria such as components, item interactions, their position in the inventory, or numerous other in-game values.
+Items models are stored as JSON files in a resource pack in the assets/<namespace>/items folder.
+Which items model is used by an item is based on the component minecraft:item_model, which references the identifier of the items model at /assets/<namespace>/items/<id>, and can be changed through commands.
+
+
+== JSON format ==
+
+
+=== Items model ===
+
+
+== Items model types ==
+
+
+=== model ===
+Render a plain model from the models directory.
+
+
+==== Tint sources types ====
+
+
+===== constant =====
+Return a constant RGB color.
+
+
+===== dye =====
+Return value from minecraft:dyed_color component or default if not present
+
+
+===== firework =====
+Return average of colors from minecraft:firework_explosion component or default color if there are none.
+
+
+===== grass =====
+Return grass color at specific climate parameters, based on textures/colormap/grass.png
+
+
+===== map_color =====
+Return value from minecraft:map_color component or default color if component is not present.
+
+
+===== potion =====
+Return color from minecraft:potion_contents component:
+
+if component is present:
+custom_color value, if there is one present in component
+default color, if effect list is empty
+average of effect colors
+else, default color
+
+
+===== team =====
+Returns the team color of context entity, if any. Else, when there is no context entity, entity is not in a team or team has no color, return default.
+
+
+===== custom_model_data =====
+Return value from colors list in minecraft:custom_model_data component.
+
+
+=== composite ===
+Render multiple sub-models in the same space.
+
+
+=== condition ===
+
+
+==== Boolean property types ====
+
+
+===== broken =====
+Return true if the item is damageable and has only one use remaining before breaking.
+No additional fields for this type.
+
+
+===== bundle/has_selected_item =====
+Return true if bundle is "open", i.e. it has selected item visible in GUI.
+No additional fields for this type.
+
+
+===== carried =====
+Return true if item is carried between slots in GUI.
+No additional fields for this type.
+
+
+===== component =====
+Uses component data component predicates to match item components.
+
+
+===== damaged =====
+Return true if the item is damageable and has been used at least once.
+No additional fields for this type.
+
+
+===== extended_view =====
+Return true if player has requested extended details by holding shift key down. Only works when item is displayed in UI. Note: not a keybind, can't be rebound.
+No additional fields for this type.
+
+
+===== fishing_rod/cast =====
+Return true if there is a fishing bobber attached to currently used fishing rod.
+No additional fields for this type.
+
+
+===== has_component =====
+Return true if the given component is present on the item.
+
+
+===== keybind_down =====
+Return true if keybind is currently active.
+
+
+===== selected =====
+Return true if item is selected on a hotbar.
+No additional fields for this type.
+
+
+===== using_item =====
+Return true if player is currently using this item.
+No additional fields for this type.
+
+
+===== view_entity =====
+When not spectating, return true if context entity is the local player entity, i.e. the one controlled by client.
+When spectating, return true if context entity is the spectated entity.
+If context entity is not present, will return false.
+No additional fields for this type.
+
+
+===== custom_model_data =====
+Return value from flags list in minecraft:custom_model_data component.
+
+
+=== select ===
+Render an items model based on discrete property.
+
+
+==== Property types ====
+
+
+===== block_state =====
+Return value for some property from minecraft:block_state component.
+
+Values: Any string.
+
+
+===== charge_type =====
+Return charge type stored in minecraft:charged_projectiles component.
+No additional fields for this type.
+Values:
+
+none: If there are no projectiles or component is not present.
+rocket: If there is at least one firework rocket.
+arrow: Any other case.
+
+
+===== component =====
+Return value from a component. If the selected value comes from a registry and the current datapacks does not provide it, the entry will be silently ignored.
+
+Values: Depends on the target component type.
+
+
+===== context_dimension =====
+Return the ID of the dimension in context, if any.
+No additional fields for this type.
+Values: Namespaced dimension ID.
+
+
+===== context_entity_type =====
+Return the holding entity type, if present.
+No additional fields for this type.
+Values: Namespaced entity type ID.
+
+
+===== display_context =====
+Return context this item is rendered in.
+No additional fields for this type.
+Values:
+
+none
+thirdperson_lefthand
+thirdperson_righthand
+firstperson_lefthand
+firstperson_righthand
+head
+gui
+ground
+fixed
+on_shelf
+
+
+===== local_time =====
+Returns the current time formatted according to a given pattern. The value is updated every second. For full format documentation for locale, time zone and pattern, see ICU (International Components for Unicode) documentation.
+
+Values: Any string.
+
+
+===== main_hand =====
+Return main hand of holding player.
+No additional fields for this type.
+Values: left, or right.
+
+
+===== trim_material =====
+Return value of material field from minecraft:trim component, if present.
+No additional fields for this type.
+Values: Namespaced ID trim material.
+
+
+===== custom_model_data =====
+Return value from strings list in minecraft:custom_model_data component.
+
+Values: Any string.
+
+
+=== range_dispatch ===
+Render an items model based on numeric property. Will select last entry with threshold less or equal to property value.
+
+
+==== Numeric property types ====
+
+
+===== bundle/fullness =====
+Return weight of minecraft:bundle_contents component or 0 if not present.
+No additional fields for this type.
+
+
+===== compass =====
+Return an angle, scaled from 0.0 to 1.0 in x-z plane between holder position and target. If target is not valid (not present, in other dimension or too close to holder position) random value will be returned.
+
+
+===== cooldown =====
+Return remaining cooldown for item, scaled between 0.0 to 1.0.
+No additional fields for this type.
+
+
+===== count =====
+Return stack size.
+
+
+===== crossbow/pull =====
+Return crossbow-specific use time.
+No additional fields for this type.
+
+
+===== damage =====
+Return value for minecraft:damage component or 0 if not present.
+
+
+===== time =====
+Return value of an in-game time, scaled between 0.0 to 1.0.
+
+
+===== use_cycle =====
+Return remaining use ticks modulo period.
+
+
+===== use_duration =====
+Return item use ticks.
+
+
+===== custom_model_data =====
+Return value from floats list in minecraft:custom_model_data component or 0 if not present.
+
+
+=== empty ===
+Does not render anything.
+No additional fields for this type.
+
+
+=== bundle/selected_item ===
+Render the selected stack in minecraft:bundle_contents component, if present, otherwise does nothing.
+No additional fields for this type.
+
+
+=== special ===
+Render a special model.
+
+
+==== special model types ====
+
+
+===== banner =====
+Render a banner with patterns from minecraft:banner_patterns component.
+
+
+===== bed =====
+ 
+Render one half of a bed. To render both halves, and so the whole bed, use a minecraft:composite model.
+
+
+===== bell =====
+Render the animated part of a Bell block.
+No additional fields for this type.
+
+
+===== book =====
+Render the book that normally is a part of Enchanting Table and Lectern.
+
+
+===== chest =====
+Render a single chest.
+
+
+===== conduit =====
+Render conduit.
+No additional fields for this type.
+
+
+===== copper_golem_statue =====
+Render a copper golem statue.
+
+
+===== decorated_pot =====
+Render a decorated pot. Uses values from minecraft:pot_decorations component.
+No additional fields for this type.
+
+
+===== end_cube =====
+Render a cube with the same texture effects as the End Portal and the End Gateway blocks.
+
+
+===== head =====
+Render a head.
+
+
+===== player_head =====
+Render a player head. Use the data into the minecraft:profile component to select the texture to render.
+No additional fields for this type.
+
+
+===== shield =====
+Render a shield. Uses patterns from minecraft:banner_patterns component and color from minecraft:base_color component.
+No additional fields for this type.
+
+
+===== shulker_box =====
+Render a shulker box.
+
+
+===== standing_sign =====
+Renders a standing sign.
+
+
+===== hanging_sign =====
+Renders a hanging sign.
+
+
+===== trident =====
+Render a trident.
+No additional fields for this type.
+
+
+== History ==
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,30 @@
+<player>.dat files are used by servers to store the state of individual players. The format is also used within level.dat files to store the state of the singleplayer player, which overrides any <player>.dat files with the same name as the singleplayer player. These files are in NBT format.
+
+
+== NBT structure ==
+
+
+== Item structure ==
+
+Items are used both in the player's inventory and ender chest.
+
+
+== Inventory slot numbers ==
+The image below shows the slot numbers of the player's inventory slots as of Java Edition 1.21.5.
+In versions prior to 25w03a (including 1.21.4), the head, chest, legs, feet, and offhand slots were stored in the Inventory tag. In 1.21.4 and most prior versions these slots are numbered 103, 102, 101, 100 and -106 respectively.
+
+
+== History ==
+
+
+== Trivia ==
+Pre-1.7.10 player data files were named as the player's username rather than their UUID, this meant if the server was running on Windows and the player had a reserved filename as a player name they would not have their player data saved. List of Reserved Windows Filenames:
+AUX
+COM<n> where n is a digit from 1-9 (inclusive)
+CON
+LPT<n> where n is a digit from 1-9 (inclusive)
+NUL
+PRN
+
+
+== Navigation ==

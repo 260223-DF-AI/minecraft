@@ -1,0 +1,160 @@
+Beta 1.21.20.22 (ChromeOS, Android) or Preview 1.21.20.22 (Windows, iOS, iPadOS, Xbox, PlayStation) is the seventh beta/Preview version for Bedrock Edition 1.21.20, released on July 10, 2024, which fixes bugs.
+
+
+== Additions ==
+
+
+=== Gameplay ===
+Game Tips
+
+Added a game tip that informs players on touch devices that they are sneaking in order to avoid having new players stuck in crouch.
+Added some minor tip interruption improvements for existing game tips.
+
+
+=== General ===
+Tags
+
+Added the one_way_collidable block tag: contains iron_door, wooden_door, spruce_door, birch_door, jungle_door, acacia_door, dark_oak_door, mangrove_door, cherry_door, bamboo_door, crimson_door, warped_door, copper_door, exposed_copper_door, weathered_copper_door, oxidized_copper_door, waxed_copper_door, waxed_exposed_copper_door, waxed_weathered_copper_door, waxed_oxidized_copper_door, iron_trapdoor, trapdoor, acacia_trapdoor, birch_trapdoor, dark_oak_trapdoor, jungle_trapdoor, spruce_trapdoor, crimson_trapdoor, warped_trapdoor, mangrove_trapdoor, bamboo_trapdoor, cherry_trapdoor, copper_trapdoor, exposed_copper_trapdoor, weathered_copper_trapdoor, oxidized_copper_trapdoor, waxed_copper_trapdoor, waxed_exposed_copper_trapdoor, waxed_weathered_copper_trapdoor, waxed_oxidized_copper_trapdoor, fence_gate, acacia_fence_gate, bamboo_fence_gate, birch_fence_gate, cherry_fence_gate, crimson_fence_gate, dark_oak_fence_gate, jungle_fence_gate, mangrove_fence_gate, spruce_fence_gate, and warped_fence_gate
+Used to make mobs that are inside a block's collision box don't be pushed out.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Copper Door
+
+The "open" sound of copper doors are now pitched differently.
+Anvil
+
+A damaged anvil block may now spawn in trail ruins, as it would in Java Edition.
+The different damage block states for the anvil ID have now been split up into their own IDs.
+
+Quartz Block
+
+The different chisel type block states for the quartz_block ID have now been split up into their own IDs.
+
+Quartz Pillar
+
+Pillar Quartz Block has been renamed to Quartz Pillar.
+Red Sandstone
+
+The different block states for the red_sandstone ID have now been split up into their own IDs.
+
+Smooth Red Sandstone
+
+Its hardness changed from 0.8 to 2.
+Dirt
+
+The different block states for the dirt ID have now been split up into their own IDs.
+
+Sand
+
+The different block states for the sand ID have now been split up into their own IDs.
+
+
+=== General ===
+Realms
+
+Player can now create up to 5 invite links per Realm.
+Invite links can be enabled or disabled at will, or set to have an expiration date in the future.
+Invite links can be deleted entirely.
+Newly created invite links codes will be 15 characters long (increased from 11).
+Existing Preview Realms will keep their existing invite links, but all new Preview Realms will start with 0 invite links by default moving forward.
+Removed an unnecessary warning from 2 Player realms subscription.
+
+
+=== Technical ===
+API
+
+Dimension
+Released method getTopmostBlock from beta to 1.13.0.
+Released interface VectorXZ from beta to 1.13.0.
+Blocks
+
+The blocks.json files found in resource packs are now versioned.
+Overriding the block stone with a format_version of 1.20.50 or higher will assume the texture data in terrain_texture.json is flattened and not using an array.
+Overriding the block prismarine with a format_version of 1.21.10 or higher will assume the texture data in terrain_texture.json is flattened and not using an array.
+Overriding the block anvil, quartz_block, red_sandstone, sand, and sandstone with a format_version of 1.21.20 or higher will assume the texture data in terrain_texture.json is flattened and not using an array.
+Entity Components
+
+Added the behavior.teleport_to_owner goal, which allows an entity to teleport to its owner.
+This goal is designed for emergency situations where behavior.follow_owner could be too slow or too low priority.
+The filters field allows defining the conditions for teleportation using entity filters.
+The cooldown field allows defining how often the entity should attempt to teleport.
+minecraft:behavior.move_away_from_target has been renamed to minecraft:behavior.move_around_target to better describe what the goal does, since it can be used both for moving away from the target, but also to move toward a random position around the target.
+Entity Filters
+
+Added new entity filter owner_distance, which checks the distance of an entity from its owner.
+Gameplay
+
+Modified ItemUseInventoryTransaction packet by adding Trigger Type. This new value tells us if the packet is sent from a direct player input or the simulation tick from the button being held down.
+General
+
+Entities that fail to load due to missing content will now be preserved inside the level. These entities will re-appear when the missing content becomes available (i.e removing and re-applying an add-on).
+Items
+
+Using minecraft:wearable with slot set to slot.weapon.offhand in combination with minecraft:allow_off_hand set to false will now cause a content error.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs" experimental toggle.
+
+
+=== Changes ===
+
+
+==== Technical ====
+API
+
+Camera
+Added CameraFixedBoomOptions to the options for the setCamera function in beta.
+New interface added to beta.
+Allows you to customize minecraft:follow_orbit cameras only when the third person camera presets toggle is enabled.
+Introduces viewOffset?: Vector2. This property allows you to change the offset of the camera relative to the player to create an over the shoulder effect.
+Graphical
+
+Extended TextureSet capabilities to support Items in the Deferred Technical Preview.
+Added the new bio-optical lighting model for water in the Deferred Technical Preview. The ability to customize and data-drive water will be made available in future updates.
+Added screen space reflections to the Deferred Technical Preview. These reflections are included as part of the Reflections quality slider in the Deferred graphics settings menu. On mobile devices, screen space reflections are only available when running at Ultra settings.
+
+
+== Fixes ==
+25 issues fixed
+From released versions before 1.21.20
+
+MCPE-101893 – Smooth quartz block blast resistance is wrong
+MCPE-121664 – Rooted Dirt uses gravel sounds instead of their distinctive sounds
+MCPE-151807 – /locate doesn't use minecraft: namespace ID for structures
+MCPE-178876 – Bogged sit higher in boats and minecarts than other mobs
+MCPE-180654 – Differences in Ominous Vault loot from Java Edition
+MCPE-180913 – Torch moves in slot when being quick moved
+MCPE-182681 – Trial Explorer maps not showing trial chamber location
+From the previous development version
+
+MCPE-182290 – Flattened monster eggs/infested stones do not have stone sound assigned
+MCPE-183434 – Esc button can't be used to close the New Bed Screen
+Other
+
+Fixed an issue where screen narration would not describe how to accept a game invitation on Android, iOS, and iPadOS.
+Text to speech for UI now reads the how to play screens by hovering over, tapping on or navigating to the respective headers and paragraphs.
+Trapdoors and fence gates no longer push players or mobs when activated by redstone.
+Mounts and vehicles are no longer given a slight velocity during a dismount.
+Fixed mob animations not playing when mobs were unloaded in split screen.
+Fixed an issue so that Marketplace content is properly imported before you create or start a world.
+Legacy worlds no longer have chunks at the edge of the world that don't render.
+Fixed fog JSON validation to allow for max_density_height and zero_density_height values to range from (-64,320).
+Fixed issues with the Realms button sticking around when it shouldn't or not showing up when it should.
+Fixed a bug that locked players on an infinite loop after cancelling the process of joining a recently claimed preview Realm.
+Fixed a bug where players with a freshly installed Minecraft needed to restart before being able to see Realms Stories.
+Cleaned up the disabled Realms Stories button interface on the pause screen when playing as a second user in split screen.
+Fix so that pressing "Join Realm" on the new Play screen does not lead into an empty void.
+Fixed a crash with getTags method on item stack when called on the air block item.
+Fixed a bug on iOS and iPadOS that resulted in undefined graphics behavior (such as no point lights or washed-out lighting) in the Deferred Technical Preview.
+Fixed a gamma-correction bug that caused the textures of candles, glass, ice, honey, slime, beacons, cauldrons and portals to be overly bright in the Deferred Technical Preview.
+
+
+== References ==
+
+
+== Navigation ==

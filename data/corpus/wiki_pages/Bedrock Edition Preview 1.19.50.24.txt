@@ -1,0 +1,37 @@
+Beta 1.19.50.24 (Android) or Preview 1.19.50.24 (Windows, iOS, iPadOS, Xbox) is the fifth beta/Preview version for Bedrock Edition 1.19.50, released on November 9, 2022, which changes the model and texture for vexes, and fixes bugs.
+
+
+== Changes ==
+
+
+=== Mobs ===
+Vex
+
+Updated Vex model and texture.
+The vex retains a slightly larger hitbox to make it easier to fight.
+
+
+=== Technical ===
+General
+
+input_ground_controlled no longer implies increased auto step when controlled by player. The variable_max_auto_step component can be used instead. To have consistency with previous versions use base_value: 1.0625 and jump_prevented_value: 0.5625.
+
+
+== Fixes ==
+Gameplay
+
+Fixed a bug where players could get moved to the other side of a wall when close to a retracting piston.
+Fixed beehives not incrementing their honey level when a Bee with nectar exits. (MCPE-163938)
+Touch Controls
+
+Made keyboard input consistent with other control modes when the player is flying and using touch controls. Now, double pressing the "Space" key can correctly disable flying in touch control mode.
+Fixed an issue which prevented items from being discarded in the extended Creative Mode inventory by dropping them on another item. (MCPE-162124)
+Commands
+
+Running /execute align xyz entity now produces a command error instead of crashing. (MCPE-162733)
+
+
+== References ==
+
+
+== Navigation ==

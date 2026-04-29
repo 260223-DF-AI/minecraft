@@ -1,0 +1,32 @@
+Lists or reloads permission list on BDS. Or sets a player's permission level.
+
+
+== Syntax ==
+permission list
+Prints the current used permissions list. Exclusive to BDS.
+permission reload
+Makes the server reload the operator list from the permissions.json file. Exclusive to BDS.
+permission set <player: target> [permission: PermissionLevel]
+Sets a player's permission. Does not exist in BDS. Normally cannot be executed due to its too high permission level requirement (level 4).
+
+
+== Arguments ==
+player: target: CommandSelector<Player>
+
+Must be a player name or a target selector. 
+permission: PermissionLevel: enum
+
+Must be one of:
+member
+operator
+visitor
+
+
+== History ==
+
+
+== External links ==
+"/permission Command"     – Microsoft Learn, October 11, 2023.
+
+
+== Navigation ==

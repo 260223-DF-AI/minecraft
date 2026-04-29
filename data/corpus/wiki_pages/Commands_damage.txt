@@ -1,0 +1,88 @@
+Applies a set amount of damage to the specified entities.
+
+
+== Usage ==
+/damage applies damage to entities with health or an equivalent statistic. The <damageType>‌[JE  only] or cause: DamageType‌[BE  only] argument is used to specify the kind of damage which will be applied to the entity.
+When being applied to an applicable entity, /damage uses the same underlying logic when applying damage as is used elsewhere in the game. As such, the damage specified by the <damageType>‌[JE  only] or cause: DamageType‌[BE  only]  argument is not the exact amount of damage which will be applied to the entity. The resulting damage is affected by statistics which would otherwise modify or nullify said damage based on the damage source and type of damage (for instance players in creative mode are invulnerable to most types of damage, and damage types categorized as fire damage will be nullified by fire resistance and weakened by fire protection). Entities will also react to damage inflicted by /damage in the same manner they would if said damage was inflicted through normal means (for instance, endermen will teleport away if the damage source is categorized as a projectile).
+
+
+=== Undefined behavior ===
+
+
+=== Hardcoded behaviors ===
+When amount: int is 0, entities are always considered successfully damaged. If not 0, only entities (except armor stands, NPCs, and camera), boats, paintings, leash knots, falling blocks, and minecarts may be recognized as successfully damaged.
+Some behaviors are data-driven (e.g. end crystal explosion, fireball rebounding). These data-driven behaviors do not affect the command's output text, result, and return value. Only hardcoded behaviors can affect them.
+
+
+== Damage types ==
+Below are the types of damage that can be applied. These are used for the <damageType>‌[Java Edition  only] or cause:DamageCause‌[Bedrock Edition  only] arguments (see Syntax below).
+
+
+== Syntax ==
+Java Edition
+damage <target> <amount> [<damageType>] [at <location>]
+damage <target> <amount> [<damageType>] [by <entity>] [from <cause>]
+Bedrock Edition
+damage <target: target> <amount: int> <cause: DamageCause> entity <damager: target>
+damage <target: target> <amount: int> [cause: DamageCause]
+
+
+== Arguments ==
+JE: <target>: entityBE: target: target: CommandSelector<Actor>
+
+Specifies the entity‌[Java Edition  only] or entities‌[Bedrock Edition  only] to damage.
+Must be a player name, a target selector or a UUID‌[Java Edition  only].  In Java Edition, the target selector must be in single type.
+JE: <amount>: float
+
+Specifies the amount of damage to inflict.
+Must be a [Float]Single-precision floating-point number (from -(2-2-23)×2127 (≈-3.4×1038) to (2-2-23)2×127 (≈3.4×1038) ). And it must be greater than or equal to 0.0.
+BE: amount: int: int
+
+Specifies the amount of damage to inflict.
+Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ). Should be between 0 and 2147483647 (both inclusive).
+JE: <damageType>: resourceBE: cause: DamageCause: enum
+
+Specifies the damage type‌[Java Edition  only] or type of damage‌[Bedrock Edition  only]. Affects death messages and difficulty scaling, among other things.
+In Java Edition, if not specified, defaults to minecraft:generic.
+Must be an existing registered resource location in minecraft:damage_type registry.
+For Bedrock Edition, all possible arguments are listed on the official add-on documentation.
+JE: <location>: vec3
+
+Specifies the location the damage originated at if the cause of the damage is not an entity (e.g., the position of the bed that exploded in the Nether).
+Must be three-dimensional coordinates with double-precision floating-point number elements. Accepts tilde and caret notations.
+JE: <entity>: entityBE: damager: target: CommandSelector<Actor>
+
+Specifies the entity who dealt the damage.
+Must be a player name, a target selector or a UUID‌[Java Edition  only].  In Java Edition, the target selector must be in single type.
+JE: <cause>: entity
+
+Specifies the cause of the damage (for example, the skeleton that shot the arrow).
+Must be a player name, a target selector or a UUID.  And the target selector must be in single type.
+
+
+== Results ==
+
+
+== Output ==
+
+
+== Example ==
+Make a villager named villager_1 deal 1HP damage to the nearest iron golem:
+/damage @e[type=iron_golem, sort=nearest, limit=1] 1 generic by @e[type=villager, limit=1, name="villager_1"]‌[Java Edition  only]
+/damage @e[type=iron_golem, c=1] 1 entity_attack entity @e[type=villager, c=1, name="villager_1"]‌[Bedrock Edition  only]
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== External links ==
+"/damage Command"     – Microsoft Learn, August 16, 2024.
+
+
+== Navigation ==

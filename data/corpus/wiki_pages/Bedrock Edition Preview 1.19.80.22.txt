@@ -1,0 +1,199 @@
+Beta 1.19.80.22 (Android) or Preview 1.19.80.22 (Windows, iOS, iPadOS, Xbox) is the third beta/Preview version for Bedrock Edition 1.19.80, released on March 22, 2023, which adds trail ruins, the calibrated sculk sensor, new sign mechanics and new pottery shards behind experimental gameplay, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Command format ===
+/gametest
+
+Added two new subcommands:
+... stopall: used to manually stop all tests while they are running.
+... runsetuntilfail [tag: string] [rotationSteps: int]: used to run a set of tests but will automatically stop if any of the tests fail.
+
+
+== Changes ==
+
+
+=== General ===
+Touch Controls
+
+Re-enabled the new stack splitting UI.
+
+
+=== Items ===
+Potions and Tipped Arrows
+
+Temporarily reverted the recent adjustments made to the particle colors due a bug.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Next Major Update" and "Beta APIs" experimental toggles.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+Calibrated Sculk Sensor
+
+A type of sculk sensor which does not generate naturally and allows players to filter vibrations based on their frequency level.
+Can only be crafted with one sculk sensor and three amethyst shards in the crafting table.
+One side of the calibrated sculk sensor can receive a redstone signal as an input.
+The strength of that redstone signal is the only vibration frequency the sculk sensor will listen to.
+
+
+==== Items ====
+Pottery Shards
+
+Added 16 pottery shards, they can be found in following archaeological sites:
+Desert Pyramid
+ Miner
+Desert Well
+ Brewer
+Ocean Ruins
+Cold
+ Blade
+ Explorer
+ Mourner
+ Plenty
+Warm
+ Angler
+ Shelter
+ Snort
+Trail Ruins
+ Burn
+ Danger
+ Friend
+ Heart
+ Heartbreak
+ Howl
+ Sheaf
+Smithing Templates
+
+Five more armor trim smithing templates have been added. They can be obtained randomly from chests generated in structures accordingly.
+Trail Ruins
+ Host Armor Trim
+ Raiser Armor Trim
+ Shaper Armor Trim
+ Wayfinder Armor Trim
+Ancient City
+ Silence Armor Trim
+This is the hardest one to get, with only a 1% chance per chest.
+
+
+==== World generation ====
+Trail Ruins
+
+A buried generated structure from a lost culture.
+Four armor trims can be found here.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Block of Amethyst
+
+Added a new behavior called vibration resonance when it is placed adjacent to sculk sensors.
+If that sculk sensor receives a vibration, the block of amethyst will re-emit its frequency as a separate vibration at its location.
+Cherry Leaves
+
+Changed the texture of the particles falling underneath.
+Pink Petals
+
+Now make a sound when adding more petals to them. (MCPE-168022)
+The sound step.pink_petals is now in the "Players" category instead of "Blocks". (MCPE-168092)
+Signs
+
+Sign text can now be edited by interacting with it after being placed in the world.
+Both sides of the sign can now have separate text and colors.
+By default, a sign will prompt the player to input the front side's text when placed.
+To apply text to the back-side, the player must walk to the other side and interact with that face to edit it.
+Signs can now also be waxed with honeycomb, preventing any further edits to its text.
+Suspicious Gravel and Suspicious Sand
+
+They now generates naturally in trail ruins.
+Looted items should now reveal themselves properly from suspicious blocks when brushed, regardless of which item is contained. (MCPE-168396)
+
+
+==== Items ====
+Smithing Templates
+
+The "dune" armor trim now has a new pattern and smithing template icon.
+The "sentry" armor trim now uses "dune" armor trim's old pattern and has a new smithing template to fit this pattern.
+The "sentry" armor trim's old pattern is now used by the new "shaper" armor trim.
+
+
+==== Technical ====
+API
+
+Signs
+Fixed an issue where text set on signs using setText wasn't reflected on Signs on the client until the sign was reloaded.
+getComponent('minecraft:sign') now works with hanging signs.
+The following APIs have been moved from beta to stable @minecraft/server (1.1.0):
+dimension
+typeId
+getVelocity()
+location
+getHeadLocation()
+nameTag
+id
+getViewDirection()
+getEntities
+getEntitiesAtBlockLocation
+getPlayers
+EntityQueryOptions
+EntityQueryScoreOptions
+GameType
+getPlayers
+
+
+== Fixes ==
+Accessibility
+
+Focus indicator is now automatically visible on menu items while using a keyboard.
+Gameplay
+
+The player’s camera no longer appears inside blocks when sprint and swim are held. (MCPE-166565)
+Players are now forced to stop flying when forced into a 1.5 block tall space.
+Sneaking without the experimental toggle no longer overrides custom collision boxes.
+Graphical
+
+Changed the debug HUD text available in Preview & Beta builds to append "RTX" to the renderer information only when RTX content is being played instead of when the GPU is capable of running RTX content. As a consequence, the DXR-capable D3D12 backend will now report itself as "D3D12+".
+Structures
+
+Shipwreck supply chests are no longer missing Moss Block as loot. (MCPE-168376)
+Marketplace
+
+Wishlist feature has been added so that players can now save things to purchase at a later time.
+Editor
+
+Fixed issues with UI not scaling properly when the resolution or game window size is updated.
+Fixed a bug where tool mode would use the 3rd person camera if it was the active camera when switching from crosshair mode. The 1st person camera is always used in Tool mode.
+Fixed issues where camera control was disabled when using a nether or end portal in crosshair mode.
+Blocks
+
+Fixed clipping error inside Hopper. (MCPE-168024)
+Mobs
+
+Mobs will again take damage when standing on an incomplete block next to a campfire. (MCPE-167479)
+Graphical
+
+Fixed a bug that caused the text on Signs not to be displayed with RTX enabled. (MCPE-167638)
+User Interface
+
+Fixed a crash that could occur when opening the "My Packs" tab with a broken pack. (MCPE-165806)
+New first-time sign in screen will no longer appear on subsequent launches if you don't sign in.
+Fixed an issue where a gamepad icon would overlap the "Feedback" window.
+Fixed an issue where selecting an item in the creative inventory would snap the cursor to the search bar. (MCPE-168355)
+Updated designs for sign in and sign up screens.
+Fixed duplicate tooltips appearing when selecting item in the inventory while using touch controls. (MCPE-166866)
+Fixed a bug where the crosshair could be visible on the new death screen.
+Fixed a bug where text formatting codes would be shown on the new death screen.
+
+
+== References ==
+
+
+== Navigation ==

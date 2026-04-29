@@ -1,0 +1,54 @@
+Environment attributes control various visual and gameplay features depending on the dimension, biome, time, and weather. 
+
+
+== Usage ==
+All environment attributes have a default value, which can be overwritten or modified by the following sources (from low priority to high priority):
+
+Dimension types
+Biome definitions
+Timelines
+Weather (not data-driven)
+Dimension types and biome definitions can overwrite and modify environment attributes using the format below. (Timelines modify environment attributes using a different format, which is detailed on their own wiki page.)
+
+
+== List of attributes ==
+
+
+== Modifiers ==
+Environment attribute modifiers are used to modify the value of an environment attribute.
+
+override
+Overrides the existing value with a new value. Functions identical to directly specifying the value. This modifier is available for all value types.
+
+
+=== Boolean modifiers ===
+Boolean modifiers are used to modify boolean values. They apply a boolean operator on the old value and a given argument.
+
+
+=== Float modifiers ===
+Float modifiers are used to modify float values.
+
+simple arithmatic
+Applies a simple arithmatic operation to the old value and a given argument.
+
+alpha_blend
+Applies a alpha blending between the old value and a new value.
+
+
+=== RGB and ARGB modifiers ===
+RGB and ARGB modifiers are used to modify RGB or ARGB color values.
+
+component-wise color blending
+Applies a component-wise additive, subtractive, or multiplicative color blending of the old color and a given argument color.
+
+alpha_blend
+Applies traditional alpha blending between colors
+
+blend_to_gray
+Applies component-wise blending of the RGB components towards a grayscale color.
+
+
+== History ==
+
+
+== Navigation ==

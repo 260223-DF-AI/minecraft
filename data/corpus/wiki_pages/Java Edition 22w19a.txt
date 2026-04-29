@@ -1,0 +1,149 @@
+22w19a is the tenth and final snapshot for Java Edition 1.19, released on May 12, 2022, which introduces chat preview, merges /locate and /locatebiome into the new /locate, adds the ability to locate a POI (Point of Interest), the ability to place a template, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Command format ===
+/locate
+
+Added /locate poi, can locate a POI (Point of Interest), with following syntax:
+/locate poi <poi>
+poi: The namespaced ID of a POI, or a POI tag.
+/place
+
+Added /place template, can place templates at a given location, with following syntax:
+/place template <template> [<pos>] [<rotation>] [<mirror>] [<integrity>] [<seed>]
+Works like using the load button in the UI for a structure block.
+template: The namespaced ID of a template ("structure block file") to load and place.
+pos: The position to use as the origin for the generation. (if omitted, ~ ~ ~ is used)
+rotation: The rotation to apply. (if omitted, none is used)
+mirror: The mirroring to apply. (if omitted, none is used)
+integrity: The structure integrity value between 0 and 1.
+seed: The seed to use for the randomized degradation when integrity is less than 1.
+
+
+=== General ===
+Chat
+
+Servers can now enable chat preview, which displays a server-controlled preview above the chat edit box, showing how the message appears when sent.
+Can be used by servers to preview messages with styling applied, such as emojis or chat coloring.
+Chat preview sends chat messages to the server as they are typed, even before they're sent.
+The server then sends back the styled preview in real time.
+This allows servers to apply dynamic message stylings while still allowing chat to be securely signed.
+A warning toast message is shown on the client when joining a server with chat preview, and it can be globally disabled in chat settings.
+Dynamic chat styling can also be controlled by the server, although this is only signed when chat preview is enabled.
+Clients can prefer to always show the original, signed message by enabling "Only Show Signed Chat" in chat settings.
+Options
+
+Added "Chat Preview" chat option, for enabling chat preview. Toggled on by default.
+Added "Only Show Signed Chat" chat option, for clients who prefers to always show the original, signed message. Toggled off by default.
+options.txt
+
+Added chatPreview and onlyShowSignedChat.
+Protocol
+
+Servers now also send an additional icon and MOTD packet after a player has connected.
+This allows servers with enable-status=false to set an icon and MOTD for players that successfully connect.
+server.properties
+
+Added server property previews-chat to enable chat preview.
+Defaults to false.
+Added temporary server property test-rainbow-chat, for this snapshot only.
+Tags
+
+Added following point_of_interest_type tags (new type):
+#acquirable_job_site: armorer, butcher, cartographer, cleric, farmer, fisherman, fletcher, leatherworker, librarian, mason, shepherd, toolsmith, and weaponsmith.
+This tag defines job sites sought by villagers with none profession.
+#bee_home: beehive and bee_nest.
+This tag defines POIs that bees target.
+#village: #acquirable_job_site, home, and meeting.
+This tag defines POIs that belongs to villages.
+
+
+== Changes ==
+
+
+=== Mobs ===
+Iron golem
+
+Now make sure to spawn above something solid, so they can now spawn on top of glass and leaves and are no longer blocked by things like string.
+Tadpole
+
+Hitbox is now reduced from 0.5×0.4 to 0.4×0.3.
+Warden
+
+Now make sure to spawn above something solid, so they can now spawn on top of glass and leaves and are no longer blocked by things like string.
+Ranged attack damage is now affected by difficulty.
+
+
+=== World generation ===
+Mineshafts
+
+No longer intersect with ancient cities.
+
+
+=== Command format ===
+/locate and /locatebiome
+
+Merged into the new /locate command:
+/locate -> /locate structure
+/locatebiome -> /locate biome
+
+
+=== General ===
+Point of Interest types
+
+Removed unemployed and nitwit types.
+
+
+== Fixes ==
+29 issues fixed
+From released versions before 1.19
+
+MC-197647 – Players cannot jump off the edge of blocks when sneaking if they have a block above.
+MC-199326 – Unable to escape block bound box when you have levitation and holding shift.
+MC-200282 – Players with knockback resistance cannot be knocked off of edges when sneaking.
+MC-231600 – Sculk sensor continuously receives vibrations when next to a powered big dripleaf.
+From the 1.19 development versions
+
+MC-249130 – Tadpoles hatch inside of adjacent blocks, causing them to suffocate and die.
+MC-249434 – The warden indefinitely roars when attacked by multiple entities.
+MC-249634 – Warden's sniffing behavior continues after being distracted.
+MC-249664 – Warden despawns when far away.
+MC-249780 – Blocks that require support can generate floating in ancient cities.
+MC-249833 – Right-clicking certain items in the off-hand can generate vibrations.
+MC-249888 – Warden is not angered when hit by a blaze fireball.
+MC-249910 – Warden "Nearby Closest" sound is unused.
+MC-249966 – Warden can stop chasing a target it just roared at.
+MC-250172 – Warden doesn't turn toward the direction it is firing the Sonic Boom attack.
+MC-250233 – A warden summoned from a spawn egg suddenly losing its AI.
+MC-250272 – Warden spawns in blocks that have no collision.
+MC-250292 – Wardens can sometimes freeze when overwhelmed with enemies/attacks/sounds.
+MC-250319 – Warden approaches sounds still plays, despite the doWardenSpawning gamerule is disabled.
+MC-250353 – Warden cannot spawn on a single snow layer like other mobs.
+MC-250357 – Sculk sensors and Wardens detect when a player holds up a shield.
+MC-250948 – Warden's ranged attack is no longer affected by the game's difficulty.
+MC-250966 – Dying to the warden's sonic boom doesn't count as the warden's kill.
+MC-251029 – Warden froze and stopped being hostile toward the player.
+MC-251263 – "Invalid signature for profile public key" when trying to open a singleplayer world.
+From the previous development version
+
+MC-251316 – The game crashes when loading chunks that consist of jigsaw blocks.
+MC-251321 – Warden can be pushed by explosions while emerging.
+MC-251350 – /give @s goat_horn gives an unregistered goat horn.
+MC-251396 – java.lang.IllegalArgumentException: Name and ID cannot both be blank.
+MC-251464 – When passive mobs take damage from warden's sonic boom, they don't flee in panic.
+
+
+== Videos ==
+
+
+== Trivia ==
+This snapshot was released on a Thursday instead of Wednesday, just like snapshots before 14w26a. This was due to an unrelated delay due to a workshop about development that week's Wednesday.
+
+
+== References ==
+
+
+== Navigation ==

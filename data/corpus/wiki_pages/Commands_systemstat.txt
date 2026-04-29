@@ -1,0 +1,70 @@
+Return or sets video settings and runtime statistics of the game.
+
+
+== Syntax ==
+/systemstat <stat: SettableIntStat> [value: int]
+
+Return or sets specific video settings
+/systemstat <stat: SystemStat>
+
+Returns system runtime variables
+/systemstat brightness [value: float]
+
+Sets the brightness of the game. Similar to gamma in options.txt in Java edition
+
+
+== Arguments ==
+stat: SettableIntStat: Enum
+Specifies the video setting to return or set. Must be one of the following:
+
+guiscale for changing GUI scale modifier
+viewdistance for changing rendering distance
+value: int
+The value to set the setting to.
+Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ). Any number outside what the setting allows will be clamped internally.
+If not specified, defaults to returning the variable instead.
+stat: SystemStat: Enum
+The system and game parameters to return. Must be one of the following:
+
+avgendframetime for average frame time
+avgremaindertimepercent for average remaining time percentage
+avgrendertime for average rendering time
+avgticktime for average ticking time
+avgunaccountedtimepercent for average unaccounted time percentage
+chunkdirtycount for dirty chunk count (number of modified chunks before game ticks)
+chunkrebuildcount for number of chunks to rebuild
+cpu for your system's CPU name
+fps for current FPS
+gpu for your system's GPU name
+gpumemory for allocated GPU memory in megabytes
+msaalevel for your current MSAA level
+os for your system's OS name and version
+paths to display directories used by the game. Including:
+Root path: Internal LocalState/ApplicationData.LocalFolder path, two levels above com.mojang
+Package path: Installed game path
+Home path: com.mojang path
+Settings path: minecraftpe directory within com.mojang
+World path: minecraftWorlds directory within com.mojang
+Resource Packs Path: (See resource packs)
+Data URL: Internal URI for UWP applications
+External file path: External com.mojang path for Android. (See Android quirks)
+User data path: Same as home path
+Temporary file path: Same as settings path
+profilersecondsperupdate for time spent on profiling per tick
+resolution for current resolution of the game window
+systeminfo to display your OS, memory usage, CPU, resolution, GPU name, maximum GPU memory, MSAA level and render distance
+systemmem for allocated memory in megabytes
+xbl to display the player's Xbox live profile
+value: float
+The value to set the brightness to.
+Must be a [Float]Single-precision floating-point number (from -(2-2-23)×2127 (≈-3.4×1038) to (2-2-23)2×127 (≈3.4×1038) ). Valid values are between 0 and 1 (inclusive). Any number outside this range will be clamped internally.
+If not specified, defaults to returning the current brightness instead.
+
+
+== Result ==
+
+
+== History ==
+
+
+== Navigation ==

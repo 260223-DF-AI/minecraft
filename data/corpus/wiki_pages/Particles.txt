@@ -1,0 +1,97 @@
+Particles are special graphical effects in Minecraft that are created when certain events occur, such as explosions, rainfall, or smelting items in a furnace.
+
+
+== Behavior ==
+Particles are rendered as front-facing 2D sprites, meaning they always face the player. They disappear after a short animation, in which they may change sizes and rotate, and cycle between a number of animation sprites. They collide with solid blocks and are slowed by cobwebs, but are unaffected by other entities.[verify]
+Particles render in a spherical area around the player with a radius of 32 blocks, except campfire smoke and firework particles, which are visible within the simulation distance.
+Alongside potion particles, several other particles are stored as gray textures with colors applied to them after the fact. Note particles change color through the spectrum.
+In Bedrock Edition, each particle has unique MERS values defined in a texture set used in Vibrant Visuals. Most particles have different roughness values per pixel all other channels set to 0, but some particles have subsurface scattering or are emissive. See § Texture files for all particle MERS textures,
+The /particle command can be used to create particles and set the colors of some. In Java Edition, if a player uses the "minimal" particles option in the video settings, some particles may not appear.
+Particle textures are stored in particles.png,‌[BE  only] and some particles use their own texture atlas.
+
+
+=== Emitters ===
+Some particles are produced by separate technical particles known as "emitters". The emitter is the centerpiece of the particle effect and is responsible for spawning particles. The emitter defines how many particles are spawned per second for as long as the emitter exists, at the position of the emitter. Emitters themselves are invisible.
+
+
+=== Weather particles ===
+A special type of particles occurs during different weather conditions. These are not loaded in-game with a position, movement, and collision, and cannot be created with commands. They are more or less rendered as a graphical effect within the player's view.
+
+Specifically, this includes the rainfall and snowfall particles, visible during their respective precipitation in non-dry biomes, at any height above Y=-64 in the Overworld, in blocks exposed to the sky. In Java Edition, each block with precipitation displays the particles of that precipitation type only, while in Bedrock Edition, the density of particles depends on the player's eye position. On the border of rainfall/snowfall/no precipitation, particles decrease in density and mix with each other.
+On both editions, they gradually increase/decrease in density if the weather changes. Their behavior differs; raindrops fall at varying speeds downward and slightly tilted in Bedrock Edition. Snowflakes have much more horizontal movement and fall down slower; they twist randomly in Java Edition or fall twisting in matching, changing directions in Bedrock Edition resembling wind. Weather particles have different textures, defined in weather.png in Bedrock Edition or two separate files in Java Edition.
+
+In Bedrock Edition, ambient underwater particles and Nether biome particles (ash and spores) are also treated as weather particles; using the glitter () texture with different colors for each situation:
+
+Underwater: blue, visible even outside water bodies as long as the eye level is underwater, very slowly moving.
+Soul sand valley: gray/brown/black, floating slowly and with low density anywhere in the atmosphere as long as the player's eye level is in the biome. Density: 0.05.
+Crimson forest: bright red, floating at a higher speed and higher density similar to soul sand valley particles. Density: 0.25.
+Warped forest: dark blue, floating similarly to crimson forests but slightly slower. Density: 0.25.
+Basalt deltas: light gray, floating at a very high speed and density, noticable like a storm. Density: 2.0.
+
+Nether particles are controlled in client biome JSON files in resource packs, where each biome can have one of the four "precipitation" particles at a set density/speed. On the edges of biomes, these precipitation particles gradually increase or decrease in density similar to rain and snow particles.
+
+
+== Types of particles ==
+
+ 
+The types of particles and their ID names are displayed below. Particles are namespaced with the prefix minecraft:.
+
+
+=== Unique particles ===
+
+
+=== Block or item particles ===
+These particles re-use textures from blocks or items, which depends on the situation. They are squared and use a random part of the textures, transparencies in the textures result in different shapes.
+
+
+=== Colored particles ===
+The grayscale textures of these particles are colored differently depending on the situation.
+
+
+=== Unused particle textures ===
+
+The following textures exist in the game, but are not associated with any particle definitions controlling their behavior and appearance; they are unused and cannot be created with commands.
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== Issues ==
+Issues relating to "Particles" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Trivia ==
+Most particle textures can be changed using resource packs, however, particle colors that are applied to the texture files such as those for smoke particles used in redstone, portals, and endermen cannot be changed without mods in Java Edition.
+The dust particle has unique syntax used for color, represented with three RGB values as decimal percentages.
+Status effect particles appear where the player face is pointing.
+The elder_guardian particle always follows the player regardless of what its location has been set to.
+Redstone repeaters emit particles, but redstone comparators do not.
+There is a particle that is internally used to implement the item pickup animation, but it cannot be summoned with the /particle command. Before the name was removed in 1.13, it was called take.
+There is a limit of 16384 particles existing at the same time.
+
+
+== Gallery ==
+
+
+=== Bedrock Edition texture files ===
+
+
+=== Screenshots ===
+
+
+=== Development images ===
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

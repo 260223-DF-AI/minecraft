@@ -1,0 +1,44 @@
+Changes the visibility of a HUD element.
+
+
+== Syntax ==
+hud <target: target> <visible: HudVisibility> [hud_element: HudElement]
+
+
+== Arguments ==
+target: target: CommandSelector<Player>
+
+Specifies the target(s) to change the HUD element(s) visibility for.
+Must be a player name or a target selector. 
+visible: HudVisibility: enum 
+
+Whether hide or reset the HUD element(s) visibility.
+Must be either hide or reset.
+hud_element: HudElement: enum 
+
+The HUD element(s).
+Must be one of air_bubbles, all, armor, crosshair, health, horse_health, hotbar, hunger,
+item_text, paperdoll, progress_bar, status_effects,tooltips, and touch_controls.
+
+
+== Result ==
+
+
+== Output ==
+
+
+== Examples ==
+To hide all HUD elements for all players:
+/hud @a hide all
+To make the health bar visible again for the nearest player in Survival mode:
+/hud @p[m=s] reset health
+
+
+== History ==
+
+
+== External links ==
+"/hud Command"     – Microsoft Learn, April 12, 2024.
+
+
+== Navigation ==

@@ -1,0 +1,109 @@
+Beta 1.20.30.22 (Android) or Preview 1.20.30.22 (Windows, iOS, iPadOS, Xbox) is the seventh beta/Preview version for Bedrock Edition 1.20.30, released on August 17, 2023, which brings more parity from Java Edition, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Technical ===
+JSON
+
+Released the minecraft:food item component out of experimental in JSON formats 1.20.30 and higher.
+Added minecraft:interact_button item component to enable and set text on the interact button in JSON formats 1.20.30 and above.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Stained Terracotta
+
+The IDs of stained_hardened_clay have now been split up into their own IDs.
+
+
+=== Gameplay ===
+Game rules
+
+The recipesUnlock game rule is now set to true by default.
+
+
+=== General ===
+Settings
+
+"Text to Speech" narrator will now read out the instruction text as well as the confirm button in the "Safe Area" menu.
+Pause menu
+
+The "Pause menu" has been renamed to "Game menu".
+Play screen
+
+Updated the "Play screen".
+The "Friends" tab and "Realms" tab are now separated, for clearer feature separation.
+The "Create New World" flow and "Create From Template" flow are now separated for a clearer path into the game.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs" experimental toggle.
+
+
+=== Changes ===
+
+
+==== Technical ====
+API
+
+ItemStack
+Added getCanPlaceOn() and getCanDestroy().
+Added upper maximum limit of 255 to amount property - will throw if exceeds.
+Entity
+Added function getProperty(identifier: string): boolean | number | string | undefined - Gets an entity property.
+Added function setProperty(identifier: string, value: boolean | number | string): void - Sets an entity property during the next tick.
+Added function resetProperty(identifier: string): boolean | number | string; - Resets an entity property to its default value during the next tick and returns the default value.
+beforeEvents
+Added event/property removeEvent.
+afterEvents
+Renamed event/property removedEvent to removeEvent.
+Class EntityRemovedAfterEvent
+Renamed field removedEntity to removedEntityId: removedEntityId: string.
+Added field typeId: string.
+Added class EntityRemovedBeforeEvent.
+Added field removedEntity: Entity.
+Moved EquipmentSlot to 5.0 and changed enum values to uppercase.
+Moved EntityEquippableComponent to 5.0.
+Scoreboard
+setObjectiveAtDisplaySlot return type now correctly set to ScoreboardObjective or undefined.
+ScoreboardIdentity
+getEntity return type now correctly set to Entity or undefined.
+setWeather API can now take an optional duration parameter to set the weather duration.
+Added read-only property heightRange: NumberRange - Gets min/max dimension height limits.
+Adding Player.isSleeping and Player.isEmoting.
+
+
+== Fixes ==
+10 issues fixed
+From released versions before 1.20.0
+
+MCPE-46490 – Crossbow durability decreases after charging.
+MCPE-131572 – Cannot use the mouse or touch to navigate text menus.
+MCPE-159217 – Vignette overlaps hotbar and other HUD elements with "Fancy Graphics" enabled.
+MCPE-171213 – Wrong camera collision with the composter in 3rd person.
+From the 1.20.0 version
+
+MCPE-163456 – Hanging signs placed by commands has a very large hitbox compared to the normal ones.
+MCPE-168813 – Calibrated sculk sensor doesn't fully light up when activated.
+From the 1.20.30 development versions
+
+MCPE-174073 – [Script API] Unexpected change to properties of native classes.
+Other
+
+Fixed ZL/ZR icons for Joy-Con and Switch Pro controller on Android.
+Fixed lighting of items in hand in the "Deferred Technical Preview".
+Optimization and fixes for point light contributions.
+1 issue fixed
+From released versions before 1.20.0
+
+BDS-17527 – Multiple server crashes due to memory leak when loading chunks.
+
+
+== References ==
+
+
+== Navigation ==

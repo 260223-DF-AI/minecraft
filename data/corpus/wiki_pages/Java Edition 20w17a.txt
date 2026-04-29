@@ -1,0 +1,194 @@
+20w17a is the thirteenth snapshot for Java Edition 1.16, released on April 22, 2020, which added the /attribute command, tweaked bastion remnant loot, and lowered the spawn rate of ruined portals, along with bug fixes.
+
+
+== Additions ==
+
+
+=== Command format ===
+Commands
+
+Added the /attribute command.
+Used to get, set, or modify attributes.
+Syntax:
+attribute <target> <attribute> get [<scale>]: get total value of attribute
+attribute <target> <attribute> base set <value>: sets base value
+attribute <target> <attribute> base get [<scale>]: get base value
+attribute <target> <attribute> modifier add <uuid> <name> <value> (add|multiply|multiply_base): adds modifier (fails if modifier is already present)
+attribute <target> <attribute> modifier remove <uuid>: removes modifier
+attribute <target> <attribute> modifier value get <uuid> [<scale>]: get value of modifier
+Parameters:
+<target>: single entity (note: only players, armor stands and mobs have attributes)
+<attribute>: name of attribute (like minecraft:generic.max_health)
+<name>: string (in optional quotes) describing human-readable name of modifier
+<value>: floating point value (note: certain attributes have limits on final value, so the change might not be noticeable)
+
+
+=== General ===
+Options
+
+Added an "Entity Distance" scale option ranging from 50% to 500%.
+Sets the distance at which mobs render into frame.
+Tags
+
+Added pressure_plates block tag.
+Contains light and heavy weighted pressure plates, as well as the #wooden_pressure_plates and #stone_pressure_plates block tags.
+Added stone_pressure_plates block tag.
+Contains stone and polished blackstone pressure plates.
+Sounds
+
+Added new sounds for chains.
+World creation
+
+Difficulty and game rules can now be changed from the "Create World" screen.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Furnaces
+
+Breaking a furnace now gives the experience for the smelted things inside.
+Gilded blackstone and Nether gold ore
+
+Now use the same sounds as Nether quartz ore.
+Smithing tables
+
+Improved UI.
+Added an ingot outline to the second input slot.
+Added a hammer icon above the input slots, similar to the anvil UI.
+Soul fire lanterns and soul fire torches
+
+Renamed "Soul Fire Lantern" and "Soul Fire Torch" to "Soul Lantern" and "Soul Torch", respectively.
+IDs have been changed from soul_fire_torch and soul_fire_lantern to soul_torch and soul_lantern, respectively.
+Walls
+
+Now change into posts when pressure plates and banners are placed on them.
+
+
+=== World generation ===
+Bastion remnants
+
+Loot has been tweaked.
+Ancient debris and netherite scraps have been made generally rarer.
+Netherite gear can no longer be found in bastion remnants; instead, diamond gear is found.
+The chances and stack sizes of various items have been tweaked.
+Ruined portals
+
+Now spawn about 30% less frequently.
+
+
+=== Gameplay ===
+Creative inventory
+
+Inventory tab names, which appear in the description of items when in the Search tab, now display in boldface.
+Other information, such as tag names, are now displayed in boldface as well.
+Netherite ingots and netherite scrap have been moved next to iron and gold ingots.
+
+
+=== General ===
+Block storage format
+
+Format in chunks has been slightly changed to speed up various tasks (rendering, pathfinding, world generation, etc.).
+BlockStates in Sections elements no longer contain values stretching over multiple 64-bit fields.
+If the number of bits per block is not the power of two (i.e. single 64-bit value can't fill the whole number of blockstates) some bits aren't used.
+For example, if a single block state takes 5 bits, the highest 4 bits of every 64-bit field are unused. That also means a slight increase in storage size (in case of 5 bits, from 320 to 342 64-bit fields).
+Fonts
+
+Chat component style now supports font property, which is a resource location for the font in the resource pack. No entry is equivalent to minecraft:default.
+Full range of Unicode characters is supported, making it possible to type emojis and other Unicode characters outside of the Basic Multilingual Plane.
+However, custom resource packs must be used to display correct characters instead of tofu, due to the lack of these characters in the default font.
+Force Unicode option now switches between normal and alternative font (called uniform.json) - no reload needed.
+Main menu
+
+The "Singleplayer" button jumps directly to the "Create World" screen if there are no worlds to select.
+Raw JSON text format
+
+The JSON color component now supports 6-digit hexadecimal colors to specify custom colors other than the 16 default color codes.
+Example: /tellraw @a {"text":"Turquoise output","color":"#00ff88"}
+The hoverEvent chat component now uses the parameter contents, with contents depending on type:
+For show_text - chat component
+For show_item - either item id or object with fields id, count and tag (with last one being serialized NBT)
+For show_entity - object with fields: id (UUID), name (chat component) and type (entity type resource location)
+The value argument is now deprecated, but still supported.
+Tags
+
+Changed the wall_post_override block tag to include the banners and pressure_plates block tags.
+UI
+
+Changed checkbox texture.
+World save format
+
+Saving level.dat now uses randomly-named temporary files (instead of using level.dat_new every time).
+player/*.dat are now saved in a way similar to level.dat (including leaving .dat_old files).
+
+
+== Fixes ==
+52 issues fixed
+From released versions before 1.16
+
+MC-1601 – Breaking a furnace will not give the player experience for the smelted things inside.
+MC-5410 – In creative mode, flying down is stopped when brushing up against ladders or vines.
+MC-31032 – Using only one empty map does not increase minecraft.used:minecraft.map.
+MC-46417 – Sprint particles are emitted in spectator mode.
+MC-56373 – Selector and score text components do not work on hoverEvents.
+MC-63020 – Some chunks are not rendered in the first person from some angles in certain situations (incorrect frustum culling).
+MC-94535 – Flying and holding Ctrl close to the ground emits walking particles.
+MC-96319 – Mob pathfinding AI does not regard some blocks as obstructions and is unable to pathfind on top of them.
+MC-108598 – Client rendering other player or mob holding compass influences compass of user.
+MC-114544 – Kicked by "Flying is not enabled on this server" while sleeping.
+MC-117710 – Bonus Chest setting is not copied when re-creating world.
+MC-117805 – Oak trees can generate right below height limit (y = 256) resulting in an incomplete tree.
+MC-120572 – /recipe crashes the game.
+MC-126244 – /locate, explorer maps, and treasure maps can cause extreme TPS lag, even leading to a complete server freeze if structure generation is turned off.
+MC-131360 – Music sometimes stops abruptly when you go underwater.
+MC-132926 – The width of an advancement's description depends on the first line.
+MC-135738 – Bossbar names that have scores don't update as intended after exiting and re-entering the world.
+MC-144622 – Using /data modify to set the name from a block only works once.
+MC-149704 – Sneaking/crouching twice makes player sprint.
+MC-149792 – Client book length mismatch resulting in crash.
+MC-151364 – Feeding a dolphin causes a crash when structure generation is turned off.
+MC-169514 – Tamed parrots cannot be renamed unless they are flying.
+MC-170075 – "Online play is not rated" checkbox has no outline when focused.
+MC-171939 – Many mobs are placed incorrectly in the statistics.
+MC-176104 – Dropped compasses always point up.
+MC-177346 – A compass in a mob's hand does not point to correct location if the mob turns.
+From the 1.16 development versions
+
+MC-171561 – Only one player can access a shulker box at a time.
+MC-174359 – Piglins prefer using an unenchanted gold item instead of an enchanted gold item.
+MC-174473 – Nether gold ore uses stone sound effects.
+MC-175113 – Rain prevents entities from burning in fire.
+MC-175186 – Respawning does not check if the "respawn block" is the correct one for the dimension.
+MC-175998 – Striders move very fast between two blocks or when diagonally running into blocks.
+MC-176029 – Right clicking a lodestone with a stack of compasses converts the whole stack.
+MC-176060 – Recipe book does not load the entire empty map recipe anymore.
+MC-176116 – Saddle texture on strider is backwards.
+MC-176348 – Cartographer villagers cannot trade explorer maps.
+MC-176521 – Pressing space while the recipe book button is highlighted in crafting interfaces does not toggle the recipe book.
+MC-177776 – Netherite ingots are not sorted properly with other ingots.
+MC-177780 – Shulkers cannot be opened while playing closing animation anymore.
+MC-177796 – Blackstone walls are in the "Building Blocks" category instead of "Decoration Blocks" category, unlike all other walls.
+MC-177862 – Polished blackstone button and pressure plate are in incorrect area of the Creative inventory.
+MC-177885 – Invisible horses show patterns.
+MC-177997 – Baby zoglins still deal the same attack damage as an adult.
+MC-178050 – New Nether music is inconsistently loud.
+MC-178086 – Flying close to the ground with soul speed over soul blocks speeds up the player and emits soul particles.
+MC-178093 – Piglins with full inventories will not pick up gold ingots to barter, even though you can still right-click to barter with them.
+MC-178259 – Game crashes when an iron golem with the attack damage attribute is set to 0.5d.
+MC-178316 – Dispenser plays "dispensed item" sound when attempting to charge a full respawn anchor instead of "dispenser fails".
+MC-178630 – TNT eye height changed.
+From the previous development version
+
+MC-178797 – Barrier blocks generate in bastion remnant.
+MC-178955 – Badlands are viewed as a mountainous biome for ruined portals.
+MC-179542 – Basalt delta blocks override Nether bricks in fortresses.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

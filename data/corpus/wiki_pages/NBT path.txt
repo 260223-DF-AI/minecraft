@@ -1,0 +1,61 @@
+An NBT path is a descriptive string used to specify one or more particular elements from an NBT data tree.
+
+
+== Usage ==
+The format of an NBT path is node.node.….node, i.e. one or more nodes represented by . (dot/period) characters. Dots before some certain nodes (e.g. []. See table below) can be omitted. Each node declares what kinds of child tags should be selected from what kinds of current tags. When a node is applied on a tag, one or more child tags in it is selected.
+Tags without tag names are aggregated into a collection, which is called a tag collection. The initial tag collection has only one element (the root tag). Each node in an NBT path is applied on the elements in the tag collection to generate a new tag collection. As nodes in the NBT path are applied one by one, the tag collection is constantly changing. After the last node is applied, the tags in the new tag collection are the tags selected by the NBT path.
+If there are multiple elements in current tag collection, a node is applied on each element in the tag collection separately, and all the selected child tags are placed into the same new tag collection. For example: for {tag1:1b, tag2:[{foo:0},{foo:[]},{foo:{}}]}, path tag2 selects only one tag: a list tag [{foo:0},{foo:[]},{foo:{}}]; Path tag2.[] selects three tags: three compound tags {foo:0}, {foo:[]}, and {foo:{}}; If adding another node after this path, the new node is applied on each of these three tags, e.g. path tag2.[].foo selects three tags: an integer tag 0, a list tag [], and a compound tag {}.
+Some commands like /data get ... require the size of the tag collection obtained by the NBT path to be 1, that is, only one tag is selected.
+And some commands like /data modify ... allow the size of the tag collection obtained by the NBT path to be greater than 1, that is, modifying more than one tags at once is allowed.
+
+
+== Nodes ==
+These are all six types of nodes available. Needed nodes can be used arbitrarily, except the root compound tag node is only applicable as the first element in an NBT path.
+
+
+== Examples ==
+
+
+=== Name escaping ===
+Quoted strings, such as "Lorem ipsum" or 'Lorem ipsum', can be used if a tag name needs to be escaped.
+
+
+=== Mixed path ===
+{}—Specifies the root tag
+{foo:4.0f}—Specifies the root tag if its children tag "foo" is 4.0f
+foo—Specifies the tag named "foo" under the root tag
+foo.bar or foo{}.bar—Specifies the children tag named "bar" under the foo tag (should be a compound)
+foo.bar[0]—Specifies the first element of the "bar" tag (should be a list or array)
+foo.bar[-1]—Specifies the last element of the "bar" tag (should be a list or array)
+foo.bar[0]."A [crazy name]!"—Specifies the children tag named "A [crazy name]!" under that first element (should be a compound)
+foo.bar[0]."A [crazy name]!".baz—Specifies the children tag named "baz" under that crazily named tag (should be a compound)
+foo.bar[]—Specifies all elements of the "bar" tag (should be a list or array)
+foo.bar[].baz—Specifies the children tags named "baz" under all elements  (should be compounds) of the "bar" tag  (should be a list)
+foo.bar[{baz:5b}]—Specifies all elements (should be compounds) of the "bar" tag (should be a list), in which the "baz" tags are 5b
+foo{bar:"baz"}—Specifies the "foo" tag (should be a compound) if its children tag "bar" has the value "baz"
+foo{bar:"baz"}.bar—Specifies the "bar" tag under "foo" (should be a compound), only if it matches the value "baz"
+
+
+=== Example 1 ===
+/data get entity @p foo.bar[0]."A [crazy name]!".baz
+
+foo—Specifies the tag named "foo" under the root tag.
+foo.bar—Specifies the child tag named "bar" under the foo tag (should be a compound)
+foo.bar[0]—Specifies the first element of the "bar" (should be a list or array)
+foo.bar[0]."A [crazy name]!"—Specifies the child tag named "A [crazy name]!" under that first element (should be a compound)
+foo.bar[0]."A [crazy name]!".baz—Specifies the child named "baz" under that crazily named tag (should be a compound)
+
+
+=== Example 2 ===
+/data get block ~ ~ ~ Items[1].components.minecraft:written_book_content.pages[3].raw
+A player has written a book and placed it inside a chest, and Alex is going to work up to the above command in stages. Observe the following imaginary chat log:
+
+
+== History ==
+ 
+
+
+== References ==
+
+
+== Navigation ==

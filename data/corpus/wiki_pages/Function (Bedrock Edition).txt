@@ -1,0 +1,87 @@
+Functions allow players to run lists of commands using text files with the extension .mcfunction. This page covers how to use functions in Bedrock Edition.
+
+
+== Usage ==
+Text files must be placed into a top-level folder named "functions" within a behavior pack, located at behavior_packs/[behavior_pack]/functions. Subfolders can also be added to this folder. For example, running the function sub/foo runs the file located at [behavior_pack]/functions/sub/foo.mcfunction.
+
+
+=== /reload ===
+Note: Currently /reload reloads only functions that already exist at the time the game is launched, meaning changes can be made to existing functions but the game must be restarted for newly added functions.
+
+
+=== Success results ===
+Upon successfully running a function, a message displays in chat: "Successfully executed [amount] function entries."
+
+
+== Function syntax ==
+Within the .mcfunction file, one valid command is placed per line, without the usual forward slash /. Players can add comments within the function text file by preceding them with a #. 
+
+
+=== min_engine_version ===
+Functions require a minimum engine version specified in the pack manifest.json file.
+This field determines which version of a command to run. The number specified here should match the version number of the game. For example, /fill was changed in 1.19.70. If your behavior pack has "min_engine_version": [1, 19, 10] and runs a function that contains /fill, it runs the older version of fill (as if the version was still 1.19.10).
+
+
+==== Manifest example ====
+A manifest is required for add-ons, behaviour packs and resource packs to work. Note that the three dots ... must be replaced with an actual UUID, which can be generated with a UUID generator like UUIDTools.com.{
+    "format_version": 3,
+    "header": {
+        "name": "House Building Add-On",
+        "description": "Let the game build houses for you using this Add-On",
+        "uuid": "...",
+        "version": "1.0.0",
+        "min_engine_version": "1.26.10"
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "...",
+            "version": "1.0.0"
+        }
+    ],
+    "metadata": {
+        "authors": ["Minecraft Wiki"],
+        "product_type": "addon"
+    }
+}
+
+
+=== Simple function example ===
+title @p title Test
+setblock ~ ~2 ~ sulfur_bricks
+say Test
+#this is a comment
+
+
+=== More complex function example ===
+This function builds a basic house around the executor. Note that because the function runs commands in order, the glass windows and spruce door replace the walls created by the first command.
+
+fill ~-2 ~-1 ~-2 ~2 ~2 ~2 stone_bricks 0 hollow
+fill ~-2 ~-1 ~-2 ~2 ~-1 ~2 spruce_planks
+fill ~ ~ ~2 ~ ~ ~2 spruce_door 1
+fill ~-2 ~1 ~ ~-2 ~1 ~ glass
+fill ~2 ~1 ~ ~2 ~1 ~ glass
+fill ~ ~1 ~-2 ~ ~1 ~-2 glass
+
+
+== Running a function ==
+Functions attempt to run all commands within a single tick, including the commands of nested functions called within another function. 
+
+
+=== Limits ===
+A single function call runs up to 10,000 commands (including calls to other functions, i.e. recursion).
+
+
+=== Commands ===
+
+
+==== /function ====
+Allows players to run a function once.
+The commands in the function are run through the entity or command block that ran the /function command.
+Syntax: /function <path/to/function/file>
+
+
+== History ==
+
+
+== Navigation ==

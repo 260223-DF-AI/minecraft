@@ -1,0 +1,56 @@
+Dimensions are JSON files located in data packs that define dimensions for the game. New dimensions added can be accessed by using commands, like /execute in <dimension> run teleport <coordinates>.
+
+
+== Usage ==
+Dimensions are stored as JSON files within a data pack, at the path data/<namespace>/dimension/<name>.json. Alternatively, a Custom world preset can be used to customize all dimensions in a world. Dimensions stored separately override the dimension set in the selected world preset. This allows datapacks to only override a single dimension while keeping the other dimensions untouched. However, the user-selected world preset then doesn't have an impact on the given dimension.
+
+
+== JSON format ==
+
+
+== Generator types ==
+
+
+=== debug ===
+The generator type used when selecting debug mode in the world creation menu. This generator has no additional fields.
+
+
+=== flat ===
+The generator type used for superflat worlds.
+
+
+=== noise ===
+The generator used in all the default dimensions.
+
+
+== Biome sources ==
+
+
+=== checkerboard ===
+The checkerboard biome source places biomes in a checkerboard pattern.
+
+
+=== fixed ===
+The fixed biome source, also called single biome, uses one specified biome everywhere.
+
+
+=== multi_noise ===
+
+
+=== the_end ===
+The biome source used for the End dimension. This biome source has no additional fields.
+
+
+== Multi noise parameter list ==
+A multi-noise biome source parameter list is stored as JSON files within a data pack, at the path data/<namespace>/worldgen/multi_noise_biome_source_parameter_list/<name>.json. It is used to avoid changing world preset files when adding new biomes to experimental data packs.
+The syntax is as follows:
+
+
+== History ==
+
+
+== External links ==
+Dimension Generator on misode.github.io
+
+
+== Navigation ==

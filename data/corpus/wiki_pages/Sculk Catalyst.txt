@@ -1,0 +1,163 @@
+A sculk catalyst is a sculk block that "blooms" when a mob or player dies nearby, which may convert nearby blocks to sculk blocks (except for more sculk catalysts). 
+
+
+== Obtaining ==
+
+
+=== Breaking ===
+A sculk catalyst can be mined with any tool, but hoes are the quickest. It drops itself only if mined with any tool enchanted with Silk Touch. It drops 5 experience if mined without Silk Touch.
+
+
+=== Natural generation ===
+Sculk catalysts are generated within the deep dark biome.
+
+
+=== Mob loot ===
+A warden drops a single sculk catalyst upon death, unaffected by Looting. This is the only renewable way to obtain sculk catalysts.
+
+Java Edition:Bedrock Edition:
+
+
+=== Generated loot ===
+
+
+== Usage ==
+Sculk catalysts convert experience into sculk veins, sculk sensors, and sculk shriekers, and use experience to convert many natural blocks into sculk.
+
+
+=== Blooming ===
+When a living entity (a mob or player, including ender dragons , withers, and wardens) dies near a sculk catalyst by any means, it blooms. This sculk bloom turns the mob into sculk charges based off its natural experience drops. Sculk charges grow into new sculk blocks, sensors and shriekers. Sculk blocks are always produced, with up to 1 sculk block per experience point. A sculk charge also has a 9% chance to grow a sculk sensor, and a 1% chance to grow a sculk shrieker.
+A bloom occurs for the death of any living entity, and can even consume multiple entities at once. A sculk bloom cannot occur if the entity is not directly above a solid block or if the entity is below the sculk catalyst. A sculk farm can be made using pointed dripstone as long as the sculk catalyst is on the same level as the pointed dripstone.
+During a sculk bloom, the catalyst gives off soul particles, and creates a patch of sculk blocks with sculk veins around them. Sculk blooms can replace blocks in the sculk_replaceable tag, including the surface materials of most of the biomes in all the Overworld, the Nether, and the End.
+
+
+==== Blooming range ====
+A sculk bloom occurs for the death of any living entity within a Euclidean distance of 8 blocks in Java Edition or 10 blocks in Bedrock Edition from a sculk catalyst.
+If the entity dies near multiple sculk catalysts, only the nearest sculk catalyst blooms.
+
+
+==== Sculk charges ====
+When a living entity (a player or mob), is consumed by a sculk bloom, it won't drop experience, because the sculk bloom event converts the entity's experience into sculk charges. One experience point is worth one sculk charge. These charges are used to convert the block beneath the entity into a sculk block. If the block is already a sculk block, or if there are extra sculk charges, the sculk block absorbs the sculk charges. Up to 1000 charges can be present in one block.
+The sculk charge in a block is lost when the block is destroyed or broken.
+
+
+=== Sculk growth ===
+Sculk growth is an event where a sculk bloom starts on a non-sculk block. The sculk growth first tries to convert the charged block into a sculk block. The following blocks can be converted:
+In Java Edition, these blocks are marked under the sculk_replaceable tag.
+Sculk growth can grow all of the sculk family blocks excluding more sculk catalysts. If the charged block can't be converted, sculk veins grow on the block instead. If sculk veins can't grow, the sculk charge is removed and nothing happens. Each sculk block costs 1 experience to grow. Charge can also be used to create sensors or shriekers, or can be lost to decay.
+When a sculk block is grown, it also tries to grow up to 20 sculk veins on every face of every adjacent block. A sculk vein costs 1 sculk charge when it grows on a block that cannot be converted into sculk.
+Sculk growth can't happen on a block that is completely surrounded by blocks unless some of those blocks are sculk veins.
+Sculk veins are never placed on the sides of a sculk block and are removed when the block they are attached to is converted to a sculk block.
+
+
+==== Discharging ====
+Every other game tick, sculk blocks and veins discharge excess sculk charges. This discharge can cause the sculk charge to spread across a patch of sculk blocks and grow the patch larger.
+Every other game tick, when sculk blocks or veins discharge, they transfer all of their sculk charges to a random adjacent block. The adjacent block must be a sculk block, a sculk vein, or one of the blocks that is sculk_replaceable. If there are no adjacent blocks to discharge to, the sculk charge simply stays where it is and eventually decays.
+Each time a sculk block is charged, it discharges again. This causes sculk charges to move like electricity in a daisy chain. Sculk charges from different sculk blocks and veins tend to cluster together if there are enough charges, similar to how water collects in a valley or river. Sculk charges keep moving like this until they run out due to converting blocks, constructing shriekers and sensors, or decaying.
+If a sculk charge keeps discharging in the same area without creating new sculk family blocks, it decays.
+Every time a sculk block or vein discharges, it has a 9% chance to grow a sculk sensor, and a 1% chance to grow a sculk shrieker.
+Sculk sensors and sculk shriekers cannot receive sculk charges and are only produced by them.
+Sculk sensors and shriekers cannot grow if there are 2 or more sculk sensors and shriekers within a 9×3×9 box, with the bottom center of the box centered on the sculk bloom's origin (or within -4,0,-4 and 4,2,4 in relative coordinates).
+Sculk shriekers generated by sculk growth won't summon wardens, and they shriek more frequently due to their can_summon tag being set to false.
+
+
+==== Blooming without spreading ====
+Even though growing new sculk requires experience, sculk blooms still occur for mobs that can not drop experience on death. This is the intended behavior, and a sculk catalyst even blooms when an armor stand is destroyed because the game has armor stands labeled as being living entities.
+When a player with no experience dies in range of a sculk catalyst, it still blooms and no sculk grows. If keep inventory is on, the player retains experience after dying. This prevents the sculk bloom from consuming the experience and growing sculk.
+
+
+=== Light source ===
+Sculk catalysts emit a light level of 6.
+
+
+=== Piston interactivity ===
+Sculk catalysts cannot be moved by pistons or sticky pistons.
+
+
+== Sounds ==
+
+
+=== Generic ===
+Java Edition:
+
+Bedrock Edition:
+
+
+=== Unique ===
+Java Edition:
+
+Bedrock Edition:
+
+
+== Data values ==
+
+
+=== ID ===
+Java Edition:
+
+Bedrock Edition:
+
+
+=== Block states ===
+
+Java Edition:
+
+Bedrock Edition:
+
+
+=== Block data ===
+A sculk catalyst has a block entity associated with it that holds additional data about the block.
+Java Edition:
+
+Bedrock Edition:
+
+See Bedrock Edition level format/Block entity format.
+
+
+== Achievements ==
+
+
+== Advancements ==
+
+
+== History ==
+
+
+=== Announcement and tweets ===
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== Issues ==
+Issues relating to "Sculk Catalyst" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Trivia ==
+The sculk catalyst is made of a "bone-like material".
+
+
+== Gallery ==
+
+
+=== Textures ===
+
+
+=== Screenshots ===
+
+
+=== In other media ===
+
+
+== See also ==
+Moss Block
+Pale Moss Block
+
+
+== References ==
+
+
+== Navigation ==

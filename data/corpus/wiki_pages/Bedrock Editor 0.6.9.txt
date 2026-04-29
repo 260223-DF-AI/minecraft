@@ -1,0 +1,41 @@
+Bedrock Editor v0.6.9 is a minor alpha release for the Bedrock Editor released on July 17, 2024, which makes some UI and API changes.
+
+
+== Additions ==
+UI
+
+Added persistence for the default hotbar.
+API
+
+Added ExtensionContext.settings.theme which will represent the In-World UI Theme.
+This feature currently has three functions: resolveColorKey(string): Color, setCurrentTheme(string): void, and getThemeList(): string[].
+There is a single minecraft:default theme.
+Future work will add the ability to create, modify, and delete custom themes but the default themes will not be modifiable.
+
+
+== Changes ==
+UI
+
+Updated block hotbar to have non-air defaults.
+API
+
+Updated subset of PropertyPane API to use IObservable pattern.
+Added an alternative Property Pane addVector3 API that leverages type safe IObservable. Observables can be created using makeObservable API.
+Added interfaces IVector3PropertyItem and IVector3PropertyItemOptions for the new property item.
+Renamed function to create property bag Vector3 to addVector3_deprecated.
+Added an alternative Property Pane addBool API that leverages type safe IObservableProp value API.
+Added interfaces IBoolPropertyItem and IBoolPropertyItemOptions for the new property item.
+Renamed function to create property bag bool item to addBool_deprecated.
+Converted Property Pane addText API to use IObservableProp.
+Added interfaces IButtonPropertyItem and IButtonPropertyItemOptions for the button property item.
+IPropertyPane addButton API can now take a plain function.
+Removed ButtonVarianttype, and added ButtonPropertyItemVariant enum API.
+Renamed EDITOR_PANE_PROPERTY_ITEM_TYPE enum API to PropertyItemType.
+Converted property pane addImage API to support IObservable. It will also be possible to use custom image formats like icon and block with ImageResourceData as value.
+Added onClickfunction and alignment property to IImagePropertyItemOptions API.
+
+
+== References ==
+
+
+== Navigation ==

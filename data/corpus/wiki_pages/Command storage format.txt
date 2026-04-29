@@ -1,0 +1,24 @@
+The command_storage.dat files are gzip compressed NBT files located in the data folder in a savegame under their respective <namespace> directory. They store information about the /data command storage in the world. Each namespace in the storage has its own data file.
+
+
+== Usage ==
+The command storage of NBT data is an efficient way for commands to access or save NBT data without an overhead for block entities or entities reading from or writing to the NBT data.
+Each command storage is a general purpose, key-value storage, identified by a resource location to prevent unintentional conflicts.
+/data get, /data modify, and /execute (if|unless) data can read from the storage, while /data merge, /data modify, /data remove, and /execute store can write to the storage.
+The storage can also be accessed by text components.
+
+
+== Directory structure ==
+
+Multiple <namespace> directory may be present in the data directory .
+
+
+== NBT structure ==
+
+Multiple [NBT Compound / JSON Object] compound tags of different names may exist under [NBT Compound / JSON Object] contents tag.
+
+
+== History ==
+
+
+== Navigation ==

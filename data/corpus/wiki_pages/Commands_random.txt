@@ -1,0 +1,73 @@
+Generates a random integer, or controls random sequences in the world.
+
+
+== Syntax ==
+random (value|roll) <range>
+
+Outputs a random integer.
+Range is given by two integers separated by two periods where the first given number must always be smaller than the second given number.
+random (value|roll) <range> <sequence>
+
+Samples a random integer from the specified random sequence. If the sequence does not exist, it is created with the random sequence settings of the world.
+random reset *
+
+Removes all the random sequences in the world. A random sequence is created with the settings of the world when called by a loot table.
+random reset * <seed> [<includeWorldSeed>] [<includeSequenceId>]
+
+Removes all the random sequences in the world, and sets the random sequence settings of the world. The setting of the world is 0, true, true, if having not executed /random reset * ... command in the world.
+random reset <sequence>
+
+Removes and re-creates a random sequence with the settings of the world. If the sequence does not exist, it is just created.
+random reset <sequence> [<seed>] [<includeWorldSeed>] [<includeSequenceId>]
+
+Removes and re-creates a random sequence with the specified settings instead of the settings of the world. If the sequence does not exist, it is just created.
+
+
+== Arguments ==
+value|roll
+
+Whether or not to notify other players of the results when extracting random numbers.
+If it is value, the result is displayed in chat only to the player executing the command. If roll, the result is broadcasted to all players.
+<range>: int_range
+
+Specifies the range to pick the random number from. The size of the range (calculated by max - min + 1) should be between 2 and 2147483646.
+Must be a range acceptable for 32-bit integer values. (e.g. 0 - exact match of 0. ..0 - less than or equal to 0. 0.. - more than or equal to 0. 0..1 - from 0 to 1, both inclusive.)
+<sequence>: resource_location
+
+Specifies the resource location of a random sequence to sample or reset.
+If there's no sequence with the specified resource location, it is created.
+Must be a resource location for an unregistered content.
+<seed>: int
+
+The salt value.
+Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ).
+<includeWorldSeed>: bool
+
+Whether to incorporate the world seed value with the specified <seed> when seeding a random sequence. If not specified, defaults to true.
+Must be a [Boolean]Boolean (either true or false).
+<includeSequenceId>: bool
+
+Whether to incorporate the hash of the ID with the specified <seed> when seeding a random sequence. If not specified, defaults to true.
+Must be a [Boolean]Boolean (either true or false).
+
+
+== Examples ==
+/random roll 1..5
+Rolls a random number between 1 and 5 and writes it in chat
+execute store result score @p random_number run random value 1..10
+Generates a random number between 1 and 10 and stores it in a scoreboard called random_number  for the nearest player
+/execute store result score player random_number run random value 1..3
+/tellraw @a [{text:"Rolled number "},{"score": {"name": "player", "objective": "random_number"} }]
+Generates a number between 1 and 3 and displays it with message "Rolled number <rolled number>"
+
+
+== Result ==
+
+
+== Output ==
+
+
+== History ==
+
+
+== Navigation ==

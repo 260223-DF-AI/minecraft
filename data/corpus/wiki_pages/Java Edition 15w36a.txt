@@ -1,0 +1,87 @@
+15w36a is the nineteenth snapshot for Java Edition 1.9, released on September 2, 2015.
+
+
+== Additions ==
+
+
+=== Command format ===
+Scoreboard
+
+collisionRule added as a team rule to the scoreboard.
+It determines whether or not entities can push each other, and whether or not it's team dependent.
+Subcommands: always, never, pushOtherTeam, pushOwnTeam.
+
+
+== Changes ==
+Command blocks
+
+Can no longer be placed by players who are unable to use commands.
+
+
+=== Items ===
+Armor
+
+Armor protection calculations have been nerfed:
+Max (20) armor points damage reduction reduced from 80% to 66% (Changed back again in 16w02a).
+Armor points count for less as the attack strength increases: each 2HP done by the attack reduces the effective defense points by 1 ().
+
+
+=== Mobs ===
+General
+
+No longer reset their AI when hit.
+Due to MC-87946, all hostile mobs can now draw line of sight through solid blocks in order to track the player.
+Creepers, skeletons, and zombies
+
+Detection range for players wearing their corresponding mob head adjusted to be 50% of the normal range again.
+
+
+=== Gameplay ===
+Enchanting
+
+Protection has been nerfed.
+Protection enchantment bonuses are now linear instead of quadratic.
+Sharpness has been buffed.
+Each Sharpness level now adds 1HP damage to the base damage at level I and an additional 1.5HP × 0.75 for each additional level, up from a flat 1.25HP × 0.625 per level, using the formula Level + 0.5 * (Level - 1).
+Entities
+
+Players can now be pushed by other entities again.
+The exceptions being: items, paintings, ender crystals, area effect clouds, item frames and xp orbs.
+These can be overridden for mobs and players through a team rule.
+The same class of entities are now "magnetic" to the fishing rod bobber, and in the case of mobs/players no longer suffer from knockback or pseudo-damage.
+
+
+=== General ===
+Performance
+
+Optimized memory usage when connected to servers.
+
+
+== Fixes ==
+7 issues fixed
+From released versions before 1.9
+
+MC-7980 – Enderman teleportation and behavior irregular.
+MC-59098 – Enderman only make the 'stare' noise as long as the player is close to the enderman.
+MC-64591 – Wither skeletons wield sword incorrectly.
+From the 1.9 development versions
+
+MC-82955 – Left-hand items render incorrectly on Alex model skins.
+MC-86840 – Armor durability affecting protection is not working right.
+MC-87611 – Chains of conditional command blocks don't work properly.
+From the previous development version
+
+MC-87759 – Hopper: java.lang.NullPointerException: Loading entity NBT.
+
+
+== Videos ==
+
+
+== Trivia ==
+This version was previously removed from the launcher for some time, but was added back in September 2018.
+
+
+== References ==
+
+
+== Navigation ==

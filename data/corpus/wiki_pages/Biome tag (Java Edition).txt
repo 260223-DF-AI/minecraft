@@ -1,0 +1,324 @@
+A biome tag is a group of biomes. Biome tags are used to to control where structures generate, the spawn conditions of various entities, and numerous other gameplay features. See below for the use of each tag. Biome tags can also be used when testing for biome arguments in commands with #<resource location>, which succeeds if the biome matches any of the biomes specified in the tag.
+
+
+== List of tags ==
+
+
+=== allows_surface_slime_spawns ===
+​[more information needed]
+
+
+=== allows_tropical_fish_spawns_at_any_height ===
+​[more information needed]
+
+
+=== is_badlands ===
+​[more information needed]
+Used in the #has_structure/mineshaft_mesa, #has_structure/ruined_portal_mountain, #spawns_warm_variant_farm_animals, and #spawns_warm_variant_frogs tags.
+
+
+=== is_beach ===
+​[more information needed]
+Used in the #has_structure/buried_treasure, #has_structure/mineshaft, #has_structure/ruined_portal_standard, and #has_structure/shipwreck_beached tags.
+
+
+=== is_deep_ocean ===
+​[more information needed]
+Used in the #has_structure/ocean_monument, and #is_ocean tags.
+
+
+=== is_end ===
+​[more information needed]
+Used in the #spawns_cold_variant_farm_animals, and #spawns_cold_variant_frogs tags.
+
+
+=== is_forest ===
+​[more information needed]
+Used in the #has_structure/mineshaft, and #has_structure/ruined_portal_standard tags.
+
+
+=== is_hill ===
+​[more information needed]
+Used in the #has_structure/mineshaft, and #has_structure/ruined_portal_mountain tags.
+
+
+=== is_jungle ===
+​[more information needed]
+Used in the #has_structure/mineshaft, #has_structure/ruined_portal_jungle, #spawns_warm_variant_farm_animals, and #spawns_warm_variant_frogs tags.
+
+
+=== is_mountain ===
+​[more information needed]
+Used in the #has_structure/mineshaft, #has_structure/pillager_outpost, and #has_structure/ruined_portal_mountain tags.
+
+
+=== is_nether ===
+​[more information needed]
+Used in the #has_structure/nether_fortress, #has_structure/ruined_portal_nether, #spawns_warm_variant_farm_animals, and #spawns_warm_variant_frogs tags.
+
+
+=== is_ocean ===
+​[more information needed]
+Used in the #has_structure/mineshaft, #has_structure/ruined_portal_ocean, #has_structure/shipwreck, #required_ocean_monument_surrounding, and #water_on_map_outlines tags.
+
+
+=== is_overworld ===
+​[more information needed]
+Used in the #has_structure/stronghold tag.
+
+
+=== is_river ===
+​[more information needed]
+Used in the #has_structure/mineshaft, #has_structure/ruined_portal_standard, #more_frequent_drowned_spawns, #reduce_water_ambient_spawns, #required_ocean_monument_surrounding, and #water_on_map_outlines tags.
+
+
+=== is_savanna ===
+​[more information needed]
+Used in the #spawns_warm_variant_farm_animals, and #spawns_warm_variant_frogs tags.
+
+
+=== is_taiga ===
+​[more information needed]
+Used in the #has_structure/mineshaft, and #has_structure/ruined_portal_standard tags.
+
+
+=== mineshaft_blocking ===
+Used in mineshaft generation to check if next structure piece can`t be placed
+
+
+=== more_frequent_drowned_spawns ===
+Drowned spawn attempts have a 1 in 15 chance to succeed to spawn in biomes in this tag (as opposed to 1 in 40 in other biomes) and are not limited to least 5 blocks below the sea level.
+
+
+=== polar_bears_spawn_on_alternate_blocks ===
+​[more information needed]
+
+
+=== produces_corals_from_bonemeal ===
+Coral can be farmed by using bone meal in these biomes.
+
+
+=== reduce_water_ambient_spawns ===
+​[more information needed]
+
+
+=== required_ocean_monument_surrounding ===
+These biomes must be present around a location where a monument is possible to generate.
+
+
+=== spawns_cold_variant_farm_animals ===
+Cows, pigs, and chickens that spawn in these biomes will be their cold variant. Sheep that spawn in these biomes will use the cold wool colors.
+
+
+=== spawns_cold_variant_frogs ===
+Frogs that spawn in these biomes will be their cold(green) variant.
+
+
+=== spawns_coral_variant_zombie_nautilus ===
+Zombie Nautiluses that spawn in these biomes will be their coral variant.
+
+
+=== spawns_gold_rabbits ===
+Rabbits in these biomes always use the gold variant, unless the biome also has the spawns_white_rabbits tag.
+
+
+=== spawns_snow_foxes ===
+​[more information needed]
+
+
+=== spawns_warm_variant_farm_animals ===
+Cows, pigs, and chickens that spawn in these biomes will be their warm variant. Sheep that spawn in these biomes will use the warm wool colors.
+
+
+=== spawns_warm_variant_frogs ===
+Frogs that spawn in these biomes will be their warm(white) variant.
+
+
+=== spawns_white_rabbits ===
+Rabbits in these biomes have an 80% chance of being white and a 20% chance of being white splotched. Other variants will not spawn. Takes precedence over spawns_gold_rabbits.
+
+
+=== stronghold_biased_to ===
+When placing a stronghold, the position is moved up to 112 block on the x and z axis to a random position where the biome at y=0 is in this tag, if such a position exists.
+
+
+=== water_on_map_outlines ===
+These biomes appear as water on map outlines.
+
+
+=== without_wandering_trader_spawns ===
+Biomes where wandering traders do not spawn.
+
+
+=== without_zombie_sieges ===
+Players in these biomes cannot trigger zombie sieges.
+
+
+=== has_structure/ancient_city ===
+Ancient city can generate in these biomes.
+
+
+=== has_structure/bastion_remnant ===
+Bastion remnants can generate in these biomes.
+
+
+=== has_structure/buried_treasure ===
+Buried treasure can generate in these biomes.
+
+
+=== has_structure/desert_pyramid ===
+Desert pyramid can generate in these biomes.
+
+
+=== has_structure/end_city ===
+End city can generate in these biomes.
+
+
+=== has_structure/igloo ===
+Igloo can generate in these biomes.
+
+
+=== has_structure/jungle_temple ===
+Jungle temple can generate in these biomes.
+
+
+=== has_structure/mineshaft ===
+Mineshaft can generate in these biomes.
+
+
+=== has_structure/mineshaft_mesa ===
+Mesa mineshaft can generate in these biomes.
+
+
+=== has_structure/nether_fortress ===
+Nether fortress can generate in these biomes.
+
+
+=== has_structure/nether_fossil ===
+Nether fossil can generate in these biomes.
+
+
+=== has_structure/ocean_monument ===
+Ocean monument can generate in these biomes.
+
+
+=== has_structure/ocean_ruin_cold ===
+Cold ocean ruin can generate in these biomes.
+
+
+=== has_structure/ocean_ruin_warm ===
+Warm ocean ruin can generate in these biomes.
+
+
+=== has_structure/pillager_outpost ===
+Pillager outpost can generate in these biomes.
+
+
+=== has_structure/ruined_portal_desert ===
+Desert ruined portal can generate in these biomes.
+
+
+=== has_structure/ruined_portal_jungle ===
+Jungle ruined portal can generate in these biomes.
+
+
+=== has_structure/ruined_portal_mountain ===
+Mountain ruined portal can generate in these biomes.
+
+
+=== has_structure/ruined_portal_nether ===
+Nether ruined portal can generate in these biomes.
+
+
+=== has_structure/ruined_portal_ocean ===
+Ocean ruined portal can generate in these biomes.
+
+
+=== has_structure/ruined_portal_standard ===
+Normal ruined portal can generate in these biomes.
+
+
+=== has_structure/ruined_portal_swamp ===
+Swamp ruined portal can generate in these biomes.
+
+
+=== has_structure/shipwreck ===
+Shipwreck can generate in these biomes.
+
+
+=== has_structure/shipwreck_beached ===
+Beached shipwreck can generate in these biomes.
+
+
+=== has_structure/stronghold ===
+Stronghold can generate in these biomes. This includes all overworld biomes to ensure that the stronghold is always placed, even when no optimal biome is found (see #stronghold_biased_to).
+
+
+=== has_structure/swamp_hut ===
+Swamp hut can generate in these biomes.
+
+
+=== has_structure/trail_ruins ===
+Trail ruins can generate in these biomes.
+
+
+=== has_structure/trial_chambers ===
+Trial chambers can generate in these biomes.
+
+
+=== has_structure/village_desert ===
+Desert village can generate in these biomes.
+
+
+=== has_structure/village_plains ===
+Plains village can generate in these biomes.
+
+
+=== has_structure/village_savanna ===
+Savanna village can generate in these biomes.
+
+
+=== has_structure/village_snowy ===
+Snowy village can generate in these biomes.
+
+
+=== has_structure/village_taiga ===
+Taiga village can generate in these biomes.
+
+
+=== has_structure/woodland_mansion ===
+Woodland mansion can generate in these biomes.
+
+
+== Removed tags ==
+
+
+=== has_closer_water_fog ===
+These biomes have a shorter view distance underwater.
+Version added: 22w14a. Version removed: 25w42a.
+
+
+=== increased_fire_burnout ===
+​[more information needed]
+Version added: 23w03a. Version removed: 25w42a.
+
+
+=== plays_underwater_music ===
+The player hears the special underwater music when underwater in these biomes.
+Version added: 22w11a. Version removed: 25w42a.
+
+
+=== snow_golem_melts ===
+​[more information needed]
+Version added: 23w03a. Version removed: 25w42a.
+
+
+=== without_patrol_spawns ===
+​[more information needed]
+Version added: 22w11a. Version removed: 25w45a.
+
+
+== History ==
+
+
+== Navigation ==

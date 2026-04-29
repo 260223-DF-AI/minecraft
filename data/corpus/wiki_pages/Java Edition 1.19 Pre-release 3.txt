@@ -1,0 +1,64 @@
+1.19 Pre-release 3 (known as 1.19-pre3 in the launcher) is the third pre-release for Java Edition 1.19, released on May 25, 2022, which makes tweaks, and fixes bugs.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Sculk sensor
+
+item_interact_start is no longer detectable as a vibration, to allow more specific actions be detected, like drink or eat.
+
+
+=== Mobs ===
+Warden
+
+Wardens' sonic boom attack now bypasses the damage reduction by armor enchantments such as Protection.
+
+
+=== Non-mob entities ===
+Item frame
+
+Reverted the change made in 22w15a, which made a larger hitbox size when put a map inside it.
+
+
+=== General ===
+Tags
+
+Removed moss_carpet from the #frogs_spawnable_on block tag.
+Removed item_interact_start from the #vibrations, and #warden_can_listen game event tag.
+
+
+== Fixes ==
+18 issues fixed
+From released versions before 1.19
+
+MC-209932 – Sculk sensors only detect the last turtle egg being broken when being stepped on.
+MC-210277 – Sculk sensors are not activated upon chickens laying eggs.
+MC-210278 – Sculk sensors are not activated upon bees entering or leaving their hive or nest.
+MC-214622 – Sculk sensors do not detect daylight detector mode switching.
+From the 1.19 development versions
+
+MC-249094 – Unexpected culling of inner sculk shrieker faces.
+MC-249097 – Sides and bottoms of sculk shrieker not culled by solid blocks.
+MC-249230 – Frogs prioritize eating entities over panicking when being damaged.
+MC-250162 – Placing a map in an item frame will break any intersecting paintings and item frames with a map inside.
+MC-250238 – Frogs attempt to pathfind to entities outside of their reach causing them to spin and twitch constantly.
+MC-250983 – Allays can get stuck and freeze inside non-full blocks.
+MC-251220 – Block lighting on extended parts are a lot darker in 22w17a compared to 1.18.2.
+MC-251420 – Demo Mode: The "Purchase Now!" link's destination is incorrect.
+MC-251858 – Subtitles are higher than in previous versions.
+MC-251872 – The game output and server console are logged with warnings regarding chat packets with invalid signatures when using entity selectors within commands.
+MC-251878 – Sculk sensors hearing items being dropped on the ground doesn't alert shriekers even if a player drops it.
+MC-251968 – /execute running chat related commands logs "Received chat packet without valid signature" warning.
+MC-252071 – Warden still detects after death if signal is traveling before death.
+MC-252078 – Allays no longer flee or panic when taking damage.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

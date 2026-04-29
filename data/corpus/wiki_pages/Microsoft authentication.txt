@@ -1,0 +1,102 @@
+Minecraft games use Microsoft accounts for authentication. There are multiple steps and different tokens required, but in the end, a normal Minecraft token will be received. Launching the game itself hasn't changed. All accounts now use this new system.
+
+
+== Microsoft OAuth2 flow ==
+Prior to any of these steps, you will first need to obtain an OAuth 2.0 client ID by creating a Microsoft Azure application. You will not need to obtain a client secret.
+You can then use the OAuth2 authorization code flow to obtain an access token. You'll need to present the user with a login page that, once completed, will redirect to a specified URL with the token in the query parameters. In non-web applications this typically involves spinning up a temporary HTTP server to handle the redirect. If you'd rather not do that, consider using the (slightly less automatic) device code flow instead.
+In any case, you'll need to include XboxLive.signin in the scope parameter of the authorization request; otherwise the next endpoint will complain, and not in a helpful way.
+According  to this support Article, new created Azure Apps must apply for the Permission to use the Minecraft API using this form. If your App don't have the Permission api.minecraftservices.com will return a 403.
+Note: You must use the consumers AAD tenant to sign in with the XboxLive.signin scope. Using an Azure AD tenant ID or the common scope will just give errors. This also means you cannot sign in with users that are in the AAD tenant, only with consumer Microsoft accounts.
+
+
+== Authenticate with Xbox Live ==
+Now that we are authenticated with Microsoft, we can authenticate with Xbox Live.
+To do that, we send
+
+Again, it will complain if you don't set Content-Type: application/json and Accept: application/json.
+It will also complain if your SSL implementation does not support SSL renegotiations.
+The response will look like this:
+
+
+== Obtain XSTS token for Minecraft ==
+Now that we are authenticated with XBL, we need to get a XSTS token, we can use to login to Minecraft.
+
+Again, set content type and accept to json and ensure SSL renegotiation is supported by your client.
+
+Note: When trying to get the XSTS token for the bedrock realms API, you need to change the following:  
+
+also you can stop at this point, as the bedrock realms API uses the XSTS token directly instead of a separate auth scheme.
+
+Response will look like this:
+
+The endpoint can return a 401 error with the below response:
+
+The Redirect parameter usually will not resolve or go anywhere in a browser, likely they're targeting Xbox consoles.
+Noted XErr codes and their meanings:
+
+2148916227: The account is banned from Xbox.
+2148916233: The account doesn't have an Xbox account. Once they sign up for one (or login through minecraft.net to create one) then they can proceed with the login. This shouldn't happen with accounts that have purchased Minecraft with a Microsoft account, as they would've already gone through that Xbox signup process.
+2148916235: The account is from a country where Xbox Live is not available/banned
+2148916236: The account needs adult verification on Xbox page. (South Korea)
+2148916237: The account needs adult verification on Xbox page. (South Korea)
+2148916238: The account is a child (under 18) and cannot proceed unless the account is added to a Family by an adult. This only seems to occur when using a custom Microsoft Azure application. When using the Minecraft launchers client id, this doesn't trigger.
+2148916262: TBD, happens rarely without any additional information.
+
+
+== Authenticate with Minecraft ==
+Now we can finally start talking to Minecraft. The XSTS token from the last request allows us to authenticate with Minecraft using
+
+Response:
+
+This access token allows us to launch the game, but, we haven't actually checked if the account owns the game. Everything until here works with a normal Microsoft account!
+
+
+== Checking game ownership ==
+So let's use our mc access token to check if a product licence is attached to the account.
+
+The access token goes into the auth header: Authorization: Bearer <Minecraft Access Token>. (Keep in mind that Bearer  is actually the prefix you must include!)
+If the account owns the game, the response will look like this:
+
+The JWTs in items contain the values:
+
+the last JWT looks like this decoded:
+
+If the account doesn't own the game, the items array will be empty.
+Note that the signature should always be checked with the public key from Mojang to verify that it is a legitimate response from the official servers:
+
+See the JWT standard[1] for more details.
+In case the public key ever changes, it can be extracted from the launcher library:
+
+The created file launcher-strings.txt will include 2 strings which begin with -----BEGIN PUBLIC KEY----- and end with -----END PUBLIC KEY-----.
+The first key seems to be the one used for the JWT tokens, use of the second key is unknown.
+
+
+== Getting the profile ==
+Now that we know that the account owns the game, we can get their profile in order to fetch the UUID:
+
+The response will look like this, if the account owns the game:
+
+Else it will look like this:
+
+Note that Xbox Game Pass users who haven't logged into the new Minecraft Launcher at least once will not return a profile, and will need to login once after activating Xbox Game Pass to setup their Minecraft username.
+You should now have all necessary data (the mc access token, the username and the uuid) to launch the game. Well done!
+
+
+== Sample implementations ==
+minecraft_auth.py: Authentication like the launcher does (i.e. code flow) + refresh token request. (broken)
+A fully working kotlin implementation can be found [2] here using device tokens.
+A fully working cli wrapper in Java using device tokens here
+A rough sample implementation in Java (using javafx and its webview) here.
+A fully working Java library supporting 4 login flows can be found here.
+An implementation in Go here.
+An implementation in JS can be found here and one using JS/TS here
+An implementation in Python can be found here
+An implementation in Rust can be found here.
+A Kotlin library (JVM + JS) can be found here.
+A C# library using webview and MSAL.NET can be found here.
+A Rust library can be found here.
+A Rust library that includes useful stuff for launchers can be also found here (Deprecated).
+A PHP library can be found here.
+
+
+== Navigation ==

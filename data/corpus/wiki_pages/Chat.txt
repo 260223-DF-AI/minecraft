@@ -1,0 +1,108 @@
+Chat is a built-in messaging system used to communicate with other players, or to execute commands. In Bedrock Edition, the chat is a menu screen that darkens the background.
+
+
+== Usage ==
+By default, players can press T or ↵ Enter for keyboards,  for touchscreens, or  for controllers to open the chat menu. Recent chat messages are shown on the left side of the HUD for 3 seconds by default.
+
+
+=== Communication ===
+The primary purpose of the chat is for player communication. Generally, the player simply types out their message and presses ↵ Enter, or the send button.‌[BE  only]
+If the player wishes to privately message another player, they can use the /msg command.
+
+
+==== Mentioning ====
+In Bedrock Edition, the at symbol (@) can be used to autocomplete and highlight a player name in chat. Entering @here mentions all players. When mentioning players in a message, the name can be highlighted in a different color from the rest of chat. The color is yellow by default, but can be changed in the chat settings. While mentioning is not present in Java Edition, ↹ Tab can be used to autocomplete a player's username.
+
+
+==== Formatting ====
+
+Players can use /tellraw command to send stylized texts on the chat using text component. They may apply various text styles, such as custom colors, bold, italic, underline, strikethrough, and more. In Bedrock Edition, the section symbol (§) also allows players to change the style of the text with formatting codes. 
+In Java Edition, 43 emojis are supported by the game's default font, Mojangles (see Mojangles § Emoji). They are shown as pixelated icons on text fields, including the chat. In Bedrock Edition, certain characters in the Unicode code points or shortcodes (such as :furnace:) are reserved for private-area emojis in the game, such as the hunger and armor icons, controller icons, and more. Other emojis and unknown characters appear as a question mark (?).
+
+
+=== Commands ===
+
+Players can also type commands into the chat. Commands are identified by the use of a forward slash (/) at the beginning of the message. By default, the / key opens the chat with a / already present to easily run commands.
+While typing, pressing ↹ Tab autocompletes the first possible command or username starting with the letter(s) typed. If there are multiple usernames or commands beginning with the letter(s), a list of possibilities is displayed; pressing  ↹ Tab  again scrolls through the list.
+
+Some commands may also have additional parameters that may be auto-completed by pressing ↹ Tab at that point.
+Certain commands that handle blocks (ex. /fill) have parameters that need the coordinates of the target block(s). Pressing ↹ Tab when these coordinates are needed automatically adds the coordinates of the block the player is looking at.
+
+
+==== Quick commands ====
+In Bedrock Edition, there are a few buttons in the chat to execute commands without having to type them in. These commands include /setworldspawn, /teleport, /time, and /weather. Pressing a command opens a list of arguments. For /teleport, all players are shown in both the <victim> and <destination> arguments. Pressing an argument instantly executes the command.
+
+
+=== Coordinates ===
+In Bedrock Edition, the chat also shows the player's coordinates when Copy Coordinate UI in the Creator settings tab is enabled. The player can view and copy both the player's current coordinates and the coordinates of the block the player is facing.
+The button next to the copy button pastes any copied text into the text box.
+
+
+=== Informational messages ===
+
+There are several informational messages shown on the chat when specific actions happen in the world:
+
+If a player or a named tamed pet dies in the world, a death message is announced to the chat.
+When a player joins or leaves the game, they are announced to the chat.
+When command_block_output‌[JE  only] or commandblockoutput‌[BE  only] is enabled, all command blocks when executing a command notify the admin through the chat.
+In Bedrock Edition, when a player uses an emote, it is announced to the chat with the emote's name.
+In Bedrock Edition, when a player changes their character in the Character Creator, it is announced to the chat after the character changed.
+In Bedrock Edition, when a player joins a world or travels between dimensions, the "Open Chat Message" is shown exclusively to that player, which shows the keys to open the chat and to open the emote GUI. The message can be toggled in the accessibility settings and is not shown when using touch controls.
+
+
+=== Chat settings ===
+
+In Bedrock Edition, a chat settings menu can be opened from the chat menu. Options such as the font, text color and size, and line spacing can be changed here. For an overview of the chat settings in Java Edition configurable through the main options screen, see Options § Chat Settings.
+
+
+== Message history ==
+A player can access the message history via a small scroll bar is on the side of the chat. The player can also scroll using the mouse wheel or PgUp and PgDn. The last 100 chat messages are stored. Holding down ⇧ Left Shift or ⇧ Right Shift and attempting to scroll up or down slows down scrolling. The player can paste their own recently sent messages by pressing the ↑ Up and ↓ Down keys while typing.
+
+In Bedrock Edition, when a new message appears while scrolled up in the chat history, a green styled tooltip appears informing there are new messages.
+
+
+== Drafts ==
+
+Unsent chat messages will be saved as drafts when chat is forcibly closed from external sources such as dying or opening dialog. When chat is opened next time, the draft is visible in gray and italic. It can be converted to a normal message by typing more text, using arrow keys, clicking the chat or selecting it by using ⇧ Shift + ← Left or ⇧ Shift + → Right.
+
+
+== Text filtering and restrictions ==
+In Bedrock Edition, any inappropriate word or phrase typed in the chat is censored and replaced by number signs (#). This can be turned off with the "Profanity Filter" option in the settings, but only if the player is signed in with a verified Microsoft account; otherwise, the option is greyed out and cannot be disabled. The list of censored phrases can be found internally under Content/data/profanity_filter.wlist (where the content is encoded in Base64). A similar feature is available in Java Edition's server.jar by configuring undocumented text-filtering-config and text-filtering-version options from server.properties. They are used internally by Realms.
+In the United Kingdom, chat is restricted if players did not verify their age for their Xbox account. This effect is different from each edition:
+
+In Java Edition, this restricts sending chat messages in a multiplayer world and receiving them.
+In Bedrock Edition, this blocks communication only between players that are not mutual Xbox friends.
+In Bedrock Edition, servers may disable the in-game chat using chat-restriction in server.properties. This can either drop chat messages and not send them to any clients, informed with a warning, or completely disable the chat UI.
+
+
+== Notes ==
+In Bedrock Edition, the chat background opacity and chat message duration for chat messages shown on the HUD can't be adjusted from the chat settings menu, but can be found in the accessibility settings.
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+=== Legacy Console Edition ===
+
+
+== Issues ==
+Issues relating to "Chat" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Gallery ==
+
+
+== See also ==
+Social interactions, the way to report players.
+
+
+== References ==
+
+
+== Navigation ==

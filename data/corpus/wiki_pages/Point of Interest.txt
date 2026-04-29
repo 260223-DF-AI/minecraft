@@ -1,0 +1,29 @@
+Point of interest refers to particularly important blocks in the game. In the game, there is a dedicated space that saves only the location of points of interest, separate from the data for other blocks in the world, allowing quicker access to these points.
+It is also sometimes referred to as POI, an abbreviation for point of interest.
+
+
+== Mechanism ==
+Points of interest are used by some entities, items, and blocks. They are saved as mca files in the Level format folders (the folder that stores world data inside the saves folder):
+
+poi folder (for the Overworld)
+DIM-1\poi folder (for the Nether)
+DIM1\poi folder (for the End)
+
+
+=== ID ===
+Each point of interest is assigned an ID. The ID does not necessarily match the block's ID; for example, a bed is minecraft:home.
+The ID saved in the mca files corresponds to the point of interest, and the block's ID is not saved. The IDs are listed in the table below.
+
+
+=== free_tickets ===
+Each point of interest has a maximum number of entities that can be associated with it at the same time. The maximum number for each point of interest is shown in the table below.
+The number of available slots is stored in a value called free_tickets for each point of interest. For example, a Bell can be associated with up to 32 Villagers. If twelve Villagers are already associated with it, the value of free_tickets will be twenty. For blocks like the Nether Portal, which cannot be associated with entities, the value is always set to 0.
+
+
+== List of points of interest ==
+
+
+== History ==
+
+
+== Navigation ==

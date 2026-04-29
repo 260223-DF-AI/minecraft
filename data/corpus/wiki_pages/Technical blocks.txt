@@ -1,0 +1,23 @@
+Technical blocks are blocks that can be used for some purposes when events in the game are happening, or blocks that use independent ID namespaces prevent the unnecessary combinations of block states. Technical blocks can't normally be obtained in the game, but in older Java Edition versions and current Bedrock Edition versions, different technical blocks can be obtained using glitches or NBT editing.
+
+
+== Java Edition ==
+The game prevents certain blocks from being obtained through normal gameplay methods, such as crafting, the Creative inventory, the pick block key, and the Silk Touch enchantment. It also prevents such blocks from being given through less conventional methods, such as inventory editing, mods, and commands. Until 1.7.2 and 1.8, there had been a wide variety of blocks that could be edited into the inventory; over time, however, the game was updated so that these blocks became entirely unavailable, even though one utilized inventory editing. From Java Edition 1.13 onwards, blocks and items are completely different concepts, and numerical IDs no longer exist at all.
+Currently, the game only accepts resource locations (such as minecraft:dirt) in most commands, and uses these resource locations when assigning blocks to the inventory and save files. The old method of obtaining a block via numerical IDs is no longer an option because the numerical id method getItemById(Integer.parseInt(id))  is no longer used in command /give. In addition, the game automatically removes blocks with illegitimate resource locations from the inventory, so using inventory editors is also no longer an option. Furthermore, certain blocks with both block and item forms, such as minecraft:cake, cannot be obtained in their block form in the inventory; however, since the game has a corresponding item named minecraft:cake, the item form is given instead. The only option is modifying game's class where registered items and ItemBlocks (direct item forms of blocks) in order to register and obtain them.
+
+
+=== List ===
+
+
+==== Removals ====
+
+All of the following block items were removed at one point, as clarified in the following paragraphs.
+In snapshot 13w37a for 1.7.2, the /give command was modified so that it would display the name of the item in chat. In fact, this change could not remove ItemBlocks, another change was necessary. Due to this,  Sets.newHashSet(Block[], {blocks here}) was added which removes the item forms of blocks in the list of its list. Due to this, 26 blocks were made unavailable.
+In snapshot 14w25a for 1.8, changes were made to the way the icons of items were rendered, and the way block data was internally represented. Similar to 13w37a, this change could not remove ItemBlocks, another change was necessary. Due to this, registerItemBlock(block) method was added, which adds the item form of respective block. Due to this, 12 blocks were made unavailable. 
+
+
+== Bedrock Edition ==
+In Bedrock Edition, some of the items can only be obtained from inventory editing or add-ons.
+
+
+== Navigation ==

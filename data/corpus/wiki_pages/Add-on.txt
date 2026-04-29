@@ -1,0 +1,152 @@
+An add-on is a package format and a type of downloadable content that provides additional custom game features beyond the base game in Minecraft. It contains a set of programming interfaces used for constructing and customizing certain game objects and elements, such as entities, blocks, items, biomes, structures, the user interface, and more. It is officially supported by Mojang Studios, who provide the Creator Documentation for developers.
+Add-ons consist of three main APIs: a resource pack for managing assets and resources, a behavior pack for defining data-driven behaviors, and scripting for writing a set of procedural instructions to perform custom behaviors and interactions. These functions and utilities are used for video game modding.
+Add-ons are officially hosted on the Marketplace, where players can download or purchase them on their devices using an in-game digital currency called Minecoins. They must be submitted by members in the Minecraft Partner Program and approved by the Minecraft Content Team, or made directly in collaboration with Mojang Studios as official DLC. They can also be packaged for external downloading, but these cannot be imported on consoles.
+
+
+== Overview ==
+
+
+=== Packs ===
+Add-ons can be created with two types of data packs: behavior packs and resource packs. Behavior packs can be used to change gameplay and allow adding and customizing entity behaviors, loot tables, spawn rules, item behaviors, item recipes, biome characteristics, and much more. Resource packs affect how the game looks and have no effect on gameplay, and they allow adding and customizing textures, models, music, texts, and interfaces.
+Definitions are written in JSON files, which are organized in multiple folders by their features. This system allows users to override and modify certain features in the base game, or add unique features with their own pack.
+All contents of an add-on can be packaged together in a zipped .mcaddon file. An add-on file can be automatically imported by the game, which will organize all contents in the dedicated directories in com.mojang.
+
+
+==== Sub-packs ====
+Resource packs and behavior packs can contain other packs inside the root, known as sub-packs. A sub-pack has the same format as the main pack and the directory of a sub-pack can have any name. Sub-packs need to be specified in the manifest.json file of the main pack, where a name and minimum memory tier can also be added. For example, a pack can have multiple less resource-intensive sub-packs for lower memory tiers, but it can also be used for other types of settings. The memory tier, affecting which sub-pack is used, can be adjusted in the pack's settings menu in-game.
+
+
+=== Molang ===
+
+Molang is a simple expression-based language designed for fast, data-driven calculation of values at run-time, and with a direct connection to in-game values and systems. It is used in Bedrock Edition in their add-on system with its purpose being to enable low-level systems like animation to support flexible data-driven behavior for both internal and external creators, while staying highly performant.
+
+
+=== Scripting ===
+
+Scripting is an add-on feature used to write a set of procedural instructions for the game to perform custom behaviors and interactions at a certain time or in response to events and actions. It lets users control behaviors of entities, blocks, and items; characteristics of the world; or an entire game loop. It is fundamentally different from the behavior pack system, the latter uses a component system with preset definitions provided by the game.
+Script files are written in the JavaScript programming language and loaded by the game under the scripts directory inside an add-on. Users may use TypeScript, a dialect of JavaScript, which provides better error reporting and a static type system. The Scripting API provides script modules for users to interact with the game, each module must be added as a dependency in the manifest.json, some notable ones are:
+
+Typing definitions (for use in TypeScript) can be installed via npm package manager from the official packages owned by mc-npm. There are other built-in modules, further reading.
+External modules are not built directly into the game and act as a helpers or utilities for development; they are available on minecraft-scripting-libraries GitHub and can only be installed through npm. They need to be merged with the scripting project through a bundler; Mojang recommends esbuild for simplicity.
+The Scripting API version 2 is a major update to the Scripting API, which provides a new API to define custom components and custom commands along with other major API changes that aren't backward compatible with the previous version. Most changes from the Scripting API version 2 are available from @minecraft/server version 2.0.0.
+
+
+=== Marketplace ===
+The Marketplace is an in-game platform where creators may sell their add-ons to the player-base. All Marketplace content must be submitted by members in the Minecraft Partner Program and approved by the Minecraft Content Team. Purchased content in the Marketplace is synchronized to the player's Microsoft account, and if they are not signed in, it is saved locally on their device.
+Free add-ons are released as part of special events, for occasions such as to promote the release of A Minecraft Movie for Minecraft's 15 Years celebration and the eventful McDonald's X A Minecraft Movie promotion. See § Official add-ons for a full list of add-ons officially promoted by Mojang Studios.
+In addition to the Marketplace, there are community websites dedicated to hosting community-made add-ons, although such add-ons may only be loaded on Windows and mobile, whereas consoles can only access those add-ons through Realms.
+
+
+=== Minecraft Education ===
+
+In 2026, add-ons were introduced into Minecraft Education. These add-ons are all free, and designed to be optional utilities for teachers. All DLC of this nature are referred to as add-ons, however several function as skin packs instead.
+
+
+== Loading tips ==
+
+Extra loading tip messages appear if the player is loading a world with add-ons applied. The loading message box is titled "Modified World", and loading tip messages would primarily warn the player about the add-ons or resource packs applied. For a full list, see Loading tips § Add-on tips.
+
+
+== Official add-ons ==
+
+
+=== Bedrock Edition ===
+
+
+=== Minecraft Education ===
+
+
+== History ==
+
+
+=== General ===
+This section includes major additions and milestones of add-ons. It also includes all Marketplace related history.
+
+
+=== Scripting ===
+
+
+== Videos ==
+Tutorials from the official Minecraft Creator Channel.
+
+
+=== Historical videos ===
+These videos were uploaded when add-ons were first introduced. They demonstrate how add-ons could create customized gameplay and modify existing entities.
+The first introduction of add-ons
+
+Early add-ons tutorial and playthrough
+
+Early Scripting API and experimental custom UI
+
+
+== Quotes ==
+
+
+== Gallery ==
+
+
+== See also ==
+Mod
+Commands
+Data pack
+Resource pack
+Skin pack
+World template
+Mash-up pack
+
+
+== References ==
+
+
+== External links ==
+
+
+=== Official documentation ===
+Addons JSON Documentation
+Animation JSON Documentation
+Biome Documentation
+Block JSON Documentation
+Entity JSON Documentation
+Features JSON Documentation
+Item JSON Documentation
+Molang Documentation
+Recipe JSON Documentation
+Particle JSON Documentation
+Schema Documentation
+Script API Documentation
+
+
+=== Official tutorials ===
+Getting Started With Minecraft Add-Ons
+Introduction to Resource Packs
+Introduction to Behavior Packs
+Getting Started with the Minecraft Entity Wizard
+Getting Started with the Minecraft Item Wizard
+Getting Started with the Minecraft Block Wizard
+
+
+=== Tools and libraries ===
+Commonly Used Tools
+Minecraft Creator Tools
+Bedrock Editor
+Snowstorm
+Chunker
+
+
+=== Unofficial resources ===
+Bedrock Wiki
+Minecraft Addons - CurseForge
+Minecraft PE Mods, Maps, Skins, Seeds, Texture Packs | MCPEDL
+
+
+=== Templates ===
+Resource and Behavior Example Packs
+
+Bedrock Add-On Sample Files
+Script API Example Packs
+
+Script API @minecraft/server-gametest samples
+Script API @minecraft/server samples
+
+
+== Navigation ==

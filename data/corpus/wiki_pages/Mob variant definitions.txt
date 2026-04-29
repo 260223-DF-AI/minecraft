@@ -1,0 +1,67 @@
+Mob variants are variants of mobs. They define the assets and models used and define the conditions in which this variant spawns.
+
+
+== Definition ==
+Mob variants can be defined in data packs, as part of the directory structure below.
+
+
+== JSON Format ==
+
+
+=== Cat ===
+Cat variants are defined using the following format:
+
+
+=== Chicken ===
+Chicken variants are defined using the following format:
+
+
+=== Cow ===
+Cow variants are defined using the following format:
+
+
+=== Frog ===
+Frog variants are defined using the following format:
+
+
+=== Pig ===
+Pig variants are defined using the following format:
+
+
+=== Wolf ===
+Wolf variants are defined using the following format:
+
+
+=== Wolf sounds ===
+Wolf sound variants are defined using the following format:
+
+
+=== Zombie Nautilus ===
+Zombie nautilus variants are defined using the following format:
+
+
+== Spawn condition ==
+Spawn conditions are used to determine which variant to spawn. Each variant contains a list of conditions with attached priorities. The selection of a variant happens in 3 steps:
+
+Each condition is evaluated. The matching condition with the highest priority determines the priority of the variant. If no condition matches the variant is discarded.
+Of all remaining variants, all except those with the highest priority are discarded.
+Of the remaining variants, a random variant is chosen.
+Spawn conditions are specified using the following format:
+
+
+=== biome ===
+Tests if the spawn position is inside one of the specified biomes.
+
+
+=== structure ===
+Tests if the spawn position is inside at least one of the specified structures.
+
+
+=== moon_brightness ===
+Matches the moon brightness at the time of the spawn.
+
+
+== History ==
+
+
+== Navigation ==

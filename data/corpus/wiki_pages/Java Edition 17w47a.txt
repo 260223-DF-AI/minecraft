@@ -1,0 +1,322 @@
+17w47a is the sixth snapshot for Java Edition 1.13, released on November 22, 2017, which added a new type of pumpkin, debug sticks, an item form of many blocks which previously could only be placed using commands, tweaked the placement conditions for many blocks, performed The Flattening, and much more.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Pumpkins
+
+New block, without the face.
+Previous pumpkin block has been renamed to "Carved Pumpkin".
+Right-clicking a pumpkin block with shears turns it into a carved pumpkin and makes it drop 4 pumpkin seeds.
+   Buttons, pressure plates, and trapdoors
+
+Can now be made from all six types of wood.
+
+
+=== Items ===
+        Bark, mushroom block, mushroom stem, petrified oak slab, smooth quartz, smooth red sandstone, smooth sandstone, and smooth stone
+
+Now have item forms in the creative inventory.
+ Debug stick 
+
+Cycles between different block states.
+Left-clicking cycles through states; right-clicking cycles through values.
+Shift-clicking cycles through the states or values in reverse order.
+Only obtainable through commands
+
+
+=== General ===
+Options
+
+New option when editing a world to make a backup and open the backups folder.
+An option in chat settings to toggle automatic command suggestions (defaults on, otherwise hit tab to bring them up).
+
+
+== Changes ==
+
+
+=== Blocks ===
+General
+
+Numeric block IDs no longer exist; there is no longer a limit to distinct possible block IDs.
+Blocks with a collision box now have matching bounding boxes.
+Affected: anvils, brewing stands, cauldrons, fences, filled end portal frames, glass panes, hoppers, iron bars, lily pads, pistons, stairs, and vines
+Updated the collision box of anvils and hoppers.
+Does not affect blocks with a collision box smaller than their model, such as soul sand and snow layers.
+Blocks now emit the block breaking particles according to their size.
+The outline for block hitboxes can now have other shapes than just one cuboid. This causes the outline of stairs and other blocks to match with the hitbox.
+Banners
+
+Now make a sound when placed.
+Beds
+
+Now require a block below it as a support.
+Previously, this was only required when placing the bed and the block could be destroyed afterward without the bed being destroyed.
+Buttons
+
+Can no longer be placed on top of pistons.
+Renamed "Button" to "Stone Button".
+Cacti
+
+Now break if signs or banners are placed directly next to it.
+Previously, these blocks couldn't be placed like this.
+Chests and trapped chests
+
+Can now be put directly next to their double variants instead of requiring one block between them.
+Shift right-clicking a chest or trapped chest next to a chest or trapped chest respectively doesn't make the two chests or 2 trapped chests combine into a double chest or double trapped chest.
+Cocoa beans
+
+Can now be placed when aiming at blocks that it cannot be placed on if there is an adjacent block that they can be placed on.
+Can now replace replaceable blocks such as snow, fire or grass when placed by the player.
+Dispensers
+
+Crafting it no longer requires a fully repaired bow.
+Doors
+
+Can now be placed by aiming at the side of a block.
+Enchanting Table
+
+"Enchantment Table" has been renamed to "Enchanting Table".
+Fence gates and pumpkins
+
+Placing them no longer requires a block below.
+Heads
+
+Now make a sound when placed.
+Can no longer be placed inside entities.
+Player heads have been renamed from "Head" to "Player Head".
+Infested blocks
+
+Now break instantly, regardless of a tool that the player is using.
+When broken with Silk Touch, the non-infested counterpart of the block drops.
+Levers
+
+Flicking it on now displays redstone particles.
+Can no longer be placed on top of pistons.
+Note blocks
+
+Are no longer block entities.
+Hence now pushable by pistons.
+Redstone comparator
+
+Now has a bottom texture plane.
+Redstone repeater
+
+Now has a bottom texture plane.
+Redstone wire
+
+Now makes a sound when placed.
+Signs
+
+Now make a sound when placed.
+TNT
+
+Removed the explode block state (explode on punch).
+Vines
+
+Multiple vines facing different directions, including on the bottom of blocks, can now be placed in the same block space.
+
+
+=== Items ===
+Carrot on a stick
+
+Now craftable with a damaged fishing rod.
+Spawn eggs
+
+Using them on blocks without collision box now spawns the mob inside that block rather than next to it.
+
+
+=== World generation ===
+Witch huts
+
+Now generate with a mushroom in the flower pot.
+Previously, they were completely empty.
+
+
+=== Non-mob entities ===
+ Armor stands
+
+Can now be placed inside water, lava and fire just like any other replaceable block.
+Can no longer step up blocks.
+
+
+=== Command format ===
+/blockdata
+
+Removed in favor of /data.
+/particle
+
+Particle names now use resource locations.
+Old ID → new ID:
+mobspellambient → minecraft:ambient_entity_effect
+angryvillager → minecraft:angry_villager
+blockdust and blockcrack → minecraft:block
+damageindicator → minecraft:damage_indicator
+dragonbreath → minecraft:dragon_breath
+driplava → minecraft:dripping_lava
+dripwater → minecraft:dripping_water
+reddust → minecraft:dust
+spell → minecraft:effect
+mobappearance → minecraft:elder_guardian
+enchantmenttable → minecraft:enchant
+magiccrit → minecraft:enchanted_hit
+endrod → minecraft:end_rod
+mobspell → minecraft:entity_effect
+largeexplode → minecraft:explosion
+hugeexplosion → minecraft:explosion_emitter
+fallingdust → minecraft:falling_dust
+fireworksspark → minecraft:firework
+wake → minecraft:fishing
+happyvillager → minecraft:happy_villager
+instantspell → minecraft:instant_effect
+iconcrack → minecraft:item
+slime → minecraft:item_slime
+snowballpoof → minecraft:item_snowball
+largesmoke → minecraft:large_smoke
+townaura → minecraft:mycelium
+explode and snowshovel → minecraft:poof
+droplet → minecraft:rain
+sweepattack → minecraft:sweep_attack
+totem → minecraft:totem_of_undying
+suspended → minecraft:underwater
+witchmagic → minecraft:witch
+take: unlisted
+footstep: removed
+depthsuspend: removed
+/playsound
+
+↹ Tab auto-completes custom sound events.
+
+
+=== Gameplay ===
+Creative inventory
+
+Because of The Flattening, certain blocks and items have been moved around in their respective groups, for example, the purpur block is now after obsidian.
+Mushroom blocks, farmland and grass path are added to the inventory, under the Decoration Blocks group; blank firework rockets are added to the Miscellaneous group; and bark, smooth stone, sandstone, red sandstone and quartz are added to the Building Blocks group.
+
+
+=== General ===
+The "flattening"
+
+Numeric block metadata completely phased out in favor of block states.
+Split, merged, created, deleted, and renamed a lot of blocks, block states, block entities and items.
+Blocks and items previously differing because of damage value have gotten their own ID, for example white_wool instead of wool:0
+Damage has been moved to the tag tag and is only used by tools, armor and maps.
+Files and commands no longer use data or set_data.
+Statistics
+
+Are being updated.
+stat.(stat) is now minecraft.custom:minecraft.(stat).
+stat.(stat).minecraft.(block/item/entity ID) is now minecraft.(stat):minecraft.(block/item/entity ID).
+Superflat customization
+
+Preset strings no longer use a version number.
+
+
+== Fixes ==
+81 issues fixed
+From released versions before 1.13
+
+MC-1511 – Anvil can be placed in certain blocks.
+MC-1947 – Pumpkins and jack 'o' Lanterns can only be placed on solid blocks.
+MC-2208 – Blocks with special placement can be placed inside player/entity.
+MC-2666 – Corner cobblestone wall has incorrect collision box.
+MC-4504 – The hitbox of brewing stands is missing the blaze rod.
+MC-9194 – A Comparator can lock a repeater, but the repeater doesn't look like it's locked.
+MC-9704 – Sometimes randomly unable to place ladder while standing in the same block.
+MC-12000 – The hit-box of corner fences isn't the same as the collision box.
+MC-26739 – Doors won't update with redstone.
+MC-34365 – If the player creates a double chest and does the command /setblock near the chest, it will create an invisible chest/the visible chest is a triple chest.
+MC-39948 – Blocks/items only different by data value are not listed separately in statistics.
+MC-53439 – The top block of a two-block plant temporarily becomes a peony/sunflower upon placing a block in the bottom.
+MC-59517 – TNT explode=true blockstate drops TNT item when fused by hit in survival mode.
+MC-59610 – Cactus has full block hitbox.
+MC-59691 – Inconsistent block/item names: brick(s).
+MC-61821 – Digging snow layer yields one snowball too much.
+MC-63820 – Empty flower pot in witch huts.
+MC-64455 – Translation missing for some blocks.
+MC-70188 – Some blocks cannot be placed facing a wall with /setblock or /fill + datavalues or block states.
+MC-73495 – Commands saying item names use incorrect/wrong item names.
+MC-74231 – Flower pot's blockdata won't visually update.
+MC-75430 – Enderman held block not fully updated from old block id system.
+MC-75940 – block log2 and leaves2 crash the game when set to certain data values.
+MC-79255 – Using /trigger first time on player gives score of 0 but not displayed on scoreboard.
+MC-81746 – Falling block entities don't check for data values: converting sand to red sand.
+MC-84173 – Trapdoors get a redstone update when being pushed/pulled next to a power source, but not when being pushed/pulled away from it.
+MC-92901 – End Crystals and placed at high coordinates are placed with offset.
+MC-93129 – Falling sand behaves incorrectly in lazy chunks.
+MC-94027 – "Carried" tag of enderman reads value as string and short.
+MC-94186 – BlockDragonEgg does not extend BlockFalling.
+MC-101332 – Can use the FallingSand to go through a mossy cobblestone wall.
+MC-102545 – There are 352 different flowerpots in the debug world.
+MC-103035 – Dragon egg doesn't create fallingdust particles.
+MC-105820 – Relative decimal coordinates with block related commands are inconsistent.
+MC-106024 – Fence gates do not update in wall block states when placed by command.
+MC-106127 – Some blocks cannot be given certain block states.
+MC-108756 – Dungeons generating triple chests.
+MC-109348 – Game crashes on loading world with a java.lang.StackOverflowError after using structure blocks due to multiple block entities in the same location.
+MC-109591 – Detecting the block states not saved in metadata does not work.
+MC-109659 – The observer only detected upgrade top of the door if opened/closed with energy (button, lever, etc.), but not with the player's hand.
+MC-111472 – Game doesn't save anywhere that a chest is a double chest.
+MC-112394 – Numeral ids can still be used in some commands.
+MC-112891 – Falling block entity drops block with metadata of item dropped when block would be mined causing malformed drops.
+MC-113001 – Some items act client-side always as if they were successfully used.
+MC-113347 – Rails rotate when moved.
+MC-114965 – Placed tripwire hook updates blocks around opposite facing tripwire hook on same axis.
+MC-115799 – Colored bed flickers red when placing/destroying.
+MC-116580 – Iron trapdoors stay on after breaking power source, until updated.
+MC-117032 – "Done" button in statistics screen is offset.
+MC-117166 – Corner stairs with torch/lever/button etc. doesn't cause block update when near destroyed support stairs.
+MC-117837 – Player placed leaves update when log block breaks.
+MC-117932 – Bed particles cause z-fighting.
+MC-118153 – Lava can only turn concrete powder into concrete when it falls into source block.
+MC-118202 – iron bars, glass pane etc have incorrect selection hitbox on corners.
+MC-118221 – Vines cannot be placed below non-solid blocks.
+MC-120790 – Redstone lamps and wire update whether they are lit or not when setblocked, but no other blocks do.
+MC-121271 – Activator rails not updating.
+MC-121742 – block states can't be used in /give, /clear and /replaceitem, but can be used in /setblock, /fill, /execute detect and /testforblock.
+From the 1.13 development versions
+
+MC-121693 – Crash when typing empty selector "[x_rotation=]" or "[y_rotation=]".
+MC-121699 – "Unknown score holder" when using the placeholder * in some commands.
+MC-121700 – Invalid syntax when using decimal values on block position arguments.
+MC-121739 – Normal players can use player selectors in /msg command.
+MC-121752 – Scoreboard, "no score" and "0" desyncs.
+MC-121783 – /gamerule doesn't work at all.
+MC-121786 – /tellraw does not work.
+MC-121787 – Teleporting things to infinity/NaN is possible.
+MC-121790 – Tab completion doesn't change the case of characters typed before pressing tab.
+MC-121795 – Unable to use decimals for the speed parameter in the /particle command.
+MC-121827 – Selectors and scoreboards not working for signs, /tellraw, and /title (works correctly for books).
+MC-121858 – "Scoreboard players get" not working for read-only objectives.
+From the previous development version
+
+MC-121970 – /blockdata command is still present.
+MC-121975 – Datapack order does not persist after a world is closed.
+MC-121976 – /datapack disable doesn't refresh advancements for player.
+MC-121982 – Inconsistent tab-completion spacing.
+MC-121985 – Using the scroll wheel to select between arguments of various commands like /experience and /gamemode cause a crash
+MC-121996 – distance filter seems to not work in gameLoopFunction.
+MC-122004 – Using space to complete the command will add 2 spaces.
+MC-122020 – Cannot add 0 to a player's score.
+MC-122074 – Tab completion not working on items in commands.
+MC-122108 – Shapeless recipes cannot be crafted using named or enchanted ingredients.
+Private issues
+
+MC-111317 – Private security issue.
+
+
+== Videos ==
+
+
+== Trivia ==
+
+The banner image of this update is an animated GIF. On some frames, trapdoors with the purple/black missing texture are displayed.
+
+
+== References ==
+
+
+== Navigation ==

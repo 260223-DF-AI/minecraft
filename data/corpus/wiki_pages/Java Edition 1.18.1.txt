@@ -1,0 +1,45 @@
+1.18.1 is a minor update to Java Edition, released on December 10, 2021, which makes minor changes related to fog and fixes bugs. It is compatible with 1.18 servers.
+Most importantly, this version fixes a critical security vulnerability in the Log4j library of the dedicated server release that could be used to perform a remote code execution exploit. As a result, players were urged to secure their clients and servers. This is the final version released in 2021.
+While this wasn’t the last update to 1.18, it was the last before the development versions of 1.19 started.
+
+
+== Changes ==
+
+
+=== General ===
+Fog
+
+World fog now starts farther away from the player, to make distant terrain more visible.
+Instead of applying fog as a spherical volume, it is now applied as a cylindrical volume.
+
+
+== Fixes ==
+8 issues fixed
+From released versions before 1.18
+
+MC-152198 – Actual render distance is 2 chunks lower than render distance setting.
+MC-219507 – Beacon's power reverts back to previous one on world reload.
+From 1.18
+
+MC-242729 – Observer activating without any updates nearby, caused by /clone.
+MC-243216 – Chunk render distance on servers seems shorter than in 1.17.1.
+MC-243253 – Minecraft Realms screen is loading for long time.
+MC-243796 – Random non fatal exceptions in console: Failed to store chunk ConcurrentModificationException.
+Other
+
+Fixed an issue that would cause players on low-bandwidth connections to get timeout errors when connecting to a server. 
+Fixed a critical security issue in which attackers are able to execute code on others' devices (RCE exploit) via in-game messaging or other methods where the game logs a certain exploitable string, due to an upstream vulnerability in log4j2. 
+
+
+== Videos ==
+
+
+== Trivia ==
+This version was released exactly 2 years after 1.15.
+This version was released on the same day as its final release candidate.
+
+
+== References ==
+
+
+== Navigation ==

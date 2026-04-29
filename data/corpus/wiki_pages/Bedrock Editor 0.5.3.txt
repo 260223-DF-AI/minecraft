@@ -1,0 +1,19 @@
+Bedrock Editor v0.5.3 is a minor alpha release for the Bedrock Editor released on January 24, 2024, which tweaks the API and fixes bugs.
+
+
+== Changes ==
+The PropertyPane.addDropdown function now returns an IDropdownPropertyItem that can be used to call the new updateDropdownItems to change the Dropdown items in an existing Dropdown and optionally set a new currently-selected index.
+updateDropdownItems calls the corresponding onChange function but passes -1 in for the oldValue because the list is changing entries.
+Added Cursor delta relative to Player position and the name of the block at the cursor position to the Player position status bar entry.
+Vector3 panes now have a default minX/Y/Z of MIN_SAFE_INTEGER, allowing negative values to be used.
+
+
+== Fixes ==
+The player will now correctly spawn at the current location when the "Spawn at current location" option is checked in the test world property pane.
+Viewport in the editor is no longer incorrectly offset while in a world with deferred graphics enabled.
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,226 @@
+1.8.1 is a minor update for Java Edition released on November 24, 2014 to improve performance and fix bugs. 1.8.1 is compatible with 1.8 servers. This is the final version released in 2014.
+
+
+== Additions ==
+
+
+=== Items ===
+Maps
+
+Added proper color display support for the new blocks.
+
+
+=== Command format ===
+Game rules
+
+doEntityDrops - Works like doTileDrops and doMobDrops but applies to non-mob entities (minecarts, paintings, etc.) instead.
+
+
+=== Gameplay ===
+Credits
+
+Ryan Holtz (TheMogMiner) and Michael Stoyke (Searge) are now mentioned in the credits.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Jack o'lanterns
+
+Can be used to create iron golems and snow golems again.
+Also able to be put on head to avoid endermen, and some other mobs.
+
+
+=== Items ===
+General
+
+Now rotate on fast graphics.
+Potion of Leaping
+
+Can now be extended with redstone.
+
+
+=== Mobs ===
+General
+
+No longer run from creepers that are about to explode.
+Armor stands
+
+Added Marker tag.
+
+
+=== World generation ===
+Witch huts
+
+Newly generated witch huts can spawn witches on Y 64 to 71.
+This allows for three spawning floors in witch farms.
+
+
+=== Command format ===
+Game rules
+
+doTileDrops no longer affects entities.
+
+
+=== General ===
+Options
+
+Renamed "Multiplayer Settings" to "Chat Settings".
+Off/fancy/fast clouds.
+Off/on entity shadows.
+Fast/fancy now only controls leaves and rain particles.
+Servers
+
+Removed the client side TCP packet delay caused by Nagle's algorithm.
+Performance
+
+Various improvements.
+Many optimizations.
+
+
+== Fixes ==
+131 issues fixed
+From released versions before 1.8
+
+MC-3 – Player facing changes when passing through nether portals in certain cases.
+MC-349 – Villagers ignore data tags in trading.
+MC-954 – Air blocks floating in water.
+MC-1279 – Slow (choppy) rotating beacon block.
+MC-1607 – Ghost end portal in the End/missing layer with AMD/ATI graphics cards.
+MC-3448 – Statistic screen icons messed up.
+MC-4158 – Nether portal sometimes places player a fraction of a block in the air.
+MC-4167 – EXP orbs will switch locations after a second or so from killing a mob.
+MC-6261 – Brewing stand doesn't drop custom potions.
+MC-6594 – Non-living entities (boats, minecarts, falling sand, item frames, paintings) drop items even if doTileDrops is set to false.
+MC-10808 – Sprinting and breaking particles of piston arms use same particles as piston even though there is no stone on the arms.
+MC-12013 – Experience orbs are invisible for one second right after spawning.
+MC-25646 – Music keeps playing when putting in a disc in a jukebox and breaking it at the same time.
+MC-30937 – /summoned mobs riding XP orbs phase out of existence.
+MC-37782 – Items held by witches are too small and held wrongly.
+MC-38372 – Sprint glitch.
+MC-45537 – Cannot place buttons under stairs or slabs, or on top of upside down stairs or slabs.
+MC-46579 – Items are too high up on the arm in 3rd person mode while sneaking.
+MC-47052 – Wither destroying barrier block.
+MC-48011 – Ender dragon experience drops are not affected by doMobLoot gamerule.
+MC-48130 – /fill replace command not filling when clicking tab.
+MC-49126 – Glowstone crystal formations are missing their bottom layers.
+MC-49538 – Achievement "Overpowered" has misleading icon.
+MC-50263 – Lighting bug affecting End portal frames with eye.
+MC-52717 – Placing heads/skulls break existing blocks.
+MC-53718 – Chicken jockey riding inside chicken.
+MC-54551 – Resizing window while in Customized World Settings snaps back to Customized Settings page 1.
+MC-54707 – Command: /setblock minecraft:sign produces a confusing error message.
+MC-55661 – Animals don't teleport to player when target is air block.
+MC-56574 – /tellraw open_url isn't showing url.
+MC-57633 – Minecraft crashes when specific command is used.
+MC-58307 – Air bubbles appear after drowning and still dead.
+MC-58568 – Item frames with items in them do not frustum culling properly causing severe FPS lag.
+MC-59216 – Unable to build iron golem and snow golem with jack o'lantern.
+MC-59358 – "/spawnpoint <player>" (without coordinates) is not working.
+MC-59360 – Levers pop off non-solid blocks.
+MC-61587 – /summon Rotation bug.
+MC-61640 – Snow layers can't be placed on top of another full snow layer block.
+MC-61653 – Mojang's API for retrieving players from UUIDs isn't working consistently.
+MC-62140 – 2 block tall flowers generated in previous version removes the 2nd block.
+MC-62206 – barrier block can cause mobs to get stuck and suffocate to death.
+MC-62758 – Tall flowers drop two items when block below is broken.
+MC-63466 – Ctrl +Pick Block gives a steve head instead of a head with the owner's skin.
+MC-64082 – Enchantment options for individual players are reset after death. KeepInventory does not have any effect.
+MC-64427 – /worldborder,/scoreboard and /debug with invalid arguments don't print an error message.
+MC-64484 – Fire charge plays no sound due to incorrect sound file reference.
+MC-64653 – /execute particle leaves a false particle trail to 0,0,0.
+MC-64773 – /particle autocompletion.
+MC-64846 – Cannot extend potion of leaping to eight minutes using redstone in a brewing stand.
+MC-65603 – Ender dragon does not obey NoAI tag.
+MC-65834 – Snow layers placed against the side of a block are placed one block too far out.
+MC-65945 – Enderman blocks look weird when invisible.
+MC-66324 – /clone has incomplete syntax.
+MC-66658 – /kill does not tab autocomplete with a player's name.
+MC-66786 – Incorrect death message for dispensed harming potions.
+MC-66861 – when press ↹ Tab on /entitydata, players pop up.
+MC-66922 – <effect> argument in /effect does not show clear in help syntax.
+MC-67437 – Lightning gives AI to witches and zombie pigman that were originally pigs and villagers that had NoAI set to 1.
+MC-68160 – Placing a colored banner on a cactus drops a black banner.
+MC-68247 – Beacon beam disappears while looking upwards from it.
+MC-68400 – Creative Inventory vert. scrollbar changes without scrolling.
+MC-68497 – Cut/Copy function updates clipboard even if nothing is selected.
+MC-68654 – Tab Complete - /effect and /enchant.
+MC-68745 – /resourcepacks/ folder is not automatically created when initially starting the game.
+MC-68891 – Mobs think daylight sensor is a full block, causing them to jump while trying to get off it.
+MC-69266 – Snow layer placing behavior buggy and inconsistent.
+MC-69323 – Certain commands do not allow tab completing coordinate arguments.
+MC-69823 – /debug help text wrong.
+MC-69983 – Multiplayer settings named wrongly.
+MC-69984 – The "Defaults" popup on the customized world generation options screen doesn't disable hovering over stuff behind it.
+MC-69989 – Debug worlds generate one column twice.
+MC-70054 – Rabbits don't follow players holding golden carrots or dandelions.
+MC-70111 – When a thrown ender pearl is in the air, it disappears after relogging.
+MC-70305 – "Sprint" is in the wrong category in Controls screen.
+MC-70308 – Bottom outline is missing in the Controls screen buttons.
+MC-70338 – Hopper: java.lang.OutOfMemoryError: Java heap space - creating debug image whilst stitching textures.
+MC-70359 – Block breaking remains when eating/blocking with a sword.
+MC-70431 – Minecraft 1.8 skin bug! (The layer in the right arm, does not show completely in first person).
+MC-70472 – Crash when trying to connect to a server with more than 73 characters address.
+MC-70565 – when opening a chest in modded servers Minecraft crashes continuously.
+MC-70675 – End credits make no mention of Ryan Holtz (TheMogMiner) or Michael Stoyke (Searge).
+MC-71436 – Screen goes black when "highlighting" players in Spectator mode.
+MC-71777 – /achievement take taking too many achievements.
+MC-71973 – Tab list headers and footers stay even when rejoining a different server.
+MC-71981 – Uploading a hardcore world to Realms retains auto-ban.
+MC-72166 – Banners disappear at some angles.
+MC-72524 – Can't place buttons on top of redstone blocks.
+MC-72583 – doTileDrops affects item frames.
+MC-72688 – /execute Detect gives false positive when in different dimension.
+MC-72806 – When using /stop server executes the shutdown sequence twice (and hangs if players are online).
+MC-72868 – Mobs glitch through the ground under certain conditions.
+MC-72869 – The 'Defaults' button on the Customized world screen does not disable itself after use.
+MC-72871 – Resizing the game makes buttons on "Defaults" popup on Customized world GUI disappear.
+MC-73098 – Zombie pigman displays unusual behavior.
+MC-74843 – Ender Dragon ignores CustomName
+From 1.8
+
+MC-44474 – Smooth teleportation while falling glitches player back up.
+MC-46455 – If you switch gamemode while inside a block or mob, you glitch inside it.
+MC-46670 – Withers trapped in a barrier box attacks barriers, killing it.
+MC-46809 – /say Not showing villager entity data if 'CustomName' provided.
+MC-47987 – Entering a mobs view in spectator mode does not change if world is changed.
+MC-48220 – Constantly re-destroying a block with a command block eventually leads to server freezing.
+MC-48633 – Operation, test and enable doesn't show up as options when typing /scoreboard players.
+MC-50695 – FallingSand becomes invisible when player rides anything.
+MC-51515 – SpreadPlayers Entity WitherSkull.
+MC-53046 – Odd LAN behavior and crash.
+MC-53558 – World Generator Crash when creating a custom new world (Different than others).
+MC-53983 – Loading World on New World or loading screen disappears if the window size is changed.
+MC-54575 – Part of stair becomes invisible when placing a block near it.
+MC-54626 – Chicken jockey falls into solid block when chicken dies.
+MC-54929 – Fast creeper bug (aka Creeper Zurg Rush).
+MC-55767 – Unable to hide wither skull names..
+MC-56798 – Replacing water does not stop its flow.
+MC-57266 – While using fast graphics, tree leaves render as fancy in the distance.
+MC-58132 – Spectator mode layer glitch.
+MC-58908 – /help for /worldborder not updated.
+MC-61610 – Bedrock at Y0 has wood log in it at x0 y0 z0.
+MC-61828 – Guardian doesn't attack players.
+MC-61844 – Creepers target iron golems, causing terrain damage without interaction of a player.
+MC-62103 – Bug with regeneration effect.
+MC-64353 – Leaving an area then coming back create ghost chests.
+MC-64515 – Inconsistency in piston timing.
+MC-64598 – Creative search tab text becomes offset.
+MC-64727 – Breaking Door corruption/crash.
+MC-65276 – Bow when held is upside down.
+MC-68880 – Rabbit falls through snow layers and suffocates.
+MC-69489 – Cannot summon enderpearl.
+MC-69562 – Cannot play LAN whilst offline.
+MC-69862 – Cannot open chest/Furnace/ with item in hand.
+MC-70992 – textures_X.png in .minecraft directory.
+From the current version, hotfixed
+
+MC-75346 – http://skins.minecraft.net/MinecraftSkins redirects to cape when no skin exists.
+MC-76755 – Crash somewhere in realm settings.
+
+
+== References ==
+
+
+== Navigation ==

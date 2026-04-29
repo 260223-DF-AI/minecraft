@@ -1,0 +1,669 @@
+1.21.130, the release of Mounts of Mayhem, is a game drop for Bedrock Edition released on December 9, 2025, which adds the nautilus, nautilus armor, zombie nautilus, spears, zombie horsemen, camel husks, and parched.
+
+
+== Additions ==
+
+
+=== Items ===
+ Nautilus Armor
+
+Equippable on nautiluses and zombie nautiluses.
+Has copper, iron, gold, diamond, and netherite variants.
+Copper, iron, golden, and diamond nautilus armor have a chance to be found in the chests for the following structures:
+Buried treasure
+Ocean ruins
+Shipwreck
+Copper, iron and golden nautilus armor can be smelted into the respective nuggets.
+ Netherite Horse Armor
+
+Can be obtained by upgrading diamond horse armor with a smithing table.
+
+ Spawn Eggs
+
+Added nautilus, zombie nautilus, camel husk, and parched spawn eggs.
+ Spear
+
+New weapon that can be crafted in wood, stone, copper, iron, gold, diamond and netherite versions.
+Each material has different stats for timing, influencing how fast they are to use.
+Copper, iron and golden spears can be smelted into the respective nuggets.
+Can be enchanted with the exclusive enchantment Lunge, in addition to the available enchantments for swords.
+Has a minimum reach for damage, being too close to a target will yield no damage.
+Has extended maximum reach compared to other tools and weapons.
+Zombies, husks, zombified piglins and piglins can spawn holding a spear.
+Has two attacks: jab and charge.
+Jab
+Used by quick-pressing the primary action button.
+Is a low-damage attack with knockback.
+Has a cooldown between attacks.
+Wooden spears have the fastest cooldown, while netherite has the slowest.
+Can hit multiple enemies.
+Charge
+Used by holding the secondary action button.
+Damage is based on spear material, the player’s view angle, and the velocity of both the player and the target.
+While holding down the button, the attack goes through three stages before returning to idle:
+Engaged: The spear can deal damage, knockback, and dismount mounted enemies if the speed is above the required thresholds.
+Tired: Indicated by the spear rotating to a vertical position and shaking. The spear can deal damage and knockback (but not dismount) if the speed is above the required thresholds.
+Disengaged: Indicated by the spear being lowered, pointing downwards. The spear deals damage but not knockback or dismount if the speed is above the required thresholds.
+The spear's range when used by mobs is half of that when used by players, but they can deal damage, dismount and knockback at lower speeds than the players.
+
+
+=== Mobs ===
+ Camel Husk
+
+New undead camel variant.
+Spawns at 0 light level in deserts.
+Spawns with two riders: A husk wielding a spear and a parched.
+Does not burn in sunlight, following the husk's spawning rules.
+Does not spawn in caves, following the husk's spawning rules.
+Is hostile if the rider is a hostile mob.
+Passive without a rider.
+Despawns like other hostile mobs, but becomes persistent when ridden by a player.
+Favourite food is rabbit foot.
+Cannot be bred.
+As a mount they work similar to normal camels.
+ Nautilus
+
+A new neutral aquatic mob.
+Spawns in all ocean biomes.
+Has 15HP × 7.5 health.
+Attacks using a dash attack, if provoked.
+Occasionally attacks pufferfish within range using the dash attack.
+Takes suffocation damage on land.
+Grants the Breath of the Nautilus effect to mounted players.
+Can be bred and tamed using a pufferfish or a bucket of pufferfish.
+A tamed nautilus can be equipped with a saddle, then the player can ride it.
+While riding it, the player can use its dash attack (similar to camels) by pressing the jump button.
+Once tamed, has a roaming restriction around its home position of 16 blocks with a saddle, and 32 blocks without.
+Has a 5% (1⁄20) chance of dropping a nautilus shell upon death, on a player kill, unaffected by Looting.
+ Parched
+
+New skeleton variant.
+Spawns at 0 light level in deserts replacing some of the regular skeletons.
+Does not spawn in caves, following the husk's spawning rules.
+Does not burn in sunlight.
+Shoots arrows of Weakness.
+Has a slower rate of fire compared to normal skeletons, similar to bogged.
+ Zombie Nautilus 
+
+A new neutral underwater mob that spawns with a drowned rider wielding a trident.
+ Has a coral variant, which appears when spawned in a warm ocean type biome.
+Hostile only if ridden by a hostile mob.
+Behaves similar to the nautilus except that it cannot be bred.
+Burns in sunlight, like other undead mobs.
+Nautilus armor protects it from sunlight damage.
+Drops 0-3 rotten flesh when killed by a player or tamed wolf, unaffected by Looting.
+
+
+=== Gameplay ===
+Achievements
+
+Death messages
+
+Added the following death message:
+"<entity> died from dehydration"
+Effects
+
+ Breath of the Nautilus
+Effect that affects players riding a nautilus.
+Pauses player oxygen consumption (but does not replenish oxygen).
+Enchantments
+
+Lunge
+A new enchantment that is unique to the spear.
+Only works with the jab attack.
+When doing a jab attack with Lunge, it propels the player horizontally in the view direction.
+The view angle needs to be perfectly leveled horizontally to achieve maximum lunge distance.
+Costs saturation/hunger to use, similar to sprinting or jumping.
+Level I consumes 1 (), level II consumes 2 (), and level III consumes 3 ().
+Lunge can only be used if the player has at least 6 () hunger points in their hunger bar.
+There is also a durability cost of 1 for using Lunge across all levels.
+
+
+=== General ===
+Input
+
+Automatically selects the Chat screen text field on opening for Windows when using keyboard and mouse, enabling text input as soon as screen opens.
+Music
+
+Reenabled missing music for several biomes.
+Performance
+
+Now automatically attempts to join the local copy if syncing world from cloud on Xbox fails.
+Realms
+
+Realms Manage Feed is now located within Realms Stories instead of Realms Settings.
+Settings
+
+Added an option to adjust the size of the top buttons in the HUD for touch controls.
+Removed the "Customize Controls" toggle, the button now always appears.
+Added an option to the video settings to adjust screen tilting when taking damage.
+Splash
+
+Added "One does not simply walk to the Far Lands".
+
+
+=== Graphical ===
+Added the ability to data-drive cubemap lighting and effects in Vibrant Visuals.
+The partial transparency applied to mobs when close to the camera now also applies to players.
+
+
+== Changes ==
+
+
+=== Audio ===
+The swimming sound no longer plays when flying underwater.
+
+
+=== Biomes ===
+Pufferfish and tropical fish can now be caught when fishing in jungles.
+
+
+=== Blocks ===
+ Hopper
+
+Hoppers now have a short cooldown after being moved by a piston that prevents interaction.
+ Water
+
+Light absorption in water has been changed from 2 to 1 units, to match Java Edition.
+
+
+=== Gameplay ===
+Technical
+
+Custom items tagged with minecraft:is_shovel now build paths on all blocks the shovel does and it extinguishes campfires and removes snow like a shovel.
+
+
+=== General ===
+Settings
+
+Accessibility option "Enable Open Chat Message" has been renamed to "Chat Instructions on Join".
+UI
+
+The camera Y-sensitivity for D-Pad controls has been decreased.
+Add-Ons navigation buttons now have proper spacing between the icon and the text.
+Added a new joystick for touch controls when using the control schemes 'player_relative_strafe' or 'camera_relative_strafe'.
+The new joystick is only available with "Joystick & tap to interact" and "Joystick & aim crosshair" control modes.
+Players who are using "D-Pad & tap to interact" when entering into one of the two control schemes will be put into "Joystick & tap to interact" and then returned to "D-Pad & tap to interact" after they stop using one of the two control schemes.
+Implemented the same HUD icon for effects  as Java Edition.
+All items now show the "Hit" attack prompt when aiming at a mob.
+Items with dedicated interaction prompts now show when aiming at a mob if there is no other special mob interaction prompt.
+The mob's inventory panel is now hidden for all unchested mobs in the default UI.
+The interface windows will now close when you are hurt by a mob.
+Panorama
+
+Updated the panorama to reflect Mounts of Mayhem.
+Performance
+
+Improved loading times when exiting worlds.
+Improved loading times when using the /reload all command.
+Improved loading times when re-entering similar worlds.
+Improved loading times when transferring between servers.
+
+
+=== Graphical ===
+The first critical hit particle for arrows is now slightly delayed.
+Kelp is now affected by block dithering when near the camera.
+
+
+=== Items ===
+ Spawn Eggs
+
+Changed zombie horse spawn egg texture to reflect the updated texture of the zombie horse.
+Spawn eggs are now sorted thematically in the Creative inventory, according to the following categories:
+Overworld
+Farm Animals
+Mounts
+Pets
+Wild Animals
+Aquatic
+Miscellaneous
+Golems
+Villagers
+Undead
+Spiders
+Monsters
+Illagers
+Nether
+The End
+Tools and Weapons
+
+Now lose durability when used to attack armor stands, just like they do when damaging other entities, such as minecarts, paintings, boats, or leash knots.
+No longer "bob" whenever their durability changes, such as when losing durability from an attack, or repaired by Mending.
+
+
+=== Mobs ===
+ Camel
+
+Now takes fall damage starting 4 blocks higher when walking or dashing.
+No longer sinks in water while ridden by a player.
+ Dolphin
+
+No longer spawns in cold ocean or deep cold ocean biomes to match Java Edition.
+ Donkey, Horse, and Mule
+
+No longer sink in water while ridden by a player.
+ Piglin
+
+Piglins can now spawn holding spears and use their jab attack.
+Piglins now consider golden nautilus armor and golden spears as items they like.
+ Pufferfish
+
+Can now spawn in lukewarm oceans and deep lukewarm oceans.
+ Zombie, Husk, and Zombified Piglin
+
+Zombies, husks, and zombified piglins can now spawn holding spears and use their charge attack.
+ Zombie Horse
+
+Texture changed from  to have a darker texture.
+Now spawns naturally, in plains and savanna biomes.
+Spawns in darkness, and burns in sunlight, like other undead mobs.
+Counts towards the hostile mob cap and spawns with other hostile mobs in the spawning cycle.
+Sometimes spawns with a zombie holding an iron spear and riding it, but the zombie horse can also spawn on its own.
+Has 25HP × 12.5 health.
+Can be healed and tempted using red mushrooms.
+Drops 2-3 rotten flesh when killed (instead of 0-2), with an extra 0-1 for each level of Looting.
+The boost from Looting is the same as it was before the update.
+Any zombie spawning riding it now has a chance of dropping a red mushroom on death.
+An unridden zombie horse does not display any hostile behavior towards players.
+If it is ridden by a zombie, the zombie will control its pathfinding and therefore make it hostile.
+Untamed zombie horses despawn like other hostile mobs.
+Tamed zombie horses are persistent and do not despawn.
+Can be tamed in the same fashion as a regular horse, and can then be mounted and controlled by a player.
+Can be equipped with a saddle and horse armor.
+Horse armor protects it from sunlight damage.
+Has variable movement speed and jump strength, determined when it spawns.
+The tooltip displayed when attempting to mount an untamed zombie horse has been changed from "Ride" to "Mount".
+
+
+=== Spawn events ===
+spawn_adult
+
+Now applied when zombified piglins spawn as an adult.
+spawn_baby
+
+Now applied when zombified piglins spawn as a baby.
+
+
+=== Technical ===
+AI Goals
+
+Made schemas for goals minecraft:behavior.explore_outskirts and minecraft:behavior.investigate_suspicious_location stricter when parsing and will fail to load an entity json that has invalid data in versions 1.21.130 and newer.
+Added the "minecraft:behavior.use_kinetic_weapon" AI goal
+Description:
+Allows a mob to make use of items with a "minecraft:kinetic_weapon" item component.
+The mob will approach the target before using the weapon and charging with it.
+If the target gets too close, the mob will retreat and reposition before charging again.
+Once all "max_duration" in the item's "minecraft:kinetic_weapon" component have elapsed, the mob goes on cooldown and retreats before approaching again.
+Fields:
+"approach_distance": The distance to the target within which the mob begins using its kinetic weapon.
+"reposition_distance": The distance the mob retreats to once the target is closer than the midpoint of the item's "minecraft:kinetic_weapon" component's minimum and maximum "reach".
+"reposition_speed_multiplier": Multiplier applied to the mob's movement speed while repositioning.
+"cooldown_distance": The distance the mob retreats to after all of the item's "minecraft:kinetic_weapon" component's "max_duration" values have elapsed.
+"cooldown_speed_multiplier": Multiplier applied to the mob's movement speed while on cooldown.
+"weapon_reach_multiplier": Multiplier applied to the item's "minecraft:kinetic_weapon" component's "reach".
+"weapon_min_speed_multiplier": Multiplier applied to each "min_speed" and "min_relative_speed" condition in the item's "minecraft:kinetic_weapon" component.
+"min_path_time": Minimum base time, in seconds, before recalculating a new attack path to the target (before increases are applied).
+"max_path_time": Maximum base time, in seconds, before recalculating a new attack path to the target (before increases are applied).
+"path_fail_time_increase": Time, in seconds, added to the attack path recalculation interval when the mob cannot move along the current path.
+"inner_boundary_time_increase": Time, in seconds, added to the attack path recalculation interval when the target is beyond "path_inner_boundary".
+"outer_boundary_time_increase": Time, in seconds, added to the attack path recalculation interval when the target is beyond "path_outer_boundary".
+"path_inner_boundary": Distance at which to increase attack path recalculation by "inner_boundary_time_increase".
+"path_outer_boundary": Distance at which to increase attack path recalculation by "outer_boundary_time_increase".
+"speed_multiplier": Multiplier applied to the mob's movement speed when moving toward its target.
+"require_complete_path": Specifies whether a full navigation path from the mob to the target is required.
+"track_target": Allows the mob to track its target even if it lacks a hard-coded sensing component.
+"cooldown_time": Cooldown time, in seconds, between consecutive attacks.
+"melee_fov": Field of view, in degrees, used by the hard-coded sensing component to detect a valid attack target.
+"x_max_rotation": Maximum rotation, in degrees, on the X-axis while the mob is trying to look at its target.
+"y_max_head_rotation": Maximum rotation, in degrees, on the Y-axis while the mob is trying to look at its target.
+"random_stop_interval": Defines a 1-in-N chance for the mob to stop its current attack, where N equals "random_stop_interval".
+"attack_once": Allows the mob to perform this melee attack behavior only once during its lifetime.
+Requirements:
+The mob must have an item with the "minecraft:kinetic_weapon" item component
+Must otherwise fulfill the same conditions as other melee attack goals.
+"minecraft:behavior.melee_box_attack", "minecraft:behavior.delayed_attack", "minecraft:behavior.melee_attack" and "minecraft:behavior.stomp_attack" now correctly apply their "path_inner_boundary" field.
+Added two new fields to behavior.float to enable more control of floating and how long the vehicle can be underwater before dismounting its passengers.
+chance_per_tick_to_float: The chance per tick to cause an upward impulse.
+time_under_water_to_dismount_passengers: Time in seconds that a floating vehicles head can be underwater before it causes its passengers to dismount.
+Added a new field to behavior.nearest_attackable_target to enable a probability of target being chosen by behavior.nearest_attackable_target goal:
+target_acquisition_probability: Probability (0.0 to 1.0) that an entity will accept a found target.
+The default value unless specified is 1.0.
+Modified behavior.nearest_attackable_target's attack_interval field to support a range of value:
+range_min: Minimum time in seconds before the entity searches for a attack target, can now be set to other values than just 0.
+range_max: Maximum time in seconds before the entity searches for a attack target.
+Added the "hijack_mount_navigation" field to the "minecraft:behavior.use_kinetic_weapon" AI goal.
+Allows a mob to override its mount’s navigation behavior with the one defined by this goal.
+Requires the mount to be running the "minecraft:behavior.mount_pathing" goal, whose default behavior will be ignored.
+API
+
+Released AABB from beta to v2.4.0.
+Released Entity.getAABB, ControlScheme, Player.setControlScheme, Player.getControlScheme, GetBlocksStandingOnOptions, Entity.getBlockStandingOn and Entity.getAllBlocksStandingOn from beta to v2.4.0.
+Added new module @minecraft/server-graphics to change graphics and rendering settings.
+The /clone command now fires onBreak beta API event for custom blocks overridden at source destination.
+Moved Loot Table Discovery APIs from beta into 2.4.0.
+Released BlockRedstoneProducerComponent from beta to v2.4.0.
+Released InvalidBlockComponentError from beta to v2.4.0.
+Released LiquidSettings from beta to v2.4.0.
+JigsawPlaceOptions:
+Moved LiquidSettings from beta to v2.4.0.
+JigsawStructurePlaceOptions:
+Moved LiquidSettings from beta to v2.4.0.
+Released BlockComponentBlockBreakEvent from beta to v2.4.0.
+/structure and /place commands and StructureManager API Place function now trigger onBreak beta API event for custom blocks when overidden.
+Moved class Potions from beta to v2.4.0.
+Moved class PotionDeliveryType from beta to v2.4.0.
+Moved class PotionEffectType from beta to v2.4.0.
+Moved component ItemPotionComponent from beta to v2.4.0.
+Moved error InvalidPotionDeliveryTypeError from beta to v2.4.0.
+Moved error InvalidPotionEffectTypeError from beta to v2.4.0.
+Player method clearPropertyOverridesForEntity can now take an entity or entity ID as valid arguments in v1.19.0.
+Biomes
+
+The client side Molang queries query.entity_biome_has_all_tags, query.entity_biome_has_any_tags, and query.entity_biome_has_any_identifier no longer need the Upcoming Creator Features toggle to be used.
+Blocks
+
+The "fit_to_frame" option in geometry files can no longer be disabled to render block-items larger than its frame from "format_version" 1.21.130 onward.
+Moved the minecraft:precipitation_interactions i.e. Block Precipitations Interactions component from experimental to stable.
+Extended "minecraft:collision_box" height to 24 when using a format version of 1.21.130 or higher and the Upcoming Creator Features toggle is enabled.
+"minecraft:collision_box" now supports arrays of boxes when using a format version of 1.21.130 or higher and the Upcoming Creator Features toggle is enabled.
+Block Components
+
+The option "alpha_masked_tint" in "minecraft:material_instances" now requires the Upcoming Creator Features toggle again.
+Modified "minecraft:material_instances" block component.
+Field emissive renamed to shaded to better describe what the field does.
+Default value of shaded now true, when false the material ignores face_dimming and ambient occlusion.
+Released field "shaded", formerly called "emissive" from experimental.
+Components
+
+Updates to minecraft:dash_action
+Added new field "can_dash_underwater" that allows entities with this component to dash underwater.
+Added is_controlling_passenger_family entity filter to check if the passenger controlling a mount is of the specified family.
+Added has_item_with_component entity filter to check if the entity has equipped an item with the designated component name.
+Entity Components
+
+Added new field, "protection_slot", to minecraft:burns_in_daylight, which allows specifying an equipment slot that should provide protection from burning in daylight.
+Valid values are "slot.weapon.offhand", "slot.armor.head", "slot.armor.chest", "slot.armor.legs", "slot.armor.feet", and "slot.armor.body".
+Leaving this field unspecified will default to having the head armor slot provide protection from burning in daylight.
+In the "minecraft:ageable" and "minecraft:breedable" components, the "transform_to_item" field has been renamed to "result_item".
+This field is now defined for each item entry in each component's "items" list, enabling item-specific transformations on use.
+Added "result_item" field to the items in the "minecraft:healable" and "minecraft:tameable" components.
+This field is defined for each item entry in the "items" list.
+Upgraded the minecraft:addrider entity component, allowing it to take an array of riders.
+Description:
+Allows a rideable mob to spawn with one or more riders.
+Fields:
+"riders": Array of riders to add to the entity, with the mandatory field entity_type and optional field spawn_event.
+riders Fields:
+entity_type: The type of mob to spawn.
+spawn_event: An optional event to spawn with the mob.
+Requirements:
+The mob must have a minecraft:rideable entity component.
+The array of riders must be no longer than minecraft:rideable has seat_count.
+Added new boolean field can_dehydrate to minecraft:breathable.
+The field defaults to false to preserve previous breathable behavior. When set to true, entities that only breathe water will take dehydration damage when out of water.
+Renamed the minecraft:body_rotation_locked_to_vehicle component to minecraft:rotation_locked_to_vehicle.
+The component now aligns both the entity's body rotation and its overall rotation with that of its mounted vehicle.
+Added a lunge field to the minecraft:exhaustion_values component.
+Defines the amount of exhaustion applied when triggering the lunge enchantment, multiplied by the enchantment level.
+Added the ambient field to minecraft:mob_effect component.
+Causes the effect to render with the ambient effect background.
+Causes the effect to not pulse for timing out.
+Item Components
+
+Added the minecraft:swing_sounds item component.
+Allows overriding the swing sounds emitted by the user.
+Fields:
+"attack_miss": sound played when an attack misses or deals no damage due to invulnerability.
+"attack_hit": sound played when an attack hits.
+"attack_critical_hit": sound played when an attack hits and deals critical damage.
+Added the minecraft:kinetic_weapon item component.
+Description:
+Allows an item to deal damage and other effects every tick while in use, to all unobstructed targets found in a straight line from the user's view vector.
+Damage is computed based on both the user's and target's velocity projected onto the view vector (via dot product).
+The more the user and target move toward each other and align with the view vector, the higher the damage.
+After applying "damage_multiplier" and "damage_modifier", the resulting damage is floored to the nearest lower integer.
+Fields:
+"delay": Ticks to wait before applying damage and effects.
+"reach": Range along the view vector where entities can be hit.
+"hitbox_size": Extra tolerance on the raycast to detect entities.
+"damage_multiplier": Multiplies the sum of the projected velocities.
+"damage_modifier": Adds to the multiplied sum of the projected velocities.
+"damage_conditions": Conditions that need to be satisfied for damage to be applied.
+"knockback_conditions": Conditions that need to be satisfied for knockback to be applied.
+"dismount_conditions": Conditions that need to be satisfied for riders to be dismounted.
+"damage_conditions", "knockback_conditions" and "dismount_conditions" fields:
+"max_duration": Time, in ticks, during which the effect can be applied after "delay" elapses.
+"min_speed": Minimum user's speed (projected onto the view vector via a dot product) required for the effect to be applied.
+"min_relative_speed": Minimum relative speed of the user with respect to the target (projected onto the view vector via a dot product) required for the effect to be applied.
+Requirements:
+Requires the "minecraft:use_modifiers" item component on the same item.
+Added the "minecraft:piercing_weapon" item component.
+Description:
+Allows an item to deal damage to all entities detected in a straight line along the user's view vector.
+Items with this component cannot destroy blocks, as the attack action always takes priority, regardless of what the user is looking at.
+Fields:
+"reach": Range along the view vector where entities can be hit.
+"hitbox_size": Extra tolerance on the raycast to detect entities.
+Requirements:
+The "minecraft:cooldown" item component now supports a "type" field.
+Values:
+"use": puts the item on cooldown when used, preventing further use until it expires, but still allowing attacks, mining, and interaction.
+"attack": puts the item on cooldown when attacking, preventing further attacks until it expires, but still allowing use, mining, and interaction.
+Added the creative_reach field to minecraft:kinetic_weapon and minecraft:piercing_weapon item components.
+Defines the reach used when the user is in Creative mode.
+Added the start_sound field to the minecraft:use_modifiers item component.
+Defines the sound to play when starting using the item.
+Molang
+
+Added four new Molang queries pertaining to the minecraft:on_use_kinetic_damage item component:
+query.get_kinetic_item_delay, returns the delay value from the main-hand item's minecraft:on_use_kinetic_damage component, or 0 if the component is not present.
+query.get_kinetic_item_damage_duration, returns the damage_duration value from the main-hand item's minecraft:on_use_kinetic_damage component, or 0 if the component is not present.
+query.get_kinetic_item_knockback_duration, returns the knockback_duration value from the main-hand item's minecraft:on_use_kinetic_damage component, or 0 if the component is not present.
+query.get_kinetic_item_dismount_duration, returns the dismount_duration value from the main-hand item's minecraft:on_use_kinetic_damage component, or 0 if the component is not present.
+Added "query.kinetic_weapon_delay", which returns the "delay" value from the main-hand item's "minecraft:kinetic_weapon" component, or 0 if the component is not present.
+Added "query.kinetic_weapon_damage_duration", which returns the "max_duration" value of "damage_conditions" from the main-hand item's "minecraft:kinetic_weapon" component, or 0 if the component is not present.
+Added "query.kinetic_weapon_knockback_duration", which returns the "max_duration" value of "knockback_conditions" from the main-hand item's "minecraft:kinetic_weapon" component, or 0 if the component is not present.
+Added "query.kinetic_weapon_dismount_duration", which returns the "max_duration" value of "dismount_conditions" from the main-hand item's "minecraft:kinetic_weapon" component, or 0 if the component is not present.
+Added "query.ticks_since_last_kinetic_weapon_hit", which returns the number of ticks elapsed since the user last hit something while using a kinetic weapon.
+Added new Pack Settings Molang queries:
+query.get_pack_setting('ns:slider_name'), the value of a slider.
+query.is_pack_setting_enabled('ns:toggle_name'), check if toggle is enabled.
+query.is_pack_setting_selected('ns:dropdown_name', 'dropdown_option_name'), if a dropdown option is selected.
+Network
+
+Added ActorFlags::BODY_ROTATION_LOCKED_TO_VEHICLE
+LevelSoundEventPacket modified:
+added LevelSoundEvent::SpearAttackHit, LevelSoundEvent::SpearAttackMiss, LevelSoundEvent::WoodenSpearAttackHit and LevelSoundEvent::WoodenSpearAttackMiss.
+ActorEventPacket modified:
+added ActorEvent::KINETIC_DAMAGE_DEALT.
+Added new Level Sound Event, imitate.camel_husk.
+Added new Level Sound Event, imitate.parched.
+Renamed ActorFlags::BODY_ROTATION_LOCKED_TO_VEHICLE to ActorFlags::ROTATION_LOCKED_TO_VEHICLE.
+Added Ambient boolean field to MobEffectPacket, defines if the effect is considered ambient.
+Modified LevelSoundEventPacket:
+added LevelSoundEvent::SpearUse and LevelSoundEvent::WoodenSpearUse.
+UI
+
+String multiplication in UI expressions is now limited exclusively to %.<number>s.
+Added resolve_ancestor_scope boolean to 'view bindings' as a way to bind to an ancestor that matches the source_control_name.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs" and "Upcoming Creator Features" experimental toggles.
+
+
+=== Additions ===
+
+
+==== Technical ====
+API
+
+Released @minecraft/server version 2.4.0.
+Added @minecraft/server version 2.5.0-beta.
+Added EntitySwingSource for providing context of player swings to beta.
+Added PlayerSwingStartAfterEvent.swingSource to beta.
+Added PlayerSwingEventOptions.swingSource to beta.
+World:
+Added property readonly tickingAreaManager: TickingAreaManager to beta.
+Added class TickingAreaManager to beta.
+Added interface TickingArea to beta.
+Added interface TickingAreaOptions to beta.
+Added class TickingAreaError to beta.
+Added enum TickingAreaErrorReason to beta.
+Added BlockComponentRedstoneUpdateEvent, which can be subscribed by custom block components.
+Added onRedstoneUpdate custom component subscription in beta with the following conditions:
+Block has minecraft:redstone_consumer component, otherwise CONTENT_ERROR is thrown.
+Subscription is not queued if the BlockComponentRedstoneUpdateEvent.powerLevel is less than minecraft:redstone_consumer field min_power.
+API Infra
+
+Modernized CommandOutputPacket serialization
+Max number of "Output Messages" are now 100.
+Field "Message Id", set max size to 512 characters.
+Max number of "Parameters" are now 512.
+Modernized CommandRequestPacket serialization.
+Field "Request ID", set max size to 39 characters.
+Blocks
+
+Added component minecraft:support.
+Added a new block trait, minecraft:connection, to expose behavior like fences or glass panes where blocks connect to other blocks around them. Using this trait with the example below adds the bool states minecraft:connection_north, minecraft:connection_east, minecraft:connection_south and minecraft:connection_west.
+Added component minecraft:connection_rule behind the Upcoming Creator Features toggle, which allows custom blocks to define whether other blocks with connection behavior - such as fences, walls, bars, and glass panes - can try to create a connection.
+Added VanillaBlockTag minecraft:has_fence_connections that can be used to identify a custom block as a block that creates connections like a fence; this tag is required to create connections between custom and Vanilla fences.
+The component and tag can be used along with the minecraft:connection block trait to make a custom fence that creates connections like a Vanilla fence.
+Added new state minecraft:corner_and_cardinal_direction to the minecraft:placement_direction block trait, which enables the minecraft:corner with values none, inner_left, inner_right, outer_left, and outer_right to provide similar behavior to how stairs in Vanilla work.
+When this is set, you can use the field blocks_to_corner_with to decide the criteria with an array of block descriptors to determine what blocks to form a corner with.
+With the Beta APIs toggle on, Vanilla Stairs have the tag minecraft:cornerable_stairs available, and can corner with custom blocks with the same tag if the block also uses minecraft:cardinal_direction block states.
+The default behavior for this field is to corner with the same block name.
+This all requires the Beta APIs toggle to be enabled on a world and the use_beta_features flag on your block.
+The minecraft:corner block state is now mirrored when used within a structure.
+Added minecraft:redstone_consumer component behind the Upcoming Creator Features experiment.
+Contains optional field min_power, which defines the minimum value for incoming signal strength.
+If signal strength is greater than or equal to this value, then the onRedstoneUpdate event is sent to Scripts.
+Contains optional field propogates_power, a boolean to control whether a signal can pass through this block or not.
+Modified minecraft:material_instances block component:
+Removed redundant experimental field shaded.
+Added minecraft:leashable block component, which allows custom blocks to receive a lead attachment creating a leash knot, including an offset field to change the position of the leash knot. Only available with the Upcoming Creator Features experiment enabled.
+
+
+=== Changes ===
+
+
+==== Technical ====
+API
+
+Debug drawing tech in @minecraft/debug-utilities now supports rendering shapes in different dimensions:
+Added setLocation(location: minecraftserver.DimensionLocation minecraftserver.Vector3): void method to DebugShape.
+The location property on DebugShape has been changed to read only (use setLocation above to modify the location).
+Added dimension readonly property to DebugShape.
+Changed the constructors of all the debug shapes to instead take a variant of Vector3 or DimensionLocation.
+API Infra
+
+Modernized AvailableCommandsPacket serialization. Added these constraints:
+Chained Subcommand Data / Name max size set to 512 characters.
+Commands / Name max size set to 512 characters.
+Commands / Description max size set to 1000 characters.
+Commands / Chained Subcommand Indexes max size set to 250 elements.
+Commands / Overloads max size set to 250 elements.
+Constraints / Constraint Indices max size set to 250 elements.
+Blocks
+
+Blocks that use the minecraft:placement_position block trait with the state minecraft:vertical_half and minecraft:placement_direction with the state minecraft:corner_and_cardinal_direction now update the corner state immediately instead of a tick later.
+
+
+== Fixes ==
+83 issues fixed
+From released versions before 1.21.9
+
+MCPE-83616 – Small amounts of Crimson Fungus and Crimson Roots don't spawn in Warped Forests.
+MCPE-101541 – Phantom can drown.
+MCPE-128957 – Hanging roots cannot be waterlogged (parity issue).
+MCPE-133343 – Drowned do not apply vertical knockback to the player when dealing melee damage.
+MCPE-147816 – Command list does not move away from the edge correctly when the window is resized, enabling/disabling fullscreen mode (F11).
+MCPE-168996 – Cherry trees can generate inside other trees by replacing their foliage.
+MCPE-171996 – Camel takes fall damage from lower height than in Java Edition.
+MCPE-176018 – Wolf's model has an offset to the left against their shadow.
+MCPE-178232 – Some sounds of goats aren't controlled by the "Friendly Creatures" sound slider.
+MCPE-179847 – /clone...filtered does not filter out water from waterlogged blocks, and will waterlog any block in target area.
+MCPE-180470 – Xbox controller not working on ROG Ally.
+MCPE-180489 – Custom blocks do not have a quick move animation.
+MCPE-184251 – Connecting two controllers disables the other one.
+MCPE-220351 – All particles with format version >= 1.20.80 give erroneous content log errors regarding asset paths.
+MCPE-222444 – Other players' skins appear as Steve/default skin on Android.
+MCPE-223049 – Vibrant Visuals breaks /camera fade color.
+MCPE-223708 – Storage is Full/Can no longer play Minecraft.
+MCPE-226509 – Holding up on the D-pad no longer continuously scrolls up in JSON UI menus.
+MCPE-227007 – No border around the Social drawer panel opened inside the Pause menu.
+MCPE-227833 – Significant mouse and keyboard input delay in the latest Preview.
+MCPE-227846 – Preview with the latest GDK does not use a dark titlebar when the system theme is set to "Dark".
+MCPE-227849 – Preview with the latest GDK is missing its unique window/titlebar icon.
+MCPE-227904 – GDK: The Cursor's appearing position after opening a GUI is not consistent.
+MCPE-227955 – Black bar appears at the bottom of the screen when launching the game in fullscreen mode with Anti-Aliasing set to 1.
+MCPE-228041 – Loading all dimension types on load sets the world-spawn to 0,0.
+MCPE-228098 – Pressing ALT + F4 while in-game opens the Game menu instead of closing the game.
+MCPE-228101 – Some options are missing from the new accessibility settings.
+MCPE-228176 – Restarting the game after signing out signs the user back in when signed in before.
+MCPE-228233 – Paste Coordinates button pastes coordinates twice in the chat.
+MCPE-228256 – Sitting Copper Golem Statue has an offset and incorrectly rotated nose.
+MCPE-228276 – Items in the output slot of a grindstone or smithing table cannot be moved to hotbar slots using the number keys.
+MCPE-228281 – Mooshroom's mushrooms are not affected by the "Enable Dithering" setting.
+MCPE-228288 – GDK: Switching to another window while loading a world will cause the cursor to stay at the center after the world is loaded.
+MCPE-228296 – When the Dithering setting is turned off, several mobs/items appear to be dithered.
+MCPE-228374 – Hoppers can place more than one potion into a brewing stand slot when using an add-on that increases the potion stack size.
+MCPE-228584 – On-screen keyboard displays when trying to type if controller is also connected.
+MCPE-228607 – Worlds in the "shared" folder don't load resource/behavior packs.
+MCPE-229046 – Opening chat does not automatically select the chat box anymore.
+MCPE-229088 – Disabling “Scroll inactive windows when hovering over them” option in Windows no longer works in Minecraft Preview.
+MCPE-229154 – Vibrant Visuals setting is not available on Android devices using newer Adreno 722 GPUs.
+Other
+
+Fixed an issue where the replacement biomes were not read for client-side chunk generation.
+Fixed large flipbook textures corrupting other textures.
+Fixed a bug where camels could not dash when standing in water.
+Fixed Realm server selection behaving unpredictably.
+Fixed a bug where some achievements could not be manually removed from the In Progress list.
+Fixed disabling of building and mining abilities for players with operator permissions while in Creative mode.
+Fixed blocks using "render_method":"blend" always being semi-transparent.
+Fixed blocks using "render_method":"blend" and "render_method":"alpha_test" not having shaded sides in the inventory.
+Fixed triggering of PlayerSwingStartAfterEvent to only happen on the start of a swing.
+Fixed an issue where Dimension.getEntitiesFromRay and Entity.getEntitiesFromViewDirection stopped working for some entities such as minecraft:xp_orb, ground items, minecraft:arrow, minecraft:snowball and minecraft:thrown_trident.
+Fixed an issue where onBreak beta API event would not fire if a piston was the breaking cause.
+Fixed bundle duplication with hoppers.
+Prevented a crash when trying to export structures in unsupported platforms.
+Fixed custom blocks rendered in structure block GUI.
+Fixed controller focus being cut off for the top of the Realms Timeline opted-out members list.
+Fixed a bug where timeLeft would cause the DebugShape to be removed immediately.
+Fixed a bug where the arrow head of the DebugArrow would look incorrect at certain rotations.
+Fixed a bug preventing players from growing pink petals, wildflowers, or leaf litter by targeting side of a block.
+Fixed snowflakes flickering during player movement.
+Fixed a bug where the text to speech settings incorrectly auto enabled when starting a world.
+Fixed a bug that caused dialogues with bold text to appear truncated in certain DLC maps.
+Fixed a bug causing breakpoints to miss under certain conditions.
+Fixed rotation and mirroring of vines during structure placement.
+Custom blocks will no longer be overly bright when flying between two inventory slots.
+Fixed water being rendered opaque.
+Fixed an issue where blocks moved by pistons are too dark.
+Fixed blocks flashing yellow when pushed with a piston with Vibrant Visuals enabled.
+Fixed damage particles sometimes rendering as black with vanilla renderer.
+Fixed archaeology items sometimes rendering as nearly black.
+Fixed an issue where players could get temporarily stuck when adding members to a newly purchased Realm.
+Fixed a crash from using a data driven renderer.
+Fixed ambient mob effects constantly flashing like they are timing out.
+Fixed "ambient_occlusion" field in "minecraft:material_instances" block component.
+Fixed content warning that incorrectly occurred for format_version field in entity json in versions before 1.8.0.
+Fixed an issue where DebugShape objects were not cleaned up properly after running /reload.
+Fixed an issue where DebugText would not be affected by the scale property.
+Reduced flickering and fixed incorrect reflections on low roughness materials with height maps in Vibrant Visuals.
+Fixed an issue where signing in at the exact wrong time would make many online features unable to load for 5 minutes.
+Fixed a regression where torches and lanterns weren't emitting point lights in raytracing-enabled worlds.
+Fixed IME input when application lost and regained focus (switching from the app and back while editing).
+Fixed an issue where IME Candidates would appear in the wrong monitor or misplaced in relation to text field.
+Fixed blocks with the tick component not ticking when placed via a Jigsaw structure.
+
+
+== Videos ==
+Updates for Creators
+
+
+== References ==
+
+
+== Navigation ==

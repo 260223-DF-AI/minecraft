@@ -1,0 +1,45 @@
+Broadcasts a narrative message in third person.
+
+
+== Syntax ==
+Java Edition
+me <action>
+Bedrock Edition
+me <message: message>
+
+
+== Arguments ==
+JE: <action>: messageBE: reason: message: CommandMessage
+
+Specifies the message to display.
+It is a greedy phrase string argument (taking the rest of the command as the string argument). Can include spaces as well as target selectors. The game replaces entity selectors in the message with the list of selected entities' names, which is formatted as "name1 and name2" for two entities, or "name1, name2, ... and namen" for n entities. In Bedrock Edition, @<player name> can be used to mention a player; @here can be used to mention all players.
+
+
+== Result ==
+
+
+== Output ==
+
+
+== Example ==
+/me was eaten by a grue
+Outputs the player's name followed by the string " *[Player] was eaten by a grue" - if the player's name is Steve: " *Steve was eaten by a grue"
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== References ==
+
+
+== External links ==
+"/me Command"     – Microsoft Learn, October 11, 2023.
+
+
+== Navigation ==

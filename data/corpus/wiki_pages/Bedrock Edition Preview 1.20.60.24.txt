@@ -1,0 +1,160 @@
+Beta 1.20.60.24 (Android) or Preview 1.20.60.24 (Windows, iOS, iPadOS, Xbox) is the fifth beta/Preview version for Bedrock Edition 1.20.60, released on January 4, 2024, which fixes bugs. This is the first beta/Preview released in 2024.
+
+
+== Additions ==
+
+
+=== General ===
+Tags
+
+Added the trapdoors block tag: contains all trapdoors. (iron_trapdoor, trapdoor, spruce_trapdoor, birch_trapdoor, jungle_trapdoor, acacia_trapdoor, dark_oak_trapdoor, mangrove_trapdoor, cherry_trapdoor, bamboo_trapdoor, crimson_trapdoor, warped_trapdoor, copper_trapdoor, exposed_copper_trapdoor, weathered_copper_trapdoor, oxidized_copper_trapdoor, waxed_copper_trapdoor, waxed_exposed_copper_trapdoor, waxed_weathered_copper_trapdoor, waxed_oxidized_copper_trapdoor)
+
+
+== Changes ==
+
+
+=== Blocks ===
+Hardened Stained Glass (EDU-only)
+
+The different block states for the hard_stained_glass ID have now been split up into their own IDs.
+
+Hardened Stained Glass Pane (EDU-only)
+
+The different block states for the hard_stained_glass_pane ID have now been split up into their own IDs.
+
+
+=== Items ===
+Potato, Carrot, Melon, Sweet Berries, Nether Wart, Sunflower, Lilac, Rose Bush, Peony, Glowstone Dust, and Gravel
+
+No longer have increased chance of drops when mined with an enchanted book of Fortune.
+Turtle Scute
+
+Renamed "Scute" to "Turtle Scute".
+
+
+=== Structures ===
+Trail Ruins
+
+Trail ruins will now be placed in the same location and configuration as in Java Edition.
+
+
+=== Technical ===
+AI Goals
+
+behavior.follow_parent now interrupts navigation on stop for content using engine version 1.20.60 or higher.
+Biomes
+
+Biome tags in JSON files are now specified under a minecraft:tags component, in a tags array, rather than as loose JSON objects, for files with a format_version of 1.20.60 or higher.
+Components
+
+The interact component now supports the additional entity_act value for the vibration field.
+Entity Event Responses
+
+Added the emit_vibration entity event response, which allows the entity to emit a vibration having the entity itself as its source.
+The vibration field allows to specify the vibration to be emitted.
+The allowed values are shear, entity_act, and entity_interact.
+Molang
+
+Added content errors that state query.remaining_durability and query.max_durability are only to be used with Item contexts.
+Performance
+
+Feature toggle Enable New Geometry Tessellation Pipeline defaults to true.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Armadillo and Wolf Armor", "Update 1.21", and "Beta APIs" experimental toggles.
+
+
+=== Additions ===
+
+
+==== Technical ====
+Add-ons and Script Engine
+
+The block component minecraft:random_ticking is now supported again.
+API
+
+system.runJob()
+system.clearJob()
+Added runJob and clearJob for optimizing long running tasks using JavaScript generators. system.runJob takes a generator function and returns a jobId.
+@minecraft/server.BlockPermutation
+Moved getState and withStates APIs from beta to stable.
+Scripting
+
+Added ScriptBiomeTypes and ScriptBiomeType to allow Scripting API to enumerate the BiomeRegistry.
+Added a findClosestBiome function to Dimension to find the closest biome of a specified type, to a given position in the world.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Armadillo
+
+Armadillo now emits vibrations when rolling up and when unrolling.
+Baby armadillos no longer move towards their parents after rolling up.
+Breeze
+
+The Breeze can now jump when standing in water.
+The Breeze now avoids trapdoors when pathfinding.
+
+
+==== Blocks ====
+Trial Spawner
+
+Improved trial spawner particles.
+
+
+==== Non-mob entities ====
+Wind Burst
+
+Removed the darkening tint in wind burst particle to uphold parity.
+
+
+==== Items ====
+Wolf Armor
+
+Volume of sounds for equipping and removing wolf armor is now controlled by the Friendly Creatures slider.
+
+
+== Fixes ==
+24 issues fixed
+From released versions before 1.20.60
+
+MCPE-105457 – Villager's profession skin may not match its workstation and trades.
+MCPE-173386 – Going through Nether/End portal causes game to get stuck on "Building Terrain", and restarting the game teleports player to the same coordinates of the dimension that they left from.
+MCPE-175206 – Pistons pushing/pulling/breaking blocks may teleport player to 0 on one axis.
+MCPE-176365 – Cannot speed up after landing on blocks in Creative.
+MCPE-176528 – Villagers link to the same job block/bed even if it is already claimed, and game crashes if you break that job block/bed.
+From the previous development version
+
+MCPE-176926 – Double pressing jump button makes the play jump while disabling flying.
+MCPE-177283 – Boat disappears when placed at the player's feet or next to another boat.
+MCPE-177551 – Armadillo's legs will sometimes flicker when rolled up.
+MCPE-177560 – Wolf armor duplicates when dropped.
+MCPE-177562 – Armadillo has no roll sound/unused sound.
+MCPE-177593 – Pillager outposts doesn't spawns pillagers.
+Others
+
+Fixed a bug where the player would exit a vehicle at an incorrect height if the vehicle was over a fire block.
+Fix font glyph boundary artifacts (spotty pixels at the edge of each character) with italic text rendering at certain resolution.
+Pufferfish no longer inflate and deflate repeatedly when a player is at a specific distance from them.
+Mobs that have partial blocks (e.g. Trapdoors, Slabs, etc.) specified as part of their list of blocks to avoid in their Navigation Component should now avoid them properly.
+Realms Tab in new Play Screen should no longer be stuck in a loading state.
+Fixed crash that could occur in the Play menu whilst looking at Realms.
+Corrected translations about "posting" and "liking" on Realms Stories.
+Fixed issue where shadows for alpha tested geometry (doors, leaves, etc.) were no longer rendering in the Deferred Technical Preview.
+Banner shields now render when equipped in both left and right hands in the Deferred Technical Preview.
+Fixed an issue where light emitting items glowed in the player's hand in dark rooms during the day in the Deferred Technical Preview.
+Improved upscaling stability on Android in the Deferred Technical Preview.
+On Android, pixelated artifacts are no longer visible on the right half of the screen when upscaling is turned on in the Deferred Technical Preview.
+Fixed unstable and incorrect light clustering results in the Deferred Technical Preview.
+
+
+== Notelist ==
+
+
+== References ==
+
+
+== Navigation ==

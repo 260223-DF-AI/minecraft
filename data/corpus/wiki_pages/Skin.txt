@@ -1,0 +1,157 @@
+Skins refer to the textures that are placed onto the player character model. Skins can be created using a skin editor or the Character Creator, or they can be purchased in skin packs from the Marketplace. Players can change their skin in the Minecraft Launcher or Dressing Room.
+
+
+== Default skins ==
+The default skins are always available in the Minecraft Launcher or Dressing Room, including nine Minecraft characters. Skins can have different arm or height sizes; Ari, Kai, Steve, Sunny, and Zuri have wide arms by default, Alex, Efe, Makena, and Noor have slim arms by default.
+
+
+== Features ==
+Skins are divided into areas that act as the surface area of the character (e.g., front head area, left leg area, etc.) They are stored as 64×64 pixels templates, consisting of an inner and outer layer; each layer consisting 1,632 usable pixels, making 3,264 total. In Bedrock Edition, players can also use 128×128 pixels templates, consisting of two layers of 6,528 usable pixels, making 13,056 total. 
+The outer layer of the skin is 0.5 pixels bigger than the inner layer on the body, arms, and legs; and is 1 pixel bigger than the inner layer on the head. This layer is usually used to give the character glasses, hats, or other accessories (even a bigger head).
+Skins set to "slim" model lose 25% of their arms' width, and the rightmost pixels in the skins' images are ignored. Slim skins from 64×64 templates have two layers of 1,568 usable pixels, making 3,136 total, and slim skins from 128×128 templates have two layers of 6,272 usable pixels, making 12,544 total. In Bedrock Edition, the arms of slim skins' model are lower than the torso by about 0.5 pixel.
+
+
+=== Transparency ===
+On both editions, a pixel on the skin's outer layer can be completely transparent. Semitransparent pixels, which are pixels with opacity between 0 and 255, and inner layer's transparency are dictated by each of the editions' color calculation:
+
+In Java Edition, the skin's inner layer cannot be transparent. Any pixels that are semitransparent are forced to be fully opaque while reducing their color detail, matching its original opacity level; instead of having 256 possible shades of RGB colors, the pixel is rounded to a smaller set of values by parts per the opacity value. For example, with an opacity of 2, the RGB color values are rounded to parts per two, as one of 0/2, 1/2, or 2/2 of 255, that is 0, 128, and 255; if we apply this to an RGB colors of (255, 13, 142), it becomes (255, 0, 128), with an opacity of 255. An exception to this mechanic is a pixel with an opacity of 0, simply becoming a solid black.
+In Bedrock Edition, if players set any of their skin's outer or inner layer pixels opacity to 25 (≈10%) or lower, those pixels appear invisible, otherwise, for opacity to 26 or greater, they appear visible.
+
+
+=== Character Creator ===
+
+In Bedrock Edition, there are two types of skin which the players can choose from: the Character Creator skins and the "Classic Skins".
+Character Creator skins are made in the Dressing Room with a range of cosmetic items that can be applied to specific parts of the character's model, such as facial features or individual body parts, or clothing items. There are two types of cosmetic item depending on the parts they are applied: body items, which apply to their body parts/features; and style items, which are worn like accessories or apparels. They can appear three-dimensional, that is, they can be built on top of the character's body in 3D space, or completely replace specific body parts (like the arms or legs) with custom models. The eyes part of Character Creator skins also blink occasionally.
+Cosmetic items are usually made by Marketplace creators, and are obtained from the featured items or the Marketplace Pass selection on the Character Creator menu, which can be free or paid costing Minecoins (or Tokens on PlayStation versions). Body items are mostly reserved by Minecraft and can be equipped for free, except the arms and legs, which are obtainable previously. Some cosmetic items can be earned by completing certain achievements, and historically, limited-time challenges and in-game live events, which make these items only obtainable during specific time periods.
+
+Players can adjust the character's height and arms size of Character Creator skins, where the character's model gets resized along with the texture pixels. It has no effect on the hitbox size, although the camera eye height does change.​[more information needed]
+The "Classic Skins" are standard wide or slim character models with a skin texture applied from a skin pack (from Marketplace or a custom skin pack), or a custom PNG image imported from the player's device. They do not have an ability to use 3D models, as this feature is restricted to the Character Creator skins. For imported custom skins outside the Marketplace, they have limited visibility for players with "Only Allow Trusted Skins" option turned off in the Settings.
+In other tabs, all skin types can be modified in the Dressing Room using capes, and emotes can be selected and obtained similarly to body or style items.
+
+
+=== Skin signature ===
+
+In order for a skin to be displayed in the game, the player's GameProfile data containing the skin's texture URL and signature is sent by the server through Player Info Update packet. The signature is then validated by vanilla clients to be displayed properly in their game; this ensures that no custom skin outside the ones uploaded through the Minecraft services can be used or tampered. As a side effect, it also makes offline mode players unable to use a skin, at least without using mods.
+When a player wears a new skin, the signature for that skin is generated alongside the texture URL. This data is stored permanently in Minecraft services, even when the skin is no longer used by the original player, and can be traced back by third-party services, such as NameMC or MineSkin. Notably, MineSkin has utilize this quirk to generate multiple valid signatures for user-uploaded custom skins with a limited set of accounts. Furthermore, these custom skins can be applied to mannequins or player heads through the [NBT Compound / JSON Object] profile tag or minecraft:profile data component respectively.
+
+
+== Changing player skins ==
+
+
+=== Java Edition ===
+Only players who have purchased Minecraft can change their character's skin. This is done on the profile page or in the Minecraft Launcher by uploading a valid PNG image that is 64×64 pixels, or a legacy texture that is 64×32 pixels, which then replaces the default skin.
+
+Skins also have the option of having either 3 or 4 pixel wide arms, which can be changed on the profile page as well.
+The steve.png and alex.png files in client.jar can also be changed and replaced via a resource pack, but the effects are visible only to players using the resource pack, and affects all players with the default skin.
+
+
+=== Bedrock Edition ===
+
+Players can choose one of the nine default skins upon first launch or in the Dressing Room when creating from an empty slot. The Dressing Room, accessible from the main menu, profile, and game menu, can also be used to switch skins, change, or remove skins from five available slots.
+In the "Classic Skins" tab, players can switch to a downloaded or owned skin. Skins can be obtained as part of skin packs in the Marketplace, purchased using Minecoins. The player has to sign in to their Microsoft (or their respective console account on PlayStation/Nintendo) to access all the skins they owned and bought from the Marketplace, on any device.
+On Windows and mobile devices, custom skin files can be imported in the "Classic Skins" tab, or manually in com.mojang/custom_skins. The player must select a valid skin image file from their file explorer/photo gallery (a .png texture from 64x32, 64x64, or 128x128 pixels), and must choose between the two model sizes (classic/slim). Players can also make their own skin packs, which must include a manifest.json file, a skins.json file, and all the desired skins. An additional .lang file can be added inside a folder labeled texts to display the skin names, but the game can register the skins without it.
+
+
+== Skin packs ==
+
+Skin packs are collections of multiple wearable skins and available in Bedrock Edition as downloadable content. They can be acquired through:
+
+The Marketplace, which officially hosts a large number of skin packs by Mojang Studios and their partners. Most of them cost Minecoins (Tokens on PS4), but some have been released for free.
+The .mcskin files put in the skin_packs or development_skin_packs folder in the game files (inaccessible on consoles).
+External sources such as community hosted repositories for skin packs, which are automatically imported with .mcpack files (not on consoles). For information about the contents of a custom skin pack, see Skin pack § Package format.
+
+
+=== Java Edition skin packs ===
+The following skin packs were released on minecraft.net by Mojang Studios for certain events. These are technically not "skin packs" but simply collections of skin files marketed together. Although designed for Java Edition, they can also be imported in Bedrock Edition, except console ports.
+
+
+== Templates ==
+Many players prefer their own unique skin. While premade skins can be found online, players may prefer to create their own.
+A custom skin is a way to personalize the player model and can be done either by using a variety of community-made skin editors, or by editing the steve.png or alex.png file manually with an image editor like Photoshop, GIMP, Paint.net or similar image editors. The steve.png file can be downloaded here and the alex.png file here. When editing the steve.png or alex.png file manually, be sure to keep the original image dimensions and make the background of the skin (the unused pixels) completely transparent. Otherwise, Minecraft may fail to recognize the skin as intended.
+Alternatively, some may find it easier to use a program, either downloadable or in-browser, which provides a live view of their character on a three-dimensional model as they are editing the skin. For example, programs may further assist players by providing them with a wide variety of pre-made selections (such as hats, boots, sweaters, etc.) to give the skin creator exactly what they want, even if the creator has little to no artistic skill.
+After making a custom skin, either by using a skin editor or by editing the steve.png file directly, one still needs to upload the .png file at the Skin section of the Profile page on Minecraft.net (found here) before the skin is applied. Other players in multiplayer can also see this skin. Note that players cannot see the custom skin if they are not logged in or when playing offline.
+
+
+=== Official skin templates ===
+Minecraft Help Center Article
+
+
+=== Other templates ===
+
+
+== Videos ==
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+=== Legacy Console Edition ===
+
+
+=== Historical images ===
+
+
+== Issues ==
+Issues relating to "Skin" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Trivia ==
+
+In April 2018, malware code was discovered inside of several downloadable user-made Minecraft image skins for use with the Java Edition of the game. Avast stated that nearly 50,000 accounts were infected, and when activated, the malware would attempt to reformat the user's hard drive. Mojang promptly patched the issue, and released a statement stating that "the code would not be run or read by the game itself", and would run only when the image containing the skin itself was opened.
+
+
+=== Number of skins ===
+The total number of possible unique player skins varies immensely, depending on version, as well as what is considered unique. Below are tables with the number of unique skins on Java and Bedrock Edition, with cells within rows and columns that correspond to different rules. Cells in the left columns consider all completely transparent pixels to be the same, while the ones on the right consider them to be unique.
+
+The formulae below can be used to find the number of skins with a given width, template dimensions, etc. It essentially finds the number of potential states for pixels on the bottom layer, multiplies that by the number of potential states for pixels on the top layer, then sets that to the power of the total number of pixels on each layer.
+(vb×vt)(86+16A)×t2, where:
+vb={224(αb−1)+1if s∧αb≠1224αbotherwise is the number of possible values for each bottom layer pixel
+vt={224(αt−1)+1if s∧αt≠1224αtotherwise is the number of possible values for each bottom layer pixel
+αb is the number of possible opacity values for each bottom layer pixel
+at is the number of possible opacity values for pixels on the top layer.
+t is the thickness, equal to the number of pixels wide legs are: 4 for 64×64, 8 for 128×128 
+A is the arm thickness/thickness ratio: 1 for wide, 0.75 for slim
+s is the "sameness" of 0-alpha pixels: True if all 0-alpha pixels are considered the same regardless of color, False otherwise
+
+In an AntVenom video, he calculated a total of 281600 × 53264 (≈3.060 133 2201 × 1026845) skins. The rules he used were to include only wide skins, allow transparent pixels only on the top layer, consider all fully transparent pixels to be unique, and include only 100 possible opacity values (αb = 1, αt = 100, t = 4, A = 1, s = 0).
+
+
+== Gallery ==
+ 
+
+
+=== Renders ===
+
+
+== See also ==
+Mojang API
+Character
+Mob (entity)
+Mobs
+Mob of Me
+Player
+Skin pack
+
+
+== References ==
+
+
+== External links ==
+How to Make a Custom Skin in Minecraft: Java Edition – Minecraft Help Center
+Skin editors:
+
+SkinsCollection
+Blockbench
+PMCSkin3D
+NeedCoolerShoes
+Skindex
+See Tutorial:Programs and editors/Skinning and texturing for a more detailed list.
+
+
+== Navigation ==

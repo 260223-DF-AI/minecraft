@@ -1,0 +1,51 @@
+Beta 1.17.0.58 is the ninth and final beta version for Bedrock Edition 1.17.0, released on May 20, 2021, which fixes bugs.
+
+
+== Changes ==
+
+
+=== Technical ===
+Mobs
+
+Added a new field "transform_to_item" to the "minecraft:ageable" component.
+If the field is filled with an item name, the item will be given back when any of "feed_items" are used. Similar to "transform_to_item" in the "minecraft:breedable" component.
+
+
+== Fixes ==
+Dripstone
+
+Long stalactites drip only from the tip.
+Stalactites now drip water slightly more often when filling a cauldron.
+Pointed dripstone now correctly gets destroyed after the block it was placed on is broken by block updates.
+User Interface
+
+Tweaked background color of settings screens.
+Graphical
+
+Fixed a bug that could occur on older worlds where looking up in a minecart would display the inside of the minecart blocking the player's view.
+Maps inside glow item frames no longer cause nearby items to light up.
+Items
+
+Picking or breaking glow item frames now gives the correct item (MCPE-117514).
+Advanced Pick Block will now save the data of copied blocks correctly (MCPE-126040).
+Furnaces, smokers, and blast furnaces now become unlit when fuel finishes (MCPE-127550, MCPE-127559).
+Fixed a bug where the map was centered on player's position when it was created (MCPE-126607).
+Baby axolotls no longer consume the bucket when being fed with a bucket of tropical fish.
+Buckets that were used to feed axolotls can now be stacked together with other empty buckets (MCPE-127426).
+Gameplay
+
+Fixed ripple effect on portals and crash when creating a large amount of portal blocks (MCPE-126674, MCPE-126690).
+Fixed bubble columns on naturally generated magma blocks (MCPE-127196).
+Commands
+
+Function's positional offset is no longer re-evaluated for every command inside the function when run with the /execute command. It is now only evaluated once for the whole function (MCPE-124890).
+Technical
+
+Fixed an issue with signs not displaying the saved text upon placement.
+The "has_equipment" filter once again supports data values.
+
+
+== References ==
+
+
+== Navigation ==

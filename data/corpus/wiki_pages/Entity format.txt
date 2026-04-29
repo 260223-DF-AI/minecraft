@@ -1,0 +1,32 @@
+Entities are stored in the entities folder of respective dimension folders. It is stored like Minecraft Anvil format files, which are named in the form r.x.z.mca.
+
+
+== Directory structure ==
+
+
+== Entity inheritance ==
+Most entities share similar functionalities with each other from abstract classes or interfaces. For instance, horses (and their undead variants), donkeys, camels, mules, and llamas all inherit from Abstract Horse, which share some of its horse-like behaviors and properties to their inheritance. This inheritance can be seen under the game's code for all of its entities.
+An entity that inherits from an abstract class or other entity share their implementation and functionalities with each other, while an entity that inherits from an interface may not necessarily share its functionalities, rather implement the required behaviors from the interface itself. As such, an entity's implementation of the interface may be different from other entities. Any entity may implement multiple interfaces, while only inheriting a single abstract class or other entity.
+
+
+=== Abstract classes ===
+Entity Area Effect CloudEnd CrystalEvoker FangsExperience OrbEye of EnderFalling Block EntityInteractionItem EntityMarkerPrimed TNTDisplay Block DisplayItem DisplayText DisplayHanging Entity Item Frame Glow Item FrameLeash Fence Knot EntityPainting
+
+
+=== Interfaces ===
+
+
+== NBT structure ==
+Every entity is an unnamed [NBT Compound / JSON Object] compound contained in the Entities list of a chunk file. The sole exception is the Player entity, stored in level.dat, or in <player>.dat files on servers.
+
+
+== Entity format ==
+All entities are with the following structure:
+
+
+=== Mobs ===
+Mobs are a subclass of Living Entity with additional tags to store their health, attacking/damaged state, potion effects, and more depending on the mob. Players and armor stands are a subclass of living entities.
+
+
+==== Mob-specific data ====
+Many mobs additionally have individual data.

@@ -1,0 +1,70 @@
+Documentation on the server protocol used by the Minecraft Classic Creative server.
+
+
+== Minecraft.net communication ==
+
+
+=== Heartbeats ===
+To be able to connect to a server in Minecraft Classic from the server list, a server must broadcast to minecraft.net a so-called "heartbeat" every few minutes.
+The stock server broadcasts this heartbeat every 45 seconds.
+A "heartbeat" takes the form of an HTTP request to https://minecraft.net/heartbeat.jsp.
+After sending a heartbeat, the URL for the server is returned.
+It is critical to a successful heartbeat that you leave out the "www" in the HTTP request, as you are going to be targeting it as a URI, not a URL.
+It can be a GET or POST request. A table of the required parameters is below:
+
+The simplest way to send a heartbeat is to open a TCP socket to port 80 on minecraft.net, and send the following (with the values changed, obviously):
+GET /heartbeat.jsp?port=25565&max=32&name=My%20Server&public=True&version=7&salt=wo6kVAHjxoJcInKx&users=0, plus a CRLF(Carriage-return and Line feed).
+Make sure any strings, like name, are escaped.
+If everything goes well, in the response body you'll receive a URL to the server. Otherwise you'll get a nice HTML error message. There aren't any HTML headers to parse, as the HTTP version is not specified so HTTP/0.9 is used, which does not have headers.
+
+
+=== User authentication ===
+The "key" provided when a user joins the server can be compared to the MD5 checksum of the server's "salt" plus the username to verify that the user is logged in to minecraft.net with that username.  This is useful for establishing enough trust of the name provided to ban or op the player by name.
+
+if( player.key == md5( server.salt + player.name ) ) {
+ // player is logged in via minecraft.net
+} else {
+ // player is forging the username
+}
+
+This is also the way that Notch prevents "cracked," or pirated, clients from accessing online servers. When a cracked client tries to connect to an online server, an error appears at the connection screen saying, "Failed to Connect: User Not Premium"
+Note: This means that you should make sure your "salt" is kept a secret and shared only with heartbeat.jsp.  If your server's "salt" is visible anywhere to users, it is trivial for users to produce valid-looking "key"s without being logged in to minecraft.net.
+
+
+== Packet protocol ==
+Every packet starts with a byte representing the Packet ID.
+
+
+=== Protocol data types ===
+
+
+=== Client → server packets ===
+
+
+=== Server → client packets ===
+
+
+== Player position ==
+
+
+=== Fixed point ===
+Player position is represented via X, Y, and Z fixed-point coordinates.  The fractional portion is 5 bits, so dividing the short integers received in position update packets by 32 yields floating point coordinates for the player. This position corresponds to the center of the client viewport.
+
+
+=== Standing on things ===
+The bottom of the player's feet is located 1.59375 (fixed-point: 51) units below the center of the viewport, so to position the player on top of a particular block you could send a teleport (0x08) packet specifying a Y value based on the block position as: (Y x 32 + 51)
+
+
+=== Orientation ===
+A yaw value of 0 means the player is facing in the Z- (negative Z) direction.  This value increases in a clockwise direction as seen from above.  If we call the negative Z direction "North", then a yaw of 64 means "East", 128 means "South", and 192 means "West".
+A pitch value of 0 means level and this value increases in a downward direction.  64 is down, and 192 is up.  Values of 65 to 191 should never occur because the player cannot look further up or down than the 64 → 0, 255 → 192 range. However, the Minecraft Classic client does not ignore invalid values, so it is possible to make players' heads "upside-down".
+
+
+== Color codes ==
+
+Messages sent from the server to the client can contain color codes, which allow coloring of text for various purposes.
+An ampersand symbol (&) followed by a hex digit in the message tells the client to switch colors while displaying text. The current version of the game uses a section (§) symbol, but the 0.30 version uses ampersands. For the formatting codes for the current version of the game, see Formatting codes.
+Color coding at the start of the message works only if the player ID byte is less than 127. If it's 127 or higher, the game automatically adds &e before the message, making it yellow. However, color codes after the first character still work. If using an ID below 127, it doesn't add a color code, so the values used still work.
+
+
+== Navigation ==

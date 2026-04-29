@@ -1,0 +1,163 @@
+Beta 1.2.0.2 (also known as 1.2 build 1) is the first build released for 1.2.0 that introduces multiple new features. This is the first ever beta released in 2017.
+This is the only version of Bedrock Edition that can be played on Android devices that do not own the game in the Google Play Store.
+
+
+== Additions ==
+
+
+=== General ===
+Splitscreen functionality
+In-game help guide.
+How to play/tutorial screen
+New loading screens with tips
+Redesigned crafting UI incorporating the recipe book
+This results in a new Creative inventory layout with redesigned tabs and reorganization of all blocks and items.
+Options
+World starting preferences
+Starting Map
+Bonus Chest
+Trust Players
+Game rule preferences
+TNT Explodes
+Natural Regeneration
+Game rules can be toggled in the options menu
+Player permissions
+In-game server host options
+Worlds can now be set to Invite Only, Friends Only, or Friends of Friends
+Render Clouds and Fancy Leaves can now be toggled in Video Settings
+Remix 3D export functionality (Windows 10 only)
+Underwater particles
+
+
+=== Gameplay ===
+Dual wielding
+
+You can now put a map in the off-hand
+
+
+=== Command format ===
+Version exclusive: /tickingarea
+Replaces the functionality of spawn chunks in the Java Edition and allows the creation of areas that update even if no player is around
+Many ticking areas can be created as long as the chunk limit is not exceeded
+Ticking areas work inter-dimensional
+Enables features such as crop growth, command blocks, redstone and mob activity when the player is not around
+Command variations:
+tickingarea add <from: x y z> <to: x y z> [name: string] (adds a ticking area for a set string in a defined area)
+tickingarea add circle <center: x y z> <radius: int> [name: string] (adds a ticking area for a set string in a defined circular area)
+tickingarea remove <position: x y z> (removes a ticking area from a position)
+tickingarea remove <name: string> (removes a ticking area from a set string)
+tickingarea remove_all (removes all ticking areas)
+tickingarea list [all-dimensions] (lists all ticking areas)
+Version exclusive: tick_world
+Prevents entities from despawning and makes an entity load the world
+Optional despawn distance available for entities that should despawn when players are far away (eg Ender Dragon)
+Version exclusive: user interface elements for commands to prevent the need for typing
+@s selector
+Used to target the entity executing the command
+/summon:
+Ability to summon projectiles like fireballs, dragon eggs, etc.
+
+
+=== World generation ===
+Ravines
+
+
+=== Blocks ===
+Banners
+Jukeboxes
+Coarse dirt
+Stained Glass
+Stained Glass Pane
+
+
+=== Items ===
+Armor stands
+Version exclusive: Can stack up to 64
+Book and quill
+Version exclusive: Can hold two pages at the same screen
+Version exclusive: Edit button to change the words per page
+Firework star
+Firework rocket
+Version exclusive: Can be launched in any direction depending on the direction a dispenser is facing
+Music discs
+Spawn eggs
+Parrot
+Zombie Villager
+
+
+=== Entities ===
+Parrots
+Armor stands
+Version exclusive: Can hold tools such as swords without the need for commands
+Version exclusive: Have a limited amount of poses that can be switched between by sneaking and interacting with them (right-clicking by default).
+Version exclusive: Redstone power can also change the pose
+
+
+== Changes ==
+
+
+=== General ===
+Skins can be changed from the pause menu
+Chat messages can now be muted
+Block selections can be shown using a black outline, rather than displaying the block as a lighter color (similar to the Java Edition)
+Old block selection interface can still be used, although the new interface is default on Xbox One and Switch
+Hiding UI elements now hides block selections as well
+Redesigned button mapping and added Pick Block for controllers
+Increased the default player limit on worlds from 5 to 8 on higher-end devices
+
+
+=== Gameplay ===
+Brewing now requires blaze powder
+Items picked up are now animated on the hotbar
+Temperature decreases with height
+Block placement speed now matches the player's movement speed
+Adjusted the color that flashes when mobs are attacked
+Fishing now uses the proper loot tables to acquire enchanted items and books
+Text chat can now be opened with controllers and touch screens when sleeping in a bed
+Players can now go to bed if there are monsters nearby on Peaceful difficulty
+Directional audio will continue to match the player's point of view while standing still
+Increased the pace and smoothness of moving upstairs while riding a mob
+The chat screen can now be closed by pressing Enter when no text is present
+Controller sensitivity is now set to 50 by default
+The pause button now appears on the HUD (Android Only)
+New trade offers from villagers can be observed quicker, after the trades are unlocked
+Only one bucket can be placed in a furnace at a time
+Players can no longer drink milk instantly after milking a cow
+
+
+=== Command format ===
+Version exclusive: A WIP UI-driven layer on top of some of the most common commands.
+New command parsing system
+Autocomplete works "everywhere", including selector arguments
+/tp
+Version exclusive: ^ used for coordinates relative to the direction the player is facing.
+Version exclusive: facing mode to make the target entity face a specified location/entity upon teleportation.
+falling_block is selectable in commands now.
+Version exclusive: fishing_hook is also selectable in commands now.
+Version exclusive: /detect is now its own separate command
+
+
+=== Blocks & Items ===
+Item frames converted from blocks to entities
+Enchanted Apples are now uncraftable
+Items can now travel upwards through solid blocks, allowing for 3x3 item elevators
+Beacon light beams change color when going through stained glass and stained glass panes
+Ice is now transparent
+Stained glass and stained glass panes now have their own textures, and are obtainable without the use of inventory editors.
+Version exclusive: Player heads now appear on maps
+Version exclusive: Changed the inventory icons for glass panes, stained glass panes, and iron bars
+Locator maps now track the owner's position, regardless of dimension
+Banners now spawn on end cities
+Observer blocks have updated textures and will now blink red when outputting a redstone pulse
+Bricks, nether bricks, and clay blocks have been renamed to better differentiate from other items
+Single glass panes, stained glass panes, and iron bars are now rod-shaped
+Replaced grassless dirt with Coarse Dirt.
+
+
+== Fixes ==
+
+
+== References ==
+
+
+== Navigation ==

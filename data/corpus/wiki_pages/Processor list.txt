@@ -1,0 +1,117 @@
+A processor list is used to transform blocks of a structure template during generation. They contain a list of processors. Processor lists are configured using JSON files stored within a data pack in the folder data/<namespace>/worldgen/processor_list or an add-on in the folder <root BP>/worldgen/processors.
+
+
+== JSON format ==
+A processor list can be a list, or an object that contains a list.
+Java Edition:
+A list:
+
+Or an object:
+
+Bedrock Edition:
+
+
+== Processors ==
+
+
+=== rule ===
+Replaces blocks with custom rules
+
+
+=== block_rot ===
+
+Randomly removes blocks. The removed blocks are not replaced by air, but keep the old blocks before the structure being generated
+
+
+=== block_age ===
+
+Makes blocks aged. A stone, stone bricks, or cracked stone bricks block has a chance of 0.5 to be replaced with one of cracked stone bricks, stone brick stairs, mossy stone bricks, and mossy stone brick stairs. All variants of stairs have a 0.5 chance to become one of stone slab, stone brick slab, mossy stone brick stairs, and mossy stone brick slab. All variants of slabs and walls may remain unchanged or become mossy stone brick variants. Obsidian also has a 0.15 chance to be replaced with crying obsidian.
+
+
+=== block_ignore ===
+Removes specified blocks. The removed blocks are not replaced by air, but keep the old blocks before the structure being generated.
+
+
+=== gravity ===
+
+Change the Y-level of blocks' positions to fit the terrain like a village road. Note that this is not used to make floating gravity blocks fall down. This processor is hardcoded to be used on a structure template if its "projection" field in its template pool is "terrain_matching"
+
+
+=== protected_blocks ===
+Specifies which blocks in the world cannot be overridden by this structure
+
+
+=== blackstone_replace ===
+
+Replaces all stone-variant blocks with blackstone variants and all iron bars with chains.
+
+
+=== jigsaw_replacement ===
+
+Replaces jigsaw blocks with the specified final state. This processor is hardcoded to be used unless generated in the jigsaw block GUI.
+
+
+=== lava_submerged_block ===
+
+Blocks with incomplete outline shapes cannot override the lava in the world
+
+
+=== capped ===
+Applies a processor to some random blocks instead of applying it to all blocks.
+
+
+=== nop ===
+
+Does nothing
+
+
+== Rule test ==
+Rule tests are used to test if a block matches specific conditions.
+
+
+=== always_true ===
+Matches any block
+
+
+=== block_match ===
+Tests is the block is the specified block.
+
+
+=== blockstate_match ===
+Tests is the block for the specified block state.
+
+
+=== random_block_match ===
+Tests is the block is the specified block. Then only matches with a given probability.
+
+
+=== random_blockstate_match ===
+Tests is the block for the specified block state. Then only matches with a given probability.
+
+
+=== tag_match ===
+Tests if the block is in the specified block tag.
+
+
+== Position rule test ==
+Position rule tests are used to test if a position matches specific conditions.
+
+
+=== always_true ===
+Matches any position.
+
+
+=== linear_pos ===
+
+Passes with a random probability, the probability is based on the 3D Manhattan distance to the structure start (center bottom block of first element).
+
+
+=== axis_aligned_linear_pos ===
+Passes with a random probability, the probability is based on the distance to the structure start (center bottom block of first element) along the specified axis.
+
+
+== External links ==
+Processor list Generator on misode.github.io
+
+
+== Navigation ==

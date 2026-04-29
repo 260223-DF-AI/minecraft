@@ -1,0 +1,87 @@
+Debug mode usually refers to a world preset used to test block states, block models, and textures.
+Debug mode can also refer to a dimension generator type (minecraft:debug) that generates a block grid, which is used in the "Debug mode" world preset, and can also be used in custom dimensions.
+Debug mode can also refer to a state of a world, if the Overworld uses the "debug" generator, the world goes into the debug mode state. In this state, blocks can't be changed even in creative mode or with commands.
+
+
+== Debug mode world preset ==
+
+To select the debug mode, hold the Alt key while clicking the "World Type" button in the world creation menu. Debug mode is the world type directly after Single Biome, and just before the default preset.
+Upon selecting debug mode, the "Bonus Chest", "Generate Structures", "Allow Cheats" and "Data Packs" options are forcibly disabled. The game mode is set to Spectator, difficulty is locked on Peaceful, and cheats are enabled. The game rule doDaylightCycle is forced to false, while other game rules are forced to default values.
+
+
+== Debug generator ==
+The minecraft:debug generator contains all blocks, in all of their existing block states, organized in a single world. The world updates automatically to include any new registered block IDs that are added. Therefore, this mode is useful not only to Mojang Studios developers, but also to creators of resource packs and mods.
+
+
+=== Block grid ===
+
+Every block state generates only once or, in a few cases in some versions, twice. They are sorted in a grid spread across an altitude of Y=70. The block grid changes its size according to the number of blocks and block states available. Let T be the total number of block states, and ⌈x⌉ the ceiling of x (that is, x rounded up), the number of blocks per row is given by ⌈T/⌈√T⌉⌉+1, however, only the first ⌈√T⌉ blocks are counted to determine the block of the next rows, so if ⌈√T⌉<⌈T/⌈√T⌉⌉+1, then the last block of each row be repeated in the following row. Note that the number of rows is always slightly less than the number of columns, even if the last row is incomplete.
+
+In a grid with 29873 block states,0000 there are 173 lines with up to 174 block states. The last line has 117 block states. 
+
+A barrier floor at Y=60 also spawns, extending past the grid in all directions to the world boundary. Other than the barrier floor, the remainder of the map is empty.
+
+
+==== List of blocks ====
+
+
+== Debug mode state ==
+Debug mode can refer to a state of the world. If the Overworld uses the "debug" generator, the world goes into the debug world state.
+
+
+=== World generation ===
+
+If a Nether portal or End portal is used, or teleported using /execute, the player enters other dimensions. The sky, light level and other properties remain appropriate to the dimension.
+In this state, all the dimensions are forced to use the "debug" generator. The chunk rendering may not update by itself in these dimensions, resulting in the need to right-click a block to render a new chunk.
+In the vanilla End, the ender dragon and its End crystals still spawn, although the dragon cannot break or interact with blocks. The iron bars surrounding some End crystals still spawn, but are unbreakable and invisible.
+
+
+=== World behavior ===
+It is impossible to change, place or remove any block, even by the game itself.
+Chunk's chunk tick (including random ticks) does not execute.
+No entity spawns naturally.
+Any block whose interactions do not change its block state can still be used (including chests, beds, cake, etc.). Although a block's state cannot change, its block entity data can change, either through normal player interaction or with the use of the /data command.
+These unique properties of debug mode can cause certain blocks to behave in unexpected ways, though due to the arrangement of blocks next to one another, not all may be seen in every version:
+
+Water and lava cannot be removed by buckets, but still fills an empty bucket in Survival mode. If the player empties the bucket, the lava or water blocks turn invisible.
+Bells can still be rung.
+Cauldrons clean leather armor and banners, but cannot be filled by buckets.
+Flying through a pressure plate with powered stated false, or a weighted pressure plate with power state 0, causes it to produce the pressure plate clicking sound every tick it is pressed.
+Using a comparator in subtract mode causes the block in the direction opposite its facing property to drop as an item.
+Warning: If that block is a repeater or a comparator, it drops an enormous amount of itself (typically around  16 stacks  to  36 stacks ), lagging the game for a few seconds, and likely crashing the game on low-end PCs.
+Any summoned falling block drops as an item when it hits another block, rather than converting itself to a block.
+Using fence gates, comparators, deactivated buttons, levers, deactivated pressure plates, doors, or trapdoors does not move or change the block, but the sound still plays.
+Using a music disc on an empty jukebox does not change its block state but still plays the music normally.
+Interacting with a chiseled bookshelf that has a book does not give you a book.
+Copper golem statues can still cycled upon by Interacting with it but it will only visually change to its next state before being updated and reset by clicking it again.
+
+
+== History ==
+
+
+== Issues ==
+
+Issues relating to "Debug mode" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Trivia ==
+The set biome for this mode is plains by default in the Overworld.
+The sun is displayed as if it were the beginning of the day (time 1000), but the daylight cycle is disabled.
+Regardless, the time can still be adjusted with the use of the /time command, and the daylight cycle can be toggled with the use of the /gamerule doDaylightCycle command. The time can be also advanced from nighttime to sunrise with the use of a bed.
+Using a map does not create an accurate map of the blocks in the world.
+When the world type in the world creation screen is set to Default, clicking on the World Type button with both ⇧ Shift and Alt held down immediately changes the world type to Debug Mode.
+Experimental blocks generate even if the corresponding experiments are disabled.
+They can be obtained in the hotbar by pressing pick block while in Creative mode. They are labelled as "Disabled Item", cannot be placed and disappear when dropped.
+Banners with banner patterns and decorated pots with sherds do not generate in debug mode.
+
+
+== Gallery ==
+
+
+=== Screenshots ===
+
+
+== References ==
+
+
+== Navigation ==

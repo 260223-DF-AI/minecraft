@@ -1,0 +1,93 @@
+Beta 1.16.100.55 is the sixth beta version for Bedrock Edition 1.16.100, released on September 10, 2020, which brought more parity from Java Edition, and fixes bugs.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Observers
+
+No longer get stuck in an active state when moved by pistons.
+Shroomlights
+
+Can now be composted.
+
+
+=== Items ===
+Banner Patterns
+
+The "thing" banner pattern can now be crafted at the loom.
+
+
+=== Mobs ===
+Camera
+
+Can no longer be obtained by using /give command.
+Piglins and Piglin Brutes
+
+Now keep their crossbows or golden axes (respectively) when zombified.
+Zoglins
+
+Changed baby zoglin's model to match Java Edition.
+
+
+=== General ===
+Add-ons and Script Engine
+
+Bandwidth optimization: make sure level event packets only broadcast locally.
+Spatial Bandwidth Optimizations are now exposed through a component, minecraft:conditional_bandwidth_optimization.
+Spatial Bandwidth Optimizations are now utilized by every actor using minecraft:conditional_bandwidth_optimization.
+Added the selector component to raw text which can be used to print entity names in commands such as /tellraw and /titleraw.
+Structures are no longer cut off when loaded using the /structure command.
+Experimental Gameplay
+
+Toggle has been revamped.
+Added "Custom Biome Add-Ons", "Experimental Scripting Add-Ons", "Experimental Molang Features", and "Next Gameplay Update" toggle.
+Menu Screen
+
+Added Mojang Studios logo splash screen for Android devices.
+Technical
+
+FMOD music channel now sets its priority to 0 when music is played to prevent FMOD virtual channel from stealing it when a regular sound is played in game (default priority is 128)
+
+
+== Fixes ==
+Performance and Stability
+
+Game no longer crashes if a player opens a shulker box they're standing on after rejoining a multiplayer session.
+Fixed crash when using /fill command with portal to fill huge amount of blocks.
+Vanilla Parity
+
+Baby zoglins now have oversized heads. (MCPE-65454)
+Shroomlight block can now be used with the composter. (MCPE-82999)
+Crimson fungus and warped fungus can now be placed on mycelium blocks. (MCPE-88588)
+Observers will no longer get stuck in an active state when moved by a piston. (MCPE-61175)
+The "Thing" banner can now be crafted at the loom. (MCPE-70449)
+All expected blocks and items can now be composted again. (MCPE-94671)
+General
+
+Portal blocks placed with /setblock or /fill commands that are not part of a valid portal structure will only exist for 1 second before they are removed.
+Foxes will no longer take damage when falling on berries. (MCPE-82273)
+Text and background for the title command (Title, Subtitle, and Actionbar) have been adjusted and spaced out.
+Dressing room now shows cached Character Creator items when offline.
+24 bit PNGs without an alpha channel are no longer accepted as valid custom skins. (MCPE-50094)
+Gameplay
+
+Boots enchanted with Soul Speed no longer become stuck on mobs or the player after breaking. (MCPE-75375)
+Piglin brutes preserve equipment when zombified. (MCPE-83683)
+User Interface
+
+The smithing table screen now contains hammer icon and UI elements appear correctly when using the "Pocket" UI profile setting. (MCPE-79541)
+New Achievement Screens
+
+Made the reward frame on the list item the same as the art frame.
+Improved the tap visual feedback.
+Decreased safe zone size.
+Fixed an issue where it was impossible to move focus away from Back button using a keyboard.
+Fixed an issue where the new achievement screens would sometimes incorrectly apply safe zone along the split in split screen mode, instead of just at the window edges.
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,38 @@
+A test environment is a way to group up GameTests and give them the right preconditions to run.
+
+
+== Definition ==
+Test environments can be defined in data packs, as part of the directory structure below.
+
+
+== JSON Format ==
+Test environments are defined using the following format:
+
+
+== Environment types ==
+
+
+=== all_of ===
+Applies multiple environments
+
+
+=== function ===
+Uses functions to set up and tear down the test.
+
+
+=== game_rules ===
+Applies game rules during the test, and resets them after tests have completed.
+
+
+=== weather ===
+Applies specific weather during the test, and resets it after tests have completed.
+
+
+=== clock_time ===
+Changes the time of a specified world clock to the specified value, and resets it after tests have completed.
+
+
+== History ==
+
+
+== Navigation ==

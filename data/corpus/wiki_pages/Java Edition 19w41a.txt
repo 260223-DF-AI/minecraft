@@ -1,0 +1,177 @@
+19w41a is the ninth snapshot for Java Edition 1.15, released on October 9, 2019. It adds a new menu panorama, two new blocks, the ability to toggle sprinting and sneaking, and a new command for spectating.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Honey blocks
+
+Crafted from 4 honey bottles.
+The bottles are not consumed and remain in the crafting grid.
+Walking on them is slower, and jump height is reduced.
+Effect also works through non-full blocks like carpet, trapdoors and slabs.
+If an entity is on a honey block that is pushed by a piston, the entity is moved with the honey block.
+Entities touching the side of a honey block slide down slowly.
+Landing on a honey block reduces fall damage.
+Fall damage is cut to about 1⁄5 of normal: equal to ceiling(fall distance - 3) / 5), or in other words, 1⁄5 of 1HP for every block fallen after the first 3, rounded up.
+When a honey block is pushed or pulled by a piston, it attempts to move all adjacent blocks in the same direction.
+Work the same way as slime blocks.
+Mobs usually avoid walking on them.
+Does not conduct redstone signals.
+ Honeycomb blocks
+
+Purely decorative.
+Crafted using 4 honeycombs.
+
+
+=== Command format ===
+/spectate
+
+Syntax is /spectate [<target>] [<player>].
+target – the target entity to spectate.
+If omitted, makes the player stop spectating.
+player – the player that should spectate the target.
+Must be in Spectator mode.
+If omitted, @s (the executing player) is used.
+clickEvent
+
+Added copy_to_clipboard action.
+
+
+=== Gameplay ===
+Controls
+
+Sneak and sprint inputs can now be switched between "Hold" and "Toggle" mode in the accessibility options.
+Allows players to stay sneaked while opening different GUIs.
+Also affects flying down in Creative mode. When toggled, the player keeps going down until toggled again.
+Sprites
+Status effects
+
+Instant Damage
+ Added an effect sprite.
+Instant Health
+ Added an effect sprite.
+Saturation
+ Added an effect sprite.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Beehives
+
+Name changed from "Bee hive" to "Beehive".
+ID also changed from bee_hive to beehive.
+Stripped wood
+
+Can now be crafted from stripped logs.
+
+
+=== Items ===
+Spawn egg
+
+The bee spawn egg colors have been changed from  to .
+
+
+=== Mobs ===
+General
+
+Mobs are better at avoiding walking through lava now.
+Ender dragons
+
+Removed a black dot on the transparent parts of wing texture.
+Removed texture for part of wing bottom in the exploding ender dragon.
+Iron golems
+
+Now starts cracking upon losing health.
+A sound plays on every cracking stage.
+There are 4 stages, from uncracked to fully cracked, before the golem dies.
+Can be healed using iron ingots.
+A sound plays each time the golem is repaired.
+One iron ingot restores 25HP × 12.5 health.
+It takes 4 iron ingots to repair an iron golem from 1 HP to full health.
+Zombie villagers
+
+Zombie villagers that were converted from villagers can no longer despawn.
+
+
+=== Command format ===
+/effect
+
+The /effect clear command now defaults to @s if no target argument is given.
+
+
+=== General ===
+Title screen
+
+Changed panorama to an image which includes new 1.15 features such as bees and bee nests.
+Because this was an asset update, the menu panorama in all previous 1.15 snapshots was also updated.
+Descriptions under buttons on the "Create World" screen are now narrated.
+Tags
+
+Removed dirt_like block tag.
+
+
+== Fixes ==
+42 issues fixed
+From released versions before 1.15
+
+MC-20144 – Saturation and Instant Health/Damage effects do not have an icon.
+MC-35920 – Some translucent parts of entities make translucent blocks, block entities and some entities invisible (depending on loading order).
+MC-80110 – Villager item count graphical bug.
+MC-86846 – Changing a powered command block from impulse or chain mode to repeat mode does not trigger it until repowering.
+MC-109108 – Mobs getting stuck on vines.
+MC-120480 – Pets teleport onto blocks which have a solid "bottom", not "top" face.
+MC-121942 – Item count renders behind crafting preview items.
+MC-124140 – Anchoring does not reset after use and is implicitly applied in nonsensical cases by default.
+MC-125104 – Cancelling delete world screen and options sub-menus using Esc opens main menu.
+MC-129806 – Team prefixes and suffixes do not show for villagers without a custom name.
+MC-131552 – Cannot craft stripped wood from stripped log.
+MC-145021 – Tamed animals are not able to teleport to the player when they are on the snow layer blocks.
+MC-146213 – Loading bar on splash screen is able to extend beyond its black outline.
+MC-156005 – Tamed wolves no longer teleport to the player when they're in water.
+MC-161733 – Vindicator's "idle5" sound is unused.
+MC-162952 – Stacked numbers of an item in inventory are rendered behind the potion effect status effect in inventory.
+From the 1.15 development versions
+
+MC-159423 – Bees cannot get to flowers on edges.
+MC-159469 – There is a space in "Beehive" when there shouldn't be.
+MC-160102 – IllegalArgumentException when being attacked by a weak iron golem.
+MC-160957 – Bees do not leave the nest or hive when it is destroyed by the player.
+MC-161297 – Shulker box's inside textures are invisible.
+MC-161391 – Strays are brighter.
+MC-161495 – Horse texture is partially translucent when viewing it from certain angles.
+MC-161692 – Hopper creating a furnace block entity by transferring an item crashes the game.
+MC-161840 – Entities are shaded far darker than usual.
+MC-161847 – Armor slots in the inventory are displayed black in some circumstances.
+MC-161855 – Icons used for customizing superflat worlds are not displayed if no world has been opened before.
+MC-161856 – Items held by armorstands are only visible in spectator mode.
+MC-161889 – Mobs in spawners are in full lighting even when no light source is around.
+MC-161891 – Blocks with special rendering are not rendered behind transparent block items.
+MC-162042 – Items with partially transparent textures will render incorrectly in item frames.
+MC-162087 – Parrots can imitate pandas.
+MC-162118 – Iron Golems hanging in mid air.
+MC-162378 – Screen turns black during the totem of undying activation animation.
+MC-162432 – Some blocks like chests and beds are no longer shaded in the world.
+From the previous development version
+
+MC-162538 – Creative menu corners have opacity issues; outlines have no transparency.
+MC-162550 – Offhand slot is glitched/black in some circumstances.
+MC-162586 – Log repeatedly prints the message "Ticking entity", and finally crashes the game.
+MC-162616 – java.lang.NullPointerException after attacking a parrot.
+MC-162671 – Mooshroom cow's mushroom texture is too bright.
+MC-162936 – java.lang.IllegalArgumentException when using an enchanted totem of undying.
+Private issues
+
+MC-160865 – Waking up from a bed can cause the server to crash in specific circumstances.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

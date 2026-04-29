@@ -1,0 +1,1453 @@
+This is a list of Java Edition 1.11 development versions.
+
+
+== 16w32a ==
+16w32a is the first snapshot for Java Edition 1.11, released on August 10, 2016.
+
+
+=== Additions ===
+
+
+==== Items ====
+Spawn eggs
+
+ Zombie villager spawn egg
+Eggs that were removed in Java Edition 1.10-pre2 are re-added, except the cat spawn egg, including:
+ Wither skeleton spawn egg
+ Donkey spawn egg
+ Mule spawn egg
+ Skeleton horse spawn egg
+ Zombie horse spawn egg
+ Elder guardian spawn egg
+ Husk spawn egg
+ Stray spawn egg
+
+
+==== General ====
+Splashes
+
+"Javalicious edition"
+Internationalization
+
+New strings within the game were made available for internationalization:
+World selection error messages,
+Customized superflat preset names,
+Spectator-mode-specific options and messages,
+In the Options menu: the words "chunks" and "fps",
+In item tooltips: the words "Color: ", "NBT: " and "Durability: ",
+The F3 + Q keybindings display text, and text associated with other F3 actions,
+Text associated with downloading resource packs from servers.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Cauldrons
+
+Washing dyed leather armor and dyed banners now removes 1 water level from the cauldron.
+
+
+==== Items ====
+Spawn eggs
+
+Are now sorted by name in the Creative inventory.
+Stacks
+
+There is no longer an item stack of 0 when using the drag function to craft items.
+
+
+==== Mobs ====
+Creepers
+
+If a creeper is inflicted with a potion effect, its explosion causes a lingering effect of the potion.
+No longer drop music discs when killed by a stray or wither skeleton.
+Husks
+
+Now try to avoid water.
+Snow golems
+
+Now, when their pumpkin is sheared from their head, that is saved with the game (previously it was just an in-memory visual effect).
+Skeleton trap horses
+
+The chance of spawning with a thunderstorm lightning strike is reduced to 1⁄5 of what it was.
+Chickens
+
+Some pixels has been added under the head.
+
+
+==== Gameplay ====
+Exhaustion levels
+
+Chat
+
+Some warnings now appear above the hotbar instead in the chat, like "Press [key] to dismount" had.
+"You can only sleep at night"
+"You may not rest now, there are monsters nearby"
+"This bed is occupied"
+"Height limit for building is 256 blocks"
+"Unable to open. Loot not generated yet."
+
+
+==== Command format ====
+/give
+
+Now ignores item-specific stacking restrictions.
+Block states
+
+Block states can now be used in the /execute, /fill, /setblock and /testforblock commands.
+Examples:
+/setblock ~ ~ ~ minecraft:stone variant=granite instead of /setblock ~ ~ ~ minecraft:stone 1
+/setblock ~ ~ ~ wool color=blue instead of /setblock ~ ~ ~ minecraft:wool 11
+/setblock ~ ~ ~ minecraft:planks variant=acacia instead of /setblock ~ ~ ~ minecraft:planks 4
+/setblock ~ ~ ~ minecraft:birch_fence_gate facing=west,open=true
+
+
+==== General ====
+Resource packs
+
+The required pack version number was changed to "3" in pack.mcmeta.
+Version 3 resource packs have to use lowercase filenames for everything.
+Entity IDs, block entity IDs, block IDs and item IDs
+
+Now are no longer case sensitive.
+Auto-completion puts in lowercase letters.
+Entity and block entity IDs
+
+Use underscores to separate words, rather than using single words in mixed case.
+Optionally, a minecraft: namespace prefix can be used, just like block and item IDs. However, it is not optional for EntityTags and spawners.
+There are still old entity IDs in the language files (example: LavaSlime instead of magma_cube for the magma cube) and the new mobs in 1.11 have their ID with the old type (no underscores, capital letters for the beginning of the words. example: VindicationIllager instead of vindication_illager for the vindicator.)
+The following names have changed:
+
+Horse was split into entity IDs horse, donkey, mule, skeleton_horse and zombie_horse for their respective types.
+Skeleton was split into entity IDs skeleton, stray and wither_skeleton.
+Zombie was split into entity IDs zombie, zombie_villager and husk.
+Guardian was split into entity IDs guardian and elder_guardian.
+Unused savegame IDs Mob and Monster were removed, meaning that all references to the first mob added to the game called Mob, have been removed.
+NBT format
+
+For all horses, HasReproduced, Type and Saddle tags are removed.
+ChestedHorse and Items tags now apply only to mule and donkey.
+SkeletonTrap and SkeletonTrapTime tags now apply only to skeleton_horse.
+Elder tag is removed from guardian and elder_guardian.
+ZombieType, and IsVillager tag is removed from all zombie types.
+ConversionTime and Profession tags now apply only to zombie_villager.
+SkeletonType tag is removed from all skeleton types.
+Pumpkin byte tag is added to snowman.
+Loot tables
+
+Donkeys, mules, husks and zombie villagers now each draw from their own loot tables, rather than drawing from the horse and zombie loot tables, respectively.
+
+
+=== Fixes ===
+30 issues fixed
+From released versions before Java Edition 1.11
+
+MC-9 – Dropped anvil makes no sound when it breaks.
+MC-87 – When scaling a map with paper, shift-clicking on it won't apply the correct scale level.
+MC-679 – Compass points wrong direction after returning from nether.
+MC-1555 – Items get deleted when the crafting recipe overflows the inventory.
+MC-2153 – Chickens' necks have no texture.
+MC-8293 – Dispensers spawn mobs without offset along the y-axis.
+MC-11834 – "[SEVERE] Item entity # has no item?" is spammed in the console and items appear as stone for invalid IDs or on initial drop.
+MC-14640 – No hunger bar when riding a Boat or Minecart.
+MC-26690 – Wither Skeletons Flicker when in the sun.
+MC-46341 – Some text isn't translated and isn't available on Crowdin.
+MC-83185 – Fishing rod in offhand, bobber immediately disappears/goes to 0,0.
+MC-83571 – Custom named bosses show "Wither" / "Enderdragon" at boss health bar.
+MC-85320 – End Bricks, purpur blocks, chorus plants, bone blocks and structure blocks don't show the right colors on maps.
+MC-87034 – Dragon's breath and lingering potion area is invisible on minimal particles.
+MC-88096 – When using spawn eggs on fences the mobs fall through.
+MC-89064 – Lightning spawns Skeleton Horse when doMobSpawning/spawn-monsters is false.
+MC-90191 – Armor stands, silverfish and endermites in boats spin rapidly.
+MC-91728 – Instant Health/damage potion tipped arrows got no effect.
+MC-93619 – Shooting potion tipped arrow in creative mode reduces arrow count.
+MC-93648 – Snow golems with pumpkins sheared off regain pumpkins.
+MC-94978 – Throwable items fired from dispenser do not hit mobs for the first two ticks.
+MC-95922 – Destroyed dropped Minecart items use entity name.
+MC-96954 – Passenger Entities get dismounted client-side when rerendered.
+MC-97916 – Items receive too much momentum when they're squeezed.
+MC-101441 – When durability on bow it is 0 / 384 and the bow is on the left hand.
+MC-102047 – Middles click on mob variants gives base mob Spawn Egg.
+MC-103043 – Entity name incorrect for Wither Skeleton / Stray / Elder Guardian / Zombie Pigman.
+MC-105560 – Hoppers become stuck on world reload at chunk borders.
+MC-105787 – Structure void has unused model files.
+Other fixes
+
+More stable handling of invalid items.
+Less duplication bugs will occur.
+
+
+== 16w32b ==
+16w32b is the second snapshot for Java Edition 1.11, released on August 11, 2016 to fix some bugs and crashes from 16w32a.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+All sloped rail types
+
+Hitbox heights are decreased from a full block to a half of a block.
+
+
+==== Mobs ====
+Green-robed villagers
+
+Re-added this entity as Profession:5; its name is shown in the trading GUI as "Nitwit".
+Spawns naturally in villages.
+When spawned naturally in a village, or from an egg, it has no trades.
+Green-robed zombie villagers
+
+Re-added this entity as Profession:5.
+Spawns naturally anywhere zombie villagers spawn.
+
+
+==== Command format ====
+/title can now display text in the action bar position.
+
+
+=== Fixes ===
+34 issues fixed
+From released versions before Java Edition 1.11
+
+MC-2188 – Item gets used when right clicking on a saddled pig
+MC-19033 – Pig with a saddle loses name and you get the name tag back when chunk the pig is in gets unloaded
+MC-30790 – particle blast on landing based on fall distance rather than fall speed
+MC-34943 – /summon-ing a villager without a "Count" tag allows the trade, but does not take the item
+MC-71367 – Shift-clicking two slots of same item into anvil results in client-side stack of zero in inventory
+MC-75290 – Transferring lapis lazuli into the enchanting GUI can leave you a stack of zero
+MC-76899 – Dragging items with the middle mouse button causes block count to go negative
+MC-81818 – When resizing the window, you may end up spining around.
+MC-97245 – Boat placement sound uses equipment sound subtitle
+MC-100398 – "Marker"true ArmorStands can be pushed by Pistons (incl. + excl. NoGravity:1)
+MC-101063 – Invalid item id in villager trading causes client, who tries to trade, to crash
+MC-101608 – Teleporting a Vehicle will Kick off its Passengers
+MC-102248 – Player being killed by Stray shows "@ was shot by Skeleton" death message
+MC-102454 – Generic/green robed (zombie) villagers aren't spawnable.
+MC-102638 – All sloped rail hitbox equivalent to the a complete block
+MC-105862 – Arrows of slowness disapear from inventory
+From the previous development version
+
+MC-105948 – Selecting a language no longer changes it in-game/crash the game
+MC-105950 – Zombie Villager spawn egg only spawns the farmer zombie villager
+MC-105953 – Minecraft crashes with superflat preset that uses block which does not exist as item (Example: The Void)
+MC-105954 – Game crashes when hit by an entity holding an item without a specified damage value
+MC-105955 – selectors don't accept minecraft: prefix for entity type, but error message states otherwise
+MC-105956 – Trying to ride donkey/mule from spawn egg crashes the game
+MC-105960 – Entity ID in chat tooltip uses old format (e.g. ArmorStand instead of minecraft:armor_stand)
+MC-105962 – Achievements for picking up (block) items don't trigger
+MC-105969 – /summon minecraft:lightning_bolt does not work
+MC-105970 – Structure Void Blocks Missing Textures When Breaking
+MC-105975 – Incorrect entity translation name in statistics
+MC-105989 – Execute detect stairs stops working after reloading the world
+MC-105990 – Using single lead item in creative mode removes it from inventory
+MC-106002 – ⇧ Shift + double click no longer moves all stacks
+MC-106014 – Crash when a fishing rod bobber goes in a nether portal
+MC-106016 – When you put armor on an armor stand, you cannot get the armor off the stand
+MC-106035 – Client Deletes MC Assets
+MC-106036 – Dispensing a pumpkin or a wither skull will crash the game
+
+
+== 16w33a ==
+16w33a is the third snapshot for Java Edition 1.11, released on August 17, 2016.
+
+
+=== Additions ===
+
+
+==== Menu screen ====
+Splashes
+
+Added "Should not be played while driving" and "You're going too fast!".
+
+
+=== Changes ===
+
+
+==== Items ====
+ Shields
+
+Now keep enchantments and durability when crafted with banners.
+
+
+==== Gameplay ====
+Subtitles
+
+Some of elder guardians' and zombie villagers' subtitles are now distinct from the subtitles for guardians and zombies.
+Smelting
+
+More things can be used as fuel:
+1 wool smelts 0.5 items
+1 carpet smelts 0.33 items, just less than 1⁄3 items (increased in 16w35a)
+1 ladder smelts 1.165 items, just less than 1 1⁄6 items (increased in 16w35a)
+1 wooden button smelts 0.5 items
+1 bow smelts 1.5 items
+1 fishing rod smelts 1.5 items
+1 sign smelts 1 item
+1 bowl smelts 0.5 items
+1 wooden door smelts 1 item
+1 boat smelts 2 items
+
+
+==== Blocks ====
+ Cauldrons
+
+Can now be refilled with water bottles.
+ Beds
+
+If the player clicks on the bed, but is not right beside it, it now shows a message:
+"You may not rest now, the bed is too far away"
+Previously the player would get no message, but would be unable to sleep.
+ Banners
+
+Now require a dye when applying a pattern that uses a non-dye item, such as a creeper head or enchanted golden apple.
+Previously the lack of a dye would have applied the black variant of the pattern.
+
+
+==== Mobs ====
+ Farmer Villagers
+
+Now sells 5–7 apples, where before they sold 5
+Now sells 6–10 cookies, where before they sold 6
+ Elder Guardians
+
+Now drop a wet sponge rather than a dry sponge.
+
+
+=== Fixes ===
+34 issues fixed
+From released versions before Java Edition 1.11
+
+MC-4582 – Can't eat, throw, or shoot while looking at an iron door/iron trapdoor
+MC-5330 – Range for using bed is lower than normal range
+MC-9691 – Inconsistency: Some wooden items don't burn in furnaces
+MC-14525 – Name tag item doesn't work on entities with right click ability
+MC-30630 – Double grass and fern use 2 different biome colors for top and bottom
+MC-49666 – Trades not randomized for farmer villager
+MC-59888 – Tall grass (top) particles are sunflower texture with broken pallete
+MC-75726 – Broken error message when loading (broken?) resource packs
+MC-82811 – Attempting to use currently unusable items bobs item up and down
+MC-82965 – Main hand item use animation plays when using offhand (3rd person mode)
+MC-87048 – Putting design on shield will cause shield to lose enchantment
+MC-90538 – Elytra not placeable on Armor Stand
+MC-91209 – Inconsistent word separation in chat help for F3+[key] combinations (resourcepacks, renderdistance)
+MC-92294 – Elder guardians drop normal sponge instead of wet sponge
+MC-93371 – No armor stand breaking sound in Creative mode
+MC-94303 – Filling/emptying bucket/bottle sound doesn't play for cauldrons
+MC-94597 – Shooting an arrow prints "added speed" in the Game Output
+MC-97808 – Not canceled that draw a bow
+MC-98779 – Skeletons spawned with /summon or natural spawning algorithm are not in the correct height
+MC-102683 – Elder Guardians use the same subtitles as normal Guardians
+MC-106168 – Using spawn egg on side of block spawns mobs inside transparent blocks
+From the Java Edition 1.11 development versions
+
+MC-106030 – No longer receives xp when shift-clicking ingots in furnace
+MC-106043 – Placing a banner that was in a stack of 1 causes it to lose it's data
+MC-106045 – Fishing rod does not appear cast in offhand
+MC-106067 – Unable to dye banners
+MC-106133 – Skeletons / stray / wither skeleton with tipped arrow in offhand no longer shoot tipped arrows
+MC-106152 – Zombie villager has no independent subtitles
+MC-106172 – Wither skeleton / zombie pigman emits a constant hissing sound despite not being on fire when standing on a submerged fence
+MC-106190 – Husk / zombie villager drop zombie head when killed by charged creepers
+From the previous development version
+
+MC-106072 – Resource pack loaded as FOLDER doesn't show ingame anymore
+MC-106100 – Hopper: java.lang.NullPointerException: Ticking block entity
+MC-106101 – Hopper: java.lang.ArrayIndexOutOfBoundsException: 1
+MC-106116 – Achievements which rely on crafting the item (such as Benchmarking or Time to strike!) don't unlock when shift-clicking
+MC-106193 – No enchantment books when the player is fishing
+
+
+== 16w35a ==
+16w35a is the fourth snapshot for Java Edition 1.11, released on September 1, 2016.
+
+
+=== Additions ===
+Internationalization
+
+New strings within the game were made available for internationalization:
+/save-all flush command output
+
+
+=== Changes ===
+
+
+==== Blocks ====
+
+
+===== General =====
+Blocks with custom names, including banners, hoppers, chests, furnaces, enchanting tables, dispensers, droppers, brewing stands, and minecarts, retain their custom name when the block is dropped as an item, and when the item is placed again.
+Use the CustomName tag
+ Carpets
+
+1 carpet now smelts 0.335 items, increased from 0.33.
+3 carpets can now fully smelt 1 item.
+ Ladders
+
+1 ladders now smelts 1.5 items, increased from 1.165.
+2 ladders can now fully smelt 3 items.
+ Trapdoors
+
+If placed right next to redstone sources, they now update to an open state.
+
+
+==== Mobs ====
+ Blazes
+
+Take 1HP damage when hit by a splash water bottle.
+ Enderman
+
+Take 1HP damage and teleport when hit by a splash water bottle.
+ Saddled Pigs
+
+Are now able to be renamed by name tags.
+ Ender Dragons
+
+Now shows their hitbox when F3 + B is activated.
+
+
+==== World generation ====
+ Desert and Savanna Village wells
+
+The bottom most part of the wells are now made of sandstone and acacia logs instead of cobblestone respectively.
+
+
+==== General ====
+Options
+
+Changed the title and description of "Snooper Settings"
+Brings it into line with the new privacy policy
+Title is now "Feed us data!" instead of "Machine Specs Collection"
+Description is now "We always want to improve Minecraft and, to help us do that, we'd like to collect some information. This lets us know what hardware to support and where the big problems are. It also gives us a sense of the size of our active player base, so we know if we're doing a good job. You can view all the information we collect below. If you want to opt out then you can simply toggle it off!"
+ Shields
+
+Now block 100% of the damage dealt in melee combat, up from 66%.
+Zombies without any weapons don't deal any damage to the player, nor damage the shield's durability.
+Creeper explosions deal 0 damage to the player.
+Wither skeletons don't inflict the Wither effect when hit by them.
+Burning zombies don't set the player on fire.
+Husks don't apply the Hunger effect.
+Strays don't apply the Slowness effect.
+Now are disabled 100% of the time if a mob or player wielding an axe attacks the player when the shield is blocking, even if they are not sprinting.[verify]
+
+
+=== Fixes ===
+34 issues fixed
+From released versions before Java Edition 1.11
+
+MC-4603 – The Ender Dragon is hostile to players in Creative
+MC-5120 – Fireworks pushed by water / fired horizontally out of loaded chunks cause client to hang
+MC-70143 – Eyes of Ender point to stairs after reloading a world
+MC-83337 – Eye of Ender in the mainhand doesn't block offhand item usage
+MC-84095 – Ender Dragon destroys fireballs/Fireballs invisible
+MC-85805 – Two pistons smashing a shulker glitch
+MC-88459 – Height limit message sent twice when trying to place from off hand
+MC-94274 – Hitbox of cocoa beans too small
+MC-94485 – Hand animation continue swing when cocoa block placed already
+MC-95738 – Slimes health resets to max when setting any nbt-tag
+MC-102506 – Ugly Bryce terrain generation (generation of stone above ground)
+MC-103261 – Desert villages generate with cobblestone around the well
+MC-104259 – Player/Mob stuck/through when on farmland while it changes to dirt
+MC-106179 – Zombie burns you when you block with shield
+MC-106252 – Slowness arrows from strays don't stack with crafted/shot arrows
+MC-106300 – Cake hitbox appears at 0,0,0
+MC-106364 – Lightning impact subtitle is misspelled as lighting
+MC-106524 – Stray chunks being generated far away
+MC-106552 – "/save-all flush" puts untranslated messages into chat
+MC-106713 – Snooper information may be de-anonymized by a third party
+From the Java Edition 1.11 development versions
+
+MC-106056 – Can trade with /summon-ed green villagers (nitwit) only once per villager
+MC-106058 – Villager converted from zombie has random trades from random profession.
+MC-106064 – Some non-nitwit villagers have no trades
+MC-106075 – Hopper timings depend on the gametick they're activated in.
+MC-106099 – Firework Rocket does not spawn
+MC-106165 – Mob Potion effects are inflicted through shields
+MC-106302 – Unable to name saddled pigs
+From the previous development version
+
+MC-106298 – Unequipping horse armor shows armor equipping subtitle "Horse armor equips"
+MC-106303 – 3 carpets are not enough to smelt one item
+MC-106311 – A Tipped Arrow shot in Creative Mode will add to Inventory upon Pickup
+MC-106324 – Generated villagers can have impossible Career
+MC-106343 – Can't use right click ability while looking at a Green Villager
+MC-106362 – Newly generated Villagers have Incorrect Tier 1 trades
+MC-106399 – Igloos generating zombie instead of zombie villager
+
+
+== 16w36a ==
+16w36a is the fifth snapshot for Java Edition 1.11, released on September 8, 2016.
+
+
+=== Changes ===
+Flowers
+
+Their hitbox now corresponds to their exact visual location on the block (as opposed to always placed in the middle of the block).
+Leaves
+
+Particles emitted from leaves now use the corresponding color according to the biome.
+
+
+=== Fixes ===
+23 issues fixed
+From released versions before Java Edition 1.11
+
+MC-29544 – Particles from falling/landing/sprinting on leaves do not use foliage color
+MC-41270 – Resourcepack's glyph_sizes.bin and some unicode_pages are only loaded on startup
+MC-63010 – Placing a banner and breaking it in Survival causes them to not stack (as they have NBT data)
+MC-71347 – Shift-clicking crafted items increase achievement objective by 2
+MC-83905 – Compass animates incorrectly.
+MC-84519 – Golden apple offhand glitch
+MC-88103 – Clock animates incorrectly / spins at noon
+MC-93493 – Spectators can control horses
+MC-95460 – Compass needle spins only in lower half randomly in the End and Nether.
+MC-96463 – UV mapping in cross.json and tinted_cross.json models is incorrect / south face of crossed textures of saplings, plants, etc. is mirrored
+MC-101120 – Sign items with invalid JSON in Text1 tag are used in creative
+MC-101555 – Resource pack fails to load when the itemframe blockstate is multipart
+MC-105886 – World file names containing brackets will not load packaged resource packs
+MC-106536 – The block model of bone blocks lacks some cullface definitions
+MC-106675 – Command feedback inconsistency.
+MC-106708 – Block model random offset compatibility
+From the Java Edition 1.11 development versions
+
+MC-105978 – Lingering potions lose their effect when thrown in Survival mode
+MC-105982 – Placing a sign that was in a stack of 1 causes it to lose its data
+MC-106046 – Lava bucket gets used up in smelting
+MC-106084 – Passengers do not upgrade correctly from old versions
+MC-106314 – Invalid statistic - Don't know what stat.killEntity.Creeper is
+MC-106665 – "Pause on lost focus" inconsistent spelling.
+Private issues
+
+MC-103550 – Malformed ping packet from server crashes client
+
+
+== 16w38a ==
+16w38a is the sixth snapshot for Java Edition 1.11, released on September 20, 2016.
+
+
+=== Additions ===
+
+
+==== Gameplay ====
+Gamerules
+
+doWeatherCycle
+Determines whether the weather changes.
+Defaults to true.
+maxEntityCramming
+Defaults to 24.
+If one entity tries to push more than 24 other entities, it starts to suffocate. (Note that pushing entities like minecarts also count towards this, although minecarts don't suffocate, mobs or players who push one, do suffocate)
+The death message is (playername) suffocated in a wall.
+Setting to 0 disables the rule.
+Affects mobs and players only.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+ Cobblestone Walls and Mossy Cobblestone Walls
+
+Are now in the "Decoration Blocks" tab in the Creative inventory rather than the "Building Blocks" tab.
+ Farmland
+
+Using pick block gives the player farmland itself instead of dirt.
+
+
+==== Command format ====
+Target selectors
+
+Invalid selectors (such as @e[Type=creeper] instead of @e[type=creeper], @e[asdf] or @e[foo=nonexistent]) now generate an error instead of being silently ignored.
+Removed implicit target selectors (such as @e[167,28,454]).
+
+
+==== Gameplay ====
+Chat
+
+Messages can now be 256 characters long instead of 100.
+Fishing
+
+Ink sacs are now caught in stacks of 10 with a weight of 1, rather than in stacks of 1 with a weight of 10.
+
+
+==== General ====
+Sounds
+
+Walking underwater no longer produces a step sound for the block the player is walking on.
+
+
+==== Items ====
+ Potions
+
+Potions that have missing or invalid potion-effect tags now default to the uncraftable potion, which now has no glint, and is now magenta in color.
+This also applies to lingering potions, splash potions and tipped arrows.
+Due to the water bottle without tags being changed to uncraftable potion, the brewing icon is also changed to uncraftable potion in the Creative inventory.
+ Elytra
+
+Visible when equipped on skeletons, zombies and armor stands.
+
+
+==== Mobs ====
+ Guardians and Elder Guardians
+
+Their common drop of raw fish will now be cooked fish if they die while on fire.
+Their rare drops from player kills, which match fishing loot and are sometimes fish, are unaffected.
+ Rabbits
+
+Their raw rabbit drop is now affected by the Looting enchantment.
+ Skeleton Horses and Zombie Horses
+
+Their bone and rotten flesh drops (respectively) now yield 0–2, and are now affected by Looting.
+
+
+=== Fixes ===
+39 issues fixed
+From released versions before Java Edition 1.11
+
+MC-3841 – Attacking an unsaddled pig while holding a saddle saddles the pig.
+MC-8673 – Players killed by Wither Skeletons are shown to have been killed by a Skeleton
+MC-36927 – Durability of golden swords occasionally dropped by zombie pigmen is not random (always 25).
+MC-46456 – Written books given by command crashes when copied in crafting table if Author is missing
+MC-61997 – Squids spawn in lava.
+MC-66946 – 2-block tall hitbox on small armor stands.
+MC-67406 – Small armor stands display items differently than normal ones.
+MC-70424 – Baby zombie pigmen's sword is slightly tilted forward.
+MC-80551 – You can place redstone, doors, rails etc. onto 7⁄8 layers of snow.
+MC-86130 – Shields change their base color when damaged & repaired / Crafting different in colors results in damage.
+MC-87159 – Dragon breaks blocks in far-off locations.
+MC-88533 – Marker armorstands cannot properly be tested for with target argument "r=0".
+MC-89921 – Elytra not rendered on entities/mobs.
+MC-91383 – Horses (now only skeleton horses and zombie horses) drop different amount of loot than before.
+MC-92772 – Saddled pigs don't drop saddle with doMobLoot=false.
+MC-92776 – Ink sacs are fished in stacks of 1 instead of 10.
+MC-93435 – Cobblestone walls are listed in the "Building Blocks" tab.
+MC-93609 – Player is floating above the saddle of a mule.
+MC-93824 – Feeding golden carrot to breed horse works if InLove is greater than 0.
+MC-94476 – Killing rabbits with Looting does not give more raw rabbit.
+MC-94947 – Chicken "stepping" sound still works when the chicken is swimming.
+MC-95450 – Villager loot table missing.
+MC-95469 – Middle click / pick block on farmland gives dirt.
+MC-96499 – Boats collide with any entity (arrows, paintings, etc.) even if Marker:1b is on (armor stand).
+MC-98146 – Marker armor stand does not render in some cases.
+MC-98260 – Water bottles have inconsistent NBT tag depending on how you obtain them.
+MC-99602 – Impossible to detect water bottles filled from the ocean in player's inventory.
+MC-100950 – Boats can travel / remain on the fog of lingering potion / dragon's breath.
+MC-101615 – Silverfish do more damage to players on easy difficulty than on normal difficulty.
+MC-101642 – Iron golem / VillagerGolem is holding red flower client side 400 ticks too long.
+MC-103339 – Mushroom cows do not path to mycelium, but grass. Causes unintended spawning requirements.
+MC-103726 – Marker armor stands are not saved with structures.
+MC-105071 – Random green/gray dot in anvil GUI.
+MC-106747 – Wither bosses break structure blocks / structure voids.
+MC-106842 – Target selector stops parsing its arguments if an entry is not <argument>=<value>.
+MC-107054 – lit_furnace item model but no item.
+MC-107055 – 2 models for old wooden slab's item
+From the Java Edition 1.11 development versions
+
+MC-106485 – Banner applied to a shield doesn't change the shield correctly.
+From the previous development version
+
+MC-106896 – Crash when using backspace after deleting all the characters in the name of anything with a custom name.
+
+
+== 16w39a ==
+16w39a is the seventh snapshot for Java Edition 1.11, released on September 28, 2016.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Observers
+
+Ported from the Pocket and Windows 10 editions.
+Has slight behavior differences due to how redstone works in the Java Edition compared to Pocket and Windows 10 Edition.
+Check the observer page for said differences.
+Outputs a redstone signal when it detects a block update.
+Normal BUDs still remain.
+ Shulker boxes
+
+Crafted in a crafting table as a single column, with a chest in the middle row and a shulker shell both above and below the chest.
+In this snapshot, there is a bug that makes the player unable to craft it in the right and left columns.
+Works similar to a chest, but keeps its content when broken.
+If it has any content inside, it drops itself in Creative mode as well.
+Cannot be placed inside another shulker box.
+When hovered over in the inventory, it shows up to 5 slots of its content.
+Breaks when being pushed by a piston.
+Uses the same opening and closing animations as the shulker.
+Can be placed on different sides of a block to open in different directions.
+When opening, its hitbox changes from 1 block to 1.5 blocks in its opening direction.
+Because of this, it doesn't open if there is a block of any kind within the closest half-block area in its opening direction.
+Can be dyed in any of the available dye colors.
+Dyed shulker boxes have a slightly darker bottom part than the normal one.
+In this snapshot, there is a bug with obtaining the dyed versions, so currently it is only possible to get them through Creative or commands.
+Dispensers can place the block on the ground.
+Can be mined with anything, but is mined faster with a pickaxe.
+
+
+==== Items ====
+Spawn eggs
+
+ Llama Spawn Egg
+Spawns llamas
+ Vindicator Spawn Egg
+Spawns vindicators.
+ Evoker Spawn Egg
+Spawns evokers.
+ Vex Spawn Egg
+Spawns vexes.
+ Shulker shells
+
+Has a 50% chance of being dropped by a shulker upon death.
+Crafted together with a chest in a column to make shulker boxes.
+ Totems of undying
+
+Evokers always drop one of these upon death.
+Holding it in either hand when the player dies activates it and saves their life.
+Gives players the Absorption and Regeneration effects when activated.
+Does not prevent death by /kill or the void.
+Has an animation when activated, which uses the item's texture and model.
+ Explorer maps
+
+Can only be obtained from cartographer villagers.
+Used to locate ocean monuments and the new woodland mansions.
+Ocean explorer maps are slightly blue, while woodland explorer maps are slightly brown.
+Works like a map, but shows the outlines of land and a single structure icon.
+Fills in the map with blocks once the player starts exploring the area shown.
+When resized, it still shows the structure icon, but loses the outlines.
+When outside the area on the map, the player icon is smaller the further away the player is.
+When 1024 blocks away from the structure, the dot changes from a small icon to a bigger one.
+
+
+==== Mobs ====
+ Llamas
+
+Spawn in extreme hills.
+Drop leather.
+Have multiple skins, like cats and horses.
+Attack by spitting.
+If the player hits them, llamas spit at the player once, dealing 1HP damage.
+If not in a caravan group, they are always aggressive toward wolves.
+Can be equipped with a carpet for decoration and a chest for storage.
+Differently colored carpets have different textures when placed on llamas.
+The amount of storage slots available depends on the strength of the llama.
+If the player puts a leash on one, up to 10 llamas are attracted and try to form a caravan.
+Caravan groups are passive to all mobs.
+Tamed llamas can be bred with hay bales.
+Illagers
+
+Being relatives to the villagers, they look similar but have pale gray skin and wear dark clothes.
+Two kinds of illagers are introduced: evokers and vindicators.
+ Vindicators
+
+Separate their arms when aggravated, and hold an iron axe in their main hand.
+Hostile toward players and villagers.
+If given the name Johnny they attack any nearby mobs, with the exception of other illagers.
+Spawn in the woodland mansions upon generation. They don't respawn.
+May drop emeralds and an iron axe upon death.
+ Evokers
+
+Added as an end-game challenge, or mini-boss.
+Always drop a totem of undying upon death. May drop emeralds too.
+In battle, they summon vexes and fangs to attack.
+Raise their arms when casting a spell.
+Fangs always deal 6HP damage, ignoring armor.
+Hostile toward players and villagers.
+Spawn in the two upper floors of woodland mansions upon generation. They don't respawn.
+Change any blue colored sheep in a radius of 16 blocks into red.
+ Vexes
+
+Spawn only when summoned by an evoker.
+Small, pale, flying mobs that can phase through blocks.
+Show red marks when about to attack.
+Hostile toward players and villagers.
+Hold an iron sword in their main hand.
+
+
+==== Non-mob entities ====
+ Evocation fangs
+
+Are summoned by the evoker when they perform their fang attack.
+There are two kinds of offensive bite and defensive bite.
+Fangs in warmup still have a visible hitbox.
+Damages 6HP deals to mobs that were in place.
+Naturally spawned fangs do not harm illagers.
+But player-spawned ones do.
+
+
+==== World generation ====
+Return portal
+
+Teleport the player to the main island's spawn platform.
+Generate randomly throughout the End's outer islands.
+Woodland Mansion
+
+Generate in roofed forest biomes.
+Home to the illagers.
+Have three floors, where the bottom two are larger and the third is smaller.
+Use procedural generation and structure blocks for random layouts.
+Because of this, some rooms may be completely surrounded by walls and have no entrance.
+Consist mostly of cobblestone, dark oak planks, and blocks crafted from them.
+Can be located with a woodland explorer maps.
+
+
+==== Gameplay ====
+Curses
+
+Enchantments with negative effects.
+Two curses added: the Curse of Binding (enchantment ID 10) and the Curse of Vanishing (enchantment ID 71).
+Curse of Binding binds the item to the player, making them unable to drop it or take it off if it is an armor item, although it drops when they die. Players in Creative mode are unaffected by this curse.
+Curse of Vanishing makes the item disappear if the player dies. /gamerule keepInventory true prevents this.
+Cursed tools, armor and books can be found as loot in some generated structures.
+
+
+==== Command format ====
+/locate
+
+Syntax: /locate <StructureType>
+Accepts: EndCity, Fortress, Mansion, Mineshaft, Monument, Stronghold, Temple and Village.
+Desert temples, jungle temples, witch huts and igloos all go under the Temple category.
+Pushes coordinates for the closest structure of given type in the chat for the player who executed the command.
+Returns the message "Located [Structure] at [x] [y] [z]".
+Displays the Y coordinates as "(y?)" for some structures.
+If a structure is not located nearby (i.e. in a different dimension), it responds with "Unable to locate any [StructureType] feature."
+
+
+==== General ====
+Customized world generation
+
+Added an option to disable the generation of woodland mansions.
+Particles
+
+spit
+Used when llamas spit.
+totem
+Used when the totem of undying is activated.
+NBT format
+
+New display tag entry for items: [String] LocName for translation strings.
+[Int] CustomPotionColor integer tag for potions and potion arrows to overwrite/set the color.
+[Int] ColorMap integer tag for filled maps to overwrite/set the color of the marks in the item texture.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+ End Gateway Blocks
+
+Now use a magenta-colored beam when teleporting entities, rather than yellow.
+This color matches the beam that occurs when the block first generates.
+
+
+==== Items ====
+ Maps
+
+Now shows the land properly when used in the End.
+Item texture's "markers" can now be colored by ColorMap tag.
+Used for explorer maps.
+ Potions and Tipped Arrows
+
+Item texture's color can now be custom colored by CustomPotionColor tag.
+
+
+==== Mobs ====
+ Shulkers
+
+Now drop 0-1 shulker shells.
+Can be spawned in with different colors using the Color tag.
+Colored shulkers have a darker bottom part, making them slightly different from normal shulkers.
+ Villagers
+
+Cartographer was added as a new career.
+Trading with a cartographer is the only way to obtain the new explorer maps.
+ Wither Skeletons
+
+Now have their own sounds.
+ Zombie Villagers
+
+Now have their own sounds.
+
+
+==== General ====
+Tab-completion results are now sorted alphabetically.
+Switched the "Done" and "Reset Keys" buttons on the controls screen for consistency.
+
+
+=== Fixes ===
+11 issues fixed
+From released versions before Java Edition 1.11
+
+MC-6321 – Maps created in the end act as if they are in the nether
+MC-58677 – GUI has inconsistent capitalization
+MC-76173 – "Note Blocks" appear as "Noteblocks" in statistics
+MC-92139 – Too many tipped arrows in the "Combat" section of the Creative inventory
+MC-107170 – writeString method of PacketBuffer is not creating correct exception text
+MC-107320 – Sort order of command autocomplete confusing
+From the Java Edition 1.11 development versions
+
+MC-106077 – Missing sound files (largeblast1.ogg / largeblast_far1.ogg) because of CamelCase in 1.11.json
+From the previous development version
+
+MC-107154 – Junk potion from fishing is uncraftable potion
+MC-107165 – Brewing icon displays the incorrect color in Creative inventory tab
+MC-107166 – Experience bottles produce pink particles.
+MC-107284 – Disabling shields with axes doesn't work
+
+
+== 16w39b ==
+16w39b is the eighth snapshot for Java Edition 1.11, released on September 29, 2016 to fix some bugs and crashes from 16w39a.
+
+
+=== Changes ===
+Flower pots
+
+Player can now remove the potted plant from the pot, by pressing use.
+Llamas
+
+Drops are now affected by Looting.
+
+
+=== Fixes ===
+33 issues fixed
+From released versions before Java Edition 1.11
+
+MC-105513 – Loading Structures that contain no blocks ignores entities.
+MC-106571 – Cannot tab-complete "flush" with the save-all command.
+MC-106573 – "flush" argument in save-all not included in /help save-all.
+From the Java Edition 1.11 development versions
+
+MC-107221 – Can't breed donkeys with horses, making Mules unobtainable,
+From the previous development version
+
+MC-107379 – Spawn Eggs of new mobs are not sorted alphabetically in Creative inventory.
+MC-107383 – Colored shulker boxes give off purple particles when being broken.
+MC-107385 – Shulker Box has no texture on bottom when opened.
+MC-107388 – Shulker boxes don't retain custom names when placed or broken.
+MC-107391 – Shulker boxes don't get color applied when crafting with a dye.
+MC-107392 – Inserting Items into a furnace crashes the client.
+MC-107398 – All colored shulkers boxes named have only "Shulker Box" that would named colors like example: "Blue Shulker Box".
+MC-107400 – Looting Enchant does not affect Llama Leather drops.
+MC-107405 – Player is unable to put plants (saplings, flowers, ferns) into flower pots.
+MC-107423 – When placing a colored shulker box it's purple for a fraction of a second.
+MC-107425 – Llamas/horses don't show hearts when tamed.
+MC-107427 – Shulker Box can only be accessed by 1 player at the same time (WaI?).
+MC-107458 – The player can place shulker boxes underneath themselves.
+MC-107469 – Silent Tag does not affect evocation fangs.
+MC-107479 – Shulker box interactions don't appear in the Statistics like other interactions.
+MC-107486 – Villagers don't run away from illagers.
+MC-107498 – Unintended capital "LLama" in subtitles.
+MC-107501 – Crash when trying to place shulker box within the same block as a sign or piston extensions.
+MC-107510 – Curse of Binding doesn't affect mobs wearing items.
+MC-107528 – Can only craft shulker boxes in the middle column of a crafting table.
+MC-107536 – Llamas do not save their inventory NBT data, causing java.lang.ArrayIndexOutOfBoundsException crash.
+MC-107573 – Sound event name of shulker box is miscategorized as entity, instead of block.
+MC-107586 – Items with Curse of Vanishing are dropped by mobs that hold them sometimes.
+MC-107598 – Shulker box's GUI elements are slightly offset in comparison to chest's.
+MC-107608 – Pick Block on placed shulker boxes gives different item than found in the creative inventory.
+MC-107612 – Small shulker texture errors.
+MC-107661 – Shulker Boxes always dispensed vertically.
+MC-107683 – Llama causes crash when breeding if "Strength" is 0.
+MC-107746 – Totem consumed all stack when used.
+
+
+== 16w39c ==
+16w39c is the ninth snapshot for Java Edition 1.11, released on September 30, 2016 to fix some bugs and crashes from 16w39a and 16w39b.
+
+
+=== Changes ===
+Dispensers
+
+Now dispense boats facing the same way as the dispenser, instead of toward the dispenser.
+Shulkers
+
+Can now be spawned on the sides and bottoms of blocks through the usage of spawn eggs.
+
+
+=== Fixes ===
+22 issues fixed
+From released versions before Java Edition 1.11
+
+MC-7809 – Aiming at the very bottom of a side of an upper slab/stair places slabs/stairs right-side up in multiplayer
+MC-21433 – Fences are interactive blocks
+MC-72962 – The Empty Map texture is one pixel to the right compared to the Map/Paper texture
+MC-82841 – Arrows are bright despite being in darkness
+MC-83998 – Unable to place blocks on fences from offhand
+MC-90074 – Boat from dispenser is facing wrong direction (towards dispenser instead of the same way as dispenser)
+MC-92191 – Using /entitydata on a player-thrown potion will edit player's inventory
+MC-93651 – No placement sound when placing blocks on fence
+MC-101372 – Item pickup sound plays twice when picking up an item
+MC-106557 – Shulker cannot correctly spawn to the block(The side/below) by use spawn egg
+From the Java Edition 1.11 development versions
+
+MC-106206 – Wrong spot for zombie pigmen egg in Creative inventory
+MC-107148 – Elytra not rendering texture correctly
+MC-107291 – Potion entity is marked as invalid, when you throw potions and press button Q
+MC-107522 – Arrows floating, when the shulker box is opened and then closed
+MC-107803 – Invalid Variant value for llama does not default to 0 causing invisible llama
+MC-107830 – Observer side texture upside down
+MC-107877 – Dispenser placing a Shulker Box does not make the fail sound if the dispenser fails
+From the previous development version
+
+MC-107817 – Inconsistency: Silver shulker box, not light gray
+MC-107820 – Leftover-"test.png" from shulker boxes in 16w39b\assets\minecraft
+MC-107823 – Trajectory of ranged items altered when shooting at Shulker Boxes
+MC-107828 – stat.useItem.minecraft.totem doesn't work
+MC-107843 – Totem consumed all stack when used in offhand
+
+
+== 16w40a ==
+16w40a is the tenth snapshot for Java Edition 1.11, released on October 6, 2016 to fix some bugs from 16w39c.
+
+
+=== Changes ===
+Vindicators
+
+"Johnny" vindicators are now also created by setting a new byte tag, Johnny, to true, in addition to renaming the vindicator to Johnny. The tag supersedes the name, so a Johnny tag set to 1b allows arbitrary names with the "Johnny" behavior, or a Johnny tag set to 0b allows the name Johnny without the "Johnny" behavior.
+Their axe is now one of their HandItems, whereas before it was purely a visual effect. This means their attack now disables shields.
+Vindicators have been heavily buffed - their attack damage on Easy has been increased from 3HP to 7HP, on Normal 5HP to 13HP × 6.5, and on Hard 7HP to 19HP × 9.5.
+Projectiles
+
+Tags xTile, yTile, zTile, inTile and inGround were removed.
+The life tag is no longer used for anything, but still saved/read.
+This affects ghast fireballs, blaze fireballs, fire charges, dragon fireballs and wither skulls.
+End portal blocks
+
+The starfield effect was changed to match that of the end gateway block. It no longer changes perspective with respect to the player, but now remains static with respect to the game screen.
+
+
+=== Fixes ===
+34 issues fixed
+From released versions before Java Edition 1.11
+
+MC-3352 – Arrows fired into a repeater / comparator / jukebox / command block / hopper / daylight sensor that is updating will play the arrow hitting a block noise
+MC-4132 – Piston placement issue past 16777217
+MC-4789 – Gravel And Sand Falling Through Piston
+MC-84566 – Arrows fall off dispensers/droppers when they are powered
+MC-89030 – Pistons warp entities too much (Pistons pull entities in/through blocks)
+MC-93814 – Equipping Pumpkins/Mob Heads through dispenser often play "dispenser failed" sound
+MC-98093 – Distorted pistons
+MC-105096 – shield animation glitch (wiggle)
+MC-107998 – Animals not running away when on fire
+From the Java Edition 1.11 development versions
+
+MC-106706 – Renamed brewing stand does not drop after being placed
+MC-106765 – Silverfish not moving when mobGriefing is false
+MC-106905 – Rabbits jump extra high on farmland and fence related blocks.
+MC-107168 – Weather changes to clear after sleeping with doWeatherCycle set to false
+MC-107378 – Unable to shift-click items into non-full brewing stand ingredient slot
+MC-107403 – No subtitles for Shulker Box / Llama
+MC-107674 – Evocators & vindicator do not display custom head item or held items
+MC-107884 – stat.talkedToVillager doesn't add the score when right-clicking a villager with no offers.
+MC-107891 – Vindicator axes are not damaged
+MC-107941 – Shooting an arrow and reloading the world gives potion particles.
+MC-108123 – {CanPickUpLoot:1b} Vindicators don't use their better weapon
+From the previous development version
+
+MC-107929 – Typo: "Light Grey Shulker Box"
+MC-107937 – Renamed shulker boxes got unnamed when placed by a dispenser
+MC-107954 – Camera shakes when open shulker box you standing on
+MC-107967 – Falling Sand glitching out
+MC-108021 – Some mobs float above horses when riding them
+MC-108029 – Strange texture behavior of End portal block
+MC-108055 – Leash knot can't be broken sometimes
+MC-108079 – Crash when trading or picking up filled map with invalid data value from furnace
+MC-108084 – When in Creative's "Survival Inventory", dropping an item will not delete item from hand
+MC-108085 – Vindicators and mobs with axes don't disable shields.
+MC-108105 – Llamas in caravan unable to be tamed
+MC-108188 – Spectral arrows not being shot by skeletons
+MC-108225 – Cannot leash multiple mobs to same fence when not holding lead item
+MC-108271 – Unable to untie more than one Llama from a fence
+
+
+== 16w41a ==
+16w41a is the eleventh snapshot for Java Edition 1.11, released on October 13, 2016 mainly to fix a few bugs with observers and pistons.
+
+
+=== Changes ===
+Item durability bar
+
+The colors of the durability bar, which is displayed on damaged items in the hotbar and inventories, have been changed.
+The color is now bright during the entire length of the bar, when previously it faded through a set of not so bright oranges and yellows, it now fades through clear yellow and orange.
+Also, the background of the durability bar is now completely black, where it used to be transparent.
+Elytra
+
+Now have their own sound when equipped.
+Llamas
+
+The spawn rate has been drastically reduced.
+
+
+=== Fixes ===
+57 issues fixed
+From released versions before Java Edition 1.11
+
+MC-341 – Duplication and deletion of hotbar items in Creative using number keys
+MC-2912 – Creative Mode Hotbar Glitch when using Number Key to exchange items slots
+MC-11416 – Dispenser / Dropper / Piston / Command block placing is not consistent
+MC-14861 – teleporting using commands resets the velocity
+MC-51662 – Sand/Gravel broken into entity by upward extending piston
+MC-58614 – XP bar is not transparent (no alpha) when normal crosshair is not visible
+MC-59303 – When placed next to a cactus, the head of bed remains same
+MC-70806 – Blocks with a data value > 0 have missing texture in superflat customization
+MC-73529 – Incorrect error message for @e[type=!Player,c=1,r=1]
+MC-80692 – WitherBoss attacks ArmorStands
+MC-96544 – Temperature Freezing Point Inconsistency
+MC-97982 – Offhand slot frame rotated 180 degrees compared to hotbar
+MC-98009 – Elytra equipment sound using Leather armor equipment sound
+MC-99103 – The player can't see remaining time when they have a potion effect in Demo Mode
+MC-99603 – Wolves … and Ocelots fall out of the world
+MC-99661 – Summoning a LeashKnot with a passenger entity crashes
+MC-99814 – help -1 throws unknown command exception
+MC-99900 – Enchantments boostrap class has the wrong error message when called before bootstrap
+MC-101249 – Target selectors ignore invalid arguments
+MC-102439 – Shield Desynchronizes
+MC-102683 – "Elder Guardian Flops" showed as "Guardian Flops" in subtitles
+MC-104901 – Suboptimal visibility and horrific look of the tool's durability bar colors
+MC-105406 – OpenGL Leak in View Frustum
+MC-105898 – Mushrooms and crops cause bed to drop; leaves "head" of bed behind, same with double plant
+MC-108315 – Closing options with esc doesn't send player setting packet
+MC-108409 – Villager makes disagree sounds when the player clicks arrows and trade boxes.
+MC-108588 – Structure blocks save invalid data when saving a structure at 0, 0
+MC-108700 – Wood breaking- incorrect subtitle
+From the Java Edition 1.11 development versions
+
+MC-106296 – Wrong subtitle for sound (sounds.json mistake)
+MC-107171 – maxEntityCramming is off-by-one
+MC-107407 – Zooming out an explorer map turns the map blank
+MC-107410 – Observer block outputs single game tick pulse, not single redstone tick pulse
+MC-107600 – Observer block causes bottom half of bed to break
+MC-107662 – Observers can cause blocks to be stuck in the powered state when being pushed by pistons
+MC-107730 – Oberserver block powers air blocks
+MC-107783 – Observer powers redstone dust only to level 1
+MC-107795 – Redstone connects to Observer Blocks on sides
+MC-107869 – Llamas often spawn in blocks and die while in mountainous regions
+MC-107907 – Llama spit is not saved as entity
+MC-107934 – Observers are placed with the input facing the player (unlike MCPE)
+MC-107957 – Hopper: java.util.ConcurrentModificationException
+MC-107959 – Buttonspamming with observerblocks
+MC-108045 – Minecraft not using latest unifont unicode chart, characters are missing
+MC-108054 – Observer rotates when being udpated, moved and then reloaded
+MC-108216 – Copying then zooming out an explorer map make it lose its structure pointer
+MC-108270 – Wither skeleton spawing quelled by normal skeletons
+MC-108399 – No subtitle for when the totem of undying activates
+From the previous development version
+
+MC-108344 – Left-handed vindicators raise right arm when aggressive
+MC-108348 – Totem of undying is not consumed/destroyed
+MC-108349 – When a sticky piston (facing up with a block on it) is retracted while an entity is standing on it, the entity appears to sink into the ground.
+MC-108354 – Incorrect subtitle when equipping a llama with a chest
+MC-108357 – Naturally generated vindicators axe is missing
+MC-108358 – Crash when 32 or more pistons retract in a single chunk (IllegalArgumentException)
+MC-108378 – Crafting a Zoomed Out Map By a Hotbar Hotkey Won't Update It
+MC-108480 – Johnny Vindicators attempt to attack armor stands
+MC-108525 – shulker_box.png Default resource pack GUI 1 pixel too high (167 vs 166 pixel)
+Private issues
+
+MC-99599 – Server does not test if player is sleeping when receiving CPacketEntityAction.Action.STOP_SLEEPING
+
+
+== 16w42a ==
+16w42a is the twelfth snapshot for Java Edition 1.11, released on October 19, 2016 mainly to fix a bunch of bugs and crashes.
+
+
+=== Changes ===
+Arrows
+
+Now have a crit tag which determines whether the arrow deals critical hit damage.
+Vexes
+
+Now do more damage - their attack damage on Easy has been increased from 3HP to 5HP, on Normal 4HP to 9HP, and on Hard 6HP to 13HP × 6.5.
+
+
+=== Fixes ===
+37 issues fixed
+From released versions before Java Edition 1.11
+
+MC-3367 – Reflecting ghast fireballs is nearly impossible.
+MC-12788 – Custom superflat world GUI graphical glitch with chests/ender chests / trapped chests/beacon blocks,
+MC-46309 – Command feedback doesn't work with @e and no mobs which match the selector.
+MC-46345 – Maps stop updating after going through nether portal / Map update packets ignored by client.
+MC-50156 – WitherSkull / fireball disappears at y >~ 256.
+MC-58795 – Spectator mode teleportation to team member causes crash.
+MC-59144 – A held item replaced by the same kind of item by /replaceitem does not visually update.
+MC-64119 – stat.drop won't increase when player throws items out of their inventory screen.
+MC-73205 – FallingSand glitches upwards.
+MC-79318 – Double piston extender: sand on top falling in between pistons.
+MC-80549 – Slime /entitydata motion causing unkillable slime.
+MC-81731 – Dropped items are doubled in Creative, Survival inventory.
+MC-86163 – When hostile mobs hit you while blocking with shield, sound of taking damage is not played.
+MC-88089 – Two players going down a ladder at the same time makes them stuck or go up.
+MC-90175 – Game crashes with exit code -805306369 (out of memory?) when boats are summoned as a passenger of a boat that is a passenger of a living entity.
+MC-92106 – ThrownPotion not using particles from CustomPotionEffects tag.
+MC-95735 – (Splash) harming and healing potion still applies effect even if it's specified not to.
+MC-97360 – Hitting a bed, sign, or banner displays the "Block broken" caption instead of "Block breaking".
+MC-97692 – Boat riding on an entity riding on an entity.
+MC-98727 – Standing on a boat starves the player extremely quickly.
+MC-99763 – /help command not suggesting tab completion when executed from other entity.
+MC-100260 – Explosion impulse on non-living entities is not attenuated by power, distance, or obstructions.
+MC-102986 – Can place Grass Path at "invalid" locations.
+MC-105845 – Memory usage graph of server GUI not drawing.
+MC-107138 – Shot arrow loses its critical state after reloading.
+MC-108253 – Zombie villagers despawn.
+MC-108664 – Witches that spawn in witch huts don't have PersistenceRequired set to 1.
+MC-108748 – Can't trade with villagers while holding a spawn egg.
+From the Java Edition 1.11 development versions
+
+MC-108081 – Item name shown in /give command feedback has no hoverEvent.
+MC-108351 – No play placed sound and subtitles, when placing blocks on cake.
+MC-108405 – Maps break after leaving the End.
+From the previous development version
+
+MC-108676 – Skeletons and wither skeletons can spawn anywhere in the Nether.
+MC-108685 – The corners of the offhand hotbar slot have transparent textures.
+MC-108718 – Illagers and Vexes not randomly looking at the player when not aggressed.
+MC-108727 – Thorns enchantment has no effect on vexes.
+MC-108729 – When giving yourself items with negative durability, the game crashes.
+MC-108752 – Elder Guardians spawned from spawn egg/command do not have full health.
+
+
+== 16w43a ==
+16w43a is the thirteenth snapshot for Java Edition 1.11, released on October 27, 2016.
+
+
+=== Additions ===
+
+
+==== World generation ====
+Woodland mansions
+
+Have a new room with lava encased in glass and obsidian, with a diamond block in the middle.
+
+
+==== Gameplay ====
+Death messages
+
+"<player|mob> was squished too much", when suffocated due to the maxEntityCramming gamerule.
+Evocation fangs
+
+Added the [NBT Compound / JSON Object] Owner tag.
+
+
+=== Changes ===
+Fishing rods
+
+Now cast out or reel in when right clicking on fences.
+Loot tables
+
+Villagers, vexes and ender dragons are now able to draw from their own loot tables.
+Observers
+
+Arrows on the top and bottom sides now point towards its output.
+Vexes
+
+Can now cross nether and end portals, and move in water.
+Redstone
+
+Air is no longer given a block update when a redstone current travels through it.
+
+
+=== Fixes ===
+38 issues fixed
+From released versions before Java Edition 1.11
+
+MC-1040 – Tools with Unbreaking enchantment break, disappear from slot then reappear
+MC-2920 – Wrong fishing line calculation
+MC-11449 – Repeaters update very differently
+MC-11877 – Fishing bobber floats a block above water
+MC-47508 – Ridden entities disappear on re-login
+MC-55851 – Leads not rendering when spawned (attached to mob/fencepost) via command block/structure block
+MC-79996 – Blocks like crops and rails are solid to fishing rods.
+MC-80500 – Snow layer placed against the side of another snow layer are placed one block too far out, only when there's a block where snow would go normally
+MC-80782 – Memoryleak caused by Maps; even post reconnect
+MC-87988 – Fishing rod sometimes cannot reel in entities
+MC-93286 – Fishing rod can't pull mob
+MC-94169 – Fishing rod bobber collision error and into the block
+MC-94502 – Pasting numbers in customized world generation text fields does not enable "Defaults" button
+MC-95450 – Some mobs have missing loot tables
+MC-95944 – Fished items doesn't reach player
+MC-96110 – Bobber hitbox is not synchronized
+MC-96205 – Boat still does rowing animation while pressing a and d
+MC-98995 – Birch Forest M biome generation off
+MC-99427 – Fishing bobber sticks to entity sometimes only visually
+MC-100711 – Arrows not able to be picked up when on a changing repeater
+MC-100964 – Resetting demo mode dialog cannot be canceled by button
+MC-102041 – "Skipping Entity with id " message is missing invalid entity id
+MC-103100 – Fishing rods do not always pull in items
+MC-103313 – Hitbox of baby mobs / slime / magma cube / llama are offset for some seconds
+MC-104663 – Fishing particle glitch
+MC-108238 – Teleporting away from leashed entity causes leash knot to be near 0 0 0 client side
+From the Java Edition 1.11 development versions
+
+MC-106082 – Attempting to pull ignited TNT with a fishing rod at long distances rarely works
+MC-106892 – Dragon breath particles aren't reduced on lower particle settings
+MC-107149 – maxEntityCramming death message states "suffocated in a wall"
+MC-107515 – Vex cannot teleport through Nether / End portal
+MC-107818 – Mansion generates with a 4 section room missing
+MC-107844 – Vex has one accidental red dot on its left arm
+MC-107846 – Evocation fangs hurt illagers after reload
+MC-108095 – Llama caravans refuse to pathfind down hills and around obstacles.
+MC-108696 – Observers don't update whatever is being powered through blocks properly.
+MC-108797 – Vex cannot move in water
+MC-108873 – /w, /tell and /msg with you as target outputs incorrect string
+From the previous development version
+
+MC-108897 – Blocks given redstone power do not power nearby redstone until the wire is updated
+
+
+== 16w44a ==
+16w44a is the fourteenth and final snapshot for Java Edition 1.11, released on November 3, 2016, which fixes bugs.
+
+
+=== Changes ===
+Sneaking 
+
+Now prevents drops from heights of more than 0.6 blocks; previously, it was 1 full block or greater.
+
+
+=== Fixes ===
+77 issues fixed
+From released versions before Java Edition 1.11
+
+MC-2334 – Sneaking on shorter than full blocks (chests, enchantment table...) will make you fall nonetheless
+MC-36360 – No player sound when "Friendly Creatures" sounds are turned off
+MC-58812 – Pick-Block and drag will only create a limited number of stacks for an item
+MC-73494 – Translation for white wool and white carpet is incorrect (US)
+MC-86818 – Lingering and splash potions show invalid name in statistics
+MC-87364 – Missing error message for failed scoreboard players tag
+MC-87989 – Wrong line when casting fishing rod in third person view
+MC-89174 – /enchant with any invalid ID displays message "There is no such enchantment with ID 0"
+MC-92105 – Splash and lingering potion ignore Ambient and ShowParticles tag
+MC-94352 – frame drops with active VBOs-setting when breaking blocks
+MC-98922 – Fishing hook / bobber cannot kill itself after 1200 ticks and bounces on land
+MC-99353 – Elytra becomes transparent when wearing enchanted armor
+MC-99598 – Sticky pistons with slime blocks acting crazy
+MC-99980 – Skeleton trap horses can spawn on mushroom islands
+MC-102888 – Stray overlay turns dark blue when wearing enchanted armor
+MC-109277 – Fishing rod bobber has incorrect NBT values
+From the Java Edition 1.11 development versions
+
+MC-105966 – Snapshot incompatible with realms message is missing
+MC-106040 – Command feedback from /testforblock the wrong way around
+MC-106062 – Language pre-selection is set to "English (US)" even with different choice
+MC-106586 – Snowballs duplicate when thrown
+MC-107172 – Hitbox of Marker:true armor stands lets their names now appear above them
+MC-107189 – Elytra still has big model with small mobs/armor stands
+MC-107321 – Marker armor stands can be set on fire
+MC-107550 – Curse of Vanishing book listed in "Miscellaneous" tab
+MC-107555 – /debug command missing decimal places
+MC-107558 – Illager spawn locations keep original block
+MC-107601 – /enchant command doesn't allow to put "Curse of Binding" on skulls or pumpkins
+MC-107623 – Observer instant wire
+MC-107631 – Smooth andesite in woodland mansion is sometimes replaced by default worldgen blocks
+MC-107639 – Shulker box can't be read by comparators if placed by dispensers until block update
+MC-107697 – Llamas spinning
+MC-107760 – Observer activating in odd circumstances
+MC-107796 – When opening the shulker box it makes the shulker glitch back and forth
+MC-107822 – Curse of Binding cannot be applied to elytra in Survival mode.
+MC-107872 – Random cobblestone walls spawn next to mansions
+MC-107882 – Comparator not updating when shulker box behind block is broken
+MC-107948 – Observer block detects distant placement of tripwire hook
+MC-107977 – Item not shown in hand when middle click dragging
+MC-108008 – Hitbox of Marker:1 armor stands lets passengers appear now ABOVE them
+MC-108034 – Wrong armor stand hitbox and hitbox update
+MC-108054 – Observer rotates when being udpated, moved and then reloaded
+MC-108076 – Cartographer villager unlocking explorer map causes HUGE lag
+MC-108109 – Fire doesn't disappear after death
+MC-108127 – TransferCooldown tag gets reset when item enters hopper
+MC-108128 – Chaining too many observer blocks crashes the game
+MC-108159 – Duplicate structure file of woodland mansion room
+MC-108168 – Shulker box isn't rotated correctly with structure block
+MC-108222 – Incorrect value is written for unlimitedTracking tag in map data
+MC-108317 – Inconsistent capitalization "Note block" in subtitles
+MC-108321 – Text does not appear in the action bar while chat is set to hidden
+MC-108373 – Area effect clouds created by exploding creeper ignore ShowParticles and Ambient tag
+MC-108496 – Moving a powered fence gate with a piston doesn't properly update the fence gate
+MC-108521 – Animals have trouble jumping up 1 block when led
+MC-108560 – Inconsistent dropper/dispenser behavior from observer signal
+MC-108616 – "Local Brewery" achievement icon is an uncraftable potion
+MC-108678 – Observer inconsistent signal
+MC-108697 – Observers send out a 2 redstone tick pulse as opposed to 1
+MC-108702 – Observer updates weirdly in reaction to opening/closing chests
+MC-108865 – Fangs cannot be summoned on transparent blocks
+MC-108877 – "Local Brewery" achievement can be obtained improperly
+MC-108945 – The totem of undying appears on relog.
+MC-108952 – Evocation illagers run away from the player or villagers even when on the same team
+MC-109020 – Weird behavior with tagged & markered armor stands.
+MC-109021 – Bursting lingering water bottle produces an effect cloud
+MC-109058 – Shulker bullet, small fireball, wither skull and fireball cannot hurt/hit vex
+MC-109078 – Entities become transparent when armor stand with elytra is rendered
+MC-109086 – Piston extension have missing model textures for structure void
+MC-109150 – Player phases inside block pushed by piston when sneaking.
+MC-109240 – Zombies picking up multiple items but only dropping one
+MC-109283 – Freeze when quitting a level while the /locate command is busy searching
+From the previous development version
+
+MC-109226 – Repeaters and comparators don't update non-solid blocks in front of them
+MC-109255 – Fishing line has unlimited distance
+MC-109256 – Casting fishing rod while looking straight down freezes server
+MC-109269 – Player cannot cast a fishing rod while directly looking up
+MC-109276 – Hopper clock spam empty lines in game output
+MC-109290 – Fishing rod bobber floating in the air (lost the gravity), when the mob died
+MC-109306 – Shulker boxes lose their Lock tag when mined.
+
+
+== 1.11-pre1 ==
+1.11-pre1 is the first and only pre-release for Java Edition 1.11, released on November 8, 2016. This is the final pre-release released in 2016.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Observers
+
+Changed the front (detecting side) texture to be an "observing face".
+Same texture is used for facing up and down, although facing down: points with the top of the face toward north, and when facing up: points with the top of the face toward south.
+The texture is a hybrid of the rejected observer texture () for Pocket Edition, and the previous texture.
+Redstone output side now blinks when it outputs power.
+
+
+==== Items ====
+Enchanted books
+
+Curse of Vanishing, Unbreaking III and Mending now appear in the tools as well as the combat tab of the Creative inventory.
+
+
+==== General ====
+Added a warning message for players using Java 7 or 6.
+Cleaned up translation files to no longer use %d.
+
+
+=== Fixes ===
+18 issues fixed
+From released versions before Java Edition 1.11
+
+MC-96505 – value key in score object for text components does not function
+MC-97354 – Large amount of translations use invalid formatting conversion
+MC-101457 – JSON signs with the score tag don't work.
+MC-103399 – /debug command create empty files
+MC-107848 – Shulker and shulker boxes have dark corners
+From the Java Edition 1.11 development versions
+
+MC-107581 – Animation of totem is affected by "fixed" display setting rotation (and is inverted)
+MC-108270 – Wither skeleton spawing quelled by normal skeletons
+MC-109303 – Hoppers do not pass items back and forth at a regular speed and comparators can not read them correctly
+MC-109507 – Placing Shulker Box at 0 0 0 Causes Client Crash
+MC-109563 – Trapped chests no longer *update* components it powers through the block it's on
+From the previous development version
+
+MC-109566 – Inventory: Single Stack Items don't drop off into a slot when cursor is moving
+MC-109567 – potion, splash_potion, lingering_potion and tipped_arrow show as uncraftable in statistics
+MC-109568 – Cannot drag all held items
+MC-109576 – Curse of Binding in no creative inventory tab anymore
+MC-109577 – Unbreaking and Mending are only listed in Tools creative inventory tab
+MC-109587 – Elytra are sometimes transparent on an armor stand
+MC-109603 – Observers can cause powerable blocks to be stuck on
+MC-109605 – Inverting redstone torches prints "lskdjfldskjf" to log
+
+
+== Notes and references ==
+
+
+== Navigation ==

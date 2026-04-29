@@ -1,0 +1,62 @@
+1.21.11 Pre-Release 4 (known as 1.21.11-pre4 in the launcher) is the fourth pre-release for Java Edition 1.21.11, released on December 1, 2025.
+A separate unobfuscated version of 1.21.11 Pre-Release 4 was released, titled 1.21.11 Pre-Release 4 Unobfuscated (or 1.21.11-pre4_unobfuscated when in the launcher). This is an experimental version released in preparation for obfuscation being removed from Java Edition clients and servers.
+
+
+== Changes ==
+
+
+=== Mobs ===
+Nautilus and zombie nautilus
+
+Dispensers can now equip saddles and nautilus armor on tamed nautiluses and zombie nautiluses.
+Dismounting a nautilus or zombie nautilus while on land no longer places the player inside the nautilus.
+This works given that there is a valid block to place the player on.
+If there is no valid block, the player will be placed inside the nautilus as before.
+Zombie nautilus drops are now affected by Looting.
+
+
+=== General ===
+Creative mode
+
+The attack range extension for players in Creative mode is set to 2 blocks.
+Data pack
+
+The pack format version is now 94.1.
+Item components
+
+minecraft:attack_range: Added fields.
+min_creative_reach: float, the minimum distance in blocks from the Creative Mode attacker to the target to be considered valid.
+Default value: 0.0, valid from 0.0 to 64.0
+max_creative_reach: float, the maximum distance in blocks from the Creative Mode attacker to the target to be considered valid.
+Default value: 5.0, valid from 0.0 to 64.0
+
+
+== Fixes ==
+9 issues fixed
+From released versions before 1.21.11
+
+MC-154651 – Boats and rafts can break off paintings and item frames.
+MC-300588 – Waypoint modifications reset upon death.
+MC-301127 – Music stops and restarts when trying to connect to a server when the music frequency is set to constant.
+MC-302516 – Zombie villagers spawn as the variant matching the biome at 0, 0, 0.
+MC-304385 – Item frames and paintings pop out when in the same space as a stationary happy ghast.
+From the 1.21.11 development versions
+
+MC-302662 – Dismounting a nautilus always places you inside the nautilus.
+MC-302895 – Spears held in the off hand play the charging animation when using items in the main hand.
+MC-304374 – Zombie nautilus drops are not affected by Looting.
+From the previous development version
+
+MC-304547 – Items in the crafter's slots aren't visible.
+
+
+== Videos ==
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

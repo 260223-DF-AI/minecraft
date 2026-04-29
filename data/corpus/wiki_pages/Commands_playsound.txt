@@ -1,0 +1,77 @@
+Plays a specified sound to a player, in a location, and in a specific volume and pitch.
+
+
+== Syntax ==
+Java Edition
+playsound <sound> [<source>] [<targets>] [<pos>] [<volume>] [<pitch>] [<minVolume>]
+Bedrock Edition
+playsound <sound: string> [player: target] [position: x y z] [volume: float] [pitch: float] [minimumVolume: float]
+
+
+== Arguments ==
+JE: <sound>: resource_locationBE: sound: string: basic_string
+
+Specifies the sound to play.
+In Bedrock Edition, must be a string. And it must be a single word that has no space or a double-quoted string (When quoted, \ can be used to escape characters). Should be a sound definition defined in sound_definitions.json (for example, mob.pig.say).
+In Java Edition, must be a resource location for an unregistered content. Should be a Sound Event defined in sounds.json (for example, entity.pig.ambient).
+A sound event may be affiliated with multiple sounds, and the sound that is actually produced is chosen at random from them, modified by their "weight", just as the game normally would. For example, the entity.pig.ambient sound event plays one of several pig sounds at random, because the event has multiple sounds associated with it.
+Resource packs may add their own events to sounds.json; the command successfully plays these. File names are not used by this command; it strictly uses the events defined in sounds.json (which may not even be similar to the original file names and paths), and thus a resource pack adding new sound files must define events for them (this is not necessary when replacing old sounds already defined in events).
+JE: <source>
+
+Specifies the music category and options the sound falls under. Must be master, music, record, weather, block, hostile, neutral, player, ambient, voice, or ui. If omitted, master is used.
+JE: <targets>: entityBE: player: target: CommandSelector<Player>
+
+Specifies the player(s) for whom the sound is going to be played. If not specified, defaults to the player who executes the command.
+Must be a player name, a target selector or a UUID‌[Java Edition  only].  And the target selector must‌[JE  only]/should‌[BE  only] be of player type. In Bedrock Edition, the target selector should be of player type.
+JE: <pos>: vec3BE: position: x y z: CommandPositionFloat
+
+Specifies the position to play the sounds from.
+Must be three-dimensional coordinates with double-precision floating-point number‌[Java Edition  only] or single-precision floating-point number‌[Bedrock Edition  only] elements. Accepts tilde and caret notations.
+JE: <volume>: floatBE: volume: float: float
+
+Specifies the distance that the sound can be heard. If not specified, defaults to 1. For values less than 1, the volume diminishes. For values greater than 1, the sound does not actually grow louder, but its audible range (a 16-block radius at 1) is multiplied by volume. There is always a gradual falloff to silence based on distance from the center of the sphere. For values equal to or less than 0, no player can hear the sound.
+Must be a [Float]Single-precision floating-point number (from -(2-2-23)×2127 (≈-3.4×1038) to (2-2-23)2×127 (≈3.4×1038) ). In Java Edition, it must be greater than or equal to 0.0.
+JE: <pitch>: floatBE: pitch: float: float
+
+Specifies the pitch and speed of the sound. If not specified, defaults to 1.
+Must be a [Float]Single-precision floating-point number (from -(2-2-23)×2127 (≈-3.4×1038) to (2-2-23)2×127 (≈3.4×1038) ). In Java Edition, it must be between 0.0 and 2.0 (inclusive).
+In Java Edition, values less than 0.5 are equivalent to 0.5. Values lower than 1 lower the pitch and increase the duration; values greater than 1 raise the pitch and reduce the duration. The pitch value is a multiplier applied to the frequency, so if a value from 0.5 to 1 is doubled, the pitch goes an octave higher. (See Note block § Usage for converting other intervals to pitch values, but be aware that 1 isn't F♯ for all sound effects.)
+In Bedrock Edition, only values between 0 and 256 work. Values above 256 are equivalent to the default value; values less than 0 default to 1, while values equal to 0 makes the sound inaudible. The value of the pitch is also the value for the speed multiplier, ex. if you set the pitch to 2 then the sound will play at double the pitch and double the speed.
+Notice that in Bedrock Edition, if you try to set a pitch value to a sound, then the speed of playing sound will be changed in turn. And the speed multiplier is just the value of this argument.
+JE: <minVolume>: floatBE: minimumVolume: float: float
+
+Specifies the volume for targets outside the sound's normal audible sphere. If a target is outside the normal sphere, the sound is instead centered some short distance (two blocks away) from the target, and this argument determines its volume. If not greater than 0, targets outside the normal audible sphere cannot hear the sound.
+If not specified, defaults to 0.0.
+Must be a [Float]Single-precision floating-point number (from -(2-2-23)×2127 (≈-3.4×1038) to (2-2-23)2×127 (≈3.4×1038) ). In Java Edition, it must be between 0.0 and 1.0 (inclusive).
+
+
+== Result ==
+
+
+== Output ==
+
+
+== Examples ==
+To play the creeper hissing sound 3 blocks behind the nearest player:
+/execute as @p at @s run playsound entity.creeper.primed hostile @s ^ ^ ^-3 1 0.5‌[Java Edition  only]
+/execute as @p at @s run playsound note.creeper @s ^ ^ ^-3 1 0.5‌[Bedrock Edition  only]
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== See also ==
+/stopsound — Stops a sound.
+
+
+== External links ==
+"/playsound Command"     – Microsoft Learn, October 11, 2023.
+
+
+== Navigation ==

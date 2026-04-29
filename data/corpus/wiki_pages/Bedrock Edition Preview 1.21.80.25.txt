@@ -1,0 +1,201 @@
+Beta 1.21.80.25 (ChromeOS, Android) or Preview 1.21.80.25 (Windows, iOS, iPadOS, Xbox, PlayStation) is the fourth beta/Preview version for Bedrock Edition 1.21.80, released on April 3, 2025, which adds dried ghasts, ghastlings, happy ghasts, harnesses, Vibrant Visuals, and fixes bugs.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Flowers, Bamboo, Hanging Roots, Mangrove Propagule, Nether Sprouts, Coral Fans, Coral plants, double tall plants, Pointed Dripstone, Tall Grass, and Dry Grass
+
+They now have the same random offset range and values as Java Edition.
+
+
+=== General ===
+Settings
+
+Enabled Filter Profanity toggle on PlayStation platforms.
+
+
+=== Technical ===
+API
+
+Moved enum Difficulty from beta to v1.19.0.
+World
+Moved getDifficulty(): Difficulty from beta to v1.19.0.
+Moved setDifficulty(difficulty: Difficulty): void from beta to v1.19.0.
+Moved the following Player methods from beta to v1.19.0.
+Renamed BoundingBox to BlockBoundingBox and released from beta to v1.19.0.
+Renamed BoundingBoxUtils to BlockBoundingBoxUtils.
+Moved dimension.placeFeature and dimension.placeFeatureRule from beta to v1.19.0.
+Biomes
+
+Removed remainder of support for unused minecraft:consolidated_features and minecraft:legacy_world_generation_rules JSON components.
+Blocks
+
+New render_method type available for minecraft:material_instances. They are meant to support the same behavior of block turning opaque in the far rendering like Leaves in contrast to other disappearing like bamboo stalk.
+render_method: blend_to_opaque
+render_method: alpha_test_to_opaque
+render_method: alpha_test_single_sided_to_opaque
+The field tint_method in the minecraft:map_color component no longer requires the "upcoming creator features" toggle.
+The field tint_method in the minecraft:destruction_particles component no longer requires the "upcoming creator features" toggle.
+The field tint_method in the minecraft:material_instances" component no longer requires the "upcoming creator features" toggle.
+Components
+
+Introduced a drop_item_y_offset parameter to the minecraft:interact component.
+Defines a custom y-axis offset for when an item is dropped.
+Requires drop_item_slot to be specified.
+The minecraft:leashable component's on_unleash trigger triggers on the leash breaking with format version 1.21.80 and later.
+The old behavior is still available to opt in to by setting on_unleash_interact_only to true.
+Entity Filters
+
+Added new entity filter has_equipment_tag, works like has_equipment but takes an item tag instead of an item name.
+Graphical
+
+Added support for multiple locators for use with leashes for rendering multiple ropes between two entities.
+multi_lead_n:
+Where n = {1, 2, 3, 4} defines locators when the entity is leashed to a different entity.
+Used if and only if it has a corresponding multi_lead_hold_n and the number n is equal on the two entites.
+multi_lead_hold_n
+Where n = {1, 2, 3, 4} defines locators where the entity is leashing a different entity.
+Used if and only if it has a corresponding multi_lead_n and the number n is equal on the two entites.
+lead
+is set to origin if it is not defined in the geo.
+lead_hold
+is set to origin if it is not defined in the geo.
+Items
+
+Bundles' open icons are now specified via IconItemComponent. This addresses the issue where a missing texture would appear for an opened custom Bundle. Bundle icon paths have also now be separated into unique keys in item_texture.json.
+Molang
+
+Added query.has_any_leashed_entity_of_type which takes a list of entity identities and checks if the actor has any of the listed entities leashed. Available on both the client and the server.
+Usage: query.has_any_leashed_entity_of_type( 'minecraft:sheep', 'minecraft:creeper' )
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs", "Custom Components V2", "Drop 2 2025", "Experimental Creator Camera Features" and "Vibrant Visuals" experimental toggles.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Dried Ghast
+
+Found in Nether fossils in soul sand valleys.
+Can be crafted with 1 bone block and 8 ghast tears.
+
+When waterlogged, it undergoes 3 states over about 20 minutes until it spawns a ghastling mob.
+Makes sounds and shows particles depending on state.
+If mined during the waterlogging, it will revert to its "dry" state regardless of what state it has reached during waterlogging.
+Will revert states back to its initial "dry" state when it is taken away from being waterlogged, using the same time scale.
+
+
+==== Items ====
+ Harness
+
+Crafted out of 3 leather, 2 glass and 1 wool, the harness will have the same color as the wool used when crafting.
+
+Can be re-dyed.
+
+Can only be equipped on a happy ghast.
+Allows up to 4 players to mount the happy ghast.
+Can be removed from the happy ghast using shears but only when no players are mounted.
+ Happy Ghast Spawn Egg
+
+Used to spawn a happy ghast.
+
+
+==== Mobs ====
+ Happy Ghast
+
+A rideable entity, which can be equipped with a harness and ridden by up to four players.
+Can be stood on, similar to a Shulker.
+When not being ridden, will approach players holding snowballs.
+ Baby versions are called ghastlings.
+Spawned after a dried ghast gets hydrated in water.
+Can be fed snowballs to speed up their growth.
+Can be summoned using the command: /summon happy_ghast ~ ~ ~ ~ ~ minecraft:spawn_baby.
+
+
+==== Gameplay ====
+Game rules
+
+Added the game rule command locatorBar to enable or disable the locator bar feature.
+Vibrant Visuals
+
+The Deferred Technical Preview is now available outside of Minecraft Preview using the Vibrant Visuals experiment.
+New vanilla PBR textures and deferred lighting configurations have been added.
+It is customizable and has two different built-in forms: Favor Performance, and Favor Visuals. Specific feature and visual settings can also be adjusted by expanding "Vibrant Visuals Options".
+
+
+==== Technical ====
+API
+
+@minecraft/server 2.0.0-beta
+Added CustomCommandOrigin to custom command script callback.
+Added CustomCommandSource enum.
+Renamed CustomCommandPermissionLevel to CommandPermissionLevel.
+Renamed CustomCommandParamType.Position to CustomCommandParamType.Location.
+BlockCustomComponent now take an optional CustomComponentParameters object for Custom Components V2 experiment as a second argument to event callbacks in 2.0.0-beta.
+CustomComponentParameters added to 2.0.0-beta.
+params property added to CustomComponentparameters to 2.0.0-beta.
+ItemCustomComponent now take an optional CustomComponentParameters object for Custom Components V2 experiment as a second argument to event callbacks in 2.0.0-beta.
+EntityFrictionModifierComponent has been changed to read-only in version 2.0.0-beta.
+@mincraft/server-admin
+Added AsyncPlayerJoinBeforeEvent
+Added beforeEvents.asyncPlayerJoin, AsyncPlayerJoinBeforeEvent, and AsyncPlayerJoinBeforeEventSignal to allow creators to delay players joining the world.
+AsyncPlayerJoinBeforeEventSignal.subscribe is different than other events because the callback it accepts returns a promise. Once the promise is resolved, the player will join the world, or if the promise is rejected the player will be disconnected without joining the server. The player will be at the loading screen while the promise is pending.
+Blocks
+
+When Custom Components V2 experiment is enabled, minecraft:custom_components component is deprecated in 1.21.80 and higher format versions.
+When Custom Components V2 experiment is enabled, custom components are flattened inline with other components and allow parameters in 1.21.80 and higher format versions. Example:
+
+Cameras
+
+Changed approach for the easing between moving targets under the Experimental Creator Camera Features toggle.
+Experiments
+
+Added Drop 2 2025 experiment.
+Added Custom Components V2 experiment.
+Added Vibrant Visuals experiment.
+Graphical
+
+Added a new lighting model for clouds in the Deferred Technical Preview. The lighting parameters can not be configured at this time.
+Increased the range of cloud rendering in the Deferred Technical Preview.
+Added pixelated reflections to the Deferred Technical Preview. This new effect will cause reflections to align to the texel grid of textures in the world.
+Added pixelated shadows to the Deferred Technical Preview. This new effect can be controlled with the new shadows JSON schema, shadows/global.json. This file adds new settings that control the style of shadows in the game. Available parameters are shadow_stlye, which can be soft_shadows or blocky_shadows, and texel_size. soft_shadows are the default style, while blocky_shadows results in shadows that are pixelated in appearance. When blocky_shadows are enabled, texel_size controls the size of the pixelation effect. texel_size should be equivalent to the block texture size in order to achieve a one to one mapping between the pixels in a texture and the pixelated effect created by enabling blocky_shadows, but this is not required. An example version of what shadows/global.json could look like is as follows:
+
+Items
+
+When Custom Components V2 experiment is enabled, minecraft:custom_components component is deprecated in 1.21.80 and higher format versions.
+When Custom Components V2 experiment is enabled, custom components are flattened inline with other components and allow parameters in 1.21.80 and higher format versions. Example:
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Ghast
+
+Updated the ghast texture to be higher resolution. This makes it in line with the new happy ghast.
+
+
+== Fixes ==
+7 issues fixed
+From released versions before 1.21.80
+
+MCPE-121484 – Shields do not take durability damage from explosions
+MCPE-166344 – Farmer villagers won't harvest grown crops - they just stare at them
+MCPE-186699 – Setting the gamerule doLimitedCrafting to true does not stop players from crafting unknown recipes
+MCPE-189739 – Custom skin set to Wide model changes to Slim model after restarting the game
+MCPE-190625 – Credits music does not plays when the game is paused
+Other
+
+Fixed a bug that a player can sprint in water faster than swimming.
+Fixed a bug where incorrect Json errors would appear for valid item texture references.
+
+
+== References ==
+
+
+== Navigation ==

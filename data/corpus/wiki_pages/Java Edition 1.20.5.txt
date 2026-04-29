@@ -1,0 +1,1624 @@
+1.20.5, the release of Armored Paws, is a game drop for Java Edition released on April 23, 2024. It adds armadillos, wolf armor, new wolf variants, redoes how items store data, along with fixing many bugs. Additionally, it updates the Update 1.21 Experiment, including the addition of the bogged, the vault, breeze rods, wind charges, the mace, and ominous events. 
+This is the first version released in 2024, and the first release version of Java Edition to require a 64-bit operating system and Java 21 or later.
+
+
+== Additions ==
+
+
+=== Items ===
+ Armadillo scute
+
+Dropped by armadillos periodically and when brushed.
+Dispensers can be used to brush armadillo scutes off armadillos.
+Can be used to craft and repair wolf armor.
+Spawn eggs
+
+ Armadillo spawn egg
+ Wolf armor
+
+Crafted with 6 armadillo scutes in a harness shape.
+Protects wolves from most damage sources until the armor loses all durability and breaks.
+Provides an armor value of 11 ( × 5.5).
+Shows signs of increased breakage as durability goes down.
+Using wolf armor on an adult tamed wolf equips the armor on the wolf, and using shears makes it drop the armor.
+When the wolf gets sheared, the player is granted the Shear Brilliance advancement.
+Only a wolf's owner can put on / shear off wolf armor. That also excludes dispensers.
+The wolf's owner can repair the armor with armadillo scutes while it is equipped on the wolf.
+If a wolf dies while wearing armor, it drops the armor.
+Wolf armor can be dyed similarly to leather armor.
+
+
+=== Mobs ===
+ Armadillo
+
+The winner of Minecraft Live 2023's Mob Vote.
+A passive mob that spawns in savanna and badlands biomes with the same frequency as chickens and pigs.
+Has 12HP × 6 health points.
+Can drop armadillo scutes either periodically or when brushed, but drops no loot when killed.
+Armadillos drop scutes at around the same rate as chickens lay eggs.
+Brushing takes 16 durability from the brush.
+Can be bred with spider eyes.
+If an armadillo detects a threat, it rolls up.
+Threats include:
+A player sprinting.
+A player in a vehicle or mounted.
+Anyone who has been attacked by someone recently.
+Undead mobs.
+Special cases where an armadillo doesn't roll up include when it is:
+Fleeing.
+In water or in the air.
+On a lead.
+When an armadillo is rolled up it cannot walk nor eat, and is not tempted by food. Additionally, it is protected by its shell, causing it to take reduced damage and completely negating damage from weaker attacks.
+While rolled up, armadillo continuously scans for threats. If no threats are detected for 3 seconds (60 ticks), it unrolls. Armadillos peek out to see if “the coast is clear” before unrolling.
+
+Wolf
+
+Added 8 new wolf variants. There are now 9 wolf variants, including the original pale wolf.
+ The pale wolf spawns in the taiga biome.
+ The rusty wolf spawns in the sparse jungle.
+ The spotted wolf spawns in the savanna plateau.
+ The black wolf spawns in the old growth pine taiga.
+ The striped wolf spawns in the wooded badlands.
+ The snowy wolf spawns in the grove.
+ The ashen wolf spawns in the snowy taiga.
+ The woods wolf spawns in the forest.
+ The chestnut wolf spawns in the old growth spruce taiga.
+Wolves spawned with the wolf spawn egg spawn as the variant associated with the biome the egg is used in. They default to pale wolf in any other biome.
+All wolves spawned before 1.20.5 are pale wolves and continue to be pale wolves.
+The new variants combined with the ability to dye a wolf's armor and collar, there are effectively 2,415,919,248 (2.4 billion) distinct wolves, which is 2,415,919,232 more than the 16 wolves that used to be available. Therefore, this update added 2,415,919,232 distinct wolves. See Wolf § Trivia for more details.
+
+
+=== Command format ===
+/transfer
+
+New command that triggers a transfer of a player to another server.
+Only exists on dedicated servers.
+Syntax: /transfer <hostname> [<port>] [<players>]
+hostname: String describing the hostname of the server to connect to.
+port: Integer denoting the port number of the server to connect to.
+If omitted, 25565 is used.
+players: The players to transfer.
+If omitted, @s is used.
+Item modifiers
+
+Added minecraft:copy_components function.
+Copies components from a specified source onto an item.
+This is now used in the Vanilla pack in place of the minecraft:copy_name and minecraft:copy_nbt functions.
+conditions: list of conditions (default: []):
+Conditions to check before applying the function.
+source: source type to pull from.
+Currently, can only and must be "block_entity".
+include: optional, list of components to copy.
+If omitted, all components are copied.
+exclude: optional, list of components to exclude.
+If omitted, defaults to an empty list.
+Added minecraft:set_components function.
+Adds or replaces the given component on the input item.
+conditions: list of conditions (default: []):
+Conditions to check before applying the function.
+components: map of component id to component value (format varied by id).
+Components with a ! prefix (e.g. "!minecraft:damage": {}) cause this component to be removed.
+Added filtered loot function.
+Applies sub-function only to items that match item predicate.
+Fields:
+conditions - list of conditions to filter this function.
+item_filter - item predicate used to match items.
+modifier - functions to apply to matching items.
+Added modify_contents loot function.
+Apply modifier function to every item inside a component.
+If component does not exist, it is not be added.
+Fields:
+conditions - list of conditions to filter this function.
+component - target component.
+Allowed values: container, bundle_contents, charged_projectiles.
+modifier - function or list of functions to be applied to every item inside container
+Added set_book_cover loot function.
+New function for setting the cover details of the minecraft:written_book_content component. If present, any pages in the book are left untouched.
+Fields:
+conditions: list of conditions (default: []):
+Conditions to check before applying the function
+title: optional filterable text (same format as title on the minecraft:written_book_content component):
+The title to set
+If omitted, the original title is kept (or an empty string is used if there was no component)
+author: optional string:
+The author to set
+If omitted, the original author is kept (or an empty string is used if there was no component)
+generation: optional integer [0; 3]:
+The generation value to set
+If omitted, the original generation is kept (or 0 is used if there was no component)
+Added set_custom_model_data loot function.
+Sets custom_model_data component.
+Fields:
+conditions - list of conditions to filter this function.
+value - integer number provider.
+Added set_fireworks loot function.
+New function for setting the details of the minecraft:fireworks component.
+Fields:
+conditions: list of conditions (default: []):
+Conditions to check before applying the function
+flight_duration: Optional integer, 0-255:
+The flight duration measured in number of gunpowder.
+If omitted, the flight duration of the item is left untouched - or set to 0 if the component did not exist before.
+explosions: List of firework_explosion data - same format as the explosion field in the minecraft:fireworks component:
+The explosion data to set
+mode: enumerated value deciding function for explosions:
+replace_all: fully replace the explosions list
+replace_section: replace a section of the explosions. Arguments:
+offset: optional non-negative integer:
+Start of replaced range.
+If omitted, 0 is used.
+size: optional non-negative integer:
+Size of range to be replaced in explosions.
+If omitted, the size of explosions field is used.
+insert: insert explosions, moving existing explosions to after the inserted section. Arguments:
+offset: optional non-negative integer:
+Index before which explosions are inserted.
+If omitted, 0 (before first explosion) is used.
+append: append explosions at the end of the list
+Fields explosions and mode are grouped together as a sub-object.
+{ "explosions": <list>, "mode": <mode>, <mode-dependent fields>} becomes {"explosions": {"values": <list>, "mode": <mode>, <mode-dependent fields>}}.
+explosions field is now optional, while value field inside it is now mandatory.
+Added set_firework_explosion loot function.
+New function for setting the details of the minecraft:firework_explosion component.
+Fields:
+conditions: list of conditions (default: []):
+Conditions to check before applying the function
+shape: optional Explosion Shape:
+The explosion shape to set
+If omitted, the original shape is kept (or small_ball is used if there was no component)
+colors: optional integer array, RGB values:
+List of initial particle colors to replace the ones on the existing explosion with
+If omitted, the original colors are kept (or [] is used if there was no component)
+fade_colors: optional integer array, RGB values:
+List of fade-to particle colors to replace the ones on the existing explosion with
+If omitted, the original colors are kept (or [] is used if there was no component)
+trail: optional boolean:
+Set whether the explosion should have a trail or not
+If omitted, the original has_trail value is kept (or false is used if there was no component)
+twinkle: optional boolean:
+Set whether the explosion should have a twinkle or not
+If omitted, the original has_twinkle value is kept (or false is used if there was no component)
+Added set_item loot function.
+Replaces item type of item stack without changing count and components.
+Fields:
+conditions - list of conditions to filter this function.
+item - new item type.
+Added set_writable_book_pages loot function.
+New function for manipulating the pages of the minecraft:writable_book_content component.
+Fields:
+conditions: list of conditions (default: []):
+Conditions to check before applying the function
+pages: list of Filterable strings (same format as pages on the minecraft:writable_book_content component):
+The pages to apply
+mode: enumerated value deciding function:
+replace_all: fully replace the book contents
+replace_section: replace a section of the book. Arguments:
+offset: optional non-negative integer:
+Start of replaced range
+If omitted, 0 is used
+size: optional non-negative integer:
+Size of range to be replaced in book
+If omitted, the size of pages field is used
+insert: insert pages, moving existing pages to after the inserted section. Arguments:
+offset: optional non-negative integer:
+Index before which pages are inserted
+If omitted, 0 (before first page) is used
+append: append pages at the end of the book
+Added set_written_book_pages loot function.
+New function for manipulating the pages of the minecraft:written_book_content component. Same format as set_writable_book_content but the pages field contains filterable Components instead of Strings (same format as pages on the minecraft:writable_book_content component), and is a JSON Object rather than a string containing JSON.
+Any cover data is left untouched, and the page content components are set to resolve next time a player opens the book.
+Added toggle_tooltips loot function.
+This function can be used to modify item component tooltip visiblity.
+It works by setting fields like show_in_tooltip without changing other values.
+Format: toggles - a map of supported item component type to boolean value.
+Supported components: trim, dyed_color, enchantments, stored_enchantments, unbreakable, can_break, can_place_on, attribute_modifiers.
+Example: {function:"toggle_tooltips","toggles":{"enchantments":false}} hides enchantments tooltip.
+Loot tables
+
+Added storage loot number provider to access values from command storage.
+This number provider is able to access numeric values from command storage directly.
+If selected storage does not exist or tag selected by path is not numeric or does not exist, provider returns 0.
+Fields:
+storage: namespaced id of command storage.
+path: NBT path to field.
+Added new loot table type minecraft:equipment.
+Has required parameters of this_entity and origin.
+this_entity: the mob that is about to be given equipment.
+origin: the position of the mob.
+Added optional equipment_loot_table to the spawn data present in the SpawnPotentials of monster spawners and spawn_potentials of trial spawner configs.
+If present, rolled items from the specified loot table are equipped to the mob that spawns.
+
+
+=== Gameplay ===
+Advancements
+
+Added four new advancements:
+
+Added the default_block_use advancement trigger, which triggers due to the default interaction of a block by a player, such as opening a door.
+Added the any_block_use advancement trigger, which triggers due to any type of interaction with a block by a player, such as using an item on the block or its default usage.
+Added the crafter_recipe_crafted advancement trigger, which triggers when a crafter ejects a successfully crafted item into the world.
+The player entity predicate matches the player who is nearby.
+Has a recipe_id condition which is the ID of the recipe being crafted.
+Has an optional ingredients condition which is a list of item predicates matching the ingredients that form the recipe being crafted.
+Added the fall_after_explosion advancement trigger, which triggers when a player begins falling after being knocked upwards by an explosion or wind burst
+The player entity predicate matches the player who is falling.
+Has an optional start_position condition which is a location predicate matching the position the player was at when they were hit by the explosion or burst.
+Has an optional distance condition which is a distance predicate matching how far the player must be from start_position to cause the criterion to be granted.
+Has an optional cause condition which is an entity predicate matching the entity which caused the explosion or burst to happen.
+
+
+=== Gameplay ===
+Advancements
+
+Armadillos are now required for the "Two by Two" advancement.
+The "The Parrots and the Bats" advancement can be granted by breeding armadillos now.
+Creative mode
+
+Ctrl+pick blocking a renamed block (such as a chest) in Creative mode now gives a renamed item.
+Effects
+
+ Infested
+Affected entities have a 10% chance to spawn 1-2 silverfish when hurt.
+Silverfish spawn at the center of the entity's bounding box and fling out in the direction the entity is facing.
+Silverfish cannot get this affect.
+ Oozing
+Affected entities spawn two slimes upon death.
+Slimes only spawn in a given 5x5x5 area up to the max entity cramming count.
+Slimes cannot get this effect.
+ Raid Omen
+A variant that Bad Omen can transform into if the player enters a village.
+It has a duration of 30 seconds.
+Once the Raid Omen expires, a raid starts at the location the player gained the Raid Omen.
+ Trial Omen
+A variant that Bad Omen can transform into if the player is within detection range of a trial spawner that is not ominous.
+The Trial Omen has a duration of 15 minutes multiplied by the transformed Bad Omen's level.
+Players that have Trial Omen are surrounded by ominous particles.
+ Weaving
+Affected entities spread 2-3 cobweb blocks upon death.
+Players are affected by the movement buff through cobwebs, affecting 50% of their normal speed instead of 25%.
+ Wind Charged
+Affected entities emit a wind burst upon death.
+Enchantments
+
+Three new enchantments have been introduced, though only obtainable via commands.
+Breach
+Rare enchantment, accessible in the enchanting table and on enchanted books in loot.
+Has 4 levels.
+Maces enchanted with Breach reduce the effectiveness of armor on the target.
+The effectiveness of the armor is reduced by 15% per Breach level.
+Density
+Common enchantment, accessible in the enchanting table and on enchanted books in loot.
+Has 5 levels.
+Maces enchanted with Density do more damage per fallen block per Density level.
+Damage dealt per fallen block is increased by 1 per level of Density.
+Wind Burst
+Unique enchantment which can only be found in ominous vaults.
+Has 3 levels.
+Maces enchanted with Wind Burst emit a burst of wind upon hitting an enemy, launching the attacker upward and enabling the linking of smash attacks one after the other.
+Each level bounces the attacker higher up in the air; however any level above the default maximum of 3 obtained through commands makes the player simply lose all downward momentum and begin falling again, without gaining any upward momentum.
+
+
+=== General ===
+Attributes
+
+Added generic.fall_damage_multiplier attribute to multiply overall fall damage amount.
+Default is 1, and the valid range is from 0 to 100.
+Added generic.gravity attribute that controls blocks/tick^2 acceleration downward.
+Default is 0.08, and the valid range is from -1 to +1.
+Added generic.safe_fall_distance attribute to control the fall distance after which the entity takes fall damage.
+Default is 3, and the valid range is from -1024 to +1024.
+Added the generic.scale attribute.
+Allows changing the size of any mob to anywhere between 0.0625 and 16 times their default size.
+Added the generic.step_height attribute.
+Determines the max height in blocks where a mob can walk above without jumping.
+Default is 0.6, and the valid range is from 0 to 10.
+Added player.block_break_speed attribute that acts as a multiplier over block breaking speed for players.
+The valid range is from 0 to 1024.
+Added the player.block_interaction_range and player.entity_interaction_range attributes.
+Determines the maximum range a player can interact with blocks and entities, respectively.
+They both range between 0 and 64, with the default value being 4.5 for blocks and 3 for entities.
+Entity predicate
+
+Added entity sub-predicate slots, used to check single or multiple slots on any entity.
+For slot ranges, only one slot needs to match for whole entry to pass
+The field contains a map of slot names (same as ones used in item commands) to item predicate
+Example:
+
+Added raider sub entity predicate.
+New sub-predicate has been added to match raidersFields:
+has_raid - Match whether the raider is in an active raid.
+is_captain - Match whether the raider is a captain.
+Game rule
+
+Added spawnChunkRadius to set the size of the spawn chunks.
+Defaults to 2, equivalent to 3×3 entity ticking chunks.
+Possible values are 0 to 32, where 0 completely disables the spawn chunks and 10 is equivalent to the functionality before this change.
+Inventory
+
+Added new slot names:
+container.*: contains container.0 to container.53.
+hotbar.*: contains hotbar.0 to hotbar.8.
+inventory.*: contains inventory.0 to inventory.26.
+enderchest.*: contains enderchest.0 to enderchest.26.
+villager.*: contains villager.0 to villager.7.
+horse.*: contains horse.0 to horse.14.
+weapon.*: contains weapon.mainhand, and weapon.offhand.
+armor.*: contains armor.head, armor.chest, armor.legs, armor.feet, and armor.body.
+player.cursor: item held by player on screen except Creative mode.
+player.crafting.0, player.crafting.1, player.crafting.2, player.crafting.3, and player.crafting.*: player's crafting slots
+Loot tables
+
+Added gameplay/panda_sneeze loot table for drops when pandas sneeze.
+Options
+
+Added "Menu Background Blurriness" in accessibility settings.
+Defaults to 50%.
+Particles
+
+Added the following particle types: infested, item_cobweb, small_gust, raid_omen, trial_omen, trial_spawner_detection_ominous, ominous_spawning, and vault_connection.
+Servers
+
+Added transfer packets.
+Custom servers can now request that clients connect to another server with a new packet.
+When a client is transferred, it connects to the target server with a new transfer intent (id 3).
+By default, servers do not accept incoming transfers and disconnect the client.
+This can be changed by setting the accepts-transfers property to true in the server.properties file.
+Resource packs are maintained across transfers.
+In the case of a transfer, custom servers can skip authentication with a new flag.
+Added cookie packets.
+Cookie packets allow custom servers to request and store data on a client.
+Each cookie may be up to 5 KiB in size.
+Cookies may be requested during login, configuration and play phases — but only stored during the configuration and play phases.
+Cookies are persisted across server transfers but are not persisted when the player disconnects.
+This allows servers to pass along information such as authentication or custom game data to the new server.
+Added an option to configure how region file compression algorithm is handled on dedicated servers.
+Added a dedicated server configuration property region-file-compression with 3 possible values:
+deflate, the default option. Uses the old algorithm.
+lz4 uses LZ4 algorithm, which requires less CPU time to compress and decompress but uses more disk space.
+none does not compress the data.
+Consumes significantly more space and requires significant time to read and write, even though CPU is used less.
+Might make sense together with filesystem level compression.
+Changing the compression algorithm does not automatically recompress the world.
+New or updated chunks use the newly configured algorithm, but the old ones stay in the previous format.
+Added a reserved region file compression id for third-party servers to use for custom compression implementations.
+Compression id 127 can now be used for custom implementations of region file compression.
+When used, the version id must be followed by a namespaced string representing the custom algorithm used.
+Tags
+
+Added the following block tags:
+#armadillo_spawnable_on: contains #animals_spawnable_on, #badlands_terracotta, red_sand, and coarse_dirt
+Controls which blocks the armadillo can spawn on.
+#badlands_terracotta: contains terracotta, white_terracotta, yellow_terracotta, orange_terracotta, red_terracotta, brown_terracotta, and light_gray_terracotta
+#does_not_block_hoppers: contains beehive, and bee_nest
+Controls which blocks never disable a hopper when placed above one.
+#incorrect_for_wooden_tool, #incorrect_for_gold_tool, #incorrect_for_stone_tool, #incorrect_for_iron_tool, #incorrect_for_diamond_tool, and #incorrect_for_netherite_tool
+These tags combine the existing #needs_diamond_tool, #needs_iron_tool, and #needs_stone_tool tags for each specific tool tier.
+Added the following damage type tag:
+#bypasses_wolf_armor: contains #bypasses_invulnerability, cramming, drown, dry_out, freeze, in_wall, indirect_magic, magic, outside_border, starve, thorns, and wither
+Controls which damage types bypass wolf armor.
+#is_player_attack: contains player_attack
+For attacks performed by the player.
+Added the following enchantment tag:
+#tooltip_order: contains binding_curse, vanishing_curse, riptide, channeling, wind_burst, frost_walker, sharpness, smite, bane_of_arthropods, impaling, power, density, breach, piercing, sweeping_edge, multishot, fire_aspect, flame, knockback, punch, protection, blast_protection, fire_protection, projectile_protection, feather_falling, fortune, looting, silk_touch, luck_of_the_sea, efficiency, quick_charge, lure, respiration, aqua_affinity, soul_speed, swift_sneak, depth_strider, thorns, loyalty, unbreaking, infinity, and mending
+Controls which order Enchantments are listed in tooltips.
+Added the following entity type tags:
+#aquatic: contains axolotl, cod, dolphin, elder_guardian, glow_squid, guardian, pufferfish, salmon, squid, tadpole, tropical_fish, and turtle
+#arthropod: contains bee, endermite, silverfish, spider, and cave_spider
+#ignores_poison_and_regen: contains #undead
+Controls which entities cannot be affected by Poison and Regeneration effects.
+#illager: contains evoker, illusioner, pillager, and vindicator
+#illager_friends: contains #illager
+Controls which entities illagers consider allies (unless on a different team).
+#inverted_healing_and_harm: contains #undead
+Controls which entities that have inverted meanings of the Healing and Harming effects.
+#not_scary_for_pufferfish: contains cod, dolphin, elder_guardian, glow_squid, guardian, pufferfish, salmon, squid, tadpole, tropical_fish, and turtle
+Controls which entities do not cause pufferfish to puff.
+#redirectable_projectile: contains fireball, wind_charge, and breeze_wind_charge
+Controls projectiles which can be redirected by player attacks and projectiles toward the direction the player is looking.
+#sensitive_to_bane_of_arthropods: contains #arthropod
+Controls which entities are sensitive to Bane of Arthropods.
+#sensitive_to_impaling: contains #aquatic
+Controls which entities are sensitive to Impaling.
+#sensitive_to_smite: contains #undead
+Controls which entities are sensitive to Smite.
+#wither_friends: contains #undead
+Controls which entities the wither does not target and which cannot harm the wither.
+Added the following item tags:
+#chest_armor: contains leather_chestplate, chainmail_chestplate, golden_chestplate, iron_chestplate, diamond_chestplate, and netherite_chestplate
+#dyeable: contains leather_helmet, leather_chestplate, leather_leggings, leather_boots, leather_horse_armor, and wolf_armor
+#enchantable/foot_armor: contains #foot_armor
+#enchantable/leg_armor: contains #leg_armor
+#enchantable/chest_armor: contains #chest_armor
+#enchantable/head_armor: contains #head_armor
+#enchantable/armor: contains #enchantable/foot_armor, #enchantable/leg_armor, #enchantable/chest_armor, and #enchantable/head_armor
+#enchantable/weapon: contains #swords, #axes, and mace
+#enchantable/sword: contains #swords
+#enchantable/fire_aspect: contains #enchantable/sword, and mace
+#enchantable/sharp_weapon: contains #swords, and #axes
+#enchantable/mining: contains #axes, #pickaxes, #shovels, #hoes, and shears
+#enchantable/mining_loot: contains #axes, #pickaxes, #shovels, and #hoes
+#enchantable/fishing: contains fishing_rod
+#enchantable/trident: contains trident
+#enchantable/bow: contains bow
+#enchantable/crossbow: contains crossbow
+#enchantable/equippable: contains #foot_armor, #leg_armor, #chest_armor, #head_armor, elytra, #skulls, and carved_pumpkin
+#enchantable/durability: contains #foot_armor, #leg_armor, #chest_armor, #head_armor, elytra, shield, #swords, #axes, #pickaxes, #shovels, #hoes, bow, crossbow, trident, mace, flint_and_steel, shears, brush, fishing_rod, carrot_on_a_stick, and warped_fungus_on_a_stick
+#enchantable/vanishing: contains #enchantable/durability, mace, compass, carved_pumpkin, and #skulls
+#foot_armor: contains leather_boots, chainmail_boots, golden_boots, iron_boots, diamond_boots, and netherite_boots
+#head_armor: contains leather_helmet, chainmail_helmet, golden_helmet, iron_helmet, diamond_helmet, netherite_helmet, and turtle_helmet
+#leg_armor: contains leather_leggings, chainmail_leggings, golden_leggings, iron_leggings, diamond_leggings, and netherite_leggings
+#meat: contains beef, chicken, cooked_beef, cooked_chicken, cooked_mutton, cooked_porkchop, cooked_rabbit, mutton, porkchop, rabbit, and rotten_flesh
+This is not used by the game directly, but may be included by other tags.
+#skulls: contains player_head, creeper_head, zombie_head, skeleton_skull, wither_skeleton_skull, dragon_head, and piglin_head
+#armadillo_food, #bee_food, #camel_food, #cat_food, #chicken_food, #cow_food, #frog_food, #goat_food, #hoglin_food, #horse_food, #horse_tempt_items, #llama_food, #llama_tempt_items, #ocelot_food, #panda_food, #parrot_food, #parrot_poisonous_food, #pig_food, #rabbit_food, #sheep_food, #strider_food, #strider_tempt_items, #turtle_food, and #wolf_food
+These tags control which items can be fed to or tempt the corresponding mobs.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Cobweb
+
+Added unique sounds.
+Grindstone
+
+No longer accepts items that have [NBT Compound / JSON Object] unbreakable component but do not have an enchantment.
+If the item above has durability, it can be repaired with an unbreakable item and the output does not inherit [NBT Compound / JSON Object] unbreakable component. If the order is swapped, the item is neither be repaired nor disenchanted. If the only item in slots is an enchanted unbreakable item, it is disenchanted and [NBT Compound / JSON Object] unbreakable component remains.
+No longer disenchants two enchanted books at the same time.
+Hopper
+
+Improved hopper performance.
+Hoppers no longer try to pick up item entities if there is a full block placed above it.
+Can, however, still pick up items from beehives and bee nests.
+Player head
+
+Now stores item name in custom_name tag.
+NBT tag SkullOwner and ExtraType is replaced with profile to keep a consistent format with the item component form.
+
+
+=== Items ===
+General
+
+Now count is stored again when there is only 1 item.
+Defaults to 1 if this field is invalid.
+Turtle scute
+
+Renamed "Scute" to "Turtle Scute".
+The ID has been changed from scute to turtle_scute.
+
+
+=== Mobs ===
+General
+
+FactorCalculationData has been removed from mob effect instance tags.
+Mobs with CanPickUpLoot no longer pick up enchanted items after picking up an unenchanted item.
+Bees and parrots
+
+Adjusted their flying behavior to keep them from overshooting their position when flying up and down.
+Cave spiders and spiders
+
+Are now scared of armadillos that are not in a rolled up state.
+Horse
+
+Replaced [NBT Compound / JSON Object] ArmorItem with [NBT Compound / JSON Object] body_armor_item.
+Llama
+
+Replaced [NBT Compound / JSON Object] DecorItem with [NBT Compound / JSON Object] body_armor_item.
+Shulkers
+
+Are no longer able to destroy armor stands.
+Shulker bullets
+
+Are now easier to hit with melee player attacks, as their hitbox is now larger specifically when being melee-attacked by a player.
+Wolf
+
+Changes to tamed wolves:
+Now have 40HP × 20 instead of 20HP × 10.
+No longer take half damage from most environmental sources like they used to do.
+Feeding a wolf now heals twice as many health points.
+Now only take knockback from snowballs from snow golems, like other mobs, instead of taking damage.
+Now have tag [NBT Compound / JSON Object] body_armor_item to store the armor they are wearing.
+The texture of the wolf collar layer has been changed.
+Now spawns on coarse dirt and podzol blocks.
+Now spawns in sparse jungle, savanna plateau, and wooded badlands biomes.
+When summoned using spawn eggs or commands, the variant selection now follows the natural spawning biome rules with the following extensions:
+Rusty wolf is selected in all jungle biomes, including jungle and bamboo jungle.
+Spotted wolf is selected in all savanna biomes, including savanna and windswept savanna.
+Striped wolf is selected in all badlands biomes, including badlands and eroded badlands.
+
+
+=== Non-mob entities ===
+Llama spits
+
+Now use a new damage type spit instead of mob_projectile.
+Are no longer able to destroy armor stands.
+
+
+=== World generation ===
+Grove
+
+Rabbits, wolves, and foxes are now the only animals spawning in the grove biome.
+
+
+=== Command format ===
+General
+
+Unstructured NBT data attached to stacks of items (tag field) has been replaced with structured 'components'.
+This data is parsed and validated when the item is loaded.
+This should improve performance in certain scenarios (e.g. armor trim rendering) when item data was frequently compared or requested and parsed.
+Custom data can still be stored in the minecraft:custom_data component.
+This change has been made in order to:
+Improve performance in cases where the game needs to frequently look up some property of an item (e.g. armor trims rendering every frame).
+Validate item properties at load time, enabling easier identification of invalid data in commands and data packs.
+This should avoid any 'silent' breakages in commands specifying custom item data for any potential future format changes.
+Continue to evolve the game to enable the creation of dynamic content.
+Item types (e.g. minecraft:stick) hold a set of default components on an item that individual item stacks can override.
+Commands such as /give, /item, /loot, and /clear have updated item syntax.
+Components can now be specified after the item name in square brackets.
+Components are assigned with an = (e.g. wooden_pickaxe[damage=23]).
+Components are comma-separated (e.g. netherite_hoe[damage=5,repair_cost=2]).
+Component types are autocompleted, but values themselves are not.
+Values however are validated, and the command fails to parse if the component is improperly specified.
+e.g. /give @s wooden_pickaxe[damage=-34] is not valid.
+The pre-existing NBT syntax ({...}) must now be specified with the minecraft:custom_data component.
+e.g. /give @s stick{foo:'bar'} is equivalent to /give @s stick[custom_data={foo:'bar'}].
+Item predicate arguments (in /clear) have new semantics with respect to matching components and custom data.
+Each specified component must be present on the target item, and have an exactly equal parsed value.
+Components with default values (e.g. damage=0 by default) automatically exist on the target item if not specified.
+As such, /clear @s diamond_pickaxe[damage=0] matches only undamaged diamond pickaxes.
+On the other hand, /clear @s diamond_pickaxe matches any diamond pickaxe, irrespective of damage.
+Exact matching of component values applies even for the minecraft:custom_data component.
+However, the {...} syntax for custom data still uses the pre-existing partial matching behavior for NBT.
+This means that all tags specified in the predicate must be present on the target item, but additional tags on the target item are ignored.
+Lists in the target must contain all list-items specified in the predicate, but additional list-items are ignored.
+The format of serialized items and items in data packs has been updated for consistency and to support components.
+When advanced tooltips are enabled (F3+H), the number of components is displayed instead of number of tags.
+Default component values for items are now listed in items.json generated in reports directory.
+Block definitions are now added to blocks.json report (note: those definitions are not used yet and present only for informational purposes).
+The ignoreTags field on villager trades has been removed and replaced by a component predicate on damage.
+If the key_item field of a vault block is not present, the vault cannot be unlocked.
+Command arguments that previously accepted namespaced ids of loot tables, modifiers and predicates can now also accept inline definitions
+loot
+item
+execute if predicate
+Values have same structure as matching JSON files, though they are encoded as SNBT. Example: execute if predicate {condition:weather_check, raining:true}
+Entity format
+
+Added [NBT Compound / JSON Object] body_armor_item to entity data, which functions similarly to entries of [NBT List / JSON Array] HandItems and [NBT List / JSON Array] ArmorItems.
+Also added [Float] body_armor_drop_chance, which determines the chance of dropping body armor.
+Potion effects stored in items or entities no longer encode their default values.
+amplifier: 0
+duration: 0
+ambient: false
+show_particles: true
+All block positions are now stored as an array of 3 integers instead of a map of XYZ.
+FlowerPos and HivePos in bees have been renamed to flower_pos and hive_pos.
+FlowerPos in beehives has been renamed to flower_pos.
+BeamTarget in end crystals has been renamed to beam_target.
+Leash in all leashable entities has been renamed to leash.
+PatrolTarget in patrolling mobs has been renamed to patrol_target.
+ExitPortal in end gateways has been renamed to exit_portal.
+WanderTarget in wandering traders has been renamed to wander_target.
+Tipped arrows no longer store their applied potion effects.
+This is instead fetched from their held item.
+Area effect clouds now store potions in the same format as the minecraft:potion_contents component in a potion_contents field:
+Potion -> potion_contents.potion
+Color -> potion_contents.custom_color
+effects -> potion_contents.custom_effects
+Villager trades can be configured to accept only undamaged items by selecting for 'minecraft:damage': 0
+By default, if no components are specified, any item is accepted (similar to components field in item predicates).
+Item stack format
+
+Along with format changes due to components, the structures of item stacks on disk and in data packs have been updated for consistency.
+Previous id (string) and Count (byte) fields have been replaced with id (namespaced string) and count (integer) fields.
+This format is additionally applied to the icon field in advancements, items in chat component hover events, and the result field in smelting recipes (result and count are no longer inlined).
+The count field is optional (defaults to 1), and no longer stored if default.
+Stack size is now limited to the maximum stack size of the item.
+The tag field has been removed, and any remaining contents end up in the minecraft:custom_data component when upgrading.
+A new components field stores all components attached to an item.
+Format: map of component id to component value (varies by component id).
+e.g. {..., components: {'minecraft:damage': 12}}.
+Components with a ! prefix (e.g. "!minecraft:damage": {}) cause this component to be removed.
+Components equal to their default value are not stored.
+The item stack format no longer represents empty stacks (air item, or count 0).
+Instead, in places that support it, the field should be omitted.
+In some cases, such as lists of stacks (e.g. HandItems in living entities), an empty map ({}) is used to represent empty stacks.
+Predicate format
+
+Item predicate format has been updated:
+tag field has been removed.
+items field now supports a single entry, hash-prefixed item tag, or list of items.
+potion -> potions, and supports a single entry, hash-prefixed potion tag, or list of potions.
+nbt predicate has been renamed to custom_data and now matches minecraft:custom_data component.
+A new optional components field matches exact components.
+All specified components must be present an exactly equal on the target item, but additional components may be ignored.
+Components with defaults are assumed to exist on the target item if not specified.
+Format: map of component id to component value (varies by component id).
+e.g. "components": { "minecraft:damage": 0 } matches only undamaged items.
+Block predicate format has been updated:
+tag field has been removed.
+blocks field now supports a single entry, hash-prefixed block tag, or list of blocks.
+Fluid predicate format has been updated:
+tag field has been removed.
+fluid -> fluids, and supports a single entry, hash-prefixed fluid tag, or list of fluids.
+Entity predicate format has been updated:
+type field now supports a single entry, hash-prefixed entity type tag, or list of entity types.
+Location predicate format has been updated:
+biome -> biomes, and supports a single entry, hash-prefixed biome tag, or list of biomes.
+structure -> structures, and supports a single entry, hash-prefixed structure tag, or list of structures.
+Other format changes
+
+Banners now store applied patterns in the same format as the minecraft:banner_patterns component in a patterns field:
+Patterns[].Pattern (string short id) -> patterns[].pattern (string pattern registry id)
+Patterns[].Color (integer dye id) -> patterns[].color (string dye name)
+Beehive format has also been updated:
+Bees[].EntityData -> bees[].entity_data
+Bees[].TicksInHive -> bees[].ticks_in_hive
+Bees[].MinOccupationTicks -> bees[].min_ticks_in_hive
+FlowerPos -> flower_pos
+/attribute
+
+Modifier operations have been renamed:
+add -> add_value
+multiply_base -> add_multiplied_base
+multiply -> add_multiplied_total
+/execute
+
+if and unless sub-commands can now use items to compare or count items.
+execute if|unless items <source> <slots> <item_predicate>
+<source> is the same one as used in /item.
+e.g. block <x> <y> <z> or entity <target> (selector can return multiple entities)
+<slots> can accept single slot (like container.0) or a range (like container.*)
+<item_predicate> is the same as item predicate in /clear command.
+If used alone, it returns total number of items in stacks that match predicates.
+/item
+
+slot now supports a range of slots.
+/playsound
+
+Can now be used without specifying the player (assuming @s) and without specifying the mixer (assuming master).
+Item modifiers
+
+minecraft:set_nbt and minecraft:copy_nbt functions have been renamed to minecraft:set_custom_data and minecraft:copy_custom_data respectively.
+These now apply to the minecraft:custom_data component of the target item.
+minecraft:set_attributes function has been updated.
+The modifier slot field now supports any, armor, and hand values.
+The modifier operation values have been renamed:
+addition -> add_value
+multiply_base -> add_multiplied_base
+multiply_total -> add_multiplied_total
+Added replace field (default: true).
+When false, attributes are appended.
+Nested lists are no longer supported in function lists.
+Changed set_contents loot function.
+Unused field type has been removed.
+Added new mandatory field component:
+Describes target component to be filled with items.
+Existing contents are replaced.
+Allowed values: container, bundle_contents, charged_projectiles
+bundle_contents and charged_projectiles ignore empty stacks.
+Changed set_custom_data loot function.
+Field tag now accepts both SNBT data written as a string (existing format) and unflattened tags.
+Changed set_lore loot function.
+The replace field has been removed.
+Now has mode like set_fireworks and set_written_book_pages.
+Changed set_name loot function.
+Added optional field target to specify which name should be set
+Values:
+custom_name - sets custom_name component (default)
+item_name - sets item_name component
+Item predicate argument
+
+The item predicate syntax (used in execute if|unless items and clear commands) has been significantly expanded.
+The general syntax is: <type> [comma-separated list of <test>]
+<type> can be one of:
+item id
+item tag id prefixed with #
+* to match any item
+<test> can have one of 3 forms:
+<component_id>=<value> - match exact value of component (same as in previous format)
+<value> is a representation of component value in SNBT format (same as in item give argument)
+<component_id> - check if component exists
+<predicate_id>~<value> - check item sub-predicate
+<value> is a representation of item sub-predicate in SNBT format (but otherwise same as one used for advancement and loot table JSON files)
+Example: *[damage~{durability:{min:3}}] matches any stack with at least 3 uses left
+The special name minecraft:count can be used for matching the stack size
+count=<positive int> passes only when the stack size equals the given value
+count~<int range> passes when the stack size is in the specified range
+Example: *[count~{max:2}] matches any stack with count <= 2
+count always passes
+Any <test> entry can be negated by prefixing with !
+Example: *[!count=1] matches any stack that has count other than 1
+<test> elements can be also joined with | to check multiple alternatives
+Example: *[!damage|damage=0] looks for items without damage component or with 0 damage
+Removed redundant custom data section ({...}) from item arguments (it's fully replaced by [custom_data={...}])
+To make this transition easier, custom_data item sub-predicate has been changed to allow unquoted SNBT
+The syntax for custom data partial matching ({}) has been removed in favor of using custom_data predicates
+So stick{a:2} becomes stick[custom_data~{a:2}]
+Item sub-predicates
+
+General rules of component predicates:
+Unless otherwise specified, a field in predicate with the same name as a field in component that matches (i.e. has the same name as predicate) will match that field value
+Those fields usually have the same type as in the components, but are optional.
+Exceptions:
+List fields are replaced with collection matchers (see below)
+Integer and float fields are replaced with ranges
+Registry ids are replaced with a type that accepts id, list of ids or a tag
+Collection matcher is a shared part of predicate used for matching collections. Every instance of this matcher has same fields with same functionality, with only difference being type of matched elementFields:
+size - integer range to match against collection size
+contains - a list of element predicates
+All conditions must match for predicate to pass
+Not all elements in tested container have to be matched
+Elements can be in any order
+Single element can match multiple predicates
+Examples (when matching item stacks):
+{contents:[{item:diamond}]} - matches when there is at least one diamond item
+{contents:[{item:diamond}, {item:dirt}]} - matches when there is at least one diamond item and at least one dirt item
+count - a list of matchers on element counts
+Entry fields:
+test - element matcher
+count - optional integer range to check against number of elements passing test
+Examples (when matching item stacks):
+{count:[{count:3,test:{items:diamond}}]}} matches only when there are exactly 3 stacks of diamonds (no matter the stack size)
+Predicates
+
+Removed any entity sub-predicate.
+Added slot name contents for single-slot entities like item frames and item displays.
+Contents of item entity can now be accessed through contents slot name.
+Component-specific item predicate properties have been moved to separate field predicates.
+Some fields from item predicate have been moved to a map in an optional field predicates.
+The new field is similar to the components field on item stacks.
+This was done to simplify addition for future predicates and to allow sub-predicates to more closely resemble names of components they match.
+The following fields have been moved:
+enchantments - field moved to sub-predicate minecraft:enchantments
+stored_enchantments - field moved to sub-predicate minecraft:stored_enchantments
+potions - field moved to sub-predicate minecraft:potion_contents
+custom_data - field moved to sub-predicate minecraft:custom_data
+Predicate minecraft:custom_data now accepts both SNBT data written as a string (existing format) and unflattened tags
+That means that *[custom_data~{a:1}] and *[custom_data~"{a:1}"] are equivalent
+Flattened string format has been kept since NBT type information can't be expressed in JSON
+durability field has been expanded to minecraft:damage predicate:
+This check now works for any item that has minecraft:damage component
+An item that does not have a minecraft:damage component can never match
+To check for unbreakable items, query value of minecraft:unbreakable component
+Fields:
+damage - optional bounds for value of minecraft:damage component
+durability - optional bounds for durability (max damage minus value of minecraft:damage)
+Predicates minecraft:enchantments, minecraft:stored_enchantments, minecraft:potion_contents and minecraft:damage require matching component to exist on item
+That means that, for example, matching for empty enchantment list does not pass on items without minecraft:damage component
+Note: some components, like minecraft:enchantments have default values, so they always match.
+wolf
+New wolf sub-predicate has been added to match wolf variantsFields: variant - wolf variant to match (single entry, list of entries or tag)
+cat, frog, painting
+Field variant now accepts single entries, list of entries or tags.
+wolf, cat, frog and painting entity sub-predicates now accept tags and plain lists instead of just single elements.
+Slots
+
+Replaced horse.armor slot argument with armor.body, applicable now to all mobs.
+Enchantments
+
+The projectile weapon enchantments Infinity, Flame, Multishot, Piercing, Power, and Punch now work on both crossbows and bows, if placed onto the alternative weapon using data manipulation or a change to the enchantable/* tags.
+
+End portal
+
+When entities leave or enter the End, the area they arrive in now stays loaded for 15 seconds, matching the behavior of nether portals.
+Spawn chunks
+
+The size of the spawn chunks changed from radius 10 (19x19 entity ticking chunks) to radius 2 (3×3 entity ticking chunks).
+This was done to reduce memory usage, loading times and CPU usage.
+The developers opted to not fully remove spawn chunks to allow players who currently utilize this functionality to continue to do so.
+
+
+=== General ===
+General
+
+The game now requires a 64-bit operating system.
+The game now requires Java 21.
+The included Java distribution is now the Microsoft build of OpenJDK 21.0.2.
+Accessibility
+
+The default focus is now always set when entering or exiting any menu while navigating using tab or arrow keys.
+Attributes
+
+Renamed horse.jump_strength to generic.jump_strength, and now applies to all entities.
+This controls the base impulse from a jump (before jump boost or modifier on block).
+Default is 0.42, and the valid range is from 0 to 32.
+Background
+
+The menu background dirt texture has been replaced by a darkened background.
+The dirt texture has been moved to the "Programmer Art" resource pack.
+Outside the game, the menu panorama is displayed across all screen.
+In the game, the world is visible across all screens.
+Paired with the darkened background is a blur.
+The strength of the blur can be configured in accessibility settings.
+In-game screens such as containers and books are not affected by these changes.
+The animated nether portal texture is displayed when changing dimension to or from The Nether.
+The animated end portal effect is displayed when changing dimension to or from The End.
+After defeating the ender dragon and entering the end portal, the End Poem and credits are now displayed with a background based on the animated end portal effect.
+Chat
+
+Client chat state (on-screen messages and chat input history) is now preserved by client when entering and exiting configuration phase.
+Message signature chain handling remains unchanged - going into configuration phase starts new session.
+If client has message delay configured, pending messages are delivered immediately before leaving world.
+Server can clear chat state by sending reset_chat packet in configuration phase.
+Controls
+
+Using Ctrl or ⌘ Command + pick block no longer lists "(+NBT)" in the item tooltip.
+Create New World screen
+
+Renamed "Allow cheats" to "Allow commands".
+Also applies to "Open to LAN" menu.
+Data pack
+
+The pack format version is now 41.
+The minecraft:sweeping enchantment has been renamed to minecraft:sweeping_edge.
+Loot table entry with id loot_table now also accepts inline loot tables.
+Loot table entry loot_table (which returns all items from provided nested loot table) now has the following syntax: value - can be either:
+namespaced id - reference to another named loot table.
+full loot table (same format as in standalone file).
+Banner patterns are now be loaded into the registry from data/<namespace>/banner_pattern/<id>
+
+Int and float providers used in worldgen definitions are no longer wrapped in an extra value field next to type
+For example, {"type":"minecraft:uniform","value":{"min_inclusive":0.0,"max_inclusive":1.0}} becomes {"type":"minecraft:uniform","min_inclusive":0.0,"max_inclusive":1.0}
+The text field within filterable entries in book components has been renamed to raw to avoid ambiguity.
+The profile component and fields on player head items and blocks respectively now support resolving from a UUID.
+By specifying the id field without a name, the name and textures will be looked up.
+Added new terrain adaptation type for structures: encapsulate
+Density will be added all around every piece of a structure
+Ideal for structures that need to be entirely covered underground
+The combination of max_stack_size and max_damage components is no longer allowed in commands and data pack definitions
+Added a new option body in entity equipment sub-predicate to match the item in the body armor slot of an entity
+The saturation_modifier field on the food component has been replaced with saturation
+saturation is the exact value added to the player's saturation level
+In respect to the former saturation_modifier, this is defined by saturation = nutrition * saturation_modifier * 2
+Changed optional equipment_loot_table field in the SpawnPotentials of Monster Spawners and spawn_potentials of Trial Spawner configs.
+Now named equipment instead of equipment_loot_table
+Format: object with fields
+loot_table - A loot table used to generate the equipment
+slot_drop_chances - An optional map of equipment slot to specified drop chance
+Can also be a single value instead of a list to apply to all slots: e.g. slot_drop_chances: 0.0f applies a chance of 0% to all slots
+e.g. equipment: {loot_table: "minecraft:equipment/trial_chamber", slot_drop_chances: {"head": 0.0f, "chest": 0.25f, "legs": 1.0f, "feet": 0.25f}}
+If present, rolled items from the specified loot table are equipped to the mob that spawns.
+Effect
+
+The background texture of the small effect UI has been changed.
+The former behavior of effects such as Jump Boost, Levitation, and Mining Fatigue over 127 has been replaced with new attributes.
+Font
+
+shift in TTF glyph providers is now restricted to the range [-512;512].
+Item stack components
+
+Non-default components on item stacks containing block items are now stored on block entities when placed.
+Component removals from defaults are currently not preserved.
+Placing and breaking non-block entity blocks remains unchanged - nothing is preserved.
+Does not automatically cause preserved components to be restored on drops - this requires addition of copy_components function to loot table.
+Components are stored in field called components.
+Some components (like custom_name) are still handled by legacy serialization, which means they might not be present in there.
+Contains map of component id to component value.
+Language
+
+Added support for Viossa language.
+options.txt
+
+Removed skipRealms32bitWarning.
+Particles
+
+Status effect particle colors are no longer blended into one particle color.
+All active visible status effect particles are now rendered separately.
+The frequency of emitting status effect particles has been lowered to clutter the screen less.
+Particle options in commands and in fields like Particles in Area Effect clouds now use the same representation as worldgen files (like existing biomes' ambient particle settings)
+For example, command /particle minecraft:dust 1.0 0.0 0.0 2.0 ... becomes /particle minecraft:dust{color:[1.0, 0.0, 0.0], scale:2.0} ...
+The syntax for particles without extra options (like minecraft:villager) remains unchanged
+Changes to block particles (minecraft:block, minecraft:block_marker, minecraft:falling_dust, minecraft:dust_pillar) options:
+Field value has been renamed to block_state
+Field block_state now also accepts plain block name to represent default block state
+Example transformations:
+minecraft:block minecraft:redstone_lamp[lit=true] -> minecraft:block{block_state: {Name: "minecraft:redstone_lamp", Properties: {lit: "true"}}}
+minecraft:block minecraft:diamond_block -> minecraft:block{block_state: "minecraft:diamond_block"}
+Changes to minecraft:item options:
+Field value has been renamed to item
+Field item now also accepts plain item name to represent item stack with default components
+count field is now ignored
+Example transformations:
+minecraft:item minecraft:dirt -> minecraft:item{item: {id: "minecraft:dirt"}}
+minecraft:item minecraft:dirt -> minecraft:item{item: "minecraft:dirt"}
+Changes to dust_color_transition options:
+Field fromColor has been renamed to from_color
+Field toColor has been renamed to to_color
+Example transformation: dust_color_transition 1.0 0.0 0.0 0.5 0.0 1.0 0.5 -> dust_color_transition{from_color: [1.0f, 0.0f, 0.0f], scale: 0.5f, to_color: [0.0f, 1.0f, 0.5f]}
+Changes to entity_effect options:
+Field value has been renamed to color
+Field color now also accepts list of floats representing RGBA color
+Protocol
+
+The minecraft:chat_command_signed packet has been split from minecraft:chat_command.
+Commands that do not accept any signed arguments use the unsigned packet, and do not pass any 'last seen' chat updates.
+Invalid data in packets sent from a server now causes the game client to disconnect.
+Changed the approach to game client disconnecting on invalid data in packets sent from a server.
+To ease the transition period, modded servers can opt out by setting the appropriate field in the handshake/game_profile packet.
+This option will be removed in the next release.
+Recipe
+
+Can now specify item component.
+[NBT Compound / JSON Object] result field for crafting_shaped, crafting_shapeless, stonecutting, and smithing_transform now accepts [NBT Compound / JSON Object] components.
+[String] result field for smelting, blasting, smoking, and campfire_cooking recipes are now an item stack without count. That is, [String] id must be specified and [NBT Compound / JSON Object] components is now accepted.
+Resource pack
+
+The pack format version is now 32.
+The ttf font provider transforms have been adjusted to have more reasonable defaults.
+shift is no longer applied double, and now directly represents a number of pixels in the game UI.
+The font EM square is fitted to size pixels in the game UI, instead of between the font ascender and font descender.
+The font baseline is positioned consistently with the default font (7 pixels below line top).
+This means that generally, any font with a size of 9 and no shift should look correct by default.
+The unused attributes array in core shader definitions has been removed.
+The IViewRotMat uniform has been removed, and the Position attribute for entities is now in (camera relative) world space.
+Light direction uniforms are no longer premultiplied by the view matrix.
+Added texture and model files for vault block.
+The trial key item texture has been changed.
+Added texture and particle file for vault_connection particle.
+Added font variant filters to font providers.
+Every glyph provider can now be enabled or disabled based on certain set of variants.
+Available variants are currently hardcoded and controlled by font options menu.
+Current variants:
+uniform - wired to "Force Uniform" button.
+jp - wired to "Japanese Glyph Variants" button.
+Filters are defined in section called filter, available for every glyph provider.
+Keys in that object are variant names (for example uniform).
+Glyph provider is included only when value in filter matches actual value of variant in key.
+Changed Japanese font variants.
+New option has been added to select Japanese variants for some CJK characters.
+Replacement glyphs come from Japanese version of Unifont font.
+New option is included in new "Font Settings" menu, accessible from "Language" menu.
+Default value of this option is based on system locale language setting.
+"Force Unicode" button has been moved to "Font Settings".
+Added additional textures to support colored layers of wolf armor for the wolf model and wolf armor item:
+textures/entity/wolf/wolf_armor_overlay.png
+textures/item/wolf_armor_overlay.png
+Wolf armor item texture, textures/item/wolf_armor.png, has been raise by 2px to create space for the durability bar.
+Added three semi-transparent textures for the cracks to show on the wolf armor layer:
+textures/entity/wolf/wolf_armor_crackiness_low.png
+textures/entity/wolf/wolf_armor_crackiness_medium.png
+textures/entity/wolf/wolf_armor_crackiness_high.png
+The options_background and the light_dirt_background textures have been removed.
+Instead, menu_background is used as the background of screens, while menu_list_background is used for the background of lists.
+Lists now use the header_separator and footer_separator textures at the top and bottom, respectively.
+The following textures have been updated: footer_separator, header_separator.
+The following sprites have been updated: widget\tab, widget\tab_highlighted, widget\tab_selected, widget\tab_selected_highlighted.
+The widget\scroller_background sprite has been added.
+The following textures in Realms have been removed: changes, changes_highlighted, restore, restore_highlighted, make_operator_highlighted, remove_operator_highlighted, remove_player_highlighted.
+Added gui/inworld_menu_background, gui/inworld_menu_list_background, gui/inworld_header_separator, and gui/inworld_footer_separator textures to allow menus accessed from the pause menu to look different from menus accessed from the title screen.
+Added gui/tab_header_background texture, which is rendered behind the tab buttons in the Create World Screen.
+Added misc/credits_vignette texture, which is rendered behind the poem and the credits.
+The blur post-processing shader has been renamed to box_blur.
+Added optional boolean field use_linear_filter to post-processing passes which when set to true switches texture sampling mode from nearest-neighbor sampling to linear interpolation for that pass.
+Added entity_outline_box_blur post-processing shader.
+Particle entity_effect takes color argument when spawned from command /particle entity_effect r g b a.
+4 float values ranging from 0.0 to 1.0 representing RGBA.
+Removed map_icons.png
+Map decoration icons have been split from the former map_icons.png to use an atlas loaded from the textures/map/decorations/ directory
+The process of upgrading a pack can be assisted by using an automated Slicer tool.
+Added trial_chambers map decoration icon
+Added the following sound events: block.cobweb.break, block.cobweb.step, block.cobweb.place, block.cobweb.hit, block.cobweb.fall, block.trial_spawner.about_to_spawn_item, block.trial_spawner.spawn_item, block.trial_spawner.spawn_item_begin, block.trial_spawner.charge_activate, block.trial_spawner.ambient_charged, item.ominous_bottle.dispose, event.mob_effect.bad_omen, event.mob_effect.trial_omen, and event.mob_effect.raid_omen
+Added textures for the following blocks and items: ominous vault, ominous trial spawner, ominous bottle
+Updated textures for normal vault block
+Added the following mob effect icon textures: infested, oozing, weaving, wind_charged, raid_omen, trial_omen, and bad_omen_121
+Added new models for ominous state of vault block
+Shaders
+
+Removed position_color_normal and position_tex_lightmap_color shaders.
+Replaced position_tex_color_normal shader with rendertype_clouds.
+Splashes
+
+Changed "Java 16 + 1 = 17!" to "Java 16 + 1 + 4 = 21!".
+Tags
+
+Added coarse_dirt, and podzol to the #wolves_spawnable_on block tag.
+The axolotl_tempt_items item tag has been renamed to axolotl_food
+Removed the tools item tag (overlapping with breaks_decorated_pots), moving previous contents into that tag.
+Tooltip
+
+No longer appears when hovering outside the containing element.
+UI
+
+The UI has been updated to sport a fresher look and to be more consistent when it comes to the layout of different UI elements, all while retaining the essence and feel of the old screens.
+Screen elements such as titles and buttons are positioned more consistently across different screens.
+The "Player" and "World Backups" screens in Realms have been updated.
+Lists now have clearer borders at the top and bottom.
+Other
+
+Added JFR (Java Flight Recorder) events for individual chunk reads (minecraft.ChunkRegionRead) and writes (minecraft.ChunkRegionWrite).
+Introduced changes to optimizing worlds.
+Optimizing singleplayer worlds and running dedicated server with forceUpgrade now also upgrades contents of entities and poi directories of the world.
+New recreateRegionFiles dedicated server startup parameter.
+It triggers world optimization similar to forceUpgrade, but also rewrites all the chunks independently of whether they have been upgraded.
+This creates fresh and defragmented region files.
+Using this parameter after changing the region-file-compression server property recompresses all region files in the new format.
+Improved server TPS debug chart.
+As before, it is accessible by pressing F3 + 2 in a singleplayer world.
+The bottom dark red section of the chart displays the time spent during the main logic of the server tick. It is equivalent to the value displayed in the old chart.
+The light brown section displays time spent on running scheduled tasks.
+The purple section displays time spent executing all other code during the tick.
+The top light green (or yellow or red depending on lag) section displays time spent idling, waiting for next tick.
+The min, avg, max aggregate values are based on the sum of the first 3 sections.
+Allowed server operators to view dedicated server TPS debug chart.
+Maximum length of a command in a function (including macro expansions) can no longer exceed 2,000,000 characters.
+Reduced time needed to generate explorer maps to buried treasures.
+Reduced amount of data sent by the server during login by reusing parts of the vanilla datapack.
+In singleplayer, when errors occur during loading or saving of chunks a warning is shown in a toast.
+Trying to join a singleplayer world with less than 64 MB free disk space shows a warning screen.
+Additionally, a warning toast is shown periodically while in game.
+
+
+== Experimental ==
+These additions and changes only take effect when the Update 1.21 experimental data pack is enabled, the exception to this is the change to villagers, which takes effect when the "Villager Trade Rebalance" experimental data pack is enabled.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Heavy core
+
+A mysterious, dense block which can be combined with a breeze rod to craft a mace.
+Can be found as a loot reward in ominous vaults with a chance of 8.3%.
+When placed, it has the same size as a player head, and can be oriented in 12 directions.
+Mining a heavy core is slow - it takes 15 seconds to mine.
+The appropriate tool is the pickaxe.
+Are resistant to explosions: blast resistance matches the one from obsidian.
+Can be waterlogged.
+ Ominous trial spawner
+
+A more powerful active phase of the trial spawner with unique challenges and rewards.
+Provides a more challenging experience that advanced players can opt into for better rewards.
+A trial spawner becomes ominous when it detects a player with the Trial Omen effect if:
+Either it is not in cooldown.
+Or, it is in cooldown but was not ominous during its last activation. This bypasses the cooldown.
+While active, it:
+Glows blue instead of orange.
+Emits soul flames instead of normal flames.
+Spawns mobs, usually with equipment if they can wear it.
+Mobs that can wear equipment often spawn with enchanted weapons and armor.
+Armor enchantments include Protection IV, Projectile Protection IV and Fire Protection IV.
+Weapon enchantments include Sharpness I, Knockback I, Power I and Punch I.
+The armor these mobs wear have armor trims applied from the trial chambers.
+Periodically spawns potions and projectiles on top of unsuspecting players and mobs.
+Based on their location, spawners in an area select a random set of projectiles to spawn.
+These projectiles always include a single type of lingering potion from a set of possible status effects.
+Players are chosen 50% of the time when an ominous trial spawner chooses which entity to drop projectiles on top of.
+Becoming ominous despawns any existing mobs it spawned and resets its challenge.
+It stays ominous until it has been defeated and its cooldown has finished.
+When defeated, it ejects a different set of loot to normal trial spawners.
+An ominous trial key has a 30% chance of ejecting from a defeated ominous trial spawner, replacing the usual 50% chance to eject a trial key.
+ Ominous vault
+
+A variant of the vault, with a different texture, that emits soul flames instead of normal flames.
+Can be found throughout the trial chambers in harder to find places.
+Is unlocked with an ominous trial key.
+Holds a more valuable set of rewards than the normal vault.
+Can provide some particularly valuable items, to mention a few:
+ Ominous bottle (Bad Omen level III - V)
+ Enchanted golden apple
+ Flow armor trim
+ Heavy core
+ Flow banner pattern
+Enchantments for the mace:
+Wind Burst
+Breach
+Density
+ Vault
+
+A block containing loot that can be unlocked with trial keys.
+Found throughout trial chambers.
+Using a trial key on a vault unlocks it, making it eject loot.
+Can be unlocked by an unlimited amount of players.
+It can be only activated once per player. After a player has unlocked a vault, they cannot unlock that vault again.
+If a player has not unlocked that vault before, an orange stream of particles flows from the player to the vault when nearby.
+Has a keyhole that opens or closes depending on the players nearby.
+If any nearby player has not unlocked that vault, the keyhole opens.
+If all nearby players have unlocked that vault, the keyhole remains closed.
+Within its cage, it cycles through and display items which are possible to eject from its loot table.
+The rewards it ejects are randomized from its loot table each time it is unlocked.
+The player gets no more than 1 unstackable item per vault.
+The player more often gets rewards which can stack together.
+Cannot be crafted or obtained in Survival, and does not drop anything when mined.
+Explosion-resistant and cannot be moved.
+Can eject:
+ Wind charges
+ Bolt armor trim
+ Trident
+ Honey bottle
+ Arrow
+ Arrow of Poison
+ Golden apple
+ Enchanted golden apple
+ Ominous bottle (Bad Omen level I or II)
+ Guster banner pattern
+
+
+==== Items ====
+Banner patterns
+
+Added two new banner patterns:
+ Flow banner pattern
+ Guster banner pattern
+ Breeze rod
+
+Dropped by the breeze.
+Can be crafted into 4 wind charges.
+Can be used with the heavy core to craft a mace.
+ Mace
+
+A new heavy weapon that can be crafted from a breeze rod and a heavy core.
+Using the weapon while falling can increase the damage output. The higher the player falls, the more damage is dealt.
+This can be done by jumping toward the target and hitting them before the player hits the ground.
+Successfully striking a target in this way negates any damage accumulated from the fall, similar to how a wind charge works, as well as resets all vertical momentum.
+Maces have a unique explosive particle effect when executing a smash attack with the mace to really show the player's power.
+Maces have a unique sound when hitting an entity from a fall of more than 5 blocks.
+Other entities near the struck enemy receive knockback, even stronger when falling for more than 5 blocks before attacking.
+Can be enchanted with:
+Smite
+Bane of Arthropods
+Fire Aspect
+Unbreaking
+Mending
+Curse of Vanishing
+Wind Burst
+Breach
+Density
+Can be repaired with breeze rods using an anvil.
+Players can use a mace in combination with wind charges to launch up and deliver devastating smash attacks on their enemies.
+ Ominous bottle
+
+Can be consumed by players to give the Bad Omen effect for 100 minutes (120000 game ticks).
+Has 5 variations, one for each Bad Omen level.
+The bottle breaks when consumed.
+Can be stacked to 64.
+Is ocassionally found in loots from vaults
+Is dropped by raid captains when they are defeated outside a raid.
+ Ominous trial key
+
+A new variant of the trial key.
+Can only be obtained by defeating an ominous trial spawner.
+Can be used to unlock an ominous vault, but cannot unlock a vault.
+Pottery sherds
+
+Added 3 new pottery sherds, that can be found on decorated pots inside of trial chambers:
+ Flow pottery sherd
+ Guster pottery sherd
+ Scrape pottery sherd
+Smithing templates
+
+Added two new smithing templates, that are exclusively obtained from vault and ominous vaults:
+  Bolt armor trim
+  Flow armor trim
+Spawn egg
+
+ Bogged spawn egg.
+ Trial chambers map
+
+Can be traded from journeyman cartographers.
+Point to a nearby trial chamber.
+ Wind charge
+
+It can now be obtained as an item by the player.
+Can be crafted from breeze rods.
+When used it fires off a wind charge projectile similar to the breeze's.
+A wind charge fired by a player grants 10% more knockback than a breeze's, but has a much smaller area of impact.
+Just like the projectile fired by the breeze, wind charges fired by the player also deal damage if they hit an entity directly, and they activate redstone components.
+There is a half-second cooldown after each use.
+Wind charges can be fired from a dispenser.
+Players that launch themselves with a wind charge only accumulate fall damage below the Y-level of where they collided with the wind burst.
+
+
+==== Mobs ====
+ Bogged
+
+A new, mossy and mushroom covered variant of the skeleton that shoots poisonous arrows.
+Is faster to take down with 16HP × 8 health instead of 20HP × 10 health.
+Attack at a slower interval of 3.5 seconds (70 game ticks) instead of skeletons' 2 seconds (40 game ticks).
+Has a chance to drop arrows of Poison when killed by a player.
+Drops 2 mushrooms (either both red/brown or one of each) when sheared.
+Spawns naturally in swamps and mangrove swamps.
+They're somewhat rare, with their spawn chance being half of that of the skeleton.
+As opposed to strays and husks, bogged do not require sky access to spawn, and they can also spawn in caves.
+Can spawn from trial spawners in some trial chambers. These spawners now replace the ones that spawn skeletons shooting arrows of Poison.
+
+
+==== Command format ====
+Loot functions
+
+Added set_ominous_bottle_amplifier loot function.
+Sets the ominous_bottle_amplifier component on the target item according to a number provider.
+conditions: list of conditions to filter this function
+amplifier: a number provider used to generate the ominous_bottle_amplifier component
+
+
+==== Gameplay ====
+Advancements
+
+Added eight new advancements:
+
+ Ominous events
+
+Bad Omen has been expanded to give access to an optional experience in trial chambers.
+These optional experiences accessed through Bad Omen are now known as ominous events.
+They are more challenging than usual, and are designed to shake up the experience in unique ways.
+Illager raids are an example of an existing ominous event.
+Bad Omen is getting some changes with this redesign:
+It has a new, shadowy icon and a sound for being applied to the player.
+It no longer triggers a raid directly when entering a village.
+Instead, it transforms into Raid Omen with a duration of 30 seconds.
+Once the Raid Omen expires, a raid starts at the location the player gained the Raid Omen.
+Like any other effect, players can drink a bucket of milk to clear the Raid Omen to prevent the raid from starting.
+It is no longer given to players that defeat a raid captain outside a raid.
+Instead, players can gain access to Bad Omen by consuming a new ominous bottle.
+
+
+==== General ====
+Tags
+
+Added the following block tag:
+#blocks_wind_charge_explosions: contains barrier, and bedrock
+Controls which blocks are not impacted by the explosion when hit by wind charge.
+Added the following entity type tags:
+#deflects_projectiles: contains breeze.
+#immune_to_infested: contains silverfish.
+For entities that cannot receive the Infested mob effect.
+#immune_to_oozing: contains slime.
+For entities that cannot receive the Oozing mob effect.
+#no_anger_from_wind_charge: contains bogged, breeze, skeleton, stray, zombie, husk, spider, cave_spider, and slime.
+Added the following item tag:
+#enchantable/mace: contains mace.
+Added the following structure tag:
+#on_trial_chambers_maps: contains trial_chambers.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Crafter
+
+The top face of the crafter is no longer mirrored.
+Trial spawner
+
+Trial spawners now have the same two default loot tables as they have in the trial chamber.
+The loot ejected from trial spawners has been adjusted.
+It now has a focus on providing higher quality food more often to make replenishing between fights more safe.
+No longer ignore the custom_spawn_rules field.
+Now appears more frequently in the trial chambers corridors.
+All trials spawners now increase the amount of mobs present at once by 0.5 for each additional player, down from 2.
+Baby zombie spawners now only have 2 mobs present at once for its baseline, down from 3 mobs.
+Can now only activate when a player is in line of sight.
+
+
+==== Items ====
+Trial key
+
+Can now be used to open vaults.
+Texture changed to match the vaults.
+
+
+==== Mobs ====
+Breeze
+
+Breezes now deflect all projectiles.
+Deflected projectiles now deflect in the direction of the shooter.
+Added sounds for projectile deflection, 'charging up attack', the breeze being in the air, and a 'whirl' idle sound.
+Tweaked the existing sounds.
+Separate eyes textures have merged into the head.
+The texture for the bottom faces of breeze's rods was changed.
+Is now aggressive toward iron golems in addition to players.
+No longer retaliates against attacks from skeletons, strays, zombies, husks, spiders, cave spiders, and slimes. These mobs don't retaliate when damaged by a breeze.
+Now avoids jumping into dangerous blocks or air.
+Drops 1-2 breeze rods when killed by a player.
+The number of breeze rods dropped is affected by Looting enchantments.
+Parrot
+
+Can now imitate bogged sounds.
+Villager
+
+In the "Villager Trade Rebalance" experiment, villagers who buy armor now ignore durability and can buy damaged armor.
+
+
+==== Non-mob entities ====
+Wind charge
+
+Updated the model, texture, and animation, to give it a more dynamic look and feel.
+They now use a new damage type wind_charge instead of mob_projectile.
+
+
+==== World generation ====
+Trial chambers
+
+The spawners that used to spawn skeletons holding Poison arrows now spawn bogged.
+Added new chambers and variations, with new challenges:
+Remade chamber_3, and renamed it to pedestal.
+Remade chamber_5 with variations, and renamed it to eruption.
+Remade chamber_6 with variations, and renamed it to assembly.
+Remade chamber_9, and renamed it to slanted.
+Added flow, guster, and scrape pottery sherds to the decorated pots in the decor structure pool.
+Placed vaults and ominous vaults.
+Reduced amount of trial spawners in corridors.
+Added an atrium to the corridors.
+Made various layout changes in intersections and corridors.
+Fixed various broken jigsaw connections in the corridors.
+Trial chambers now generate slightly more rarely and a bit more spaced out from each other, and more consistently buried by terrain when found underground.
+Added a new trap dispenser style to chambers.
+Chamber "Eruption":
+Stopped tuff bricks from spawning in the air.
+Added more lights to quadrants.
+
+
+==== Gameplay ====
+Advancements
+
+Killing a bogged now counts for the "Monster Hunter" advancement.
+Bogged are now required for the "Monsters Hunted" advancement.
+
+
+==== General ====
+Tags
+
+Added vault to the #features_cannot_replace block tag.
+Added heavy_core to the #mineable/pickaxe block tag.
+Added bogged to the #skeletons entity type tag.
+Added mace to the #breaks_decorated_pots item tag.
+Removed the #deflects_arrows and #deflects_tridents entity type tags.
+
+
+== Fixes ==
+220 issues fixed
+From released versions before 1.20
+
+MC-19893 – options_background.png is incorrectly displayed upside down in the credits after beating the dragon.
+MC-71977 – Changing generic.attack_damage of tamed wolf has no effect/taming wolf removes custom generic.attack_damage.
+MC-72151 – Snow golem's snowballs damage wolves instead of pushing them.
+MC-94413 – Breaking, placing and walking in cobweb plays stone sounds.
+MC-96609 – Pick block on player head does not use BlockEntityTag.
+MC-100016 – Singleplayer world selection screen is shown incorrectly when light_dirt_background.png and/or options_background.png are transparent.
+MC-100994 – Items in hotbar appear on top of tab menu.
+MC-107353 – Ghast fireballs move incorrectly when hit with Knockback enchantment.
+MC-109286 – Default dirt page background not aligned properly.
+MC-117637 – World is visible for a short moment after credits before respawn.
+MC-117955 – Player teleports to the top when crushed by a piston head.
+MC-117977 – Advancement GUI doesn't have a close button.
+MC-118857 – Effect amplifier is read/written as byte from NBT despite being stored as an integer.
+MC-118890 – Tipped arrows stuck in the ground never lose their effect.
+MC-121621 – Pick block on shulker boxes doesn't find placed and mined shulker boxes in inventory.
+MC-123804 – Explorer map and ominous banner names appear in item frames, draw in italics, and can be removed with an anvil.
+MC-130244 – When opening chat in F1 mode, previous messages aren't visible.
+MC-131636 – One additional character at the end is allowed in JSON text components.
+MC-132380 – The "Joining world..." message shows up when you enter a nether/end portal.
+MC-140397 – When combining two enchanted unbreakable items, the result will be two stacked items.
+MC-140565 – Patrol leaders with banners can drop two different types of banners which don't stack.
+MC-142372 – Ctrl + pick block on a campfire with food cooking updates the nbt during cook time.
+MC-143614 – Campfire item with "cooking" NBT heavily shakes in hand/off-screen, when Ctrl+pick-blocked.
+MC-147710 – Some long mob names are occluded by the scroll bar in the Statistics page.
+MC-148057 – Ominous banners generated in outposts show the pattern list.
+MC-148480 – Putting two identical enchanted books in a grindstone will output one book.
+MC-151793 – Various ominous banner stacking issues.
+MC-153329 – Leashing an iron golem breaks its pathfinding until reloading the world.
+MC-153643 – Debug overlay is rendered behind hotbar items.
+MC-153879 – Raiders ignore ominous banners that were saved in the Saved Toolbars from a different version.
+MC-155857 – Team command doesn't affect illagers and witches AI.
+MC-157133 – Enchanted books with curses can be stacked using a grindstone.
+MC-165435 – Can't trigger flying mode in Creative while standing in the middle of 2×2 magma block bubble column.
+MC-165948 – Bees can be lured into dangerous blocks.
+MC-166361 – GUI scale does not visually update when the option is changed using the keyboard and without the mouse.
+MC-167324 – Multiple UI buttons can be highlighted at the same time.
+MC-167375 – Baby turtle subtitles are grammatically incorrect.
+MC-168407 – Bees can get stuck in a lantern.
+MC-169389 – End portals sometimes teleport the player to Overworld coordinates.
+MC-170000 – Hand lighting / lighting of held items changes drastically in first-person mode when looking around.
+MC-171177 – The player can enter Nether portals in Creative mode by running against the frame of the portal.
+MC-171981 – Map of fuel times is created anew every time an item is placed in a furnace, instead of being cached.
+MC-172047 – Wolves try to attack armor stands.
+MC-172447 – Leaving the End shows loading screen with overlapping text.
+MC-172898 – Equipping armor in Creative via right click causes it to disappear from the hotbar for a frame.
+MC-173303 – Leashed pets teleport to the player when reloaded.
+MC-173672 – Title text renders in front of player names in player list.
+MC-174496 – Player heads lose their name after being placed.
+MC-175437 – Fullscreen resolution isn't applied when exiting Video Settings with Esc.
+MC-175622 – Wolf's tail will spin 360 degrees if max health is increased.
+MC-178410 – Banners don't support the HideFlags tag when placed down as blocks.
+MC-184066 – Respawn anchors don't produce an ambient sound.
+MC-184622 – Sound for exiting a portal/travelling to another dimension does not use its subtitle string despite it existing in en_us.json.
+MC-185379 – Baby polar bear subtitle does not explicitly mention it comes from a baby polar bear.
+MC-185955 – When the player's eye level is up to 2 pixels above water, they count as being underwater as if it would be a full block.
+MC-186626 – /weather not working in custom dimensions.
+MC-187267 – Title text renders in front of sidebar.
+MC-187372 – There is no space between FPS limit/VSync and graphics level in the debug screen.
+MC-187616 – Totems rendered too dark for a second after being used.
+MC-187746 – Game rule buttons on "Edit game rules" screen are highlighted despite being covered.
+MC-188497 – AngerTime and AngryAt cannot be set on summon.
+MC-189211 – "Water Taken from Cauldron" statistic is slightly covered by the bottom of the screen's overlay.
+MC-189484 – Statistics screen tab selection is not centered.
+MC-193202 – Tamed wolf health resets when NBT is loaded (e.g. relog).
+MC-193460 – Inconsistent layering of sidebar and debug screen (F3) text.
+MC-193511 – Title text renders in front of narrator text.
+MC-193515 – Boss bar text renders in front of narrator text.
+MC-193517 – Boss bar text renders in front of sidebar.
+MC-193521 – Boss bar text renders in front of F3.
+MC-193524 – Boss bar text strikethough/underline renders on ↹ Tab list.
+MC-193656 – Banners' breaking texture is displaced and/or repeatedly flips horizontally, depending on the banner's rotation.
+MC-193753 – Respawn anchor ambient sound subtitle refers to it as a portal.
+MC-194948 – Block breaking subtitle inconsistent with painting, item frame and lead breaking subtitles.
+MC-195572 – The fog from lava is much denser when having the Fire Resistance effect active compared to Bedrock Edition.
+MC-198492 – Players can be pushed into danger in situations where they wouldn't normally be damaged.
+MC-198787 – Inefficient streams in GoalSelector.
+MC-198963 – Chat text renders in front of player names in player list.
+MC-199973 – Wet wolf is rendered too dark compared to past versions.
+MC-200947 – Large amount of unused space in map_icons.png texture file.
+MC-200987 – Title in bossbar breaks HUD opacity.
+MC-201722 – /summon command ignores stacking restrictions.
+MC-204947 – Ctrl + pick block on placed ominous banners is not the same as pick block.
+MC-206854 – Multiplayer warning and Chat Preview warning are off center.
+MC-207353 – Ghast fireballs and wind charges can't be redirected in melee if the attack does 0 damage.
+MC-208528 – Feeding tamed baby wolves and cats causes them to sit down/stand up.
+MC-213104 – Statistics tab resets when resizing the Minecraft window.
+MC-216071 – Splash text resets if you hit escape on the Multiplayer menu, but not the Singleplayer menu.
+MC-217084 – Player head NBT "ExtraType" is no longer saved but doesn't use DataFixerUpper upgrade path.
+MC-218811 – Big dripleaves tilt when touched from the side.
+MC-219899 – Bone meal used on rooted dirt causes the particles to appear above it, despite the growth being below it.
+MC-219967 – IndexOutOfBoundsException occurs instead of a "Bad packet id" message.
+MC-221754 – Leashed wolves no longer attack when unleashed.
+MC-224343 – Books don't stack after being placed on a lectern.
+MC-225170 – Normal matrix scaling broken in some situations.
+MC-226775 – Extinguishing candle shows inaccurate subtitle.
+MC-228486 – Cannot switch to other windows using ⌘ Command+↹ Tab on macOS.
+MC-229209 – Loot table function set_count doesn't work with unstackable items anymore.
+MC-229680 – Chest, trapped chest, ender chest and barrels stop functioning when moving far away whilst in the GUI.
+MC-229919 – Bees don't recognize beehives or bee nests with a campfire directly below and a block on top.
+MC-230256 – NBT "HideFlags" does not hide "Slot" on minecraft:bundle.
+MC-232489 – Retrieving a plant from a flower pot ignores inventory contents.
+MC-232560 – Tamed wolf movement speed decreases when unleashed from a fence.
+MC-234406 – The dirt background changes its position when interacting with the "Players" button in the Realms menu.
+MC-234558 – There is no title in the "Invite player" Realms menu.
+MC-234889 – Potion effect icons displayed within the HUD can overlap boss bars.
+MC-238242 – There is an unnecessary black pixel in the upper right corner of small potion UI icons in the inventory.
+MC-239084 – Item pickup animation is darker than the actual item model.
+MC-248076 – Specific type of firework rockets won't stack with each other after use.
+MC-248689 – Fog on falling blocks happens too early.
+MC-248961 – takenDamage for achievement criteria is calculated wrongly when the player has equipped a helmet.
+MC-249136 – Freeze/server-side lag spike sometimes occurs when attempting to locate a buried treasure or opening/breaking a chest containing a map.
+MC-249335 – Using bone meal on mangrove leaves spawns growth particles at the center of the block instead of below it.
+MC-250432 – Esc key always unpauses the game in Demo mode.
+MC-251027 – Wearing a helmet doesn't reduce the damage of falling anvils or stalactites by 1⁄4.
+MC-251042 – Third-party warning buttons are not positioned well in non-English languages.
+MC-251303 – Transparent boss bars break when more than one is on screen.
+MC-251509 – Patterned banners not stacking properly / banner loses "banner" ID when mined.
+MC-252409 – Memory statistics within the debug menu contain some unnecessary spaces.
+MC-259142 – Hoppers with barrel facing downwards on top picking up item.
+MC-259355 – Game crashes because /place sometimes does not check whether position is loaded and out of world.
+MC-259587 – Negative item durability causes the durability bar to render incorrectly.
+MC-260099 – Sniffer's snout shading changes during sniffing.
+MC-260867 – Cannot focus entries on the pack selection screen using the mouse.
+MC-260889 – Players can use water buckets and lava buckets on blocks that are out of reach.
+MC-260921 – Data is focused last on the statistics screen when using keyboard navigation.
+MC-261577 – The nether portal overlay is rendered completely opaque when using spyglasses while standing inside of nether portals.
+MC-261596 – Crafting Table search keyboard shortcut not working.
+MC-261749 – Tamed cats don't emit mob interaction vibrations for entering sitting/standing mode.
+MC-261846 – Japanese language uses a Chinese font.
+MC-264821 – The fog on armor worn by entities occurs too early.
+MC-266990 – Maps with the same 'map' tag value, but different 'display' tag data can cause markers to disappear.
+MC-268580 – Chiseled bookshelf model is not deterministic in data generation.
+From 1.20
+
+MC-262503 – light_dirt_background.png and header_separator.png does not match options_background.png.
+MC-263256 – Chat renders on top of ↹ Tab, blocking information.
+MC-263315 – Attack target of hoglins/zoglins can't be detected by /execute on target.
+From 1.20.1
+
+MC-263641 – Boss bar text no longer renders behind potion effect icons.
+MC-263872 – The "Scanning for games on your local network" element in the Multiplayer menu cannot be selected via the mouse cursor.
+MC-263873 – Elements within the statistics menu are not selected in order when using the ↹ Tab key.
+MC-263874 – Elements in lists within the statistics menu cannot be selected via the mouse cursor.
+MC-264456 – Entity targeted by frogs and axolotls can't be detected by /execute on target.
+MC-264597 – F3 debug menu underlined text renders over subtitles.
+MC-264637 – Text shaders resource packs cause subtitles to flicker.
+MC-265273 – The tab list in create world screen does not indicate it's tab-focused by highlight or rendering borders.
+MC-267433 – Shift double-clicking while holding the same item on your cursor doesn't transfer items.
+From 1.20.2
+
+MC-264684 – Too long macro silently fails.
+MC-265520 – Switching connection protocols sometimes produces errors.
+MC-265541 – player.dat_old won't be read even if player.dat doesn't exist.
+MC-265585 – Waterlogged barriers do not diffuse sky light.
+MC-265661 – Dirt background appears to overlap back button on experimental feature requirements data pack screen for some window sizes.
+MC-265669 – Hotbar text renders above subtitle background but under subtitle text.
+MC-265709 – Stonecutter outputs are broken past the 32nd row in the GUI (server only).
+MC-265741 – Waterlogged barriers don't show up on maps.
+MC-265749 – Tooltips flash when the values of buttons or fields are changed.
+MC-266135 – Cached macro commands ignore permission level, allowing limited permission escalation.
+MC-266136 – Macro commands ignore function-permisson-level server setting, including when lower than default.
+MC-266334 – Shulker bullets destroy armor stands.
+MC-266389 – Glow berry particles are barely visible when bonemealed.
+MC-266589 – Armor durability is changed when swapping on Creative.
+MC-266628 – High polling rate causing stuttering.
+MC-266960 – Bossbar text renders in front of player list background and player icons.
+MC-266997 – Sky light doesn't update when breaking a shulker box while its (closing) animation is playing.
+From 1.20.3
+
+MC-265835 – The freezing effect is rendered totally opaque when using a spyglass.
+MC-266032 – Attempting to copy a "Copy of a copy" book in a Crafter behaves incorrectly.
+MC-266055 – Opening or closing a copper door or trapdoor while holding an axe / honeycomb grants wax-related advancement.
+MC-266144 – Copper doors are not part of the #doors item tag.
+MC-266145 – Copper trapdoors are not part of the #trapdoors item tag.
+MC-266308 – Copper bulbs have unused "turn_off" sound.
+MC-266430 – Breeze on top of a non-full block produces particles of the block below it.
+MC-266432 – Exposed, weathered and oxidised copper bulbs are unwaxed in trial chambers.
+MC-266449 – Breeze doesn't attack or retaliate against mob on sight.
+MC-266467 – Wind charges stutter when flying through the air.
+MC-266469 – When attacked, breezes sometimes stop pathfinding, jumping, or firing wind charges.
+MC-266532 – Breezes can be hit by some projectiles.
+MC-266533 – Breeze's AI has serious flaws in open terrain.
+MC-266557 – The breeze sometimes moves around while attacking, interrupting its attack animation.
+MC-266570 – Wind charges can't go through non-solid blocks.
+MC-266577 – Some trial spawners in trial chambers spawn mobs without persistence.
+MC-266680 – The glowing outline isn't applied to the eyes or eyebrows of breezes.
+MC-266685 – The entity shadows of breezes are too large in relation to the size of their models.
+MC-266688 – Breeze model's glowing eyes are not resource pack-friendly.
+MC-266707 – Trial spawners ignore custom_spawn_rules.
+MC-266738 – Subtitles string "subtitles.block.trial_spawner.spawn_mob" is misleading and inconsistent.
+MC-266879 – Clouds, entity hitboxes, block outlines, specially rendered blocks, and enchantment glints, render through the insides of breezes' eyes and eyebrows.
+MC-266909 – Breezes don't have smooth transitions to their idle states when they stop moving.
+MC-266999 – Crafter's tooltip buttons can still be visible to players on Spectator mode.
+MC-267044 – Tick status strings contain inconsistent word usage.
+MC-267045 – Some tick strings are missing articles and are unclear.
+MC-267086 – Compass does not indicate spawn point correctly when game is frozen with /tick.
+MC-267103 – Client crashes when receiving inconsistent network registries.
+MC-267104 – The bottom face textures of breezes' rods are incorrect and don't match with surrounding colors.
+MC-267133 – Breezes can't attack or move when there is no land around them and they are on the same height block as the player.
+MC-267149 – Crafter top face has an inverted UV texture map.
+MC-267193 – A function with /return fail run in chat doesn't indicate failure.
+MC-267465 – 1.20.3 upload error: "Cannot invoke "ctt.c()" because "this.b" is null".
+From 1.20.4
+
+MC-267194 – /return run function in combination with a fork and a function that doesn't return has inconsistent behavior.
+MC-267273 – Second beacon power for level 4 beacon flickers when player hovers the mouse pointer over it.
+MC-267352 – Singleplayer worlds don't load the player.dat when the "Player" tag is absent from level.dat.
+MC-267384 – Unused duplicate wolf armor sound events.
+MC-267451 – Items named with an anvil on 1.20.4 don't stack with items named prior.
+MC-267500 – Attribute modifier on an item with the first and/or last 2 integers of the UUID being 0 are non-functional.
+MC-267732 – /place jigsaw still caps max depth at 7.
+MC-267742 – Opening a written book makes it unstackable with identical unopened books.
+MC-267747 – Click and hover events don't work when viewing chat while F1 is enabled.
+MC-267866 – Panda slimeball drop is hardcoded.
+MC-267975 – The Realms player list is rendered larger than its visual size.
+MC-267976 – The scroll bar in the Realms player list can no longer be dragged using the mouse cursor.
+MC-268000 – The client crashes when using /give to give players a skull.
+MC-268011 – Hoppers leak the last world they sucked item on.
+MC-268022 – Elements within the list in the "Experimental feature requirements" menu cannot be selected via the mouse cursor.
+MC-268110 – Deleting world results in a file directory error.
+MC-268236 – Search field in the social interactions menu not focused by default.
+MC-268353 – Tick freeze randomizes next AI tick type.
+MC-268597 – Hitting a breeze with a player reflected/dispensed wind charge causes it to become trapped within the breeze until it moves.
+MC-268624 – "Saving world" message is rendered behind pause menu background, instead of on top.
+MC-269085 – Experience bar and jump bar render translucent pixels as opaque.
+MC-269279 – The "Normal user" button within the Realms player menu is improperly capitalized.
+MC-269472 – Crash when table_bonus loot condition has empty chances list.
+MC-269496 – You don't get any damage if you fight against the breeze in a minecart or in a boat.
+MC-269755 – Scroller in Report Player screen renders translucent pixels as opaque, unlike elsewhere.
+MC-269763 – Scroller in Realms screen renders translucent pixels as opaque, unlike elsewhere.
+
+
+== Videos ==
+
+
+== Trivia ==
+The scale attribute comes from the April Fools snapshot 23w13a_or_b mainly taken from the attribute "minecraft:generic.scale" or the /transform scale command.
+This minor update has the most snapshots (15, beating the previous record of 1.7.4 and 1.20.3 at 8 snapshots), even surpassing major updates such as 1.19 and 1.20.
+The first snapshot was released on the 51st week, surpassing 1.9 (15w51a/15w51b) as it was released on the latest calendar of all snapshots, on December 18th.
+1.20.5 has the longest wait for a minor update to Java Edition, with 138 days having elapsed since the release of 1.20.4 on December 7, 2023, surpassing 1.8.9 by only 4 days.
+
+
+== See also ==
+Bedrock Edition 1.20.80
+
+
+== References ==
+
+
+== Navigation ==

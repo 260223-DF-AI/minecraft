@@ -1,0 +1,50 @@
+Slot sources allow the location of any inventory slot to be specified within data packs.
+
+Format: object with fields.
+type: the slot source type.
+<type-specific>: additional fields depending on the type.
+minecraft:empty Type
+Empty selection containing no slots.
+minecraft:group Type
+Merges several slot sources into one, with the resulting selection containing all slots from each slot source provided.
+If a slot is included in more than one slot source, it will be repeated in the resulting slot source.
+e.g. [a, b] + [c, a] -> [a, b, c, a]
+Format:
+terms: list of slot sources to join.
+Can alternatively be written inline as a list of slot sources.
+minecraft:slot_range Type
+Selects slots within a slot range from the inventory of an entity or block entity.
+Mirrors the behavior of the from argument of the /item command.
+Format:
+source: an entity or block entity from which the slots will be sourced, from loot context.
+Can be block_entity, this, attacking_entity, last_damage_player, direct_attacker, target_entity, or interacting_entity
+slots: a slot range in the format of <slot_type> or <slot_type>.<slot_number> (e.g. armor.chest or container.*).
+minecraft:contents Type
+Selects all non-empty slots from the inventory component of one or more items.
+If no item is stored inside that component, the resulting selection will be empty.
+The location of the item(s) whose inventory component to use is specified by another slot source.
+If the slot source includes more than one item with that component, the resulting selections will be merged identically as with the minecraft:group type.
+e.g. Bundle [a, b] + Shulker Box [c, d] -> [a, b, c, d]
+Format:
+component: the inventory component to target.
+Allowed values are minecraft:bundle_contents, minecraft:charged_projectiles, and minecraft:container
+slot_source: a slot source containing slots with item(s) to target.
+minecraft:filtered Type
+Applies a filter to the selected slots, excluding any non-matching slots from the resulting selection.
+Format:
+item_filter: an item predicate to match against the items in each slot.
+slot_source: the slot source to filter.
+minecraft:limit_slots Type
+Limits the number of slots provided, with the resulting selection containing at most that number of slots.
+Any slots bringing the number of slots above that limit will be excluded, in order of inclusion.
+e.g. [a, b, c, d] -> [a, b, c] if the limit is set to 3
+Format:
+limit: integer, the maximum number of slots to include in the resulting selection.
+slot_source: the slot source to limit.
+Example slot source selecting every slot with more than 16 items from the hotbar and armor slots of an entity:
+
+
+== History ==
+
+
+== Navigation ==

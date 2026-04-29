@@ -1,0 +1,141 @@
+Beta 1.17.20.22 is the third beta version for Bedrock Edition 1.17.30, released on July 14, 2021, which made mob spawning changes behind experimental toggle, and fixes bugs.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Light Block
+
+Light blocks now reveal a particle when the player is holding the item.
+Unlike in Java Edition, the respective item texture is used as the particle instead of four yellow stars.
+
+
+=== Mobs ===
+Axolotls
+
+Axolotls now spawn only where there's a stone block less than 10 blocks below the spawning space.
+
+
+=== General ===
+
+User Interface
+
+Slightly changed the Minecraft logo on the loading screen and main menu (before Beta panorama loaded).
+
+
+=== Technical ===
+Commands 
+
+Target selectors ry and rym now support wrapping around north
+Spawning 
+
+Similar to the spawns_on_block_filter, the spawns_above_block_filter specifies a list of blocks and a distance.
+The mob can then spawn only if the nearest block within the specified distance below the desired spawnpoint is in that list (water and air not included).
+
+
+== Experimental ==
+These changes are accessible by enabling the "Caves & Cliffs" and "Enable GameTest Framework" experimental toggle.
+
+
+=== Blocks ===
+Glow Lichen
+
+Can now generate below Y=0 to Y=-64.
+
+
+=== Mobs ===
+Axolotl
+
+Now only spawn in lush caves.
+Can now spawn below Y=0 to Y=-64.
+Glow Squid
+
+Can now spawn below Y=0 to Y=-64.
+Goat
+
+Now only spawn in mountain meadow biome.
+General 
+
+Block light level now must be 0 for many hostile mobs to spawn.
+
+
+=== World generation ===
+Dripstone Cluster
+
+Can now generate below Y=0 to Y=-64.
+Dripstone Caves and Lush Caves biome
+
+Can now generate below Y=0 to Y=-64.
+
+
+=== Technical ===
+GameTest Framework
+
+Renamed BlockTypes class to MinecraftBlockTypes
+Renamed Effects class to MinecraftEffectTypes
+Renamed Items class to MinecraftItemTypes
+Events
+Added read-only property currentTick to tick event - Returns the current server tick
+Renamed event createEntity to entityCreate
+Renamed event addEffect to effectAdd
+Renamed event activatePiston to pistonActivate
+Renamed event beforeActivatePiston to beforePistonActivate
+Renamed event explodeBlock to blockExplode
+Renamed event changeWeather to weatherChange
+
+
+== Fixes ==
+Stability and performance 
+
+Fixed several crashes that could occur during gameplay
+Blocks 
+
+Amethyst cluster block can no longer be placed on grass path.
+Corrected deepslate lapis lazuli ore block name from deepslate lapis ore (MCPE-123605).
+Dispensers now remove bubble columns when removing water (MCPE-56462).
+Sea pickles now change light depending on being in water or not (MCPE-131642).
+Snow layers are now melted by light from torches, etc. (MCPE-131272).
+Vanilla parity: falling gravity blocks will no longer break when landing on certain blocks (MCPE-20109).
+Gameplay 
+
+Vanilla parity: using bone meal on moss blocks now also replaces tuff blocks (MCPE-125922).
+Vanilla parity: fixed light block not being displayed correctly when being held (MCPE-123249).
+Fixed held items not disappearing visually to other players after a player dies when the keep inventory gamerule is enabled (MCPE-64235).
+Nether portals placed between chunks no longer break when leaving the Nether (MCPE-74333).
+Shears now correctly cut vines and glow lichen faster (MCPE-123139).
+Weeping and twisting vines now grow correctly after the player breaks them (MCPE-90932).
+Graphical 
+
+Adjusted padding for HD textures in mipmaps level 1 in texture atlas to fix texture bleeding.
+Half of the enchantment table book doesn't render dark anymore (MCPE-106627).
+Blocks moved by a piston are no longer white while moving (MCPE-66250).
+Mobs 
+
+Axolotl spawns only when there is stone up to 10 blocks under them, and not in bubble columns.
+Armor stands now drop equipped items when destroyed by fire or lava (MCPE-94603).
+Limited the maximum number of phantom mobs that can spawn (MCPE-106557).
+Goats now play their "impact 3" sound (MCPE-127757).
+User interface 
+
+Recipe book crafting estimates no longer differ from the actual results.
+Experimental warning message is no longer displayed inconsistently when loading beta worlds.
+Cursor items no longer count towards recipe ingredient in recipe book.
+Selected recipe is now deselected when the player runs out of ingredients.
+Non-craftable recipes no longer displayed in recipe book when search mechanism is used.
+Nether blocks now appear in the crafting grid if any other ingredient is unavailable.
+Fixed a wireless network connection error message that appeared when players were connected via a wired network.
+Fixed various spelling errors in character creator.
+Hover of widget buttons were showing corrupted appearance before full load was complete.
+Fixed a legibility issue with some Japanese font characters.
+Riding an animal now displays the correct tooltip term when played on a non-touch screen.
+Technical
+
+Killing a custom mob with an unknown loot table entry type will no longer cause a crash, and will now throw a content error (MCPE-129006).
+Rabbit with initialEvent specified now scales properly to adult rabbit size (MCPE-76643).
+
+
+== References ==
+
+
+== Navigation ==

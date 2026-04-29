@@ -1,0 +1,398 @@
+Block states (also known as block properties) are extra pieces of data that further define a block, such as how it appears or behaves.
+In Bedrock Edition, there are also aux values (also known as Metadata) to define a block. Aux values are in the format of binary flags, which basically match the block states one-to-one, and they are accessible in decimal number in commands. However, aux values are intended to be deprecated, and newly added blocks or block states no longer support aux values.
+In Java Edition, there are also fluid states, that further define a fluid as to how it behaves.
+
+
+== List of block states ==
+
+
+=== age ===
+Tracks the age of plants to handle growth and of fire to handle spread.
+
+
+=== attached ===
+Whether the tripwire hook is connected to a valid tripwire circuit or not. For hanging signs, whether the sign is hanging from a single point or not.
+
+
+=== attachment ===
+How this block is attached to the block it is on.
+
+
+=== axis ===
+What axis the block is oriented to.
+
+
+=== berries ===
+Whether this block contains any berries.
+
+
+=== bites ===
+The number of bites taken from the cake.
+
+
+=== bloom ===
+Whether a sculk catalyst is currently blooming.
+
+
+=== bottom ===
+Whether this scaffolding is floating (shows the bottom) or a pale moss carpet is only showing the upper vines.
+
+
+=== can_summon ===
+Whether this shrieker can summon a warden if triggered.
+
+
+=== candles ===
+How many candles are contained within this block.
+
+
+=== charges ===
+Tracks the remaining uses of respawn anchors.
+
+
+=== conditional ===
+Whether or not the command block is conditional.
+
+
+=== copper_golem_pose ===
+The pose of a copper golem statue.
+
+
+=== cracked ===
+Whether or not a decorated pot produces shattering sound when broken.
+
+
+=== crafting ===
+Whether a crafter is currently crafting.
+
+
+=== creaking_heart_state ===
+The current state of a creaking heart.
+
+
+=== delay ===
+The amount of time between receiving a signal and responding.
+
+
+=== disarmed ===
+Whether the tripwire is broken using shears or not.
+
+
+=== distance ===
+The distance from a base block.
+
+
+=== down ===
+Determines whether something is below the block.
+
+
+=== drag ===
+Determines whether the bubble column is a whirlpool or upwards.
+
+
+=== dusted ===
+The dusting progress of a suspicious block.
+
+
+=== east ===
+Determines whether something is on the east side of the block.
+
+
+=== eggs ===
+The amount of eggs in this block.
+
+
+=== enabled ===
+Whether or not the hopper can collect and transfer items.
+
+
+=== extended ===
+Whether or not the piston is extended.
+
+
+=== eye ===
+Whether the frame contains an eye of ender.
+
+
+=== face ===
+What side of a block the attached block is on.
+
+
+=== facing ===
+For most blocks, what direction the block faces.
+For wall-attached bells as well as cocoa, the opposite is true.
+
+
+=== falling ===
+Whether a fluid is falling.
+
+
+=== flower_amount ===
+The amount of flowers in a group of pink petals or wildflowers.
+
+
+=== half ===
+For tall plants and doors, which half of the door or plant occupies the block space. For trapdoors and stairs, what part of the block space they are in.
+
+
+=== hanging ===
+Whether or not the lantern or mangrove propagule hangs on the ceiling.
+
+
+=== has_book ===
+Whether or not this lectern holds a book.
+
+
+=== has_bottle_0 ===
+Whether or not a bottle is in slot 1 of the brewing stand.
+
+
+=== has_bottle_1 ===
+Whether or not a bottle is in slot 2 of the brewing stand.
+
+
+=== has_bottle_2 ===
+Whether or not a bottle is in slot 3 of the brewing stand.
+
+
+=== has_record ===
+True when the jukebox contains a music disc.
+
+
+=== hatch ===
+Determines how close an egg is to hatching; starts at 0 and is randomly incremented.
+
+
+=== hinge ===
+Identifies the side the hinge is on (when facing the same direction as the door's inside).
+
+
+=== honey_level ===
+The level of honey inside the beehive and bee nest.
+
+
+=== in_wall ===
+If true, the gate is lowered by three pixels, to accommodate attaching more cleanly with walls.
+
+
+=== instrument ===
+The instrument sound the note block makes when it gets powered or used.
+
+
+=== inverted ===
+Whether the daylight detector detects light (false) or darkness (true).
+
+
+=== layers ===
+How many layers of snow are on top of each other.
+
+
+=== leaves ===
+How big the leaves are on this bamboo.
+
+
+=== level ===
+For cauldrons, composters, and fluids, describes how full the block is. For lights, describes the light level produced.
+
+
+=== lit ===
+Whether the block is turned on or off.
+
+
+=== locked ===
+Whether the repeater can change it is powered state (false) or not (true).
+
+
+=== mode ===
+The mode the comparator or structure block is in.
+
+
+=== moisture ===
+How wet the farmland is.
+
+
+=== natural ===
+If a creaking heart is naturally generated, instead of placed by a player.
+
+
+=== north ===
+Determines whether something is on the north side of the block.
+
+
+=== note ===
+The note the note block plays when it gets powered.
+
+
+=== occupied ===
+If there's already a player in this bed.
+
+
+=== ominous ===
+Whether a trial spawner or vault is ominous.
+
+
+=== open ===
+Whether the door is open or closed.
+
+
+=== orientation ===
+Direction the arrows point, followed by the position of the line face.
+
+
+=== part ===
+Whether this is the foot or head end of the bed.
+
+
+=== persistent ===
+Whether leaves decay (false) or not (true)
+
+
+=== pickles ===
+The amount of pickles in this block.
+
+
+=== power ===
+The power level of Redstone emission.
+
+
+=== powered ===
+Whether the block is powered.
+
+
+=== rotation ===
+The rotation of standing heads, signs and banners.
+
+
+=== sculk_sensor_phase ===
+Describes this sculk sensor's phase (whether it's active).
+
+
+=== segment_amount ===
+The amount of leaves in a group of leaf litter.
+
+
+=== shape ===
+The way this block connects to its neighbors.
+
+
+=== short ===
+Whether this piston head's arm is 4/16th of a block shorter.
+
+
+=== shrieking ===
+Whether this sculk shrieker is shrieking.
+
+
+=== side_chain ===
+The current state of a vault.
+
+
+=== signal_fire ===
+Whether this campfire has higher smoke or not.
+
+
+=== slot_0_occupied ===
+Whether slot 0 is occupied by a book.
+
+
+=== slot_1_occupied ===
+Whether slot 1 is occupied by a book.
+
+
+=== slot_2_occupied ===
+Whether slot 2 is occupied by a book.
+
+
+=== slot_3_occupied ===
+Whether slot 3 is occupied by a book.
+
+
+=== slot_4_occupied ===
+Whether slot 4 is occupied by a book.
+
+
+=== slot_5_occupied ===
+Whether slot 5 is occupied by a book.
+
+
+=== snowy ===
+Whether this block uses the snowy side texture.
+
+
+=== south ===
+Determines whether something is on the south side of the block.
+
+
+=== stage ===
+Whether this sapling is ready to grow.
+
+
+=== thickness ===
+The thickness of pointed dripstone or sulfur spikes.
+
+
+=== tilt ===
+The tilt stage of a big dripleaf.
+
+
+=== tip ===
+Whether pale hanging moss is at the bottom.
+
+
+=== trial_spawner_state ===
+The current state of a trial spawner.
+
+
+=== triggered ===
+Whether this block has been activated.
+
+
+=== type ===
+Determines the variant of this block.
+
+
+=== unstable ===
+Whether the TNT ignites when punched or not.
+
+
+=== up ===
+Determines whether something is above the block.
+
+
+=== vault_state ===
+The current state of a vault.
+
+
+=== vertical_direction ===
+The vertical directon of pointed dripstone or sulfur spikes.
+
+
+=== waterlogged ===
+Whether the block has water in it.
+
+
+=== west ===
+Determines whether something is on the west side of the block.
+
+
+== List of fluid states ==
+
+
+=== falling ===
+Whether a fluid is falling.
+
+
+=== level ===
+Determines the height of the fluid, 8 when the fluid is falling.
+
+
+== History ==
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

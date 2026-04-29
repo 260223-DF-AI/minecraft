@@ -1,0 +1,337 @@
+Since the beginning of Minecraft's development, numerous features were added that are inaccessible and have no actual use. Legacy Console Edition contains a wide variety of such features, namely remnants from other editions, leftover debug material utilized during development and other scrapped elements.
+
+
+== Blocks ==
+
+
+=== Command blocks ===
+
+All three variants of the command block are obtainable through only external inventory editors, as opposed to Java Edition and Bedrock Edition, where they're easily accessible through cheats. They are completely stripped from any in-game functionality, lacking a corresponding GUI and the ability to run commands. The game still calls on and applies the textures accordingly which seems to imply command blocks were functional in development builds of the game and used by 4J Studios. Several functions and remaining NBT data relating to opening and using command blocks and for running many different types of commands are also present in the game data.
+
+The game's localization data contains a possibly related, unused chat message for players executing commands. The block's description states "Used to execute commands."
+
+
+=== Barrier ===
+
+Barriers are solid and invisible blocks, also acquired through external editors. They mostly behave like intended, aside from casting shadows like normal blocks, thus making them somewhat visible. Interestingly, 4J Studios themselves utilized barriers in the Update Aquatic tutorial world​[until: TU73] and various Mini game maps, notably the glide track Shrunk.
+Its description states "An invisible but solid block."
+
+
+=== Wood ===
+
+Blocks with the log's bark texture on all six sides are referred to as wood. These have multiple variants, corresponding to each wood type and their stripped forms. They are broken with an axe. Unlike in modern editions of the game, they can't be crafted into planks. Nor is wood flammable despite its appearance, though it does catch fire from lava. Furnaces accept wood as fuel. 
+All variants of wood were later added as obtainable blocks in both Creative and Survival in PlayStation 4 Edition 1.90, it being the only version of Legacy Console Edition to receive the Village & Pillage update.
+Its description states "Chopped using an axe, and can be crafted into planks or used as a fuel."
+
+
+=== Petrified oak slab ===
+
+Before the addition of current wooden slabs and their variants in Xbox 360 Edition TU9, old wooden slabs were merely another variant of stone slabs. Thus, they weren't flammable and had to be broken with a pickaxe, in spite of optically being the same as standard oak slabs.
+When the new wooden slabs were added, the old ones were removed from crafting and the Creative inventory,[verify] making them inaccessible by those means. However, the original wooden slabs weren't converted upon updating a world. Therefore, they are still legitimately obtainable through old world saves.
+Its description states "Used for making long staircases. Two slabs placed on top of each other will create a normal-sized  double slab block."
+
+
+=== Unused block entity data ===
+
+
+== Items ==
+
+
+=== debug_fourj_item ===
+
+debug_fourj_item has the texture of a barrier, no display name nor description. As its ID suggests, it was utilized during development for debug purposes. When used on a mob, it sets that mob to be persistent. The item texture ID barrier only applies to this item, as the actual barrier uses the block texture ID barrier.
+
+
+=== Minecart with command block ===
+
+Minecarts with command blocks only exist in their item form. Trying to place one down will summon a regular minecart instead. According to Java Edition and Bedrock Edition, its intended purpose was to execute commands upon interacting with activator rails.
+The game's localization data contains the unused description for this item, stating "Used to execute commands on the move!"
+
+
+=== Spectral arrow ===
+
+Since the Legacy Console never received the Combat Update, spectral arrows ultimately went unused. They can be shot using a bow and even had their particle trail ported over. Due to the absence of a functional Glowing effect, the arrows have no effect on their target other than dealing regular damage.
+Its description states "Gives the victim a glowing outline that can be seen through blocks."
+
+
+=== Shield ===
+
+Code for the shield is present in the game data, but needs to be assigned an item form manually to obtain it in-game. It has no model and texture, nor a display name and description. It functions like intended, absorbing most of the damage dealt to the player.
+The shield was later added properly in PlayStation 4 Edition 1.90.
+
+
+=== Tattered written book ===
+The "Tattered" fourth generation for written books is not obtainable in standard gameplay. It can only be accessed by setting the [Int] generation tag to 3.
+
+
+=== Unused item data ===
+
+
+== Entities ==
+
+
+=== Giant ===
+
+Giants are 12 blocks tall hostile mobs carried over from Java Edition. Due to their lack of AI, they won't move unless hit by a player and are never actually aggravated towards them. Though they can pick up dropped items and equip gear. Giants were intended to resemble zombies, ultimately however only use their model and not their texture file, instead applying arrows.png. They have 100HP × 50 health points and drop 5 experience points in addition to any equipped items upon dying.
+
+
+=== The Killer Bunny ===
+
+The killer bunny is a hostile variant of the rabbit, summoned by setting a rabbit's [Int] RabbitType tag to 99. In-game, it will automatically be given the custom name "entity.KillerBunny.name". They won't despawn when the difficulty is set to peaceful. It attacks nearby players, dealing 5HP damage on easy, 8HP on normal and 12HP × 6 on hard difficulty. Killer bunnies become passive and can be lured when a player holds a carrot. It has 3HP health points and has the same drops as normal rabbits.
+Its description states "A hostile rabbit that will attack you if you get too close! May drop a rabbit hide or a rabbit's foot when killed."
+
+
+=== Illusioner ===
+
+Illusioners are unused illagers carried over from Java Edition. An illusioner attacks players, iron golems and villagers with a bow once manually equipped with one. When lacking their weapon, they become passive. It creates four fake duplicates when attacking, while being invisible itself. The duplicates vanish as soon as the real illusioner's Invisibility effect fades. It can also cast Blindness for 20 seconds on its victim. Illusioners have 32HP × 16 health points and can drop their bow or other equipment along with 5 experience points.
+Its description states "Illusioners are hostile. They attack with a bow, and use magic to confuse!"
+
+
+=== Unused entity data ===
+
+
+== Status effects ==
+
+
+=== Glowing ===
+
+Glowing is an unused status effect that lacks functionality. It is intended to be inflicted on players or mobs hit by spectral arrows and give its victim a glowing outline to be seen through blocks.
+
+
+=== Saturation ===
+
+Saturation is another non-functional status effect, intended to instantly replenish empty hunger points in the hunger bar. Unlike the other unused effects, it has no effect icon.
+
+
+=== Blindness ===
+
+Blindness impairs the player's vision down to a four block radius, engulfing the rest in a thick black fog. It prevents sprinting and dealing critical hits. The aforementioned illusioner is capable of inflicting this effect.
+
+
+=== Health Boost ===
+
+Health Boost increases the maximum health points by four per level. The extra health isn't visible in the player's health bar, whereas those of ridden mobs that have the effect do show it. It shares Absorption's effect icon and functions similarly, with the difference of having to regenerate the added health points manually. When the effect fades, the screen jolts as if taking damage.
+
+
+=== Bad Luck ===
+
+Bad Luck is a status effect that contrasts to Luck. Whereas the latter is leastwise obtainable from the Creative inventory, Bad Luck goes unused entirely. It subtracts the effect level from the player's luck attribute, decreasing the chances of getting high-quality loot when fishing.
+
+
+== Gameplay ==
+
+
+=== Hardcore mode ===
+
+Remnants of Hardcore carried over from early Java Edition are still present in the game data. The mode can be accessed by externally modifying the world data, though any leftover functionality is sparse. Besides changing the difficulty to Hard, the mode has no other effects. The player's health bar remains normal and players can still respawn after death.
+
+
+=== Build Off ===
+Build Off was a planned mini game similar to "Build Battle" on Java Edition servers. Despite being cancelled before Legacy Console Edition was discontinued, the game's code contains multiple references to the scrapped mode. Calls for music cues as well as a respective leaderboard are present in the game data.
+
+
+== Sounds ==
+
+
+=== Corrupted cave sounds ===
+Earlier builds of the game contained corrupted cave sounds. The non-corrupted versions used in-game are stored separately under cave1_fixed and cave8_fixed.
+
+
+=== Sound loops ===
+
+The four audio loops from C418's early Java Edition sound tests existed in the Xbox 360 Edition files until TU57 when the game's audio format was changed to match that of the other editions. Despite other sound effects from alpha and beta versions of Java Edition existing still in the files to this day, these were removed. 
+
+
+=== Combat sounds ===
+Multiple unused sounds from the Java Edition Combat Update are present within the game files.
+
+
+=== Log stripping sounds ===
+Unused sounds for stripping logs with an axe.
+
+
+=== Unused mob sounds ===
+Several unused sound files from Java Edition for different mobs are present in the game files.
+
+
+=== Crafting failed duplicate ===
+A duplicate of the sound played when failing to craft an item.
+
+
+=== Glide mini game sounds ===
+Unused sounds found amongst those used for the Glide mini game.
+
+
+=== Other ===
+Aforementioned leftover sounds from early versions of Java Edition which have not found a use in Legacy Console Edition.
+
+
+== Resources ==
+
+
+=== Blocks and items ===
+Structure block textures
+
+terrain.png contains unused textures for structure blocks. These texture resources are called on and used by the game for the structure block which implies that structure blocks were used in development builds of the game. There are also several functions relating to opening and using structure blocks in the game data.
+Structure void
+
+An unutilized texture for the structure void is present in items.png. Structure voids are actually in the game and function identically to their Java Edition counterparts if loaded in a structure file. 
+Duplicate stems
+
+Duplicate stem textures in terrain.png are left over.
+Conditional command blocks
+  
+Textures for conditional command blocks are found in terrain.png. Even though command blocks contain NBT data relating these variants, they can't be enabled in-game. Consequently, their textures are unused.
+Placeholder textures
+Several placeholder textures can be found in terrain.png and items.png due to animated textures being sourced from elsewhere.
+Unused shulker box layer
+terrain.png has an unused tile, which was intended to be used in texture packs as a non-tinted overlay for shulker boxes. This can be seen in the Norse Mythology mash-up pack's terrain.png file. However, the game does not attempt to call for it.
+
+
+=== Particles ===
+Bubble
+
+Unused texture for bubbles. Actual bubbles use a different texture that is tinted in-game.
+Angry villager
+
+Unused particle of an angry villager.
+Bubble pop
+ 
+ 
+ 
+ 
+
+Unused textures for bubbles popping, originally intended to appear at the top of bubble columns.
+Camera shoot explosion
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+Unused explosion particles from Bedrock Edition and Education Edition. On those editions, they appear when shooting pictures with a camera.
+
+
+=== Map icons ===
+Target point
+
+Unused map icon of a red triangle.
+
+
+=== Other ===
+Minecraft icon
+
+The user interface assets contain numerous unutilized duplicates of the same Minecraft icon. Such are only seen when world icons fail to load, although those are sourced from a separate file.
+Checkbox texture
+
+Unused textures of a selected checkbox can sometimes be found in addition to the aforementioned Minecraft icons.
+PS3 layout table
+
+A layout table of unknown purpose is found in the debug assets of PlayStation 3 Edition.
+Update Aquatic graphic
+
+The Update Aquatic artwork is shown in the dialog box used to access the store page for Bedrock Edition on Xbox One Edition and Nintendo Switch Edition since Legacy Console Edition was discontinued. However, it was also left in the game files of old-gen editions which did not receive Bedrock Edition and thus don't utilize this graphic.
+Old skin select menu
+Numerous textures of the old character skin selector are still present in the game files.
+Alliance icon
+
+During the development of Battle, teams were planned and partially worked on. Remnants of the scrapped feature are this graphic, leftover game rule data and unused text strings.
+
+Altimeter icons
+
+Grass block render
+
+Unused render of a grass block.
+Attack cooldown
+ 
+ 
+ 
+ 
+
+Unused textures for the attack cooldown from Java Edition.
+Enchantment slot
+ 
+
+The slot for applying enchantments to an item in the enchanting table used to have a respective icon. Albeit removed in-game later for unknown reasons, its textures remained.
+Mini game placeholder
+
+Wii U Edition contains an early placeholder image that would have been displayed when selecting DLC for Battle. Additionally, it reveals an early name for said mini game.
+Altered unused textures
+Various unused textures and textures utilized by unused features are altered by texture packs, despite not being seen in-game in those environments.
+
+
+== Worlds ==
+
+
+=== Battle map areas ===
+
+
+==== Crucible ====
+
+The large variant hides a second lava sea beneath the normally accessible layer of lava. It hints at the possibility that the arena's floor originally extended deeper, along with numerous leftover cages and an early location for the bottom high-value chest, both of which are also found underground.
+
+
+==== Cove ====
+
+Three copies of the same cave system are located in the immediate vicinity of the large variant's arena, originally planned to be an accessible section of the map. It is unfinished, partially decorated and would have seemingly contained a single loot chest. Only one copy actually connects to the main arena and is somewhat visible through a set of iron bars positioned to the large skull's right.
+
+
+==== Cavern ====
+
+In the large variant, an unseen village and a structure consisting of mossy stone bricks can be found next to the cavern's opening. An area with various utility blocks is located further away. It seems to be a testing area used by the developers to presumably test the interaction privileges in Battle.
+
+
+==== Temple ====
+An entire underground section has been cut from the large variant. It is located right below the temple and would have been accessible through descending stairs at the central spawn. These have been sealed off in the map's final rendition. The scrapped section seems fully finished with decoration and even a loot chest that is refilled during gameplay.
+
+
+==== Lair ====
+Multiple oddities are present in the small variant. An arrow made out of quartz blocks at world spawn points into the arena's direction. The arena itself has a creeper face carved into its outer walls. Both variants have an unused room that is sealed off from the arena. Whereas the room of the small variant is empty, that of the large variant is fully decorated.
+
+
+==== Atlantis ====
+A few inaccessible rooms are located underground, which appear to be leftovers from a once planned segment in the arena's large variant that was ultimately however scrapped.
+
+
+==== Ruin ====
+Both map variants contain several cut rooms, as well as staircases, which would have connected different parts of the map. Although a select few are partially decorated, they appear mostly unfinished. Furthermore, part of the background city scenery is heavily obscured and thus goes unused. This also applies to both variants of the map.
+
+
+==== Siege ====
+Unutilized redstone wiring is scattered around the small arena. They appear to have been intended for differing purposes, as, for example, a few connect to various dispensers containing splash potions of weakness, poison and slowness, whereas it is unclear what the rest was intended for. In addition, between the two canals in the large arena, which can be accessed during standard gameplay, an unfinished third canal can be found.
+
+
+=== TU46 tutorial world ===
+The file of the Xbox 360 Edition TU46 tutorial world is still present in the game files.
+
+
+== Developer tools ==
+
+4J Studios utilized a number of debug tools to aid during Legacy Console Edition's development.
+
+
+== Other ==
+
+
+=== Biome preview menu ===
+
+An unused menu is found in the game's data, which shows a map of all biomes in a world before it is initially generated. It has options to randomize the seed, zoom into the map and change the world size. The playable area of the seed can also be shifted in the X and Z directions with directional inputs. These do not function correctly when the world is generated, leaving artifacts where the world would have ended if it was not shifted or scaled.
+
+
+=== Player format ===
+
+
+=== World settings ===
+
+
+== Navigation ==

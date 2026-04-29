@@ -1,0 +1,122 @@
+A projectile is an entity that can be fired, shot, or thrown by mobs, other entities, dispensers, and players. Projectiles can also be summoned using /summon.
+
+
+== List of projectiles ==
+
+
+=== Inheritance ===
+
+EntityProjectile Firework Rocket EntityFishing HookLlama SpitShulker BulletAbstract Arrow ArrowSpectral ArrowThrown TridentAbstract Hurting Projectile Dragon FireballWither Skull EntityAbstract Wind Charge Breeze Wind ChargeWind ChargeFireball Large FireballSmall FireballThrowable Projectile Throwable Item Projectile Thrown SnowballThrown EggThrown Ender PearlThrown Eye of EnderThrown Experience BottleThrown Potion
+
+
+=== Table ===
+Mobs and players equipped with bows and crossbows can use them to shoot arrows. The player can also throw various items as projectiles. Some mobs shoot projectiles directly as an attack.
+
+
+=== Picking up ===
+An eye of ender has a 80% chance of surviving when thrown. If it survives, it drops as an item where it stopped, which can then by picked up.
+A trident thrown by a player can be picked up (in its projectile form), as long as its on the ground, doesn't have Loyalty, and the player didn't throw it while in Creative mode.
+All other projectiles are either destroyed, turned into something else, or exist as a projectile which despawns after some time, and cannot be picked up or grabbed in their projectile form.
+
+
+== Initial conditions ==
+ 
+
+
+=== Shot from dispenser ===
+All projectiles use the following calculations to get shot by a dispenser:
+
+To find the position, move out from the center of the block by DISTANCE and add Y OFFSET.
+Get the unit vector straight out of the dispenser.
+For each axis, add a random (64-bit) number between -0.0172275 * UNCERTAINTY and 0.0172275 * UNCERTAINTY, using a triangular distribution.
+To find the velocity, scale by POWER.
+
+
+=== Throwable projectiles (except eye of ender) ===
+The direction and velocity of throwable projectiles is slightly randomized and affected by the player's movement. More specifically, the game does these calculations in order:
+
+Get the facing vector of the player, with length 1. For the pitch, this uses the player's pitch plus PITCH (where positive PITCH makes the vector point lower).
+For each axis, add a random (64 bit) number between -0.0172275 and 0.0172275, using a triangular distribution.
+Scale the velocity by POWER.
+Add the player's velocity. If the player is on the ground, the Y component is unaffected.
+The result is a shooting speed of around POWER towards where the player is facing, depending on randomness and the player's velocity.
+
+
+== Motion ==
+
+
+== Collision ==
+Projectiles perform a raycast from their current position to their next position and check for blocks and entities that would get hit.
+
+
+=== Entity collision ===
+ 
+
+
+==== Throwable projectiles ====
+Throwable projectiles (Ender pearl, snowball, egg, potion, experience bottle, eye of ender) treat entities as being 0.6 blocks larger than they actually are in every axis (0.3 in every direction). They collide with all living entities, all minecart types, boats, end crystals, falling blocks, and tnt.
+To calculate the collision, the game uses the following process:
+
+Make a box from the current tick's position to next tick's position
+Inflate it by 1 in every direction
+Get every entity in the box
+For each entity:
+Inflate it by 0.3 in every direction
+Check if it intersects the line connecting the current position and the next position
+Keep the intersection if it's the closest to the projectile so far, otherwise throw it out
+
+
+==== Abstract arrows and abstract hurting projectiles ====
+Abstract arrows (Arrow, tipped arrow, spectral arrow, trident) and abstract hurting projectiles (Fireball, dragon fireball, wind charge, wither skull, dangerous wither skull) use a raycast to calculate entity collisions, and don't inflate entities like ThrowableProjectiles.[verify]
+
+
+=== Block collisions ===
+All blocks collisions are checked using a raycast from the projectile's current position to its next position, which hits the block's collision box, with a few special cases:
+
+The top of scaffolding is only hit if the projectile begins its movement below it, because that collision box only exists for entities that are above it.
+Walls, fences, moving pistons, the back of piston arms, and other blocks whose collision box extends beyond a full cube are only seen by the projectile if the raycast intersects the full cube space where the block is actually located.
+End portal blocks and exit portal blocks have no hard hitbox, so projectiles will only enter if they tick inside the portal blocks.
+
+
+==== Ender pearl specific block collisions ====
+
+If a pearl hits a Nether portal, it is sent to the nether. If the pearl would have hit other blocks after the portal, that collision position is used as the position where the pearl entered the portal. Otherwise, the final position it would've ended at is used. See Nether portal for more details on how entities get placed after going through portals.
+If a pearl hits an End gateway, it teleports the player as if the player had gone into the gateway. The pearl itself is deleted.
+
+
+== Data values ==
+
+
+=== ID ===
+Java Edition:
+
+Bedrock Edition:
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+=== Legacy Console Edition ===
+
+
+== Issues ==
+Issues relating to "Projectile" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== See also ==
+Projectile Protection - an enchantment that reduces damage received from projectiles.
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

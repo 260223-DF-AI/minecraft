@@ -1,0 +1,103 @@
+1.14.3 - Combat Test is the first experimental version of a future combat update. Although it is a version for a future major release, this combat experiment is a fork of 1.14.3 Pre-Release 4. This version was released only on Reddit, so it does not appear in the launcher or in any Minecraft.net blog post.
+
+
+== Additions ==
+
+
+=== Gameplay ===
+Combat
+
+New attribute: generic.attackReach.
+Represents the attack reach of a player.
+Only used by players.
+Default base: 3.0; minimum: 0.0; maximum: 6.0.
+Value is the number of blocks away the player can attack from.
+Weapon modifier now modifies generic.attackReach with Operation 0 and UUID 26cb07a3-209d-4110-8e10-1010243614c8.
+Added a "Combat Reach" parameter (using attribute generic.attackReach) to swords, hoes and tridents.
+
+
+== Changes ==
+
+
+=== Gameplay ===
+Combat
+
+Players can now only attack when the weapon is fully charged.
+Different weapons and items have different attack ranges, all separate from the block breaking reach.
+3.5 blocks for all swords.
+4 blocks for tridents and hoes.
+3 for all other items.
+The attack timer can be charged to 200%.
+The attack timer reaches 200% after the recharging animation of the sword is fully complete.
+A 200% charge is required for critical hits and the sweeping attack.
+A 200% charge also deals higher knockback while sprinting.
+Weapons with shorter cooldowns give victims shorter attack invulnerability times (invincibility frames).
+The attack control can now be held down, attacking whenever the attack cooldown reaches 100%.
+It is now possible to hit mobs through non-full-sized blocks such as grass.
+HUD
+
+Changed how the attack indicator works.
+When on crosshair mode:
+The meter only appears after the attack is 100% recharged, showing the progress of reaching 200% charge instead.
+The "+" now only appears below the attack indicator when at 200% charge.
+When on hotbar mode:
+The meter only appears while charging the initial 100%.
+Sweep attack
+
+Performing a sweep attack now requires the Sweeping Edge enchantment.
+Now requires the attack timer to be at 200%.
+Is now performed regardless of whether an entity is hit.
+
+
+=== Items ===
+Axes
+
+Increased attack speed for all axes to 2.
+All axes deal 1HP more damage than their sword counterparts.
+Attack reach remains at 3 blocks.
+Hoes
+
+Changed the attack speed for most hoes:
+Wooden: 2; stone: 2.5; diamond and gold: 3.5.
+Changed the damage dealt for all hoes:
+Wooden, stone, and gold: 2HP; iron and diamond: 3HP.
+Increased attack reach to 4 blocks.
+Pickaxes
+
+Increased attack speed for all pickaxes to 2.5.
+Increased damage for all pickaxes by 1HP.
+Attack reach remains at 3 blocks.
+Shield
+
+Critical hits bypass shields.
+Removed warm-up delay from shields (0.25 second activation cooldown).
+When in the off-hand, shields activate when sneaking.
+Shields no longer knockback attackers when they block.
+Shovels
+
+Increased attack speed for all shovels to 2.
+Decreased damage for all shovels by 1HP.
+Attack reach remains at 3 blocks.
+Swords
+
+Increased attack speed for all swords to 3.
+Increased damage for all swords by 1HP.
+Increased attack reach to 3.5 blocks.
+Trident
+
+Increased attack speed to 2.
+Decreased base damage from 9HP to 7HP.
+Increased attack reach to 4 blocks.
+
+
+== Videos ==
+
+
+== Issues ==
+This version is not supported on the bug tracker, and as such issues relating to this version will not be fixed.
+
+
+== References ==
+
+
+== Navigation ==

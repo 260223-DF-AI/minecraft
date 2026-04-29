@@ -1,0 +1,560 @@
+These data values refer to the different types of blocks and items on Bedrock Edition. They are used in many places in Minecraft. Block IDs are used to define blocks placed in the world and inventory items (including items in chests and items dropped in the world). Item IDs are valid only for items.
+These data values differ greatly from the Java Edition data values.
+
+
+== IDs ==
+
+
+=== Block IDs ===
+
+All of blocks have their own direct item forms. Blocks with numeric ID over 255 have item form with numeric ID of 255 - (block ID) to avoid block item IDs being overlapped into the other item ID space.
+The item IDs are the IDs of the block's direct item form, which is used in savegame files and addons. This may, in some cases (e.g. Bed and Sugar Cane) differ from the ID of the item used to place the block, attainable through normal gameplay, the Creative inventory, or the /give command.
+
+
+=== Item IDs ===
+
+
+==== Block items ====
+The string IDs of most blocks' direct item forms are the same as IDs of the blocks themselves. However, there are some exceptions:
+
+Note that commands like /give use blocks' IDs to specify block items,  instead of block items' IDs.
+There are also some block items that were previously in the game but have since been removed:
+
+
+==== Other items ====
+Other items have values above 255, making it easy to separate the block item IDs from the other item IDs.
+In early versions, items had numeric IDs which had been used in commands and savegame files. However, these numeric IDs are deprecated. The following table lists items with their legacy numeric IDs.
+
+In current versions, items have numeric runtime IDs which are used internally in the game. The runtime IDs depend on the order in which the item is registered in the code. So when a new item is added, other items' IDs may also change. And some items are exclusive in normal Bedrock Edition, the developer version, or the Education Edition, so items' runtime IDs are not the same in each edition. The following table lists items with their numeric runtime IDs.
+
+Note that the boat, dye, banner_pattern, and spawn_egg in the four tables above are not normal items in game. They are used as alias IDs. For backward compatibility, an item has alias ID if its ID was changed:
+
+
+=== Entity IDs ===
+Several entity names do not correlate with entity names from Java Edition. The standard for naming new entities changes with subsequent releases; however, existing entity names have not been changed.
+
+
+=== Effect IDs ===
+
+
+=== Enchantment IDs ===
+
+
+== Block states ==
+ 
+After block IDs, block states further define blocks placed, describing for example the height of water or the direction a torch points. These replace the former block data, which was removed from command syntax in 1.19.70. Some of these block states are associated with legacy aux values (also called metadata), which are defined in the form of binary flags. Aux values are intended to be deprecated, with newly added blocks and block states no longer supporting them.
+
+
+==== active ====
+Determines whether the block is active or not.
+
+
+==== age ====
+Tracks the age of plants to handle growth and of fire to handle spread.
+
+
+==== age_bit ====
+Determines if the sapling should grow.
+
+
+==== attached_bit ====
+Whether the tripwire hook is connected to a valid tripwire circuit or not. For hanging signs, whether the sign is hanging from a single point or not.
+
+
+==== attachment ====
+Determines the type of attachment used by a block.
+
+
+==== bamboo_leaf_size ====
+Determines the size of bamboo leaves.
+
+
+==== bamboo_stalk_thickness ====
+Determines the thickness of bamboo stalk.
+
+
+==== big_dripleaf_head ====
+Determines if the block is the leaf part of the plant, or a part of the stem.
+
+
+==== big_dripleaf_tilt ====
+
+
+==== bite_counter ====
+
+
+==== bloom ====
+
+
+==== books_stored ====
+
+
+==== brewing_stand_slot_a_bit ====
+
+
+==== brewing_stand_slot_b_bit ====
+
+
+==== brewing_stand_slot_c_bit ====
+
+
+==== brushed_progress ====
+
+
+==== button_pressed_bit ====
+
+
+==== can_summon ====
+Determines if the block can or cannot summon mobs.
+
+
+==== candles ====
+How many candles are contained within this block.
+
+
+==== cauldron_liquid ====
+What the liquid in the cauldron is.
+
+
+==== cluster_count ====
+How much is in a cluster
+
+
+==== composter_fill_level ====
+The fill level of a composter
+
+
+==== conditional_bit ====
+If a command block is conditional
+
+
+==== coral_direction ====
+
+
+==== coral_fan_direction ====
+
+
+==== covered_bit ====
+
+
+==== crafting ====
+
+
+==== creaking_heart_state ====
+
+
+==== dead_bit ====
+
+
+==== deprecated ====
+
+
+==== direction ====
+
+
+==== disarmed_bit ====
+
+
+==== door_hinge_bit ====
+
+
+==== drag_down ====
+
+
+==== dripstone_thickness ====
+
+
+==== end_portal_eye_bit ====
+
+
+==== explode_bit ====
+
+
+==== extinguished ====
+
+
+==== facing_direction ====
+
+
+==== fill_level ====
+
+
+==== ground_sign_direction ====
+The rotation of standing heads, signs, and banners.
+
+
+==== growing_plant_age ====
+
+
+==== growth ====
+The rotation of standing heads, signs, and banners.
+
+
+==== hanging ====
+The rotation of standing heads, signs, and banners.
+
+
+==== head_piece_bit ====
+
+
+==== height ====
+
+
+==== honey_level ====
+
+
+==== huge_mushroom_bits ====
+
+
+==== in_wall_bit ====
+
+
+==== infiniburn_bit ====
+
+
+==== item_frame_map_bit ====
+
+
+==== item_frame_photo_bit ====
+
+
+==== kelp_age ====
+
+
+==== lever_direction ====
+
+
+==== liquid_depth ====
+
+
+==== lit ====
+
+
+==== minecraft:block_face ====
+
+
+==== minecraft:cardinal_direction ====
+
+
+==== minecraft:connection_east ====
+
+
+==== minecraft:connection_north ====
+
+
+==== minecraft:connection_south ====
+
+
+==== minecraft:connection_west ====
+
+
+==== minecraft:facing_direction ====
+
+
+==== minecraft:vertical_half ====
+
+
+==== moisturized_amount ====
+
+
+==== multi_face_direction_bits ====
+
+
+==== natrual ====
+
+
+==== occupied_bit ====
+
+
+==== ominous ====
+
+
+==== open_bit ====
+
+
+==== orientation ====
+
+
+==== output_lit_bit ====
+
+
+==== output_subtract_bit ====
+
+
+==== pale_moss_carpet_side_east ====
+
+
+==== pale_moss_carpet_side_north ====
+
+
+==== pale_moss_carpet_side_south ====
+
+
+==== pale_moss_carpet_side_west ====
+
+
+==== persistent_bit ====
+
+
+==== pillar_axis ====
+
+
+==== portal_axis ====
+
+
+==== powered_bit ====
+
+
+==== powered_shelf_type ====
+
+
+==== propagule_stage ====
+
+
+==== rail_data_bit ====
+
+
+==== rail_direction ====
+
+
+==== redstone_signal ====
+
+
+==== rehydration_level ====
+
+
+==== repeater_delay ====
+
+
+==== respawn_anchor_charge ====
+
+
+==== rotation ====
+
+
+==== sculk_sensor_phase ====
+
+
+==== sea_grass_type ====
+
+
+==== stability ====
+
+
+==== stability_check ====
+
+
+==== propagule_stage ====
+
+
+==== suspended_bit ====
+
+
+==== tip ====
+
+
+==== toggle_bit ====
+
+
+==== torch_facing_direction ====
+
+
+==== trial_spawner_state ====
+
+
+==== triggered_bit ====
+
+
+==== turtle_egg_count ====
+
+
+==== twisting_vines_age ====
+
+
+==== update_bit ====
+
+
+==== upper_block_bit ====
+
+
+==== upside_down_bit ====
+
+
+==== vault_state ====
+
+
+==== vine_direction_bits ====
+
+
+==== wall_connection_type_east ====
+
+
+==== wall_connection_type_north ====
+
+
+==== wall_connection_type_south ====
+
+
+==== wall_connection_type_west ====
+
+
+==== wall_post_bit ====
+
+
+==== weeping_vines_age ====
+
+
+==== weirdo_direction ====
+
+
+=== Deprecated ===
+This is a list of block states deprecated due to the flattening. These block states are still present in the game files, and they can still be used with pre-flattened block IDs in commands. For example, /setblock ~ ~ ~ fence ["wood_type"="acacia"] would place an acacia fence.
+
+
+==== allow_underwater_bit ====
+Deprecated Preview 1.21.30.23.
+
+
+==== block_light_level ====
+Deprecated Preview 1.21.20.21.
+
+
+==== chemistry_table_type ====
+Deprecated Preview 1.21.30.23.
+
+
+==== chisel_type ====
+Deprecated Preview 1.21.30.21.
+
+
+==== color ====
+Deprecated Preview 1.20.60.24.
+
+
+==== color_bit ====
+Deprecated Preview 1.21.30.22.
+
+
+==== coral_color ====
+Deprecated Preview 1.21.0.21.
+
+
+==== coral_hang_type_bit ====
+Deprecated Preview 1.21.10.21.
+
+
+==== damage ====
+Deprecated Preview 1.21.20.22.
+
+
+==== dead_bit ====
+Deprecated Preview 1.21.10.21.
+
+
+==== dirt_type ====
+Deprecated Preview 1.21.20.22.
+
+
+==== double_plant_type ====
+Deprecated Preview 1.21.0.22.
+
+
+==== flower_type ====
+Deprecated Preview 1.20.80.23.
+
+
+==== monster_egg_type ====
+Deprecated Preview 1.21.10.20.
+
+
+==== new_leaf_type ====
+Deprecated Preview 1.20.70.20.
+
+
+==== new_log_type ====
+Deprecated Preview 1.20.0.20.
+
+
+==== old_leaf_type ====
+Deprecated Preview 1.20.70.20.
+
+
+==== old_log_type ====
+Deprecated Preview 1.20.0.20.
+
+
+==== prismarine_block_type ====
+Deprecated Preview 1.21.10.22.
+
+
+==== sand_stone_type ====
+Deprecated Preview 1.21.20.22.
+
+
+==== sand_type ====
+Deprecated Preview 1.21.20.22.
+
+
+==== sapling_type ====
+Deprecated Preview 1.20.80.20.
+
+
+==== sponge_type ====
+Deprecated Preview 1.21.30.22.
+
+
+==== stone_brick_type ====
+Deprecated Preview 1.21.10.20.
+
+
+==== stone_slab_type ====
+Deprecated Preview 1.21.10.20.
+
+
+==== stone_slab_type_2 ====
+Deprecated Preview 1.21.10.22.
+
+
+==== stone_slab_type_3 ====
+Deprecated Preview 1.21.10.22.
+
+
+==== stone_slab_type_4 ====
+Deprecated Preview 1.21.10.22.
+
+
+==== stone_type ====
+Deprecated Preview 1.20.50.20.
+
+
+==== stripped_bit ====
+Deprecated Preview 1.20.70.22.
+
+
+==== structure_void_type ====
+Deprecated Preview 1.21.30.21.
+
+
+==== tall_grass_type ====
+Deprecated Preview 1.21.0.20.
+
+
+==== top_slot_bit ====
+Deprecated Preview 1.20.20.20.
+
+
+==== wall_block_type ====
+Deprecated Preview 1.21.30.21.
+
+
+==== wood_type ====
+Deprecated Preview 1.20.70.22.
+
+
+== Numeric ID Inherit Tree ==
+
+
+== References ==
+
+
+== Navigation ==

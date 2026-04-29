@@ -1,0 +1,653 @@
+This is a list of Pocket Edition v0.11.0 alpha development versions.
+
+
+== v0.11.0 alpha build 1 ==
+v0.11.0 alpha build 1 is the first build version released for v0.11.0, and the first build released in 2015.
+
+
+=== Additions ===
+
+
+==== General ====
+Skins
+Death messages
+Localization
+Text formatting codes
+Show server status and message of the day on server entries screen
+
+
+==== Gameplay ====
+New World edit screen.
+Added mob effects:
+ Poison
+Can be obtained by eating rotten flesh and pufferfish, or being attacked by a cave spider on normal and hard difficulty.
+ Nausea.
+Can only be obtained by eating Pufferfish.
+ Hunger
+Can only be obtained by eating Raw Chicken.
+Does not affect the player yet.
+Fishing.
+Change gamemode.
+Lock/unlock day cycle.
+Rename worlds.
+Version exclusive: Make old worlds infinite.
+
+
+==== Blocks ====
+Redstone Block
+Currently its only purpose is to store redstone dust.
+Grass Path block
+Grass path blocks that are lower than normal grass blocks (15/16th of a block).
+To create, tap a grass block with a shovel.
+Replaces the gravel paths in villages.
+
+
+==== Items ====
+Boats
+Version exclusive: Emits smoke when destroyed.
+Version exclusive: Crafting recipe is 5 wood planks and a wooden shovel.
+Larger in size.
+Color is dependent on the planks used.
+Sprite color is always the same; it doesn't change based on actual boat color.
+When in a boat, two buttons for steering appear. The right button steers to the left, the left button steers to the right. Pressing both buttons moves the boat forward.
+Are more resistant to damage - when colliding with another block, the boat will not break.
+Can support two riders, including passive and hostile mobs.
+Passive and hostile mobs can ride in a boat without the player.
+Fishing Rod
+Rotten Flesh
+Fish
+Raw Cod
+Cooked Cod
+Raw Salmon
+Cooked Salmon
+Pufferfish
+Tropical Fish
+
+
+==== Mobs ====
+Squid
+Version exclusive: Baby squid
+Version exclusive: Produces a black cloud of "ink" when attacked.
+Version exclusive: Spawn only in ocean biomes.
+Spider Jockey
+Cave Spider
+Version exclusive: Cave spider jockeys
+Bat
+Baby Zombie
+Baby zombies have a 5% chance of spawning as a chicken jockey. (In turn, zombies have a 0.2% chance of being a chicken jockey)
+Magma Cube
+Drop magma cream
+Can only be spawned from spawn eggs.
+Ghast
+Only available through spawn eggs.
+Spawn egg can only be received through inventory editing.
+
+
+=== Changes ===
+
+
+==== General ====
+Options
+Added a "hide" button to the chat screen
+Performance
+Improved multiplayer bandwidth usage
+Improved client/server communication
+Improved disconnection messages
+Now includes the reason of the kick/ban.
+Improved text rendering
+Improved world loading
+Faster torch placing (less lag)
+Added shovels in creative mode
+Added server-side checks on games
+Non-fancy render mode now works properly
+Updated inventory icon from a Brick block to a chest
+Limited player names to PC allowed names﻿
+Changed texture for mob spawners
+
+
+=== Fixes ===
+40 bugs fixed
+
+Fixed the block break feedback circle disappearing on suspend
+Fixed crashes while saving the world
+Fixed crashes on armor screen
+Fixed crashes on furnace screen
+Fixed world not being saved
+Fixed zombie pigman catching fire
+Fixed being unable to create a new world
+Fixed players getting stuck in the void after dying
+Fixed a hotbar duplication glitch
+Fixed the action button not being disabled after moving away
+Fixed grass/mycelium not growing below fences but underwater
+Fixed stone walls connecting to water
+Fixed cocoa tile not updating neighbor blocks when dropped
+Fixed breakable bedrock in survival.
+Fixed placing water replacing non-solid blocks
+Fixed wooden axe not burning on furnaces
+Fixed different planks no longer stacking
+Fixed updating neighbors and rendering on random change
+Fixed gravel falling near fences
+Fixed destroying Reactor-core not allowing the night to end
+Fixes disallowing changing name while playing
+Fixed quartz stairs not in stonecutter
+Fixed a duplicated player kick
+Fixed door duplication when placed near a cactus
+Fixed water not functioning properly on transparent blocks
+Fixed double plant blocks deleting existing blocks
+Fixed entities getting ticked twice when riding
+Fixed duplication of items while feeding wolves
+Fixed iron bars not connecting to glass panes
+Fixed fences connecting to fence gates sideways
+Fixed acacia and dark wood stairs not burning
+Fixed grass becoming dirt even if sapling can't grow
+Fixed carpets not dropping more than one when stacked.
+Fixed sand/gravel falling when placed on top of torches
+Fixed the topmost block having full bright lighting
+Fixed world crash when unknown blocks are present
+Fixed trees growing on the client
+Fixed desert wells and special biomes not generating
+Fixed issue with connecting to local games
+MCPE-8118 - Unequipped armor causes a crash when dying with the armor tab open
+
+
+== v0.11.0 alpha build 2 ==
+v0.11.0 alpha build 2 is the second build version released for v0.11.0.
+
+
+=== Additions ===
+Added View-bobbing slider in the menu.
+
+
+=== Fixes ===
+19 bugs fixed
+
+Fixed startup crash for old worlds
+Wolves are no longer angry after killing a target
+Fixed bugs with tamed animals not being tame
+Fixed several collision checks
+FishHook now despawns on game exit
+Fixed arrows crashing the game
+Fixed arrows being picked up by the player in mid-air
+From the previous development version
+
+MCPE-8170 - Sounds are played twice
+MCPE-8172 - Water and lava are in a block far away from where the texture is
+MCPE-8173 - Skeleton shoot arrows to themselves
+MCPE-8174 - Cannot play on LAN
+MCPE-8185 - Destroying a furnace with items in it crashes the game
+MCPE-8205 - Crash with invalid or no skin.
+MCPE-8226 - Players do not lose status effects particles while they die
+MCPE-8271 - Time for potions is not shown correctly
+MCPE-8272 - Armor leggings not showing
+MCPE-8276 - Trunks are missing in spruce trees
+MCPE-8278 - Double click to browse skins crashes the game
+MCPE-8331 - Multiplayer crashes when another tablet is joining my world to ride the boat with my brother
+
+
+== v0.11.0 alpha build 3 ==
+v0.11.0 alpha build 3 is the third build version released for v0.11.0.
+
+
+=== Additions ===
+
+
+==== Items ====
+Spawn eggs
+
+ Cave spider spawn egg
+Made available in the Creative inventory.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Furnace
+
+Furnaces now drop one stack for each item instead of splitting them up.
+
+
+=== Fixes ===
+16 bugs fixed
+
+Fixed a crash when destroying an AddEntityPacket.
+Fixed a crash when opening two browsers for skin windows at the same time.
+Fixed a crash when destroying a furnace with items inside it under certain circumstances.
+Fixed a crash when re-entering a level due to cloud rendering.
+Fixed multiple crashes caused by code incorrectly marked unreachable.
+Fixed the enderman angry animation only being shown on the client.
+Fixed leggings not always being scaled correctly.
+Fixed some translated strings not having their parameters replaced.
+Fixed entities not sending their last movement packet when moving.
+Fixed falling tiles that did not drop items if the ticking player was in creative mode.
+Fixed packet ordering (related to batching).
+From the 0.11.0 development versions
+
+MCPE-8167 - Death in boat respawns you in boat.
+MCPE-8168 - Crash upon launch.
+MCPE-8200 - Alpha build 2. No cave spider egg.
+MCPE-8273 - Half armor icon renders as a heart on status bar.
+MCPE-8274 - Fence gate sometimes does not connect.
+
+
+== v0.11.0 alpha build 4 ==
+v0.11.0 alpha build 4 is the fourth build version released for Alpha 0.11.0.
+
+
+=== Additions ===
+Implemented milk drinking to remove mob effects.
+
+
+=== Changes ===
+Version name now includes the beta number.
+
+
+=== Fixes ===
+13 bugs fixed
+
+Sleeves are now properly rendered in the first-person mode.
+Fixed potion duration rendering for high values.
+Fixed some gamepad menu issues.
+Fixed spawning high up in the air.
+Fixed wrong player spawning rotation and velocity.
+Fixed chat background rendering when using bold.
+Changed the way skins are loaded and saved.
+From released versions before 0.11.0
+
+MCPE-7889 - Game crashes when pressing 'Quit to title'.
+From the 0.11.0 development versions
+
+MCPE-8163 - Fishing bobber gets stuck in boat.
+MCPE-8218 - Existing old world type game crashes.
+MCPE-8220 - Fishing pole bobber glitch.
+MCPE-8275 - Drinking milk does not remove potion effects.
+MCPE-8277 - Enderman angry animation only on client side.
+
+
+== v0.11.0 alpha build 5 ==
+v0.11.0 alpha build 5 is the fifth build version released for v0.11.0.
+
+
+=== Additions ===
+New splashes on the title screen.​[more information needed]
+
+
+=== Fixes ===
+22 issues fixed
+From released versions before Pocket Edition v0.11.0 alpha
+
+MCPE-8143 – Can click invisible cancel button during terrain generation.
+From the Pocket Edition v0.11.0 alpha development versions
+
+MCPE-8187 – You can fall through blocks while coming from top of a not-full block (like slabs or chests).
+MCPE-8231 – When Tnt blows up, it destroy other tnts instead of priming them up.
+MCPE-8233 – Chests delete all items stored after loading a new world.
+From the previous development version
+
+MCPE-8263 – When I spawn a boat beside a block, it doesn't go.
+MCPE-8266 – Crash after exiting app: null pointer exception in isNetworkEnabled.
+MCPE-8279 – Crash when quitting to title whilst opening a chest.
+Other
+
+Fixed chat formatting character skipping.
+Fixed SetEntityData packet destruction.
+Fixed bobber corruption.
+Fixed a crash when loading an invalid skin.
+Fixed milk name.
+Fixed enderman name.
+Fixed a crash on arrows after reloading world.
+Fixed effect particles not being removed after drinking milk.
+Fixed spawn eggs being used in Creative mode.
+Fixed a background queue deadlock.
+Fixed a crash during quitting.
+Fixed some black screen issues by killing the background process on activity destruction.
+Fixed tile entities (chests, signs) not saving.
+Fixed a crash that occurred when hooking an exploding creeper.
+Bone meal can no longer be used on grass or ferns that have a block directly above them.
+
+
+== v0.11.0 alpha build 6 ==
+v0.11.0 alpha build 6 is the sixth build version released for Alpha 0.11.0.
+
+
+=== Changes ===
+Items can be swapped on the selection bar
+Skin selection player model rotation
+
+
+=== Fixes ===
+16 bugs fixed
+
+Fixed items in chests not saving when quitting
+Creative/survival mode change works again
+Always Day switch works again
+Edited world names are now saved
+Corrected entity duplication in multiplayer
+Spawned players will now have the correct rotation without interpolation
+Fixed the creative list being incorrect sometimes after connecting to a server
+Fixed a cause of lag on the world list under slow networks
+Fixed possible attacks by servers on the server list
+Fixed crash after death and respawning multiple times
+Fixed crash when disconnecting from a server
+Fixed riding non-existent entities on multiplayer crashing the game
+Bubble meter no longer gets reset on the death screen
+From released versions before 0.11.0
+
+MCPE-8261 - Breath meter bug after drowning.
+From the 0.11.0 development versions
+
+MCPE-8186 - Chests doesn't drop they're content while destroyed, or crash the game
+MCPE-8194 - GameMode Switch Button Bug
+
+
+== v0.11.0 alpha build 7 ==
+v0.11.0 alpha build 7 is the seventh build version released for v0.11.0.
+
+
+=== Fixes ===
+13 bugs fixed
+
+Fixed AABB on baby zombies
+Fixed potential crash on a mob spawner
+Fixed back button on the language screen
+Fixed player position on skin screen
+Fixed active nether reactor crashing when broken
+Fixed crash on rendering null-items
+Fixed wolves not syncing sitting animation in MP
+Fixed game being stuck on a black screen
+Fixed players not getting fall damage
+Fixed inventory not closing on death
+From the 0.11.0 development versions
+
+MCPE-8251 - Crash after fishing boat, exploded creeper and minecart
+MCPE-8309 - The Custom Skins Option Is Missing
+From the previous development version
+
+MCPE-8350 - When I change server from Creative to Survival, my friend who joined me in the server has unlimited items...
+
+
+== v0.11.0 alpha build 8 ==
+v0.11.0 alpha build 8 is the eighth build version released for v0.11.0.
+
+
+=== Additions ===
+Added magma cube spawn eggs
+The mob could previously only be spawned by hacking in the egg
+
+
+=== Changes ===
+Fishing rod now breaks the connection between rider and ride
+Changed default biome
+
+
+=== Fixes ===
+21 bugs fixed
+
+Fixed crash when leaving server while riding.
+Fixed spawn-egg mobs falling through the world.
+Fixed players not dropping their inventory on death.
+Removed redundant dirty queue (increase performance).
+Fixed excess tallgrass in savanna biomes.
+Improved (re-)spawning, teleporting.
+From released versions before 0.11.0
+
+MCPE-6858 - Duplicate of a consumable item in use shows up in Hotbar.
+MCPE-6866 - Naturally generated stationary lava doesn't update.
+MCPE-7185 - No fall damage for guests.
+MCPE-8109 - Beds display light level zero when covered by a block.
+MCPE-8341 - Falling red sand broken by a torch drops normal sand.
+MCPE-8352 - Naturally spawned lava has no blast resistance below a certain leve.l
+From the 0.11.0 development versions
+
+MCPE-8175 - Sometimes entities (players, animals, monsters, and boats) start falling into the ground until they die or reach the void.
+MCPE-8195 - Boats hitting the shore would go into the land, then sink into the blocks until y=0.
+MCPE-8221 - Fishing does not work.
+MCPE-8258 - The boat's GUI does not include the chat button.
+MCPE-8282 - All of the quartz block varieties are named the same "Block of Quartz."
+MCPE-8284 - Enderman Spawn Egg is named wrong.
+MCPE-8302 - Fishing doesn't work well on boats.
+MCPE-8313 - Hitting the "fish" button in multiplayer targets the nearest player and pulls said player towards the player with the rod.
+
+
+== v0.11.0 alpha build 9 ==
+v0.11.0 alpha build 9 is the ninth build version released for v0.11.0.
+
+
+=== Fixes ===
+9 bugs fixed
+
+Fixed various language errors
+Fixed crash related to tessellator
+Fixed crash related to falling sand
+Fixed crash on the skin selection screen
+Fixed speed modifiers
+Fixed initial spawn teleport bug
+Fixed tamed wolves
+From released versions before 0.11.0
+
+MCPE-8245 - You do not catch on fire from mobs which are on fire.
+From the 0.11.0 development versions
+
+MCPE-8283 - Player is not being pushed by water
+
+
+== v0.11.0 alpha build 10 ==
+v0.11.0 alpha build 10 is the tenth build version released for v0.11.0.
+
+
+=== Additions ===
+
+
+==== Skin packs ====
+Version exclusive: City Folk Skin Pack.
+Version exclusive: Town Folk Skin Pack.
+
+
+=== Changes ===
+Third person interactions are only available in front of the player.
+Increased creative mode interaction range.
+
+
+=== Fixes ===
+13 bugs fixed
+
+Clients connecting to the server would teleport the host when spawning.
+Hotbar won’t shift to the left anymore.
+Players are affected by knockback on servers.
+Players can be pulled by a fishing rod.
+Chat, PotionEffect, and Similar buttons will only open when tapping (not dragging).
+Increased amount of gravel on Extreme Hills Mutated biome.
+World opening errors are now logged (for future fixes).
+From the 0.11.0 development versions
+
+MCPE-8215 - Sand block disappearing when falling (worlds before 0.11 only).
+MCPE-8285 - All leaves are not named correctly.
+MCPE-8305 - Game crash when breaking Nether Reactor Core.
+From the previous development version
+
+MCPE-8399 - Eating food gives incorrect particles.
+MCPE-8429 - Stone Brick bug.
+MCPE-8436 - Farming wheat, potatoes and carrots doesn't work.
+
+
+== v0.11.0 alpha build 11 ==
+v0.11.0 alpha build 11 is the eleventh build version released for v0.11.0.
+
+
+=== Additions ===
+Wolves can now eat rotten flesh.
+Fishing rods can now be used in 3rd person.
+Added all tool types to the Creative inventory.
+
+
+=== Changes ===
+Tweaked the skin packs.
+Changed the connection indicator to a dot that shows if you can connect or not.
+
+
+=== Fixes ===
+23 bugs fixed
+
+Fixed crash when closing server.
+Fixed crash on joining worlds.
+Fixed crash on disabling Wi-Fi.
+Fixed crash on switching worlds.
+Fixed minecarts and boats for multiplayer.
+Fishing button now gets priority over the leave boat button.
+Fixed bug with furnace smelting whilst output slot is full.
+Selected language is now centered in the language list.
+Fixed players in creative mode dying by void.
+Fixed boat riding behavior on reconnect.
+Players no longer spawn in transparent blocks.
+Fixed block break speed when under haste effect.
+Fixed boats’ hitbox so that it doesn’t prevent fishing and breaking blocks while looking down.
+From released versions before 0.11.0
+
+MCPE-7891 - at (x,0,y), top of the texture of the block shows whereas the sides are invisible.
+MCPE-7997 - Spawning on the soil above killing place in cave.
+MCPE-8045 - Mobs can breed when separated.
+MCPE-8123 - Entities invisible when at/above the height limit.
+MCPE-8582 - Invisible bottom layer.
+From the 0.11.0 development versions
+
+MCPE-8394 - Segfault when low memory event fires.
+MCPE-8421 - Black Screen.
+MCPE-8457 - Crash when back on MCPE from another app (Multitasking).
+From the previous development version
+
+MCPE-8452 - Skin packs free skins selection bug.
+MCPE-8487 - Crash when exiting old type world.
+
+
+== v0.11.0 alpha build 12 ==
+v0.11.0 alpha build 12 is the twelfth build version released for 0.11.0.
+
+
+=== Changes ===
+Removed extra items (like different types of swords) from the creative inventory
+Changed the way the select skin is highlighted
+
+
+=== Fixes ===
+23 bugs fixed
+
+Fixed crash when the client uses the last item of a stack
+Fixed crash when breaking flowers/mushrooms
+Fixed crash when being disconnected while the game is suspended
+Fixed buckets being unable to be used underwater
+It’s now easier to get into boats while holding a boat in your hand (underwater)
+Creative players can no longer be set on fire
+Tiny slimes no longer spawn in Peaceful
+Skins are now centered on the skin pack screen
+Fixed several localization issues
+From released versions before 0.11.0
+
+MCPE-8039 - The player get damages when connecting to survival servers
+MCPE-8099 - Chickens walk on water
+From the 0.11.0 development versions
+
+MCPE-8164 - Fishing button while on a boat
+MCPE-8224 - Clients are not losing inventory while they die
+MCPE-8225 - Client's food doesn't consume upon use
+MCPE-8291 - World List shows all worlds as having been played "Today" (even very old worlds)
+MCPE-8328 - Grass not spreading
+MCPE-8345 - Mob effects not dealing true damage
+MCPE-8428 - Cave Spider Spawner does not generate in Mineshaft
+MCPE-8435 - Boat type changing upon exiting the world
+MCPE-8458 - Build 10 interaction range increase also affects survival mode when split controls off
+MCPE-8482 - Arrow flies in wrong directon when in a boat
+From the previous development version
+
+MCPE-8496 - Fire on player does not go off
+MCPE-8506 - Axes incorrect order in inventory
+
+
+== v0.11.0 alpha build 13 ==
+v0.11.0 alpha build 13 is the thirteenth build version released for v0.11.0.
+
+
+=== Changes ===
+Readded all tools to the Creative inventory.
+
+
+=== Fixes ===
+9 bugs fixed
+
+Fixed crash on loading chunks too early
+Fixed crash when creating certain entities
+Fixed various language-related issues
+Fixed lighting with entities outside of world bounds
+From the 0.11.0 beta
+
+MCPE-8464 – Back button on Android navbar doesn't work in Options menu
+MCPE-8558 – Skin pack glitch
+From the previous development version
+
+MCPE-8516 – Iron shovel missing in Creative
+MCPE-8518 – Casting the fishing rod into water crashes the game immediately
+MCPE-8525 – Fishing in a boat crashes the game
+
+
+== v0.11.0 alpha build 14 ==
+v0.11.0 alpha build 14 (RC) is the fourteenth build version and the first (and only) release candidate for v0.11.0. It is the final build version for this version and the final build version to be classified as a release candidate.
+
+
+=== Tweaks ===
+Removed burning animation from creative mode completely
+Improved boat boarding so you can press the interact button as well as the D-Pad
+Bandit skin is now slim
+Tall grass pixels are now square, and short grass has a random height
+Improved some text overflowing on buttons
+Skeletons now have improved accuracy
+Game attempts to repair corrupted worlds
+Added snowballs to the creative inventory
+
+
+=== Fixes ===
+34 bugs fixed
+
+Fixed items disappearing from furnaces after removing items from the input slot
+Fixed crash after getting poisoned
+Crafting recipes using wood now display the correct type of wood
+Magma cube spawn egg now uses the correct texture
+Naturally spawned lava is now affected by gravity
+Removed burning animation from creative mode completely
+Fixed client/server item in hand mismatch.
+Fixed particles when breaking tall grass
+Chat & pause buttons now show for boat passengers
+Fixed clients not being able to board boats
+Fixed crash when having null items in hand
+Fixed missing cave spider eyes
+Fixed [NUL] characters at the end of strings
+Tamed animals no longer teleport to the player while inside a boat
+Fixed spawning above beds and caves
+Fixed player spawning on the same height it was killed
+Fixed creative clients having items after switching to survival
+Fixed “iMojang” string
+Fixed players spawning into the ground
+Fixed multitasking crash
+Fixed invisible clients
+Fixed crash when throwing snowballs
+Fixed poison lasting after respawn
+Fixed memory leak on potion effects
+Fixed spawn on players after joining a world
+Fixed players being in a constant death animation
+Fixed placing sign crashes when another player removes it
+Fixed lava fire being biased towards east and north
+Fixed crash when using bonemeal multiple times on tall grass
+Fixed endermen not teleporting away from projectiles
+From released versions before 0.11.0
+
+MCPE-6786 – Movement of chicken's head is inverted
+MCPE-7887 – Cocoa beans will not grow at all
+MCPE-8512 – Underground lightning is affected by sunrise/sunset
+From the 0.11.0 development versions
+
+MCPE-8196 – Clownfish is not a food item
+MCPE-8508 – Always day option does not toggle when tapped
+
+
+== Notes and references ==
+
+
+== Navigation ==

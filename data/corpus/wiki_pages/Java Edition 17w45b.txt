@@ -1,0 +1,105 @@
+17w45b is the fourth snapshot for Java Edition 1.13, released on November 10, 2017, which added the /data command.
+
+
+== Additions ==
+
+
+=== Command format ===
+/data
+
+A command that allows the player to get, merge, and remove entity and block NBT data.
+/data get block <pos> [<path>] [<scale>]
+Returns the NBT data from the block at <pos> as its result (if a [<path>] is specified). A [<path>] can be specified to only retrieve that NBT data, but this is limited to numeric tags. An optional [<scale>] can be provided to scale the number retrieved.
+/data get entity <target> [<path>] [<scale>]
+Returns the NBT data from one [<target>] entity as its result (if a [<path>] is specified). A [<path>] can be specified to only retrieve that NBT data, but this is limited to numeric tags. An optional [<scale>] can be provided to scale the number retrieved.
+/data merge block <pos> <nbt>
+Merges the block NBT data at <pos> with the specified <nbt> data.
+/data merge entity <target> <nbt>
+Merges the entity NBT data from <target> with the specified <nbt> data. Merging player NBT data is not allowed.
+/data remove block <pos> <path>
+Removes NBT data at <path> from the block at <pos>.
+/data remove entity <target> <path>
+Removes NBT data at <path> from one <target> entity. Removing player NBT data is not allowed.
+Data paths look like this: foo.bar[0]."A [crazy name]".baz.
+foo.bar means foo's child called bar.
+foo[0] means element 0 of foo.
+"quoted strings" may be used if a name of a key needs to be escaped.
+Examples of old commands:
+/entitydata <target> {} is now /data get entity <target>
+/blockdata <pos> <nbt> is now /data merge block <pos> <nbt>
+Examples of new functionalities:
+/data get entity @e[type=pig,limit=1] Saddle 2
+/data remove block 17 45 34 Items
+
+
+== Changes ==
+
+
+=== Command format ===
+/entitydata
+
+Has been removed in favor of /data.
+/execute store
+
+Has been reworked.
+/execute store (result|success) score <name> <objective> <chained command>
+The value is stored into the scoreboard under <name> and <objective>.
+The objective must exist, but unlike with /stats you don't need to set an initial value for <name>.
+/execute store (result|success) block <pos> <path> (byte|double|float|int|long|short) <scale> <chained command>
+The value is stored in the NBT data at path of the block at pos as a byte, double, float, int, long, or short.
+/execute store (result|success) entity <target> <path> (byte|double|float|int|long|short) <scale> <chained command>
+The value is stored in the NBT data at path of one target entity as a byte, double, float, int, long, or short.
+Data paths look like this: foo.bar[0]."A [crazy name]".baz.
+foo.bar means foo's child called bar.
+foo[0] means element 0 of foo.
+"quoted strings" may be used if a name of a key needs to be escaped.
+Examples:
+/execute store success score @a foo run say hi
+/execute as @e[type=pig] at @s store success entity @s Saddle byte 1 if entity @p[distance=..5]
+/execute if <...>
+
+Now returns success and result values if used on its own, without a sub-command.
+
+
+== Fixes ==
+27 issues fixed
+From released versions before 1.13
+
+MC-80400 – Sizelimited entity selectors (@e with c=1,@r with type=!entity) in commands prefer players.
+MC-87799 – /execute detect functions inconsistently with semi- (snow layer, grass path, soul sand, farmland) blocks.
+MC-98244 – Same UUID infinite times possible + changing UUID possible via entitydata.
+MC-106681 – Scoreboard teams leave doesn't work if first player fails.
+MC-111704 – Players can input any value in [old block handling] of setblock and fill.
+MC-114721 – Title command treats invalid second argument as "title".
+MC-117933 – /clone command treats invalid optional arguments as if they were default.
+From the previous development version
+
+MC-121623 – Cannot use namespace in type= for selectors.
+MC-121627 – @s fails to build valid commands.
+MC-121635 – Incorrect failed /fill result message.
+MC-121637 – Incorrect result message when teleporting a single entity.
+MC-121642 – "Optional" commands following conditional execute chain succeed/fail strangely.
+MC-121647 – JRE Fatal Error when joining multi-player server.
+MC-121655 – Incorrect message when teleporting single entity.
+MC-121656 – Some creative commands are available by a survival player with cheats disabled.
+MC-121660 – distance argument can't find players with @a, @p or @e[type=player].
+MC-121663 – Gamerules are copying from other worlds.
+MC-121674 – Execute doesn't work in functions.
+MC-121683 – -= isn't a valid operation in scoreboard players operation.
+MC-121686 – Execute unless always fails on entities.
+MC-121695 – Tellraw only supports 1 target.
+MC-121711 – @a or @s doesn't include dead player.
+MC-121726 – Only players can teleport with relative coordinates.
+MC-121727 – Execute on multiple entities cancels, once one command fails.
+MC-121728 – The order, in which execute runs the command for each entity, is in reverse.
+MC-121749 – /entitydata does not apply modified NBT data.
+MC-121765 – Removing n scoreboard points adds them instead.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

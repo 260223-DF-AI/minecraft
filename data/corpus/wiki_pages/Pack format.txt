@@ -1,0 +1,54 @@
+Pack format, sometimes referred to as pack version, is a number used in pack.mcmeta to describe what Java Edition versions a resource pack or data pack is compatible with. Each version specifies the pack formats it supports in its version.json. The pack format can be obtained by running /version, or using the F3 + V debug hotkey.
+Pack formats help Minecraft identify whether a resource or data pack was built for the correct version of the game. If the format number in a pack's pack.mcmeta file is higher than the one the game supports, the pack appears as "incompatible". This system ensures that new pack features introduced in later versions do not cause crashes or missing content in older ones.
+
+
+== Technical details ==
+Each pack format corresponds to specific internal changes in how Minecraft reads data or assets. These include updates to registries, loot tables, tags, advancements, and model syntax. Both resource packs and data packs use the same numbering system but apply it differently:
+
+Data packs focus on gameplay logic – structures, recipes, tags, loot tables, and functions.
+Resource packs deal with textures, models, block states, sounds, and text assets.
+For example, when upgrading from format 12 to 15, several JSON structures (such as predicates and item components) changed to match new engine rules.
+Below is an example of a streamlined pack.mcmeta file compatible with Minecraft 1.21.8 and earlier versions:
+
+{
+  "pack": {
+    "description": "Example datapack for Minecraft 1.21",
+    "pack_format": 48
+  }
+}
+
+If this number does not match the game's supported format, Minecraft displays a warning in the pack list.
+Since 25w31a, the pack format has been changed to work with "min_format" and "max_format" fields instead of the previous "pack_format" field.
+Both data packs and resource packs have this change.
+Here is the recommended pack.mcmeta configuration for Minecraft 1.21.9 and newer:
+
+{
+  "pack": {
+    "description": "Example datapack for Minecraft 1.21.9",
+    "min_format": 88,
+    "max_format": 88
+  }
+}
+
+
+== Data pack format history ==
+Below is a list of all valid data pack formats with corresponding Java Edition versions.
+
+
+== Resource pack format history ==
+Below is a list of all valid resource pack formats with corresponding Java Edition versions.
+
+
+== List of pack formats ==
+
+
+== Notes ==
+
+
+== See also ==
+Resource pack – how pack files and folders are structured
+pack.mcmeta – metadata file used by both resource and data packs
+version.json – internal version file that defines supported pack formats
+
+
+== Navigation ==

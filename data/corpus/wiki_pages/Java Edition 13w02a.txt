@@ -1,0 +1,181 @@
+13w02a is the third snapshot for Java Edition 1.5, released on January 10, 2013.
+An experimental version of 13w02a was released by Dinnerbone on Mojira to try to fix an issue with white textures.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Activator rails
+
+Used to trigger minecarts with TNT.
+Need to be powered by redstone.
+Transmit power up to 8 activator rails far.
+Crafted the same way as normal rails except without a stick in the middle.
+ Block of quartz
+
+New building block.
+Made by using 4 pieces of nether quartz in a square.
+ Chiseled quartz block
+
+New building block.
+Crafting recipe is 2 quartz slabs vertically.
+ Pillar quartz block
+
+New building block.
+Crafting recipe is 2 blocks of quartz vertically.
+ Quartz slabs
+
+New slab block.
+Crafting recipe is the same except that it is made out of any quartz block.
+ Quartz stairs
+
+New stair block.
+Crafting recipe is the same except that it is made out of any quartz block.
+
+
+=== Non-mob entities ===
+Minecart with TNT
+
+Triggered by activator rails.
+Crafting recipe is a TNT block on top of a minecart (allowing for creation in the 2×2 inventory).
+When it derails, it explodes instantly, ignoring the usual timer delay.
+Explodes even more violently the faster it goes.
+In Creative mode, when left clicked while moving, the minecart with TNT explodes.
+
+
+=== Gameplay ===
+Death messages
+
+Now includes the cause of death, the player the deceased player was fighting at time of death, and the name of the item used to kill.
+For death messages for fall damage, a complicated system was introduced.
+There are now two types of messages, "[player] <first>" and "[player] <first> and <last>".
+<first> can be:
+fell [off a ladder/off some vines/out of the water/fell from a high place]
+was [shot/pummeled/blown/fireballed/knocked] [off a ladder/off some vines/out of the water/from a high place]
+was [shot/pummeled/blown/fireballed/knocked] [off a ladder/off some vines/out of the water/from a high place] by [player/mob]
+<last> can be:
+into a pool of lava
+fell out of the world
+into a patch of fire
+into a patch of cacti
+got finished off by [player/mob]
+got finished off by [player/mob] using [item]
+got finished off using [item]
+There are 352 different death messages for falling. (Technically there are 416 because the verb "blown" exists twice in the en_US.lang file.)
+
+
+== Changes ==
+
+
+=== Blocks ===
+Anvils
+
+Improved naming of containers.
+Renamed chests, trapped chests, dispensers, furnaces, brewing stands, and enchantment tables display the new name in their GUI where the normal name used to appear.
+Hoppers
+
+Is now controllable by redstone – players can power it to disable item forwarding.
+Added a proper icon.
+Is no longer considered wooden (cannot be used as a fuel in a furnace, etc.).
+New crafting recipe uses iron ingots rather than stone.
+The redstone signal emitted when a redstone comparator is placed against it directly has changed.
+1 item gives a signal strength of 1, a 1/3 of a stack (21 for items which stack to 64) gives a signal strength of 2.
+The number of full stacks x 3 = signal strength.
+E.g. 2 stacks of an item/block give a signal strength of 6, while 2 potions also give a signal strength of 6 (because a potion occupies one stack).
+Lava 
+
+Changed textures.
+Now flows more quickly in the Nether.
+Enclosed hidden lava springs now generate in the Nether.
+Redstone comparator
+
+Updated texture.
+When fed by containers, they now start giving out a signal as soon as 1 item is in the container, allowing for empty container detection.
+Slabs
+
+The final "seamless" stone slab (and, by extension, smooth stone) has been removed as a result of the addition of quartz slabs.
+Trapped chests
+
+Now in "Decoration Blocks" tab in Creative inventory.
+
+
+=== Items ===
+Fireball
+
+The texture of fireballs has been accidentally changed from  to .
+
+
+=== Mobs ===
+General 
+
+Improved naming of spawn eggs.
+Mobs spawned from renamed eggs have the name of the egg and the names appear in the death message.
+Mobs can now display their custom name as nametag using NBT data.
+Skeletons
+
+Improved aiming.
+Now shoots from 15 blocks away, instead of 10.
+Accuracy changes with difficulty.
+
+
+=== World generation ===
+Mineshafts
+
+Changed the chests to minecarts with chests.
+
+
+=== Gameplay ===
+Language
+
+Updated language files.
+Language files can now be updated via the background downloader (no need for a new Minecraft release).
+Missing textures and models
+
+Changed the missing texture from  to .
+Is now present in the texture atlases stitched_terrain.png and stitched_items.png.
+Texture packs
+
+Textures now use one file per block/item, which are stitched together at runtime – texture sizes don't need to be consistent.
+Any block and item can be animated by putting the frames underneath each other in the right .png – player can use an optional .txt to specify frame order and duration.
+Textures for animated blocks or items (water, lava, fire, nether portal, compass and clock) are no longer procedurally generated, and now have their own texture files.
+Existing texture packs are "automagically" converted.
+Vanilla textures are used if texture files are missing.
+
+
+== Fixes ==
+22 issues fixed
+From released versions before 1.5
+
+MC-737 – Map scaling breaks the map sometimes.
+MC-1086 – [FIXED] Command block/Repeater acting weirdly.
+MC-1642 – Minecart noise gets stuck on long cart rides. Bumping, choppy sound.
+MC-1972 – Redstone torch sometimes update instantly (not the North/South quirk).
+MC-2257 – Minecraft VERY slow to join/update a server, takes LONG time to login (30 seconds/ 1 min).
+MC-2526 – Rain animation glitches through the ceiling.
+MC-2806 – Anvils will sometimes hit the edge of a block and break instead of being placed.
+MC-3597 – Floating minecart tracls when pushed by one-pulse piston.
+MC-3662 – Pistons and other Non-Solid blocks.
+MC-4752 – Failed to save player profile.
+MC-5691 – 1.4.6 - Windows 8 64x - Mouse: View issues/Accuracy error?
+MC-6131 – Crash upon reloading texture pack.
+MC-6699 – Reading Bytes in Minecraft code has a possible flaw.
+From the 1.5 development versions
+
+MC-5722 – Destroying a Daylight Sensor by hand works as quick as with a pickaxe, but only using a pickaxe the item drops.
+MC-5777 – Game stop reading clicks when you are clicking very fast.
+MC-5788 – Inactive detector rail outputs redstone through block.
+MC-5874 – Shift left double-click doesn't work.
+From the previous development version
+
+MC-5998 – Item duplication by using the hopper.
+MC-6125 – Adding an item to the chest decreases output signal level.
+MC-6165 – Comparators cannot determine if a container is empty.
+MC-6202 – Cacti grow extremely quickly.
+MC-6265 – Hoppers can be used as fuel in furnaces.
+
+
+== References ==
+
+
+== Navigation ==

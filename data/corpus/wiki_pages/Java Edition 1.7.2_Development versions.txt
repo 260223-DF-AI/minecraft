@@ -1,0 +1,1342 @@
+This is a list of Java Edition 1.7.2 development versions.
+
+
+== 13w36a ==
+13w36a is the first snapshot for Java Edition 1.7.2, released on September 5, 2013, which adds many new biomes and flowers, and tweaks fishing.
+13w36a was reuploaded on September 6, 2013, to fix a few bugs.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+Flowers
+
+Many new variants, some of which are two blocks tall.
+Applying bone meal to two block tall flowers drops that flower as an item.
+Thus all two block tall flowers are renewable.
+ Allium
+Can be crafted to magenta dye.
+ Azure bluet
+Can be crafted to light gray dye.
+ Blue orchid
+Can be crafted to light blue dye.
+ Lilac
+Can be crafted into 2 magenta dye.
+ Oxeye daisy
+Can be crafted to light gray dye.
+ Peony
+Can be crafted into 2 pink dye.
+ Poppy
+Replaced the rose flower.
+Iron golems now drop poppies instead of roses.
+ Rose bush
+Can be crafted into 2 red dye.
+ Sunflower
+Faces east.
+Can be crafted into 2 yellow dye.
+ Tulips
+Comes in white, red, orange and pink varieties.
+Can be crafted to light gray, red, orange and pink dyes, respectively.
+ Tall grass
+
+Can be created by applying bone meal to grass.
+ Large fern
+
+Can be created by applying bone meal to a fern.
+Generates in taiga biomes and their variants.
+ Packed ice
+
+When broken, does not turn to water like ice does.
+Does not melt.
+Opaque, rather than translucent like normal ice.
+Torches and redstone can be placed on it.
+ Podzol
+
+New dirt variant.
+Grass is unable to spread on it.
+Can be harvested using tools enchanted with Silk Touch.
+Only found in mega taiga biomes.
+ Grassless dirt
+
+Grass is unable to spread on it.
+Only obtainable using /give.
+Block ID is 3:1.
+Monster egg variants
+
+Mossy stone brick monster eggs, cracked stone brick monster eggs, and chiseled stone brick monster eggs.
+Have the same appearance as their stone brick variants.
+
+
+==== Items ====
+ Clownfish
+
+Restores 1 () when eaten.
+ Raw salmon
+
+Restores 2 () when eaten.
+Can be cooked in a furnace to get cooked salmon.
+ Cooked salmon
+
+Obtained from cooking raw salmon in a furnace.
+Restores 6 () when eaten.
+ Pufferfish
+
+If eaten, inflicts the player with the Hunger, Nausea, and Poison status effects.
+Used to brew a potion of Water Breathing.
+Enchanted books
+
+Multiple enchantments on a book, when combined with a tool using an anvil, give enchantments according to the tool.
+
+
+==== Mobs ====
+Skeletons and zombies
+
+Now spawn with and drop armor, bows, and swords enchanted with Unbreaking.
+
+
+==== World generation ====
+Biomes
+
+Birch forest
+A forest made of birch trees.
+Cold beach
+A variant of normal beaches which generates when a snowy biome borders an ocean.
+Deep ocean
+An ocean biome variant, about twice as deep as it.
+Can reach a maximum depth of the Y-coordinate in the low 20s.
+The floor is covered with gravel.
+Extreme hills+
+A variant of extreme hills which contains spruce trees.
+Flower forest
+A variant of forest biomes.
+Contains every flower in the game, except for sunflowers and blue orchids.
+Ice plains spikes
+Contains giant spikes made of packed ice, shaped similarly to upside down icicles.
+Mega taiga
+Contains 2×2 spruce trees,
+Much of what is typically grass blocks in most biomes is replaced by podzol.
+Contains grassless dirt.
+Contains scattered "boulders" made up of moss stone.
+Allows the generation of dead bushes, mushrooms, and ferns.
+Mesa
+Composed primarily of hardened clay in multiple colors.
+Generates dead bushes.
+Roofed forest
+Has dark grass, giant mushrooms, and 2×2 dark oak trees.
+Has extremely dense trees and leaves, sometimes dark enough for monsters to spawn during the daytime.
+This is the first biome aside from the mushroom island that naturally spawns with huge mushrooms.
+Savanna
+Generates curved acacia trees.
+Savannas are one of the two biomes where horses now spawn naturally, the other being plains.
+Villages may generate in savanna biomes.
+Stone beach
+Consists primarily of stone.
+Composed of hills which are steep but not completely vertical.
+Sunflower plains
+Exactly the same as plains, but with the ability to spawn sunflowers.
+Taiga
+A non-snowy taiga variant.
+The old taiga biome is now called cold taiga.
+Biome variants
+
+Hill biomes
+More hills variants to fit with the new biomes.
+Birch forest hills, cold taiga hills, and mega taiga hills can now be generated.
+M biomes
+Variants of other biomes with an "M" added to the end of them.
+Much rarer than their normal biome or any of its other variants.
+Extreme hills M, taiga M, roofed forest M, extreme hills+ M, savanna M, mesa plateau M, and mesa plateau F M are more mountainous versions of their normal biome.
+Swampland M, jungle M, jungle edge M, birch forest hills M, cold taiga M, and savanna plateau M are other rare biome variants.
+Desert M contains water lakes, unlike normal deserts.
+Birch forest M has taller birch trees than usual.
+Plateau biomes
+Variants of other biomes with "Plateau" added to the end of them. All of them are like their normal biome or its variants, but flattened at the top.
+The only plateaus in the game are savanna plateau and mesa plateau.
+World type
+
+AMPLIFIED
+Requires a powerful computer to run well.
+Mountains in this world type can reach up to Y=256.
+Miscellaneous
+
+Whether snow generates or not now depends on altitude, with noise variation.
+Biome dependent.
+
+
+==== Gameplay ====
+Enchanting
+
+New enchantments for fishing rods that change the player's luck of catching an item when fishing.
+Lure - increases chance of catching fish.
+Luck of the Sea - increases chance of getting treasure.
+
+
+==== Command format ====
+/summon 
+
+Used to spawn entities.
+Usage: /summon [x] [y] [z] [dataTag].
+
+
+==== General ====
+Particle effects 
+
+Fishing now has many different particle effects.
+Bubbles show up moving towards the player's bobber just before the player has something on their hook.
+Has the appearance of a fish swimming towards the hook.
+Falling now has particle effects.
+Particle size depends on distance fallen.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Command blocks
+
+Now show what command it ran recently.
+Dead bushes 
+
+Can now be placed on hardened clay and stained clay.
+Ferns
+
+Ferns and large ferns display their coloring from foliage.png.
+Flowers 
+
+Are now flammable.
+Cannot be placed dead center on a block, but have certain variations in which they are placed.
+Grass
+
+Grass and tall grass display their coloring from foliage.png.
+Item frames
+
+Now drop the item inside them when punched, then drop themselves if they are punched when empty.
+Display the name of the item they hold (if it is custom named) when looked at up close.
+Melons 
+
+Now generate in jungles.
+Sugar cane 
+
+Changes color depending on biome.
+Texture is unchanged, adding biome color makes it appear different.
+Weighted pressure plates 
+
+Now output a signal relative to the number of entities on them, always starting at 1 signal strength if any entities are present.
+For light weighted pressure plates, every entity adds 1 strength to the signal.
+For heavy weighted pressure plates, starting at 1, every 10 entities adds 1 strength to the signal.
+Example: 11 entities increases signal strength to 2.
+Written books 
+
+Can now be cloned the same way maps can, but by using books and quills instead of empty maps.
+Can clone multiple copies of the same book by putting more book and quills in the crafting grid.
+
+
+==== Items ====
+Flint and steel
+
+Now a shapeless recipe.
+
+
+==== Mobs ====
+Creepers
+
+Can now be manually exploded after igniting the mob with a flint and steel.
+
+
+==== World generation ====
+
+Biomes
+
+Are now put into four main categories.
+Snow-covered
+Cold
+Medium
+Dry/Warm
+Biomes attempt to avoid getting placed next to a biome that is too different to themselves.
+Extreme hills
+
+Generation tends to include more flat areas, and more extreme mountainous regions.
+Stone is generated more frequently than in the previous versions, even outside of extreme hills+ biomes.
+Oceans
+
+Are now smaller and take up much less of the map.
+Rivers
+
+Now have gravel patches.
+Swampland
+
+Grass is greener and fluctuates more in color, depending on biome temperature.
+In shallower parts, the coast is covered in staggered dirt blocks.
+Taiga
+
+Taiga biomes no longer receive snowfall below Y=120.
+
+
+==== Gameplay ====
+Fishing
+
+Changes to the mechanics to make it better.
+More rewards: treasure and junk.
+Treasure: 6 items total, including enchanted fishing rods, enchanted bow, enchanted books, name tags, lily pads, saddles
+Junk: 13 items total, including damaged fishing rods, water bottles, rotten flesh, string, leather, bowls, sticks, bones, tripwire hooks, ten stacked ink sacs, or damaged leather boots.
+Fog
+
+The distance where fog appears has been doubled.
+
+
+==== Command format ====
+Commands
+/give
+
+Can now give items to players with custom names and lore.
+It can also give enchanted items.
+Example: /give ... {display:{Name:"",Lore:["",""]},ench:[0:{id: ,lvl: }]}.
+It can also give items to players with custom NBT data, such as SkullOwner to obtain the head of a specific player.
+This removes the necessity to use an NBT editing program to obtain these items.
+Attribute modifiers have been added to the /give command (not completely investigated as of yet).
+Example: To give a diamond sword with +50 attack damage to the nearest player, use the command /give @p 276 1 0 {AttributeModifiers:[0:{AttributeName:"generic.attackDamage",Name:"generic.attackDamage",Amount:50,Operation:0,UUIDLeast:894654,UUIDMost:2872}]}.
+This enables the possibility of additional attributes to items using commands without the use of an NBT editing program.
+/time set day
+
+Now sets the time to 1000 instead of 0.
+Scoreboard
+
+Can now use statistics to create objectives; anything that statistics can track can be used as an objective.
+Can also track achievements.
+This is the reason why statistics/achievements were changed to be stored per world/server.
+
+
+==== General ====
+Achievements
+
+Rewrite of the achievement system.
+Are now per world/server.
+Added 744 new objective criteria.
+New achievements: "Repopulation", "Adventuring Time", "The Beginning?", "The Beginning.", and "Beaconator".
+Achievements screen can now be zoomed in and out using the mouse wheel.
+Achievements do not appear on the achievements screen if more than five achievements need to be achieved first.
+Example: "DIAMONDS!" does not appear until "Getting Wood" is achieved.
+Controls
+
+Rewrote key configuration.
+Function and sprint keys can be changed.
+By default, sprinting can be activated by holding down the left control key.
+In Creative mode, this can also be done while flying.
+The original sprinting controls (double-tap forward or double-tap backward while holding down forward) still function.
+Smooth mouse, formerly available by pressing F8, now uses F4 by default.
+Inventory
+
+The display item for the "Decoration Blocks" tab in the Creative mode inventory is the peony.
+Changed from the old rose flower.
+Lighting
+
+A lot fewer "black spots" appear in the terrain generator.
+Torch bugs in strongholds and mineshafts have been fixed.
+Options
+
+Rewrite of several option screens.
+A completely new options menu.
+A new "Select Resource Pack" menu.
+Death screen
+
+Added a prompt which asks the player if they are sure they want to quit when they die.
+Resource packs
+
+The ability to select multiple resource packs at once.
+Resource packs at the top take precedence over those below.
+Allows for non-manual merging of textures from multiple packs, a sound pack, and a different texture pack, etc.
+Statistics
+
+New statistics: distance by horse, animals bred, junk fished, treasure fished.
+Rewrite of the system.
+Now ties in with the scoreboard system.
+Added 744 new objective criteria that were previously tracked with statistics and achievements.
+Are now per world/server.
+Data for a block, item, or mob does not appear in their respective tab in the Statistics screen unless the player has crafted/placed/mined that block, crafted/used/depleted that item, or killed/was killed by that mob.
+Sounds
+
+The volume of in-game music, jukebox and note block music, hostile mobs, passive mobs, players, weather, blocks/environment, and the master volume can now all be modified separately.
+
+
+=== Fixes ===
+32 issues fixed
+From released versions before Java Edition 1.7.2
+
+MC-715 – V-Sync in Window mode, settings not activated between sessions.
+MC-944 – Armor with protection on it seems to reduce against hunger damage.
+MC-1018 – Black lighting under overhangs.
+MC-2915 – Attempting to tp to an invalid coordinate returns "commands.generic.double.invalid".
+MC-4150 – Baby zombies do not drop any loot/xp.
+MC-4482 – Saplings placed on farmland are not affected by bone meal.
+MC-5238 – 10 MB server texture pack limit is too small.
+MC-5550 – Night time doesn't immediately allow sleep.
+MC-6820 – The generation of terrain surface layer produces local straight glitches.
+MC-7449 – Silverfish enter chiseled stone brick, and the chiseled stone brick appears as normal stone brick.
+MC-9547 – Incorrect usage string for `/scoreboard teams empty`.
+MC-10257 – when a pig gets struck by lightning it spawns without a sword.
+MC-11518 – RCON and scoreboard command output formatting.
+MC-12450 – Missing usage string commands.scoreboard.players.list.usage.
+MC-12452 – Scoreboard team join command fails on invalid team name.
+MC-12454 – Scoreboard option seeFriendlyInvisibles not listed in usage.
+MC-12541 – the letters for the 'off' setting on smooth lighting aren't capitalized.
+MC-12731 – Minecraft crashes if the player click edit or delete on a LAN game.
+MC-15564 – start up failure: IllegalStateException: "Cannot determine close requested state of uncreated window".
+MC-16324 – "Reached end of stream" messages in Minecraft server terminal when client pings the server.
+MC-16910 – Packet250CustomPayload(dk).
+MC-17090 – Invalid teamcolors throw an NPE in the console rather than an error message "invalid color".
+MC-18569 – Server resource packs not implemented yet.
+MC-22927 – Animals run forever after being hit.
+MC-26608 – /spreadplayers confirmation text is wrong.
+MC-27284 – /scoreboard teams option color: Tab doesn't list all options.
+MC-29279 – Bug: the command block can be damaged by the explosion of blue wither skulls.
+MC-29321 – Jukeboxes play at the sound volume for effects until the player change the music volume.
+MC-29361 – Oceans are too big for the world.
+From the original version of 13w36a
+
+Fixed "weird language selection".
+Fixed the names of grass blocks and dirt.
+Attempted to fix a bug with mesa biomes, but the fix did not work.
+
+
+== 13w36b ==
+13w36b is the second snapshot for Java Edition 1.7.2, released on September 6, 2013 to fix some of the bugs and crashes in the 13w36a snapshot.
+13w36b was reuploaded twice on September 6, 2013. The first time was to fix issues relating to the inventory key
+and the second was to roll back control changes.​[more information needed].
+
+
+=== Additions ===
+
+
+==== General ====
+Statistics
+
+Added mob statistics.
+
+
+=== Changes ===
+
+
+==== Items ====
+Armor, bows, swords
+
+Can now get the Unbreaking enchantment from enchantment tables.
+
+
+==== General ====
+Options
+
+Pressing the "Super Secret Settings" button plays a random sound with a deeper pitch.
+
+
+=== Fixes ===
+15 issues fixed
+From released versions before Java Edition 1.7.2
+
+MC-2840 – Chat concurrency issues.
+From the previous development version
+
+MC-29446 – Mesa biome spawn.
+MC-29453 – Server Console: Debug Messages? TranslatableComponent.
+MC-29462 – Enchantments are not displayed on item's tool tip/Enchantments do not work at all.
+MC-29463 – Can't obtain achievement "Beginning?"
+MC-29478 – Attacks show enchanted particles without enchanted weapons.
+MC-29479 – When eating Pufferfish/Salmon/Clownfish the normal fish particles appear.
+MC-29484 – Sound not saving.
+MC-29497 – Vanilla 13w36a find suspicious class.
+MC-29504 – Typo in /achievement give.
+MC-29532 – Wrong item shows up on the 'Adventure Time' achievement.
+MC-29548 – commands.summon.outOfWorld.
+MC-29562 – Hopper: java.lang.NullPointerException.
+MC-29571 – Hopper: java.lang.NullPointerException.
+In a reupload of this version
+
+Fixed an issue with the inventory key.
+
+
+== 13w37a ==
+13w37a is the third snapshot for Java Edition 1.7.2, released on September 12, 2013, which adds the /setblock and /testforblock commands and increases the command block length limit.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/setblock 
+
+Places blocks without the use of FallingSand.
+Syntax: /setblock <x> <y> <z> <TileName> [dataValue] [oldBlockHandling] [dataTag].
+Valid values for oldBlockHandling: "replace" places the specified block (throws error message if the same block exists already), "keep" only places blocks in air, and "destroy" mines the existing block and drops an item before placing the new block.
+/testforblock 
+
+Check for blocks in specific locations.
+Syntax: /testforblock <x> <y> <z> <TileName> [dataValue] [dataTag].
+All blocks beyond X/Z 30 million (±30,000,000) from origin now act as solid blocks, and cannot be targeted with the crosshair.
+This includes air blocks, essentially creating an invisible wall which extends infinitely, even above and below the chunks.
+As all blocks function as solid, if the player is moved outside the boundary via external tools, they are unable to move outside the block space they are within.
+Despite the above, the camera can still move normally.
+This reveals that ghost chunks still generate, as the camera can pass through normally solid blocks beyond the boundary.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Command blocks
+
+Increased the character limit to "many thousand characters".
+Lava
+
+Lava source blocks can no longer be destroyed by explosions.
+Technical blocks
+
+Removed the item forms of many blocks: bed (26), piston head and extension (34 & 36), redstone wire (55), wheat crops (59), standing and wall sign (63 & 68), wooden and iron door (64 & 71), lit redstone ore (74), unlit redstone torch (75), sugar cane (83), cake (92), unpowered and powered repeater (93 & 94), locked chest (95), pumpkin and melon stem (104 & 105), nether wart (115), brewing stand (117), cauldron (118), lit redstone lamp (124), tripwire (132), flower pot (140), skull (144), and unpowered and powered comparator (149 & 150).
+They can no longer be obtained with /give, but can be created with /setblock.
+Because the game is still told to drop a lit redstone lamp when mining a lit lamp with Silk Touch, doing so results in a java.lang.NullPointerException crash as such an item no longer exists.
+This removal has been done by adding method Sets.newHashSet(new Block[] {unobtainable blocks here}), and manual removal of blocks from Sets.newHashSet would restore ItemBlocks of aforementioned blocks.
+
+
+==== World generation ====
+Mesa
+
+Slightly changed mesa biome generation to appear more layered.
+
+
+==== Gameplay ====
+Nether portals
+
+Planned to have odd width to allow for design variations.
+Can be built large enough so that ghasts can enter the Overworld.
+Portals can now be activated from any block within the portal, not just the bottom (when any fire block appears inside the frame).
+New nether portal building rules: any size from 4×5 to 23×23, but rectangular.
+
+
+==== Command format ====
+/give
+
+Now prints renamed items' name in chat and show tooltips when hovered over.
+Block/item IDs
+
+Can now be referred to with names instead of IDs.
+
+
+==== General ====
+Chat
+
+Improved the chat system.
+"Useful to map makers, modders, players and server admins".
+Added a way to do things when clicking things in chat, like executing a command.
+Other actions include opening a URL and showing an item tooltip when hovered on.
+"Saved screenshot as" messages can now be clicked to open the screenshot, takes players to the .minecraft folder.
+Names can now be clicked to PM people.
+Added /tellraw <player> <raw json message> to send chat messages with custom functionality to players - sender does not appear.
+Syntax example: /tellraw @p {text:"Daytime? ",color:"green",extra:[{text:"Click here!",color:"blue",clickEvent:{action:"run_command",value:"/time set day"}},{text:" Nighttime? "},{text:"Click here!",color:"blue",clickEvent:{action:"run_command",value:"/time set night"}},{text:" Have fun!"}]}.
+
+
+=== Fixes ===
+15 issues fixed
+From released versions before Java Edition 1.7.2
+
+MC-4973 – Zombie pigman from Nether portal still spawns even if doMobSpawning is false.
+MC-10077 – Adjacent obsidian blocks prevent Nether portal appearing.
+MC-28400 – Breeding animals gives xp even if doMobLoot gamerule is false.
+MC-28768 – Horse breeding doesn't produce markings correctly on foal.
+MC-29088 – Shearing sound does not play when shearing a mooshroom.
+MC-30070 – Flowing lava can be blown up by TNT.
+From the Java Edition 1.7.2 development versions
+
+MC-29432 – Water and ice no longer transparent on fast graphics.
+MC-29493 – Minecraft crash near 30 million blocks.
+MC-29505 – Some plants not working properly with flowerpots.
+MC-29530 – All the new flowers give only 1 of their respective dye whereas dandelions and 'roses' (now poppies) still give 2.
+MC-29866 – Thorns enchantment backfires.
+MC-30405 – Flint and steel sound and hand animation do not play when igniting a creeper.
+From the previous development version
+
+MC-30181 – Statistics and achievements un-pause the game.
+MC-30465 – Ender crystals in the overworld cause non-reasonable amount of lag.
+MC-30615 – Sugar cane can be placed on ground without a water source.
+
+
+== 13w37b ==
+13w37b is the fourth snapshot for Java Edition 1.7.2, released on September 13, 2013 to fix some of the bugs and crashes in the 13w37a snapshot.
+
+
+=== Fixes ===
+3 issues fixed
+From released versions before Java Edition 1.7.2
+
+MC-15547 – Structures (witch huts, nether fortresses etc.) don't get saved with the world file.
+From the previous development version
+
+MC-30796 – 2 portals overlaying each other does not render correctly.
+MC-30806 – Exception with /give command.
+
+
+== 13w38a ==
+13w38a is the fifth snapshot for Java Edition 1.7.2, released on September 19, 2013.
+
+
+=== Additions ===
+
+
+==== Command format ====
+Commands
+
+Added /setidletimeout <minutes until kick> to automatically kick idle players after a set length of time.
+Multiplayer-only command, can be used only by server operators.
+NBT format
+
+Added <structure>.dat files in data folder for storing structure data.
+Contains files called "Village.dat" (villages), "Fortress.dat" (nether fortresses), "Temple.dat" (desert pyramids, jungle temples, and witch huts), "Stronghold.dat" (strongholds), "Mineshaft.dat" (mineshafts), and others.
+NBT structure consists of the individual parts of each structure, labeled "children", the chunk it originates in, a tag called BB, and an ID for what type of structure it is.
+The children tags have information on each part of the structure and the type of part it is
+
+
+==== General ====
+Achievements
+
+Added the achievement "Diamonds to you!", which is obtained by throwing diamonds at another player.
+Lighting
+
+The sky near the horizon now darkens when the player has blocks between them and the sky.
+The greater the distance between the player and an area open to the sky, the darker the sky appears.
+
+
+=== Changes ===
+
+
+==== Items ====
+Maps
+
+Improved placing maps into item frames.
+
+
+==== Mobs ====
+Zombies
+
+Reduced lag from the zombies.
+
+
+==== General ====
+Achievements
+
+Improved achievements.
+When a player earns an achievement, it is now announced in chat.
+This can be disabled on servers in the server.properties.
+"Super Secret Settings"
+
+The button now applies different experimental shaders.
+List of available shaders: antialias, deconverge, outline, art, desaturate, pencil, bits, flip, phosphor, blobs, fxaa, scan_pincushion, blobs2, green, sobel, blur, invert, wobble, color_convolve, NTSC.
+Video settings
+
+Render distance is now a slider ranging from 2 to 16 chunks.
+The sky is now visible on short (4 chunks) render distance.
+The chunks can now render past 12 chunks.
+Max framerate is now a slider ranging from 10 to 250 fps, then unlimited.
+Added mipmapping, anisotropic filtering, and FSAA (as a shader).
+Mipmap levels setting is a slider ranging from off to 1 through 4.
+Anisotropic filtering can be disabled or set to 2, 4, 8 or 16.
+Post-processing (shaders) can be toggled.
+They now display on the whole block.
+Fog
+
+Re-adjusted fog distance to appear near the render distance limit, reverting changes made in 13w36a.
+Fog now covers 25% of the view distance, compared to 75% before 13w36a.
+Distance effects
+
+Item frames now no longer simply follow the camera at extreme coordinates.
+This is due to them being affected by an even more extreme bug as of this snapshot.
+
+
+=== Fixes ===
+7 issues fixed
+From released versions before Java Edition 1.7.2
+
+MC-28625 – The horse armor equip sound does not play when replacing it with already equipped armor.
+MC-31065 – Villages were not generating (snapshot 13w37b).
+From the Java Edition 1.7.2 development versions
+
+MC-3973 – Players who mine redstone lamps with Silk Touch would get a lit redstone lamp in their inventory.
+MC-30483 – When the player sets their render distance too far it stays on normal.
+MC-30694 – Endermen stare sound still plays when the enemy mobs sound slider is at 0%.
+MC-30822 – Enchanted books with no metadata.
+MC-30858 – A player selector with only one matching player outputs as " and USERNAME .."
+
+
+== 13w38b ==
+13w38b is the sixth snapshot for Java Edition 1.7.2, released on September 20, 2013, to fix some of the bugs and crashes in 13w38a.
+
+
+=== Additions ===
+
+
+==== General ====
+Options
+
+"Super Secret Settings"
+Added bumpy shader.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Air
+
+Redefined the concept of air.
+Is now an actual block instead of the absence of a block (null).
+It can be kept in the inventory.
+When in the inventory, dropped, and inside an item frame, it uses the missing texture, but when held in the player's hand, it appears entirely invisible.
+Drops from entities that would normally drop nothing, including villagers, bats, silverfish, and the ender dragon.
+
+
+==== World generation ====
+Swampland
+
+Removed marsh-like areas (later readded in Java Edition 14w26a).
+
+
+=== Fixes ===
+7 issues fixed
+From the previous development version
+
+MC-31613 – Hopper: java.lang.NullPointerException - Clicking in video settings screen.
+MC-31631 – Main Menu does not display correctly.
+MC-31651 – Block break animations no longer display.
+MC-31754 – Map disappearing when leaving world.
+MC-31777 – Scoreboard does not display sidebar anymore.
+MC-31782 – Chatbar background doesn't show when typing.
+MC-31846 – Placed tripwire string does not show its texture.
+
+
+== 13w38c ==
+13w38c is the seventh snapshot for Java Edition 1.7.2, released on September 20, 2013, to fix some of the bugs and crashes in 13w38a and 13w38b.
+13w38c was reuploaded a few minutes after release.​[more information needed]
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Air
+
+Removed as an item, like most of the technical blocks as of 13w37a.
+Not obtainable with /give.
+
+
+=== Fixes ===
+6 issues fixed
+From released versions before Java Edition 1.7.2
+
+MC-3973 – Players who mine redstone lamps with Silk Touch would get a lit redstone lamp in their inventory.
+From the Java Edition 1.7.2 development versions
+
+MC-32028 – Shader never disappears in F3 once it appears.
+From the previous development version
+
+MC-31876 – Hopper: java.lang.NullPointerException.
+MC-31880 – Hopper: java.lang.NullPointerException.
+MC-31883 – Killing mobs sometimes drop "tile.air.name" .
+MC-31892 – Crashes the game when entering the Nether.
+
+
+== 13w39a ==
+13w39a is the eighth snapshot for Java Edition 1.7.2, released on September 26, 2013. It adds red sand to mesa biomes and allows for more than one enchantment on a book. 
+The server was reuploaded just over an hour after release.​[more information needed]
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Red sand
+
+Generated on the lowest surface levels of the mesa biome.
+Behaves like normal sand.
+Can be smelted into glass and crafted into TNT, but cannot be crafted into sandstone.
+
+
+==== Non-mob entities ====
+  Minecart with command block
+
+Can only be obtained using /give @p 422, /give @p hopper_command_block or /summon MinecartCommandBlock.
+Activated by activator rails.
+Run their command every so often as long as they are powered - a command block minecart going across a single powered activator rail at full speed runs its command thrice.
+Can be success-tested while on a detector rail with a redstone comparator next to the rail (just like how the minecart with chest and minecart with hopper can be fill-checked).
+
+
+=== Changes ===
+
+
+==== Items ====
+Enchanted books
+
+Can now give multiple enchantments.
+
+
+==== World generation ====
+Badlands
+
+Orange terracotta generates in place of sandstone, but not in the same type of formation.
+
+
+==== General ====
+Logging
+
+Now done using Log4j 2.
+Default logging location is now in logs/latest.log, older logs are archived in logs/year-months-day-counter.log.gz with GZIP compress. The year is 4 digits, and the month and day are both 2 digits. The counter is the number of startups on the day. The counter is 1 when the first startup of the day and increasing each startup.
+The way logs are saved can be changed, examples: HTML page, database, errors only, no logging at all.
+As a result, this is the first version to be affected by the Log4Shell security vulnerability, although running the game through the current launcher will automatically apply a patch to fix it.
+
+
+=== Fixes ===
+9 issues fixed
+From released versions before Java Edition 1.7.2
+
+MC-673 – Sky/lighting doesn't get darker during a thunderstorm.
+MC-1105 – Villagers act like it is raining when they are in the desert, and it rains elsewhere.
+MC-28405 – The saddle equip sound effect does not play when equipping a pig with a saddle.
+From the Java Edition 1.7.2 development versions
+
+MC-29521 – Rain doesn't make particles/sound in some biomes (extreme hills).
+MC-31418 – Snow golems die in extreme hills snow.
+MC-31432 – XP orb sound bug.
+MC-31438 – Enemy monster slider controls the sound of items entering one's inventory.
+From the previous development version
+
+MC-31932 – Hopper: java.lang.NullPointerException.
+MC-31947 – Hopper: java.lang.NullPointerException.
+
+
+== 13w39b ==
+13w39b is the ninth snapshot for Java Edition 1.7.2, released on September 27, 2013 to fix some of the bugs and crashes in the 13w39a snapshot.
+
+
+=== Changes ===
+
+
+==== Non-mob entities ====
+Minecart with command block
+
+Now only activates every 4 ticks (2 redstone ticks) when on a powered activator rail.
+Changed the ID from minecraft:hopper_command_block to minecraft:command_block_minecart.
+
+
+==== Command format ====
+Syntax
+
+Added an alert telling the player to use item names when you spawn item in using its ID, due to soon becoming deprecated.
+
+
+==== General ====
+Achievements
+
+The "Diamonds to you" achievement can now be obtained by throwing a diamond at a zombie with the CanPickUpLoot tag.
+Main menu
+
+Added an alert in the main menu warning the player of a change in the far future, which will result in Minecraft requiring an OpenGL feature set version of 2.1 or higher.
+
+
+=== Fixes ===
+8 issues fixed
+From released versions before Java Edition 1.7.2
+
+MC-784 – Letters in Arabic language are not connected.
+From the Java Edition 1.7.2 development versions
+
+MC-31693 – Super Secret settings does nothing/Shaders don't work.
+MC-32091 – "Diamonds to you" Achievement not available in Singleplayer.
+From the previous development version
+
+MC-32663 – Some shaders render entire screen black
+MC-32672 – /testfor command no longer works.
+MC-32673 – Command Blocks ignore Gamerule "commandBlockOutput".
+MC-32687 – Activating Minecart with Command Block with an Activator Rail causes multiple activations.
+MC-32699 – Squid damage multiplayer - End of Stream, NullPointerException.
+
+
+== 13w41a ==
+13w41a is the tenth snapshot for Java Edition 1.7.2, released on October 10, 2013, which adds stained glass and their pane variants.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Stained glass
+
+Crafted the same way as stained clay, but with glass.
+Comes in 16 different colors.
+ Stained glass panes
+
+Crafted the same way as regular glass panes, but with stained glass.
+Comes in 16 different colors.
+
+
+==== General ====
+Splashes
+
+Added splash screen: "Now contains 32 random daily cats!" in reference to Random_Guy_32 from Twitter.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Glass panes
+
+Now connect to each other and glass.
+Are rendered differently, and have 2 pixel thick collision boxes.
+Ice
+
+Fixed transparency.
+Is now visible through other ice.
+Iron bars
+
+Now connect to each other and glass.
+Are rendered differently, and have 2 pixel thick collision boxes.
+Locked chest
+
+Removed the block entirely. Its ID is now used by stained glass.
+Water
+
+Fixed transparency.
+Is now visible through other water blocks.
+Portal
+
+Fixed transparency.
+Are now visible through other Nether portals.
+
+
+==== General ====
+Network code
+
+Rewrite of the network code.
+Uses Netty now.
+Most packets won't change.
+Handshake and ping procedure is being redone.
+There is a packet length header.
+Server list
+
+Reworked the list.
+Added server icons.
+Lists the current players on a server when you hover over the player number.
+Added support for multi-line MOTD comments.
+Removed support for MOTD comments going offscreen.
+Reset the protocol version.
+Video settings
+
+Changes to the menu.
+
+
+=== Removals ===
+
+
+==== General ====
+Distance effects
+
+Item frames no longer follow the camera and jitter with camera rotation at extreme coordinates.
+Paintings also no longer follow the camera and jitter with camera rotation at extreme coordinates.
+Fixed a desynchronisation issue that appeared at high coordinates; this varied depending on hardware.
+In some cases, this simply caused entities, water, ice and the wireframe block outline box to appear slightly desynchronised from the world itself. However, in others, the former grouping would jitter severely.
+
+
+=== Fixes ===
+15 issues fixed
+From released versions before Java Edition 1.7.2
+
+MC-1379 – Transparent texture makes transparent texture behind invisible.
+MC-10984 – GS4 query listener fails to send player list when len(players) > 127.
+MC-12984 – Getting a locked chest pushed into the player's head crashes the game.
+MC-16435 – Boats still break on lilies.
+From the Java Edition 1.7.2 development versions
+
+MC-29498 – Villagers, exchanging 2 items for one, have their second required item in trade deleted after reloading the world.
+MC-29748 – Fire aspect does not cause fire on any mob.
+MC-30873 – Crash - Block Statistics: If player breaks a technical block, the statistics get corrupted.
+MC-31619 – Item frames are self-lit.
+MC-31649 – Beacon beam not showing.
+MC-31686 – Custom mob names can't be seen through blocks.
+MC-32008 – 13w38b leaves are lighter and cast a lot fewer shadows.
+MC-32733 – Game is sending incorrect (additional?) frames to the video buffer.
+MC-32762 – No logging to development console.
+MC-33057 – Text is completely unreadable/invisible.
+From the previous development version
+
+MC-33025 – No logs created in 13w39 client in singleplayer mode.
+
+
+== 13w41b ==
+13w41b is the eleventh snapshot for Java Edition 1.7.2, released on October 11, 2013 to fix some of the bugs in the 13w41a snapshot.
+13w41b was reuploaded later in that day, to fix crashes related to the server icon.
+
+
+== 13w42a ==
+13w42a is the twelfth snapshot for Java Edition 1.7.2, released on October 17, 2013. It allows for more letters to be put on signs, change the texture of stained glass and makes witches a common monster (like creepers and zombies) instead of spawning exclusively in and around witch huts.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Signs
+
+Different letters can be typed now.
+Stained glass
+
+Have a smoother/transparent texture.
+Stained glass panes
+
+Have a smoother/transparent texture.
+The crafting recipes now yield 16 panes instead of 6, to be consistent with regular glass panes.
+Water
+
+Transparency slightly adjusted.
+If water is directly adjacent to ice, when looking through the ice, the player cannot see the water.
+However, the player can see the ice when looking through water.
+If water is not directly adjacent to ice, the player can see the water when looking through the ice.
+The player can no longer see the water surface from underwater
+
+
+==== Items ====
+Maps
+
+Now display the color of colored wool and stained clay, allowing a wider range of colors visible on maps.
+Each different type of block has a different shading on the map.
+
+
+==== Mobs ====
+Witches 
+
+Now spawn anywhere where the light level is 7 or less, including any biome and underground.
+Zombies
+
+Can only break doors when having the new CanBreakDoors tag set to 1, an up to 10% chance.
+
+
+==== General ====
+Inventory
+
+The armor boxes get black when empty and away from cursor.
+Putting cursor over the armor inventory displays which armor is to put on there.
+Resource packs
+
+Rewrote the sound system.
+The player is now able to add new sounds using resource packs.
+Resource packs can now add, remove, supplement, randomize, and group sounds using JSON.
+Sounds and music are now stored together in the new .minecraft/assets/sounds folder.
+
+
+=== Fixes ===
+15 issues fixed
+From released versions before Java Edition 1.7.2
+
+MC-4921 – Sounds (e.g. mobs/portals/water) don't immediately fade.
+MC-10633 – Players can't look through ice or stained glass if they have it in their hand, but they can if it is placed.
+MC-19483 – Sounds playing after leaving world.
+MC-26660 – Constant minecart sound.
+MC-28478 – Successful hit sound effect does not match the sound in the assets sound folder.
+From the Java Edition 1.7.2 development versions
+
+MC-31577 – Major bug: arrows shot by infinity bow/skeleton do not despawn over time.
+MC-32082 – Signs, heads, and cauldrons have a full block breaking texture.
+MC-32295 – Glitchy item borders with mipmapping and anisotropic filtering activated.
+MC-32314 – The Mojang logo is blurry.
+MC-33141 – Rain does not stop.
+MC-33182 – Losing connection to server when a minecart command block is placed on a powered activator rail.
+MC-34096 – Minecart sound is considered an enemy monster.
+MC-34649 – Glass panes, stained glass, and ice show the texture in all faces.
+From the previous development version
+
+MC-34889 – Superflat shows void particles.
+MC-34892 – Mobs/other players only looking in one direction/walking backwards on SMP.
+
+
+== 13w42b ==
+13w42b is the thirteenth snapshot for Java Edition 1.7.2, released on October 18, 2013 to fix some of the bugs and crashes in the 13w42a snapshot.
+
+
+=== Additions ===
+
+
+==== General ====
+Options
+
+Language selection
+"Force Unicode Font" button added.
+Allows changing whether Unicode font is forced for text or not.
+
+
+=== Changes ===
+
+
+==== General ====
+Options
+
+Language selection
+The first 32 characters of the codepage 437 font (ascii.png) have been replaced to support some more languages without having to change the font.
+
+
+=== Fixes ===
+5 issues fixed
+From the previous development version
+
+MC-35614 – Any 8-bit encoding corresponds to the same number in codepage 437 instead.
+MC-35615 – Damaged enchanted items don't have damage bars, but are damaged.
+MC-35642 – Wobble shader broken.
+MC-35653 – Hopper: java.lang.NullPointerException: Ticking player.
+MC-35655 – Game crashes when changing the player sound slider.
+
+
+== 13w43a ==
+13w43a is the fourteenth and final snapshot for Java Edition 1.7.2, released on October 21, 2013, which adds acacia and dark oak wood, bark, leaves, and saplings.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+Wood
+
+Acacia wood.
+Has a texture resembling jungle wood, but with less green.
+Cannot be crafted into planks yet.
+Can only be placed through external tools or commands.
+Dark oak wood.
+Shares its texture with spruce wood.
+Cannot be crafted into planks yet.
+Can only be placed through external tools or commands.
+Bark
+
+Acacia bark.
+Has a texture resembling jungle bark, but with less green.
+Dark oak bark.
+Shares its texture with spruce bark.
+Leaves
+
+Acacia leaves.
+Visually identical to oak leaves.
+Dark oak leaves.
+Visually identical to oak leaves.
+Saplings
+
+Acacia sapling.
+Found in savanna biome.
+Dark oak sapling.
+Found in roofed forest biome.
+Must have four saplings placed in a 2×2 square to be grown, like big jungle trees.
+
+
+==== Command format ====
+/setworldspawn or /setworldspawn <x> <y> <z>
+
+Sets a new point as the spawn for all players (even if they have never joined the server or are offline, does not override beds).
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Cauldrons 
+
+Now put out burning entities (if there is already water in the cauldron). This depletes some of the water.
+Jukeboxes
+
+Music that is played in jukeboxes now loops.
+
+
+==== Items ====
+Maps
+
+When placed inside an item frame, the map now displays the item frame again, but still on a full block scale.
+Pufferfish
+
+Changed texture.
+Spawn eggs
+
+Now work on lava.
+
+
+==== Non-mob entities ====
+Boats
+
+Have been reverted to the previous WASD controls.
+Note that the A and D keys can be used only while the W key is pressed.
+No longer inflict fall damage when running aground.
+Boats being broken by lily pads has now been slightly improved.
+
+
+==== General ====
+Minecraft Realms 
+
+Improved Minecraft realms support.
+
+
+=== Fixes ===
+24 issues fixed
+From released versions before Java Edition 1.7.2
+
+MC-3871 – Cauldron water does not put out fire/damage blaze.
+MC-11027 – Axes accelerate the speed at which Slabs are broken.
+MC-12769 – when typing /help with a number higher than 4, it produces the wrong message.
+MC-15688 – Axe breaks all slabs in adventure mode. No drops for stone.
+MC-26151 – Minecraft has advice on an error report that should be deleted.
+MC-29424 – Players appear offset for other clients after going through nether portals.
+MC-31031 – Spawn eggs can be used on top of water, but not lava.
+MC-32250 – Typo on "Unable to Load Worlds" screen.
+From the Java Edition 1.7.2 development versions
+
+MC-14521 – Boats cannot be steered by using the "left" and "right" keys.
+MC-29483 – 2x2 spruce use oak leaves.
+MC-29510 – New trees that spawn in Savanna drop wrong sapling and are unable to be reproduced.
+MC-35722 – Master sound level resets on reboot and RP change.
+MC-35735 – Splash potions making throw sound but not breaking sound.
+MC-35805 – OS X: Pressing Del / Backspace on signs shows "DEL" character instead of deleting characters.
+MC-35848 – Maps are rendered too bright.
+From the previous development version
+
+MC-35728 – Numbers render behind enchanted stacked enchanted items.
+MC-35879 – German Umlauts and ß are not correctly centered at sign.
+MC-35883 – Partially transparent map bug.
+MC-35910 – Typing ƒ, ∞ œ, π, Ω, ≈, √, ≤, ≥ and many more symbols on a sign or in the chat crashes the game.
+MC-35918 – "Format Error" in the Book and Quill.
+MC-36096 – Cake FallingSand Entity not landing correctly regenerates chunk.
+MC-36133 – "Force Unicode Font" is displayed in currently active language, whereas "Done" is displayed in highlighted language.
+MC-36141 – "Format error" in language selection menu.
+MC-36327 – RCON Messages: TranslatableComponent.
+
+
+== 1.7 ==
+1.7 is the first pre-release for Java Edition 1.7.2, released on October 22, 2013. It adds acacia and dark oak planks, slabs, and stairs and re-textures the tops of most wood blocks.
+The 1.7 pre-release was re-uploaded. The reupload of the server changed the language data file from Unix-style to Windows-style line endings. Changes to the client are unknown as the client JAR is lost.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Planks
+
+Acacia planks
+Dark oak planks
+
+ Slabs
+
+Acacia wood slabs
+Dark oak wood slabs
+
+ Stairs
+
+Acacia wood stairs
+Dark oak wood stairs
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Bonus chests
+
+Now contain acacia logs in addition to the other items.
+Logs
+
+Now have different textures for their top and bottom (with the exception of oak logs).
+Spruce saplings
+
+Can now be grown in a 2×2 grid to produce a large spruce tree.
+
+
+==== Mobs ====
+Spiders, cave spiders, endermen, zombie pigmen, and blazes
+
+No longer attack when provoked by players in Creative mode.
+
+
+==== World generation ====
+Dark oak tree
+
+Renamed from "Roofed Oak" and "Oak Roof".
+
+
+==== General ====
+Sounds
+
+Music now pauses when pausing the game.
+
+
+=== Fixes ===
+15 issues fixed
+From released versions before Java Edition 1.7.2
+
+MC-2638 – Once hit, old AI mobs and wolves don't turn back to passive in Creative until they die or despawn.
+MC-4592 – When mobs start to attack the player in survival and they switch to creative mobs keep attacking the player.
+MC-13661 – When re-sizing window before game loads internal view doesn't resize.
+MC-33294 – Log top textures messed up.
+From the Java Edition 1.7.2 development versions
+
+MC-29489 – 2x2 Spruce trees won't grow.
+MC-30870 – Commands with coordinates are offset -2 x and/or z from where it should (at negative X and Z coordinates).
+MC-31656 – Can't see fire on spiders.
+MC-32862 – Hopper: java.lang.NullPointerException: Ticking entity.
+MC-35716 – Rain cannot be seen through stained glass.
+MC-35739 – Crash when hovering over a written book given by commands.
+MC-35846 – Hopper: java.lang.IllegalArgumentException: n must be positive.
+From the previous development version
+
+MC-36364 – Roofed oak and acacia trees drop incorrect saplings.
+MC-36437 – Acacia or oak roof logs produce oak wood planks.
+MC-36448 – Some sounds do not play.
+From the current version, hotfixed
+
+MC-36529 – "Pick Block" key on acacia or dark oak leaves gives the wrong item back.
+
+
+== 1.7.1 ==
+1.7.1 is the second pre-release for Java Edition 1.7.2, released on October 23, 2013.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Jukeboxes
+
+No longer loop.
+
+
+==== General ====
+Controls
+
+Changed F3 + B visuals. The entity hitbox is now completely transparent, with a thin white outline.
+Misc
+
+Block bounding boxes are now completely black instead of dark gray.
+
+
+=== Fixes ===
+14 issues fixed
+From released versions before Java Edition 1.7.2
+
+MC-1000 – Some zombie pigmen are missing their swords in the nether.
+MC-1262 – Birch and spruce trees do not grow directly next to one another.
+From the Java Edition 1.7.2 development versions
+
+MC-29509 – NPE when /summon an item.
+MC-29893 – Inventory will not close and re-centers.
+MC-30940 – Game crashes and deletes chunks when encountering invalid items, such as lit redstone lamps broken with silk touch.
+MC-31669 – Enchanted items hotbar display colored background in shader mode.
+MC-31714 – Game never starts on Linux (took about seven minutes before 13w41a).
+MC-34750 – Leaves render incorrectly when in containers or the Creative inventory.
+MC-35075 – Shadows fail to render.
+MC-35689 – Music disc descriptions show records.{recordname} instead of just {recordname}.
+MC-36410 – dark oak wood and acacia wood won't turn into charcoal.
+MC-36591 – Exiting out of the inventory freezes game and causes jukebox issues.
+MC-36715 – 'Search Items' text is white in Creative inventory screen.
+MC-36737 – Anvil text is sometimes white and unreadable.
+
+
+== Notes and references ==
+
+
+== Navigation ==

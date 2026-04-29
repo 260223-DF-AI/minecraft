@@ -1,0 +1,724 @@
+This is a list of Bedrock Edition 1.12.0 development versions.
+
+
+== beta 1.12.0.2 ==
+Beta 1.12.0.2 is the first beta version for Bedrock Edition 1.12.0, released on April 17, 2019, which adds new particles, reintroduces the camera, and includes many changes relating to add-ons and map-making.
+
+
+=== Additions ===
+
+
+==== Items ====
+Camera
+
+Has been re-added.
+Can only be obtained with the /give command.
+Has no functionality.
+
+
+==== Command format ====
+Commands
+
+Added several new commands related to add-ons and map-making.​[more information needed]
+Gamerules
+
+Added spawnradius gamerule.
+Allows players to specify a radius circle for players to spawn in.
+Added sendcommandblockfeedback, maxcommandchainlength and commandblockoutput gamerules.
+Are related to delay option for commands.
+Namespaces
+
+Added minecraft: prefix for /give to separate vanilla items  and add-on items.
+World options
+
+Added a new "Respawn Radius" option in the game settings.
+/particle
+
+Added new particles:
+minecraft:dragon_death_explosion_emitter
+minecraft:underwater_torch_particle
+minecraft:dragon_destroy_block
+minecraft:dragon_dying_explosion
+minecraft:enchanting_table_particle
+minecraft:falling_dust_concrete_powder_particle
+minecraft:falling_dust_scaffolding_particle
+minecraft:falling_dust_gravel_particle
+minecraft:falling_dust_red_sand_particle
+minecraft:falling_dust_sand_particle
+minecraft:falling_dust_top_snow_particle
+minecraft:huge_explosion_lab_misc_emitter
+minecraft:ice_evaporation_emitter
+minecraft:knockback_roar_particle
+minecraft:lab_table_heatblock_dust_particle
+minecraft:lab_table_misc_mystical_particle
+minecraft:mob_block_spawn_emitter
+minecraft:note_particle
+minecraft:obsidian_glow_dust_particle
+minecraft:phantom_trail_particle
+minecraft:stunned_emitter
+
+
+==== General ====
+Dedicated servers
+
+Enabled content logging on Bedrock Dedicated Servers.
+Item IDs
+
+Item instance IDs can now be synchronized between clients and servers.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Barrels
+
+Now have their own section in the Creative inventory, instead of under the chests category. (MCPE-43946)
+Cartography tables and lecterns
+
+Adjusted and added UI tooltips for both blocks.
+Command blocks
+
+Added auto complete to command blocks.
+Added a delay option to command blocks.
+A delay can be added to the command block using the new field. The ticks for this delay are in redstone ticks.
+Seagrass
+
+Updated the texture brightness of seagrass to match Java Edition. (MCPE-34795)
+Structure blocks
+
+Now have an outline when placed.
+
+
+==== Mobs ====
+Illager captains
+
+Converting a normal pillager to a captain with the tag command now displays the banner correctly.
+Illager captains now drop banners correctly even if the world is reloaded.
+The Bad Omen effect is now only received when killing an illager captain, and not when dealing non-fatal damage with a bow or damage potion.
+Villagers
+
+Villager trading UI no longer opens and closes if the player is standing too far away.
+Clerics can now correctly pathfind to their job sites.
+Villagers that are actively trading with players no longer run and hide if the raid bell rings.
+Added a sound to indicate when a villager does not want to trade, such as during a raid.
+Cured villagers now keep the jobs they had before becoming a zombie. (MCPE-42348)
+Wandering traders and zombie villagers
+
+Added new sounds.
+NPC
+
+Dialog and changeable skins have now been removed from NPCs.
+
+
+==== General ====
+Add-ons
+
+Mob events can now be enabled and disabled in world templates.
+Animations and particles can be added without being linked to entities.
+Inventory, armor, and hand containers can be adapted through scripting.
+Sound effects can now be triggered by animation events.
+Added new executeCommand to the Scripting API.
+Added Scripting events for interaction with items, for example:
+Item picked up
+Item dropped
+Carried item changed
+Added One-shot animation support, allowing the ability to execute a single animation on an entity.
+Particle emitters can now trigger scripting events.
+Updated documentation of actor events, to document client-side usage of actor events in resource packs.
+"Add block" components now use JSON schemas.
+Added a screen to view content log errors.
+The log screen can be opened using Ctrl+H, or by going to Settings and then Profile.
+Added code to allow static validation scripts to be run locally.
+Custom blocks can now be added through Scripting.
+This is currently still a "work in progress" feature, and more functionality will be added in future updates.
+Custom blocks can currently only be added through additional JSON scripting.
+Custom blocks can only be placed with slash commands.
+Added new data-driven particles:
+Llama Spit
+Large Explosions
+Colored Flames
+Redstone Dust
+Falling Dust
+Lava
+Enchanting Table
+Conduit
+Added new data-driven animations:
+Wolves
+Fang Attack
+Arrows
+Shulker Bullets
+Bows
+Water
+Updated documentation to include a breaking changes section.
+Basic item related events have been exposed to the scripting API. This includes:
+actor_acquired_item
+actor_carried_item_changed
+actor_dropped_item
+actor_use_item
+actor_equipped_armor
+Basic inventory events have been exposed to the scripting API. This includes:
+inventory_container
+armor_container
+hand_container
+hotbar_container
+New block events and two new APIs have been included to query for blocks. This includes:
+APIs
+getBlock(Ticking Area, x, y, z)
+getBlock(Ticking Area, PositionObject)
+getBlocks(Ticking Area, x min, y min, z min, x max, y max, z max)
+getBlocks(Ticking Area, Minimum PositionObject, Maximum PositionObject)
+Events:
+block_destruction_started
+block_destruction_stopped
+piston_moved_block
+player_destroyed_block
+player_placed_block
+executeCommand API
+Allows the scripting API to get the result of a slash command.
+Event data API:
+Allows creators to create event data, register and pass it to the event function.
+Updated demo pack.
+Biome generation is now customizable via behavior packs.
+Music
+
+Now plays when the keyboard shows up on the screen.
+
+
+=== Fixes ===
+Crashes
+
+Fixed several crashes that could occur during gameplay.
+Fixed a crash that could occur when switching players on Xbox.
+Fixed a crash that could occur when launching the game on some Windows 10 devices.
+Fixed a crash that could occur when certain interactive blocks (e.g. beds, chests, furnaces) are loading in when joining a realm.
+Fixed a crash that could occur when engaging in a fight with an elder guardian in an ocean monument.
+Fixed a crash that could occur when throwing a trident with Loyalty enchantment.
+Fixed a crash that could sometimes occur when exiting the game.
+Performance
+
+Improved chunk loading performance in multiplayer.
+Further improvements to performance when using selectors with commands.
+Cached resource packs no longer cause lag on Nintendo Switch. (MCPE-36976)
+General
+
+Player permissions now apply correctly when more than one operator tries to adjust them.
+Arrows that are shot into blocks keep their position when reloading the world.
+Area of effect clouds no longer try to spawn excessive numbers of particles when time of day is changed. (MCPE-39595)
+Marketplace resource packs are now immediately applied after downloading in the world edit menu. (MCPE-33121)
+The 'Always Day' toggle now correctly animates and shows the correct setting. (MCPE-43304)
+Flowing water is no longer left behind after flowing over string. (MCPE-36343)
+After the fishing_hook is killed by command the player can now cast the hook again without having to right click twice.
+The screen reader prompt no longer appears every time the player adjusts the network settings on Nintendo Switch.
+Removed an unnecessary Xbox Live sign-in notification.
+Gameplay
+
+Marketplace offers page can now show more than 25 items.
+Items that are split between slots in the villager trade window still count as a total trade amount.
+Blocks can once again be placed on unlit redstone ore. (MCPE-44305)
+World settings now sync correctly between different Xbox devices.
+Only players who fought in a raid see and receive the Hero effect in realms now.
+Bells now ring when hit with splash and lingering potions.
+Mob spawners now only spawn mobs if the light level is below 7. (MCPE-42427)
+Cocoa beans now break and drop when pushed by pistons. (MCPE-41868)
+Fixed several related issues with end gateway portals. These should now teleport the player to the correct safe location when used. (MCPE-43176, MCPE-43177, MCPE-19699)
+Efficiency pickaxes now break packed ice at a faster rate. (MCPE-23648)
+Players that are being healed can still be knocked back by TNT.
+Villagers now keep their job when cured. (MCPE-42348)
+The grindstone now correctly combines and repairs two damaged items.
+The player can now interact with blocks with a charged crossbow on touch devices.
+Fixed various scenarios where certain blocks couldn't be placed until the game was restarted.
+World generation
+
+Fixed a bug on dedicated servers and realms which could cause the wrong block types to generate.
+Tweaked the number of job sites in villages.
+Mobs
+
+Vindicators can now path correctly over carpet during raids.
+The wither no longer plays its spawning animation when reloading a world. (MCPE-32415)
+Mobs no longer path-find over brewing stands.
+Mobs now spawn on double slabs. (MCPE-30765)
+Mobs no longer get stuck when pathfinding on ladders. (MCPE-43034)
+Evokers no longer move too fast in "move to village" goal.
+Blocks
+
+Scaffolding can no longer be placed on conduit blocks, matching Java Edition.
+The bell now swings towards a player when it is hit, matching Java Edition. (MCPE-42469)
+Items
+
+Dropped items no longer prevent minecarts from being placed on rails.
+Empty glass bottles now stack correctly when removed from brewing stands. (MCPE-42175)
+Shields no longer appear too bright in item frames. (MCPE-41222)
+Graphical
+
+Fixed a z-fighting texture issue on some villager skins.
+Corrected the position of leads on wolves.
+Noteblock particles now correctly correspond to the notes played.
+Fixed missing zombie villager skin.
+Farmland now has the correct side and bottom texture. (MCPE-42746)
+Fixed door and trapdoor texture issues. (MCPE-43173)
+Dyed leather horse armor color no longer affects other horse armor. (MCPE-43230)
+User interface
+
+Adjusted cartography table UI to fit Android screens when using Classic UI.
+Add-ons and script engine
+
+Fixed a scripting bug that could cause the player to float.
+Pickblock (middle click) now works correctly on non-vanilla entities that have been added using add-ons. (MCPE-38205)
+ScriptAttackComponent and ScriptCollisionBoxComponent now correctly retrieve updated data.
+Functions ran on a game loop now use an origin which has Game Master permissions, not Owner permissions.
+Added a new constructor parameter to the ServerCommandOrigin so that the function manager can create an instance with upgraded permissions.
+
+
+== beta 1.12.0.3 ==
+Beta 1.12.0.3 is the second beta version released for Bedrock Edition 1.12.0, released on May 1, 2019, which changes splash texts and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Splashes
+
+Added new splash texts:
+"All blocks covered!"
+"feedback.minecraft.net"
+"It came from space."
+"Rainbow turtle?"
+"Something funny!"
+"I need more context."
+"Ahhhhhh!"
+"Don't worry, be happy!"
+"Water bottle!"
+"What's the question?"
+"Plant a tree!"
+"Go to the dentist!"
+"What do you expect?"
+"Look mum, I'm in a splash!"
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Bamboo
+
+Updated the texture brightness slightly, to match Java Edition. (MCPE-42635)
+
+
+==== General ====
+Add-ons
+
+The behavior pack template once again contains the 'spawn_rules' folder.
+Recipe and item JSON files have been added to the behavior pack template.
+Menu screen
+
+The "Store" button has been renamed to "Marketplace".
+Splashes
+
+Removed splashes referencing Notch:
+"Made by Notch!"
+"The Work of Notch!"
+"110813!"
+
+
+=== Fixes ===
+Crashes
+
+Fixed several crashes that could occur during gameplay.
+Fixed a crash that could sometimes occur when loading certain marketplace worlds.
+Performance
+
+Improved performance around villages and villager job sites.
+Fixed a memory leak that occurred with the script engine.
+General
+
+Fixed an issue where consuming the last item in a stack to unlock an achievement could cause the achievement not to unlock.
+Gameplay
+
+Player models no longer have flipped arms and legs. (MCPE-44718)
+The "Haggler" achievement once again unlocks when requirements are met.
+Villager trading now properly takes away items from the second slot, when applicable.
+Shields and tridents are no longer invisible when held. (MCPE-44647)
+Players no longer see through the world when clipping into blocks after leaving a boat. (MCPE-42593)
+Mobs
+
+Tamed tuxedo cats now use the proper texture. (MCPE-43527)
+Stray cats can no longer claim beds in villages for worlds converted from version 1.10. (MCPE-44299)
+Villagers now always spawn as V1 when using template worlds, including Marketplace worlds.
+Witches no longer jump when attacking.
+Fixed some geometry animation issues for various skin packs.
+The ghast spinning model in monster spawners is now the correct size.
+Improved pathing for variable-sized mobs.
+Zombies and vindicators now break doors down faster.
+Fixed wandering trader podzol and coral trades.
+Fletchers now trade 16 arrows instead of 5.
+Changed the cost of butcher's cooked rabbit trade.
+Leatherworker's saddle trade is lowered from 10 to 6 emeralds.
+Armor stands can once again hold armor stand items.
+Blocks
+
+Flowing lava once again turns into cobblestone when hit by water. (MCPE-43990)
+Frosted ice blocks can now be broken. (MCPE-41256)
+Slabs and other non-solid blocks once again prevent grass from growing on dirt. (MCPE-42975)
+Logs can once again be turned into stripped logs with axes. (MCPE-44680)
+Rails at a T-junction once again change directions when powered by redstone. (MCPE-44735)
+Fixed smokers not having the correct texture underneath. (MCPE-43944)
+Items
+
+Correct colors of wool are now displayed as a material required to create colored banners in the recipe book.
+Fixed several items not losing durability when used.
+Graphical
+
+The player's arm is no longer displaced in first-person view after eating food. (MCPE-40135)
+Composter growth particles now appear in the correct location.
+Fixed animated textures for flowing lava and water on several texture packs.
+Fixed gray textures that sometimes appeared on doors and trapdoors.
+User interface
+
+Attempting to combine stacks of the same item no longer swaps them instead on touch controls.
+Items are no longer lost when swapping to and from the off-hand slot on touch controls. (MCPE-44706)
+The How to Play button on the cartography table now directs to the proper screen.
+Sweet berries no longer disappear on the hotbar when they are highlighted.
+Killing a wandering trader's llama can no longer show their inventory screen.
+Commands
+
+Removed "tile" prefix in the /give command. (MCPE-44667)
+Blocks and entities that aren't available in the Creative inventory no longer require the minecraft namespace when used as parameters in slash commands.
+Commands can now be auto-completed on command blocks without leading with a /. (MCPE-44679)
+Add-ons and script engine
+
+minecraft:entity_use_item documentation now generates correctly.
+Corrected block event descriptions.
+Custom entities now correctly re-evaluate current target validity.
+'getBlocks' now returns a 3D array of block objects.
+Fixed incorrect component name for entities with the new 'water_movement' component.
+getBlock and getBlocks now correctly handle getting a block when given an actor position (or any non-integer position).
+
+
+== beta 1.12.0.4 ==
+Beta 1.12.0.4 is the third beta version for Bedrock Edition 1.12.0, released on May 8, 2019, which fixes bugs and updates the main menu panorama.
+
+
+=== Changes ===
+
+
+==== General ====
+Add-ons
+
+Signs no longer break after being cloned to an area without support.
+Added API documentation for the log function.
+Menu screen
+
+Updated the panorama from Update Aquatic to Village & Pillage.
+
+
+==== Gameplay ====
+Sounds
+
+Increased the frequency and volume of the ambient mob sounds made during raids, to make them easier to locate.
+
+
+=== Fixes ===
+Crashes
+
+Fixed a crash that could occur on dedicated servers.
+Fixed a crash that could occur when trying to create a new template world.
+Fixed a crash on Nintendo Switch that could occur when suspending and resuming the game.
+Fixed a crash that could sometimes occur while navigating various UI screens.
+General
+
+Frosted ice that is waiting to melt no longer causes excessive lag. (MCPE-39698)
+Comparators that are powered when loaded, turned off, and then on again in one tick now correctly stop outputting power when it is off for the one tick.
+Fixed an issue with an incorrect spawn point after respawning on the Mario Mash-up pack.
+Removed the sand trade from the wandering trader and adjusted the cost of a diamond hoe on the toolsmith.
+Resource packs are now applied correctly after downloading through the world or global settings.
+Fixed an issue with player skins not loading correctly between devices.
+Dates appear again next to player earned achievements in the achievements menu.
+The "Zombie Doctor" achievement now unlocks when the player cures a zombie villager.
+Gameplay
+
+Players no longer clip through walls when transitioning from swimming to standing up in water.
+Players now receive damage when trapped in fallen sand/gravel. (MCPE-45704)
+Combining two heavily damaged tools in the crafting table now creates a tool with the correct durability.
+Mobs
+
+Iron golems no longer run to the world center after its village is destroyed. (MCPE-45509)
+Spiders can correctly path-find over obstacles again.
+Tweaked polar bear head position animation.
+Graphical
+
+Tinted spawn eggs are now properly scaled in item frames.
+Red sandstone stairs now have correct textures on all sides. (MCPE-20677)
+Updated the glass texture for locked maps in the cartography table UI. (MCPE-43314)
+User interface
+
+Going back to the Play screen (or Settings screen) now properly selects the previously selected tab when text to speech is enabled.
+Fixed an issue on Xbox that could prevent the menus from being navigated after signing in to a Microsoft account.
+The book icon in the enchantment table UI is no longer overlapping the runic inscription (Pocket UI).
+The "Wheel Turning" button is now only shown once in the Minecraft VR settings.
+Commands
+
+Fixed an issue that sometimes caused command blocks to fail to execute commands for no apparent reason.
+
+
+== beta 1.12.0.6 ==
+Beta 1.12.0.6 is the fourth beta version for Bedrock Edition 1.12.0, released on May 22, 2019, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== General ====
+Add-ons
+
+Removed the "byte order mark" at the beginning of function files if it exists.
+Updated ScriptHotbarContainerComponent's generateDocumentation function to say it checks the player's first hotbar item slot, not their third.
+
+
+=== Fixes ===
+Crashes
+
+Fixed a crash that could occur when the game was checking for previously downloaded content.
+Fixed a crash that could sometimes occur when exiting the game on Windows 10.
+Fixed a crash that could occur when loading the game.
+Fixed a crash that could occur when throwing an egg or snowball. (MCPE-40435)
+Fixed a crash that could occur when flaming arrow entities were being loaded in.
+Fixed a global resources crash on Android.
+Fixed a crash that could occur when trading with a villager.
+Performance
+
+Made further improvements to performance around new villages.
+Reduced the amount of memory required to load textures.
+Fixed a bug that would cause a performance drop when mobs produced splashing particles when entering water.
+Improved block occlusion performance.
+Improved performance related to chunk loading.
+General
+
+Custom skins are now applied correctly without needing to restart the game to see them. (MCPE-37926)
+Made item names more consistent by removing 'tile' from the beginning of some of them.
+The "Invite to Game" button is no longer enabled on third-party servers.
+Made improvements to roaming skins, which should apply correctly after reloading or reinstalling the game and signing in.
+Custom skins no longer keep revert to an earlier cross-platform skin after reloading the game. (MCPE-45476)
+Gameplay
+
+The "Iron Belly" achievement can be unlocked once again. (MCPE-46260)
+Acacia planks can be crafted correctly once again. (MCPE-44398)
+Village job site blocks now have consistent sound volume levels when used by players.
+Players now consistently receive items when completing a trade with a villager and using a controller.
+The player paper doll model now moves correctly when the player is gliding with elytra. (MCPE-44731)
+Using pick-block on sweet berry bushes now gives the player the correct item. (MCPE-41877)
+Fireworks now correctly boost elytra flight if provided through /give or /setitem.
+Bone meal is now consumed correctly when used on grass.
+Paintings can now be crafted from dyed wool.
+Players no longer lose villager job site locations if they replace a job site block that is tied to an experienced villager.
+Players can no longer lose or duplicate banner patterns when switching them in a loom with a full inventory.
+Cactus blocks of different growth stages can be smelted into green dye again. (MCPE-42497)
+Fixed an issue with missing button icons in the How to Play section on Switch.
+Pressing controller Y on the cartography output slot now only crafts the correct amount.
+Re-established a fix to keep legacy trades working the way they used to.
+Llamas now drop their leads if their wandering trader is killed. (MCPE-44704)
+Mobs
+
+Cats and villagers now have the correct head position when sitting and sleeping. (MCPE-44648)
+Tamed cats no longer slide around while sitting. (MCPE-44491)
+Armor stands now render off-hand items correctly.
+Villagers without professions now follow regular schedules.
+Parrot legs are now aligned correctly when flying.
+Fixed creeper model in some Marketplace maps.
+Graphical
+
+Updated illager captain banner texture.
+Fire particles no longer display on empty mob spawner blocks.
+Tweaked arrow rendering timing to improve VR experience.
+Fixed a small error in the bell texture UV.
+Commands
+
+Killing a rideable entity no longer respawns its rider when killed in the same tick.
+The /testforblock command now works reliably with items renamed in the language files.
+Add-ons and scripting engine
+
+Custom underwater mobs can now spawn naturally.
+
+
+== beta 1.12.0.9 ==
+Beta 1.12.0.9 is the fifth beta version for Bedrock Edition 1.12.0, released on June 3, 2019, which adds rarity tooltips and fixes bugs.
+
+
+=== Changes ===
+
+
+==== General ====
+Add-ons
+
+Removing a timer component and adding a new one should no longer have the new timer inherit the old timer's time value.
+Included a fix to allow for JSON content that refers to blocks with "tile." at the front of it to be looked up successfully.
+Rarity
+
+Golden apples and enchanted golden apples now have rarity tooltips.
+
+
+=== Fixes ===
+Crashes
+
+Fixed several crashes that could occur during gameplay.
+Fixed a crash that could occur on Nintendo Switch when the game was saving or loading. (MCPE-45862)
+Fixed a Marketplace issue that could result in the game getting stuck or crashing when loading in content.
+Fixed a crash that could occur when signing in to Xbox Live.
+Fixed a crash that could occur when breaking a bell. (MCPE-46636)
+Fixed an issue that could cause the game to freeze or stop responding. (MCPE-46654)
+Fixed a crash that could sometimes occur when changing skins.
+Fixed a crash that could occur when loading in a roaming skin.
+Fixed a crash that could occur on Switch.
+Performance
+
+Made further performance improvements when opening inventory screens. (MCPE-27167)
+Made some further performance improvements around villages and job sites.
+Several other performance improvements, included some related to mob AI pathfinding.
+General
+
+The Marketplace search screen now displays the proper pack icons.
+Fixed Marketplace sale items not showing the discount percentage.
+Marketplace sale items no longer change size when hovered over.
+The "New" tag is now properly removed from a Marketplace collection once it has been viewed.
+Replaced some missing Marketplace screenshots.
+Made improvements to the patch notes to make sure the correct ones show up after an update.
+Fixed an issue with skins not loading in correctly after restarting the game.
+Several fixes and improvements related to game invites:
+Fixed a bug that would prevent a player from creating or loading a world, or cause a crash, after attempting and failing to join another world via an invite.
+Fixed an issue that prevented the player from joining a world or server after receiving an invite.
+Players should no longer see the "Unable to connect to World" message when trying to enter own Realm or any area from Friends tab after failed attempt to join a game.
+Fixed a loading screen issue that could prevent split-screen players on console from joining the world correctly.
+Gameplay
+
+Fixed an issue that was preventing players from feeding hay bales to animals in order to breed them.
+Players now respawn at the correct spawn point when they die.
+Players can now respawn successfully without having to exit and re-join the world first.
+Mobs
+
+Iron golems now sway when walking.
+Graphical
+
+Fixed the sitting model for cats that were previously tamed ocelots. (MCPE-41929)
+Enchanted armor and bows now show their shimmering effect again. (MCPE-45750)
+User interface
+
+Fixed a controller bug when navigating through the Marketplace
+The crafting grid no longer clears when the gamepad cursor moves to any non-recipe book slot
+Add-ons and scripting engine
+
+Fixed an issue that was preventing custom blocks from registering successfully.
+Fixed an issue with custom items and blocks not requiring the namespace for slash commands.
+
+
+== beta 1.12.0.10 ==
+Beta 1.12.0.10 is the sixth beta version for Bedrock Edition 1.12.0, released on June 6, 2019, which fixes some bugs.
+
+
+=== Fixes ===
+Crashes
+
+Fixed a crash that could sometimes occur when switching profiles on Xbox One platform.
+Performance
+
+Made several performance improvements related to various UI screens and interactions.
+General
+
+Fixed an issue with incorrect patch notes showing.
+Gameplay
+
+The "Rainbow Collection" achievement can now be unlocked.
+Blocks with high translucency no longer stop grass growth. (MCPE-46035)
+
+
+== beta 1.12.0.11 ==
+Beta 1.12.0.11 is the seventh beta version for Bedrock Edition 1.12.0, released on June 11, 2019, which fixes some bugs.
+
+
+=== Fixes ===
+Performance
+
+Improved FPS performance related to various particles:
+Enderman's teleporting particles no longer cause consistent FPS drop, especially during boss fights.
+Improved performance related to bubble columns, improving FPS during underwater exploration.
+General
+
+Fixed several more issues where the player's skin would revert to a default one if the network connection changed.
+Skins equipped from the "Recently used" section are now correctly applied when selected.
+Minecoin offers now display the correct amount of coins given in offer.
+Gameplay
+
+Floating blocks no longer turn grass to dirt at night. (MCPE-46035, MCPE-45751, MCPE-45698)
+Mobs
+
+New zombie villagers now have the correct name in death messages instead of a placeholder name. (MCPE-45932)
+Commands
+
+Command selectors are back to resolving in less than 0.5ms as opposed to 4+ms.
+villager_v2 works in selectors again, and targets both old villagers and new villagers.
+
+
+== beta 1.12.0.12 ==
+Beta 1.12.0.12 is the eighth beta version for Bedrock Edition 1.12.0, released on June 17, 2019, which fixes bugs.
+
+
+=== Fixes ===
+Crashes
+
+Fixed several crashes that could occur during gameplay.
+Fixed a crash that could occur when viewing the skin picker.
+General
+
+Skin packs now correctly show the number of skins included.
+Scrolling through the skin picker now works correctly.
+Fixed an issue that was preventing skins from showing correctly in the Marketplace.
+Add-ons and scripting engine
+
+The "NearestAttackableTargetGoal" component now correctly reselects targets.
+
+
+== beta 1.12.0.13 ==
+Beta 1.12.0.13 is the ninth beta version for Bedrock Edition 1.12.0, released on June 19, 2019, which fixes bugs.
+
+
+=== Fixes ===
+Crashes
+
+Fixed several crashes that could occur during gameplay.
+Fixed a crash that could occur when attempting to transfer too many items into a barrel. (MCPE-45833)
+Fixed a crash related to an invalid bucket texture.
+Performance
+
+Made several performance improvements and optimizations.
+General
+
+The Global Resources tab now shows the correct type of applicable packs.
+Add-ons and scripting engine
+
+Tweaked scripting documentation for particle billboarding.
+
+
+== beta 1.12.0.14 ==
+Beta 1.12.0.14 is the tenth and final beta version for Bedrock Edition 1.12.0, released on June 24, 2019, which fixes bugs.
+
+
+=== Fixes ===
+Crashes
+
+Fixed several crashes that could occur during gameplay.
+Performance
+
+Made several performance improvements and optimizations.
+Improved performance and fixed FPS drops when flying with elytra in the End in Survival mode.
+General
+
+Fixed a duplication glitch involving removing items from a chest in a timely matter.
+Improved beta debug display text render.
+Fixed custom bow size in certain marketplace packs.
+Fixed an issue with invalid characters being used in some Marketplace packs, causing geometry and texture errors.
+
+
+== Notes and references ==
+
+
+== Navigation ==

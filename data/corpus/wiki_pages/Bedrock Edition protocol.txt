@@ -1,0 +1,701 @@
+This article documents the Bedrock Edition protocol for 1.16.220, protocol 431.
+The Bedrock Edition protocol uses UDP instead of TCP that is used for the Java Edition.
+Bedrock Edition uses RakNet as its protocol library.
+The default Bedrock Edition port is 19132.
+Information for this page was obtained from the NukkitX Protocol library, MiNET and gophertunnel.
+For more complete documentation, consider visiting the Official Docs.
+
+
+== Data types ==
+
+
+== Types Table ==
+
+
+== Packet Format ==
+Bedrock Edition uses RakNet as its protocol library, so the packets are sent that way. The UDP protocol specifies packet length, so unlike Java Edition and TCP which deal with raw data streams packets are not length-prefixed. Packets seem to always use compression and can also use encryption. Multiple packets can also be batched into a single packet.
+Packet compression uses zlib, and it seems that packet data can be fed directly into zlib (after being decrypted if encryption is enabled).
+
+Refer to gophertunnel for more information.
+
+
+== Login process ==
+The login process is as follows:
+
+C→S: Request Network Settings
+S→C: Network Settings
+C→S: Login
+S→C: Server To Client Handshake
+C→S: Client To Server Handshake
+S→C: Play Status (Login success)
+To spawn, the following packets should be sent, in order, after the ones above:
+
+S→C: Resource Packs Info
+C→S: Resource Pack Client Response
+S→C: Resource Pack Stack
+C→S: Resource Pack Client Response
+S→C: Start Game
+S→C: Creative Content
+S→C: Biome Definition List
+S→C: Level Chunk
+S→C: Play Status (Player spawn)
+If there are no resource packs being sent, a Resource Pack Stack can be sent directly after Resource Packs Info to avoid the client responses.
+
+
+== Packets ==
+Please note that some packet ids are missing, so they don't line up.
+The following packet ids are missing:
+0x10, 0x74, 0x7F, 0x80
+(16, 116, 127, 128)
+
+
+==== Login ====
+Sent when the client initially tries to join the server. It is the first packet sent and contains information specific to the player.
+
+
+==== Play Status ====
+
+The values for each status are as follows:
+
+
+==== Server To Client Handshake ====
+
+
+==== Client To Server Handshake ====
+Sent by the client in response to a Server To Client Handshake packet sent by the server. It is the first encrypted packet in the login handshake and serves as a confirmation that encryption is correctly initialized client side. It has no fields.
+
+
+==== Disconnect ====
+Sent by the server to disconnect a client.
+
+
+==== Resource Packs Info ====
+
+
+==== Resource Pack Stack ====
+
+
+==== Resource Pack Client Response ====
+
+The values for each status are as follows:
+
+
+==== Text ====
+Sent by the client to the server to send chat messages, and by the server to the client to forward or send messages, which may be chat, popups, tips etc.
+
+For additional information and examples of all the chat types above, see here: https://imgur.com/a/KhcFscg
+
+
+==== Set Time ====
+Sent by the server to update the current time client-side. The client actually advances time client-side by itself, so this packet does not need to be sent each tick. It is merely a means of synchronizing time between server and client.
+
+
+==== Start Game ====
+Sent by the server to send information about the world the player will be spawned in.
+
+In order to use custom blocks, you must add data_driven_items as an ExperimentData in this packet with its value set to true [whether you need to add the experiment data to the resource pack process, like with items, has been untested]. A boilerplate representation of the NBT sent for a custom block is as follows:
+
+The block runtime ID is determined by the second part of the namespace, in alphabetical order. If the block is named wikivg:aaa, it will be placed at the beginning of the block runtime states. If the block is named wikivg:zzz, it will be placed at the end of the palette [most likely - naming a block "snow" caused other block states to shift].
+
+
+==== Add Player ====
+Sent by the server to make a player entity show up client-side. It is one of the few entities that cannot be sent using the Add Entity packet.
+
+
+==== Add Entity ====
+Sent by the server to spawn an entity to the player. It is used for every entity except other players, paintings and items, for which the Add Player, Add Painting and Add Item Entity packets are used.
+
+
+==== Remove Entity ====
+Sent by the server to remove an entity that currently exists in the world from the client-side. Sending this packet if the client cannot already see this entity will have no effect.
+
+
+==== Add Item Entity ====
+Sent by the server to make an item entity show up. It is one of the few entities that cannot be sent using the Add Entity packet.
+
+
+==== Take Item Entity ====
+Sent by the server when a player picks up an item entity. It makes the item entity disappear to viewers and shows the pick-up animation.
+
+
+==== Move Entity Absolute ====
+Sent by the server to move an entity to an absolute position. It is typically used for movements where high accuracy isn't needed, such as for long range teleporting.
+This packet is also sent by the client when riding a horse/donkey.
+
+
+==== Move Player ====
+Sent by players to send their movement to the server, and by the server to update the movement of player entities to other players.
+
+Modes:
+
+Teleportation causes:
+
+
+==== Rider Jump ====
+Sent by the client when it jumps while riding an entity that has the WASDControlled entity flag set, for example when riding a horse. According to MiNET this can also be sent from the server to the client, but details on this are unknown.
+
+
+==== Update Block ====
+Sent by the server to update a block client-side, without resending the entire chunk that the block is located in. It is particularly useful for small modifications like block breaking/placing.
+
+
+==== Add Painting ====
+
+Valid facing values:
+
+0 - Facing toward positive Z (south)
+1 - Facing toward negative X (west)
+2 - Facing toward negative Z (north)
+3 - Facing toward positive X (east)
+Valid name values:
+
+Kebab
+Aztec
+Alban
+Aztec
+Aztec2
+Bomb
+Plant
+Wasteland
+Wanderer
+Graham
+Pool
+Courbet
+Sunset
+Sea
+Creebet
+Match
+Bust
+Stage
+Void
+SkullAndRoses
+Wither
+Fighters
+Skeleton
+DonkeyKong
+PoInter
+Pigscene
+BurningSkull
+
+
+==== Tick Sync ====
+Sent by the client and the server to maintain a synchronized, server-authoritative tick between the client and the server. The client sends this packet first, and the server should reply with another one of these packets, including the response time.
+
+
+==== Level Sound Event (1) ====
+
+
+==== Level Event ====
+
+
+==== Block Event ====
+
+
+==== Entity Event ====
+
+
+==== Mob Effect ====
+
+Events:
+
+0: None
+1: Add
+2: Modify
+3: Remove
+
+
+==== Update Attributes ====
+
+
+==== Inventory Transaction ====
+
+
+==== Mob Equipment ====
+
+
+==== Mob Armor Equipment ====
+
+
+==== Interact ====
+
+
+==== Block Pick Request ====
+
+The Bedrock client sends the position of the block. It expects the server to decide the block to pick and add it to the inventory or switch the hotbar slot if needed.
+
+
+==== Entity Pick Request ====
+
+
+==== Player Action ====
+
+
+==== Entity Fall ====
+Sent by the client when it falls from a distance onto a block that would damage the player.
+This packet should not be used at all by the server, as it can easily be spoofed using a proxy or custom client. Servers should implement fall damage using their own calculations.
+
+
+==== Hurt Armor ====
+Sent by the server to damage the player's armor after being hit. 
+The packet should never be used by servers as it hands the responsibility over to the player completely, while the server can easily and reliably update the armor damage of players itself.
+
+
+==== Set Entity Data ====
+
+
+==== Set Entity Motion ====
+
+
+==== Set Entity Link ====
+
+
+==== Set Health ====
+Sent by the server to set the health of the player it is sent to.
+This packet should no longer be used. Instead, the health attribute should be used so that the health and maximum health may be changed directly.
+
+
+==== Set Spawn Position ====
+
+
+==== Animate ====
+Sent by the server to send a player animation from one player to all viewers of that player. 
+
+
+==== Respawn ====
+
+States:
+
+
+==== Container Open ====
+
+Bedrock needs either a valid block position, with an actual block at that position, or an entity ID for this to work. The entity must have CONTAINER_BASE_SIZE metadata, or the block must be a container. The entity ID is used for minecart chests etc. but any entity will work. If the entity has NAMETAG metadata this will be used as the container name.
+
+
+==== Container Close ====
+
+
+==== Player Hotbar ====
+
+
+==== Inventory Content ====
+
+
+==== Inventory Slot ====
+
+
+==== Container Set Data ====
+
+
+==== Crafting Data ====
+Since 1.16.200, each recipe must have a unique network ID. Otherwise, the client will crash.
+
+
+==== Crafting Event ====
+
+
+==== GUI Data Pick Item ====
+
+Sent by the server to make the client 'select' a hotbar slot. It currently appears to be broken however, and does not actually set the selected slot to the hotbar slot set in the packet.
+
+
+==== Adventure Settings ====
+Sent by the server to update gameplay related features, in particular permissions to access these features for the client.
+It includes allowing the player to fly, build, and mine and attack entities. Most of these flags should be checked server-side instead of using this packet only.
+The client my also send this packet to the server when it updates one of these settings through the in-game settings interface. The server should verify if the player actually has permission to update these settings.
+
+
+==== Block Entity Data ====
+
+
+==== Player Input ====
+Sent by the client when the player is moving but the server does not allow it to update its movement using the Move Player packet. It includes situations where the player is riding an entity like a boat. If this is the case, the packet is sent roughly every tick.
+
+
+==== Level Chunk ====
+
+
+==== Set Commands Enabled ====
+This packet is sent to the client to enable or disable the ability to execute commands. If disabled, the client itself will stop the execution of commands.
+
+
+==== Set Difficulty ====
+Sent by the server to update the client-side difficulty pf the client. The actual effect of this packet on the client isn't very significant, as the difficulty is handled server-side.
+
+
+==== Change Dimension ====
+
+
+==== Set Player Game Type ====
+
+
+==== Player List ====
+
+
+==== Simple Event ====
+
+
+==== Event ====
+
+
+==== Spawn Experience Orb ====
+Sent by the server to spawn an experience orb entity client-side. 
+
+
+==== Map Item Data ====
+Sent by the server to update the data of a map shown to the client. It is sent with a combination of flags that specify what data is updated.
+The packet may be used to update specific parts of the map only. It is not required to send the entire map each time when updating one part.
+TODO
+
+
+==== Map Info Request ====
+Sent by the client to request the server to deliver information of a certain map in the inventory of the player. The serve should respond with a Map Item Data packet.
+
+
+==== Request Chunk Radius ====
+Sent by the client to update the server on the chunk view radius that it has set in the settings. The server may respond with a Chunk Radius Updated packet with either the radius requested, or a different chunk radius if the server chooses so.
+
+
+==== Chunk Radius Updated ====
+Sent by the server in response to a Request Chunk Radius packet. It defines the radius that the server allows the client to have. This may be lower than the chunk radius requested by the client.
+
+
+==== ItemFrame Drop Item ====
+Sent by the client in creative mode when it wants to remove an item from an item frame. For survival mode, the player action types of START_BREAK and ABORT_BREAK are instead sent.
+
+
+==== Game Rules Changed ====
+
+
+==== Camera ====
+
+
+==== Boss Event ====
+
+
+==== Show Credits ====
+Sent by the server to show the Minecraft credits screen to the client. It is typically when the player beats the ender dragon and leaves the End.
+
+Statuses:
+
+
+==== Available Commands ====
+
+
+==== Command Request ====
+
+
+==== CommandBlock Update ====
+
+
+==== Command Output ====
+
+
+==== Update Trade ====
+
+
+==== Update Equip ====
+
+
+==== Resource Pack Data Info ====
+
+
+==== Resource Pack Chunk Data ====
+
+
+==== Resource Pack Chunk Request ====
+
+
+==== Transfer ====
+Sent by the server to transfer a player from the current server to another. Doing so will fully disconnect the client, bring it back to the main menu and make it connect to the next server.
+
+
+==== Play Sound ====
+
+
+==== Stop Sound ====
+
+
+==== Set Title ====
+Sent by the server to make a title, subtitle or action bar shown to a player. It has several fields that allow setting the duration of the titles.
+
+
+==== Add Behavior Tree ====
+Sent by the server. Its usage remains unknown, as behavior packs are typically all sent at the start of the game.
+
+
+==== Structure Block Update ====
+When client change the Structure Block Screen and close it, client will send it to server to update. 
+
+Structure Editor Data
+
+
+==== Show Store Offer ====
+Sent by the server to show a Marketplace store offer to a player. It opens a window client-side that displays the item.
+The packet only works on partnered servers: Servers that are not partnered will not have a store button show up on the in-game pause menu and will, as a result, not be able to open store offers on the client side. Sending the packet does therefore not work when using a proxy that is connected to with the domain of one of the partnered servers.
+
+
+==== Purchase Receipt ====
+Sent by the client to notify the server it purchased an item from the marketplace store that was offered by the server.
+The packet is only used for partnered servers.
+
+
+==== Player Skin ====
+Sent by the client when it updates its own skin using the in-game skin picker. It is relayed by the server, or sent if the server changes the skin of a player on its own accord. 
+Note that the packet can only be sent for players that are in the player list at the time of sending.
+
+
+==== Sub Client Login ====
+Sent when an additional player attempts to join from a split screen session. The contents of the chain data and skin data fields use the same format as the Login packet, and can be decoded the same way.
+
+
+==== Automation Client Connect ====
+Sent by the server to make the client connect to a websocket server. This websocket server has the ability to execute commands on the behalf of the client and it canlisten for certain events fired by the client.
+
+
+==== Set Last Hurt By ====
+Sent by the server to let the client know what entity type it was last hurt by. At this moment, the packet is useless and should not be used. 
+There is no behavior that depends on if this packet is sent or not.
+
+
+==== Book Edit ====
+Sent by the client when it edits a book. It is sent each time a modification was made and the player stops its typing 'session', rather than simply after closing the book.
+
+
+==== NPC Request ====
+Sent by the client when it interacts with an NPC.
+
+
+==== Photo Transfer ====
+Sent by the server to transfer a photo (image) file to the client. It is typically used to transfer photos so that the client can display it in a portfolio in Education Edition.
+While previously usable in the base game, the displaying of photos in books was disabled and the packet has little use anymore.
+The packet is specifically for Education Edition. It has no use in the base game.
+
+
+==== Model Form Request ====
+Sent by the server to make the client open a form.
+
+
+==== Model Form Response ====
+
+
+==== Server Settings Request ====
+
+
+==== Server Settings Response ====
+
+
+==== Show Profile ====
+Sent by the server to show the Xbox Live profile of one player to another.
+
+
+==== Set Default Game Type ====
+Sent by the client when it toggles the default game type in the settings UI, and is sent by the server when it actually changes the default game type, resulting in the toggle being changed in the settings UI.
+
+
+==== Remove Objective ====
+
+
+==== Set Display Objective ====
+
+
+==== Set Score ====
+Sent by the server to send the contents of a scoreboard to the player. It may be used to either add, remove or edit entries on the scoreboard.
+
+
+==== Lab Table ====
+Sent by the client to let the server know it started a chemical reaction in Education Edition, and is sent by the server to allow other clients to show the effects.
+This packet is only functional if Education features are enabled.
+
+
+==== Update Block Synced ====
+Sent by the server to synchronize the falling of a falling block entity with the transitioning back and forth from and to a solid block. It is used to prevent the entity from flickering, and is used in places such as the pushing of blocks with pistons.
+
+
+==== Move Entity Delta ====
+Sent by the server to move an entity by a given delta. The packet is specifically optimized to save as much space as possible, by only writing non-zero fields.
+
+Flags
+
+
+==== Set Scoreboard Identity ====
+Sent by the server to change the identity type of one of the entries on a scoreboard. This is used to change, for example, an entry pointing to a player, to a fake player when it leaves the server, and to change it back to a real player when it joins again.
+In non-vanilla situations, this packet is quite useless.
+
+
+==== Set Local Player As Initialized ====
+Sent by the client in response to a |Play Status with the status Player Spawn (3). The packet marks the moment at which the client is fully initialized and can receive any packet without discarding it.
+
+
+==== Update Soft Enum ====
+Sent by the server to update a soft enum, also known as a dynamic enum, previous sent in the Available Commands packet. It is sent whenever the enum should get new options or when some of its options should be removed.
+
+
+==== Network Stack Latency ====
+Sent by the server (and the client, on development builds) to measure the latency over the entire Minecraft stack, rather than the RakNet latency. 
+It has over usages too, such as the ability to be used as some kind of acknowledgement packet, to know when the client has received a certain other packet.
+
+
+==== Script Custom Event ====
+Sent by both the client and server. It is a way to let scripts communicate with the server, so that the client can let the server know it triggered an event, or the other way around.
+
+
+==== Spawn Particle Effect ====
+Sent by the server to spawn a particle effect client-side. Unlike other packets that result in the appearing of particles, this packet can show particles that are not hardcoded in the client. They can be added and changed through behavior packs to implement custom particles.
+
+
+==== Available Entity Identifiers ====
+Sent by the server at the start of the game to let the client know all entities that are on the server.
+
+
+==== Level Sound Event (2) ====
+
+
+==== Network Chunk Publisher Update ====
+Sent by the server to change the point around which chunks are and remain loaded. 
+This is useful for minigame servers, where only one area is ever loaded, in which case the Network Chunk Publisher packet can be sent in the middle of it, so that no chunks ever need to be additionally sent during the course of the game.
+In reality, the packet is not extraordinarily useful, and most servers just sent it constantly at the position of the player. 
+If the packet is not sent at all, no chunk will be shown to the player, regardless of where they are sent.
+
+
+==== Biome Definition List ====
+Sent by the server to let the client know all biomes that are available and implemented on the server side.
+
+
+==== Level Sound Event (3) ====
+
+
+==== Level Event Generic ====
+Sent by the server to send a 'generic' level event to the client. This packet sends an NBT serialized object and may for that reason be used for any event holding additional data.
+
+
+==== Lectern Update ====
+Sent by the client to update the server on which page was opened in a book on a lectern, or if the book should be removed from it.
+
+
+==== Video Stream Connect ====
+
+
+==== Client Cache Status ====
+Sent by the client at the start of the game. It is sent to let the server know if it supports the client-side blob cache. Clients such as Nintendo Switch do not support the cache, and attempting to use it anyway will fail.
+
+
+==== On Screen Texture Animation ====
+Sent by the server to show a certain animation on the screen of the player.
+The packet is used, for example, for when a raid is triggered and a raid a defeated.
+
+
+==== Map Create Locked Copy ====
+Sent by the server to create a locked copy of a map into another map. It is used in the cartography table to create a map that is locked and cannot be modified.
+
+
+==== Structure Template Data Request ====
+Sent by the client to request data of a structure.
+
+
+==== Structure Template Data Response ====
+Sent by the server to send data of a structure to the client in response to a Structure Template Data Export Request packet.
+
+
+==== Update Block Properties ====
+Sent by the server to update the available block properties.
+
+
+==== Client Cache Blob Status ====
+Sent by the client to let the server know what blobs it already has, in an ACK type system.
+
+
+==== Client Cache Miss Response ====
+Sent by the server in response to a Client Cache Blob Status and contains the blob data of all blobs that the client acknowledged not to have yet.
+
+
+==== Network Settings ====
+Sent by the server to update a variety of network settings. These settings modify the way packets are sent over the network stack.
+
+
+==== Player Auth Input ====
+Sent by the client to allow for server authoratative movement. It is used to synchronize the player input with the position server-side.
+The client sends this packet when the 'Server Authoritive Movement' field in the Start Game packet is set to true, instead of the Move Player packet. The client will send this packet once every tick.
+
+
+==== Creative Content ====
+Sent by the server to set the creative inventory's content for a player.
+Introduced in 1.16, this packet replaces the previous method of sending an Inventory Content packet with the creative inventory window ID. This packet must be sent from a server after the StartGamePacket since 1.16.100. Otherwise, the client will crash!
+
+
+==== Player Enchant Options ====
+Sent by the server to update the enchantment options displayed when the user opens the enchantment table and puts an item in.
+This packet was added in 1.16 and allows the server to decide on the enchantment that can be selected by a player. The player should be sent once for every slot update of the enchantment table. The vanilla server sends an empty packet when the player first opens the enchantment table (air is present in the enchantment table slot) and sends a packet with actual enchantments in it when items are put in that can have enchantments.
+
+
+==== Item Stack Request ====
+Sent by the client to change item stacks in an inventory. 
+Added in 1.16, is essentially a replacement of the Inventory Transaction packet for inventory specific actions, such as moving items around or crafting.
+The Inventory Transaction packet is still used for actions such as placing blocks and interacting with entities.
+
+
+==== Item Stack Response ====
+Sent by the server in response to an Item Stack Request packet from the client.
+This packet is used to either approve or reject ItemStackRequests from the client. If a request is approved, the client will simply continue as normal. If rejected, the client will undo the actions so that the inventory should be in sync with the server again.
+
+
+==== Player Armor Damage ====
+Sent by the server to damage the armor of a player. It is a very efficient packet, but generally it's much easier to just send a slot update for the damaged armor.
+
+
+==== Code Builder ====
+Sent by the server to open the URL to a Code Builder (websocket) server.
+This packet is only used by Education Edition and have no affect on the base game.
+
+
+==== Update Player Game Type ====
+Sent by the server to change the game mode of a player. It is functionally identical to the Set Player Game Type packet.
+
+
+==== Emote List ====
+Sent by the client every time it joins the server and when it equips new emotes. It may be used by the server to find out which emotes the client has available. If the player has no emotes equipped, this packet is not sent.
+Under certain circumstances, this packet is also sent from the server to the client, but more testing is needed for this.
+
+
+==== Position Tracking DB Server Broadcast ====
+Sent by the server in response to the Position Tracking DB Client Request packet. Thus packet is, as of 1.16, currently only for lodestones. The server maintains a database with tracking IDS and their position and dimension. The client will request these tracking IDs, (NBT tag set on the lodestone compass with the tracking ID?) and the server will respond with the status of those tracking IDs.
+What is actually done with the data sent depends on what the client chooses to do with it. For the lodestone compass, it is used to make the compass point toward lodestones and to make it spin if the lodestone at a position is no longer there.
+
+
+==== Position Tracking DB Client Request ====
+Sent by the client to request the position and dimension of a 'tracking ID'. These IDs are tracked in a database by the server. In 1.16, this is used for lodestones.
+The client will sent this request to find the position a lodestone compass needs to point to. If found, it will point to the lodestone. If not, it will start spinning around.
+A Position Tracking DB Server Broadcast packet should be sent in response to this packet.
+
+
+==== Debug Info ====
+Sent by the server. It does not seem to do anything when sent to the normal client in 1.16;
+
+
+==== Packet Violation Warning ====
+Sent by the client when it receives an invalid packet from the server. It holds some information on the error that occurred.
+
+
+==== Animate Entity ====
+Indicates that the client should play the specified animation on the selected entities. This is the packet used for the /playanimation command found on vanilla Bedrock (see Minecraft Wiki).
+
+
+==== Item Component ====
+Always sent by a vanilla Bedrock server after the StartGamePacket. Sent not empty for items with data driven information.
+In order for the information in this packet to be used, the experiment data titled data_driven_items must be set to true in the ResourcePackStackPacket (as of 1.16.100), and the item entry in StartGamePacket must have its component toggle set to true.
+
+ComponentItemData takes in a String identifier and an NBT CompoundTag containing item data. Valid, minimal NBT data looks like the following (Any comments are preceded with //):
+
+A list of all known valid item properties (and descriptions, if added):
+
+Other item components can be found here: https://bedrock.dev/docs/stable/Item#Item%20Components (Add these in the same format as minecraft:icon shown above). Also see: https://wiki.bedrock.dev/concepts/items
+
+
+==== Filter Text ====
+Since 1.16.200, this packet is sent for to all anvil and cartography table rename inputs (I.E. typing a single character will send this packet). The client expects a response back, or else it will assume that the item cannot be renamed (which can be used to block renaming items).
+
+
+==== Request Network Settings ====
+Since v554, this is the first packet sent by the client.
+
+
+== Navigation ==

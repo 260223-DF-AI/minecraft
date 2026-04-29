@@ -1,0 +1,376 @@
+Command context (also know as execution context, command origin, command source stack) is a set of parameters like the executor and execution environment. It is used to provide context for command execution or raw JSON text resolution.
+
+
+== Behaviors ==
+There are mainly 8‌[JE  only]/7‌[BE  only] parameters in command context:
+
+Execution Permission Level
+Executor Parameters, including:
+Executor Name
+Executor Entity
+Execution Environment Parameters, including:
+Execution Dimension
+Execution Position
+Execution Rotation
+Execution Anchor‌[Java Edition  only]
+Execution Output Callback
+When commands are executed or raw JSON texts are resolved in different scenarios, corresponding contexts are provided, to allow them to work in different scenarios.
+When running a function with the /function command, the context for commands inside the function inherits the Executor Parameters, Execution Environment Parameters, and Execution Permission Level from the context of /function command, while the Execution Output Callback is not inherited. In Java Edition, the Execution Permission Level of commands in a function is limited to 2 or below, so, if the /function command is executed with 2 or higher Execution Permission Level, the command inside the function is executed with Execution Permission Level being 2.
+In Bedrock Edition, the context for commands in functions scheduled by /schedule command also inherits the Executor Parameters, Execution Environment Parameters, and Execution Permission Level from the context of /schedule command.
+
+
+=== Static values and Dynamic values ===
+In Java Edition, the Executor Name and each Execution Environment Parameters in a context are static, and each of them exists independently. In other words, if these parameters are not modified with /execute, they do not change during the command execution, or during the execution of each command in a function. For example, even if the name of the Executor Entity is modified in a function, it does not change the Executor Name in the context of subsequent commands in the function; For another example, for /execute at @n[type=sheep] run function test, even if a /tp command in a function test changes the position, rotation, or dimension of the sheep entity, it does not affect the Execution Position, Execution Rotation, and Execution Dimension in the context of subsequent commands in the function, since the values of all these parameters are static after being modified by the at subcommand and they are no longer related to the sheep entity itself.
+In Bedrock Edition parameter values are static in some cases but dynamic in other cases. When dynamic, the value of a parameter does not exist independently, but rather it is a reference to an entity and fetches values from the entity in real time. For example, when an Execution Position is dynamic, it depends on an entity and obtains its position in real time, i.e., if the entity is moved in a function, the Execution Position in the context of subsequent commands in the function is the position of the entity after the move.
+Specifically, dynamic values exist in the following cases:
+
+When the player executes a command in the chat bar, or a command is requested through a WebSocket server connected with the client, the Execution Position, Execution Rotation, and Execution Dimension are dynamic and referring to the player entity.
+When a command block minecart executes the command in it, the Execution Position and Execution Rotation are dynamic, referring to this minecart entity.
+When an entity event response defined in a behavior pack executes a command, or a script executes a command with entity class, or an animation controller in a behavior pack executes a command, or an NPC executes a command, the Executor Name, Execution Position, Execution Rotation, and Execution Dimension are dynamic and referring to the entity.
+/execute command converts the Executor Name to a dynamic value referring to the Executor Entity. That is, when a command is executed in a /execute command, the Executor Name of it is always dynamic, fetched from the Executor Entity in real time, regardless of whether there is a static Executor Name in the context of the /execute.
+at ... and positioned as ... subcommands in /execute set the Execution Position to a dynamic value, referring to the specified entity.
+at ... and rotated as ...  subcommands in /execute set the Execution Rotation to a dynamic value, referring to the specified entity.
+If the Execution Position is dynamic, it fetches the position from an entity in real time. But, if this entity is riding on another entity, there is a special treatment:
+
+If the hitbox bottom of this entity is lower than the hitbox bottom of the mount, the mount's hitbox bottom is used as the Y coordinate of the Execution Position.
+For example, if a player is riding on a minecart, the player's X and Z coordinates and the minecart's Y coordinate are used as the Execution Position.
+If the entity which a dynamic value refers to has been removed from the world (e.g., an armor stand is killed, or a sheep finishes its death animation), the dynamic value cannot be fetched. In this case, default values of parameters are used:
+
+Executor Name defaults to an empty string
+Execution Dimension defaults to empty
+Execution Position defaults to (0, 0, 0)
+Execution Rotation defaults to (0, 0)
+For example, when /execute run say hi is executed in the command block, as mentioned above, the Executor Name converts to a dynamic value by the /execute command, referring to the Executor Entity. Since there is no Executor Entity in the context, the Executor Name of /say hi is an empty string.
+For another example, if the Executor Entity is removed before a function schedule (scheduled by /schedule) is executed, the schedule cannot be executed because the Execution Dimension is missing in the context.
+A dynamic value is converted to a static value in the following cases:
+
+/execute command converts the Execution Dimension to a static value.
+/execute command converts the Execution Rotation to a static value.
+align ... subcommand in /execute converts the Execution Position to a static value.
+in ... subcommand in /execute converts the Execution Position to a static value.
+positioned <coordinates> subcommand in /execute converts the Execution Position to a static value.
+facing ... subcommand in /execute converts the Execution Rotation to a static value.
+rotated <angles> subcommand in /execute converts the Execution Rotation to a static value.
+If the Execution Position is a dynamic value, then anchored ... subcommand in /execute converts the Execution Position to a static value, being the position at the referred entity's feet or eyes; If the Execution Position is a static value, anchored ... subcommand does not take any effect.
+For example:
+
+When a player executes /function ... in the chat bar, the Execution Position, Execution Rotation and Execution Dimension of commands in the function are dynamic, referring to the player.
+When a player executes /execute run <command> in the chat bar, the Execution Position of the <command> is dynamic, while the Execution Rotation and Execution Dimension are static.
+When a player executes /execute at @s run <command> in the chat bar, the Execution Position and Execution Rotation of the <command>} are dynamic, while the Execution Dimension is static.
+When a player executes /execute at @s rotated ~ ~ run <command> in the chat bar, the Execution Position of the <command> is dynamic, while the Execution Rotation and Execution Dimension are static.
+When a player executes /execute at @s rotated ~ ~ positioned ~ ~ ~ run <command> in the chat bar, the Execution Position, Execution Rotation and Execution Dimension of the <command> are all static.
+When a player executes /execute positioned ~ ~ ~ run <command> in the chat bar, the Execution Position, Execution Rotation and Execution Dimension of the <command> are all static.
+If there are at least three entities in a dimension, and a player in the dimension executes /execute rotated as @e[c=3] run tp @s ~ ~1 ~ in the chat bar, the player is teleported to 3 blocks above its original position.
+
+
+== Parameters ==
+
+
+=== Execution Permission Level ===
+
+The Execution Permission Level cannot be modified by /execute command.
+In Java Edition, in the context of commands in a function called by a /function command, the Execution Permission Level is limited to 2 or less. If the Execution Permission Level of the /function command is greater than 2, the commands in the function is executed with Execution Permission Level of 2.
+
+
+=== Executor Parameters ===
+There are two Executor Parameters, Executor Name and Executor Entity, where the Executor Entity parameter may be empty (e.g. when a command is executed by a command block). Executor parameters are used in the following scenarios:
+
+When sending a message using commands such as /tell or /say, the Executor Name is used as the sender name of the message.
+@s target selector directly selects the Executor Entity.
+By default, the target of commands such as /tp and /kill is the Executor Entity.
+By default, the target player of commands such as /clear, /gamemode, and /playsound is the Executor Entity, if it is a player entity.
+In Java Edition, commands such as /trigger and /teammsg take effect on the Executor Entity, if the Executor Entity is a player.
+In Java Edition, Execution Anchor modifies the Y coordinate based on the eye height of the Executor Entity.
+They can be modified using as, on, and summon subcommands in /execute command. In Java Edition, the Executor Name and Executor Entity are always modified at the same time. In Bedrock Edition, only the Executor Entity is modified, and as mentioned above, the Executor Name remains a dynamic value referring to the Executor Entity.
+
+
+=== Execution Dimension ===
+Execution Dimension is the dimension in which the command takes effect. Execution Dimension is used in the following scenarios:
+
+Whenever coordinates are specified, the coordinates are specified within the Execution Dimension.
+Target selectors with distance‌[JE  only], r‌[BE  only], rm‌[BE  only], dx, dy, or dz being specified, only entities in the Execution Dimension are selected.
+In Java Edition, target selectors with x, y, or z being specified, only entities in the Execution Dimension are selected, too.
+Commands such as /locate works within the Execution Dimension.
+Execution Dimension can be modified using at and in subcommands in the /execute command. In Bedrock Edition, the /execute command itself converts the Execution Dimension to a static value.
+
+
+=== Execution Position ===
+Execution Position is the coordinates that the command takes effect from. Execution Position is used in the following scenarios:
+
+Relative coordinates are relative to the Execution Position.
+In Java Edition, the origin of local coordinates is based on the Execution Position and affected by the Executor Anchor.
+In Bedrock Edition, the origin of local coordinates is the Execution Position.
+In Java Edition, the start point of /execute facing ... and /tp ... facing ... is based on the Execution Position and affected by the Executor Anchor.
+In Bedrock Edition, the start point of /execute facing ... and /tp ... facing ... is the Execution Position.
+Commands such as /locate use the Execution Position as its start point.
+By default, the target position of commands such as /locate is the Execution Position.
+Execution Position can be modified using align, at, positioned subcommands in /execute command, and in subcommand also affects the Execution Position. In Bedrock Edition, at and positioned as subcommands set the Execution Position to a dynamic value referring to the specified entity. In Bedrock Edition, align, anchored, in, and positioned <coordinates> subcommands convert the Execution Position to a static value.
+
+
+=== Execution Rotation ===
+Execution Rotation is the rotation that the command is executed with. Execution Rotation is used in the following scenarios:
+
+The coordinate system of local Coordinates is based on the Execution Rotation.
+Relative rotation specified with a tilde (~) in commands such as /tp and /spawnpoint is relative to the Execution Rotation.
+Execution Rotation can be modified using at, facing, and rotated subcommands in the /execute command. In Bedrock Edition, as and rotated as subcommands set the Execution Rotation to a dynamic value referring to the specified entity. In Bedrock Edition, /execute command itself and its facing, rotated <angle> subcommands converts the Execution Rotation to a static value.
+
+
+=== Execute Anchor ===
+
+Execute Anchor determines whether the position of eyes or feet of the Executor Entity is used as the origin of local coordinates, and the start point of facing in /teleport and of facing subcommand in /execute.
+
+If it is foot, uses the Execution Position directly.
+If it is eyes, based on the Execution Position, the eye height of the Executor Entity is added into the Y coordinate.
+Execution Anchor are used only in the following scenarios:
+
+Local coordinates.
+The start point of facing ... subcommand in /execute.
+The start point of /tp ... facing ....
+Execute Anchor can be modified using anchored subcommand in /execute command.
+Executor Anchor parameter does not exist in Bedrock Edition. Instead, in Bedrock Edition, the anchored subcommand in /execute directly modifies the Execution Position. If the Execution Position is originally dynamic, the anchored subcommand converts it to a static value, being the position of feet or eyes of the entity being referred by the dynamic value; If the Execution Position is static, anchored subcommand does not have any effect at all.
+
+
+=== Execution Output Callback ===
+Execution Output Callbacks are used to receive output values of a command.
+A command executed in a command block, a minecart with command block, or a script‌[Bedrock Edition  only] has a callback that sends the success count to the command block or minecart.
+In Java Edition, store subcommand in /execute command can be used to add a new callback while the existing callbacks are retained. Existing callbacks cannot be cleared by /execute command.
+The context of commands in a function called by a /function or /schedule does not inherit the Execution Output Callbacks of the /function or /schedule command.
+
+
+== Contexts in various scenarios ==
+
+
+=== Command execution ===
+
+
+==== Server console ====
+The context of commands entered in the server console is:
+
+Execution Permission Level: 4
+Executor Name: Server
+Executor Entity: None
+Execution Dimension: Overworld
+Execution Position:  Bottom northwest corner of the block at the world spawn‌[Java Edition  only]/(0, 0, 0)‌[Bedrock Edition  only]
+Execution Rotation: (0, 0)
+Execution Anchor‌[JE  only]: Feet
+Execution Output Callback: None
+
+
+==== Functions executed by the server-side ====
+A function is executed by the server-side when:
+
+In Java Edition, the function is called via load or tick tags.
+In Bedrock Edition, the function is called via tick.json.
+In Java Edition, the function is scheduled by /schedule command.
+The context of commands in a function executed by the server-side is:
+
+Execution Permission Level: 2‌[Java Edition  only]/1‌[Bedrock Edition  only]
+Executor Name: Server
+Executor Entity: None
+Execution Dimension: Overworld
+Execution Position:  Bottom northwest corner of the block at the world spawn‌[Java Edition  only]/(0, 0, 0)‌[Bedrock Edition  only]
+Execution Rotation: (0, 0)
+Execution Anchor‌[JE  only]: Feet
+Execution Output Callback: None
+
+
+==== Player ====
+The context of commands that are entered in the chat bar, or requested via a WebSocket server connected with the client in Bedrock Edition, is:
+
+Execution Permission Level: The permission level of the player
+Executor Name: The name of the player; or External for commands requested by a WebSocket in Bedrock Edition
+Executor Entity: The player
+Execution Dimension: The dimension the player is in (Dynamic value in Bedrock Edition)
+Execution Position: The position of the player (Dynamic value in Bedrock Edition)
+Execution Rotation: The rotation of the player (Dynamic value in Bedrock Edition)
+Execution Anchor‌[JE  only]: Feet
+Execution Output Callback: None
+
+
+==== Command block ====
+The context of commands that are executed in a command block is:
+
+Execution Permission Level: 2‌[Java Edition  only]/1‌[Bedrock Edition  only]
+Executor Name: The custom name of the command block. If it has no custom name, defaults to @‌[Java Edition  only]/!‌[Bedrock Edition  only].
+Executor Entity: None
+Execution Dimension: The dimension the command block is in
+Execution Position: The center of the command block
+Execution Rotation: The rotation of the command block‌[Java Edition  only]/(0, 0)‌[Bedrock Edition  only]
+Execution Anchor‌[JE  only]: Feet
+Execution Output Callback: Sends the success count to the command block
+
+
+==== Minecart with command block ====
+The context of commands that are executed in a minecart with command block is:
+
+Execution Permission Level: 2‌[Java Edition  only]/1‌[Bedrock Edition  only]
+Executor Name: The custom name of the minecart. If it has no custom name, defaults to @‌[Java Edition  only]/!‌[Bedrock Edition  only].
+Executor Entity: The minecart with command block
+Execution Dimension: The dimension the minecart is in
+Execution Position: The position of the minecart (Dynamic value in Bedrock Edition)
+Execution Rotation: The rotation of the minecart (Dynamic value in Bedrock Edition)
+Execution Anchor‌[JE  only]: Feet
+Execution Output Callback: Sends the success count to the command block
+
+
+==== Sign ====
+
+The context of commands executed when a player clicks a sign block is:
+
+Execution Permission Level: 2
+Executor Name: The name of the player
+Executor Entity: The player
+Execution Dimension: The dimension the sign block is in
+Execution Position: The center of the block the sign is in
+Execution Rotation: (0, 0)
+Execution Anchor: Feet
+Execution Output Callback: None
+
+
+==== Advancement reward ====
+
+The context of commands in the function called by a [String] function reward in a custom advancement is: 
+
+Execution Permission Level: 2
+Executor Name: The name of the player that gets the advancement
+Executor Entity: The player that gets the advancement
+Execution Dimension: The dimension the player is in
+Execution Position: The position of the player
+Execution Rotation: The rotation of the player
+Execution Anchor: Feet
+Execution Output Callback: None
+
+
+==== Enchantment effect ====
+
+The context of commands in the function called by a run_function enchantment effect is:
+
+Execution Permission Level: 2
+Executor Name: The name of the affected entity of the enchantment effect
+Executor Entity: The affected entity of the enchantment effect
+Execution Dimension: The dimension the enchantment takes effects in
+Execution Position: The position the enchantment takes effects at
+Execution Rotation: The rotation of the affected entity of the enchantment effect
+Execution Anchor: Feet
+Execution Output Callback: None
+
+
+==== Entity in behavior packs ====
+
+The context of commands executed via an entity event response defined in a behavior pack, or via entity class in a script, or an animation controller in a behavior pack, or a dialogue of an NPC entity is:
+
+Execution Permission Level: 1
+Executor Name: The name of the entity (Dynamic value in Bedrock Edition)
+Executor Entity: The entity
+Execution Dimension: The dimension the entity is in (Dynamic value in Bedrock Edition)
+Execution Position: The position of the entity (Dynamic value in Bedrock Edition)
+Execution Rotation: The rotation of the rotation (Dynamic value in Bedrock Edition)
+Execution Output Callback: If via entity class in a script, returns the success count
+
+
+==== Dimension in scripts ====
+
+The context of commands executed via Dimension class in a script: 
+
+Execution Permission Level: 1
+Executor Name: Script Engine
+Executor Entity: None
+Execution Dimension: The dimension
+Execution Position: (0, 0, 0)
+Execution Rotation: (0, 0)
+Execution Output Callback: Returns the success count
+
+
+=== Raw JSON text resolution ===
+When resolving a raw JSON text, relative coordinates, local coordinates, and target selectors in it are resolved based on a command context. The Execution Output Callback parameter in the command context is not used by raw JSON text.
+Note that if the [String] name field is * in a score type text, the reader's own score is displayed. In addition to the command context, the readers of the raw JSON text are also listed below.
+
+
+==== Called by a command ====
+A raw JSON text called by a command inherits the context of the command. Including:
+
+/bossbar‌[Java Edition  only]
+Reader: None
+/tellraw
+Reader: Each player that receives the message
+/title
+Reader: Each player that receives the title
+
+
+==== Written book being opened by a player ====
+
+The context when a written book is being opened by a player is:
+
+Execution Permission Level: The permission level of the player
+Executor Name: The name of the player
+Executor Entity: The player
+Execution Dimension: The dimension the player is in
+Execution Position: The position of the player
+Execution Rotation: The rotation of the player
+Execution Anchor: Feet
+Reader: The player
+
+
+==== Written book being placed on a lectern ====
+
+The context when a written book is being placed on a lectern is:
+
+Execution Permission Level: 2
+Executor Name: Lectern
+Executor Entity: None
+Execution Dimension: The dimension the lectern is in
+Execution Position: The center of the block the lectern is in
+Execution Rotation: (0, 0)
+Execution Anchor: Feet
+Reader: None
+
+
+==== Sign ====
+
+The context when the text in a sign block is being changed via NBT is:
+
+Execution Permission Level: 2
+Executor Name: Sign
+Executor Entity: None
+Execution Dimension: The dimension the sign is in
+Execution Position: The center of the block the sign is in
+Execution Rotation: (0, 0)
+Execution Anchor: Feet
+Reader: None
+
+
+==== Text display entity ====
+
+The context when the text in a text display entity is being changed 
+
+Execution Permission Level: 2
+Executor Name: The name of the text display entity
+Executor Entity: The text display entity
+Execution Dimension: The dimension the text display entity is in
+Execution Position: The position of the text display entity
+Execution Rotation: The rotation of the text display entity
+Execution Anchor: Feet
+Reader: The text display entity
+
+
+==== Item modifier ====
+
+In item modifier, set_name and set_lore functions resolve the raw JSON text only if the entity specified with [String] entity does exist, with the following context:
+
+Execution Permission Level: 2
+Executor Name: The name of the entity specified with [String] entity
+Executor Entity: The entity specified with [String] entity
+Execution Dimension: The dimension that the entity specified with [String] entity is in
+Execution Position: The position of the entity specified with [String] entity
+Execution Rotation: The rotation of the entity specified with [String] entity
+Execution Anchor: Feet
+Reader: The entity specified with [String] entity
+
+
+== History ==
+
+
+== References ==
+
+
+== Navigation ==

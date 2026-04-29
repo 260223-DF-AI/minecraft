@@ -1,0 +1,249 @@
+26.1 Snapshot 7 (known as 26.1-snapshot-7 in the launcher) is the seventh snapshot for Java Edition 26.1, released on February 11, 2026.  It adds new textures and modules for baby hostile mobs and villagers, adds trumpet instrument sounds that can be heard by placing a note block on any copper block.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Note block
+
+Added the trumpet instrument.
+It can be heard when a note block is placed on top of a block of copper.
+The sound is different based on the oxidation level of the copper block.
+
+
+=== Items ===
+Golden dandelion
+
+Can now be used on baby hoglins.
+
+
+=== Mobs ===
+
+Baby mobs
+
+Changed the textures and models of the following baby mobs, increasing their bounding boxes to better fit the new models:
+Zombie
+Husk
+Drowned
+Piglin
+Zombified piglin
+Villager
+Zombie villager
+Baby villager and zombie villagers
+
+Now made up of a base model with overlays for each type.
+
+Skeleton horses and zombie horses
+
+Baby variant no longer grows up.
+
+
+=== General ===
+General
+
+Changed the internals of how chunk geometry data is stored in GPU memory and how they are rendered.
+Block model
+
+Any block model can now support cutout or translucent (partially transparent pixels) textures.
+Whether a quad is rendered in the cutout or translucent render pass is determined by the contents of its assigned sprite.
+Any sprite with translucent (partially transparent) pixels will be assigned to the "translucent" pass.
+Any sprite with fully transparent pixels will be assigned to the "cutout" pass.
+All other sprites are assigned to the "solid" pass.
+The format of the textures map has been updated:
+Non-string entries will now be rejected, instead of interpreted as strings.
+Alongside the previous inline sprite ID form, entries can now be defined as an object with fields:
+sprite - the sprite ID
+force_translucent - optional boolean, true if any geometry with this texture should be forced into the "translucent" pass.
+This is useful for example for blocks that don't have any translucent pixels, but use the mean mipmap strategy.
+Default: false
+Chat
+
+The chat screen can now always be opened, even when chatting is restricted by settings.
+When the chat screen is open, specific actions and message types may still be restricted.
+Information about the restrictions (if there are any) is displayed on top of the chat box and above the chat input when the chat screen is open.
+The same information can also be accessed in World Settings screen.
+Chat entries from client actions like taking screenshots will now be displayed even when messages from players and servers are restricted.
+Changing chat settings will now hide all messages of restricted types and discard any new ones.
+The handling of chat messages on a published local server is now more consistent with dedicated servers in regard to chat settings.
+Data pack
+
+The pack format version is now 99.1.
+Mob sound variant
+
+Added adult sound variants for the following animals:
+Cats have a new variant called royal.
+Pigs have new variants called mini and big.
+Cows have a new variant called moody.
+Chickens have a new variant called picky.
+The original sounds of each animal are used for the variant called classic.
+Every one of these animals will have a random sound variant assigned to it from the new variants and the original one.
+Cat sound variants
+Cat sound variants can be data-driven by adding entries to data//cat_sound_variant/.json
+The file contains two sound sets defining adult_sounds and baby_sounds
+Each sound set contains the following fields which correspond to sound events to use for the specific behavior:
+ambient_sound
+stray_ambient_sound
+hiss_sound
+hurt_sound
+death_sound
+eat_sound
+beg_for_food_sound
+purr_sound
+purreow_sound
+Pig sound variants
+Pig sound variants can be data-driven by adding entries to data//pig_sound_variant/.json
+The file contains two sound sets defining adult_sounds and baby_sounds.
+Each sound set contains the following fields which correspond to sound events to use for the specific behavior:
+ambient_sound
+hurt_sound
+death_sound
+step_sound
+Cow sound variants
+Cow sound variants can be data-driven by adding entries to data//cow_sound_variant/.json
+Each sound variant contains the following fields which correspond to sound events to use for the specific behavior:
+ambient_sound
+hurt_sound
+death_sound
+step_sound
+Chicken sound variants
+Chicken sound variants can be data-driven by adding entries to data//chicken_sound_variant/.json
+The file contains two sound sets defining adult_sounds and baby_sounds.
+Each sound set contains the following fields which correspond to sound events to use for the specific behavior:
+ambient_sound
+hurt_sound
+death_sound
+step_sound
+Resource pack
+
+The version is now 81.0.
+Updated mule_baby.png and donkey_baby.png to fit the model properly.
+Shaders
+
+The block.vsh and terrain.vsh no longer receive the Normal vertex attribute.
+Some small changes were to how various shaders sample the lightmap texture. This includes core/entity.vsh, core/item.vsh, core/rendertype_leash.vsh, core/rendertype_text.vsh, core/rendertype_text_background.vsh, core/rendertype_text_intensity.vsh, and core/rendertype_translucent_moving_block.vsh.
+Sounds
+
+Added new sound events for the cat:
+entity.cat_royal.ambient
+entity.cat_royal.hiss
+entity.cat_royal.hurt
+entity.cat_royal.death
+entity.cat_royal.eat
+entity.cat_royal.beg_for_food
+entity.cat_royal.purr
+entity.cat_royal.purreow
+entity.cat_royal.stray_ambient
+Added new sound events for the pig:
+entity.pig_mini.ambient
+entity.pig_mini.hurt
+entity.pig_mini.death
+entity.pig_big.ambient
+entity.pig_big.hurt
+entity.pig_big.death
+Added new sound events for the chicken:
+entity.chicken_picky.ambient
+entity.chicken_picky.death
+entity.chicken_picky.hurt
+entity.chicken_picky.step
+Added new sound events for the cow:
+entity.cow_moody.ambient
+entity.cow_moody.death
+entity.cow_moody.hurt
+entity.cow_moody.step
+Added new sound events for the note block trumpet instrument:
+block.note_block.trumpet
+block.note_block.trumpet_exposed
+block.note_block.trumpet_oxidized
+block.note_block.trumpet_weathered
+Tags
+
+Removed camel_husk, and hoglin from #cannot_be_age_locked entity type tag.
+Textures
+
+Added new entity textures:
+entity/villager/villager_baby.png
+entity/villager/baby/desert.png
+entity/villager/baby/jungle.png
+entity/villager/baby/plains.png
+entity/villager/baby/savanna.png
+entity/villager/baby/snow.png
+entity/villager/baby/swamp.png
+entity/villager/baby/taiga.png
+entity/zombie/drowned_baby.png
+entity/zombie/drowned_outer_layer_baby.png
+entity/zombie/husk_baby.png
+entity/zombie/zombie_baby.png
+entity/zombie_villager/zombie_villager_baby.png
+entity/zombie_villager/baby/desert.png
+entity/zombie_villager/baby/jungle.png
+entity/zombie_villager/baby/plains.png
+entity/zombie_villager/baby/savanna.png
+entity/zombie_villager/baby/snow.png
+entity/zombie_villager/baby/swamp.png
+entity/zombie_villager/baby/taiga.png
+entity/piglin/piglin_baby.png
+entity/piglin/zombiefied_piglin_baby.png
+entity/equipment/humanoid_baby/chainmail.png
+entity/equipment/humanoid_baby/copper.png
+entity/equipment/humanoid_baby/diamond.png
+entity/equipment/humanoid_baby/gold.png
+entity/equipment/humanoid_baby/iron.png
+entity/equipment/humanoid_baby/leather_overlay.png
+entity/equipment/humanoid_baby/leather.png
+entity/equipment/humanoid_baby/netherite.png
+entity/equipment/humanoid_baby/turtle_scute.png
+
+
+== Fixes ==
+29 issues fixed
+From released versions before 26.1
+
+MC-13187 – Water in water cauldrons is not transparent.
+MC-257362 – Particles from breaking frogspawn are transparent.
+MC-263488 – The item texture of pink petals has a misplaced transparent pixel.
+MC-299730 – Dumping textures while using a TTF font crashes the game.
+MC-305580 – Baby zombie horses and baby skeleton horses grow into adults, unlike other baby undead mobs.
+From the 26.1 development versions
+
+MC-305492 – Baby wolves have visible z-fighting.
+MC-305501 – Baby wolves render their collar incorrectly all over their body.
+MC-305515 – Rabbits float when panicking.
+MC-305545 – The "wolf_baby" and "wolf_tame_baby" textures are identical.
+MC-305583 – The right side of the texture of British shorthair kittens overlaps the back of the head.
+MC-305591 – The texture of temperate piglets uses the wrong color for a part of their body.
+MC-305644 – Piglet heads are off-center.
+MC-305984 – The legs of baby donkeys and baby mules extend into the ground by one pixel, mapped to an irregular texture area.
+MC-305986 – “subtitles.entity.baby_chicken.hurt” displays as a raw translation key.
+MC-305999 – Entities in any light level besides 0 render fully bright.
+MC-306008 – Baby horse legs are not connected to the body correctly when it rears up.
+MC-306034 – "subtitles.entity.baby_horse.land" displays as a raw translation key.
+MC-306097 – Golden dandelions don't make mobs persistent.
+MC-306136 – Baby pandas float in the air when fed bamboo after being fed golden dandelions.
+MC-306137 – Players can feed baby pandas after feeding them golden dandelions.
+MC-306157 – Getting the average water color of blocks takes up about half of the chunk render compile times.
+MC-306161 – The color of baby turtles' front legs is inconsistent with the back legs.
+MC-306172 – Golden dandelions don't work on baby hoglins.
+From the previous development version
+
+MC-306185 – The podzol patches in the Old Growth Pine Taiga and Old Growth Spruce Taiga biomes are now generated incorrectly.
+MC-306195 – Camel husks with the "Age" tag set below -24000 use their removed baby variant's hitbox size and animation speed.
+MC-306201 – Baby turtles' legs now z-fight.
+MC-306207 – The world upgrade tooltips in the world selection screen appear with any world after selecting a world that needs to be upgraded.
+MC-306222 – Some strings introduced in 26.1 Snapshot 6 are grammatically incorrect.
+Other
+
+Fixed issue where baby axolotl animations were being disrupted by walking animation.
+
+
+== Videos ==
+
+
+== Trivia ==
+Unlike most first-of-the-week snapshots, 26.1 Snapshot 7 was released on Wednesday instead of Tuesday, similar to the snapshots before 25w15a.
+
+
+== References ==
+
+
+== Navigation ==

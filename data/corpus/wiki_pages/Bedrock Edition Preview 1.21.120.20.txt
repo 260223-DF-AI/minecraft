@@ -1,0 +1,185 @@
+Beta 1.21.120.20 (ChromeOS, Android) or Preview 1.21.120.20 (Windows, iOS, iPadOS, Xbox, PlayStation) is the first beta/Preview version for Bedrock Edition 1.21.120, released on September 3, 2025, which fixes some bugs.
+
+
+== Additions ==
+
+
+=== General ===
+Splashes
+
+Added splash "Music made by Hyper Potions!".
+
+
+== Changes ==
+
+
+=== Blocks ===
+Shelf
+
+Adding or removing redstone power to or from the shelf now emits vibrations.
+When a player places/removes/swaps an item on an unpowered shelf, a vibration of frequency 3 is emitted.
+When a player places/removes an item on a powered shelf, a vibration of frequency 3 is emitted.
+When a player swaps item with one on a powered shelf, a vibration of frequency 6 is emitted.
+
+
+=== General ===
+Camera
+
+The first person camera will now offset backwards slightly when facing and climbing blocks such as ladders and vines.
+Graphical
+
+Added TAA upscaling to weather effects like snow.
+Improved quality of gamma correction on PC and Consoles.
+Mobs will now become slightly transparent when the camera gets too close or passes through them.
+Marketplace
+
+Starting a world with a missing Marketplace template will now correctly redownload the template and start the world.
+UI
+
+Brightness adjustment was renamed to gamma adjustment in Vibrant Visuals.
+A "Reset to Defaults" button was added to the gamma adjustment screen in Vibrant Visuals.
+The slider widget that controls the Vibrant Visuals gamma value shows the current gamma value, and the center of the slider corresponds to the default value.
+
+
+=== Mobs ===
+Chicken Jockey
+
+The baby zombie riding a chicken now drops the lava chicken music disc when killed by a tamed wolf.
+Copper Golem
+
+Copper golem step and spin sounds now use a natural attenuation curve.
+
+
+=== World generation ===
+Structures
+
+Structures no longer build on top of features (e.g. trees) at chunk borders.
+
+
+=== Technical ===
+API
+
+Optionally set version property to beta to always choose the latest beta version of the module. Example from manifest.json:
+
+LootTableManager's loot generation methods now properly recognize tools enchanted with looting.
+Moved type ScriptBiomeType from beta into 2.3.0.
+Moved API Dimension.getBiome(location: Vector3) from beta into 2.3.0.
+Blocks
+
+Custom blocks using a non-opaque render_method in the minecraft:material_instances component that are placed above water will no longer incorrectly cull the top face of the water block.
+Components
+
+The all_slots_empty, any_slot_empty, has_equipment filters now support main_hand as an equipment location.
+Item Components
+
+Items with the new minecraft:fire_resistant item component no longer visually disappear on the client when thrown in fire while persisting on the server, as the property is now synced correctly across both.
+Molang
+
+Added 31 new Molang expressions:
+math.inverse_lerp(start, end, value), returns the normalized progress between start and end given value.
+math.ease_in_quad(start, end, 0_to_1), output goes from start to end via 0_to_1, starting slow and accelerating toward the end.
+math.ease_out_quad(start, end, 0_to_1), output goes from start to end via 0_to_1, starting fast and decelerating toward the end.
+math.ease_in_out_quad(start, end, 0_to_1), output goes from start to end via 0_to_1, starting slow, accelerating in the middle, then slowing again at the end.
+math.ease_in_cubic(start, end, 0_to_1), output goes from start to end via 0_to_1, starting slow and accelerating strongly toward the end.
+math.ease_out_cubic(start, end, 0_to_1), output goes from start to end via 0_to_1, starting fast and decelerating strongly toward the end.
+math.ease_in_out_cubic(start, end, 0_to_1), output goes from start to end via 0_to_1, starting slow, accelerating strongly in the middle, then slowing again at the end.
+math.ease_in_quart(start, end, 0_to_1), output goes from start to end via 0_to_1, starting slow and accelerating rapidly toward the end.
+math.ease_out_quart(start, end, 0_to_1), output goes from start to end via 0_to_1, starting fast and decelerating rapidly toward the end.
+math.ease_in_out_quart(start, end, 0_to_1), output goes from start to end via 0_to_1, starting slow, accelerating rapidly in the middle, then slowing again at the end.
+math.ease_in_quint(start, end, 0_to_1), output goes from start to end via 0_to_1, starting slow and accelerating sharply toward the end.
+math.ease_out_quint(start, end, 0_to_1), output goes from start to end via 0_to_1, starting fast and decelerating sharply toward the end.
+math.ease_in_out_quint(start, end, 0_to_1), output goes from start to end via 0_to_1, starting slow, accelerating sharply in the middle, then slowing again at the end.
+math.ease_in_sine(start, end, 0_to_1), output goes from start to end via 0_to_1, starting slow and accelerating smoothly toward the end.
+math.ease_out_sine(start, end, 0_to_1), output goes from start to end via 0_to_1, starting fast and decelerating smoothly toward the end.
+math.ease_in_out_sine(start, end, 0_to_1), output goes from start to end via 0_to_1, starting and ending slow, with smoother change in the middle.
+math.ease_in_expo(start, end, 0_to_1), output goes from start to end via 0_to_1, starting slow and accelerating very rapidly toward the end.
+math.ease_out_expo(start, end, 0_to_1), output goes from start to end via 0_to_1, starting fast and decelerating gradually toward the end.
+math.ease_in_out_expo(start, end, 0_to_1), output goes from start to end via 0_to_1, starting and ending slow, with very rapid change in the middle.
+math.ease_in_circ(start, end, 0_to_1), output goes from start to end via 0_to_1, starting slow and accelerating along a circular curve toward the end.
+math.ease_out_circ(start, end, 0_to_1), output goes from start to end via 0_to_1, starting fast and decelerating along a circular curve toward the end.
+math.ease_in_out_circ(start, end, 0_to_1), output goes from start to end via 0_to_1, starting and ending slow, with circular acceleration and deceleration in the middle.
+math.ease_in_bounce(start, end, 0_to_1), output goes from start to end via 0_to_1, starting with bounce oscillations and settling into the end.
+math.ease_out_bounce(start, end, 0_to_1), output goes from start to end via 0_to_1, approaching the end with bounce oscillations that diminish over time.
+math.ease_in_out_bounce(start, end, 0_to_1), output goes from start to end via 0_to_1, starting and ending with bounce oscillations, smoother in the middle.
+math.ease_in_back(start, end, 0_to_1), output goes from start to end via 0_to_1, overshooting backward before accelerating into the end.
+math.ease_out_back(start, end, 0_to_1), output goes from start to end via 0_to_1, overshooting past the end before settling into it.
+math.ease_in_out_back(start, end, 0_to_1), output goes from start to end via 0_to_1, overshooting at both start and end, with smoother change in the middle.
+math.ease_in_elastic(start, end, 0_to_1), output goes from start to end via 0_to_1, starting with elastic oscillations before accelerating into the end.
+math.ease_out_elastic(start, end, 0_to_1), output goes from start to end via 0_to_1, overshooting the end with elastic oscillations before settling.
+math.ease_in_out_elastic(start, end, 0_to_1), output goes from start to end via 0_to_1, oscillating elastically at both start and end, with stable change in the middle.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs", "Upcoming Creator Features", and "Render Dragon Features for Creators" experimental toggles.
+
+
+=== Additions ===
+
+
+==== Technical ====
+API
+
+Added Dimension.getGeneratedStructures(location: Vector3) which can be used to locate the Structures (Pillager Outpost, Mineshaft, etc.) of a given location.
+Added worldAfterEvents.playerUseNameTag which fires when a Player uses a named NameTag Item on an Entity.
+Added ControlScheme string enum.
+Added method Player.setControlScheme(controlScheme?: string): void; to beta.
+Added method Player.getControlScheme(): ControlScheme; to beta.
+Blocks
+
+Allow items referencing a pottable block in their minecraft:block_placer component to be pottable when replace_block_item is true.
+Editor
+
+Added an offset and alignment property to the summon tool so that creators can more easily position entities at specific locations.
+Graphical
+
+Deprecated point_lights/global.json in favor of a new file and schema, local_lighting/local_lighting.json. Creators can still make use of point_lights/global.json, but are encouraged to migrate to the new schema.
+Extended per-block local lighting information to include a light_type which can be either static_light or point_light.
+A block will only be considered for point lighting if its light_type is set to point_light.
+static_light is currently unused.
+The light_color property is now optional. If unprovided, the block will use a fallback light color instead.
+A sample local_lighting.json could look like this: format_version: 1.21.120, minecraft:local_light_settings: minecraft:torch: light_color: #EFE39D, light_type: point_light.
+Molang
+
+Added query.entity_biome_has_any_identifier, query.entity_biome_has_any_tags, and query.entity_biome_has_all_tags molang query functions to Upcoming Creator Features.
+These queries only work in resource packs (client-side), and are not supported in behavior packs.
+entity_biome_has_any_identifier('namespace:biome_name') takes a list of biome identifiers and checks if any are the specified biome the entity is in.
+entity_biome_has_any_tags('my_tag_name') takes a list of biome tags and checks if the biome the entity is in matches any.
+entity_biome_has_all_tags('my_tag_name') takes a list of biome tags and checks if the biome the entity is in matches all.
+
+
+== Fixes ==
+24 issues fixed
+From released versions before 1.21.120
+
+MCPE-51173 – No Suspicious Stew in the Creative menu.
+MCPE-105710 – Keyboard button for mobile devices in chat still exists on Windows, and Console.
+MCPE-159992 – /locate biome deep_dark sometimes sent you to the wrong coordinates of the biome.
+MCPE-177866 – Custom items can't be used in commands if their menu category is "none" or undefined.
+MCPE-180489 – Custom blocks do not have a quick move animation.
+MCPE-183832 – Player sleep message says Users instead of Players.
+MCPE-186409 – Clicking text to reposition caret is wrong if the text box isn't scrolled fully right.
+MCPE-190569 – Enchantment glint animation still plays when the game is paused.
+MCPE-191379 – /damage can damage end crystals even though the chat says it cannot.
+MCPE-224011 – Copper chest opening and closing sounds are too loud.
+MCPE-225249 – Items held by copper golems can't be taken when the player has an item in the offhand.
+MCPE-225309 – Some items stick out too far from shelves.
+MCPE-225997 – Tadpoles spawn in the upper northwest corner of the frogspawn block, often causing them to die out of the water.
+MCPE-225999 – Sitting Copper Golem Statue has inconsistent UV mapping.
+MCPE-226160 – Smooth lighting on partial blocks is broken after 1.21.100 update.
+MCPE-226829 – Items can’t be moved from creative inventory to player inventory.
+Other
+
+Fixed an issue with being unable to continue destroying valid blocks in Adventure Mode when they are behind water.
+Fixed loading of text for sign blocks from very old worlds.
+Fixed snowflakes flickering during player movement.
+Fixed the brightness of creeper textures in the gamma calibration screen in Vibrant Visuals.
+Fixed a bug that could cause armor trims to appear applied to untrimmed armor in the inventory.
+Fixed an issue where worlds backed by Xbox cloud storage would show a default tile when local data was present but invalid.
+Fixed Player.graphicsMode not returning the correct graphics mode when a player has switched to Vibrant Visuals.
+Fixed query.graphics_mode_is_any not being correct when switching to Vibrant Visuals.
+
+
+== References ==
+
+
+== Navigation ==

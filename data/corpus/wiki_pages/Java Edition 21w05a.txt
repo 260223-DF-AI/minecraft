@@ -1,0 +1,299 @@
+21w05a is the seventh snapshot for Java Edition 1.17, released on February 3, 2021, which adds lush cave related features and fixes bugs.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Azalea
+
+Bush-like block which can be planted on dirt and grass blocks.
+Has variants with either no blossoms or pink blossoms.
+Azalea can grow from moss blocks when bone meal is used on them.
+ Azalea leaves
+
+Has variants with either no blossoms or pink blossoms.
+Yield azalea and sticks on decay.
+ Cave vines
+
+A natural light source, with a light level of 10 or 14 (depending on whether it's head or body).
+Drop glow berries.
+Growth can be sped up using bone meal.
+Berries can be harvested by interacting with the vine.
+Grow from glow berries when placed on the underside of a block.
+Unlike regular vines, they cannot be climbed.
+ Dripleaf 
+
+Allows an entity to stay on it for 1.5 seconds (30 ticks), before the entity falls through it.
+The tilt happens in 3 stages: "Unstable", "Partial", and "Full". These can be seen in the F3 debug menu.
+All the stages are solid except the "Full" stage, which is when the player falls through.
+When nobody is standing on it, it is set to "None" stage.
+If the player sneaks on it while it's in the "Unstable" stage, it returns to "None". Sneaking on it while it's in "Partial" or "Full" stage has no effect.
+Comes in two sizes: small and big. Small dripleaf can be applied bone meal to grow into the big variant.
+Small dripleaf can only be obtained with shears (otherwise breaks), and can only be planted on clay, or underwater on clay and dirt blocks.
+Big dripleaf can be obtained with any tool or by hand, as well as breaking it using projectiles, and can be planted on grass and dirt blocks.
+ Hanging roots
+
+Decorative blocks that can only be placed on the underside of a block.
+Obtained with shears, otherwise break.
+ Moss block
+
+An opaque block with a grass-like texture on all sides.
+Can be bonemealed to grow grass, tall grass, moss carpets and both types of azaleas on it and in its vicinity.
+Breaks when pushed by a piston.
+ Moss carpet
+
+Same texture as the moss block, but one pixel thick.
+Crafted with moss blocks.
+ Rooted dirt
+
+A dirt-like block with roots on its texture.
+Similar to coarse dirt, neither mycelium nor grass spread to it.
+ Spore blossom
+
+Can only be placed on the underside of a block.
+Sends particles downward when opened.
+
+
+=== Items ===
+ Glow berries
+
+Can be eaten, restoring 2 ().
+Grow on cave vines.
+
+
+=== General ===
+Particles
+
+Added new particles: falling_spore_blossom, spore_blossom_air
+Tags
+
+Added the azalea_log_replaceable block tag.
+Contains the #flowers block tag, the #leaves block tag, grass, ferns, sweet berry bushes, and small dripleaf plants.
+Added the cave_vines block tag.
+Contains the cave vines body block and cave vines head block.
+Added the lush_plants_replaceable block tag.
+Contains the #base_stone_overworld block tag, the #cave_vines block tag, dirt, gravel, sand, moss block, the #flowers block tag, grass, tall grass, moss carpet, small dripleaf, big dripleaf, big dripleaf stem, and vines.
+Added the fox_food item tag.
+Contains sweet berries and glow berries.
+Textures
+
+Added a block texture named root_vines_head.png.
+This texture is unused in-game.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Copper block, cut copper block, and variants
+
+The stages are now called "Copper Block", "Exposed Copper Block", "Weathered Copper Block" and "Oxidized Copper Block" to match Bedrock Edition.
+This also applies to cut copper and its variants.
+Is now affected by the randomTickSpeed gamerule.
+Composter
+
+Some items are now compostable:
+30% chance: non-flowering azalea leaves, glow berries, moss carpet, small dripleaf, hanging roots.
+50% chance: flowering azalea leaves.
+65% chance: spore blossoms, non-flowering azalea, moss blocks, big dripleaf.
+85% chance: flowering azalea.
+Lightning rod
+
+Are now shaded properly.
+Powder snow
+
+Can now be pushed and pulled by pistons and sticky pistons.
+Flaming arrows that collide with powder snow are extinguished.
+Sculk sensor
+
+Added the following game events that the sculk sensor reacts to, along with corresponding frequency value
+
+"Block change" is for when a player or dispenser changes a block.
+This includes placing a book on a lectern, placing and removing items from a flower pot, putting out a campfire, placing a candle on a cake, tilting a big dripleaf, and putting out a candle.
+"Mob interact" is for certain mob interactions to cause vibrations.
+This includes giving a golden apple to zombie villager with Weakness, healing a tamed wolf, using an iron ingot to heal an iron golem, and most instances of successfully feeding an animal.
+"Prime fuse" applies to both creepers and TNT.
+The "equip" event checks for giving items to an armor stand and pressing the use button to equip armor from the hotbar.
+Manually equipping armor does not trigger sculk sensors.
+Removing armor, from the player or from an armor stand, does not trigger sculk sensors.
+Equipping items on other mobs, such as horses, does not trigger sculk sensors.
+Stonecutter
+
+Can be used to craft the different copper block variants.
+
+
+=== Items ===
+Bundle
+
+The player now receives a tutorial when first having a bundle in the inventory.
+
+
+=== Mobs ===
+Drowned
+
+Now have a chance of dropping a copper ingot instead of a gold ingot, to match Bedrock Edition.
+Foxes
+
+Eat glow berries.
+Can now walk over powder snow without sinking.
+Skeletons
+
+Begin the process of turning into strays when they are inside powder snow after 30 seconds (600 game ticks) and finally turn into strays after 45 seconds (900 game ticks).
+Wandering traders
+
+May now sell small dripleaf.
+Ravagers
+
+Now break azalea and flowering azalea leaves.
+
+
+=== Gameplay ===
+Advancements
+
+Glow berries are now required for "A Balanced Diet" advancement.
+NBT data
+
+All projectile entity data now has a field called HasBeenShot.
+If this field is false, during the next tick the projectile fires a projectile shot game event, causing any nearby sculk sensors to react.
+
+
+=== General ===
+Game events
+
+Removed the "armor stand add item", "eating finish", "entity hit", and "flint and steel use" events.
+Added the "block change", "drinking finish", "eat", "entity damaged", "entity killed", "entity place", "equip", "mob interact", "minecart moving", "prime fuse", "ravager roar", "ring bell", "shear", "shulker close", and "shulker open" events.
+Resource packs
+
+Improved performance when using many overrides on an item model.
+toasts.png GUI texture has a new icon for the bundle tutorial.
+Tags
+
+Added azalea leaves and azalea leaves flowers to the leaves block and item tags.
+Added foxes to the powder_snow_walkable_mobs entity type tag.
+Changed the ignore_vibrations_stepping_carefully gave event tag.
+Renamed to ignore_vibrations_sneaking.
+Added the swim event.
+Updated the vibrations game event tag to match the full list of game events (see above).
+Customized world
+
+World height/depth is shrunk to a max range of Y=-2032 to Y=2031 now (compares with the previous version: Y=-2048 to Y=2031), due to the limitation of light processing codes.
+
+
+== Fixes ==
+100 issues fixed
+From released versions before 1.17
+
+MC-96114 – Shulker can lift up mobs.
+MC-103430 – Vines breaking too slow (enchanted shears).
+MC-130098 – Debug world spawns player at y=2 instead at y=70 where all the blocks are.
+MC-142711 – Baby turtles take damage when pushed against ceiling.
+MC-148432 – Sound spam while in water and lava at the same time.
+MC-149495 – Pufferfish triggers tripwire without colliding with it upon reloading the game.
+MC-152265 – Starting server outputs "unable to resolve BlockEntity for ItemStack" errors.
+MC-153254 – Baby zombies/piglins take damage when pushed against ceiling by bubble columns.
+MC-163673 – Baby husks, piglins, zombies, zombie villagers, and zombified piglins take damage when jumping into a space with a solid block above it.
+MC-165846 – Pufferfish can take suffocation damage when bloating.
+MC-167113 – Snow golems take damage from block that aren't technically in its head.
+MC-172466 – Entities misaligning when growing up.
+MC-186879 – Standing in fire and water spams the extinguish sound.
+MC-190454 – Desync when a player rides a horse riding another mob, and that mob dies.
+MC-191714 – Player is dismounted when standing on farmland while riding a horse/boat while the farmland turns to dirt, causing a desync.
+MC-197947 – Creative mode player constantly gets extinguished while standing in constant fire in rain, making constant sound.
+MC-198432 – Pufferfish phases through blocks after reloading world.
+MC-199356 – chatDelay in options.txt has a space between the colon and the value.
+MC-199543 – Parity issue: Vine sounds.
+MC-200906 – Pufferfish hitbox incorrect when reloading world.
+MC-203374 – Falling blocks broken by shulkers have a strong directional bias.
+MC-205477 – Occasional desync when trying to enter/exit a boat while the server is lagging.
+MC-205735 – Baby cows can suffocate on stairs.
+MC-209361 – Game crashes upon instantly click-replacing the block underneath a bamboo sapling with another bamboo.
+MC-209625 – Baby llamas suffocate when below a solid block while standing on top of a carpet.
+MC-212291 – Client can dismount vehicles independently from the server, causing a de-sync.
+MC-212449 – Fish/(glow) squid spawned using /summon dry out instantly.
+MC-222189 – Piston lag escalates massively with the total tile entity count.
+From the 1.17 development versions
+
+MC-203555 – Typo in "Weathered Copper BlocK".
+MC-203594 – Inconsistent spelling with copper blocks.
+MC-204301 – Lightning rods don't strongly power the blocks they are attached onto.
+MC-204801 – Large amounts of copper blocks lag the server and causes the worldsave to take forever.
+MC-205079 – Cauldrons don't fill with powder snow in some biomes.
+MC-205401 – "Fire extinguishes" Sound repeatedly plays when a mob that burns in daylight is in powder snow.
+MC-206113 – Powder Snow causes Z-Fighting with Falling Blocks.
+MC-207256 – Overwriting sculk sensors with themselves using /fill causes them to not work.
+MC-207258 – Sculk sensors do not react to minecarts being driven.
+MC-207261 – Bell ringing event is not considered a vibration.
+MC-207262 – Drinking potions or milk doesn't cause vibrations even though eating does.
+MC-207263 – Inconsistency: Filling cauldrons with liquids or powder snow is not detected by sculk sensors.
+MC-207277 – Sculk sensor can't detect setting a fire with fire charge.
+MC-207283 – Extinguishing a campfire is not detected by sculk sensor.
+MC-207300 – Blocks being placed or picked up by an enderman are not detected by sculk sensors.
+MC-207329 – Sculk sensors don't properly detect eating from other mobs.
+MC-207340 – Sculk sensors do not detect buckets of fish being emptied.
+MC-207358 – Sculk sensors don't detect shulkers opening and closing.
+MC-207384 – Flame arrows repeatedly trigger sculk sensors.
+MC-207387 – Sculk sensors can sense players sneaking in water when they move, even when they're not swimming.
+MC-207391 – Sculk sensors don't detect certain flying mobs.
+MC-207397 – The fire extinguish sound plays every tick when the player is on fire and freezing.
+MC-207407 – Villages will always generate at least on y=0.
+MC-207408 – Trying to generate something below y=0 results in game crash.
+MC-207417 – Directly breaking fire does not alert sculk sensors, but removing its supporting block correctly does.
+MC-207418 – Breaking paintings/item frames/glow item frames does not alert sculk sensors, even though placing them does.
+MC-207445 – Sculk sensor doesn't detect squids swimming.
+MC-207473 – Sculk sensors do not detect when ghasts shoot.
+MC-207520 – Sculk sensors don't react to ravager roars.
+MC-207521 – Ocelots and cats can still emit vibrations while sneaking.
+MC-207592 – Shooting bow with flame enchantment while sneaking triggers sculk sensor.
+MC-207600 – Sculk sensor detects wrong sound for fishing rod.
+MC-207670 – Sculk sensors do not detect the placement of boats and minecarts.
+MC-207671 – Sculk sensors do not detect candles being placed into cakes.
+MC-207672 – Sculk sensors do not detect when creepers are set off with flint and steel.
+MC-207673 – Sculk sensors do not detect lighting TNT with flint and steel.
+MC-207674 – Sculk sensors do not detect placing things in flower pots.
+MC-207675 – Sculk sensors do not detect books being placed onto lecterns.
+MC-207677 – Sculk sensors do not detect collecting water with bottles.
+MC-207678 – Sculk sensors do not detect collecting honey bottles.
+MC-207679 – Sculk sensors do not detect the breaking of bee nests and beehives in Creative mode.
+MC-207745 – Sculk sensors do not detect when ender dragons shoot fireballs.
+MC-208193 – Sculk sensors do not detect removing things from flower pots.
+MC-208194 – Sculk sensors do not detect when candle cakes are eaten.
+MC-208477 – Going into a dimension that has height higher than the maximum height crashes the game.
+MC-208602 – Axolotls summoned with a command dry out instantly.
+MC-209903 – Sculk sensors are not activated upon shearing sheep, mushrooms, snow golems and pumpkins.
+MC-209926 – Sculk sensors are not activated upon collecting Dragon's Breath.
+MC-209953 – Sculk sensors are not activated upon extinguishing a candle.
+MC-210000 – Sculk sensors do not detect when blazes shoot fireballs.
+MC-210282 – Sculk sensors are not activated upon silverfish or endermite moving along the ground.
+MC-210495 – Sculk sensors are not activated upon lighting a campfire or candle with a fire charge.
+MC-210815 – Sculk sensors are not activated upon shulkers shooting.
+MC-211119 – Sculk sensors do not detect when withers shoot wither skulls.
+From the previous development version
+
+MC-212117 – Placing glow lichen in lava creates waterlogged glow lichen.
+MC-212141 – Shulkers get rotated when upgrading to 21w03a.
+MC-212149 – Shulker is sometimes mis-rotated when player teleports through a nether portal and reloading an active chunk with Shulker.
+MC-212211 – Glow lichen is not grouped with vines in the creative inventory.
+MC-212215 – Glow Lichen mining speed is not affected by efficiency.
+MC-212284 – Crammed enitities pushed through blocks when growing to adults.
+MC-212290 – Commands /setblock and /fill don't work at or above height 1024 in some cases.
+MC-212331 – Boats dismount you in the direction the boat is facing instead of the direction of the player.
+MC-212347 – Importing custom world file height is limited to 2047 instead of 2048.
+MC-212384 – Sculk sensors do not detect cake being eaten.
+MC-212422 – Game crashes when generating a world with increased height limit.
+MC-212432 – Sculk sensors are not activated upon using a spawn egg.
+MC-212532 – Shulkers are spawned slightly mis-rotated after a shulker was hit by another shulker's shulker bullet.
+MC-212537 – Standing near a shulker slightly lifts you when they open.
+MC-212541 – Shulkers are often incorrectly rotated upon generation.
+MC-213257 – Drowned do not drop copper.
+MC-213268 – Copper Blocks variants like slabs/stairs/cut copper cannot be crafted through Stonecutter.
+MC-213512 – Copper blocks are named differently from bedrock edition.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

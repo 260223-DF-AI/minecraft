@@ -1,0 +1,62 @@
+This command sets the spawn point for a player.
+This command works in any dimension and can set the player's spawn point into any dimension..
+
+
+== Syntax ==
+Java Edition
+spawnpoint [<targets>] [<pos>] [<angle>]
+Bedrock Edition
+spawnpoint [player: target] [spawnPos: x y z]
+
+
+== Arguments ==
+JE: <targets>: entityBE: player: target: CommandSelector<Player>
+
+Specifies the player whose spawn point should be set. If not specified, defaults to the command's executor.
+Must be a player name, a target selector or a UUID‌[Java Edition  only].  And the target selector must‌[JE  only]/should‌[BE  only] be of player type. In Bedrock Edition, the target selector should be of player type.
+JE: <pos>: block_posBE: spawnPos: x y z: CommandPositionFloat
+
+Specifies the coordinates of the player's new spawn point. If not specified, defaults to the position of the specified player(s) in Bedrock Edition or the command's execution in Java Edition.
+In Java Edition, <x> and <z> should be in the range of [-30000000, 30000000), and <y> should be in the range of [-20000000, 20000000).
+In Bedrock Edition, <x> and <z> that are greater than 30,000,000 or less than -30,000,000 are reverted to 30,000,000 and -30,000,000 respectively; <y> values which are greater than 319 and less than -64 are reverted to 319 and -64 respectively.
+In Java Edition:
+Must be a block position composed of <X>, <Y> and <Z>, each of which must be an integer or a tilde and caret notation.
+In Bedrock Edition:
+Must be three-dimensional coordinates with single-precision floating-point number elements. Accepts tilde and caret notations.
+JE: <angle>: angle
+
+Specifies the yaw angle to spawn with. Defaults to the direction the executor is facing.
+Must be a yaw angle, measured in degrees with single-precision floating-point numbers. -180.0 for due north, -90.0 for due east, 0.0 for due south, 90.0 for due west, to 179.9 for just west of due north, before wrapping back around to -180.0. Tilde notation can be used to specify a rotation relative to the execution yaw rotation.
+
+
+== Result ==
+
+
+== Output ==
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== See also ==
+/clearspawnpoint
+/setworldspawn
+
+
+== Notes ==
+
+
+== References ==
+
+
+== External links ==
+"/spawnpoint Command"     – Microsoft Learn, October 11, 2023.
+
+
+== Navigation ==

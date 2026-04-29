@@ -1,0 +1,55 @@
+A block definition is a JSON file used to define a custom block and its behavior. Block definition files are located in the  blocks folder of a behavior pack.
+
+
+== Structure ==
+Block definitions are structured as follows:
+
+
+=== States ===
+The [NBT Compound / JSON Object] states object is used to define custom block states. Only custom states are allowed, using a vanilla state or the "minecraft" namespace will cause an error and fail.
+The object consists of state names as properties, and an array of possible values for each state. Integer states can also be defined as a range using an object. Block state values can be queried in permutations using the molang query "query.block_state('<state_name>')".
+Examples:
+
+
+=== Traits ===
+The [NBT Compound / JSON Object] traits object is used to add vanilla block traits, which allow for custom blocks to have access to some vanilla block states. This object only gives access to the states, other functionality usually has to be added using permutations.
+The object consists of traits and their enabled states:
+
+
+==== minecraft:connection ====
+
+Gives blocks the boolean states minecraft:connection_north, minecraft:connection_south, minecraft:connection_east, and minecraft:connection_west, allowing for the block to connect to blocks next to it.
+
+Example:
+
+
+==== minecraft:multi_block ====
+
+Allows a block to be made up of multiple block parts like a door. This adds the minecraft:multi_block_part state, which is an integer representing which part this block is in the multi block.
+
+Example:
+
+
+==== minecraft:placement_position ====
+Gives blocks states related to where the player places the block. Two states are available:
+
+minecraft:vertical_half: The half of the block space that the block was placed in, allowing for stair and slab functionality. Possible values are top, and bottom.
+minecraft:block_face: The block face that the player placed the block on, allowing for log and pillar functionality. Possible values are up, down, east, north, west, and south.
+
+Example:
+
+
+==== minecraft:placement_direction ====
+Gives blocks states related to the direction in which the player places the block. Three states are available:
+
+minecraft:cardinal_direction: The direction the player was facing when the block was placed. Possible values are north, south, east, and west.
+minecraft:facing_direction: Same as minecraft:cardinal_direction, but allows up and down as well. Possible values are up, down, east, north, west, and south.
+minecraft:corner: Allows the block to form corners with other blocks like stairs. Possible values are none, inner_left, inner_right, outer_left, and outer_right.
+
+Example:
+
+
+== History ==
+
+
+== Navigation ==

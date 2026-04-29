@@ -1,0 +1,135 @@
+Beta 1.21.0.22 (Android) or Preview 1.21.0.22 (Windows, iOS, iPadOS, Xbox, PlayStation) is the third beta/Preview version for Bedrock Edition 1.21.0, released on April 18, 2024, which fixes bugs.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Sunflower, Lilac, Double Tallgrass, Large Fern, Rose Bush, and Peony
+
+The different double plant type block states for the double_plant ID have now been split up into their own IDs.
+
+
+=== General ===
+Experiments
+
+Removed the "Update 1.21" experimental toggle.
+The features that were previously under experimental toggle "Update 1.21" have been "de-experimentified" and are now available during normal gameplay.
+Removed the "Experimental Cameras" experimental toggle.
+Player Profile
+
+Updated the player Profile page.
+Added the ability to view and manage:
+Achievements
+Friends
+Followers
+Stats
+In the new Play Screen UI you can access Profile from the Play menu.
+Open the Friends Drawer and click on your friends to see their profiles, or click "Search for Players" from the Friends Drawer to find new profiles.
+In the old UI, click "Add Friends" from the Friends tab and search for friends. Click on them to view their profiles.
+
+
+=== Mobs ===
+Breeze
+
+The Breeze now slides during combat.
+
+
+=== Technical ===
+API
+
+GameRules
+Released GameRules from beta to 1.11.0.
+Released GameRuleChangeAfterEvent from beta to 1.11.0.
+Released GameRuleChangeAfterEventSignal from beta to 1.11.0.
+Released World.gameRules from beta to 1.11.0.
+Released WorldAfterEvents.gameRuleChange from beta to 1.11.0.
+EntityTameableComponent
+Changed return type of getTameItems to ItemStack[]
+Changed tame to take a player.
+Added method tamedToPlayer, tamedToPlayerId, isTamed.
+Released EntityColor2Component from beta to 1.11.0.
+Released PaletteColor from beta to 1.11.0.
+Released ItemStack.matches from beta to 1.11.0.
+Released EntityNavigationComponent from beta to 1.11.0.
+Released EntityNavigationClimbComponent from beta to 1.11.0.
+Released EntityNavigationFloatComponent from beta to 1.11.0.
+Released EntityNavigationFlyComponent from beta to 1.11.0.
+Released EntityNavigationGenericComponent from beta to 1.11.0.
+Released EntityNavigationHoverComponent from beta to 1.11.0.
+Released EntityNavigationWalkComponent from beta to 1.11.0.
+Moved setType API from beta to stable 1.11.0.
+Added function waitTick(ticks?: number): Promise where the returned promise is resolved after "ticks" number of ticks or 1 tick if no ticks parameter is supplied.
+Removed argument waterlogged from function setBlockPermutation and moved it from beta to 1.11.0.
+Moved function saveToWorld from beta to 1.11.0.
+Moved function saveAs from beta to 1.11.0.
+Updated signature of createFromWorld and moved it from beta to 1.11.0.
+Renamed function getIds to getWorldStructureIds and moved it from beta to 1.11.0.
+Entities 
+
+Updated entity geometry to allow UV rotations. This allows you to rotate the specified UV rect in 90 degree increments before applying it to a cube face of an entity model. Supported from minecraft:geometry format version 1.21.0 and up.
+Items 
+
+Unlocking requirements are now sent to clients for minecraft:recipe_shapeless and minecraft:recipe_shaped.
+It allows the UI to suggest recipes that are always unlocked when the game rule dolimitedcrafting is ON.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs" and "Render Dragon Features for Creators" experimental toggles.
+
+
+=== Changes ===
+
+
+==== Technical ====
+API
+
+Changed function from fillBlocks(begin: Vector3, end: Vector3, block: BlockPermutation | BlockType | string, options?: BlockFillOptions): number to fillBlocks(volume: BlockVolumeBase | CompoundBlockVolume, block: BlockPermutation | BlockType | string, options?: BlockFillOptions): ListBlockVolume
+BlockFillOptions
+Removed member matchingBlock?: BlockPermutation.
+Added member blockFilter?: BlockFilter.
+Added member ignoreChunkBoundErrors?: boolean.
+Added ItemComponentUseCompleteEvent for beta.
+Deferred Rendering Pipeline 
+
+Added a new feature to the Deferred Technical Preview: Color Grading and Tone Mapping.
+This new capability allows resource packs to define their own color post processing for conveying distinct moods and themes.
+New experimental toggle added in video settings menu to remove texture limit and load textures instead of using the "pink texture" called "Remove Texture Limit". Textures will continue to load until the system exhausts all available graphics memory.
+Added light pre-exposure to the Deferred Technical Preview.
+This new feature is enabled by default and cannot be disabled. While this won’t result in any immediate visual difference for players, creators now have the freedom to specify sun or atmospheric intensities with values larger than 65,000.
+
+
+== Fixes ==
+20 issues fixed
+From released versions before 1.21.0
+
+MCPE-173632 – Mobile stack splitting bar is slightly offset
+MCPE-173919 – Black sun when using deferred pipeline technical preview
+MCPE-175449 – Unable to Increase Fireworks Duration while DoLimitedCrafting is on
+MCPE-176613 – Some Copper / Tuff recipes still missing
+MCPE-177064 – Decorated pots in trial chambers drop loot after replaced by player
+MCPE-178672 – Upper Copper Trapdoor moves to the bottom of block when waxing and unwaxing
+MCPE-178882 – Bogged has the same attack interval as normal skeletons and strays and not in parity with Java
+MCPE-179260 – Vault always generate facing south in trial chambers
+MCPE-179358 – The off front of Vault texture is inconsistent
+MCPE-179686 – Respawn Radius Still Defaults to 5 in Certain Circumstances
+MCPE-179777 – The "Play on Realms server" Button Text on the New Edit World Screen Does Not Match the Create New World Screen
+MCPE-179883 – Content Log error "[RuntimeCamera][warning]-Chunks will not load when the camera is moved outside the player chunk radius..." - when teleport to unloaded area
+MCPE-179904 – Switching perspectives while moving will briefly flash incorrect camera position and player animations
+MCPE-179920 – Cartographer doesn't sell Trial Chamber Exploration Map when enabling Villager Trade Rebalancing and Update 1.21 experiments toggle together
+From the previous development version
+
+MCPE-180273 – Trial Omen, Wind Charged, Weaving, Oozing, and Infestation effect doesn't have their unique particle effects
+Others
+
+When a player dies in a Nether Portal, they no longer spawn with a shaky camera.
+Status effect particle colors are no longer blended into one particle color. Up to 8 active visible status effect particles are now rendered separately.
+Made potion duration of the Wind Charged, Infested, Weaving, and Oozing effects match Java Edition (3 minutes).
+Fixed the game inconsistently advertising free Realms trial based on multiple sources.
+Fixed mob animations not playing when mobs were unloaded in split screen.
+
+
+== References ==
+
+
+== Navigation ==

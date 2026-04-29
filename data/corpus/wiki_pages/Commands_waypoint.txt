@@ -1,0 +1,68 @@
+Manages waypoints displayed on the locator bar. Allows querying existing waypoints of entities and modifying their appearance properties like color and fade effect.
+
+
+== Usage ==
+Lists tracked waypoints or modifies properties of the waypoint being transmitted by specific entities. A tracked waypoint is associated with an entity that meets either of the following conditions:
+
+The entity has the waypoint_transmit_range attribute set to a value greater than 0.
+The entity's waypoint color has been explicitly set using /waypoint modify <waypoint> color (either with a name or hex code) during the current game session. This is temporary and it is no longer tracked after reloading the world.
+Only entities with tracked waypoints can be listed by /waypoint list.
+Any entities that can transmit a waypoint is called waypoint transmitter. They only include living entities, which are armor stands, mobs, and players.
+
+
+== Syntax ==
+waypoint list
+Lists all tracked waypoint from entities (as defined above). The output includes the player's name or the entity's type with color specified by their waypoint color. If none specified, it results to white, regardless of the randomly chosen color by the game or their team color.
+waypoint modify <waypoint> color <color>
+Changes the waypoint's color to one of the 16 color codes. This overrides the default color.
+waypoint modify <waypoint> color hex <hex_color>
+Changes the waypoint's color using a 6-digit hexadecimal color code (RRGGBB format, e.g., FF0000 for red). This overrides the default color.
+waypoint modify <waypoint> color reset
+Resets the waypoint's color to the default color (chosen randomly by the game, or the entity's team color).
+waypoint modify <waypoint> style set <style>
+Sets the waypoint style from waypoint_style directory in a resource pack. By default, it is set to minecraft:default.
+The game does not check if a definition exists under the directory, setting it to a non-existent definition results in a missing texture for the waypoint icon.
+waypoint modify <waypoint> style reset
+Resets the waypoint's style.
+
+
+== Arguments ==
+<waypoint>: entity
+
+Specifies the target entity whose transmitted waypoint should be modified.
+Must be a player name, a target selector or a UUID.  And the target selector must be in single type. Must be a waypoint transmitter.
+<color>: color
+
+Specifies a color name to apply to the waypoint's indicator on the locator bar. This overrides the default color (which may be influenced by the entity's team color).
+Must be a valid color name (e.g., red, blue, light_purple).
+<hex_color>: hex_color
+
+Specifies a hexadecimal color code (RRGGBB format) to apply to the waypoint's indicator on the locator bar. This overrides the default color.
+Must be a 6-digit hexadecimal number (000000-FFFFFF). For example, FF0000 for red, 6495ED for cornflower blue.
+<style>: resource_location
+
+Specifies the waypoint style from waypoint_style directory in a resource pack.
+Must be a resource location for an unregistered content.
+
+
+== Result ==
+
+
+== Output ==
+
+
+== Examples ==
+To list all currently tracked waypoints being transmitted:
+waypoint list
+To change the waypoint color for the player named "Steve" to gold on the locator bar:
+waypoint modify Steve color gold
+To change the waypoint color for a creeper to lime using a hex code:
+waypoint modify @e[type=creeper,limit=1] color hex 00FF00
+To reset the waypoint color for a zombie to its default color:
+waypoint modify @e[type=zombie,limit=1] color reset
+
+
+== History ==
+
+
+== Navigation ==

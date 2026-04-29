@@ -1,0 +1,446 @@
+25w31a is the first snapshot for Java Edition 1.21.9, released on July 29, 2025.  It adds new features such as copper armor and tools, copper nuggets, copper horse armor, copper chests, copper golems, and shelves.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Copper chest
+
+A new type of chest that has waxed and oxidized variants.
+Copper chests oxidize over time and can be waxed like other copper blocks.
+Copper chests can be crafted using a chest and copper ingots.
+
+ Copper golem statue
+
+A decorative block which has waxed and oxidized variants.
+Copper golem statue oxidizes over time and can be waxed like copper blocks.
+The pose of the block can be changed by interacting with it.
+If the copper golem statue has no oxidation when interacted with using an axe, the block will turn into a copper golem again.
+When connected to a redstone comparator, the copper golem statue block emits a redstone signal based on its current pose.
+ Lightning rod
+
+Added exposed, weathered, and oxidized variants and their respective waxed variants.
+ Shelf
+
+A decorative block which comes in all wood variants.
+Can be crafted from six matching blocks of any stripped log, stripped stem, or block of stripped bamboo, filling the top and bottom row, producing 6 shelves.
+
+The shelf can store up to 3 item stacks:
+Interacting with any of the 3 slots on its front swaps the player's main hand item with the content of that slot.
+The shelf displays all items it contains in front of it, similar to an item frame.
+While a shelf is powered by redstone, its front texture changes to reflect that it's powered; when placed next to each other, up to 3 powered shelves will connect.
+Interacting with a single powered shelf swaps all its contents with the 3 rightmost items in the player's hotbar.
+Interacting with two connected shelves swaps their contents with the 6 rightmost items in the player's hotbar.
+Interacting with three connected shelves swaps their contents with all items in the player's hotbar.
+It does not matter which of the connected shelves the player interacts with.
+They provide a signal value to redstone comparators placed at the back: the strength of the signal is a binary number based on the filling state of the slot, with the left slot being the least significant bit and the right slot being the most significant bit.
+
+
+=== Items ===
+ Copper armor
+
+Added copper helmets, copper chestplates, copper leggings, and copper boots.
+Copper armor has higher durability than leather and gold, but less than iron. Copper armor enchantability sits slightly lower than with iron.
+
+ Copper horse armor
+
+A new variant of horse armor.
+Has the same loot table and chance of generating as iron horse armor.
+Has an armor value of 4 ().
+Cannot be crafted.
+ Copper nugget
+
+Added copper nuggets.
+Copper equipment turns into copper nuggets when smelted.
+Copper nuggets can be crafted by using a copper ingot.
+
+ Copper tools
+
+Added copper axes, copper hoes, copper pickaxes, copper shovels, and copper swords.
+Mine faster and are more durable than stone tools, but not iron tools.
+More enchantable than diamond tools, but slightly less than iron tools.
+Possess identical damage and attack speed to stone tools.
+Cannot mine any more blocks than stone tools can.
+
+ Copper golem spawn egg
+
+Added copper golem spawn egg.
+
+
+=== Mobs ===
+ Copper golem
+
+A new mob which can be spawned by placing a jack o'lantern or carved pumpkin on top of a copper block.
+Has 12HP × 6 health points.
+Drops 1 to 3 copper ingots when killed.
+They are immune to fall damage, and do not drown underwater.
+Copper golems oxidize over time and can be waxed like copper blocks.
+Copper golems take on the oxidization state of the copper block used to make them.
+If the copper golem has fully oxidized and is not waxed, it will turn into a copper golem statue block.
+When turned into a copper golem statue, the copper golem will drop any item it may be holding.
+A copper golem turned into a copper golem statue will keep its name if named with a name tag.
+Copper golems can help with sorting items into chests.
+If it is not holding an item, it will look for a nearby copper chest and pick up items from that chest.
+The copper golem will look in any oxidized and waxed copper chest variant to pick up items.
+It can pick up at most 16 items in a stack at a time.
+Any item in a copper chest can be picked up.
+Interacting with the copper golem with an empty hand will make it drop its carried item.
+If it is holding an item, it will look for nearby wooden chests to try to place the item into.
+The copper golem will look in chests and trapped chests to try to place items.
+It can only place an item in a chest if the chest is empty or contains the same type, name and enchantments of item the golem is holding in its hand.
+It will visit a max of 10 copper chests when looking for items to pick up, and a max of 10 chests when looking for somewhere to put the items.
+If no matching chest is found, the copper golem will idle for 7 seconds before trying again.
+The search area for chests from the copper golem's position is horizontally 32 blocks and vertically 8 blocks.
+
+
+=== General ===
+Options
+
+Added "Invert Mouse X" option to the Mouse Settings screen, which inverts the mouse x-axis.
+Added "Sprint Window" option to the Controls screen, which represents the time window in ticks where double-tapping the forward key activates sprint.
+Tags
+
+Block Tags
+Added #copper
+Contains all copper blocks.
+Added #copper_chests
+Contains all copper chest blocks.
+Added #copper_golem_statues
+Contains all copper golem statue blocks.
+Added #incorrect_for_copper_tool
+Contains all blocks which will not drop items with a copper tool.
+Added #lightning_rods
+Contains all lightning rods.
+Added #wooden_shelves
+Contains all shelves.
+Item Tags
+Added #copper
+Contains all copper block items.
+Added #copper_chests
+Contains all copper chest block items.
+Added #copper_golem_statues
+Contains all copper golem statue items.
+Added #copper_tool_materials
+Contains all copper tool materials.
+Added #lightning_rods
+Contains all lightning rods.
+Added #repairs_copper_armor
+Contains all items which repair copper armor.
+Added #wooden_shelves
+Contains all shelves.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Heads
+
+Mob heads now preserve any custom name when they are placed and then mined again.
+Lightning rod
+
+Now oxidize like other copper blocks and the lightning rod on the copper golem.
+Can now be waxed.
+
+
+=== Items ===
+ Dyes
+
+Dye colors now have updated icons.
+The goal with these is to enhance visual cohesion across the dye set while maintaining distinct shapes to support colorblind accessibility.
+Spawn eggs
+
+Monster spawn eggs now have a tooltip warning when the difficulty is set to Peaceful.
+The mob no longer spawns for one tick when an attempt is made to use the spawn egg.
+
+
+=== Mobs ===
+Happy ghast
+
+Is now audible from 64 blocks.
+Riding sound volume is slightly increased.
+
+
+=== Command format ===
+/summon
+
+Now fails when trying to summon monsters while the difficulty is set to Peaceful.
+
+
+=== Gameplay ===
+Sounds
+
+Sounds for chests now play at a lower volume.
+The volume at which a sound is played at now respects the sound source volume value.
+The "Voice/Speech" sound source has been renamed to "Narrator/Voice".
+Added new sound events: block.copper_chest.open, block.copper_chest.close, block.copper_chest_weathered.open, block.copper_chest_weathered.close, block.copper_chest_oxidized.open, block.copper_chest_oxidized.close, entity.copper_golem.step, entity.copper_golem.hurt, entity.copper_golem.death, entity.copper_golem.spin, entity.copper_golem_weathered.step, entity.copper_golem_weathered.hurt, entity.copper_golem_weathered.death, entity.copper_golem_weathered.spin, entity.copper_golem_oxidized.step, entity.copper_golem_oxidized.hurt, entity.copper_golem_oxidized.death, entity.copper_golem_oxidized.spin, item.armor.equip_copper, entity.copper_golem.spawn, entity.copper_golem.no_item_get, entity.copper_golem.no_item_not_get, entity.copper_golem.item_drop, entity.copper_golem.item_no_drop, entity.copper_golem_become_statue, block.copper_golem_statue.break, block.copper_golem_statue.place, block.copper_golem_statue.hit, block.copper_golem_statue.fall, block.copper_golem_statue.step, block.shelf.activate, block.shelf.deactivate, block.shelf.multi_swap, block.shelf.place_item, block.shelf.single_swap
+
+
+=== General ===
+Chunks
+
+The concept of fixed "spawn chunks" has been removed.
+A dimension that has any player activity, forceloaded chunks, active portals, or ender pearls in flight will be considered "active" and will keep processing chunks and entities.
+Previously, this would only apply if a player was in the dimension or a chunk was forceloaded.
+The game will ensure that the following chunks are fully loaded before the player joins or the server starts, in the same way as spawn chunks formerly were:
+Chunks loaded by the /forceload command.
+Chunks active due to portal activity.
+Thrown ender pearls (Singleplayer only).
+The small area of chunks around the player (Singleplayer only).
+Chunks required to assign the global world spawn (World creation only).
+Data component format
+
+blocks_attacks item component.
+If the damage reduced in an attack is 0, for example by angle threshold not matching, the item can no longer get disabled in the attack, nor cause knockback due to blocking.
+Data pack
+
+The pack format version is now 82.0.
+Debug screen
+
+Was reworked to be less cluttered and more configurable.
+It can now be accessed from everywhere in the game, not only when in a game world.
+It now displays less information by default.
+Added a new Debug Options screen which can be opened by pressing F3 + F5.
+It can be used to configure which debug information should be displayed.
+For each item the player can choose if it should be turned off, visible when the debug screen (F3) is open, or it should always be visible, even when the debug screen is closed.
+Some debug features that were previously available, like chunk border rendering or entity hitbox rendering, can now be toggled through this debug options screen.
+Some debug features that were not previously available to the community, like Octree visualization, are now accessible through the debug options screen.
+The state of the debug options screen is saved between the launches of the game.
+The debug options screen has the following preset profiles:
+Default resets everything to the default state.
+Performance shows simple performance metrics, including the FPS meter always visible on screen.
+Density function
+
+Added minecraft:find_top_surface
+Approximates the topmost surface of a given density function.
+It scans from an upper bound to a lower bound to find the point at which the density changes from negative to positive.
+The upper bound should be as close to the actual surface for best performance.
+The upper bound should never be lower than the actual surface.
+Fields:
+density - density function to approximate the surface of.
+upper_bound - 2D density function providing the highest possible y-value.
+lower_bound - integer, lowest possible y-value.
+cell_height - positive integer defining the grid resolution on which to scan.
+Added minecraft:invert
+Resolves to 1/argument
+Fields:
+argument - density function.
+Game rule
+
+The game rule spawnChunkRadius was removed.
+Jigsaw structures
+
+The max_distance_from_center field may now specify a different restriction on the vertical axis from horizontal.
+This can be specified by an object with fields:
+horizontal - required integer between 1 and 128.
+vertical - optional integer between 1 and 4096 (default: 4096).
+e.g: "max_distance_from_center": { "horizontal": 20, "vertical": 500 }.
+The previous format of a single inline value specifying both horizontal and vertical distance is still supported.
+Loading world screen
+
+The world loading screen now shows the chunks that the player is about to be placed into, rather than chunks loaded around world spawn.
+The loading screen additionally now includes a progress bar.
+This progress bar accounts for all kinds of chunk loading as mentioned above.
+It was in versions before 1.3.1 with a slightly different texture.
+Loot tables
+
+Added minecraft:entity_interact loot table type which takes the following parameters:
+target_entity, the entity being interacted with.
+interacting_entity, the optional entity that is interacting with the target_entity.
+tool, the tool used to interact with target_entity.
+Added minecraft:block_interact loot table type which takes the following parameters:
+block_state, the block state of the block entity being interacted with.
+block_entity, the optional block entity being interacted with.
+interacting_entity, the optional entity that is interacting with the block_state.
+tool, the optional tool used to interact with block_state.
+Fields that specify a target entity in a loot table, such as entity_properties.entity, can additionally target the target_entity and interacting_entity parameter types.
+Added charged_creeper/root loot table for drops when an entity is killed by a charged creeper.
+This loot table dispatches on the mob that was killed, to the following loot tables:
+charged_creeper/piglin
+charged_creeper/creeper
+charged_creeper/skeleton
+charged_creeper/wither_skeleton
+charged_creeper/zombie
+Once any mob killed drops an item from this loot table, other mobs killed by the same creeper will not drop from this loot table.
+Added brush/armadillo loot table for drops when an armadillo is brushed.
+Added gameplay/turtle_grow loot table for drops when a turtle grows into an adult.
+Added harvest/beehive loot table for drops when a beehive or bee nest is harvested using shears.
+Added harvest/cave_vine loot table for drops when a cave vine with glowberries is harvested by interacting with it.
+Added carve/pumpkin loot table for drops when a pumpkin is carved using shears.
+Options
+
+A button leading to the Controls screen has been added to the Accessibility Settings screen.
+The "Auto-Jump" option, as well as the "Sneak" and "Sprint" toggles have been removed from the Accessibility Settings screen.
+The "Show Subtitles" option has been renamed to "Closed Captions".
+The "Attack/Destroy" and "Use Item/Place Block" keybinds are now toggleable, meaning they can be set to either "Hold" or "Toggle" in the Controls screen.
+Pack format
+
+The pack versions for data packs and resource packs now have minor versions.
+A minor version increment of the game's pack version is backwards-compatible, meaning all packs made for previous iterations of the same major version will keep working.
+Packs can set compatibility requirements on minor versions in case they rely on resources introduced in a minor version.
+Pack.mcmeta
+
+The pack.mcmeta format has been updated:
+The supported_formats field has been removed.
+If the pack declares support for a pack version with the previous format (data pack < 82, resource pack < 65), it is still required.
+Otherwise, it is not allowed and must be removed.
+The pack_format field is now optional.
+If the pack declares support for a pack version with the previous format (data pack < 82, resource pack < 65), it is still required.
+Added required field min_format - specifies the minimum version supported.
+A full version is specified as a list of two integers, e.g [74, 1]
+Specifying a single integer is interpreted as that major version, e.g. 74 is the same thing as [74, 0].
+Specifying a list of a single integer is interpreted the same as specifying that integer alone.
+Added required field max_format - specified the maximum version supported.
+A full version is specified as a list of two integers, e.g [74, 1]
+Specifying a single integer is interpreted as any minor version, i.e. the minor version is 0x7fffffff.
+Specifying a list of a single integer is interpreted the same as specifying that integer alone.
+For overlay entries:
+The formats field has been removed.
+If the pack includes any overlay range that includes a pack version with the previous format (data pack < 82, resource pack < 65), it is still required for all overlay definitions.
+Otherwise, it is not allowed and must be removed.
+Added required field min_format and max_format with the same formats the fields above with the same name for the pack section.
+Rendering
+
+Entity rendering order was improved for significantly better performance.
+Areas with lots of mobs, like mob farms, will have a smoother gameplay.
+FPS will not improve much if most of the lag comes from things other than entities, like playing with high render distance while not being near many mobs.
+Resource pack
+
+The version is now 65.0.
+Added new block sprites: copper, copper_left, copper_right, exposed_copper, exposed_copper_left, exposed_copper_right, weathered_copper, weathered_copper_left, weathered_copper_right, oxidized_copper, oxidized_copper_left, oxidized_copper_right, acacia_shelf, bamboo_shelf, birch_shelf, cherry_shelf, crimson_shelf, dark_oak_shelf, jungle_shelf, mangrove_shelf, oak_shelf, pale_oak_shelf, spruce_shelf, warped_shelf
+Added new entity sprites: copper_golem, exposed_copper_golem, weathered_copper_golem, oxidized_copper_golem, copper_golem_eyes, exposed_copper_golem_eyes, weathered_copper_golem_eyes, oxidized_copper_golem_eyes
+Added new item sprites: copper_axe, copper_boots, copper_chestplate, copper_golem_spawn_egg, copper_helmet, copper_hoe, copper_leggings, copper_nugget, copper_pickaxe, copper_shovel, copper_sword
+Shaders & Post-process effects
+
+Full Screen Passes
+The following vertex shaders have been removed, and replaced by core/screenquad.vsh:
+core/blit_screen.vsh
+post/blit.vsh
+post/blur.vsh
+post/invert.vsh
+post/sobel.vsh
+post/screenquad.vsh
+Vertex shaders for post-processing effects, as well as lightmap generation and full screen blits are no longer are passed the Position attribute, and instead must assign vertex coordinates by gl_VertexID.
+These passes furthermore are only executed with 3 vertices, instead of a full quad
+Tags
+
+Biome Tags
+Added cherry_grove to #stronghold_biased_to tag.
+Block Tags
+Added #copper_chests to #guarded_by_piglins tag.
+Added #copper_chests, and #lightning_rods to #needs_stone_tool tag, and removed lightning_rod.
+Added #wooden_shelves to #mineable/axe tag.
+Added #copper_chests, #copper_golem_statues, and #lightning_rods to #mineable/pickaxe tag, and removed lightning_rod.
+Entity Tags
+Added copper_golem to #can_breathe_under_water, and #fall_damage_immune tags.
+Item Tags
+Added copper_axe to #axes tag.
+Added copper_chestplate to #chest_armor tag.
+Added copper_boots to #foot_armor tag.
+Added copper_helmet to #head_armor tag.
+Added copper_hoe to #hoes tag.
+Added copper_leggings to #leg_armor tag.
+Added crimson_shelf, and warped_shelf to #non_flammable_wood tag.
+Added copper_pickaxe to #pickaxes tag.
+Added copper_shovel to #shovels tag.
+Added copper_sword to #swords tag.
+Texture atlases
+
+The following texture atlases no longer have unused mipmapped versions generated:
+armor_trims.png-atlas
+banner_patterns.png-atlas
+beds.png-atlas
+chest.png-atlas
+decorated_pot.png-atlas
+shield_patterns.png-atlas
+shulker_boxes.png-atlas
+signs.png-atlas
+World Generation
+
+The initial_density_without_jaggedness field in noise_settings definitions has been replaced with a preliminary_surface_level field.
+initial_density_without_jaggedness was a 3D density function that was used to determine an approximate surface level by scanning for the first point with a density greater than 0.390625.
+preliminary_surface_level is a 2D density function that should produce the y-level of the approximate surface.
+The minecraft:find_top_surface density function can be used to replicate the previous scanning.
+
+
+== Fixes ==
+53 issues fixed
+From released versions before 1.21
+
+MC-46634 – Thunder volume is not affected by weather volume settings.
+MC-73881 – Summoning monsters in peaceful difficulty spawns monster for 1 tick.
+MC-89142 – Changing jump key to "Enter" let player jump after completing chat line.
+MC-94610 – Missing loot table entries for mob heads from charged creepers.
+MC-98200 – All sound sliders except master are ignored by high-volume /playsound.
+MC-183776 – After switching game modes using F3 + F4, you need to press F3 twice to toggle the debug screen.
+MC-192907 – The F3 debug menu cannot be toggled while chat is open.
+MC-196443 – When reducedDebugInfo is true, hitting F3 + B and F3 + G would still tell the player in chat that they are being toggled, despite nothing happening.
+MC-197247 – Using F3 + D to clear pending lines keeps the previous delay for a new message.
+MC-203401 – Double-tapping forward button to sprint cannot be disabled/reconfigured.
+MC-217956 – Number keys do not work on the game menu with the debug pie.
+MC-220842 – Opening game mode switcher while spectating a mob with shader effect toggles the effect.
+MC-234479 – You can invite the same player multiple times to your realm even if they've already received an invitation or have already joined it.
+MC-235780 – The beacon GUI incorrectly displays the "Beacon" tooltip when the mouse cursor is held over the "Done" or "Cancel" buttons.
+MC-237016 – The chat delay function continues to print messages despite the game being paused.
+MC-237843 – Players can be idle kicked whilst viewing the end credits.
+MC-259692 – Sneaking and sprinting states are activated or toggled unexpectedly when releasing their input keys while an interface was just previously closed.
+MC-259935 – It can snow even when biome precipitation is set to NONE.
+MC-260822 – The "Done" and "Cancel" buttons within the beacon GUI no longer display tooltips when the mouse cursor is held over them.
+MC-261387 – Redundant block_predicate_filter check in mangrove tree placement.
+MC-262000 – Unused texture: misc/white.png.
+MC-263597 – The ender dragon's respawning noise cannot be turned down by the Hostile Mobs volume slider.
+MC-269838 – Pumpkin seeds drop from sheared pumpkins is hardcoded.
+MC-269839 – Honeycomb drop from sheared bee nests and beehives is hardcoded.
+MC-270918 – Loot tables for mob heads are missing copy_components loot function for custom_name.
+From 1.21.1
+
+MC-275244 – Setting "width_smoothness" in file configured_carver to 0 causes the game to freeze or crash.
+MC-275432 – Subtitles are difficult to see within screens.
+MC-276568 – Mipmapped versions of the armor trims atlas are generated.
+MC-276629 – Glow berries drop from cave vines appears to be hardcoded.
+MC-277447 – Minecraft generates mipmapped textures for chests, but does not use them.
+MC-277450 – Minecraft generates mipmapped textures for shulker boxes, but does not use them.
+MC-277470 – Minecraft generates mipmapped textures for beds, but does not use them.
+MC-277471 – Minecraft generates mipmapped textures for signs, but does not use them.
+MC-277473 – Minecraft generates mipmapped textures for decorated pots, but does not use them.
+MC-277481 – Minecraft generates mipmapped textures for banners, but does not use them.
+MC-277483 – Minecraft generates mipmapped textures for shields, but does not use them.
+MC-277770 – Processor type block_age always modifies slabs property "type" to bottom.
+From 1.21.2
+
+MC-276759 – Scute drop from brushing armadillos is hardcoded.
+From 1.21.4
+
+MC-278965 – Cherry Grove is not part of the #stronghold_biased_to tag.
+MC-279793 – Mounting horses, donkeys, mules, zombie horses, skeleton horses, and camels no longer forces you to face forward.
+MC-289348 – Ender pearls stop loading chunks in The End after relog, if there are no players in that dimension.
+From 1.21.5
+
+MC-298274 – Certain invalid commands give "see below for error" with no additional information.
+MC-298805 – Axes disable shields even when the shield does not block the attack.
+From 1.21.6
+
+MC-297593 – Cauldrons now apply the effect of the substance they're filled with when contacted from the underside.
+MC-298732 – The cursor is no longer shown at the end of lines that aren't the final one.
+MC-298883 – The active world slot is not highlighted when selected via TAB navigation in Realms.
+From 1.21.7
+
+MC-299450 – You can no longer double-click to select characters in the book and quill interface.
+MC-299451 – Pages in book and quills are no longer automatically focused when switching pages.
+MC-299566 – The cursor in the book and quill interface is positioned too far to the left.
+MC-299628 – Mounted players/mobs trigger sculk sensors on world load.
+MC-299782 – Zombie villagers saved in jigsaw structures forget their biome variant and profession upon world generation.
+From 1.21.8
+
+MC-299896 – You can switch the worlds of expired realms to empty slots, which misleadingly prompts world creation despite no active realms subscription.
+MC-300021 – Some elements of the villager interface are now rendered above the cursor item.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

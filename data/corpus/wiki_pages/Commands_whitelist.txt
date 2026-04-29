@@ -1,0 +1,52 @@
+Used to manage server whitelists.
+In Java Edition, server operators can always connect when the whitelist is active, even if their profiles do not appear in the whitelist. In Bedrock Edition, players must be whitelisted regardless of operator status. The profiles of the whitelisted players are stored in the whitelist.json or allowlist.json‌[Bedrock Edition  only] configuration file.
+
+
+== Syntax ==
+whitelist add <targets> (Java Edition)
+allowlist add <name: string> (Bedrock Edition)
+Adds player profile(s) into the whitelist. The player does not need to be online.
+whitelist list
+Displays all player profiles in the whitelist.
+whitelist off
+Disables the server's use of a whitelist. Not implemented in Bedrock Edition.
+whitelist on
+Enables the server's use of a whitelist. Not implemented in Bedrock Edition.
+whitelist reload
+Reloads the list of player profiles in whitelist.json or allowlist.json‌[Bedrock Edition  only] from disk (used when whitelist.json has been modified outside of Minecraft).
+whitelist remove <targets> (Java Edition)
+allowlist remove <name: string> (Bedrock Edition)
+Removes player profile(s) from the whitelist. The player does not need to be online.
+
+
+== Arguments ==
+JE: <targets>: game_profile
+
+Specifies the player profile(s) to be added into or removed from the whitelist.
+Specifies one or more game profiles (player profiles). Must be a player name (should be a real one if the server is in online mode) or a player-type target selector.
+BE: name: string: basic_string
+
+Specifies the player name(s) to be added into or removed from the whitelist.
+Must be a string. And it must be a single word that has no space or a double-quoted string (When quoted, \ can be used to escape characters).
+
+
+== Result ==
+
+
+== Output ==
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== External links ==
+"/allowlist Command"     – Microsoft Learn, August 1, 2024.
+
+
+== Navigation ==

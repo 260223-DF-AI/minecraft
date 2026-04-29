@@ -1,0 +1,69 @@
+Beta 1.16.210.58 is the eighth beta version for Bedrock Edition 1.16.210, released on February 3, 2021, which brought technical changes and fixes bugs.
+
+
+== Changes ==
+
+
+=== Command format ===
+/mixer
+
+Now removed entirely from the game again.
+
+
+=== General ===
+Settings
+
+Broadcasting options are now completely removed from the game again, since Mixer streaming services are no longer available.
+
+
+=== Technical ===
+Component Variables
+
+main_hand - An optional object storing optional transform data for first_person and third_person for the player's right hand.
+off_hand - An optional object storing optional transform data for first_person and third_person for the player's left hand.
+first_person - An optional object storing 3 vectors 'position', 'rotation', 'scale' used to build the first person matrix.
+third_person - An optional object storing 3 vectors 'position', 'rotation', 'scale' used to build the third person matrix.
+Render Offsets Component
+
+Simple items, like swords or pickaxes, can have an optional offset applied to them to modify the way they are rendered.
+Note this component should not be added to an attachable item.
+
+
+== Fixes ==
+Accessibility
+
+The screen reader now properly announces edit/create character button text for each character on the profile screen.
+Performance and Stability
+
+Fixed a number of crashes that could occur during gameplay.
+Fixed a crash that could occur when opening the achievements screen when the anti-aliasing setting was set to 1 (MCPE-110164).
+General
+
+Fixed ticks not affecting blocks changing states - this means that things like crops and saplings will once again grow correctly (MCPE-116221).
+Fixed the player being unable to interact with a tool in their inventory after breaking blocks with it in survival (MCPE-115341).
+Fixed dried kelp block bottom and carried textures so that rope pixels are aligned (MCPE-35476).
+Fixed an issue where snow accumulated in lines with certain simulation distances (MCPE-73468).
+TNT submerged in water will once again launch players in Survival mode.
+Fixed an issue where achievement names and descriptions would not be translated, independent of language selection. (MCPE-85813).
+The online status of cross-platform friends' shown on the invite screen will now update when a change has been detected (MCPE-70004).
+Fixed an issue that prevented achievement rewards from showing correctly after changing the language setting.
+Owned and purchasable skins no longer get mixed into different categories while offline.
+Emote title no longer shows previously previewed emote upon re-entering tab.
+Updated the in-game links to the feedback site and bug tracker.
+Graphics
+
+Goat and other tinted spawn eggs now look correct when held in hand (MCPE-104145).
+Fixed an issue with screen resolution which could flicker when resizing a window (MCPE-69721).
+Entities that use material state "Blending" now render correctly behind transparent parts.
+Technical
+
+On the "Dragons!" Marketplace map, behavior animation controller will no longer stop working after reloading the map with a saddled dragon.
+Disabled loading of entities in custom biome features.
+Fixed UVs of data-driven blocks to not be slightly shrunk, which caused texel warping.
+Fixed data driven blocks being pushed by pistons not working correctly.
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,322 @@
+14w25a is the twenty-seventh snapshot for Java Edition 1.8, released on June 18, 2014, which adds ocean monuments and all the blocks, items and mobs associated with the structure. It also adds coarse dirt.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Prismarine
+
+Generates in ocean monuments.
+Can be crafted with prismarine shards.
+The cracks in prismarine appear to slowly change color between brown, blue, gray and purple.
+ Prismarine bricks
+
+Generate in ocean monuments.
+Can be crafted with prismarine shards.
+ Dark prismarine
+
+Generates in ocean monuments.
+Can be crafted with prismarine shards and an ink sac.
+ Sea lanterns
+
+Generates in ocean monuments.
+Can be crafted with prismarine shards and prismarine crystals.
+Emit light at a light level of 15 and have an animated texture.
+ Coarse dirt
+
+Replacement for grassless dirt.
+Slightly darker texture than regular dirt.
+Can be crafted with two dirt and two gravel in a checker-board pattern.
+ Wet sponge
+
+Obtained when a sponge soaks up water.
+Smelt wet sponge to remove water and get sponge.
+Wet sponge emits water dripping particles.
+Dropped by elder guardians when killed by a player.
+
+
+=== Items ===
+ Prismarine crystals
+
+Drop from guardians and sea lanterns.
+Can be crafted into sea lanterns.
+ Prismarine shard
+
+Drop from guardians.
+Can be crafted into all three kinds of prismarine blocks and sea lanterns.
+ Guardian spawn egg
+
+Spawns the new guardian mob.
+
+
+=== Mobs ===
+ Guardian
+
+Spawns in ocean monuments.
+Attacks squid and players with a laser.
+When on land, it flops around and doesn't suffocate, unlike squid.
+Drops prismarine shards, prismarine crystals and raw fish.
+ Elder guardian
+
+Is a boss-like variant of guardians.
+There are 3 elders in each monument.
+A flashing elder guardian appears on screen when close to the mob, and Mining Fatigue III is inflicted on the player for 5 minutes.
+Mining Fatigue III makes mining really slow, but not impossible.
+Drops a wet sponge when killed by a player.
+
+
+=== World generation ===
+Ocean monuments
+
+New underwater generated structure made out of prismarine, prismarine bricks, dark prismarine, and sea lanterns.
+8 blocks of gold can be found at the center of the monument.
+Also generates in old worlds.
+Can be toggled for a customized world.
+
+
+=== Gameplay ===
+Enchantments
+
+Depth Strider
+Allows the player to move faster in water.
+Can be applied only to boots.
+Can go up to level III.
+
+
+=== General ===
+Splashes
+
+"Flavor with no seasoning!"
+"Strange, but not a stranger!"
+"Tougher than diamonds, rich like cream!"
+"Getting ready to show!"
+"Getting ready to know!"
+"Getting ready to drop!"
+"Getting ready to shock!"
+"Getting ready to freak!"
+"Getting ready to speak!"
+"It swings, it jives!"
+"Cruising streets for gold!"
+"Take an eggbeater and beat it against a skillet!"
+"Make me a table, a funky table!"
+"Take the elevator to the mezzanine!"
+
+
+== Changes ==
+
+
+=== Blocks ===
+General
+
+Rewrote how blocks are rendered.
+Rewrote how block data is handled.
+Removed the previously-accessible item forms of flowing and stationary water and lava blocks (8, 9, 10 & 11), double stone and wooden slabs (43 & 125), fire blocks (51), nether portal and end portal blocks (90 & 119), cocoa pods (127), and potato and carrot crops (141 & 142).  They are no longer available as item forms through the /give or /summon commands, but are still placeable through commands such as /setblock. This removal has made by adding method registerItemBlock(block), which registers an ItemBlock for respective block. The previously-accessible item forms of these blocks is not in the registerItemBlock list, this means they do not have any registered direct item form and therefore, they are unobtainable.
+Cracked stone bricks
+
+Can be obtained by smelting stone bricks.
+Podzol
+
+No longer displays dirt as its side texture when a block is placed above.
+Tall grass & grass
+
+Texture is now brighter.
+Huge mushrooms blocks
+
+When harvested with Silk Touch, they drop blocks with corresponding mushroom texture (red or brown) on all sides rather than the one with spores.
+Redstone torches
+
+No longer randomly fix themselves.
+Melon and pumpkin stems
+
+ Now composed of two planes.
+Signs
+
+Use the JSON text components Text1, Text2, Text3, Text4 instead of plain text.
+Can be used to show scores towards players by using the selector and score tags.
+Previously, text formatting could only be accomplished using the section symbol via Formatting codes.
+Character limit is based on character width. Previously, it was capped at exactly 15 characters.
+Might need some time before it can work in Survival.
+Sponge
+
+Introduced sponge to Survival mode, with new behavior and looks.
+Turns into wet sponge when it soaks up water.
+Water particles appear around the sponge when this happens.
+Destroys water blocks from 5 blocks away in a kind of sphere.
+Soaks up water only when water is touching it.
+Stairs
+
+All icons for stairs in the inventory are now viewed at a different angle.
+
+
+=== Items ===
+General
+
+All items are models, some are still generated from item icons.
+Resource packs can make models for all items.
+Arrows
+
+Work differently underwater.
+They lose all velocity after a few blocks and slowly fall.
+Fire arrows are extinguished.
+Written books
+
+Use JSON text components instead of plain text with the new pages tag.
+Capable of using the clickEvent and hoverEvent tags.
+Previously, text formatting could only be accomplished using the section symbol via formatting codes.
+Might need some time before it can work in Survival.
+
+
+=== Mobs ===
+Iron golems
+
+Can be spawned by arranging the blocks in any orientation.
+This does not affect the orientation of the spawned mob.
+Now require air blocks in the corners to be built.
+Snow golems
+
+Can be spawned by arranging the blocks in any orientation.
+This does not affect the orientation of the spawned mob.
+Withers
+
+Can be spawned by arranging the blocks in any orientation.
+This does not affect the orientation of the spawned mob.
+Can now move around during the invulnerability stage right after they are spawned.
+Now require air blocks next to the base soul sand to be built.
+Wither skeletons
+
+No longer visibly catch fire when going into fire or lava.
+Can now spawn anywhere on nether brick within the bounds of every nether fortress, even outside of specific segments.
+Prior to this version, wither skeletons would only spawn this way in the first fortress loaded into the game due to a bug.
+Spawning within specific segments remains unchanged and was not affected by the bug.
+
+
+=== Command format ===
+/scoreboard operation
+
+Added three scoreboard operators: <, >, =.
+Can be tested with a comparator to see if two scores are greater than, smaller than or equal to each other.
+Model format improvements
+
+New tag "textures" to specify the textures used by the model.
+Removed the directional attribute from the uv definition and replaced it with explicit texture references.
+"textureFacing" renamed to "texture", it is prepended with the hash symbol (#).
+"useAmbientOcclusion" renamed to "ambientocclusion".
+"rotateVariantTextures" renamed to "UV lock".
+"cull" renamed to "cullface", specifies the opposite of which neighboring face causes culling to occur.
+Example: if one has an east-facing face but wants it to be culled along a different axis (let's say Z), one would specify "cullface": "north" or "cullface": "south".
+Rotation made more verbose, it is now more clear that it can only occur on a single axis.
+Example, the rotation for one of the two faces of the "cross" model is now: "rotation": { "origin": [ 8, 8, 8 ], "axis": "y", "angle": 45, "rescale": true },.
+The folder models/blocks/meshes was removed and model files are now stored in models/blocks.
+The folder blockstates was added and stores the model selection files previously found in models/blocks.
+
+
+=== Gameplay ===
+Inventory
+
+Text color darkened to  #404040, the same color as before 1.2.4.
+Potion effects
+
+Players now see better with Night Vision and Water Breathing at the same time underwater.
+Player list
+
+Shows the faces of players.
+
+
+=== General ===
+Debug screen
+
+F3 + B now also shows which direction entities are looking in using a blue line.
+Items in first-person view now move up and down when its data changes.
+Animations
+
+Block-hit animation that was used prior (from previous snapshots and 1.7.x) was removed.
+
+
+== Removals ==
+
+
+=== General ===
+Distance effects
+
+Falling block entities are now generated at the correct positions.
+Options
+
+Anisotropic filtering has been removed.
+This also means that the four-by-four checker variant of the missing texture no longer exists.
+
+
+== Fixes ==
+54 issues fixed
+From released versions before 1.8
+
+MC-1298 – Slightly damaged and very damaged anvils lose broken texture when falling.
+MC-1499 – Can see the water lighter in a certain position.
+MC-3615 – Seeing through lava bug.
+MC-4239 – Redstone and string in a cobble generator turn into obsidian.
+MC-5018 – Wide characters (e.g. tildes ~) overflow on signs.
+MC-5306 – Enchanted blocks don't show enchantment in hand, inventory, as headwear (skulls/pumpkins) or when dropped on the ground.
+MC-7432 – Real zombie sieges fail to start (fix included).
+MC-7488 – Village siege's spawn location is calculated incorrectly (fix included).
+MC-9173 – Side of dropped items and items in item frames don't appear enchanted.
+MC-11524 – Slime & minecart glitch.
+MC-18752 – Entity shadows not rendered correctly after getting GL error due to compass in item frame.
+MC-19205 – Tall grass particles are gray when destroyed by placing water through another tall grass.
+MC-29777 – Grass Block's sides use fast version of texture when held in hand regardless of graphical settings.
+MC-30484 – Giving items with unknown (high) data value crashes and leaves the world unusable.
+MC-30897 – Nether portal doesn't fully break when one or more blocks are destroyed.
+MC-31615 – Mipmapping: seeing green and brown "blocks" at the horizon.
+MC-44363 – Anvil rendering glitch in inventory.
+MC-45264 – Item textures with overlays cause potion display box to turn invisible in a 16x16 pixel area.
+MC-48688 – Anisotropic filtering bug.
+MC-52540 – Lack of shading on east/west block variants using the x rotation argument.
+MC-55382 – Glow effect doesn't work for dropped items with data tag in fast graphics.
+MC-56541 – Redstone torches (and other redstone components) have inconsistent timings.
+MC-67168 – Setting anisotropic filtering above 0 on some Intel graphics systems makes some textures appear fuzzy.
+From the 1.8 development versions
+
+MC-46591 – Ender dragon destroys barriers when it flies through them.
+MC-47437 – Endermen do not teleport out of water, lava or when on fire.
+MC-47475 – Floating mushrooms on mooshrooms.
+MC-48435 – Beacon is not transparent like before in inventory.
+MC-49110 – Arrow's inGround NBT tag does not update when fired into some blocks.
+MC-49839 – .json shading filters rendered after red/blue anaglyph mod.e
+MC-50290 – Beacon shadows are incorrect in hand and inventory.
+MC-50322 – Z-fighting in iron bars with glass blocks.
+MC-50509 – Item hitbox in frame is displayed incorrectly.
+MC-50598 – Unlit redstone comparators gives off lit redstone torch particles.
+MC-50729 – Vines orienting improperly in inside corners.
+MC-50732 – Anvil, beacons, pistons, end portal frames etc. are incorrectly shadowed in inventory.
+MC-51003 – Custom player skulls show as the default skin's head on mobs or players.
+MC-51134 – Anvil texture doesn't change in hand.
+MC-51198 – When player's head is inside a full block, the player see the texture of the block below their feet.
+MC-51236 – Same door model on mirrored doors.
+MC-51717 – Brewing stand bottles model error.
+MC-52076 – End portal frame (falling sand) texture render glitch.
+MC-53374 – Piston, end portal frame, beacon, and anvil items are darker than the block form.
+MC-53478 – "Round Trip Different" error with stained glass, ender chests, quartz.
+MC-53587 – When powering a piston, the piston head quickly appears as a full block.
+MC-53675 – Non-full blocks occupy a full block when moved by piston.
+MC-54039 – Sugar cane next to a block turns black.
+MC-54053 – Blocks moved by pistons/slime block have their textures temporarily rotated 180° or 90°.
+MC-54075 – The side face of a piston arm doesn't renders when a block is placed next to it.
+MC-54602 – Invulnerable mobs still drown.
+MC-55145 – Pumpkin top textures don't rotate depending on direction.
+MC-56744 – Baby pigmen cannot attack.
+From the previous development version
+
+MC-55684 – /clone with move on structure with dispensers vomits dispenser contents onto ground.
+MC-55702 – /clone command move: NBT containing blocks drop item.
+MC-56689 – /move command with containers on positive axis deletes items.
+
+
+== Trivia ==
+14w25a was previously removed from the launcher for some time, but was added back in September 2018.
+This snapshot was released on the same day as 1.7.10-pre4.
+Although this was the last first-of-the-week snapshot before snapshots were said to be released on Wednesdays instead of Thursdays, this snapshot was released on a Wednesday instead of Thursday.
+
+
+== References ==
+
+
+== Navigation ==

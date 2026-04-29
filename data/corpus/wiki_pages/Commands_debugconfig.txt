@@ -1,0 +1,42 @@
+/debugconfig is a command that can be enabled with the debug property -DMC_DEBUG_DEV_COMMANDS. It allows sending a player back to configuration phase.
+
+
+== Syntax ==
+debugconfig config <target>
+
+Removes the target player's avatar from the world and switches their connection back to the configuration phase. While in this state, the player's client sees a "Reconfiguring..." screen with a "Disconnect" button that is initially grayed out, and is enabled after 20 seconds.
+debugconfig unconfig <target>
+
+Fully connects the player with the target UUID back into the server, if a player with the target UUID is connected and in the configuration phase.
+debugconfig dialog <target> <dialog>
+
+Shows the player with the target UUID the specified dialog, if a player with the target UUID is connected and in the configuration phase.
+
+
+== Arguments ==
+<target>: entity
+
+Only for debugconfig config. Specifies the target player to switch to the configuration phase.
+Must be a player name, a target selector or a UUID.  And the target selector must be of single-player type.
+<target>: uuid
+
+Only for debugconfig unconfig and debugconfig dialog. Specifies the UUID of a connected player in the configuration phase to fully connect to the server or to show a dialog to.
+Must be a UUID in the hyphenated hexadecimal format. Allowed characters include: -, A-F, a-f, and 0-9.
+<dialog>: dialog
+
+Specifies the dialog to show to a player in the configuration phase.
+Must be either:
+A namespaced ID of a dialog defined in a data pack (e.g., custom:my_dialog or minecraft:server_links). These are stored in the minecraft:dialog registry.
+An inline SNBT defining the dialog structure directly in the command. See Dialog § Dialog format for the structures.
+
+
+== Result ==
+
+
+== Output ==
+
+
+== History ==
+
+
+== Navigation ==

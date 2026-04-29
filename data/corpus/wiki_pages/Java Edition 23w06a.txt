@@ -1,0 +1,317 @@
+23w06a is the fourth snapshot for Java Edition 1.19.4, released on February 8, 2023, which introduces display entities, /damage command, damage types and tags, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Non-mob entities ===
+Display entities
+
+Including block display, item display, and text display.
+Like markers, don't tick and have no collisions or physics.
+Models render at entity position, with normal rotation around X and Y axis (so it can be controlled by teleport commands), but also with additional arbitrary model transform.
+2 new data types added, each of them has 2 forms, but only one for saving, as following:
+rotation
+Quaternion form (used for saving): array of 4 numbers, describing components (x, y, z, w).
+Axis-angle form: object with following fields:
+axis: 3D vector.
+angle: Angle in radians.
+transformation: Arbitrary affine transform, composed as following fields and following order:
+Matrix form: array of 16 numbers, describing row-major matrix.
+Decomposed form (used for saving): object with following fields:
+translation: 3D vector.
+left_rotation: rotation object.
+scale: 3D vector.
+right_rotation: rotation object.
+Some properties of display entities can be interpolated, to create gradual changes over time for clients, instead of instantaneous jumps.
+Display entities keep track of current and previous values of interpolated values:
+All properties marked as "interpolated" are part of a single interpolation set.
+Any update to interpolated property cause all values of interpolation set to be saved as "current".
+Data command executions that do not change value of property (even if it's present in NBT) do not count as updates.
+Updates are synchronized to clients at most once per tick, so multiple updates within command still count as single update.
+Previous current values are saved as "previous".
+If interpolation is enabled, entity transitions between "previous" and "current" values over time.
+Start of interpolation (entity fully in "previous" state) is defined by field interpolation_start (game time, in ticks).
+Set to -1 to load current game time instead.
+End of interpolation (entity fully in "current" state) is defined as interpolation_start + interpolation_duration (in ticks).
+Every entity in family has the following fields:
+transformation: transformation applied to model (after normal entity orientation). Defaults to identity. Interpolated.
+billboard: option to control if entity should pivot to face player when rendered:
+fixed: No rotation (default).
+vertical: Entity can pivot around vertical axis.
+horizontal: Entity can pivot around horizontal axis.
+center: Entity can pivot around center point.
+brightness: If present, overrides light values used for rendering. Omitted by default (which means rendering uses values from entity position). Object has two fields:
+sky: Value of skylight, from 0 to 15.
+block: Value of block light, from 0 to 15.
+view_range: Maximum view range of this entity. Actual distance depends on client-side render distance and entity distance scalling. Default value 1.0 (roughly the same as fireball).
+shadow_radius: Size of shadow. Defaults to 0 (no shadow). Interpolated.
+shadow_strength: Strength of the shadow. Controls the opacity of the shadow as a function of distance to block below. Defaults to 1. Interpolated.
+width, height: Describe size of culling bounding box. Bounding box spans vertically y to y+height and horizontally width/2 in all directions from entity position. If either field is set to 0, culling is disabled. Both default to 0.
+glow_color_override: Override glow border color. Defaults to 0 (use team color).
+Besides common fields, these entity types also have some exclusive fields for their different usages:
+Item display (item_display): Displays a single item stack (stack can be changed with commands by setting slot inventory.0).
+item: Item stack to display. Same format as in inventory.
+Example: {id: "minecraft:dirt", Count: 1}
+item_display: Describes item model transform applied to item (as defined in display section in model JSON)
+Values: none (default), thirdperson_lefthand, thirdperson_righthand, firstperson_lefthand, firstperson_righthand, head, gui, ground, fixed.
+Block display (block_display): Displays a block state, does not display block entities, even if they would normally be created on block placement (like chest).
+block_state: Block state to display. Same format as item held by endermen.
+Example: {Name:"minecraft:dirt"}.
+Text display (text_display): Displays a text component (backgrounds uses new shader types rendertype_text_background and rendertype_text_background_see_through).
+text: Text to display. Components are resolved with the context of the display entity.
+line_width: Line width used to split lines (note: new line can be also added with \n characters). Defaults to 200.
+text_opacity: Opacity (alpha component) of rendered text. Defaults to 255. Interpolated.
+background: Color of background. Includes alpha channel. Defaults to 0x40000000. Interpolated.
+default_background: If true, rendering uses default text background color (same as in chat). Defaults to false.
+shadow: Should text be displayed with shadow. Defaults to false.
+see_through: Should text be visible through blocks. Defaults to false.
+alignment: How text should be aligned.
+Values: center (default), left, right.
+
+
+=== Command format ===
+Game rule
+
+Added doVinesSpread.
+Defaults to true.
+Determines if vines spread to nearby blocks.
+Does not affect cave vines, twisting vines and weeping vines.
+/damage
+
+A new command to apply damage to entities, with following syntaxes:
+/damage <target> <amount> [<damageType>] [at <location>]
+/damage <target> <amount> [<damageType>] [by <entity>] [from <cause>]
+Parameters:
+target: The entity to damage.
+amount: Amount of damage to inflict.
+damageType: The type of damage to inflict.
+This determines how the damage affects the entity as well as which death message is displayed.
+location: The location the damage originated at (when no entity caused the damage).
+For instance, it might represent the location of a bed exploding in the Nether.
+entity: The entity inflicting the damage.
+cause: The cause of the damage, in the case of indirect damage.
+Example: When shot by an arrow, the entity is the arrow projectile while cause might be a skeleton.
+/execute
+
+Added /execute summon sub-command, with the following syntax:
+/execute summon <entity> -> execute
+This sub-command is for summoning new entity and binding context (@s) to it. Meant to simplify entity setup and reduce need for raw NBT editing.
+
+
+=== General ===
+Data pack
+
+Added damage types, which are a new registry.
+Determines how damage is handled by the game.
+Includes which attributes the damage has as well as which death message is used when an entity dies due to that type of damage, example: 
+Fields:
+message_id: The message id used for deaths caused by this damage type.
+Combined with other string fragments to form a translation key.
+exhaustion: The amount of hunger exhaustion caused by this damage type.
+scaling: Whether this damage type scales with difficulty levels. Possible values:
+never: Damage is always the same.
+always: Damage always scales with difficulty.
+when_caused_by_living_non_player: Damage scales with difficulty if it was caused by a living entity who is not a player.
+effects: Optional field controlling how damage manifests when inflicted on players. Possible values:
+hurt (default): The default hurt sound.
+thorns: Thorns hurt sound.
+drowning: Drowning sound.
+burning: A single tick of burning sound.
+poking: Berry bush poke sound.
+freezing: Freeze tick sound.
+death_message_type: Optional field that controls if special death message variants are used. Possible values:
+default (default): No special death message logic is applied.
+fall_variants: Show a variant of fall damage death instead of a regular death message, e.g. death.fell.assist.item.
+intentional_game_design: Show the intentional game design message instead of a regular death message.
+Damage type tags control many aspects of how damage from different sources are interpreted.
+Options
+
+Added "Damage Tilt" accessibility option, for controlling the amount of camera shake when being hurt.
+Added a tooltip in the Key Binds screen that specifies which keybinds are conflicting.
+Tag
+
+Added following damage type tags:
+#always_most_significant_fall: contains out_of_world.
+#always_triggers_silverfish: contains magic.
+#avoids_guardian_thorns: contains magic.
+#burns_armor_stands: contains on_fire.
+#bypasses_armor: contains on_fire, in_wall, cramming, drown, fly_into_wall, generic, wither, dragon_breath, freeze, starve, fall, freeze, stalagmite, magic, indirect_magic, out_of_world, and sonic_boom.
+#bypasses_effects: contains starve.
+#bypasses_enchantments: contains sonic_boom.
+#bypasses_invulnerability: contains out_of_world.
+#bypasses_resistance: contains out_of_world.
+#damages_helmet: contains falling_anvil, falling_block, and falling_stalactite.
+#ignites_armor_stands: contains in_fire.
+#is_drowning: contains drown.
+#is_explosion: contains fireworks, explosion, player_explosion, and bad_respawn_point.
+#is_fall: contains fall and stalagmite.
+#is_fire: contains in_fire, on_fire, lava, hot_floor, unattributed_fireball, and fireball.
+#is_freezing: contains freeze.
+#is_lightning: contains lightning_bolt.
+#is_projectile: contains arrow, trident, mob_projectile, unattributed_fireball, fireball, wither_skull, and thrown.
+#no_anger: contains mob_attack_no_aggro.
+#no_impact: contains drown.
+#witch_resistant_to: contains magic, indirect_magic, sonic_boom, and thorns.
+#wither_immune_to: contains drown.
+General
+
+Added --pidFile argument to dedicated server command line for printing Process ID (PID) to file.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Jukebox
+
+Now emits a note particle above them while playing a music disc, to match Bedrock Edition.
+Sculk sensor
+
+Are now able to detect more actions included in several existing and new game events, such as the following:
+block_change:
+Using shears on cave vines, kelp, twisting vines and weeping vines.
+Picking an item from a cave vine or a lectern.
+Interacting with items placed on both types of item frames.
+Trampling farmland into regular dirt.
+Charging up a respawn anchor.
+Interacting with a composter.
+block_place:
+Turtle and frogs laying eggs.
+container_close:
+Closing a minecart with chest or a boat with chest.
+entity_dismount (new game event, with signal 6):
+Dismount any passenger from any vehicle.
+entity_interact:
+Dyeing a sheep.
+Attaching or removing a lead from an entity.
+entity_mount (new game event, with signal 7):
+Mount any passenger to any vehicle.
+
+
+=== Items ===
+Shield
+
+A sound is now played when a shield is placed into the offhand slot.
+
+
+=== Non-mob entities ===
+Minecart with hopper
+
+No longer aggravates piglins when opened.
+
+
+=== General ===
+"Create New World" screen
+
+Tabs can be switched with the keyboard by pressing Ctrl + ↹ Tab and Ctrl + ⇧ Shift + ↹ Tab.
+Specific tabs can also be navigated to by pressing Ctrl + Tab Number.
+Added a screen to easily enable/disable experimental features.
+Can always be found under the "More" tab.
+In snapshots, a shortcut button can be found under the "Game" tab.
+Creative inventory
+
+Added painting variants to "Functional Blocks" tab.
+Paintings with pre-defined variant now display author, title and size in description when hovered over.
+The "Operator Utilities" tab contains the four paintings that are not available in Survival mode.
+Added fire charge to the "Ingredients" tab.
+Data pack
+
+Increased data pack version to 12.
+Options
+
+Renamed "Notification Display Time" accessibility option to "Notification Time".
+Texts in options buttons now have a scrolling animation whenever they are too large to fit.
+options.txt
+
+Removed heldItemTooltips.
+Predicate
+
+Removed is_projectile, is_explosion, bypasses_armor, bypasses_invulnerability, bypasses_magic, is_fire, is_magic, and is_lightning fields from damage type predicates.
+A new tags array has been added. Each entry has two fields:
+id: The ID of a damage type tag.
+expected: Whether the damage is expected to have or not have the tag for the predicate to match.
+
+
+== Experimental ==
+These changes only take effect when the 1.20 experimental data pack is enabled.
+
+
+=== Changes ===
+
+
+==== Item ====
+Trimmed armor
+
+Swapped iron and iron_darker palette, then made iron_darker darker overall.
+Added a darkest pixel to chestplate_trim trim item texture.
+
+
+== Fixes ==
+45 issues fixed
+From released versions before 1.19
+
+MC-12729 – Z-fighting can be seen on leggings and boots worn by entities.
+MC-145765 – Both "Text Background" settings strings are overflowing the buttons.
+MC-156443 – In some languages, text is too long and escapes buttons.
+MC-198874 – Opening a Minecart with Hopper provokes Piglins, even though opening a Hopper doesn't provoke them.
+MC-209622 – Sculk sensors do not detect item frame / glow item frame interactions.
+MC-209896 – Sculk sensors are not activated upon placing glowstone into respawn anchors.
+MC-209907 – Sculk sensors are not activated upon attaching or removing leads from fences.
+MC-209929 – Sculk sensors are not activated upon filling composters.
+MC-210276 – Sculk sensors are not activated upon trampling farmland.
+MC-210294 – Sculk sensors are not activated upon mounting or dismounting any non-biological entities.
+MC-210334 – Sculk sensors are not activated upon sheep being dyed.
+MC-210707 – Sculk sensors are not activated upon closing chest boats, chest rafts, or chest minecarts.
+MC-210715 – Sculk sensors are not activated upon attaching or removing leads from entities.
+MC-212501 – Sculk sensors are not activated upon collecting books from lecterns.
+MC-213803 – Sculk sensors are not activated upon harvesting glow berries from cave vines.
+MC-215767 – Sculk sensors do not detect turtles laying an egg.
+MC-233972 – Text can appear outside of buttons in the key binds menu when assigning keys to functions or when multiple functions are assigned to the same key.
+MC-236988 – Sculk sensors are not activated upon using shears on cave/twisting/weeping vines or kelp.
+MC-237450 – The "Simulation Distance" text can appear outside of its slider.
+MC-237879 – Sculk sensors are not activated upon villagers working with composters.
+MC-249878 – Text can appear outside of the "Device" button within the music and sound options menu.
+From 1.19
+
+MC-251917 – No gear equipping sound or subtitle when a shield is placed into the offhand slot.
+MC-251934 – Sculk sensors are not activated upon frogs laying frogspawn.
+MC-252434 – Sculk sensors are activated when interacting with fences while holding leads.
+From 1.19.2
+
+MC-257558 – Sculk sensors are activated upon interacting with minecarts with hoppers.
+MC-257873 – Swapping an armor piece with an armor piece of the same type doesn't play its equipping sound.
+MC-258156 – The Warden does not deal the same amount of damage to the player and entities in difficult mode.
+From 1.19.3
+
+MC-258622 – Fire charge isn't in the Ingredients tab in creative inventory.
+From the 1.19.4 development versions
+
+MC-259193 – The "Notification Display Time" text can appear outside of its slider.
+MC-259195 – Using /ride on an entity in another dimension causes client/server desync.
+MC-259197 – The damage tilt effect isn't accessible-friendly.
+MC-259221 – Using the /ride command on invalid entities teleports players to their position.
+MC-259224 – Blocking attacks with shields causes the damage tilt to play and red damage tint to show.
+MC-259227 – /execute if loaded <pos> alone always fails.
+MC-259233 – Argument error messages for low values are inconsistently spelled.
+MC-259245 – An enderman ridden with /ride constantly teleports if the player looks at the enderman's eyes.
+MC-259247 – The /execute on owner sub-command does not select the owner of a horse, donkey, llama, or mule.
+MC-259360 – The selectWorld.mapFeatures.info string is missing a comma after the word "Shipwrecks".
+MC-259432 – Single missing pixel in chestplate_trim item texture.
+MC-259442 – Can't shift click items into second anvil slot.
+MC-259454 – Loot table for hoglin stable chests uses the loot table for bridge chests instead.
+MC-259468 – empty_slot_amethyst_shard does not show in Smithing Table slot.
+From the previous development version
+
+MC-259599 – Curse of Binding armor can be removed by swapping armor with right click in hotbar.
+MC-259635 – The color palettes for iron and iron_darker trims are flipped.
+MC-259640 – The lightest three colors of iron and iron_darker color palettes are identical.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

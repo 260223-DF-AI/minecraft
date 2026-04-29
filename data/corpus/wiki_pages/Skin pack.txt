@@ -1,0 +1,77 @@
+A skin pack is a type of downloadable content that adds additional skins for players to choose from along with the default skins included with the game's purchase. Skin packs are available in Bedrock Edition as purchasable content on the Marketplace. They often feature characters from other video games, movies, and television shows, alongside original designs. Skin packs all have skins related to one another, e.g, a movie skin pack includes characters from only the designated movie. Skin packs are a way to quickly obtain several themed skins at once.
+In addition to separately available skin packs, some mash-up packs and downloadable worlds come bundled with skin packs as well.
+Custom skin packs can be created and imported to the game with a data system similar to resource packs and behavior packs.
+
+
+== List of official skin packs ==
+
+
+=== Cross-platform ===
+
+
+=== Bedrock Edition ===
+
+
+=== Legacy Console Edition ===
+
+
+=== Minecraft Education ===
+
+
+== Package format ==
+
+Custom skin packs use a package format which contains multiple skins for the players and loaded by the game under the com.mojang/development_skin_packs directory. It is defined in manifest.json with the skin_pack module, and contains skins.json and localization files for defining skin entries. When a custom skin pack is loaded by the game, it appears as a skin pack below the custom skin on the "Classic Skins" menu of the Dressing Room.
+Zipped skin packs can be distributed with the .mcpack file extension. Opening a skin pack file will automatically import it to com.mojang/skin_packs and it appears in the Dressing Room. Imported skin packs do not support custom geometry models, only being exclusive to marketplace skin packs made by official collaborations, or published by "Minecraft".
+
+
+=== Directory structure ===
+
+
+=== skins.json ===
+The skins.json file is used to define skin entries later loaded by the game. The following interface is used for skin.json:
+
+
+=== Localization ===
+The localization files for skin pack may be defined under texts directory. For example, texts/en_US.lang defines localization for players with American English language set in their settings.
+The following key name format applies for skin pack localization:
+
+skin.serialize_name.skin_localization_name for defining a skin's name.
+skinpack.serialize_name for defining the skin pack's name.
+skinpack.serialize_name.by for defining the author's name.
+Both serialize_name and skin_localization_name are defined in the skins.json file as specified above.
+
+
+=== Internal skin packs ===
+An internal skin pack is used for the default skins, which uses the same directory structrure as custom skin packs. Internal skin packs can be found at Microsoft.MinecraftUWP/data/skin_packs.
+
+
+== History ==
+
+
+=== Bedrock Edition ===
+
+
+=== Legacy Console Edition ===
+
+
+== Gallery ==
+
+
+=== Artwork ===
+
+
+== See also ==
+Mash-up packs
+Texture packs
+
+
+== References ==
+
+
+== External links ==
+Packaging a Skin Pack | Microsoft Learn
+Change Your Look: An Introduction To Skin Packs | Microsoft Learn
+GitHub skin pack sample
+
+
+== Navigation ==

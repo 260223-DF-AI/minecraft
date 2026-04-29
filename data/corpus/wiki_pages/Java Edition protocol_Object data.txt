@@ -1,0 +1,30 @@
+This article documents the Data field in the Spawn Entity packet. The field is of type VarInt, and the meaning of its contents depend on the type of entity being spawned, as defined in the Type field of the same packet, and is documented below.
+
+
+== Item Frame ==
+
+The Notchian client clamps invalid values into the valid range through the modulus operator. If the resulting value is negative, the absolute value is used.
+Velocity in the packet is always ignored.
+
+
+== Painting ==
+
+The Notchian client clamps invalid values into the valid range through the modulus operator. If the resulting value is negative, the absolute value is used.
+
+Velocity in the packet is always ignored.
+
+
+== Falling Block ==
+
+Velocity in the packet is always ignored.
+
+
+== Fishing Hook ==
+
+Velocity in the packet is ignored, and instead should be inferred from the shooter's position.
+
+
+== Projectile ==
+
+
+== Warden ==

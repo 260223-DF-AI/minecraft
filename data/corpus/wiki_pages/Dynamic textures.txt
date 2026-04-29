@@ -1,0 +1,59 @@
+A dynamic texture is a graphic which is generated at runtime, as opposed to being simply provided via a resource pack.
+A directory containing all current dynamic textures can be produced by pressing F3 and S in Java Edition.
+
+
+== Produced textures ==
+
+
+=== Current ===
+
+
+==== Missing texture ====
+
+A texture used for indicating missing or corrupted graphics. This is only used for objects not on a texture atlas, as each texture atlas contains its own copy of the texture.
+
+
+==== Texture atlases ====
+
+Texture atlases are compilations of several related texture files into one single sheet. Instead of having to load several textures individually, the game can compile several hundreds of images into one texture and reference different sub-textures by their UV position.
+
+
+==== Dynamic font files ====
+Font characters will be added to a small atlas-like file as they are needed.
+
+
+==== Pack icons ====
+These are defined in resource packs and data packs, but are also replicated in the F3+S output.
+
+
+==== Server icons ====
+Server icons are dumped into the folder if they have already been loaded.
+
+
+==== Maps ====
+The contents of maps are also dumped to this folder where applicable.
+
+
+==== Capes ====
+While capes have existed since Beta, they are now printed to the debug folder as of 24w46a.
+
+
+==== Skins ====
+While skins have existed since Classic, they are now printed to the debug folder as of 24w46a.
+
+
+==== World icons ====
+World icons are only loaded in while the select world menu is open, so they are only dumped while the menu is open. They are downscaled to 64x64 pixels.
+
+
+=== Former ===
+
+
+==== Lightmaps ====
+These are used for rendering lighting in-game.
+
+
+== History ==
+
+
+== References ==

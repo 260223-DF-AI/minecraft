@@ -1,0 +1,860 @@
+This is a list of Bedrock Edition 26.10 development versions.
+
+
+== Preview 26.10.20 ==
+Beta 26.10.20 (ChromeOS, Android) or Preview 26.10.20 (Windows, iOS, iPadOS, Xbox, PlayStation) is the first beta/Preview for Bedrock Edition 26.10, released on January 27, 2026, which retextures various baby mobs and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Baby mobs
+
+Changed the textures and models of the following baby mobs:
+Axolotl
+Increased the bounding box of baby axolotls to better fit the new model.
+Has new baby animations.
+ Dolphin
+ Donkey
+ Glow Squid
+Increased the bounding box of baby glow squid to better fit the new model.
+ Horse
+Increased the bounding box of baby horses to better fit the new model.
+ Mule
+ Skeleton Horse
+Increased the bounding box of baby skeleton horses to better fit the new model.
+ Squid
+Increased the bounding box of baby squid to better fit the new model.
+ Turtle
+ Zombie Horse
+Increased the bounding box of baby zombie horses to better fit the new model.
+Gave the baby axolotl animations to match its new model.
+Added new sounds for baby horses and chickens.
+Added missing textures beneath baby chicken wings.
+Updated the bone hierarchy and renamed the bones of baby donkeys and baby mules to match the horse hierarchy and bones.
+Updated the UVs for the rear legs of both baby donkeys and baby mules.
+ Rabbit
+
+The new rabbit models and textures are now version sliced.
+Textures are prefixed with rabbit_.
+
+
+==== General ====
+Experiments
+
+Removed the "Drop 1 of 2026" experimental toggle and implemented all features in regular gameplay.
+
+
+==== Technical ====
+AI Goals
+
+Migrated "minecraft:behavior.ocelotattack" ('_' misname is legacy and cannot safely be changed).
+Made schemas for the following goals stricter when parsing, and will fail to load an entity json that has invalid data in versions 1.26.10 and newer. Also unified and updated documentation:
+minecraft:behavior.drop_item_for
+minecraft:behavior.fertilize_farm_block
+minecraft:behavior.harvest_farm_block
+minecraft:behavior.inspect_bookshelf
+minecraft:behavior.lay_egg
+Float Range field time_of_day_range in minecraft:behavior.drop_item_for now only accepts an object with min and max values.
+Field lay_seconds in minecraft:behavior.lay_egg now only accepts numbers greater than or equal to 0.
+API
+
+Now generates JSON metadata for Molang queries available in the game.
+Released @minecraft/server version 2.6.0.
+Added @minecraft/server version 2.7.0-beta.
+Released Block.getComponents and Block.hasComponent into 2.6.0.
+Released EntityHealBeforeEvent from beta to v2.6.0.
+Released EntityHealAfterEvent from beta to v2.6.0.
+Released EntityHealCause from beta to v2.6.0.
+Released EntityHealSource from beta to v2.6.0.
+Released EntityHealEventOptions from beta to v2.6.0.
+Released EntityHealBeforeEventSignal from beta to v2.6.0.
+Released EntityHealAfterEventSignal from beta to v2.6.0.
+Released WorldBeforeEvents.entityHeal from beta to v2.6.0.
+Released WorldAfterEvents.entityHeal from beta to v2.6.0.
+Released EntityHurtBeforeEvent from beta to v2.6.0.
+Released EntityHurtBeforeEventOptions from beta to v2.6.0.
+Released EntityHurtBeforeEventSignal from beta to v2.6.0.
+Released WorldBeforeEvents.entityHurt from beta to v2.6.0.
+Released EntityHurtAfterEventOptions from beta to v2.6.0.
+Released change of EntityHurtAfterEventSignal to use EntityHurtAfterEventOptions from beta to v2.6.0.
+Released EntityItemPickupAfterEvent from beta to v2.6.0
+Released EntityItemPickupBeforeEvent from beta to v2.6.0
+Released EntityItemPickupEventOptions from beta to v2.6.0
+Released ItemFilter from beta to v2.6.0
+Released EntityItemPickupAfterEventSignal from beta to v2.6.0
+Released EntityItemPickupBeforeEventSignal from beta to v2.6.0
+Released WorldAfterEvents.entityItemPickup from beta to v2.6.0
+Released WorldBeforeEvents.entityItemPickup from beta to v2.6.0
+Moved world.getSeed to stable.
+query.get_level_seed_based_fraction is no longer restricted to the Upcoming Creator Features toggle.
+Added minimum, maximum, or both bounds to several APIs.
+API metadata now list any bounds, minimum value, or maximum value if applicable on interfaces and class methods and properties.
+Moved localizationKey property on ItemType, EntityType, BlockType, and BlockPermutation from beta to stable.
+@minecraft/server-net
+
+Added additional error types for HTTP requests:
+HttpRequestBodyTooLargeError - Request body exceeds configured limit.
+HttpRequestLimitExceededError - Concurrent request limit reached.
+HttpRequestNotAllowedError - Request targets a URI not in the allow list.
+HttpsOnlyError - HTTPS required but non-HTTPS URI provided.
+Components
+
+Replaced the simulate_waves field of the minecraft:buoyant component with the new movement_type field.
+The movement_type field accepts one of three values:
+waves, makes the entity move up and down based on its speed (default value).
+bobbing, makes the entity move up and down at a constant pace.
+none does nothing.
+The big_wave_probability and big_wave_speed fields are only used when movement_type is set to waves.
+Added the can_auto_step_from_liquid field to the minecraft:buoyant component.
+Defines whether the entity can move out of a liquid block to a neighboring solid block if pushed against it.
+Dedicated Server
+
+Added HTTP configuration capabilities for the @minecraft/server-net scripting module on dedicated servers. Server operators can now configure HTTP request limits and restrictions via the permissions.json file. All of the configurable options are optional. If not specified, limits for the particular setting will not be enforced.
+Graphical
+
+The colored block lighting feature is no longer restricted to the Render Dragon Features for Creator Experiment.
+To enable this feature, PBR resource packs must include a local_lighting.json with static_light entries. Blocks that do not have a static_light and light_color specified via a provided resource pack will be treated as non-colored lighting and use the standard uniform light color.
+Static colored lighting on flowing lava and other blocks no longer appears too dark in Vibrant Visuals.
+Adding static_light shading to data driven entities in Vibrant Visuals.
+Added static_light shading to more entities and items in Vibrant Visuals.
+Static colored lighting no longer leaks through corners in Vibrant Visuals.
+Adjusted the light attenuation of static colored block lighting to be less intense.
+Custom blocks with ambient occlusion disabled do not have the occasional black vertex issue anymore.
+Improve ambient occlusion for blocks using a custom geometry.
+Removed ESSL_300 shader language support.
+Realms
+
+Added message and logic for error joining realm whose owner is banned.
+UI
+
+Added button enumeration narration to the death screen when text to speech is enabled.
+Text input fields now support arrow key navigation between lines and keyboard shortcuts such as Ctrl+V on Android.
+Input fields in Ore UI now support mouse caret positioning and selection on Android.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs", and new "Experimental Voxel Shape Features" experimental toggles.
+
+
+==== Changes ====
+
+
+===== Technical =====
+Add-Ons and Script Engine
+
+Added experimental toggle "Voxel Shapes" which enables the use of voxel shapes on blocks.
+Voxel shapes are currently only used for occlusion/culling.
+Currently, only unit cube Vanilla blocks have a voxel shape associated. With this experiment enabled, custom blocks with a voxel shape will only cull against Vanilla unit cube blocks or other custom blocks with a voxel shape.
+Blocks
+
+Added culling_shape field to minecraft:geometry component behind the VoxelShapes toggle.
+The value should be an identifier of a voxel shape and can refer to either a custom voxel shape file, minecraft:unit_cube, or minecraft:empty.
+If the VoxelShapes experiment is enabled and a shape is not specified, minecraft:empty will be used by default if the block does not use minecraft:geometry.full_block.
+Blocks can handle the following entity events in scripting through the onEntity handler:
+Custom named events:
+on_home from minecraft:behavior.go_home
+on_escape from minecraft:behavior.avoid_block
+on_reach from minecraft:behavior.move_to_block
+on_place from minecraft:behavior.place_block
+on_take from minecraft:behavior.take_block
+Unlike the current Vanilla blocks that handle those events, custom blocks may receive those events up to one tick after they were emitted, depending on how late in the tick the event was emitted.
+
+
+=== Fixes ===
+34 issues fixed
+From released versions before Bedrock Edition 26.10
+
+MCPE-168787 – Conflict Between The Game And Mouse "Show Location Of Point When I press the CTRL key" windows setting.
+MCPE-173833 – Baby Polar Bear becomes Hostile.
+MCPE-174103 – Adding an Illager Banner to an enchanted shield removes enchantments.
+MCPE-177148 – Performance Issues on Nintendo Switch.
+MCPE-218741 – Ghast changes back to old texture when shooting fireballs.
+MCPE-226307 – The "Time" button in the chat/command window prevents you from changing the time from day to night if the "Always Day" option is enabled.
+MCPE-229542 – Zombie horses can burn even while standing in water.
+MCPE-229843 – Quick moving custom blocks displays a version of the block with backface culling enabled.
+MCPE-231488 – Windows' "Click lock" mouse setting no longer working as of 1.21.120.
+MCPE-231719 – Horse, Donkey, Mule, and Boat movement is extremely sluggish, delayed, and visually unstable.
+MCPE-232019 – Block State for minecraft:corner doesn't update properly in specific circumstances.
+MCPE-232109 – inputpermission command causes movement stutter.
+MCPE-232900 – minecraft://?addExternalServer links are broken on GDK versions.
+MCPE-233168 – Resizing the game window in Minecraft also resizes it in Minecraft Preview, and vice-versa.
+MCPE-234715 – Updated full-block model rotated incorrectly in item frames.
+MCPE-234722 – /reload all doesn't reload resource packs in "resource_packs" folder, but exiting and re-entering a world manually does.
+MCPE-234734 – New baby Rabbits, Mooshrooms, Ocelots, and Sheep are invisible with the Classic Texture Pack activated.
+MCPE-234744 – New rabbit textures were not given a separate "rabbit_v2" folder, breaking all existing resource packs.
+MCPE-234784 – the new baby cows, pigs, and chickens are the size of adult mobs, with even bigger heads while using the Classic texture pack.
+MCPE-234785 – The baby cats and wolves use the new 2026 drop 1 models, despite having the Classic texture pack enabled.
+MCPE-235024 – Death screen no longer fading in.
+Other
+
+Fixed an issue preventing some item related achievements from being obtained.
+Fixed incorrect allele range syntax for pandas and goats.
+This was actually fixed in Preview 26.0.29.
+Fixed an issue where Marketplace textures would be cached when re-entering worlds and could potentially degrade performance on some platforms.
+Fixed screen narration reading previously typed chat messages letter by letter when context changed.
+Fixed feature loading to allow for sub-directories and any filename, will now only use identifier in JSON.
+Fixed an issue with z-fighting on brewing stands and stonecutters on PlayStation in certain lighting conditions.
+Fixed an issue that caused the spyglass full screen effect to brighten the scene in Vibrant Visuals.
+Fixed an issue that caused end portals to have invisible panels in Vibrant Visuals.
+Fixed long running sounds such as jukebox music from playing in the menu when leaving a multiplayer world.
+Fixed a bug that made buttons at the top of the Marketplace screen difficult to select with a controller.
+Fixed EntityHurtBeforeEvent.cancel to not allow some sources of knockback (sprint bonus, enchantment, mace smash, projectiles) when set to true.
+Fixed issues with the MERS texture for tamed baby wolves.
+Added missing texture for the tamed woods variant for baby wolves.
+
+
+== Preview 26.10.21 ==
+Beta 26.10.21 (ChromeOS, Android), Preview 26.10.21 (Windows, Xbox, PlayStation), or Preview 26.10.22 (iOS, iPadOS) is the second beta/Preview for Bedrock Edition 26.10, released on February 3, 2026, which adds golden dandelions, retextures several baby mobs, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Golden Dandelion
+
+Crafted with a dandelion and 8 gold nuggets:
+
+When used on a baby mob, it will stop aging. This sets NBT attribute GrowthPaused to 1.
+When used again, it will continue to age again. This sets NBT attribute GrowthPaused to 0.
+Cannot be used on monsters (including undead mounts) and villagers.
+Can be placed and potted like other flowers.
+
+
+==== General ====
+Settings
+
+Added a setting for texture streaming on some devices to the Video settings, which will reduce the GPU memory for some textures, especially with more add-ons.
+Added an option on Windows to disable pausing when the application loses focus.
+Controls
+
+Added a keybind, F4 by default, to open the social drawer in-game.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Baby mobs
+
+Changed the textures of the following baby mobs:
+ Armadillo
+ Bee
+ Camel
+ Fox
+ Goat
+ Llama
+ Polar Bear
+ Trader Llama
+Added unique animations for baby foxes, camels, and armadillos.
+
+
+==== General ====
+UI
+
+Updated the inventory and SDL screens to properly reflect purchases made when navigating back to it from a related page.
+Updated the interact button design for touch controls.
+
+
+==== Technical ====
+AI Goals
+
+Made the schema for minecraft:behavior.ram_attack stricter when parsing, now will fail to load an entity json that has invalid data in versions 26.10 and newer.
+Float Range field cooldown_range now only accepts an object with min and max values.
+Other formats will fail to parse.
+Made the schema for minecraft:behavior.celebrate stricter when parsing, now will fail to load an entity json that has invalid data in versions 26.10 and newer.
+Float Range fields sound_interval and jump_interval now only accepts an object with min and max values.
+Other formats will fail to parse.
+API
+
+Added isSuperset parameter to world.containsBiomes.
+Moved world.containsBiomes to stable.
+Removed superset property from BiomeFilter.
+Moved ScriptBiomeFilter to stable.
+Released BlockComponentRedstoneUpdateEvent.previousPowerLevel from beta to v2.6.0.
+Released property ItemDurabilityComponent.unbreakable from beta to v2.6.0.
+Character Creator
+
+Added check for usage of banned skin in persona delegate and added case to display default appearance and inform user when banned skin is detected.
+Exiting the game after changing your appearance will immediately cache all changes.
+Entity components
+
+Added the ability to pause and reset growth of entities in minecraft:ageable using specified items.
+Introduced fields pause_growth_items and reset_growth_items, which are a list of items that can be fed to the entity to pause or reset growth for baby entities.
+Introduced ActorDefinitionTrigger fields pause_growth and reset_growth to trigger an event when aging is paused or reset for baby entities.
+Scripting
+
+Added new widget render primitive types to the @minecraft/server-editor module:
+WidgetComponentRenderPrimitiveTypeCylinder - Cylinder primitive with elliptical cross-section (radiusX, radiusZ, height)
+WidgetComponentRenderPrimitiveTypeCone - Cone primitive with elliptical base (radiusX, radiusZ, height)
+WidgetComponentRenderPrimitiveTypeCuboid - Cuboid primitive with independent dimensions (lengthX, lengthY, lengthZ)
+WidgetComponentRenderPrimitiveTypePyramid - Pyramid primitive with rectangular base (xWidth, zWidth, height)
+WidgetComponentRenderPrimitiveTypeEllipsoid - Ellipsoid primitive with Vector3 radii
+Added corresponding PrimitiveType enum values: Cone, Cuboid, Cylinder, Ellipsoid, and Pyramid.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs" experimental toggle.
+
+
+==== Changes ====
+
+
+===== Technical =====
+API
+
+Introduced new UI capabilities called Data-Driven UI (DDUI).
+These APIs introduce a new way to create modal forms with new capabilities and an all new look.
+Reload command now closes all the Data Driven UI screens as part of the execution.
+ScriptSetBannerDetailsFunction now includes base color and pattern data.
+
+
+=== Fixes ===
+14 issues fixed
+From released versions before Bedrock Edition 26.10
+
+MCPE-158584 – Chat command completion on new iOS keyboard does not work when cursor at end of partial parameter.
+MCPE-183866 – Villager names appear in a different font when the language is set to English (United Kingdom).
+MCPE-191027 – Pick Block button opacity cannot be adjusted when customizing. controls.
+MCPE-225207 – Wolf Armor & Undyed Bundle render incorrectly in Shelves and Item Frames if their textures are higher than 16x.
+MCPE-234684 – Adult mooshroom's head mushroom floating.
+MCPE-234733 – Baby skeleton horses grow up, unlike baby zombie horses.
+MCPE-235095 – Party icon doesn't match the old UI style in the new settings screen.
+MCPE-235400 – “Go to Settings” button opens JSON Settings menu instead of Ore UI.
+MCPE-235419 – Game Crashes When Writing High-Data-Volume Text (e.g., Chinese/Japanese) on Single Book Page Due to New Character Limit in Beta 26.0.29.
+Other
+
+Fixed a crash that sometimes happened when players were climbing.
+Fixed a crash when opening Realms tab with 150+ joined realms.
+Fixed client crash on world load from out of bounds minecraft:geometry in the minecraft:item_visual component.
+Fixed an issue with DebugBox where the position was being used as the bottom-left corner, instead of the centre.
+Fixed an issue with DebugShape.attachedTo where the attachment position was unintentionally using the height offset of the entity.
+
+
+== Preview 26.10.23 ==
+Beta 26.10.23 (ChromeOS, Android) or Preview 26.10.23 (Windows, iOS, iPadOS, Xbox, PlayStation) is the third beta/Preview for Bedrock Edition 26.10, released on February 11, 2026, which adds new textures and models for baby zombies, their variants, piglins, and villagers. It also adds the trumpet note block sound, adds the "Describe" keybind, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Controls
+
+Added a key binding for Describe, a feature that displays with text or text to speech which block or mob is in front of the player.
+
+
+==== Sounds ====
+ Note Block
+
+Added the trumpet instrument.
+It can be heard when a note block is placed on top of a block of copper.
+The sound is different based on the oxidation level of the copper block.
+
+
+=== Changes ===
+
+
+==== Items ====
+ Golden Dandelion
+
+Can now be crafted into yellow dye.
+Can now be used to craft suspicious stew.
+Can now be used to distract piglins.
+Can now be picked up by endermen and mobs who can pick up items.
+Can now be sold by the wandering trader.
+Now produces particles and sounds on use.
+Bone meal can no longer be used on it to spawn more flowers around it.
+
+
+==== Mobs ====
+Baby mobs
+
+Changed the textures and models of the following baby mobs:
+ Drowned
+ Husk
+ Piglin
+ Villager
+ Zombie
+ Zombie Villager
+ Zombified Piglin
+Horse
+
+Updated adult horse's blackdot markings to match the new baby horse markings.
+
+
+==== General ====
+Game Menu
+
+Added a Beta Feedback button in Preview and betas, which opens the feedback site.
+This replaces the Browse Add-ons! button, which has been moved to the small buttons below.
+The small buttons now show a tooltip similar to hotbar tooltips on hover.
+Play screen
+
+Hardcore worlds now show the amount of days played if the game rule showdaysplayed is enabled.
+Settings
+
+Updated the Controller and Touch settings tabs with Ore UI.
+
+
+==== Technical ====
+AI Goals
+
+Made the schemas for the following goals stricter when parsing and will fail to load an entity json that has invalid data in versions 26.10 and newer:
+minecraft:behavior.celebrate_survive
+minecraft:behavior.random_search_and_dig
+minecraft:behavior.swim_with_entity
+minecraft:behavior.take_flower
+minecraft:behavior.trade_with_player
+minecraft:behavior.teleport_to_owner
+minecraft:behavior.work
+minecraft:behavior.work_composter
+The following float range fields now only accepts an object with min and max values.
+fireworks_interval in minecraft:behavior.celebrate_survive.
+cooldown_range and digging_duration_range in minecraft:behavior.random_search_and_dig.
+API
+
+Included the built in math functions in generated metadata for molang.
+Changed resultItem on EntityDefinitionFeedItem and FeedItem to be of type string undefined.
+Released resultItem on EntityDefinitionFeedItem and FeedItem from beta to v2.6.0.
+Released EntityItemDropAfterEvent from beta to v2.6.0.
+Released EntityItemDropAfterEventSignal from beta to v2.6.0.
+Released EntityItemDropEventOptions from beta to v2.6.0.
+Released WorldAfterEvents.entityItemDrop from beta to v2.6.0.
+Item components
+
+The minecraft:block_placer item component has a new boolean field, aligned_placement.
+When true, block placement through this item will be aligned while holding the interaction button down.
+Defaulted to false.
+JSON Schema
+
+Updated the canopy_decoratorschema to support placing several blocks in a row as a decorator.
+New schema includes decoration_blocks_sequence as a list of blocks and a count per block to be placed.
+Rendering
+
+Armor attachables for players now use a new render controller called controller.render.armor.player.
+UI
+
+Changed screen narration to not read the Marketplace Pass banner.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs" and "Upcoming Creator Features" experimental toggles.
+
+
+==== Changes ====
+
+
+===== Technical =====
+API
+
+Added the Observable class that fires change events when the data it is wrapping changes.
+CustomForm and MessageBox use these to sync data between the client and the server and you can use observables to get notifications if data changes.
+Localizable messages can be provided by using the interface UIRawMessage.
+Blocks
+
+Added block trait minecraft:multi_block behind the "Upcoming Creator Features" experiment.
+Graphical
+
+Removed the legacy format for specifying light colors in the "Render Dragon for Creators" experiment.
+point_lights/global.json will no longer be loaded.
+Server-UI DDUI
+
+Renamed the interface LabelOptions to TextOptions.
+Class CustomForm:
+Added the method label(text: Observable<string> string UIRawMessage, options?: TextOptions): CustomForm.
+Class MessageBox:
+Removed the method title(text: Observable<string> string UIRawMessage): MessageBox.
+Added the parameter title to static method create:
+static create(player: Player, title: Observable<string> string UIRawMessage): MessageBox.
+
+
+=== Fixes ===
+16 issues fixed
+From released versions before Bedrock Edition 26.10
+
+MCPE-119736 – Villagers sleep on the floor.
+MCPE-232736 – All Back navigation options stop functioning in the Profile page after viewing another player’s Profile page through the friends list.
+MCPE-234686 – “Fast bridging” disabled when replacing a custom block’s item
+MCPE-234762 – Icons inside the Ore UI screen become invisible when the UI scale is set to small.
+MCPE-235009 – Villager trading items overlap with arrow and lock icon when using Pocket UI.
+MCPE-235141 – Marketplace content (add-ons, mash-ups, skin packs, etc.) is unable to be downloaded.
+From the Bedrock Edition 26.10 development versions
+
+MCPE-235767 – Baby Sea Turtle mers mapping is incorrect.
+Other
+
+Fixed warm baby chicken texture not being symmetrical.
+Fixed incorrect baby brown rabbit texture.
+Corrected baby turtle texture colors.
+Fixed incorrect baby British shorthair cat texture.
+Corrected baby pig texture colors.
+Fixed a bug where some light source blocks held in hand would appear unlit when near other light source blocks in Vibrant Visuals.
+Fixed a bug where isValid could return false for a valid SimulatedPlayer after it had been spawned.
+Fixed an issue with images for the Marketplace Pass and Realms FAQs pages being excessively large.
+Fixed gamma encoding of the sun, moon, weather, and end sky in Vibrant Visuals.
+
+
+== Preview 26.10.24 ==
+Beta 26.10.24 (ChromeOS, Android) or Preview 26.10.24 (Windows, iOS, iPadOS, Xbox, PlayStation) is the fourth beta/Preview for Bedrock Edition 26.10, released on February 17, 2026, which adds new textures and models for the remaining baby mobs: the hoglin, panda, sniffer, strider, and zoglin. It also adds new sound variants, adds the furnace recipe book as an experiment, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+ Dead bush
+
+Can now be placed on farmland.
+ Golden dandelion
+
+Now displays green particles when used on a baby mob.
+Particles moving downwards indicate that aging is paused.
+Particles moving upwards indicate that age has been reset and is now resumed.
+Now plays pause growth and reset growth sounds on use.
+ Stonecutter
+
+Deepslate can now be directly crafted into its cobbled, polished, brick, and tile variants in the stonecutter.
+Stone can now be directly crafted into its cobblestone variants in the stonecutter.
+Due to a bug (MCPE-236401), the granite, polished granite, diorite, polished diorite, andesite and polished andesite can also be used to make cobblestone.
+This was fixed in the next Preview.
+
+
+==== Mobs ====
+Baby mobs
+
+Changed the textures and models of the following baby mobs:
+ Hoglin
+ Panda
+ Sniffer
+ Strider
+ Zoglin
+Adjusted the hitbox of baby zombies and variants, piglins, and villagers to fit in 1 block high and 0.5 block wide spaces.
+ Cat, Chicken, Cow, and Pig
+
+Added distinct sound variants similar to wolves, in addition to the original "classic" variant:
+Cats have a new "royal" variant.
+Pigs have new "mini" and "big" variants.
+Cows have a new "moody" variant.
+Chickens have a new "picky" variant.
+ Husk
+
+Fixed a family typo preventing babies from forming jockeys.
+
+
+==== General ====
+How to Play
+
+The main How to Play button has been moved from the settings to the game menu.
+Play screen
+
+Custom servers are now always available on the "Servers" tab even when no featured servers could be found.
+Realms
+
+The "world_replica_based_backup" flag and the old Realms backup system have been removed, and now the new backups system, Realms Saves, is now enabled at all times.
+
+
+==== Technical ====
+AI Goals
+
+Made schemas for the following goals stricter when parsing and will fail to load an entity json that has invalid data in versions 26.10 and newer:
+minecraft:behavior.move_to_land
+minecraft:behavior.move_to_water
+minecraft:behavior.ocelot_sit_on_block
+minecraft:behavior.raid_garden
+minecraft:behavior.stomp_turtle_egg
+minecraft:behavior.offer_flower
+minecraft:behavior.play
+Made the schema for minecraft:behavior.play_dead stricter when parsing, it will now fail to load an entity json that has invalid data in versions 26.10 and newer. Int Range field random_damage_range now only accepts an object with min and max values.
+API
+
+Released AimAssistCategory from beta to v2.6.0.
+Released AimAssistCategorySettings from beta to v2.6.0.
+Released AimAssistPreset from beta to v2.6.0.
+Released AimAssistPresetSettings from beta to v2.6.0.
+Released AimAssistRegistry from beta to v2.6.0.
+Released PlayerAimAssist from beta to v2.6.0.
+Released PlayerAimAssistSettings from beta to v2.6.0.
+Released AimAssistTargetMode from beta to v2.6.0.
+Released World.getAimAssist from beta to v2.6.0.
+Released Player.getAimAssist from beta to v2.6.0.
+Released BlockComponentEntityEvent from beta to v2.6.0.
+Client Entities
+
+Added held_item_scale field to entity.json schema.
+Allows items held by mobs to be scaled by a factor greater than zero.
+Defaults to 1.0.
+Entity components
+
+A content warning will now throw if the amount of experience orbs requested to be spawned in a single tick exceeds the recommended max of 512.
+General
+
+Upgraded actor JSON resources to Cereal slice 26.0 and re-serialized to align with the updated schema.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs", "Upcoming Creator Features", "Experimental Voxel Shape Features", and "Furnace Recipe Book" experimental toggles.
+
+
+==== Additions ====
+Experiments
+
+Added experimental toggle to enable the new furnace recipe book.
+
+
+==== Changes ====
+
+
+===== Technical =====
+API
+
+Game Test:
+When running /gametest run <test> on game tests with invalid structures, the game tests are no longer spawned at the world ceiling.
+Added dedicatedServer optional global to beta of server-admin for accessing dedicated server only APIs.
+Added DedicatedServerUtils to beta of server-admin with dedicated server only APIs.
+Added LevelStorage to beta of server-admin with dedicated server save state management APIs.
+Added LevelStorageQuerySnapshotFile to beta of server-admin.
+Added AllowList to beta of server-admin with dedicated server allow list management APIs.
+Added the function Entity.addItem for directly giving items to a mob or player.
+Added Block.getParts method behind beta. Returns an array of Block parts if the block has the minecraft:multi_block trait.
+Server-UI DDUI
+
+Changed Class CustomForm:
+Changed return of method show(): Promise<void> to Promise<boolean> where returning true means it was shown and false means it was not shown.
+Added isShowing(): boolean method.
+Changed Class MessageBox:
+Added isShowing(): boolean method.
+Changed interface MessageBoxResult:
+Added the property wasShown which is set to true if the message box was shown to the player.
+
+
+=== Fixes ===
+19 issues fixed
+From released versions before Bedrock Edition 26.10
+
+MCPE-173775 – Clocks, Compasses, and Recovery Compasses have a corrupted appearance after turning HD texture packs on/off.
+MCPE-174365 – Can't reposition caret by clicking or tapping on some screens.
+MCPE-224638 – Certain area in the Nether causes extreme lag or a game/server crash when entered.
+MCPE-232634 – Scrolling Direction setting in Windows no longer applies in-game when using an external mouse.
+MCPE-234672 – Baby cats, ocelots and wolves spawned by using spawn eggs on untamed mobs come in a broken state.
+MCPE-234763 – Featured server profile picture turns into small dot when UI scale is set to small.
+MCPE-235481 – Game crash when using liquid detection block component with an empty detection rules array.
+MCPE-235655 – Picking up arrows dropped by Skeletons while holding arrows in off-hand causes slot errors.
+From the Bedrock Edition 26.10 development versions
+
+MCPE-235690 – "Full keyboard mode" and "Invert camera Y-axis" options do not take effect until the world is reloaded.
+MCPE-235789 – Voxel shape box validation incorrect.
+Other
+
+Fixed tamed baby British shorthair cat variant texture.
+Fixed a bug where baby mobs would be incorrectly scaled when using classic texture packs.
+Fixed a regression where striders and piglins over enthusiastically scream.
+Fixed an issue where baby armadillos would not peek out while rolled up.
+Fixed narration for elements outside a scroller.
+Fixed characters rotating incorrectly in UI when riding a mob.
+Fixed localization string for tile.sticky_piston_arm_collision.name to Sticky Piston Arm Collision.
+Fixed /setblock and /fill commands from placing partial double blocks, like the upper part of a door.
+Fixed sky light calculations being applied multiple times per chunk, causing excessive memory usage.
+
+
+== Preview 26.10.25 ==
+Beta 26.10.25 (ChromeOS, Android) or Preview 26.10.25 (Windows, iOS, iPadOS, Xbox, PlayStation) is the fifth beta/Preview for Bedrock Edition 26.10, released on February 24, 2026, which makes some minor changes, updates the panorama, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+ Drowned, husk, and zombie
+
+Reduced the head size of the baby mob models.
+
+
+==== Items ====
+Name tag
+
+Can no longer be bought from librarians.
+Can now be sold by wandering traders as a common trade for 1 emerald with a 7% chance, and 5 trades in stock.
+Can no longer be found in chests in woodland mansions and ancient cities.
+
+
+==== General ====
+Controls
+
+Updated the name for the Describe control to Identify.
+Graphical
+
+Added static/colorized block light shading to particles in Vibrant Visuals.
+Panorama
+
+Updated the panorama to reflect Tiny Takeover.
+
+
+==== Technical ====
+AI Goals
+
+The minecraft:behavior.panic goal has been made more robust in how it calculates an entity's desired path.
+API
+
+Moved the interface TickingAreaOptions from beta to V2.6.0.
+Moved the class TickingAreaManager from beta to V2.6.0.
+Moved the interface TickingArea from beta to V2.6.0.
+Moved the error TickingAreaError from beta to V2.6.0.
+Moved the enum TickingAreaErrorReason from beta to V2.6.0.
+Camera:
+Released playAnimation method from beta to v2.6.0.
+Released attachToEntity method from beta to v2.6.0.
+Released EntityAttachPoint from beta to v2.6.0.
+Released CatmullRomSpline from beta to v2.6.0.
+Released LinearSpline from beta to v2.6.0.
+Released AnimationOptions from beta to v2.6.0.
+Released CameraAttachOptions from beta to v2.6.0.
+Released ProgressKeyFrame from beta to v2.6.0.
+Released RotationKeyFrame from beta to v2.6.0.
+Released SplineAnimation from beta to v2.6.0.
+World:
+Moved the property readonly tickingAreaManager: TickingAreaManager from beta to V2.6.0.
+Blocks
+
+Added some JSON constraints for blocks with trait minecraft:multi_block:
+Component minecraft:movable must be defined and cannot be defined in permutations.
+Valid values for movement_type are popped or immovable.
+Component minecraft:placement_filter cannot be defined in permutations.
+Entity components
+
+Split the minecraft:pushable component into two new components:
+minecraft:pushable_by_block is the equivalent of setting "is_pushable_by_piston": true.
+If minecraft:pushable_by_block exists on the entity, then pistons and shulker boxes can attempt to push it.
+Removing minecraft:pushable_by_block is the equivalent of setting "is_pushable_by_piston": false.
+minecraft:pushable_by_entity is the equivalent of setting "is_pushable": true.
+If minecraft:pushable_by_entity exists on the entity, then other entities can attempt to push it.
+Removing minecraft:pushable_by_entity is the equivalent of setting "is_pushable": false.
+The component minecraft:pushable will no longer be parsed.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs", "Upcoming Creator Features", and "Experimental Voxel Shape Features" experimental toggles.
+
+
+==== Changes ====
+
+
+===== Technical =====
+API
+
+TickingAreaManager:
+Changed createTickingArea() to return Promise<void> instead of Promise<TickingArea> in beta.
+Added locatorBar property to beta:
+Manages the collection of waypoints displayed on the player's locator bar.
+Added Waypoint class to beta:
+Base class for waypoints displayed on the player's locator bar.
+Added EntityWaypoint class to beta:
+Waypoint that tracks an entity's position.
+Added PlayerWaypoint class to beta:
+Waypoint that tracks a player's position with player specific visibility rules.
+Added LocationWaypoint class to beta:
+Waypoint that points to a fixed location in the world.
+Added WaypointTexture enum to beta:
+Enum representing different texture icons for waypoints.
+Added WaypointTextureBounds interface to beta:
+Defines a texture and distance range for waypoint display.
+Added WaypointTextureSelector interface to beta:
+Defines how waypoint textures change based on distance.
+Added EntityVisibilityRules interface to beta:
+Controls waypoint visibility based on entity state.
+Added PlayerVisibilityRules interface to beta:
+Controls waypoint visibility based on player-specific states.
+Added LocatorBar class to beta:
+Manages the collection of waypoints displayed on a player's locator bar.
+Added LocatorBarError error class to beta:
+Error thrown when a locator bar operation fails.
+Added LocatorBarErrorReason enum to beta:
+Enum representing reasons why locator bar operations fail.
+Added InvalidWaypointError error class to beta:
+Error thrown when attempting operations on an invalid waypoint.
+Added InvalidWaypointTextureSelectorError error class to beta:
+Error thrown when using WaypointTextureSelector size over limit.
+Blocks
+
+Added minecraft:chest_obstruction component under the Upcoming Creator Features toggle.
+It defines how a block placed above a chest or ender chest should obstruct their opening.
+obstruction_rule specifies how the block is evaluated during opening if placed above; shape is the default when not specified.
+always: Will always obstruct a chest from opening.
+never: Will never obstruct a chest from opening.
+shape: Will use the Blocks AABB shape to determine if the chest is obstructed from opening.
+Blocks prior to 26.10 will behave as expected based on their defined geometry and material instances.
+
+
+=== Fixes ===
+21 issues fixed
+From released versions before Bedrock Edition 26.10
+
+MCPE-104070 – Water leaks through stair blocks when not all of same type.
+MCPE-186092 – Trial chambers are over spawning mobs.
+MCPE-232505 – Cannot download the add-on “RealismCraft 2.2” from the "Create from template" screen.
+MCPE-233116 – Incorrect or Missing Closed Captions.
+MCPE-233144 – Sounds played through entity or attachables animations do not produces subtitles.
+MCPE-234709 – Subtitles text slightly offset to the right when showing subtitle with "<" direction.
+MCPE-234792 – The UI looks small even if GUI Scale is set to max.
+From the Bedrock Edition 26.10 development versions
+
+MCPE-235469 – Baby glow squid is not emissive.
+MCPE-235739 – Golden dandelions can't be used on squid and baby squid.
+MCPE-236101 – Baby Leather armor lacks from its not tinted leather overlay from Java.
+MCPE-236105 – Armor Trims not showing.
+MCPE-236401 – Cobblestone recipes incorrectly appear for other stone types in stonecutters.
+Other
+
+Fixed an issue that could cause invalid classic skins to be shown as blank skins.
+Fixed an issue where some players on PS5 had vertical sync disabled, causing image tearing.
+Fixed a hole in the snifflet texture.
+Fixed broken modals shown when client attempts to play on a Realm.
+Fixed placement_filter and block_placer components to support placing on liquid blocks when used with liquid_clipped.
+Fixed rare crash on PS5 native due to inconsistency of packet ordering.
+Fixed content warnings for unit cube and empty shapes that appear when joining a voxel shape enabled world as a client.
+Fixed a missing pixel in the robe of the baby plains zombie villager texture.
+Mirrored baby hoglin and baby zoglin left ear texture.
+
+
+== Preview 26.10.26 ==
+Beta 26.10.26 (ChromeOS, Android) or Preview 26.10.26 (Windows, iOS, iPadOS, Xbox, PlayStation) is the sixth beta and sixth and final Preview version for Bedrock Edition 26.10, released on March 4, 2026, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Gameplay ====
+Trading
+
+Re-added the master librarian level, where they will now offer red and yellow candles for three emeralds each.
+
+
+=== Fixes ===
+4 issues fixed
+From the Bedrock Edition 26.10 development versions
+
+MCPE-236650 – Librarians cannot level up to Master due to having no master-level trade
+MCPE-236656 – Villager movement is choppy and extremely fast
+Other
+
+Fixed the baby sheep texture causing layers to turn invisible when dithering was enabled.
+Mob and player heads are now scaled correctly when worn by humanoid baby mobs.
+
+
+== beta 26.10.27 ==
+Beta 26.10.27 is the seventh and final beta version for Bedrock Edition 26.10, released on March 7, 2026 for Android only, which fixes a bug.
+
+
+=== Fixes ===
+1 issue fixed
+Other
+
+Fixed issues with inputting text while using a physical keyboard on Android devices.
+
+
+== Notes and references ==
+
+
+== Navigation ==

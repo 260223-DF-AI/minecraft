@@ -1,0 +1,99 @@
+A falling block is the entity form of a block that appears when a gravity-affected block loses its support.
+
+
+== Spawning ==
+Falling blocks naturally spawn where gravity-affected blocks lose their base of support. These blocks include:
+
+In Java Edition, falling block entities can be spawned through /summon. By tweaking the BlockState NBT tag, it is possible to summon any block as a falling block entity.
+Although it has the same appearance as its corresponding block and is also affected by gravity, primed TNT is a different entity.
+
+
+== Behavior ==
+A falling block continues falling until it lands on another block with a solid top surface. If it lands with the bottom center of its hitbox in a replaceable block, and the block below can support it (i.e. not a replaceable block), then the falling block returns to its block state. Otherwise, it breaks and drops as an item.
+Like most other entities, falling blocks are affected by explosions and bubble columns, can be launched by a moving slime block, can be pushed by pistons, can be slowed down by cobwebs, can slide down the side of a honey block, and can travel through nether and end portals. However, they do not bounce on a stationary slime block and can neither be pushed nor slowed down by water or lava.
+Falling blocks pass through most entities without colliding with them, although projectiles such as arrows bounce off them. They do not have health, cannot be attacked and do not take damage. They are also immune to all status effects.
+By default, a falling block that has existed for more than 600 ticks (30 seconds) destroys itself and drops as an item. This can be changed by modifying the entity's Time NBT value. Suspicious sand and suspicious gravel also drop themselves after falling for more than 30 seconds, making this the only way to obtain suspicious blocks in Survival mode.‌[Java Edition  only]
+Commands such as /data‌[Java Edition  only] can change the moving and facing directions of a falling block, although there are no in-game mechanics that can alter a falling block's facing direction. They can be removed with the /kill command.
+Some falling blocks, like anvils and pointed dripstone, deal damage to players and mobs in the same block space where they land. The damage is dealt only on landing, and is not dealt to players and mobs that collide with them in mid-air. A falling block that deals damage can be summoned if its HurtEntities tag is set to true. The amount of damage dealt per block fallen can be customized via the FallHurtAmount tag, and the maximum damage dealt can be customized via the FallHurtMax tag.
+
+
+=== Interactions with projectiles ===
+Projectile hits the falling block
+
+Bottle o' Enchanting
+Egg
+Ender Pearl
+Fire Charge
+Firework Rocket
+Lingering Potion
+Snowball
+Splash Potion
+Wind Charge
+Projectile passes through the falling block
+
+Eye of Ender
+Fireball
+Llama Spit
+Projectile ricochets on the falling block
+
+Arrow
+Spectral Arrow
+Trident
+
+
+== Sounds ==
+
+Some falling blocks produce sounds when they land.
+Java Edition
+
+Bedrock Edition:
+
+
+== Data values ==
+
+
+=== ID ===
+Java Edition:
+
+Bedrock Edition:
+
+
+=== Entity data ===
+Java Edition:
+
+Bedrock Edition:
+
+See Bedrock Edition level format/Entity format.
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+=== Legacy Console Edition ===
+
+
+=== New Nintendo 3DS Edition ===
+
+
+=== Data history ===
+
+
+== Issues ==
+Issues relating to "Falling Block" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== See also ==
+Tutorial:Falling blocks
+Entity
+
+
+== References ==
+
+
+== Navigation ==

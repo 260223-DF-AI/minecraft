@@ -1,0 +1,888 @@
+1.15, the release of Buzzy Bees, is a major update to Java Edition released on December 10, 2019. It added bees and bee-related items, such as beehives, honey bottles and honeycombs.
+Alongside adding bees, this update focused on fixing bugs and improving performance, as well as adding numerous features that were originally Bedrock Edition exclusives.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Beehive
+
+Can be crafted using 6 planks and 3 honeycombs.
+Can house bees.
+Fills up with honey.
+The amount of honey in the beehive increases as bees gather nectar and return to their hive.
+The player can harvest honeycombs and honey bottles from the hive using shears and glass bottles respectively.
+If the player breaks or harvests honey from the hive, the bees become hostile on the player.
+Bees inside the hive don't turn hostile if it is harvested with Silk Touch, but bees outside the hive do.
+Bees don't turn hostile if there is a lit campfire or fire underneath the hive when honeycombs or honey bottles are harvested.
+Is a block entity and cannot be pushed by pistons.
+When instantly mined in Creative mode, they drop as an item if they contain any bees.
+
+ Bee nest
+
+Spawn naturally in flower forests, plains, and sunflower plains biomes.
+Functions the same as beehives, but requires Silk Touch to be collected.
+ Honey block
+
+Can be crafted with 4 honey bottles.
+The bottles are not consumed and remain in the crafting grid.
+Stickier than slime blocks:
+Players' jump height is drastically reduced.
+Players walk very slow and cannot sprint on them.
+Effect also works through non-full blocks like carpets and slabs.
+When a honey block is pushed or pulled by a piston, it attempts to move all adjacent blocks in the same direction.
+Works the same way as slime blocks.
+Honey blocks do not stick to slime blocks.
+If an entity is on a honey block that is pushed by a piston, the entity is moved with the honey block.
+Entities touching the side of a honey block slide down slowly.
+Landing on a honey block reduces fall damage.
+Fall damage is cut to about 1⁄5 of normal: equal to ceiling((fall distance - 3) / 5), or in other words, 1⁄5 of 1HP for every block fallen after the first 3, rounded up.
+Mobs usually avoid walking on them.
+Does not conduct redstone signals.
+Bees occasionally 'eat' from them if placed near beehives or bee nests.
+
+ Honeycomb block
+
+Can be crafted with 4 honeycombs.
+Are purely decorative.
+Are mined the same speed by all tools.
+
+
+=== Items ===
+ Honey bottle
+
+Obtained by using a glass bottle on beehives/nests with a honey_level of 5.
+Restores 6 () and 1.2 saturation.
+Removes the Poison effect when consumed.
+Can be crafted into sugar and honey blocks.
+Stack up to 16.
+
+ Honeycomb
+
+Obtained by using shears on beehives/nests with a honey_level of 5.
+Can be used to craft beehives and honeycomb blocks.
+Spawn eggs
+
+ Bee spawn egg
+Spawns bees.
+
+
+=== Mobs ===
+ Bee
+
+Have 10HP health.
+Live in groups near hives and nests.
+If a bee does not have a home nest, it wanders until it finds one.
+Can hide inside hives.
+Maximum of 3 bees per nest.
+Are neutral mobs.
+When attacked, all bees from the same hive try to attack the original attacker.
+The same happens when their hive or nest is destroyed.
+Placing a campfire or lighting fire under the nest makes the bees passive.
+Have an [Int] Anger data tag, which defaults to zero.
+When the bee is attacked, this tag is set to around 700 ticks.
+When they attack, they give Poison to the target for 10 seconds and then they die 50–60 seconds after attacking.
+When in an angry state, their eyes are red.
+Affected by the Bane of Arthropods enchantment.
+Can be bred using any type of flower, including wither roses.
+They follow any player holding a small flower.
+If the player holds still, bees hover around them.
+Hover around flowers and enter a "pollinated" state after some time. When pollinated, pale white particles come off them. The bee also has its texture changed to include dots similar in color to the pollen particles.
+Bees try to pollinate wither roses despite the fact that they are harmed by the Wither effect they give.
+When they pollinate flowers, a small popping noise is heard.
+Return to their nest after entering the "pollinated" state.
+A pollinated bee can accelerate the growth of crops and sweet berry bushes it passes.
+After enough bees enter a bee nest in the pollinated state, the bee nest is filled with honey.
+Try to avoid water.
+Being killed by a bee sting results in new death message: "<player> was stung to death".
+
+
+=== Command format ===
+/data
+
+Can now use storage as a source or target, which is general purpose, key/value storage.
+Each storage is identified by a distinct resource location.
+Storage is shared between all dimensions in a world.
+Data in storage persists between on world close.
+/execute
+
+Added subcommand /execute if predicate.
+Evaluates custom predicates, defined in the predicates directory of a datapack.
+Added subcommand /execute store storage.
+Stores the command result to the storage target for the /data command.
+/schedule
+
+Added new optional syntax /schedule ... [append|replace].
+Defaults to replace.
+Added new syntax /schedule clear <id> to remove existing schedules.
+Returns the number of removed schedules.
+Extended /schedule to allow scheduling the same function multiple times.
+/spectate
+
+Syntax is /spectate [<target>] [<player>].
+target – the target entity to spectate.
+If omitted, makes the player stop spectating.
+player – the player that should spectate the target.
+Must be in Spectator mode.
+If omitted, @s (the executing player) is used.
+clickEvent
+
+Added copy_to_clipboard action.
+Entity selectors
+
+New selector parameter predicate allows applying custom predicates, defined in the predicates directory of a datapack.
+Gamerules
+
+doInsomnia
+Whether phantoms can spawn in the nighttime.
+doImmediateRespawn
+Players respawn immediately without showing the death screen.
+drowningDamage
+Whether the player should take damage when drowning.
+fallDamage
+Whether the player should take fall damage.
+fireDamage
+Whether the player should take fire damage.
+Loot tables
+
+Loot table predicates can now be defined in separate files and used for entity selectors and in execute if command.
+Added new parameters to the location_check condition.
+offsetX, offsetY, offsetZ – optional offsets to location.
+Added reference.
+Includes condition defined in predicates directory of datapack, selected with name parameter.
+Added time_check condition.
+Checks day time.
+value – range of accepted values.
+period – if present, time is modulo-divided by this value (for example, if set to 24000, value operates on a time period of days).
+New function:
+copy_state – Copies state properties from dropped block to BlockStateTag in dropped item.
+Parameters:
+block – source of properties (block ID).
+properties – list of property names. All must be present on block.
+
+
+=== Gameplay ===
+Advancements
+
+Controls
+
+Sneak and sprint inputs can now be switched between "Hold" and "Toggle" mode in the accessibility options.
+Allows players to stay sneaked while opening different GUIs.
+Also affects flying down in Creative mode. When toggled, the player keeps going down until toggled again.
+
+
+=== General ===
+Entity predicate
+
+Now accepts player field, which checks player properties.
+Fails when entity is not player.
+Fields:
+level – range of allowed player levels.
+gamemode – same values as /gamemode command.
+stats – list of statistics to match. Entry fields: type (like minecraft:custom), stat (like minecraft:sneak_time) and value (an integer range).
+For example, {"stats":[{"type":"minecraft:used","stat":"minecraft:fishing_rod","value":{"min":2,"max":10}}]} succeeds if the player has used fishing rods a total of 2 through 10 times; more or less fails.
+recipes – map of recipe IDs. Boolean value tells if it should or should not be known to player.
+advancements – map of advancement IDs. If value is a boolean, checks if advancement is done. If value is an object, checks completion of criteria.
+Entity predicate now accepts team field, which matches team name.
+Languages
+
+Added Yiddish language.
+Location predicate
+
+Predicate now accepts block and fluid sub-predicate.
+Fields:
+block – exact block ID to match.
+fluid – exact fluid ID to match.
+tag – block/fluid ID to match.
+nbt – matcher for block entity NBT (only for blocks).
+state – map of name/value properties. Value can be integer, boolean or string or object with optional min and max properties.
+Predicate now accepts the light sub-predicate.
+Object has one integer range – light – that matches visible light (maximum value of sky-darkening and block light)}}.
+Predicates
+
+Added custom predicates.
+The condition part of loot tables can now be defined as separate data pack resource in predicates directory.
+Particles
+
+New particles: dripping_honey, falling_honey, falling_nectar, landing_honey.
+Splashes
+
+Added 3 new splash text:
+"In case it isn't obvious, foxes aren't players."
+"Buzzy Bees!"
+"Minecraft Java Edition presents: Disgusting Bugs"
+Statistics
+
+Added statistics for anvil and grindstone interaction counts.
+Tags
+
+Added minecraft:beehives, minecraft:bee_growables, minecraft:crops, minecraft:flowers, minecraft:shulker_boxes, and minecraft:tall_flowers block tags.
+Added minecraft:arrows, and minecraft:beehive_inhabitors entity tags.
+Added minecraft:flowers, minecraft:lectern_books, and minecraft:tall_flowers item tag.
+Added new portals block tag.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Bells
+
+Now ring if powered with a redstone signal.
+Campfires
+
+Can now be extinguished with a shovel.
+Composters
+
+Now crafted with wooden slabs (like in Bedrock Edition), instead of fences and wooden planks.
+Crafting table
+
+When the GUI is opened, ⇧ Shift + clicking an item or a stack in the inventory now transfers it directly into the crafting grid.
+Dark prismarine
+
+Now crafted from black dye instead of ink sacs.
+Dispensers
+
+Can now harvest honeycombs when dispensing shears on bee nests and beehives filled with honey.
+The honeycomb items are dropped on the ground.
+Can now collect honey bottles when dispensing glass bottles on beehives.
+Can now collect water bottles when dispensing glass bottles on water.
+Can now place down armor stands.
+Fire charges launched from a dispenser now light campfires.
+Firework rockets dispensed from a dispenser now travel in the direction they were fired.
+End stone bricks
+
+Now have a hardness of 3.
+Now have a blast resistance of 9.
+Farmland
+
+Blocks that can be manually placed on farmland without turning it into dirt can now also be pushed into (the space above) it by a piston without turning the farmland under the block the piston has pushed into dirt.
+Iron doors
+
+Must now be mined with a pickaxe for it to be dropped as an item.
+Large ferns
+
+Now drop wheat seeds.
+Melon stems and pumpkin stems
+
+Attached stems now drop their seeds again when broken.
+Rails
+
+Now places facing the player, rather than always north~south.
+Redstone comparators
+
+Can now detect how much honey is inside beehives and bee nests.
+The output strength is equal to the amount of honey in the hive.
+Scaffolding
+
+Increased burn time when used as fuel in a furnace to be able to smelt 2 items, rather than 0.25.
+Stripped wood
+
+Can now be crafted out of stripped logs.
+Wet sponges
+
+Now dry out when placed in the Nether.
+
+
+=== Items ===
+Boats
+
+When used as fuel, one boat now smelts 6 items in a furnace, blast furnace, or smoker instead of 1.
+Spawn eggs
+
+Drowned, husk, zombie, zombie pigmen, and zombie villager spawn eggs can be used on adult versions of these mobs to spawn baby variants.
+
+
+=== Mobs ===
+General
+
+Mobs are now better at avoiding walking through lava.
+Ender dragons
+
+Removed a black dot on the transparent parts of wing texture.
+Removed texture for part of wing bottom in the exploding ender dragon.
+Foxes
+
+Now spawn in all taiga biome variants.
+Iron golems
+
+Now use the generic.attackDamage attribute.
+Now starts cracking upon losing health.
+A sound plays on every cracking stage.
+There are 4 stages, from uncracked to fully cracked, before the golem dies.
+Can be healed using iron ingots.
+A sound plays each time the golem is repaired.
+One iron ingot restores 25HP × 12.5.
+It takes 4 iron ingots to repair an iron golem from 1 HP to full health.
+Magma cubes, ocelots, and slimes
+
+Now use the generic.attackDamage attribute.
+Parrots
+
+Can now sit on a player's shoulder even when the player is riding an entity.
+Can no longer imitate endermen, polar bears, wolves, and zombie pigmen.
+Spawning
+
+When breedable mobs in groups spawn naturally, they now sometimes spawn babies in the groups.
+Has a 5% chance for foxes, cows, sheep, pigs, and chickens, and a 10% chance for wolves, llamas, and horses.[verify for Java Edition]
+Villagers
+
+Nitwit villagers no longer have a leveling gemstone on their belt.
+
+
+=== Non-mob entities ===
+Dragon Fireballs
+
+The texture has been changed, which now resembles the fire charge texture after the Texture Update.
+Experience orbs
+
+Experience orbs now appear at the same spatial and temporal location as loot when an entity is killed.
+Now render as translucent again.
+
+
+=== World generation ===
+Trees
+
+Birch trees generate in the dark forest biome once again.
+Sweet berry bushes
+
+Now spawn in the giant tree taiga biome.
+Internal
+
+Massive upgrade to the creation system of generation features.
+For example, it makes it easier for modders to implement custom features.
+
+
+=== Command format ===
+/effect
+
+The /effect clear command now defaults to @s if no target argument is given.
+/kill
+
+The first parameter now defaults to @s if no target argument is given.
+NBT components
+
+Added NBT text component variant for NBT storage: {"nbt": <path>, "storage":"<resource id>"}.
+
+
+=== Gameplay ===
+Advancements
+
+Item predicate in advancements now makes a distinction between actual enchantments and stored enchantments, like ones stored in enchanted books.
+stored_enchantments is used to match stored enchantments.
+Bees can now be bred to unlock the "The Parrots and the Bats" advancement.
+Bees are now required for the "Two by Two" advancement.
+Honey bottles are now required for the "A Balanced Diet" advancement.
+Spectral arrows can now be used to unlock the "Take Aim" advancement.
+Controls
+
+Elytra can now start to glide immediately after jumping (while rising), not only during the descent of the jump.
+Food
+
+All foods are now edible in Creative mode, including cake.
+Hardcore mode
+
+"Delete world" and "Leave server" have been removed in favor of "Title screen" and manual world deletion.
+Recipe book
+
+The composter recipe now unlocks with wooden slabs instead of wooden fences.
+Many recipes changed to only require one material instead of nine to unlock.
+The recipes affected are:
+
+Many recipes for items that are crafted by placing one of the above blocks in a crafting table no longer unlock when the player has nine of the material.
+The recipes affected are:
+
+Sleeping
+
+Setting the respawn point by using a bed now shows the message "Respawn point set" in chat.
+If a player tries to sleep in a bed that is occupied by a villager, the villager is now kicked out of the bed.
+Trying to sleep during the daytime now sets the player's spawn location to that bed.
+Status effects
+
+Instant Damage
+Added an effect sprite.
+Instant Health
+Added an effect sprite.
+Saturation
+Added an effect sprite.
+Trading
+
+Librarians now sell one bookshelf for nine emeralds, instead of three bookshelves for six emeralds.
+
+
+=== General ===
+Block models
+
+Inventory models are now brighter than before.
+Chunk format
+
+Biome information now is stored in sixty-four 4×4 arrays, allowing biomes to be changed based on height; previously, biome values corresponded to only the X and Z coordinates.
+The [Int Array] Biomes array in the [NBT Compound / JSON Object] Level tag for each chunk now contains 1024 integers instead of 256. Each number in the array is the biome for a 4×4×4 volume in the chunk. These 4×4×4 volumes are arranged by Z, then X, then Y. That is, the first 4×4 values in the array are for the 16×16 chunk, at Y levels 0–3, the next 4×4 is for Y levels 4–7, etc.
+Data packs
+
+Updated data pack version to 5.
+Debug screen
+
+The "chunk updates" counter on the second line no longer appears.
+Floating-point precision
+
+The floating-point precision used for the location of where certain particles and entities appear has increased to 64-bit (double-precision), from 32-bit (single-precision).
+This fixes many issues regarding certain types of particles and entities not appearing at the right places when far away from the center of the world, especially beyond 16,777,216 blocks. The following list includes instances that are known and confirmed to be fixed:
+Particles
+Fishing particles
+Squid ink particles
+End gateway particles
+Conduit particles
+Impact particles when entity has fallen from height on to block
+Sweeping attack particles
+Damage heart particles
+Particles appearing when using the /particle command
+Mycelium particles
+Underwater particles
+Nether portal particles
+End portal particles
+Brewing stand particles
+Spawner particles
+Barrier particles
+Armor stand breaking particles
+Particles for suspended blocks affected by gravity, such as sand and gravel.
+Entities
+Primed TNT entities
+Block entities
+The floating book above placed enchanting tables is now correctly rotated towards the direction of where a nearby player is at high coordinates.
+Font
+
+Modified the nonlatin_european font file to change the texture of characters ß (Eszett) and β (beta).
+Game library updates
+
+Minecraft now requires OpenGL 2.0.
+Loot tables
+
+Entities are now set for block loot tables in some cases where it was not previously.
+Title screen
+
+Changed title screen panorama to an image which includes new 1.15 features such as bees and bee nests.
+The menu panorama uses seed -4404205509303106230 at coordinates X = 339.691, Y = 65.546, Z = -1072.041
+Descriptions under buttons on the "Create World" screen are now narrated.
+Narrator
+
+Command suggestions are now narrated if the narrator is turned to system or all.
+Nether portals
+
+Nether portals in the Overworld now correctly link with portals placed in the top half (128–255) of the Nether dimension.
+Obfuscation maps
+
+Are now published with all future versions of the game, including this one.
+Does not change the existing restrictions on what may or may not be done with game code or assets.
+Links to the obfuscation mappings are included as part of the version's accompanying .json file.
+Options
+
+The biome blend setting has moved and now has descriptions per setting value.
+The biome blend setting is now shown in the debug overlay.
+Performance
+
+Tweaked chunk loading calculations.
+Improved chunk rendering.
+Optimized explosions.
+Vertically moving particles now perform better when colliding with blocks.
+Other performance improvements.
+Player animation
+
+Added the hand use animation for players in first-person and third-person perspectives when performing the following actions:
+Making tamed wolves, cats or parrots sit or stand
+Breeding animals
+Shearing animals
+Activating redstone ore
+Dyeing mobs
+Filling and emptying buckets
+Placing boats
+Throwing projectiles
+Dropping items from the hotbar or via inventory
+Using spawn eggs on mobs to spawn baby mob variants
+Using spawn eggs on water
+Placing lily pads 
+Curing zombie villagers
+Feeding pandas
+Using firework rockets to boost when gliding with an elytra
+Redundant hand use animations have been removed from the following actions:
+Trying to place paintings in invalid positions
+Trying to use active buttons
+Trying to ring bells from angles they can't be used from
+Trying to eat cake when hunger bar is full
+Right clicking on fences; this also prevented blocks from being placed on fences from the offhand
+Right clicking on flower pots with incompatible items
+Resource packs
+
+Updated resource pack pack_formatto 5 as the following has changed:
+Changed texture mappings with all chests, banner and shield patterns now use alpha channels. The ender dragon no longer has a separate texture for the bottom of its wing. The glint texture for enchanted items now appears like it does in-game. The game now supports conversion with some of version 4 resource packs' outdated textures to the newer ones.
+Increased the size limit for the client-side downloading of resource packs from 50 MB to 100 MB.
+Tags
+
+Removed dirt_like block tag.
+Text
+
+Tweaked contrast for text colors.
+Textures
+
+Changed texture map for all chests.
+Banner patterns now use the alpha channel instead of black.
+Shield pattern textures now use alpha level for determining what gets the color, instead of the brightness.
+The ender dragon no longer has a separate texture for the bottom of its wing.
+The glint texture for enchanted items now appears like it does in-game.
+Made textures for the Java Edition 1.13 panorama menu background 1×1 pixels.
+Removed textures for customized world type preset icons, except Isles.
+Grass and foliage tints no longer vary within a biome, with the exception of swamps.
+UI
+
+Changed appearance of highlighted buttons used in Title screen and similar UIs.
+Highlighted buttons now have a white outline.
+Highlighted buttons no longer have a blue tint on them. Instead, they are now only slightly brighter than unhighlighted buttons.
+Highlighted buttons now have white text on them instead of yellow.
+
+
+== Fixes ==
+317 issues fixed
+From released versions before 1.12
+
+MC-791 – Rails are not placed in the direction the player is looking.
+MC-849 – Eating a food item, drinking a potion, curing a zombie, and feeding an animal all have a chance of also consuming a second food item, potion, etc, without any animation.
+MC-997 – Clouds are transparent when the player is above/in them but not when they're underneath them.
+MC-1313 – Incorrect sign surface normal causes the text color to not be applied properly.
+MC-2140 – Connecting to a server with a space in the name fails.
+MC-2871 – Baby zombies are not spawned when right-clicking onto an adult zombie with a zombie spawn egg.
+MC-2958 – Custom mobs and normal vexes drop equipped items with looting despite DropChances being set to 0.
+MC-3591 – Cured zombie villagers don't drop picked up items.
+MC-3784 – Players can see the moon/sun through clouds with solid blocks above them.
+MC-3984 – A re-created hardcore game is not hardcore unless game modes are cycled through and reset to hardcore.
+MC-4240 – Placing fireworks on a side of a block summons it inside that block and makes it stuck under blocks above.
+MC-4378 – Iron doors drop when destroyed by hand.
+MC-5336 – Bonus chest doesn't always spawn on 'Snowy Kingdom' preset.
+MC-6932 – Minecart with TNT/Hopper/Furnace lighting error.
+MC-9553 – Wrong rendering order of particles, hitboxes, clouds, transparent blocks, breaking animations and various other transparent textures.
+MC-10135 – Arrows stuck in players create an odd lighting bug.
+MC-10209 – 'Allow Cheats' and 'Bonus Chest' buttons get unlocked after entering superflat/buffet customization options.
+MC-12211 – Comparator in subtraction mode does not update visually under certain conditions.
+MC-13884 – Hanging snow golems don't throw snowballs.
+MC-14826 – Leads in unloaded chunks break, become invisible or connect to an invisible target far away.
+MC-15862 – A dying enderman teleports away if it falls into water; takes experience to the teleportation destination.
+MC-19413 – Horse tries to "finish" pathfinding when you interrupt it by riding it.
+MC-19764 – Trades are still possible after a villager/wandering trader died.
+MC-20144 – Saturation and Instant Health/Damage effects do not have an icon.
+MC-24336 – Withers are harmed by the explosions of their wither skulls.
+MC-27287 – Baby wolves spawn hurt.
+MC-28447 – Speed effect stops working after switching dimensions but resumes after sprinting.
+MC-29386 – Health boost not showing additional hearts when switching dimensions.
+MC-30646 – Hardcore game is not deleted.
+MC-33285 – Summoning slimes with custom maxHealth attributes does not work.
+MC-35507 – Block breaking animation renders incorrect at certain angles.
+MC-35920 – Some translucent parts of entities make translucent blocks, block entities and some entities invisible (depending on loading order).
+MC-36716 – Square enchantment glint is shown on advancements screen and toast popups.
+MC-38779 – Thin black stripes over mooshrooms / iron golems / enderman / falling block with mipmapping.
+MC-41822 – Black squares and triangles in the end sky with low render distance.
+MC-41825 – Some entities are darker/black in the End (without light).
+MC-42248 – Placing lily pads does not have a hand animation in third-person.
+MC-44244 – Lightning causes water, stained glass, entities, and tile entities to disappear.
+MC-47091 – Slimes, magma cubes, ocelots, and iron golems do not use generic.attackDamage attribute.
+MC-47941 – TNT and creepers flash white when exploding.
+MC-49203 – Rendering depth of beacon and ender chest in superflat preview is wrong.
+MC-54619 – World border invisible with blindness effect.
+MC-58177 – Night vision rendered darker and orange when nearing light sources with brightness on moody.
+MC-60634 – Spawn egg use animation not shown when using on animal.
+MC-63179 – Clouds move with the player.
+MC-63509 – Banners do not have a breaking animation.
+MC-63669 – Comparator Timing Issue.
+MC-63720 – Banners do not move in wind when over certain Time value of the level.dat.
+MC-63942 – Transparent block weird rendering when held in hand/worn by an entity such as the player.
+MC-68565 – Monsters spawn at daytime at y=256 and don't burn.
+MC-69302 – Non-trivial blocks on the achievements screen/advancement tabs are rendered in the wrong order.
+MC-69696 – Fire animation is dark for spiders, endermen and phantoms.
+MC-70111 – When a thrown ender pearl is in the air, it disappears after relogging and the player does not get teleported.
+MC-74762 – Under certain circumstances chunks can swap or reset.
+MC-77652 – Falling Block does not have uniform transparency/non-transparency in the End.
+MC-79867 – Guardian beam brightens nearby entities.
+MC-80110 – Villager item count graphical bug.
+MC-80694 – DisplayTile block in Minecart in spawner is dark.
+MC-81970 – Rotating armor stand causes shaking base plate.
+MC-82943 – Witch held item uses player held item position.
+MC-83003 – Barrier particles are not visible if the barrier block is in the off-hand.
+MC-83051 – Spectral arrows, potion arrows, and Channeling tridents apply effects to endermen.
+MC-83998 – Unable to place blocks on fences from off-hand.
+MC-84611 – Right clicking water while duel wielding spawn eggs creates two of the mobs.
+MC-84771 – Items and blocks can't be put in an item frame with the off-hand.
+MC-85133 – Back-face culling is not enabled for items held in 3rd person
+MC-86619 – Hand moves up and down when switching between empty slots.
+MC-86846 – Changing a powered command block from impulse or chain mode to repeat mode does not trigger it until repowering.
+MC-88014 – Interacting with shears on sheep always uses item in off-hand as well.
+MC-88179 – Armor bar disappears after changing dimension until GUI update.
+MC-88209 – Endermen make stare sound even when provoked by attacking.
+MC-88912 – Arrows and trident float when shot at the side of soul sand.
+MC-89996 – hoverEvent changes lighting for displayed block of minecart and end crystal.
+MC-90602 – Chunks don't load correctly/not rendering.
+MC-93479 – F3+B hitbox/fishing rod line thickness (width) varies depending on whether F3 is open.
+MC-93810 – falling_block becomes invisible if it is near the edge of the world.
+MC-93932 – Blocks/items held by witches are flipped upside-down.
+MC-93967 – The smoke particles of the explosion are displayed when Particles option is set to minimal.
+MC-94013 – End stone bricks are less durable than end stone and destroyed by the ender dragon.
+MC-94421 – Shooting an enderman with a bow and arrow or trident will play arrow or trident collision sounds and subtitles.
+MC-94491 – Pressing Esc in world settings returns to the main menu instead of the world list.
+MC-94838 – Comparator affected through gap.
+MC-96207 – Boats breaking lily pads creates too many particles.
+MC-96521 – After clicking "Delete World", hardcore world still runs in background.
+MC-97877 – Boat paddle shaded incorrectly.
+MC-98024 – End crystals don't have a texture on the inside.
+MC-98308 – Armor opacity/transparency doesn't work correctly.
+MC-98656 – Falling blocks do not render correctly when far away from 0,0.
+MC-99779 – Right-clicking creeper with flint and steel uses item in off-hand as well.
+MC-100222 – Breeding wolves with rotten flesh causes Hunger to the player.
+MC-101247 – Horses, donkeys, mules, and boats sometimes disappear after dismounting.
+MC-101700 – Missing server-side check-in enderman teleport.
+MC-101725 – Enderman takes continuous damage from cacti and magma blocks.
+MC-102130 – Glowing slimes/drowned outline becomes black when taking damage.
+MC-102267 – Certain mobs do not take damage on magma blocks.
+MC-103212 – F3+B hitbox not rendering in front of block 36.
+MC-103313 – Hitbox of slime and magma cube is offset for some seconds.
+MC-103672 – Steerable ridden entities (boats/pigs/horses) teleport back to their previous position for a short moment on dismount.
+MC-103800 – Sometimes armor stands won't update their visual rotation.
+MC-104818 – When there is no value for an argument in options.txt, it is not correctly parsed: Skipping bad option: lastServer:.
+MC-106494 – Items despawn after one minute instead of five when dropped from the creative inventory.
+MC-106826 – Can interact with (eat) cake in creative mode/hunger bar is full.
+MC-107754 – Transparent skin issue when held map in main hand and off-hand.
+MC-107941 – Shooting, summoning or editing an arrow and reloading the world gives potion particles.
+MC-108666 – Chest/trapped chest/ender chest/shulker box/bed/conduit held by witches are too small.
+MC-108893 – Standing in a chunk with an end crystal with a beam target causes entity shading to render incorrectly.
+MC-109108 – Mobs getting stuck on vines.
+MC-110907 – Curse of Vanishing does not work in some places.
+MC-111444 – An elytra cannot open if the server is lagging or when moving upwards.
+MC-112292 – Texture for blocks using TileEntitySpecialRenderer is not bound for a short moment when entering a world and in superflat settings.
+MC-112850 – Items with an empty AttributeModifier tag spam the console.
+MC-112990 – Powered data parameter of furnace minecart is set by client as well.
+MC-112995 – Cannot use items while looking at armor stand.
+MC-113899 – Leaves of swamp world generation trees replace all non-full blocks.
+MC-114106 – Dispenser plays failed sound when equipping a single pumpkin or skull.
+MC-114522 – Invisible mob/player taking damage is rendered opaque and in wrong order.
+MC-114576 – Blocks with flat textures held by player in third person view, villager / iron golem or enderman have z-fighting.
+MC-114715 – Mobs picking up items can drop their current item even when the drop chance is set 0.
+MC-115567 – Enderman stare sound does not play if enderman was spawned less than 20 seconds ago.
+MC-115643 – Cannot hear punching blocks with 'Friendly Creatures' volume off.
+MC-117449 – options.txt is read and written with the default OS encoding.
+MC-117635 – Rear legs of sitting tamed wolf are displayed hovering.
+MC-117914 – Entities crossing dimensions through nether portal causes tremendous lag.
+MC-119078 – Glowing is not working for some entities.
+MC-119621 – Left arm swings in third person while interacting with fence with item in main hand.
+MC-120480 – Pets teleport onto blocks which have a solid "bottom", not "top" face.
+MC-120558 – Advancement trigger consume_item not working for single potion item stack.
+MC-121942 – Item count renders behind crafting preview items.
+MC-122135 – Several GUIs are not closed when pressing Esc.
+MC-123307 – /execute store can modify player data inside item "tags" of their Inventory or EnderItems.
+MC-123686 – Old chests disappear when updating to 1.8+.
+MC-124140 – Anchoring does not reset after use and is implicitly applied in nonsensical cases by default.
+MC-124280 – Using fire charges on TNT in Creative mode consumes the fire charge.
+MC-125104 – Cancelling delete world screen and options sub-menus using Esc opens main menu.
+MC-125204 – Trident appears floating when charging it while sneaking.
+MC-125360 – Enchanted tridents do not look enchanted.
+MC-125495 – Owner tag of item entities is ignored if entity is destroyed in 200 ticks (Age >= 5800).
+MC-125511 – Item entity merging ignores Owner tag.
+MC-125638 – Ignited TNT block create entity offset at high coordinates.
+MC-125810 – Carved pumpkin cannot be enchanted in survival mode.
+MC-125880 – Recipe book rejects bows with Damage:0 tag when crafting dispensers.
+MC-126996 – Primed TNT in low light levels loses its texture.
+MC-127005 – Bottom of waterlogged blocks shows water texture.
+MC-127094 – Arm animation is not executed in certain circumstances.
+MC-127573 – Hover text is displayed for multiplayer chat while in bed even if chat is hidden.
+MC-128361 – Cannot eat a chorus fruit, golden apple, or enchanted golden apple in Creative mode.
+MC-129273 – Attempting to place a painting in a spot where it cannot exist may play the hand animation anyway.
+MC-129781 – A trident will hit the ground after hitting an enderman.
+MC-129806 – Team prefixes and suffixes do not show for villagers without a custom name.
+MC-131061 – Armor stands cannot be placed by dispensers.
+MC-131552 – Cannot craft stripped wood from stripped log.
+MC-132211 – Book edits occur on network thread.
+MC-132304 – When the resource pack has CJK / non ASCII characters in filename, it will be removed at restart of the game
+MC-132445 – Spawn eggs used on water do not display a hand animation.
+MC-132787 – Lily pads generate much less frequently / do not generate in certain areas.
+MC-133255 – Cartographers generate maps for existing mansions and monuments rather than unexplored ones.
+MC-133348 – Wrong position of elder guardian effect while swimming.
+MC-133877 – Extreme lag from decaying leaves.
+MC-134495 – Click and hover events still work when F1 is toggled.
+MC-134865 – Normal text between obfuscated text can flicker as well.
+MC-135098 – Animal spawn eggs occasionally spawn baby animals.
+MC-135110 – Crash when using outdated resource pack: Non [a-z0-9/._-] character in path of location.
+MC-136074 – Endermen can teleport onto waterlogged blocks.
+MC-136352 – Tools from creative inventory/crafting do not have Damage:0 set until relog.
+MC-136360 – Attached pumpkin and melon stems do not drop seeds when broken.
+MC-136367 – When exiting a boat it will put the player on top of the boat.
+MC-136470 – Buckets' CanPlaceOn NBT check is applied to the block behind.
+MC-136757 – End gateway magenta beam height varies based on the distance from the player.
+MC-136865 – Fortune and Silk Touch enchantments not working on last use.
+MC-137297 – Clicking "Leave server" after dying on hardcore multiplayer does not disconnect the player from the server.
+MC-138465 – Ender pearls forget their owner after reload (of game or chunks).
+MC-140825 – Structure palette variant selection looks faulty.
+MC-141354 – Dragon fireball texture inconsistent with new fire charge texture.
+MC-142848 – Hitbox and eye level of polar bear is not adjusted when attacking.
+MC-142918 – The stonecutter does not allow custom recipe inputs to be shift-clicked in.
+MC-144263 – Anvils glitch out and make noise when dropped on a shulker.
+MC-144588 – The loading screen for reloading resource packs does not cover the whole screen if the GUI is hidden.
+MC-144608 – Reloading a shader with modified vert/frag files will not update it.
+MC-144688 – Projectiles (snowballs, etc) do not preserve item data if using the item depletes the stack.
+MC-144766 – Chunks stop rendering in respawn screen.
+MC-145021 – Tamed animals are not able to teleport to the player when they are on the snow layer blocks.
+MC-145179 – /data modify modifies player item data but shows error message.
+MC-145275 – Reloading a resource pack messes up all textures for a brief moment.
+MC-145587 – Endermen will teleport into water (without taking damage) to dodge a projectile.
+MC-145821 – Stained glass, ice, slime block, and other transparent block particles are not transparent anymore.
+MC-145879 – Titles are no longer faded when text background opacity is enabled in the accessibility settings.
+MC-146194 – Summon and rotation in same tick not working.
+MC-146213 – Loading bar on splash screen is able to extend beyond its black outline.
+MC-146305 – Wandering traders sometimes run extremely fast for no reason.
+MC-146327 – Reloading resource pack unsticks held item position.
+MC-146623 – Bonus chests can spawn in the air or over grass.
+MC-147241 – Recipe grouping pop-up is darker than it should be.
+MC-147548 – Terrible performance with large forest fires.
+MC-147549 – Clicking on the bell from unringable angles/clicking non-bell parts of the bell plays the hand animation.
+MC-147843 – Minecraft 1.14 can display the aquatic background.
+MC-147865 – The elder guardian particle is displayed too high, over the player's head.
+MC-148107 – Ominous banners render differently in advancement UI and toast.
+MC-148562 – Obsidian towers in The End biome are not generated as intended.
+MC-148590 – When hitting a magma with a lot of health, it causes very many particles.
+MC-148704 – The "Server Light" section disappears then reappears.
+MC-148865 – Title screen panorama turns white after clicking "Delete World" in hardcore mode.
+MC-149181 – Biome blend causes massive stuttering when loading chunks or when placing/breaking blocks.
+MC-149231 – Dragon egg culls the top of cactus.
+MC-149343 – Chunk block lag when tall spruce tree is grown in that chunk.
+MC-149928 – Soul sand can not suffocate mobs.
+MC-150079 – Some commands in a command block will not run if the last character is a space.
+MC-150202 – Chunks sometimes are dislocated/copied to another location.
+MC-150242 – The held item tooltip no longer fades correctly.
+MC-151173 – Stream used to read the options.txt file is never closed.
+MC-151354 – Cannot rearrange servers with shortcut.
+MC-151962 – The last use of shear will not drop the item on one high blocks.
+MC-152100 – When using a brewing stand, the player cannot put blaze powder into the slot using the shift key.
+MC-152159 – Players can hit the dragon during its death animation.
+MC-152172 – Cartography table plays the sound multiple times overlapping on shift-click.
+MC-152173 – Loom plays the sound multiple times overlapping on shift-click.
+MC-152683 – Spectral arrows don't count for the "Take Aim" achievement.
+MC-152751 – Horse armor can occasionally be duplicated when killing a horse wearing it with a weapon enchanted with Looting III.
+MC-152839 – Screen is shaking on death.
+MC-153216 – Zombie villager overlay turns dark blue/purple when equipped with enchanted armor.
+MC-153298 – Wandering traders can spawn inside small spaces, such as farms.
+MC-153334 – Cured villagers sell bookshelves for 1 emerald and buy books for 1 emerald, allowing players to easily get an unlimited amount of emeralds.
+MC-153661 – Villagers always ring bells in the same direction, even if that should not be possible.
+MC-153697 – Iron golems will occasionally attack players in Creative or Spectator mode.
+MC-153698 – Jumping on a boat in water for a while causes you to accumulate fall damage.
+MC-153820 – The entity_properties block loot table condition only works for players.
+MC-154088 – Some text areas do not support partial transparency.
+MC-154280 – The nitwit has a badge, even though unemployed villagers do not because they cannot trade.
+MC-154779 – Bed breaking texture is not centered properly.
+MC-154873 – When breaking a block with an enchanted book with Silk Touch on it, the block drops itself.
+MC-155289 – Mob spawning rate in the Overworld is reduced.
+MC-155520 – Repeaters do not update properly.
+MC-155591 – Foxes can spawn in giant spruce taiga, but not in giant tree taiga.
+MC-155616 – Shulkers in boats disappear after entering end gateways.
+MC-155758 – Endermen don't pick up non-collidable blocks.
+MC-156005 – Tamed wolves no longer teleport to the player when they're in water.
+MC-156078 – Name tags not working on endermites.
+MC-156197 – Using shears with 1 durability remaining drops nothing or wrong drop.
+MC-156276 – Cannot shift-click while riding a horse, within inventory.
+MC-156746 – Cannot change attribute generic.maxHealth for tamed wolves …
+MC-156766 – Items stopped spreading far on death.
+MC-156852 – Ghost blocks remain when insta-mining; reappearance of MC-5694.
+MC-156856 – Ravager pathfinding AI becomes broken when ravager encounters a pillager patrol.
+MC-156876 – In desert_small_house_7, one door is open.
+MC-156884 – Bows sometimes don't use the correct texture when being drawn in creative mode.
+MC-156952 – Village tree center has leaves that are persistent.
+MC-157136 – Villagers restocking is not properly tracked.
+MC-157212 – Trusted fox hostile AI seems to be broken. Foxes only defend players from mobs that shoot arrows, but ignore mobs that use melee attacks and projectile entities that are not arrows.
+MC-157426 – Command outputs which should be sorted don't get sorted.
+MC-157494 – Tamed animals no longer teleport to players properly.
+MC-157697 – Unplayable conditions when pillagers loaded: extreme lag spikes.
+MC-158373 – Raid horn sounds play globally in all villages.
+MC-158414 – When riding an entity, players appear to be at the location they mounted it at as soon as they are out of range.
+MC-158484 – Game crashes when an illager rides any mob.
+MC-158585 – Villagers spawned from dispensers have default textures no matter what biome they are in.
+MC-158672 – Entering certain chunks causes FPS drops.
+MC-158677 – Ender dragon freezes the server if there is no end stone in the end.
+MC-158705 – When drinking a potion in creative it changes the potion next to it when scrolling to that potion in the hotbar.
+MC-158843 – Mobs can no longer spawn on jack o' lanterns and redstone lamps.
+MC-158853 – Chests missing after converting and loading an old map from 1.7.10.
+MC-158870 – Debug diagram does not allow stepping into profiler segments.
+MC-158911 – Fences and walls connect to closed shulker boxes.
+MC-158978 – "Create New World" button in the world creation menu is enabled after returning from the world customize menu, allowing world names to be left blank.
+MC-158988 – Minecraft will remove up to several hundred chunks per region if region file is not exact multiple of 4096 bytes.
+MC-159182 – Breaking boats in a world converted from alpha to beta to release 1.8 to release modern versions doesn't drop the boat.
+MC-159196 – Cape is rendered too dark if the player is sprinting and has an arrow in it.
+MC-159462 – Scrolling hotbar slots while consuming uses multiple items.
+MC-159496 – Player death uses incorrect sound event.
+MC-159574 – When switching to another item while drinking a potion, the item is replaced with an empty bottle and the slot with the potion is cleared.
+MC-159785 – Cloned block contains same item in memory.
+MC-159947 – Fire charge from dispenser does not light campfire.
+MC-160123 – Large ferns no longer drop seeds.
+MC-160177 – Block breaking animation doesn't show for other players.
+MC-160367 – Pillagers do not despawn.
+MC-160895 – Breeding animals does not display a hand animation.
+MC-160896 – Shearing sheep and mooshrooms does not display a hand animation.
+MC-160981 – Making tamed parrots sit or stand plays no hand animation.
+MC-160992 – Certain blocks cause bare hand to animate when clicked on, despite no action taking place, but do not cause held items to animate.
+MC-160993 – Empty flower pots cause arm animation to play even when holding incompatible items.
+MC-161002 – Endermen don't turn to face the player when looked at.
+MC-161083 – Inconsistency with how multi-block objects display cracking animations.
+MC-161132 – Leaves are considered solid faces for block placement.
+MC-161151 – Right clicking on redstone ore, which causes it to light up, plays no hand animation.
+MC-161154 – When the ender eye is unavailable, the hand animation still plays.
+MC-161220 – Right-clicking on a button while it is pressed inwards still plays a hand animation.
+MC-161261 – Treating zombie villagers does not display a hand animation.
+MC-161262 – Feeding pandas does not play hand animation.
+MC-161733 – Vindicator's "idle5" sound is unused.
+MC-161886 – Dropped trident items rotate around an external axis / Bed items rotate around a non-centered axis.
+MC-161888 – Enchantment tables do not track the player correctly at high distances from the world origin.
+MC-161902 – Game crashes when a turtle ridden by an illager enters water.
+MC-161991 – Floating point precision error: Trailing particles from fishing lose precision at high coordinates.
+MC-161993 – Floating point precision error: Conduit particles are attracted to conduit incorrectly at high distances.
+MC-161994 – Floating point precision error: Squid ink particles lose precision at high coordinates.
+MC-161999 – Floating point precision error: Particles emitted by end gateways gravitate to a point that loses precision at high coordinates.
+MC-162261 – Placed rails are not immediately updated when connecting to other rails.
+MC-162531 – Player sneaks while sleeping if there is a lantern two blocks above the bed.
+MC-162905 – Kelp naturally generates with 'age' too low.
+MC-162952 – Stacked numbers of an item in inventory are rendered behind the potion effect status effect in inventory.
+MC-163308 – Pillagers still spawning in trees in 1.14.4.
+MC-163375 – Minecart with a furnace can take anything as fuel.
+MC-163400 – Parrots can imitate wolves, polar bears, and zombie pigmen.
+MC-163879 – Dispenser plays failed sound when equipping a single mob head.
+MC-164342 – Barrels do not generate LootTable when broken.
+MC-164397 – Birches no longer generate in Dark Forest biomes.
+MC-164499 – Game crashes when creating customized superflat world with unparsable biome.
+MC-164747 – Inconsistent capitalization of "By" in "Damage Blocked By Shield".
+MC-164896 – Chests, boats, and beds are not shown behind dropped stained glass.
+MC-165023 – Sand dropped on boats can force-update cacti, sugar cane, and bamboo, causing them to grow very quickly.
+MC-165034 – Falling blocks convert to blocks when falling on top of a boat.
+MC-165524 – Zombie pigman spawn eggs used on zombie pigmen do not spawn baby zombie pigmen.
+MC-165653 – Translucent stairs have a z-clipping issue.
+MC-166047 – Tamed wolves attack tamed parrots.
+MC-166590 – Sweet berry bushes do not generate in any type of giant tree taiga biomes.
+MC-166865 – The game crashed while initializing the game, with error: java.lang.IllegalArgumentException: MALFORMED.
+Private issues
+
+MC-11944 – Able to replace end portal with buckets in hand or dispenser.
+MC-136984 – Game crash exploit.
+MC-140507 – Overloading a chunk with data will cause it to revert to its old state.
+
+
+== Gallery ==
+
+
+== Videos ==
+
+
+== Trivia ==
+  Unused textures for a "wax_block" and a "crystallized_honey" item could be found in the game files during development of 1.15; these were accidentally added and were removed in snapshot 19w42a.
+From March 18 until June 18, 2020, splashes for 1.15 - 1.15.2 didn't show the normal set of splash texts. Instead, it showed a set of splash texts referencing the COVID-19 pandemic.
+
+
+== See also ==
+Bedrock Edition 1.14.0
+Education Edition 1.14.31
+
+
+== References ==
+
+
+== Navigation ==

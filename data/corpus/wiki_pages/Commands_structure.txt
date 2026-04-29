@@ -1,0 +1,86 @@
+Used to save and load structures without having to use structure blocks.
+
+
+== Syntax ==
+structure save <name: string> <from: x y z> <to: x y z> [saveMode: StructureSaveMode]
+structure save <name: string> <from: x y z> <to: x y z> [includeEntities: Boolean] [saveMode: StructureSaveMode] [includeBlocks: Boolean]
+Saves a structure.
+structure load <name: string> <to: x y z> [rotation: Rotation] [mirror: Mirror] [includeEntities: Boolean] [includeBlocks: Boolean] [waterlogged: Boolean] [integrity: float] [seed: string]
+structure load <name: string> <to: x y z> [rotation: Rotation] [mirror: Mirror] [animationMode: StructureAnimationMode] [animationSeconds: float] [includeEntities: Boolean] [includeBlocks: Boolean] [waterlogged: Boolean] [integrity: float] [seed: string]
+Loads a structure.
+structure delete <name: string>
+Deletes saved structure file.
+
+
+== Arguments ==
+
+name: string: basic_string
+
+Must be a string. And it must be a single word that has no space or a double-quoted string (When quoted, \ can be used to escape characters).
+Should be in the format of name or namespace:name. If namespace is unspecified, defaults to mystructure:
+from: x y z: CommandPosition and to: x y z: CommandPosition (in save mode)
+
+Specifies any two opposing corner blocks of the region to be saved.
+Must be a three-dimensional coordinates composed of <X>, <Y> and <Z>, each of which must be a single-precision floating-point number or tilde and caret notation.
+to: x y z: CommandPosition (in load mode)
+
+Specifies the lower northwest corner of the destination region.
+Must be a three-dimensional coordinates composed of <X>, <Y> and <Z>, each of which must be a single-precision floating-point number or tilde and caret notation.
+saveMode: StructureSaveMode: enum
+
+Specifies the storage location.
+Must be one of disk and memory. If not specified, defaults to memory.
+disk saves the structure to the world database itself. After leaving and rejoining the world, the structure save files is still there.
+memory only saves the structure in memery temporarily. When leaving and rejoining the world, the structure save files are gone.
+includeEntities: Boolean: enum
+
+Specifies whether including entities or not. If unspecified, defaults to true.
+Must be a [Boolean]Boolean (either true or false).
+rotation: Rotation: enum
+
+Specifies the rotation when loading a structure. If unspecified, defaults to 0_degrees.
+Must be one of 0_degrees, 90_degrees, 180_degrees, and 270_degrees.
+mirror: Mirror: enum
+
+Specifies the axis of mirror flip when loading a structure. If unspecified, defaults to none.
+Must be one of x, z, xz, and none.
+animationMode: StructureAnimationMode: enum
+
+Specifies the animation to generate structures.
+Must be one of block_by_block and layer_by_layer.
+animationSeconds: float: float
+
+Specifies the duration of the animation.
+Must be a [Float]Single-precision floating-point number (from -(2-2-23)×2127 (≈-3.4×1038) to (2-2-23)2×127 (≈3.4×1038) ).
+includeBlocks: Boolean: enum
+
+Specifies whether including blocks or not. If unspecified, defaults to true.
+Must be a [Boolean]Boolean (either true or false).
+integrity: float: float
+
+Specifies the integrity (probability of each block being loaded). If 100, all blocks in the structure are loaded. If 0, no blocks are loaded. If unspecified, defaults to 100.
+Must be a [Float]Single-precision floating-point number (from -(2-2-23)×2127 (≈-3.4×1038) to (2-2-23)2×127 (≈3.4×1038) ). Should be between 0 and 100 (inclusive).
+seed: string: basic_string
+
+Specifies the seed when calculating whether a block should be loaded according to integrity. If unspecified, a random seed is taken.
+Must be a string. And it must be a single word that has no space or a double-quoted string (When quoted, \ can be used to escape characters).
+waterlogged: Boolean: enum
+
+Specifies whether or not waterlog the blocks when the structure is loaded in water. If unspecified, defaults to false.
+Must be a [Boolean]Boolean (either true or false).
+
+
+== Result ==
+
+
+== Output ==
+
+
+== History ==
+
+
+== External links ==
+"/structure Command"     – Microsoft Learn, June 25, 2025.
+
+
+== Navigation ==

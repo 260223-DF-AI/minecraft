@@ -1,0 +1,109 @@
+12w18a is the fourth snapshot for Java Edition 1.3.1, released on May 3, 2012.
+This is the first version that makes singleplayer worlds run on a local server, resulting in the use of separate threads for rendering logic and world logic. This change resulted in a large number of broken features, some of which are yet to be fixed in the latest version, and on weak computers can result in server-lag in singleplayer.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ 
+   Wood, Leaves, Planks, and Stone Bricks Variants
+
+Now have their proper names (e.g. "Oak Wood", "Birch Leaves", "Spruce Wood Planks", "Mossy Stone Bricks").
+
+
+== Changes ==
+
+
+=== Items ===
+ Book and Quills
+
+Game no longer pauses when writing in a book and quill.
+ Cocoa Beans
+
+Now obtainable from jungle tree leaves.
+ Signs
+
+Game no longer pauses when writing in a sign.
+Wooden Tools
+
+Can now smelt one item in a furnace.
+
+
+=== Mobs ===
+ Villagers
+
+When spawned from spawn eggs, they now get a random profession.
+
+
+=== Gameplay ===
+Breaking
+
+The 1⁄4 second (5 tick) delay between block breaking has been removed for players in Survival. The player can now instantly mine a large amount of blocks in Survival simply by holding destroy if conditions are met.
+Hardcore
+
+Hardcore is now available in multiplayer.
+Singleplayer
+
+Separated server logic and client, therefore singleplayer is now a local server.
+
+
+=== Command format ===
+General
+
+Game no longer pauses when entering a command or pausing the game.
+
+
+=== General ===
+Debug screen
+
+Coordinates are now rounded to 5 digits.
+"ws", "fs" and "g" (Walking speed, flying speed and ground; "g" is true if the player is touching the ground).
+Language
+
+Updated language files.
+Texture packs
+
+Support and auto-download for server texture packs.
+Server jar
+
+The server jar now accepts command-line arguments --demo, --port, --singleplayer, --universe, and --world. The old nogui argument still works for backward compatibility.
+
+
+== Removals ==
+
+
+=== General ===
+Infinite Map Visualizer
+
+Removed the infinite map visualizer from the game's source code.
+Features broken by the internal server
+
+Many features were broken or significantly changed due to the client-server split, many of which still remain absent from the game.
+Distance effects
+
+The particles from adding an eye of ender to an end portal frame block no longer appear offset if performed at high distances from the world origin.
+This is due to the fact that they simply did not appear at all from this snapshot onward, which is another bug entirely.
+This bug resurfaced in Java Edition 19w14a when the aforementioned absent particles bug was fixed.
+Player
+
+The player "Notch" no longer drops an apple in addition to his inventory.
+
+
+== Fixes ==
+4 bugs fixed
+
+Fixed being unable to switch tools of the same kind in inventory.
+Fixed water destroying non-solid blocks when breaking them from above.
+Fixed picking a block in Creative with a tool in hand causing the tool to be lost.
+Fixed Silk Touch yielding only one slab from double slabs.
+
+
+== Trivia ==
+In this version, when loading a singleplayer world, one needs to put minecraft.zip/server/minecraft_server.jar into .minecraft/server manually to continue loading.
+
+
+== References ==
+
+
+== Navigation ==

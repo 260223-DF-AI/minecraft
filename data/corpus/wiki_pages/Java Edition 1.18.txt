@@ -1,0 +1,911 @@
+1.18, the second and final release of Caves & Cliffs, is a major update to Java Edition released on November 30, 2021. It completely overhauls the Overworld generation, with larger caves, taller mountains, new mountain biomes, new cave biomes, and flooded caves. It was first announced alongside the release of 1.17 snapshot 21w15a when Mojang Studios stated that the Caves & Cliffs update would be split in two. Some features for 1.18 were initially implemented during 1.17's development cycle, before getting postponed and relegated to official data packs used with a corresponding 1.17 snapshot.
+
+
+== Additions ==
+
+
+=== Items ===
+ Otherside music disc
+
+Added a new music disc from Lena Raine titled "otherside".
+Can be found on rare occasions in stronghold corridor chests, or more rarely in Monster room chests.
+Has a blue and green color to the ring area of the disc.
+
+
+=== World generation ===
+Caves
+
+Completely overhauled.
+Now stretch down to Y=-64.
+The caves now generate in 2 layers of different stone bases depending on the depth.
+The layer above Y=8 is made up of regular stone.
+Stone transitions to deepslate from Y=8 to Y=0.
+Deepslate completely replaces stone from Y=0 to bedrock.
+Certain types of ores and structures still generate in the deepslate layer, as well as tuff and gravel.
+Dirt, diorite, granite and andesite do not generate in this layer.
+Biomes such as the dripstone caves and lush caves now generate in the underground.
+Contain aquifers, bodies of water with different heights, independent of sea level (Y=63).
+Aquifers below Y=0 sometimes generate with lava instead of water.
+Improved old caves to blend in with the new generations of caves better.
+New noise caves, coming in 3 forms, "cheese", "spaghetti", and "noodle".
+Cheese caves have large stone towers stretching from the bottom of the cave to the top, and are often large enough to allow safe elytra flight.
+Spaghetti caves are long, thin caves that have small aquifers and are more similar to original caves.
+Noodle caves are thinner, squigglier, and more claustrophobic variants of spaghetti caves.
+Mountains
+
+Come in 6 sub-biomes:
+Meadow
+A grassy elevated biome that looks like a flowery and colder plains, with an aqua grass color and dark blue water color.
+Generates in plateaus and the lowest layers of some mountains, usually near plains and other temperate biomes.
+Contains grass, tall grass, dandelions, azure bluets, cornflowers, poppies, oxeye daisies and alliums.
+Birch and oak trees can rarely appear in this biome, and always have bee nests.
+Only rabbits, donkeys, and sheep spawn in this biome.
+Plains villages and pillager outposts can generate in this biome.
+Grove
+Generates in the slopes of a snowy mountain when next to forested biomes.
+Reminiscent of a snowy taiga with a surface of snow blocks and powder snow, instead of grass blocks.
+Rabbits, wolves, foxes, sheep, pigs, chickens and cows spawn in this biome.
+Pillager outposts can generate in this biome.
+Snowy slopes
+Generates in the slopes of a mountain when next to plains and snowy tundra.
+Covered in snow, snow block and powder snow.
+Only rabbits and goats spawn in this biome.
+Igloos and pillager outposts can generate in this biome.
+Jagged peaks
+One of three biomes that generate in the mountain peaks.
+Covered in snow, snow blocks and stone.
+Tends to generate in sharp and jagged peaks in areas with snowy, cold, and temperate biomes.
+Only goats spawn in this biome.
+Pillager outposts can generate in this biome.
+Frozen peaks
+One of three biomes that generate in the mountain peaks.
+Covered in snow, snow blocks, ice, and packed ice.
+Tends to generate in smoother and less jagged peaks in areas with snowy, cold, and temperate biomes.
+Only goats spawn in this biome.
+Pillager outposts can generate in this biome.
+Stony peaks
+One of three biomes that generate in the mountain peaks.
+Covered in stone, gravel, and strips of calcite.
+Tends to generate in any peak surrounded by warm biomes such as jungles and savannas, to avoid temperature clashes.
+No animals spawn in this biome.
+Pillager outposts can generate in this biome.
+Ore veins
+
+Long and rare ore formations.
+Copper ore veins mixed with granite and blocks of raw copper generate above Y=0.
+Iron ore veins mixed with tuff and blocks of raw iron generate below Y=0.
+Upgrading of old worlds
+
+The biomes and terrain from old and new chunks now seamlessly blend, preventing the hard cut borders from before. Any player-made structures in these chunks may either be intact, buried, or deteriorated.
+Several checks are made on the previous bedrock layer to determine whether or not a chunk should generate new terrain below.
+The game first checks if there is any bedrock at Y=0.
+If bedrock is detected, the game then checks if each column in a chunk has air at Y=0. New terrain generates only under columns with non-air blocks.
+If there is no bedrock whatsoever at Y=0, the whole chunk does not get new terrain below.
+The old bedrock layer between Y=0 and Y=4 in old chunks gets replaced with deepslate.
+A new bedrock layer is placed between Y=-64 and Y=-60.
+
+
+=== Command format ===
+/jfr
+
+When enabled, begins profiling with Java FlightRecorder, as well as the following custom events:
+minecraft.ServerTickTime: Sampling event exposing average server tick times in intervals of a second
+minecraft.ChunkGeneration: Time taken to generate individual chunk stages
+minecraft.PacketRead / minecraft.PacketSent: Network traffic
+minecraft.WorldLoadFinishedEvent: Initial world loading duration
+The profiling can be stopped in-game by using /jfr stop.
+If it is started from an external source, the JFR events for network packets are aggregated instead of one event per packet.
+
+
+=== Gameplay ===
+Advancements
+
+Added two new advancement triggers.
+fall_from_height
+Triggered when a player lands after falling.
+ride_entity_in_lava
+Triggered for every tick when player rides in lava.
+
+
+=== General ===
+Debug screen
+
+Added three new lines: Multinoise, biome builder, and terrain.
+Appears if the dimension where the player is uses the multi-noise biome source type.
+Multinoise lists the parameters used at the player's position in order to place a biome. C is continentalness, E is erosion, T is temperature, H is humidity, and W is weirdness.
+Continentalness goes up as you go more inland. In areas with low continentalness values, oceans may generate.
+Erosion determines how flat or mountainous terrain is. Higher values result in flatter areas, lower values result in mountainous areas.
+Temperature and humidity have no impact on the terrain itself, and determining only biome placement.
+Weirdness indirectly drives the PV (peaks and valleys) noise and determines which biome variant gets placed.
+Terrain lists values related to terrain generation.​[more information needed]
+Font
+
+Added illageralt, the rune-like font from Minecraft Dungeons.
+Currently usable only via commands
+/tellraw @a {"text":"Caves and Cliffs: Part II","font":"illageralt"}
+Languages
+
+Added Lombard.
+Added Toki Pona.
+Loot tables
+
+Added the type field, which is mandatory.
+Written into BlockEntityTag.id to ensure that the tag can be migrated correctly between versions
+Added new loot table function set_potion, to set Potion tag on any item.
+Has following parameters:
+id: Potion ID
+Music
+
+Added new music to the Overworld (when playing in survival mode), distributed to the new biomes, and to the main menu.
+By Lena Raine: "Stand Tall", "Left to Bloom", "One More Day", "Wending" and "Infinite Amethyst":
+"Stand Tall" plays in the snowy slopes, jagged peaks, frozen peaks and stony peaks biomes, as well as the menu screen.
+"Left to Bloom" plays in the meadow and lush caves biomes, as well as the menu screen.
+"One More Day" plays in the meadow, snowy slopes and lush caves biomes, as well as the menu screen.
+"Wending" plays in the grove, jagged peaks, stony peaks and dripstone caves biomes, as well as the menu screen.
+"Infinite Amethyst" plays in the grove and dripstone caves biomes, as well as the menu screen.
+By Kumi Tanioka (谷岡 久美): "Floating Dream", "Comforting Memories" and "An Ordinary Day":
+"Floating Dream" plays in the jagged peaks and lush caves biomes.
+"Comforting Memories" plays in the grove biome.
+"An Ordinary Day" plays in the snowy slopes, dripstone caves and lush caves biomes.
+NBT format
+
+Spawners now have a new [NBT Compound / JSON Object] CustomSpawnRules tag, which lets players override the spawn rules of the spawned mob.
+In the tag, players can specify [Int] BlockLightLimit, which indicates the highest block-light at which the spawners spawn mobs.
+Options
+
+Can now disable lightning flashes, which prevents lightning from making the sky flash. Lightning bolts themselves still appear.
+The device the game outputs audio to can now be chosen in-game.
+Added "Chunk Builder" to video settings.
+Determines as to which chunk sections are updated synchronously in a single frame.
+Three options: Fully Blocking, which corresponds to how chunk sections were updated before 21w37a, and Semi Blocking and Threaded, which reduce stuttering when placing or removing blocks. However, the latter two options may cause rare visual delays in world updates.
+Added "Simulation Distance" video setting, a new slider.
+Entities, blocks, and fluids are not updated outside of simulation distance.
+Allows higher render distance with less CPU load.
+Lower limit is 5 chunks.
+Added "Autosave Indicator" to video settings, for singleplayer worlds, which allows to toggle the indicator on / off.
+The indicator appears in the bottom right of the screen whenever the game is saving the world file.
+Defaults to on.
+Added Online Options as a separate screen:
+The "Realms Notifications" option has been moved to this screen.
+Contains the new "Allow Server Listings" option.
+When deactivated, the player name appears as "Anonymous Player" in server online player listings.
+Contains the new "Server Difficulty" option, to indicate the difficulty of the current server.
+Particles
+
+Added block_marker, to replace light and barrier.
+Renders with texture declared in particle slot for model assigned to configured block state.
+Summoned with same syntax as block particle (i.e. block_marker wheat[age=2]).
+server.properties
+
+Added simulation-distance.
+Added hide-online-players, which when set to "True", does not send a player list on status requests.
+Subtitles
+
+Added subtitles for various bundle sounds.
+Added a new subtitle for the crop sound of shears.
+Tags
+
+Added the animals_spawnable_on block tag.
+Contains grass block.
+Animals can spawn on blocks in this tag.
+Added the axolotls_spawnable_on block tag.
+Contains clay.
+Axolotls can spawn on blocks in this tag.
+Added the azalea_grows_on block tag.
+Contains #dirt, #sand, #terracotta, snow block, and powder snow.
+Added the azalea_root_replaceable block tag.
+Contains #lush_ground_replaceable, #terracotta and red sand.
+Added the big_dripleaf_placeable block tag.
+Contains #dirt, #small_dripleaf_placeable, and farmland.
+Big dripleaf can be placed on blocks in this tag.
+Added the dirt item tag.
+Contains dirt, grass block, podzol, coarse dirt, mycelium, rooted dirt, and moss block.
+Added the foxes_spawnable_on block tag.
+Contains grass block, snow, snow block, podzol and coarse dirt.
+Foxes can spawn on blocks in this tag.
+Added the goats_spawnable_on block tag.
+Contains stone, snow, snow block, powder snow, packed ice and gravel.
+Goats can spawn on blocks in this tag.
+Added the mooshrooms_spawnable_on block tag.
+Contains mycelium.
+Mooshrooms can spawn on blocks in this tag.
+Added the parrots_spawnable_on block tag.
+Contains grass block, air, #leaves and #logs.
+Parrots can spawn on blocks in this tag.
+Added the polar_bears_spawnable_on_in_frozen_ocean block tag.
+Contains ice.
+Polar bears can spawn on blocks in this tag when in the frozen ocean biome.
+Added the rabbits_spawnable_on block tag.
+Contains grass block, snow, snow block and sand.
+Rabbits can spawn on blocks in this tag.
+Added the replaceable_plants block tag.
+Contains grass, fern, dead bush, vine, glow lichen, sunflower, lilac, rose bush, peony, tall grass, large fern, and hanging roots.
+Added the terracotta block and item tag.
+Contains terracotta and the 16 variants of stained terracotta.
+Added the wolves_spawnable_on block tag.
+Contains grass block, snow and snow block.
+Wolves can spawn on blocks in this tag.
+Telemetry
+
+Readded, previously a part of game known as "snooper" until 18w20c.
+Implemented only in world load event now.
+Sent data when loading singleplayer world or connecting to multiplayer server.
+Contains following information:
+Launcher identifier
+User identifier (XUID)
+Client session ID (changes on restart)
+World session ID (changes per world load, to be reused for later events)
+Game version
+Operating system name and version
+Java runtime version
+If client or server is modded (same information as on crash logs)
+Server type (single player, Realms or other)
+Game mode
+Cannot be disabled.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Anvil
+
+Slightly changed the hammer texture on its GUI.
+Barrel
+
+Changed the back texture to match the spruce planks from 18w47a.
+Big dripleaf
+
+Can now be placed only on clay, coarse dirt, dirt, farmland, grass blocks, moss blocks, mycelium, podzol, and rooted dirt.
+Carrot
+
+Texture of crop stage3 was changed from  to , removed an extra pixel.
+Cartography table
+
+Texture was changed from  to , to match the dark oak planks texture after being updated a second time in the Texture Update.
+Cave vines, kelp, twisting vines, and weeping vines
+
+Now stop growing if shears are used on the tip.
+This action changes the age block state of the tip to 25.
+Changed cave vines plant texture from  to .
+Cocoa beans
+
+Textures of cocoa pods (stage0 and stage1) were changed.
+Conduit
+
+Now has an assigned tool, the pickaxe.
+Copper ore
+
+Now drop 2-5 raw copper when mining instead of 2-3.
+Dirt path
+
+Side texture was changed to better match its top texture, as well as the side of a dirt block.
+Doors
+
+Changed texture mapping on doors to make top and bottom textures rotate correctly when opened/closed.
+Changed textures of oak door and iron door, to remove the extra horizontal line.
+Enchanting table
+
+Now emits a light level of 7.
+Changed the texture of the lapis lazuli icon in the GUI from  to .
+Glass pane
+
+Top texture was changed to better match its side texture.
+Lava
+
+Now replaces air below Y=-54, instead of Y=11.
+Lectern
+
+Base texture was changed to match the oak planks texture after being updated a second time in the Texture Update.
+Logs
+
+Top textures of crimson stems and warped stems were changed, to match Bedrock Edition.
+Changed the top texture of dark oak log.
+Changed the side texture of stripped dark oak log, to match the color of its top texture.
+Magma blocks
+
+Slightly increased the frequency of underwater magma.
+Now sometimes generate at the bottom of water-filled caves.
+Redstone comparator
+
+Changed the base texture of lit comparators from   to  .
+Spore blossom
+
+Now obtainable in survival mode due to lush caves being able to generate naturally.
+Stained glass
+
+Changed textures of blue stained glass and red stained glass, to match transparency of other types of stained glass.
+Stonecutter
+
+Block of copper can be converted to 4 cut copper using stonecutter.
+
+
+=== Items ===
+Beetroot seeds and melon seeds
+
+Textures were moved down by 1 pixel.
+Campfire and soul campfire
+
+Changed the item textures from   to  .
+Crossbow
+
+Durability has been increased to 465.
+Doors
+
+Changed the item textures of all doors except crimson and warped from        to       .
+Item frames and glow item frames
+
+Changed the item textures from   to  .
+Signs
+
+Changed the item textures from         to        .
+
+
+=== Mobs ===
+Axolotls
+
+Texture of the wild axolotl was changed.
+Now spawn only in water above clay blocks in lush caves.
+Now have their own mob cap.
+Now avoid lava.
+Cod, salmon, pufferfish, tropical fish, squid, and dolphins
+
+Now spawn only in water from Y=50 to Y=64.
+Additionally, tropical fishes now also spawn in lush caves at any height.
+Drowned
+
+Now can spawn in aquifers inside dripstone caves, as well as warm ocean biomes.
+Enderman
+
+Now takes damage when hit by a splash water bottle.
+Evoker, pillager, vindicator, illusioner and ravager
+
+No longer attack baby villagers.
+Removed hoods in the textures of evokers and vindicators.
+Removed a few misplaced pixels in the illusioner's texture.
+Pillagers can now spawn on snow blocks.
+Foxes
+
+Can now spawn on podzol, coarse dirt, and snow blocks.
+Glow squids
+
+Now spawn only in water blocks under Y=30.
+Goats
+
+Now spawn only in snowy slopes, jagged peaks, and frozen peaks biomes.
+Horses, mules, and donkeys
+
+Now follow players holding golden carrots, golden apples, and enchanted golden apples.
+Llamas
+
+Now follow players holding hay bales.
+Parrots
+
+The bottom texture of all parrots' wings has been flipped.
+Rabbits
+
+Can now spawn on snow blocks.
+Witches
+
+Removed hoods in their textures.
+Wither
+
+Tweaked the wither skull's texture to use the new wither face from the Texture Update.
+Wolves
+
+Can now spawn on snow blocks.
+Zombie villager
+
+Tweaked the armorer zombie villager's and weaponsmith zombie villager's textures to remove stray villager pixels.
+General
+
+Block light level now must be 0 for many hostile mobs to spawn (the sky light can still prevent these mobs from spawning like before).
+Optimized AI for axolotls, goats, hoglins, zoglins, piglins, piglin brutes and villagers.
+All feedable mobs (except sheep) named Dinnerbone now look at the player correctly.
+
+
+=== Non-mob entities ===
+Armor stand
+
+Smooth stone outline texture was changed.
+
+
+=== World generation ===
+All structures
+
+Now hardcoded into world generation.
+Amethyst geodes
+
+Now generate only up to Y=30.
+Azalea tree
+
+No longer generate underwater.
+Badlands
+
+Now can generate in mountain peaks.
+Red sand generates a bit higher.
+Red sandstone now generates naturally once again.
+Beaches
+
+Beaches are generally wider.
+In some places there is a chance where no beaches generate at all, to provide some variation.
+Biomes
+
+Some biomes have been renamed:
+
+Since the terrain height is no longer controlled by biomes, most of the height variant sub-biomes, along with previously unused biome variants have been removed from the game and had their code merged into the main biome:
+
+As a result of this change:
+All deserts are now eligible for village and desert pyramid generation.
+All taigas are now eligible for village and pillager outpost generation.
+All swamps are now eligible for swamp hut generation.
+All snowy taigas are now eligible for igloo generation.
+Worlds made in previous versions that generated these biomes convert them into their default variants.
+Buried treasure
+
+Buried treasure chests can now contain water breathing potions.
+Desert pyramids
+
+No longer generate on water.
+Now spawn on the surface rather than at a fixed y-level, but tend to be partially buried.
+Dripstone caves
+
+Now generate naturally underground and inside hills or mountains.
+Drowned can spawn in aquifers inside dripstone caves.
+Monster rooms
+
+Increased the amount of dungeons, especially below Y=0.
+Fossils
+
+The fossils in the deepest part of the underground generate with Deepslate Diamond Ore instead of Coal Ore.
+Jungle pyramids
+
+No longer generate on water.
+Lakes
+
+Water lakes were removed, because aquifers could provide local water levels.
+Lava lakes now generate only above Y=0
+Lush caves
+
+Now generate naturally underground and inside hills or mountains.
+Azalea trees now generate above lush caves.
+Mineshafts
+
+The starting room no longer generates with a dirt floor.
+Now generate higher up in badlands.
+Ocean
+
+Ocean biomes temperatures now match land biome temperatures:
+Frozen oceans now generate only within snowy taigas or snowy plains, as well as snowy beaches.
+Cold oceans now generate only within taigas, old growth taigas, and some plains and forests.
+Normal oceans now generate only within plains, forests, birch forests, and dark forests.
+Lukewarm oceans now generate only within savannas, jungles, and sometimes plains and forests.
+Warm oceans now generate only within deserts or badlands and can sometimes spawn in deep waters.
+Completely removed the previously unused deep warm ocean biomes.
+
+Ore distribution
+
+Changed ore generation of all ores making them have a spread value like lapis lazuli ore. Some still retain a linear generation alongside a spread generation.
+Coal ore attempts to generate twice: once, evenly between an altitude of Y=136 and Y=256; and as a spread, peaking at an altitude of Y=96 and generating between an altitude of Y=0 and Y=192.
+Copper ore generates between Y=-16 and Y=112, generating the most at Y=48 and like all other ores, uses spread. It peaks at Y=48. Bigger blobs of copper ore generate in dripstone caves.
+Iron ore attempts to generate three times: once as a spread peaking at an altitude of Y=256, generating above Y=80; another as a spread peaking at Y=16 and generating with a minimum height of Y=-24 and a maximum height of Y=57, and a smaller one spreading evenly between the altitudes of Y=-64 and Y=-32.
+Gold ore generates between the altitudes of Y=-64 and Y=32, peaking at Y=-16. Also, extra gold generates below Y=-48. The extra gold that generates in the badlands biome was increased, with a top height limit from Y=79 to Y=256, and increased number of blobs.
+Lapis lazuli ore attempts to generate twice: once, as a spread between the altitudes of Y=32 and Y=-32, peaking at an altitude of 0; and evenly between the altitudes of Y=64 and Y=-64, generating buried like ancient debris.
+Redstone ore attempts to generate twice: once, evenly between an altitude of Y=15 and Y=-64; and as a spread, peaking at an altitude of -64 and generating below an altitude of Y=-32.
+Diamond ore now generate as a spread, generating below Y=16 and peaking at depths near Y=-64.
+Emerald ore generates above Y=-16 as a spread, peaking at Y=256 and decreasing in quantity as the altitude decreases.
+The size and positioning of diorite, andesite, granite, gravel and dirt has been tweaked - there are larger blobs of these blocks but they're fewer and further apart.
+Diorite, andesite and granite generate less commonly above Y = 60.
+Pillager outposts
+
+Now generate in all the new mountain biomes.
+Springs
+
+Lava springs can now generate amid calcite, dirt, snow block, powder snow and packed ice.
+These changes allow lava springs to generate in mountains and snowy terrain.
+Water springs can now generate amid dirt and snow block, and don't generate higher than Y=192.
+Stony shore
+
+Now generate with strips of gravel.
+Can generate alongside any biome instead of just windswept hills.
+Swamp
+
+Swamp oak trees are now able to generate in slightly deeper water than before.
+Villages
+
+Now slightly more spread out.
+Now generate in meadows.
+General
+
+The overworld now uses the multi-noise biome source type.
+Terrain generation is now independent from biomes, with biomes adapting to whatever terrain they happen to generate throughout.
+This allows for natural variation in the terrain of any individual biome, both in terms of shape and elevation.
+For example, forests and deserts could form up on a hill without needing a special biome just for that purpose.
+This additionally allows for smoother transitions between biomes.
+Terrain is now smoother and more extreme.
+Bedrock layers generate dependent on the world seed now.
+New random number generator is used for Overworld generation.
+
+
+=== Gameplay ===
+Advancements
+
+"Light as a Rabbit" now has "Sweet Dreams" as its parent instead of "Adventure".
+Changed the number of biomes required to visit for the "Adventuring Time" advancement from 42 to 50, due to the removal of sub-biomes and the inclusion of new additions, with the following biomes now being required:
+
+Weather
+
+Sleeping now resets the weather cycle only if the weather is rain or a thunderstorm.
+
+
+=== General ===
+Chunk format
+
+Chunks Level.Sections[].BlockStates & Level.Sections[].Palette have moved to a container structure in Level.Sections[].block_states.
+Chunks Level.Biomes are now paletted and live in a similar container structure in Level.Sections[].biomes.
+Chunks Level.CarvingMasks[] is now long[] instead of byte[].
+Removed chunks Level and moved everything it contained up.
+Level.Entities has moved to entities.
+Level.TileEntities has moved to block_entities.
+Level.TileTicks and Level.ToBeTicked have moved to block_ticks.
+Level.LiquidTicks and Level.LiquidsToBeTicked have moved to fluid_ticks.
+Level.Sections has moved to sections.
+Level.Structures has moved to structures.
+Level.Structures.Starts has moved to structures.starts.
+Level.Sections[].block_states has moved to sections[].block_states.
+Level.Sections[].biomes has moved to sections[].biomes.
+Added yPos the minimum section y position in the chunk.
+Added below_zero_retrogen containing data to support below zero generation.
+Added blending_data containing data to support blending new world generation with existing chunks.
+Chunk render pipeline
+
+Changed the prioritization order.
+Clouds
+
+Raised cloud level from 128 to 192.
+Data generator
+
+--report option now creates full worldgen reference files instead of just biomes.
+Data packs
+
+Data pack version number has been increased to 8.
+Effects
+
+Redesigned how effects look in the inventory screen.
+Can display while recipe book is showing.
+The list of effects are now shown to the right of the player's inventory, instead of the left side.
+When the inventory effects list is visible, it is hidden from the game view to reduce screen clutter.
+There are now two effect-list views, compact and classic:
+Classic is the pre-existing list of effects, one after another.
+Compact is a single icon for each effect, suitable for small screens.
+The game automatically switches between the two looks to suit the available screen space.
+Height limit
+
+Has been increased to 384 blocks, expanding 64 blocks up and 64 blocks down, with 319 being the height limit and -64 being the depth limit.
+Title screen
+
+Main menu background is changed to reflect Caves & Cliffs: Part II update.
+Mob spawning
+
+The maximum number of monsters spawned is now tracked per player instead of globally.
+Options
+
+Sneak, sprint, and auto-jump options have been moved to the "Controls" tab.
+Render distance now causes chunks to load in a cylinder shape around the player instead of a square.
+Changed default brightness to 50.
+Performance
+
+Now, various background tasks including world generation are executed on a background thread pool.
+The size of the thread pool equals Amount of available CPU threads - 1.
+Maximum amount of threads is 255, instead of 7. This limit can be overridden by Java system property max.bg.threads.
+Player spawning
+
+Reworked world spawn selection algorithm.
+Now spawns according to the same climate parameters that control biome placement and world generation: players should no longer be able to spawn in the ocean or some other inconvenient location.
+Resource packs
+
+Updated resource pack pack_formatto 8 as the following has changed:
+inventory.png now contains an extra sprite for a thin-layout version of the effect list in the inventory.
+Size limit for server resource packs has been increased from 100 MB to 250 MB.
+Scoreboards
+
+Removed length limits for scoreboards, score holders and team names.
+Server
+
+server.jar now bundles individual libraries instead of merging all the files into single archive.
+This change is meant to solve certain problems related to Java modules.
+On startup, server.jar unpacks libraries into a directory configured by bundlerRepoDir (default: working directory).
+To run different main class than server, use bundlerMainClass property.
+If this property is set to an empty value, the server just validates and extracts files, then exits.
+Server classes are now signed.
+Splashes
+
+The splash "[this splash text has been delayed until part 2]" has been changed to "[this splash text is now available]".
+The splash "Now Java 16!" has been changed to "Java 16 + 1 = 17!".
+Sprinting
+
+No longer reduced to walking when touching the wall at low angles.
+Tags
+
+Renamed the lava_pool_replaceables block tag to lava_pool_stone_cannot_replace.
+Tick
+
+Changed some internal details of block and fluid ticking to improve save times.
+World creation screen
+
+Removed "Caves" and "Floating islands".
+World types
+
+Changed "Amplified" and "Large Biomes" types, they have been adapted to the new terrain.
+"Amplified" now has terrain with the following characteristics:
+Rounded terrain at Y=320, instead of Y=256 previously.
+Doubled offset above sea level.
+Greatly increased 3D noise values, resulting in lower factor values inversely.
+Doubled peak jaggedness.
+"Large Biomes" now has terrain with the following characteristics:
+Most biomes are four times larger, except mountain peaks and rivers.
+Multinoise is slowed down by factor 4 for temperature, vegetation, continentalness, and erosion, but not for ridge noise.
+General
+
+Optimized entity collisions.
+The game now requires Java 17 instead of Java 16.
+Chunks are now saved whenever there is spare time to reduce autosave spikes.
+
+
+== Fixes ==
+241 issues fixed
+From released versions before 1.16.2
+
+MC-7200 – Cave/tunnel generation may cut tunnels a bit too soon.
+MC-29274 – Withers do not pursue players in survival mode unless attacked.
+MC-30560 – River through eroded badlands biome generates floating rock formations at water surface.
+MC-32813 – Floating water / lava above caves / cave carver doesn't update water.
+MC-44055 – Game fails to switch the audio output from one device to another from the title screen after the game has started.
+MC-46584 – Clicking and dragging MOUSE3 (mouse wheel) over item slots incorrectly attempts to place full stacks in Survival.
+MC-49010 – Cloning pressure plates or buttons whilst they're activated keeps them pressed forever.
+MC-50888 – Can get out of 30,000,000 area.
+MC-53444 – You can get outside of the world border by mounting a rideable entity (boat, pig, etc.) outside of it.
+MC-54119 – Can place/take water/lava/lily pads outside world border and inside spawn protection.
+MC-54545 – Client render distance doesn't adjust to server render distance if they are different, causing faulty chunk loading.
+MC-62550 – World border not correctly initialized for the End and Nether.
+MC-63340 – Sleeping always resets time until rain.
+MC-65628 – Desert pyramids generate underground when using amplified or custom terrain.
+MC-72831 – Water lakes can generate in deserts.
+MC-73300 – "Saving Level..." text not appearing in pause menu.
+MC-80824 – Spawning in some biomes causes "Unable to find spawn biome" warning.
+MC-85975 – Slimes don't spawn in the swamp hills biome.
+MC-96535 – Ambient property of potion effects with ShowParticles:0b is not disregarded.
+MC-101334 – Required space for placing a boat is too small.
+MC-101917 – Andesite, diorite and granite won't generate above a height of about 80.
+MC-109260 – Full-width punctuation characters are rendered incorrectly.
+MC-113425 – Player can interact with entities outside the world border.
+MC-116359 – Status effects aren't displayed in inventory when recipe book is open.
+MC-117800 – Half bed can be placed outside the world border.
+MC-118134 – Item frame texture as an item uses texture of oak planks.
+MC-121997 – Every dimension's world border is operating independently, and doesn't appear where it actually is.
+MC-123277 – Too long scoreboard objectives and team names are not detected when commands are parsed.
+MC-125033 – Old cave and ravine generation gets cut off unnaturally on chunk borders near water.
+MC-126133 – Undercover ravines sometimes generate cut off at chunk borders.
+MC-128762 – Strongholds do not generate in ocean buffet worlds.
+MC-128770 – Woodland mansions still generate in dark forest hills.
+MC-129266 – Jagged ocean transitions and slower biome generation.
+MC-129485 – Certain biome specific plant distribution is completely based on chunks, causing patchy biome generation.
+MC-129912 – Player no longer spawned at highest level at world spawn.
+MC-131686 – Spawn in ground with Buffet generation when creating a new world.
+MC-131808 – Forests don't spawn trees near the positive edges, but overstretch bounds on the negative edges.
+MC-131930 – Deep warm ocean generates without coral and sea pickles.
+MC-132175 – Beaches generate along swamp hills when bordering an ocean.
+MC-132285 – Isolated water block floating in mid-air.
+MC-132306 – Snowy grass without snow near lakes in snowy biome.
+MC-132347 – Spawning inside icebergs.
+MC-132429 – Sand beaches generate when bordering gravelly mountains biomes.
+MC-133466 – Certain world configurations force the player to spawn at X=8 Z=8.
+MC-133582 – Dolphins try to catch up with boat on land.
+MC-134407 – Ocean ravines spawning underground with a stone roof on top.
+MC-135947 – Conduit takes a long time to break when underwater.
+MC-136288 – Strongholds don't generate in swamp biomes.
+MC-136523 – Invisible world border in the End dimension.
+MC-137140 – Llamas cannot spawn in shattered savanna plateau.
+MC-137950 – Signs textures do not correspond to the actual texture of their handle.
+MC-137956 – Lakes still generate in superflat preset "Overworld" after removing its tag.
+MC-138118 – Parrot wing texture is reversed on the bottom.
+MC-138734 – Spawn point for seed 0, world type Buffet with badlands plateau biome is under surface, ⇒ player dies.
+MC-138782 – Stranded dolphin tries to catch the boat on the water and stops beating.
+MC-138801 – The interactions between a biome and another biome and its variants are inconsistent.
+MC-138939 – Fish and dolphins spawn in water above sea level.
+MC-140151 – Modified jungle edge biomes generate only when a jungle borders a swamp hills biome.
+MC-140690 – Giant spruce taiga hills have no difference with giant spruce taiga.
+MC-142385 – Campfire texture has one pixel extending into hotbar outline.
+MC-145376 – Bamboo can generate underground when generating in non-bamboo jungles.
+MC-147122 – You can set your spawn point outside the world border using a bed or respawn anchor.
+MC-148182 – The zombie villager "profession" texture uses villager-skin-colored pixels.
+MC-148422 – Stripped dark oak log side texture is too bright.
+MC-149822 – Bottom border on status effect displays in the inventory is missing.
+MC-150567 – Dark oak log top texture bark ring not updated.
+MC-152506 – Wither skull projectile has faces with old texture.
+MC-152966 – Increase in villages generating in versions after 1.10.
+MC-156616 – Badlands layers not generating properly.
+MC-158410 – Strongholds don't generate in beach surface and snowy beaches buffet worlds.
+MC-159025 – Drowned do not spawn in warm ocean biomes.
+MC-160256 – Texture of door items does not match the blocks.
+MC-160710 – Chat messages written while sleeping are deleted after waking up.
+MC-162038 – Pillagers have no hood texture.
+MC-162803 – Lily Pad mirrors texture when placed.
+MC-166238 – Trees can generate on mycelium.
+MC-166423 – Splash water bottles don't damage endermen.
+MC-166508 – Glitchy chunk rendering since 1.15 pre-release 2.
+MC-167277 – Swamp hills don't naturally generate seagrass.
+MC-167800 – Rabbits do not spawn on snow block, podzol and coarse dirt.
+MC-169523 – As of 18w06a, the sand, clay and gravel blocks no longer generate around small lakes.
+MC-170551 – Foxes can't spawn on podzol or coarse dirt.
+MC-170557 – Spruce door top/bottom has the incorrect texture.
+MC-173339 – Comparators lit base texture is incorrect.
+MC-175929 – Ice spikes get cut off below height limit on AMPLIFIED worlds.
+MC-176309 – Illusioner has a few misplaced pixels left in their texture.
+MC-176824 – Red glass and outline of blue glass are slightly more opaque.
+MC-176833 – Anvil GUI hammer uses an outdated iron pallet.
+MC-177016 – Some lakes in frozen biomes generate unfrozen.
+MC-177664 – Sound system warning messages are spamming the system log.
+MC-180398 – Too many sounds causes client to stall, limit can be easily reached with rabbits.
+MC-182362 – Score callbacks with a too long name break callback chain.
+MC-183184 – Sprinting stops as soon as you touch another block.
+MC-185033 – Underground spawn in single biome world type.
+MC-185034 – Always respawning on the same block with no spawnpoint set.
+MC-185263 – Non full chunks in cache memory "semi-leak".
+MC-186042 – Plains biome is always generated when a swamp borders a desert, snowy tundra or snowy taiga.
+MC-187174 – World border does not take Nether coordinates into account.
+MC-187716 – Nether biome surface builder types incorrectly assume the world height is 128 blocks.
+MC-188096 – Gravelly mountains+ is no different than gravelly mountains.
+MC-190285 – "bedrock_roof_position" tag number does not represent height, but height modifier.
+MC-190363 – Some biomes generate as "Single biome" worlds in "Floating islands" world type.
+MC-190724 – Spawning in solid blocks in single biome "Badlands Plateau" world.
+MC-193348 – Status effect bars shift the player's inventory in Creative mode.
+MC-194822 – Glass pane top texture has not changed with the Texture Update.
+MC-194950 – Cactus in potted cactus is vertically squished.
+MC-196723 – If the player gets an effect in Creative mode while their inventory is open and not having an effect before, they won’t see the effect in their inventory until they close and open their inventory.
+MC-197688 – Mountain edge never generates.
+MC-198007 – Villages replace ice with path blocks instead of wood.
+MC-198232 – Music plays less frequently as it normally did.
+MC-199298 – Strongholds don't generate in bamboo jungles.
+MC-199662 – Extra pixels in cocoa pod textures as of Texture Update.
+MC-200046 – Cartography table planks texture is incorrect/slightly outdated.
+MC-200137 – Lectern base plate texture still uses the old planks texture.
+MC-200230 – Anomalous stripes/grid ice generation in frozen ocean biome.
+MC-200494 – In mineshafts, torches can generate attached to blocks other than the wooden supports.
+MC-200640 – Despite being a coastal biome, mushroom field shores don't have a warm/unique water color.
+MC-200803 – Gravelly mountains+/modified gravelly mountains placed incorrectly in the biome selection.
+MC-200956 – Beetroot seeds texture is not vertically centered.
+MC-200957 – Melon seeds texture is not vertically centered.
+MC-202036 – Adding a biome to a datapack shifts biome IDs in existing chunks.
+MC-202166 – "Times Crafted" statistics column doesn't always display data correctly.
+MC-202376 – Rabbits, instead of spawning on snow blocks, spawn on snow layers.
+MC-202910 – Inconsistent highlight color on armor.
+MC-203155 – Enchanting table GUI uses old lapis texture.
+MC-204901 – Side texture for dirt paths hasn't been updated with the texture update.
+MC-206303 – Minecarts have old textures on the bottom.
+MC-206620 – Cauldron invisible when crawling in it.
+MC-206660 – Stalactites don't fall properly if there are blocks directly below it.
+MC-208352 – Dark forest hills don't generate small patches of plains or sunflower plains, but dark forest does.
+MC-208353 – Several hills biomes do not generate sporadically replacing patches of their regular biome counterparts.
+MC-208601 – Axolotls do not avoid danger when pathfinding.
+MC-212113 – Glow lichen can spawn underwater whilst not in a cave.
+MC-213779 – FPS drops when looking up in a tall world (4064 blocks).
+MC-214288 – Player does not spawn on the surface of the world when min_y is greater than 0.
+MC-214335 – Flower forest is much steeper than regular forest.
+MC-214783 – Oceans generate with stone floors.
+MC-214797 – Pointed dripstone can generate floating at transitions between local water levels.
+MC-214799 – Aquifers sometimes create air pockets.
+MC-214864 – Hard edges when new caves generate near surface.
+MC-214894 – Bamboo generates in caves under jungles.
+MC-214959 – Sugar cane generates in caves.
+MC-214963 – Mineshaft generation is non-deterministic.
+MC-215062 – Weird aquifer barrier generator and water in incorrect states.
+MC-215139 – Some water in caves does not start flowing.
+MC-215296 – Mineshafts often don't generate in floating island worlds.
+MC-215876 – Dirt can generate below Y=0 from mineshafts.
+MC-216362 – Jukeboxes that have been placed don't stack with jukeboxes that have not been placed.
+MC-216432 – Mineshafts can generate with light but without any torches.
+MC-216448 – River generates over a ravine.
+MC-216561 – Torches not spawning in abandoned mineshafts under Y=0.
+MC-216784 – Ruined portals don't generate below Y=0.
+MC-216952 – Some chunks interrupting with cave systems filled with blocks.
+MC-216967 – Kelp and seagrass can generate in aquifers.
+MC-217038 – Large dripstone structures can be generated outside the caves.
+MC-217056 – Some high-speed particles lag/freeze the game.
+MC-217136 – Random noise pillars generating mid air.
+MC-217379 – Pufferfish don't spawn in deep warm ocean.
+MC-217465 – Unnatural shape looking like a chunk border but appears to be completely unrelated to chunk borders.
+MC-217509 – Inefficient generation of aquifers, noise caves and ore veins.
+MC-217906 – Large amounts of axolotls cause performance issues.
+MC-218167 – Chatting causes lag to occur.
+MC-218592 – Azalea trees can generate in more than two blocks of water.
+MC-219035 – Fossil structures can't generate in far east and south blocks of a chunk.
+MC-219132 – Cave vines hang from amethyst buds and clusters.
+MC-219774 – Magma blocks spawn everywhere underwater in 21w10a.
+MC-219946 – Weird flat sections of terrain.
+MC-220061 – Painting back texture is mirrored.
+MC-221172 – Warped and Crimson Stems use different top texture from Bedrock Edition.
+MC-221641 – Caves can make ravines generate without water.
+MC-221679 – End fog loses its gradient when under Y=0.
+MC-221777 – Horses, donkeys, mules, llamas, and trader llamas do not follow players holding food.
+MC-221815 – Flat roofs in underwater caves.
+MC-221917 – Dripstone, pointed dripstone, and cave magma generate in oceans.
+MC-222051 – Iron ore generation was not increased in 21w13a.
+MC-222154 – Cave vines can generate hanging on pointed dripstone.
+MC-222379 – Magma can spawn under air in underwater caves.
+MC-222388 – Acacia trees under Y=0 often grow with bare branches.
+MC-222763 – Armor stands use the old smooth stone slab texture.
+MC-223044 – Floating water can generate in ravines.
+MC-223051 – Dripstone can generate in surface lakes.
+MC-223148 – Extended height message goes behind the scrolling bar.
+MC-223840 – Lava blocks from "Lava Aquifers" don't get updated when a cave cuts through underneath them.
+MC-223917 – Goats on fire do not attempt to pathfind toward water.
+MC-224205 – Cloned big dripleaves remain tilted forever when their tilt value is not equal to "none".
+MC-224494 – Regular dirt can generate naturally on the surface near pools.
+MC-225030 – Dungeons are extremely rare compared to in the past.
+MC-225506 – Grass blocks can generate naturally in underground pools.
+MC-225553 – Oak and iron doors have a line in their textures.
+MC-225781 – The noise cave lava level and the cave carver lava level generate 1 block apart.
+MC-225842 – Flowers can generate on large plants near lakes.
+MC-225858 – Seeds and flowers appear in ponds.
+MC-225949 – Parity issue: Different Bedrock and Java sign items textures.
+MC-226000 – Pointed dripstone items in underground pools.
+MC-226313 – Lava can generate floating in caves.
+MC-226437 – Water lakes generating in snowy tundra's can sometimes contain dark spots.
+MC-226682 – World can fail to render/load causing visual issues.
+MC-226689 – Albert Pastore's name is grey and improperly indented in the credits.
+MC-226711 – Carrot crop texture has an incorrect pixel.
+MC-227064 – Floating grass can still generate above water lakes.
+MC-227163 – Credits say "IT Manager" instead of "IT Managers".
+MC-227204 – "Explore, dream, discover" quote no longer appears after new credits.
+MC-227206 – Random names in the new credits use curly quotes/apostrophes.
+MC-227231 – Steven Silvester's name might be misspelt in the credits.
+MC-227239 – In the credits, Elizabeth Batson's company name is improperly capitalized.
+MC-227244 – Ore blocks from ore veins float in underwater magma ravines.
+MC-227258 – Flowering Azalea Leaves are in both #minecraft:mineable/hoe and #minecraft:mineable/axe tags, while regular Azalea Leaves (and all other leaves) are only in #minecraft:mineable/hoe.
+MC-227329 – The usage and punctuation of "Inc" is still inconsistent in the credits.
+MC-227398 – Misplaced pixel on cave vines texture.
+MC-227537 – Crash: java.lang.NullPointerException: Cannot invoke "it.unimi.dsi.fastutil.objects.ObjectSet.remove(Object)" because "$$4" is null.
+MC-228745 – Big dripleafs can't be supported by farmland.
+MC-228900 – Cave vines can generate floating (Recurrence of MC-218817).
+MC-229013 – Lava lake decorator config is unused.
+MC-229365 – Large amounts of goats cause performance issues.
+MC-229517 – Conversion sounds for strays and drowned is controlled by Friendly Creatures mixer, not Hostile Creatures.
+MC-229977 – Breaking blocks with pistons on the east/west direction causes significant lag.
+MC-230302 – Glow item frame item texture is missing two pixels.
+MC-230343 – Parity issue: Enchanting tables do not emit a light level of 7.
+MC-230866 – Eating whilst traveling through a Nether portal prints error in game log.
+MC-231219 – Cave vines can occasionally generate hanging on fences.
+MC-231272 – Cave vines can sometimes generate hanging on cobwebs.
+MC-231400 – Modified badlands plateau and mountain edge don't generate and gives out invalid biome data in single biome worlds.
+MC-231666 – Dragon egg can teleport to outside the world border.
+MC-231782 – Missing "(" in Frank Criscione credit.
+MC-231818 – You can no longer use the up or down arrow to navigate between servers in the multiplayer menu.
+MC-231863 – Game crashes when trying to access the Realms settings.
+MC-233050 – #lava_pool_stone_replaceables tag name is misleading.
+MC-233661 – In some cases, sand blocks generating over lakes do not cause light updates, resulting in large dark spots.
+MC-233771 – Parity issue: Light blocks do not display their light level when shown via a held light block item.
+MC-233883 – The hide and show messages buttons in the social interactions menu display their hover text regardless of the position of the cursor.
+MC-234039 – The back of wild axolotls are off-centered.
+MC-235567 – Clusters of dripstone (stalagmites) tend to generate abnormally frequent with thickness "tip" on tall caves.
+MC-237608 – Server address shown when connection fails during server startup.
+MC-238006 – Emerald ore and infested blocks do not generate in snowy mountain biomes.
+MC-238073 – Decorators are independent of world seed.
+MC-238877 – Deep ocean and ocean are not needed for the "Adventuring Time" advancement.
+MC-238966 – Old growth spruce taiga and old growth birch forest aren't a part of the "Adventuring Time" advancement.
+MC-238968 – Windswept gravelly hills and windswept savanna aren't a part of the "Adventuring Time" advancement.
+MC-240021 – Cullface arguments in cauldrons are excessive.
+MC-240229 – Rain and snow fall on the same blocks in a certain height range.
+MC-241747 – Inconsistent Colors in grindstone GUI.
+
+
+== Videos ==
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

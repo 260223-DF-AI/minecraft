@@ -1,0 +1,1026 @@
+This is a list of Bedrock Edition 1.16.100 development versions.
+
+
+== beta 1.16.100.50 ==
+Beta 1.16.100.50 is the first  beta version for Bedrock Edition 1.16.100, released on July 30, 2020, which changes the achievement screen and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Achievements
+
+Added a new achievement details screen.
+Only available after gradual roll-out.
+Settings
+
+Added Noto Sans font license button and pop-up dialog to Settings screen.
+Creative inventory
+
+Added farmland to the Creative inventory.
+
+
+=== Changes ===
+
+
+==== General ====
+Achievements
+
+Revamped the UI.
+Only available after gradual roll-out.
+
+
+==== Mobs ====
+Camera
+
+Can now be obtained by using /give command once again.
+Gold Nugget, Iron Nugget, Nether Brick
+
+Can now be used as fuel, lasting for 1 second.
+Technical
+
+Actors
+The minecraft:behavior.controlled_by_player goal is now data-driven.
+Physics Component's has_gravity is now used to decide whether a mob should apply water gravity, if the mob does not have a Navigation Component.
+Ender Crystals can no longer be pushed.
+The Squid's rendering is now data-driven.
+Minecarts are now data-driven.
+This converted minecart rideable, minecarts with chest, with hopper, with command block, and with TNT to be data-driven.
+Display Name Component
+Items can now override their display name with a localized 'value'.
+
+
+=== Fixes ===
+General
+
+Custom names now modify boss's bars (MCPE-43473)
+Fixed bug where system language setting for Simplified and Traditional Chinese was not honored by the game.
+Nintendo Switch can now upload worlds to Realms again (REALMS-474).
+This fix is still in beta so won’t be available for Realms or non-beta platforms yet.
+Game no longer crashes if a player opens a shulker box they're standing on after rejoining a multiplayer session
+Fixed issue where some walls were not correctly connected on world load
+Fishing Rod will now correctly cast when close to a mob (MCPE-65249).
+Fixed an issue that meant the block highlight/selection box was extending above blocks.
+Fixed an issue with missing animation when damaging bamboo.
+Added Noto Sans font license button and pop-up dialog to Settings screen (in the Profile section).
+Graphical
+
+Fixed a graphical issue with glass blocks in City Living world, that affected some devices on Windows 10.
+Fixed an issue with the skybox background graphics not rendering correctly on some devices.
+
+
+== beta 1.16.100.51 ==
+Beta 1.16.100.51 is the second beta version for Bedrock Edition 1.16.100, released on August 12, 2020, which brings more parity from Java Edition, changes the achievement screen, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Basalt
+
+No longer destroyed by ghast fireballs.
+Now take slightly more time to break.
+
+
+==== Mobs ====
+Dolphins
+
+Now dry out at the same rate as Java Edition.
+Snow Golems
+
+Shearing them now drops the pumpkin.
+Turtles
+
+Now play a sound when they lay eggs.
+
+
+==== Non-mob Entities ====
+Experience orbs
+
+Will now float up in water.
+
+
+==== Gameplay ====
+Enchantments
+
+If the player has the Mending enchantment on any items, XP will now always go to healing the items before going to the XP bar.
+
+
+==== General ====
+Achievements
+
+Gamepad bumpers can now be used to switch tabs in the achievements screen.
+Tweaked the default focus on the tabs in the achievements screen.
+Added extra space between the end of the list and the "input legend" at the bottom.
+The achievement detail screen now shows "Completed on other platform" section.
+Technical 
+
+Item names of the format minecraft:item.someitem no longer need the item. portion and it will be ignored.
+Added Entity Movement Prediction.
+
+
+=== Fixes ===
+Stability and Performance
+
+The game no longer crashes if a player opens a Shulker Box they're standing on after rejoining a multiplayer session (MCPE-60856)
+Vanilla Parity
+
+Sea Turtles now play a sound when they lay eggs
+Dolphins will now dry out at the same rate as they do in Java Edition; 120 seconds
+Undamaged Mending items will no longer prevent damaged Mending items from being repaired (MCPE-80156)
+Basalt can no longer be destroyed by Ghast fireballs (MCPE-75252)
+Basalt blocks now take slightly more time to destroy
+TNT no longer activates when a Redstone Torch is placed directly on it (MCPE-81258)
+Experience Orbs now float in water (MCPE-64039)
+Adjusted Netherite movement in lava (MCPE-65372)
+Trade discounts from Hero of the Village and Curing Zombie Villagers now match the Java Edition (MCPE-70782)
+Pistons can no longer be extended above the build height limit or into the void (MCPE-37825, MCPE-51067)
+General
+
+Grindstone no longer shows a result unless it changes the item (MCPE-54256)
+Water from bubble columns now flows as it should (MCPE-36463)
+Custom-named boats and minecarts will now save their name after placing and breaking. Their names will also be shown in the world (MCPE-25845)
+Smelted items (prior to 1.13) no longer contain incorrect damage values and can be stacked (MCPE-54617)
+Hostile mobs can now spawn in thunderstorms during the day (MCPE-34409)
+Shearing a Snow Golem now drops a carved pumpkin (MCPE-66967)
+Bees now leave their hive/nest after an allotted time in the End and Nether dimensions (MCPE-58322)
+Water now flows correctly near edges
+Fixed a bug that could cause falling blocks to duplicate near a portal (MCPE-68229)
+Villagers no longer get locked into the wrong profession (MCPE-62080)
+Dragon Egg no longer disappears if placed on a pedestal and Ender Dragon is respawned (MCPE-78400)
+Music is no longer interrupted when entering the water in ocean biomes (MCPE-76213)
+Saplings will no longer incorrectly transform into a bee nest when next to a tree and flowers (MCPE-80543)
+Hoppers with containers above them can no longer collect dropped items (MCPE-80555)
+Gravity-affected blocks no longer break when their supporting block is moved by a piston (MCPE-81106)
+Podzol no longer generates below the top layer when spawning large spruce trees (MCPE-71995)
+Fixed an issue that caused rails to not be powered correctly along the x-axis (MCPE-81987)
+Turtles and Dolphins on land will now successfully move towards water (MCPE-44918)
+Compass items will now point in the correct direction when the player is in a boat (MCPE-56876)
+Mob's inactivity timer is now reset when closer than 50 blocks from the nearest player
+Ghasts once again spawn in all light levels (MCPE-85747)
+Fixed Vex movement along the x and z directions (MCPE-41879)
+Blaze now switches between melee attack and ranged attack based on the distance from the player (MCPE-45469)
+Falling blocks now break after falling for extended periods of time (MCPE-73124)
+Name tags now work correctly again (MCPE-65535)
+Collecting fish with a bucket now works more consistently
+User Interface
+
+Fixed a visual issue where clicking to edit the text box in the NPC dialog would not show the caret (Education Edition Features)
+Technical
+
+Fix for ItemDescriptors
+
+
+== beta 1.16.100.52 ==
+Beta 1.16.100.52 is the third beta version for Bedrock Edition 1.16.100, released on August 19, 2020, which added new commands, more parity features from Java Edition, technical changes, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/playanimation
+
+Used to run a one-off animation.
+/ride
+
+Used to make entities ride other entities, stop entities from riding, make rides evict their riders, or summon rides or riders.
+/structure
+
+Used to save and load structures without having to use structure blocks.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Brewing Stands
+
+Can now be crafted with Blackstone.
+Farmland
+
+Now gives itself when pickblocked, instead of normal dirt.
+Can now be obtained using /give command.
+
+
+==== General ====
+Technical
+
+Updated Actor Properties. Two fields that were invalid and appeared in some vanilla content will now give a content error. The field 'value' on minecraft:can_fly and the property minecraft:foot_size should simply be removed from any entity files.
+Make boat use the Buoyancy Component. Added two new components, the inside_block_notifier component, which fires specified events when the actor enters or exits specified blocks, and the out_of_control component, which sets a corresponding actor flag, in order to make this possible.
+Added error checks to parsing of minecraft shareables items. Displays content log if item name is invalid or the array is empty.
+Attempting to load a custom material that is not defined no longer causes a crash. A proper content error is now thrown.
+Exposed new data parameters to control the behavior of Drop Item For Goal. This includes: seconds_before_pickup, cooldown, minimum_teleport_distance, max_head_look_at_height, teleport_offset, and entity_types.
+Exposed new data parameters to control the behavior of Harvest Farm Block Goal, including max_seconds_before_search, search_cooldown_max_seconds, and seconds_until_new_task.
+Updated the format_versionfield in geometry, particles, and animation files to behave as entity behavior files do.
+Aseprite
+The UI now supports using aseprite JSON files for animations, which allows more advanced animations than simple flip books.
+Format Version Checks
+Updated the format_versionfield in geometry, particles, and animation files to behave as entity behavior files do.
+SetBannerDetailsFunction
+Now supports customizing non-Illager banners
+Up to 6 patterns and colors can be specified.
+
+
+=== Fixes ===
+Vanilla Parity
+
+Brewing Stand can now be crafted with Blackstone (MCPE-90465)
+Players can now spawn farmland with the /give command and pick it with Pick Block (MCPE-25691)
+Cod and Salmon killed by fire damage now drop cooked fish (MCPE-30693)
+Performance and Stability
+
+Fixed a crash that occurred when entering a game with specific texture packs enabled
+Adding tags to the Ender Dragon will no longer crash the game when reloading the world (MCPE-89076)
+Blocks
+
+Fence gates now align with Blackstone Walls (MCPE-78002)
+Placing blocks on Crimson Roots and Warped Roots will now properly remove the roots (MCPE-81521)
+Target blocks no longer power additional blocks above them (MCPE-85455)
+Cocoa Beans can now be placed on and survive on all jungle wood variants (MCPE-46638)
+Experience Orb
+
+The Experience Orb now ignores world lighting, allowing it to always be at max brightness (MCPE-67448)
+Items
+
+Dropped items no longer float too low to the ground
+Dragon Egg now always drops when it is destroyed by an explosion (MCPE-52632)
+Mobs
+
+Mobs in lava were not able to find a path out. This fix makes it so they can enter a lava block if they are already in lava
+Pathfinding will now account for minecraft:scale component
+Updated BrewingStand, ButtonBlock, ChestBlock, EnderChestBlock, SlabBlock, and SoulSandBlockblock types to allow path-finding and navigation (MCPE-47075)
+
+
+== beta 1.16.100.53 ==
+Beta 1.16.100.53 is the fourth beta version for Bedrock Edition 1.16.100, released on August 26, 2020, which fixes bugs.
+
+
+=== Fixes ===
+General
+
+Lava and water textures are now visible after placing Slime block or Honey block next to or above them. (MCPE-62255)
+End gateways will now correctly calculate distance to the center block when searching for an exit position. (MCPE-48922)
+Plants and crops now grow more consistently when near chunk borders.
+Structure Blocks
+
+Removed the name field from the structure block 3D Export screen.
+Fixed incorrect chunk position calculation for block changes that occur during the structure block preview window.
+Structure loading/saving no longer affects ticking blocks in nearby chunks.
+Fixed the Reset button not re-rendering the wireframe bounding box.
+Technical/Commands
+
+Fixed the logic that decides whether or not an entity can be summoned. Now you can summon an entity using the execute command, which this bug disallowed.
+Fixed particles when using animation controllers to play particles and switching to a different state that also plays particles.
+
+
+== beta 1.16.100.54 ==
+Beta 1.16.100.54 is the fifth beta version for Bedrock Edition 1.16.100, released on September 3, 2020, which brought more parity from Java Edition, RenderDragon to the Windows 10 port, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/fog
+
+Used for managing active fog settings for players.
+
+
+==== General ====
+Splashes
+
+Added new splashes:
+This parrot is no more! It has ceased to be!
+Music by Lena Raine!
+Aww man!
+#minecraftfarms
+And my pickaxe!
+Envision! Create! Share!
+Fabulous graphics!
+Also try Minecraft Dungeons!
+Vanilla!
+May contain traces of citrus!
+Zoglin!?
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Bee Nests
+
+Now appear yellow on maps.
+Chains
+
+Can now be placed in all orientations.
+Lanterns
+
+Can now be waterlogged.
+Also applies to soul lanterns.
+Nether gold ore
+
+Now uses the "nether" color on maps.
+Soul Campfires
+
+Now deal double the damage that normal campfires deal.
+Now drop Soul Soil instead of Charcoal when mined.
+Sweet Berry Bushes
+
+Now deal damage to mobs and players.
+
+
+==== Items ====
+Brown and Red Mushrooms
+
+Can now be placed and grown on both types of nylium.
+Crimson and Warped Fungus
+
+Can now be placed on mycelium.
+Will still only grow into a huge fungus on the respective nylium.
+Lodestone Compasses
+
+Can now be enchanted with Curse of Vanishing.
+Totem of Undying
+
+Now gives Fire Resistance I instead of II.
+
+
+==== Mobs ====
+Hoglins
+
+Now afraid of Respawn Anchors.
+Baby Hoglins now deal appropriate damage.
+Baby Hoglin now have drops after being killed by the player.
+Iron Golems
+
+Now attacks Hoglins.
+Piglins
+
+Now drop their inventory when "zombified".
+Can now equip Shields, Elytra, Turtle Shells, and various Mob Heads.
+Piglin Brutes
+
+Now drops 20 experience points instead of 10.
+No longer spawns with enchanted golden axes.
+Striders
+
+Now has the correct health of 20HP × 10 instead of 15HP × 7.5 to match Java Edition.
+Strider Jockeys
+
+The zombified piglin riding a strider now spawns holding a warped fungus on a stick.
+Zoglins
+
+Now take damage from Instant Health effect and heal from Instant Damage effect.
+Baby Zoglin now have drops after being killed by the Player.
+
+
+==== World generation ====
+Nether Biomes
+
+Soul Sand Valley now have ceilings covered with Soul Soil and Soul Sand.
+Basalt Delta now have Basalt ceilings.
+Ruined portals
+
+Now can generate with 4–12 glistering melons instead of only one.
+
+
+==== Gameplay ====
+Bartering
+
+Various weights and item amounts have been changed to match the Java Edition with the exception of spectral arrows.
+Blackstone, arrows, and water bottles can now be obtained through bartering.
+Netherite Hoe, Glowstone Dust and Magma Cream can no longer be obtained from bartering.
+Enchanting
+
+Soul Speed are no longer obtainable from fishing, chest loot, or raids.
+Map colors
+
+Map colors have been updated accordingly.
+Warped stems, stripped warped stems, and warped planks now use the WARPED_STEM color instead of the COLOR_CYAN color.
+Warped hyphae and stripped warped hyphae now use the WARPED_HYPHAE color instead of the COLOR_CYAN color.
+Warped nylium now uses the WARPED_NYLIUM color instead of the COLOR_CYAN color.
+Warped fungi and twisting vines now use the COLOR_CYAN color instead of the PLANT color.
+Warped wart blocks now use the WARPED_WART_BLOCK color instead of the COLOR_CYAN color.
+Crimson stems and stripped crimson stems now use the CRIMSON_STEM color instead of the COLOR_RED color.
+Crimson hyphae and stripped crimson hyphae now use the CRIMSON_HYPHAE color instead of the COLOR_RED color.
+Crimson nylium now uses the CRIMSON_NYLIUM color instead of the COLOR_RED color.
+Crimson fungi and weeping vines now use the NETHER color instead of the PLANT color.
+Crimson planks now use the CRIMSON_STEM color instead of the NETHER color.
+
+
+==== General ====
+Options
+
+Removed the "Particle Render Distance" options as it became redundant with /fog.
+RenderDragon
+
+Windows 10 now uses the new rendering engine RenderDragon.
+Splashes
+
+Removed the "mixer.com/minecraft" splash, as Mixer streaming services is no longer available.
+Technical
+
+The MoveToLiquidGoal has been changed to use data for its target block.
+Striders now correctly executes the move_to_liquid goal.
+minecraft:behavior.send_event
+No longer uses -1 in max_activation_range as a value to indicate unlimited range, the default has been changed to 32.
+Added content log warnings for when min_activation_range and max_activation_range is less than 0
+Added content log warnings for when min_activation_range is greater than max_activation_range
+minecraft:behavior.summon_entity
+No longer uses -1 in max_activation_range as a value to indicate unlimited range, the default has been changed to 32
+Added content log warnings for when min_activation_range and max_activation_range is less than 0
+Added content log warnings for when min_activation_range is greater than max_activation_range
+
+
+=== Fixes ===
+Performance and Stability
+
+Fixed issue where the game could crash if player joined the game in a sleeping state. (MCPE-79465)
+Fixed a bug which would cause a crash after killing an Elder Guardian or Guardian. (MCPE-94176)
+Fixed a crash that could sometimes occur when using fireworks to propel elytra.
+Vanilla Parity
+
+It's now possible to place chains so that they are aligned horizontally.
+Floor and ceiling surface generation now correctly match Java.
+Soul Sand Valleys now have ceilings covered with Soul Soil and Soul Sand. (MCPE-69159)
+Basalt Deltas now have Basalt ceilings. (MCPE-79608)
+Striders with riders can now be tempted.
+Piglins now drop their inventory when "zombified". (MCPE-81503)
+Piglin Brutes now give 20xp instead of 10 when killed by player. (MCPE-94089)
+Allow Piglin to preserve equipment when zombified. (MCPE-83683)
+Lanterns can now be placed underwater and do not pop when a water source block is placed on them.
+The Piglin in Bedrock will now offer similar bartering items as it does in Java (MCPE-92662)
+Soul Fire now doesn't melt snow or ice blocks (MCPE-74901)
+Soul Campfires now does twice as much damage as regular campfires (MCPE-81499)
+Zombified Piglin is no longer floating above the strider while riding (MCPE-80188)
+Warped Fungus can now grow in Crimson Forest on Bedrock.
+Piglins can no longer drop Nether Brick Blocks after bartering on Bedrock (MCPE-74395)
+Baby Zoglin and Baby Hoglin now have drops after being killed by the Player.
+Wither Skeletons now automatically attack Piglins and Piglin Brutes (MCPE-65456)
+Hoglins will now flee from Respawn Anchors (MCPE-71534)
+Iron Golems now attack Hoglins on Bedrock (MCPE-73838)
+Zoglins now take damage from Healing effect and heal from Harming effect.
+If Ruined Portal chests contain glistening melon slices they no longer contain only a single melon slice (MCPE-92675)
+Zombified Piglins that are jockeys on Striders now hold a Warped Fungus on a Stick.
+Piglin Brutes no longer have enchanted Golden Axes to have parity with Java.
+Nether Sprouts can be used in the Composter again (MCPE-78026)
+Soul Speed Enchant found in chests is now limited to Bastion Remnant chests.
+Netherite armor items no longer takes durability loss from player standing on magma (MCPE-76532)
+Soul Campfires now drop Soul Soil instead of Charcoal when mined (MCPE-74709)
+Strider health is now on parity with the Java version (MCPE-76425)
+Piglins can now equip Shields, Elytra, Turtle Shells, and various Mob Heads. (MCPE-75863)
+Piglin Brutes no longer become angry from specific blocks being broken, they still always attack a player on sight though (MCPE-94106)
+Zombified baby piglins now correctly display items held in their hands
+Quick crafting Piston will now work with Warped planks and Crimson planks (MCPE-87659)
+Baby Hoglins now deal appropriate damage.
+Piglins now spawn naturally in Nether Wastes on Peaceful difficulty.
+General
+
+Updated Splash texts and loading screen tips
+Added screen reader support to gamepad helpers on main menu
+Corrected map color representation for multiple blocks (MCPE-19228, MCPE-83797)
+Nether and Warped wart blocks are no longer in an unfolding section in the creative menu
+Totem of Undying now applies the correct effects upon dying (MCPE-52364)
+Loading screen hints now have punctuation (MCPE-85381)
+Gameplay
+
+Mobs can no longer power Minecarts they stand in (MCPE-46804)
+Fixed a bug where the player and mobs wouldn't take damage when walking through sweet berry bushes
+Slimes can climb ladders again
+Fixed bug where ladders were not displayed in special cases when placed next to each other
+Killing mobs that have armor equipped with ranged weapons now result in armor loot (MCPE-44408)
+Compass with custom name retains its name when linked to a Lodestone
+Lodestone Compasses can now be enchanted with the Curse of Vanishing using an Anvil (MCPE-74016)
+Compasses with Curse of Vanishing now retain their enchantment when linked to a Lodestone
+Slimes now spawn in slime chunks inside frozen biomes (MCPE-49303)
+Iron pickaxe can now be dropped during raids (MCPE-44417)
+Brown and Red Mushrooms can now be grown into huge mushrooms on Nylium
+Crimson and warped fungus can now be placed on Mycelium
+Graphical
+
+Striders now have a separate texture mapping for each leg, and their leg textures are properly mirrored
+Created an updated biomes_client.json file for 1.16.100 that links each biome to a fog definition identifier
+Created /fog command for managing active fog settings for players; these fog settings override fog driven from the client such as biome location of player camera
+Created a json file for each fog definition which contains the new fog_start, fog_end, fog_color, and render_distance_type settings for parity with previous data and hardcoded values
+Added child object "volumetric" which contains density and media_coefficients objects. These hold the data values used for the volumetric fog.
+Technical
+
+Molang Script Expression query.spellcolor
+Fixed a difference with the default return type of the script function, which differed from the usual return type
+SendEventGoal
+Fixed a crash that could occur if the SendEventGoal is defined with incomplete json fields
+Fixed a crash that could occur if a SendEventGoal stage is defined with a delay of 0.
+
+
+== beta 1.16.100.55 ==
+Beta 1.16.100.55 is the sixth beta version for Bedrock Edition 1.16.100, released on September 10, 2020, which brought more parity from Java Edition, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Observers
+
+No longer get stuck in an active state when moved by pistons.
+Shroomlights
+
+Can now be composted.
+
+
+==== Items ====
+Banner Patterns
+
+The "thing" banner pattern can now be crafted at the loom.
+
+
+==== Mobs ====
+Camera
+
+Can no longer be obtained by using /give command.
+Piglins and Piglin Brutes
+
+Now keep their crossbows or golden axes (respectively) when zombified.
+Zoglins
+
+Changed baby zoglin's model to match Java Edition.
+
+
+==== General ====
+Add-ons and Script Engine
+
+Bandwidth optimization: make sure level event packets only broadcast locally.
+Spatial Bandwidth Optimizations are now exposed through a component, minecraft:conditional_bandwidth_optimization.
+Spatial Bandwidth Optimizations are now utilized by every actor using minecraft:conditional_bandwidth_optimization.
+Added the selector component to raw text which can be used to print entity names in commands such as /tellraw and /titleraw.
+Structures are no longer cut off when loaded using the /structure command.
+Experimental Gameplay
+
+Toggle has been revamped.
+Added "Custom Biome Add-Ons", "Experimental Scripting Add-Ons", "Experimental Molang Features", and "Next Gameplay Update" toggle.
+Menu Screen
+
+Added Mojang Studios logo splash screen for Android devices.
+Technical
+
+FMOD music channel now sets its priority to 0 when music is played to prevent FMOD virtual channel from stealing it when a regular sound is played in game (default priority is 128)
+
+
+=== Fixes ===
+Performance and Stability
+
+Game no longer crashes if a player opens a shulker box they're standing on after rejoining a multiplayer session.
+Fixed crash when using /fill command with portal to fill huge amount of blocks.
+Vanilla Parity
+
+Baby zoglins now have oversized heads. (MCPE-65454)
+Shroomlight block can now be used with the composter. (MCPE-82999)
+Crimson fungus and warped fungus can now be placed on mycelium blocks. (MCPE-88588)
+Observers will no longer get stuck in an active state when moved by a piston. (MCPE-61175)
+The "Thing" banner can now be crafted at the loom. (MCPE-70449)
+All expected blocks and items can now be composted again. (MCPE-94671)
+General
+
+Portal blocks placed with /setblock or /fill commands that are not part of a valid portal structure will only exist for 1 second before they are removed.
+Foxes will no longer take damage when falling on berries. (MCPE-82273)
+Text and background for the title command (Title, Subtitle, and Actionbar) have been adjusted and spaced out.
+Dressing room now shows cached Character Creator items when offline.
+24 bit PNGs without an alpha channel are no longer accepted as valid custom skins. (MCPE-50094)
+Gameplay
+
+Boots enchanted with Soul Speed no longer become stuck on mobs or the player after breaking. (MCPE-75375)
+Piglin brutes preserve equipment when zombified. (MCPE-83683)
+User Interface
+
+The smithing table screen now contains hammer icon and UI elements appear correctly when using the "Pocket" UI profile setting. (MCPE-79541)
+New Achievement Screens
+
+Made the reward frame on the list item the same as the art frame.
+Improved the tap visual feedback.
+Decreased safe zone size.
+Fixed an issue where it was impossible to move focus away from Back button using a keyboard.
+Fixed an issue where the new achievement screens would sometimes incorrectly apply safe zone along the split in split screen mode, instead of just at the window edges.
+
+
+== beta 1.16.100.56 ==
+Beta 1.16.100.56 is the seventh beta version for Bedrock Edition 1.16.100, released on September 17, 2020, which makes technical changes, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== General ====
+Add-ons and script engine
+
+Added minecraft:placement_filter component which allows the player to set conditions for where the block can be placed.
+Added serialization to Block Descriptor.
+Added static anyMatch functions to BlockDescriptor to compare a list of BlockDescriptors against: Block*, BlockLegacy, or BlockDescriptor.
+Added a function to compare two BlockDescriptors.
+Changed the BlockDescriptor BlockLegacy member variable to a Block*, to set the block states during deferred block resolution and get the block with the states set.
+Removed all the existing Block* json parsing.
+Added unit tests to verify parsing and serializing block descriptors.
+Added unit tests to verify comparing a BlockDescriptors against each other.
+Added unit tests to verify getting a block from BlockDescriptor with the states set.
+Experimental Gameplay
+
+Added "Experimental Add-On Features" toggle.
+Technical
+
+DataDrivenBlockEvents
+Adds support for parsing and performing the following event responses:
+Added the set_block_at_pos event response.
+Spawn Loot.
+Set Block.
+Added support for the on_interact trigger component.
+Added support for the on_player_placing trigger component.
+Also added MoLang queries for cardinal_block_face_placed_on and cardinal_player_facing for getting placement context.
+DataDrivenBlockModels
+Added the first pass of the new data driven block tessellation pipelin.
+Added the minecraft:geometry component to allow using a block model for rendering.
+Added the minecraft:unit_cube component to allow using a default unit cube for rendering. Unit cubes get some extra effects like ambient occlusion and face removal.
+Added the minecraft:material_instances component to allow mapping faces and material_instances in a geometry file to an actual material.
+DataDrivenBlockModels - SmoothLighting
+Fixed smooth lighting and ambient occlusion with new data driven blocks.
+ExecuteCommand
+Added support to item json events for the execute_command keyword.
+Items
+Created RepairableItemComponent that data-drives how an item is repaired in game.
+Renamed and split item ID to be in parity with the Java item IDs.
+Added new BlockRaycastComponent that can override the AABB used for outlines and raycasting.
+Added new BlockCollisionComponent that can override the AABB used for entity collision.
+Added new BlockPropertyComponent that can replace the blockProperties : Unwalkable, Infiniburn, PreventsJumping, Immovable, BreakOnPush, OnlyPistonPush and BreaksWhenHitByArrow.
+Added new BlockQueuedTickingComponent that triggers events for a block on a range of time set by the creator.
+Added new BlockRandomTickingComponent that triggers events for a block randomly.
+Added a Rotation Component that allows a block to rotate The component only allows axis-aligned rotations.
+Adds the base implementation of the CraftingTableComponent.
+Allows the creation of custom crafting tables.
+Currently only supports 3x3 grids.
+Records
+Items can now be made records to play music in jukeboxes. Their component variables:
+sound_event A string value corresponding to a sound event in the game code. This string must be one these for music to play: "13", "cat", "blocks", "chirp", "far", "mall", "mellohi", "stal", "strad", "ward", "11", "wait", "pigstep"
+duration A float value that determines how long particles are spawned from the JukeBox Block, should approximately match length of sound event.
+comparator_signal An integer value that represents the strength of the analogue signal, used by the Comparator Block.
+RunCommand
+Added support to entity json events for the run_command keyword alongside the current add and remove keywords.
+Updated the following components to parse and use BlockDescriptor instead of Block*: BlockBreakSensorComponent, BlockListEventMap, BreathableComponent, BreedableComponent, BuoyancyComponent, EntityPlacerItemComponent, PreferredPathComponent, SeedItemComponentLegacy.
+Updated the following features to parse and use BlockDescriptor instead of Block*: NoSurfaceOreFeature, OreFeature, SingleBlockFeature.
+Updated the following goal definitions to parse and use BlockDescriptor instead of Block*: GoalDefinition, RaidGardenGoal, VanillaGoalDefinition.
+Updated the following surfaces code to parse and use BlockDescriptor instead of Block*: MesaSurfaceAttributes, SurfaceMaterialAdjustmentAttributes, SurfaceMaterialAttributes.
+Updated the following tests to reflect the changes from updating code to use BlockDescriptors: BuoyancyComponentServerTests, FeatureHelperTests, NoSurfaceOreFeatureTests, OreFeatureTests, SingleBlockFeatureTests.
+Updated the following trees to parse and use BlockDescriptor instead of Block*: AcaciaTreeCanopy, AcaciaTreeTrunk, FallenTreeTrunk, FancyTreeCanopy, FancyTreeTrunk, MegaPineTreeCanopy, MegaTreeCanopy, MegaTreeTrunk, PineTreeCanopy, RoofedTreeCanopy, SimpleTreeCanopy, SimpleTreeTrunk, SpruceTreeCanopy, TreeHelper.
+Schema
+Split allowed_blocks into use_on and dispense_on.
+use_on specifies what blocks an entity placer item is allowed to be used on, omit to allow all blocks.
+dispense_on specifies what blocks an entity placer item is allowed to be dispensed on, omit to allow all blocks.
+
+
+=== Fixes ===
+Performance and stability
+
+Fixed several crashes that could occur during gameplay.
+Fixed a crash on startup on Xbox One.
+Achievement screen
+
+Time played now displays correctly on the achievement screen (MCPE-66331).
+Allow navigating the focus to the summary by pressing left on the gamepad when narration is enabled.
+Updated input legends for achievement list and achievement reward.
+"Screen" is now narrated when opening an achievement detail screen.
+Fixed how we calculate how many rewards a player has.
+Show the achievements, even after a timeout, when the data has been fetched.
+Don't play click sounds when using a mouse button that is not primary.
+Fix issue where the scrollbar would appear even when there is no content to scroll.
+Added acceleration to focus navigation while using a gamepad.
+Fixed focus persistency while switching from the All tab.
+Fixed support for the mouse "back button" to go back from the achievements screen.
+Fixed support for the Escape button to go back from the achievements screen.
+Fixed an issue where the Input Legend for a Tab would be "open" even when the Tab was already selected.
+General 
+
+Fixed text-to-speech not reading the messages on various screens.
+Fixed maps not being in the list of items when using the /clear command.
+Fixed sign-in button becoming unresponsive after backing out of sign-in prompt screen.
+Gameplay 
+
+Cobblestone is now shown as the default ingredient for stone tools (MCPE-71843).
+Reduced and reintroduced linear attenuation for raid horn sound (MCPE-85593).
+The correct sounds are now played for breaking and placing item frames (MCPE-98901).
+
+
+== beta 1.16.100.57 ==
+Beta 1.16.100.57 is the eighth beta version for Bedrock Edition 1.16.100, released on September 24, 2020, which adds new commands and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/camerashake
+
+Used to enable a camera shaking effect.
+/clearspawnpoint
+
+Used to clear spawnpoints in the world.
+/event
+
+Used to trigger an event on an entity.
+
+
+==== General ====
+Settings
+
+Added "Camera Shake" toggle in the Video and Accessibility settings.
+Used to adjust camera shakes.
+
+
+=== Changes ===
+
+
+==== General ====
+Experimental Gameplay
+
+Added "Additional Modding Capabilities" toggle.​[more information needed]
+Inventory
+
+Items in the inventory will no longer move into the crafting grid when hovering over recipes.
+The selected recipe will no longer be cleared when changing tabs, even if the player doesn't have all the necessary ingredients for that recipe.
+Picking up items while the cursor is hovering over a recipe now updates to the recipe's new index.
+Technical 
+
+Added Item Lock components to allow for items to be locked in the inventory, locked in a slot, or kept upon death.
+Added a new loop_delayfield to skeletal animation files that controls how to wait between each iteration of a looping animation.
+Added camerashake command to enable a camera shaking effect.
+Villagers/zombie villagers will once again correctly spawn as a baby when using the summon command to summon them with the event minecraft:entity_born.
+Older command versions using /execute will now use the proper position for command selectors when calculating the radius.
+Items
+Banners using the set_banner_details function no longer throw a content error when a "base_color" isn't specificed, but rather only when the "base_color" is invalid.
+Added decrement_count event response for items.
+MoveTowardsRestrictionGoal
+This goal has been removed in favor of the two new child goals that make the behavior more clear.
+MoveTowardsDwellingRestrictionGoal
+This goal is for Actors that are part of the Village construct.
+The DwellerComponent is necessary for this goal.
+MoveTowardsHomeRestrictionGoal
+The HomeComponent is necessary for this goal.
+Exposed a new data parameter for the range at which the Actor will stay within in relation to their home: restriction_radius.
+Send Event Goal
+minecraft:behavior.send_event no longer uses -1 in max_activation_range as a value to indicate unlimited range, the default has been changed to 32.
+Added content log warnings for when min_activation_range and max_activation_range is less than 0.
+Added content log warnings for when min_activation_range is greater than max_activation_range.
+Added a new json field look_at_target which allows and disallows entities to turn and face their target.
+
+
+=== Fixes ===
+Performance and stability
+
+Fixed several crashes that could occur during gameplay.
+Fixed an issue where the game could crash if suspended in one of the new achievement screens.
+Made code optimizations to improve chunk loading performance (MCPE-85614).
+Beta changes
+
+Nether portals no longer break in a ripple pattern (MCPE-99650).
+Spawn eggs can now be used on an underwater mob spawner.
+General
+
+Fixed an issue with worlds disappearing from the worlds list during crash on world start (MCPE-84649).
+"The Beaconator" achievement can now be reliably unlocked.
+Fixed a bug where the Archer trophy would not unlock after meeting the criteria (MCPE-86371).
+End city loot chests now generate correctly (MCPE-72920).
+Basalt pillars now generate in soul sand valley again (MCPE-98961).
+Fixed player collision box not properly sizing when swimming, gliding, etc. (MCPE-98271).
+Mobs
+
+Mob spawn range now scales with simulation distance (MCPE-95568).
+Villagers from older versions now level up correctly when trading (MCPE-85013).
+Improved performance of farmer villagers when harvesting or sowing crops.
+Fixed a bug which could prevent farmer villagers from harvesting crops.
+Player-ridden striders now jump onto magma blocks as well as non-full blocks in front of them when guided by warped fungus on a stick (MCPE-77096).
+Overworld animals leashed to the player no longer become unleashed when the player returns from the Nether.
+Striders now correctly executes the move_to_liquid goal.
+Baby animals can be tamed once again, before growing up.
+Bees can now only exit beehives and bee nests through air blocks (MCPE-97185).
+Blocks
+
+Beehives and bee nests now show the correct front facing texture (MCPE-92468).
+Crimson and warped stems/hyphae are now in their correct creative inventory groups (MCPE-74611).
+Items
+
+Item names now appear correctly (MCPE-100252).
+Piglin snout banner pattern can be found in the inventory again (MCPE-100269).
+Banner patterns can now be crafted in the 2x2 crafting grid (MCPE-91247).
+Craftable items now appear correctly (MCPE-100257).
+Written books no longer exist in the creative inventory (MCPE-100275).
+Fixed an issue that meant item damage was not assigned until a world was reloaded (MCPE-62324).
+Player can now see an item's durability immediately after crafting it (MCPE-62324).
+Fixed an issue that prevented an empty item from being given back after using a food like soup or stew.
+Fixed a bug where dropped item stacks could become invisible after merging with another item stack (MCPE-71139).
+Fixed a bug where iron, gold, and diamond horse armor would all show white (MCPE-94432).
+Mob heads and bee spawn eggs now appear correctly in the inventory (MCPE-100251).
+Netherite armor items no longer take durability loss from a player standing on magma blocks (MCPE-76532).
+Audio
+
+Pitch written in sound_definitions.json is now correctly played (MCPE-49430).
+Phantoms wings now make a flapping sound.
+User interface
+
+Beacon container interface no longer shuffles items around the inventory slots when trying to quick-move items from the inventory while the hotbar is full.
+"Ride Exit" hint now clears Actionbar messages (MCPE-75097).
+Updated the profanity filter list (MCPE-64359).
+Character creator
+
+Fixed character creator navigation problems between featured items, achievement rewards, emotes, and the dressing room (MCPE-89179).
+Touch controls
+
+Pressing the 'Leave Boat' button on touch devices will no longer make the player hit a passenger or destroy the boat (MCPE-78113).
+A button icon has been added to the NPC dialog screen to show which gamepad button to press to close the window.
+The hovered slot data is now cleared properly whenever the cursor is moved off of an item slot. This way the gamepad helpers are correct when you are not hovering on an item slot anymore on any container screen.
+The item name text that appears when the player changes the hotbar selection now anchors from the bottom. This way when it grows, it will not overlap with the hotbar (MCPE-79566).
+Change Gamertag and Manage Account buttons on Settings screen (in the Profile section) now opens URLs correctly on iOS and Android.
+Technical
+
+Fixed a bug where start_delayfields in skeletal animations were being used for both the initial delay before playing an animation and for inter-loop delays
+Fixed a crash on Android and included a more descriptive content error to print shader linker problem on screen.
+
+
+== beta 1.16.100.58 ==
+Beta 1.16.100.58 is the ninth beta version for Bedrock Edition 1.16.100, released on September 30, 2020, which adds a new command and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/music
+
+Allows the player to control playing music tracks.
+
+
+==== General ====
+Splashes 
+
+Added eight new splashes:
+Black lives matter!
+Be anti-racist!
+Learn about allyship!
+Speak OUT against injustice and UP for equality!
+Amplify and listen to BIPOC voices!
+Educate your friends on anti-racism!
+Support the BIPOC community and creators!
+Stand up for equality in your community!
+
+
+=== Changes ===
+
+
+==== General ====
+Technical
+
+Removed legacy fall damage packet from client.
+Made some small changes around how we calculate the spawn position of dropped items from a player that dies from falling.
+Added support for the music command, allowing creators to play and control custom music.
+Changed LegacyCubemap from opaque to transparent (MCPE-94275).
+Fog Definition identifier cannot use the minecraft: namespace unless it's from a vanilla resource pack.
+Blocks that have ticking components will now clear their pending ticks from the ticking queue upon removal.
+Added the on_player_destroyed trigger component.
+DataDrivenBlocks
+Middle click on non-default permutations of data driven blocks no longer throws an assert. Middle click now adds the default permutation of the block to your inventory.
+Added a fix for blocks computing ambient occlusion to behave more like vanilla by only contributing ambient occlusion if it's an opaque unit cube.
+Made data driven blocks with disabled collision pathable.
+Documentation
+Added documentation for block event responses and re-organized block documentation.
+
+
+=== Fixes ===
+Performance and Stability
+
+Fixed several crashes that could occur during gameplay.
+Fixed a crash that occurred when rendering.
+Fixed a crash that could occur when a stunned entity loaded into the world.
+Fixed a crash that could occur in certain Marketplace layouts, and ensured the carousel is always populated correctly.
+Gameplay
+
+Fixed an issue with tall plants (bamboo, sugar cane, and cactus) breaking instantly (MCPE-98111).
+Fixed a bug that prevented lava buckets from being used as fuel (MCPE-100405).
+General
+
+Fixed an issue where animations in the achievement screen could be played backwards.
+Fixed missing translation loading screen tip (MCPE-100308).
+
+
+== beta 1.16.100.59 ==
+Beta 1.16.100.59 is the tenth beta version for Bedrock Edition 1.16.100, released on October 8, 2020, which adds a new command, re-adds RenderDragon, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/schedule
+
+Used to set an action on a certain schedule.
+Works differently than Java Edition counterparts.
+
+
+=== Changes ===
+
+
+==== Command format ====
+/camerashake
+
+Added the ability to pick between different shake types
+
+
+==== General ====
+RenderDragon
+
+Re-enabled in the beta.
+Technical
+
+Add Block
+Add Block content is not allowed to use Vanilla Block identifiers to avoid content collisions
+SetBlockAtPos does not modify the block position from incoming parameters
+Components
+Added a Lock in Inventory (minecraft:lock_in_inventory) component that can be applied to an item via the /give and /replaceitem commands. This prevents the item from being removed from the player's inventory, dropped, or crafted with.
+Added a Lock in Slot (minecraft:lock_in_slot) component that can be applied to an item via the /give and /replaceitem commands. This prevents the item from being moved or removed from its slot in the player's inventory, dropped, or crafted with.
+Added a Keep on Death (minecraft:keep_on_death) component which can be applied to an item via the /give and /replaceitem commands. This component prevents the item from being dropped when the player dies.
+Item Icon Component
+Items now have an easy way to set the icon for an item for displaying in the user interface
+Component Variables
+texture: Full path to icon image to use as item's icon. No default
+frame: Molang script to be executed at runtime to determine the icon's current frame. Can be a constant, defaults to: 0
+legacy_texture_id: The name of the texture used on legacy items. No default
+legacy_frame: Molang script to be executed at runtime to determine the icon's current frame. Can be a constant, defaults to: 0
+Data Driven Blocks
+Added the BlockDisplayNameComponent to allow display names to be configured in the localization table
+Made entity_collision and pick_collision take into account the rotation on a block
+Added support for the on_interact trigger component
+Improved support for on_interact modifying the item used, e.g. change durability or set into another item
+
+
+=== Fixes ===
+Performance and Stability
+
+Fixed several crashes that occurred during gameplay
+Fixed a crash that could occasionally occur while flying or moving around the game world
+Blocks
+
+Signs can no longer be placed on end rods
+Blocks that can only be obtained with commands no longer have a placeholder tooltip (MCPE-100760)
+Fixed Crimson Roots, Warped Roots and Nether Sprouts not generating in the Nether (MCPE-100614)
+Walls converted from Console Edition saves are now joined properly
+Items
+
+Item lock icon and tooltip no longer appear when the Show Tags game rule is false
+Fixed an issue that was causing some item recipes to be missing from the crafting window (MCPE-100257)
+Armor no longer gets stuck in the hot bar after interacting with an armor stand (MCPE-84368)
+Added Book & Quill back to the Creative item inventory (MCPE-100361)
+User Interface
+
+Fixed the 'Profile' button in the Pause Menu not being sized correctly.
+Technical
+
+Fixed an issue where custom items were not added to the Creative item inventory and therefore could not be used with commands
+Fixed a bug where a request queued with /schedule would not clear out when executed and would execute when re-entering a level
+Fixed issues with the /schedule command that would consider an area loaded before it was actually loaded, and the command now respects which dimension it is queued in
+Fixed issue with Blocks sync
+Fixed animations not running on mobs spawned with custom events
+Fixed issue where on_interact would duplicate the item used if an event response killed the player
+Fixed custom items functioning or rendering correctly on the client in a client/server scenario
+
+
+== beta 1.16.100.60 ==
+Beta 1.16.100.60 is the eleventh and final beta version for Bedrock Edition 1.16.100, released on October 15, 2020, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Command format ====
+/structure
+
+Added the ability to animate the placement of a structure.
+
+
+=== Fixes ===
+Performance and Stability 
+
+Fixed a crash on that could occur when Player 1 in a split-screen session disconnects their controller. (MCPE-99565)
+Gameplay 
+
+When the /clone command replaces a double chest with another double chest, it now sets their pairing correctly upon load. This way it doesn't cause errors before it ticks to match up the pair.
+Graphical
+
+Touchscreen input "Chat and Commands" UI element now has a darker border.
+"Tip" messages no longer appear off screen.
+Changed vignette layer from 4 to 5 to prevent drawing vignette in between hotbar items.
+Technical  
+
+Fixed updating of bounding box to happen after proper scale has been set.
+
+
+== Notes and references ==
+
+
+== Navigation ==

@@ -1,0 +1,92 @@
+Schedules the function(s).
+
+
+== Usage ==
+In Java Edition, delays the execution of a function or all functions in a function tag. The function(s) are executed by the server after specified amount of time passes.
+In Bedrock Edition, schedules a function to be executed once an area is fully loaded, or after a certain amount of time.
+In Java Edition, the same functions or the same function tags cannot have two schedules executed at the same game tick.
+In Java Edition, in replace mode, overrides an unexecuted schedule directly when a function or a function tag already has an unexecuted schedule. For example, if a function is scheduled to be executed in 30 seconds, and before it is executed you want to modify the execution time, you can use replace mode to set a new schedule to replace the original.
+Even when using the execute as ... command, the scheduled function always runs as the server at world spawn.
+
+
+== Syntax ==
+Java Edition
+schedule function <function> <time> [append|replace]
+Adds a schedule.
+schedule clear <function>
+Removes a schedule.
+Bedrock Edition
+schedule on_area_loaded add <from: x y z> <to: x y z> <function: filepath>
+schedule on_area_loaded add circle <center: x y z> <radius: int> <function: filepath>
+schedule on_area_loaded add tickingarea <name: string> <function: filepath>
+Adds a schedule to be executed once an area is loaded.
+schedule delay add <function> <delay (ticks)> [append|replace]
+schedule delay clear <function>
+Delays a schedule.
+schedule clear <function: filepath>
+schedule on_area_loaded clear function <function: filepath>
+schedule on_area_loaded clear tickingarea <name: string> [function: filepath]
+Removes a schedule.
+
+
+== Arguments ==
+JE: <function>: functionBE: function: filepath: CommandFilePath
+
+Specify the function to be run.
+In Java Edition, must be a resource location or one prefixed with a #, which resolves into a function or a function tag during command execution. In Bedrock Edition, must be of the format path/to/function/file, which resolves into a function located at [behavior_pack]/functions/path/to/function/file.mcfunction during command execution.
+JE: <time>: time
+
+Specify the delay time.
+It must be a single-precision floating-point number suffixed with a unit. It must be not less than 0 gameticks. Units include:d: an in-game day, 24000 gameticks;s: a second, 20 gameticks;t (default and omitable): a single gametick; the default unit.The time is set to the closest integer after unit conversion to gametick. For example. .5d is same as 12000 gameticks.
+One thing to note is that the delay time of 1t does NOT always mean one tick of delay. Instead, it schedules the function for the upcoming phase for scheduled functions.
+If schedule function <function> 1t is executed in #minecraft:tick functions, it schedules the function for the phase in the same tick, which comes right after the phase for the #minecraft:tick functions.
+If schedule function <function> 1t is executed during the "scheduled functions" phase, it schedules the function for the next phase, which is coming in the next tick.
+Thus, specifying 1t in #minecraft:tick functions makes the function run within the same tick, and specifying 1t in scheduled functions makes the function run in the next tick.
+JE: <function>: string (in /schedule clear ... mode)
+
+Specify the function to be cleared. Should be a namespaced ID (minecraft: cannot be omitted) or a function tag(minecraft: cannot be omitted).
+Must be a string. And it is a greedy phrase (taking the rest of the command as the string argument).
+JE: append|replace
+
+replace — (default) Simply replaces the current function's schedule time.
+append — Allows multiple schedules to exist at different times.
+BE: from: x y z: CommandPosition and to: x y z: CommandPosition
+
+Specifies the coordinates of opposite corners of a rectangular area used to define a loaded area.
+Must be a three-dimensional coordinates composed of <X>, <Y> and <Z>, each of which must be a single-precision floating-point number or tilde and caret notation.
+For x and z, numbers less than -30,000,000 or greater than 30,000,000 are treated as -30,000,000 or 30,000,000 respectively.
+BE: center: x y z: CommandPosition
+
+Specifies the coordinates of the center point of a circular area used to define a loaded area.
+Must be a three-dimensional coordinates composed of <X>, <Y> and <Z>, each of which must be a single-precision floating-point number or tilde and caret notation.
+For x and z, numbers less than -30,000,000 or greater than 30,000,000 are treated as -30,000,000 or 30,000,000 respectively.
+BE: radius: int: int
+
+Specifies the radius of a circular loaded area as the number of chunks from the center to the edge of the circle.
+Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ). It should be between 0 and 2,147,483,647 (inclusive).
+BE: name: string: basic_string
+
+Specifies the name of a ticking area, executes function when which is added.
+Must be a string. And it must be a single word that has no space or a double-quoted string (When quoted, \ can be used to escape characters).
+
+
+== Result ==
+
+
+== Output ==
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== External links ==
+"/schedule Command"     – Microsoft Learn, October 9, 2024.
+
+
+== Navigation ==

@@ -1,0 +1,243 @@
+This is a list of Java Edition 1.14.3 development versions.
+
+
+== 1.14.3 Pre-Release 1 ==
+1.14.3 Pre-Release 1 (known as 1.14.3-pre1 in the launcher) is the first pre-release for Java Edition 1.14.3, released on June 3, 2019, which makes small changes to villagers and fixes some bugs left over from 1.14.2.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Villagers
+
+Panicking villagers now have a higher chance of spawning iron golems.
+Farmers now spend more time farming when they are working.
+Farmers now always give away food even if other villagers do not need it.
+
+
+==== General ====
+Performance
+
+Improved performance.
+
+
+=== Fixes ===
+36 issues fixed
+From released versions before 1.14
+
+MC-74407 – Villager inventories can get into a state where villagers cannot do anything useful
+MC-123836 – Double blocks are not loaded in structures
+MC-135001 – Beds drop as an item when loaded in a structure
+From 1.14
+
+MC-138053 – /gamerule spectatorsGenerateChunks being false prevents chunks from being loaded
+MC-143369 – Wandering trader text implies trades refresh
+MC-144507 – The legs on cats clip through to the top of the model
+MC-145863 – Villagers breed even if there are not enough beds
+MC-146429 – Farmer villagers stumble between farming and using their composters
+MC-146835 – Illager captain spawned from raids will still give the bad omen effect to its killer, causing raids to never end
+MC-147740 – Villagers sometimes don't restock
+MC-147851 – Villagers frequently run right into mobs they are trying to avoid
+MC-148013 – Farmer villager behavior too lazy / not farming at all
+MC-148610 – Hostile mobs spawning on top of trapdoors, glowstone and sea lanterns
+MC-149372 – Game crashes when opening a 1.13.2 world
+MC-149443 – Iron golems spawn too often
+MC-150319 – Crash after using /kill
+MC-151079 – An employed villager quickly becomes unemployed and employed when it works, even if its workstation has not been deleted.
+MC-151084 – Chunk rendering is slow and random
+MC-151144 – Hostile mobs in lazy chunks no longer count towards mob cap, breaking mob switches
+MC-151185 – Game crash after breaking villager point of interest
+MC-151337 – Mob spawn rate too high
+MC-151346 – Crash while F3 menu tries to access tags while /reload-ing
+MC-151395 – Farmers create bread only when they pick up at least 3 wheat at once
+From 1.14.1
+
+MC-151225 – Upgrading worlds from 1.14 causes villagers to lose their brain memories
+MC-151753 – More than one raid can happen in a village
+MC-151771 – Villagers do not try to run away from zombie villagers
+MC-151772 – Mob cap in the hundreds to over 1000 per player.
+MC-151802 – Spawning causes massive TPS CPU load on a flat world.
+MC-151995 – Patrol leaders spawn without banner
+MC-152044 – Baby trader llamas disappear immediately
+From 1.14.2
+
+MC-152053 – High client-side lag when pistons activate
+MC-152228 – Can not /summon trader llama
+MC-152542 – Resource warning "Codepoint '1ed0' declared multiple times in minecraft:textures/font/accented.png"
+MC-152810 – Cat's natural spawning causes null pointer exception
+MC-153222 – Broken/incorrect recipe files cause a data pack not to load with nothing in log
+MC-153355 – java.util.NoSuchElementException ticking entity crash when a workstation is destroyed near a villager with a job
+
+
+== 1.14.3 Pre-Release 2 ==
+1.14.3 Pre-Release 2 (known as 1.14.3-pre2 in the launcher) is the second pre-release for Java Edition 1.14.3, released on June 7, 2019, which makes changes to patrols and villager panic behavior, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Villagers
+
+Panicked villagers now have to work and sleep so they cannot be in a state of panic all the time.
+The "last slept" and "last worked" properties for villagers are now saved properly.
+
+
+==== Gameplay ====
+Advancements
+
+Saturation is no longer required for the "How Did We Get Here?" advancement.
+Enchantments
+
+Protection, Projectile Protection, Fire Protection, and Blast Protection are now mutually exclusive again, as they were prior to 1.14.
+Illager patrols
+
+Vindicators are no longer part of patrols.
+Doubled the minimum time to spawn from 5 minutes to 10–11 minutes.
+Patrols now follow hostile mob spawning rules.
+Patrols no longer spawn if the block light level disallows monster spawning.
+Patrols are now allowed to spawn in any biome except mushroom biomes.
+
+
+==== General ====
+LWJGL
+
+Updated to 3.2.2.
+
+
+=== Fixes ===
+25 issues fixed
+From released versions before 1.14
+
+MC-72390 – Rcon is not thread-safe.
+MC-124170 – Performance issue with particles causing lag.
+MC-129491 – Advancement location trigger works inconsistently for structures added in 1.9 or later.
+From 1.14
+
+MC-139257 – Server crash on reload when world border is modified.
+MC-141301 – Illager patrols spawning on blocks mobs should not spawn on, such as slabs, carpets, stairs, etc.
+MC-141961 – Multiple protection enchantments on a piece of armor
+MC-142360 – Pillagers patrols can spawn pillagers on top of trees inside a leaf block.
+MC-144107 – Miscalculation of camera position in windowed mode on Linux.
+MC-144929 – When there is water above a water source, other water sources adjacent to the water source flow outwards.
+MC-146433 – Double chest does not display custom name.
+MC-148354 – Guardians require water to spawn from spawners.
+MC-148600 – Zombie pigmen will spread their anger forever if they can continuously respawn.
+MC-148986 – Low-tier enchants from level 30 standard enchanting setups.
+MC-149207 – Water with blocks above will convert to flowing water for no reason.
+MC-149877 – Baby foxes suffocate when jumping under blocks.
+MC-150401 – Chickens suffocate if jumping while under a solid block.
+MC-150954 – Pillager patrol spawning is off: they spawn too close to each other, in odd biomes, and too frequently.
+From 1.14.1
+
+MC-151566 – Pillagers patrols can spawn outside world border.
+MC-151989 – Players in survival do not get the dolphin's grace effect if the dolphin cannot path to the player.
+MC-152638 – Villager trade GUI does not close when a major change happens to the villager, leading to free trades and quick stock refreshing.
+From 1.14.2
+
+MC-152182 – Trading halls are non-viable: employed villagers sometimes un-bond from an existing workbench within 2 blocks, apprentice ranks and above cannot re-bond unless moved 96 blocks away and back.
+MC-153221 – Dragon fireball causes FPS to crash.
+From the previous development version
+
+MC-153714 – Old graphics card warning on Mac despite having recent hardware.
+MC-153730 – /reload does not work if there are too many new data packs.
+MC-153734 – Vanilla data pack disabled after upgrading a world to 1.14.3 (items do not drop, fishing does not work, no advancements, etc).
+
+
+== 1.14.3 Pre-Release 3 ==
+1.14.3 Pre-Release 3 (known as 1.14.3-pre3 in the launcher) is the third pre-release for Java Edition 1.14.3, released on June 14, 2019, which adds a game rule to disable raids, changes some block placement rules, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Command format ====
+Game rules
+
+Added /gamerule disableRaids which disables raids when set to true.
+When true, the Bad Omen is not removed from a player when entering a village.
+If set to true while a raid is in progress, the raid stops, but the existing raid mobs don't despawn.
+
+
+==== General ====
+Languages
+
+Added Bashkir (Башҡортса) language.
+Added Gothic (Gutrazda) language.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Lanterns
+
+Can now be placed on iron bars and glass panes.
+Can now be attached below iron bars and glass panes.
+Pressure plates and torches
+
+Can now be placed on iron bars and glass panes.
+
+
+==== Items ====
+General
+
+Items can once again be repaired by crafting them together, as they could before 1.14.
+This used to only be able to be done in a grindstone.
+
+
+=== Fixes ===
+14 issues fixed
+From released versions before 1.14
+
+MC-47699 – Blazes are able to see a player through blocks.
+MC-93892 – Flame arrows and fireballs set player on fire even when blocking with shield.
+MC-110004 – Endermen and blazes do not drop experience when hit with splash or lingering potion.
+MC-131122 – Torches cannot be placed on iron bars or glass panes.
+From 1.14
+
+MC-147619 – Foxes that trust a player will still avoid wolves and other players they are angry towards instead pursuing them.
+MC-149518 – Skylight appearing under blocks.
+From 1.14.1
+
+MC-151710 – Entities not functioning in forceloaded chunks.
+From 1.14.2
+
+MC-153470 – Language map does not close internal en_us.json file after reading.
+MC-154000 – When dispenser places shulker box it decreases its stack twice.
+MC-154080 – Wandering trader trading GUI does not close when it changes dimensions allowing infinite trades.
+MC-154081 – Opening the survival inventory when opening a world crashes the game.
+MC-154328 – The zombie siege never happens.
+From the previous development version
+
+MC-154092 – Zombie pigmen lose aggression even when they are in range and have a line of sight.
+Private issues
+
+MC-154239 – NPE server crash when painting entities spawned with mob spawn eggs are saved.
+
+
+== 1.14.3 Pre-Release 4 ==
+1.14.3 Pre-Release 4 (known as 1.14.3-pre4 in the launcher) is the fourth and final pre-release for Java Edition 1.14.3, released on June 19, 2019, which fixes bugs.
+
+
+=== Fixes ===
+6 issues fixed
+From 1.14
+
+MC-99198 – Villagers cannot breed using beetroot
+MC-145202 – Blazes can see through blocks they should not be able to.
+From the Java Edition 1.14.3 development versions
+
+MC-154082 – The world border is no longer solid.
+From the previous development version
+
+MC-154499 – Item frames in the world disappear and cause multiple error messages in the server console, and placing an item frame causes the client to crash.
+MC-154506 – Zombie pigmen do not become aggressive to players even if the alarmed pigman has a clear line of sight.
+MC-154602 – End cities being generated causes the game to crash.
+
+
+== Notes and references ==
+
+
+== Navigation ==

@@ -1,0 +1,34 @@
+particles.png and related particle atlases are texture atlases found inside the game's internal resource packs used to load the majority of the game's particle textures, excluding those derived from other textures.
+
+
+== Usage ==
+These texture atlases are used for particle textures. The main file, particles.png, is used for the majority of particles. Some particles with dynamic textures, such as campfire smoke and falling leaves have their own texture atlases. Texture atlases can be found in Content/data/resource_packs/vanilla_version/textures/particle or .../particles, where the version number corresponds to the latest version the texture atlas has been modified. Each particle defines which texture atlas it uses in its JSON file in the same resource pack. Each particle atlas has an associated texture set which defines the MERS values used in Vibrant Visuals.
+The following particle atlases are currently in use:
+
+Custom texture atlases may be created in resource packs for custom particles.
+
+
+== Format ==
+particles.png may have changed width with time. The file is split into different squares, usually 8×8 but bigger for some other cases, which correspond to the texture of many particles found in-game. Like with items.png, unused sections of the texture are completely transparent, unlike with terrain.png and the paintings sheet where such regions are colored magenta.
+
+
+== History ==
+
+
+=== Java Edition ===
+particles.png was compressed in 13w09c, 15w49a, and 1.11-pre1. explosion.png was compressed in 13w09c and 15w49a, and explosion.png and sweep.png in 1.11-pre1.
+
+
+=== Bedrock Edition ===
+particles.png was compressed in v0.15.0 alpha build 1.
+
+
+== Gallery ==
+
+
+== See also ==
+Texture pack
+terrain.png
+
+
+== Navigation ==

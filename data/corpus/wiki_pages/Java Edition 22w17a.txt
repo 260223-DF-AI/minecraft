@@ -1,0 +1,223 @@
+22w17a is the eighth snapshot for Java Edition 1.19, released on April 27, 2022, which adds goat horns from Bedrock Edition, makes changes to allays and wardens, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Items ===
+ Goat horn
+
+Added from Bedrock Edition.
+Drops when a goat rams coal ore, emerald ore, iron ore, log, packed ice, or stone.
+Can play a loud sound that can be heard from afar, with a cooldown around 7 seconds between each use.
+Has 8 variants, each variant has its own unique sound.
+"Ponder", "Sing", "Seek", "Feel" can be obtained from the regular goats' ramming, or the chest in pillager outposts with a 50% chance.
+"Admire", "Call", "Yearn", "Dream" can only be obtained from the screaming goats' ramming.
+The variant of horn that a goat may drop is completely random.
+
+
+=== Gameplay ===
+Death messages
+
+Added new death messages to wardens' ranged attack:
+"<player> was obliterated by a sonically-charged shriek"
+If a player or mob attacks the dead player before they die, the death message is "<player> was obliterated by a sonically-charged shriek whilst trying to escape <player/mob>".
+
+
+=== General ===
+Chat
+
+Chat messages between players are now cryptographically signed.
+Players are given a Mojang provided key-pair on startup.
+Chat styling is now handled via server resource packs with the translation key chat.type.text.
+Entity format
+
+Added [Byte] HasLeftHorn and [Byte] HasRightHorn boolean fields to goats' entity format.
+Decides the visibility and dropability of their horns.
+Item modifier
+
+Added the item function set_goat_horn_sound.
+server.properties
+
+Added server property enforce-secure-profile to allow servers to requiring a player to having a Mojang-signed public key.
+Defaults to false.
+Enforcing secure profiles prevents players without a Mojang-signed public key from connecting.
+Tags
+
+Added the following block tags:
+#overworld_natural_logs: acacia_log, birch_log, oak_log, jungle_log, spruce_log, dark_oak_log, and mangrove_log.
+#snaps_goat_horn: #overworld_natural_logs, stone, packed_ice, iron_ore, coal_ore, and emerald_ore.
+Added the following item tag:
+#overworld_natural_logs: acacia_log, birch_log, oak_log, jungle_log, spruce_log, dark_oak_log, and mangrove_log.
+Added the following game event tag:
+#allay_can_listen: note_block_play
+
+
+== Changes ==
+
+
+=== Blocks ===
+Brewing stand
+
+Updated base UVs and texture to match a graphical fix in Bedrock Edition, which has no effect on visuals.
+Mangrove roots
+
+Changed its block model, to make the inner faces have the same size with the outer faces.
+Piston and sticky piston
+
+Changed their textures, to match the color of the oak planks on the piston head.
+Sculk
+
+Its blast resistance has been lowered.
+Sculk catalyst
+
+Sculk spreading can now replace soul sand and mud.
+TNT
+
+Ores, sculk blocks, and spawners blown up by TNT ignited by a player now drop experience.
+
+
+=== Items ===
+Fence
+
+Changed the model when in an item frame, to make their two horizontal bars thicker, matching the thickness in their block form.
+Leather cap
+
+Changed its texture, to extend the center bar on the back face to the bottom.
+
+
+=== Mobs ===
+Allay
+
+Connecting with note blocks is now better visualized by the vibration particle.
+Connecting with note blocks can now be blocked by wool again, by placing wool between the allay and the note block.
+Several sounds have been updated.
+Evoker, illusioner and witch
+
+Changed their models, now their last two rows of pixels on their robes can render.
+Goat
+
+Now can drop 2 horns each.
+The number of horns left to drop is represented on the model.
+Llama
+
+Changed all variants' chest texture, to use the chest texture since the texture update.
+Pillager
+
+Changed its model, slightly shortened its coat to match its actual texture.
+Villager
+
+Changed their models, now their last two rows of pixels on their robes can render.
+Changed their textures in all biomes.
+The color of the top and bottom of their legs now matches the sides correctly.
+Removed the identical part in savanna villagers' texture with the villager base texture.
+Slightly changed jungle villagers' shoes texture.
+Vindicator
+
+Changed its model, slightly shortened its coat to match its actual texture.
+Changes its crossed arm's texture.
+The "gap" between their two arms connects correctly now.
+Changed the color of the seam face between their upper and lower arms, which is not visible in default.
+Warden
+
+Ranged attack now:
+Bypasses shields and armor.
+Deals damage of 10HP instead of 16HP × 8 (Easy) / 30HP × 15 (Normal) / 45HP × 22.5 (Hard).
+Has a reduced cooldown of 2 seconds instead of 5 seconds.
+Now drops a sculk catalyst upon death.
+Wolf
+
+Reverted the mirroring change for ears and legs in 22w11a. 
+
+Zombie villager
+
+Changed their models, now their last two rows of pixels on their robes can render.
+Changed their clothes texture in all biomes (except desert and swamp).
+The color of the top and bottom of their legs now matches the sides correctly.
+Added "shirt" part in savanna zombie villagers' clothes, to match other zombie villagers.
+Slightly changed jungle zombie villagers' shoes texture.
+Removed extra textures on weaponsmith zombie villagers' arm's top.
+
+
+=== General ===
+HUD
+
+Changed the texture of the "half" armor bar, moved the highlighted pixel from the right to the left.
+Realms
+
+Replaced realms subtle selected world highlight with a clear green checkmark.
+Splashes
+
+Removed "Привет Россия!"
+Tags
+
+Polished deepslate are now part of the #sculk_replaceable_world_gen block tag.
+Removed #dampenable_vibrations game event tag.
+
+
+== Fixes ==
+49 issues fixed
+From released versions before 1.19
+
+MC-13103 – Texture Z-Fighting at Wolf[/]Cat snout.
+MC-53312 – Illager/(zombie) villager/witch robes do not render the last two rows of pixels.
+MC-106627 – Leather cap texture overlay does not align correctly.
+MC-141064 – Cleric collar z-fighting.
+MC-166686 – Villagers with taiga outfits show Z-fighting around their neck.
+MC-176840 – Ores no longer drop experience when blown up.
+MC-208597 – Boats ridden over wool are detected by sculk sensor.
+MC-208771 – Projectiles landing on wool trigger sculk sensors.
+MC-210712 – Sculk sensors are not activated upon backwards movement in a boat.
+MC-210901 – Sculk sensors are not activated upon entities sliding on ice.
+MC-224709 – Full armor icon does not match empty armor icon.
+MC-226761 – Parity issue: Goats do not drop horns.
+MC-248161 – Weaponsmith zombie villager texture has leftover pixels from the regular weaponsmith texture.
+MC-248292 – Llama uses pre-1.14 chest texture.
+MC-248555 – Mismatches within (zombie) villager textures.
+MC-248556 – Savanna Zombie Villager missing a body texture.
+MC-248557 – Savanna villager body defines pixels identical to base villager texture.
+MC-248561 – Vindicator's crossed arms element has miscolored pixels on the faces touching the other arm elements.
+MC-248562 – Iron golem has unused pixels in the texture.
+MC-249032 – Fence item model's bars inconsistent with placed block.
+MC-249039 – "Half" armor bar icon texture is incorrect.
+MC-249962 – Exploding an End Crystal does not produce explosion vibration.
+MC-250921 – Spawners do not drop experience when blown up.
+From the 1.19 development versions
+
+MC-249190 – Sculk blocks do not drop experience orbs when blown up.
+MC-249192 – Mangrove propagules break lily pads and frogspawn directly above them when attempting to grow.
+MC-249262 – Sculk cannot replace soul sand or mud when mobs die on top of them.
+MC-249601 – Z-fighting occurs on a Warden's tendrils when clicking.
+MC-249669 – tadpole.png has unused frog egg texture.
+MC-249745 – If allay is holding an item, it can be equipped with armor using a dispenser.
+MC-249780 – Blocks that require support can generate floating in ancient cities.
+MC-249919 – Pillar in Ancient City can generate with waterlogged stairs.
+MC-250000 – Allays and villagers create ghost items when they take items from a stack and cannot fit the whole stack in their inventory.
+MC-250027 – Allays ignore the dimension when checking for liked note blocks.
+MC-250075 – The inner two planes in mangrove roots are smaller than they should be.
+MC-250076 – Shading is disabled for the two inner planes in mangrove roots, even though it is not for all the other planes.
+MC-250165 – Doing /locate stronghold in some single biomes causes an unexpected error.
+MC-250171 – Warden Sonic Boom attack can be completely mitigated by shields.
+MC-250240 – Z-fighting can be seen around the backs of frogs when they open their mouths.
+MC-250243 – Warden sonic boom attacks can hit endermen, shulkers or players who have finished eating chorus fruit and players who have used ender pearls within range, even if they have teleported.
+MC-250288 – Some blocks in Ancient City structures can only be covered by sculk veins and cannot be converted into a sculk block.
+MC-250321 – Flying and aquatic mobs pathfinding in certain blocks cause crash || The game crashed whilst ticking entity Error: java.lang.NullPointerException: Cannot invoke "dnm.a()" because "$$1" is null.
+MC-250331 – Chunk rendering is glitchy / incorrect when redrawing.
+From the previous development version
+
+MC-250339 – Paintings are off-centered in multiplayer servers.
+MC-250379 – Teleporting armor stands results in visual desync and abnormal behavior.
+MC-250396 – /locatebiome command displays Y-axis of -64 in certain cave biomes, causing the player to die when teleported.
+MC-250400 – Blocks and items can cause the world to render invisibly.
+MC-250411 – Sculk can spread in ancient city structures and replace soul sand with fire on top, extinguishing fires.
+MC-250429 – Narrator improperly narrates chat.
+MC-250460 – The rendering of players is delayed for others.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

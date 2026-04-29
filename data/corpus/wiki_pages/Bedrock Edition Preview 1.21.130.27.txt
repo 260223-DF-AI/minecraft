@@ -1,0 +1,192 @@
+Beta 1.21.130.27 (ChromeOS, Android) or Preview 1.21.130.27 (Windows, iOS, iPadOS, Xbox, PlayStation) is the fifth beta and sixth Preview version for Bedrock Edition 1.21.130, released on November 11, 2025, which fixes bugs.
+
+
+== Additions ==
+
+
+=== General ===
+Splash
+
+Added "One does not simply walk to the Far Lands".
+References kurtjmac, who completed his 14-year Far Lands walk a month prior.
+
+
+== Changes ==
+
+
+=== Items ===
+Spawn Eggs
+
+Spawn eggs are now sorted thematically in the Creative inventory, according to the following categories:
+Overworld
+Farm Animals
+Mounts
+Pets
+Wild Animals
+Aquatic
+Miscellaneous
+Golems
+Villagers
+Undead
+Spiders
+Monsters
+Illagers
+Nether
+The End
+ Spear
+
+Now play hit sounds and trigger attack animations when charging at armor stands.
+Enchantment effects are now applied only when the player’s and target’s speeds are sufficient to deal damage.
+Attack range is now consistent with other weapons in Creative mode.
+Tools and Weapons
+
+Tools and weapons now lose durability when used to attack armor stands, just like they do when damaging other entities such as minecarts, paintings, boats, or leash knots.
+
+
+=== Mobs ===
+ Camel Husk
+
+A husk that spawns riding a camel husk now has a 50% chance of dropping a rabbit foot.
+Can no longer be leashed while being ridden by a hostile mob and can no longer enter a panicked state while it is being ridden.
+ Nautilus
+
+Added custom saddle sound.
+ Parched
+
+Updated leg UV by moving the UV by 1 pixel.
+Now deals a base damage amount of 1 heart instead of 1.5, matching Java Edition.
+Now has the same vertical offsets in vehicles as other skeleton variants.
+ Zombie Horse
+
+Saddle textures now match other horse saddles.
+ Zombie Nautilus
+
+Added custom saddle sound.
+
+
+=== Gameplay ===
+Effects
+
+ Breath of the Nautilus
+No longer stops air from replenishing when a player is out of water, when a player with the Water Breathing effect is riding a nautilus, and when an entity is submerged in lava.
+Technical
+
+Custom items tagged with minecraft:is_shovel now build paths on all blocks the shovel does and it extinguishes campfires and removes snow like a shovel.
+
+
+=== General ===
+Achievements
+
+"MOAR Tools" is now awarded by copper tools correctly instead of being awarded by other items.
+"You Need a Mint" is no longer awarded from items other than dragon's breath.
+UI
+
+The interface windows will now close when you are hurt by a mob.
+
+
+=== Technical ===
+API
+
+Moved class Potions from beta to v2.4.0.
+Moved class PotionDeliveryType from beta to v2.4.0.
+Moved class PotionEffectType from beta to v2.4.0.
+Moved component ItemPotionComponent from beta to v2.4.0.
+Moved error InvalidPotionDeliveryTypeError from beta to v2.4.0.
+Moved error InvalidPotionEffectTypeError from beta to v2.4.0.
+Player method clearPropertyOverridesForEntity can now take an entity or entity ID as valid arguments in v1.19.0.
+Item Components
+
+Added the creative_reach field to minecraft:kinetic_weapon and minecraft:piercing_weapon item components.
+Defines the reach used when the user is in Creative mode.
+Added the start_sound field to the minecraft:use_modifiers item component.
+Defines the sound to play when starting using the item.
+Network
+
+Modified LevelSoundEventPacket:
+added LevelSoundEvent::SpearUse and LevelSoundEvent::WoodenSpearUse.
+UI
+
+Added resolve_ancestor_scope boolean to 'view bindings' as a way to bind to an ancestor that matches the source_control_name.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs", "Upcoming Creator Features", and "Render Dragon Features for Creators"  experimental toggles.
+
+
+=== Additions ===
+
+
+==== Technical ====
+API
+
+Added BlockComponentRedstoneUpdateEvent, which can be subscribed by custom block components.
+Added onRedstoneUpdate custom component subscription in beta with the following conditions:
+Block has minecraft:redstone_consumer component, otherwise CONTENT_ERROR is thrown.
+Subscription is not queued if the BlockComponentRedstoneUpdateEvent.powerLevel is less than minecraft:redstone_consumer field min_power.
+Blocks
+
+The minecraft:corner block state is now mirrored when used within a structure.
+Added minecraft:redstone_consumer component behind the Upcoming Creator Features experiment.
+Contains optional field min_power, which defines the minimum value for incoming signal strength.
+If signal strength is greater than or equal to this value, then the onRedstoneUpdate event is sent to Scripts.
+Contains optional field propogates_power, a boolean to control whether a signal can pass through this block or not.
+Modified minecraft:material_instances block component:
+Removed redundant experimental field shaded.
+Added minecraft:leashable block component, which allows custom blocks to receive a lead attachment creating a leash knot, including an offset field to change the position of the leash knot. Only available with the Upcoming Creator Features experiment enabled.
+Graphical
+
+Added Colored Static Block Lighting under the Render Dragon Features for Creators toggle.
+Only available in Preview worlds that are using Vibrant Visuals, which the experiment toggle is active.
+Static lights can be defined in local_lighting.json using "light_type": "static_light".
+Blocks with the "point_light" light_type will also receive colored static lighting.
+Static lighting follows lighting rules and respects the minecraft:light_emission and minecraft:light_dampening block components.
+Static lighting is additive/accumulated, so overlapping lights of different colors will cause lighting to get brighter.
+Overlapping lights of the same type (i.e. same color and light_emission) will not cause lighting to get brighter.
+Static lighting is not affected by stained glass or other translucent blocks.
+
+
+== Fixes ==
+31 issues fixed
+From released versions before 1.21.130
+
+MCPE-83616 – Small amounts of Crimson Fungus and Crimson Roots don't spawn in Warped Forests.
+MCPE-128957 – Hanging roots cannot be waterlogged (parity issue).
+MCPE-180470 – Xbox controller not working on ROG Ally.
+MCPE-184251 – Connecting two controllers disables the other one.
+MCPE-228281 – Mooshroom's mushrooms are not affected by the "Enable Dithering" setting.
+MCPE-228296 – When the Dithering setting is turned off, several mobs/items appear to be dithered.
+MCPE-228374 – Hoppers can place more than one potion into a brewing stand slot when using an add-on that increases the potion stack size.
+MCPE-230064 – Entities and Items Cannot Generate New Nether Portals in Unlinked Dimensions.
+MCPE-230558 – When pressing any of the number keys on an item in a stonecutter, the game crashes.
+MCPE-230832 – Mouse cursor moves in the background during gameplay, disrupting gameplay.
+From the 1.21.130 development versions
+
+MCPE-229439 – Spear Jabbing animation is tilted, compared to Java.
+MCPE-229442 – Spear charging sound sometimes is played twice at the same time.
+MCPE-229446 – Some sound events don't play for zombie nautiluses.
+MCPE-229452 – Player's right hand sometimes intersects with the player's body when swimming.
+MCPE-229475 – Spears have maximum reach of 4 blocks.
+MCPE-229490 – Spear will clip with Piglin's Sword.
+MCPE-229499 – Unbreaking Not Working with Lunge on Spears Using Jab Attack.
+MCPE-229778 – It is impossible to combine two spears in an anvil.
+MCPE-229863 – The shaking animation of the left arm in animation.zombie.melee_spear_use is incorrectly mirrored.
+MCPE-229888 – Can't place spear in item frame on mobile.
+MCPE-230074 – Nautilus Spawns at Any Height Without Y-Level Restrictions.
+MCPE-230231 – Parched cannot spawn as riders of Spider Jockeys.
+MCPE-230284 – Parched and Husk Mobs can 100% Immediately Ride Camel Husk (Java Edition Inconsistency).
+MCPE-230845 – Camel Husk is using incorrect sound effects.
+MCPE-230851 – Camel Husk have incorrect spawn_category in Bedrock Edition.
+Other
+
+Fixed an issue where signing in at the exact wrong time would make many online features unable to load for 5 minutes.
+Fixed a regression where torches and lanterns weren't emitting point lights in raytracing-enabled worlds.
+Fixed IME input when application lost and regained focus (switching from the app and back while editing).
+Fixed Looting not working on camel husks.
+Fixed clipping between the nautilus and zombie nautilus's heads and shells.
+Fixed nautilus and zombie nautilus hurt sounds outside of water being replaced by player hurt sounds.
+
+
+== References ==
+
+
+== Navigation ==

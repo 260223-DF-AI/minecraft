@@ -1,0 +1,26 @@
+Bedrock Editor v0.4.2 is a minor alpha release for the Bedrock Editor released on August 3, 2023, which fixes some bugs and tweaks the API.
+
+
+== Changes ==
+API
+
+Fixed bugs caused by CompoundBlockVolume relativity.
+Normalize the use of CompoundBlockVolume instead of Selection.
+Updated CompoundBlockVolume to maintain internal volume list as relative.
+Converted CompoundBlockVolume to be a list of relative volumes to an origin.
+Added a CompoundBlockVolumeRelativeType to signal volume push operations as relative or absolute.
+Added set/get Origin functions and a translate function.
+Miscellaneous
+
+Player count added to status bar. Now, it is possible to see how many people are in a multiplayer editing session.
+Vec3 component minimum limit will now default to Number.MAX_SAFE_INTEGER.
+
+
+== Fixes ==
+Fixed a bug where the position of the selection cursor was not being recalculated upon block updates.
+
+
+== References ==
+
+
+== Navigation ==

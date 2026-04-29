@@ -1,0 +1,127 @@
+24w04a is the fifth snapshot for Java Edition 1.20.5, released on January 24, 2024 which adds the /transfer command, changes the behavior of armadillos and breezes, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Command format ===
+/transfer
+
+New command that triggers a transfer of a player to another server.
+Only exists on dedicated servers.
+Syntax: /transfer <hostname> [<port>] [<players>]
+hostname: String describing the hostname of the server to connect to.
+port: Integer denoting the port number of the server to connect to.
+If omitted, 25565 is used.
+players: The players to transfer.
+If omitted, @s is used.
+
+
+== Changes ==
+
+
+=== Mobs ===
+Armadillo
+
+Now also rolls up when detecting a mob, or a player that has attacked it recently.
+When it is in rolled up state, its shell now protects it, and reduces the damage dealt to it, even allowing it to fully resist weak attacks.
+
+
+=== General ===
+"Create New World" screen
+
+Renamed "Allow cheats" to "Allow commands".
+Data packs
+
+The pack format version is now 29.
+Other
+
+Added an option to use a faster region file compression algorithm on dedicated servers.
+Added a dedicated server configuration property region-file-compression with 2 possible values:
+deflate, the default option. Uses the old algorithm.
+lz4 uses LZ4 algorithm, which requires less CPU time to compress and decompress but uses more disk space.
+Changing the compression algorithm doesn't automatically recompress the world.
+New or updated chunks use the newly configured algorithm, but the old ones stay in the previous format.
+Introduced changes to optimizing worlds.
+Optimizing singleplayer worlds and running dedicated server with forceUpgrade now also upgrades contents of entities and poi directories of the world.
+New recreateRegionFiles dedicated server startup parameter.
+It triggers world optimization similar to forceUpgrade, but also rewrites all the chunks independently of whether they have been upgraded.
+This creates fresh and defragmented region files.
+Using this parameter after changing the region-file-compression server property recompresses all region files in the new format.
+Improved server TPS debug chart.
+As before, it is accessible by pressing F3 + 2 in a singleplayer world.
+The bottom dark red section of the chart displays the time spent during the main logic of the server tick. It is equivalent to the value displayed in the old chart.
+The light brown section displays time spent on running scheduled tasks.
+The purple section displays time spent executing all other code during the tick.
+The top light green (or yellow or red depending on lag) section displays time spent idling, waiting for next tick.
+The min, avg, max aggregate values are based on the sum of the first 3 sections.
+Reduced time needed to generate explorer maps to buried treasures.
+
+
+== Experimental ==
+These additions and changes only take effect when the Update 1.21 experimental data pack is enabled.
+
+
+=== Additions ===
+
+
+==== General ====
+Tags
+
+Added the following entity type tag:
+#no_anger_from_wind_charge: contains breeze, skeleton, stray, zombie, husk, spider, cave_spider, and slime.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Copper grate
+
+Stonecutting copper blocks into copper grates now again outputs 4 copper grates instead of 1.
+Trial spawner
+
+No longer ignores the custom_spawn_rules field.
+
+
+==== Mobs ====
+Breeze
+
+Is now aggressive toward iron golems in addition to players.
+No longer retaliates against attacks from skeletons, strays, zombies, husks, spiders, cave spiders, and slimes. These mobs don't retaliate when hurt by the breeze's wind charge projectile.
+
+
+==== Non-mob entities ====
+Wind charge
+
+Is now its own damage type.
+
+
+== Fixes ==
+9 issues fixed
+From released versions before 1.20
+
+MC-232489 – Retrieving a plant from a flower pot ignores inventory contents.
+MC-249136 – Freeze/server-side lag spike sometimes occurs when attempting to locate a buried treasure or opening/breaking a chest containing a map.
+From 1.20.3
+
+MC-266449 – Breeze doesn't attack or retaliate against mob on sight.
+MC-266707 – Trial spawners ignore custom_spawn_rules.
+From the 1.20.5 development versions
+
+MC-267925 – Retrieving an item from a flower pot while holding something causes the item to end up in your off hand.
+MC-267937 – Shooting a breeze with a piercing crossbow makes the game crash.
+MC-267938 – The world loading percentage value can get covered by the spawn chunk loading animation when the spawnChunkRadius gamerule is set to large values.
+MC-267941 – The end portal kills mobs at spawnChunkRadius 0.
+From the previous development version
+
+MC-267953 – No element is focused when opening the Realms world backups menu using keyboard navigation.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

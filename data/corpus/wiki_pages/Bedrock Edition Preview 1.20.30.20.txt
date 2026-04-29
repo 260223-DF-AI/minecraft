@@ -1,0 +1,172 @@
+Beta 1.20.30.20 (Android) or Preview 1.20.30.20 (Windows, iOS, iPadOS, Xbox) is the fifth beta/Preview version for Bedrock Edition 1.20.30, released on August 3, 2023
+, which brings more parity from Java Edition, changes some villager trades, changes the diamond ore generation, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Gameplay ===
+Game rules
+
+Added doLimitedCrafting, controls whether players can craft only those recipes that they have unlocked, defaults to false.
+
+
+=== General ===
+Experiments
+
+Added the "Villager Trade Rebalancing" experimental toggle.
+Contains updated trades for villagers for the purpose of rebalancing.
+Added the "Render Dragon Features for Creators" experimental toggle.
+Enable the deferred rendering pipeline. Requires a PBR-enabled resource pack and compatible hardware.
+Settings
+
+Added "Vertical Sync" video option.
+
+
+=== Technical ===
+JSON
+
+Released the minecraft:enchantable item component out of experimental in JSON formats 1.20.30 and higher.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Concrete Powder
+
+The IDs of concrete_powder have now been split up into their own IDs.
+
+Sculk Sensor and Calibrated Sculk Sensor
+
+Can now detect the following events:
+Throwing an eye of ender.
+Minecarts, consistently when moving on rails while empty.
+Collecting fish, axolotls, and tadpoles with buckets.
+Cleaning items in cauldrons.
+Dying leather armor in cauldrons.
+Tipping arrows in cauldrons.
+Using dyes to change cauldrons' water color.
+Non-player actors event when equipping shields in their off-hand slot.
+
+
+=== Command format ===
+Anvil, Big Dripleaf, Blast Furnace, Calibrated Sculk Sensor, Campfire, End Portal Frame, Furnace, Lectern, Pink Petals, Redstone Comparator, Redstone Repeater, Small Dripleaf, Smoker, and Soul Campfire
+
+Now they use the minecraft:cardinal_direction block state instead of direction or facing_direction.
+minecraft:cardinal_direction uses four string values ["north", "south", "east", "west"].
+
+
+=== World generation ===
+Ore distribution
+
+Diamond ore is now generated more frequently in the deepslate layers of the Overworld.
+Added a new ore blob placement: Uniform distributed, from height -64 to -4, with blob size 8, generation frequency 2 and a 50% chance of discarding when exposed to air.
+Other existing diamond ore placements remain untouched.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Villager Trade Rebalancing", "Beta APIs", and "Render Dragon Features for Creators" experimental toggles.
+
+
+=== Additions ===
+
+
+==== Technical ====
+Deferred Technical Preview
+
+Introducing new experimental cross-platform graphics features for creators.
+Features included:
+PBR materials – blocks and entities.
+Primary lighting.
+Shadows (sun & moon).
+Bloom.
+Tone mapping.
+Atmospheric scattering.
+
+
+=== Changes ===
+
+
+==== Gameplay ====
+Trading
+
+Changed the trading mechanism of librarians selling enchanted books.
+Instead of offering every possible enchanted book, librarians will now be offering specific enchanted books depending on which biome they come from.
+Jungle and swamp villages do not generate naturally. Thus, players must breed villagers or cure zombie villagers in these biomes to access their trades.
+All tradable enchanted books now split to special books and normal books.
+Special books have a specific enchantment with a fixed level, and are only available from master librarians with full XP.
+Normal books have a specific enchantment without a fixed level, just like before.
+All enchantments used for crossbow, fishing rod, and trident are removed from trading.
+
+Changed the wandering trader trades.
+Trade list now made up by following trades, in order:
+Buying Trade (new) × 2
+Special Selling Trade × 2
+Ordinary Selling Trade × 5
+Added new buying trades, some selling trades, and changed some existing selling trades:
+
+
+==== Technical ====
+API
+
+Removed MinecraftItemTypes from @minecraft/server and replaced with version from @minecraft/vanilla-data.
+Added function remove- Removes the entity. This cannot be called on players but can be used on simulated players in Gametest.
+MolangVariableMap
+Added setFloat function.
+Changed return type of setColorRBG, setColorRGBA, setSpeedAndDirection, and setVector3 to void.
+Changed the MolangVariableMap property on spawnParticle to be optional: spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void.
+Renamed Colorinterface to RGBA.
+Added interface RGB.
+Added script binding functions to get/set the CompoundBlockVolume origin.
+Added additional params to some methods to query the children of CompoundBlockVolume for their positional relativity to the parent.
+Added additional params to some methods to freeze positional relativty when origin changes are submitted.
+Converting the CompoundBlockVolume container to use relative coordinates to an internal origin.
+JSON
+
+cooldown field for target descriptors now properly work in minecraft:behavior.nearest_prioritized_attackable_target goal.
+Deprecated minecraft:mining_speed in JSON formats 1.20.30 and higher.
+Fixed an issue where items with format version 1.20.20 and above using the menu_category field in a world with the "Holiday Creator Features" experimental toggle enabled would not load.
+Removed minecraft:requires_interact component.
+
+
+== Fixes ==
+26 issues fixed
+From released versions before 1.20.0
+
+MCPE-19700 – Wrong elytra texture in item frame and hand.
+MCPE-62797 – Pickaxes don't speed up piston breaking.
+MCPE-81790 – Villagers can change their profession in the night time/during raids.
+MCPE-85429 – Camera does not pass through glass, glass panes and iron bars.
+MCPE-98861 – Significant input delay on devices with render dragon.
+MCPE-151745 – Undead mobs equips illager banner instead of hold it in mainhand slot.
+MCPE-157055 – Powering or unpowering a repeater or comparator in flowing water briefly blocks the water flow.
+MCPE-159409 – Hasitem/data argument does not on items that use data as "damage".
+MCPE-161134 – Renamed entity or some blocks have container with format "(text)text" display $container_title.
+MCPE-161438 – Raid boss bar becomes automatically empty when defeated.
+MCPE-162253 – Book and quill not making sounds while using Xbox controller bumpers.
+MCPE-165062 – Sleeping under an end portal causes the game to get stuck on the loading screen and summons a nether portal.
+MCPE-165301 – Unknown block.
+MCPE-167403 – Cannot crouch while flying in Creative with touch controls.
+MCPE-168998 – Redstone transmission through custom minecraft:block is inconsistent.
+MCPE-169728 – Bulk item crafting buggy.
+MCPE-169840 – Backspace does not erase all text when pressed.
+From 1.20 versions
+
+MCPE-171822 – Cherry grove uses the 1.16.100 water fog
+MCPE-172835 – Pressing enter while not at end of text in chat deletes everything ahead of it.
+MCPE-172910 – Setting the playerssleepingpercentage gamerule to 0 or on negative numbers skips the sleeping animation.
+MCPE-172917 – There is no chat message for when skipping the night is not possible with playerssleepingpercentage set above 100.
+MCPE-173028 – "Detected lost connection" and "Abandoned connection closed" error message is untranslated.
+MCPE-173189 – [ScriptAPI] Some characters are counted as 2 or 3 characters in the character count check of the setLore() method.
+Other
+
+Third person camera no longer clips through snow, mud, and soul sand.
+Fixed an issue with the client failing to attempt connection to dedicated server in some situations.
+Fixed a bug that autocomplete suggestions for values coming after brackets are missing if there is no space between tilde (as Z coordinate) and block name in commands.
+
+
+== References ==
+
+
+== Navigation ==

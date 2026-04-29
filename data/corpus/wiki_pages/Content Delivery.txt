@@ -1,0 +1,20 @@
+Minecraft, across all editions (excluding offline and disc editions such as the legacy console editions), uses various content delivery mechanisms to retrieve sound assets and metadata that are not shipped with the game directly.
+
+
+== Java Edition ==
+While certain assets are contained within the game's JAR file, others are not included with the game. These assets are downloaded by the Minecraft Launcher from Mojang's CDN (content delivery network) into a pre-defined directory from which they can be loaded by the game. Such assets include:
+
+Sounds
+Music
+Custom player skins
+Launcher metadata (such as [version].json files)
+This metadata also provides URLs for downloading additional resources
+In certain cases, the game itself is also downloaded from the CDN in JAR format, although this happens less frequently and only when the version number changes.
+
+
+=== Third-party usage ===
+Third-party launchers are able to download Minecraft resources from the Mojang CDN in a similar manner to the official launcher. However, the location used to store the resources before making them available to the game varies between launcher implementations. 
+The CDN being responsible for hosting the game files, in addition to reliance on Microsoft's authentication mechanisms for licensing, allows third-party Minecraft launchers to distribute copies of the game while staying within the Minecraft Usage Guidelines. Some launchers can download Minecraft without authentication, but this is not supported or endorsed by Microsoft or Mojang and constitutes a form of software piracy. Such launchers may also attempt to download or inject additional software which puts the host computer at risk. 
+
+
+== Bedrock Edition ==

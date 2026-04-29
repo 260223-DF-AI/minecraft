@@ -1,0 +1,212 @@
+A block update is an in-game mechanism that occurs when a block is modified in some way.
+Limited to the computing power of a computer, the game can not process all blocks at all times, which is why the game needs such mechanism. When a block changes (due to a player, an entity, or a chunk tick, etc.), it notifies nearby blocks that they should check if they need to respond to the change.
+
+
+== Java Edition ==
+In Java Edition, there are two main types of block updates: post placement (PP) and neighbor changed (NC).
+
+
+=== Priorities ===
+This article uses the priorities listed in the table below to categorize the various block updates. However, keep in mind that these values are not actually present in the game's code.
+
+Most players only use -3 to 3 priority values to describe scheduled ticks, so it is recommended not to use these values for the update sequence in order to avoid ambiguity with scheduled tick priorities.
+
+
+=== Post placement update ===
+A post placement (PP) update (aka update post placement, update neighbor shapes, update shape) is the most common type of block updates, mainly used for connected blocks changing their shapes (e.g. stairs, fences) and attached blocks dropping into items (e.g. torches, cactus, wheat).
+
+
+==== Sending ====
+
+General PP updates
+When a block is placed, destroyed, replaced, or its blockstate is changed, the game sends PP update to its immediate neighbors, in this order: west, east, north, south, down, up.
+Exceptions
+Some blocks have unique behaviors:
+Lighting a nether portal does not send PP update.
+A nether portal generating does not send PP update.
+Changing block state with debug stick does not send PP update.
+Shulker boxes sends general PP updates when beginning to open/close or finished opening/closing.
+When a redstone wire is placed, destroyed, replaced, or its blockstate is changed, for any block that the redstone wire points horizontally to, if it is not a redstone wire, then the game also sends PP updates to the block above it and the block below it. However, it does not send PP update to an observer.
+Pistons and beds have more complex updates.
+
+
+==== Receiving ====
+When a block receives a PP update, the direction of the PP update may be considered. For example, a wheat block accepts only PP updates from beneath.
+Only the following blocks can receive PP updates:
+
+
+=== Neighbor changed update ===
+Neighbor changed (NC) updates (aka neighbor changed, update neighbors, redstone update) are the most widely known type of block updates (for historical reasons), and are mainly used for redstone components.
+
+
+==== Sending ====
+
+General NC updates
+Most blocks send NC updates to their immediate neighbors when they are placed, destroyed, or replaced, in this order: west, east, down, up, north, south.
+Exceptions
+Some changes do not produce General NC updates:
+Bamboo
+Thickens when the upper bamboo thickens.
+Bamboo shoot
+Grows into a bamboo.
+Water and Bubble column
+Convert to each other.
+Carved pumpkin, Jack o'lantern, Snow block and Block of Iron
+Turn into a golem.
+Plants
+Turn into a double-block plant.
+Cauldron
+Its water level changes.
+Chorus flower and Chorus plant
+Grow, ripen or change their shape.
+Cocoa
+Grows.
+Redstone repeater
+Becomes lit or unlit.
+Redstone comparator
+Its signal or its mode is changed.
+Coral, Coral fans, and Coral blocks
+Die.
+Wheat, Potatoes, Carrots, and Beetroots
+Grow.
+Doors, Trapdoors, and Fence gates
+Opes, close, activate, or deactivate.
+Dragon egg
+Transports to destination.
+Farmland
+Gets hydrated or dry.
+Frosted ice
+Melts gradually (but has not turned into water).
+Jukebox
+Inserts or ejects records.
+Nether wart
+Grows.
+Observer
+Becomes lit or unlit.
+Redstone lamp
+Becomes lit or unlit.
+Sea pickle
+Increases its number using bone meal.
+Sponge
+Absorbs water.
+Melon stem and Pumpkin stem
+Grow.
+Melon or pumpkin is removed from them.
+Sweet berry bush
+Grows.
+Its fruits are collected.
+Turtle egg
+Its number decreases.
+Vines
+Grows, changes its shape, grows out a new vine block.
+Wither skeleton skull, Soul soil, and Soul sand
+Turn into a wither.
+Grass block
+Gets eaten by a sheep.
+Carrots
+Get eaten by a rabbit.
+Anvil
+Gets damaged.
+End portal frame
+The Eye of Ender is placed.
+End portal
+Generates.
+Brewing stand
+Bottles or potions are added into it.
+Structure block and Command block
+Change their mode.
+Cactus and Sugar cane
+Grow.
+Daylight detector
+Changes its mode.
+Dispenser, Dropper, and Hopper
+Becomes activated or deactivated.
+Fire
+Its age or shape changes.
+Saplings
+Increase their stage.
+Tripwire
+Its "disarmed" value changes.
+Beds
+Become occupied or unoccupied.
+Nether portal and Obsidian
+Generates as a nether portal.
+Campfire
+Add or remove hay bale below it.
+Fences, Stairs, Glass panes, Iron bars, Mushroom blocks, and Walls
+Its shape changes.
+Grass block, Podzol, and Mycelium
+Be covered or uncovered by snow.
+Kelp, Weeping vines, and Twisting vines
+Grow.
+Add or remove kelp/vines above/below it.
+Pressure plates
+Its signal changes.
+All blocks
+Change their blockstate using debug stick.
+Placed by a command.
+Pistons and Beds
+Have more complex behavior.
+Other NC updates
+Some blocks (mainly redstone components) send more NC updates other than general NC updates when changing.
+
+
+==== Receiving ====
+When an NC update is received, the block that caused that update may taken into consideration. For example, a rail accepts only NC updates from power components.
+Only the following blocks can react to NC updates:
+
+
+=== Comparator update ===
+
+The comparator update (i.e. Block entity updates, Update neighbor for output signal) is a subtype of the neighbor update that is only sent to comparators. Redstone comparators can read certain blocks and produce an output signal, and in turn, these blocks can send comparator updates when changing, to notify the comparators. Comparators can also read some entities (item frames and glow item frames), as such, these entities can send comparator updates too, even though they are not blocks.
+When a block that can be detected by comparators changes, it sends updates to surrounding comparators (including comparators separated by a solid block), in this order: north, east, south, west.
+After receiving a comparator update, comparators attempt to calculate and change their output signal.
+
+
+=== Special blocks ===
+
+Pistons: during the start of the extension/retraction process, every time a moving piston block gets placed and every time one of the normal blocks is replaced/removed, PP updates are sent to these blocks' neighbors. Once all moving piston blocks have been placed, the game will send NC updates to the replaced/removed normal blocks' neighbors.
+Sticky pistons, however, do not send NC updates around their head when they start to pull blocks: only the NC updates caused by the moving piston block turning back into a normal block are sent, once the retraction process is over. If a sticky piston fails to retract a slime block or a honey block due to the pull limit, no updates will be sent around the head whatsoever.
+
+
+=== Block updates and DFS ===
+Block updates follow the principle of depth-first search (DFS).
+For example, when Block A changes, it maybe sends block updates to B and C one by one. Receiving the update, B maybe changes and sends updates to D and E. Receiving update from B, D changes and sends updates to some block. Then E receives the update from B. Then C receives the update from A.
+
+
+=== Self update ===
+When a block is placed, it checks and adapts itself to its surroundings by Blockstate.onPlace() or similar methods. Strictly speaking, this isn't a block update; however when a block is placed or changed, if it changes again when self-updated, then the former change does not produce any general update (this is a bug).
+Here is a list of self updates that can cause this bug.
+
+Hopper
+When being placed, if it should be powered, becomes powered.
+Wet sponge
+If in the nether, it turns into an dry sponge.
+Sponge
+When being placed, it absorbs water and turns into an wet sponge.
+Target and Observer
+When a powered target or observer is placed, it turns into an unpowered state.
+Tripwire
+When being placed, it updates the signal and connection.
+Fire
+When being placed, if it should be extinguished, removes itself.
+TNT
+When being placed, if it should explode, removes itself.
+Rail, Detector rail, Activator rail, Powered rail
+When being placed, it updates its shape.
+Detector rail
+When being placed, it checks whether it is pressed and updates its state.
+Carved pumpkin
+When being placed, if it should turn into a golem, removes itself.
+
+
+== Bedrock Edition ==
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+== Navigation ==

@@ -1,0 +1,55 @@
+Triggers a transfer of a player to another server.
+
+
+== Syntax ==
+Java Edition
+transfer <hostname> [<port>] [<players>]
+Bedrock Edition
+transfer <pfidOrMSA: string> <server: string> <port: int>
+
+
+== Arguments ==
+BE: pfidOrMSA: string: basic_string
+
+The player to transfer. Can be the microsoft account name (player name), or the PlayFab ID (shown when a player joins in or disconnects from the server).
+Must be a string. And it must be a single word that has no space or a double-quoted string (When quoted, \ can be used to escape characters).
+JE: <hostname>: stringBE: server: string: basic_string
+
+Describes the hostname of the server to connect to.
+Must be a string. In Java Edition, it must be a quotable phrase, which is either a single word (allowed characters: -, +, ., _, A-Z, a-z, and 0-9) or a quoted string (by " or ' ). In Bedrock Edition, it must be a single word that has no space or a double-quoted string (When quoted, \ can be used to escape characters).
+JE: <port>: integerBE: port: int: int
+
+Denotes the port number of the server to connect to. In Java Edition, if not specified, defaults to 25565.
+Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ). In Java Edition, it must be between 1 and 65535 (inclusive). In Bedrock Edition, it should be between 0 and 65535 (inclusive).
+JE: <players>: entity
+
+The player(s) to transfer. If not specified, defaults to the executor player.
+Must be a player name, a target selector or a UUID.  And the target selector must be of player type.
+
+
+== Result ==
+
+
+== Output ==
+
+
+== Examples ==
+In Java Edition, transfer the player executing the command to port 1630 of the server localhost: transfer localhost 1630.
+In Java Edition, transfer the player Steve to the server minecraft.server.example:25565: transfer minecraft.server.example 25565 Steve.
+In Bedrock Edition, transfer the player Steve to the server minecraft.server.example:19132: transfer Steve minecraft.server.example 19132
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== External links ==
+"/transfer Command"     – Microsoft Learn, May 13, 2025.
+
+
+== Navigation ==

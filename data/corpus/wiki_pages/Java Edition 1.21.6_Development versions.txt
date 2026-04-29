@@ -1,0 +1,1778 @@
+This is a list of Java Edition 1.21.6 development versions.
+
+
+== 25w15a ==
+25w15a is the first snapshot for Java Edition 1.21.6, released on April 8, 2025, which adds the dried ghast block, happy ghasts, harnesses, two new advancements and fixes bugs. The locator bar is also added behind an experimental toggle.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Dried ghast
+
+Found in Nether fossils in soul sand valleys.
+Can be crafted with 1 bone block and 8 ghast tears.
+
+Can be mined instantly without using a tool.
+When waterlogged, it undergoes 3 states over about 20 minutes until it spawns a ghastling mob.
+Makes sounds and shows particles depending on state.
+If mined during the waterlogging, it will revert to its "dry" state regardless of what state it has reached during waterlogging.
+Will revert states back to its initial "dry" state when it is taken away from being waterlogged, using the same time scale.
+Can be moved by pistons.
+
+
+==== Items ====
+ Happy ghast spawn egg
+
+Used to spawn a happy ghast.
+ Harness
+
+Crafted out of 3 leather, 2 glass and 1 wool, the harness will have the same color as the wool used when crafting.
+
+Used to fly on happy ghasts.
+Can only be equipped on a happy ghast.
+Allows up to 4 players to mount the happy ghast.
+Have 16 variants, matching the color of wool used to craft the harness.
+Can be re-dyed.
+
+Can be removed from the happy ghast using shears, but only when no players are mounted.
+
+
+==== Mobs ====
+ Ghastling
+
+Spawned after a dried ghast gets hydrated in water.
+Can also be summoned using the command: /summon happy_ghast ~ ~ ~ {Age:-24000}, or by using a Happy Ghast Spawn Egg on a Happy Ghast.
+Has 20HP × 10 health points.
+Will grow up into a Happy Ghast after about 20 minutes (or faster if fed Snowballs).
+Can be tempted and fed using snowballs to speed up their growth.
+After spawning, a ghastling will try and follow:
+Players within a 16-block radius.
+Or an adult, non-aquatic passive mob (and some neutral mobs) within a 16-block radius.
+If no player or suitable mob is close around the ghastling, it will idle around within 32 blocks from its home position (where it spawned or last was interacted with).
+It will reset its home position if it is moved more than 16 blocks away from the border of its home area.
+ Happy ghast
+
+Spawned after a ghastling grows up.
+Has 20HP × 10 health points.
+A rideable entity, which can be equipped with a harness and ridden by up to four players.
+When a player mounts, the goggles on the happy ghast go down to cover its eyes, indicating that it now can be controlled.
+Players mounted after the first player piloting the happy ghast are placed in slots on each side of it, starting clockwise from the first player.
+Pressing crouch button dismounts the player on top.
+3rd person camera is moved back when player is mounted.
+If players dismount midair, the happy ghast will descend towards the ground before it resumes roaming.
+The first player that mounts the Happy Ghast will control it, sitting in front of the Happy Ghast, just above its face.
+Pressing the forward key will make the Happy Ghast fly in the direction the player is looking.
+Pressing the back key will make the Happy Ghast fly in the opposite direction the player is looking.
+Pressing the left and right keys will strafe the Happy Ghast in the respective direction.
+Pressing the jump key will make the Happy Ghast fly directly up.
+Can be stood on, similar to a shulker.
+If the happy ghast detects players on top of it, it then ceases all movement and aligns to the closest cardinal horizontal direction.
+This happens regardless of it having a harness equipped or not.
+When not being ridden, can be tempted by players holding snowballs and harnesses.
+However, they can not be bred.
+Harness tempting only works if the Happy Ghast is unharnessed.
+Has no panic behavior when taking damage.
+Slowly regenerates health, with regeneration speeding up during rain, snow or when flying at the same height as clouds are rendered.
+Can be burned by fire and lava, as opposed to regular ghasts.
+Cannot enter boats, but can enter minecarts.
+When there are no players mounted or walking on the happy ghast, the goggles go up and the happy ghast starts to roam around the home position (the home position is where the Ghastling was hydrated as a dried ghast).
+Idles around within 64 blocks from its home position in the similar way as the Ghastling.
+If wearing a harness, the happy ghast idles closer to the home position (within 32 blocks).
+The Happy Ghast will try to stay close to blocks when roaming on its own.
+Does not drop anything other than experience.
+
+
+==== Command format ====
+/version
+
+No arguments.
+Prints current version information on server side.
+Available in singleplayer or for server operators.
+
+
+==== Gameplay ====
+Advancements
+
+Added 2 new advancements:
+Stay Hydrated!
+Place a Dried Ghast block into water
+Heart Transplanter
+Place a Creaking Heart with the correct alignment between two Pale Oak Log blocks
+
+
+==== General ====
+Attributes
+
+Added camera_distance
+Default value: 4.0
+Modifies the distance at which the camera is placed away from the player or spectated entity when in a third-person view.
+If the entity being ridden has a larger camera_distance attribute, that distance will be used.
+This distance is multiplied by the scale attribute to get a final target camera distance.
+Controls
+
+Added F3 + V.
+Prints client-side version information.
+Statistics
+
+Added minecraft:happy_ghast_one_cm: Distance by Happy Ghast.
+Tags
+
+Added the #triggers_ambient_desert_sand_block_sounds block tag.
+Contains blocks that can trigger ambient desert sand sounds to play from blocks above.
+Added the #happy_ghast_food item tag.
+Contains items that can be used to feed happy ghasts.
+Added the #happy_ghast_tempt_items item tag.
+Contains items that can be used to tempt happy ghasts.
+Added the #harnesses item tag.
+Contains all types of harnesses.
+Added the #can_equip_harness entity tag.
+Contains entities that can equip the harness items
+Added #followable_friendly_mobs entity tag.
+Contains non-baby entities that will be followed by ghastlings.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Firefly bush
+
+Now produces larger, and more constant, amounts of particles.
+
+
+==== Items ====
+Spawn eggs
+
+Blaze and breeze egg size changed from "large" to "medium".
+
+
+==== Mobs ====
+ Ghasts
+
+Updated their texture to be higher resolution, matching the new happy ghast.
+Wolves, sheep and pigs
+
+Now have their legs mirrored.
+
+
+==== Command format ====
+/datapack
+
+Added /datapack create
+Creates new empty directory data pack for current world.
+Supported pack version is always equal to one supported by game.
+Available only to server owners.
+Syntax: /datapack create <id> <name>
+id - new pack name, must be a valid directory name.
+name - text component to be placed in description in pack.mcmeta.
+
+
+==== Gameplay ====
+Spectator mode
+
+Spectators will now teleport together with, but stop spectating, entities that move to other dimensions.
+Sounds
+
+Adjusted ambient sand sounds from sand, red sand, and terracotta:
+They no longer require sky access to play.
+They have a slightly decreased chance to play.
+They now play in all biomes equally.
+Sand, red sand, and terracotta blocks no longer make ambient wind sounds (block.sand.wind).
+Sand and red sand still make sand sounds (block.sand.idle).
+Short dry grass and tall dry grass can now make ambient wind sounds (block.dry_grass.ambient) when above 2 sand, red sand, terracotta blocks.
+
+
+==== General ====
+Data component format
+
+attribute_modifiers
+Added optional display field to attributes_modifiers entries.
+There are 3 display types:
+default - Current behavior of showing the calculated attribute modifier values on the tooltip.
+hidden - Does not show the attribute modifier entry.
+override - Replaces the shown attribute modifier text.
+Contains a single field value for the text contents to show for this attribute modifier entry.
+Data pack
+
+The pack format version is now 72.
+Dimension Type definitions have a new optional field, cloud_height that indicates what Y-level the clouds start in the dimension.
+Entity data
+
+area_effect_cloud
+The Particle field has been renamed to custom_particle, and now always functions as an exact override for the default colored entity_effect particle.
+The field will not be written if no override is specified.
+The color will no longer be inherited from the potion contents when specifying the entity_effect or tinted_leaves particle types.
+Equipment Assets
+
+Added new happy_ghast_body layer type, rendering in the body slot of the happy ghast.
+Resource pack
+
+The pack format version is now 56.
+The game will now consistently respect blur texture parameter in .png.mcmeta files.
+Sounds
+
+Changed location on the sounds for glow squid, squid, guardian, horse, rabbit and pufferfish from the entity folder to the mob folder.
+Sound events
+
+block.sand.wind has been renamed to block.dry_grass.ambient.
+Tags
+
+Added happy_ghast to #dismounts_underwater, and #fall_damage_immune entity tags.
+The #plays_ambient_desert_block_sounds block tag has been renamed to #triggers_ambient_desert_dry_vegetation_block_sounds.
+Third-person view
+
+Increased the third-person camera distance when spectating or riding Ghasts, Ender Dragons, and Giants.
+
+
+=== Experimental ===
+
+
+==== Additions ====
+
+
+===== Command format =====
+/waypoint
+
+A new command for querying and modifying waypoints.
+Syntax:
+/waypoint list
+/waypoint modify <entity-selector> color <color>
+/waypoint modify <entity-selector> color hex <hex-color>
+/waypoint modify <entity-selector> color reset
+/waypoint modify <entity-selector> fade <fade_start> <alpha_start> <fade_end> <alpha_end>
+/waypoint modify <entity-selector> fade reset
+Parameters:
+entity-selector: For selecting entities that are transmitting as waypoints (see waypoint_transmit_range attribute).
+color: Overrides the locator bar icon color for this waypoint.
+hex <hex-color> arguments are in web format (RRGGBB).
+Red is either hex F00 or hex FF0000.
+Cornflower blue is hex 6495ED.
+fade: Set the fade out effect for waypoints.
+The arguments <fade_start> <alpha_start> <fade_end> <alpha_end> handle the starting/ending fade distance & alpha opacity.
+*_start is the nearby values (closest to the player).
+*_end is the far values (furthest from the player).
+reset will restore the default behavior of distant locator bar icons fading out to 0.2 alpha.
+
+
+===== Gameplay =====
+Locator Bar
+
+A UI element on the player HUD that displays the direction of other players in the world. It is in place of the experience bar.
+Visible when on a server with at least one other unhidden player and when experience is not being gained.
+By default, all players transmit a waypoint from themselves, and all players receive all waypoints; allowing players to locate other players in multiplayer.
+The locator bar will display colored indicators when the camera is facing within 120 degrees towards a waypoint. If a waypoint is above/below the camera's viewport (the screen) an up/down arrow will display.
+Any waypoint that is determined to be a player or mob that belongs to a Team then the color indicator will match the team color.
+Can be toggled with useLocatorBar game rule.
+Crouching will hide the player, preventing them from appearing on the Locator Bar of other players.
+Spectators are only visible to other spectators on the Locator Bar.
+
+
+===== General =====
+Attribute
+
+Added waypoint_transmit_range and waypoint_receive_range.
+Default: 0.0, Minimum: 0.0, Maximum: 60000000.0.
+Players have a default transmission and receive range of 60,000,000.
+Mobs with a transmission range above zero will send waypoint packets to nearby receivers.
+Similarly, receivers only receive with a range above zero, and cannot receive waypoints outside of this range.
+Game rule
+
+Added the useLocatorBar game rule.
+Is enabled by default for servers running the Locator Bar experiment.
+Disabling the game rule will remove all existing waypoints from all players.
+
+
+==== Changes ====
+
+
+===== Blocks =====
+Carved Pumpkin and Heads
+
+Will hide players from the locator bar when worn in the head slot.
+
+
+===== Items =====
+Potion of Invisibility
+
+Will hide players from the locator bar.
+
+
+=== Fixes ===
+20 issues fixed
+From released versions before 1.21
+
+MC-147260 – Map icons are not displayed in the cartography table.
+MC-191306 – Sounds played using /playsound are played in all dimensions.
+MC-266318 – Trapdoors and doors have inconsistent subtitles for being opened and closed.
+From 1.21.1
+
+MC-276264 – Advancement screen shadow renders below item icons.
+From 1.21.2
+
+MC-275374 – Drowneds with CanBreakDoors:1b don't break doors.
+From 1.21.3
+
+MC-277992 – 1 color in the pale chest boat item is incorrect.
+MC-278466 – Bundle experiment data pack related strings are not in deprecated.json.
+From 1.21.4
+
+MC-278873 – The data fixer regenerates chunks containing items obtained from flower pots using Ctrl + Pick Block before version 1.13, or it crashes the game if the item is in the player's inventory.
+From 1.21.5
+
+MC-280047 – Temperate cows use their 1.14 texture with the Programmer Art resource pack enabled.
+MC-280266 – Firefly bushes don't produce as many, or as constant, amounts of particles as on Bedrock Edition.
+MC-280268 – Blazes and breezes use "large" spawn eggs despite mobs of a similar size using "medium".
+MC-280471 – The Particle.color field in area effect clouds is read-only.
+MC-293619 – The chicken spawn egg texture in Programmer Art is missing pixels that match the inventory slot background color.
+MC-295681 – Leaf litter can generate inside of woodland mansions.
+MC-295850 – Done and Cancel buttons on the world creation Edit Game Rules screen do the same thing.
+MC-295866 – The /setblock and /fill commands no longer update redstone power in some situations.
+MC-295867 – Structures from previous versions fail with DataFixerUpper.
+MC-296035 – Two pixels from "mooshroom_spawn_egg" are the same as "cow_spawn_egg".
+MC-296624 – Old Brown Mooshroom texture is missing from Programmer Art.
+MC-297537 – Extra "entity.wolf_whine.whine" sound event exists in sounds.json.
+
+
+== 25w16a ==
+25w16a is the second snapshot for Java Edition 1.21.6, released on April 15, 2025, which adds more functionality and improvements to leads, technical changes to shaders, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Gameplay ====
+POI
+
+Added the test_instance POI.
+
+
+=== Changes ===
+
+
+==== Items ====
+Firework rocket
+
+While gliding, using a firework rocket will only be used as a boost even if placed on a block.
+Lead
+
+Leashed leads are now rendered twice as thick, to match Bedrock Edition.
+Leads can now be used to leash two mobs together.
+Sneak-interact on any mob while holding a bunch of leashed mobs will leash these mobs to the interacted entity.
+It's not possible to leash anything to itself.
+If the re-leashing an entity would result in immediate leash snapping due to distance, the re-leashing would not happen.
+Leads can be snipped from an entity when interacting them with shears, which consumes their durability.
+This applies to its own leash connection as well as all entities attached to it.
+Dispensers can now snip leashes from entities in front of them when they are equipped with shears; this also consumes their durability.
+The leash mechanics were improved, with reworked leash physics, allowing for more stable leash connection, especially when leashed entities are not on ground.
+When dragged on the leash, leashed objects will now orient themselves towards the leasher.
+Using a firework rocket when flying with leashed entities will now break the leash connections.
+When leashing an already leashed mob, the current leash will now snap and a player will re-leash the object to the player.
+It's not possible to steal leashed entities from other players.
+The interactions with a leash knot and fence blocks have changed:
+When interacting with a leash knot or a fence, if there are any player-leashed entities in range of the leash knot, they will be re-leashed to the leash knot or a fence.
+In case of attaching of mobs fails due to distance or there is nothing to attach, the player will now transfer all fence leashed entities to itself.
+If there is nothing left attached to the leash knot, it disappears.
+Sneak-interact can only result in attaching of the player mobs to the fence.
+Interacting with shears or punching the leash knot will result in all current connections broken.
+Boats, as well as large mobs that can be leashed but cannot fit in a boat (horses, donkeys, mules, camels and sniffers), can now be leashed in a special 4-leash configuration to the happy ghast.
+Happy ghast will also present a custom layer when it's leashing something using a quad connection.
+Leashes in quad connection are now rendered without slack.
+Leash snapping distance has been changed from 10 to 12 blocks.
+The distance between centers of entities bounding boxes, rather than their feet is used to determine the distance between two leashed entities.
+Happy ghast leash is now longer - with free roaming distance of 10 blocks and leash snapping at 16 blocks.
+
+
+==== General ====
+Block models
+
+Block model rotations are no longer limited to multiplies of 22.5.
+elements[].rotation.angle value in block models is no longer limited to multiplies of 22.5 degrees and can now be any angle from -45 to +45.
+Clouds
+
+Clouds now exist all the way to the horizon.
+Data component format
+
+painting/variant
+No longer accepts inline variants.
+Data pack
+
+The pack format version is now 73.
+Resource pack
+
+The pack format version is now 57.
+All core shader uniforms are now uniform blocks.
+The cloud texture (clouds.png) can no longer be colored.
+Shaders
+
+All built-in uniforms are now uniform blocks instead of opaque loose uniforms.
+Custom uniforms provided to post-process shaders are now uniform blocks.
+Uniform definitions inside JSON files are now per-block.
+Post-process effect definitions
+Entries in the targets map have been expanded to support new properties.
+New optional boolean field: persistent
+Default: false
+If true, this render target will be persistent across frames.
+The contents of the target will be cleared when the screen is resized.
+New optional field: clear_color
+Default: [0, 0, 0, 0]
+Format: integer ARGB value, or float array in order [R, G, B, A]
+When this target is created or cleared, it will be filled with this color.
+The uniforms values is now a list-per-block, instead of a global list.
+e.g. uniforms: { "UniformBlockName": [ { "type": "vec2", "value": [...] } ] }
+The order of uniforms in a block must match the order in the shader.
+name as part of a uniform definition is no longer used.
+value as part of a uniform definition replaces the old values, and the type depends on the type field.
+This field is required.
+"type": "int" needs "value": 123 (a single int).
+"type": "float" needs "value": 123.4 (a single float).
+"type": "vec2" needs "value": [1.2, 3.4] (two floats).
+"type": "vec3" needs "value": [1.2, 3.4, 5.6] (three floats).
+"type": "ivec3" needs "value": [1, 2, 3] (three ints).
+"type": "vec4" needs "value": [1.2, 3.4, 5.6, 7.8] (four floats).
+"type": "matrix4x4" needs "value": [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0] (four rows of four columns of floats).
+Post-process effect shaders
+Instead of every uniform being an individual opaque type, they are now grouped in uniform blocks.
+They will be set according to the pass definition in the JSON file, and may be shared across both vertex and fragment shaders.
+The list of sizes (all vec2 *Size uniforms) are now replaced with a single SamplerInfo uniform block.
+This contains, in order, the size of the output texture followed by the size every input texture.
+The order of textures in the definition file will dictate the order of samplers in this uniform.
+For most post chains this is just OutSize and InSize as before.
+All sizes are vec2
+post/bits.fsh
+Expects a BitsConfig of float Resolution and float MosaicSize.
+post/blit.fsh
+Expects a BlitConfig of vec4 ColorModulate.
+post/blur.vsh and post/box_blur.fsh
+Expects a BlurConfig of vec2 BlurDir and float Radius.
+post/color_convolve.fsh
+Expects a ColorConfig of vec3 RedMatrix, vec3 GreenMatrix and vec3 BlueMatrix.
+post/invert.fsh
+Expects a InvertConfig of float InverseAmount.
+post/rotscale.vsh
+Expects a RotScaleConfig of vec2 InScale, vec2 InOffset and float InRotation.
+post/spiderclip.fsh
+Expects a SpiderConfig of vec4 Scissor and vec4 Vignette.
+Globals uniform block
+Available through #moj_import <minecraft:globals.glsl>
+Most shaders are able to receive this uniform block, even if they don't normally use it.
+Contains ScreenSize, GlintAlpha, GameTime and MenuBlurRadius.
+MenuBlurRadius is the blur radius of the background when a menu is open.
+Fog uniform block
+Available through #moj_import <minecraft:fog.glsl>
+Most shaders are able to receive this uniform block, even if they don't normally use it.
+Contains FogColor, FogShape, FogStart, FogEnd, FogSkyEnd and FogCloudsEnd.
+FogSkyEnd is new and represents where the fog should end when drawing for the sky.
+FogCloudsEnd is new and represents where the fog should end when drawing the clouds.
+FogEnd is the "normal" fog cutoff as before.
+FOG_IS_SKY is now available to the position.vsh/position.fsh shaders when they are rendering for the sky.
+Projection uniform block
+Available through #moj_import <minecraft:projection.glsl>
+Most shaders are able to receive this uniform block, even if they don't normally use it.
+Contains ProjMat with no changes.
+DynamicTransforms uniform block
+Available through #moj_import <minecraft:dynamictransforms.glsl>
+Is no longer available to shaders that do not normally use it.
+Contains ModelViewMat, ColorModulator, ModelOffset, TextureMat, LineWidth.
+Lighting uniform block
+Available through #moj_import <minecraft:light.glsl>
+Most shaders are able to receive this uniform block, even if they don't normally use it.
+The values may not make sense if the shader wouldn't normally expect it, however.
+Contains Light0_Direction and Light1_Direction.
+CloudInfo uniform block
+Only available to the clouds shaders (rendertype_clouds.vsh/rendertype_clouds.fsh).
+Contains CloudColor, CloudOffset and CellSize (new).
+CellSize contains the size of an individual cloud cell.
+LightmapInfo uniform block
+Only available to the lightmap shader (lightmap.fsh).
+Contains AmbientLightFactor, SkyFactor, BlockFactor, UseBrightLightmap, NightVisionFactor, DarknessScale, DarkenWorldFactor, BrightnessFactor, SkyLightColor with no change in behavior.
+
+
+=== Fixes ===
+Reverted the fix for MC-101556: Nether Portal teleport range is too large (equivalent to a full block)
+45 issues fixed
+From released versions before 1.21
+
+MC-104231 – Loading a custom structure doesn't load rails correctly.
+MC-230902 – Black shapes sometimes appear in the end sky at low render distance
+MC-238931 – Clouds stop rendering before they are hidden by fog
+MC-256411 – Clouds not fully rendered depending on angle
+MC-257532 – Clouds don't fill the sky after 1.18 height change
+From 1.21.1
+
+MC-277369 – The draft report icon isn't initially visible when saving a report as a draft.
+MC-277370 – The draft report icon doesn't initially disappear when a report is discarded.
+From 1.21.5
+
+MC-279515 – The game stalls when running the /test clearall command with large radiuses.
+MC-280297 – The volume level between grass and dirt is inconsistent.
+MC-293754 – Minecraft causes OpenGL errors occasionally.
+MC-295395 – Entities interact differently with nether portals.
+MC-295677 – Title screen fades in from black after closing the "Welcome to Minecraft" screen.
+MC-295895 – 1.21.5 breaks minecart behavior when travelling through nether portals.
+MC-295944 – Reloading a professionless zombie villager causes it to gain random profession clothing.
+MC-296099 – Nether portal collision is or isn't working depending on the cardinal direction.
+MC-296121 – ClientboundLevelChunkPacketData buffer size is too big.
+MC-296348 – NoAI:1b mobs cannot be ridden in 1.21.5+.
+From the previous development version
+
+MC-296353 – Potions, tipped arrows, and dyed leather armor render with missing or incorrect colors in the inventory.
+MC-296355 – Characters in front of the cursor render one pixel too far to the left.
+MC-296356 – Hitbox rendering in GUIs is broken.
+MC-296357 – Happy ghasts produce footstep sounds when flying close above blocks.
+MC-296358 – A player in Spectator mode on top of a happy ghast makes it stop moving.
+MC-296363 – Scrolling in the experiments screen does not move the positions where the buttons can be selected.
+MC-296365 – Block placing sounds are played when the block states of completely unhydrated dried ghasts are changed.
+MC-296366 – Kicked for flying while flying happy ghast.
+MC-296367 – The enchantment glint in the inventory appears on all items of the same type.
+MC-296373 – The side faces of dried ghast tentacles aren’t culled when covered by blocks.
+MC-296376 – Sounds produced by ghastlings can be heard from too far away.
+MC-296381 – Dried Ghasts always face north in world generation.
+MC-296382 – Filled maps are blurry.
+MC-296401 – Harnesses are not sorted correctly in the Creative Inventory.
+MC-296419 – Spectators' names in multiplayer tab list render improperly compared to 1.21.5.
+MC-296426 – Text background lacks opacity over hotbar icons.
+MC-296427 – Happy ghasts move/spin erratically when leashed to a fence.
+MC-296434 – Unable to see items when hovering over them inside of a bundle.
+MC-296437 – Items render behind effect icons and recipe book inside of the inventory.
+MC-296444 – Blur is applied to resource pack icons.
+MC-296465 – Highlighting text on a sign causes it to override the sign background.
+MC-296467 – Item tooltips cause items behind it to not render.
+MC-296470 – Items render behind text in anvils.
+MC-296471 – Hud is now hidden while in bed resulting in delayed hud rendering.
+MC-296517 – The menu panorama turns gray when the switching realm worlds interface is open.
+MC-296518 – Text inside the middle of the java realms information box completely disappears when selected.
+MC-296524 – Server and singleplayer world icons are blurry.
+MC-296638 – Clocks, compasses, and lodestone compasses do not render enchantment glint in certain display contexts when using Fabulous! graphics.
+
+
+== 25w17a ==
+25w17a is the third snapshot for Java Edition 1.21.6 released on April 22, 2025, which makes the locator bar available in normal gameplay and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Gameplay ====
+Locator bar
+
+Added waypoint style for changing waypoints' icon on specific distances in a resource pack.
+Setting the style of a waypoint is possible using the new /waypoint modify ... style arguments.
+The default implementation is as such:
+near_distance and far_distance are optional and default to the values 128 and 332 respectively.
+far_distance distance must be greater than near_distance
+Each sprite is searched within the prefix of hud/locator_bar_dot/ (the directory textures/gui/sprites/hud/locator_bar_dot).
+
+
+==== General ====
+Options
+
+Added new video setting "Cloud Distance" to reduce the cloud range.
+Tag
+
+Added the #happy_ghast_avoids block tag.
+Contains blocks that happy ghasts avoid getting close to.
+Added the #triggers_ambient_dried_ghast_block_sounds block tag.
+Contains blocks that can trigger ambient dried ghast sounds to play when a dried ghast block is placed on them.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Dried Ghast
+
+Dried ghast's rarity has been changed from Uncommon to Common.
+
+
+==== Items ====
+Harness
+
+Can now be equipped on a happy ghast using a dispenser.
+
+
+==== World generation ====
+Woodland Mansion
+
+The room "1x1_b5.nbt" generates again.
+
+
+==== Command format ====
+/waypoint
+
+Replaced fade argument by style: For changing the icon spriteset and selection distances.
+set <waypoint_style/resource> changes the style to a specific asset under waypoint_style/
+reset will restore the default icon behavior of the Locator Bar.
+
+
+==== Gameplay ====
+Locator Bar
+
+Waypoints' icon now use different sprites based on how far away the player is to their locations instead of the fade effects previously implemented.
+
+
+==== General ====
+Game rule
+
+Renamed game rule useLocatorBar to locatorBar, consistent with Bedrock Edition.
+Realms
+
+Changed the layout of the Realms configuration screen to use tabs.
+A Worlds tab containing changes to any of the world slots, creating new worlds and changing their settings.
+A Players tab to manage the players that have access and their level of access to the Realm.
+A Subscription tab to manage the Realms subscription.
+A Settings tab to change the settings of the Realm.
+Introduced a Region Preference setting that allows for more granular control over what region a Realm is started.
+Changed the wording for Close/Open Realm to Temporarily close/Reopen Realm.
+
+
+=== Technical ===
+Data pack
+
+The pack format version is now 74.
+Resource pack
+
+The pack format version is now 58.
+Shaders
+
+Added two new core shaders; stars, and sky which are used to render the stars and upper portion of the sky respectively.
+Post-process effects
+Fog uniform block.
+FOG_IS_SKY has been removed in favor of splitting up the sky shader.
+
+
+=== Experimental ===
+All features previously behind the "Locator Bar" experimental toggle have been de-experimentified and are now available during normal gameplay.
+
+
+=== Fixes ===
+28 issues fixed
+From released versions before 1.21
+
+MC-240121 – "1x1_b5.nbt" piece does not generate in woodland mansions.
+From the Java Edition 1.21.6 development versions
+
+MC-296369 – Dispensers cannot equip harnesses onto happy ghasts.
+MC-296421 – Right-clicking a happy ghast equipped with a harness while crouching will play hand animation.
+MC-296438 – The "display" field on Attribute Modifiers is not optional, despite the changelog saying it is.
+MC-296443 – Happy ghasts don’t avoid pathfinding into dangerous blocks.
+MC-296511 – Gamemode Switcher icons become invisible when using resource pack with opaque or translucent selection.png.
+MC-296516 – Tooltips are incorrectly rendered below nearby elements when holding your mouse cursor over players that are online on realms.
+MC-296538 – Rarity of Dried Ghast is inconsistent with its crafting ingredients.
+MC-296542 – Waypoints on locator bar do not adjust to 3rd person front camera.
+MC-296567 – Waypoints on locator bar do not respect team colors.
+MC-296583 – Applying the waypoint_transmit_range attribute to an entity at the same time it is summoned makes it not show on the locator bar.
+From the previous development version
+
+MC-296750 – The game crashes after startup on some systems (predominantly Linux systems) with AMD graphics.
+MC-296755 – Resource Packs: The panorama overlay now renders in front of everything in the title screen.
+MC-296756 – Clouds do not render at render distance 2 & 3.
+MC-296764 – The text cursor renders behind command auto-complete text.
+MC-296766 – GUIs of rideable mobs are missing their slots as of 25w16a.
+MC-296770 – Strikethrough text in the villager interface is rendered behind characters.
+MC-296774 – Player messages within the "Select Chat Messages to Report" menu aren’t rendered while selected.
+MC-296775 – Some elements within the "Select Chat Messages to Report" menu are rendered darker while player messages are selected.
+MC-296777 – Lead shift right-clicking doesn't work on Boats with Chests.
+MC-296779 – The social interactions menu is rendered darker than normal.
+MC-296782 – Player models within the “Report Player Skin” menu are rendered darker and lower than normal.
+MC-296794 – Furnaces, blast furnaces, and smokers sometimes do not show the burn progress and lit progress animations.
+MC-296805 – The game crashes when holding your mouse cursor over players that are online on realms.
+MC-296806 – Cloud rendering has a considerable impact on performance as of 25w16a.
+MC-296807 – The titles of selected tabs within the "Create New World" menu are rendered behind the background.
+MC-296808 – The titles of lists within the resource pack and data pack menus are rendered behind the background.
+MC-296984 – The "No pending invites!" text within the realms invitation menu is rendered behind the background.
+
+
+== 25w18a ==
+25w18a is the fourth snapshot for Java Edition 1.21.6 released on April 29, 2025.
+
+
+=== Changes ===
+
+
+==== Items ====
+Dried ghast
+
+The bone block in the recipe has been replaced with soul sand.
+
+Lead
+
+The slimeball in the recipe has been replaced with a string.
+This is to make the recipe easier to craft for players.
+
+
+==== Gameplay ====
+Bartering
+
+Piglins can now give dried ghast blocks when bartered with.
+Splash potion
+
+Splash potions distance to affected entities now depends on the closest distance between the entity hitbox and the splash potion hitbox where it landed.
+If an entity is hit directly by the splash potion, it will receive the full effect of the potion.
+If the entities are grouped together, they will receive the same effect strength.
+
+
+==== General ====
+Data pack
+
+The pack format version is now 75.
+Entity data
+
+Added home_pos and home_radius fields to all mobs.
+Mobs with set home position will limit their pathfinding to stay within the indicated area.
+Some mobs, like bats, slimes, magma cubes, phantoms and ender dragons may ignore it.
+Interacting with leashes or riding may change the home position of the mob.
+Fonts
+
+uniform font has been updated to use Unifont 16.0.03.
+Added previously omitted Unifont glyphs for Private Use Areas.
+Those glyphs are loaded as a separate sub-font minecraft:include/unifont_pua and are not included in any normally used font.
+Characters in those areas are managed by Under-CSUR (Under-ConScript Unicode Registry), which adds various scripts not present in official Unicode set, like Tengwar or Sitelen Pona.
+Unihex Font Provider
+Field size_overrides is now optional (defaults to empty list).
+Resource pack
+
+The version is now 59.
+All JSON files (in worlds, packs, configuration, etc.) are now parsed in strict mode.
+The hud/locator_bar_arrow_up and hud/locator_bar_arrow_down sprites are now animated with a standard animation definition in the corresponding .mcmeta files.
+Tags
+
+Updated the #followable_friendly_mobs entity tag to include the happy ghast.
+
+
+=== Fixes ===
+18 issues fixed
+From released versions before 1.21
+
+MC-200925 – Ghasts are not affected by potions thrown on their head.
+MC-262268 – Keyboard navigation does not work in the book and quill GUI.
+MC-264431 – #minecraft:sand tag has two minecraft:suspicious_sand.
+From 1.21.3
+
+MC-278459 – unifont.json contains trailing comma.
+From 1.21.4
+
+MC-279284 – Experience orbs from thrown bottles o' enchanting are very prone to getting stuck inside blocks.
+From 1.21.5
+
+MC-279875 – Cannot diagonally climb slab through suspended scaffolding.
+MC-280281 – Fishing bobbers rapidly jitter when attached to entities that are moving.
+MC-280502 – Translation key snbt.parser.undescore_not_allowed has a typo.
+MC-295879 – Sprint-hitting boats and then getting in them causes the boat to fall through the block underneath.
+MC-295914 – Loot table files accept invalid JSON.
+MC-296784 – The "Welcome to Minecraft" screen is missing its fade out.
+MC-296866 – Predicates of particular namespaces failed to be accessed on /execute.
+From the Java Edition 1.21.6 development versions
+
+MC-296354 – Happy ghasts aren’t affected by potions thrown on their heads.
+MC-296898 – Happy ghasts' home slightly drift over time.
+From the previous development version
+
+MC-297112 – You cannot use CTRL + NUM to navigate to tabs within the configure realms menu.
+MC-297114 – The realms menu incorrectly claims that realms are expiring soon.
+MC-297115 – The “This is a Snapshot Realm…” box no longer renders with a black background.
+MC-297184 – 'Realms' is lowercase in mco.errorMessage.realmsService.configurationError..
+
+
+== 25w19a ==
+25w19a is the fifth snapshot for Java Edition 1.21.6 released on May 6, 2025.
+
+
+=== Changes ===
+
+
+==== Non-mob entities ====
+Projectiles
+
+Projectiles now have a target tolerance margin that changes over time.
+All projectiles start with no margin for the first two ticks of their flight.
+After that, the target margin will expand by 0.05 blocks per tick until it reaches the previous fixed 0.3 blocks margin.
+This allows for better precision close to the shooting player or entity, while still allowing for some collision leeway when the projectile is further away.
+
+
+==== General ====
+Attributes
+
+The scale attribute for the happy ghast now has a limit of 1.0.
+Data pack
+
+The pack format version is now 76.
+--quickPlaySingleplayer command line argument can now be used without an identifier to launch into the last played world.
+Entity format
+
+tnt
+The entity that primed the TNT is now stored in an optional owner field (UUID of Living entity).
+vex
+The owner of a vex is now stored in an optional owner field (UUID of Mob).
+Resource pack
+
+The version is now 60.
+Panorama textures must now all be the same size, and square.
+Shaders
+
+Shader fog
+The fog is now split into environmental and render-distance-based.
+Previously both those concepts were mixed in the same uniforms.
+Environmental fog is supposed to represent the "fogginess" of the environment the player is in: lava, water, and now also atmosphere.
+Render distance fog is supposed to obscure the border of visible terrain.
+Environmental fog uses spherical distance to determine its intensity, render distance fog uses cylindrical distance.
+The resulting fog value for any given vertex is the maximum of both.
+Fog uniform block
+FogStart was renamed to FogRenderDistanceStart and now represents the render distance fog start.
+FogEnd was renamed to FogRenderDistanceEnd and now represents the render distance fog end.
+FogEnvironmentalStart is new and represents the start of environment-based fog.
+FogEnvironmentalEnd is new and represents the end of environment-based fog.
+FogShape was removed. Render distance fog is now cylindrical and environmental for is spherical.
+Sounds
+
+The sound event block.dried_ghast.hit has been removed.
+UI sprites
+
+mob_effects.png-atlas has been merged into gui.png-atlas and no longer exists.
+This means Mob Effect sprites now support GUI sprite scaling properties.
+
+
+=== Fixes ===
+20 issues fixed
+From released versions before 1.21
+
+MC-69821 – TNT "forgets" the player that ignited it when the world is reloaded.
+MC-118430 – Vex summoner is not stored in NBT despite being used for AI task.
+MC-118432 – Vex summoner is not reset once it is dead.
+From 1.21.1
+
+MC-277486 – Mob effect icons ignore "scaling" parameter in mcmeta files.
+From 1.21.3
+
+MC-277903 – Creative inventory tab icons can display item cooldown overlay.
+From 1.21.5
+
+MC-295690 – Players stay on fire for a while after barely touching fire.
+MC-296701 – Transformed entities do not retain their custom_data component.
+MC-296709 – All non-default jukebox_playable components are deleted from existing items when updating past 1.21.4.
+MC-297347 – Tamed animals no longer sit when their owner changes dimension.
+MC-297461 – Equipment and sleeping pos data cannot be loaded in 1.21.4, but can be loaded in 1.21.5 to bees spawned from bee nest and bee hive.
+From the Java Edition 1.21.6 development versions
+
+MC-296432 – The ability to stand on top of happy ghasts which have a larger scale attribute becomes unreliable or even impossible.
+MC-296460 – Debug crosshair renders incorrectly.
+MC-296494 – The player sometimes falls from a happy ghast when reconnecting to a world.
+MC-296797 – The movement of happy ghasts for non-controlling passengers is jittery.
+MC-296813 – The panorama isn't slightly blurred anymore which causes some "flickering" effects.
+MC-296970 – The dried ghast block has a hit sound event.
+MC-297142 – The "Leave Bed" button is invisible.
+MC-297235 – Clouds not fully rendered depending on angle when very high above the world.
+MC-297271 – Waypoint packet is handled by network thread instead of render thread, causing crash.
+From the previous development version
+
+MC-297339 – Sign text is non-functional.
+
+
+== 25w20a ==
+25w20a is the sixth snapshot for Java Edition 1.21.6, released on May 13, 2025.
+
+
+=== Additions ===
+
+
+==== Items ====
+Music disc
+
+ Added the "Tears" music disc by Amos Roddy.
+Obtained by killing a ghast with a fireball deflected by a player.
+Has a comparator output of 10 when played in a jukebox.
+
+
+==== Command format ====
+/dialog
+
+A new command that shows dialog to clients.
+Syntax:
+/dialog show <targets> <dialog>
+Show dialog to player(s).
+<targets> - player name, UUID or a player selector.
+<dialog> - a namespaced ID from minecraft:dialog registry or inline dialog value as described above.
+Returns number of players in targets argument.
+/dialog clear <targets>
+Clean dialog for player(s), if they have any visible.
+<targets> - player name, UUID or a player selector.
+Returns number of players in targets argument.
+
+
+==== Gameplay ====
+Music
+
+Added 5 new background music tracks by Amos Roddy to cherry groves, forest, desert, grove, and lush caves biomes:
+"Below and Above"
+"Broken Clocks"
+"Fireflies"
+"Lilypad"
+"O's Piano"
+The same songs have been added to the menu screen music rotation.
+
+
+==== General ====
+Dialogs
+
+Added a way to display simple modal dialogs to a user.
+Dialogs are stored in a minecraft:dialog registry, but can also be defined inline
+Dialogs are an experimental feature.
+To avoid user confusion, dialog screens are marked with a warning sign next to the title.
+Clicking on this warning leads to a dialog that explains to user that this screen is provided by custom content.
+It also gives user an option to leave current world to avoid them being locked in infinite loop of dialogs.
+Dialogs can be displayed by server in play and configuration connection phases.
+However, only inline registries are allowed in configuration, since registries are not yet available in that phase.
+Dialogs always close after user selects any action.
+Dialogs by default will also close after Escape key is pressed.
+When this happens, dialog will run action specific to dialog type described as "exit action" below.
+This behavior is configurable.
+When dialog screen is closed, game goes back to previously displayed non-dialog screen or back to gameplay.
+That means that new dialogs always replace already opened ones, if any.
+Dialogs screens will pause the game in singleplayer mode.
+Dialogs can be configured to be accessible from Pause menu.
+This replaces and expands "Server Links" button added in previous versions.
+Most dialogs follow a common layout, however exact contents depend on type:
+Header with title and warning button.
+Body elements (labels, inputs, buttons and submit actions), scrollable if needed.
+Optional footer, contains main buttons and submit actions.
+Dialog Description Format
+
+Dialogs are stored in minecraft:dialog registry that can be provided by a datapack
+Fields:
+type - one of dialog types from minecraft:dialog_type registry
+<type-specific> - see below.
+Common dialog fields
+Most dialog types share some fields.
+Fields:
+title
+Screen title, text component.
+Should be always visible on screen, no matter the specific type.
+external_title
+Name to be used for a button leading to this dialog (for example from pause screen), optional text component.
+If not present, title will be used instead.
+body
+Optional list of body elements or a single element.
+can_close_with_escape
+Can dialog be dismissed with Escape key, default true.
+Common button data
+Most actions in dialog types share following fields that describe appearance of a button associated with that action:
+label- text component.
+tooltip - optional text component to display when button is highlighted or hovered over.
+width - width of the button, positive integer with default 150.
+Click action
+Common object used in dialogs to represent clickable action on a dialog.
+Fields:
+Common button data.
+on_click - optional click event (same format as click_event on text components).
+If not present, clicking button will simply close screen without any action.
+Dialog types
+minecraft:notice
+A simple screen with one action in footer.
+Exit action: same as action.
+Fields:
+Common dialog fields
+action - click action, defaults to button with gui.ok label and no action or tooltip.
+minecraft:confirmation
+A simple screen with two actions in footer.
+Exit action: same as no action.
+Fields:
+Common dialog fields
+yes - click action for positive outcome.
+no - click action for negative outcome.
+minecraft:multi_action
+A scrollable list of actions arranged in columns.
+Screen also has button in footer that runs exit action and closes the screen.
+Label will be gui.cancel if dialog has defined exit action and gui.back if it has no side effects.
+Exit action: defined in on_cancel field.
+Fields:
+Common dialog fields
+actions - non-empty list of click actions.
+on_cancel - optional click event (same format as click_event on text components).
+columns - positive integer describing number of columns, default: 2.
+minecraft:server_links
+A scrollable list of links received from server in minecraft:server_links packet, arranged in columns.
+Screen also has button in footer that runs exit action and closes the screen.
+Label will be gui.cancel if dialog has defined exit action and gui.back if it has no side effects.
+Note: this is a replacement for previous "Server Links" screen, but now with an additional body.
+Exit action: defined in on_cancel field.
+Fields:
+Common dialog fields.
+on_cancel - optional click event (same format as click_event on text components).
+columns - positive integer describing number of columns, default: 2.
+button_width - width of buttons in the list, positive integer with default 150.
+minecraft:dialog_list
+A scrollable list of buttons leading directly to other dialogs, arranged in columns.
+Titles of those buttons will be taken from external_title fields of targeted dialogs.
+Screen also has button in footer that runs exit action and closes the screen.
+Label will be gui.cancel if dialog has defined exit action and gui.back if it has no side effects.
+Exit action: defined in on_cancel field.
+Fields:
+Common dialog fields.
+dialogs - dialog, a list of dialogs or a dialog tag.
+on_cancel - optional click event (same format as click_event on text components).
+columns - positive integer describing number of columns, default: 2.
+button_width - width of buttons in the list, positive integer with default 150.
+minecraft:simple_input_form
+A screen that accepts user inputs.
+Has a single submit action with in a footer.
+Exit action: none (submitting data closes screen, but does not run any action outside of sending data to server).
+Fields:
+Common dialog fields
+inputs - non-empty list of inputs controls.
+action - submit action.
+minecraft:multi_action_input_form
+A screen that accepts user inputs.
+Can have multiple submit actions.
+Has no footer, submit actions are appended to a body.
+Exit action: none (submitting data closes screen, but does not run any action outside of sending data to server).
+Fields:
+Common dialog fields.
+inputs - non-empty list of inputs controls.
+actions - non-empty list of submit actions.
+Dialog body types
+All dialogs have a list of body elements describing contents between title and actions or inputs.
+Fields:
+type - one of dialog body types from minecraft:dialog_body_type registry.
+<type-specific> - see below.
+minecraft:plain_message
+A multiline label.
+Fields:
+contents - text component.
+width - maximum width of message, positive integer with default 200.
+minecraft:item
+Item with optional description.
+If description is present, it will be rendered to the right of item.
+Item will be rendered as if it was in inventory slot.
+Item is not scaled even if width and height are set to values other than default.
+Fields:
+item - item stack with count.
+description - optional object with fields:
+contents - text component.
+width - maximum width of contents, positive integer with default 200.
+Can also be just be text component.
+show_decorations - if true, count and damage bar will be rendered over the item, default: true.
+show_tooltip - if true, item tooltip will show up when item is hovered, default: true.
+width - horizontal size of element, default: 16.
+height - vertical size of element, default: 16.
+Input control types
+Input dialog uses a set of controls to accept user input.
+When submitted, current value of input will be converted to a string and sent to the server as described by submit action section below.
+Fields:
+type - one of input control types from minecraft:input_control_type registry.
+key - string identifier of value used when submitting data, must be a valid template argument (letters, digits and _).
+<type-specific> - see below.
+minecraft:text.
+Simple text input.
+Sends current contents without modification.
+Fields:
+width - width of input, positive integer with default: 200.
+label - a text component to be displayed to the left of control.
+label_visible - controls label visibility, default: true.
+initial - initial contents, default: "" (empty).
+minecraft:boolean
+A plain checkbox with a label.
+Fields:
+label - a text component to be displayed to the right of control.
+initial - an initial value, default: false (i.e. unchecked).
+on_true - a string value to send when control is checked, default: true.
+on_false - a string value to send when control is unchecked, default: false.
+minecraft:single_option
+A button that cycles between a set of options when clicked.
+Sends value associated with currently selected preset.
+Fields:
+label - a text component to be displayed on the button.
+label_visible - if true, label will be incorporated into button text, default: true.
+width - width of button, positive integer with default: 200.
+options - a list of objects with fields:
+id - a string value to send on submit.
+display - a text component to display on button, optional (if not present, id is used).
+initial - an optional boolean flag that selects initial option (only one option can have it set to true).
+Additionally list might also contain plain string - in that case it's equivalent to a single entry with field id set to that string and other fields set to default.
+minecraft:number_range
+A slider for picking a numeric value out of some range.
+Sends currently selected value.
+Whole numbers will be sent without decimal point.
+Fields:
+label - a text component to be used as a slider label.
+label_format - a translation key to be used for building label (first argument is contents of label field, second argument is current value), default: options.generic_value.
+width - width of input, positive integer with default: 200.
+start - start value (when slider is in leftmost position) (inclusive), float.
+end - end value (when slider is in rightmost position) (inclusive), float.
+steps - number of increments, positive integer.
+Note: value of 1 means that slider will have two positions (start and end).
+initial - initial value of slider, rounded down nearest step, must be within range, defaults to min.
+Submit actions
+Every submit action on input dialog has a button associated with it.
+When one of those buttons is clicked, values of all inputs will be collected and sent to a server using one of methods described below.
+id field of a submit action will be included as an input with key action.
+Submit action fields:
+Common button data.
+id - string identifier of an action.
+on_submit - submit method to run when button is clicked, object with following fields:
+type - one of submit method types from minecraft:submit_method_type registry.
+<type-specific> - see below.
+Note: server does not validate individual values as they arrive as filled commands or custom payloads.
+Submit method types
+minecraft:command_template
+This method will build a command using a provided macro template and request the server to run it (same as minecraft:run_command click event).
+If the command requires permission higher than 0 (when any operator permissions are required), a confirmation dialog will be shown.
+Macro will be expanded with values from input.
+For example, if macro is some_command $(action), action parameter will be expanded to id field of a submit action.
+Inputs not used in macro will be ignored, while macro parameters not matching any inputs will be replaced with an empty string.
+Fields:
+template - a string with a macro template to be interpreted as a command.
+minecraft:custom_template
+This method will build a custom server click action using a provided macro template and send it to the server (same as minecraft:custom click event).
+Macro will be expanded with values from input.
+Inputs not used in macro will be ignored, while macro parameters not matching any inputs will be replaced with an empty string.
+Fields:
+template - a string with a macro template to be used as a payload.
+id - namespaced ID.
+minecraft:custom_form
+This method will build a custom server click action from all values and request the server to run it (same as minecraft:custom click event).
+Format:
+keys are separated from values with horizontal tabulation (U+0009) character.
+key-value entries are separated with line feed (U+000A) character.
+If characters U+0009 and U+000A are present in any key or value, they will be escaped to \t and \n.
+Fields:
+id - namespaced ID.
+Built-in dialogs
+The built-in datapack contains some custom dialogs to provide customization of specific screens used by client.
+minecraft:server_links
+Replacement for previously existing "Server Links" screen.
+Meant to simplify migration for servers that used this feature previously.
+minecraft:custom_options
+Shows contents of minecraft:pause_screen_additions tag (see below).
+Lets user select a specific dialog if this tag contains multiple entries.
+Note: Since this tag is meant for interoperability, any content that replaces this dialog should be careful to not hide other dialog providers.
+Tags
+
+Added the #pause_screen_additions dialog tag.
+Dialogs in this tag replaces the "Report Bugs" button or the "Server Links" button on the pause screen.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Dried ghast
+
+No longer breaks if water flows into it.
+
+
+==== Items ====
+Leather
+
+Can now be found in monster room, ancient city, desert temple, jungle temple and stronghold altar chests in quantities 1-5.
+Saddle
+
+Can be removed from mobs wearing them by using shears on the mob.
+Cannot be removed this way from ravagers or mobs with riders.
+Shears in a dispenser don't work.
+Saddles can now be crafted with 3 leather and 1 iron ingot.
+The recipe unlocks when a player picks up their first leather.
+
+No longer found in chests in monster rooms, ancient cities, desert temples, jungle temples and in stronghold altar chests.
+Shears
+
+Can now remove saddles, horse armor, harnesses and carpets from mobs.
+They cannot be removed if the mob has a rider.
+They cannot be removed if the player is crouching.
+Saddles cannot be removed from ravagers.
+Dispensers with shears cannot remove saddles, horse armor, harnesses and carpets equipped on mobs.
+
+
+==== Mobs ====
+Ghast
+
+Now drop a ”Tears” music disc when killed by a player-deflected fireball.
+
+
+==== Gameplay ====
+Fog
+
+Fog is now applied to 3d HUD elements such as first person player hands and items in hands.
+Rain and thunder weather is somewhat less foggy now.
+Rain fog affects interiors less.
+Music
+
+Music now plays even when the game is paused.
+Added an option to the Music & Sound settings, "Music Frequency", that allows players to change how frequently music plays while in a game world.
+Settings are Default, Frequent and Constant.
+Default is the normal delay between 10 - 20 minutes
+Frequent halves the delay to 5 minutes and Constant sets the delay to 5 seconds.
+Added an option to the Music & Sound settings, "Show Music Toast", that enables a music toast to be shown whenever a song starts playing.
+With this option enabled, the song that is currently playing will be seen at all times in the top left corner of the in-game pause menu.
+Default setting is Off.
+
+
+==== General ====
+Attributes
+
+flying_speed
+Ghasts now have a flying_speed attribute that affects their flying speed.
+Credits
+
+The credits have been updated.
+Data component format
+
+equippable
+Added new optional field: can_be_sheared (boolean).
+If true, players can use Shears to remove this equippable item from a target mob by right-clicking, provided all other shearing conditions are satisfied.
+If not specified, it defaults to false.
+Added new optional field: shearing_sound (sound event).
+It's a sound event that plays when the equippable item is sheared.
+If not specified, it defaults to the item.shears.snip sound event.
+Data pack
+
+The pack format version is now 77.
+"Command Syntax" report now contains information about required permission level.
+Users will now be prompted for confirmation before executing a command from the run_command click action in books and chat if the command can't be parsed or requires elevated permissions (i.e. higher than 0).
+Panorama
+
+Updated the panorama to show a scene with happy ghasts flying next to a mountain side.
+Pause menu
+
+A data pack can request some of the available dialogs to be accessible from Pause screen
+This feature replaces "Server Links" button and is placed on Pause screen according to the same rules
+Buttons leading to dialogs exposed in this way will use label described in external_title field
+This feature is configured by minecraft:pause_screen_additions dialog tag:
+If this tag is not specified or is empty but the server has sent server_links packet, tag will be handled as if it contained minecraft:server_links dialog
+Note: this matches previous Server Links feature behavior
+If this dialog is removed, the tag remains empty
+If this tag is still empty, button is not visible ("Send Feedback" and "Report Bugs" buttons are visible instead)
+If this tag has a single element, Pause screen button will lead directly to this dialog
+If this tag has multiple elements, Pause screen button will lead to minecraft:custom_options which (by default) lets user select one of the tag elements
+If this dialog is removed, button is not visible
+Realms
+
+Added the Realms logo to the Realms loading screens.
+Added region information when connecting to a Realm.
+Resource pack
+
+The version is now 61.
+Splash
+
+Removed "Minors welcome!"
+Changed "Pumpa kungen!" to "Pumpakungen!"
+Changed "10 years of Mining and Crafting!" to "15 years of Mining and Crafting!"
+5 splashes are added:
+"Music by Aaron Cherof!"
+"Music by Kumi Tanioka!"
+"Music by Amos Roddy!"
+"Flint and Steel!"
+"Chicken Jockey!"
+Text component format
+
+Click Events
+New click action minecraft:custom has been added.
+When user clicks a component with this click action, client will send a dedicated packet minecraft:custom_click_action to a server.
+The intended use is as an alternative for run_command to be used by modded servers without worrying about having to add custom commands.
+This packet has no functionality on vanilla servers.
+Fields:
+id - namespaced ID.
+payload - optional string field.
+Dialog Click Event
+New action show_dialog has been added.
+When user clicks this component, a dialog will be opened for them.
+Fields:
+dialog - a namespaced ID from minecraft:dialog registry or inline dialog value as described above.
+UI sprites
+
+Added icon/music_notes and toast/now_playing sprites.
+
+
+=== Fixes ===
+The fix to MC-3697 has been partially reverted. Decorative hanging entities such as paintings and item frames are now immune to explosions from submerged TNT while items and armor stands are once again vulnerable to them.
+16 issues fixed
+From released versions before 1.21
+
+MC-97423 – Horse temporarily stuck in jump animation if dismounted.
+MC-103511 – Sound/Song stops playing after adjusting the volume.
+MC-118081 – Sounds don't pause when game is paused on some UI screens.
+MC-224704 – Block cracks are not affected by the fog from powder snow or lava.
+MC-248682 – Translucent blocks moved by pistons aren't affected by fog correctly.
+MC-248688 – Falling translucent blocks aren't affected by fog correctly.
+MC-269744 – Out of memory crash when using a preset with a large layer.
+From 1.21.1
+
+MC-276665 – Music is never turning on when it's toggled in the menu.
+From 1.21.3
+
+MC-277991 – The 2 brightest pixel colors on pale oak boat items are still switched.
+From 1.21.5
+
+MC-296311 – TNT touching water will destroy blocks and damage entities but will ignore decorative entities.
+MC-297524 – Connection with realm gives weird HTML text.
+From the Java Edition 1.21.6 development versions
+
+MC-296836 – Happy ghast saddle model doesn't change when lead is broken by exceeding max range.
+MC-296843 – Clouds are rendered incorrectly on some Mac systems.
+From the previous development version
+
+MC-297535 – The enchantment glint doesn't render in first person or the inventory.
+MC-297544 – Rain screen overlay does not affect 1st person hand or items.
+MC-297570 – Block breaking overlay not affected by environmental fog.
+
+
+== 25w21a ==
+25w21a is the seventh and final snapshot for Java Edition 1.21.6, released on May 20, 2025.
+
+
+=== Additions ===
+
+
+==== Gameplay ====
+Sounds
+
+Added entity/leashknot/break for when a lead snaps.
+The following sounds have been added for shearing saddles, horse armor, and carpets from llamas.
+mob/horse/armor_unequip
+mob/horse/saddle_unequip
+mob/llama/unequip
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Horse, donkey, and mule
+
+Can now be fed carrots to heal, grow, and improve their temper, with the same effect as apples.
+
+
+==== Gameplay ====
+Sounds
+
+The following sounds have been renamed:
+entity/leashknot/break1 -> entity/leashknot/unleash1
+entity/leashknot/break2 -> entity/leashknot/unleash2
+entity/leashknot/break3 -> entity/leashknot/unleash3
+entity/leashknot/place1 -> entity/leashknot/leash1
+entity/leashknot/place2 -> entity/leashknot/leash2
+entity/leashknot/place3 -> entity/leashknot/leash3
+
+
+==== General ====
+Clouds
+
+The pattern of clouds has been changed.
+Data pack
+
+The pack format version is now 78.
+Dialogs
+
+run_command click actions will now correctly close dialogs and book screens even if the command does not require elevated permissions.
+Dialogs should now correctly return to the previous non-dialog screen on close in all cases.
+If a new dialog is received by the client while warning screen is visible, it will not replace it, but when user clicks the "Back" button, the new dialog will be restored instead.
+The sizes of elements in dialogs are now restricted:
+buttons - between 1 and 1024 (inclusive).
+minecraft:plain_message dialog body - between 1 and 1024 (inclusive).
+minecraft:item dialog body
+width of description - between 1 and 1024 (inclusive).
+width - between 1 and 256 (inclusive).
+height - between 1 and 256 (inclusive).
+minecraft:text input control - between 1 and 1024 (inclusive).
+minecraft:single_option input control - between 1 and 1024 (inclusive).
+minecraft:number_range input control - between 1 and 1024 (inclusive).
+minecraft:text input control
+max_length - maximum length of input, positive integer with default of 32.
+multiline - if present, allows users to input multiple lines, optional object with fields:
+max_lines - if present, limits maximum lines, optional positive integer.
+height - height of input, optional integer in range 1 to 512.
+If this field is omitted, but max_lines is present, the height will be chosen to fit the maximum number of lines.
+If this and max_lines are both omitted, it will default to a height that fits 4 lines.
+minecraft:number_range input control
+The steps field has been replaced with a new field:
+step - step size, optional positive float.
+If present, only values of initial + <any integer> * step will be allowed.
+If absent, any value from range the is allowed.
+initial - if not specified, now defaults to the middle of the range.
+minecraft:multi_action_input_form dialog type.
+Added new field columns - positive integer describing number of columns, default: 2.
+Resource pack
+
+The version is now 62.
+Tags
+
+Added carrot to #horse_food item tag.
+
+
+=== Fixes ===
+21 issues fixed
+From released versions before 1.21
+
+MC-36696 – Clicking on the statistics button on the menu screen advances the game by 1 tick.
+MC-112730 – Beacon beam and structure block render twice per frame.
+MC-236464 – Beacon beams emitted from below the player are invisible after reloading chunks.
+MC-239701 – Rendering issue when breaking ice and flying with "Chunk Builder" set to Threaded.
+MC-258336 – Frost Walker causes frequent visual corruption near chunk borders on Threaded and Semi-Blocking Chunk Builder.
+From 1.21.5
+
+MC-296337 – Minecarts cause memory usage increases and crashes.
+MC-297264 – Cat breeds are not seed based anymore.
+From the Java Edition 1.21.6 development versions
+
+MC-297336 – Experience orbs from thrown bottles o' enchanting are very prone to getting stuck inside blocks when thrown against a corner.
+MC-297615 – Untranslatable error message when trying to join a closed Realm.
+From the previous development version
+
+MC-297803 – The string menu.custom_screen_info.contents misspells "personal" as "pesonal".
+MC-297806 – music.game.swamp.labyrinthine misspells the song's title.
+MC-297808 – music.game.oxygene is missing the grave accent sign.
+MC-297812 – Bold text is rendered differently than in previous versions.
+MC-297813 – Amos Roddy is not listed in the credits.
+MC-297823 – music.game.mice_on_venus is using wrong capitalization.
+MC-297845 – Clicking the Statistics button in Singleplayer does not play the button click sound until you resume playing.
+MC-297846 – The music toast flashes in the pause menu when the Music slider is set to zero.
+MC-297875 – Text shadow from underlined text overlaps the text below it in chat messages.
+MC-297888 – Text no longer renders in a consistent order across different fonts.
+MC-297917 – The client stops responding when showing a dialog with an extremely wide button.
+MC-297977 – Dialog columns layout has extra spacing between the grid and the overflow linear layout.
+
+
+== 1.21.6 Pre-Release 1 ==
+1.21.6 Pre-Release 1 (known as 1.21.6-pre1 in the launcher) is the first pre-release for Java Edition 1.21.6, released on May 28, 2025.
+
+
+=== Additions ===
+
+
+==== General ====
+Tags
+
+Added the #quick_actions dialog tag.
+Dialogs to open when pressing quick actions.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Dried ghast
+
+The dried ghast now emits a vibration frequency of 11 from the sculk sensor when its block state changes.
+The ambient dried ghast sounds are now adjusted under the Blocks sound option instead of the Ambient/Environment option.
+Carpet
+
+Shearing carpets for llamas now emits a vibration frequency of 6, while unequipping it emits a vibration frequency of 4 from the sculk sensor.
+
+
+==== Items ====
+Saddle
+
+Shearing saddles now emits a vibration frequency of 6, while unequipping it emits a vibration frequency of 4 from the sculk sensor.
+ Horse armor
+
+Shearing horse armor now emits a vibration frequency of 6, while unequipping it emits a vibration frequency of 4 from the sculk sensor.
+
+
+==== Mobs ====
+Happy ghast
+
+A player riding a happy ghast can no longer completely fly through a happy ghast ridden by another player.
+
+
+==== General ====
+Controls
+
+A new keybind called "Quick Actions" has been added to allow users to access a set of content-configured dialogs.
+Default key: G
+This feature is configured by minecraft:quick_actions dialog tag.
+If this tag is empty, the keybind does nothing.
+If this tag has a single element, the keybind will open this dialog.
+If this tag has multiple elements, the keybind will lead to minecraft:quick_actions dialog which (by default) lets user select one of the tag elements.
+If this dialog is removed, the keybind does nothing.
+This option is intended to be used in custom content and by servers, so this tag is empty by default.
+Data pack
+
+The pack format version is now 79.
+The minecraft:custom click event has been expanded to carry full a NBT tag.
+Dialogs
+
+Dialogs can now configure if they pause the game and if they close after an action is taken.
+Every dialog can now have inputs and can submit information.
+The definition of actions has been changed to accommodate that.
+The dedicated input dialog types have been removed, since they are redundant now.
+The order of elements is:
+Body
+Inputs
+Actions
+Common Dialog fields
+New fields:
+pause - if the dialog screen should pause the game in single-player mode, default: true.
+after_action - an additional operation performed on the dialog after click or submit actions, default: close.
+close - closes the dialog and returns to the previous non-dialog screen (if any).
+none - does nothing, i.e. keeps the current dialog screen open.
+Only available if pause is false to avoid locking the game in single-player mode.
+wait_for_response - replace the current dialog with a "Waiting for Response" screen.
+Servers are expected to eventually replace this screen with a new dialog.
+To avoid accidental locking, a "Back" button will become active after 5 seconds.
+Clicking this button will continue as if the dialog was closed (i.e. the game returns to the previous non-dialog screen, if any).
+The "Waiting for Response" screen will unpause the game in single-player mode to avoid locking the game.
+Dialog Types
+minecraft:multi_action, minecraft:server_links, minecraft:dialog_list
+Replaced field on_cancel with exit_action, holding an optional action.
+If exit_action is present, a button for it will appear in footer, otherwise the footer is not present.
+exit_action is also used for the Escape action.
+Removed minecraft:simple_input_form.
+Since any dialog can now have inputs, this dialog can be replaced by minecraft:notice.
+Removed minecraft:multi_action_input_form.
+Since any dialog can now have inputs, this dialog can be replaced by minecraft:multi_action (without any specified exit_action).
+Input Control Types
+minecraft:custom click event, all inputs will now return either a string or an NBT tag, depending on context.
+minecraft:text
+Output values:
+As template substitution: contents without modification.
+As tag: a string tag with contents without modification.
+minecraft:boolean
+Output values:
+As template substitution: on_true when checked, on_false when unchecked.
+As tag: 1b when checked, 0b when unchecked.
+minecraft:number_range
+Output values:
+As template substitution: text representation of current value.
+Whole numbers will be sent without decimal point.
+As tag: a float tag with current value.
+Dialog Body Types
+Hover and click events on text components within bodies now work as expected.
+Click events are handled by the dialog screen like any other action - that means it will also run the after_action.
+Actions
+The format of actions has been changed due to the merging of plain and input dialogs.
+After every action the dialog will always evaluate the contents of the after_action field (see above).
+Fields:
+Kept fields: label, tooltip, width
+New field: action (replaces on_click and on_submit) - an action to perform when button is clicked, optional object with fields:
+<type-specific> - see below, depends on type
+Action Types
+Static Dialog
+All existing click_event actions (except for open_file) are included as dialog action types.
+Uses same format as click_event on text components (but with action replaced with type). For example, when using show_dialog, entry for action button will look like:
+
+minecraft:dynamic/run_command
+This action will build a run_command event using a provided macro template.
+The macro will be expanded with string values from all inputs.
+For example, if the macro template is some_command $(some_input), the string value from the input with key of some_input will be used for the template expansion.
+Inputs not used in macro will be ignored, while macro parameters not matching any inputs will be replaced with an empty string.
+Fields:
+template - a string with a macro template to be interpreted as a command.
+minecraft:dynamic/custom
+This method will build a minecraft:custom event using all input values.
+All input contents will be sent together inside a compound tag, with tag value of each input put under id from key field of that input.
+Additional static fields can be added to payload.
+Fields:
+additions - fields to be added to payload, optional compound tag.
+id - namespaced ID.
+Item models
+
+Item model definitions now have a boolean field oversized_in_gui which is false by default
+If true, the item model will be allowed to be bigger than its item slot
+If false, the item model will be clipped to the item slot size when being rendered in GUI
+This ability of items being rendered outside their slots should not be considered officially supported, it was temporarily restored as an exception since many servers are relying on it
+At some point in the future it is meant to be replaced with an officially supported way of achieving similar functionality
+Introduced new item model minecraft:player_head to handle player profile texture loading and rendering
+Removed support for minecraft:profile from minecraft:head
+minecraft:player_head special model type
+Renders a player head.
+Uses profile from the minecraft:profile component to load a texture. Renders a default texture until the profile texture is fully loaded.
+No fields.
+minecraft:head special model type
+No longer supports profile from minecraft:profile component to load a player texture.
+Renders a default player texture when kind is player and no texture override is supplied.
+Fields remain unchanged.
+Resource pack
+
+The version is now 63.
+Added oversized_in_gui item model field.
+Introduced new player head special model type.Minecraft.
+
+
+=== Fixes ===
+26 issues fixed
+From released versions before 1.21
+
+MC-94800 – URL shown in open URL dialog is not shortened.
+MC-140819 – Lectern model extends past inventory slot.
+MC-200092 – /setworldspawn seems to ignore the 'angle' parameter.
+MC-272825 – Custom filled maps from 23w31a and earlier do not upgrade properly in later versions.
+From 1.21.5
+
+MC-280276 – Some item models can still clip into the block below when hovering on the ground.
+MC-297868 – Items in the armor.body and saddle slots are not kept when dying while the game rule keepInventory is set to true.
+MC-297893 – prevent_equipment_drop enchantment effect does not work with armor.body and saddle slots.
+MC-297894 – /clear command does not clear armor.body and saddle slots.
+From the Java Edition 1.21.6 development versions
+
+MC-296420 – '/datapack create' can create directories with illegal names.
+MC-296431 – Clipping item sprites to stay in slot makes it impossible to hide the slot for resource packs.
+MC-296458 – Player heads in the inventory don't show the right skin.
+MC-297275 – Players can desync from their mounts when jumping on a happy ghast.
+MC-297550 – Happy ghasts don’t remain stationary correctly when players dismount them while other players are still controlling them.
+MC-297807 – Clicking "Save and Quit to Title" in the dialog warning menu takes you to the server list even if the world is singleplayer or locally-hosted LAN.
+MC-297817 – Newly placed paintings sometimes appear at a different position.
+MC-297848 – The menu background is not shown for a short amount of time when leaving a world from a dialog.
+MC-297897 – Players can fall through happy ghasts.
+MC-297899 – FPS drops due to clouds.
+MC-297906 – Running a command with a large output whilst on a dedicated server causes a kick and no logged output.
+MC-297915 – The name plates of entities with an empty custom name are now rendered incorrectly.
+MC-298071 – All naturally spawned zombie villagers are professionless since 25w16a.
+From the previous development version
+
+MC-298101 – Sniffers now show the digging animation instead of the walking animation.
+MC-298116 – The warning text in the confirm link screen is no longer visible.
+MC-298117 – All buttons at the bottom of the Realms screen are clickable when no realm is selected.
+MC-298139 – Items bigger than the size of a slot incorrectly bleed over onto other items.
+MC-298146 – GUI items disappear at high screen resolutions.
+
+
+== 1.21.6 Pre-Release 2 ==
+1.21.6 Pre-Release 2 (known as 1.21.6-pre2 in the launcher) is the second pre-release for Java Edition 1.21.6, released on June 2, 2025.
+
+
+=== Changes ===
+
+
+==== Gameplay ====
+Sounds
+
+The following sound categories have been renamed:
+Friendly Creatures -> Friendly Mobs
+Hostile Creatures -> Hostile Mobs
+
+
+==== General ====
+Dialogs
+
+Input Control Types
+minecraft:text
+Output values:
+As template substitution: contents with special characters escaped to fit in a SNBT literal (note: both ' and " are escaped).
+For multiline field:
+If height field is omitted, but max_lines is present, the height that will be chosen to fit the maximum number of lines can't exceed 512.
+
+
+=== Fixes ===
+15 issues fixed
+From released versions before 1.21
+
+MC-217887 – Unsigned books written in 1.9-pre1 or earlier don't upgrade properly.
+From 1.21.5
+
+MC-297591 – Ender pearls can unexpectedly come to a halt.
+From the Java Edition 1.21.6 development versions
+
+MC-297575 – Happy Ghast with nbt NoAI set to true can't be controlled by player.
+MC-298104 – The max_lines field of multiline text input control is unrestricted, lagging the game.
+MC-298144 – The initial value of minecraft:text input type is limited to 32 characters, regardless of max_length field.
+MC-298155 – Dialog command_template using a multiline text input causes player to be kicked out of the server due to illegal characters in chat (which is \n)
+MC-298209 – Player cannot move while touching a happy ghast's body.
+MC-298301 – Blinking the cursor shifts all characters to the right of a multilines text field input in Dialogs.
+MC-298307 – Entering and exiting a pale garden while in Creative mode causes the current music track to remain silent.
+From the previous development version
+
+MC-298315 – Portals take excessive time to teleport players.
+MC-298358 – Riding a mob into powder snow no longer affects the player properly.
+MC-298361 – Happy ghast with player riding, teleports back and forth when exiting nether portal.
+MC-298368 – music_notes.png.mcmeta has an extra index that does not exist, causing a warning.
+MC-298394 – Freezing in Powdered Snow is very inconsistent and jittery.
+MC-298422 – Ghasts and happy ghasts do not take damage from harmful blocks under some circumstances.
+
+
+== 1.21.6 Pre-Release 3 ==
+1.21.6 Pre-Release 3 (known as 1.21.6-pre3 in the launcher) is the third pre-release for Java Edition 1.21.6, released on June 4, 2025.
+
+
+=== Additions ===
+
+
+==== General ====
+Advancement definition
+
+Added minecraft:player_sheared_equipment trigger.
+Can trigger when a player shears off a shearable equipment from an entity.
+Conditions:
+item - Item that is sheared.
+entity - The entity that was sheared.
+
+
+=== Changes ===
+
+
+==== Command format ====
+/playsound
+
+Added new category ui.
+Sounds in this category will continue playing when paused, similarly to music.
+
+
+==== Gameplay ====
+Sound
+
+Added new sound volume category called "UI" for sounds played by UI elements, like button clicks.
+
+
+==== General ====
+Data Pack
+
+The pack format version is now 80.
+
+
+=== Fixes ===
+13 issues fixed
+From released versions before 1.21
+
+MC-250107 – The entity shadows of ghasts are too small in relation to the size of their models.
+From the Java Edition 1.21.6 development versions
+
+MC-296371 – The entity shadows of happy ghasts are too small in relation to the size of their models.
+MC-296374 – The entity shadows of ghastlings are too small in relation to the size of their models.
+MC-296853 – The "Shear Brilliance" advancement is incorrectly given by shearing a lead off a wolf.
+MC-297113 – Hotbar shown in loading terrain screen.
+MC-297497 – The “Connection Lost” title isn’t displayed when being kicked from realms due to idle timeout.
+MC-297972 – Dialog body content is misaligned.
+MC-298353 – Ridden entities won't make the lead breaking sound when attached to a fence.
+MC-298412 – Subtitles are no longer shown when the master volume is set to zero.
+MC-298466 – When clicking the "yes" button to confirm command execution in a dialog, if the player is put into another dialog, the click sound from the "yes" button will not be played until it is closed.
+From the previous development version
+
+MC-298492 – Disconnecting through dialog in configuration phase causes the client to crash.
+MC-298516 – While running /dialog clear and /dialog show every tick, pressing the warning button just after joining the world can crash the game.
+MC-298520 – Items in slots now render behind the container title, mismatching 1.21.5 behavior.
+
+
+== 1.21.6 Pre-Release 4 ==
+1.21.6 Pre-Release 4 (known as 1.21.6-pre4 in the launcher) is the fourth and final pre-release for Java Edition 1.21.6, released on June 10, 2025.
+
+
+=== Fixes ===
+4 issues fixed
+From 1.21.2
+
+MC-279417 – Luring mobs onto blocks at Y=-64 will instead make them pathfind to the highest elevation.
+From the Java Edition 1.21.6 development versions
+
+MC-298446 – The "Thunder roars" sound is no longer affected by the master volume.
+MC-298510 – Happy ghasts stay still for a few seconds when you get off them.
+From the previous development version
+
+MC-298653 – Master volume slider no longer affects /playsound sounds with high volume.
+
+
+== 1.21.6 Release Candidate 1 ==
+1.21.6 Release Candidate 1 (known as 1.21.6-rc1 in the launcher) is the first and only release candidate for Java Edition 1.21.6, released on June 12, 2025, which fixes bugs.
+
+
+=== Fixes ===
+3 issues fixed
+From the Java Edition 1.21.6 development versions
+
+MC-298022 – Not signed Books and Quills with an overflowing new line at the bottom do not depict the pages' contents.
+MC-298633 – Happy Ghast gets you stuck in blocks while riding and gets stuck in blocks upon dismount.
+MC-298658 – Locator Bar shows inaccurate positions after respawn.
+
+
+== Notes and references ==
+
+
+== Navigation ==

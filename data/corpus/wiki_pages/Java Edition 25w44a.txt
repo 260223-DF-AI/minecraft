@@ -1,0 +1,396 @@
+25w44a is the fourth snapshot for Java Edition 1.21.11, released on October 28, 2025, which adds camel husks and parched.
+
+
+== Additions ==
+
+
+=== Items ===
+ Spawn eggs
+
+Added camel husk and parched spawn eggs.
+
+
+=== Mobs ===
+ Camel husk
+
+New undead variant of the camel.
+Spawns at a light level of 0 in deserts.
+Spawns with two riders: A husk wielding a spear in the front and a parched in the back.
+Does not spawn in caves, following the husk's spawning rules.
+Does not burn in sunlight.
+Has 32HP × 16 health.
+Is hostile if the rider is a hostile mob (similar to the zombie horse). Is passive without a rider.
+Despawns like other hostile mobs, but becomes persistent while ridden by a player.
+Favorite food is rabbit foot, but it cannot be bred.
+Drops 2-3 rotten flesh when killed, with an extra 0-1 for each level of Looting.
+Any husk riding it now has a chance of dropping a rabbit foot on death.
+As a mount, it works similar to a normal camel.
+ Parched
+
+New variant of the skeleton.
+Spawns at a light level of 0 in deserts replacing some of the regular skeletons.
+Does not spawn in caves, following the husk's spawning rules.
+Does not burn in sunlight.
+Has 16HP × 8 health.
+Shoots arrows of Weakness, and has a chance to drop them as well.
+Has a slower rate of fire compared to a normal skeleton, similar to the bogged.
+
+
+=== General ===
+Environment attributes
+
+Added minecraft:visual/water_fog_start_distance
+The distance in blocks from the camera at which underwater fog starts to have an effect. If negative, the fog will start out with density as if it had started that many blocks behind the camera.
+Value type: float
+Default value: -8.0
+Modifiers: Float Modifiers
+Interpolated: yes
+Resolved at the camera's position
+Added minecraft:visual/fog_start_distance
+The distance in blocks from the camera at which fog starts to have an effect (when the camera is not submerged in another substance). If negative, the fog will start out with density as if it had started that many blocks behind the camera. Note: the final value is also modified by weather.
+Value type: float
+Default value: 0.0
+Modifiers: Float Modifiers
+Interpolated: yes
+Resolved at the camera's position.
+Added minecraft:visual/fog_end_distance
+The distance in blocks from the camera at which fog reaches its maximum density (when the camera is not submerged in another substance).
+Value type: non-negative float
+Default value: 1024.0
+Modifiers: Float Modifiers
+Interpolated: yes
+Resolved at the camera's position.
+Note: the final value is also modified by weather.
+Added minecraft:visual/sky_fog_end_distance
+The distance in blocks from the camera at which the fog that affects the sky reaches its maximum density (when the camera is not submerged in another substance).
+Value type: non-negative float
+Default value: 512.0
+Modifiers: Float Modifiers
+Interpolated: yes
+Resolved at the camera's position.
+Note: this value is restricted by the Render Distance option.
+Added minecraft:visual/cloud_fog_end_distance
+The distance in blocks from the camera at which the fog that affects clouds reaches its maximum density (when the camera is not submerged in another substance).
+Value type: non-negative float
+Default value: 2048.0
+Modifiers: Float Modifiers
+Interpolated: yes
+Resolved at the camera's position.
+Note: this value is restricted by the Cloud Distance option.
+Added minecraft:visual/cloud_color
+The color of the clouds. If fully transparent, clouds are entirely disabled and happy ghasts will not regenerate health faster when at cloud height.
+Value type: ARGB color
+Default value: #00000000
+Modifiers: ARGB Color Modifiers
+Interpolated: yes
+Resolved at the camera's position for rendering, or at the position of a happy ghast for regeneration.
+Game rules
+
+Added minecraft:fire_spread_radius_around_player
+Controls the maximum distance in blocks that fire can spread around a player.
+This replaces the previous doFireTick and allowFireTicksAwayFromPlayer game rules, which have now been removed.
+Setting it to 0 will disable fire spreading.
+Setting it to -1 will allow fire spreading without players around.
+Limit: Minimum -1
+Options
+
+Added the anisotropic filtering graphics option.
+This new option improves the visual quality of blocks when viewed at a distance or at an angle.
+The default depends on the graphics preset, and the values are "off", "2x", "4x", and "8x".
+If the hardware does not support it, it will not be used.
+This significantly impacts video memory usage (especially combined with a high mipmap count).
+Added the chunk fade time option.
+Located in Video Settings.
+Controls the fade-in time of chunks.
+Slot Sources
+
+Added slot sources to allow the location of any inventory slot to be specified within datapacks.
+Format: object with fields.
+type: the slot source type.
+<type-specific>: additional fields depending on the type.
+minecraft:empty Type
+Empty selection containing no slots.
+minecraft:group Type
+Merges several slot sources into one, with the resulting selection containing all slots from each slot source provided.
+If a slot is included in more than one slot source, it will be repeated in the resulting slot source.
+e.g. [a, b] + [c, a] -> [a, b, c, a]
+Format:
+terms: list of slot sources to join.
+Can alternatively be written inline as a list of slot sources.
+minecraft:slot_range Type
+Selects slots within a slot range from the inventory of an entity or block entity.
+Mirrors the behavior of the from argument of the /item command.
+Format:
+source: an entity or block entity from which the slots will be sourced, from loot context.
+Can be block_entity, this, attacking_entity, last_damage_player, direct_attacker, target_entity, or interacting_entity
+slots: a slot range in the format of <slot_type> or <slot_type>.<slot_number> (e.g. armor.chest or container.*).
+minecraft:contents Type
+Selects all non-empty slots from the inventory component of one or more items.
+If no item is stored inside that component, the resulting selection will be empty.
+The location of the item(s) whose inventory component to use is specified by another slot source.
+If the slot source includes more than one item with that component, the resulting selections will be merged identically as with the minecraft:group type.
+e.g. Bundle [a, b] + Shulker Box [c, d] -> [a, b, c, d]
+Format:
+component: the inventory component to target.
+Allowed values are minecraft:bundle_contents, minecraft:charged_projectiles, and minecraft:container
+slot_source: a slot source containing slots with item(s) to target.
+minecraft:filtered Type
+Applies a filter to the selected slots, excluding any non-matching slots from the resulting selection.
+Format:
+item_filter: an item predicate to match against the items in each slot.
+slot_source: the slot source to filter.
+minecraft:limit_slots Type
+Limits the number of slots provided, with the resulting selection containing at most that number of slots.
+Any slots bringing the number of slots above that limit will be excluded, in order of inclusion.
+e.g. [a, b, c, d] -> [a, b, c] if the limit is set to 3
+Format:
+limit: integer, the maximum number of slots to include in the resulting selection.
+slot_source: the slot source to limit.
+Example slot source selecting every slot with more than 16 items from the hotbar and armor slots of an entity:
+
+Tags
+
+Item Tags
+Added #camel_husk_food
+Contains all items that can be used to feed a camel husk.
+Entity Tags
+Added #can_float_while_ridden
+Contains entities that can float on water while being ridden.
+
+
+== Changes ==
+
+
+=== Items ===
+Spawn eggs
+
+ The textures of zombie horse spawn eggs have been updated to reflect the mob's updated appearance.
+
+
+=== Mobs ===
+Bat
+
+No longer spawn more frequently and in higher light levels between October 20 and November 3.
+Horses, mules, donkeys, zombie horses, camels, llamas and trader llamas
+
+No longer sink in water while ridden by a player.
+Nautilus and zombie nautilus 
+
+Can now attack any mob if provoked by that mob, not just players.
+Parrot
+
+Now can mimic the sounds of zombie nautilus, zombie horse, camel husk and parched.
+
+
+=== Command format ===
+/worldborder
+
+The time argument for setting the size can now also specify seconds or in-game days using an s or d suffix.
+The time argument for setting the warning distance now specifies ticks by default but can also specify seconds or in-game days using an s or d suffix.
+
+
+=== Gameplay ===
+Advancements
+
+Updated "Monster Hunter" to include, and "Monsters Hunted" to require the camel husk and parched.
+Enchantments
+
+Reduced the number of hunger points consumed by using Lunge across all Enchantment levels.
+Level I consumes 1 (), level II consumes 2 (), and level III consumes 3 ().
+Added a durability cost of 1 for using Lunge across all Enchantment levels.
+
+
+=== General ===
+General
+
+Added support for KQueue on OSX to improve network connection performance.
+The LWJGL library was reverted to version 3.3.3.
+Biomes
+
+The following color fields in the effects definition now support colors as a string in the form "#rrggbb", or a float array in the form [red, green, blue]
+water_color
+foliage_color
+dry_foliage_color
+grass_color
+grass_color_modifier
+Chunks
+
+Now fade in instead of appearing out of nowhere, with the fade-in time adjustable through Video Settings.
+Data pack
+
+The pack format version is now 92.0.
+Environment attributes
+
+Modifiers on ARGB Color Values
+override
+Argument format: ARGB Color
+add - component-wise additive color blending.
+Argument format: RGB Color
+subtract - component-wise subtractive color blending.
+Argument format: RGB Color
+multiply - component-wise multiplicative color blending.
+Argument format: RGB or ARGB Color
+If specified, the alpha component is multiplied independently just like the other color channels.
+alpha_blend - traditional alpha blending that might be seen in image editing software.
+Argument format: ARGB Color
+When the argument alpha is 1, it will behave as an override with no blending.
+Renamed minecraft:visual/water_fog_radius to minecraft:visual/water_fog_end_distance
+Removed minecraft:visual/extra_fog
+Replaced minecraft:visual/cloud_opacity with minecraft:visual/cloud_color
+Fog
+
+Environmental Fog in the Nether is no longer dependent on the render distance setting, and will consistently be applied from 10 to 96 blocks.
+Game rules
+
+Have been moved into a registry.
+With that, all game rules have been renamed from their previous camel case names to resource locations in snake case.
+Additionally, some game rules have been further renamed:
+announceAdvancements -> minecraft:show_advancement_messages
+commandBlocksEnabled -> minecraft:command_blocks_work
+command_modification_block_limit -> minecraft:max_block_modifications
+disableElytraMovementCheck -> minecraft:elytra_movement_check
+The value is inverted accordingly in places that use the resource location.
+disablePlayerMovementCheck -> minecraft:player_movement_check
+The value is inverted accordingly in places that use the resource location.
+disableRaids -> minecraft:raids
+The value is inverted accordingly in places that use the resource location.
+doDaylightCycle -> minecraft:advance_time
+doEntityDrops -> minecraft:entity_drops
+doImmediateRespawn -> minecraft:immediate_respawn
+doInsomnia -> minecraft:spawn_phantoms
+doLimitedCrafting -> minecraft:limited_crafting
+doMobLoot -> minecraft:mob_drops
+doMobSpawning -> minecraft:spawn_mobs
+doPatrolSpawning -> minecraft:spawn_patrols
+doTileDrops -> minecraft:block_drops
+doTraderSpawning -> minecraft:spawn_wandering_traders
+doVinesSpread -> minecraft:spread_vines
+doWardenSpawning -> minecraft:spawn_wardens
+doWeatherCycle -> minecraft:advance_weather
+maxCommandChainLength -> minecraft:max_command_sequence_length
+maxCommandForkCount -> minecraft:max_command_forks
+naturalRegeneration -> minecraft:natural_health_regeneration
+snowAccumulationHeight -> minecraft:max_snow_accumulation_height
+spawnRadius -> minecraft:respawn_radius
+spawnerBlocksEnabled -> minecraft:spawner_blocks_work
+Limits
+Some game rules that previously did not have a limited value range now do:
+minecraft:max_block_modifications: Minimum 1
+minecraft:max_command_forks: Minimum 1
+minecraft:max_command_sequence_length: Minimum 0
+minecraft:max_entity_cramming: Minimum 1
+minecraft:max_snow_accumulation_height: Minimum 0, maximum: 8
+minecraft:players_nether_portal_creative_delay: Minimum 0
+minecraft:players_nether_portal_default_delay: Minimum 0
+minecraft:players_sleeping_percentage: Minimum 0
+minecraft:random_tick_speed: Minimum 0
+minecraft:respawn_radius: Minimum 0
+Game Tests
+
+In the game_rules test environment the keys bool_rule and int_rule have been replaced with a single key rules.
+It is a map from game rules resource locations to the game rules value. The value type is either integer or boolean depending on the game rule.
+Loot tables
+
+Added new minecraft:slots loot pool entry.
+Provides the items contained within the selected slots to the loot table.
+Format:
+slot_source: a slot source describing where the items are located.
+Supports all standard loot pool entry fields.
+Removed contents as a supported value for the dynamic loot entry type.
+Its behavior of providing the contents of a Shulker Box was made redundant by the addition of the slots loot entry type, and can now be replicated with the slot_range slot source.
+Minecraft Server Management Protocol
+
+The version is now 2.0.0.
+In the typed_game_rule and untyped_game_rule schemas, the type of the value field has been changed from string to take either a boolean or an integer.
+It now uses the game rule resource location as the key.
+Resource pack
+
+The version is now 72.0.
+block.vsh/fsh copies terrain.vsh/fsh and handles ad-hoc blocks (e.g. held by entities).
+Added ChunkSection uniform, used by terrain.vsh (which replaces DynamicTransforms).
+New shaders have been introduced to perform GPU based sprite animations.
+Globals uniform now has camera coordinates.
+terrain core shader now samples the blocks atlas texture linearly instead of with nearest neighbour
+Shaders & Post-process Effects
+
+Added animate_sprite* core shaders, which use a new SpriteAnimationInfo uniform.
+Sprite Animations
+
+Sprites (textures as part of a larger atlas) are now animated on the GPU rather than per-tick on the CPU.
+For regular frame-based animations, animate_sprite.vsh and animate_sprite_blit.fsh are used to perform the draw.
+For interpolated animations, animate_sprite.vsh and animate_sprite_interpolate.fsh are used to perform the draw.
+The UBO SpriteAnimationInfo contains information on where the sprite should be drawn to, within the greater texture atlas.
+Statistics
+
+Added minecraft:nautilus_one_cm statistic (Distance By Nautilus).
+Tags
+
+Entity Tags
+Changed #skeletons to include parched.
+Changed #zombies to include camel husk.
+Changed #can_equip_saddle to include camel husk.
+UI
+
+"Interface" option inside the Video Settings screen has been renamed to "Preferences".
+The Single Biome Customization screen now has a search box.
+The language selection screen now has a search box to filter languages.
+
+
+== Fixes ==
+35 issues fixed
+From released versions before 1.21
+
+MC-2791 – The player model in the inventory screen renders in the wrong orientation when it's not standing up straight.
+MC-73186 – Gaps between the faces of item models and complex block models.
+MC-149630 – Some particles have very thin, vertical lines that flash in and out around the particles.
+MC-237158 – Magma blocks can generate on the ceilings of caves below aquifers.
+From 1.21.6
+
+MC-298942 – Character body moves instead of the head when riding a happy ghast.
+From 1.21.8
+
+MC-300642 – When texture atlases are large, gaps are rendered between blocks that have a low resolution.
+MC-301988 – Buttons in the telemetry screen are not aligned properly in some languages.
+From 1.21.9
+
+MC-301311 – The “Transfer Now” button no longer renders highlighted when the java realms information box is selected.
+MC-301516 – The mouse cursor doesn’t change to the hand shape when hovering over tabs in the “Create New World” menu and similar screens.
+MC-301517 – The mouse cursor doesn’t change to the hand shape when hovering over arrows in the singleplayer, multiplayer, resource packs, and data packs menus.
+MC-301527 – The mouse cursor doesn’t change to the resize shape when scrolling in the advancements menu.
+MC-302111 – Elements within the resource pack and data pack menus are not selected in order when using the ↹ Tab key.
+MC-302325 – When the player toggles a debug renderer using its hotkey (F3 + B, F3 + G) while in the debug options screen, the corresponding entry is not updated.
+MC-302338 – The narrator button in the Accessibility Settings menu doesn't update upon pressing Ctrl + B.
+MC-302362 – Clicking on "Singleplayer" or "Multiplayer" in the main menu then immediately clicking on a world or server joins it even when not clicking the play button.
+MC-302482 – Resource and data pack names can overlap selection boxes when the scroll bar is present.
+From the 1.21.11 development versions
+
+MC-302678 – Arrows and tridents get stuck on players and mobs.
+MC-303072 – Game crashes when a trident entity with PierceLevel ≥ 1 hits a mob or player.
+MC-303168 – Equipping a saddle onto a nautilus uses the "subtitles.entity.horse.saddle" subtitle.
+MC-303255 – Nautiluses do not deal damage if mobGriefing is false.
+From the previous development version
+
+MC-303429 – Piglins and hoglins shake in the nether.
+MC-303432 – Chinese input is not recognized.
+MC-303434 – Japanese input is not recognized.
+MC-303439 – Held items in third-person view show strange artifacts when viewed at certain angles.
+MC-303455 – The cursor is no longer centered when opening a container or menu on Wayland.
+MC-303460 – The cursor no longer follows the look set by the system on Wayland.
+MC-303461 – The application icon shows the generic Wayland icon instead of the Minecraft icon on Wayland.
+MC-303478 – Cannot launch 25w43a on Linux with Nvidia Graphics.
+MC-303481 – Game has no audio and crashes with Mac Studio Display.
+MC-303485 – The game can no longer save chunks in custom dimensions.
+MC-303504 – Nether sprouts textures still expand when viewed from a sharp angle.
+MC-303506 – Control-key combinations additionally send the normal letter on Wayland.
+MC-303520 – Sweet berry bush textures still expand when viewed from a sharp angle.
+MC-303541 – The game doesn't boot on Wayland.
+MC-303651 – Rotating dropped items sometimes create visual artifacts.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

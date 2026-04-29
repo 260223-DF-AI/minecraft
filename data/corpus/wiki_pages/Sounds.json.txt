@@ -1,0 +1,47 @@
+sounds.json (sound_definitions.json in Bedrock Edition) is a file used by the sound system in resource packs which tells the sound system what sound files to play when a sound event is triggered by one or more in-game events. This file is located in assets/<namespace> in resource packs, and the default file is located in .minecraft/assets/objects (assets/resource_packs/vanilla/sounds in Bedrock Edition), and its hashed name can be found by looking it up in the file .minecraft/assets/indexes/<version>.json.
+Since file .minecraft/assets/objects is obfuscated, one can find in Tutorial:Sound directory some methods to extract the sound.json and the sound directory, where all sounds and music are stored.
+
+
+== File structure ==
+
+
+=== Java Edition ===
+This file is stored in JSON format, but is represented here using NBT.
+An example of a pre-1.10 sounds.json can be found here.
+Dinnerbone's pre-1.10 specifications can be found here.
+
+
+=== Bedrock Edition ===
+
+[verify]
+
+1.14.0
+
+Old
+
+
+== Sound events ==
+A sound event is linked to one or more in-game events. Two sound events may share the same sound file, but correspond to different in-game events and/or belong to different sound categories. A few valid sound events aren't included in sounds.json, while others don't have an in-game event associated with them. Any sound event that lacks an in-game event can be played only with /playsound or by using a note block below a player head with the note_block_sound block entity tag set. All default sound events, the sounds they use, the category they belong to, the subtitle that plays at that event, and the in-game events they are triggered by are listed in the following table.
+
+
+=== Unused sound events ===
+
+
+== Block sound categories ==
+
+A block sound type is a set of sounds that blocks use when they are broken, placed, hit, fallen on, stepped on, jumped from,‌[Bedrock Edition  only] or landed on.‌[Bedrock Edition  only]
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== References ==
+
+
+== Navigation ==

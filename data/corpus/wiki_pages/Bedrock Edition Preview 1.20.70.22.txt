@@ -1,0 +1,122 @@
+Beta 1.20.70.22 (Android) or Preview 1.20.70.22 (Windows, iOS, iPadOS, Xbox) is the third beta/Preview version for Bedrock Edition 1.20.70, released on February 7, 2024, which brings more parity from Java Edition and fixes bugs.
+
+
+== Changes ==
+
+
+=== Blocks ===
+End Portal Frame
+
+The end portal frame has been moved to the "Nature" category in the Creative inventory.
+Wood and Stripped Wood
+
+The different wood type and stripped bit block states for the wood ID have now been split up into their own IDs.
+
+
+=== General ===
+Death screen
+
+The updated death screen is now enabled by default, even when resource packs are applied to a world.
+Experiments
+
+Removed the "Molang Features" experimental toggle.
+Play screen
+
+The feedback button in the Friends Drawer in the new play screen now leads to the correct feedback page.
+Realms Stories
+
+Added four new Realm Events.
+Added two extra-special LARGE Realm Events.
+Added screen-reader narration for Comments screen.
+When in split-screen mode, only the primary user can access Realms Stories.
+
+
+=== Technical ===
+API
+
+Added Player.setGameMode and Player.getGameMode to beta for changing the player's GameMode.
+Added GameRuleChangeAfterEvent, GameRule and world.afterEvents.gameRuleChange for responding to game rules changes.
+Moved explosion from beta to 1.9.0.
+JSON
+
+Entities
+Entities with a damage_sensor component can once again be killed via commands.
+The damage_sensor component can once again trigger entity events on entities other than the owner.
+Molang
+
+Released query.is_attached and query.has_player_rider from experimental.
+Removed experimental Molang queries query.get_ride and query.get_riders.
+Released Molang query.scoreboard for use with behavior packs from experimental. (resource packs will return 0)
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Armadillo and Wolf Armor", "Update 1.21", and "Beta APIs" experimental toggles.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Vault
+
+Tweaked the texture to make them easier to distinguish from trial spawners.
+
+
+==== Mobs ====
+Armadillo
+
+Now do not panic when damaged but roll up instead, and hide their head and feet.
+Now peek out to see if “the coast is clear” before unrolling.
+Updated animations and sounds for rolling up, unrolling, and the peek out animation.
+The time for a rolled-up armadillo to stay without threats before unrolling has been increased from 3 to 4 seconds.
+Breeze
+
+The breeze's attack damage has been tweaked.
+
+
+==== Technical ====
+API
+
+Added events PlayerGameModeChangeAfterEvent, PlayerGameModeChangeBeforeEvent with signals world.afterEvents.playerGameModeChange and world.beforeEvents.playerGameModeChange to beta.
+Removed function triggerEvent().
+WorldBeforeEvents
+Removed property itemDefinitionEvent.
+WorldAfterEvents
+Removed property itemDefinitionEvent.
+
+
+== Fixes ==
+13 issues fixed
+From released versions before 1.20.70
+
+MCPE-19426 – Strongholds sometimes don't generate the end portal.
+MCPE-151348 – Cave vines without glow berries drop a glow berry when mined using Silk Touch.
+MCPE-162868 – Blue and black candle are placed as wrong colors on a cake.
+From the previous development version
+
+MCPE-177975 – The world list layout (grid vs list) isn't saved with the new menus.
+Others
+
+The breeze is only suggested in the type selector when the appropriate experimental toggle is enabled.
+Fixed gamepad back button input not working correctly on the Realms Stories settings screen.
+Fixed issue with time blocks not rendering in the correct time zones on Switch.
+Fixed the timing of PlayerInteractWithEntityAfterEvent and PlayerInteractWithBlockAfterEvent.
+Fixed minecraft:geometry.full_block faces not rotating to match transform component.
+Fixed minecraft:geometry.full_block blocks not culling faces against some vanilla blocks.
+Fixed a bug where item dynamic properties could sometimes be applied to items with a stack size greater than 1.
+Fixed a crash on Android devices when entering Deferred Technical Preview worlds.
+Fixed a circular visual artifact that could occur when using the new point light shadows feature in the Deferred Technical Preview.
+3 issues fixed
+From released versions before 1.20.70
+
+REALMS-11290 – end_dragon_fight_ticking_area prevents mob spawning in realm.
+REALMS-11358 – item despawn timer continues in the end main island no matter if a player loads the chunks or not.
+Others
+
+Fixed a bug where text in the Realms subscription landing page was slightly truncated.
+
+
+== References ==
+
+
+== Navigation ==
