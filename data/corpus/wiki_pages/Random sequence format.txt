@@ -1,0 +1,23 @@
+Random sequences are random number sequence generators used by loot tables and the /random (roll|value) ... command.
+
+
+== NBT structure ==
+Current random sequences in a world and the random sequence settings of the world are stored in the /data/random_sequences.dat, which is a GZip-ed NBT file.
+
+
+== Usage ==
+Random sequences are used by a loot table when its seed is not specified. Loot tables in containers from the world generation are not affected by random sequences (but are directly affected by the world seed).
+Random sequences use the Xoroshiro128++ random number generator.
+When a random sequence is called for the first time, it is created with the seed:
+
+From the [Int] salt value.
+If [Boolean] include_world_seed is true, XOR the [Int] salt with the world seed.
+Expands it to 128 bits. The lower 64 bits are the XOR between the value and 0x6a09e667f3bcc909; The higher 64 bits is the sum of the lower 64 bits and 0x9e3779b97f4a7c15.
+If [Boolean] include_sequence_id is true, XOR it with the MD5 of the namespaced ID of the creating random sequence.
+The two long numbers calculated from the lower 64 bits and the higher 64 bits respectively as follows are the seed of the random sequence.
+
+
+== History ==
+
+
+== Navigation ==

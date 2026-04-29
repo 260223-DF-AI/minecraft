@@ -1,0 +1,139 @@
+A thunderstorm is a somewhat uncommon and dangerous weather condition.
+
+
+== Behavior ==
+Thunderstorms are an uncommon temporary, global occurrence that can happen randomly at any time, within the Overworld. Whether it rains, snows, or no precipitation is active during a thunderstorm varies depending on the temperature of the biome, as well as the current altitude.
+
+While the clear counter is counting down, the weather is always clear. This counter is used only when the /weather clear command is issued, setting the counter to a value given by the player or 5 minutes.
+The rain counter counts down to zero, and each time it reaches zero, the rain is toggled on or off. When the rain is turned on, the counter is reset to a value between 12,000-24,000 ticks (0.5-1 game days), and when the rain is turned off the counter is reset to a value of 12,000-180,000 ticks (0.5-7.5 game days).
+Like the rain counter, the thunder counter also toggles thunder on and off when it reaches zero, but clear weather overrides the "on" state. When thunder is turned on, the thunder counter is reset to 3,600-15,600 ticks (3-13 minutes), and when thunder is turned off the counter resets to 12,000-180,000 ticks (0.5-7.5 game days).
+Thunder can occur in the game only when the rain and thunder states both happen to be "on" at the same time. The random combinations of the states toggled by the rain and thunder counters result in a 1.44% chance for a thunderstorm to occur, or an approximate average real-time duration of 9 hours between thunderstorms.
+The values in each range are uniformly distributed.
+Thunderstorms can be skipped entirely with the use of a bed, regardless of the time of day.
+
+
+== Effects ==
+
+As with rain and snow, the sky is darkened and the sun, moon, and stars are no longer visible, although the sun and moon are still visible in dry biomes in Bedrock Edition. In Bedrock Edition, the sky and atmospherics darken to  rgb(51, 51, 51), which is blended with a weight of 75% with previous colors, and not visible in dry biomes with Vibrant Visuals. The clouds darken from white to dark gray (95%  rgb(30, 30, 30) in Bedrock Edition), although clouds themselves do not precipitate or create lightning. Fog grows in density, decreasing view distance by 30%, and is colored in classic graphics  #666666 ( #403C44 in pale gardens).
+Unlike during regular rainstorms or snowstorms, the sky light level is reduced by 10 for the purposes of hostile mob spawning, which allows hostile mobs to spawn at any time of day as long as the block light level is 0, even in dry biomes which have visibly full daylight in Bedrock Edition. With Vibrant Visuals, this makes directional lighting appear more intense in dry biomes and it colors the environment yellow-brown.
+Although the sun is not visible during thunder, the glow associated with sunrise and sunset is still visible,‌[JE  only] or mie scattering with Vibrant Visuals.
+
+
+=== Lightning ===
+
+Lightning is a lethal element of thunderstorms. Lightning momentarily increases the sky light's brightness to slightly greater than full daylight. The sky box itself gets colored  rgb(204, 204, 255) in Bedrock Edition, blended with other colors with a weight of 45%.
+
+Lightning strikes randomly and creates fires (only on normal and hard difficulty) in a 2 block radius where it strikes. Such fires act normally, igniting all flammable materials, detonating TNT, and even activating nether portals. The lightning itself, however, is not destructive and does not destroy blocks. While most fires are extinguished by the rain, areas that block rain can allow the fire to spread, and any netherrack, magma blocks, soul sand, or soul soil lit by lightning is not extinguished by the rain.
+Most entities struck by lightning are dealt 5HP damage (sometimes twice in succession) and are set on fire, which may cause additional damage. Boats (including boats with chests) may be destroyed entirely leaving nothing behind.
+If the player is killed by a lightning strike, the death message appears: "<player> was struck by lightning". This message does not display if the player was killed by the fire created by a lightning bolt.
+Lightning in Bedrock Edition changes color from white to orange at sunset, and appears brighter during the daytime.
+Lightning may be manually summoned with the /summon lightning_bolt command. It is summoned as an entity, and it can be referred to by commands or selectors. 
+
+Lightning is also spawned when a trident enchanted with Channeling is thrown and strikes a mob or a lightning rod during a thunderstorm.
+On graphics settings lower than Fabulous!, water is invisible when seen through lightning.‌[Java Edition  only]
+
+
+==== Effects on mobs ====
+A lightning strike affects certain mobs differently:
+
+Lightning may randomly spawn a "skeleton trap" horse with a chance of 0.75–1.5% chance on Easy, 1.5–4% on Normal, and 2.8125–6.75% on Hard, depending on the regional difficulty. A player triggers the trap by moving within 10 blocks of the horse, whereupon the horse transforms into four skeletal horsemen. A non-triggered trap horse despawns after 15 minutes.
+A pig struck by lightning turns into a zombified piglin.
+A creeper becomes charged.
+A villager gets replaced by a witch when lightning strikes within four blocks from it.
+A red mooshroom changes into a brown mooshroom and vice versa.
+A lightning strike on a turtle instantly kills it, and it drops 1 bowl instead of its normal drops.
+On peaceful difficulty, pigs and villagers take damage normally.
+
+
+==== Lightning mechanics ====
+For each loaded chunk, every tick there is a 1⁄100,000 chance of an attempted lightning strike during a thunderstorm. From this probability, if ≈201 chunks are loaded (from a radius of 128 blocks from the player to the center of each chunk) then 90% of the time up to 5 lightning strikes occur in the world each minute, with an average of approximately 2.4 lightning strikes each minute.
+When lightning is to strike, random X and Z coordinates within the chunk are chosen, and the block just above the highest block that is liquid or obstructs movement is chosen for the lightning strike. If a lightning rod is nearby, it strikes the rod instead. Then if there are any living entities that can see the sky in a 3×h×3 region from 3 below the target block up to the world height, one such entity is selected at random and the lightning target is moved to the block the entity stands in.
+The target block is checked again for the following conditions:
+
+Target block can see the sky.
+Rain (not snow) is falling in the target block.
+Thus, lightning does not naturally strike within cold biomes or biomes where it does not rain.
+If these conditions pass, lightning strikes.
+When lightning strikes, all entities within a 6×12×6 region horizontally centered on the northwest corner of the target block with the bottom edge 3 below the target block are struck by lightning. Multiple passes are made over this region, so items dropped during an earlier pass may be destroyed during a subsequent pass; damage immunity usually prevents struck mobs from taking more than 5HP damage. Non-solid blocks (such as redstone, torches, and snow layers) are not directly affected by lightning. Since lightning is an entity with the ID "lightning_bolt", it can be summoned with /summon, although it cannot be ridden with /ride.
+
+
+==== Thunder ====
+
+Thunder is a sound event that occurs every time lightning strikes. Every player within 160 thousand blocks and in the same dimension hears the thunder. 
+The ability to hear thunder affects multiplayer, as it is possible to hear lightning strike at someone else's base or use a modded Minecraft client to determine the direction of every strike in the world the player is in. Using the direction of strikes, it is possible to triangulate the coordinates of lightning strikes. Worried pandas are also scared during thunderstorms.
+Because lightning bolts only happen in loaded chunks, this can be used to, for example, know where the other player is in a multiplayer world with only two players.
+
+
+==== Lightning rods ====
+
+Lightning strikes within a radius of 128 blocks (Java Edition) or 64 blocks (Bedrock Edition) of a lightning rod are redirected to the rod, emitting a redstone signal. This can be used to prevent flammable structures from being struck by lightning, or intentionally direct lightning toward or away from mobs. During a thunderstorm, they emit spark-like particles, even in biomes where lightning doesn't strike.
+
+
+== Sounds ==
+Java Edition:
+
+Bedrock Edition:
+
+
+== Data values ==
+
+
+=== ID ===
+Java Edition:
+
+Bedrock Edition:
+
+
+=== Entity data ===
+Lightning bolts have entity data associated with them that contain various properties.
+Java Edition:
+
+Bedrock Edition:
+
+See Bedrock Edition level format/Entity format.
+
+
+== Advancements ==
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+=== Legacy Console Edition ===
+
+
+=== Data history ===
+
+
+==== Java Edition ====
+
+
+==== Bedrock Edition ====
+
+
+== Issues ==
+Issues relating to "Lightning" or "Thunder" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Trivia ==
+Lightning, unlike other weather effects, does not have an image file associated with it. It is an entity, coded directly into the game engine, allowing for dynamic, realistic lightning.
+In Bedrock Edition, lightning strikes closer to the player more often than in Java Edition, due to spawn distance limits.
+Because lightning is an entity, commands and command blocks can be used to kill and remove them from the world.
+
+
+== Gallery ==
+
+
+=== Screenshots ===
+
+
+== References ==
+
+
+== Navigation ==

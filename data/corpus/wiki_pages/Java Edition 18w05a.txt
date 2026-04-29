@@ -1,0 +1,92 @@
+18w05a is the sixteenth snapshot for Java Edition 1.13, released on January 31, 2018. Although this is the first snapshot to be released after the decision was made to include the Update Aquatic features in 1.13, this snapshot did not contain any Update Aquatic features.
+
+
+== Additions ==
+
+
+=== Command format ===
+General
+
+Basic entity selector suggestions in the command UI.
+A warning now is logged for ambiguous commands.
+/bossbar
+
+/bossbar create <id> <name> creates a boss bar.
+id is used to target the boss bar and is in the form namespace:name, for example: foo:bar. If no namespace is specified it defaults to minecraft.
+name is the display name of the boss bar and only accepts a JSON text component.
+Examples:
+/bossbar create example:test "Hello World"
+/bossbar create hello:world {"text":"Foo Bar","color":"red","bold":true}
+/bossbar set <id> name <name> changes the display name of the boss bar.
+/bossbar set <id> color (blue|green|pink|purple|red|white|yellow) changes the color of the text (if no color was specified as part of a text component) and the boss bar, defaults to white.
+/bossbar set <id> style (notched_10|notched_12|notched_20|notched_6|progress) changes the style of the boss bar, defaults to progress.
+notched sets the amount of segments.
+progress sets the amount of segments to 1.
+/bossbar set <id> value <value> changes the current value of the boss bar, defaults to 0.
+/bossbar set <id> max <max> changes the maximum value of the boss bar, defaults to 100.
+/bossbar set <id> visible <visible> changes the visibility of the boss bar, defaults to true
+/bossbar set <id> players <players> changes which players can see the boss bar, defaults to none.
+/bossbar remove <id> removes the boss bar.
+/bossbar list displays a list of created boss bars.
+/bossbar get <id> (max|players|value|visible) return the resquested setting as a result of the command.
+/execute store 
+
+New subcommand: /execute store (result|success) bossbar <id> (value|max) <chained command>.
+Stores the result or success in the boss bar's value or max setting.
+
+
+== Changes ==
+
+
+=== General ===
+Crowdin
+
+Updated translations.
+
+
+== Fixes ==
+22 issues fixed
+ old
+
+MC-2399 – Transparent blocks visually use the brighter light level that they are next to.
+MC-4923 – Flint and steel and fire charges can place fire at invalid positions.
+MC-5037 – Riding a pig/horse with a cape causes it to not behave as expected.
+MC-8471 – Blocks cannot be placed on a block the player is next to.
+MC-55710 – Relative tp from a vehicle applies dismount offset.
+MC-57332 – Number arguments in command have all int limitation.
+MC-58556 – Breaking a block being moved by a piston creates missing texture particles.
+MC-60117 – Upper slabs can't be placed when standing on a lower slab 2 blocks below.
+MC-64919 – Players can place a block through T-intersection glass panes, iron bars, and fences when standing inside of the hitbox.
+MC-65774 – Landing particles not showing when landing on skulls.
+MC-88674 – Growing cactus placed on blocks other than (red) sand drops two cacti instead of breaking.
+MC-89634 – Spreadplayers favor the negative coordinates.
+MC-105591 – Flint and Steel loses durability and fire charge is used up even if no fire was placed.
+MC-120296 – F3 + T doesn't reload the data in pack.mcmeta
+ dev
+
+MC-123460 – JSON parsing exceptions thrown during parsing of pack.mcmeta of data and resource packs are not caught properly.
+MC-124048 – Tab completing advancement (any?) key with trailing space errors.
+MC-124056 – The members/target/targets argument of /scoreboard and /team does not tab-complete player names.
+ previous
+
+MC-124360 – OS locale is used for /data get feedback text when specifying the scale argument.
+MC-124379 – datapacks load functions unreliably.
+MC-124384 – Trigger objectives are enabled by default.
+MC-124499 – Missing command feedback for successfully triggering trigger.
+MC-124616 – /setidletimeout suggests it is in seconds while the behavior is in minutes.
+
+
+== Videos ==
+
+
+== Trivia ==
+This is the last version to have the Old Customized world type.
+
+
+== Gallery ==
+
+
+== References ==
+
+
+== Navigation ==

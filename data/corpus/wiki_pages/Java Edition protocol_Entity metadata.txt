@@ -1,0 +1,867 @@
+Various Entities have different metadata fields and status codes.
+These are the valid codes for Minecraft Java Edition 26.1; for upcoming snapshots, see Java Edition protocol/Development version#Entity Metadata.
+This page is maintained semi-automatically using a work-in-progress script made by mat, so it should update fairly quickly to new Minecraft versions. Regardless, it's not recommended that you parse it programmatically. Instead, consider using Bixilon's PixLyzer or Burger (or mat's Burger fork, which the script for updating this page depends on).
+
+
+== Entities ==
+
+Most entities are spawned via Spawn Entity, however, care should be taken for the following cases:
+Entities marked in __ blue must be spawned in their own special ways:
+
+Experience Orb, should be spawned using Spawn Experience Orb
+Entities marked in __ red must not be spawned at all, as they're server-side only:
+
+Marker, more info can be found here.
+
+
+== Entity Metadata Format ==
+Note that entity metadata is a totally distinct concept from block metadata.  It is not required to send all metadata fields, or even any metadata fields, so long as the terminating entry is correctly sent.
+Entity Metadata is an array of entries, each of which looks like the following:
+
+Villager types (minecraft:villager_type registry):
+
+Villager professions (minecraft:villager_profession registry):
+
+
+=== Wolf Variant ===
+
+
+=== Painting Variant ===
+
+
+== Entity Metadata ==
+
+
+=== Entity ===
+The base class.
+
+On the Notchan server Is pressing sneak key reflects the sneak key state indicated by the client rather than the entity's pose, and can thus be set while swimming, flying or crawling, or unset while stuck sneaking under a block.
+Freezing ticks cap at 140 in the client for the player's snow overlay when stuck in powder snow. If the entity extends LivingEntity and freezing ticks reaches the cap, the mob will start shaking (this excludes the skeleton, which has its own indicator).
+
+
+=== Area Effect Cloud ===
+Extends Entity.
+
+
+=== Wind Charge ===
+Extends Entity.
+No additional metadata.
+
+
+=== Dragon Fireball ===
+Extends Entity.
+No additional metadata.
+
+
+=== End Crystal ===
+Extends Entity.
+
+
+=== Evoker Fangs ===
+Extends Entity.
+No additional metadata.
+
+
+=== Experience Orb ===
+Extends Entity.
+
+
+=== Eye of Ender ===
+Extends Entity.
+
+
+=== Falling Block ===
+Extends Entity.
+
+
+=== Fireball ===
+Extends Entity.
+This is the large fireball shot by ghasts.
+
+
+=== Firework Rocket ===
+Extends Entity.
+
+
+=== Interaction ===
+Extends Entity.
+
+
+=== Item ===
+Extends Entity.
+
+
+=== Item Frame ===
+Extends Entity.
+
+
+=== Glow Item Frame ===
+Extends Item Frame.
+No additional metadata.
+
+
+=== Leash Knot ===
+Extends Entity.
+No additional metadata.
+
+
+=== Lightning Bolt ===
+Extends Entity.
+No additional metadata.
+
+
+=== Llama Spit ===
+Extends Entity.
+No additional metadata.
+
+
+=== Marker ===
+Extends Entity.
+No additional metadata.
+
+
+=== Ominous Item Spawner ===
+Extends Entity.
+
+
+=== Painting ===
+Extends Entity.
+
+
+=== Shulker Bullet ===
+Extends Entity.
+No additional metadata.
+
+
+=== Small Fireball ===
+Extends Entity.
+This is the fireball shot by blazes and dispensers with fire charges.
+
+
+=== Primed TNT ===
+Extends Entity.
+
+
+=== Wind Charge ===
+Extends Entity.
+No additional metadata.
+
+
+=== Wither Skull ===
+Extends Entity.
+
+
+=== Fishing Bobber ===
+Extends Entity.
+
+
+=== Abstract Arrow ===
+Extends Entity.
+
+
+=== Arrow ===
+Extends Abstract Arrow.
+Used for both tipped and regular arrows.  If not tipped, then color is set to -1 and no tipped arrow particles are used.
+
+
+=== Spectral Arrow ===
+Extends Abstract Arrow.
+No additional metadata.
+
+
+=== Trident ===
+Extends Abstract Arrow.
+
+
+=== Display ===
+Extends Entity.
+
+
+=== Block Display ===
+Extends Display.
+
+
+=== Item Display ===
+Extends Display.
+
+
+=== Text Display ===
+Extends Display.
+
+
+=== Living Entity ===
+Extends Entity.
+
+
+=== Armor Stand ===
+Extends Living Entity.
+
+Note that armor stands with the invisible flag from the base entity class set also cannot be attacked or damaged, except for by the void.
+
+
+=== Avatar ===
+Extends Living Entity.
+
+
+=== Mannequin ===
+Extends Avatar.
+
+
+=== Player ===
+Extends Avatar.
+
+
+=== Mob ===
+Extends Living Entity.
+
+
+=== Bat ===
+Extends Mob.
+
+
+=== Ender Dragon ===
+Extends Mob.
+
+Phases (according to the wiki page on dragon data values) are:
+
+0: circling
+1: strafing (preparing to shoot a fireball)
+2: flying to the portal to land (part of transition to landed state)
+3: landing on the portal (part of transition to landed state)
+4: taking off from the portal (part of transition out of landed state)
+5: landed, performing breath attack
+6: landed, looking for a player for breath attack
+7: landed, roar before beginning breath attack
+8: charging player
+9: flying to portal to die
+10: hovering with no AI (default when using the /summon command).
+
+
+=== Ghast ===
+Extends Mob.
+
+
+=== Phantom ===
+Extends Mob.
+
+Hitbox size is determined by horizontal=0.9 + 0.2*size and vertical=0.5 + 0.1 * i
+
+
+=== Slime ===
+Extends Mob.
+
+
+=== Magma Cube ===
+Extends Slime.
+No additional metadata.
+
+
+=== Creature ===
+Extends Mob.
+No additional metadata.
+
+
+=== Allay ===
+Extends Creature.
+
+
+=== Copper Golem ===
+Extends Creature.
+
+
+=== Iron Golem ===
+Extends Creature.
+
+
+=== Pufferfish ===
+Extends Creature.
+
+
+=== Shulker ===
+Extends Creature.
+
+
+=== Snow Golem ===
+Extends Creature.
+
+
+=== Tadpole ===
+Extends Creature.
+
+
+=== Ageable Mob ===
+Extends Creature.
+
+
+=== Dolphin ===
+Extends Ageable Mob.
+
+
+=== Squid ===
+Extends Ageable Mob.
+No additional metadata.
+
+
+=== Glow Squid ===
+Extends Squid.
+
+
+=== Animal ===
+Extends Ageable Mob.
+No additional metadata.
+
+
+=== Armadillo ===
+Extends Animal.
+
+
+=== Axolotl ===
+Extends Animal.
+
+
+=== Bee ===
+Extends Animal.
+
+
+=== Chicken ===
+Extends Animal.
+
+
+=== Cow ===
+Extends Animal.
+
+
+=== Fox ===
+Extends Animal.
+
+
+=== Frog ===
+Extends Animal.
+
+
+=== Happy Ghast ===
+Extends Animal.
+
+
+=== Goat ===
+Extends Animal.
+
+
+=== Hoglin ===
+Extends Animal.
+
+
+=== Mooshroom ===
+Extends Animal.
+
+
+=== Ocelot ===
+Extends Animal.
+
+
+=== Panda ===
+Extends Animal.
+
+
+=== Pig ===
+Extends Animal.
+
+Whenever a carrot on a stick is used, if the pig is not currently boosting it will start to boost for 140 to 980 (inclusive) ticks.  When boost time is changed, a counter is reset which counts up to the boost time, after which boosting will stop.  The value remains set at its modified value even after boosting is stopped.
+
+
+=== Polar Bear ===
+Extends Animal.
+
+
+=== Rabbit ===
+Extends Animal.
+
+
+=== Sheep ===
+Extends Animal.
+
+
+=== Sniffer ===
+Extends Animal.
+
+
+=== Strider ===
+Extends Animal.
+
+
+=== Turtle ===
+Extends Animal.
+
+
+=== Abstract Horse ===
+Extends Animal.
+
+
+=== Camel ===
+Extends Abstract Horse.
+
+
+=== Camel Husk ===
+Extends Camel.
+No additional metadata.
+
+
+=== Horse ===
+Extends Abstract Horse.
+
+
+=== Skeleton Horse ===
+Extends Abstract Horse.
+No additional metadata.
+
+
+=== Zombie Horse ===
+Extends Abstract Horse.
+No additional metadata.
+
+
+=== Chested Horse ===
+Extends Abstract Horse.
+
+
+=== Donkey ===
+Extends Chested Horse.
+No additional metadata.
+
+
+=== Llama ===
+Extends Chested Horse.
+
+
+=== Trader Llama ===
+Extends Llama.
+No additional metadata.
+
+
+=== Mule ===
+Extends Chested Horse.
+No additional metadata.
+
+
+=== Tameable Animal ===
+Extends Animal.
+
+
+=== Cat ===
+Extends Tameable Animal.
+
+
+=== Parrot ===
+Extends Tameable Animal.
+
+
+=== Wolf ===
+Extends Tameable Animal.
+
+
+=== Abstract Nautilus ===
+Extends Tameable Animal.
+
+
+=== Nautilus ===
+Extends Abstract Nautilus.
+No additional metadata.
+
+
+=== Zombie Nautilus ===
+Extends Abstract Nautilus.
+
+
+=== Abstract Villager ===
+Extends Ageable Mob.
+
+
+=== Villager ===
+Extends Abstract Villager.
+
+
+=== Wandering Trader ===
+Extends Abstract Villager.
+No additional metadata.
+
+
+=== Abstract Fish ===
+Extends Creature.
+
+
+=== Cod ===
+Extends Abstract Fish.
+No additional metadata.
+
+
+=== Salmon ===
+Extends Abstract Fish.
+
+
+=== Tropical Fish ===
+Extends Abstract Fish.
+
+
+=== Monster ===
+Extends Creature.
+No additional metadata.
+
+
+=== Blaze ===
+Extends Monster.
+
+
+=== Bogged ===
+Extends Monster.
+
+
+=== Breeze ===
+Extends Monster.
+No additional metadata.
+
+
+=== Creaking ===
+Extends Monster.
+
+
+=== Creeper ===
+Extends Monster.
+
+
+=== Enderman ===
+Extends Monster.
+
+
+=== Endermite ===
+Extends Monster.
+No additional metadata.
+
+
+=== Giant ===
+Extends Monster.
+No additional metadata.
+
+
+=== Guardian ===
+Extends Monster.
+
+
+=== Elder Guardian ===
+Extends Guardian.
+No additional metadata.
+
+
+=== Parched ===
+Extends Monster.
+No additional metadata.
+
+
+=== Silverfish ===
+Extends Monster.
+No additional metadata.
+
+
+=== Skeleton ===
+Extends Monster.
+
+
+=== Spider ===
+Extends Monster.
+
+
+=== Cave Spider ===
+Extends Spider.
+No additional metadata.
+
+
+=== Stray ===
+Extends Monster.
+No additional metadata.
+
+
+=== Vex ===
+Extends Monster.
+
+
+=== Warden ===
+Extends Monster.
+
+
+=== Wither ===
+Extends Monster.
+
+
+=== Wither Skeleton ===
+Extends Monster.
+No additional metadata.
+
+
+=== Zoglin ===
+Extends Monster.
+
+
+=== Zombie ===
+Extends Monster.
+
+
+=== Drowned ===
+Extends Zombie.
+No additional metadata.
+
+
+=== Husk ===
+Extends Zombie.
+No additional metadata.
+
+
+=== Zombie Villager ===
+Extends Zombie.
+
+
+=== Zombified Piglin ===
+Extends Zombie.
+No additional metadata.
+
+
+=== Base Piglin ===
+Extends Monster.
+
+
+=== Piglin ===
+Extends Base Piglin.
+
+
+=== Piglin Brute ===
+Extends Base Piglin.
+No additional metadata.
+
+
+=== Raider ===
+Extends Monster.
+
+"Is celebrating" appears to control the pose for vindicators and does not appear to be used by other types.
+
+
+=== Pillager ===
+Extends Raider.
+
+
+=== Ravager ===
+Extends Raider.
+No additional metadata.
+
+
+=== Vindicator ===
+Extends Raider.
+No additional metadata.
+
+
+=== Witch ===
+Extends Raider.
+
+
+=== Spellcaster Illager ===
+Extends Raider.
+
+
+=== Evoker ===
+Extends Spellcaster Illager.
+No additional metadata.
+
+
+=== Illusioner ===
+Extends Spellcaster Illager.
+No additional metadata.
+
+
+=== Thrown Item Projectile ===
+Extends Entity.
+
+
+=== Thrown Egg ===
+Extends Thrown Item Projectile.
+Default item is minecraft:egg.
+No additional metadata.
+
+
+=== Thrown Ender Pearl ===
+Extends Thrown Item Projectile.
+Default item is minecraft:ender_pearl.
+No additional metadata.
+
+
+=== Thrown Bottle o' Enchanting ===
+Extends Thrown Item Projectile.
+Default item is minecraft:experience_bottle.
+No additional metadata.
+
+
+=== Splash Potion ===
+Extends Thrown Item Projectile.
+No additional metadata.
+
+
+=== Lingering Potion ===
+Extends Thrown Item Projectile.
+No additional metadata.
+
+
+=== Snowball ===
+Extends Thrown Item Projectile.
+Default item is minecraft:snowball.
+No additional metadata.
+
+
+=== Abstract Vehicle ===
+Extends Entity.
+
+
+=== Boat ===
+Extends Abstract Vehicle.
+
+
+=== Acacia Boat ===
+Extends Boat.
+No additional metadata.
+
+
+=== Acacia Boat with Chest ===
+Extends Boat.
+No additional metadata.
+
+
+=== Bamboo Raft with Chest ===
+Extends Boat.
+No additional metadata.
+
+
+=== Bamboo Raft ===
+Extends Boat.
+No additional metadata.
+
+
+=== Birch Boat ===
+Extends Boat.
+No additional metadata.
+
+
+=== Birch Boat with Chest ===
+Extends Boat.
+No additional metadata.
+
+
+=== Cherry Boat ===
+Extends Boat.
+No additional metadata.
+
+
+=== Cherry Boat with Chest ===
+Extends Boat.
+No additional metadata.
+
+
+=== Dark Oak Boat ===
+Extends Boat.
+No additional metadata.
+
+
+=== Dark Oak Boat with Chest ===
+Extends Boat.
+No additional metadata.
+
+
+=== Jungle Boat ===
+Extends Boat.
+No additional metadata.
+
+
+=== Jungle Boat with Chest ===
+Extends Boat.
+No additional metadata.
+
+
+=== Mangrove Boat ===
+Extends Boat.
+No additional metadata.
+
+
+=== Mangrove Boat with Chest ===
+Extends Boat.
+No additional metadata.
+
+
+=== Oak Boat ===
+Extends Boat.
+No additional metadata.
+
+
+=== Oak Boat with Chest ===
+Extends Boat.
+No additional metadata.
+
+
+=== Pale Oak Boat ===
+Extends Boat.
+No additional metadata.
+
+
+=== Pale Oak Boat with Chest ===
+Extends Boat.
+No additional metadata.
+
+
+=== Spruce Boat ===
+Extends Boat.
+No additional metadata.
+
+
+=== Spruce Boat with Chest ===
+Extends Boat.
+No additional metadata.
+
+
+=== Abstract Minecart ===
+Extends Abstract Vehicle.
+
+If custom block state is unset, then each type of Minecart will render its own type of block with its own properties. Note that one does not need to send these values for the metadata fields, as the client will automatically select them if they are not overridden by the metadata field. They are only provided for reference to help with swapping out other blocks.
+
+Rideable Minecarts contain air (minecraft:air) and have a y position of 6
+Chest Minecarts contain chests facing north (minecraft:chest[facing=north]) and have a y position of 8
+Furnace Minecarts contain a normal furnace facing north when unpowered (minecraft:furnace[facing=north]) and a lit furnace facing north when powered (minecraft:furnace[facing=north, lit=true]) and have a y position of 6 in both cases
+Hopper Minecarts contain a hopper (minecraft:hopper) and have a y position of 1
+TNT Minecarts contain TNT (minecraft:tnt) and have a y position of 6
+Command block minecarts contain a Command Block (minecraft:command_block) and have a y position of 6
+Spawner Minecarts contain a spawner (minecraft:spawner) and have a y position of 6
+
+
+=== Minecart with Chest ===
+Extends Abstract Minecart.
+No additional metadata.
+
+
+=== Minecart with Command Block ===
+Extends Abstract Minecart.
+
+
+=== Minecart with Furnace ===
+Extends Abstract Minecart.
+
+
+=== Minecart with Hopper ===
+Extends Abstract Minecart.
+No additional metadata.
+
+
+=== Minecart ===
+Extends Abstract Minecart.
+No additional metadata.
+
+
+=== Minecart with Monster Spawner ===
+Extends Abstract Minecart.
+No additional metadata.
+
+
+=== Minecart with TNT ===
+Extends Abstract Minecart.
+No additional metadata.

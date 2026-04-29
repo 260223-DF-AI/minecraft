@@ -1,0 +1,170 @@
+Beta 1.21.100.23 (ChromeOS, Android) or Preview 1.21.100.23 (Windows, iOS, iPadOS, Xbox, PlayStation) is the fourth beta/Preview version for Bedrock Edition 1.21.100, released on July 1, 2025, which fixes some bugs. It also adds copper golems, copper chests, copper tools and copper armor, as part of the "Drop 3 2025" experiment. 
+
+
+== Additions ==
+
+
+=== General ===
+Flat world presets
+
+Added "The Void" as a flat world preset.
+
+
+== Changes ==
+
+
+=== Gameplay ===
+Hotbar
+
+Hotbar can always be hit in any touch device. The detection area matches the texture even if you have customise controls enabled.
+Leashed mobs
+
+Updated the way leashed mobs interact with vehicles.
+Leashed mobs can now be pulled into boats, minecarts, and other rideable entities if the leash is slackened when close to those entities.
+Leashed mobs will now automatically dismount their vehicle if the leash is stretched far enough.
+
+
+=== General ===
+UI
+
+Made some adjustments to the spacing of items in the settings menu.
+
+
+=== Technical ===
+Add-ons and Script Engine
+
+Biomes client settings now look up settings based on the biome's full name, including its namespace. Vanilla biomes will fall back on their name without a namespace if an exact match is not found before falling back on default settings (for example, minecraft:plains will match itself, then plains if no setting was found)
+API
+
+Added new error class UnsupportedFunctionalityError which is thrown for certain cases where a particular functionality such as a method, or part of a method based on the parameters, is not supported. An example is calling the Entity method remove on a player.
+Added new error class EntitySpawnError which is thrown when an entity fails to spawn via the spawnEntity method on Dimension.
+Updated many methods to throw custom errors to provide better context and information of the problem that occurred.
+Blocks
+
+Blocks with improperly configured textures will now show additional content errors.
+Released the particle count field for the block destruction particles component out of experimental.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs", and "Drop 3 2025" experimental toggles.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+Copper Chest
+
+Copper chest is a new type of chest that has waxed and oxidized variants.
+Copper chests oxidize over time and can be waxed like other copper blocks.
+Copper chests can be crafted using a chest and copper ingots.
+
+
+==== Items ====
+Copper Armor
+
+Added copper helmets, copper chestplates, copper leggings, and copper boots.
+Copper armor has higher durability than leather but less than iron. Copper armor enchantability sits slightly lower than with iron.
+
+Copper Nugget
+
+Added copper nuggets.
+Copper equipment turns into copper nuggets when smelted.
+Copper nuggets can be crafted by using a copper ingot.
+
+Copper Tools
+
+Added copper axes, copper hoes, copper pickaxes, copper shovels, and copper swords.
+Copper tools and weapons are crafted and repaired using copper ingots. They do the same amount of damage as stone but have higher durability. Copper tools work faster than stone tools, but they are slower than their iron counterparts. Copper tools have higher enchantability than diamond, but slightly less than iron.
+
+ Copper Golem Spawn Egg
+
+Used to spawn a copper golem.
+
+
+==== Mobs ====
+Copper Golem
+
+Drops 1 to 3 copper ingots when killed.
+It can help with sorting items into chests.
+If it is not holding an item, it will look for a nearby copper chests and pick up items from that chest.
+It can pick up max 16 items in a stack at the time.
+Any item in a copper chest can be picked up.
+If it is holding an item, it will look for nearby wooden chests to try to place the item into.
+It can only place an item in a chest if the chest is empty or contains the same type of item the golem is holding in its hand.
+It will visit a max of 10 copper chests when looking for items to pick up, and a max of 10 chests when looking for somewhere to put the items.
+If no matching chest is found the copper golem will idle for 7 seconds before trying again.
+The search area for chests from the copper golem's position is horizontally 32 blocks and vertically 8 blocks.
+
+
+==== Technical ====
+AI Goals
+
+Added the minecraft:behavior.transport_items AI goal, allows a mob to transport items from and to containers.
+Description:
+If the mob is not carrying an item it will try to find a container matching source_container_types and will attempt to take an item from the first non-empty slot. It will take the largest of max_stack_size and the size of the stack in that slot. If the container is empty or it does not find a match it will remember this container as visited and search for the next container from which to pick up an item. If it fails to find an unvisited container from which to pick up items it will disable the goal for idle_cooldown seconds and reset what containers it has visited. Once it has picked up an item it resets what containers it has visited.
+If the mob is carrying an item it will try to find a container matching destination_container_types and attempt to put its carried item in it. It will put as much of the carried item as possible into the container. If it is still carrying an item (the container is full) it will remember the container as visited and try to find the next container to put items in. If it fails to find an unvisited container in which to put items it will disable the goal for idle_cooldown seconds and reset what containers it has visited. Once it has stored items and is empty handed again it resets what containers it has visited.
+If at any point the target container becomes an invalid target (the block could be removed or a chest could have a cat sit on it for example), the mob will mark the position as visited and move to the next target.
+Fields:
+source_container_types: A list of block descriptors that should be a container type to get items from. Default is any container.
+destination_container_types: A list of block descriptors that should be a container type to put items in. Default is any container.
+max_stack_size: The maximum stack size that the mob will try to take from a container. Default is 16.
+interaction_time: The amount of time spent interacting with the containers in seconds. Default is 3.0.
+allow_simultaneous_interaction: Whether the entity is allowed to simultaneously interact with a container that another non-player entity is already interacting with. Default is false.
+search_strategy: Whether to select the nearest valid container or a random valid container in range. valid values are nearest or random (default).
+search_distance: The maximum horizontal and vertical distance at which to find containers for taking or placing items. Default [62, 32].
+max_visited_containers: The maximum number of containers the mob will visit before resetting. 0 is unlimited and default is 16.
+initial_cooldown: Time, in seconds, the mob will wait after spawning or after its available goals have changed (e.g. due to a component group update). Default is 0.
+idle_cooldown: When the mob cannot find a valid container to interact with, the goal will be disabled for this amount of time in seconds. Default is 20.
+place_strategy: governs which container contents the goal is allowed to add to:
+with_matching: Only allows placing item in a container already having stack(s) of item.
+with_matching_or_empty: Like the above, but additionally allows placement in empty containers.
+any: Puts no restriction, allows placement of item in container as long as there is space. This is the default behavior.
+allowed_items: A list of item descriptors that are the only items the mob is allowed to transport. If non-empty disallowed_items must be empty. Default is empty (all items allowed).
+disallowed_items: A list of item descriptors that are the mob is not allowed to transport. If non-empty allowed_items must be empty. Default is empty (no items disallowed).
+Requirements and limitations:
+Initially the component requires the 2025 Drop 3 experiment to be enabled but it will be generally available in a later update.
+A navigation component is needed to enable the mob to navigate to the container. E.g. minecraft:navigation.walk
+At the moment chests, copper chests, barrels, and shulker boxes are the only supported containers.
+API
+
+Added setFov with CameraFovOptions parameter. This can be used to modify the FOV of the current camera.
+Added class LootTableManager to beta, which allows for generation of loot from entities and blocks.
+Added easing options for clearing a custom FOV. Clearing without valid easing values will instantly clear the custom FOV value.
+
+
+=== Changes ===
+
+
+==== Technical ====
+API
+
+Moved type EntityHungerComponent, EntitySaturationComponent, EntityExhaustionComponent from beta into 2.1.0.
+Moved EntityEquippableComponent properties totalArmor and totalToughness from beta into 2.1.0.
+Class ModalFormDataTextFieldOptions.
+Field defaultValue type changed from string to minecraftserver.RawMessage string.
+
+
+== Fixes ==
+11 issues fixed
+From released versions before 1.21.100
+
+MCPE-51638 – Boats make footstep sound on solid blocks
+MCPE-221320 – The Happy Ghast's hitbox is glitched causing them to suffocate against walls
+MCPE-222298 – Boats lose forward momentum abruptly when falling down
+Other
+
+Fixed faces of non-full blocks (eg. cakes or trapdoors) having an unnatural ambient occlusion applied to them in some neighboring blocks configurations.
+Glowing text on signs no longer gets overly bright when looked at directly in Vibrant Visuals.
+Fixed parent_setup not running with the correct context.
+Fixed an issue where custom armor disabled knockback on some platforms.
+Fixed a bug where the happy ghast riding sound would sometimes play in the loading screen.
+Fixed a bug where both ghast and happy ghast ambient sounds would not be audible further than 16 blocks away from the player.
+Fixed a bug where ambient sounds played by a flying mob would have the volume set to 0.2 by default.
+Fixed choppiness in Player.applyImpulse and Player.clearVelocity for beta.
+
+
+== References ==
+
+
+== Navigation ==

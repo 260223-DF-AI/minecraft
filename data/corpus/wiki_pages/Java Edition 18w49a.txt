@@ -1,0 +1,106 @@
+18w49a is the eleventh snapshot for Java Edition 1.14, released on December 5, 2018, which adds sweet berries and sweet berry bushes.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Sweet berry bushes
+
+Commonly found in taiga, taiga hills, and taiga mountains biomes.
+Rarely found in snowy taiga, snowy taiga hills and snowy taiga mountains biomes.
+Can be planted from sweet berries.
+Have 4 stages of growth: 'sapling', 'no berries', 'some berries', and 'full berries'.
+Drop 1–2 berries in younger stage, 2–3 in full growth stage.
+They're harvested with right-click.
+Support bone meal usage.
+They slow movement of all mobs in all stages of growth.
+Any mob can stand inside them, but they deal damage similar to a cactus if the mob isn't standing still, as long as the bush has grown past the 'sapling' stage.
+
+
+=== Items ===
+ Sweet berries
+
+Fill 2 () hunger points.
+Can be planted in the ground and grow into sweet berry bushes.
+
+
+=== World generation ===
+Snowy tundra villages.
+
+
+=== Command format ===
+Loot tables
+
+Added new loot table function: copy_nbt.
+Copies NBT from source to item tags.
+Parameters:
+source: can be this, killer, killer_player, or block_entity.
+ops
+List of copy operations:
+source: source path (same as /data).
+target: target path.
+op: replace, append (for lists), or merge; for compound tags.
+entity: source of profile (does nothing if it's not a player).
+
+
+=== General ===
+Death messages
+
+Added new death messages for when a player dies from moving through a sweet berry bush.
+<player> was poked to death by a sweet berry bush
+<player> was poked to death by a sweet berry bush whilst trying to escape <entity>
+
+
+== Changes ==
+
+
+=== World generation ===
+Villages
+
+Updated savanna villages.
+
+
+=== Gameplay ===
+Raids
+
+Changed the maximum Bad Omen level for a maximum-strength raid to 5.
+Kill leaders to increase Bad Omen level.
+There are now two waves per Bad Omen level.
+The player now has to complete a wave before the next one starts.
+Illager beasts can now be part of every wave.
+The raid boss bar now slowly fills up when a raid is triggered or when a wave is cleared.
+
+
+== Fixes ==
+17 issues fixed
+From released versions before 1.14
+
+MC-72809 – Entities do not have shadows at y=256.
+MC-111480 – Firework boosting doesn't work in the first world loaded after a game start or if player has entity id 0.
+MC-125051 – Incorrect structure names in advancements cause java.lang.NullPointerException.
+MC-139712 – Copying one half of unrecognized Unicode character crashes client.
+From the 1.14 development versions
+
+MC-137688 – A firework rocket shot by a crossbow doesn't explode on entities.
+MC-137848 – Shulker boxes don't drop when mined by hand.
+MC-138067 – Replacing filled jukebox drops record.
+MC-138641 – Shulker boxes no longer retain "Lock" nbt when being broken.
+MC-139555 – /data modify copies source nbt to destination nbt as reference.
+MC-139703 – Pillagers once again have glitched arms.
+MC-139732 – Villager trade menu not opening outside of a village.
+MC-139886 – Pillagers don't spawn with the banners at pillager outposts.
+MC-139935 – Infinite loop when a raid is searching for a spawn position.
+MC-139979 – Raid never finishes if raid mobs aren't killed by player.
+MC-139993 – When players in peaceful mode walk into the village, can still trigger a raid.
+MC-139994 – Raid never finishes if the player is set to peaceful mode when subjected to raids.
+MC-140113 – Raid bar will not decrease when raid mobs walked into the nether portal, end portal or end gateway.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

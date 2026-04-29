@@ -1,0 +1,43 @@
+The /tick command provides utilities for modifying the target tick rate of the game, temporarily fast forwarding the game, and pausing the game server side among other things. The /tick command cannot be executed from a command block.
+
+
+== Syntax ==
+tick query
+Outputs the current ticking status and target ticking rate, with information about the tick performance, including average time per tick and percentiles of time per tick.
+tick rate <rate>
+Sets the target ticking rate to the specified value. Modifying the target ticking rate changes the relative speed of the game as the game still expects a constant tick rate of 20.0, the default tick rate.
+tick freeze
+Freezes ticking. All gameplay elements are not ticked, except players and any entity a player is riding.
+tick unfreeze
+Unfreezes ticking.
+tick step [<time>]
+Unfreezes ticking, runs specified amount of time, and refreezes. Only works if ticking is frozen.
+tick step stop
+Stops the current stepping process and refreeze the tick.
+tick sprint [<time>]
+Makes the game run as fast as it can for the specified amount of ticks plus one, ignoring the target ticking rate. At the end of the sprint, the game will resume the previous ticking status and display performance information about the tick times from sprinting.
+tick sprint stop
+Stops the current tick sprinting and resumes the previous ticking status.
+
+
+== Arguments ==
+<rate>: float
+
+Specifies the target rate in TPS. The default rate is 20.0 TPS.
+Must be a [Float]Single-precision floating-point number (from -(2-2-23)×2127 (≈-3.4×1038) to (2-2-23)2×127 (≈3.4×1038) ). And it must be between 1.0 and 10000.0 (inclusive).
+<time>: time
+
+Specifies the number of ticks to step or sprint. Defaults to 1 game tick if not specified.
+It must be a single-precision floating-point number suffixed with a unit. It must be not less than 1 gameticks. Units include:d: an in-game day, 24000 gameticks;s: a second, 20 gameticks;t (default and omitable): a single gametick; the default unit.The time is set to the closest integer after unit conversion to gametick. For example. .5d is same as 12000 gameticks.
+
+
+== Result ==
+
+
+== Output ==
+
+
+== History ==
+
+
+== Navigation ==

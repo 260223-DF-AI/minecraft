@@ -1,0 +1,221 @@
+22w45a is the fourth snapshot for Java Edition 1.19.3, released on November 9, 2022, which adds block of bamboo and block of stripped bamboo in the built-in experimental data pack, adds new default skins for offline players, changes model and texture for vexes, tweaks creative inventory again, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Mobs ===
+ Player
+
+Added new default skins for offline players. Their names are Ari, Efe, Kai, Makena, Noor, Sunny, and Zuri.
+The old skins have been removed, with the new skins being located on a new folder.
+
+
+=== General ===
+Options
+
+Added "Operator Items Tab" option in the controls menu, which is off by default.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Scaffolding
+
+Changed its texture.
+Shulker box
+
+Now pops off blocks attached (such as torches) to the opened faces when opening.
+While open, blocks which require support cannot be placed on these open faces.
+
+
+=== Items ===
+Water bucket
+
+Can now be emptied into waterlogged blocks.
+
+
+=== Mobs ===
+Vex
+
+Changed model and textures. 
+Retains a slightly oversized hitbox to make it easier to fight.
+
+
+=== Gameplay ===
+Creative inventory
+
+The textures for the tabs are now skinnier.
+Operator-only items now appear in a new "Operator Utilities" tab if the player has both the "Operator Items Tab" option in controls menu set to ON and the required operator permissions.
+The tab is hidden if operator permissions are lost while inventory is open.
+Now also includes structure blocks and all light levels of light blocks.
+Added a "Colored Blocks" tab.
+Contains all blocks with 16 color variants.
+Moved all colored blocks from "Building Blocks" tab to this tab instead to make that tab less sizeable.
+"Consumables" tab has been renamed to "Food & Drinks" tab to have a more straightforward name.
+"Crafting" tab has been renamed to "Ingredients" tab since not all items are used in crafting.
+Reordered:
+Natural blocks
+More consistency between types for the top section.
+Moved eggs to be between seeds and single-block plants.
+Placed climbable plants above double-block plants.
+Food & drinks
+Cooked versions of raw food are now right next to each other.
+Redstone blocks
+Less cluttered.
+Higher importance items up the top.
+Removed variants of boat with chests, buttons, doors, fence gates, pressure plates and trapdoors that don't have any functional difference.
+Ingredients
+Placed lapis in the same order as ore blocks.
+Moved bottle o' enchanting from the "Tools & Utilities" tab to the ingredients tab next to enchanting books.
+Added:
+All axes to the "Combat" tab (they still remain in the tools & utilities tab as well).
+All possible suspicious stews to the food & drinks tab.
+The tooltip shows the effect of a stew before it's picked up from the creative inventory.
+Only stews with effects available via crafting or mooshrooms are listed.
+Pressure plates and buttons of each type to the building blocks tab.
+Almost all lighting blocks to the top of the functional blocks tab.
+All 3 flight durations of fireworks to tools & utilities tab, and the combat tab next to crossbow.
+Eye of ender next to end portal frame block in functional tab for better ease of use.
+Tooltips for all items in creative menu outside single-category tabs show categories where this item can be found.
+Previously this only happened on the search tab.
+Spectator
+
+"Teleport to Team Member" option in spectator menu now only shows up for teams with viable target players.
+
+
+=== Command format ===
+/publish
+
+Now has new arguments to enable commands and set the default game mode.
+New syntax: /publish [<allowCommands>] [<gamemode>] [<port>]
+
+
+=== General ===
+Multiplayer
+
+Made changes to the "Open to LAN" screen.
+Now allows selecting the port on which to host the LAN world.
+The game mode and allow cheats buttons are now initialized with the default values of the world.
+Music
+
+The Wild Update music has been tweaked to be slightly less loud.
+Recipes
+
+Many recipe files were made to be formatted more consistently.
+Blocks and items that are crafted using nine of a single item are now considered shapeless recipes, though this has no impact on gameplay.
+Resource pack
+
+The pack format version is now 12.
+Tags
+
+The #overworld_natural_logs item tag was removed.
+
+
+== Experimental ==
+These additions and changes only take effect when the 1.20 experimental data pack is enabled.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Block of bamboo and  block of stripped bamboo
+
+Two new log-like blocks.
+Block of bamboo can be crafted from 9 bamboo and can be stripped like other logs.
+Bamboo planks crafted from block of bamboo yield only 2 planks compared to 4 for logs.
+
+
+==== General ====
+Tags
+
+Added #bamboo_blocks block and item tags: bamboo_block and stripped_bamboo_block.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Bamboo planks
+
+Changed its crafting recipe to using 1 block of bamboo (stripped or unstripped) to craft 2 bamboo planks.
+Hanging signs
+
+Replaced the bamboo planks in crafting recipe of bamboo hanging sign to block of stripped bamboo, also increased the result from 2 to 6.
+Changed the texture of jungle wall hanging signs.
+
+
+==== Items ====
+Bamboo raft and bamboo raft with chest
+
+Changed their item textures.
+The raft is now taller and the chest is more detailed.
+
+
+==== General ====
+Tags
+
+Added #bamboo_blocks to the #mineable/axe block tag.
+
+
+== Fixes ==
+40 issues fixed
+From released versions before 1.19
+
+MC-30954 – Chat pop-ups being displayed when chat disappears.
+MC-80032 – Horses can suffocate when going through nether portals.
+MC-118140 – Result map tooltip when zooming out a map shows previous zoom value instead of new one.
+MC-127110 – You can't empty water buckets into waterlogged blocks.
+MC-152823 – Buckets ignore fluid placement check for replaceable or non-solid-blocking LiquidBlockContainers.
+MC-177523 – Enderman angry/screaming sound event subtitled identically to idle sound.
+MC-177789 – Shulker box doesn't destroy twisting vines when placed on top.
+MC-193360 – Inconsistent eye level between piglins or zombified piglins and piglin brutes.
+MC-194390 – A firework rocket from the creative inventory doesn't show a flight duration.
+MC-200000 – Merchant trade select packet (C2S) does not check for negative indices.
+MC-220668 – Shulker boxes can open when blocked by Big Dripleaf.
+MC-220708 – Shulker boxes can be opened when blocked by small dripleaves.
+MC-235414 – Player desynchronization with Nether Portals.
+MC-244550 – Empty Tags match Empty Slots in Shaped Recipes.
+From 1.19.2
+
+MC-255370 – Chat hover & click events are offset if "Line Spacing" chat setting is used.
+MC-255743 – Bees' path finding system may cause performance issues.
+MC-256685 – In a small window, when in a scrollable option menu, the tooltip from option 1 of row 8 appears at the top of the screen when hovering over it.
+From the 1.19.3 development versions
+
+MC-256461 – Camel's back of neck is visible during the sit down animation.
+MC-256475 – Placing or taking books from chiseled bookshelves displays the "Block placed" subtitle.
+MC-256511 – Non-controlling passengers can make camels dash.
+MC-256516 – Inconsistent textures with jungle hanging signs.
+MC-256532 – Sounds for Bamboo, Crimson and Warped hanging signs use the generic wood sound.
+MC-256616 – Weighted pressure plates make incorrect sounds.
+MC-256674 – FileAlreadyExistsException if the resourcepacks directory is a symbolic link.
+MC-256765 – References to chat reporting in singleplayer.
+MC-256849 – Steve and Alex are not using their updated skins whilst the game is offline.
+MC-256854 – Error in any model file causes resource reload fail now.
+MC-256884 – Mobs don't shoot correctly from crossbows.
+MC-256885 – The word "messages" within the gui.chatSelection.fold string is always pluralized.
+MC-256888 – New network protocols prevent logging into offline servers.
+MC-256903 – Lodestone compass's enchantment glint is scaled incorrectly.
+MC-256917 – Death message from explosions by TNT and TNT minecarts that are not the cause of a player or another mob has changed.
+MC-256951 – TNT Minecarts don't record what caused its explosion.
+MC-256961 – Multishot shoots projectiles backwards.
+MC-256990 – Superflat Worlds can use Disabled Blocks as part of their layers.
+From the previous development version
+
+MC-257102 – Missing Structure Block in creative tab.
+MC-257104 – "Lava" in gamerule.lavaSourceConversion is misspelled as "Lave".
+MC-257118 – Buttons are placed different than pressure plates in Creative Inventory.
+MC-257182 – Scaffolding does not match the bamboo color scheme.
+MC-257234 – Applying bone meal to warped or crimson fungus crashes client on multiplayer.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,130 @@
+21w39a is the third snapshot for Java Edition 1.18, released on September 29, 2021, which adds new advancements and fixes bugs.
+Starting from this snapshot, players can open old worlds again. This does not only mean it is the first version which makes it possible to convert old worlds with lower limit Y=0 to the new Y=-64, but it means also that high caution is needed and backups are recommended when converting important old worlds, because the old chunks do yet not generate anything under their bedrock level: from -64 to -1 it is just void, only the new chunks get the new deep generation.
+
+
+== Additions ==
+
+
+=== Gameplay ===
+Advancements
+
+Added four new advancements:
+Caves & Cliffs
+Fall from the top to the bottom of the Overworld
+Feels like home
+Ride a strider on lava for 50 blocks in the Overworld
+Star Trader
+Trade with a villager at the build height limit
+Sound of Music
+Play music with a jukebox in a meadow biome
+Added new advancement triggers.
+fall_from_height
+Triggered when a player lands after falling.
+ride_entity_in_lava
+Triggered for every tick when player rides in lava.
+
+
+=== General ===
+Loot tables
+
+Added new loot table function set_potion, to set Potion tag on any item.
+Has following parameters:
+id: Potion ID
+
+
+== Changes ==
+
+
+=== Mobs ===
+Drowned
+
+Now can spawn in aquifers inside dripstone caves.
+Zombie
+
+No longer spawns in dripstone caves.
+
+
+=== World generation ===
+Lofty peaks, snowcapped peaks and stony peaks
+
+Its small mountains are more jagged now.
+Meadow
+
+Trees in meadows now always contain a bee nest.
+
+
+=== Gameplay ===
+Advancements
+
+"Light as a Rabbit" now has "Sweet Dreams" as its parent instead of "Adventure".
+
+
+=== General ===
+Buried treasure
+
+Chests can now contain Water Breathing potions.
+Chunk format
+
+Paths for the block and biome data have changed:
+Level.Sections[].BlockStates is now Level.Sections[].block_states.data.
+Level.Sections[].Palette is now Level.Sections[].block_states.palette.
+Chunk’s Level.Biomes are now paletted and live in a similar container structure in Level.Sections[].biomes.palette and Level.Sections[].biomes.data.
+Chunk’s Level.CarvingMasks[] is now long[] instead of byte[].
+Effects
+
+Redesigned how effects look in the inventory screen.
+Can display while recipe book is showing.
+The list of effects are now shown to the right of the player's inventory, instead of the left side.
+When the inventory effects list is visible, it is hidden from the game view to reduce screen clutter.
+There are now two modes of seeing the effect list: compact and classic.
+Classic is the pre-existing list of effects, one after another.
+Compact is a single icon for each effect, suitable for small screen estate.
+The game automatically switches between the two looks to suit the available screen estate.
+Options
+
+Changed default brightness to 50.
+Resource packs
+
+Resource pack version number is now 8, as the following has been changed:
+inventory.png now contains an extra sprite for a thin-layout version of the effect list in the inventory.
+Server jar
+
+server.jar now bundles individual libraries instead of merging all the files into single archive.
+This change is meant to solve certain problems related to Java modules.
+On startup, server.jar unpacks libraries into a directory configured by bundlerRepoDir (default: working directory).
+To run different main class than server, use bundlerMainClass property.
+
+
+== Fixes ==
+14 issues fixed
+From released versions before 1.18
+
+MC-116359 – Status effects aren't displayed in inventory when recipe book is open.
+MC-129485 – Certain biome specific plant distribution is completely based on chunks, causing patchy biome generation.
+MC-145376 – Bamboo could generate underground when generating in non-bamboo jungles.
+MC-149822 – Bottom border on status effect displays in the inventory is missing.
+MC-193348 – Status effect bars shift the player's inventory in creative mode.
+MC-196723 – Potion effects obtained in creative mode while in inventory do not show up until reopening inventory.
+MC-214894 – Bamboo generates in caves under jungles.
+MC-214959 – Sugar cane generated in cave.
+MC-218167 – Chatting causes lag to occur.
+From the 1.18 development versions
+
+MC-236755 – "Feature Placement" crash: java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0.
+MC-236903 – Naturally generated cave vines have an age between 17-25.
+From the previous development version
+
+MC-237464 – Packet sent event is recorded as packet received event.
+MC-237505 – Certain Biome Builder debug values do not change.
+Other
+
+Removed generic snapshot tooltips from incompatible worlds (except for worlds created in experimental snapshots).
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

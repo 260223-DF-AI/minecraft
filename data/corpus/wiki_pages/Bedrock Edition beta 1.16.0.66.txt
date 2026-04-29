@@ -1,0 +1,51 @@
+Beta 1.16.0.66 is the sixteenth beta version for Bedrock Edition 1.16.0, released on June 4, 2020, which fixes bugs and adds two new emotes.
+
+
+== Additions ==
+
+
+=== General ===
+Server list
+
+UI has been updated.
+Galaxite has appeared as a featured server and was inaccessible, displaying the text "Coming Soon".
+
+
+=== Gameplay ===
+Emotes
+
+Added "Over There!" and "Simple Clap" emotes.
+
+
+== Fixes ==
+Crashes
+
+Fixed several crashes that could occur during gameplay.
+Fixed a crash that could occur when attempting to create world with the Tropical City Resort mash-up pack.
+Fixed an issue that could cause a hang on start up when trying to open certain worlds.
+General
+
+Fixed an issue with projectiles being destroyed prematurely if they didn't deal damage. This is now optional with the addition of 2 new flags to the projectile.
+Gameplay
+
+Fixed an issue that could cause chests to generate without loot (MCPE-69003).
+Graphical
+
+Fixed rendering issues while riding a mount
+Add-ons and scripting
+
+Fixed an issue that could occur when the movement component is removed, meaning that a mob's speed has to ramp up from 0 again.
+Changes to components: set_last_hurt_requires_damage and destroy_on_hit_requires_damage. Each defaulting to true to respect old behavior, but can now be set to false if it is desired to have a projectile that is destroyed even when it doesn't deal damage.
+Commands
+
+Added new overload for /replaceitem with an option for destroy (the old behavior) or keep (the command will return an error if an item occupies that slot).
+Fixed a bug where a mob wouldn't delete its goal if all goals were trying to be removed.
+Fixed spamming of particles, sounds, and events for looped, non-zero-length animations with timelines.
+Fixed a syntax error issue when running the /xp command with levels.
+Fixed an issue with “A Nightmare in Candyland” map which was no longer teleporting players correctly.
+
+
+== References ==
+
+
+== Navigation ==

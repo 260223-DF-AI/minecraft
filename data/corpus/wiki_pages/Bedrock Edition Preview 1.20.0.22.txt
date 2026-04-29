@@ -1,0 +1,228 @@
+Beta 1.20.0.22 (Android) or Preview 1.20.0.22 (Windows, iOS, iPadOS, Xbox) is the third beta/Preview version for Bedrock Edition 1.20.0, released on April 26, 2023 which adds a new music disc, new /camera command, new music, and fixes bugs.
+
+
+== Additions ==
+
+
+=== General ===
+Experiments
+
+Added the "Experimental Cameras" experimental toggle.
+Enable the /camera command.
+Loading tips
+
+Added the following loading screen tips:
+Explore structures throughout the Minecraft world to find smithing templates to trim your armor pieces.
+Need more smithing templates? Try to copy them.
+The sniffer egg seems to like moss blocks.
+Mob heads make sounds, try them out on note blocks!
+Some sand might be suspicious. Use your brush on it to find some good stuff!
+Two players can ride together on a camel.
+The camels jump... horizontally!
+Music
+
+Added new ambient soundtracks, all by Aaron Cherof.
+"A Familiar Room" plays in survival mode (all biomes).
+"Bromeliad" plays in bamboo jungle, cherry grove, flower forest, forest, jungle, sparse jungle.
+"Crescent Dunes" plays in desert, all types of badlands.
+"Echo in the Wind" plays in cherry grove, flower forest, lush caves, all types of badlands.
+Splashes
+
+Added the following splashes:
+This sand is sus
+Remember to brush your... ...teeth
+Has working bookshelves!
+Sniff sniff...
+Place hanging sign here
+
+
+=== Items ===
+Music Disc
+
+Added a new music disc by Aaron Cherof titled "Relic".
+Can only be obtained when brushing suspicious gravels within trail ruins, with 1⁄12 chance appeared as a rare loot.
+Emits a redstone signal of 14.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Sculk Sensor and Calibrated Sculk Sensor
+
+Sculk Sensors and Calibrated Sculk Sensors now have three phases: Inactive, Active, and Cooldown
+The default phase is Inactive
+This phase lasts indefinitely until the block receives a vibration
+During this phase, the block is able to listen to nearby vibrations until one has been scheduled
+When a scheduled vibration is received, the block switches to the Active phase
+This phase lasts 30 game ticks for Sculk Sensors, and 10 game ticks for Calibrated Sculk Sensors
+During this phase, the block stops listening to nearby vibrations, wiggles its tendrils, and emits a Redstone signal and light
+After the Active phase has finished, the block switches to a Cooldown phase
+This phase lasts for 10 game ticks
+During this phase, the block keeps wiggling its tendrils, but no longer emits a Redstone signal nor light
+Finally, once this phase is finished, the block will switch back to the Inactive phase
+Previously, these phases had different timings:
+The Active phase lasted 40 game ticks for Sculk Sensors and 20 game ticks for Calibrated Sculk Sensors
+There was no Cooldown phase
+These phase timings were tweaked so that it is less common for activated contraptions to recursively activate the Sculk Sensor that powered them.
+Sniffer Egg
+
+Can now be found in the suspicious sand loot table found at warm ocean ruins.
+Now emits particles only when placed on moss blocks.
+
+
+=== General ===
+Death screen
+
+Reverted changes when the "Show Coordinates" setting is enabled.
+
+
+=== Items ===
+Pottery Sherd
+
+Renamed from Pottery Shard to Pottery Sherd.
+
+
+=== Mobs ===
+Sniffer
+
+Can now be tempted using torchflower seeds.
+Sniffer now rather breeds than search and dig for items or be tempted.
+Camels
+
+The tooltip for dismounting Camels has been updated to match the one for other rideable mobs.
+
+
+=== World generation ===
+Trail Ruins
+
+Reworked and added more variants.
+No longer generates with sand.
+Tweaked the amount of gravel and dirt.
+Tweaked the amount of suspicious gravel.
+Split the archaeological loot tables for the suspicious gravel within the structure.
+Rare loot items and common loot items now each have their own dedicated archaeological loot table.
+
+
+=== Technical ===
+Add-Ons and Script Engine
+
+Pumpkin blocks use the string type state minecraft:cardinal_direction instead of the int type direction state.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs" and "Experimental Cameras" experimental toggles.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/camera
+
+A new command that can switch to custom camera perspectives and fade the screen.
+Syntax: (Simplified)
+camera <players: target> . . .
+... clear
+... fade . . .
+... color <red: float> <green: float> <blue: float>
+... time <fadeInSeconds: float> <holdSeconds: float> <fadeOutSeconds: float> . . .
+... color <red: float> <green: float> <blue: float>
+... set <preset: string> . . .
+... [default: default]
+... ease <easeTime: float> <easeType: Easing> . . .
+... [default: default]
+... pos <position: x y z> . . .
+... rot <xRot: value> <yRot: value>
+... rot <xRot: value> <yRot: value>
+... pos <position: x y z> . . .
+... rot <xRot: value> <yRot: value>
+... rot <xRot: value> <yRot: value>
+
+
+=== Changes ===
+
+
+==== Technical ====
+Add-ons
+
+Changed minecraft:cardinal_direction and minecraft:facing_direction states from int to string type.
+minecraft:cardinal_direction has four values ["north", "south", "east", "west"].
+minecraft:facing_direction has six values ["down", "up", "north", "south", "east", "west"].
+Removed knockback_resistance item component.
+API
+
+New APIs moved from beta to stable @minecraft/server 1.2.0:
+Moving applyDamage(amount: number, options?: EntityApplyDamageByProjectileOptions EntityApplyDamageOptions): boolean to 2.0.
+Moving kill(): boolean to 2.0.
+Moving EntityApplyDamageOptions to 2.0.
+Moving EntityApplyDamageByProjectileOptions to 2.0.
+Moving EntityDamageCause to 2.0.
+Moving addTag(tag: string) to 2.0.
+Moving removeTag(tag: string) to 2.0.
+Moving hasTag(tag: string) to 2.0.
+Moving getTags() to 2.0.
+Moved "Containerand" BlockInventoryComponent and EntityInventoryComponent to 2.0.
+Moved Music APIs from beta to stable.
+Moved Sound APIs from beta to stable.
+Moved ModalFormData, MessageFormData, and ActionFormData to 0.0.
+Moved ItemStackconstructor and getter APIs to 2.0.
+Moved EntityItemComponent, ItemComponent, ItemTypeand, and ItemLockMode to 2.0.
+Moving applyImpulse(vector: Vector3): void to 2.0.
+Moving applyKnockback(directionX: number, directionZ: number, horizontalStrength: number, verticalStrength: number): void to 2.0.
+Moving clearVelocity(): void to 2.0.
+Moved runCommand from beta to 2.0.
+Enchantments
+Removed MinecraftEnchantmentTypes class. Use MinecraftEnchantmentTypes from @minecraft/vanilla-data module for minecraft version specific information.
+Added support for strings in all enchantment methods for specifying the enchantment type.
+source on ExplosionBeforeEvent is now an optional property because explosions may not have a source.
+Tameable component
+Removed unimplemented and tameEvent from TameableComponent.
+Updated API to better handle operations outside of loaded and ticking areas.
+PositionInUnloadedChunkError: Exception thrown when trying to interact with a block object that isn't in a loaded and ticking chunk anymore.
+PositionOutOfWorldBoundariesError: Exception thrown when trying to interact with a position outside of dimension height range.
+Dimension
+getBlock now returns an optional Block to reflect it might return 'undefined' if asking for a block at an unloaded chunk.
+Signs
+Added optional SignSide parameter to functions setText, getText, getRawText, setTextDyeColor, and getTextDyeColor on BlockSignComponent to support getting and setting text and colors on both sides of signs.
+Added isWaxed property to BlockSignComponent indicating whether players can edit the sign or not.
+Added setWaxed method to BlockSignComponent to block players from editing the sign.
+runCommand and runCommandAsync on Dimension and Entity can now fail with a CommandError.
+runCommand can throw a CommandError exception.
+runCommandAsync will pass a CommandError into the reject handler.
+
+
+== Fixes ==
+20 issues fixed
+From released versions before 1.20.0
+
+MCPE-163399 – Greek Mythology Mashup / Items in Frames
+MCPE-165962 – Some splashes are written without "!" in Bedrock
+MCPE-167193 – Sniffer digging doesn't have digging particles playing
+MCPE-168856 – The loot table for suspicious blocks generated in trail ruins has two identical entries for bricks
+MCPE-168869 – Trail Ruins structure aren't completely buried underground
+MCPE-168934 – Raiser and Wayfinder smithing template texture are offset by 1 Pixel
+MCPE-168999 – Flight mode is disabled when flying under stairs and hoppers
+MCPE-169141 – You can't plant bamboo on suspicious gravel
+MCPE-169142 – Can't plant bamboo, cactus, sugar cane and dead bush on suspicious sand
+MCPE-169567 – Bees still make player eat sound
+MCPE-169607 – Torchflowers cannot be used to feed brown mooshrooms
+From the previous development version
+
+MCPE-169498 – The pitcher plant recipe does not craft two dyes, which is inconsistent with other two block tall flowers
+Other
+
+Custom items with minecraft:record show the correct sound description in hover text and on playing in a jukebox.
+Has item command selector now correctly detects whether or not an actor has a filled map or firework star in their inventory.
+The /inputpermission command now has a description displayed in the command dialogue preview.
+Fixed an issue where the plant textures appeared darker.
+Sugar Cane and Bamboo can now be placed on Moss Block.
+Sniffer can no longer search and dig in water.
+Made Sniffer walk cycle smoother.
+Fixed bug in response of MessageFormResponse where selection was inverted from which button was selected. button1 now refers ** to the left button and results in a selection of 0 and button2 now refers to the right button and results in a selection of 1.
+
+
+== References ==
+
+
+== Navigation ==

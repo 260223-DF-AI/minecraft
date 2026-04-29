@@ -1,0 +1,197 @@
+22w44a is the third snapshot for Java Edition 1.19.3, released on November 2, 2022, which adds new spawn eggs, tweaks the Creative inventory,  and fixes bugs.
+
+
+== Additions ==
+
+
+=== Items ===
+Spawn eggs
+
+ Ender dragon spawn egg
+ Iron golem spawn egg
+ Snow golem spawn egg
+ Wither spawn egg
+Ender dragon and wither spawn eggs are only available through commands to prevent accidental destruction of player builds.
+
+
+=== Gameplay ===
+Game rules
+
+Added blockExplosionDropDecay, mobExplosionDropDecay and tntExplosionDropDecay.
+When set to false, all blocks drop loot.
+When set to true, blocks drop loot randomly depending on how far from the explosion center.
+Defaults to false for TNT, true for block and mob.
+Added snowAccumulationHeight.
+When it is snowing, this game rule determines the maximum number of snow layers that can be accumulated in each block.
+Defaults to 1.
+Set to 0 makes no snow form at all.
+Set to 8 or above lets snow form up to the level of a full block.
+Added waterSourceConversion and lavaSourceConversion.
+When set to true, allows new sources of that fluid to form.
+Defaults to true for water and false for lava.
+Added globalSoundEvents, controlling whether certain gameplay moments are heard by all players regardless of location, defaults to true.
+
+
+=== General ===
+Tags
+
+Added the following item tag:
+#fence_gates: acacia_fence_gate, birch_fence_gate, dark_oak_fence_gate, jungle_fence_gate, oak_fence_gate, spruce_fence_gate, crimson_fence_gate, warped_fence_gate, and mangrove_fence_gate.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Spawners
+
+Renamed to "Monster Spawner" to match Bedrock Edition, and removed purple text color.
+No longer have a default mob spawn type when placed by a player, which was a pig previously.
+Don't emit fire particles when a mob spawn type has not been defined.
+Pick-block now works for spawner blocks.
+The mob type is now displayed in the hover description of a spawner item stack.
+If a mob type has not been defined yet, the hover description will describe how to set it.
+
+
+=== Items ===
+Spawn eggs
+
+Changed the colors of polar bear spawn egg (to ), to distinguish it from the ghast spawn egg.
+
+
+=== Mobs ===
+Turtles
+
+Now have a 5 minute cooldown after breeding.
+
+
+=== Non-mob entities ===
+Minecart with spawners
+
+Don't emit fire particles when a mob spawn type has not been defined.
+Renamed to "Minecart with Monster Spawner".
+
+
+=== Gameplay ===
+Creative inventory
+
+Operator-only blocks and items can now be found in the "Redstone Blocks" tab when have the required permissions. This includes the barrier, all variants of command blocks, debug stick, jigsaw block, light block (level 15), minecart with command block and structure void, but does not include the structure block.
+In "Functional Blocks" tab:
+Added bee nest and tinted glass.
+Moved respawn anchor before beds.
+Reordered pressure plates by functionality.
+Moved end portal frame and infested blocks here from Natural Blocks tab.
+In "Redstone Blocks" tab:
+Added barrel, cauldron, chest, composter and furnace.
+In "Building Blocks" tab:
+Added block of amethyst and chain.
+Moved block of redstone and block of coal here from the Natural Blocks tab.
+In "Crafting" tab:
+Added ancient debris.
+Reordered the following tabs for better consistency:
+Building blocks
+Consumables
+Natural blocks
+
+
+=== General ===
+Sounds
+
+Step sounds can now be heard when walking on carpets, lily pads and small amethyst buds.
+Step sounds can now be heard when walking through crimson roots, glow lichen, Nether sprouts and warped roots.
+Tags
+
+Removed #non_flammable_wood block tag.
+Added crimson roots, glow lichen, lily pad, moss carpet, Nether sprouts, small amethyst bud, warped roots and #wool_carpets to the #inside_step_sound_blocks block tag.
+Removed crimson hanging sign and warped hanging sign from the #non_flammable_wood item tag.
+
+
+== Experimental ==
+These additions and changes only take effect when the 1.20 experimental data pack is enabled.
+
+
+=== Additions ===
+
+
+==== General ====
+Tags
+
+Added bamboo fence gate to the new #fence_gates item tag, as the additional part when built-in datapack enabled.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Bamboo fence, bamboo fence gate and bamboo mosaics
+
+Can be used as fuel now.
+Chiseled bookshelves
+
+Now work with hoppers and droppers.
+
+
+==== General ====
+Tags
+
+Added bamboo mosaic slab and bamboo mosaic stairs to the #mineable/axe block tag.
+Added crimson hanging sign and warped hanging sign to the #non_flammable_wood item tag.
+Removed bamboo mosaic slab from the #wooden_slabs block and item tag.
+Removed bamboo mosaic stairs from the #wooden_stairs block and item tag.
+
+
+== Fixes ==
+32 issues fixed
+From released versions before 1.19
+
+MC-50605 – The pick block function doesn't work with mob spawners.
+MC-136152 – Placing mob spawner renders a pig for up to a second.
+MC-137136 – Lily Pads use incorrect sound.
+MC-137306 – Turtles don't have breeding delay.
+MC-171621 – Crimson and Warped roots don't make a sound when walked on, unlike Nether sprouts.
+MC-189872 – Certain mobs don't have spawn eggs.
+MC-191790 – Re-creating a world doesn't allow a blank seed and uses recreated world's seed instead of random.
+MC-195780 – "Data mode" and "Load mode" aren't capitalized while "Save Mode" and "Corner Mode" are.
+MC-242097 – Ghast and Polar Bear Spawn Eggs are nearly indistinguishable.
+MC-244721 – "Erase cached data" is not capitalized.
+MC-245503 – The configuration of moss block spreading cannot be modified by data pack.
+MC-251744 – Datapacks cannot change sapling growth.
+From 1.19
+
+MC-253387 – Frog walking animation is slowed down when applied with slow falling.
+MC-254435 – Neither the secure chat warning toast nor the chat preview warning screen is presented to the player when joining a server using the --server argument
+From 1.19.1
+
+MC-254435 – Neither the secure chat warning toast nor the chat preview warning screen is presented to the player when joining a server using the --server argument
+From 1.19.2
+
+MC-255115 – Lily pads do not produce sounds when walking on them.
+From the 1.19.3 development versions
+
+MC-256463 – Camels will not pathfind over 1.5 high blocks.
+MC-256480 – Non Flammable Wood Item tag contains 1.20 content even when disabled.
+MC-256526 – Bamboo Fence Gate has missing textures / culling issues.
+MC-256606 – Camel walking animation is slowed down when applied with slow falling.
+MC-256623 – Bamboo mosaic slabs aren't flammable.
+MC-256637 – Some bamboo blocks can't be used as furnace fuel.
+MC-256647 – Mobs face south even with a given rotation value.
+MC-256708 – Bamboo mosaic recipes are inconsistent.
+MC-256768 – Entities no longer have random rotations upon being summoned from spawn eggs.
+MC-256830 – Unable to sprint on a Camel with low hunger.
+From the previous development version
+
+MC-256881 – The game crashes when pressing the Esc key while having draft chat reports saved.
+MC-256887 – Tinted glass is not considered a 'Functional Block'.
+MC-256934 – You aren't prompted to save your chat reports as drafts while only having report categories inputted.
+MC-257058 – Cactus is not grouped with sugar cane in Creative inventory.
+MC-257059 – Mushroom stem comes after Nether fungus stems in Creative inventory, but mushroom blocks come before wart blocks.
+MC-257060 – Bee nest is absent from Functional Blocks.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

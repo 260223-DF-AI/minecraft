@@ -1,0 +1,160 @@
+In Java Edition 1.13, the change known as "The Flattening" was performed, which modified the IDs of many blocks, items, biomes, particles, paintings, entities, statistics and sound events, removed numeric IDs, added and removed some block states, and changed NBT tags and display names.
+Later changes to IDs and display names, e.g. water cauldrons being split from cauldrons in 1.17, are not counted here.
+
+
+== Block and item IDs ==
+Blocks and items that change their ID in any way also affect their statistics.
+
+
+== Entity IDs ==
+Entities that change their ID in any way also affect their statistics.
+
+
+== Biome IDs ==
+
+
+== Structure IDs ==
+
+
+== Particle IDs ==
+Particle IDs started using resource locations (minecraft: in front) as well as changed the ID.
+
+
+== Sound events ==
+Some sound events were modified.
+
+
+== Block states ==
+Some block states were modified.
+
+
+== Painting motifs ==
+Painting motifs started using resource locations (minecraft in front) as well as changed the ID to be uncapitalised and separated with underscores.
+
+
+== Names ==
+The names of some blocks and items were changed.
+
+
+== Statistics ==
+Statistics received the following changes:
+
+Merged the blocks and items tabs.
+Changed to use resource locations.
+
+
+== NBT data ==
+Chunk format was modified.
+
+
+=== Items ===
+Changes to item structure:
+
+Damage in the root of the item data removed.
+Damage added in the tag tag, only used for durability.
+map integer added in the tag tag, for maps.
+Base of shields has the colors in the opposite order for consistency.
+ench for enchantments got renamed to Enchantments.
+Enchantment Ids in Enchantments and StoredEnchantments now use the string ids.
+
+
+=== Entities ===
+Changes to entity format:
+
+CollarColor of Wolves has the colors in the opposite order for consistency.
+carried and carriedData of endermen merged into carriedBlockState.
+inTile and inData of arrows and spectral arrows merged into inBlockState.
+DisplayTile and DisplayData of minecarts merged into DisplayState.
+Block and Data of falling blocks merged into BlockState.
+ParticleParams1 and ParticleParams2 from area effect clouds removed, merged with Particle (same formatting as in the command).
+
+
+=== Blocks ===
+Changes to block entity format:
+
+Flower pot block entity removed.
+Note block block entity removed.
+BlockId and BlockData of moving pistons merged into blockState.
+Base from banners removed.
+Rot from heads removed.
+Color of banners' and shields' Patterns has the colors in the opposite order for consistency.
+Record of jukeboxes removed.
+
+
+==== Prior specifications ====
+Note block
+
+Flower pot
+
+
+== Commands ==
+Some commands were changed.
+
+/clear [<data>] argument removed.
+/clone [<data>] argument merged with ID and no longer allows metadata.
+/execute detect (now /execute if|unless block) [<data>] argument merged with ID and no longer allows metadata.
+/fill [<data>] and [<replaceData>] arguments merged with ID and no longer allow metadata.
+/give [<data>] argument removed.
+/replaceitem [<data>] argument removed.
+/setblock [<data>] argument merged with ID and no longer allows metadata.
+/particle [<params>] arguments merged with name and formatted as block_id[states] and item_id.
+
+
+== Advancements ==
+Two changes were made to advancements:
+
+icon's data removed.
+item condition's data removed.
+
+
+== Loot tables ==
+The set_data function was removed from loot tables.
+
+
+== Game assets ==
+Models
+Renamed to use the new IDs.
+Block state files
+Renamed to use the new IDs.
+"normal" for blocks without block states changed to an empty string ("").
+Item frames now have "map=false" instead of "normal" and "map=true"instead of "map".
+Model references no longer start at the models/block/ folder, but instead at models/.
+Textures
+Renamed to use the new IDs. See Java Edition 1.13/Resource pack changes for the list of file names changed.
+Renamed the blocks folder to block.
+Renamed the items folder to item.
+Recipes
+Renamed to use the new IDs.
+Advancements
+Recipe advancements renamed to use the new IDs.
+Language files
+
+
+=== Block translation strings ===
+
+
+=== Item translation strings ===
+
+
+=== Entity translation strings ===
+
+
+=== Enchantment translation strings ===
+
+
+=== Effect translation strings ===
+
+
+=== Statisic translation strings ===
+
+
+=== Statisic information translation strings ===
+
+
+=== Other translation strings ===
+
+
+== History ==
+
+
+== References ==

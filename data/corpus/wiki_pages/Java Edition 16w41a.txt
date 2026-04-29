@@ -1,0 +1,97 @@
+16w41a is the eleventh snapshot for Java Edition 1.11, released on October 13, 2016 mainly to fix a few bugs with observers and pistons.
+
+
+== Changes ==
+Item durability bar
+
+The colors of the durability bar, which is displayed on damaged items in the hotbar and inventories, have been changed.
+The color is now bright during the entire length of the bar, when previously it faded through a set of not so bright oranges and yellows, it now fades through clear yellow and orange.
+Also, the background of the durability bar is now completely black, where it used to be transparent.
+Elytra
+
+Now have their own sound when equipped.
+Llamas
+
+The spawn rate has been drastically reduced.
+
+
+== Fixes ==
+57 issues fixed
+From released versions before 1.11
+
+MC-341 – Duplication and deletion of hotbar items in Creative using number keys
+MC-2912 – Creative Mode Hotbar Glitch when using Number Key to exchange items slots
+MC-11416 – Dispenser / Dropper / Piston / Command block placing is not consistent
+MC-14861 – teleporting using commands resets the velocity
+MC-51662 – Sand/Gravel broken into entity by upward extending piston
+MC-58614 – XP bar is not transparent (no alpha) when normal crosshair is not visible
+MC-59303 – When placed next to a cactus, the head of bed remains same
+MC-70806 – Blocks with a data value > 0 have missing texture in superflat customization
+MC-73529 – Incorrect error message for @e[type=!Player,c=1,r=1]
+MC-80692 – WitherBoss attacks ArmorStands
+MC-96544 – Temperature Freezing Point Inconsistency
+MC-97982 – Offhand slot frame rotated 180 degrees compared to hotbar
+MC-98009 – Elytra equipment sound using Leather armor equipment sound
+MC-99103 – The player can't see remaining time when they have a potion effect in Demo Mode
+MC-99603 – Wolves … and Ocelots fall out of the world
+MC-99661 – Summoning a LeashKnot with a passenger entity crashes
+MC-99814 – help -1 throws unknown command exception
+MC-99900 – Enchantments boostrap class has the wrong error message when called before bootstrap
+MC-101249 – Target selectors ignore invalid arguments
+MC-102439 – Shield Desynchronizes
+MC-102683 – "Elder Guardian Flops" showed as "Guardian Flops" in subtitles
+MC-104901 – Suboptimal visibility and horrific look of the tool's durability bar colors
+MC-105406 – OpenGL Leak in View Frustum
+MC-105898 – Mushrooms and crops cause bed to drop; leaves "head" of bed behind, same with double plant
+MC-108315 – Closing options with esc doesn't send player setting packet
+MC-108409 – Villager makes disagree sounds when the player clicks arrows and trade boxes.
+MC-108588 – Structure blocks save invalid data when saving a structure at 0, 0
+MC-108700 – Wood breaking- incorrect subtitle
+From the 1.11 development versions
+
+MC-106296 – Wrong subtitle for sound (sounds.json mistake)
+MC-107171 – maxEntityCramming is off-by-one
+MC-107407 – Zooming out an explorer map turns the map blank
+MC-107410 – Observer block outputs single game tick pulse, not single redstone tick pulse
+MC-107600 – Observer block causes bottom half of bed to break
+MC-107662 – Observers can cause blocks to be stuck in the powered state when being pushed by pistons
+MC-107730 – Oberserver block powers air blocks
+MC-107783 – Observer powers redstone dust only to level 1
+MC-107795 – Redstone connects to Observer Blocks on sides
+MC-107869 – Llamas often spawn in blocks and die while in mountainous regions
+MC-107907 – Llama spit is not saved as entity
+MC-107934 – Observers are placed with the input facing the player (unlike MCPE)
+MC-107957 – Hopper: java.util.ConcurrentModificationException
+MC-107959 – Buttonspamming with observerblocks
+MC-108045 – Minecraft not using latest unifont unicode chart, characters are missing
+MC-108054 – Observer rotates when being udpated, moved and then reloaded
+MC-108216 – Copying then zooming out an explorer map make it lose its structure pointer
+MC-108270 – Wither skeleton spawing quelled by normal skeletons
+MC-108399 – No subtitle for when the totem of undying activates
+From the previous development version
+
+MC-108344 – Left-handed vindicators raise right arm when aggressive
+MC-108348 – Totem of undying is not consumed/destroyed
+MC-108349 – When a sticky piston (facing up with a block on it) is retracted while an entity is standing on it, the entity appears to sink into the ground.
+MC-108354 – Incorrect subtitle when equipping a llama with a chest
+MC-108357 – Naturally generated vindicators axe is missing
+MC-108358 – Crash when 32 or more pistons retract in a single chunk (IllegalArgumentException)
+MC-108378 – Crafting a Zoomed Out Map By a Hotbar Hotkey Won't Update It
+MC-108480 – Johnny Vindicators attempt to attack armor stands
+MC-108525 – shulker_box.png Default resource pack GUI 1 pixel too high (167 vs 166 pixel)
+Private issues
+
+MC-99599 – Server does not test if player is sleeping when receiving CPacketEntityAction.Action.STOP_SLEEPING
+
+
+== Videos ==
+
+
+== Trivia ==
+16w41a was previously removed from the launcher for some time, but was added back in September 2018.
+
+
+== References ==
+
+
+== Navigation ==

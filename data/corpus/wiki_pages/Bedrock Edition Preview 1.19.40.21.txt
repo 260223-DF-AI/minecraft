@@ -1,0 +1,77 @@
+Beta 1.19.40.21 (Android) or Preview 1.19.40.21 (Windows, iOS, iPadOS, Xbox) is the second beta/Preview version for Bedrock Edition 1.19.40, released on September 14, 2022, which fixes bugs.
+
+
+== Changes ==
+
+
+=== Command format ===
+/summon
+
+Added new overload to the /summon command that adds rotation arguments.
+New overload is /summon [spawnPos: x y z] [yRot: float] [xRot: float] [spawnEvent: string] [nametag: string].
+Previous overload /summon [spawnPos: x y z] [spawnEvent: string] [nametag: string].
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Upcoming Creator Features" and "GameTest Framework" experimental toggle.
+
+
+=== Changes ===
+
+
+==== Technical ====
+Commands
+
+Implemented the /execute facing and /execute facing entity commands.
+Implemented the /execute align command.
+Data Driven Blocks
+
+"minecraft:direction" is no longer exposed as a data-driven blockProperty. Blocks throw a content error when the "minecraft" namespace is used.
+GameTest Framework
+
+Removed built-in GameTest Behavior Packs.
+General
+
+Added flag is_hidden_in_commands in menu_category to control whether or not a block can be used in commands.
+
+
+== Fixes ==
+Spectator Mode (Experimental)
+
+Water fog is no longer removed for players in Spectator Mode (MCPE-161105)
+Gameplay
+
+Fixed fall damage accumulating while the player is in a Trapdoor block at the top of a bubble column (MCPE-158858)
+Mobs
+
+Fixed a bug where mobs with a long hit range could hit players through walls (MCPE-55790)
+User Interface
+
+Fixed a bug in Pocket UI where items could be dropped in the dark-grey areas around the item grid in the Crafting Table screen
+Fixed a bug in Pocket UI where items could be dropped in the dark-grey areas around the item grid in the inventories for the Horse, Mule, Donkey, and Llama
+Fixed a bug where the death screen message was visible when the showdeathmessage gamerule was set to false
+Vanilla Parity
+
+Sweet Berries can now be planted on Farmland (MCPE-99632)
+Changed bubble column strength to match Java Edition (MCPE-158858)
+Blocks
+
+Dirt Path and Farmland block collisions are now one texel lower (MCPE-12109)
+Players now sink in Soul Sand and Mud blocks (MCPE-154973)
+Players swimming above Mud will not have their screen covered (MCPE-153737)
+Projectiles landing on Mud will not repeatedly shake (MCPE-153744)
+Amphibious mobs no longer have trouble pathfinding around Mud Blocks (MCPE-153961)
+Mobs
+
+Ravager now can be hurt by Evoker Fangs
+Increased Ravager collision box size to match Java Edition (MCPE-142171, MCPE-45531)
+Increased Ravager speed to match Java (MCPE-48145)
+Stability and Performance
+
+Fixed a crash that could occur when using the hasItem selector and specifying a negative value for the item's data (MCPE-152314)
+
+
+== References ==
+
+
+== Navigation ==

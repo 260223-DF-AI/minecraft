@@ -1,0 +1,2378 @@
+This is a list of Java Edition 26.1 development versions.
+
+
+== 26.1 Snapshot 1 ==
+26.1 Snapshot 1 (known as 26.1-snapshot-1 in the launcher) is the first snapshot for Java Edition 26.1, released on December 16, 2025. It adds data pack-controlled trading, improves the game's lighting and the look of the Night Vision effect, and makes other technical changes (i.e. related to data packs).
+This is the first snapshot to use the new version format announced earlier that month, the first snapshot to require Java 25, the first snapshot to be released with only an unobfuscated build, and the final snapshot released in 2025.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/swing
+
+New command that enables swinging of entities' arms.
+Not all entities support swing animation. /swing will succeed for those entities, but clients will only display it when possible.
+For example, this makes it possible to swing mannequin arms.
+Returns the amount of entities for which a swing was sent.
+Syntax: /swing <entity selector> <mainhand|offhand>
+
+
+==== General ====
+Data component format
+
+Added minecraft:additional_trade_cost
+Transient component used to modify the amount of items wanted in a villager trade.
+Removed after a trade has been generated.
+Format: integer
+Data-driven villager trades
+
+Trades offered by villagers and wandering traders are now data-driven and can be customized by datapack developers.
+Villager Trades
+Present in the villager_trade folder, represents a blueprint for trades which is used by villagers and wandering traders to generate actual trades.
+Entry Format:
+wants, an object representing an item type and number of them needed to trade.
+id, the id of the item
+count, an optional number provider representing how many of the item is needed for the trade.
+Defaults to a constant 1
+components, an optional component map representing the expected data components on the item.
+Defaults to an empty map.
+additional_wants, an optional object representing an additional item required by the merchant, has the same format as wants.
+gives, an item Stack representing the resulting item given by the merchant when trading.
+Uses the existing format for item stacks.
+given_item_modifiers, a optional list of item Modifiers representing modifiers to apply to the item in gives such as enchantments or potions, used to add dynamism to the trade rather than hardcoding certain values.
+Uses the existing format for item modifiers (also known as loot modifiers, item functions, loot functions...).
+If any of these returns an empty item the entire trade will be discarded.
+Item Modifier references are not supported.
+If the final item has a stored_enchantment component containing an enchantment in the #double_trade_price tag, then the count of wants is doubled.
+max_uses, an optional number provider representing the maximum number of times a trade may be used.
+Is set to 1 if the number provider returns a lower value.
+Defaults to 4
+reputation_discount, a number provider representing how much factors such as demand, discounts or penalties affects the cost represented by wants.
+Is set to 0.0 if the number provider returns a lower value.
+Defaults to 0.0
+xp, an optional number provider representing the amount of xp a merchant gets when the trade is done.
+Is set to 0 if the number provider returns a lower value.
+Defaults to 1
+merchant_predicate, a predicate representing conditions on the merchant that need to be met for the trade to be offered.
+Uses the existing format for predicates.
+Predicate references are not supported.
+double_trade_price_enchantments, an optional enchantment id, list of namespaced enchantment IDs, or hash-prefixed enchantment tag representing enchantments that will double the additional cost from minecraft:enchant_randomly and minecraft:enchant_with_levels if they have include_additional_cost_component set to true and if the item has one of the provided values in its minecraft:stored_enchantments component.
+An example trade of an emerald and a book for an enchanted book offered only by desert villagers.
+
+Environment attributes
+
+minecraft:visual/block_light_tint
+Tint of the block light. Block light color start as dark grey at low light levels, becomes tinted by this attribute at medium levels and turns white at high levels. By default, it provides the yellowish tint of torches. Bright colors work best for this attribute, with at least one color component being fully bright. The tint applies globally to all light sources visible on the screen. Individual lights can not be tinted differently.
+Value type: RGB color
+Default value:  #FFD88C
+Modifiers: RGB Color Modifiers
+Interpolated: yes
+Resolved at the camera's position
+minecraft:visual/ambient_light_color
+Defines both the ambient light tint and brightness. This light is applied to the world at 0 light level. Block and sky light are added on top of it.
+Value type: RGB color
+Default value:  #000000.
+Modifiers: RGB Color Modifiers
+Interpolated: yes
+Resolved at the camera's position.
+Set to  #0A0A0A in the Overworld,  #302821 in the Nether, and  #3f473f in the End.
+minecraft:visual/night_vision_color
+This color is used similarly to ambient light color. When the Night Vision effect is active, per-component maximum of minecraft:visual/night_vision_color and minecraft:visual/ambient_light_color is used as ambient color. Night Vision is not tinted by default.
+Value type: RGB color
+Default value:  #999999
+Modifiers: RGB Color Modifiers
+Interpolated: yes
+Resolved at the camera's position
+Lightmap debug renderer
+
+A new debug renderer for the lightmap was added, which can be enabled using the F3 + 4 keybind.
+It is mutually exclusive with FPS/TPS and networking charts.
+It shows the lightmap texture in real-time in the bottom right corner of the screen.
+The vertical axis of the texture represent sky light levels (0-15 from bottom to top).
+The horizontal axis of the texture represent block light levels (0-15 from left to right).
+The color of each pixel represents the resulting color that will be applied to blocks and entities lit with the corresponding block and sky light levels.
+Loot contexts
+
+Added minecraft:villager_trade which takes the following parameters:
+this, the entity offering the trade.
+origin, the block position of the entity at its feet.
+Loot functions
+
+Added minecraft:set_random_dyes
+Additively adds dyes to an item's minecraft:dyed_color data component if the item is in the #dyeable tag Fields:
+conditions - conditions for the function to apply.
+number_of_dyes - number provider representing the number of random dyes out of sixteen to apply to the item.
+The same dye might be selected repeatedly.
+Added minecraft:set_random_potion
+Randomly sets the minecraft:potion_contents data component on an item Fields:
+conditions - conditions for the function to apply.
+options - optional potion id, list of namespaced potion IDs, or hash-prefixed potion tag, representing the possible potions to select from.
+Defaults to any potion in the potions registry.
+Number providers
+
+Added minecraft:sum
+Returns the sum of a list of number providers.
+Fields:
+summands, a list of number providers.
+Tags
+
+Added several tags representing groups of villager trades from which villagers and wandering traders derive their trading pools.
+Villagers have the following tags representing each profession and level of trade in the format: #<profession>/level_<level>, up to level 5.
+Smiths have the #common_smith/level_<level> tags representing common trades among armorers, weaponsmiths and toolsmiths, up to level 5.
+Wandering Traders have the following tags: #wandering_trader/buying, #wandering_trader/special, #wandering_trader/common.
+Potion tags
+Added #tradeable
+Contains all potion effects that can appear in villager trades.
+Trade sets
+
+What trades are unlocked by villager professions are now determined using deterministic random sequences, like loot drops and barter loot.
+Present in the trade_set folder, they are groupings of trades offered by villagers and wandering traders.
+Currently only hardcoded ones are available in <profession>/level_<level> for villagers, as well as wandering_trader/buying, wandering_trader/special, wandering_trader/common for wandering traders.
+Entry Format:
+trades, a villager trade id, list of namespaced villager trade IDs, or hash-prefixed villager trade tag representing the trades that are part of this trade set.
+amount, a number provider representing the amount of trades to be generated from this set when used.
+If the generated number is greater than the number of available trades then it will only generate until all trades have been used once, unless allow_duplicates is set to true
+allow_duplicates, a boolean representing if the trade set can use the same villager trade multiple times to generate trades.
+Defaults to false
+random_sequence, an optional named random sequence that determines which trades are generated.
+Defaults to a non-deterministic random sequence.
+An example trade set offering 2 trades from the #minecraft:armorer/level_1 tag, allowing duplicates.
+
+
+=== Changes ===
+
+
+==== General ====
+Data pack
+
+The pack format version is now 95.0.
+Debug screen
+
+The looking_at_block and looking_at_fluid debug entries no longer show tags.
+New debug entries have been added:
+looking_at_block_tags
+looking_at_fluid_tags
+looking_at_entity_tags
+Renamed debug entries:
+looking_at_block -> looking_at_block_state
+looking_at_fluid -> looking_at_fluid_state
+Enchantment definition
+
+The post_piercing_attack component no longer only works for a player if that player has a certain food level.
+Lightmap algorithm
+
+The algorithm that maps block and sky light levels to how bright things appear on screen has been fully rewritten.
+A new algorithm that is supposed to mostly provide the same overall results as previous one, but:
+It is simpler and more straightforward, and fixes multiple issues of the previous one.
+The darkness effect and world darkening effect of the Wither fight now works the same way in all dimensions.
+The night vision effect now simply adds ambient light instead of scaling the resulting colors.
+It means that fully dark areas no longer look brighter than areas lit by block or sky light.
+Other aspects of the algorithm such as block light tint, ambient light color and night vision color are now data-driven through environment attributes.
+Lightmap shader
+
+The lightmap.fsh shader was significantly modified.
+The LightmapInfo uniform now has two new fields:
+BlockLightTint
+NightVisionColor
+The AmbientLightFactor field was removed, its value is now premultiplied into AmbientColor
+The DarkenWorldFactor was renamed to BossOverlayWorldDarkeningFactor
+Text and items rendered in UI now use a separate 1x1 white lightmap texture, so the lightmap shader does not always have to keep the 15, 15 pixel purely white.
+Loot functions
+
+Changed minecraft:enchant_with_levels
+Now also takes the following field:
+include_additional_cost_component - optional boolean representing if a minecraft:additional_trade_cost component should be added to the item based on the cost of the enchantment.
+Defaults to false
+The value is determined by the levels number provider and is the same that is used to determine what enchantment level is used for enchanting.
+Changed minecraft:enchant_randomly
+Now also takes the following field:
+include_additional_cost_component - optional boolean representing if a minecraft:additional_trade_cost component should be added to the item based on the cost of the enchantment.
+Defaults to false
+The value is determined by the value selected by levels or its default value using the following formula: 2+random(0,5+level*10)+3*level
+Predicates
+
+Entity Predicates
+player Sub-Predicate
+New optional field: food
+A Food predicate
+Format: Object with fields:
+level - optional integer min/max range specifying the required food level.
+saturation - optional float min/max range specifying the required saturation level.
+Resource pack
+
+The version is now 76.0.
+Splashes
+
+Changed "Java 16 + 1 + 4 = 21!" to "Java 16 + 1 + 4 * 2 = 25!".
+Tags
+
+Enchantment Tags
+Removed the following tags:
+trades/desert_special
+trades/jungle_special
+trades/plains_special
+trades/savanna_special
+trades/snow_special
+trades/swamp_special
+trades/taiga_special
+General
+
+If a server's disk space is low, a toast will now be shown to server operators.
+The game now requires Java 25.
+The included Java distribution is now the Microsoft build of OpenJDK 25.
+Piglin inventory slots can now be accessed using piglin.* similar to how villager inventories can be accessed using villager.*.
+
+
+=== Fixes ===
+20 issues fixed
+From released versions before 26.1
+
+MC-64087 – Revengeful zombies / Zombie reinforcements will try to attack you in Creative mode.
+MC-179949 – You cannot edit the inventories of piglins by using /item replace.
+MC-197497 – Smooth lighting transition from level 1 to 0 is not smooth.
+MC-199589 – Hitting mobs in Creative mode then switching into Survival causes the mob to target you.
+MC-219981 – Leader zombie-type mobs spawn with 20 health despite having an increased maximum health.
+MC-300465 – Maps with the maximum number of markers cannot be placed in item frames.
+MC-302186 – Ambient lighting in the Nether appears discolored compared to previous versions.
+MC-302408 – Inconsistent underwater lighting with the Conduit Power effect applied.
+MC-302528 – Low sky & block light look outright broken when cast on the same area.
+MC-303119 – Feeding a cat or wolf in Survival mode with only one item in the selected item slot does not restore as much health as it should.
+MC-303125 – Creepers can blow up after the player dies.
+MC-303389 – The ender dragon's velocity can be affected by attacks while perched.
+MC-303692 – Debug overlay text has an indent when improved transparency is disabled.
+MC-304023 – Redundant level data fixer files are saved in worlds' "data" folder.
+MC-304217 – Lunge's hunger requirement applies to post_piercing_attack effects of custom enchantments.
+MC-304599 – Dolphins don't follow players riding nautiluses like in Bedrock Edition.
+MC-304631 – Anisotropic filtering set to 8x causes opaque translucent textures to become transparent in the distance when there are odd-sized block textures.
+MC-304725 – Zombie villagers summoned with default spawn eggs always spawn as their plains variant.
+MC-304991 – Clicking on a chest with loot that hasn't been generated in Spectator mode makes the "block.chest.locked" sound.
+MC-305012 – The description of the "Universal anger" game rule still uses the old ID of the "Forgive dead players" game rule.
+
+
+== 26.1 Snapshot 2 ==
+26.1 Snapshot 2 (known as 26.1-snapshot-2 in the launcher) is the second snapshot for Java Edition 26.1, released on January 7, 2026. It adds retextured and remodeled baby mobs, remodeled rabbits, craftable name tags, and more. This is the first snapshot released in 2026.
+
+
+=== Additions ===
+
+
+==== General ====
+Tags
+
+Added the #metal_nuggets item tag.
+Contains all types of nuggets.
+
+
+=== Changes ===
+
+
+==== Items ====
+Name tag
+
+Can now be crafted with 1 paper and 1 nugget.
+
+
+==== Mobs ====
+
+Rabbit
+
+Their models, animations, and textures have been updated.
+  Now has an idle animation. A rabbit can only do these if it has been leashed at least once, but isn't currently leashed.
+Hitbox size has been adjusted to match each of the new models.
+Programmer Art textures have been removed following the model changes.
+Baby mobs
+
+Added new baby sounds for wolves, cats and pigs.
+Updated the models and textures of the following baby mobs
+Cat
+Chicken
+Cow
+Mooshroom
+Ocelot
+Pig
+Rabbit
+Sheep
+Wolf
+Adjusted the hitbox of the baby chicken to align with the new model.
+Saddles on baby pigs no longer render.
+Wolf armor on baby wolves no longer render.
+
+Skeleton horses and zombie horses
+
+No longer panic when hurt.
+
+
+==== General ====
+General
+
+Tweaked default JVM options.
+The game now allocates 4 GB of RAM by default (up from 2 GB).
+Garbage collection has been changed from G1GC to ZGC for compatible computers.​[more information needed]
+Data pack
+
+The pack format version is now 96.0.
+Entity data
+
+The current_explosion_impact_pos and current_impulse_context_reset_grace_time fields from players have been added to all mobs and the armor stand.
+The ignore_fall_damage_from_current_explosion field on players has been removed.
+Mob variant definitions
+
+Wolf sound variants sound events in wolf_sound_variant have been moved into a new field adult_sounds and the field baby_sounds was added.
+Resource pack
+
+The version is now 77.0.
+Sounds
+
+Added new sound events for the baby cat:
+entity.baby_cat.ambient
+entity.baby_cat.hiss
+entity.baby_cat.hurt
+entity.baby_cat.death
+entity.baby_cat.eat
+entity.baby_cat.beg_for_food
+entity.baby_cat.purr
+entity.baby_cat.purreow
+entity.baby_cat.stray_ambient
+Added new sound events for the baby pig (piglet):
+entity.baby_pig.ambient
+entity.baby_pig.hurt
+entity.baby_pig.death
+entity.baby_pig.step
+Added new sound events for the baby wolf:
+entity.baby_wolf.ambient
+entity.baby_wolf.growl
+entity.baby_wolf.death
+entity.baby_wolf.hurt
+entity.baby_wolf.pant
+entity.baby_wolf.whine
+entity.baby_wolf.step
+Tags
+
+Removed awkward, mundane, and thick from #tradeable potion tag.
+Textures
+
+Entity textures
+Added new entity textures:
+entity/cat/cat_all_black_baby.png
+entity/cat/cat_black_baby.png
+entity/cat/cat_british_shorthair_baby.png
+entity/cat/cat_calico_baby.png
+entity/cat/cat_collar_baby.png
+entity/cat/cat_jellie_baby.png
+entity/cat/ocelot_baby.png
+entity/cat/cat_persian_baby.png
+entity/cat/cat_ragdoll_baby.png
+entity/cat/cat_red_baby.png
+entity/cat/cat_siamese_baby.png
+entity/cat/cat_tabby_baby.png
+entity/cat/cat_white_baby.png
+entity/chicken/chicken_cold_baby.png
+entity/chicken/chicken_temperate_baby.png
+entity/chicken/chicken_warm_baby.png
+entity/cow/cow_cold_baby.png
+entity/cow/cow_temperate_baby.png
+entity/cow/cow_warm_baby.png
+entity/cow/mooshroom_brown_baby.png
+entity/cow/mooshroom_red_baby.png
+entity/pig/pig_cold_baby.png
+entity/pig/pig_temperate_baby.png
+entity/pig/pig_warm_baby.png
+entity/rabbit/rabbit_black.png
+entity/rabbit/rabbit_brown.png
+entity/rabbit/rabbit_caerbannog.png
+entity/rabbit/rabbit_gold.png
+entity/rabbit/rabbit_salt.png
+entity/rabbit/rabbit_toast.png
+entity/rabbit/rabbit_white.png
+entity/rabbit/rabbit_white_splotched.png
+entity/sheep/sheep_baby.png
+entity/sheep/sheep_wool_baby.png
+entity/wolf/wolf_angry_baby.png
+entity/wolf/wolf_ashen_angry_baby.png
+entity/wolf/wolf_ashen_baby.png
+entity/wolf/wolf_ashen_tame_baby.png
+entity/wolf/wolf_baby.png
+entity/wolf/wolf_black_angry_baby.png
+entity/wolf/wolf_black_baby.png
+entity/wolf/wolf_black_tame_baby.png
+entity/wolf/wolf_chestnut_angry_baby.png
+entity/wolf/wolf_chestnut_baby.png
+entity/wolf/wolf_chestnut_tame_baby.png
+entity/wolf/wolf_collar_baby.png
+entity/wolf/wolf_rusty_angry_baby.png
+entity/wolf/wolf_rusty_baby.png
+entity/wolf/wolf_rusty_tame_baby.png
+entity/wolf/wolf_snowy_angry_baby.png
+entity/wolf/wolf_snowy_baby.png
+entity/wolf/wolf_snowy_tame_baby.png
+entity/wolf/wolf_spotted_angry_baby.png
+entity/wolf/wolf_spotted_baby.png
+entity/wolf/wolf_spotted_tame_baby.png
+entity/wolf/wolf_striped_angry_baby.png
+entity/wolf/wolf_striped_baby.png
+entity/wolf/wolf_striped_tame_baby.png
+entity/wolf/wolf_tame_baby.png
+entity/wolf/wolf_woods_angry_baby.png
+entity/wolf/wolf_woods_baby.png
+entity/wolf/wolf_woods_tame_baby.png
+Renamed the following entity textures:
+entity/armorstand/wood.png → entity/armorstand/armorstand.png
+entity/cat/all_black.png → entity/cat/cat_all_black.png
+entity/cat/black.png → entity/cat/cat_black.png
+entity/cat/british_shorthair.png → entity/cat/cat_british_shorthair.png
+entity/cat/calico.png → entity/cat/cat_calico.png
+entity/cat/jellie.png → entity/cat/cat_jellie.png
+entity/cat/persian.png → entity/cat/cat_persian.png
+entity/cat/ragdoll.png → entity/cat/cat_ragdoll.png
+entity/cat/red.png → entity/cat/cat_red.png
+entity/cat/siamese.png → entity/cat/cat_siamese.png
+entity/cat/tabby.png → entity/cat/cat_tabby.png
+entity/cat/white.png → entity/cat/cat_white.png
+entity/chicken/cold_chicken.png → entity/chicken/chicken_cold.png
+entity/chicken/temperate_chicken.png → entity/chicken/chicken_temperate.png
+entity/chicken/warm_chicken.png → entity/chicken/chicken_warm.png
+entity/copper_golem/exposed_copper_golem.png → entity/copper_golem/copper_golem_exposed.png
+entity/copper_golem/exposed_copper_golem_eyes.png → entity/copper_golem/copper_golem_eyes_exposed.png
+entity/copper_golem/oxidized_copper_golem_eyes.png → entity/copper_golem/copper_golem_eyes_oxidized.png
+entity/copper_golem/weathered_copper_golem_eyes.png → entity/copper_golem/copper_golem_eyes_weathered.png
+entity/copper_golem/oxidized_copper_golem.png → entity/copper_golem/copper_golem_oxidized.png
+entity/copper_golem/weathered_copper_golem.png → entity/copper_golem/copper_golem_weathered.png
+entity/cow/cold_cow.png → entity/cow/cow_cold.png
+entity/cow/temperate_cow.png → entity/cow/cow_temperate.png
+entity/cow/warm_cow.png → entity/cow/cow_warm.png
+entity/cow/brown_mooshroom.png → entity/cow/mooshroom_brown.png
+entity/cow/red_mooshroom.png → entity/cow/mooshroom_red.png
+entity/fox/snow_fox.png → entity/fox/fox_snow.png
+entity/fox/snow_fox_sleep.png → entity/fox/fox_snow_sleep.png
+entity/frog/cold_frog.png → entity/frog/frog_cold.png
+entity/frog/temperate_frog.png → entity/frog/frog_temperate.png
+entity/frog/warm_frog.png → entity/frog/frog_warm.png
+entity/llama/brown.png → entity/llama/llama_brown.png
+entity/llama/creamy.png → entity/llama/llama_creamy.png
+entity/llama/gray.png → entity/llama/llama_gray.png
+entity/llama/spit.png → entity/llama/llama_spit.png
+entity/llama/white.png → entity/llama/llama_white.png
+entity/panda/aggressive_panda.png → entity/panda/panda_aggressive.png
+entity/panda/brown_panda.png → entity/panda/panda_brown.png
+entity/panda/lazy_panda.png → entity/panda/panda_lazy.png
+entity/panda/playful_panda.png → entity/panda/panda_playful.png
+entity/panda/weak_panda.png → entity/panda/panda_weak.png
+entity/panda/worried_panda.png → entity/panda/panda_worried.png
+entity/pig/cold_pig.png → entity/pig/pig_cold.png
+entity/pig/temperate_pig.png → entity/pig/pig_temperate.png
+entity/pig/warm_pig.png → entity/pig/pig_warm.png
+entity/projectiles/spectral.png → entity/projectiles/arrow_spectral.png
+entity/projectiles/tipped.png → entity/projectiles/arrow_tipped.png
+entity/turtle/big_sea_turtle.png → entity/turtle/turtle.png
+Moved the following entity textures:
+entity/armadillo.png → entity/armadillo/armadillo.png
+entity/banner_base.png → entity/banner/banner_base.png
+entity/bat.png → entity/bat/bat.png
+entity/beacon_beam.png → entity/beacon/beacon_beam.png
+entity/blaze.png → entity/blaze/blaze.png
+entity/dolphin.png → entity/dolphin/dolphin.png
+entity/enchanting_table_book.png → entity/enchantment/enchanting_table_book.png
+entity/end_gateway_beam.png → entity/end_portal/end_gateway_beam.png
+entity/end_portal.png → entity/end_portal/end_portal.png
+entity/endermite.png → entity/endermite/endermite.png
+entity/experience_orb.png → entity/experience/experience_orb.png
+entity/fishing_hook.png → entity/fishing/fishing_hook.png
+entity/guardian.png → entity/guardian/guardian.png
+entity/guardian_beam.png → entity/guardian/guardian_beam.png
+entity/guardian_elder.png → entity/guardian/guardian_elder.png
+entity/lead_knot.png → entity/lead_knot/lead_knot.png
+entity/minecart.png → entity/minecart/minecart.png
+entity/phantom.png → entity/phantom/phantom.png
+entity/phantom_eyes.png → entity/phantom/phantom_eyes.png
+entity/shield_base.png → entity/shield/shield_base.png
+entity/shield_base_nopattern.png → entity/shield/shield_base_nopattern.png
+entity/silverfish.png → entity/silverfish/silverfish.png
+entity/snow_golem.png → entity/snow_golem/snow_golem.png
+entity/spider_eyes.png → entity/spider/spider_eyes.png
+entity/trident.png → entity/trident/trident.png
+entity/trident_riptide.png → entity/trident/trident_riptide.png
+entity/wandering_trader.png → entity/wandering_trader/wandering_trader.png
+entity/witch.png → entity/witch/witch.png
+
+
+=== Fixes ===
+13 issues fixed
+From released versions before 26.1
+
+MC-302734 – Zombie horses constantly move in and out of water and burn to death.
+MC-304361 – The heads of zombie nautiluses have a massive empty gap on the back.
+MC-304705 – The E value in entity_render_stats in the debug overlay doesn't work.
+MC-304761 – Spears' charge animation takes too long to rotate sideways for slower spears.
+MC-305040 – Nautili spawned as a result of a player breeding two other nautili can despawn.
+From the previous development version
+
+MC-305104 – The "Programmer Art" and "High Contrast" resource packs are listed as incompatible.
+MC-305121 – Some expert level mason trades no longer generate.
+MC-305130 – Farmers sell suspicious stews with 20 times the intended duration.
+MC-305131 – Duplicate trade entries in journeyman level shepherd trades.
+MC-305132 – Master level fletchers can now sell tipped arrows of thick, mundane, and awkward potions.
+MC-305164 – Armorers now buy diamonds at expert level instead of journeyman.
+MC-305175 – The Lunge enchantment now works at 6 hunger and above, instead of 7.
+MC-305279 – Expert cleric sells glowstone instead of ender pearl.
+
+
+== 26.1 Snapshot 3 ==
+26.1 Snapshot 3 (known as 26.1-snapshot-3 in the launcher) is the third snapshot for Java Edition 26.1, released on January 13, 2026. It adds several data pack features, such as new block and fluid tags, world clocks, and time markers.
+
+
+=== Additions ===
+
+
+==== General ====
+Block tags
+
+Added the following tags which determine which blocks a category of vegetation can be placed on and survive.
+#supports_vegetation for blocks that provide support to the following blocks: 
+#supports_crops for blocks that provide support to the following crops at all growth stages:
+Wheat
+Carrot
+Potato
+Beetroot
+Torchflower Crop
+Pitcher Plant
+#supports_stem_crops
+#supports_pumpkin_stem
+#supports_melon_stem
+#supports_sugar_cane
+#supports_sugar_cane_adjacently
+Which blocks satisfy adjacency support requirements for sugar cane
+#supports_cactus
+#supports_chorus_plant
+#supports_chorus_flower
+#supports_nether_sprouts
+#supports_azalea
+#supports_warped_fungus
+#supports_crimson_fungus
+#supports_mangrove_propagule
+#supports_hanging_mangrove_propagule
+#supports_nether_wart
+#supports_warped_roots
+#supports_crimson_roots
+#supports_wither_rose
+#supports_cocoa
+#supports_lily_pad
+#supports_frogspawn
+Empty by default
+#support_override_cactus_flower
+Cactus flowers can be placed on blocks in this tag even if they do not have a sturdy top face.
+Added the following tags which determine which blocks are not able to support specific categories of vegetation.
+#cannot_support_seagrass
+#cannot_support_kelp
+Added #grows_crops which defines which blocks beneath allow the following crops to grow:
+Wheat
+Carrot
+Potato
+Beetroot
+Torchflower Crop
+Pitcher Plant
+Pumpkin Stem
+Melon Stem
+Added the following tags to define which blocks can start particular types of bubble columns.
+#enables_bubble_column_drag_down
+Magma block by default.
+#enables_bubble_column_push_up
+Soul sand by default.
+Fluid tags
+
+Added tags to determine which fluids can support the following blocks:
+#supports_lily_pad
+#supports_frogspawn
+Added #supports_sugar_cane_adjacently
+Contains fluids satisfy adjacency support requirements for sugar cane.
+Added #bubble_columns_can_occupy fluid tag to define which fluids a bubble column can occupy with water as default.
+Time markers
+
+Time markers assign a particular name to a specific (optionally repeating) point in time for a specific world clock. Time markers replace the previously predetermined names that could be used by /time set, for example day or night.
+Time markers will exist within the context of a specific world clock. This means that even though the different time markers are defined by different Timelines, only one Time Marker can exist with a particular id for a particular world clock. It also means that two world clocks can have a time marker with the same name.
+Built-in uses of time markers
+Some time markers are used to drive Vanilla game behavior. Usually, they are configured to not show up in /time commands.
+minecraft:wake_up_from_sleep - the time to advance the dimension's default clock to when players in that dimension wake up after sleeping.
+minecraft:roll_village_siege - the time of the dimension's default clock at which the random chance for a zombie village siege to occur should be evaluated.
+World clocks
+
+Each world clock contains an internal time that increases every tick. A world clock can be defined in data packs under the world_clock registry (i.e. found under data/<namespace>/world_clock/<id>.json)
+A world clock can be paused or resumed, and the time of the clock can be changed or queried, using the /time command.
+This allows different dimensions to have different clocks.
+Format: object with no fields
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Dispenser
+
+Spawn egg without a entity_data component are dropped as an item. Previously, the dispenser failed to activate.
+Tripwire
+
+The tripwire texture is now rendered as alpha cutout instead of transparent.
+This makes the texture opaque now.
+
+
+==== Command format ====
+/swing
+
+Both arguments can now be omitted.
+The entity selector will be @s if omitted
+Which hand to swing will be mainhand if omitted
+/time
+
+The /time command is now based on world clocks.
+A clock can be optionally specified as an input for the time command with /time of <clock> ....
+If the clock is not specified (/time ... as before), the default clock for the dimension is used.
+The return value (e.g. from /execute store) from the set and add subcommands is now the total elapsed ticks of the clock instead of the current time of day.
+Syntax:
+/time [of <clock>] set <time> - sets the total elapsed ticks of the clock.
+/time [of <clock>] set <timemarker> - advances the clock forward to the next occurrence of the time marker..
+For the minecraft:overworld clock, the available time markers are: day, noon, night, and midnight
+/time [of <clock>] add <time> - adds ticks to the clock, can be a negative or a positive number.
+/time [of <clock>] pause - pauses the clock.
+/time [of <clock>] resume - resumes the clock.
+/time [of <clock>] query <timeline> - displays and returns the current number of ticks within the timeline's period.
+/time [of <clock>] query <timeline> repetitions - displays and returns the number of times the timeline's period has repeated.
+/time [of <clock>] query time - displays and returns the total elapsed ticks of the clock.
+/time query gametime - as before, the total elapsed ticks within the world (unaffected by changes made to clocks using /time).
+
+
+==== Items ====
+ Bundles 
+
+Now supports a bundle_container component with a weight greater than 231-1, equivalent to 231-1 stacks.
+Previously, the component was removed when the limit was exceeded.
+A bundle exceeding this limit is shown as full, however, when attempting to empty it, add a new item, or view the tooltip, it still appears empty.
+ Item stack 
+
+Now, in many cases, it is treated as empty if it has conflicting data, such as having a count greater than max_stack_size, or having max_stack_size greater than one along with max_damage.
+When mining a shulker box containing an item stack with a conflicting data, it will treat the item as Air x0 in the tooltip, and placing it in a block the item stack will be removed.
+Shooting an arrow with a conflicting data using a crossbow will not be a project.
+Using a bundle to remove an item stack with a conflicting data, no items will be dropped. Viewing the tooltip of the bundle, the game try render an empty stack, causing the game to crash.
+Item stacks with conflicting data can still be placed in chests and in the inventory.
+
+
+==== General ====
+General
+
+Added -XX:+UseCompactObjectHeaders -XX:+AlwaysPreTouch -XX:+UseStringDeduplication to the default JVM arguments.
+Data pack
+
+The pack format version is now 97.0.
+Debug screen
+
+The day_count debug entry has been split from local_difficulty.
+Dimension types
+
+Added the field default_clock: optional world clock ID.
+Specifies the default clock that will be used for the /time command.
+If a default clock is specified, the time command requires an explicit clock argument.
+Also specifies the clock to which minecraft:wake_up_from_sleep and minecraft:roll_village_siege time markers apply.
+If not specified, those time markers will never apply in that dimension.
+Game rules
+
+The game rules screen is now accessible in-game through a new World Options screen in the pause menu.
+A search bar has been added to the top of the game rules screen, both in-game and in the world creation menu.
+Game Tests
+
+Replaced time_of_day with clock_time.
+Added a new required field clock: world clock ID, the clock within which to set time (from the existing time field).
+Options
+
+The difficulty button in the pause menu has been replaced with a button leading to a new screen - World Options.
+The world options screen contains the difficulty button as well as a button for changing game rules.
+The game rules screen is available for all operators and otherwise disabled.
+Predicates
+
+minecraft:time_check loot predicate
+Added clock field: a world clock ID, specifies which world clock the time check should be done for.
+Recipes
+
+result field should now be more consistent across all recipe types that contain it.
+It will now accept short form (e.g. "minecraft:foo", which is equivalent to {"id":"minecraft:foo", "count": 1}).
+For recipe types smelting, blasting, smoking and campfire_cooking this field now also accepts count field.
+Resource pack
+
+The version is now 78.0.
+Tags
+
+Block Tags
+Renamed the following tags for consistency:
+#dry_vegetation_may_place_on → #supports_dry_vegetation
+#bamboo_plantable_on → #supports_bamboo
+#small_dripleaf_placeable → #supports_small_dripleaf
+#big_dripleaf_placeable → #supports_big_dripleaf
+#mushroom_grow_block → #overrides_mushroom_light_requirement
+Mushrooms cannot survive without a light level below 13 if not in the above tag.
+#snow_layer_can_survive_on → #support_override_snow_layer
+Snow layers can be placed on blocks in this tag even if they do not have a top full face.
+#snow_layer_cannot_survive_on → #cannot_support_snow_layer
+Timelines
+
+Added a clock field: a world clock ID, specifies which world clock the timeline is tied to.
+This field is required, but to match previous behavior the minecraft:overworld clock can be used
+Added an optional time_markers field, an optional map between namespaced Time Marker IDs and either an int or a Time Marker object.
+Format:
+Non-negative int, the tick that the time marker marks.
+Or object with fields:
+ticks: int between 0 and period_ticks, the tick that the time marker marks.
+show_in_commands: optional boolean, specifies whether the Time Marker will show up in command suggestions.
+Default: false
+
+
+=== Fixes ===
+11 issues fixed
+From released versions before 26.1
+
+MC-233911 – Sleeping in a bed and waking up no longer instantly sets the daytime sky
+MC-297536 – Z-fighting occurs on the debug crosshair.
+MC-299992 – Unexpected behavior when giving or testing for an item with certain components manually specified as their default values.
+MC-305292 – Copper chests use the Christmas present texture.
+From the Java Edition 26.1 development versions
+
+MC-305105 – The spear in an entity's main hand gets animated when their off hand arm is swung using /swing.
+MC-305156 – Dialog elements are not displayed until the UI is refreshed.
+MC-305251 – Breezes are aggressive toward every mob.
+MC-305261 – The enchant_with_levels and enchant_randomly functions can crash the game.
+MC-305459 – Villagers spawned from spawn eggs use the biome at the world origin (0, 0, 0) for their variant.
+From the previous development version
+
+MC-305540 – Wandering traders sell pumpkins instead of kelp for 3 emeralds.
+MC-305577 – Piglins no longer flee from greater numbers of hoglins.
+
+
+== 26.1 Snapshot 4 ==
+26.1 Snapshot 4 (known as 26.1-snapshot-4 in the launcher) is the fourth snapshot for Java Edition 26.1, released on January 20, 2026, which changes the models of baby horses, donkeys, and mules, as well as zombie and skeleton horses, adds new tags, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Block tags
+
+Added the following tags which determine which blocks a category of vegetation can be placed on and survive:
+#supports_stem_fruit
+#supports_pumpkin_stem_fruit
+#supports_melon_stem_fruit
+
+
+=== Changes ===
+
+
+==== Mobs ====
+
+Baby mobs
+
+Changed the textures and models of the following baby mobs:
+Donkey
+Horse
+Mule
+Skeleton horse
+Zombie horse
+Increased the hitbox size of baby horses, skeleton horses, and zombie horses to better fit each new model.
+
+
+==== General ====
+Block tags
+
+Added #sand and removed sand to #supports_sugar_cane tag.
+Data pack
+
+The pack format version is now 97.1.
+Villager and piglin inventory slots can now only be accessed using mob.inventory.*. villager.* and piglin.* have been removed.
+Resource pack
+
+The version is now 78.1.
+Sounds
+
+Added new sound events for the baby horse:
+entity.baby_horse.ambient
+entity.baby_horse.hurt
+entity.baby_horse.death
+entity.baby_horse.angry
+entity.baby_horse.eat
+entity.baby_horse.fall
+entity.baby_horse.land
+entity.baby_horse.step
+entity.baby_horse.breathe
+Textures
+
+Entity textures
+Added new entity textures:
+entity/horse/donkey_baby.png
+entity/horse/horse_black_baby.png
+entity/horse/horse_brown_baby.png
+entity/horse/horse_chestnut_baby.png
+entity/horse/horse_creamy_baby.png
+entity/horse/horse_darkbrown_baby.png
+entity/horse/horse_gray_baby.png
+entity/horse/horse_blackdots_baby.png
+entity/horse/horse_markings_white_baby.png
+entity/horse/horse_markings_whitedots_baby.png
+entity/horse/horse_markings_whitefield_baby.png
+entity/horse/horse_skeleton_baby.png
+entity/horse/horse_white_baby.png
+entity/horse/horse_zombie_baby.png
+entity/horse/mule_baby.png
+World clocks
+
+Added minecraft:the_end world clock to the End dimension.
+It now controls End flashes.
+
+
+=== Fixes ===
+21 issues fixed
+From released versions before 26.1
+
+MC-131745 – Shipwrecks sometimes generate split into different variants at chunk boundaries.
+MC-298136 – The aura of beacon beams now always renders behind block entities.
+MC-302635 – Semi-transparent blocks render in front of solid blocks when viewed through semi-transparent blocks being pushed by a piston.
+MC-305699 – Piglins in groups fail to initiate hoglin hunting behavior.
+From the Java Edition 26.1 development versions
+
+MC-305134 – "villager." and "piglin." can both test both villagers' and piglins' inventories.
+MC-305510 – The top texture of stripped spruce logs is now inconsistent with Bedrock Edition.
+MC-305632 – The minimum prices for enchanted books traded by librarians are inconsistent with the established price calculation formula.
+MC-305674 – You can sell water bottles to wandering traders up to 12 times, instead of 2.
+MC-305675 – Even when "Villager Trade Rebalance" is enabled, master armorers still sell diamond armor without buying diamonds.
+MC-305676 – When "Villager Trade Rebalance" is enabled, master desert armorers sell diamond leggings for 4 diamonds instead of 3 diamonds.
+MC-305677 – When "Villager Trade Rebalance" is enabled, master savanna armorers sell diamond chestplates for 6 emeralds and 2 diamonds instead of 8 emeralds and 3 diamonds.
+From the previous development version
+
+MC-305691 – Villagers have insomnia.
+MC-305695 – Piglins spawned from spawn eggs now immediately hunt.
+MC-305700 – Hoglins and zoglins no longer attack.
+MC-305708 – Sugar cane can no longer be placed on red sand.
+MC-305711 – Wardens spawned from spawn eggs now immediately burrow into the ground.
+MC-305719 – Iron golems now spawn in abundance.
+MC-305743 – When the "Villager Trade Rebalance" experiment is enabled, novice armorers sell iron boots for 5 iron ingots.
+MC-305744 – When the "Villager Trade Rebalance" experiment is enabled, apprentice armorers sell iron helmets instead of iron leggings or chestplates.
+MC-305747 – When the "Villager Trade Rebalance" experiment is enabled, journeyman armorers sell chainmail chestplates instead of bells.
+MC-305767 – Melons and pumpkins now grow only on farmland.
+
+
+== 26.1 Snapshot 5 ==
+26.1 Snapshot 5 (known as 26.1-snapshot-5 in the launcher) is the fifth snapshot for Java Edition 26.1, released on January 27, 2026.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Golden dandelion
+
+Crafted with a dandelion and 8 gold nuggets:
+
+Can also be bought from wandering traders.
+When used on a baby mob, it will stop aging. This sets NBT attribute AgeLocked to 1.
+When used again, it will continue to age again. This sets NBT attribute AgeLocked to 0.
+Cannot be used on monsters (including undead mounts) and villagers.
+Can be placed and potted like other flowers.
+Can be used to craft yellow dye and a Saturation suspicious stew.
+
+
+==== General ====
+Data component format
+
+Added minecraft:dye.
+Represents a color of dye.
+Used in various places that previously required the exact dye item, including mob and block interactions.
+The presence of this component itself does not enable functionality. The item has to be explicitly allowed for the given functionality, for example by adding it to tags or changing recipe ingredients.
+Format: one of white, orange, magenta, light_blue, yellow, lime, pink, gray, light_gray, cyan, purple, blue, brown, green, red, black
+Tags
+
+Entity Tags
+Added #cannot_be_age_locked
+Defines which baby mobs that age that can not have its aging stopped using a golden dandelion.
+Item Tags
+Added #dyes
+Contains all vanilla dyes.
+Added #loom_dyes
+Contains all items that are allowed in the Loom screen to set pattern colors.
+The loom screen also requires the minecraft:dye component to be present on item stacks.
+Added #loom_patterns
+Contains all items that are allowed in the loom screen to unlock patterns.
+The loom screen also requires the minecraft:provides_banner_patterns component to be present on item stacks.
+Added #cat_collar_dyes
+Contains all items that can be used to dye a pet cat's collar.
+The color will be taken from the minecraft:dye component of the used item stack.
+Added #wolf_collar_dyes
+Contains all items that can be used to dye a pet wolf's collar.
+The color will be taken from the minecraft:dye component of the used item stack.
+Added #cauldron_can_remove_dye
+Contains all items that can be used on water-filled cauldron to remove minecraft:dyed_color component.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Baby mobs
+
+Updated the models and textures of the following baby mobs:
+Axolotl
+Dolphin
+Glow squid
+Squid
+Turtle
+Increased the hitbox size of baby axolotls, glow squids, and squids to better fit each new model.
+
+
+==== General ====
+Data pack
+
+The pack format version is now 98.0.
+Environment attribute
+
+Updated the gameplay/turtle_egg_hatch_chance environment attribute to have a default value of 0.002.
+Game rules
+
+The search bar now also selects game rules based on description and category in addition to namespaced ID and name.
+Loot functions
+
+minecraft:set_random_dyes
+No longer works only for items in #dyeable tag.
+Recipes
+
+minecraft:crafting_special_mapcloning recipe type has been removed, functionality has been absorbed by minecraft:crafting_transmute.
+New show_notification fields with the same functionality as existing one in minecraft:crafting_shaped have been added to the following existing recipe types:
+minecraft:crafting_shapeless
+minecraft:crafting_shaped
+minecraft:crafting_transmute
+minecraft:smelting
+minecraft:blasting
+minecraft:smoking
+minecraft:campfire_cooking
+minecraft:stonecutting
+minecraft:smithing_transform
+minecraft:smithing_trim
+Removed unused group field from recipes without a recipe book:
+minecraft:stonecutting
+minecraft:smithing_transform
+minecraft:smithing_trim
+Renamed the following stonecutter recipes, along with the relevant advancement:
+minecraft:chiseled_stone_bricks_stone_from_stonecutting was renamed to minecraft:chiseled_stone_bricks_from_stone_stonecutting
+minecraft:end_stone_brick_slab_from_end_stone_brick_stonecutting was renamed to minecraft:end_stone_brick_slab_from_end_stone_bricks_stonecutting
+minecraft:end_stone_brick_stairs_from_end_stone_brick_stonecutting was renamed to minecraft:end_stone_brick_stairs_from_end_stone_bricks_stonecutting
+minecraft:end_stone_brick_wall_from_end_stone_brick_stonecutting was renamed to minecraft:end_stone_brick_wall_from_end_stone_bricks_stonecutting
+minecraft:mossy_stone_brick_slab_from_mossy_stone_brick_stonecutting was renamed to minecraft:mossy_stone_brick_slab_from_mossy_stone_bricks_stonecutting
+minecraft:mossy_stone_brick_stairs_from_mossy_stone_brick_stonecutting was renamed to minecraft:mossy_stone_brick_stairs_from_mossy_stone_bricks_stonecutting
+minecraft:mossy_stone_brick_wall_from_mossy_stone_brick_stonecutting was renamed to minecraft:mossy_stone_brick_wall_from_mossy_stone_bricks_stonecutting
+minecraft:prismarine_brick_slab_from_prismarine_stonecutting was renamed to minecraft:prismarine_brick_slab_from_prismarine_bricks_stonecutting
+minecraft:prismarine_brick_stairs_from_prismarine_stonecutting was renamed to minecraft:prismarine_brick_stairs_from_prismarine_bricks_stonecutting
+minecraft:quartz_slab_from_stonecutting was renamed to minecraft:quartz_slab_from_quartz_block_stonecutting
+minecraft:stone_brick_walls_from_stone_stonecutting was renamed to minecraft:stone_brick_wall_from_stone_stonecutting
+minecraft:crafting_transmute
+Recipes with this type can now accept multiple items matched by the material ingredient.
+Added fields:
+material_count - integer range describing the amount of items matched by the material ingredient.
+Must be a subrange of [1,8]
+Default: [1,1] (i.e. exactly one item).
+add_material_count_to_result - boolean field (default: false).
+When true, the amount of slots containing items matched by the material ingredient will be added to the final count of the result.
+minecraft:crafting_dye
+Replaces minecraft:crafting_special_armordye
+Output:
+This recipe will first mix the current value of the minecraft:dyed_color component from the item matched by the target ingredient with the minecraft:dye component values from the items matched by the dye ingredients.
+Result will be built by transmuting the item matched by the target ingredient into the result item stack and then applying the new value of the minecraft:dyed_color component.
+Fields:
+category - crafting book category, one of building, redstone, equipment, misc, default: misc
+group - string value used for grouping recipes in the crafting book, default: empty string
+show_notification - optional boolean describing if a popup should be shown when this recipe is unlocked, default: true
+target - ingredient (was harcoded to #dyeable tag).
+dye - ingredient (was hardcoded to dye items).
+The minecraft:dye component is required on matching items for the whole recipe to match.
+result - resulting item stack (was always a copy of the item matched by the target ingredient).
+minecraft:crafting_imbue
+Replaces minecraft:crafting_special_tippedarrow
+Matches a single source ingredient surrounded by eight material ingredients
+Output:
+This recipe will copy the minecraft:potion_contents component value from the item matched by the source ingredient to the resulting stack.
+Fields:
+category - crafting book category, one of building, redstone, equipment, misc, default: misc
+group - string value used for grouping recipes in the crafting book, default: empty string
+show_notification - optional boolean describing if a popup should be shown when this recipe is unlocked, default: true
+source - ingredient (was hardcoded to minecraft:lingering_potion)
+material - ingredient (was hardcoded to minecraft:arrow)
+result - resulting item stack (was hardcoded to eight minecraft:tipped_arrow)
+minecraft:crafting_special_bannerduplicate
+Ingredients can now be restrained.
+Output can now be configured.
+The recipe still only works for banner items.
+Removed unused category field.
+Added fields:
+banner - ingredient to be used for both source and target items (was hardcoded to any banner item).
+result - resulting item stack (was always a copy of the Banner item with non-empty pattern).
+Output:
+The recipe finds the first banner item matched by the banner ingredient and treats it as the source banner.
+Result will be built by transmuting the source banner into the result item stack.
+The source banner will be kept in the crafting grid.
+minecraft:crafting_special_bookcloning
+Ingredients and output can now be configured.
+Removed unused category field.
+Added fields:
+source - ingredient to be used as a source book
+The minecraft:written_book_contents component is required on the matching item for the whole recipe to match.
+material - ingredient to target the item to be cloned (was hardcoded to #book_cloning_target tag).
+allowed_generations - integer range describing allowed value of the generation field of minecraft:written_book_contents component on the item matched by the material ingredient.
+Must be a subrange of [0,2]
+Default: [0,1] (i.e. accepting original and first copies, but not copies of a copy).
+result - resulting item stack (was always a copy of the item matched by the source ingredient).
+Output:
+The recipe will first take the value of minecraft:written_book_contents component in the item matched by the source ingredient.
+Field generation in minecraft:written_book_contents will be incremented by one.
+The recipe will not yield a result if the value of generation is 2 or more.
+Result will be built by transmuting item matched by the source ingredient to the result item stack and then applying the new value of minecraft:written_book_contents component.
+Number of items matched by the material ingredient beyond the first one will be added to the resulting stack size.
+The original item matched by the source ingredient will be kept in the crafting grid.
+minecraft:crafting_decorated_pot
+Ingredients and result can now be configured.
+Removed unused category field.
+Added fields:
+back, left, right, front - ingredients (was hardcoded to #decorated_pot_ingredients).
+result - resulting item stack (was hardcoded to a single minecraft:decorated_pot).
+Other functionality remains unchanged, i.e. items matched by ingredients will be added to the matching fields in the minecraft:pot_decorations component of the resulting stack.
+minecraft:crafting_special_firework_rocket
+Ingredients and result can now be configured.
+Removed unused category field.
+Added fields:
+shell - ingredient (was hardcoded to minecraft:paper).
+fuel - ingredient (was hardcoded to minecraft:gunpowder).
+star - ingredient (was hardcoded to minecraft:firework_star).
+result - resulting item stack (was hardcoded to three minecraft:firework_rocket).
+Output:
+Exactly one stack matching the shell ingredient must be present.
+The number of stacks matching the fuel ingredient will control the flight_duration field.
+The explosions field will be copied from the minecraft:firework_explosion component of the star ingredient (if any).
+minecraft:crafting_special_firework_star_fade
+Ingredients can now be configured.
+Removed unused category field.
+The recipe will now use the minecraft:dye component instead of a hardcoded mapping of dye items to colors.
+Added fields:
+target - ingredient (was hardcoded to minecraft:firework_star).
+dye - ingredient (was hardcoded to dye items).
+The minecraft:dye component is required on matching items for the whole recipe to match.
+result - resulting item stack (was always a copy of the item matched by the target ingredient).
+Output:
+This recipe will find the current value of the minecraft:firework_explosion component from the item matched by the target ingredient.
+The fade_colors field of the minecraft:dye component will be set to the values from the items matched by the dye ingredients.
+Result will be built by transmuting item matched by the target ingredient into the result item stack and then applying the new value of minecraft:firework_explosion component.
+minecraft:crafting_special_firework_star
+Ingredients and result can now be configured.
+Removed unused category field.
+Added fields:
+trail - ingredient (was hardcoded to minecraft:diamond).
+twinkle - ingredient (was hardcoded to minecraft:glowstone_dust).
+fuel - ingredient (was hardcoded to minecraft:gunpowder).
+dye - ingredient (was hardcoded to dye items).
+The minecraft:dye component is required on matching items for the whole recipe to match.
+shapes - a map of shapes to ingredients.
+Allowed keys are the same as the ones for the shape field in the minecraft:firework_explosion component (i.e. small_ball, large_ball, star, creeper, burst).
+Was hardcoded to: minecraft:fire_charge - large_ball, minecraft:feather - burst, minecraft:gold_nugget - star, any skull or head - creeper
+result - resulting item stack (was hardcoded to three minecraft:firework_star).
+The recipe will now use the minecraft:dye component instead of a hardcoded mapping of dye items to colors.
+Output:
+Exactly one stack matching the fuel ingredient must be present.
+Result will be based on the result field, with the contents of the minecraft:firework_explosion component built with following values:
+The values of the minecraft:dye component of items matched by the dye ingredient will be added to the colors field.
+If an item matched by the trail ingredient is present, the has_trail field will be set to true.
+If an item matched by the twinkle ingredient is present, the has_twinkle field will be set to true.
+The shape field will be set based on the item matched by any of ingredients in the shape field (or small_ball if none is found).
+minecraft:crafting_special_mapextending
+Ingredients and output can now be configured.
+Removed unused category field.
+Added fields:
+map - ingredient (was hardcoded to minecraft:filled_map with minecraft:map_id components).
+minecraft:map_id component is required on the matching map item for the whole recipe to match.
+material - ingredient (was hardcoded to minecraft:paper).
+result - resulting item stack (was always a copy of the item matched by the map ingredient).
+If isn't a minecraft:filled_map, the game crashes or attempts to retrieve the item it from the crafting table, due to a lack of necessary post-processing.
+Output:
+The recipe finds the item matched by the map ingredient with the minecraft:map_id component set.
+Result will be built by transmuting the source item into the result item stack.
+minecraft:map_post_processing component will be set on the result item.
+The source item will be kept in the crafting grid.
+minecraft:crafting_special_shielddecoration
+Ingredients and output can now be configured.
+Removed unused category field.
+Added fields:
+banner - ingredient (was hardcoded to any banner item).
+Will only match if the item is a banner.
+target - ingredient (was hardcoded to minecraft:shield).
+minecraft:banner_patterns component must be not set or be empty for the whole recipe to match.
+result - resulting item stack (was always a copy of the item matched by the target ingredient).
+Functionality remains unchanged, i.e. this recipe will apply the following changes to the copy of the item matched by the target ingredient:
+Output:
+Result will be built by transmuting the item matched by the target ingredient into the result item stack and then:
+Copying the minecraft:banner_patterns component from the item matched by the banner ingredient.
+Setting the minecraft:base_color component based on the type of the banner matched by the banner ingredient.
+Resource pack
+
+The version is now 79.0.
+The glow particles emitted by glow squids, lightning rods, blocks being waxed, unwaxed and scraped is now rendered as opaque, since they never actually used translucency.
+Removed demo_background.png in favor of popup/background.png sprite.
+Sounds
+
+Added new sound events for the baby chicken:
+entity.baby_chicken.ambient
+entity.baby_chicken.hurt
+entity.baby_chicken.death
+Added new sound events for golden dandelion:
+item.golden_dandelion.use
+item.golden_dandelion.unuse
+Tags
+
+Removed the #dyeable item tag.
+Added golden_dandelion to #piglin_loved, and #small_flowers item tags.
+Added golden_dandelion to #small_flowers block tag.
+Added potted_golden_dandelion to #flower_pot block tag.
+Added wandering_trader/emerald_golden_dandelion to wandering_trader/common villager trade tag.
+Text components
+
+Tags resolved from minecraft:nbt text components, with interpret: false, are now pretty-printed instead of being flattened into a single text component.
+Textures
+
+Added new block textures:
+block/golden_dandelion.png
+
+
+=== Fixes ===
+14 issues fixed
+From released versions before 26.1
+
+MC-102774 – You can respawn the ender dragon with only two end crystals.
+MC-163978 – Mobs can spawn on moving blocks.
+MC-260148 – show_notification only works for shaped crafting recipes.
+MC-305388 – Bees never cease to be angry.
+MC-305888 – Turtle eggs no longer hatch in the Nether or the End.
+From the Java Edition 26.1 development versions
+
+MC-305145 – Emissive elements of items are invisible in the GUI.
+MC-305457 – The targeted fluid is always displayed as "empty" in the debug overlay.
+MC-305692 – The World Options menu does not display or update properly for clients connected to dedicated servers.
+MC-305693 – Smelting recipes do not add the correct count of items to the output.
+MC-305698 – Some functions fail to load due to "components not bound yet".
+MC-305732 – Dedicated server operators can make all monsters despawn unintentionally with the World Options screen.
+From the previous development version
+
+MC-305847 – Closed captions for baby horses are untranslated.
+MC-305850 – Translucent blocks and fluids are no longer visible behind translucent particles if "Improved Transparency" is disabled.
+MC-305886 – Unused sound event 'entity.baby_horse.fall'.
+
+
+== 26.1 Snapshot 6 ==
+26.1 Snapshot 6 (known as 26.1-snapshot-6 in the launcher) is the sixth snapshot for Java Edition 26.1, released on February 3, 2026, which add new textures and models for the baby armadillo, bee, camel, fox, goat, llama, polar bear, and trader llama. It also includes many changes for data packs and resource packs.
+
+
+=== Additions ===
+
+
+==== General ====
+Tags
+
+Block tags
+Split apart #dirt into multiple block tags.
+#dirt now only contains dirt, coarse dirt and rooted dirt.
+#mud contains mud and muddy mangrove roots.
+#moss_blocks contains moss block and pale moss block.
+#grass_blocks contains grass block, mycelium and podzol.
+Added #substrate_overworld which contains #dirt, #mud, #moss_blocks and #grass_blocks
+This is used as a collection for world generation conditions.
+Added the following tags which define which ground blocks beneath an applicable tree or bamboo can be replaced with podzol:
+#beneath_tree_podzol_replaceable
+#beneath_bamboo_podzol_replaceable
+Added #cannot_replace_below_tree_trunk which contains #dirt, #mud, #moss_blocks and podzol.
+Added the following tags defining which blocks their feature can be placed on:
+#forest_rock_can_place_on
+#huge_brown_mushroom_can_place_on
+#huge_red_mushroom_can_place_on
+Added #ice_spike_replaceable defining which blocks an ice spike feature can replace.
+Item tags
+Added the following tags which mirror their block tag contents:
+#mud
+#moss_blocks
+#grass_blocks
+
+
+=== Changes ===
+
+
+==== Mobs ====
+
+Axolotl
+
+Baby axolotls now have a play dead animation.
+Baby mobs
+
+Changed the textures and models of the following baby mobs:
+Armadillo
+Bee
+Camel
+Fox
+Goat
+Llama
+Polar bear
+Trader llama
+
+Camel
+
+Saddles on baby camels will no longer render.
+Camel husk
+
+No longer has a baby model.
+Polar bear
+
+Baby polar bears no longer attack foxes.
+
+
+==== General ====
+Data pack
+
+The pack format version is now 99.0.
+Dimension types
+
+Added the field has_ender_dragon_fight: boolean
+Controls whether it is possible for an ender dragon fight to exist in the dimension.
+level.dat
+
+The Player tag has been replaced with a singleplayer_uuid tag, referencing the player data file to use.
+Difficulty-related settings have been moved into a difficulty_settings tag.
+Difficulty is renamed to difficulty and is now a string instead of an integer.
+Allowed values:
+peaceful
+easy
+normal
+hard
+DifficultyLocked was renamed to locked
+Data for the ender dragon fight has been moved out to the data folder.
+It can now be found at dimensions/minecraft/the_end/data/minecraft/ender_dragon_fight.dat
+The ender dragon fight can be activated in other dimensions.
+Data changes:
+NeedsStateScanning has been renamed to needs_state_scanning
+DragonKilled has been renamed to dragon_killed
+PreviouslyKilled has been renamed to previously_killed
+IsRespawning has been replaced by respawn_stage
+Allowed values:
+start
+preparing_to_summon_pillars
+summoning_pillars
+summoning_dragon
+end
+Dragon has been renamed to dragon_uuid
+ExitPortalLocation has been renamed to exit_portal_location
+Gateways has been renamed to gateways
+Added respawn_time
+The time that has elapsed since the current stage of the respawn sequence started.
+Added respawn_crystals
+A list of UUIDs for the end crystals used to trigger the respawn sequence.
+Wandering Trader data has been moved out to the data folder.
+It can now be found at data/minecraft/wandering_trader.dat
+Data changes:
+WanderingTraderId has been removed
+WanderingTraderSpawnChance has been renamed to spawn_chance
+WanderingTraderSpawnDelay has been renamed to spawn_delay
+CustomBossEvents has been moved to the data folder.
+It can now be found at data/minecraft/custom_boss_events.dat
+Weather-related data has been moved to the data folder.
+It can now be found at data/minecraft/weather.dat
+Data changes:
+clearWeatherTime has been renamed to clear_weather_time
+rainTime has been renamed to rain_time
+thunderTime has been renamed to thunder_time
+ScheduledEvents has been moved out to the data folder.
+It can now be found at data/minecraft/scheduled_events.dat
+Data changes:
+Name has been renamed to id
+TriggerTime has been renamed to trigger_time
+Callback has been renamed to callback
+Type has been renamed to type
+Name has been renamed to id
+game_rules has been moved out to the data folder.
+It can now be found at data/minecraft/game_rules.dat
+WorldGenSettings has been moved out to the data folder.
+It can now be found at data/minecraft/world_gen_settings.dat
+Data changes:
+generate_features has been renamed to generate_structures
+world_clocks has been moved out to the data folder.
+It can now be found at data/minecraft/world_clocks.dat
+Level format
+
+All default dimensions are now stored in the dimensions subfolder.
+Data for the Overworld has been moved from the root folder to dimensions/minecraft/overworld
+This includes the region, entities, and poi folders, as well as related files out of data.
+Data for the Nether has been moved from DIM-1 to dimensions/minecraft/the_nether
+Data for the End has been moved from DIM1 to dimensions/minecraft/the_end
+The top level data folder is now only for data shared across dimensions instead of also for the Overworld.
+Player storage has been moved to the players subdirectory.
+advancements -> players/advancements
+playerdata -> players/data
+stats -> players/stats
+The world resource pack (resources.zip) has been moved to the resourcepacks subdirectory.
+Data saved in the data folder is now namespaced.
+This means that all that data will now be stored in a namespace subfolder in the corresponding data folder.
+All existing vanilla data files have been moved accordingly.
+Example: data/scoreboard.dat -> data/minecraft/scoreboard.dat
+Command storage is now stored in namespace subfolders instead of having a namespace suffix.
+Example: data/command_storage_foo.dat -> data/foo/command_storage.dat
+chunks.dat has been renamed to chunk_tickets.dat
+Data for maps is now stored in the data/minecraft/maps subfolder.
+Map index files have been renamed to only the number.
+Example: map_1.dat -> 1.dat
+idcounts.dat has been renamed to last_id.dat
+There is no more raids_end.dat special case.
+The End now uses raids.dat as well.
+Structures saved by Structure Blocks have been moved from generated/namespace/structures to generated/namespace/structure
+Resource pack
+
+The version is now 80.0.
+Shaders & Post-process Effects
+
+The core/rendertype_item_entity_translucent_cull shaders have been removed in favor of core/entity
+The core/rendertype_entity_alpha and core/rendertype_entity_decal shaders have been replaced by a DISSOLVE flag implemented by core/entity
+Rendering of items (in UI and in the world) has been split from the core/entity into new core/item shaders.
+Sounds
+
+Added sound event for baby chicken step.
+Entity type tags
+
+Added skeleton_horse, zombie_horse, and villager to #cannot_be_age_locked entity tag.
+Textures
+
+Added new entity textures:
+entity/bee/bee_baby.png
+entity/bee/bee_angry_baby.png
+entity/bee/bee_nectar_baby.png
+entity/bee/bee_angry_nectar_baby.png
+entity/fox/fox_baby.png
+entity/fox/fox_snow_baby.png
+entity/fox/fox_sleep_baby.png
+entity/fox/fox_snow_sleep_baby.png
+entity/camel/camel_baby.png
+entity/goat/goat_baby.png
+entity/armadillo/armadillo_baby.png
+entity/bear/polarbear_baby.png
+entity/llama/llama_creamy_baby.png
+entity/llama/llama_white_baby.png
+entity/llama/llama_brown_baby.png
+entity/llama/llama_gray_baby.png
+entity/equipment/llama_body/trader_llama_baby.png
+UI
+
+Worlds that need to be upgraded will now show Upgrade and Play instead of Play Selected World.
+The Edit World and Re-Create World buttons are disabled until the world has been upgraded.
+When starting such a world, a new upgrade progress screen will be shown.
+World generation
+
+Rule-based block state providers have changed so that their fallback is optional and can be empty.
+In such cases that an empty fallback is invoked, features that use them will not place anything.
+Current configuration that uses a rule-based block state provider is the state_provider in the disk feature.
+forest_rock configured feature has been renamed to block_blob
+block_blob feature configuration has changed to support the following parameters:
+state - The block the rock is made out of.
+can_place_on - A block predicate that defines which blocks the rock can be placed on.
+ice_spike configured feature has been renamed to spike
+spike feature configuration now supports the following parameters:
+state - The block the spike is made out of.
+can_place_on - A block predicate that defines which blocks the spike can be placed on.
+can_replace - A block predicate that defines which blocks the spike can replace.
+huge_red_mushroom and huge_brown_mushroom feature configurations have a new parameter:
+can_place_on - A block predicate that defines which blocks the huge mushroom can be placed on.
+alter_ground tree decorator configuration has changed so that provider is now a rule-based block state provider.
+tree feature configuration has replaced the force_dirt and dirt_provider parameters with a single below_trunk_provider rule-based block state provider:
+Format:
+fallback - An optional block state provider.
+rules - A list of rules.
+if_true - A block predicate that checks the block position before providing the block.
+then - A block state provider.
+Default value:
+
+Any trees that previously used force_dirt have a below_trunk_provider that always provides a dirt block instead.
+
+
+=== Fixes ===
+15 issues fixed
+From released versions before 26.1
+
+MC-134573 – The game freezes while doing a world backup.
+MC-259032 – /data produces a positive result for low negative numbers.
+MC-264187 – Spawners with their light limits set to ranges that don't include 15 don't spawn mobs under the night sky.
+MC-273228 – Crash when generating water lakes using a custom worldgen datapack.
+MC-303403 – Hanging sign block displays render dark and above other blocks and mobs.
+MC-306123 – Wolves still try to attack players even in Peaceful difficulty.
+From the 26.1 development versions
+
+MC-305598 – The "wolf_baby_angry4" sound (angry puppy sound) ends abruptly.
+MC-305813 – The game crashes due to an integer overflow when loading a level with a large number of days.
+MC-305887 – The eating sound for baby horses is noticeably too low-pitched.
+MC-305923 – Bubble columns delete waterlogged blocks that intersect them.
+From the previous development version
+
+MC-305988 – Golden dandelions can't be fed to tadpoles.
+MC-306022 – Golden dandelions work on tamed baby skeleton horses and zombie horses.
+MC-306035 – The "Birthday Song" advancement is no longer being granted.
+MC-306057 – The AgeLocked NBT tag isn't saved when picking up a baby axolotl in a bucket.
+Other
+
+Fixed the baby chicken's wings and the warm chicken's stripes.​​[more information needed]
+
+
+== 26.1 Snapshot 7 ==
+26.1 Snapshot 7 (known as 26.1-snapshot-7 in the launcher) is the seventh snapshot for Java Edition 26.1, released on February 11, 2026.  It adds new textures and modules for baby hostile mobs and villagers, adds trumpet instrument sounds that can be heard by placing a note block on any copper block.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Note block
+
+Added the trumpet instrument.
+It can be heard when a note block is placed on top of a block of copper.
+The sound is different based on the oxidation level of the copper block.
+
+
+==== Items ====
+Golden dandelion
+
+Can now be used on baby hoglins.
+
+
+==== Mobs ====
+
+Baby mobs
+
+Changed the textures and models of the following baby mobs, increasing their bounding boxes to better fit the new models:
+Zombie
+Husk
+Drowned
+Piglin
+Zombified piglin
+Villager
+Zombie villager
+Baby villager and zombie villagers
+
+Now made up of a base model with overlays for each type.
+
+Skeleton horses and zombie horses
+
+Baby variant no longer grows up.
+
+
+==== General ====
+General
+
+Changed the internals of how chunk geometry data is stored in GPU memory and how they are rendered.
+Block model
+
+Any block model can now support cutout or translucent (partially transparent pixels) textures.
+Whether a quad is rendered in the cutout or translucent render pass is determined by the contents of its assigned sprite.
+Any sprite with translucent (partially transparent) pixels will be assigned to the "translucent" pass.
+Any sprite with fully transparent pixels will be assigned to the "cutout" pass.
+All other sprites are assigned to the "solid" pass.
+The format of the textures map has been updated:
+Non-string entries will now be rejected, instead of interpreted as strings.
+Alongside the previous inline sprite ID form, entries can now be defined as an object with fields:
+sprite - the sprite ID
+force_translucent - optional boolean, true if any geometry with this texture should be forced into the "translucent" pass.
+This is useful for example for blocks that don't have any translucent pixels, but use the mean mipmap strategy.
+Default: false
+Chat
+
+The chat screen can now always be opened, even when chatting is restricted by settings.
+When the chat screen is open, specific actions and message types may still be restricted.
+Information about the restrictions (if there are any) is displayed on top of the chat box and above the chat input when the chat screen is open.
+The same information can also be accessed in World Settings screen.
+Chat entries from client actions like taking screenshots will now be displayed even when messages from players and servers are restricted.
+Changing chat settings will now hide all messages of restricted types and discard any new ones.
+The handling of chat messages on a published local server is now more consistent with dedicated servers in regard to chat settings.
+Data pack
+
+The pack format version is now 99.1.
+Mob sound variant
+
+Added adult sound variants for the following animals:
+Cats have a new variant called royal.
+Pigs have new variants called mini and big.
+Cows have a new variant called moody.
+Chickens have a new variant called picky.
+The original sounds of each animal are used for the variant called classic.
+Every one of these animals will have a random sound variant assigned to it from the new variants and the original one.
+Cat sound variants
+Cat sound variants can be data-driven by adding entries to data//cat_sound_variant/.json
+The file contains two sound sets defining adult_sounds and baby_sounds
+Each sound set contains the following fields which correspond to sound events to use for the specific behavior:
+ambient_sound
+stray_ambient_sound
+hiss_sound
+hurt_sound
+death_sound
+eat_sound
+beg_for_food_sound
+purr_sound
+purreow_sound
+Pig sound variants
+Pig sound variants can be data-driven by adding entries to data//pig_sound_variant/.json
+The file contains two sound sets defining adult_sounds and baby_sounds.
+Each sound set contains the following fields which correspond to sound events to use for the specific behavior:
+ambient_sound
+hurt_sound
+death_sound
+step_sound
+Cow sound variants
+Cow sound variants can be data-driven by adding entries to data//cow_sound_variant/.json
+Each sound variant contains the following fields which correspond to sound events to use for the specific behavior:
+ambient_sound
+hurt_sound
+death_sound
+step_sound
+Chicken sound variants
+Chicken sound variants can be data-driven by adding entries to data//chicken_sound_variant/.json
+The file contains two sound sets defining adult_sounds and baby_sounds.
+Each sound set contains the following fields which correspond to sound events to use for the specific behavior:
+ambient_sound
+hurt_sound
+death_sound
+step_sound
+Resource pack
+
+The version is now 81.0.
+Updated mule_baby.png and donkey_baby.png to fit the model properly.
+Shaders
+
+The block.vsh and terrain.vsh no longer receive the Normal vertex attribute.
+Some small changes were to how various shaders sample the lightmap texture. This includes core/entity.vsh, core/item.vsh, core/rendertype_leash.vsh, core/rendertype_text.vsh, core/rendertype_text_background.vsh, core/rendertype_text_intensity.vsh, and core/rendertype_translucent_moving_block.vsh.
+Sounds
+
+Added new sound events for the cat:
+entity.cat_royal.ambient
+entity.cat_royal.hiss
+entity.cat_royal.hurt
+entity.cat_royal.death
+entity.cat_royal.eat
+entity.cat_royal.beg_for_food
+entity.cat_royal.purr
+entity.cat_royal.purreow
+entity.cat_royal.stray_ambient
+Added new sound events for the pig:
+entity.pig_mini.ambient
+entity.pig_mini.hurt
+entity.pig_mini.death
+entity.pig_big.ambient
+entity.pig_big.hurt
+entity.pig_big.death
+Added new sound events for the chicken:
+entity.chicken_picky.ambient
+entity.chicken_picky.death
+entity.chicken_picky.hurt
+entity.chicken_picky.step
+Added new sound events for the cow:
+entity.cow_moody.ambient
+entity.cow_moody.death
+entity.cow_moody.hurt
+entity.cow_moody.step
+Added new sound events for the note block trumpet instrument:
+block.note_block.trumpet
+block.note_block.trumpet_exposed
+block.note_block.trumpet_oxidized
+block.note_block.trumpet_weathered
+Tags
+
+Removed camel_husk, and hoglin from #cannot_be_age_locked entity type tag.
+Textures
+
+Added new entity textures:
+entity/villager/villager_baby.png
+entity/villager/baby/desert.png
+entity/villager/baby/jungle.png
+entity/villager/baby/plains.png
+entity/villager/baby/savanna.png
+entity/villager/baby/snow.png
+entity/villager/baby/swamp.png
+entity/villager/baby/taiga.png
+entity/zombie/drowned_baby.png
+entity/zombie/drowned_outer_layer_baby.png
+entity/zombie/husk_baby.png
+entity/zombie/zombie_baby.png
+entity/zombie_villager/zombie_villager_baby.png
+entity/zombie_villager/baby/desert.png
+entity/zombie_villager/baby/jungle.png
+entity/zombie_villager/baby/plains.png
+entity/zombie_villager/baby/savanna.png
+entity/zombie_villager/baby/snow.png
+entity/zombie_villager/baby/swamp.png
+entity/zombie_villager/baby/taiga.png
+entity/piglin/piglin_baby.png
+entity/piglin/zombiefied_piglin_baby.png
+entity/equipment/humanoid_baby/chainmail.png
+entity/equipment/humanoid_baby/copper.png
+entity/equipment/humanoid_baby/diamond.png
+entity/equipment/humanoid_baby/gold.png
+entity/equipment/humanoid_baby/iron.png
+entity/equipment/humanoid_baby/leather_overlay.png
+entity/equipment/humanoid_baby/leather.png
+entity/equipment/humanoid_baby/netherite.png
+entity/equipment/humanoid_baby/turtle_scute.png
+
+
+=== Fixes ===
+29 issues fixed
+From released versions before 26.1
+
+MC-13187 – Water in water cauldrons is not transparent.
+MC-257362 – Particles from breaking frogspawn are transparent.
+MC-263488 – The item texture of pink petals has a misplaced transparent pixel.
+MC-299730 – Dumping textures while using a TTF font crashes the game.
+MC-305580 – Baby zombie horses and baby skeleton horses grow into adults, unlike other baby undead mobs.
+From the 26.1 development versions
+
+MC-305492 – Baby wolves have visible z-fighting.
+MC-305501 – Baby wolves render their collar incorrectly all over their body.
+MC-305515 – Rabbits float when panicking.
+MC-305545 – The "wolf_baby" and "wolf_tame_baby" textures are identical.
+MC-305583 – The right side of the texture of British shorthair kittens overlaps the back of the head.
+MC-305591 – The texture of temperate piglets uses the wrong color for a part of their body.
+MC-305644 – Piglet heads are off-center.
+MC-305984 – The legs of baby donkeys and baby mules extend into the ground by one pixel, mapped to an irregular texture area.
+MC-305986 – “subtitles.entity.baby_chicken.hurt” displays as a raw translation key.
+MC-305999 – Entities in any light level besides 0 render fully bright.
+MC-306008 – Baby horse legs are not connected to the body correctly when it rears up.
+MC-306034 – "subtitles.entity.baby_horse.land" displays as a raw translation key.
+MC-306097 – Golden dandelions don't make mobs persistent.
+MC-306136 – Baby pandas float in the air when fed bamboo after being fed golden dandelions.
+MC-306137 – Players can feed baby pandas after feeding them golden dandelions.
+MC-306157 – Getting the average water color of blocks takes up about half of the chunk render compile times.
+MC-306161 – The color of baby turtles' front legs is inconsistent with the back legs.
+MC-306172 – Golden dandelions don't work on baby hoglins.
+From the previous development version
+
+MC-306185 – The podzol patches in the Old Growth Pine Taiga and Old Growth Spruce Taiga biomes are now generated incorrectly.
+MC-306195 – Camel husks with the "Age" tag set below -24000 use their removed baby variant's hitbox size and animation speed.
+MC-306201 – Baby turtles' legs now z-fight.
+MC-306207 – The world upgrade tooltips in the world selection screen appear with any world after selecting a world that needs to be upgraded.
+MC-306222 – Some strings introduced in 26.1 Snapshot 6 are grammatically incorrect.
+Other
+
+Fixed issue where baby axolotl animations were being disrupted by walking animation.
+
+
+== 26.1 Snapshot 8 ==
+26.1 Snapshot 8 (known as 26.1-snapshot-8 in the launcher) is the eighth snapshot for Java Edition 26.1, released on February 17, 2026, which adds new textures and models for the remaining baby mobs: the hoglin, panda, sniffer, strider, and zoglin. It also adds new stonecutter recipes for existing blocks, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Stonecutter
+
+Deepslate can now be directly crafted into its cobbled, polished, brick, and tile variants in the stonecutter.
+Stone can now be directly crafted into its cobblestone variants in the stonecutter.
+
+
+==== Mobs ====
+Baby mobs
+
+Adjusted the hitboxes of the baby versions of zombies, piglins, villagers, and their variants to fit in 1 block high or 0.5 block wide spaces.
+Changed the models and textures of the following baby mobs:
+Hoglin
+Panda
+Sniffer
+Strider
+Zoglin
+
+Horse
+
+ Adult horse's blackdot markings have been updated to be visually closer to the new baby horse markings.
+
+
+==== Command format ====
+/fetchprofile
+
+Added a new entity subcommand that will print profile information from entity in world.
+Syntax: /fetchprofile entity <single entity selector>
+If targeted entity does not have profile (currently only Players and Mannequins do) this command will fail.
+
+
+==== General ====
+General
+
+Tweaked default JVM options.
+Decreased the initial heap size to 2GB.
+Creative Mode
+
+Using Ctrl + Pick input as an operator on players and mannequins will now show the same results as executing the /fetchprofile.
+Data pack
+
+The pack format version is now 99.2.
+Debug screen
+
+Added a new entry called detailed_memory with additional information about used memory.
+Resource pack
+
+The version is now 81.1.
+Text component format
+
+minecraft:nbt
+Tags resolved with the minecraft:nbt text component when the interpret field is set to false are now pretty-printed instead of being flattened into a single text component.
+Contents of the nbt and block fields are no longer silently rejected when parsing fails.
+The field entity no longer accepts trailing data after a selector.
+A new option called plain has been added to remove styling from pretty-printed text.
+The plain and interpret options can't both be enabled at the same time.
+minecraft:selector
+The field selector no longer accepts trailing data after a selector.
+Textures
+
+Added new entity textures:
+entity/hoglin/hoglin_baby.png
+entity/hoglin/zoglin_baby.png
+entity/strider/strider_baby.png
+entity/strider/strider_cold_baby.png
+entity/sniffer/snifflet.png
+entity/panda/aggresive_panda_baby.png
+entity/panda/brown_panda_baby.png
+entity/panda/lazy_panda_baby.png
+entity/panda/playful_panda_baby.png
+entity/panda/weak_panda_baby.png
+entity/panda/worried_panda_baby.png
+entity/panda/panda_baby.png
+UI Sprites
+
+Added new UI sprites: gui/sprites/widget/preedit.png for IME preedit overlay background.
+User interface
+
+Input Method Editors (IME) candidates will now be shown in-game (on supported platforms, currently Windows and macOS) above currently edited text field.
+Fullscreen no longer uses exclusive mode.
+
+
+=== Fixes ===
+21 issues fixed
+From released versions before 26.1
+
+MC-98631 – The heights of shields in first person are different depending on what hand you have them held in.
+MC-99647 – The "below_name" scoreboard display slot doesn't work with non-player entities.
+MC-129886 – Trying to place a block underneath min_y does not give an error message.
+MC-178713 – Bone meal can be used on certain plants at build height, but they don't grow.
+MC-184432 – There is no warning when plants are bonemealed, but cannot grow above or below world height limits.
+MC-184433 – When applying bone meal to grass / ferns / nether fungi at the upper build limit, there is no warning, and the taller part of the plant is cut off.
+MC-254785 – Bone meal is used when clicked on a bamboo stalk with a block above it.
+MC-264155 – Bone meal doesn't work on grass blocks beneath cave air or void air.
+From the 26.1 development versions
+MC-305103 – The panorama sometimes spins too fast when saving or loading a world.
+MC-305714 – /time set is unable to decrease time.
+MC-305989 – Golden dandelions do not stop baby brown mooshrooms from aging.
+MC-306019 – Items added to #cauldron_can_remove_dye by datapacks can't be undyed.
+MC-306196 – Age-locked baby bees age while in the hive.
+From the previous development version
+MC-306314 – The glowing effect is no longer visible.
+MC-306319 – The content of the chat restrictions screen can shift off-center and overflow the edge of the game window when the game window is shrunken horizontally while the chat restrictions screen is open.
+MC-306321 – The chat and chat restrictions screen don't update when changing the client chat option from that screen.
+MC-306326 – Various block animations and particles in motion now jitter while the game is frozen.
+MC-306333 – Grass blocks in dark forests no longer have a side overlay if Biome Blend is disabled.
+MC-306342 – Stray adult cats play incorrect sounds.
+MC-306345 – Baby zombies, gurgles, baby husks, and baby zombie villagers can no longer traverse one-block-high passages.
+MC-306364 – Blocks rendered as block entities are now invisible in sections without regularly rendered blocks.
+Other
+
+Fix a bug where Cat variant sounds stray_ambient and purreow weren't played
+
+
+== 26.1 Snapshot 9 ==
+26.1 Snapshot 9 (known as 26.1-snapshot-9 in the launcher) is the ninth snapshot for Java Edition 26.1, released on February 18, 2026, which fixes some major issues.
+
+
+=== Fixes ===
+5 issues fixed
+From released versions before Java Edition 26.1
+
+MC-306566 – The totem of undying screen effect now jitters while the game is frozen.
+From the Java Edition 26.1 development versions
+
+MC-305579 – Kittens repeatedly meow when snuggled up in bed.
+From the previous development version
+
+MC-306456 – The game crashes when an entity is outside the world height limits.
+MC-306479 – Entity shadows are elevated when a below_name scoreboard objective is active.
+MC-306489 – Item frame's visual gets shifted when any objective is having below_name display.
+
+
+== 26.1 Snapshot 10 ==
+26.1 Snapshot 10 (known as 26.1-snapshot-10 in the launcher) is the tenth snapshot for Java Edition 26.1, released on February 24, 2026, which makes some minor changes and fixes some issues.
+
+
+=== Additions ===
+
+
+==== General ====
+Particles
+
+Added pause_mob_growth
+Particles showing on a baby mob which has had its aging stopped using a golden dandelion.
+Added reset_mob_growth
+Particles showing on a baby mob which has had its aging reset and started using a golden dandelion.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Golden dandelion
+
+Golden dandelions now have different particles depending on if it is used to start or stop aging.
+When aging is stopped, green particles moving downwards will be shown.
+When aging is started again, green particles moving upwards will be shown.
+
+
+==== Mobs ====
+Drowned, husk, and zombie
+
+Reduced the head size of the baby mob models.
+
+Sniffer
+
+Fixed pixel gap in snifflet texture.
+Strider
+
+Fixed baby striders not having their bristles animated.
+Striders now correctly inherit the warmth of the Strider they are standing on, matching Bedrock Edition.
+
+
+==== Non-mob entities ====
+Armor stand
+
+Small armor stands now display correctly by using the adult armor and scaling it down (/attribute scale).
+
+
+==== General ====
+Data pack
+
+The pack format version is now 99.3.
+Resource pack
+
+The version is now 82.0.
+UI
+
+If there are no screens open, IME input will be cancelled.
+IME will be opened when a text input gains focus and closed when a text input loses focus.
+sound_cache debug entry has been added.
+
+
+=== Fixes ===
+18 issues fixed
+From released versions before 26.1
+
+MC-91132 – No cross-platform CJK IME support.
+MC-222949 – You can use tridents enchanted with riptide while riding entities.
+MC-305369 – Trying to attach a leash to a fence outside its reach places a ghost leash knot and plays a sound.
+MC-305471 – Cacti appear with seams on the edges and corners when using higher resolution texture packs with mipmaps enabled.
+From the 26.1 development versions
+MC-305494 – Rabbits receive damage if they jump when there's a block above them.
+MC-305507 – Baby cats' model is not scaled.
+MC-306276 – Worried pandas no longer shake and hide their faces during thunderstorms.
+MC-306300 – The riding positions of baby zombies, husks, drowned, piglins, zombified piglins, and zombie villagers are offset, causing them to visually float.
+MC-306304 – The legs of baby zombies, husks, drowned, piglins, zombified piglins, and zombie villagers clip through their worn armor when their limbs move.
+MC-306346 – Baby piglin and zombified piglin legs don't move the same way as their adult counterparts do.
+MC-306361 – Hollow spaces don't render for a while when moving into a block in Spectator mode.
+MC-306376 – Armor now appears incorrectly on small armor stands.
+MC-306454 – The legs of baby striders detach from their bodies when attacked.
+MC-306468 – The IME pre-edit window doesn't show up in the Creative mode inventory.
+MC-306486 – Using an IME keyboard makes some inputs not register.
+From the previous development version
+MC-306501 – Changing game rules from the world creation screen has no effect.
+MC-306539 – Entities now appear darker than blocks on brightness values other than "Bright".
+MC-306565 – Farmers now sell 4 cookies instead of 18.
+
+
+== 26.1 Snapshot 11 ==
+26.1 Snapshot 11 (known as 26.1-snapshot-11 in the launcher) is the eleventh and final snapshot for Java Edition 26.1, released on March 3, 2026.
+
+
+=== Additions ===
+
+
+==== General ====
+Tags
+
+Added the #prevents_nearby_leaf_decay block tag, which defines what block types prevent leaf blocks from decaying within a taxicab distance of 6 blocks.
+
+
+=== Changes ===
+
+
+==== Items ====
+Armor
+
+Changed the chainmail helmet when worn on baby humanoid mobs.
+
+
+==== Mobs ====
+Goat
+
+Baby goats now rotate their head when ramming.
+Hoglin
+
+Baby hoglin's mane now appears on both sides of the body texture.
+Panda
+
+Fixed texture on the back of the baby panda's head.
+Pig
+
+Pig sound variants now have sound for eating.
+Rabbit
+
+Fixed adult and baby rabbit textures to be consistent with the other new textures.
+
+
+==== Gameplay ====
+Trading
+
+The master librarian no longer offers name tags.
+The master librarian will now offer red candles and yellow candles for the price of three emeralds.
+The wandering trader will now offer name tags for the price of one emerald.
+
+
+==== General ====
+Block states
+
+The rotation property in default block state of banners and signs has been changed from 0 to 8.
+Data pack
+
+The pack format version is now 100.0.
+Game Test
+
+Added timeline_attributes definitions to set any number of timelines.
+timelines: A list of timelines to set.
+Items model definition
+
+The minecraft:model, minecraft:special, minecraft:range_dispatch, minecraft:composite, minecraft:select, minecraft:condition item model types now have transformation fields.
+Those fields have the same format as the transformation field on the minecraft:display entity, i.e. either an array of 16 numbers representing a matrix or structure with decomposed translation, scale and rotation info.
+For types with children (minecraft:range_dispatch, minecraft:composite, minecraft:select, minecraft:condition), the transformation will be composed with the transformation of the children, except for minecraft:bundle/selected_item.
+Model transformations will be applied after item display transformations (i.e. display section in model files).
+The transformations for some special item models (types referenced by the minecraft:special item model) have been extracted to item models itself.
+Affected special model types:
+minecraft:bed
+minecraft:banner
+minecraft:conduit
+minecraft:copper_golem_statue
+minecraft:head
+minecraft:player_head
+minecraft:shulker_box
+minecraft:shield
+minecraft:trident
+minecraft:standing_sign
+minecraft:hanging_sign
+Special model type
+minecraft:bell
+New special model type that renders the animated part of a bell block.
+No fields.
+minecraft:book
+New special model type that renders a book that normally is a part of enchanting table and lectern.
+Fields:
+open_angle - angle (in degrees) between book cover and book centerline (0 means closed, 90 means open flat).
+page1, page2 - the positions of two pages inside the book.
+0.0 means the page is in the leftmost position, 1.0 means the page in the rightmost position.
+minecraft:bed
+The model now renders only one half of the bed.
+To render both halves, use a minecraft:composite model.
+New fields:
+part - one of: head, foot
+minecraft:banner
+New field:
+attachment - selects a model to be used, one of wall, ground
+Default: ground
+minecraft:chest
+New field:
+chest_type - selects a model to be used, one of single, left, right
+Default: single
+minecraft:hanging_sign
+New field:
+attachment - selects a model to be used, one of wall, ceiling, ceiling_middle
+Default: ceiling_middle
+minecraft:standing_sign
+New field:
+attachment - selects a model to be used, one of wall, ground
+Default: ground
+minecraft:shulker_box
+Removed the orientation field.
+Loot tables
+
+Removed the name tag from ancient cities and woodland mansions.
+Mob sound variant
+
+Pig sounds
+Eating sound customization is now supported through the new field eat_sound big variant sound sets.
+Rendering
+
+Some changes have been made to the way blocks states render in places like enderman-held blocks, block display entities, etc. (but not falling blocks or pistons).
+Enchanting tables will now show a closed book on the top of the block.
+Blocks that use special renderers (like chests, banners, skulls) should now respect block state properties:
+Rendering now respects the rotation and facing properties (where applicable).
+Beds now only render one half of the model, depending on the part property.
+Copper golem statues will now respect the copper_golem_pose property.
+Walls and freestanding signs, hanging signs, banners and heads will now have separate models.
+Chests now respect part properties (where applicable).
+In general, all block states should look the same when rendered on a Block Display as they look when placed in world, except: fluids, end gateway, end portal.
+Resource pack
+
+The version is now 83.0.
+Sounds
+
+Added new sound events for the pig:
+entity.baby_pig.eat
+entity.pig_mini.eat
+entity.pig_big.eat
+entity.pig.eat
+Updated the trumpet note block sound assets.
+World generation
+
+Block state providers now have a new type called rule_based_state_provider
+This was previously a separately parsed type but is now instead a sub-type of block state providers.
+They can now be used in any other feature configurations as a block state provider and are no longer unique to the disk feature.
+Format:
+fallback - An optional block state provider
+rules - A list of rules
+if_true - A block predicate that checks the block position before providing the block
+then - A block state provider
+
+
+=== Fixes ===
+25 issues fixed
+From released versions before Java Edition 26.1
+
+MC-199975 – Endermen holding bells or bell block display entities only render the bell frame.
+MC-231663 – Dragon eggs do not check whether there is a block under their destination when teleporting.
+MC-275014 – Weathered and oxidized copper bulbs cast stronger shadows on themselves when lit with smooth lighting enabled.
+MC-301003 – The bell part of bells worn on copper golems' "saddle" is not visible.
+MC-303344 – Tooltips for selected items in dialogs are displayed even when the item isn't being hovered over.
+MC-304683 – Wandering traders don't spawn in single biome snowy plains worlds.
+MC-304796 – Hovering over a disabled slider shows the pointing hand cursor instead of the forbidden cursor.
+MC-305857 – Entity hitboxes now move jaggedly when the game is frozen.
+MC-306110 – The side textures of black, white splotched, killer, and Toast rabbits' heads extend to the bottom of their heads.
+From the Java Edition 26.1 development versions
+
+MC-305797 – The texture of the warm piglet contains unused pixels.
+MC-306082 – The back texture of one of baby woods wolves' legs is inconsistent with the other three legs.
+MC-306180 – Hitting a rolled up baby armadillo causes its legs to stick out and z-fight with the shell.
+MC-306190 – The game closes when upgrading a world fails.
+MC-306303 – Plains zombie villagers use the texture of their baby variant.
+MC-306309 – Some new animal sound variants are missing.
+MC-306312 – Some strings introduced in 26.1 Snapshot 7 are grammatically incorrect.
+MC-306466 – The back texture of baby pandas' heads has a black stripe on one of its edges.
+MC-306472 – The texture of chainmail helmets on baby humanoid mobs has no transparent pixels on its top, unlike on adult mobs.
+MC-306483 – Golden dandelions do not prevent baby trader llamas from despawning.
+MC-306520 – Baby donkeys and baby mules are offset from their hitbox, and their tail is offset from their body.
+From the previous development version
+
+MC-306607 – Endermen now display the block-holding pose even when empty-handed.
+MC-306608 – Glow item frames now resemble item frames.
+MC-306625 – The "Programmer Art" and "High Contrast" resource packs are listed as incompatible.
+MC-306639 – The worried baby panda's model is broken when hiding its face during a thunderstorm.
+MC-306676 – The bottom texture of snifflets is made up of solid colors.
+
+
+== 26.1 Pre-Release 1 ==
+26.1 Pre-Release 1 (known as 26.1-pre-1 in the launcher) is the first pre-release for Java Edition 26.1, released on March 10, 2026, which updates the panorama and makes technical changes. This is the first pre-release released in 2026, and the first pre-release to be released with only an unobfuscated build.
+
+
+=== Additions ===
+
+
+==== General ====
+Number providers
+
+Added minecraft:environment_attribute
+Fetches and provides the value of an environment attribute (that can be represented as a number).
+This provider requires a context with an origin position set as long as the environment attribute can vary positionally.
+Format: object with fields:
+attribute – environment attribute ID to fetch.
+e.g. {type: 'environment_attribute', attribute: 'gameplay/sky_light_level'}
+Predicates
+
+Added the minecraft:environment_attribute_check loot predicate.
+Exactly matches the value of an environment attribute at a given position.
+This predicate requires a context with an origin position set as long as the environment attribute can vary positionally.
+Format: object with fields:
+attribute – environment attribute ID to test
+value – Exact value of the environment attribute to match
+e.g. {condition: 'environment_attribute_check', attribute: 'gameplay/piglins_zombify', value: true}
+Tags
+
+Added the #can_spawn_from_bone_meal configured feature tags.
+Contains features that, when added in a biome, can be spawned when using bone meal in that biome.
+
+
+=== Changes ===
+
+
+==== Command format ====
+/time
+
+Syntax:
+/time [of <clock>] rate <rate> – sets the rate multiplier at which the clock should advance.
+This only changes the rate at which the world clock and any timelines dependent on it advance their internal timers.
+For example, in the case of the minecraft:overworld clock, the day/night cycle will pass quicker with a larger value, but actual game simulation will not speed up (as would happen with /tick rate).
+A rate of 1 corresponds to normal speed.
+rate is a float between 0 (exclusive) and 1000 (inclusive).
+
+
+==== General ====
+Data component format
+
+minecraft:provides_banner_patterns
+The component now also accepts an ID or a list of IDs in addition to a tag.
+minecraft:blocks_attacks
+The field bypassed_by now also accepts an ID or a list of IDs in addition to a tag.
+minecraft:damage_resistant
+The field types now also accepts an ID or a list of IDs in addition to a tag.
+Data pack
+
+The pack format version is now 101.0.
+The "Default Components" report generator no longer outputs files for entries without any components.
+Items model definition
+
+minecraft:end_cube special model type
+New special model type that renders a cube with the same texture effects as the end portal and the end gateway blocks.
+Fields:
+effect – texture effect to apply, one of: portal, gateway
+Loot functions
+
+minecraft:set_instrument
+The options field now also accepts an ID and a list of IDs in addition to a tag.
+Panorama
+
+Updated the panorama to reflect Tiny Takeover.
+Rendering
+
+End gateway and end portal should now look the same when rendered on a block display as they look when placed in world.
+Resource pack
+
+The version is now 84.0.
+Updated textures for Pup to fix issues with overlapping textures.
+Shaders
+
+The core/rendertype_translucent_moving_block shaders have been removed in favor of core/block.
+Text component format
+
+minecraft:object
+Added a new optional field named fallback that contains a text component to be used when object component itself can't be displayed (for example when printing messages in server logs or during narration).
+Objects of type player (player heads) no longer can be used in server status messages (MotD).
+All components of that type will be replaced by a fallback text.
+World generation
+
+Flower features
+Features spawned from Bone Meal are no longer restricted to the flower feature type, and instead controlled by the #can_spawn_from_bone_meal configured feature tag.
+The flower, flower_no_bonemeal, and random_patch feature types have been removed.
+Instead, patches can be expressed as a sequence of count and random_offset placement modifiers.
+Int Providers
+Added the trapezoid int provider
+Selects a random value with a trapezoid distribution, similar to the trapezoid float provider.
+Format: object with fields:
+min: integer, the minimum value to generate.
+max: integer, the maximum value to generate.
+plateau: integer, the width of the "plateau" of the distribution in which all values are equally likely to occur.
+A value of 0 is equivalent to a triangle distribution.
+A value of max-min is equivalent to a uniform distribution.
+
+
+=== Fixes ===
+25 issues fixed
+From released versions before Java Edition 26.1
+
+MC-195237 – End portals and End gateways held by endermen or as block display entities are not rendered, but Nether portals are.
+MC-230746 – Pointed dripstone does not grow with a waterlogged block 2 blocks above it but does fill cauldrons.
+MC-306427 – Certain mobs holding items with empty "kinetic_weapon" components crash the game whenever target acquisition succeeds.
+From the Java Edition 26.1 development versions
+
+MC-305518 – Baby wolves' tail uses an incorrect UV map.
+MC-305702 – Zombies and their variants have lost their special animation when holding spears.
+MC-305914 – /swing does not swing players' arms on their perspective.
+MC-306056 – The selected difficulty does not visually update when going into and out of the game rules menu.
+MC-306232 – The block breaking animation on banners is now amplified.
+MC-306315 – The left side of wolf pups' heads is misaligned, causing a gap and texture error.
+MC-306338 – Baby zombified piglins' snout texture was made for a 4×3×1 cube model, even though the snout model is actually a 3×3×1 cube.
+MC-306341 – Helmets on baby humanoids shift off-center when their heads rotate.
+MC-306532 – The error that occurred when a resource pack used textures that were too large is now incomprehensible.
+MC-306571 – CommandEncoder#copyTextureToBuffer has incorrect parameter validation statements.
+MC-306612 – Baby zombies, baby husks, and gurgles now hold items like players do.
+MC-306624 – Various translucent geometry is now invisible behind name plates.
+MC-306631 – Baby zombies, husks, drowned, and zombified piglins spawned by using spawn eggs on normal ones can't pick up items.
+MC-306633 – The "Toggle GUI" key bind doesn't work when set to a mouse button.
+MC-306653 – Name plates are no longer visible through opaque blocks.
+From the previous development version
+
+MC-306705 – Copper golem statues with a pose now appear upside down as items.
+MC-306706 – The game hangs/freezes upon losing focus.
+MC-306708 – Block state rendering of chests for the left and right block states uses the single chest texture.
+MC-306713 – The most transparent pixels of the gradient banner patterns are no longer visible.
+MC-306742 – Rendering an empty item model with oversized_in_gui causes a crash.
+MC-306748 – Profiler tick ended before path was fully popped (remainder: 'root'). Mismatched push/pop?.
+MC-306796 – Text displays with see_through set to 1 now z-fight with themselves.
+
+
+== 26.1 Pre-Release 2 ==
+26.1 Pre-Release 2 (known as 26.1-pre-2 in the launcher) is the second pre-release for Java Edition 26.1, released on March 13, 2026.
+
+
+=== Additions ===
+
+
+==== General ====
+Options
+
+Added a new display option called "Exclusive Fullscreen" which controls if fullscreen mode should take full control of a monitor.
+Defaults to false (i.e. non-exclusive mode).
+Any change will be applied only after the game restarts.
+
+
+=== Changes ===
+
+
+==== Items ====
+Spear
+
+The dismount speed thresholds have been updated to match Bedrock Edition.
+
+
+==== Mobs ====
+Axolotl
+
+Fixed issue with Baby Axolotl's right hind leg not moving correctly when swimming.
+Cat
+
+Baby cats are now scaled up to be the same size as baby ocelots.
+Horse
+
+Baby horses are no longer scaled up slightly.
+
+
+==== Gameplay ====
+Trading
+
+The master librarian will now have three available trades to ensure that an enchanted book trade is always offered when using the Villager Trade Rebalance experiment.
+
+
+==== General ====
+Text component format
+
+Components in server status messages (MotD) nested more than 16 times will now be discarded and replaced with an ellipsis.
+
+
+=== Fixes ===
+29 issues fixed
+From released versions before Java Edition 26.1
+
+MC-153831 – Trader llamas spawned from breeding can despawn.
+MC-181169 – Skeleton trapped horses with PersistenceRequired still despawn.
+MC-248092 – Untamed cats on lead despawn when attached to fence post.
+MC-274238 – Persistent trader llamas will still despawn when leashed to wandering traders.
+MC-303684 – Hoglins despawn when attached to a lead.
+MC-303685 – Zoglins despawn when attached to leads.
+MC-303749 – Dolphins can despawn when attached to leads.
+MC-303750 – Squids & glow squids can despawn when attached to leads.
+MC-304446 – Activating a stasis chamber with a sponge deletes the ender pearl.
+MC-305123 – Curse of Vanishing doesn't work when the item is equipped on an armor stand.
+MC-305196 – Witches always miss their shots when close to their target.
+MC-306064 – Mobs can be forced to look like they're dying while they aren't by using commands.
+MC-306658 – Dolphins will let themselves drown even with ample access to air.
+MC-306798 – Ender dragons with a DragonDeathTime of 200 or greater never disappear.
+From the Java Edition 26.1 development versions
+
+MC-306327 – The chat restriction warning ignores the Chat Width option.
+MC-306328 – Using golden dandelions to unlock aging forcibly removes persistence of baby animals.
+MC-306351 – Line spacing between the chat restriction warning and messages does not have a background.
+MC-306502 – Uploading a world to a snapshot Realm wipes it.
+MC-306516 – G-Sync cannot be enabled in the new borderless window mode.
+MC-306564 – Item entities' health does not decrease uniformly when on cacti.
+MC-306601 – The IME pre-edit window appears in the unfocused text box of the anvil UI when no items are placed in the anvil slots.
+MC-306626 – Adult horses' old black dots markings aren't included in the "Programmer Art" resource pack.
+MC-306632 – Baby undead horses age again.
+MC-306657 – The models for baby horses and baby cats have a different scale compared to Bedrock Edition.
+MC-306709 – Librarians' master level book trade is no longer guaranteed when Villager Trade Rebalance is enabled.
+MC-306741 – Opening the chat forces a CJK input method when one is enabled in the system.
+From the previous development version
+
+MC-306812 – Inventories with no text fields cause key binds to conflict with IME input methods.
+MC-306814 – environment_attribute value providers give incorrect results on subsequent accesses within a tick.
+MC-306830 – The mouse cursor now changes to the "not allowed" shape when hovering over part of the Creative mode inventory's Survival Inventory tab.
+
+
+== 26.1 Pre-Release 3 ==
+26.1 Pre-Release 3 (known as 26.1-pre-3 in the launcher) is the third and final pre-release for Java Edition 26.1, released on March 17, 2026.
+
+
+=== Changes ===
+
+
+==== General ====
+Data pack
+
+The pack format version is now 101.1.
+World generation
+
+count placement modifier
+The count field is now limited to a range of 0 to 4096 instead of the previous 256.
+
+
+=== Fixes ===
+10 issues fixed
+From the Java Edition 26.1 development versions
+
+MC-305118 – Resource packs previously labeled as "Broken or incompatible" don't show up at all.
+MC-306240 – /fill does not obey the max_block_modifications game rule if too many blocks are in the specified area.
+MC-306620 – Feeding a snifflet with a golden dandelion resets its age to the wrong amount of ticks.
+MC-306805 – Baby zombie villagers' arms are positioned and move incorrectly when holding an item.
+From the previous development version
+
+MC-306850 – The caves and floating_islands noise settings no longer generate as intended.
+MC-306854 – Unmentioned differences of villager trades between 1.21.11 and 26.1 snapshots.
+MC-306859 – The arms of baby zombies, baby husks, gurgles, and baby zombie villagers clip through their worn chestplates when holding items.
+MC-306860 – Player object text components in server status messages (MotD) are no longer replaced by fallback text.
+MC-306898 – Placed / Configured Features are now limited to only 256 tries, previously higher numbers where possible.
+MC-306899 – The blocklists of the fire_patch and soul_fire_patch features are inverted, causing generation issues.
+
+
+== 26.1 Release Candidate 1 ==
+26.1 Release Candidate 1 (known as 26.1-rc-1 in the launcher) is the first release candidate for Java Edition 26.1, released on March 19, 2026. This is the first release candidate released in 2026 and the first release candidate to be released with only an unobfuscated build.
+This version contains no gameplay changes from its preceding pre-release.
+
+
+=== Technical ===
+The only difference between this version and 26.1-pre-3 is the transition from pre-releases to release candidates. Therefore, the only code change in this version is that the CRASH_EAGERLY field in net.minecraft.SharedConstants has been changed from true to false, as with every transition to release candidates, which results in the following effects:
+
+Removed a packet error handler.
+Changed how chunk load failures are internally reported.
+
+
+== 26.1 Release Candidate 2 ==
+26.1 Release Candidate 2 (known as 26.1-rc-2 in the launcher) is the second release candidate for Java Edition 26.1, released on March 20, 2026, which fixes a bug.
+
+
+=== Fixes ===
+1 issue fixed
+From the Java Edition 26.1 development versions
+
+MC-306928 – Switching to another window still forces the input method to English when no input field is focused.
+
+
+== 26.1 Release Candidate 3 ==
+26.1 Release Candidate 3 (known as 26.1-rc-3 in the launcher) is the third and final release candidate for Java Edition 26.1, released on March 23, 2026.
+
+
+=== Fixes ===
+2 issues fixed
+From the previous development version
+
+MC-306989 – The ender dragon initiates its death animation as soon as it dies, no matter how close to the exit portal it is.
+Other
+
+Fixed a crash when initializing the window.
+
+
+== Notes and references ==
+
+
+== Navigation ==

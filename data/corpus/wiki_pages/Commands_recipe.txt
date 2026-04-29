@@ -1,0 +1,56 @@
+Gives or takes (unlocks or locks) recipes for players.
+
+
+== Syntax ==
+recipe give <targets> * (Java Edition)
+recipe give <player: target> * (Bedrock Edition)
+recipe give <player: target> "*" (Bedrock Edition)
+Gives (unlocks) all recipes to the player.
+recipe take <targets> * (Java Edition)
+recipe take <player: target> * (Bedrock Edition)
+recipe take <player: target> "*" (Bedrock Edition)
+Takes (locks) all recipes from the player.
+recipe give <targets> <recipe> (Java Edition)
+recipe give <player: target> <recipe: string> (Bedrock Edition)
+Gives (unlocks) a specified recipe to the player.
+recipe take <targets> <recipe> (Java Edition)
+recipe take <player: target> <recipe: string> (Bedrock Edition)
+Takes (locks) a specified recipe from the player.
+
+
+== Arguments ==
+JE: <target>: entityBE: player: target: CommandSelector<Player>
+
+Specifies the player(s) to give or take the recipe from.
+Must be a player name, a target selector or a UUID‌[Java Edition  only].  And the target selector must‌[JE  only]/should‌[BE  only] be of player type. In Bedrock Edition, the target selector should be of player type.
+JE: <recipe>: resource_locationBE: recipe: string: basic_string 
+
+Specifies a recipe to give or take.
+Must be a resource location for an unregistered content. In Bedrock Edition, must be the ID of a recipe (namespace cannot be omitted or added), see the official document.
+
+
+== Result ==
+
+
+== Output ==
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== See also ==
+Knowledge Book
+/gamerule doLimitedCrafting – Whether players should only be able to craft recipes that they have unlocked first.
+
+
+== External links ==
+"/recipe Command"     – Microsoft Learn, April 3, 2025.
+
+
+== Navigation ==

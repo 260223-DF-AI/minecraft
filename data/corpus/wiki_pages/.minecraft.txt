@@ -1,0 +1,40 @@
+.minecraft (or simply  minecraft on macOS) is the game directory of Minecraft: Java Edition and the launcher directory of the Minecraft Launcher.
+The game directory stores data managed by the game client, such as game configuration, worlds and resource packs. The launcher directory stores data managed by the launcher, such as its own configuration, the game client program, game libraries and assets. Those two directories, while technically distinct, are normally unified (in the default layout) into  .minecraft.
+
+
+== Location ==
+Below is a table showing the default path of  .minecraft.
+
+Locating the  .minecraft directory may be necessary in order to load a resource pack for use in the game, or to locate any made screenshots.
+The path in the table above is the default configuration. Launchers can place  .minecraft at any path.
+On a Windows computer, the  %APPDATA% directory may be accessed by using the Run command (accessed with the ⊞ Windows + R keyboard shortcut, or from the Start menu). It can also be accessed from Windows Explorer, by typing %APPDATA% into the address bar and pressing ↵ Enter.
+On macOS, the game directory may be accessed by opening Finder, pressing ⇧ Shift + ⌘ Command + G, typing ~/Library/Application Support/minecraft and pressing ↵ Enter. It can also be accessed via Spotlight.
+On Linux or macOS, the ~ in the path refers to the home directory. Files starting with . are hidden by default. In most file managers, pressing Ctrl + H toggles viewing hidden files. In macOS specifically, since version 10.12 (Sierra), pressing ⌘ Command + ⇧ Shift + . toggles viewing hidden files.
+
+
+== Changing location ==
+Changing the game directory path can be done per installation in the Minecraft Launcher. Changing the launcher directory path can be done by using the --workDir command-line parameter (see Tutorial:Custom Minecraft directory).
+The default location of the game directory is the launcher directory, so changing the launcher directory is sufficient if it is desirable for both of them to be moved to another place.
+
+
+== Directory structure ==
+The complete directory structure is a combination of the game directory and the launcher directory.
+
+
+=== Game directory ===
+
+Use of a resource pack can be forced by renaming its ZIP file to resources.zip and placing it in the root directory of the world save. This feature is single-player only; however, there is another way for servers to ask or force clients to use the server resource pack.
+
+
+=== Launcher directory ===
+
+For Windows and Linux, the contents of  nativelog.txt and  nativeUpdaterLog.txt can be found within  launcher_log.txt when applicable (i.e. the contents of  nativeUpdaterLog.txt is present only in  latest_log.txt after the launcher is updated or launched for the first time).
+
+
+== History ==
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,169 @@
+Beta 1.19.0.30 (Windows, Android, Xbox), Preview 1.19.0.31 (Windows, iOS, iPadOS), or Preview 1.19.0.65 (Xbox) is the fifth beta/Preview version for Bedrock Edition 1.19.0, released on May 4, 2022, which added new achievements, makes changes to Spectator mode, and bug fixes.
+
+
+== Additions ==
+
+
+=== Gameplay ===
+Achievements
+
+Added four new achievements.
+"It spreads"
+"Birthday song"
+"With our powers combined!"
+"Sneak 100"
+
+
+== Changes ==
+
+
+=== Mobs ===
+Frogs
+
+Now drop experience when killed by a player.
+
+
+=== Non-mob entities ===
+Boats with chests, minecarts with chests, minecarts with TNT and minecarts with hoppers
+
+Now drop themselves when broken.
+
+
+=== General ===
+Particles
+
+Changed the texture of the sonic boom particle.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Spectator Mode" and "Gametest Framework" experimental toggle.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/script
+
+Used to create GameTest script performance traces.
+
+
+=== Changes ===
+
+
+==== Gameplay ====
+Spectator mode
+
+Custom input mapping for Spectator mode added.
+Spectators are now unable to:
+Attack.
+Build.
+Drop items.
+Use items.
+Open inventory.
+Interact with the world through input.
+Interact with chests or other container UI.
+Spectators no longer fly slowly when entering Spectator mode from ground.
+Players enter noclip and flying when enabling Spectator mode.
+Players stop riding, using items, sleeping, and gliding when entering Spectator mode.
+Double-jump no longer breaks Spectator mode.
+
+
+==== General ====
+GameTest Framework
+
+GameTest module type changed from javascript to script in manifest.json file.
+Added an optional attribute language which has only one supported value – javascript.
+
+
+== Fixes ==
+Accessibility
+
+Submit Feedback button is now described as a link by Text-To-Speech.
+"Controller connection lost" popup now will also be shown on Main Menu screen.
+Allay
+
+Allay no longer stops moving when attempting to reach an item that is too far away while being leashed.
+Ancient cities
+
+Ancient cities are no longer flooded with water or lava as often (MCPE-153568).
+Darkness effect in water no longer creates colorful jumping lines around sources of light (MCPE-145696).
+Darkness effect fade-in is no longer abrupt (MCPE-153708).
+Breaking an activated sculk shrieker no longer stops the warden from spawning (MCPE-154000).
+Structure void block no longer generates in ancient cities with sculk veins generated around it (MCPE-153541).
+Trap mechanism variant under main central structure in ancient city now works properly (MCPE-154409).
+Sculk shriekers can once again be waterlogged.
+Warden
+
+Warden now emits darkness every 6 seconds.
+Prevent wardens from building anger towards and targeting experience orbs (MCPE-154210).
+Prevent wardens from attacking non mob type actors such as the trident.
+Warden can now detect vibrations emitted by a sculk shrieker shrieking.
+Warden now prefers investigating the closest mobs position after sniffing.
+Warden now doesn't play anger listening sounds when getting angry through an attack.
+Warden’s heartbeat now reflects the anger towards either the warden’s target or the highest recorded anger.
+Fixed the little jumping bug after warden has emerged from the ground (MCPE-154544).
+The sonic explosion particle has been updated to a new texture.
+Sculk sensor
+
+Sculk sensors correctly detect when turtle eggs and slab blocks are placed on their respective existing blocks (MCPE-153109).
+Sculk sensors now activate repeatedly when an entity is on top of them (MCPE-153818).
+A projectile hitting wool or wool carpets does not produce vibration anymore.
+A player looking at a tamed animal does not produce vibrations anymore.
+A player crouching with a shield in the offhand slot does not produce vibrations anymore (MCPE-153971).
+The sculk sensor correctly detects when a dirt, coarse dirt, or rooted dirt block is tilled with a hoe (MCPE-153734).
+Sculk sensors can now detect boat movement.
+Sculk sensors can now detect a boat above a bubble column making splashes.
+The sculk sensor correctly detects when a dirt, coarse dirt, or rooted dirt block is turned into a mud block when interacted with while holding a water bottle (MCPE-154057).
+Sculk sensors can be waterlogged once again.
+The lower face of sculk sensors can now provide support to other blocks.
+A sculk sensor can no longer detect a player sneaking on another sculk sensor.
+Mangrove
+
+Mangrove propagule now grow into trees at the same speed as in Java Edition (MCPE-154001).
+Bees can now pollinate mangrove propagules (MCPE-153783).
+Mangrove planks can now be crafted from Stripped Mangrove Logs (MCPE-154017).
+Mangrove blocks are now sorted next to other Overworld wood types (MCPE-153835).
+Mangrove roots are no longer located in the 'Woods' section of the Creative inventory.
+Mangrove wood map colors now match Java Edition (MCPE-153802).
+Mangrove log and stripped mangrove log map colors now match Java Edition (MCPE-153799).
+Mangrove roots are now flammable (MCPE-153742).
+Mud block
+
+Gravity blocks now break when falling on mud blocks (MCPE-153812).
+Turning dirt to mud now produces a splash sound (MCPE-153716).
+Mud block is now placed beside dirt in the Creative inventory (MCPE-153836).
+Mud brick slabs now play sounds when two slabs are stacked into a full block (MCPE-153775).
+Frog
+
+Frogs now provide same experience points as other animals like cows and goats (MCPE-154185).
+Frogspawn is no longer affected by random tick speed (vanilla parity).
+Tadpoles hurt sounds volume has been increased, and tadpoles now have a grow-up sound (MCPE-151538).
+Gameplay
+
+When in the Nether, endermen, piglins, skeletons, and wither skeletons now spawn in a wider range of light levels (from light level 0 to 11).
+Torches can no longer be placed on bells.
+Added Wild Update Achievements; "It spreads", "Birthday song", "With our powers combined!", and "Sneak 100".
+Graphical
+
+Fixed a bug where leads would render on top of glass (MCPE-145764).
+Reverted mirrored mob parts in wolf model according to current Art Direction.
+Items
+
+A boat with chest now drops a single item when destroyed instead of two items (boat and chest) (MCPE-153392).
+Mangrove roots can no longer be used as fuel in furnaces.
+When broken, each minecart variant (chest/hopper/TNT) drops itself as a single item, instead of splitting into two items (such as chest and minecart).
+Pathfinding
+
+Mobs do not get stuck into open trapdoors anymore (MCPE-154106).
+Stability and performance
+
+Fixed a crash that could occur when players are battling and both players are wearing Thorns enchanted armor (MCPE-153593).
+Fixed crash that could occur when blending worlds with air filled chunks.
+Fixed a crash that could occur during splitscreen play.
+
+
+== References ==
+
+
+== Navigation ==

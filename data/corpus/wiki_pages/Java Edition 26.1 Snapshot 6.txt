@@ -1,0 +1,262 @@
+26.1 Snapshot 6 (known as 26.1-snapshot-6 in the launcher) is the sixth snapshot for Java Edition 26.1, released on February 3, 2026, which add new textures and models for the baby armadillo, bee, camel, fox, goat, llama, polar bear, and trader llama. It also includes many changes for data packs and resource packs.
+
+
+== Additions ==
+
+
+=== General ===
+Tags
+
+Block tags
+Split apart #dirt into multiple block tags.
+#dirt now only contains dirt, coarse dirt and rooted dirt.
+#mud contains mud and muddy mangrove roots.
+#moss_blocks contains moss block and pale moss block.
+#grass_blocks contains grass block, mycelium and podzol.
+Added #substrate_overworld which contains #dirt, #mud, #moss_blocks and #grass_blocks
+This is used as a collection for world generation conditions.
+Added the following tags which define which ground blocks beneath an applicable tree or bamboo can be replaced with podzol:
+#beneath_tree_podzol_replaceable
+#beneath_bamboo_podzol_replaceable
+Added #cannot_replace_below_tree_trunk which contains #dirt, #mud, #moss_blocks and podzol.
+Added the following tags defining which blocks their feature can be placed on:
+#forest_rock_can_place_on
+#huge_brown_mushroom_can_place_on
+#huge_red_mushroom_can_place_on
+Added #ice_spike_replaceable defining which blocks an ice spike feature can replace.
+Item tags
+Added the following tags which mirror their block tag contents:
+#mud
+#moss_blocks
+#grass_blocks
+
+
+== Changes ==
+
+
+=== Mobs ===
+
+Axolotl
+
+Baby axolotls now have a play dead animation.
+Baby mobs
+
+Changed the textures and models of the following baby mobs:
+Armadillo
+Bee
+Camel
+Fox
+Goat
+Llama
+Polar bear
+Trader llama
+
+Camel
+
+Saddles on baby camels will no longer render.
+Camel husk
+
+No longer has a baby model.
+Polar bear
+
+Baby polar bears no longer attack foxes.
+
+
+=== General ===
+Data pack
+
+The pack format version is now 99.0.
+Dimension types
+
+Added the field has_ender_dragon_fight: boolean
+Controls whether it is possible for an ender dragon fight to exist in the dimension.
+level.dat
+
+The Player tag has been replaced with a singleplayer_uuid tag, referencing the player data file to use.
+Difficulty-related settings have been moved into a difficulty_settings tag.
+Difficulty is renamed to difficulty and is now a string instead of an integer.
+Allowed values:
+peaceful
+easy
+normal
+hard
+DifficultyLocked was renamed to locked
+Data for the ender dragon fight has been moved out to the data folder.
+It can now be found at dimensions/minecraft/the_end/data/minecraft/ender_dragon_fight.dat
+The ender dragon fight can be activated in other dimensions.
+Data changes:
+NeedsStateScanning has been renamed to needs_state_scanning
+DragonKilled has been renamed to dragon_killed
+PreviouslyKilled has been renamed to previously_killed
+IsRespawning has been replaced by respawn_stage
+Allowed values:
+start
+preparing_to_summon_pillars
+summoning_pillars
+summoning_dragon
+end
+Dragon has been renamed to dragon_uuid
+ExitPortalLocation has been renamed to exit_portal_location
+Gateways has been renamed to gateways
+Added respawn_time
+The time that has elapsed since the current stage of the respawn sequence started.
+Added respawn_crystals
+A list of UUIDs for the end crystals used to trigger the respawn sequence.
+Wandering Trader data has been moved out to the data folder.
+It can now be found at data/minecraft/wandering_trader.dat
+Data changes:
+WanderingTraderId has been removed
+WanderingTraderSpawnChance has been renamed to spawn_chance
+WanderingTraderSpawnDelay has been renamed to spawn_delay
+CustomBossEvents has been moved to the data folder.
+It can now be found at data/minecraft/custom_boss_events.dat
+Weather-related data has been moved to the data folder.
+It can now be found at data/minecraft/weather.dat
+Data changes:
+clearWeatherTime has been renamed to clear_weather_time
+rainTime has been renamed to rain_time
+thunderTime has been renamed to thunder_time
+ScheduledEvents has been moved out to the data folder.
+It can now be found at data/minecraft/scheduled_events.dat
+Data changes:
+Name has been renamed to id
+TriggerTime has been renamed to trigger_time
+Callback has been renamed to callback
+Type has been renamed to type
+Name has been renamed to id
+game_rules has been moved out to the data folder.
+It can now be found at data/minecraft/game_rules.dat
+WorldGenSettings has been moved out to the data folder.
+It can now be found at data/minecraft/world_gen_settings.dat
+Data changes:
+generate_features has been renamed to generate_structures
+world_clocks has been moved out to the data folder.
+It can now be found at data/minecraft/world_clocks.dat
+Level format
+
+All default dimensions are now stored in the dimensions subfolder.
+Data for the Overworld has been moved from the root folder to dimensions/minecraft/overworld
+This includes the region, entities, and poi folders, as well as related files out of data.
+Data for the Nether has been moved from DIM-1 to dimensions/minecraft/the_nether
+Data for the End has been moved from DIM1 to dimensions/minecraft/the_end
+The top level data folder is now only for data shared across dimensions instead of also for the Overworld.
+Player storage has been moved to the players subdirectory.
+advancements -> players/advancements
+playerdata -> players/data
+stats -> players/stats
+The world resource pack (resources.zip) has been moved to the resourcepacks subdirectory.
+Data saved in the data folder is now namespaced.
+This means that all that data will now be stored in a namespace subfolder in the corresponding data folder.
+All existing vanilla data files have been moved accordingly.
+Example: data/scoreboard.dat -> data/minecraft/scoreboard.dat
+Command storage is now stored in namespace subfolders instead of having a namespace suffix.
+Example: data/command_storage_foo.dat -> data/foo/command_storage.dat
+chunks.dat has been renamed to chunk_tickets.dat
+Data for maps is now stored in the data/minecraft/maps subfolder.
+Map index files have been renamed to only the number.
+Example: map_1.dat -> 1.dat
+idcounts.dat has been renamed to last_id.dat
+There is no more raids_end.dat special case.
+The End now uses raids.dat as well.
+Structures saved by Structure Blocks have been moved from generated/namespace/structures to generated/namespace/structure
+Resource pack
+
+The version is now 80.0.
+Shaders & Post-process Effects
+
+The core/rendertype_item_entity_translucent_cull shaders have been removed in favor of core/entity
+The core/rendertype_entity_alpha and core/rendertype_entity_decal shaders have been replaced by a DISSOLVE flag implemented by core/entity
+Rendering of items (in UI and in the world) has been split from the core/entity into new core/item shaders.
+Sounds
+
+Added sound event for baby chicken step.
+Entity type tags
+
+Added skeleton_horse, zombie_horse, and villager to #cannot_be_age_locked entity tag.
+Textures
+
+Added new entity textures:
+entity/bee/bee_baby.png
+entity/bee/bee_angry_baby.png
+entity/bee/bee_nectar_baby.png
+entity/bee/bee_angry_nectar_baby.png
+entity/fox/fox_baby.png
+entity/fox/fox_snow_baby.png
+entity/fox/fox_sleep_baby.png
+entity/fox/fox_snow_sleep_baby.png
+entity/camel/camel_baby.png
+entity/goat/goat_baby.png
+entity/armadillo/armadillo_baby.png
+entity/bear/polarbear_baby.png
+entity/llama/llama_creamy_baby.png
+entity/llama/llama_white_baby.png
+entity/llama/llama_brown_baby.png
+entity/llama/llama_gray_baby.png
+entity/equipment/llama_body/trader_llama_baby.png
+UI
+
+Worlds that need to be upgraded will now show Upgrade and Play instead of Play Selected World.
+The Edit World and Re-Create World buttons are disabled until the world has been upgraded.
+When starting such a world, a new upgrade progress screen will be shown.
+World generation
+
+Rule-based block state providers have changed so that their fallback is optional and can be empty.
+In such cases that an empty fallback is invoked, features that use them will not place anything.
+Current configuration that uses a rule-based block state provider is the state_provider in the disk feature.
+forest_rock configured feature has been renamed to block_blob
+block_blob feature configuration has changed to support the following parameters:
+state - The block the rock is made out of.
+can_place_on - A block predicate that defines which blocks the rock can be placed on.
+ice_spike configured feature has been renamed to spike
+spike feature configuration now supports the following parameters:
+state - The block the spike is made out of.
+can_place_on - A block predicate that defines which blocks the spike can be placed on.
+can_replace - A block predicate that defines which blocks the spike can replace.
+huge_red_mushroom and huge_brown_mushroom feature configurations have a new parameter:
+can_place_on - A block predicate that defines which blocks the huge mushroom can be placed on.
+alter_ground tree decorator configuration has changed so that provider is now a rule-based block state provider.
+tree feature configuration has replaced the force_dirt and dirt_provider parameters with a single below_trunk_provider rule-based block state provider:
+Format:
+fallback - An optional block state provider.
+rules - A list of rules.
+if_true - A block predicate that checks the block position before providing the block.
+then - A block state provider.
+Default value:
+
+Any trees that previously used force_dirt have a below_trunk_provider that always provides a dirt block instead.
+
+
+== Fixes ==
+15 issues fixed
+From released versions before 26.1
+
+MC-134573 – The game freezes while doing a world backup.
+MC-259032 – /data produces a positive result for low negative numbers.
+MC-264187 – Spawners with their light limits set to ranges that don't include 15 don't spawn mobs under the night sky.
+MC-273228 – Crash when generating water lakes using a custom worldgen datapack.
+MC-303403 – Hanging sign block displays render dark and above other blocks and mobs.
+MC-306123 – Wolves still try to attack players even in Peaceful difficulty.
+From the 26.1 development versions
+
+MC-305598 – The "wolf_baby_angry4" sound (angry puppy sound) ends abruptly.
+MC-305813 – The game crashes due to an integer overflow when loading a level with a large number of days.
+MC-305887 – The eating sound for baby horses is noticeably too low-pitched.
+MC-305923 – Bubble columns delete waterlogged blocks that intersect them.
+From the previous development version
+
+MC-305988 – Golden dandelions can't be fed to tadpoles.
+MC-306022 – Golden dandelions work on tamed baby skeleton horses and zombie horses.
+MC-306035 – The "Birthday Song" advancement is no longer being granted.
+MC-306057 – The AgeLocked NBT tag isn't saved when picking up a baby axolotl in a bucket.
+Other
+
+Fixed the baby chicken's wings and the warm chicken's stripes.​​[more information needed]
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

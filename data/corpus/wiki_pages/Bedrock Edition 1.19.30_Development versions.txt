@@ -1,0 +1,395 @@
+This is a list of Bedrock Edition 1.19.30 development versions.
+
+
+== Preview 1.19.30.20 ==
+Beta 1.19.30.20 (Android) or Preview 1.19.30.20 (Windows, iOS, iPadOS, Xbox) is the first beta/Preview version for Bedrock Edition 1.19.30, released on August 4, 2022, which brought more parity from Java Edition, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Technical ====
+Actor Properties
+
+Numerical actor properties (float and integer) will now always clamp their values into the range of values specified.
+Add-Ons and Script Engine
+
+minecraft:instant_despawn no longer affects players.
+Commands
+
+Command selector now gets the same position for the player that the command origin player position gets.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Upcoming Creator Features" and "GameTest Framework" experimental toggle.
+
+
+==== Changes ====
+
+
+===== Technical =====
+Commands
+
+The /execute if block command now displays integer values for block positions (MCPE-156285)
+GameTest Framework
+
+Vector
+Fixed a bug where function length would return undefined
+Added function lengthSquared- Returns the squared length of the vector
+Added stackOverflow as a possible WatchdogTerminateReason for the beforeWatchdogTerminate event
+IRawMessage - Interface object representing a message
+rawtext : (string | IRawMessage)[] - (optional) A list of text objects used to build a message
+text : string - (optional) A string containing plain text to display directly. Only valid when used as a sub member in a parent rawtext or with member
+translate : string - (optional) String representing a translation identifier to translate text in the player's selected language
+with : (string | IRawMessage)[] - (optional) A list of text object arguments used to fill values in the translate text. Ignored when translate is not present
+say(string | IRawMessage) - Used to broadcast a message to all players
+tell(string | IRawMessage) - Send a message to a player
+Fixed a bug where Dynamic Properties would not persist when using worlds hosted on Bedrock Dedicated Server or Realms
+Pack dependencies on native modules can be declared using the module name without the need to specify a UUID, using the “module_name” attribute. The module name matches the import statement (e.g., “mojang-minecraft”)
+Removed mojang-gametest module version 0.1.0; packs using "mojang-gametest" specific APIs must be updated to use GameTest version 1.0.0-beta
+The "mojang-gametest" module 1.0.0-beta requires "mojang-minecraft" module 1.0.0-beta
+General
+
+Removed usage of minecraft:unwalkable block component and added block creative group and category to the block description.
+
+
+=== Fixes ===
+Vanilla Parity
+
+Endermen no longer get angry at Creative players. (MCPE-42977)
+Modified the fireball entity's collision box to match Java Edition.
+The enchanting table now produces a sound when enchanting an item.
+Amethyst blocks no longer produce sound when jumping off of them.
+Deep Dark
+
+Increased sculk shrieker and sculk sensor generation rates in deep dark and ancient cities to better match Java Edition. (MCPE-153525)
+Melon Block
+
+Fixed the bottom texture of the melon block to match the top texture. (MCPE-31035)
+Mobs
+
+Modified the cat's head position while sitting to match Java Edition. (MCPE-46668)
+Fixed a bug causing leads to break with allays after the owner player changes dimensions. (MCPE-158955)
+User Interface
+
+The item stack popup animation will now only play when a new item is added to the stack. (MCPE-23995)
+If a villager has a name tag, it is now displayed along with their trade tier. (MCPE-152644)
+Fixed a UI bug where enchanted leather items would have parts of the texture not displaying the glint animation. (MCPE-98929)
+Added new disconnection error messages to better highlight the area in which the disconnection occurred.
+Spectator Mode (Experimental)
+
+Endermen no longer become angry at players in Spectator Mode. (MCPE-156742)
+Players in Spectator Mode can no longer interact with sculk sensors by swimming in water or lava. (MCPE-153879)
+Players switching into Spectator Mode will unhook any fish hooks attached to them.
+Players in Spectator mode can no longer be pushed by explosions. (MCPE-156687)
+Powder Snow no longer emits particles when spectators move through it. (MCPE-153876)
+Big dripleaf no longer tilts when touched by players in Spectator Mode. (MCPE-156686)
+Players in Spectator Mode now keep their inventories and equipped items on death. (MCPE-156681)
+Spectators can no longer attract mob's attention when holding their favorite food. (MCPE-153882)
+The /testfor command can now target spectators. (MCPE-158042)
+The Spectator game mode can no longer be entered via the /gamemode 6 command, only via /gamemode spectator.
+Spectators using touch controls can no longer break boats and minecarts. (MCPE-158307)
+Pufferfish no longer react to nearby spectators.
+Blocks
+
+Mud Brick Slab can now be placed as a top slab via commands. (MCPE-157852)
+Gameplay
+
+Piston's animation when extending and retracting is now smooth. (MCPE-155987)
+Border Block
+
+Border blocks should now prevent passage at all heights.
+Items
+
+Mangrove, crimson, and warped planks can now be used to repair shields. (MCPE-158940)
+Marketplace
+
+The "Cannot connect to Marketplace" error will no longer be erroneously read by the Text-To-Speech reader.
+Fixed a bug where the text-to-speech feature would read the entire "My Content" page, both highlighted and non-highlighted items.
+Goat
+
+The goat's ram animation was modified to slowly lower their head when preparing to ram. (MCPE-129477)
+Villagers
+
+Fixed a bug that rarely caused the villager's bounding box to become desynced with the server when sleeping.
+Dedicated Server
+
+Added server property disable-custom-skins to block untrusted skins on a server wide level.
+Stability and Performance
+
+Fixed a bug causing an occasional crash when loading players in beds.
+Villages
+
+Raid bar no longer becomes stuck after breaking beds to cancel a raid. (MCPE-152851)
+
+
+== Preview 1.19.30.21 ==
+Beta 1.19.30.21 (Android) or Preview 1.19.30.21 (Windows, iOS, iPadOS, Xbox) is the second beta/Preview version for Bedrock Edition 1.19.30, released on August 10, 2022, which added keyboard shortcuts for copying coordinates, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== General ====
+Controls
+
+Added keyboard shortcuts that allow players to copy either their current coordinates or the coordinates of a block.
+Ctrl + Alt + C is the default for copying current coordinates.
+Ctrl + Alt + X is the default for copying coordinates of selected block.
+Needs the "Enable Copy Coordinate UI" enabled in Creator settings.
+
+
+=== Fixes ===
+Spectator Mode (Experimental)
+
+Parrots sitting on a player's shoulder now hop off when entering Spectator Mode.
+Animals and mobs with follow_owner behavior no longer follow Spectators.
+Animals and mobs with find_mount behavior no longer try to mount Spectators.
+Spectator Mode players won't have cold feet and now the Frost Walker enchant does not affect water.
+General
+
+Fixed an issue where light blocks would be removed when placing an armor stand over them. (MCPE-151856)
+Mobs
+
+Fixed hoglin and zoglin hitbox size and hit range to match Java Edition. (MCPE-65424)
+Commands
+
+Changed some structure's names in the /locate command to have underscores, like in Java Edition (e.g. ancientcity -> ancient_city); the old names will still work but will not show up in the autocomplete.
+Gameplay
+
+Added a waterlog field to the /structure command and the load tab of structure blocks to allow players to properly waterlog a structure when it's being placed under water.
+Pressing the Ctrl and Alt keys together will no longer make the Alt key get stuck down.
+Items
+
+Iron bars are no longer missing from the Creative Mode inventory and are once again accessible through commands. (MCPE-160253)
+White glazed terracotta is no longer missing from the Creative Mode inventory and is once again accessible through commands.
+Marketplace
+
+Character Creator offers in the Marketplace will no longer lose their thumbnail images upon exiting the Dressing Room.
+User Interface
+
+Added a Retry button to Xbox cloud sync prompt.
+Seagrass and kelp are no longer classified as Coral Decorations in the Creative Mode inventory. (MCPE-44034)
+When on fire, the fire overlay no longer clips through held items. (MCPE-147776)
+Stability and Performance
+
+The game no longer crashes when browsing Marketplace.
+
+
+== Preview 1.19.30.22 ==
+Beta 1.19.30.22 (Android) or Preview 1.19.30.22 (Windows, iOS, iPadOS, Xbox) is the third beta/Preview version for Bedrock Edition 1.19.30, released on August 17/18, 2022, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== General ====
+Music
+
+Music is now included on Android and Fire devices and no longer needs to be downloaded from the marketplace.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Upcoming Creator Features",  "GameTest Framework", and "Molang Features" experimental toggle.
+
+
+==== Changes ====
+
+
+===== Technical =====
+Commands
+
+The /execute at command now properly executes filters from the specified 'at' position. (MCPE-156283)
+Gametest Framework
+
+Script Command
+Added new sub-command /script watchdog exportstats - Exports a file containing memory usage and object handle statics.
+Molang
+
+Clarified the documentation for equipment_count to indicate it only counts equipped armor, and how to query for held items. (MCPE-136134)
+Touch Controls
+
+Can now hotbar slots while targeting a block while in a boat. (MCPE-156814)
+Data-Driven Block Components
+
+Enables creators to add geometry up to 0.875 units outside of the regular block unit cube on any one side.
+
+
+=== Fixes ===
+Spectator Mode (Experimental)
+
+Players in Spectator Mode are no longer affected by the powder snow fog effect. (MCPE-156683)
+Any leashed animals will not follow spectators anymore. (MCPE-157065)
+Players in Spectator Mode no longer emit particles while sprinting. (MCPE-160397)
+Spectators players with status effect applied no longer emit particles. (MCPE-160398)
+Chest Boats
+
+Fixed an issue where boats with chests would not drop the chest's contents when destroyed by the /kill command. (MCPE-160186)
+Items
+
+Eating a stew will now leave the empty bowl in the slot it was eaten from. (MCPE-56367)
+Drinking a potion will now leave the empty glass bottle in the slot you drank it from rather than your first empty inventory slot. (MCPE-26436)
+Mobs 
+
+Drowned no longer spawn in warm ocean biomes.
+Blocks
+
+Oak and mangrove fence gates are now flammable. (MCPE-160098)
+Gameplay
+
+Disallow fireballs from travelling through portals to prevent an issue where they could become permanently stuck. (MCPE-160938)
+Fixed dropped items getting stuck at the edge of flowing water. (MCPE-157167)
+Coral fans now look identical when placed facing north, west, east, and south. (MCPE-125311)
+Graphical
+
+Fixed an issue where certain water textures with waterlogged blocks displayed the wrong texture. (MCPE-156281)
+Sky in the End dimension will no longer look like static upon entry while it is raining in the Overworld. (MCPE-148843)
+Items
+
+Fixed a bug where some custom items (from Creators Features packs), after being used, were duplicated upon player's death. (MCPE-128897)
+Fixed a regression where an undamaged tool, such as a pickaxe, when name changed on an anvil, would fail to work correctly when used for the first time. (MCPE-152637)
+Fixed a bug where some blocks that require a supporting block (for example carpet or crops) did not appear on maps when placed on a non-full block or above an air block. (MCPE-159713)
+Marketplace
+
+Most common Marketplace connection issues will now automatically resolve themselves when conditions improve without needing to restart Minecraft. (MCPE-155025)
+Text To Speech no longer ignores the volume setting on startup.
+Mobs 
+
+Allays and bees should no longer get stuck on Lanterns or other low hanging objects. (MCPE-155777)
+Music
+
+Music is now included in the mobile app and no longer has to be downloaded from Marketplace.
+Stability and Performance
+
+Fixed performance issues when striders are being ridden by baby striders. (MCPE-146478)
+User Interface
+
+The arrow within the crafting Pocket UI now fits appropriately without any clipping issues.
+Commands
+
+Fixed a bug where a "%" was prepended to player names in the chat output of /scoreboard players reset. (MCPE-151389)
+Attempting to kill a player in Creative Mode using the /kill command now displays a message informing the player that in cannot be done. (MCPE-16732)
+Actors
+
+Non-parrot mobs on a player's shoulder will now adjust their position when the player crouches. (MCPE-153996)
+
+
+== Preview 1.19.30.23 ==
+Beta 1.19.30.23 (Android) or Preview 1.19.30.23 (Windows, iOS, iPadOS, Xbox) is the fourth beta/Preview version for Bedrock Edition 1.19.30, released on August 25, 2022, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== General ====
+Splashes
+
+Removed "Your gender is valid!" and "Contains infinite genders!".
+These were later re-added in the release of Bedrock Edition 1.19.30, which implies that the removal was a mistake.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Upcoming Creator Features" and  "GameTest Framework" experimental toggle.
+
+
+==== Changes ====
+
+
+===== Technical =====
+Actor Properties
+
+Add a content error when default or set_property expressions include side-effects, such as Molang variable assignment
+GameTest Framework
+
+Memory Watchdog
+script-watchdog-memory-warning- produces a content log warning when the combined memory usage exceeds the given threshold (in megabytes). Setting this value to 0 disables the warning. (default = 100)
+script-watchdog-memory-limit- saves and shuts down the world when the combined memory usage exceeds the given threshold (in megabytes). Setting this value to 0 disables the limit. (default = 250)
+Player
+setVelocity will now throw an exception when called on player types
+Watchdog
+Increased slow code warning threshold from 2 ms to 6 ms
+Items
+Renamed Items to ItemTypes
+ItemTypes
+Added function getAll(): ItemTypeIterator- Returns an iterator of all available item types
+
+
+=== Fixes ===
+Spectator Mode (Experimental)
+
+Capes are no longer rendered while in Spectator Mode (MCPE-156929)
+Spectator players in lava cauldrons no longer display the burning animation (MCPE-160331)
+Blocks
+
+Banners now spawn correctly in newly generated structures (MCPE-160696)
+Gameplay
+
+Player textures and UI elements should no longer turn pink after playing for an extended period time on highly populated servers (MCPE-105487)
+Fixed issue where player would see inside of top snow when diving into it while wearing Elytra
+Graphical
+
+Fixed a bug where the name tag background was slightly offset (MCPE-160254)
+Performance and Stability
+
+Fixed a crash that could occur when resuming the game on Xbox
+Items
+
+It is no longer possible to get an aged Sapling in the inventory by block-picking
+Item stacks now are merged together after assigned tick threshold
+Mobile Controls
+
+Resolves issue in new Touch Controls where the sprint button could not be toggled when standing still
+Added logic to automatically toggle off sprint button when player releases the on-screen joystick
+Mobs
+
+Reduced the enderman's teleport range to 32x32x32 to ensure that it cannot despawn itself by teleporting (MCPE-152268)
+Reverted a change to drowned spawning, and they again spawn in warm ocean biomes to match Java Edition
+User Interface
+
+Added a missing settings button on packs in the updated Create New World screen
+Added a new disconnection error message - "Unable to connect, please restart your client"
+Added a paste button to the Command Block screen
+Updated splash texts
+Fix issue causing messages with non-unicode characters to have incorrect spacing
+General
+
+Fixed a bug where deleting cloud synced worlds would not delete the cloud version of the world when the player deletes the world locally
+EDU Toggle: NPC names default to only being displayed while looking at them
+Audio
+
+Fixed PS4 audio stuttering issues while framerate is low (MCPE-158902)
+Technical
+
+Fixed a crashing issue related to undyed shulkers
+Commands
+
+The /execute at and /execute as commands will now execute at the correct relative rotation (MCPE-156277)
+/execute at @e run kill @e no longer crashes the game when there are items on the ground (MCPE-161029)
+Added chat output when entities are skipped by /ride summon_ride no_ride_change (MCPE-129486)
+
+
+== Preview 1.19.30.24 ==
+Preview 1.19.30.24 (iOS, iPadOS) is the fifth preview version for Bedrock Edition 1.19.30, released on August 26, 2022 for iOS and iPadOS only, which fixes a crash.
+
+
+=== Fixes ===
+Fixed a top crash that could occur during gameplay on iOS and iPadOS devices.
+
+
+== Preview 1.19.30.25 ==
+Beta 1.19.30.25 (Android) or Preview 1.19.30.25 (Windows, iOS, iPadOS, Xbox) is the fifth and final beta, and sixth and final Preview version for Bedrock Edition 1.19.30, released on September 1, 2022, which fixes bugs.
+
+
+=== Fixes ===
+Graphical
+
+Fixed an issue with flowing lava and water textures not animating on some iOS devices
+Stability and Performance
+
+Fixed a crash that would occur on some devices when loading in worlds with texture packs applied (MCPE-160800)
+
+
+== Notes and references ==
+
+
+== Navigation ==

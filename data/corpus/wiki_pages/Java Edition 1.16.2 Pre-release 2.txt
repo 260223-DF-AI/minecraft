@@ -1,0 +1,98 @@
+1.16.2 Pre-release 2 (known as 1.16.2-pre2 in the launcher) is the second pre-release for Java Edition 1.16.2, released on August 5, 2020, which changes the result of inter-dimensional teleporting, allows nether roots to be broken by hand, and fixes bugs.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Crimson and warped roots
+
+Now drop when broken without shears again.
+Nether vegetation
+
+No longer catches fire.
+
+
+=== Items ===
+Pufferfish
+
+Now gives Nausea I instead of Nausea II when eaten.
+This has no practical effect in-game as the level of the Nausea effect does not change anything.
+
+
+=== World generation ===
+Badlands
+
+Plateaus generate more frequently at the edges of badlands.
+
+
+=== Command format ===
+/execute
+
+/execute in now respects dimension scaling for relative and local coordinates: the execution position (only the X/Z part) of a command is divided by 8 when traveling from the Overworld to the Nether, and is multiplied by 8 when vice versa.
+If a value is added after the tilde, that value is added only after the new scaled position is calculated. For instance, ~5 will first scale the player's current position (multiplying by eight when traveling to the Overworld or dividing by eight when going to the Nether) before adding five to that outputted value.
+For example, if a player at position (16,64,16) in Overworld runs command /execute in minecraft:the_nether run tp ~ ~ ~, the player would now be teleported to (2,64,2) in the Nether.
+Relatively, if a player at position (2,64,2) in the Nether runs command /execute in minecraft:overworld run tp ~ ~ ~, the player would now be teleported to (16,64,16) in Overworld.
+If a player at position (80,64,80) in Overworld runs command /execute in minecraft:the_nether run tp ~ ~ ~5, the player would now be teleported to (10,64,15) in the Nether.
+If a player at position (16,64,16) in Overworld runs command /execute in minecraft:the_nether run tp 16 64 16, the player would still be teleported to (16,64,16) in the Nether.
+The behavior before this version can be done by running command /execute in <target dimension> positioned as @s run tp @s ~ ~ ~.
+Applies to custom dimensions as well.
+
+
+=== General ===
+Custom dimension type
+
+Replaced [Boolean] shrunk with [Float] coordinate_scale.
+For example, [Float] coordinate_scale for minecraft:overworld is 1.0, for minecraft:the_nether is 8.0, thus the /execute in command to go to the Overworld actually multiplies the execution position (only the X/Z part) with 8.0/1.0 (1.0/8.0 when vice versa), which is 8 (0.125 when vice versa).
+If there are two custom dimension type custom:a with coordinate_scale set to 2.33, type custom:b set to 3.14, then the /execute in command to go to custom:a would multiply the execution position (only the X/Z part) with 3.14/2.33 (2.33/3.14 when vice versa).
+
+
+== Fixes ==
+28 issues fixed
+From released versions before 1.16
+
+MC-69876 – Pistons at Y=1 do not push downwards, and at Y=254 do not push upwards.
+MC-124320 – Endermen can pick up and place snowless snowy grass blocks.
+MC-130558 – Item frames cannot be emptied if gamerule doEntityDrops is set to false.
+MC-134084 – If gamerule sendCommandFeedback is disabled, /msg or /tell do not display the message to the sender.
+MC-136553 – Dyes in Creative inventory are in reverse order.
+MC-152037 – Powered, activator, and detector rails are deleted when pushed or pulled onto a block they cannot be placed on.
+MC-169203 – Sloped redstone type rail not dropping item when pushed by piston to a spot without adjacent block.
+MC-177684 – Cocoa beans, bone meal, and lapis lazuli are placed among the dyes in the Creative inventory.
+MC-177733 – Powered and activator rail duplication.
+MC-196473 – Pufferfish gives Nausea II instead of the maximum of Nausea I.
+From 1.16
+
+MC-176491 – Nylium randomly catches fire from lava, and burns infinitely.
+MC-187357 – Strongholds will not generate in floating_islands or caves preset.
+MC-189736 – distance within a predicate no longer works.
+MC-190552 – Demo mode resets position and inventory upon launch.
+MC-190859 – floating_islands or caves buffet worlds no longer generate strongholds, and ender eyes do not locate previously-generated strongholds after upgrading to 1.16.
+From 1.16.1
+
+MC-192136 – Lava damage works differently than in previous versions.
+MC-192236 – Endermen can place blocks on top of item frames on the floor.
+MC-192371 – Paintings in the same block space pop off when chunk loads.
+MC-192845 – Block event lag in 1.16 is excessive.
+MC-195851 – Hat layer on helmets detaches from piglins' heads while bartering.
+MC-196245 – Charged creepers do not always drop their skull if zombie variants are nearby.
+From the 1.16.2 development versions
+
+MC-194867 – Minecarts come out the wrong side of a Nether portal and lose momentum when coming back to the Overworld.
+MC-194953 – Custom Biomes are not useable in predicates.
+MC-195803 – Mob kill statistics are formatted in reverse: "N killed you <mob> times."
+From the previous development version
+
+MC-196441 – Stonecutter and smithing table recipes are not given after crafting a stack of more than one.
+MC-196469 – F1 hides the Nausea green tint.
+MC-196653 – Creating multiple datapack dimensions that reference the same dimension_type string causes "unregistered dimension" crash.
+MC-196743 – Custom and modified biomes do not work in the Overworld.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

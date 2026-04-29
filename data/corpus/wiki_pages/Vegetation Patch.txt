@@ -1,0 +1,32 @@
+Vegetation patch is a feature that places some vegetation in the lush caves biome.
+
+
+== Data values ==
+
+
+=== ID ===
+Java Edition:
+
+Bedrock Edition:
+
+
+=== Config ===
+
+Java Edition:
+Vegetation patch is placed in columns, one column for each XZ position, placed separately. Rectangle of available XZ positions is defined by [Int][NBT Compound / JSON Object] xz_radius. For each XZ position feature starts searching for [Int] vertical_range blocks either up or down for closest available position, starting from Y, where feature has been placed. It can fail to generate only if all columns fail to generate.
+Depending on [String] surface feature will change direction of its search and available position:
+
+floor - available position is air 1 block above the block  from [String] replaceable tag. If search starts in air, feature will search down, otherwise - up.
+ceiling - available position is air 1 block below the block  from [String] replaceable tag. If search starts in air, feature will search up, otherwise - down.
+After search is completed and available position is found, column of blocks is placed. It replaces blocks from [String] replaceable tag for either amount of blocks set in [Int][NBT Compound / JSON Object] depth or until the first instance of non replacable, or same block, that is chosen by [NBT Compound / JSON Object] ground_state (state of block is ignored).
+After that feature, defined in [String][NBT Compound / JSON Object] vegetation_feature is generated on the found available position.
+
+
+== History ==
+
+
+== Issues ==
+Issues relating to "Vegetation Patch" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Navigation ==

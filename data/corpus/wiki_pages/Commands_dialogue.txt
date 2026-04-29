@@ -1,0 +1,62 @@
+Opens an NPC dialogue screen to the player(s), or changes the dialogue displayed by an NPC.
+
+
+== Usage ==
+Dialogue can be branched with the use of a scene file. The scene file is a Json file located inside the dialogue folder in the root directory of the active behavior pack that contains all the information needed for branching dialogue. There is no limit to the amount of scene files, as the game reads all the files in the folder and call based on scene_tag property indicated in the given scene data.
+See this documentation for scene file setup.
+
+
+== Syntax ==
+dialogue open <npc: target> <player: target> [sceneName: string]
+Forces open the targeted NPC's dialogue box to the targeted player(s), simulating the experience of clicking on an NPC.
+A targeted scene can also be indicated.
+dialogue change <npc: target> <sceneName: string> [player: target]
+Changes the content of the targeted NPC according to the targeted scene, including dialogue, commands, and name.
+This closes the dialogue box and update for the next time the NPC is interacted.
+The content can be updated on a per-player basis. If no player is targeted, the dialogue updates for all players.
+
+
+== Arguments ==
+npc: target: CommandSelector<Actor>
+
+Specifies the target to open an NPC screen from.
+Must be a player name or a target selector.  And it should target only one entity that has the minecraft:npc component.
+player: target: CommandSelector<Player>
+
+Specifies the player(s) to display the NPC screen.
+Must be specified in open mode. In change mode, all players are affected if not specified.
+Must be a player name or a target selector. 
+sceneName: string: basic_string
+
+Specifies what scene to show from the dialogue folder in a behavior pack from the scene_tag property.
+Must be specified in change mode. In open mode, the last dialogue shown is used if not specified.
+Must be a string. And it must be a single word that has no space or a double-quoted string (When quoted, \ can be used to escape characters).
+
+
+== Result ==
+
+
+== Output ==
+
+
+== Examples ==
+Open the dialogue of an NPC with tag "ducky" toward the nearest player showing scene "ducky_intro":
+dialogue open @e[type=npc, tag=ducky] @p ducky_intro
+Change the dialogue of an NPC with tag "ducky" into scene "duck_intro" toward the initiator:
+dialogue change @e[type=npc, tag=ducky] ducky_intro @initiator
+
+
+== History ==
+
+
+=== Bedrock Edition ===
+
+
+=== Minecraft Education ===
+
+
+== External links ==
+"/dialogue Command"     – Microsoft Learn, October 11, 2023.
+
+
+== Navigation ==

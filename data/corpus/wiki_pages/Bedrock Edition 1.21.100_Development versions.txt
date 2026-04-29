@@ -1,0 +1,655 @@
+This is a list of Bedrock Edition 1.21.100 development versions.
+
+
+== Preview 1.21.100.20 ==
+Beta 1.21.100.20 (ChromeOS, Android) or Preview 1.21.100.20 (Windows, iOS, iPadOS, Xbox, PlayStation) is the first beta/Preview version for Bedrock Edition 1.21.100, released on June 10, 2025, which fixes bugs and makes some small changes to improve parity with Java Edition.
+
+
+=== Additions ===
+
+
+==== General ====
+Accessibility
+
+Added screen narrator enumeration to UI buttons when adding a new server.
+
+
+=== Changes ===
+
+
+==== Command format ====
+World spawn
+
+The world spawn can now be set in the End using /spawnpoint.
+/locate
+
+/locate biome command now requires that the biome's namespace is specified (ex: minecraft:plains instead of just plains). Auto-complete suggestions for this command will now include namespaces.
+
+
+==== Mobs ====
+Animals
+
+The ambient sound interval for all animals has been adjusted to 6 seconds, matching Java Edition.
+Ghasts
+
+The ambient sound interval for all ghasts has been adjusted to 4 seconds, matching Java Edition.
+Snowballs, Ender Pearls, Ender Eyes, Experience Bottles, Splash Potions, Lingering Potions, and Ice Bombs
+
+Their sprites, when rendered in the world, now have the correct scaling and positional offset.
+They now match Java Edition, and also match better with their collider.
+
+
+==== General ====
+
+UI
+
+"Owned" or "Download" is now displayed on items the player owns outside of the "My Library" page.
+The Marketplace Pass chevron will now show on items that the user owns while on normal Marketplace pages. Not on the inventory. Owned/Download text moved to the right.
+Updated Marketplace Pass chevron to show on items in the inventory.
+Moved the "Owned"/"Download" text to the right side.
+Audio Settings Screen
+
+The audio default volumes have been updated.
+Audio settings have been updated with a brand-new look and improved navigation:
+Each setting now includes a helpful description, making it easier to understand what it does.
+Improved interaction with sliders that are now smoother and more responsive than before.
+
+
+==== World generation ====
+Trees
+
+Trees now generate more sparsely in groves.
+Trees now generate more frequently in snowy plains.
+Frozen Ocean
+
+Its surface is no longer entirely covered by ice, and now features patches of open water.
+Icebergs in frozen ocean biomes now generate with a shape and frequency that more closely matches Java Edition.
+Deep Frozen Ocean
+
+Its surface is no longer covered by ice and now consists entirely of open water.
+Old Growth Spruce Taiga and Old Growth Pine Taiga
+
+Increased the size of the podzol patches generated beneath mega pines and mega spruces.
+This change affects both world generation and trees grown by players.
+Mushrooms
+
+Mushrooms now properly generate under trees in swamps and other biomes where they naturally generate.
+Seagrass
+
+Seagrass no longer pokes through ice when it generates in shallow water in biomes that have ice on the water's surface.
+
+
+==== Technical ====
+Add-Ons and Script Engine
+
+Custom biome names are no longer implied by their filenames. Biome names are explicitly specified via the identifier property under the description sub-object of their JSON definition.
+Biome identifiers must now be namespaced (ex: minecraft:plains). Client biomes with a format version lower than 1.21.90 will have their identifier automatically prefixed minecraft: when loaded if no namespace is already specified.
+Updated biome documentation to match updated biome JSON formatting and requirements.
+API
+
+The message parameter of the setText method on BlockSignComponent no longer accepts a RawText as an option. This option was redundant as it is covered by the existing RawMessage option. This affects the setText method in all versions.
+Updated many error strings to use consistent punctuation.
+The properties minValue and maxValue on the ArgumentOutOfBoundsError class are now optional.
+Updated several APIs to throw ArgumentOutOfBoundsError instead of Error where appropriate. This affects the following APIs in all versions:
+Entity.addEffect for when the amplifier setting is out of bounds (0 - 255) or duration setting is out of bounds (1 - 20000000).
+Entity.applyImpulse for when the vector parameter is out of bounds (-1000 - 1000 per axis).
+ItemStack.setLore and ContainerSlot.setLore for when the loreList parameter is out of bounds (0 - 100 max lines, 0 - 1000 max length per line).
+ItemStack.setAmount and ContainerSlot.setAmount for when the amount parameter is out of bounds (0 - 255).
+Some existing errors that throw ArgumentOutOfBoundsError have been updated to use a standardized error message. This affects the following APIs in all versions:
+ScreenDisplay.setTitle for when the fadeInDuration, stayDuration or fadeOutDuration settings are out of bounds (min value of 0).
+StructureManager.placeStructure for when the integrity setting is out of bounds (0 - 1).
+PlayerAimAssist.setAimAssistSettings for when the viewAngle setting is out of bounds (10 - 90) or distance setting is out of bounds (1 - 16).
+ItemStack.setNameTag and ContainerSlot.setNameTag for when the nameTag parameter length is out of bounds (0 - 255).
+Some existing errors that throw InvalidArgumentError have been updated to use a standardized error message.
+CustomSpawnRulesRegistry.registerObstructionCallback for when the predicate parameter is empty or a duplicate.
+Released DyeableItemComponent to stable.
+Block Components
+
+Modified minecraft:geometry block component.
+Field uv_lock no longer requires "Upcoming Creator Features" experiment to work, Json format_version still needs to be >= 1.19.80.
+Components
+
+Content warnings will log missing entity references in Spawn Rule JSON.
+Content warnings will log missing references in Client Biome JSON.
+The minecraft:body_rotation_axis_aligned component has been renamed to minecraft:rotation_axis_aligned.
+Entity Components
+
+Made the schema for the minecraft:tick_world entity component stricter so that the parsing now refuses out of range values for radius and distance_to_players.
+Graphical
+
+Changed cloud quality to player visible option and not a dev only option.
+Jigsaw
+
+Added minecraft:blockstate_match and minecraft:random_blockstate_match rules to jigsaw processors.
+Added heightmap projection type none and made it the default setting, which instead of performing heightmap calculations uses the starting placement position.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs", "Experimental Creator Camera", and "Custom Biomes" experimental toggles.
+
+
+==== Additions ====
+
+
+===== Technical =====
+API
+
+Added class InvalidItemStackError to beta.
+Commands
+
+Added the fov_set keyword to the /camera command for changing the camera's field of view. Enabled with the Experimental Creator Camera toggle.
+Scripting
+
+Added support for text to speech for tooltips at Server-UI forms.
+UI
+
+Added support for navigation using keyboard and gamepad for tooltips at settings. Also, to be showed always inside the visible area. Mobile resolutions were having issues with this.
+
+
+==== Changes ====
+
+
+===== Technical =====
+API
+
+Moved class PlayerHotbarSelectedSlotChangeAfterEvent from beta to 2.1.0.
+Moved class PlayerHotbarSelectedSlotChangeAfterEventSignal from beta to 2.1.0.
+Moved class PlayerInventoryItemChangeAfterEvent from beta to 2.1.0.
+Moved class PlayerInventoryItemChangeAfterEventSignal from beta to 2.1.0.
+Moved interface HotbarEventOptions from beta to 2.1.0.
+Moved interface InventoryItemEventOptions from beta to 2.1.0.
+Moved enum PlayerInventoryType from beta to 2.1.0.
+Class HotbarEventOptions.
+Field allowedSlots added bound validation, numbers inside the array must be between 0 and 8.
+Class InventoryItemEventOptions.
+Field allowedSlots added bound validation, numbers inside the array must be positive.
+ItemInventoryComponent
+Bundle UI now renders non-contiguous items added to the container with this API correctly.
+Experimental
+
+/locate structure command (and similar structure-searching gameplay elements) will now quickly return no result if experimental Custom Biomes have replaced all of the biomes where that structure could appear.
+Jigsaw
+
+max_distance_from_center now parses horizontal and vertical values separately in an object while supporting horizontal only with parsing as a constant, the vertical value is now optional and defaults to having no limit.
+World generation
+
+Mixing Terrain matching and Rigid Structures will no longer sink rigid structure 1 block.
+Chunks will no longer infinitely load when multiple structures are used within a structure set.
+Can now use minecraft:empty_pool_element jigsaw template pools to represent empty elements.
+
+
+=== Fixes ===
+43 issues fixed
+From released versions before Bedrock Edition 1.21.100
+
+MCPE-63460 – Water is not transparent in swamp biome
+MCPE-74983 – Grass blocks can sometimes generate in Mushroom Islands
+MCPE-88837 – Piglin brutes do not despawn in Peaceful mode
+MCPE-114253 – Squid rendering is offset in the -Y direction
+MCPE-137029 – Swamp Biome no longer has a bumpy shoreline
+MCPE-140517 – Large spruce tree (2x2) can generate half or fully floating
+MCPE-149587 – Pressing "choose new skin" button and then pressing back button prevents skin from being changed until game is restarted
+MCPE-157125 – Non-player entities teleport to the void when transported from the End to the Overworld
+MCPE-159044 – Allay not disconnecting from lead
+MCPE-163558 – Breaking a fence that has an entity tied to it keeps the lead floating for a few seconds
+MCPE-185429 – <message: message> command argument can be empty and runs successfully
+MCPE-186435 – Allays can hold leads
+MCPE-187041 – Leash knots do not adapt to the size of wall blocks that are not connected to anything when animals are leashed to it
+MCPE-190531 – flipbook_textures.json does not support animating multiple variants of a same block and only animates the last entry for that block.
+MCPE-190751 – No camera perspective button in spectator mode
+MCPE-190776 – Standing in Scaffolding or Powder Snow causes pick-block button on mobile to disappear
+MCPE-194268 – Stacking multiple Add-Ons warning button says "Link" instead of "Read more"
+MCPE-197900 – When I load a world I get a notification saying Cloud Syncing has failed check internet connection and try again. I am connected to the internet just fine.
+MCPE-217597 – Vibrant Visuals: Lead is animated incorrectly in first person view
+MCPE-217667 – Clicking a world thumbnail while in the grid layout no longer plays click sounds
+MCPE-218617 – "Invite to Game" button obscured by scoreboard
+MCPE-219364 – /music command stops working after leaving and rejoining world until game restart
+MCPE-219554 – New Tears disc has extra spaces in its name
+MCPE-220347 – The on_fire_color component in a mob's render controllers does not display the right color in game
+MCPE-220829 – Addon Entities using Properties and Render controllers now have texture replacement issues in the v1.21.82 update
+Other
+
+Emoting players will no longer get stuck in a boat.
+Fixed a bug where caustics were not appearing for player hand and held items in first person view.
+Fixed the spyglass and fire effects in first person not receiving gamma calibration in Vibrant Visuals.
+Fixed a bug that caused bottle o' enchanting not to glow when thrown in Vibrant Visuals.
+Fixed clusters of mangrove root blocks displaying a non-uniform color.
+Fixed chain blocks not being rendered with PBR properties defined by the texture set.
+Fixed an issue that caused chain blocks to change PBR properties of surrounding blocks.
+Fixed a bug where glow squid would not act as leash anchor points.
+Fixed a bug that caused happy ghast to not rotate properly if dismounted while moving vertically.
+Fixed rare crashes during the app suspension on Xbox.
+Player dots on the locator bar now move smoothly when strafing near other players.
+Player dot on the Locator Bar now stops 1 pixel before the edge of the bar.
+Fixed a bug which could cause the bed screen to not be removed properly when being disconnected from a server.
+Fixed a bug where the includeLiquidBlocks property on BlockRaycastOptions would not correctly result in hits on liquids if it didn't also reach a solid block afterward.
+Fixed a crash with the DebugDrawer when used too early in the client joining a world (such as inside the playerSpawn event).
+Fixed assert "can't add a new vertex field at this point: COLOR" when loading some worlds that contained clusters of mangrove roots blocks.
+Fixed assert "can't add a new vertex field at this point: TEXCOORD_4" when loading some worlds that contained chain or end portal blocks.
+Fixed an issue where projectiles were shot in the wrong direction when using touch controls and custom cameras.
+
+
+== Preview 1.21.100.21 ==
+Beta 1.21.100.21 (ChromeOS, Android) or Preview 1.21.100.21 (Windows, iOS, iPadOS, Xbox, PlayStation) is the second beta/Preview version for Bedrock Edition 1.21.100, released on June 18, 2025.
+
+
+=== Additions ===
+
+
+==== Command format ====
+Target selectors
+
+Added the @n target selector, which returns the single closest entity.
+Spawn event
+
+Added two new spawn events: minecraft:entity_spawned_with_default_jockey and minecraft:entity_spawned_with_biome_specific_jockey.
+Both of them are only executable on spiders and cave spiders.
+minecraft:entity_spawned_with_default_jockey lets spiders and cave spiders spawn as a spider jockey with a skeleton rider, if it's nighttime or underground.
+minecraft:entity_spawned_with_biome_specific_jockey lets spiders and cave spiders spawn with a skeleton variant rider depending on the biome they spawn in, if it's nighttime and not underground.
+It adds a wither skeleton rider in The Nether.
+It adds a stray rider in snowy biomes.
+It adds a bogged rider in swamp or mangrove swamp biomes.
+If executed anywhere else or underground, it adds a regular skeleton rider.
+
+
+=== Changes ===
+
+
+==== General ====
+Settings
+
+Moved the graphics mode and render distance options to the top of video settings for convenience.
+Added preview sounds for the new audio tab.
+
+
+==== Graphical ====
+Vibrant Visuals
+
+Weather events now affect the scene illumination and the color of clouds and sky in Vibrant Visuals.
+Updated Reflections configurations for "Favor Performance" presets on Xbox platforms with Vibrant Visuals.
+
+
+==== Mobs ====
+Enderman
+
+Endermen can now pick up all block types they are able to in Java Edition.
+Spider
+
+ When spawning as a spider jockey in swamp or mangrove swamp biomes, it now has an 80% chance to have a bogged rider.
+Cave Spider
+
+When spawning as a spider jockey in swamp or mangrove swamp biomes, it now has an 80% chance to have a bogged rider.
+
+
+==== Technical ====
+AI Goals
+
+Added the minecraft:behavior.take_block AI goal, allows an entity to take blocks from the world with the following options:
+blocks: Array of block descriptors that the entity can take, if empty can take any block.
+can_take: Entity filters for when the entity can use the goal.
+on_take: Trigger ran if the entity does take a block.
+xz_range: XZ range from which the entity will try and take blocks from.
+y_range: Y range from which the entity will try and take blocks from.
+chance: Chance each tick to try and take a block.
+affected_by_griefing_rule: If the goal is affected by the mob griefing game rule.
+requires_line_of_sight: If the entity requires line of sight on the block it tries to take.
+Removed the minecraft:behavior.enderman_take_block AI goal, it upgrades to the above goal.
+Added the minecraft:behavior.place_block AI goal, allows an entity to place blocks in the world with the following options:
+placeable_carried_blocks: Array of block descriptors that the entity can place if its carried item, if empty can place any block from its carried item.
+randomly_placeable_blocks: Array of weighted block descriptors that the entity can randomly place, if empty the entity will try to place the block in its carried item instead.
+can_place: Entity filters for when the entity can use the goal.
+on_place: Trigger ran if the entity does place a block.
+xz_range: X range from which the entity will try and place blocks in.
+y_range: Y range from which the entity will try and place blocks in.
+chance: Chance each tick to try and place a block.
+affected_by_griefing_rule: If the goal is affected by the mob griefing game rule.
+Removed the minecraft:behavior.enderman_leave_block AI goal, it upgrades to the above goal.
+API
+
+Removed minecraft:destruction_particles's block API from beta, it was deemed too risky to expose to server scripting API since the component is only being used on client.
+Moved enum MovementType from beta to v2.0.0.
+Moved enum StickyType from beta to v2.0.0.
+Moved class BlockMovableComponent from beta to v2.0.0.
+Moved localizationKey property on Block, Entity, Dimension, and ItemStack from beta into 2.1.0.
+Moved Container methods contains, firstEmptySlot, firstItem, find, and findLast from beta into 2.1.0.
+Block
+
+alpha_test_to_opaque, alpha_test_single_sided_to_opaque, and blend_to_opaque will now shift to opaque in the distance again when used as render method in minecraft:material_instances.
+Removed Upcoming Creator Features toggle requirement from Movable Component.
+Block Components
+
+Field uv_lock no longer requires Upcoming Creator Features experiment to work. JSON format_version still needs to be >= 1.21.90.
+Components
+
+Content warnings will log missing references in Jigsaw Structure, Processor List, Template Pool, and Structure Sets JSON.
+Molang
+
+query.is_carrying_block is now usable by all entities, not just enderman.
+query.is_carrying_block returns 1.0 if the entity is carrying any block, including air.
+Textures
+
+Modified Json parsing of variations texture objects in terrain_texture.json files:
+weight field clamped to minimum value of 0.05.
+weight field clamped to maximum value of 1000000.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs", and "Custom Biomes" experimental toggles.
+
+
+==== Additions ====
+
+
+===== Technical =====
+API
+
+Added runOnFinish method to GameTest which runs after the test is completed, regardless if it passed, failed, or timed out.
+
+
+==== Changes ====
+
+
+===== Technical =====
+Gameplay
+
+When loading a chunk that used a removed custom biome, the removed biome is now replaced with the dimension's default biome, which is ocean in the Overworld.
+
+
+=== Fixes ===
+13 issues fixed
+From released versions before Bedrock Edition 1.21.100
+
+MCPE-96298 – Lead attaches to the player's head, partially blocking the screen.
+MCPE-153135 – The fox automatically places items (armor, mob heads, carved pumpkin, etc.) in armor slots.
+MCPE-162613 – Endermen can pick up warped or crimson fungus and place it onto any full block
+MCPE-164355 – Enderman Does Not Replace Items at /replaceitem.
+MCPE-178487 – Foxes don’t pick up non-stackable items like swords and totems.
+MCPE-180453 – Some blocks are not highlighted when Outline Selection is disabled.
+MCPE-190952 – Trident with the Riptide enchantment sending you back when you. immediately switch to another hotbar slot.
+MCPE-191029 – Block breaking animations do not stop after pausing the game
+MCPE-208094 – Vibrant Visuals: End Crystal healing beams texture not animated
+MCPE-220579 – Vibrant Visuals: Beacon beam texture is broken.
+MCPE-221119 – Inconsistency: Spider jockeys cannot have a Bogged rider, despite other skeletons spawning as riders.
+Other
+
+Fixed a bug where the death screen could be shown while the player was alive when certain gamepad buttons where pressed at the same time.
+Fixed an issue where endermen could take blocks without having line of sight to them.
+
+
+== Preview 1.21.100.22 ==
+Beta 1.21.100.22 (ChromeOS, Android) or Preview 1.21.100.22 (Windows, iOS, iPadOS, Xbox, PlayStation) is the third beta/Preview version for Bedrock Edition 1.21.100, released on June 25, 2025.
+
+
+=== Changes ===
+
+
+==== Items ====
+Lead
+
+Leashes will now emit their breaking sound from the location of the leash holder, rather than the actor being leashed.
+
+
+==== Mobs ====
+Happy Ghast
+
+It now drops 1-3 experience orbs when killed by a player.
+Increased volume of happy ghast ride sound.
+
+
+==== Gameplay ====
+Death
+
+Enabled engine changes to mob death behavior. This refactor shouldn’t affect gameplay.
+
+
+==== Technical ====
+Biomes
+
+Updated minecraft:grass_appearance component with grass_is_shaded variable if true it adds a shading effect to the grass as if there was a roof.
+Blocks
+
+Released the component minecraft:random_offset from experimental for block format versions 1.21.100 or higher.
+Graphical
+
+Fishing Line: Increased thickness in Vibrant Visuals mode, so that the fishing line does not disappear from TAA.
+Reduced the alpha value from 60% to 25% for hurt color overlay on entities to aid in accessibility.
+Caustics textures with incorrect dimensions will no longer be loaded; a content error will be issued and the default caustics texture will be used instead.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs", "Custom Biomes", and "Data-Driven Jigsaw Structures" experimental toggles.
+
+
+==== Additions ====
+
+
+===== Technical =====
+API
+
+Added class ItemBookComponent to beta for interfacing with minecraft:writable_book and minecraft:written_book to change their contents and sign them.
+Added class BookError and class BookPageContentError to beta.
+Biomes
+
+Added a new server side biome component surface_builder that will combine the components surface_parameters, frozen_ocean_surface, mesa_surface, swamp_surface, capped_surface, and the_end_surface into one component. Each biome can only use one builder type. The component can be used for world generation settings such as foundation material and sea floor depth.
+Added minecraft:humidity component with is_humid this forces a biome to either always be humid or never humid. Humidity effects the spread chance, and spread rate of fire in the biome.
+Added minecraft:partially_frozen This component will impact the temperature in a frozen biome, causing some areas to not be frozen. Ex: patchy ice, patchy snow.
+
+
+==== Changes ====
+
+
+===== Technical =====
+Jigsaw
+
+Changed structure definitions folder from worldgen/jigsaw_structures to worldgen/structures.
+
+
+=== Fixes ===
+5 issues fixed
+From released versions before Bedrock Edition 1.21.100
+
+MCPE-100021 – Campfires/TNT/candles can be lit by using a Fire Aspect book on them
+MCPE-219143 – The block "permutations" array is not taken into account when determining destruction particles from material instances
+MCPE-219627 – Missing Localized Text for action.interact When Using Lead to Attach Entities on Mobile
+MCPE-220496 – Tridents no longer damage mobs after being moved by a piston or trapdoor in certain situations
+Other
+
+Fixed a crash related to reading incorrect or corrupt json data for animated blocks. Instead we now trigger a content error and prevent the block from animating.
+
+
+== Preview 1.21.100.23 ==
+Beta 1.21.100.23 (ChromeOS, Android) or Preview 1.21.100.23 (Windows, iOS, iPadOS, Xbox, PlayStation) is the fourth beta/Preview version for Bedrock Edition 1.21.100, released on July 1, 2025, which fixes some bugs. It also adds copper golems, copper chests, copper tools and copper armor, as part of the "Drop 3 2025" experiment. 
+
+
+=== Additions ===
+
+
+==== General ====
+Flat world presets
+
+Added "The Void" as a flat world preset.
+
+
+=== Changes ===
+
+
+==== Gameplay ====
+Hotbar
+
+Hotbar can always be hit in any touch device. The detection area matches the texture even if you have customise controls enabled.
+Leashed mobs
+
+Updated the way leashed mobs interact with vehicles.
+Leashed mobs can now be pulled into boats, minecarts, and other rideable entities if the leash is slackened when close to those entities.
+Leashed mobs will now automatically dismount their vehicle if the leash is stretched far enough.
+
+
+==== General ====
+UI
+
+Made some adjustments to the spacing of items in the settings menu.
+
+
+==== Technical ====
+Add-ons and Script Engine
+
+Biomes client settings now look up settings based on the biome's full name, including its namespace. Vanilla biomes will fall back on their name without a namespace if an exact match is not found before falling back on default settings (for example, minecraft:plains will match itself, then plains if no setting was found)
+API
+
+Added new error class UnsupportedFunctionalityError which is thrown for certain cases where a particular functionality such as a method, or part of a method based on the parameters, is not supported. An example is calling the Entity method remove on a player.
+Added new error class EntitySpawnError which is thrown when an entity fails to spawn via the spawnEntity method on Dimension.
+Updated many methods to throw custom errors to provide better context and information of the problem that occurred.
+Blocks
+
+Blocks with improperly configured textures will now show additional content errors.
+Released the particle count field for the block destruction particles component out of experimental.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs", and "Drop 3 2025" experimental toggles.
+
+
+==== Additions ====
+
+
+===== Blocks =====
+Copper Chest
+
+Copper chest is a new type of chest that has waxed and oxidized variants.
+Copper chests oxidize over time and can be waxed like other copper blocks.
+Copper chests can be crafted using a chest and copper ingots.
+
+
+===== Items =====
+Copper Armor
+
+Added copper helmets, copper chestplates, copper leggings, and copper boots.
+Copper armor has higher durability than leather but less than iron. Copper armor enchantability sits slightly lower than with iron.
+
+Copper Nugget
+
+Added copper nuggets.
+Copper equipment turns into copper nuggets when smelted.
+Copper nuggets can be crafted by using a copper ingot.
+
+Copper Tools
+
+Added copper axes, copper hoes, copper pickaxes, copper shovels, and copper swords.
+Copper tools and weapons are crafted and repaired using copper ingots. They do the same amount of damage as stone but have higher durability. Copper tools work faster than stone tools, but they are slower than their iron counterparts. Copper tools have higher enchantability than diamond, but slightly less than iron.
+
+ Copper Golem Spawn Egg
+
+Used to spawn a copper golem.
+
+
+===== Mobs =====
+Copper Golem
+
+Drops 1 to 3 copper ingots when killed.
+It can help with sorting items into chests.
+If it is not holding an item, it will look for a nearby copper chests and pick up items from that chest.
+It can pick up max 16 items in a stack at the time.
+Any item in a copper chest can be picked up.
+If it is holding an item, it will look for nearby wooden chests to try to place the item into.
+It can only place an item in a chest if the chest is empty or contains the same type of item the golem is holding in its hand.
+It will visit a max of 10 copper chests when looking for items to pick up, and a max of 10 chests when looking for somewhere to put the items.
+If no matching chest is found the copper golem will idle for 7 seconds before trying again.
+The search area for chests from the copper golem's position is horizontally 32 blocks and vertically 8 blocks.
+
+
+===== Technical =====
+AI Goals
+
+Added the minecraft:behavior.transport_items AI goal, allows a mob to transport items from and to containers.
+Description:
+If the mob is not carrying an item it will try to find a container matching source_container_types and will attempt to take an item from the first non-empty slot. It will take the largest of max_stack_size and the size of the stack in that slot. If the container is empty or it does not find a match it will remember this container as visited and search for the next container from which to pick up an item. If it fails to find an unvisited container from which to pick up items it will disable the goal for idle_cooldown seconds and reset what containers it has visited. Once it has picked up an item it resets what containers it has visited.
+If the mob is carrying an item it will try to find a container matching destination_container_types and attempt to put its carried item in it. It will put as much of the carried item as possible into the container. If it is still carrying an item (the container is full) it will remember the container as visited and try to find the next container to put items in. If it fails to find an unvisited container in which to put items it will disable the goal for idle_cooldown seconds and reset what containers it has visited. Once it has stored items and is empty handed again it resets what containers it has visited.
+If at any point the target container becomes an invalid target (the block could be removed or a chest could have a cat sit on it for example), the mob will mark the position as visited and move to the next target.
+Fields:
+source_container_types: A list of block descriptors that should be a container type to get items from. Default is any container.
+destination_container_types: A list of block descriptors that should be a container type to put items in. Default is any container.
+max_stack_size: The maximum stack size that the mob will try to take from a container. Default is 16.
+interaction_time: The amount of time spent interacting with the containers in seconds. Default is 3.0.
+allow_simultaneous_interaction: Whether the entity is allowed to simultaneously interact with a container that another non-player entity is already interacting with. Default is false.
+search_strategy: Whether to select the nearest valid container or a random valid container in range. valid values are nearest or random (default).
+search_distance: The maximum horizontal and vertical distance at which to find containers for taking or placing items. Default [62, 32].
+max_visited_containers: The maximum number of containers the mob will visit before resetting. 0 is unlimited and default is 16.
+initial_cooldown: Time, in seconds, the mob will wait after spawning or after its available goals have changed (e.g. due to a component group update). Default is 0.
+idle_cooldown: When the mob cannot find a valid container to interact with, the goal will be disabled for this amount of time in seconds. Default is 20.
+place_strategy: governs which container contents the goal is allowed to add to:
+with_matching: Only allows placing item in a container already having stack(s) of item.
+with_matching_or_empty: Like the above, but additionally allows placement in empty containers.
+any: Puts no restriction, allows placement of item in container as long as there is space. This is the default behavior.
+allowed_items: A list of item descriptors that are the only items the mob is allowed to transport. If non-empty disallowed_items must be empty. Default is empty (all items allowed).
+disallowed_items: A list of item descriptors that are the mob is not allowed to transport. If non-empty allowed_items must be empty. Default is empty (no items disallowed).
+Requirements and limitations:
+Initially the component requires the 2025 Drop 3 experiment to be enabled but it will be generally available in a later update.
+A navigation component is needed to enable the mob to navigate to the container. E.g. minecraft:navigation.walk
+At the moment chests, copper chests, barrels, and shulker boxes are the only supported containers.
+API
+
+Added setFov with CameraFovOptions parameter. This can be used to modify the FOV of the current camera.
+Added class LootTableManager to beta, which allows for generation of loot from entities and blocks.
+Added easing options for clearing a custom FOV. Clearing without valid easing values will instantly clear the custom FOV value.
+
+
+==== Changes ====
+
+
+===== Technical =====
+API
+
+Moved type EntityHungerComponent, EntitySaturationComponent, EntityExhaustionComponent from beta into 2.1.0.
+Moved EntityEquippableComponent properties totalArmor and totalToughness from beta into 2.1.0.
+Class ModalFormDataTextFieldOptions.
+Field defaultValue type changed from string to minecraftserver.RawMessage string.
+
+
+=== Fixes ===
+11 issues fixed
+From released versions before Bedrock Edition 1.21.100
+
+MCPE-51638 – Boats make footstep sound on solid blocks
+MCPE-221320 – The Happy Ghast's hitbox is glitched causing them to suffocate against walls
+MCPE-222298 – Boats lose forward momentum abruptly when falling down
+Other
+
+Fixed faces of non-full blocks (eg. cakes or trapdoors) having an unnatural ambient occlusion applied to them in some neighboring blocks configurations.
+Glowing text on signs no longer gets overly bright when looked at directly in Vibrant Visuals.
+Fixed parent_setup not running with the correct context.
+Fixed an issue where custom armor disabled knockback on some platforms.
+Fixed a bug where the happy ghast riding sound would sometimes play in the loading screen.
+Fixed a bug where both ghast and happy ghast ambient sounds would not be audible further than 16 blocks away from the player.
+Fixed a bug where ambient sounds played by a flying mob would have the volume set to 0.2 by default.
+Fixed choppiness in Player.applyImpulse and Player.clearVelocity for beta.
+
+
+== Preview 1.21.100.24 ==
+Beta 1.21.100.24 (ChromeOS, Android), Preview 1.21.100.24 (Windows, Xbox, PlayStation) or Preview 1.21.100.25 (iOS, iPadOS) is the fifth and final beta/Preview version for Bedrock Edition 1.21.100, released on July 16, 2025, which fixes some bugs.
+
+
+=== Changes ===
+
+
+==== Gameplay ====
+Graphical
+
+Added a new camera effect when facing and climbing blocks such as ladders and vines, to reduce eye strain and improve accessibility.
+Sugar cane blocks will now become slightly transparent when the camera passes through them.
+Items dropped in first person view appear slightly higher, without affecting the actual item position.
+
+
+=== Fixes ===
+2 issues fixed
+From the previous development version
+
+MCPE-224452 – Pistons can be used to create buggy chests
+Other
+
+Fixed an issue where custom animations would be incorrect in first person with Vibrant Visuals enabled.
+
+
+== Notes and references ==
+
+
+== Navigation ==

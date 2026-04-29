@@ -1,0 +1,50 @@
+Item modifiers (also known as loot modifiers) can be used to apply modifications to item stacks, such as adjusting the stack size or adding enchantments. They can be defined in datapacks as JSON files, or used in loot tables. The /item command also accepts item modifiers in SNBT format.
+A single modification in item modifiers is called item function or loot function.
+
+
+== Definition ==
+An item modifier is a single loot function or an array of loot functions to apply to the item. The root element of an item modifier can be either an [NBT Compound / JSON Object] JSON object or NBT compound tag, following the structure of a loot function below, or an [NBT List / JSON Array] JSON array or NBT list, containing multiple loot functions.
+Item modifiers are defined using the JSON format in data packs, or the SNBT format in /item command.
+Item modifiers defined in data packs in the following directory structure, highlighted below:
+
+
+== Usage ==
+
+
+=== Commands ===
+Item modifiers can be invoked with the /item command. When doing so, it is required to specify a target slot to invoke the modifier upon, either an item inside a container block's contents, or inside an entity's inventory.
+There are two variations of this command: /item modify invokes a modifier alone upon the target slot, /item replace replaces the item in the target slot with another and subsequently invokes a modifier upon it.
+
+/item modify (block <pos> | entity <targets>) <slot> <modifier>
+/item replace (block <pos> | entity <targets>) <slot> from (block <pos> | entity <targets>) [<modifier>]
+
+
+=== Loot tables ===
+In loot tables, item modifiers can be defined without the need for a separate file; however, separate files can also be explicitly referenced using the reference function.
+
+
+== Format ==
+The format of a single item modifier is:
+
+Multiple modifiers may be bundled into one by placing them into a JSON array or an NBT list. In this case, all listed modifiers are applied in sequence, similar to the sequence modifier type.
+
+
+=== Function types ===
+The possible resource locations (namespace minecraft: is omitted) for [String] function field and associated extra contents:
+
+
+== History ==
+
+
+== Issues ==
+Issues relating to "Item modifier" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== References ==
+
+
+== External links ==
+Item Modifier Generator on misode.github.io
+
+
+== Navigation ==

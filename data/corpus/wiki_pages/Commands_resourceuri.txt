@@ -1,0 +1,34 @@
+Sets or clears the resource link in the pause menu.
+
+
+== Syntax ==
+resourceuri
+resourceuri clear
+Clears the resource link.
+resourceuri default [uri: text]
+Sets the resource link's URI, the button text is by default.
+resourceuri named <name: string> [uri: text]
+Sets the resource link.
+
+
+== Arguments ==
+name: string: basic_string
+
+Specifies the resource link's button text.
+Must be a string. And it must be a single word that has no space or a double-quoted string (When quoted, \ can be used to escape characters).
+uri: text: CommandRawText
+
+Specifies the resource link's URI, defaults to empty.
+It is a greedy phrase string argument (taking the rest of the command as the string argument).
+
+
+== Result ==
+
+
+== Output ==
+
+
+== History ==
+
+
+== Navigation ==

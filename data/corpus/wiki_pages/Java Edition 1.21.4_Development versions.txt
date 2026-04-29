@@ -1,0 +1,1349 @@
+This is a list of Java Edition 1.21.4 development versions.
+
+
+== 24w44a ==
+24w44a is the first snapshot for Java Edition 1.21.4, released on October 30, 2024, that adds the eyeblossom and resin family blocks, makes Winter Drop features available in normal gameplay (replacing the "Winter Drop" experiment), and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Eyeblossoms
+
+New flowers that generate in the pale garden biome.
+They exist in two variants: closed and open.
+Eyeblossoms transition between the two variants based on the time of day.
+During the night, eyeblossoms become open.
+During the day, they become closed.
+In dimensions that do not have a day/night cycle, they remain as-is.
+Eyeblossoms planted on the ground communicate with each other, helping each other to open or close.
+Open eyeblossoms have glowing eyes during the night.
+Can be obtained by bonemealing the grass in the pale garden biome.
+Bees get poisoned when they interact with eyeblossoms.
+Suspicious stew made from eyeblossom has Blindness or Nausea effect depending on the variant.
+Gray or orange dye can be crafted from closed and open eyeblossoms, respectively.
+Wandering traders can sell open eyeblossoms.
+The closed and open variations can each be placed in flower pots.
+ Resin block family
+
+ Resin clumps are a new multi-face block:
+Dropped by creaking hearts when it is destroyed.
+Placed around creaking hearts when its creaking is attacked.
+Can be crafted into a  block of resin.
+Can be hardened into  resin brick items in a furnace.
+Can be used to trim armor.
+Resin bricks can be crafted into the resin brick set:
+ Resin bricks block
+ Resin brick stairs
+ Resin brick wall
+ Resin brick slab
+ Chiseled resin bricks
+Both can be found in chests in the woodland mansion.
+Blocks of resin can be crafted into a creaking heart using two pale oak logs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Bell, lantern, soul lantern, copper door, iron door, heavy weighted pressure plate, light weighted pressure plate, polished blackstone pressure plate, stone pressure plate and brewing stand
+
+Now drop when broken with any tool.
+ Creaking heart
+
+No longer experimental.
+Attacking a creaking causes its creaking heart to exude 2 to 3 resin clumps.
+Creaking hearts can be crafted with a resin block and pale oak logs.
+Naturally placed creaking hearts drop 20-24 experience when broken by a player, with or without Silk Touch.
+Breaking a creaking heart block drops 1-3 resin clumps, and it is affected by Fortune enchantment.
+The top texture has been changed from .
+Ender chest
+
+Now has its normal drops when mined with anything.
+This is itself when mined with any item enchanted with Silk Touch, and 8 obsidian otherwise.
+ Nether bricks, chiseled nether bricks, cracked nether bricks and red nether bricks
+
+Changed the texture of normal, chiseled, cracked and red nether bricks from  to match the pattern of other brick blocks.
+Pale hanging moss
+
+No longer experimental.
+Breaks instantly when mined.
+Requires shears or Silk Touch tools to be obtained.
+Can now be sold by the wandering trader.
+ Pale oak hanging sign
+
+A minor texture change occurred.
+Pale moss block
+
+No longer experimental.
+Can now be sold by wandering traders.
+Pale oak leaves
+
+Now emit a falling particle effect, similar to cherry leaves.
+Pale oak sapling
+
+No longer experimental.
+Can now be sold by wandering traders.
+
+
+==== Items ====
+Elytra
+
+A subtitle for flying has been added.
+
+
+==== Mobs ====
+Bee
+
+Instead of breeding, they get withered when fed wither roses, and poisoned by eyeblossoms.
+Neither of these anger bees.
+Creaking
+
+No longer experimental.
+Melee attacks deal 3HP damage.
+The following changes apply for naturally spawning creakings:
+Reacts only to damage caused by mobs and projectiles, by swaying in place.
+Ignores cactus, sweet berry bushes and powder snow damage and can now walk through/over them.
+Has a twitching animation.
+Is fire-resistant.
+The creaking heart may decide to remove or replace its associated creaking when:
+It turns day.
+The creaking is too far away from the heart.
+A player intersects with creakings for a few seconds.
+Ravagers are no longer afraid of creakings.
+
+
+==== World generation ====
+Pale oak
+
+Player grown pale oak trees grow without any decorations.
+Naturally generated pale oak trees have pale hanging moss hanging from the foliage, pale moss patches on the ground, and creaking heart blocks can generate in them.
+
+
+==== Biomes ====
+Pale Garden
+
+Has no music, and currently playing music gradually fades out if the player enters one.
+
+
+==== General ====
+Title screen
+
+The panorama was changed to showcase pale gardens.
+
+
+=== Technical ===
+
+
+==== Additions ====
+
+
+===== General =====
+Entity format
+
+Added optional field explosion_speed_factor that controls the amount of added damage depending on the speed of the minecart.
+Default value: 1.0.
+Raw JSON text format
+
+Added optional shadow_color style field to text components, which overrides the shadow properties of text.
+Format:
+A packed integer ARGB value (e.g. -1).
+An array of RGBA values (e.g. [1, 1, 1, 1]).
+If specified as 0, the shadow is never displayed for this text.
+If specified as a non-zero value, the shadow is always displayed with this color.
+
+
+==== Changes ====
+
+
+===== Command format =====
+/attribute
+
+A subcommand to reset the base value of an attribute to its default value for the target entity was added. If the attribute does not exist on the entity, the command fails.
+Syntax:
+/attribute <target> <attribute> base reset
+Parameters:
+target: The entity to update the attribute for.
+attribute: The attribute ID to update.
+Suggestions are now shown for /attribute modifier IDs existing on the target in the /attribute command.
+
+
+===== General =====
+Biome effects 
+
+Have a new format for music using a weighted list.
+The list can be empty indicating no music should play in this biome.
+Have a new optional field: music_volume.
+The game smoothly transitions between the current music volume and the new volume when entering the biome:
+
+Block entity
+
+Item blocks with minecraft:block_entity_data component now set block entity data only if id tag matches type of placed block entity.
+Additionally, a warning is added to item tooltip if placing such item might directly or indirectly lead to command execution with high permission level.
+Configured feature
+
+The simple_block feature type has a new optional field: schedule_tick.
+If set to true, the block is scheduled to tick.
+Data pack
+
+The pack format version is now 58.
+Removed the winter_drop feature flag and built-in data pack.
+The winter drop feature flag is now in the game by default.
+Entity format
+
+The TNTFuse field of TNT minecarts has been renamed to fuse.
+GUI sprites
+
+The toast/system sprite layout has been updated to use standard nine-slicing functionality.
+The toast/tutorial sprite is now scaled for taller toasts, and as such has nine-slice scaling in the default resource pack.
+The advancements/box_obtained and advancements/box_unobtained GUI sprites are now configured to scale with nine-slicing.
+Empty slot sprites, such as those for the armor slots in the inventory, have been renamed and moved from items into the gui/sprites/container/slot directory.
+empty_armor_slot_helmet -> helmet.
+empty_armor_slot_chestplate -> chestplate.
+empty_armor_slot_leggings -> leggings.
+empty_armor_slot_boots -> boots.
+empty_slot_sword -> sword.
+empty_slot_pickaxe -> pickaxe.
+empty_slot_axe -> axe.
+empty_slot_shovel -> shovel.
+empty_slot_hoe -> hoe.
+empty_slot_smithing_template_armor_trim -> smithing_template_armor_trim.
+empty_slot_smithing_template_netherite -> smithing_template_netherite_upgrade.
+empty_slot_amethyst_shard -> amethyst_shard.
+empty_slot_diamond -> diamond.
+empty_slot_emerald -> emerald.
+empty_slot_ingot -> ingot.
+empty_slot_lapis_lazuli -> lapis_lazuli.
+empty_slot_quartz -> quartz.
+empty_slot_redstone_dust -> redstone_dust.
+The empty slot sprites in the loom have been split from their background and moved:
+container/loom/banner_slot -> container/slot/banner.
+container/loom/pattern_slot -> container/slot/banner_pattern.
+container/loom/dye_slot -> container/slot/dye.
+The empty slot sprites in the brewing stand have been split from the container background:
+container/slot/brewing_fuel.
+container/slot/potion.
+The empty slot sprites in the horse/llama inventories have been split from their background, cropped, and moved:
+container/horse/armor_slot -> container/slot/horse_armor.
+container/horse/llama_armor_slot -> container/slot/llama_armor.
+container/horse/saddle_slot -> container/slot/saddle.
+Particles
+
+trail particle has a new required field: duration.
+Indicates, in ticks, how long the particle takes to fly from the start to the target.
+Resource pack
+
+The pack format version is now 43.
+Added the following new block models and textures:
+chiseled_resin_bricks
+closed_eyeblossom
+open_eyeblossom
+Additionally uses open_eyeblossom_emissive texture layer.
+resin_block
+resin_bricks
+resin_clump
+Added the following non-top-level block models:
+cross_emissive
+flower_pot_cross_emissive
+Added the following new item models and textures:
+resin_brick
+resin_clump
+Added new armor trim color palette: trims/color_palettes/resin.
+The UV mapping of the magma cube texture has been updated.
+Tags
+
+Added resin_bricks, resin_brick_slab, resin_brick_wall, resin_brick_stairs, and chiseled_resin_bricks to the #mineable/pickaxe block tag.
+Added potted_open_eyeblossom, and potted_closed_eyeblossom to the #flower_pots block tag.
+Added open_eyeblossom, and closed_eyeblossom to the #small_flowers block and item tags.
+Added pale_moss_block to the #sniffer_diggable_block block tag.
+Added resin_brick_wall to the #walls block and item tags.
+Added resin_clump to the #trim_materials item tag.
+Replaced snow with #snow in the #overworld_carver_replaceables block tag.
+Removed the copper doors from the #needs_stone_tool block tag.
+Removed moss_carpet, and pale_moss_carpet from the #sword_efficient block tag.
+
+
+=== Experimental ===
+All features previously behind the "Winter Drop" experimental toggle have been de-experimentified and are now available during normal gameplay.
+
+
+=== Fixes ===
+123 issues fixed
+From released versions before 1.21
+
+MC-12829 – Flying through climbable blocks in creative mode slows you down.
+MC-16132 – Cave carvers don't cut through snow blocks.
+MC-49071 – The title of written books is not displayed in item frames unless renamed with anvils.
+MC-50614 – Villager trading window is not closed when villager leaves interaction range.
+MC-55347 – Title with long duration shows in other world.
+MC-59308 – Dark/pale oak leaves sometimes do not generate centered on the tree.
+MC-65931 – The pick block function doesn't work with entities while in survival or adventure mode.
+MC-71990 – The 'Hat' layer of a player skin is not shown in the tab list under certain conditions.
+MC-72846 – Altering the time of day using commands is delayed.
+MC-73784 – Players cannot see through ice when stuck inside of it.
+MC-74408 – The brewing stand GUI does not have container sprites for the fuel and potion output slots.
+MC-86153 – Ctrl + Pick Block gives new item even if picked item already exists in inventory.
+MC-86455 – Pick-block creates ghost items in Creative when hotbar is full.
+MC-111516 – Player flickers/turns invisible when flying at high speeds.
+MC-129888 – Naturally-generated seagrass and kelp destroys ice.
+MC-134002 – Blocks at y=-64 don't render on a map.
+MC-152728 – The player continues sprinting when performing actions that slow them down.
+MC-158205 – Ender Dragon doesn't take damage from melee attacks unless hit a certain way.
+MC-165778 – Maps ignore blocks at the lowest block position (y = -64 in the Overworld) with no block above.
+MC-166614 – Advancements menu doesn't render titles fully when they're longer than roughly 30 characters.
+MC-177078 – Sound event minecraft:entity.minecart.inside does not have an associated subtitle.
+MC-177082 – block.[block type].fall sounds have no subtitles.
+MC-177084 – Ambient sounds when flying with elytra have no subtitles.
+MC-177091 – Skeleton horse underwater jump sound has no subtitle.
+MC-181438 – Elytra visual shuddering when using slow falling.
+MC-186105 – Rain particles look lighter than they should with graphics set to Fabulous!
+MC-191096 – Fences and walls can no longer be placed in invalid block states by using /setblock or /fill.
+MC-191698 – Cannot set "shape" block state of stairs with /setblock.
+MC-192498 – /fill and /setblock cannot set different directional block states of several blocks, such as glass panes and iron bars.
+MC-192791 – Doors' block states cannot be set if another door half exists.
+MC-192943 – Cannot set the in_wall block state of fence gates with /setblock or /fill.
+MC-192956 – Cannot setblock chest type other than single without other adjacent chest.
+MC-192959 – Cannot setblock a directional state on redstone wire nor tripwire.
+MC-193315 – /setblock and /fill resets the instrument block state of note blocks.
+MC-200508 – No subtitle for fish swim.
+MC-203146 – No subtitle for item.crossbow.loading_middle.
+MC-204124 – Underwater minecart riding sound does not have a subtitle.
+MC-205074 – Rain and snow are not affected by the fog from powder snow when using the "Fabulous!" graphic setting.
+MC-215992 – Inconsistency with blackstone and stone pressure plate drops compared to buttons.
+MC-217515 – Particle effects are brighter using Fabulous! graphics setting.
+MC-218873 – Lanterns and soul lanterns require a pickaxe to drop despite being able to break the block on which they are mounted and them drop.
+MC-222795 – Daylight detector can be Ctrl + Pick Block'ed with NBT data despite being unable to store inverted: true state.
+MC-224763 – Fireworks are not affected by the fog from powder snow or lava when using the "Fabulous!" graphic setting.
+MC-225367 – Magma Cube's layers UV mapping overlaps.
+MC-254356 – Dying to a minecart with TNT ignited by a blaze fireball doesn't count as the blaze's kill.
+MC-255254 – /setblock can't place snowy grass blocks.
+MC-256822 – Advancement description text cuts words in weird places if title is too short.
+MC-264541 – Nine_sliced sprite glitch.
+MC-265033 – Slots with item outline textures behave inconsistently when items are placed inside of these slots.
+MC-265305 – Unused pixels in magmacube.png UV texture map & Used section removed in previous fix.
+MC-265637 – /execute on origin doesn't work on Area Effect Cloud's owner after rejoining.
+MC-266019 – Large bold text can have gaps in the middle of characters.
+MC-267095 – Nether Brick block texture misalignment.
+MC-267192 – "download.pack.failed" string exceeds the prompt box when the Force Unicode Font is turned off.
+MC-267730 – Text wall when trying to join a server.
+MC-267878 – Tutorial hint for movement may not fit all the required text if controls are changed.
+MC-268364 – Wind Charges don't ignite TNT minecarts.
+MC-268522 – The last language option is not deselected if you reach the bottom of the list and exit the menu.
+MC-268822 – There are no shadows on text displayed within the singleplayer, multiplayer, and realms list menus.
+MC-269145 – Wool item entities created when shearing a sheep stutter while flying.
+MC-269743 – Layer material entry text on the superflat customization screen is not vertically centered.
+MC-269935 – Advancement box textures use nine-slice scaling, but seemingly cannot be configured.
+MC-271218 – Empty Offers:{} NBT doesn't disable trades anymore.
+MC-272105 – Decorated Pot is missing the "contents" implicit data component type.
+From 1.21
+
+MC-272062 – Dimension padding doesn't affect the start piece.
+MC-272923 – 1.21 main menu panorama missing ladder.
+From 1.21.1
+
+MC-276123 – Display entity shadow_radius updates for all display entities.
+MC-276529 – Converting a villager into a witch does not close the trading GUI.
+MC-276794 – There are no shadows on text displayed within the social interactions list menu.
+MC-276799 – There are no shadows on text displayed within the superflat customization or preset lists.
+MC-277368 – The "message(s) selected" text within the "Select Chat Messages to Report" menu is positioned too close to the header separator.
+MC-277373 – There are no shadows on text used to display the names of categories within the key binds menu.
+MC-277374 – There are no shadows on text used to display the names of lists within the resource pack and data pack menus.
+MC-277408 – There are no shadows on text used to display the description of report categories within the "Select Report Category" menu.
+MC-277440 – There are no shadows on text used to display the speed at which a world is being uploaded within the realms menu.
+MC-277441 – There are no shadows on text used to display the start date and time left of your realm subscription within the realms menu.
+MC-277443 – There are no shadows on text displayed when connecting to realms.
+MC-277444 – There are no shadows on text used to display the names of text boxes within the realms settings menu.
+MC-277477 – There are no shadows on text used to display the description of advancements within the advancements menu.
+MC-277478 – The "Layer Material" and "Height" text within the "Superflat Customization" menu is positioned too close to the header separator.
+MC-277479 – There are no shadows on text used to display the names of game rules within the game rules menu.
+MC-277480 – There are no shadows on placeholder text displayed within the "Please describe what happened" box within the reporting menu.
+MC-277499 – Most empty slot icons ignore "scaling" parameter in mcmeta files.
+MC-277510 – When grass or mycelium grows under powder snow the grass is not snowy.
+MC-277617 – The base damage of the Power enchantment was reduced in 1.21.
+From 1.21.2
+
+MC-275917 – Consumable blocking animation is broken in first person.
+MC-276389 – The "Can hold a mixed stack of items" text within bundle tooltips doesn't have a shadow.
+MC-276969 – TNT Minecarts with explosion_power set to 0 can still break blocks.
+MC-277066 – Creakings do not show particles leading to the creaking heart if Particles are set to Minimal.
+MC-277072 – You can use bone meal on pale moss carpets in situations where nothing grows.
+MC-277076 – Pale hanging moss doesn't have an assigned tool.
+MC-277094 – Pale oak hanging sign uses a totally different palette to the rest of the wood set.
+MC-277101 – Destroying a creaking heart with player-activated TNT does not grant the Monster Hunter advancement.
+MC-277113 – Pale oak sign item and block texture is inconsistent with the other signs.
+MC-277115 – Creaking mob can spawn inside block.
+MC-277123 – You can get soft locked if a creaking falls in a hole with you.
+MC-277129 – The Creaking "slides" on the ground when not aggro towards the player.
+MC-277132 – Pale oak sign item textures are inconsistent.
+MC-277134 – Pale chest boat item is incorrect.
+MC-277145 – The 2 brightest pixel colors on pale oak boat items are wrong.
+MC-277154 – Sculk sensors are not activated upon creakings dying through their creaking hearts being destroyed.
+MC-277164 – Music plays in the pale garden.
+MC-277202 – Differences in the highlight effect of empty slot outlines in the GUI.
+MC-277213 – Subtitles for cave sounds, creaking heart idle sounds, and pale hanging moss idle sounds are identical but are shown separately.
+MC-277214 – The sound event associated with the "Creaking sees player" subtitle doesn't exist.
+MC-277268 – Pufferfish have no hit delay on creakings; they make a loud buzzing noise constantly.
+MC-277271 – Sniffers can't dig into pale moss.
+MC-277275 – Crash upon loading chunks when teleporting.
+MC-277305 – Creakings are able to be pushed around by entities and players when standing on soul sand and mud.
+MC-277363 – Creakings cannot rotate their heads independently from their bodies.
+MC-277387 – Evokers run away from creakings faster than other illagers.
+MC-277549 – Arrows summoned with custom motion don't render correctly.
+MC-277557 – Creaking Heart has inconsistent and miscolored pixels.
+MC-277651 – Arrows and tridents glitch when in an explosion or wind charge burst.
+MC-277657 – Arrows are not correctly affected by rising bubble columns.
+MC-277658 – Tridents glitch up and down in rising bubble columns.
+MC-277682 – Arrows and tridents glitch after shooting/throwing them onto magma/soul sand blocks underwater.
+MC-277742 – Creakings activate for a brief moment when switching from Creative to Spectator mode.
+MC-277754 – Chunks on the corner of the rendering distance are not synchronized between client and server for the terrain.
+MC-277776 – Baby cats and ocelots size is changed.
+MC-277815 – Creakings on a team can still be observed and stopped by teammate players.
+MC-277833 – Creakings can attack players in the same team as them.
+MC-277871 – Creaking Hearts do not have a unique place sound.
+
+
+== 24w45a ==
+24w45a is the second snapshot for Java Edition 1.21.4, released on November 6, 2024, which revamps the item model system, changes various items and mobs, and fixes bugs and crashes from 24w44a.
+
+
+=== Additions ===
+
+
+==== General ====
+Items model definitions
+
+minecraft:model item model type.
+Renders a plain model from models directory.
+Fields:
+model: namespaced ID of model in models (like minecraft:block/yellow_glazed_terracotta)
+tints: a list of tint sources to apply to elements of rendered model (first entry applies to tintindex 0, second one - 1, etc.)
+Format:
+type: type of tint source (see below)
+<type-specific> - additional fields depending on tint source type.
+minecraft:constant tint source type.
+Returns a constant RGB color.
+Fields:
+value - A packed integer RGB value (e.g. -1) or an array of RGB values (e.g. [ 1, 1, 1 ]).
+minecraft:dye tint source type.
+Returns value from minecraft:dyed_color component or default if not present.
+Fields:
+default - RGB value.
+minecraft:grass tint source type.
+Returns grass color at specific climate parameters, based on textures/colormap/grass.png.
+Same colors as ones selected by downfall and temperature in biome configuration.
+Fields:
+temperature - float in 0..1 (inclusive) range.
+downfall - float in 0..1 (inclusive) range.
+minecraft:firework tint source type.
+Returns average of colors from minecraft:firework_explosion component or default color if there are none.
+Fields:
+default: RGB value.
+minecraft:potion tint source type.
+Returns color from minecraft:potion_contents component:
+If component is present:
+custom color, if there is one present in component.
+default color, if effect list is empty.
+average of effect colors, otherwise.
+Default color, otherwise.
+Fields:
+default: RGB value.
+minecraft:map_color tint source type.
+Return value from minecraft:map_color component or default color if component is not present.
+Fields:
+default: RGB value.
+minecraft:custom_model_data tint source type.
+Returns value from colors list in minecraft:custom_model_data component.
+Fields:
+index - index for field in colors.
+Default: 0
+minecraft:special item model type.
+Renders a special (not data-driven) model.
+Fields:
+model: special model instance.
+Format:
+type - type of special model.
+<type-specific> - additional fields depending on tint source type.
+base: namespaced ID of model in models, providing transformations, particle texture and GUI light.
+minecraft:bed special model type.
+Renders a whole bed.
+Fields:
+texture - namespaced ID for texture, without textures/entity/bed/ prefix and .png suffix.
+minecraft:banner special model type.
+Renders a banner with patterns from minecraft:banner_patterns component.
+Fields:
+color - color of banner base, one of 16 predefined colors.
+minecraft:conduit special model type.
+Renders a conduit.
+No fields.
+minecraft:chest special model type.
+Renders a single chest.
+Fields:
+texture - namespaced ID for texture, without textures/entity/chest/ prefix and .png suffix.
+openness - float, 0.0 (default) - fully closed, 1.0 - fully open.
+minecraft:head special model type.
+Renders a head.
+Uses profile from minecraft:profile component when applicable.
+Fields:
+kind - one of skeleton, wither_skeleton, player, zombie, creeper, piglin, dragon
+minecraft:shulker_box special model type.
+Renders a shulker box.
+Fields:
+texture - namespaced ID for texture, without textures/entity/shulker/ prefix and .png suffix
+openness - float, 0.0 (default) - fully closed, 1.0 - fully open
+orientation - orientation for rendering.
+Default: up
+minecraft:shield special model type.
+Renders a shield.
+Uses patterns from minecraft:banner_patterns component and color from minecraft:base_color component.
+No fields.
+minecraft:trident special model type.
+Renders a trident.
+No fields.
+minecraft:decorated_pot special model type.
+Renders a decorated pot.
+Uses values from minecraft:pot_decorations component.
+No fields.
+minecraft:composite item model type.
+Renders multiple sub-models.
+All models are rendered in the same space.
+Fields:
+models: a list of item models to render.
+minecraft:condition item model type.
+Renders an item model depending on boolean property.
+Fields:
+property: type of property.
+<property-specific> - additional fields depending on property type, added inline.
+on_true - item model to render when property is true.
+on_false - item model to render when property is false.
+minecraft:using_item boolean property.
+Returns true if player is currently using this item.
+No fields.
+minecraft:broken boolean property.
+Returns true if the item is damageable and has only one use remaining before breaking.
+No fields.
+minecraft:damaged boolean property.
+Returns true if the item is damageable and has been used at least once.
+No fields.
+minecraft:has_component boolean property.
+Returns true if the given component is present on the item.
+Fields:
+component - component type.
+minecraft:fishing_rod/cast boolean property.
+Returns true if there is a fishing bobber attached to currently used fishing rod.
+No fields.
+minecraft:bundle/has_selected_item boolean property.
+Returns true if bundle is "open", i.e. it has selected item visible in GUI.
+No fields.
+minecraft:xmas boolean property.
+Returns true if current date is between December 24th and December 26th (inclusive).
+No fields.
+minecraft:selected boolean property
+Returns true if item is selected on a hotbar.
+No fields.
+minecraft:carried boolean property.
+Returns true if item is carried between slots in GUI.
+No fields.
+minecraft:shift_down boolean property.
+Returns true if player currently holding shift key down.
+No fields.
+minecraft:custom_model_data boolean property.
+Returns value from flags list in minecraft:custom_model_data component.
+Fields:
+index - index for field in flags.
+Default: 0
+minecraft:select item model type.
+Renders an item model based on discrete property.
+Fields:
+property: type of property.
+<property-specific> - additional fields depending on property type, added inline.
+cases - list of cases to match in format:
+when - value to match against property, type depends on property.
+Could be a single value or a list of values.
+model - item model to render when case is selected.
+fallback - item model to render if none of the cases matched the value.
+If not present, placeholder "missing" model is rendered instead.
+minecraft:main_hand property.
+Returns main hand of holding player.
+No fields.
+Values: left, right
+minecraft:charge_type property.
+Returns charge type stored in minecraft:charged_projectiles component.
+No fields.
+Values:
+none - if there are no projectiles or component is not present.
+rocket - if there is at least one firework rocket.
+arrow - any other case.
+minecraft:trim_material property.
+Returns value of material field from minecraft:trim component, if present.
+No fields.
+Values: namespaced ID.
+minecraft:block_state property.
+Returns value for some property from minecraft:block_state component.
+Fields:
+block_state_property - string key to select from component.
+Values: any string.
+minecraft:display_context property.
+Returns context this item is rendered in.
+No fields.
+Values:
+none
+thirdperson_lefthand
+thirdperson_righthand
+firstperson_lefthand
+firstperson_righthand
+head
+gui
+ground
+fixed
+minecraft:custom_model_data property.
+Returns value from strings list in minecraft:custom_model_data component.
+Fields:
+index - index for field in strings.
+Default: 0
+Values: any string.
+minecraft:range_dispatch item model type.
+Renders an item model based on numeric property.
+Replacement for old overrides section from block models.
+Selects last entry with threshold less or equal to property value.
+Fields:
+property: type of property.
+<property-specific> - additional fields depending on property type.
+scale - factor to multiply property value with.
+Default: 1.0
+entries - list of entries in format:
+threshold - float value.
+model - item model to render when entry is selected.
+Note: order of fields does not matter, list is sorted by threshold in ascending order before use.
+fallback - item model to render if no entries were less or equal to property value.
+If not present, placeholder "missing" model is rendered instead.
+minecraft:custom_model_data numeric property
+Returns value from floats list in minecraft:custom_model_data component.
+Fields:
+index - index for field in floats
+Default: 0
+minecraft:bundle/fullness numeric property.
+Returns weight of bundle_contents component or 0 if not present.
+No fields.
+minecraft:damage numeric property.
+Returns value for damage component.
+Fields:
+normalize: boolean
+Default: true
+If true, returns value of damage divided by max_damage component, clamped to 0..1.
+If false, returns value of damage, clamped to 0..max_damage.
+minecraft:count numeric property.
+Returns stack size.
+Fields:
+normalize: boolean.
+Default: true
+If true, returns count divided by max_stack_size component, clamped to 0..1.
+If false, returns count clamped to 0..max_stack_size.
+minecraft:cooldown numeric property
+Returns remaining cooldown for item, scaled to 0..1.
+No fields.
+minecraft:time numeric property
+Returns value of day time (used for clock), scaled to 0..1.
+Fields:
+wobble - if true, value oscillates for some time around target before settling.
+Default: true
+natural_only - if true, value is random in dimensions with natural=false.
+Default: true
+minecraft:compass numeric property
+Returns angle, scaled to 0..1 in x-z plane between holder position and target.
+If target is not valid (not present, in other dimension or to close to holder position) random value is returned.
+Fields:
+target - one of:
+spawn - points at world spawn.
+lodestone - points at location stored in lodestone_tracker component.
+recovery - points at last player death location.
+wobble - if true, value oscillates for some time around target before settling.
+Default: true
+crossbow/pull numeric property.
+Returns crossbow-specific use time.
+No fields.
+use_duration numeric property
+Returns item use ticks.
+Fields:
+remaining - if true, returned value is remaining use ticks, if false - ticks so far.
+Default: false
+use_cycle numeric property.
+Returns remaining use ticks modulo period.
+Fields:
+period - positive float.
+Default: 1.0
+minecraft:bundle/selected_item item model type.
+Renders selected stack in minecraft:bundle_contents component, if present, otherwise does nothing.
+Tags
+
+Added the #bee_attractive block tag.
+Denotes all blocks that bees may pollinate.
+Added #skeleton_preferred_weapon, #piglin_preferred_weapon, #pillager_preferred_weapon and #drowned_preferred_weapon item tags.
+For specifying preferred weapons types for these mobs when picking up items.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Creaking heart
+
+A naturally spawned creaking heart no longer drops experience when broken in Creative mode.
+Its hurt subtitle has been changed.
+Sculk sensors
+
+Are now activated from resin clumps being placed by a creaking heart, with a frequency of 13.
+
+
+==== Items ====
+Eyeblossoms
+
+Are now found at the end of the flowers in the Creative inventory.
+Resin brick
+
+Now used to trim armor, instead of resin clumps.
+Suspicious stew
+
+Changed durations of the Suspicious Stew effects to match Bedrock Edition:
+Fire Resistance: 3 seconds
+Blindness: 11 seconds
+Weakness: 7 seconds
+Regeneration: 7 seconds
+Jump Boost: 5 seconds
+Wither: 7 seconds
+Poison: 11 seconds
+
+
+==== Mobs ====
+General
+
+The way mobs decide to replace their equipped items with items on the ground was changed.
+If the item belongs in an armor slot, replace the item if any of the following conditions apply.
+The new item has a higher base armor value.
+The new item has a higher base armor toughness value.
+The new item has more enchantments.
+The new item is less damaged.
+The new item has a custom name while the old one doesn't.
+If the item belongs in the main hand slot, replace the item if any of the following conditions apply.
+The new item is a preferred weapon while the old one isn't.
+If the old item is a preferred weapon while the new item isn't, do not replace the item.
+The new item has a higher base damage value.
+The new item has more enchantments.
+The new item is less damaged.
+The new item has a custom name while the old one doesn't.
+Bees
+
+Are no longer attracted to closed eyeblossoms.
+Can no longer interact with closed eyeblossoms.
+Baby cats and wolves
+
+Now get a collar with the color that is a mix between the parents collar color if possible.
+Creaking
+
+An activated creaking doesn't move if a player in Survival or Adventure mode is looking at it.
+Creakings also have full knockback resistance in that state.
+Their eyes are now visible when they have the Invisibility effect.
+Its activate, deactivate, death, spawn & sway subtitles have been changed.
+Drowned
+
+Prefer to pick tridents from the ground as opposed to other items.
+Pillagers and piglins
+
+Prefer to pick crossbows from the ground as opposed to other items.
+Skeletons, wither skeletons, strays and bogged
+
+Prefer to pick bows from the ground as opposed to other items.
+
+
+==== Non-mob entities ====
+Experience orb
+
+Physics were changed. They are now bouncy when falling from a height.
+
+
+==== World generation ====
+Woodland mansions
+
+Loot chests can now contain resin clumps, not resin bricks.
+
+
+==== Gameplay ====
+Damage
+
+Players no longer receive 3 seconds of damage immunity when spawning, respawning, or joining a world or server.
+
+
+==== General ====
+Client.jar
+
+New entry point net.minecraft.client.data.Main is present in client jar, with similar command line structure as data generator in server jar.
+Available options: --client - generates assets directory.
+Data component format
+
+minecraft:custom_model_data
+Now has more fields to accommodate new uses by various model property getters.
+Fields:
+floats - list of floats.
+flags - list of booleans.
+strings - list of strings.
+colors - list of RGB color values.
+Data pack
+
+The pack format version is now 59.
+The tooltip warning on item blocks with the minecraft:block_entity_data component can no longer be hidden by any other component.
+Field model in minecraft:equippable component has been renamed to asset_id.
+Field item_model_index in trim_material registry has been removed (no longer needed for model rendering).
+Item models
+
+New format has been introduced for describing item models. See Items model definition.
+Item models are selected based on minecraft:item_model component.
+Model for item with item_model=foo:bar is stored in /assets/foo/items/bar.json.
+Format of file is 
+overrides section has been removed from existing block models.
+There are no longer any hardcoded paths in models directory - models are now only used if referenced by definitions in items or blockstates directories.
+Models in models/item that only redirect to a block model have been removed.
+In such cases, the item model refers to the models/block model directly.
+Item modifiers
+
+minecraft:set_custom_model_data
+Now has more fields to accommodate more complex component structure.
+Fields:
+floats - optional list operation of number providers.
+flags - optional list operation of boolean values.
+strings - optional list operation of string values.
+colors - optional list operation of RGB values or number providers.
+List operation uses same format as explosions field in set_fireworks modifier.
+For example  sets replaces floats with value 2.
+Missing textures and models
+
+If a model which the game uses directly (as opposed to template models) fails to specify a texture to use for particles, an error is now printed to the game log.
+If a model does not attempt to route a texture reference to an actual texture file, an error is logged once again.
+Protocol
+
+Client now sends the minecraft:player_loaded packet once the loading terrain screen has closed after initially loading into the world, and after closing the loading screen when respawning.
+Resource pack
+
+The pack format version is now 44.
+Invalid minecraft:filled_map items in an Item Frame (map item without the map_id component) no longer change the size of the frame.
+The equipment directory has been moved one level up, i.e. models/equipment/ becomes equipment/.
+broken_elytra model and texture has been renamed to elytra_broken.
+Server.jar
+
+Data generator in server jar (net.minecraft.data.Main) no longer generates assets directory.
+--client option has been removed from command line for this entry point.
+Tags
+
+Removed the #tall_flowers block and item tags.
+Removed the #flowers item tag.
+Put the contents of the removed #tall_flowers block tag into the #flowers block tag.
+Put the contents of the removed #flowers item tag, except closed_eyeblossom into the #bee_food item tag.
+Added resin_clump to the #replaceable block tag.
+Added resin_brick_slab, and resin_brick_stairs into the #slabs, and #stairs block and item tags respectively.
+Removed the #small_flowers block tag from the #sword_efficient block tag.
+
+
+=== Fixes ===
+78 issues fixed
+From released versions before 1.21
+
+MC-212 – Fall damage is ignored for a couple of seconds when reloading into LAN or singleplayer worlds.
+MC-21650 – Player is immune to damage for a few seconds after saving the world and returning.
+MC-99848 – Sprinting isn't canceled upon receiving the blindness effect.
+MC-158872 – Models use model of last matched predicate, not closest match.
+MC-159508 – Ctrl + Pick block on beehives and nests does not copy their honey levels.
+MC-160051 – Players can prevent fire damage by reloading world/re-joining server.
+MC-166072 – Custom Trident model ignores "layer0" and "elements" section.
+MC-186341 – Command autocomplete doesn't consider parts after a slash.
+MC-193176 – Most mobs with CanPickUpLoot prefer swords over axes and will downgrade their weapon.
+MC-193313 – Mob item pick up behavior is not distinct resulting in mobs constantly dropping and picking up items.
+MC-193336 – Heads/skulls don't render when held by an enderman or as block display entities.
+MC-201940 – After dying, Ender Dragon body part hitboxes do not move upwards with the main hitbox.
+MC-202250 – Sprinting particles appear when sprinting inside of boats in shallow water.
+MC-206684 – Spyglass particles have no associated texture.
+MC-229142 – Spyglass texture doesn't allow override through resource pack.
+MC-236295 – The game does not report absent particle texture references in models to the output log.
+MC-249079 – Sculk veins are not mirrored correctly from behind.
+MC-260216 – Decorated pots aren't rendered when held by endermen or as block display entities.
+MC-267343 – Sprinting isn't canceled upon riding entities.
+MC-269616 – Telemetry Data scroll bar does not have a background.
+MC-269749 – Report Player scroll bar does not have a background.
+MC-270136 – Thrown projectiles with custom_model_data do not maintain proper particles when breaking.
+MC-270529 – Air's model does not define a particle texture, causing issues.
+MC-271786 – Empty block states in noise_provider does not cause validation to fail, causing crash.
+From 1.21
+
+MC-272994 – Allays assigned to a player can be set on fire with sweeping and fire aspect.
+MC-273407 – Block entity items with custom block states keep them as components when placed.
+MC-273450 – Mobs with CanPickUpLoot:1b behave inconsistently with the mace / trident.
+MC-273522 – Mobs with CanPickUpLoot no longer pick up enchanted items after picking up an unenchanted item.
+MC-273635 – Trial spawners forget their designated mob when placed by player out of creative mode, assigned by spawn eggs.
+MC-274268 – Trial Spawner keeps flashing after cooldown ends.
+MC-275011 – Instant mine does not work when standing inside of cobwebs.
+From 1.21.1
+
+MC-275338 – Sprint particles can be seen if you mount a minecart (with no rail below it) while running.
+From 1.21.2
+
+MC-275215 – Experiments warning goes off the screen if viewed at low window size.
+MC-276110 – honey_level model predicate range is 1 for level 5 and 0 for levels 1-4.
+MC-276115 – New Bee Nest and Beehive item models don't use the block parent.
+MC-276412 – Custom item models set to a shield and various other items all create invisible items.
+MC-276654 – item_model item component breaks on trident.
+MC-276728 – Tridents and spyglasses appear dark in the inventory if given a custom item model for a block.
+MC-276730 – Bundles appear dark in the inventory if given a custom item model for a block and then scrolled through.
+MC-276731 – Items which use entity models will not render another entity model if specified via item model component.
+MC-276732 – Colors will carry over from item ID to target model.
+MC-276764 – Eggs with custom models use the particles from that model, but snowballs do not.
+MC-276769 – Missing texture when throwing eggs with certain template models.
+MC-276771 – Missing texture when a damageable item with one of several template models is destroyed.
+MC-276828 – Minecraft no longer prints an error to the game log when a model fails to define a texture.
+MC-276847 – Bundles given the model of a different bundle will not preserve their color when scrolled through.
+MC-277082 – Creakings take knockback from wind charges.
+MC-277092 – The eyes of creakings aren't visible when creakings have the invisibility effect.
+MC-277149 – Creakings are affected by knockback from mace smash attacks.
+MC-277243 – Creakings take knockback from Punch bows.
+MC-277264 – The Creaking can be knocked back by zoglins.
+MC-277916 – Containers are locked when upgrading a world from certain versions.
+From 1.21.3
+
+MC-277961 – Experience orbs incorrectly bounce up.
+MC-278071 – "minecraft.used:minecraft.trident" doesn't increase when throwing a trident.
+From the previous development version
+
+MC-277925 – Resin Brick Stairs are not part of the #stairs block and item tags.
+MC-277926 – Resin Brick Slab is not part of the #slab block and item tags.
+MC-277929 – The game crashes when attempting to use the void preset.
+MC-277930 – Eyeblossom subtitles are inverted.
+MC-277931 – Incorrect display on the map of the flower Closed and Open Eyeblossom.
+MC-277932 – Resin Clump is not part of the #replaceable block tag.
+MC-277933 – Smithing Table doesn't show a Clump icon for ingredient slot.
+MC-277939 – Programmer Art's empty slot icons may not have been correctly updated for 24w44a.
+MC-277941 – resin_clump is not mirrored correctly from behind.
+MC-277945 – Incorrect verb form in "Elytra swooshes" subtitle.
+MC-277950 – Open potted eyeblossom is shaded (flower_pot_cross_emissive).
+MC-277951 – Eyeblossom is placed in an unexpected position in the Creative inventory.
+MC-277952 – Sprinting isn't canceled upon flying with elytra.
+MC-277954 – Creaking Heart underwater plays spawning sounds in a loop.
+MC-277955 – Using a loom crashes the game.
+MC-277964 – Resin is not generated when a creaking is attacked by a wolf owned by a player.
+MC-277966 – Creaking does not generate resin from player-caused explosions.
+MC-277967 – The game crashes when certain explosions occur near a creaking in its death animation.
+MC-277970 – Hanging signs don't display chains when attached to the side of a block.
+MC-277972 – You can no longer swim when crouched under a slab.
+MC-277983 – Naturally-spawned creaking hearts drop experience when broken in Creative mode.
+MC-277994 – Picking a decorated pot or a shulker box always keeps its container data.
+MC-278002 – Sculk sensors are not activated upon resin clumps spawning from creaking hearts.
+MC-278004 – Hitting a creaking heart with a wind charge kills the creaking.
+
+
+== 24w46a ==
+24w46a is the third and final snapshot for Java Edition 1.21.4, released on November 13, 2024, which fixes bugs. This is the final snapshot released in 2024.
+
+
+=== Additions ===
+
+
+==== General ====
+Items model definition
+
+Boolean property types
+Added minecraft:extended_view boolean property
+Returns true if player has requested extended details by holding shift key down.
+Note: not a keybind, can't be rebound.
+Only works when item is displayed in UI.
+No fields.
+Added minecraft:keybind_down boolean property
+Returns true if keybind is currently active.
+Fields:
+keybind - keybind ID, same as value in keybind text component.
+Property types
+Added minecraft:local_time property
+Returns the current time formatted according to a given pattern.
+The value is updated every second.
+For full format documentation for locale, time zone and pattern, see ICU (International Components for Unicode) documentation.
+Fields:
+locale - optional value describing locale
+Examples:
+en_US: English language (used for things like week names), formating as in USA.
+cs_AU@numbers=thai;calendar=japanese: Czech language, Australian formatting, Thai numerals and Japanese calendar.
+Default value is "", which means "root" locale (a set of defaults, including English names)
+time_zone - optional value describing time zone.
+If not present, defaults to timezone set on client.
+Examples:
+Europe/Stockholm.
+GMT+0:45.
+pattern - describes format to be used for time formatting
+Examples:
+yyyy-MM-dd - 4-digit year number, then 2-digit month number, then 2-digit day of month number, all zero-padded if needed, separated by -.
+HH:mm:ss - current time (hours, minutes, seconds), 24-hour cycle, all zero-padded to 2 digits of needed, separated by :.
+Values: any string.
+Added minecraft:holder_type property
+Returns holding entity type, if present.
+No fields.
+Values: namespaced entity type ID.
+Special model type
+Added minecraft:standing_sign special model type
+Renders a standing sign.
+Fields:
+wood_type - one of oak, spruce, birch, acacia, cherry, jungle, dark_oak, pale_oak, mangrove, bamboo, crimson, warped
+texture - optional namespaced ID for texture, without textures/entity/signs/ prefix and .png suffix.
+If not present, it is derived from wood_type.
+Added minecraft:hanging_sign special model type
+Renders a hanging sign.
+Fields:
+wood_type - one of oak, spruce, birch, acacia, cherry, jungle, dark_oak, pale_oak, mangrove, bamboo, crimson, warped
+texture - optional namespaced ID for texture, without textures/entity/signs/hanging/ prefix and .png suffix.
+If not present, it is derived from wood_type.
+Tag
+
+Added #wither_skeleton_disliked_weapons for weapons that wither skeletons don't want to pick up.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Block of resin 
+
+The sounds were adjusted to make them softer.
+Chiseled resin bricks
+
+Texture changed so that they are consistent with resin bricks in the corner pixels.
+Creaking heart
+
+Mining speed and blast resistance was doubled.
+Introduced a variation in how long time it takes for each creaking heart to spawn a creaking.
+Resin clump
+
+Can be placed on any full face of a neighboring block.
+Can now be waterlogged.
+Moved position in the Creative inventory.
+
+
+==== Items ====
+Suspicious stew
+
+The stew of Blindness now gains the same duration when crafted from azure bluet and open eyeblossoms.
+
+
+==== Mobs ====
+Bee
+
+No longer get poisoned when touching closed eyeblossoms.
+Leashed bees no longer enter beehives or bee nests.
+Creaking
+
+The attack sounds have been updated.
+Now persists when a world is reloaded.
+The statistics screen now shows correct stats from creakings, both produced by a spawn egg and from a creaking heart.
+Pickblocking a naturally-spawned creaking in Creative mode now gives a spawn egg.
+The entity shadows of creakings are now more appropriate for their size.
+Wither skeleton
+
+No longer have bows as their preferred weapon.
+
+
+==== General ====
+Data pack
+
+The pack format version is now 60.
+Removed creaking_transient entity type.
+Items model definition
+
+Boolean property types
+minecraft:has_component
+Added field: ignore_default - if default component value should be handled as "no component".
+Default: false.
+minecraft:condition item model type
+minecraft:xmas has been renamed to minecraft:local_time.
+minecraft:shift_down has been renamed to minecraft:extended_view.
+Special model types
+minecraft:head
+Added field: texture - optional namespaced ID for texture, without textures/entity/ prefix and .png suffix.
+If absent, default texture is used, depending on kind of field.
+Additionally, if present, minecraft:profile component is ignore.
+Resource pack
+
+The pack format version is now 45.
+All blocks that previously rendered only block entity (banners, heads, beds, chests, conduits, decorated pots, shulker boxes and signs) now also render normal block model over it (same as existing behavior of bells, enchantment tables, etc.).
+Rendered block entity still can't be removed or data-driven, this change only affects previously ignored block models.
+Tag
+
+The "preferred weapon" tags are now named in plural instead of singular.
+Removed the trim_templates item tag.
+Replaced resin_clump with resin_brick in the #trim_materials item tag.
+Added #small_flowers, and pale_moss_carpet to the #replaceable_by_trees block tag.
+Dynamic textures
+
+Player skin and cape textures are now produced in the debug folder if loaded.
+
+
+=== Fixes ===
+40 issues fixed
+From released versions before 1.21
+
+MC-150224 – Rabbits can occasionally get stuck on the edges of blocks.
+MC-160001 – Skulls, signs, hanging signs, banners and decorated pots have no breaking/sprinting particles.
+MC-256649 – Hanging signs aren't rendered when held by endermen or as block display entities.
+MC-266991 – Exposed Copper Bulb has inconsistent pixels.
+MC-271169 – The "Isn't It Scute?" advancement is granted when unleashing an armadillo while holding a brush.
+MC-272245 – You can get the advancement "Shear Brilliance" when you use shears on a leashed wolf.
+From 1.21
+
+MC-273710 – Wild foxes "trust" the player after being leashed to a fence.
+MC-273861 – When a leashed bee enters a hive, the leash disappears.
+MC-274571 – The advancement "Little Sniffs" can be obtained by unleashing the snifflet and not feeding it.
+From 1.21.2
+
+MC-275274 – Missing sound for event: minecraft:block.spawner.fall.
+MC-275339 – Bad contrast in bundle interface with dark blocks.
+MC-276697 – Neutral mobs don't pathfind correctly to their target after being unleashed.
+MC-276986 – Missing pixel in open bundle texture.
+MC-277042 – Blue and Red open bundle are inconsistent with the other colors.
+MC-277071 – Middle clicking on a creaking spawned naturally through a creaking heart doesn't give you the spawn egg.
+MC-277074 – The entity shadows of creakings are slightly too large in relation to the size of their models.
+MC-277140 – The statistics screen does not visually differentiate the creaking and creaking_transient entities.
+MC-277152 – The statistic for killing a creaking doesn't increment when breaking a creaking heart.
+MC-277226 – Creakings not linked to any heart display wrong subtitles when attacked with non-damaging projectiles.
+MC-277399 – The hand animation isn't played when constantly emptying items from bundles.
+MC-277413 – The empty state sprite for the oxygen bar takes a little longer to start displaying compared to Bedrock Edition.
+MC-277533 – Bundles can remain in the open state when taken out from saved hotbars.
+From 1.21.3
+
+MC-277892 – Clicking on the selected recipe a second time in the stonecutter GUI turns the result item into a ghost item.
+MC-277959 – Reloading chunks can break translucency sorting.
+MC-278058 – Breeze entity model rods no longer spin around when it is moving.
+MC-278102 – Recipe book icons no longer visually indicate that an item has multiple recipes.
+From the Java Edition 1.21.4 development versions
+
+MC-277948 – Suspicious stew gives different durations of Blindness for Eyeblossom and Azure Bluet.
+MC-277962 – Chiseled Resin Bricks have a miscolored pixel.
+MC-278028 – Using items underwater can force you to exit swimming mode.
+MC-278124 – Resin clumps are not waterloggable.
+From the previous development version
+
+MC-278130 – Resin bricks cannot be placed or used inside smithing tables.
+MC-278131 – Resin clumps can be placed inside smithing tables.
+MC-278132 – Using items while riding camels that are sprinting slows the camel down.
+MC-278136 – Bees still get poisoned when touching closed eyeblossoms.
+MC-278149 – Strays, bogged, and wither skeletons hold their bows incorrectly when charging and shooting.
+MC-278158 – Block/item models can no longer override parent model texture references by referencing the textures in the parent model of the first parent model.
+MC-278184 – Eyeblossoms can generate replacing Pale Oak logs.
+MC-278191 – Wandering Traders can sell Pale Oak Saplings in multiple offers at once.
+MC-278212 – Resin clump is placed in an unexpected position in the creative inventory.
+MC-278286 – Standing banners have breaking/sprinting particles but wall banners do not.
+
+
+== 1.21.4 Pre-Release 1 ==
+1.21.4 Pre-Release 1 (known as 1.21.4-pre1 in the launcher) is the first pre-release for Java Edition 1.21.4, released on November 20, 2024, which fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Items model definitions
+
+Boolean property
+Added minecraft:view_entity
+When not spectating, returns true if context entity is the local player entity, i.e. one controlled by client.
+When spectating, returns true if context entity is the spectated entity.
+If context entity is not present, returns false.
+No fields.
+Item model type
+Added minecraft:empty
+Does not render anything.
+No fields.
+Property types
+Added minecraft:context_dimension
+Returns the ID of the dimension in context, if any.
+No fields.
+Values: namespaced dimension ID (like minecraft:overworld).
+Tint source type
+Added minecraft:team
+Returns team color of context entity, if any.
+Fields:
+default - RGB value to return when there is no context entity, entity is not in a team or team has no color.
+
+
+=== Changes ===
+
+
+==== Effects ====
+Water Breathing and Conduit Power effects now increase the oxygen while underwater instead of only preventing it from decreasing.
+
+
+==== Items ====
+Spawn eggs
+
+Similar to block items, spawn eggs for entities that could execute operator-only commands now have a warning in tooltip.
+
+
+==== General ====
+Items model definitions
+
+A new field has been added to the client-side item info format (i.e. files in /assets/*/items/*.json).
+hand_animation_on_swap - boolean field describing if down-and-up animation should be played in first-person view when item stack is changed (either type, count or components)
+Default: true
+Only value from new item is taken into account.
+Does not control "pop" animation in GUI when item is picked or changes count.
+Numeric property types
+minecraft:compass
+Added value none to field target which always returns an invalid target.
+minecraft:time
+Removed field natural_only.
+Added field source - time source, possible values:
+daytime - time of day
+moon_phase - moon phase
+random - random value
+Property types
+minecraft:holder_type was renamed to minecraft:context_entity_type.
+Special model types
+minecraft:head
+Added field animation - float controlling head animation (like Piglin ears or Ender Dragon jaw)
+Default: 0.0
+Fonts
+
+GNU Unifont
+Updated to version 16.0.01.
+Resource pack
+
+The pack format version is now 46.
+
+
+=== Fixes ===
+16 issues fixed
+From released versions before 1.21
+
+MC-128225 – '/data remove' can't remove the NBT "CustomName".
+MC-138100 – /data remove doesn't work for the Jukebox's RecordItem tag.
+MC-179815 – Data command doesn't remove leash from a mob.
+MC-207605 – /data remove entity [tamed wolf] Owner does not remove ownership of the wolf.
+MC-248264 – /data remove can't remove ArmorItems.
+MC-265788 – The "Start free Snapshot Realm" element can be selected or remain selected causing its tooltip to erroneously be visible when other interfaces are open.
+From 1.21.3
+
+MC-278257 – Oxygen bar animation can be interrupted by applying water breathing.
+From the Java Edition 1.21.4 development versions
+
+MC-278134 – The TAB key cannot be used to select messages to report after clicking the "X message(s) hidden" element.
+MC-278193 – Baby piglins can't decide between crossbows and golden items.
+MC-278390 – Opening shulkers no longer trigger tripwire or pressure plates.
+From the previous development version
+
+MC-278290 – Using items while swimming or walking underwater doesn't slow the player down.
+MC-278300 – Creakings struck by lightning show visual fire.
+MC-278302 – Bundle always takes out first item and ignores selected item.
+MC-278311 – Respawned creakings from creaking hearts don't persist when the world is reloaded.
+MC-278312 – Creakings spawned from a creaking heart can be name-tagged once again.
+MC-278387 – Creaking respawns when going to the nether and back.
+
+
+== 1.21.4 Pre-Release 2 ==
+1.21.4 Pre-Release 2 (known as 1.21.4-pre2 in the launcher) is the second pre-release for Java Edition 1.21.4, released on November 25, 2024, which fixes bugs.
+This version has a bug where players could take damage when falling from 1 block, this was fixed in Java Edition 1.21.4 Pre-Release 3.
+
+
+=== Changes ===
+
+
+==== General ====
+Data pack
+
+The pack format version is now 61.
+Renamed CookTime to cooking_time_spent.
+Renamed CookTimeTotal to cooking_total_time.
+Renamed BurnTime to lit_time_remaining.
+Added the field lit_total_time representing the total time the furnace should be lit.
+
+
+=== Fixes ===
+9 issues fixed
+From released versions before 1.21
+
+MC-10025 – Burn time indicator of a furnace not working correctly after reloading the world.
+MC-197857 – Villagers trying to claim claimed beds.
+From 1.21.1
+
+MC-275952 – Riding a minecart above the water with Frost Walker boots on will also give the Frost Walker effect.
+From 1.21.2
+
+MC-277169 – Creaking moves while a player is looking at it while moving a certain way and looking through pale moss.
+From the 1.21.4 development versions
+
+MC-278256 – Horses jumping multiple times in a row take fall damage.
+MC-278282 – "Tried to load a DUMMY block entity"/"Tried to load a block entity" errors at specific coordinates.
+MC-278370 – Winter drop feature flag is not added to the removed features list.
+From the previous development version
+
+MC-278430 – Trim materials item tag is not deterministic in data generation.
+MC-278497 – Using items while sneaking slows down the player way less than in previous versions.
+
+
+== 1.21.4 Pre-Release 3 ==
+1.21.4 Pre-Release 3 (known as 1.21.4-pre3 in the launcher) is the third pre-release for Java Edition 1.21.4, released on November 26, 2024, which fixes bugs. This is the final pre-release released in 2024.
+
+
+=== Fixes ===
+3 issues fixed
+From the 1.21.4 development versions
+
+MC-277977 – Teleporting large distances whilst gliding prevents the world from loading and player model glitchiness
+MC-278444 – Waterlogged resin clumps do not drop when their supporting block is broken/moved
+From the previous development version
+
+MC-278518 – Player takes damage from jumping down from one block
+
+
+== 1.21.4 Release Candidate 1 ==
+1.21.4 Release Candidate 1 (known as 1.21.4-rc1 in the launcher) is the first release candidate for Java Edition 1.21.4, released on November 28, 2024, which fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Languages
+
+Added support for Popoloca language.
+
+
+=== Fixes ===
+2 issues fixed
+From the Java Edition 1.21.4 development versions
+
+MC-278494 – Resin Bricks appears twice in "mineable/pickaxe" block tag.
+From the previous development version
+
+MC-278548 – Spyglass is held incorrectly when used from the off hand.
+
+
+== 1.21.4 Release Candidate 2 ==
+1.21.4 Release Candidate 2 (known as 1.21.4-rc2 in the launcher) is the second release candidate for Java Edition 1.21.4, released on November 29, 2024, which fixes a bug.
+
+
+=== Fixes ===
+1 issue fixed
+From the previous development version
+
+MC-278573 – Updating can cause straight biome borders with pale garden
+
+
+== 1.21.4 Release Candidate 3 ==
+1.21.4 Release Candidate 3 (known as 1.21.4-rc3 in the launcher) is the third and final release candidate for Java Edition 1.21.4, released on November 29, 2024, which fixes bugs. This is the final release candidate released in 2024.
+
+
+=== Fixes ===
+2 issues fixed
+From 1.21.1
+
+MC-276962 – JVM crash occurs when minimizing maximized window.
+From 1.21.3
+
+MC-277889 – Villagers' iron golem detection range is increased for villagers upgraded from 1.21.1 or earlier.
+
+
+== Notes and references ==
+
+
+== Navigation ==

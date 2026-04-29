@@ -1,0 +1,37 @@
+/serverpack is a command that can be enabled with the debug property -DMC_DEBUG_DEV_COMMANDS. It can install and remove server resource packs.
+
+
+== Syntax ==
+serverpack push <url> [<uuid>] [<hash>]
+
+Installs the resource pack found at the specified URL on the server. An optional UUID and the file's SHA1 hash can also be specified for the server to be able to verify the integrity of the pack, like the resource-pack-id and resource-pack-sha1 server properties.
+serverpack pop <uuid>
+
+Removes the resource pack with the specified UUID from the server.
+
+
+== Arguments ==
+<url>: string
+
+Specifies the URL to download a resource pack from.
+Must be a string.
+<uuid>: uuid
+
+For serverpack push, specifies an optional UUID for the resource pack to be installed. For serverpack pop, specifies the UUID of the resource pack to remove.
+Must be a UUID in the hyphenated hexadecimal format. Allowed characters include: -, A-F, a-f, and 0-9.
+<hash>: string
+
+Specifies the SHA1 hash of the resource pack to be installed.
+Must be a string. And it must be in a single word (Allowed characters include: -, +, ., _, A-Z, a-z, and 0-9).
+
+
+== Result ==
+
+
+== Output ==
+
+
+== History ==
+
+
+== Navigation ==

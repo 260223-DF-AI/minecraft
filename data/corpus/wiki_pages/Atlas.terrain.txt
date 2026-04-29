@@ -1,0 +1,36 @@
+atlas.terrain is a texture atlas used to store all block textures defined in terrain_textures.json.
+
+
+== Format ==
+
+atlas.terrain is a 2048×1024 pixel file that is usually split into 16×16-pixel squares with 8 pixels of padding for blocks. Its textures are generated from terrain_textures.json, ordered alphabetically by entry, when a world is loaded. Textures with animations (defined in flipbook_textures.json) are placed at the end, due to the texture being large, and are additionally animated within the atlas texture. If a texture file is referenced in multiple entries within terrain_textures.json, it will appear once in the first spot it occurs. If a broken or nonexistent texture is referenced, a missing texture will appear in its spot, even if there is a missing texture occured before it. This does not necessarily mean that the missing texture ends up being visible in-game for relevant such blocks.
+Any textures added to terrain_textures.json in loaded resource packs will show up in atlas.terrain, including those in add-ons and in internal packs such as chemistry.
+
+
+== Viewing ==
+
+The file generated for atlas.terrain can be extracted by using a structure block to 3D export a structure. There has to be a semi-transparent block like stained glass to export the right image.[needs testing] The exported file can then be converted into an OBJ file, where its UV, identical to the atlas, can be accessed.​[more information needed]
+Like other atlases in Bedrock Edition, atlas.terrain can also be viewed in-game by applying the resource location "atlas.terrain" to another object (e.g. an entity or a particle). ​[more information needed]
+
+
+=== External programs ===
+
+Using external programs such as RenderDoc, you can obtain the texture atlas and its mipmapped versions. The image needs to be flipped vertically after being downloaded as a png.
+
+
+== History ==
+
+
+=== Versions of the atlas ===
+
+
+==== Mipmapped versions ====
+
+
+==== Minecraft Education features ====
+
+
+===== Mipmapped versions =====
+
+
+== Navigation ==

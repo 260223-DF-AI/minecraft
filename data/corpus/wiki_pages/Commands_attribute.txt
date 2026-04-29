@@ -1,0 +1,60 @@
+Used to change or read attributes.
+
+
+== Syntax ==
+attribute <target> <attribute> get [<scale>]
+Returns the total value of the specified attribute.
+attribute <target> <attribute> base get [<scale>]
+Returns the base value of the specified attribute.
+attribute <target> <attribute> base set <value>
+Overwrites the base value of the specified attribute with the given value.
+attribute <target> <attribute> base reset
+Resets the base value of the specified attribute to its default value.
+attribute <target> <attribute> modifier add <id> <value> (add_value|add_multiplied_base|add_multiplied_total)
+Adds an attribute modifier with the specified properties if no modifier with the same ID already existed.
+attribute <target> <attribute> modifier remove <id>
+Removes the attribute modifier with the specified ID.
+attribute <target> <attribute> modifier value get <id> [<scale>]
+Returns the value of the modifier with the specified ID.
+
+
+== Arguments ==
+<target>: entity
+
+The entity that the attribute is applied to. Only players, armor stands, and mobs have attributes.
+Must be a player name, a target selector or a UUID.  And the target selector must be in single type.
+<attribute>: resource
+
+Specifies the attribute.
+Must be an existing registered resource location in minecraft:attribute registry.
+<scale>: double
+
+The number the value is multiplied with before being stored with /execute command.
+Must be a [Double]Double-precision floating-point number (from -(2-2-52)×21023 (≈-1.8×10308) to (2-2-52)×21023 (≈1.8×10308) ).
+<id>: resource_location
+
+Specifies the id of a modifier.
+Must be a resource location for an unregistered content.
+<value>: double
+
+Specifies the value to use.
+Must be a [Double]Double-precision floating-point number (from -(2-2-52)×21023 (≈-1.8×10308) to (2-2-52)×21023 (≈1.8×10308) ).
+
+
+== Result ==
+
+
+== Output ==
+
+
+== Examples ==
+To set the minimum armor value of the current entity to 5:
+/attribute @s minecraft:armor base set 5
+To set the minimum scale value of the current entity to .5:
+/attribute @s minecraft:armor base set .5
+
+
+== History ==
+
+
+== Navigation ==

@@ -1,0 +1,363 @@
+This is a list of Bedrock Edition 1.17.10 development versions.
+
+
+== beta 1.17.10.20 ==
+Beta 1.17.10.20 is the first beta version for Bedrock Edition 1.17.10, released on May 26, 2021, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Block of Quartz, Crafting Table, Polished Blackstone Bricks, Cracked Polished Blackstone Bricks, and Sculk Sensor
+
+Changed the textures to match Java Edition.
+Rooted Dirt
+
+Rooted dirt texture is now randomly rotated, matching the behavior of the regular dirt block (MCPE-123197).
+
+
+==== Items ====
+Dried Kelp, Netherite Axe, Netherite Boots, Netherite Hoe, Netherite Ingot, Netherite Pickaxe, and Netherite Sword
+
+Changed the texture to match Java Edition.
+
+
+==== Mobs ====
+Axolotl
+
+When fed with a bucket of tropical fish, it will now return a water bucket instead of a bucket (MCPE-127382).
+Axolotl's hitbox is now smaller to match the size of the mob.
+Axolotls no longer move their tails while playing dead (MCPE-123309).
+Skeleton
+
+Skeletons now turn into strays after 20 seconds inside powder snow, instead of 45 seconds.
+
+
+==== Non-mobs entities ====
+End Crystal
+
+Changed the models to have three cubes again instead of two, and to match Java Edition.
+
+
+==== General ====
+Settings
+
+Added a new accessibility icon in the Settings menu.
+
+
+==== Technical ====
+General
+
+Added query.show_bottom - a query for determining whether or not the entity's bottom is rendered.
+Added query.death_time - a query for determining the elapsed ticks since a mob started dying.
+Added math.min_angle - a math expression for minimizing the angle magnitude (in degrees) into the range [-180, 180].
+Gameplay
+
+Loot chests with Seed = 0 now correctly randomize if placed on the same coordinates.
+Note that pickblocking a Vanilla loot chest before opening it will now result in identical loot in each copy unless the player set the seed to 0 in the NBT.
+Data Driven Mobs
+
+Ender dragon and end crystal rendering and animations are now fully data-driven.
+Graphics
+
+Graphics hardware that supports a maximum D3D11 feature level of 9_3 or below are no longer supported.
+Stability and Performance
+
+Added better error handling for JSON parsing. Also added several new content errors for item parsing as well as for loot tables.
+Actors
+
+Incoming client-sync properties for newly seen types will properly register with client-side Actor Property Manager groups.
+
+
+=== Fixes ===
+Vanilla Parity
+
+Thunderstorms now happen as often as on Java Edition (MCPE-72798).
+Axolotl
+
+Guardians and elder guardians now attack axolotls on sight.
+Drowned now attack axolotls on sight.
+Azalea
+
+Azalea can now be bone-mealed when placed on clay.
+Using Pick Block on azalea leaves and flowering azalea leaves now results in the correct blocks being picked (MCPE-128092).
+Copper Ore
+
+Copper ore is now placed after other Overworld ores in the Creative inventory (MCPE-119724).
+Deepslate
+
+Deepslate is now placed after other stones in the Creative inventory (MCPE-127592).
+Glow Item Frame
+
+Glow item frame is now placed after regular item frame in the Creative inventory (MCPE-117532).
+Hanging Roots
+
+Hanging roots are now destroyed by water (MCPE-121676, MCPE-127677).
+Lightning Rod
+
+Lightning rod no longer breaks falling blocks that land on it (MCPE-116545).
+Commands
+
+/title clear now correctly clears the title and subtitle from the HUD (MCPE-97636).
+Dressing Room
+
+Profile screen reload button is now localized.
+Gameplay
+
+Fixed split-screen players not able to rename items on anvils (MCPE-108405).
+Graphical
+
+Projectiles such as snowballs and eggs no longer cast shadows.
+Items
+
+All dropped items now have a similar floating height.
+Data-driven items now swing faster when not targeting blocks (MCPE-119702).
+Firework rockets obtained from /replaceitem command now have a flight duration (MCPE-109037).
+Firework stars obtained from /replaceitem command now have proper color values (MCPE-109037).
+Lush Caves
+
+Small dripleaf now only drops itself when broken with shears.
+Powder Snow
+
+Burning mobs can no longer destroy powder snow when the Mob Griefing gamerule is disabled.
+User Interface
+
+Hotbar item tooltip duration now scales with the length of the tooltip's text.
+
+
+== beta 1.17.10.21 ==
+Beta 1.17.10.21 is the second beta version for Bedrock Edition 1.17.10, released on June 3, 2021, which added more parity features from Java Edition, and fixes bugs. It was not released on Android due to submission issues, but multiplayer is compatible with the previous beta.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Azalea and Flowering Azalea
+
+Can be placed inside flower pots.
+Signs
+
+Glowing text on signs now has an outer glow, making text in dark colors more visible in the dark.
+
+
+==== Mobs ====
+Goats
+
+Tempted goats now move at the same speed as goats in Java Edition.
+Goat fall damage reduction is now in parity with Java Edition. (-10 reduced fall damage)
+
+
+==== World generation ====
+Bastion remnants
+
+Chest loot has been changed.
+Loot overall was improved; rarer items had their weights increased and many item amounts were increased. Many pools had their rolls increased as well.
+Removed all "empty" loot entries.
+Most items with damage had their average durability increased.
+Added enchanted golden axes, golden carrots, enchanted golden apple and blocks of iron to various loot tables.
+Removed iron nuggets from treasure chests.
+Unenchanted diamond armor in treasure chests is no longer damaged.
+
+
+==== Technical ====
+Chunks
+
+Limits writing of chunks unless necessary. Chunks upgraded from older formats will not automatically save when loaded, but when modified (Through blocks or actors, for example) they will be marked for saving
+Data-Driven Mobs
+
+The horse rendering and animations are now fully data-driven
+This work supports all horse variants (horse, mule, donkey, zombie horse, skeleton horse) and all horse versions including:
+v1 (engine version 1.2.5 and earlier)
+v2 (engine version 1.2.6 to 1.17.0)
+v3 (engine version 1.17.10 and onward). This will be a cleaner version of the v2 model, with less confusing bone naming
+GameTest Framework
+
+Updates to how blocks are handled in APIs:
+BlockType, BlockPermutation, and Block instances replace BlockState-based updating
+Exposed chest block component and Container
+Added location and velocity read-only properties to Entity
+function createExplosion(location : Location, radius : number, explosionOptions : ExplosionOptions)
+Creates an explosion
+ExplosionOptions : class
+Provides additional configuration parameters for createExplosion
+method triggerEvent(eventName : string)
+Triggers an event on an entity
+Added thenExecuteFor to GameTestSequence, which repeatedly calls the callback for the specified number of ticks
+
+
+=== Fixes ===
+Stability
+
+Fixed a crash that occurred when breaking a block when the Caves & Cliffs experimental toggle was enabled (MCPE-128985).
+Diamond Ore
+
+Diamond ore now generates with the correct distribution again (MCPE-127555).
+Glow Lichen
+
+Glow lichen now only drops itself when broken with shears.
+Commands
+
+Frosted ice can now be used in any command that accepts a block, such as /setblock and /testforblock (MCPE-126741).
+Data-Driven Items
+
+Updated documentation for 'DisplayNameItemComponent'.
+Gameplay
+
+Disenchanting an item using the grindstone once again resets the enchantment cost penalty correctly (MCPE-107211).
+Glow Sign
+
+The text on glowing signs now has an outline (MCPE-129123).
+Black text on signs can be lit by using a glow ink sac (MCPE-128079).
+Tooltips are now present when holding ink sac and glow ink sac when using a controller.
+Ink sac and glow ink sac can no longer be used indefinitely on signs in Adventure mode.
+Player can no longer dye text on signs in Adventure mode (MCPE-126489).
+Graphics
+
+Underwater fog is once again dependent on biome (MCPE-124266).
+Items
+
+Pumpkins are once again accepted by farmer villagers regardless of their rotation when mined (MCPE-105540).
+Jukebox
+
+Jukebox now only ejects disk into non-solid blocks (MCPE-85635).
+Mobs
+
+Baby horses, including their variants, are now taller and no longer exhibit Z-fighting from their legs (MCPE-92462).
+Amphibious mobs no longer get stuck when pathing over slabs and daylight sensors.
+Attacked glow squids no longer go dark only for aggressor in multiplayer sessions.
+Villagers spawned from villager spawners on Marketplace worlds that were created after version 1.11 now correctly spawn as V2 villagers.
+Goat
+
+Goats can now continue ramming when on slime block and honey blocks.
+Strays
+
+Strays no longer drop wither skeleton skulls when killed by charged creepers (MCPE-35876).
+Bastion
+
+Bastion loot now closely matches Java Edition (MCPE-104330).
+Player
+
+Players can no longer swim through the air under a platform, though it looked pretty cool (MCPE-48958).
+Sea Turtles
+
+Baby sea turtles no longer despawn after being hatched (MCPE-70664).
+User Interface
+
+The "Reset to Default" button in the Accessibility settings now resets the Text Background Opacity slider.
+Fixed a typo in the "Loom" section of "How to Play" (MCPE-128735).
+The counters on empty tabs of the Play screen now display zero instead of an empty, grey box (MCPE-110535).
+
+
+== beta 1.17.10.22 ==
+Beta 1.17.10.22 is the third beta version for Bedrock Edition 1.17.10, released on June 9, 2021, which adds candles, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+Candle
+
+Crafted with honeycomb and string.
+Comes with 16 dyed types and a yellowish non-dyed type.
+Can be lit by any item that produces fire.
+Up to 4 can be placed in a single block, similar to sea pickles, for a maximum light level of 12.
+Only candles of the same color can be placed on the same block.
+Only one can be placed on an uneaten cake and lit.
+If any of the cake is consumed, the candle pops off.
+
+
+==== Command format ====
+/dialogue
+
+Used to create multi-page dialogues with branching narrative for NPCs via dialogue JSON files.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Axolotls 
+
+Now only spawn in total darkness.
+
+
+==== Technical ====
+GameTest Framework
+
+Renamed World.event.weatherChanged to World.event.changeWeather
+Added event World.event.addEffect
+Fires when an effect is applied to an entity.
+Added event World.event.createEntity
+Fires when an entity is added to the world.
+Removed function World.addEventListener
+Changed function getDuration() to property duration
+Changed function getAmplifier() to property amplifier
+Added property displayName
+Gets the display name of the effect
+
+
+=== Fixes ===
+Gameplay
+
+Falling Anvils and Stalactites now deal damage to mobs when landing in liquid
+Fixed a bug where players going through Cobwebs would take fall damage before hitting the ground (MCPE-121550)
+Descending through Powder Snow with touch controls now uses the same button as descending through Scaffolding
+Vanilla Parity: Empty Buckets can no longer be used to collect Fish
+Mobs
+
+Axolotls now only spawn in complete darkness
+Iron Golems and Evokers are no longer sometimes aggressive on Peaceful difficulty (MCPE-47012)
+Glow Squid now darkens to match the surrounding light level when hurt (MCPE-121754)
+When Goats are performing a ram attack, mobs will no longer retaliate against the Goats (MCPE-129619)
+Fixed a warning that could appear in splitscreen when encountering Guardians
+Character Creator
+
+Featured item thumbnails now remain within the featured items window
+The "Choose New Skin" button now shows up even when there is no imported custom skin (MCPE-128971)
+The "Choose New Skin" button no longer disappears after selecting the slim custom option
+Fixed an issue that was causing the player's head to not animate properly with emotes (MCPE-126902)
+Technical
+
+Fixed experimental 'query.target' to work on client-side queries
+Players will now be given a content error when custom recipes are invalid
+Renamed minecraft:scaffolding_climber to minecraft:block_climber, it now processes climbing both Scaffolding and Powder Snow
+
+
+== beta 1.17.10.23 ==
+Beta 1.17.10.23 is the fourth and final beta version for Bedrock Edition 1.17.10, released on June 16, 2021, which added some new splash texts from Java Edition, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Splashes
+
+Added the following splash text from Java 1.17-pre1:
+"[this splash text has been delayed until part 2]"
+"Contains simulated goats!"
+"Home-made!"
+"There's <<a cat on ,my keyboard!~" [sic]
+"The cutest predator you'll ever meet!"
+"Now you are thinking with pistons!"
+"Get to the coppah!"
+"Board game version also available!"
+"Honey, I waxed the copper!"
+"Plant-based light sources!"
+"Made by "real" people!"
+
+
+=== Fixes ===
+Fixed a crash that could occur when using a Fire Charge on Candles from certain angles
+Fertilizing Grass Block with Bone Meal generates the appropriate number of plants (MCPE-128967)
+Fixed a crash that could occur if a structure was placed with a command in an unloaded area and that structure was deleted
+Fixed a bug that could cause Nether Portals to sometimes take players to wrong coordinates (MCPE-115933).
+
+
+== Notes and references ==
+
+
+== Navigation ==

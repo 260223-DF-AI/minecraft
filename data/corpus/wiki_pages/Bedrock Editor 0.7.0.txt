@@ -1,0 +1,43 @@
+Bedrock Editor v0.7.0, also known as the Personalization Update, is a major alpha release for the Bedrock Editor released on August 15, 2024, which adds the navigation and structure panes.
+
+
+== Additions ==
+
+Structure panel
+
+Currently read-only.
+"New from Clipboard" saves structure from clipboard.
+"Copy to Clipboard" copies structures to keyboard.
+Navigation Panel
+
+Added a toggle to show a birds-eye view mini-map.
+Player's location and orientation are displayed at the center of the map.
+Teleports the player to destination on click.
+Implemented the ability to add markers to locations in player's world.
+They will show up as colored flags within the mini-map.
+Hardcore
+
+Added support for hardcore mode in the export pane ("File" → "Export").
+Some settings like cheats and difficult are overridden and restricted when hardcore mode is enabled.
+API
+
+Added getSelectedToolId and setSelectedToolId functions to IModalToolContainer API.
+
+
+== Changes ==
+Removed screenshot and profile buttons from Editor project pause menu.
+
+
+== Fixes ==
+Fixed a bug where Editor operations could exhaust all available ticking areas causing all future operations to fail.
+Fixed a bug where sometimes IModalTool.onModalToolActivation API event was called in the wrong order.
+Fixed a bug which could sometimes cause brush masks to fail to load.
+
+
+== Gallery ==
+
+
+== References ==
+
+
+== Navigation ==

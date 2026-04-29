@@ -1,0 +1,19 @@
+Timelines control game behavior and visuals based on the absolute day time through environment attributes.
+
+
+== JSON format ==
+
+
+=== Easing types ===
+ 
+An easing type specifies the interpolation easing between keyframes of an attribute track.
+Two easing types are available which do not interpolate into or out from keyframes:
+
+The rest of the easing types are all variations of a set of interpolation kinds, resized and moved to fit each segment of the track. Each is available in three forms; in_, out_, and in_out_. in_ applies the easing from the value of a keyframe after it's been passed, out_ applies the easing into the value of a keyframe before it's been passed, and in_out_ combines the two and applies the easing both from a keyframe and into the next one.
+The types of easing which support in_, out_, and in_out_ are as follows:
+
+
+== History ==
+
+
+== Navigation ==

@@ -1,0 +1,61 @@
+Single Biome (formerly known as Buffet) is a world type or a vanilla world preset in which the entire Overworld consists of one biome. It is simple to customize, albeit very limited.
+
+
+== Java Edition ==
+Single Biome uses a single fixed biome source for generating the Overworld with the default noise generator. Similar to the Default world type, this configuration generates a world with a bedrock floor at the Y=-64 lower height limit, and the rest of the terrain is generated on top of it. However, in contrast to the Default world type, the Overworld in a Single Biome world consists of only one biome.
+The Nether and the End are unchanged from their Default world type counterpart. The Nether uses the multi-noise biome source and the End uses the minecraft:the_end biome source.
+Additionally, players can override any dimension with the same fixed biome source generation like Single Biome using a custom dimension data pack.
+
+
+=== Custom biome ===
+Single Biome world type allows players to choose a biome that the world generates in the terrain of the Overworld. Biome choice determines things such as terrain, vegetation, generated structures, and to some extent, mob spawning. Single Biome worlds can be customized to use any one of the available biomes, using only that particular biome for the entire world. The player can choose any of the existing biomes, including the Nether and the End biomes, and custom biomes from data packs.
+This customization is available in the "Buffet world customization" menu, accessible by clicking the "Customize" button beside the world type selector in the world creation settings.
+Using a biome from the Nether or the End to generate the Overworld results in a world with their structures and characteristics, albeit very incomplete. For example, warped forest does not generate any warped trees, but still generates fogs, particles, and nether fortresses. This is caused by a bug where the biome surface and terrain is different from their own dimension.
+Server operators can set a Single Biome world type by setting level-type=minecraft:single_biome_surface in server.properties.
+
+
+== Bedrock Edition ==
+Code for the Single Biome world type exists in Bedrock Edition; however, it is inaccessible through the game's GUI. It can only be accessed by editing the world's level.dat file using external programs. This code supports every biome in the game, including unused biomes.
+In Bedrock Edition, Single Biome has a few quirks such as:
+
+Mineshafts, ruined portals, and strongholds generate in every biome.
+This does mean that it is possible to get wood and enter the End regardless of the chosen Biome, unlike Java Edition.
+Single Biome affects the End but not the Nether.
+Non-land biomes do not generate their terrain.
+Oceans and rivers when inside of a Nether biome have a checkerboard-like pattern of water and lava.
+Structure generation cuts off at Y-level 256 when in a Nether or End biome.
+This feature is neither widely known nor is it fully developed, and is unlikely to be fully implemented into the game, but it can still be accessed.
+
+
+== History ==
+Java Edition
+
+Bedrock Edition
+
+
+== Issues ==
+Issues relating to "Single biome" or "Buffet" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Trivia ==
+If the Nether or the End is used as the sole biome, then the sky would appear as if it is a mixture of the Overworld and the dimensions.
+
+
+== Gallery ==
+
+
+=== Screenshots ===
+
+
+=== Mojang Screenshots ===
+
+
+== See also ==
+Old Buffet world generators
+Custom
+
+
+== References ==
+
+
+== Navigation ==

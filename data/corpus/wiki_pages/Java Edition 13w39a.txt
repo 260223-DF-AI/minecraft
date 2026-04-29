@@ -1,0 +1,75 @@
+13w39a is the eighth snapshot for Java Edition 1.7.2, released on September 26, 2013. It adds red sand to mesa biomes and allows for more than one enchantment on a book. 
+The server was reuploaded just over an hour after release.​[more information needed]
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Red sand
+
+Generated on the lowest surface levels of the mesa biome.
+Behaves like normal sand.
+Can be smelted into glass and crafted into TNT, but cannot be crafted into sandstone.
+
+
+=== Non-mob entities ===
+  Minecart with command block
+
+Can only be obtained using /give @p 422, /give @p hopper_command_block or /summon MinecartCommandBlock.
+Activated by activator rails.
+Run their command every so often as long as they are powered - a command block minecart going across a single powered activator rail at full speed runs its command thrice.
+Can be success-tested while on a detector rail with a redstone comparator next to the rail (just like how the minecart with chest and minecart with hopper can be fill-checked).
+
+
+== Changes ==
+
+
+=== Items ===
+Enchanted books
+
+Can now give multiple enchantments.
+
+
+=== World generation ===
+Badlands
+
+Orange terracotta generates in place of sandstone, but not in the same type of formation.
+
+
+=== General ===
+Logging
+
+Now done using Log4j 2.
+Default logging location is now in logs/latest.log, older logs are archived in logs/year-months-day-counter.log.gz with GZIP compress. The year is 4 digits, and the month and day are both 2 digits. The counter is the number of startups on the day. The counter is 1 when the first startup of the day and increasing each startup.
+The way logs are saved can be changed, examples: HTML page, database, errors only, no logging at all.
+As a result, this is the first version to be affected by the Log4Shell security vulnerability, although running the game through the current launcher will automatically apply a patch to fix it.
+
+
+== Fixes ==
+9 issues fixed
+From released versions before 1.7.2
+
+MC-673 – Sky/lighting doesn't get darker during a thunderstorm.
+MC-1105 – Villagers act like it is raining when they are in the desert, and it rains elsewhere.
+MC-28405 – The saddle equip sound effect does not play when equipping a pig with a saddle.
+From the 1.7.2 development versions
+
+MC-29521 – Rain doesn't make particles/sound in some biomes (extreme hills).
+MC-31418 – Snow golems die in extreme hills snow.
+MC-31432 – XP orb sound bug.
+MC-31438 – Enemy monster slider controls the sound of items entering one's inventory.
+From the previous development version
+
+MC-31932 – Hopper: java.lang.NullPointerException.
+MC-31947 – Hopper: java.lang.NullPointerException.
+
+
+== Trivia ==
+13w39a was previously removed from the launcher for some time, but was added back in September 2018.
+
+
+== References ==
+
+
+== Navigation ==

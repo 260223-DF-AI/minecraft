@@ -1,0 +1,19 @@
+Waypoint styles are JSON files located in resource packs that define styling used for changing waypoints' icon and specific distances they appear on the locator bar. They are used in /waypoint modify ... style command for specific entities.
+
+
+== JSON format ==
+Waypoint styles are stored as JSON files on assets/<namespace>/waypoint_style directory.
+
+
+== Sprite selection ==
+To determine which sprite is used based on the distances, the game uses linear interpolation on the player's distance between the near and far distance values, getting the index of which sprite is supposed to be shown in the [NBT List / JSON Array] sprites list. This calculation in the game is roughly equivalent to:
+Sprite index=⌊(Player distance−Near distanceFar distance−Near distance)×Size of sprites list⌋
+Noticeably, the second sprite does not appear until the first index is calculated, which until then, the game uses the first sprite for the 0th index calculated, and for any distance less than the near distance. This is due to the zero-based numbering for indexing the sprites list.
+The distance (in blocks) which a sprite appears between transition can be calculated from:
+Sprite distance between transition=Far distance−Near distanceSize of sprites list
+
+
+== History ==
+
+
+== Navigation ==

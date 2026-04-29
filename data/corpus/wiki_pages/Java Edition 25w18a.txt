@@ -1,0 +1,97 @@
+25w18a is the fourth snapshot for Java Edition 1.21.6 released on April 29, 2025.
+
+
+== Changes ==
+
+
+=== Items ===
+Dried ghast
+
+The bone block in the recipe has been replaced with soul sand.
+
+Lead
+
+The slimeball in the recipe has been replaced with a string.
+This is to make the recipe easier to craft for players.
+
+
+=== Gameplay ===
+Bartering
+
+Piglins can now give dried ghast blocks when bartered with.
+Splash potion
+
+Splash potions distance to affected entities now depends on the closest distance between the entity hitbox and the splash potion hitbox where it landed.
+If an entity is hit directly by the splash potion, it will receive the full effect of the potion.
+If the entities are grouped together, they will receive the same effect strength.
+
+
+=== General ===
+Data pack
+
+The pack format version is now 75.
+Entity data
+
+Added home_pos and home_radius fields to all mobs.
+Mobs with set home position will limit their pathfinding to stay within the indicated area.
+Some mobs, like bats, slimes, magma cubes, phantoms and ender dragons may ignore it.
+Interacting with leashes or riding may change the home position of the mob.
+Fonts
+
+uniform font has been updated to use Unifont 16.0.03.
+Added previously omitted Unifont glyphs for Private Use Areas.
+Those glyphs are loaded as a separate sub-font minecraft:include/unifont_pua and are not included in any normally used font.
+Characters in those areas are managed by Under-CSUR (Under-ConScript Unicode Registry), which adds various scripts not present in official Unicode set, like Tengwar or Sitelen Pona.
+Unihex Font Provider
+Field size_overrides is now optional (defaults to empty list).
+Resource pack
+
+The version is now 59.
+All JSON files (in worlds, packs, configuration, etc.) are now parsed in strict mode.
+The hud/locator_bar_arrow_up and hud/locator_bar_arrow_down sprites are now animated with a standard animation definition in the corresponding .mcmeta files.
+Tags
+
+Updated the #followable_friendly_mobs entity tag to include the happy ghast.
+
+
+== Fixes ==
+18 issues fixed
+From released versions before 1.21
+
+MC-200925 – Ghasts are not affected by potions thrown on their head.
+MC-262268 – Keyboard navigation does not work in the book and quill GUI.
+MC-264431 – #minecraft:sand tag has two minecraft:suspicious_sand.
+From 1.21.3
+
+MC-278459 – unifont.json contains trailing comma.
+From 1.21.4
+
+MC-279284 – Experience orbs from thrown bottles o' enchanting are very prone to getting stuck inside blocks.
+From 1.21.5
+
+MC-279875 – Cannot diagonally climb slab through suspended scaffolding.
+MC-280281 – Fishing bobbers rapidly jitter when attached to entities that are moving.
+MC-280502 – Translation key snbt.parser.undescore_not_allowed has a typo.
+MC-295879 – Sprint-hitting boats and then getting in them causes the boat to fall through the block underneath.
+MC-295914 – Loot table files accept invalid JSON.
+MC-296784 – The "Welcome to Minecraft" screen is missing its fade out.
+MC-296866 – Predicates of particular namespaces failed to be accessed on /execute.
+From the 1.21.6 development versions
+
+MC-296354 – Happy ghasts aren’t affected by potions thrown on their heads.
+MC-296898 – Happy ghasts' home slightly drift over time.
+From the previous development version
+
+MC-297112 – You cannot use CTRL + NUM to navigate to tabs within the configure realms menu.
+MC-297114 – The realms menu incorrectly claims that realms are expiring soon.
+MC-297115 – The “This is a Snapshot Realm…” box no longer renders with a black background.
+MC-297184 – 'Realms' is lowercase in mco.errorMessage.realmsService.configurationError..
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

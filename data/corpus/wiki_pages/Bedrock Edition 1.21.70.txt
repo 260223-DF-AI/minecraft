@@ -1,0 +1,681 @@
+1.21.70, the release of Spring to Life, is a game drop for Bedrock Edition, released on March 25, 2025, which adds chicken, cow, and pig variants, adds several new plants, changes all spawn egg textures to be easier to tell apart, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Leaf Litter
+
+A new type of decorative block which can be found in the forests, dark forests and wooded badlands.
+Works like pink petals.
+Can be smelted from any type of leaves block.
+ Wildflowers
+
+A new type of flower which grow in birch forests, old growth birch forests and meadows.
+Works like pink petals.
+ Bush
+
+Generates in the following biomes:
+Plains
+Windswept Hills
+Windswept Gravelly Hills
+Windswept Forest
+River
+Frozen River
+Forest
+Birch Forest
+Old Growth Birch Forest
+ Firefly Bush
+
+Generates in swamps and near rivers.
+When it's light level 13 or lower, glowing firefly particles appear around the firefly bush, up to 5 blocks away.
+ Cactus Flower
+
+A new type of flower which can grow on cacti in deserts and all types of badlands.
+ Short Dry Grass 
+
+Generates in the desert and all types of badlands.
+ Tall Dry Grass
+
+Generates in the desert and all types of badlands.
+
+
+=== Items ===
+ Blue Egg
+
+A variant of the egg laid by the cold chicken variant.
+Spawns the cold chicken variant when hatched.
+ Brown Egg
+
+A variant of the egg laid by the warm chicken variant.
+Spawns the warm chicken variant when hatched.
+
+
+=== Mobs ===
+There are now cold and warm variants of pigs, cows, and chickens.
+
+The variant of naturally spawned mobs is determined by the biome they spawn in.
+When bred by a player, a baby of these mobs will not be a variant chosen by the current biome, but instead randomly be selected from one of its parent's variants.
+The temperate versions of the mobs spawn by default wherever the cold and warm variants do not.
+ Pig
+
+Temperate Pig: The pre-existing pig variant.
+Cold Pig: A variant that spawns in cold biomes.
+Warm Pig: A variant that spawns in warm biomes.
+ Cow
+
+Temperate Cow: The pre-existing cow variant.
+New texture and model.
+Cold Cow: A variant that spawns in certain cold biomes.
+Warm Cow: A variant that spawns in certain warm biomes.
+  Chicken
+
+Temperate Chicken: The pre-existing chicken variant.
+Cold Chicken: A variant that spawns in certain cold biomes.
+Warm Chicken: A variant that spawns in certain warm biomes.
+ Wolf
+
+Added six new sound variants.
+The sound variants are Classic, Big, Cute, Puglin, Angry, Grumpy, and Sad. The existing wolf sounds are used for the Classic variant.
+Wolves receive a random sound variant when they spawn.
+Sound variants are not related to texture variants
+
+
+=== Gameplay ===
+Sounds
+
+Dead bush blocks have a chance of playing ambient sounds when placed on top of two blocks that are any color of terracotta, sand or red sand blocks in any biome.
+Sand, red sand and terracotta of any color have a chance of playing ambient sounds when surrounded by any one of them on at least 3 sides 8 blocks away.
+block.sand.idle can be played in any biome.
+block.sand.wind only plays when in desert or badlands biomes.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Leaves
+
+The following blocks can now spawn falling leaf particles:
+Oak Leaves
+Spruce Leaves
+Birch Leaves
+Acacia Leaves
+Jungle Leaves
+Dark Oak Leaves
+Mangrove Leaves
+Azalea Leaves
+Flowering Azalea Leaves
+Lodestone
+
+Changed crafting recipe to require an iron ingot instead of a netherite ingot, making them renewable.
+
+Can now be found in Ruined Portal chests
+
+
+=== Command format ===
+/aimassist
+
+Has been moved from experimental features and is now available during normal gameplay.
+
+
+=== Items ===
+Bundle
+
+Can now be found in some of the chests in villages.
+
+ Spawn eggs
+
+Changed the visuals of all spawn eggs to make them easier to distinguish: each type of spawn egg now has its own unique icon instead of all just being colored variants of the same spotted egg.
+Each egg visual varies in shape to reflect the in-world properties of the mob it spawns: for example, smaller mobs tend to have a smaller spawn egg icon.
+
+
+=== Mobs ===
+General
+
+Farm animals can now spawn in badlands.
+Bee
+
+Is now attracted to, and can be bred using wildflowers and cactus flowers.
+Camel
+
+Now spawns in deserts.
+Cow and Mooshroom
+
+Textures have been changed.
+Nose now protrudes from model.
+Donkey
+
+Now spawns in savannas.
+Sheep
+
+Changed the rules for sheep coloring to be based on which biome they spawn in:
+Temperate biomes:
+Common:
+White sheep
+Uncommon:
+Black sheep
+Gray sheep
+Light gray sheep
+Brown sheep
+Rare:
+Pink sheep
+Cold biomes:
+Common:
+Black sheep
+Uncommon:
+Gray sheep
+Light gray sheep
+White sheep
+Brown sheep
+Rare:
+Pink sheep
+Warm biomes:
+Common:
+Brown sheep
+Uncommon:
+Gray sheep
+Light gray sheep
+White sheep
+Black sheep
+Rare:
+Pink sheep
+Sheep colors for temperate biomes is unchanged from current behavior.
+Villager
+
+The changes to cartographer trades have been moved from experimental features and are now available during normal gameplay.
+Added seven new explorer maps which cartographers can sell, each pointing to a different village or other structures in a different biome, depending on the biome they come from. These maps can help players who want to quickly find a specific location.
+Each of the 5 village maps points to a village in the specific biome.
+Jungle explorer map points to a jungle pyramid.
+Swamp explorer map points to a swamp hut.
+Cartographers from different village types will sell a different range of maps and colored banners.
+Some prices and quantities have also been adjusted.
+
+Wandering Trader
+
+The changes to wandering trader trades have been moved from experimental features and are now available during normal gameplay.
+The Wandering Trader now has better prices, more trades and a larger amount of stock for many items.
+They will also now buy basic supplies from players.
+The Wandering Trader will offer to buy two items from this list:
+Water Bottle
+Water Bucket
+Milk Bucket
+Fermented Spider Eye
+Baked Potato
+Hay Bale
+Wandering Traders now have a chance of selling these items (in addition to their previous trades):
+Logs (Acacia, Birch, Dark Oak, Jungle, Oak, Spruce, Pale Oak or Cherry)
+Enchanted Iron Pickaxe
+Potion of Invisibility
+Trade list now made up by following trades, in order:
+Buying Trade (new) × 2
+Special Selling Trade × 2
+Ordinary Selling Trade × 5
+Added new buying trades, some selling trades, and changed some existing selling trades:
+
+Spawn event
+
+Pigs, cows, and chickens can now spawn on spawn events and they used command /summon or /event to spawn this variants cold and warm animals.
+
+
+=== World generation ===
+Dark Forest
+
+Updated the tree composition in dark forests to match Java Edition, increasing the number of dark oak trees and reducing the prevalence of other tree types.
+Short Grass
+
+Now generate slightly sparser in meadows.
+
+
+=== Gameplay ===
+Achievements
+
+Enabled earning achievements while playing in a world with add-ons applied.
+Death
+
+Players no longer keep their inventory by default on Peaceful and Easy difficulties.
+Keep inventory is now considered a cheat on all difficulties.
+Sounds
+
+Lowered volume in sound files for leaf litter (break, step, place), and grass (dig).
+
+
+=== General ===
+Experiments
+
+Removed the "Drop 1 2025" and "Aim Assist" experimental toggles.
+Integrated the Villager Trade Rebalance experiment changes to the cartographer and wandering trader.
+Removed the Experimental "Third Person Cameras" toggle and added an Experimental "Creator Camera Features" toggle for all future experimental cameras.
+Settings
+
+Enabled Filter Profanity toggle on mobile platforms.
+Title screen
+
+The panorama was changed to showcase the Spring to Life.
+UI
+
+Screen Safe Area Settings: Disables Horizontal and Vertical Screen Position sliders if the Safe area is set to 100%
+Stops Screen Position from displaying -0.0 due to a rounding error.
+Long splash texts on the start screen will break into two lines to be more readable.
+The invite button on the pause screen is moved up a bit and now has an icon.
+Scaled and moved the title logo to make room for the friends drawer button.
+Added new loading tips for creative mode.
+Taking screenshots no longer takes the player out of the pause screen.
+Changes have been made to the Multiplayer tab. Player permission icons have been updated, and on PlayStation and Nintendo consoles now show a message informing the player that they need to sign in to access multiplayer features. Below the message there's a button that will take the player to respective console sign in flow.
+Touch controls: camera perspective can now be changed from a HUD button., enable this in the touch settings.
+The game will now pause when the pause menu is opened.
+This feature is not present on Nintendo Switch.
+"Player Permissions"   . 
+
+The Player Permissions screen has been upgraded to the new Ore UI, bringing a fresh look and a more intuitive and user friendly experience.
+
+"Friends Drawer Improvements"   . 
+
+Players can now also find the friends drawer in create new world, edit world, player profile, main menu and game menu, in the top right of the screen.
+
+
+=== Technical ===
+API - Scripting
+
+Unhandled rejected promises in scripting now include callstacks when logged.
+@minecraft/server 1.18.0
+Renamed system.scriptEvent to system.sendScriptEvent.
+Moved NamespaceNameErrorReason from beta to @minecraft/server 1.18.0.
+Moved system.sendScriptEvent from beta to @minecraft/server 1.18.0.
+Moved NamespaceNameError from beta to @minecraft/server 1.18.0.
+Released InputInfo.getButtonState, InputButton, and ButtonState to @minecraft/server 1.18.0.
+Released InputInfo.getMovementVector to @minecraft/server 1.18.0.
+Released PlayerButtonInputAfterEvent, AfterEvents.playerButtonInput and InputEventOptions to @minecraft/server 1.18.0.
+Several APIs have been given the Readonly permission, which allows them to now be called inside Before Event callbacks.
+All methods for BlockVolume.
+All methods for Vector.
+Changed spawnEntity method on Dimension to now take a variant of either a string or EntityType.
+Added placeFeature and placeFeatureRule APIs to the Dimension class.
+Added isValid property to the Camera class.
+Moved CameraFixedBoomOptions from beta to stable.
+Moved LiquidType enum from beta to stable.
+Moved liquid detection methods in Block from beta to stable.
+Moved liquid detection methods in BlockPermutation from beta to stable.
+Moved method Player.spawnParticle from beta to stable.
+API
+
+Component minecraft:fluidContainer has been renamed to minecraft:fluid_container in V2.
+Biomes
+
+Client Biome Components
+Add minecraft:dry_foliage_color component to override color for dry_foliage tint method.
+Blocks
+
+The minecraft:map_color component underwent a schema change:
+It is now a JSON object with two fields color and tint_method.
+color is a required string field expecting an HEX representation of the RGB, prefixed with a # character.
+tint_method is a string field that multiplies the color with a predefined tint. Supported values are none, default_foliage, birch_foliage, evergreen_foliage, grass and water.
+The old schema format is still supported for convenience.
+Examples:
+
+or
+
+or
+
+The minecraft:material_instances component supports an optional tint_method field in its instance definitions.
+tint_method is a string field that multiplies a face color with a tint computed with the biome the block is in. Supported values are none, default_foliage, birch_foliage, evergreen_foliage, dry_foliage, grass, and water.
+Held block-items are tinted as if they were in the plains biome. Example:
+
+Add dry_foliage tint method which uses the textures/colormap/dry_foliage.png color map.
+Exposed the block component minecraft:destruction_particles as a JSON object. This represents the particles used when the block is destroyed.
+There is two fields for it:
+texture is a required string field to set the texture used by the particles.
+tint_method is an optional string field that multiplies the texture color with a predefined tint. Default to none. Supported values are none, default_foliage, birch_foliage, evergreen_foliage, dry_foliage, grass and water.
+Block format before 1.21.70 will be upgraded to have the component added using the texture from the down or * of the minecraft:material_instances component if present and none for tint_method. This was the old behavior.
+Block format from 1.21.70 without the component will not be upgraded and uses the invalid texture. Examples:
+
+or
+
+Components
+Added the minecraft:replaceable component which determines if a new block can replace the existing block at a particular position. If the component is not added to a block it is not replaceable.
+Commands
+
+Moved the place feature and place featurerule subcommands out of the Upcoming Creator Features experiment.
+Removed set_movement_authority command.
+Components
+
+Multiple components that used effect durations can now be set to infinite including:
+minecraft:attack: effect_duration
+minecraft:healable: duration in the effects list
+minecraft:mob_effect: effect_time
+minecraft:projectile: durationeasy, durationnormal, and durationhard can now all use infinite
+minecraft:food: duration in the effects list
+minecraft:spell_effects: duration in the add_effects list
+minecraft:combat_regeneration: regeneration_duration
+Added the minecraft:is_collidable component
+This component allows other mobs to have vertical and horizontal collisions with the component's owner.
+For a collision to occur, both mobs must have a minecraft:collision_box component.
+This component can only be used on mobs and enables collisions exclusively between mobs.
+Please note that this type of collision is unreliable for moving mobs.
+It is recommended to use this component only in scenarios where the mob remains stationary.
+Collidable behavior is closely related to stackable behavior.
+While the minecraft:is_collidable component governs how other mobs interact with the component's owner, the minecraft:is_stackable component describes how an entity interacts with others of its own kind.
+The entity_sensor component now has two additional fields:
+y_offset, applies a vertical offset to the entity's position when calculating distances to other entities.
+find_players_only, restricts the search to Players only, affecting all subsensors.
+Added the minecraft:body_rotation_axis_aligned component, that causes the entity's body to automatically rotate to align with the nearest cardinal direction based on its current facing direction.
+Combining this with the minecraft:body_rotation_blocked component will cause the entity to align to the nearest cardinal direction and remain fixed in that orientation, regardless of future changes in its facing direction.
+Added validation for asset references in components.
+Content errors will log missing references for the following fields:
+item references.
+block reference in item component in minecraft:block_placer.
+loot table reference in block component minecraft:loot.
+The entity_sensor component's find_players_only field now functions correctly, properly restricting searches to Players only and affecting all subsensors.
+Creator
+
+ItemTag support in the match_tool loot table condition no longer requires enabling the "Upcoming Creator Features" experiment toggle.
+Dedicated Server
+
+Exposed two new parameters for dedicated server when in server-auth-with-rewind. These will make the server more strict on player positions. Look in server.properties for more information on what these do.
+server-authoritative-movement-strict default to false and can be set to true. Will affect Player position acceptance.
+server-authoritative-dismount-strict default to false and can be set to true. Will affect Player position when dismounting.
+Exposed a new parameter for dedicated server. This will make the server more strict on entity interactions. Look in server.properties for more information on what these do.
+server-authoritative-entity-interactions-strict default to false and can be set to true. Will affect entity interaction acceptance.
+Removed server-authoritative-movement parameter. It will now always use server-auth-with-rewind.
+Entity Components
+
+Added on_spawn trigger to spawn_chance on hit sub-component, triggered on the newly spawned entity with other set to the owning entity.
+Added particle_item_name map to particle_on_hit on hit sub-component, maps an item name to an actor filter to determine what the name of the item used in the particle should be. Falls back to the name of the entity itself as before.
+Entity Event Responses
+
+Added the stop_movement entity event response, which stops the entity's movement.
+The stop_vertical_movement field specifies whether vertical movement should be stopped.
+The stop_horizontal_movement field specifies whether horizontal movement should be stopped.
+This response does not stop navigation or prevent future movement.
+If that's the desired outcome, also remove the components responsible for that.
+Added the set_home_position entity event response, which sets the entity's home position to its current position.
+For this to have any effect, the entity must already have a minecraft:home component.
+Entity Events
+
+Added first_valid event type, it will evaluate every filter in order and execute the first valid one.
+Entity Filters
+
+The in_clouds entity filter now succeeds when an entity's bounding box intersects the cloud layer, rather than only when its bottom is within it.
+General
+
+Server Authoritative movement is now turned on by default.
+Goals
+
+minecraft:behavior.float_wander AI goal will now restrict mobs to their home position if they have the minecraft:home component.
+Added use_home_position_restriction field to minecraft:behavior.float_wander AI goal to control whether mobs respect home position restrictions when selecting target positions.
+Defaults to false for entities with format version below 1.21.70, and true for 1.21.70 and later.
+When true, the mob will respect home position restrictions when selecting target positions.
+JSON Events
+
+The parameter duration in the add_mob_effect event can now be set to infinite.
+Mobs
+
+Added maximum value of 100000000.0 and minimum value of -100000000.0 to minecraft:collision_box component.
+Added aquatic family-type for all aquatic mobs.
+Normal minecart is no longer considered a mob.
+Network Protocol
+
+Added ActorFlags::COLLIDABLE.
+Added ActorFlags::BODY_ROTATION_AXIS_ALIGNED.
+Added ActorFlags::WASD_AIR_CONTROLLED.
+Particles
+
+Multiple controllers transitioning out of a state at the same time will now properly expire all intended particles instead of just the last one.
+Sounds
+
+Added support for entity sound variants:
+Entity sounds now have a variants field which defines sound variants based on the runtime entity
+variants has a key field reading a Molang expression returning a string to select sound variant (e.g.: querying an enum entity property).
+variants has a map field which contains key-value pairs of a variant identifier and the sound events it overrides.
+When playing a sound for an entity we first try to calculate their variant and see if that variant overrides the sound event, if not we play the sound form the base entity. If that fails we fall back to the existing logic of running from defaults.
+Example:
+Given a mob with the following property:
+
+Sound variants can be played by querying the property:
+
+Sound effects found in animations and animation controllers can now include an optional locator field similar to particle effects allowing them to originate from the locator on the entity rather than the origin.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs" experimental toggles.
+
+
+=== Additions ===
+
+
+==== Technical ====
+API - Scripting
+
+@minecraft/server 2.0.0-beta
+Added new privilege EarlyExecution
+2.0.0-beta and higher now executes with the early execution privilege, scripting below 2.0.0-beta will continue to execute without early execution
+All after and before event signals subscribe and unsubscribe methods can now be called in early execution
+The following System methods can now be called in early execution
+clearJob
+clearRun
+run
+runInterval
+runJob
+runTimeout
+waitTicks
+BlockComponentRegistry method registerCustomComponent can now be called in early execution
+ItemComponentRegistry method registerCustomComponent can now be called in early execution
+Added startup property to SystemBeforeEvents
+Added StartupEvent
+Added StartupEventSignal
+WorldAfterEvents renamed property worldInitialize to worldLoad
+WorldBeforeEvents removed property worldInitialize
+WorldInitializeAfterEvent renamed to WorldLoadAfterEvent
+WorldInitializeAfterEventSignal renamed to WorldLoadAfterEventSignal
+Removed WorldInitializeBeforeEvent
+Removed WorldInitializeBeforeEventSignal
+Removed Dimension.runCommandAsync as most commands did not actually run asynchronously. If you are looking to run a function asynchronously, please investigate using Jobs via System.runJob.
+EntityComponent.getEntity method throws if the underlying entity is invalid (instead of return undefined previously).
+EntityInventoryComponent.containerproperty throws if the underlying entity is invalid (instead of return undefined previously).
+isValid methods on various classes have been changed to read only properties
+getComponents, getComponent and hasComponent now throw if the Entity is invalid
+applyKnockback method now takes a VectorXZ parameter for the knockback horizontal force (which includes the strength/magnitude), as well as a vertical strength parameter. To convert from V1, you should normalize your previous direction vector and multiply it by the old horizontal strength value. Vertical strength is the same as before.
+EffectType
+getName method now always returns the minecraft: namespace prefix along with the name
+Effect
+typeId property now always returns the minecraft: namespace prefix along with the name
+minecraft:air item has been removed (it is still a valid block)
+Promises are now flushed along with after events and system tasks
+system.waitTicks() now can accept an argument bounds of 0 minimum to run this tick
+Added a GraphicsMode enum and Player.graphicsMode to query a player's current graphics mode on the server.
+Added system.isEditorWorld property into @minecraft/server in beta
+BlockLocationIterator
+Added isValid(): boolean method to beta. This method checks if the iterator as been invalidated by modifying the underlining block volume.
+BlockMapColorComponent API has been added to beta
+TintMethod enum has been added to beta
+Early execution changes in version @minecraft/server 2.0.0-beta
+The following RegistrationBuilder methods can now be called in early execution:
+batch
+maxAttempts
+maxTicks
+padding
+required
+requiredSuccessfulAttempts
+rotateTest
+setupTicks
+structureName
+tag
+register function can now be called in early execution
+registerAsync function can now be called in early execution
+API - Molang
+
+Added query.graphics_mode_is_any to Molang which accepts any of the following parameters: simple, fancy, deferred, raytraced. These parameters are all graphics modes that are available in the settings menu.
+API
+
+World
+Added getDifficulty(): Difficulty method to beta. This method gets the worlds current game difficulty.
+Added setDifficulty(difficulty: Difficulty): void method to beta. This method sets the worlds current game difficulty.
+ActionFormData
+Added method header(text: minecraftserver.RawMessage): ActionFormData;. It adds a header into the form.
+Added method label(text: minecraftserver.RawMessage): ActionFormData;. It adds a label into the form.
+ModalFormData
+Added method header(text: minecraftserver.RawMessage): ModalFormData;. It adds a header into the form.
+Added method label(text: minecraftserver.RawMessage): ModalFormData;. It adds a label into the form.
+Added new script module @minecraft/diagnostics version 1.0.0-beta. This module is dedicated server only for now and allows script modules to connect their script packs to Sentry. This enables remote error tracking and monitoring for script packs.
+@minecraft/server-net
+
+Added new error InternalHttpRequestError.
+An error thrown when a platform-level HTTP error occurs. Information provided in this class may be useful for diagnostics purposes but will differ from platform to platform.
+Added new error MalformedHttpRequestError.
+An error thrown when a malformed HTTP request is attempted to be sent.
+@minecraft/server-ui
+
+Added method divider(): ActionFormData;. It adds a section divider into the form.
+Added method divider(): ModalFormData;. It adds a section divider into the form.
+Blocks
+
+minecraft:material_instances component has a new experimental boolean field isotropic for format version 1.21.70 and higher, this field controls rotating the face UVs randomly based on BlockPos.
+
+
+=== Changes ===
+
+
+==== Technical ====
+API
+
+@minecraft/server 2.0.0-beta
+Raised the limit for Lore Entry length from 50 to 1000 and the number of lines from 20 to 100 when using ItemStack.setLore.
+Added three new methods to Player. These Entity Overrides are only applied to the target Player. Changes are not applied until the next tick and will not apply to other players.
+setPropertyOverrideForEntity: Overrides an Entity Property on the target Entity to the provided value. This property must be client synced.
+removePropertyOverrideForEntity: Removes the override of the specified Entity Property on the target Entity.
+clearPropertyOverridesForEntity: Removes all overrides of any Entity Properties on the target Entity.
+BlockMapColorComponent scripting API is now read-only.
+BlockMapColorComponent scripting API fields color and tintMethod are now properties instead of methods.
+Deprecated ItemUseOnBeforeEvent in @minecraft/server 2.0.0-beta. Use PlayerInteractWithBlockBeforeEvent instead.
+Deprecated ItemUseOnAfterEvent in @minecraft/server 2.0.0-beta. Use PlayerInteractWithBlockAfterEvent instead.
+BlockDestructionParticlesComponent API has been added to @minecraft/server 2.0.0-beta.
+EntityScaleComponent has been changed to read-only in version 2.0.0-beta.
+Behavior packs
+
+Removed unused experimental json field peaks_factor from minecraft:mountain_parameters in the behavior pack biome file.
+Components
+
+Added the minecraft:input_air_controlled component, that enables controlling flying rideables.
+Functions similarly to minecraft:input_ground_controlled, but instead of limiting acceleration to the XZ-plane, this component applies acceleration in the direction the player is looking in three dimensions.
+Supports adjustments to strafing and backward movement speeds, allowing entities to fly at equal speeds in all directions or move slower when strafing or reversing.
+This component is experimental and as such requires use_beta_features to be enabled.
+It may undergo significant changes or even be replaced as development progresses.
+General
+
+In Server Authoritative movement, the Player will not constantly bop up and down if flying state change during small loss of connection with the server.
+Removing experimental files cold_taiga, cold_taiga_hills, and cold_taiga_mutated from behavior packs. These files were only loaded with the custom biomes experiment enabled, and this change does not remove the biomes themselves.
+@minecraft/server-net
+
+Updated the execution privilege of most APIs to allow them to be called in read-only contexts ("before" events).
+
+
+== Fixes ==
+85 issues fixed
+From released versions before v1.21.70
+
+MCPE-25228 – Beacon Beam disappears when moving 70 blocks up/down away from it.
+MCPE-56926 – Foxes don't take lava damage
+MCPE-69522 – Pufferfish no longer trigger inflate/deflate logic against minecarts.
+MCPE-116152 – Sea pickle cannot be placed on lightning rod
+MCPE-118688 – Donkeys don't spawn in savanna biomes
+MCPE-147815 – Spaces before the command prevent the command from being executed
+MCPE-149129 – Pufferfish no longer only poison players and monsters. Now they poison axolotls, all non-aquatic mobs excluding undead monsters, and players that aren't in Creative mode.
+MCPE-153515 – Barrier blocks cull chunk rendering
+MCPE-181679 – Decorated pots have a glitched texture in the Deferred Technical Preview
+MCPE-185361 – Items can't be moved from creative inventory to player inventory
+MCPE-185531 – Structure blocks' texture flickers when placed
+MCPE-186358 – Minecraft Encyclopedia uses outdated info/wording (English)
+MCPE-187461 – The phrase "Chat e Comandos" on Minecraft is starting with small letter
+MCPE-187995 – Custom jigsaw structures generate incorrectly
+MCPE-188401 – Blocks with item_specific_speeds cannot be destroyed
+MCPE-188457 – The player's hand still bobs if you hold an item while the game is paused
+MCPE-188457 – The player's hand still bobs if you hold an item while the game is paused
+MCPE-188459 – Animated blocks still play their animation when the game is paused
+MCPE-188461 – Fix so data driven particles pause properly when game is paused.
+MCPE-188464 – Fire overlay animation still plays when the game is paused
+MCPE-188490 – Players fall momentum is no longer reset after exiting and re-entering the world.
+MCPE-188795 – Riptide does not go as far vertically as previously.
+MCPE-189224 – Rideable Entity inventory transparent background is too dark
+MCPE-189501 – Attacking a mob while sprint jumping randomly removes all of the player's momentum, sometimes even teleporting the player backwards
+MCPE-189689 – Summoning a pig with commands or a spawn egg in snowy plains creates temperate pig
+MCPE-189693 – Leaves in cold biomes no longer turn white while it's snowing
+MCPE-189712 – Leash on pigs float above them when the "Drop 1 2025" experiment is enabled
+MCPE-189749 – Pig saddle texture is no longer symmetrical
+MCPE-189751 – Saddle model change breaks Marketplace resource packs because it was not given a v2 texture
+MCPE-189800 – Pig saddle attachable change causes resource packs with old pigs to show 2 saddles
+MCPE-189816 – client_biome files without foliage_appearance and grass_appearance components cause biomes to fall back to incorrect colors
+MCPE-189889 – Water does not flow on Magma or Soul Sand
+MCPE-189895 – dropper or dispenser may not work every 4gt, even though it is activated by a 4gt frequency signal
+MCPE-190093 – Bundles lose contents when given to armor stand
+MCPE-190225 – Pink petals/wildflowers/leaf litter do not display "Place" controller tooltip when 1/4 of the block is placed in the block
+MCPE-190418 – Outdated Enchanting Table name still used in Minecraft Encyclopedia and Achievements
+MCPE-190550 – Crafting a Bundle consumes materials but does not create a new Bundle if holding one in Survival
+MCPE-190552 – New bedrock pvp is broken after update
+MCPE-190604 – Sleeping in a bed causes the player's collision to break
+MCPE-190606 – Hover Note is broken on bedrock
+MCPE-190747 – Server IP Address Visible
+Other
+
+Placing a block in liquid, and then placing another block next to your first block in liquid will no longer replace your second placed block for a moment causing you to fall into the liquid.
+Fixed a mismatch between server and client when continuously building that caused orientation sensitive blocks to sometimes change to the wrong block.
+Fixed a crash that would occur on Xbox if you pressed "Cancel" in the Xbox UI when converting a world or importing a world from Retail to Preview
+In Server Authoritative movement, when Players receive a movement correction it will use the current Player speed instead of a generic one, this should give a better experience.
+In Server Authoritative movement, when Players receive a downward movement correction it will now use gravity acceleration, this should give a better experience.
+Fix "Reset Random Tick Speed" button not working when editing an existing world on Realms.
+Bundle tooltip no longer flickers for players beyond the first when playing in split screen
+Adjusted Minecoin purchase screen UI to not show stray pixels. Fixed overlapping issue on PS4.
+Replacing items with the lock_in_inventory component with items from the creative inventory using touch input now fails gracefully and produces a warning message.
+Fixed an issue where dark forests were missing trees along their northern borders with other biomes.
+water and lava no longer will turn into flowing_water or flowing_lava when neighbor updates happen. water and lava now will respond to queued ticks without needing to change into another block.
+Fixed an issue where No more entities assert failure occurred when flying through biomes during a storm.
+Fixed world_surface type of heightmap_projection in minecraft:jigsaw to generate on top of water and leaf blocks.
+Fixed a crash that would sometimes happen when entities with an excessively large hitbox entered liquid.
+Fixed placement of Jigsaw structures that contain blocks with minecraft:tick component.
+In Server Authoritative movement, when Player is corrected, the movement will not have easing anymore. This is a better feel, as can be seen with upward, repeating, pistons.
+Fixed typos in music definitions and sound definitions that were causing the wrong music to play for soulsand valley, desert mutated, and jungle mutated biomes.
+Pufferfish no longer only trigger inflate/deflate logic against monsters and players. Now triggers inflate/deflate logic against axolotls, all non-aquatic mobs, and players.
+Pufferfish no longer only attack players and monsters. Now they attack axolotls, all non-aquatic mobs, and players that aren't in Creative mode.
+Pufferfish no longer only poison players and monsters. Now they poison axolotls, all non-aquatic mobs excluding undead monsters, and players that aren't in Creative mode.
+Fixed an issue where other players in multiplayer scenarios would sometimes get stuck in their dying animation after respawning.
+Player characters no longer rotate sideways when moving forward.
+Fixed the Minecraft logo being misaligned on the progress screen.
+Fixed gaps from appearing between data-driven jigsaw structure pieces.
+Fixed a bug where call methods on Player.inputInfo, Player.inputPermissions, or Player.aimAssist on a player that left and rejoined the world would throw an error.
+Fixed a crash on dedicated server when submitting error reports to Sentry.
+Fixed an issue where destroying and picking up a Shulker box would make it appear invisible in the inventory until world reload.
+Fixed an issue where chunks weren't saving properly on older worlds.
+Fixed a bug where the typeid property of the Effect class was being translated based on your language option.
+Potted plants are no longer clipping through flower pots.
+Fixed wildflower item texture being slightly offset compared to Java.
+Temperate cows no longer have harsh borders on their legs.
+Red and brown mooshrooms no longer have harsh borders on their legs.
+Fixed iron golem cracked texture not appearing at appropriate damage levels.
+Fixed texture on the sides of a cold cow's head to be mirrored correctly.
+Fixed a bug where using items with a use duration (fishing rods, food, potions, etc.) and changing slots would force your slot back to the original slot.
+Stacks are now correctly splitting across slots when moving cursor and holding the button to split stack.
+Fixed a potential crash that could occur when splitting stacks of items in the creative inventory.
+Fixed an issue which prevented some users from accessing the Create New World screen in iOS and iPadOS Preview and PlayStation Preview.
+Empty bell blocks no longer crash the game when moved by a sticky piston.
+Fixed a bug where /fill, /clear and /testforblock commands would recognize IDs of some flattened blocks as block group names and affect all variants under those groups.
+Fixed an issue that occurs when cancelling world resource pack download.
+Fixed a crash that occurs when initializing minecraft:decorated_pot renderer.
+Fixed mirroring and rotation of crafter blocks when part of a structure that is being placed.
+Fixed an issue where native constructors were not properly checking privileges when being called. Constructors now check privileges properly and produce correct errors when being used in Early Execution privilege.
+1 issue fixed
+From released versions before v1.21.70
+
+REALMS-11759 – Unable to change Random Tick speed back to 1 after changing to a higher value.
+
+
+== Videos ==
+Updates for Creators
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

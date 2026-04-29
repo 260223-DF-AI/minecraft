@@ -1,0 +1,112 @@
+Beta 1.18.30.26 (Windows, Android, Xbox) or Preview 1.18.30.27 (Windows, iOS, iPadOS, Xbox) is the eighth beta/Preview version for Bedrock Edition 1.18.30, released on March 16, 2022, which adds the copper horn behind experimental gameplay, and fixes bugs.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Invisible bedrock
+
+Block ID changed from invisiblebedrock to invisible_bedrock.
+Piston heads
+
+Block ID of Piston Head changed from pistonarmcollision to piston_arm_collision.
+Block ID of Sticky Piston Head changed from stickypistonarmcollision to sticky_piston_arm_collision.
+Moving block
+
+Block ID changed from movingblock to moving_block.
+
+
+=== Items ===
+Gold nugget, Iron nugget and Nether brick
+
+Can no longer be used as fuel.
+Shields
+
+Will now be disabled for 5 seconds if struck by a player or mob wielding an axe.
+
+
+=== Technical ===
+General
+
+Limited the number of elements in the crafting_tags field of the CraftingTableComponent to 64.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Vanilla Experiments" and "GameTest Framework" experimental toggle.
+
+
+=== Additions ===
+
+
+==== Items ====
+Copper horn
+
+Crafted from a goat horn and copper ingots.
+Can play three different sounds, with additional sounds if the horn is crafted from a goat horn that is dropped by a screaming goat.
+
+
+==== World generation ====
+Pillager outpost
+
+Goat horns and copper horns now spawn as loot in pillager outpost chests.
+
+
+=== Changes ===
+
+
+==== Items ====
+Goat horn
+
+Can now be crafted into copper horns.
+Is now always dropped when a goat with at least one horn rams into stone, packed ice, iron ore, copper ore, emerald ore, or any wood log in the Overworld.
+
+
+==== Mobs ====
+Goat
+
+Now have a small chance of spawning with only one horn.
+Baby goats will always grow up to have two horns, however.
+
+
+=== Technical ===
+GameTest Framework
+
+Added event leverActivate, which is activated when a lever is toggled
+Added an optional argument to showParticles: bool = trueto function addEffect.
+
+
+== Fixes ==
+Gameplay
+
+Fixed an issue where the hunger bar would not deplete on some Marketplace worlds (MCPE-152533).
+Fixed Bad Omen effect not being applied after defeating a pillager captain (MCPE-152846).
+Mob hurt and death sounds no longer overlap (MCPE-152852).
+Knockback resistance now dampens the vertical lift received from the iron golem attack.
+Save structure blocks now correctly detect corner structure blocks at negative Y levels (MCPE-151511).
+Vanilla parity
+
+Nether brick, iron nuggets, gold nuggets, mushroom blocks, chorus flowers, and chorus plant blocks can no longer be used as fuel in furnaces (MCPE-114216).
+Camera now shakes the same way it does in Java Edition when the player receives damage (MCPE-118510).
+Shields will now be disabled when being attacked by an axe.
+Mobs
+
+Fixed an issue where some large mobs in Marketplace maps could get stuck.
+User Interface
+
+When using the new touch controls on mobile devices, the size of the thumbstick can now be adjusted with the Button Size slider in the settings screen.
+Fixed an issue in Pocket UI where items could be dropped unintentionally in blocks with custom UIs, and resized those screens to allow for dropping items on the sides instead.
+Improved contrast on multiple UI elements.
+Enabled the Behavior Packs tab in the new Create New World screen.
+Technical
+
+Components
+Fixed an issue in the Knockback goal where the incorrect owner was being passed into the filter evaluate function.
+Stability and performance
+Fixed a crash that could occur when loading entities in a chunk that contained entities pre-1.18.30.
+
+
+== References ==
+
+
+== Navigation ==

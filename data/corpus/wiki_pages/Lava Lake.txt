@@ -1,0 +1,55 @@
+A lava lake is a small, widespread, naturally-generated feature in the Overworld that contains a volume of lava.
+
+
+== Description ==
+Lava lakes are shallow and often small bodies of liquid. Lava lakes found at the surface are surrounded by stone, which can be replaced by other features such as ore features of blocks. These ore features are made of blocks like dirt, gravel, and coal ore.
+Lava lakes generate with a small air pocket above them, which may result in floating sand, floating snow cover, or even floating trees above. Lava lakes that spawn on ground level may cause nearby trees to catch on fire and burn away.
+
+
+== Generation ==
+Lava lakes are rare on the surface but often found underground above Y=0, and replace blocks around them with stone. They can generate in any biomes in Overworld except the deep dark.
+In Java Edition, the air pockets above lakes are generated with cave air instead of normal air. This is true even for lakes that are exposed to the open sky.
+
+
+== Data values ==
+
+
+=== ID ===
+Java Edition:
+
+Bedrock Edition:
+
+
+=== Config ===
+
+Java Edition:
+
+Note that lake features are generated on their northwest corner, with the actual center of the lake being offset from the placement position by +8 blocks on both the X and Z axes. It's recommended to counteract this by applying an xz_spread offset of -8 blocks to placed lake features before performing any additional checks such as block predicate filters.
+Lake features require a sufficient amount of solid blocks in order to generate, including (but not limited to) a solid base at least 3 blocks thick (starting from one block below the placement position). The fluid level of generated lake features is always one block below the placement position.
+Noise-type blockstate providers apply a single blockstate for the entire lake based on its placement position rather than the position of the lake's individual constituent blocks.
+Lake features exhibit a bug in which the freeze top layer feature type is applied only to portions of the lake that are within the chunk from which the lake feature originates. In effect, this means that usually only the north-west corner of water lakes are iced over in snowy biomes.
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== Issues ==
+Issues relating to "Lava Lake" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Gallery ==
+
+
+=== Screenshots ===
+
+
+== References ==
+
+
+== Navigation ==

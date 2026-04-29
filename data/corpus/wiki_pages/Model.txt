@@ -1,0 +1,50 @@
+Models are three-dimensional shapes used in Minecraft that are used to display objects encountered in the game.
+The models pertaining to the vast majority of blocks and items can be configured, as well as those of a small selection of entities. Models are stored as JSON files in a resource pack in the assets/<namespace>/models folder.
+
+
+== Block models ==
+
+
+== Item models ==
+
+
+== Fields used by Blockbench ==
+Some models contain fields used by Blockbench due to Mojang utilizing the software, these fields are only used by Blockbench and aren't used by Minecraft.
+
+[String] name: Name of an element (found in element objects).
+[Int Array] texture_size: 2D Integer array defining the width and height of the texture(s) being used (found at the root object).
+
+
+== Uses of models ==
+
+Non-hardcoded models are used in-game in the following contexts:
+
+Each of the item display types are used in the following situations:
+
+
+== Limitations ==
+
+
+=== Objects that cannot be remodelled ===
+
+While most blocks and items can have their model changed, there are a multitude of things that cannot.
+For example, no entities (with the exception of item frames and glow item frames) can have their model changed in Java Edition with resource packs alone. Bells can have their attachment model changed but not the bell model itself.
+
+
+==== Blocks and fluids ====
+
+Even these blocks have particle textures defined in dedicated model files, however it still stands that actual visual models cannot be changed.
+Sub-elements of blocks, such as passively emitted particles and the book on top of the enchanting table, cannot be modified, even though the base block can.
+
+
+== History ==
+
+
+== Issues ==
+Issues relating to "Block model" or "Item model" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,278 @@
+24w21a is the fifth snapshot for Java Edition 1.21, released on May 22, 2024, which introduces custom jukebox music and fixes bugs.
+
+
+== Additions ==
+
+
+=== Command format ===
+ Target selectors 
+
+Added @n entity selector, selecting the nearest entity.
+This functions as @e[sort=nearest,limit=1].
+Additional requirements may still be provided; for example: @n[type=pig] selects the closest pig.
+
+
+=== General ===
+ Game rules 
+
+Added new entitiesWithPassengersCanUsePortals gamerule.
+Defaults to false.
+When true, entities with passengers can use nether portals, end portals and end gateways, and the waiting time for being transported through the portal is completely skipped.
+ Tags 
+
+Added the following block tag:
+air: air, cave_air, and void_air
+Contains all blocks that resemble air.
+Added the following damage type tags:
+panic_causes: contains #panic_environmental_causes, arrow, dragon_breath, explosion, fireball, fireworks, indirect_magic, magic, mob_attack, mob_projectile, player_attack, player_explosion, sonic_boom, sting, thrown, trident, unattributed_fireball, wind_charge, wither, and wither_skull
+Contains damage types that cause panic in passive animals, i.e. mobs that run away when attacked.
+panic_environmental_causes: contains cactus, freeze, hot_floor, in_fire, lava, lightning_bolt, and on_fire
+Contains damage types that cause panic in aggressive animals that can panic, i.e. mobs that retaliate when attacked (wolves, polar bears (adults) and pandas).
+
+
+== Changes ==
+
+
+=== Blocks ===
+Doors
+
+Doors of different materials now default to being placed oriented together to form a double door instead of both being placed with the hinge on the same side of the block.
+Piston
+
+Reverted to the old sounds.
+Lowered volume of original sounds to address the initial feedback of pistons being too loud.
+ Vault
+
+Added a new sound on vault to help players understand they've already looted a vault.
+
+
+=== Items ===
+Bolt armor trim
+
+Can now be duplicated using a waxed block of copper.
+
+
+=== Mobs ===
+General
+
+Animals now panic for 2 seconds after taking damage (down from 4).
+Animals now panic based on the damage caused by predefined damage source types.
+Pandas, wolves and adult polar bears
+
+Now only panic from cactus, freezing, fire and lightning bolt damage.
+
+
+=== World generation ===
+Trial chambers
+
+Are less likely to generate in the deep dark.
+
+
+=== Command format ===
+ /attribute 
+
+The uuid and name arguments have been replaced with a singular id argument.
+
+
+=== General ===
+Attributes
+
+Attribute modifiers no longer have a UUID and name combination.
+Instead, attribute modifiers are now uniquely identified by a namespaced ID, similar to other resources.
+The ID of a modifier uniquely identifies it in the set of modifiers for a single attribute.
+Using the same ID for different modifiers is allowed as long as the modifiers are for different attributes.
+Existing built-in modifiers are upgraded to new IDs.
+Existing custom modifiers are upgraded to the GUID as an ID in the minecraft namespace.
+Item stack attribute modifiers
+
+The uuid and name fields have been removed.
+Attribute modifiers now have an id (namespaced ID) field.
+This is a unique identifier per attribute for the modifier.
+Entity attributes
+
+Are now stored in attribute format:
+id, renamed from Name.
+base, renamed from Base.
+modifiers, renamed from Modifiers.
+Now stores modifiers in the same format as modifiers in attribute_modifiers item stack components:
+id, replaces UUID and Name.
+amount, renamed from Amount.
+operation, renamed from Operation, now a named constant instead of an int:
+add_value - previously 0.
+add_multiplied_base - previously 1.
+add_multiplied_total - previously 2.
+Enchantments
+
+Attribute effects
+Fields:
+name & uuid have been removed, replaced by id.
+id: the namespaced ID of the attribute modifier to add.
+This will be postfixed with the slot name when the enchanted item is equipped in a slot.
+Must be unique to avoid different enchantments (or other systems) interfering with each others.
+Entity effect types
+
+damage_item.
+The damage is not applied to items held by players in creative mode.
+Hit block parameters.
+Entities: this.
+Enchantment level.
+Origin.
+Block state.
+Effect components
+
+minecraft:hit_block:
+Condition context: changed to take a hit block parameter - this is the entity hitting the block.
+Tags
+
+Some registry types that used legacy data pack directory names (based on plural name of element) have been renamed to match registry name.
+Affected directories:
+structures -> structure
+advancements -> advancement
+recipes -> recipe
+loot_tables -> loot_table
+predicates -> predicate
+item_modifiers ->item_modifier
+functions -> function
+tags/functions -> tags/function
+Removed breeze_immune_to damage type tag.
+Removed music_discs item tag.
+Predicates
+
+New item sub-predicate available as jukebox_playable.
+Matcher for jukebox_playable component (like music discs).
+Fields:
+song - optional id, list of ids or tag for jukebox song to be matched.
+Player predicate
+The gamemode field has been changed to accept a list of gamemodes.
+Data pack
+
+The pack format version is now 45.
+Item components
+
+Added the jukebox_playable item component.
+If set, the item can be inserted into jukeboxes to play a song.
+Format: object with fields.
+song: jukebox song id.
+The song that is played by the jukebox when this item stack is inserted.
+show_in_tooltip: boolean (default: true).
+If false, the name of the song isn't shown in the tooltip.
+This was formerly controlled by the hide_additional_tooltip component on music discs.
+e.g. jukebox_playable={song:'minecraft:precipice'} jukebox_playable={song:'minecraft:precipice', show_in_tooltip:false}.
+Jukebox
+
+Added a jukebox song registry which is loaded from data packs.
+Path to jukebox song definition is data/<namespace>/jukebox_song/<id>.json.
+Fields in definition:
+sound_event - sound event that is streamed when played by a jukebox.
+description - the name of the song that is displayed in the hover tooltip represented as a text component.
+length_in_seconds - length of the song in seconds as a positive float.
+comparator_output - the redstone signal output by a comparator when played in a jukebox, between 0 and 15.
+Performance
+
+Improvements to the disconnection screen.
+In some cases client now stores detailed information about disconnection (similar to crash reports).
+When that happens, new "Open Disconnection Report Directory" button is added to the disconnection screen.
+When server provides link for bug reporting, it's also added as a button to the disconnection screen.
+Realms
+
+Any member of a realm can now upgrade a world.
+In the realms main screen, all online players of a realm are displayed.
+When hovered, a tooltip is shown with each player's head and name.
+Resource pack
+
+The pack format version is now 34.
+Added the block.vault.reject_rewarded_player sound event.
+Server
+
+Pause menu now can include a list of links provided by server.
+Server can now provide list of links to client.
+Servers can add custom details to crash and disconnection reports.
+New clientbound packet custom_report_details is available in configuration and game protocols.
+This packet contains a list of key-value text entries.
+If received, contents of this packet are added in a separate section to any crash or disconnection report generated during connection to this server.
+Server link
+
+Servers can now provide a list of links to clients.
+If client has received any links, a new button called "Server Links..." shows up in pause game screen.
+To make space for that button, "Report Bugs" and "Give Feedback" buttons might be moved into a sub-screen if necessary.
+New clientbound packet server_links is available in configuration and game protocols.
+On receival, client makes links available from pause menu.
+Link labels can be built-in or custom (i.e. any text).
+Some built-ins also have special functionality:
+report_bug:
+Link is displayed on disconnection screen, if disconnection was caused by packet handling error.
+Link is included as a comment in disconnection report.
+Added bug-report-link to server.properties to allow vanilla server to configure report_bug links.
+If this field is non-empty, server sends that link to clients.
+This field should contain well-formed URL.
+Shaders
+
+The blend block in core shader definitions has been removed, as it was not used.
+The position_color_tex shader has been removed, replaced with the pre-existing position_tex_color.
+The glint_direct shader has been removed, replaced with the pre-existing glint shader.
+The armor_glint shader has been removed, as it was unused.
+Armor
+
+Burn time reduction effect now stacks on multiple armor pieces.
+Blast knockback reduction effect now stacks on multiple armor pieces.
+
+
+== Fixes ==
+42 issues fixed
+From released versions before 1.21
+
+MC-67 – Entities with passengers cannot travel through portals.
+MC-31819 – Hunger saturation depletes on Peaceful.
+MC-78473 – Mobs don't panic when hit with a summoned or dispensed potion of harming.
+MC-116279 – Non-player entities going through nether portal do not generate portal in the Nether if none exists.
+MC-151648 – Non-player entities cannot travel through unlinked nether portals.
+MC-170103 – Untamed wolves only beg for food while being angry and jumping.
+MC-253209 – Some mobs will no longer panic when receiving poison/wither damage.
+MC-260346 – Custom music discs cut off when vanilla disc would normally end.
+MC-262469 – The "Remote Getaway" advancement isn't granted upon traveling through end gateways while riding boats.
+MC-266290 – Double doors do not automatically form between waxed and unwaxed copper doors, even of the same variant.
+MC-266586 – Trial chambers can spawn directly inside the Deep Dark biome.
+MC-266626 – Breeze doesn't stop attacking the player when it enters on the same team.
+MC-267498 – Operation names in /attribute and item modifiers' set_attributes are different.
+MC-267967 – Breezes ignore the deflects_projectiles entity type tag.
+MC-268438 – Baby armadillos can still eat while rolled up.
+MC-269034 – Wolves no longer teleport while trying to pathfind out of lava.
+MC-269351 – The Bolt armor trim cannot be duplicated with waxed copper block.
+MC-269370 – Sharp lag spike caused by incorrect upper limit on particles created by mace smash attack.
+MC-269460 – Thorns enchantment doesn't work when entities are hit by wind charges.
+MC-269964 – Ominous item spawners are missing an NBT load for spawn_item_after_ticks.
+MC-269988 – New potion effects don't apply their respective behaviors when creeper explodes.
+MC-270024 – When drinking ominous bottles, Bad Omen of higher levels can be overriden by lower amplifiers.
+MC-270377 – Wind charges can be hit and redirected the moment they are thrown.
+MC-270573 – Mounted entities are immune to wind charge damage.
+MC-270749 – Remote Getaway advancement is not granted when entering a gateway by throwing an ender pearl next to it.
+MC-270808 – Any item in the armor.body slot protects wolves from taking damage.
+From the 1.21 development versions
+
+MC-271458 – Channeling tridents no longer summon lightning bolt when hitting a lightning rod during a thunderstorm.
+MC-271573 – Attribute enchantments don't behave properly on armor.
+MC-271634 – Custom enchantments don't appear in the Creative menu.
+MC-271718 – Crash when randomized_int_state_provider is applied to blocks lacking the property.
+MC-271753 – Crash due to overflow inside cost calculation in by_cost_with_difficulty.
+MC-271856 – Crossbows enchanted with Quick Charge do not benefit from its effects when used in the offhand.
+MC-271868 – Frost Walker replaces flowing water now.
+MC-271901 – Entity effect "play_sound" field "pitch" value upper limit is 1.0 instead of 2.0.
+MC-271911 – Frost Walker no longer works with void or cave air.
+MC-271914 – Soul Speed enchantment doesn't emit particles when the entity is controlled by a player.
+MC-272039 – Soul Speed uses durability in Creative mode.
+MC-272182 – Knowledge books no longer function properly with a stack size of 1 in Survival/Adventure mode.
+From the previous development version
+
+MC-272042 – If players have max health over 20 and die, when they respawn they will have 20 health instead of their max health.
+MC-272043 – The game crashes when entities die while having the Oozing effect.
+MC-272075 – Attempting to step up while controlling entity and moving fast often glitches.
+MC-272084 – Creepers with potion effects no longer create area effect clouds upon exploding.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

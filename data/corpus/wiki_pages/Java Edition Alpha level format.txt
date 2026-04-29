@@ -1,0 +1,62 @@
+Infdev introduced a new data storage challenge while under development: terrain generated in Infdev has the potential to be almost 235 petabytes (240,640 terabytes) in size when stored in memory, due to the sheer size of the map (several times the surface area of the Earth). Therefore, to reduce file size and memory usage, Notch decided to split the terrain into 16×128×16 chunks and store them on disk when not visible. In addition, terrain is only generated when it is within the drawing distance of the player's camera, significantly reducing save size, since most players are only able to search a tiny fraction of the map in a reasonable time frame. Alpha uses this technique, and both Beta and newer versions still use the general concept because of its success.
+The first version to use this format was Infdev 20100327.
+In Minecraft Beta 1.3, this format was superseded by the Region file format, where chunks are stored in groups of 32×32 in region files.
+The save format was used for all versions between Infdev 20100327 and Beta 1.2_02 inclusive, with the important exception of Infdev 20100624, which used the new  Zone file format which was immediately scrapped afterwards due to creating massive world files.
+
+
+== World folder structure ==
+An Alpha level is actually a single folder containing at least one file named level.dat. There is also a session.lock file to make sure only one Minecraft opens the level at once.
+The level folder may have up to 64 subfolders, each with up to 64 additional subfolders each. These folders contain the chunk files that hold the level's terrain and entities. Each chunk file is identified by its chunk position xPos and zPos. The varying parts of the chunk file's name are obtained by taking the base36 representation of the xPos and zPos. The names of the folders that the chunk file is placed in are found by taking xPos and zPos, modulo 64 (or bitwise ANDing with 63), and converting to base36. Negative coordinates must be interpreted as positive numbers, bitwise, via two's complement. So, -13 is treated as 243 (if its size is a byte).
+As an example, to find the chunk at position (-13, 44):
+
+The first folder name is base36(-13 % 64). This is base36(243 % 64 = 51) which is "1f".
+The second folder name is base36(44 % 64). This is base36(44) which is "18".
+The chunk file's name is "c." + base36(-13) + "." + base36(44) + ".dat". This evaluates to "c.-d.18.dat"
+Thus, the chunk at (-13, 44) is stored in "1f/18/c.-d.18.dat"
+Each chunk remembers its position independently of the file and folder names. See below to find out how to read a chunk's position from the file data.
+
+
+=== Dimensions ===
+Dimensions are saved in the same way normal worlds are, but instead of mixing the world files inside the save folder, the files are stored in an additional sub-folders with their own region and chunk data. Their names start with DIM, followed by the dimension ID.
+These dimension IDs were used in Alpha:
+
+
+=== session.lock format ===
+session.lock contains the timestamp of when the world was last touched. The file is eight bytes long, and contains a single 64-bit signed integer in big endian format. The value of this integer is the timestamp, stored as the number of milliseconds elapsed since 1970, in UTC.
+Unlike typical lock files, session.lock ensures that the LAST program to open a world is that one that owns it. The process goes something like this:
+
+program opens session.lock
+program writes timestamp to session.lock
+program monitors session.lock for changes
+if the contents of session.lock change, program aborts and gives up its lock on the world.
+
+
+=== level.dat format ===
+The level.dat file is a GZip'd NBT file that stores global level data (time of day, player health, inventory, velocity, and position within the map, etc.). Most importantly, it stores the Random Seed that the terrain generator uses to seamlessly generate more terrain on the fly.
+This file has this structure:
+
+
+=== Chunk format ===
+Chunk files, as described above, are GZip'd NBT files. They have this structure:
+
+
+==== Block Format ====
+Blocks are laid out in sets of vertical columns, with the rows going east-west through the chunk, and columns going north-south. Blocks in each chunk are accessed via the following method:
+byte BlockID = Blocks[y + (z * ChunkSizeY(=128) + (x * ChunkSizeY(=128) * ChunkSizeZ(=16) ) ) ];
+The coordinate system is as follows:
+
+X increases South, decreases North
+Y increases upwards, decreases downwards
+Z increases West, decreases East
+All array indices are ordered YZX - the Y coordinate varies fastest. Note: The height map array is the only exception which has its indexes ordered ZX instead.
+
+
+== See also ==
+Indev level format
+Zone file format
+Region file format
+Anvil file format
+Chunk format
+
+
+== Navigation ==

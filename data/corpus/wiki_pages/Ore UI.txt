@@ -1,0 +1,267 @@
+Ore UI is a collection of open source packages designed for building interactive video game user interfaces using web technology, written in the TypeScript programming language and utilizing the React library. It provides reusable building blocks for video game development and general-purpose web applications. Ore UI is currently used in Minecraft games such as Bedrock Edition, Bedrock Editor, Minecraft Education, China Edition, and Minecraft Legends.
+
+In Bedrock Edition, a new UI design system is being developed using the Gameface engine (formerly Hummingbird) by Coherent Labs, which made it possible to run modern web technology such as JavaScript, HTML and CSS.
+
+
+== Development ==
+
+
+=== Bedrock Edition's UI redesign tech preview ===
+On November 9, 2018, Tobias Ahlin, the lead experience designer at Mojang Studios, announced a UI overhaul coming to Bedrock Edition built on Hummingbird engine, which runs a subset of HTML and CSS, and a design system built with React. A tech preview for the title screen redesign featuring a user-friendly input for touch, controller, and keyboard was shown at the dotJS 2018 developer conference.
+
+The new title screen from the tech preview features two pages. The top page shows the player's last played world, with the background UI that changes to match the world's thumbnail. The bottom page shows five interactable buttons and their actions possibly:
+
+"Play" which lets the player navigate to the Select World screen.
+"Store" which lets the player navigate to the store (similar to the modern Marketplace).
+"Skins" which lets the player change their skin (similar to the modern Character Creator).
+"Achievements" and "Settings" which let the player view their achievements and settings.
+There is also a profile button (with the player's profile picture) on the top right corner, which likely lets the player navigate to their profile screen.
+The website for Minecraft JavaScript API documentation was once available through a link which can be seen near the end of the talk; the documentation provides the page to the tech preview where users could freely interact with the redesigned user interface. The original link for the documentation now redirects to a completely different website, making the documentation inaccessible; it is now considered lost media as it has not been archived elsewhere.
+In beta 1.16.100.50, released on July 31, 2020, the new achievements screen was added. It was rolled out initially for 5 percent of the player base. For the next 9 weeks, the number of players who could access the new achievement UI gradually increased from 5% to 75%.
+In the following years, more JSON UI menu screens were gradually refreshed with Ore UI, with design previews available in Minecraft Preview before full release in usually a few months. The internal resources for Ore UI include a texture atlas containing revamped textures for in-game GUIs, such as the inventory. These have been teased to be in early development.
+
+
+=== React Facet ===
+On October 18, 2021, the React Facet source code was published on Ore UI GitHub repository under the MIT License.
+On October 25, 2021, Paulo Ragonha, a tech lead at Mojang Studios, introduced React Facet, an observable-based state management for video game user interface built in React. This was announced at the React Advanced 2021 developer conference. In the talk, Ragonha showcases how React Facet bridges game data by introducing a system that connects the backend C++ game engine (where the game's states reside) with the frontend JavaScript UI. This connection relies on a concept called "facets", which are lightweight observable objects representing slices of the game's state. These facets allow the UI to subscribe to specific pieces of data from the game engine, such as player health, inventory, or environmental changes, and receive real-time updates as the state changes in the game.
+
+
+== Design system ==
+The Ore UI design system can be found inside the Ore UI Developer Page section in the Minecraft Bedrock Developer Mode. For all texture elements, see Bedrock Edition GUI, UI, and Ore UI textures § Ore UI.
+
+
+== Usage ==
+The menu screens updated with Ore UI implemented new features using the design system, such as informative (and sometimes humorous) descriptions, smaller fonts for readability, clearer and modern layouts, more responsive sliders, more different types of elements, and tags. The buttons are styled similarly to JSON UI, with updated looks, pressing animations, and exclusive sounds for progressive buttons. Certain menus have received additional animations and images, and all UI textures have been updated, including controller hints.
+Unlike JSON UI, Ore UI menus are separated into sections containing the elements. Depending on the UI scaling, each section is individually scaled, leaving gaps for the panorama in smaller scales, while some elements like the top navigation bar remain responsive. Dropdown buttons, which open an options pop-up, are replaced with always visible toggle buttons on smaller UI scales. Ore UI supports an additional accessibility scaling option to increase the scaling.
+Ore UI is currently used in the following menu screens (including sub-menus):
+
+
+=== Bedrock Edition ===
+
+
+==== Release ====
+Sign in
+Quick world creation
+Pop-ups on the Main menu
+Play
+Create new world
+Edit world (except Realms)
+All settings tabs & main settings UI except for Creator, Global Resources, Party, Storage, Resource Packs, and Behavior Packs. Realms uses the old UI for all settings.
+Inbox
+Social drawer
+Search for players
+Profile
+Report bad behavior
+Screenshot gallery
+Achievements
+Player permissions (except Realms)
+Realms information & purchase screens
+Realms stories
+Death
+Sleep
+Additionally, the toast that appears after 15 minutes of inactivity, along with the overlay, is based on Ore UI.
+
+
+==== Preview ====
+Realms Hub
+Edit world Realms
+Party
+World and Realm selection for local uploading to Realms.
+
+
+=== Bedrock Editor ===
+
+
+==== Release ====
+Create new project
+Projects tool mode
+
+
+==== Preview ====
+Main menu
+
+
+=== Minecraft Education ===
+
+
+==== Release ====
+Create new world
+Edit world
+Death
+Sleep
+
+
+=== China Edition ===
+
+
+==== Release ====
+Skin store
+Mod store
+Play
+Create new world
+Mini map
+
+
+== Differences with JSON UI ==
+
+
+== Control icons ==
+
+
+=== Keyboard and mouse controls ===
+
+
+=== Controller controls ===
+
+
+== Sounds ==
+
+
+== History ==
+
+
+=== Bedrock Edition ===
+
+
+=== Bedrock Editor ===
+
+
+=== Minecraft Education ===
+
+
+=== Control ===
+
+
+=== Ore UI releases ===
+These are standalone Ore UI releases on GitHub.
+
+
+== Issues ==
+Issues relating to "Ore UI", "OreUI", "New UI", "NewUI", or "New design" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Trivia ==
+The in-game descriptions of features are sometimes remarkable or humorous. Notable quotes are:
+Explore a mysterious world where you build, collect, craft, and fight monsters.
+Whatever the default game mode is... that's what you get.
+You can't respawn if you die. Good luck! You'll need it.
+A mysterious series of numbers used to create your world
+Might want to build with stone
+Red box goes boom
+Enjoy Minecraft with friends
+Minecraft is for everyone, including you
+Shiny glint for enchanted items
+Reverses up and down when looking around. A less common option for keyboard and mouse users, but you do you.
+We didn't know where else to put these settings
+Technical info that's not relevant to players. Feel free to have a look if you're curious!
+Not a trick question. How smooth do you like your blocks?
+Happy little clouds in the sky
+Leaves but better
+Bubbles with style
+Minecraft, in full screen
+
+
+== Gallery ==
+
+
+=== Screenshots ===
+
+
+==== Bedrock Edition ====
+
+
+==== Bedrock Editor ====
+
+
+==== Minecraft Education ====
+
+
+==== Minecraft China Edition ====
+
+
+=== Development screenshots ===
+
+
+==== Atlas ====
+
+
+==== Achievement ====
+
+
+==== Create new world ====
+
+
+==== Gameplay ====
+
+
+==== Player permission ====
+
+
+==== Party ====
+
+
+==== Disconnected ====
+
+
+==== Quick world creation ====
+
+
+==== Realms ====
+
+
+=== dotJS 2018 ===
+
+
+=== Ore UI-styled screenshots ===
+These UIs take design inspiration from Bedrock Edition's UI redesign, and are not really implemented through Ore UI framework, instead they may use resource pack or different implementation based on JSON UI.
+
+
+== Videos ==
+Ore UI Documentation
+This screen can only be access in Minecraft Bedrock Edition 1.20.0 (Dev).
+
+
+== References ==
+
+
+== External links ==
+
+
+=== GitHub ===
+Ore UI
+
+
+=== Feedback ===
+Achievement in beta 1.16.100.50
+Achievement Screen Beta Thread on July 30, 2020
+Create new world in beta 1.18.20.21
+Updated “Create New World” experience in Bedrock Beta on January 27, 2022
+Death in Preview 1.19.80.20
+Updated "You Died" Screen Experience on March 8, 2023
+Realms stories in Preview 1.20.60.23
+Let's talk about Realms Stories on December 13, 2023
+Servers in Preview 1.20.80.21
+Updated 'Servers Tab' Experience in Bedrock Preview on February 23, 2024
+Search for players in Preview 1.20.80.23
+Enhancements to finding friends in Bedrock Preview on March 18, 2024
+Profile in Preview 1.21.0.20
+Updated Player Profile in Bedrock Preview! on April 3, 2024
+Realms in Preview 1.21.20.21
+Updated Realms Tab Experience in Bedrock Preview on April 23, 2024
+Screenshots in Preview 1.21.30.22
+Screenshots available in Bedrock Preview! on August 7, 2024
+Create from template in Preview 1.21.30.24
+Updated Template Screen Experience in Bedrock Preview! on April 11, 2024
+Play in 1.21.60
+Let’s talk about the new Bedrock Edition Play screen! on December 12, 2024
+Player permissions in Preview 1.21.70.22
+Improvements to the Player Permissions screen in Bedrock on February 5, 2025
+Social drawer on Party system in Preview 26.0.25
+New Party System (Bedrock Preview) on December 10, 2025
+Settings in Preview 26.0.28
+Let’s talk about our updated settings! (Bedrock) on January 12, 2026
+Realms hub in Preview 26.20.22
+Bedrock Realms Hub on March 25, 2026
+
+
+== Navigation ==

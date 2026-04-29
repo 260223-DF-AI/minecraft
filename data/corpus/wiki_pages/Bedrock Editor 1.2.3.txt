@@ -1,0 +1,30 @@
+Bedrock Editor v1.2.3 is a minor release for the Bedrock Editor released on January 7, 2026.
+
+
+== Additions ==
+Added getDefaultProperties, popPropertiesById, pushPropertiesById and updatePropertiesById functions to Cursor API to manage stateful properties.
+Added dimensionId and ignoreEditorModeVisibilityOverride to the Widget API to control widget visibility without manual handling.
+Added a drawerPane API property to IRootPropertyPane for displaying a split-view drawer overlaid on the root pane's contents.
+Added a style API property to IPropertyItemOptionsBase for overriding default styles of items.
+Added 3-point selection mode enabled by default (shift-click to make a 3D volume selection), added '2-Point Selection' toggle to disable.
+
+
+== Changes ==
+Updated IListPanePropertyItem to dynamically adjust its size based on the number of entries until the maximum height is reached, unless the optional fixedHeight property is set
+Updated LayoutAlignment API enum values to be Start and End, instead of Left and Right
+Updated LayoutDirection API with PaneLayoutType, and Horizontal property will now be treated as a single row
+Updated Grapple tool so it will work within the full view distance
+
+
+== Fixes ==
+Fixed a bug that caused Navigation panel selected location to not mark the list entry.
+Fixed a bug that caused the input field focus highlight to remain after a drag operation.
+
+
+== Gallery ==
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,100 @@
+Weather in Minecraft consists of occasional precipitation and storms that are temporary but global.
+
+
+== Behavior ==
+
+The type of weather that occurs depends on several variable factors, including the temperature of the current biome, and the altitude in which it occurs. 
+Players who have cheats enabled can change the current weather if they wish, using the /weather command. In Bedrock Edition, /toggledownfall also switches to inclement weather, or vice versa, and /weather query can be used to determine the current weather.
+Weather changing with time can be toggled on or off using the "Weather cycle" game setting‌[BE  only] or advance_weather/doweathercycle game rule. When disabled, the weather stays the same indefinitely, unless altered using the /weather command.
+
+
+=== Java Edition mechanics ===
+In Java Edition, weather is controlled by two internal flags that cycle on and off, one flag for rain and one flag for thunder. When the rain flag is on and the thunder flag is off, the weather is rainy (or snowy or overcast, depending on the temperature). When the rain flag is on and the thunder flag is on, the weather is a thunderstorm. When the rain flag is off, the weather is clear, regardless of the thunder flag.
+Each flag has an associated timer. When the timer reaches zero, the flag is toggled and the timer chooses a new random value. The rain flag will stay on for 12000 to 24000 ticks (10 to 20 minutes, inclusive) and off for 12000 to 180000 ticks (10 minutes to 2.5 hours, inclusive). The thunder flag will stay on for 3600 to 15600 ticks (3 to 13 minutes, inclusive) and off for 12000 to 180000 ticks (10 minutes to 2.5 hours, inclusive). The thunder flag only affects the world while the rain flag is on, so it's possible for the thunder flag to cycle on and off while the rain flag stays off, resulting in a longer wait between thunderstorms, or to only partially overlap with a period of rain, resulting in a shorter thunderstorm.
+There is also a clear weather timer that is only affected by the /weather clear command and stays at zero during normal gameplay. While this timer is active, the rain and thunder flags are both kept off and their timers are locked at 1 game tick. This means that when the command-enforced clear weather ends and the timers resume, both flags will immediately flip on and both timers will reset, resulting in a thunderstorm.
+
+
+== Effects ==
+Clear weather is the first weather in a newly created world. During clear weather, the daylight cycle affects the light level and related effects; no specific effects happen. All celestial bodies are visible as well as regular fog. Sleeping in a bed resets the weather to clear, but not the weather timers.
+Inclement weather reduces the sky light level, depending on the severity of the storm. Because of this, villagers return to their homes until the storm passes.
+The sky itself darkens and gray fog increases, to the point where celestial bodies (including the sun, moon, and stars) are no longer visible, except in dry biomes in Bedrock Edition. The clouds darken depending on the severity of the weather; note that the clouds themselves do not precipitate. Although the sun is not visible during rain, the glow associated with sunrise and sunset is still visible.
+
+
+=== Rain ===
+
+Rain occurs only in blocks with a temperature higher than 0.15 and not in certain dry biomes (deserts, savannas, and badlands). Rainstorms reduce the light level to 12 in full daylight.
+Rain extinguishes fires (including flaming arrows). However, it does not extinguish fires on netherrack, and it does not solidify lava. Mobs that are on fire are extinguished on contact with rain; this prevents skeletons and zombies from burning during the day. Conversely, endermen and snow golems may die due to their weakness to water. Endermen teleport randomly until they find a dry place. Blazes and striders that are brought into the Overworld take damage and eventually die from being in contact with rain.
+
+Other interesting effects caused by rain:
+
+Fish are more abundant during rain.
+Wolves shake themselves dry if they are not moving. ‌[BE  only]
+Farmland becomes hydrated if it isn't already.
+Rain fills up cauldrons with water, albeit slowly.
+Rain particles make noise when they hit a block, and this noise can be heard at any point within 16 blocks. These particles can be disabled by setting Particles to "Minimal" in the Video Settings menu.‌[Java Edition  only]
+
+
+=== Snow ===
+
+Snowfall occurs only in biomes with a base temperature less than 0.15, or above a sufficient altitude. Like rainstorms, snowfall reduces the light level to 12 in full daylight. In Bedrock Edition, leaves gradually take on a frosted appearance once snowfall begins in snowy biomes.
+As it snows, snow layers regenerate over all non-transparent blocks. Snow layers will accumulate and grow over time in Bedrock Edition, or in Java Edition when modifying the max_snow_accumulation_height game rule. Snow does not cover transparent blocks.
+Effects from rainfall related to the properties of water do not apply with snowfall, for example entities lit on fire do not extinguish. Cauldrons exposed to snowfall slowly fill with powder snow.
+
+
+=== Thunderstorm ===
+
+Thunderstorms may occur in any biome and are combined with rain, snowfall, or clear weather depending on the temperature. They reduce the internal sky light level. At noon the internal sky light level at surface is only 10. However, in mob spawning system, the light level from the sky is treated as if it were 0, allowing hostile mobs to spawn at any time of the day.
+
+
+==== Lightning ====
+
+Lightning occurs frequently during thunderstorms, if there is rain. It strikes randomly, creating fires where it strikes, igniting any nearby flammable materials, but the rain usually puts the fire out before it can spread. Lightning can strike only blocks that are exposed to the rain. Thunder is a sound that occurs every time lightning strikes, which can be heard at much greater distances than other sounds.
+Lightning does not occur naturally in biomes that are too hot or dry to have rain or so cold that it snows instead of rains.
+Lightning deals 5HP damage to entities on normal difficulty, not including the damage done by the fire it causes. It turns creepers into charged creepers, villagers into witches, pigs into zombified piglins, and mooshrooms into their brown variants. Lightning may also randomly spawn a "skeleton trap" skeletal horse, depending on the difficulty.
+
+
+=== End flash ===
+
+An End flash is a weather-like event that occurs in the End. With Vibrant Visuals, they act as global directional light sources and illuminate the environment with a purple tint, cast shadows, and create volumetric fog. On classic graphics, they use a pixelated texture and tint block lighting purple.‌[JE  only]
+There is a 30 second delay between flashes, and each flash lasts between 5 and 19 seconds, occuring at random spots above the horizon, while also producing a sound.
+
+
+== Videos ==
+
+
+== History ==
+
+
+=== Development ===
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+=== Legacy Console Edition ===
+
+
+== Issues ==
+Issues relating to "Weather" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Trivia ==
+Rain and snow still falls above the clouds. Notch's explanation is that the gray above the clouds during a storm is “another layer of clouds” and the origin of the rain.
+Rain and snow are both considered the same weather effect by the game. This explains why there is no /weather snow command.
+Lightning does not have an image file associated with it. Thus, it is coded directly into the game engine, allowing for dynamic, realistic lightning.
+Helen Zbihlyj created a design document for a scientifically accurate rework of Minecraft's weather system.
+
+
+== Gallery ==
+
+
+=== Screenshots ===
+
+
+== References ==
+
+
+== Navigation ==

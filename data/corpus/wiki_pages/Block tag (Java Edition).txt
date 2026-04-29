@@ -1,0 +1,1281 @@
+A block tag is a group of blocks. They are used in advancement and world generation files to determine which block types meet a condition. Some block tags enable special behavior for the contained blocks. They can also be used when testing for block arguments in commands with #<resource location>, which succeeds if the block matches any of the blocks specified in the tag.
+
+
+== List of tags ==
+
+
+=== acacia_logs ===
+Used in the #logs_that_burn tag.
+
+
+=== air ===
+Used by the frost_walker enchantment definition, to only replace water below blocks in this tag.
+
+
+=== all_hanging_signs ===
+Special behavior: When placing a hanging sign below blocks in this tag while not sneaking, if the direction matches, the sign is placed with the two parallel chains.
+Used in the #all_signs, and #mineable/axe tags.
+
+
+=== all_signs ===
+This tag is used in the advancement "Glow and Behold!". Removing signs from this tag cause them to not be able to grant the advancement. Adding a shelf in this tag will earn player the achievement when they put the glow ink sac on it. Adding blocks that not allow glow ink sacs to be used on them does nothing, but.
+
+
+=== ancient_city_replaceable ===
+Blocks in this tag may be randomly removed from ancient cities as part of the "degredation" generation process.
+
+
+=== animals_spawnable_on ===
+Special behavior: Some animals use this tag to determine which blocks they can spawn on, including cats in swamp huts, chickens, cows, donkeys, horses, ocelots, pandas, pigs, polar bears not in (deep) frozen oceans, sheep, and wolves.
+Used in the #armadillo_spawnable_on, and #goats_spawnable_on tags.
+
+
+=== anvil ===
+Special behavior:
+
+While the anvil interface is open, blocks in this tag will keep it open.
+Falling blocks in this tag have a chance to get damaged or break upon landing, if they are anvils.
+When loading NBT, falling blocks in this tag set the internal HurtEntities boolean to true if it wasn't already set.
+While using the anvil interface, blocks in this tag have a chance to take damage or break, if they are anvils.
+Used in the #mineable/pickaxe tag.
+
+
+=== armadillo_spawnable_on ===
+Special behavior: Armadillos can spawn only above blocks in this tag.
+
+
+=== axolotls_spawnable_on ===
+Special behavior: Axolotls can spawn only above blocks in this tag.
+
+
+=== azalea_grows_on ===
+Azalea trees that generate naturally can generate on these blocks.
+
+
+=== azalea_root_replaceable ===
+Rooted dirt that generates as part of natural Azalea trees can replace blocks in this tag.
+
+
+=== badlands_terracotta ===
+Used in the #armadillo_spawnable_on tag.
+
+
+=== bamboo_blocks ===
+Used in the #mineable/axe tag.
+
+
+=== banners ===
+Special behavior: Filled maps used on blocks in this tag toggle a map marker if they are banners. Other blocks will play the use animation, but not add a marker.
+Used in the #mineable/axe, and #wall_post_override tags.
+
+
+=== bars ===
+​[more information needed]
+Used in the #mineable/pickaxe tag.
+
+
+=== base_stone_nether ===
+Used to determine what blocks ancient debris can replace.
+Used in the #nether_carver_replaceables, and #sculk_replaceable tags.
+
+
+=== base_stone_overworld ===
+Used to determine what blocks dirt, gravel, granite, diorite, andesite, tuff, and clay can replace when generated as veins.
+The "large dripstone" feature does not replace blocks in this tag with dripstone blocks.
+Used in the generation of the "dripstone cluster" feature.
+Surface generation in the overworld uses this tag.
+Used in the #azalea_root_replaceable, #bats_spawnable_on, #dripstone_replaceable_blocks, #forest_rock_can_place_on, #moss_replaceable, #nether_carver_replaceables, #overworld_carver_replaceables, and #sculk_replaceable tags.
+
+
+=== bats_spawnable_on ===
+Special behavior: Bats can spawn on these blocks.
+
+
+=== beacon_base_blocks ===
+Special behavior: Blocks in this tag are seen as valid beacon base blocks.
+
+
+=== beds ===
+Special behavior:
+
+Tamed cats sit or sleep with the player on blocks in this tag.
+Villagers move to and try to sleep in blocks in this tag. Only beds can be slept in.
+Baby villagers move to and try to jump in blocks in this tag.
+
+
+=== beehives ===
+Determines which blocks can fill with honey when a bee deposits pollen.
+Blocks in this tag can have honey removed by a dispenser with a glass bottle or shears.
+Used in the advancement "Bee Our Guest".
+Adding blocks to this tag has no effect.
+Used in the #does_not_block_hoppers tag.
+
+
+=== beneath_bamboo_podzol_replaceable ===
+​[more information needed]
+
+
+=== beneath_tree_podzol_replaceable ===
+​[more information needed]
+
+
+=== bee_attractive ===
+Defines the blocks (mostly plants) that bees are attracted to and can pollinate from when not in a beehive.
+If the block can be waterlogged, the block state waterlogged must be set to false. If the block is a sunflower, the block state half must be upper.
+
+
+=== bee_growables ===
+When bees pollinate these blocks they grow one stage.
+Adding blocks to this tag has no effect.
+
+
+=== birch_logs ===
+​[more information needed]
+Used in the #logs_that_burn tag.
+
+
+=== blocks_wind_charge_explosions ===
+Blocks in this tag completely obstruct wind charge bursts, as if it had maximum explosion resistance.
+
+
+=== buttons ===
+Used in the internal "gametest" system.
+
+
+=== camels_spawnable_on ===
+Camels can spawn on these blocks.
+
+
+=== camel_sand_step_sound_blocks ===
+Camels play a special step sound when walking on blocks in this tag.
+
+
+=== campfires ===
+Flint and steel and fire charges use this tag to determine what blocks they can light. Adding blocks to this tag takes effect only if the block has the lit, and waterlogged block states and both are false (only candles meet this criteria, and they already have this behavior. However, removing candles from the candle tag and adding them to this tag allows them to be lit and extinguished like campfires.
+Splash water bottles set the lit value of blocks in this tag to false. Works on all blocks with a lit block state, like redstone lamps.
+
+
+=== can_glide_through ===
+​[more information needed]
+
+
+=== candles ===
+Flint and steel and fire charges use this tag to determine what blocks they can light. Adding blocks to this tag takes effect only if the block has the lit, and waterlogged block states and both are false (only campfires meet this criteria, and they already have this behavior. However, removing campfires from the #campfires and adding them to this tag allows them to be lit and extinguished like candles).
+Splash water bottles set the lit value of blocks in this tag to false. Works on all blocks with a lit block state, like redstone lamps, provided they are not in #fire.
+
+
+=== candle_cakes ===
+Blocks in this tag are considered candle cakes and can be lit like candle cakes, if they have the lit block state and it is set to false.
+Splash water bottles set the lit value of blocks in this tag to false, if they have the lit block state and it is set to true.
+
+
+=== cannot_replace_below_tree_trunk ===
+​[more information needed]
+
+
+=== cannot_support_seagrass ===
+​[more information needed]
+
+
+=== cannot_support_kelp ===
+​[more information needed]
+
+
+=== cannot_support_snow_layer ===
+Snow can never be placed on blocks in this tag.
+Takes priority if the block is also in #snow_layer_can_survive_on.
+
+
+=== cauldrons ===
+This tag is used in certain pathfinding processes.​[more information needed]
+Used in the #mineable/pickaxe tag.
+
+
+=== cave_vines ===
+​[more information needed]
+Used in the #can_glide_through, and #moss_replaceable tags.
+
+
+=== ceiling_hanging_signs ===
+​[more information needed]
+Used in the #all_hanging_signs tag.
+
+
+=== chains ===
+​[more information needed]
+Used in the #mineable/pickaxe tag.
+
+
+=== cherry_logs ===
+​[more information needed]
+Used in the #logs_that_burn tag.
+
+
+=== climbable ===
+Used in mob pathfinding and to determine what blocks the player can climb.
+For the player to be able to climb added blocks, the block must be small enough that the center of the player's hitbox can occupy the same block. This means that blocks such as chests cannot be climbed from the sides, but can from the top.
+Used in the process of determining where to put an entity when it dismounts another entity.​[more information needed]
+If scaffolding is removed, the player cannot smoothly climb up, but can still jump up and crouch down.
+Some blocks are climbable in certain situations without being in this tag, like powder snow or trapdoors at the top of ladders.
+Used in the #fall_damage_resetting tag.
+
+
+=== coal_ores ===
+Unused.
+
+
+=== combination_step_sound_blocks ===
+When walking on a block in this tag (while occupying the same block as it), it plays a step sound that is a combination of the step sound of the block itself and the block underneath it.
+
+
+=== completes_find_tree_tutorial ===
+Looking at/punching a block in this tag completes the "find tree" step of the tutorial.
+
+
+=== concrete ===
+​[more information needed]
+
+
+=== concrete_powder ===
+
+
+=== concrete_powders ===
+​[more information needed]
+Used in the #camel_sand_step_sound_blocks, and #mineable/shovel tags.
+
+
+=== convertable_to_mud ===
+Blocks in this tag can be converted to mud if a player or dispenser uses a water bottle on it.
+
+
+=== copper ===
+​[more information needed]
+
+
+=== copper_chests ===
+​[more information needed]
+Used in the #guarded_by_piglins, #mineable/pickaxe, and #needs_stone_tool tags.
+
+
+=== copper_golem_statues ===
+​[more information needed]
+Used in the #mineable/pickaxe tag.
+
+
+=== copper_ores ===
+​[more information needed]
+Used in the #overworld_carver_replaceables tag.
+
+
+=== corals ===
+Used to generate coral reefs.
+Used in the #underwater_bonemeals tag.
+
+
+=== coral_blocks ===
+Used to generate coral reefs.
+Using bone meal on a sea pickle on a block in this tag creates more sea pickles.
+
+
+=== coral_plants ===
+​[more information needed]
+Used in the #corals tag.
+
+
+=== crimson_stems ===
+​[more information needed]
+Used in the #logs tag.
+
+
+=== crops ===
+Used in the #bee_growables tag.
+
+
+=== crystal_sound_blocks ===
+Blocks in this tag play the "amethyst block chime" sound repeatedly for a short amount of time after being stepped on, gradually decreasing in volume.
+The initial step sound is not affected by this tag.
+
+
+=== dampens_vibrations ===
+Blocks in this tag prevent sculk sensors from hearing vibrations if the block is between the sculk sensor and the vibration.
+
+
+=== dark_oak_logs ===
+​[more information needed]
+Used in the #logs_that_burn tag.
+
+
+=== deepslate_ore_replaceables ===
+Overworld ores can generate in blocks in this tag, and if they do, they become their deepslate variant
+Infested stone (from blobs) that generates in a block in this tag generates as infested deepslate
+
+
+=== default_immune_to ===
+​[more information needed]
+
+
+=== diamond_ores ===
+Unused.
+
+
+=== dirt ===
+Used in the #cannot_replace_below_tree_trunk, #enderman_holdable, #moss_replaceable, #sniffer_diggable_block, and #substrate_overworld tags.
+
+
+=== does_not_block_hoppers ===
+Blocks in this tag do not prevent hoppers from picking up items when placed on top of it.
+
+
+=== doors ===
+Mobs view all blocks in this tag as doors and pathfind accordingly.
+Replaced with air when generating zombie villages
+
+
+=== dragon_immune ===
+Ender Dragon cannot destroy blocks with this tag.
+
+
+=== dragon_transparent ===
+Ender Dragon cannot destroy blocks with this tag, but can fly straight through.
+
+
+=== dripstone_replaceable_blocks ===
+Used in dripstone generation to determine what dripstone can replace and what pointed dripstone can generate on.
+
+
+=== edible_for_sheep ===
+Blocks with this tag are edible by sheep. The sheep must be able go inside the block in order to eat it.[needs testing]
+
+
+=== emerald_ores ===
+Unused.
+
+
+=== enables_bubble_column_drag_down ===
+Blocks that allow for downward dragging bubble columns while submerged in full blocks of water
+
+
+=== enables_bubble_column_push_up ===
+Blocks that allow for upward pushing bubble columns while submerged in full blocks of water.
+
+
+=== enchantment_power_provider ===
+Blocks in this tag can power up enchanting tables when placed in a valid position.
+
+
+=== enchantment_power_transmitter ===
+Contains blocks that do not invalidate enchanting bonuses when placed between an enchanting table and bookshelves.
+
+
+=== enderman_holdable ===
+Used to determine what blocks endermen can pick up.
+
+
+=== fall_damage_resetting ===
+Blocks in this tag reset fall damage when landing in it.
+
+
+=== features_cannot_replace ===
+Blocks with this tag cannot be replaced by any generated features.
+Used in the #lava_pool_stone_cannot_replace tag.
+
+
+=== fences ===
+Mobs view all blocks in this tag as fences and pathfind accordingly.
+Leads can be attached to solid blocks in this tag. The lead knot entity uses this tag to determine if it should break or not.
+Fences in this tag attempt to connect only to other fences in this tag, but not in the #wooden_fences tag. Fences not in either tag do not connect to fences in the #wooden_fences tag.
+
+
+=== fence_gates ===
+​[more information needed]
+Used in the #maintains_farmland, #mineable/axe, and #unstable_bottom_center tags.
+
+
+=== fire ===
+Blocks in this tag are ignored when detecting valid unactivated nether portals and get removed upon activation
+Mobs view all blocks in this tag as fire and pathfind accordingly.
+Blocks in this tag cannot stop falling blocks.
+Potions capable of dousing fire remove blocks in this tag.
+Pistons do not create particles when destroying blocks in this tag.
+Entities ignited by blocks in this tag continue burning after leaving the fire source.
+Used in the #dragon_transparent tag.
+
+
+=== flowers ===
+Saplings grown next to blocks in this tag have a chance to have a bee nest.
+
+
+=== flower_pots ===
+​[more information needed]
+
+
+=== forest_rock_can_place_on ===
+​[more information needed]
+
+
+=== fox_immune_to ===
+​[more information needed]
+
+
+=== foxes_spawnable_on ===
+Foxes can spawn only on blocks in this tag.
+
+
+=== frogs_spawnable_on ===
+Frogs can spawn only on blocks in this tag.
+
+
+=== frog_prefer_jump_to ===
+​[more information needed]
+
+
+=== geode_invalid_blocks ===
+Amethyst geodes cannot try to generate inside blocks in this tag.
+
+
+=== glazed_terracotta ===
+​[more information needed]
+
+
+=== goats_spawnable_on ===
+Goats can spawn only on blocks in this tag.
+
+
+=== gold_ores ===
+​[more information needed]
+Used in the #guarded_by_piglins tag.
+
+
+=== grass_blocks ===
+​[more information needed]
+Used in the #enderman_holdable, #moss_replaceable, and #substrate_overworld tags.
+
+
+=== grows_crops ===
+​[more information needed]
+
+
+=== guarded_by_piglins ===
+Piglins become hostile toward a player that destroys a block in this tag.
+This tag has no effect on which blocks cause piglins to become hostile when opened.
+
+
+=== happy_ghast_avoids ===
+Happy ghasts avoid blocks in this tag.​[more information needed]
+
+
+=== huge_brown_mushroom_can_place_on ===
+​[more information needed]
+
+
+=== huge_red_mushroom_can_place_on ===
+​[more information needed]
+
+
+=== hoglin_repellents ===
+Hoglins avoid blocks in this tag.
+
+
+=== ice_spike_replaceable ===
+​[more information needed]
+
+
+=== ice ===
+Blocks in this tag do not act as a surface for ocean ruins to generate on.
+
+
+=== impermeable ===
+Blocks in this tag do not let fluids or honey drip through.
+
+
+=== incorrect_for_diamond_tool ===
+Due to usage in the default data component tool, blocks in this tag take longer to mine and drop nothing when using a diamond tool.
+There are currently no blocks in Vanilla that possess such traits.
+
+
+=== incorrect_for_copper_tool ===
+Due to usage in the default data component tool, blocks in this tag take longer to mine and drop nothing when using a copper tool.
+
+
+=== incorrect_for_gold_tool ===
+Due to usage in the default data component tool, blocks in this tag take longer to mine and drop nothing when using a golden tool.
+
+
+=== incorrect_for_iron_tool ===
+Blocks in this tag take longer to mine and drop nothing when using an iron tool.
+
+
+=== incorrect_for_netherite_tool ===
+Due to usage in the default data component tool, blocks in this tag take longer to mine and drop nothing when using a netherite tool.
+There are currently no blocks in Vanilla that possess such traits.
+
+
+=== incorrect_for_stone_tool ===
+Due to usage in the default data component tool, blocks in this tag take longer to mine and drop nothing when using a stone tool.
+
+
+=== incorrect_for_wooden_tool ===
+Due to usage in the default data component tool, blocks in this tag take longer to mine and drop nothing when using a wooden tool.
+
+
+=== infiniburn_end ===
+Used in the infiniburn preset of the end dimension type (determines which blocks stay on fire forever in the end).
+
+
+=== infiniburn_nether ===
+Used in the infiniburn preset of the nether dimension type (determines which blocks stay on fire forever in the nether).
+
+
+=== infiniburn_overworld ===
+Used in the infiniburn preset of the overworld dimension type (determines which blocks stay on fire forever in the overworld).
+Used in the #infiniburn_end, and #infiniburn_nether tags.
+
+
+=== inside_step_sound_blocks ===
+While the player walks in a block in this tag, the step sound noises of the sound type of the block are played instead of the noise of the below block.
+
+
+=== invalid_spawn_inside ===
+Players can't spawn or respawn inside the blocks in this tag.
+
+
+=== iron_ores ===
+​[more information needed]
+Used in the #overworld_carver_replaceables tag.
+
+
+=== jungle_logs ===
+Cocoa beans can be placed on blocks in this tag.
+Used in the #logs_that_burn, and #supports_cocoa tags.
+
+
+=== lanterns ===
+​[more information needed]
+Used in the #mineable/pickaxe tag.
+
+
+=== lapis_ores ===
+Unused.
+
+
+=== lava_pool_stone_cannot_replace ===
+Blocks in this tag cannot be replaced by stone generated in lava pools.
+
+
+=== leaves ===
+Blocks in this tag don't obstruct many features from generating, such as bonus chests, trees, and huge mushrooms.
+Used to determine placement rules for some transparent blocks.
+Blocks in this tag are destroyed 1.5x faster than normal with swords.
+Blocks in this tag are destroyed 15x faster than normal with shears and increment their stat usage.
+Blocks is this tag recognize shears as a correct tool.
+Parrots and ocelots can spawn in blocks in this tag.
+Used in the #completes_find_tree_tutorial, #lava_pool_stone_cannot_replace, #mineable/hoe, #parrots_spawnable_on, #replaceable_by_mushrooms, #replaceable_by_trees, and #sword_efficient tags.
+
+
+=== lightning_rods ===
+​[more information needed]
+Used in the #mineable/pickaxe, and #needs_stone_tool tags.
+
+
+=== logs ===
+Used for one of the requirements for settling on a block position for the parrot wandering AI.
+Blocks in this tag do not stop trees from growing.
+Checks progress for the punch_tree tutorial step.
+Used in some other pathfinding processes.​[more information needed]
+Used in the #completes_find_tree_tutorial, #lava_pool_stone_cannot_replace, #mineable/axe, #parrots_spawnable_on, and #prevents_nearby_leaf_decay tags.
+
+
+=== logs_that_burn ===
+​[more information needed]
+Used in the #logs tag.
+
+
+=== lush_ground_replaceable ===
+Rooted dirt from azalea trees and clay patches and pools in lush caves can replace blocks in this tag.
+
+
+=== maintains_farmland ===
+Contains blocks that do not cause farmland to be converted into dirt when placed on top of it.
+
+
+=== mangrove_logs ===
+​[more information needed]
+Used in the #logs_that_burn tag.
+
+
+=== mangrove_logs_can_grow_through ===
+While growing, mangrove trees ignore these blocks when placing logs.
+
+
+=== mangrove_roots_can_grow_through ===
+While growing, mangrove trees ignore these blocks when placing roots.
+
+
+=== mob_interactable_doors ===
+​[more information needed]
+
+
+=== mooshrooms_spawnable_on ===
+Mooshrooms can spawn only on blocks in this tag
+
+
+=== moss_blocks ===
+​[more information needed]
+Used in the #cannot_replace_below_tree_trunk, #enderman_holdable, #moss_replaceable, #sniffer_diggable_block, and #substrate_overworld tags.
+
+
+=== moss_replaceable ===
+Blocks in this tag can be replaced with moss blocks when a nearby moss block has bone meal applied to it.
+Used in the #lush_ground_replaceable tag.
+
+
+=== mud ===
+​[more information needed]
+Used in the #cannot_replace_below_tree_trunk, #enderman_holdable, #moss_replaceable, #sniffer_diggable_block, and #substrate_overworld tags.
+
+
+=== needs_diamond_tool ===
+Due to the use of this tag in other tags, if a block in this tag requires a certain type tool to drop, the tool must be diamond or better.
+Used in the #incorrect_for_copper_tool, #incorrect_for_gold_tool, #incorrect_for_iron_tool, #incorrect_for_stone_tool, and #incorrect_for_wooden_tool tags.
+
+
+=== needs_iron_tool ===
+Due to the use of this tag in other tags, if a block in this tag requires a certain type tool to drop, the tool must be iron or better.
+Used in the #incorrect_for_copper_tool, #incorrect_for_gold_tool, #incorrect_for_stone_tool, and #incorrect_for_wooden_tool tags.
+
+
+=== needs_stone_tool ===
+Due to the use of this tag in other tags, if a block in this tag requires a certain type tool to drop, the tool must be stone or better.
+Used in the #incorrect_for_gold_tool, and #incorrect_for_wooden_tool tags.
+
+
+=== nether_carver_replaceables ===
+Used in nether world generation definitions to indicate which blocks cave carvers can cut through.
+
+
+=== nylium ===
+Used as a check during generation certain vegetation in crimson and warped forests.
+Crimson roots, warped roots and nether sprouts can be placed on blocks in this tag, as well as soul soil.
+Netherrack is a valid bone meal target only if a nearby block is in this tag, or if netherrack itself is in this tag.
+A non-nylium block nearby causes bone meal to be consumed without producing anything when used on netherrack.
+It is still possible to spread nylium onto netherrack even if one or both nylium blocks are removed from the tag, as long as a block in the nylium tag is still nearby. This is because the check to grow nylium on the netherrack does not use the tag.
+Fungi can be placed on blocks in this tag, as well as mycelium and soul soil, as well as blocks in #dirt, and farmland.
+Used in the #nether_carver_replaceables, #sculk_replaceable, #supports_nether_sprouts, #supports_warped_fungus, and #supports_warped_roots tags.
+
+
+=== oak_logs ===
+​[more information needed]
+Used in the #logs_that_burn tag.
+
+
+=== occludes_vibration_signals ===
+Blocks in this tag prevent sculk sensors from hearing vibrations if the block is between the sculk sensor and the vibration.
+
+
+=== overworld_carver_replaceables ===
+Used in overworld world generation definitions to indicate which blocks cave carvers can cut through.
+
+
+=== overworld_natural_logs ===
+​[more information needed]
+Used in the #snaps_goat_horn tag.
+
+
+=== overrides_mushroom_light_requirement ===
+Mushrooms can spread to or be placed on blocks in this tag regardless of light level.
+Huge mushrooms can be grown on blocks in this tag regardless of light level.
+
+
+=== pale_oak_logs ===
+​[more information needed]
+Used in the #logs_that_burn tag.
+
+
+=== parrots_spawnable_on ===
+Parrots can spawn only on blocks in this tag.
+
+
+=== piglin_repellents ===
+Piglins avoid blocks in this tag.
+
+
+=== planks ===
+​[more information needed]
+Used in the #mineable/axe tag.
+
+
+=== polar_bear_immune_to ===
+​[more information needed]
+
+
+=== polar_bears_spawnable_on_alternate ===
+Polar bears can only spawn on blocks in this tag in frozen ocean and deep frozen ocean biomes. Otherwise, they use #animals_spawnable_on.
+
+
+=== portals ===
+When an entity dismounts another entity, it is not put into blocks with this tag to prevent unwanted teleportation; instead, the entity dismounts at the ridden entity's location.
+
+
+=== pressure_plates ===
+​[more information needed]
+Used in the #wall_post_override tag.
+
+
+=== prevent_mob_spawning_inside ===
+Mobs cannot spawn inside blocks in this tag.
+
+
+=== prevents_nearby_leaf_decay ===
+If a block in this tag is around a leaves block, the leaves block sets its distance block state to the distance the closest tagged block is.
+
+
+=== rabbits_spawnable_on ===
+Rabbits can spawn only on blocks in this tag.
+
+
+=== rails ===
+Minecarts can be placed and dispensed onto blocks in this tag.
+When TNT minecarts explode, blocks in this tag that the minecart is on have a blast resistance of 0.
+Used in determining rail directional placement. Adding blocks to this tag has no effect.
+Used in determining minecart speed. Adding blocks to this tag has no effect on this behavior.
+Used in the #mineable/pickaxe, and #prevent_mob_spawning_inside tags.
+
+
+=== redstone_ores ===
+​[more information needed]
+
+
+=== replaceable ===
+Contains blocks in which another block can be placed except sculk veins. This tag only lists the blocks with this property but changing it doesn't change which blocks are replaceable.
+Used in the #enchantment_power_transmitter tag.
+
+
+=== replaceable_by_mushrooms ===
+Contains changeable blocks that growing giant mushrooms can replace.
+
+
+=== replaceable_by_trees ===
+Contains changeable blocks that growing trees can replace.
+
+
+=== sand ===
+Cacti can be placed on blocks in this tag.
+Turtle eggs hatch when on a block in this tag.
+Turtles can spawn only on blocks in this tag.
+Used in the #azalea_grows_on, #camel_sand_step_sound_blocks, #camels_spawnable_on, #overworld_carver_replaceables, #supports_bamboo, #supports_cactus, #supports_dry_vegetation, and #supports_sugar_cane tags.
+
+
+=== saplings ===
+​[more information needed]
+
+
+=== sculk_replaceable ===
+When a sculk catalyst is activated, these blocks may be replaced by the various types of sculk blocks.
+Used in the #sculk_replaceable_world_gen tag.
+
+
+=== sculk_replaceable_world_gen ===
+During Ancient City generation, these blocks may be replaced by the various types of sculk blocks.
+
+
+=== shears_extreme_breaking_speed ===
+​[more information needed]
+
+
+=== shears_major_breaking_speed ===
+​[more information needed]
+
+
+=== shears_minor_breaking_speed ===
+​[more information needed]
+
+
+=== shulker_boxes ===
+Fences, walls and panes do not connect to blocks in this tag.
+If blocks are removed from this tag, the above blocks still disconnect when the shulker box opens.
+Used in the #guarded_by_piglins, and #mineable/pickaxe tags.
+
+
+=== signs ===
+Blocks in this tag are not destroyed by flowing liquids
+Removing blocks from this tag has no effect
+Used in the #all_signs, #mineable/axe, and #wall_post_override tags.
+
+
+=== slabs ===
+Blocks in this tag are viewed as slabs by ruined portal generation.
+
+
+=== small_flowers ===
+Bees attempt to pollinate blocks in this tag.
+Used in the #enderman_holdable, #flowers, #replaceable_by_mushrooms, and #replaceable_by_trees tags.
+
+
+=== smelts_to_glass ===
+Blocks with this tag give glass when smelted in a furnace.
+
+
+=== snaps_goat_horn ===
+If an adult goat rams into one of these blocks, it drops a goat horn if it has any left. Nothing will drop if the goat has no horns or is a baby.
+
+
+=== sniffer_diggable_block ===
+Blocks that can be dug by a sniffer for items such as torchflower seeds.[needs testing]
+
+
+=== sniffer_egg_hatch_boost ===
+Sniffer eggs hatch twice as fast when placed on blocks with this tag.
+
+
+=== snow ===
+Blocks in this tag turn blocks with a snowy variant below them (like grass) into said snow variant.
+Used in the #overworld_carver_replaceables tag.
+
+
+=== snow_golem_immune_to ===
+​[more information needed]
+
+
+=== soul_fire_base_blocks ===
+Blocks in this tag can support soul fire.
+
+
+=== soul_speed_blocks ===
+Soul Speed increases the player's speed on blocks in this tag.
+
+
+=== speleothems ===
+​[more information needed]
+
+
+=== spruce_logs ===
+​[more information needed]
+Used in the #logs_that_burn tag.
+
+
+=== stairs ===
+Blocks in this tag are viewed as stairs by ruined portal generation.
+
+
+=== standing_signs ===
+​[more information needed]
+Used in the #signs tag.
+
+
+=== stone_bricks ===
+Unused.
+
+
+=== stone_buttons ===
+​[more information needed]
+Used in the #buttons, and #mineable/pickaxe tags.
+
+
+=== stone_ore_replaceables ===
+Iron ore, redstone ore, gold ore, diamond ore, and lapis lazuli ore can generate as their stone variants in blocks in this tag.
+Infested stone (from blobs) that generates in a block in this tag generates as infested stone.
+
+
+=== stone_pressure_plates ===
+​[more information needed]
+Used in the #pressure_plates tag.
+
+
+=== stray_immune_to ===
+​[more information needed]
+
+
+=== strider_warm_blocks ===
+Unless a strider is in a block in this tag, it shivers.
+
+
+=== substrate_overworld ===
+​[more information needed]
+Used in the #azalea_grows_on, #azalea_root_replaceable, #beneath_bamboo_podzol_replaceable, #beneath_tree_podzol_replaceable, #forest_rock_can_place_on, #huge_brown_mushroom_can_place_on, #huge_red_mushroom_can_place_on, #ice_spike_replaceable, #nether_carver_replaceables, #overworld_carver_replaceables, #sculk_replaceable, #supports_bamboo, #supports_sugar_cane, and #supports_vegetation tags.
+
+
+=== sulfur_spike_replaceable_blocks ===
+​[more information needed]
+
+
+=== support_override_cactus_flower ===
+​[more information needed]
+
+
+=== support_override_snow_layer ===
+Snow can be placed on blocks in this tag, even if the top surface is not fully solid.
+
+
+=== supports_azalea ===
+Azalea and flowering azalea can only be placed on blocks in this tag.
+
+
+=== supports_bamboo ===
+Bamboo can be only placed on blocks in this tag.
+
+
+=== supports_big_dripleaf ===
+Big dripleaves can be placed on blocks in this tag.
+
+
+=== supports_cactus ===
+Cactus can only be placed on blocks in this tag.
+
+
+=== supports_chorus_flower ===
+​[more information needed]
+
+
+=== supports_chorus_plant ===
+​[more information needed]
+
+
+=== supports_cocoa ===
+​[more information needed]
+
+
+=== supports_crimson_fungus ===
+​[more information needed]
+
+
+=== supports_crimson_roots ===
+​[more information needed]
+
+
+=== supports_crops ===
+​[more information needed]
+Used in the #supports_stem_crops tag.
+
+
+=== supports_dry_vegetation ===
+Dry vegetations, like dead bush and dry grass, may be placed on blocks in this tag.
+
+
+=== supports_frogspawn ===
+​[more information needed]
+
+
+=== supports_hanging_mangrove_propagule ===
+​[more information needed]
+
+
+=== supports_lily_pad ===
+​[more information needed]
+
+
+=== supports_mangrove_propagule ===
+​[more information needed]
+
+
+=== supports_melon_stem ===
+​[more information needed]
+
+
+=== supports_melon_stem_fruit ===
+​[more information needed]
+
+
+=== supports_nether_sprouts ===
+​[more information needed]
+
+
+=== supports_nether_wart ===
+​[more information needed]
+
+
+=== supports_pumpkin_stem ===
+​[more information needed]
+
+
+=== supports_pumpkin_stem_fruit ===
+​[more information needed]
+
+
+=== supports_small_dripleaf ===
+Big dripleaves and small dripleaves can be placed on blocks in this tag, even if there is no water in the block where the small dripleaf is being placed.
+Used in the #supports_big_dripleaf tag.
+
+
+=== supports_stem_crops ===
+​[more information needed]
+Used in the #supports_melon_stem, and #supports_pumpkin_stem tags.
+
+
+=== supports_sugar_cane ===
+​[more information needed]
+
+
+=== supports_stem_fruit ===
+​[more information needed]
+Used in the #supports_melon_stem_fruit, and #supports_pumpkin_stem_fruit tags.
+
+
+=== supports_sugar_cane_adjacently ===
+​[more information needed]
+
+
+=== supports_vegetation ===
+​[more information needed]
+Used in the #supports_azalea, #supports_dry_vegetation, #supports_mangrove_propagule, #supports_nether_sprouts, #supports_stem_fruit, #supports_warped_fungus, #supports_warped_roots, and #supports_wither_rose tags.
+
+
+=== supports_warped_fungus ===
+​[more information needed]
+Used in the #supports_crimson_fungus tag.
+
+
+=== supports_warped_roots ===
+​[more information needed]
+Used in the #supports_crimson_roots tag.
+
+
+=== supports_wither_rose ===
+​[more information needed]
+
+
+=== suppresses_bounce ===
+​[more information needed]
+
+
+=== sword_efficient ===
+Contains blocks that break faster with a sword.
+
+
+=== sword_instantly_mines ===
+​[more information needed]
+
+
+=== terracotta ===
+​[more information needed]
+Used in the #azalea_grows_on, #azalea_root_replaceable, #overworld_carver_replaceables, #sculk_replaceable, #supports_dry_vegetation, and #triggers_ambient_desert_dry_vegetation_block_sounds tags.
+
+
+=== trail_ruins_replaceable ===
+During trail ruins generation, blocks in this tag can be replaced by suspicious gravel.
+
+
+=== trapdoors ===
+Mobs treat all blocks in this tag as trapdoors when pathfinding.
+Climbable blocks in this tag use the "<player> fell off a ladder" death message when applicable.
+
+
+=== triggers_ambient_desert_dry_vegetation_block_sounds ===
+​[more information needed]
+
+
+=== triggers_ambient_desert_sand_block_sounds ===
+​[more information needed]
+
+
+=== triggers_ambient_dried_ghast_block_sounds ===
+​[more information needed]
+
+
+=== underwater_bonemeals ===
+Blocks in this tag replace water source blocks (within 5 horizontal and 2 vertical blocks) when bone meal is used under water in warm ocean biomes.
+If the blocks in this tag are customized, the behavior is applied to water source blocks in any biome. These blocks are not waterlogged by default.
+
+
+=== unstable_bottom_center ===
+Blocks in this tag cannot support lanterns and bells on their bottom side even if they would otherwise be able to.
+
+
+=== valid_spawn ===
+Unused.
+
+
+=== vibration_resonators ===
+​[more information needed]
+
+
+=== walls ===
+Mobs treat blocks in this tag as fences when pathfinding.
+Fence gates have the in_wall block state when next to a block in this tag.
+Other walls (not defined by the tag), glass panes, and iron bars attempt to connect to non-solid blocks in this tag.
+Blocks in this tag are viewed as walls by ruined portal generation.
+Used in the #mineable/pickaxe tag.
+
+
+=== wall_corals ===
+Used to generate coral reefs.
+When bone meal is used in warm and deep warm oceans, blocks in this tag may be placed on the sides of blocks.
+Used in the #underwater_bonemeals tag.
+
+
+=== wall_hanging_signs ===
+​[more information needed]
+Used in the #all_hanging_signs tag.
+
+
+=== wall_post_override ===
+Blocks in this tag cause walls to become pillars, even if they are not solid.
+
+
+=== wall_signs ===
+​[more information needed]
+Used in the #signs tag.
+
+
+=== warped_stems ===
+​[more information needed]
+Used in the #logs tag.
+
+
+=== wart_blocks ===
+​[more information needed]
+Used in the #completes_find_tree_tutorial, and #nether_carver_replaceables tags.
+
+
+=== wither_immune ===
+Wither cannot destroy blocks with this tag by moving into them. This doesn't protect blocks from the explosion caused by creating the Wither or by Wither Skulls entities.
+
+
+=== wither_immune_to ===
+​[more information needed]
+
+
+=== wither_skeleton_immune_to ===
+​[more information needed]
+
+
+=== wither_summon_base_blocks ===
+Blocks in this tag can be used in the base to summon the wither.
+
+
+=== wolves_spawnable_on ===
+Wolves can spawn only on blocks in this tag.
+
+
+=== wooden_buttons ===
+​[more information needed]
+Used in the #buttons, and #mineable/axe tags.
+
+
+=== wooden_doors ===
+Mobs that interact with wooden doors use this tag to detect wooden doors.
+Only iron doors can be added to this tag. If added, villagers can open them.
+Used in the #doors, #mineable/axe, and #mob_interactable_doors tags.
+
+
+=== wooden_fences ===
+Fences in this tag attempt to connect to each other.
+Fences in the #fences tag do not attempt to connect to fences in this tag. Fences not in either tag do not connect to fences in this tag, including other fences of the same type.
+Used in the #fences, and #mineable/axe tags.
+
+
+=== wooden_pressure_plates ===
+​[more information needed]
+Used in the #mineable/axe, and #pressure_plates tags.
+
+
+=== wooden_shelves ===
+​[more information needed]
+Used in the #mineable/axe tag.
+
+
+=== wooden_slabs ===
+​[more information needed]
+Used in the #mineable/axe, and #slabs tags.
+
+
+=== wooden_stairs ===
+​[more information needed]
+Used in the #mineable/axe, and #stairs tags.
+
+
+=== wooden_trapdoors ===
+​[more information needed]
+Used in the #mineable/axe, and #trapdoors tags.
+
+
+=== wool ===
+Blocks in this tag are broken faster by shears and also increase the usage stat of shears.
+Placing blocks in this tag under a note block sets the instrument used to guitar. If blocks that cause note blocks to play a different instrument are added to this tag, they cause the note block to play guitar.
+Used in the #dampens_vibrations, and #occludes_vibration_signals tags.
+
+
+=== wool_carpets ===
+​[more information needed]
+Used in the #combination_step_sound_blocks, and #dampens_vibrations tags.
+
+
+=== mineable/axe ===
+Due to usage in the default data component tool, blocks in this tag are mined faster with axes. 
+Furthermore, add a block that requires the use of the correct tool (a hardcoded block property) in this tag allow it to be dropped with an axe. However, if the block is also in tags such as #incorrect_for_stone_tool the block will not be dropped by certain axes.
+
+
+=== mineable/hoe ===
+Due to usage in the default data component tool, blocks in this tag are mined faster with hoes. 
+Furthermore, add a block that requires the use of the correct tool (a hardcoded block property) in this tag allow it to be dropped with a hoe. However, if the block is also in tags such as #incorrect_for_stone_tool the block will not be dropped by certain hoes.
+
+
+=== mineable/pickaxe ===
+Due to usage in the default data component tool, blocks in this tag are mined faster with pickaxes. Furthermore, if the block requires the use of the correct tool (a hardcoded block property), it needs to be in this tag to be dropped when mined with pickaxes.
+Blocks that are also in a tag like #incorrect_for_stone_tool it cannot be dropped by mining it with some pickaxes.
+
+
+=== mineable/shovel ===
+Due to usage in the default data component tool, blocks in this tag are mined faster with shovels. 
+Furthermore, add a block that requires the use of the correct tool (a hardcoded block property) in this tag allow it to be dropped with a shovel. However, if the block is also in tags such as #incorrect_for_stone_tool the block will not be dropped by certain shovels.
+
+
+== Removed tags ==
+
+
+=== azalea_log_replaceable ===
+​[more information needed]
+Version added: 21w05a. Version removed: 21w10a.
+
+
+=== dirt_like ===
+​[more information needed]
+Version added: 18w43a. Version removed: 19w41a.
+
+
+=== fire_aspect_lightable ===
+​[more information needed]
+Version added: 24w19a. Version removed: 1.21 Pre-Release 1.
+
+
+=== lush_plants_replaceable ===
+​[more information needed]
+Version added: 21w05a. Version removed: 21w16a.
+
+
+=== non_flammable_wood ===
+The item tag with the same name still exists.
+Version added: 20w13a. Version removed: 22w44a.
+
+
+=== replaceable_plants ===
+​[more information needed]
+Version added: 1.18 Pre-release 5. Version removed: 23w14a.
+
+
+=== stripped_logs ===
+​[more information needed]
+Version added: 22w42a. Version removed: 22w46a.
+
+
+=== tall_flowers ===
+​[more information needed]
+Version added: 19w34a. Version removed: 24w45a.
+
+
+=== water_hacked ===
+​[more information needed]
+Version added: 18w07a. Version removed: 18w10c.
+
+
+=== waterlogged ===
+​[more information needed]
+Version added: 18w07b. Version removed: 18w10c.
+
+
+== History ==
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,55 @@
+Kills and removes entities (players, mobs, items, etc.).
+
+
+== Usage ==
+Directly kills living targets compulsorily (directly removes the entity) and prompts Killed <entity display name>, or Killed <number> entities if multiple entities are killed, which is irrespective of any of the targeted mob(s)' protective effects (armor, Protection and Resistance). However, the damage can be adjusted by the ender dragon. Totems of undying can't be triggered when their owner(s) die(s) because of this command.
+When the command kills mob(s), it issues the appropriate death message. Players and mobs killed this way drop loot, and slimes and magma cubes that are not of minimum size spawn smaller ones. Non-mob entities disappear if they are targeted.
+In Java Edition, ender dragons killed by this command will skip their death animation and immediately open the exit portal.
+In Bedrock Edition, players in Creative mode cannot be killed using this command.
+
+
+== Syntax ==
+Java Edition
+kill [<targets>]
+Bedrock Edition
+kill [target: target]
+
+
+== Arguments ==
+JE: <targets>: entityBE: target: target: CommandSelector<Actor>
+
+Specifies the target(s) to kill. If not specified, defaults to the player who executed the command.
+Must be a player name, a target selector or a UUID‌[Java Edition  only]. 
+
+
+== Result ==
+
+
+== Output ==
+
+
+== Examples ==
+To kill the player executing the command: kill @s or kill
+To kill the player Steve: kill Steve
+To kill item entities: kill @e[type=item]
+To kill all entities except players (if there are too many entities, some won’t be killed.) : kill @e[type=!player]
+To kill all creepers within 10 blocks:
+JE: kill @e[distance=..10,type=creeper]
+BE: kill @e[r=10,type=creeper]
+To kill all arrows that are stuck in a target: kill @e[type=arrow,nbt={inBlockState:{Name:"minecraft:target"}}]‌[Java Edition  only]
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== External links ==
+"/kill Command"     – Microsoft Learn, October 11, 2023.
+
+
+== Navigation ==

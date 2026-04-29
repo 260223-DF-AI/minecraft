@@ -1,0 +1,19 @@
+Allows manipulation of stopwatches to keep track of real time — the time measured is not affected by the game's tick rate (i.e. pausing, /tick, or even server lag).
+The time is calculated with millisecond precision. Therefore:
+
+When displayed, it is presented in seconds with 3 decimal places (e.g. 43.961s).
+While any integer value can be used as the scale argument, a scale with absolute value >1000 is not useful to extract additional precision in the integer return value.
+
+
+== Syntax ==
+Java Edition
+stopwatch create <id> - Creates a stopwatch, which immediately begins running
+stopwatch query <id> <scale> - Gets the value of the stopwatch, the amount of time since it was created/restarted. scale does not affect the displayed value in chat, but does affect the value returned e.g. for /execute store result.... If the return value would exceed 32-bit signed integer limits (<-2147483648 or >2147483647), it is clamped.
+stopwatch restart <id> - Restarts a stopwatch
+stopwatch remove <id> - Removes a stopwatch
+
+
+== History ==
+
+
+== Navigation ==

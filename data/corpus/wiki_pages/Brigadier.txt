@@ -1,0 +1,44 @@
+Brigadier is a command parser and dispatcher, designed and developed for Java Edition, mainly maintained by Dinnerbone. It is the first library used by Java Edition that Mojang has released under an open-source license.
+
+
+== Usage ==
+Brigadier is used for parsing and executing string commands.
+
+
+=== Features ===
+Define command nodes with argument or literal branches
+All the commands available in Java Edition are actually the literal branches available for the root command nodes instead of the actual executed commands.
+Modify/fork command source in command contexts
+/execute as <target selector> may modify the command source to be multiple when multiple entities are selected
+Active inspection on command parsing
+Listing all possible commands from current command node
+Handle command result real-time on execution success/failure
+/execute store can store the command result to block/entity NBT data or scoreboard
+Recursive command node redirection
+/execute run redirects to the root node of the vanilla command dispatcher
+
+
+== Limitations and issues ==
+Brigadier has various numbers of limitations while executing the command, such as the numeric limitations on integer data types such as /effect, /weather, and floating-point data types such as /time, making many integer values parsed in the commands inaccessible.
+
+
+== Minecraft argument types ==
+
+More general documentation on brigadier and its use can be found at the github repository, however this is information specifically on the argument types added and used in Minecraft. While basic implementation of commands may vary by mod loader, these argument types are mostly consistent. Your chosen mod loader probably has its own documentation for how to actually register commands using Brigadier.
+
+(See more about Java ints, longs, floats, and doubles here)
+
+
+== History ==
+
+
+=== Version history ===
+
+
+== Gallery ==
+
+
+== References ==
+
+
+== Navigation ==

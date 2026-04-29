@@ -1,0 +1,54 @@
+1.19.1 Pre-release 2 (known as 1.19.1-pre2 in the launcher) is the second pre-release for Java Edition 1.19.1, released on June 30, 2022, which adds chat trust status, makes changes to chat types, enforces secure profiles by default, and fixes bugs.
+
+
+== Additions ==
+
+
+=== General ===
+Chat
+
+Messages that are not signed with the secure chat system, or have been tampered with by the server are now marked.
+Messages with missing or invalid signatures are marked as "Not Secure".
+Messages that are detected as modified are marked as "Modified".
+The trust status of messages are displayed with both a colored indicator and an icon.
+The colored indicator is always visible.
+The icon is only visible when the chat screen is open.
+Hovering over the icon provides more information about the trust status.
+For modified messages, the original secure text is also displayed in the tooltip.
+
+
+== Changes ==
+
+
+=== General ===
+Chat
+
+Chat types added to the chat_types registry are now only used for player chat, and not system messages.
+The system and game_info chat types have been removed.
+Chat types have been simplified and are now only required to define chat and narration decorations.
+Chat types no longer support overlays.
+A system message should instead be used to display overlays.
+server.properties
+
+enforce-secure-profile is now defaulted to true for dedicated servers.
+
+
+== Fixes ==
+7 issues fixed
+From the 1.19.1 development versions
+
+MC-253112 – The game output console is logged with warnings regarding chat packets with invalid signatures when using entity selectors within commands.
+MC-253121 – Entities and other non-player chat message sources appear as players on the Select Chat Messages to Report screen.
+From the previous development version
+
+MC-253493 – The descriptions of report categories can once again overlap the "Description:" subtitle.
+MC-253495 – Selection boxes of fields within the "Select Report Category" menu list don't contain white outlines when selected using the ↹ Tab key.
+MC-253497 – Entities and other non-player chat message sources appear in the Social Interactions menu.
+MC-253501 – Long messages within the "Select Chat Messages to Report" menu can extend beyond selection boxes and past the scroll bar.
+MC-253517 – Online players cannot connect to offline server because "invalid profile public key signature".
+
+
+== References ==
+
+
+== Navigation ==

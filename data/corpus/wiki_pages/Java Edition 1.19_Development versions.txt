@@ -1,0 +1,2592 @@
+This is a list of Java Edition 1.19 development versions.
+
+
+== Deep Dark Experimental Snapshot 1 ==
+Deep Dark Experimental Snapshot 1 is the first and only experimental snapshot for Java Edition 1.19, released on February 17, 2022, which adds features related to the deep dark. This version is a fork of 1.18.1. After the release of 1.18.2, the deep dark features previewed in this version gradually made their way into official snapshots between 22w11a and 22w13a. This is the first and only experimental snapshot released in 2022.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Reinforced deepslate
+
+A new block only found in ancient cities shaped as a large frame.
+Is completely blast-resistant, and takes an incredibly long amount of time to mine (82.5 seconds).
+Can be broken, but won't drop anything, even with Silk Touch.
+Can be moved with pistons.
+ Sculk
+
+Generates in the deep dark biome.
+Has an animated texture.
+Drops only experience when broken without Silk Touch.
+When wool blocks are placed on a sculk block, it lets nearby sculk sensors know, preventing that vibration from being occluded.
+Sculk blocks grow when a mob dies near a sculk catalyst.
+ Sculk catalyst
+
+Generates in the deep dark biome.
+Emits soul particles after a mob dies within 8 blocks, and grows sculk related blocks.
+Spreads sculk blocks to wherever a nearby mob dies. The amount it spreads depends on the amount of experience the mob is meant to drop.
+Even if the mob doesn't drop experience as it wasn't killed by a player, the blocks still spread based on the amount of experience it normally drops.
+The experience isn't dropped in these cases.
+The charge decays over time, faster the furthest away from the catalyst it moves.
+If a charge decays more than 4 blocks away from the catalyst, it has a chance of creating either a sculk sensor (90%) or a sculk shrieker (10%).
+If a charge decays more than 24 blocks away from the catalyst, it merely vanishes.
+Drops only experience when broken without Silk Touch.
+Emits a light level of 6.
+ Blooms when activated.
+Can only spread sculk on blocks in the sculk_replaceable tag.
+ Sculk shrieker
+
+Generates in the deep dark biome.
+Has two soul-shaped patterns in the center.
+Has the ability to "shriek", emitting ring-like/sonic particles.
+Is activated by a sculk sensor, redstone signal or player's stepping.
+Gives players the Darkness effect when activated.
+If activated three times, a warden is summoned from the ground.
+Sculk shriekers summon wardens only if there isn't one within 48 blocks.
+ Sculk vein
+
+Generates in the deep dark biome on the edge of sculk patches.
+Generates in a layer on top of blocks and can be placed in all directions, like glow lichen.
+Has an animated texture.
+Some have parts that are transparent, allowing the player to see the block it is on top of.
+Can be waterlogged.
+Drops nothing when broken without Silk Touch.
+
+
+==== Items ====
+Spawn eggs
+
+ Warden spawn egg
+
+
+==== Mobs ====
+ Warden
+
+Spawns in the deep dark biome, specifically when too many sculk shriekers are activated.
+It is the only mob that spawns in the deep dark biome.
+"Emerges" from the ground when spawned by sculk shriekers.
+Digs back into the ground when it doesn't sense any vibration after 60 seconds.
+The first fully blind mob.
+Has a sense of smell. It can detect and pathfind toward the general location of a player or mob through a "smelling" action.
+Prioritizes smelling the player or mob that it is most suspicious of, rather than the one closest to it.
+Has a sense of vibration. When sensing movement, it pathfinds toward the source of the movement.
+It follows and attacks players, mobs, and other entities that make vibrations.
+When it detects a vibration, the growths on its head rattle and light up, similar to the sculk sensor.
+If any projectile (e.g. egg, snowball, arrow) lands near it, the warden inspects the location where the projectile landed, due to the projectile creating significant vibrations. This feature can be used in order to cause a distraction.
+Does not detect players that are sneaking.
+Can detect players or mobs that have the Invisibility effect.
+Becomes more suspicious of a player or mob as it detects its location more through vibrations and/or smelling. When it suspects the target enough, it identifies its exact location, which aggravates it, causing it to pathfind toward the target to attack regardless of outside distractions.
+Has 500HP × 250 health points and does 30HP × 15 damage on Normal difficulty, bringing players wearing full netherite armor from full health to 7HP health points.
+Wardens disable shields when they hit the players with their fists.
+The warden doesn't qualify as a target for the advancement "Monster Hunter" and isn't needed to receive the advancement "Monsters Hunted" due to its role.
+Warden's chest has a glowing core that appears to brighten and dim in tandem with the Darkness effect.
+The core creates a low throbbing or "heartbeat" sound as it pulses. The sound and animation speed up rapidly as the warden gets more suspicious of or closer to attacking a player or mob.
+Is about 3.5 blocks tall, making it one of the tallest mobs in the game, exceeding the iron golem and enderman in height and width (the same).
+
+
+==== World generation ====
+Ancient city
+
+Generates within the deep dark biome and includes all of the deep dark features within it.
+Made of deepslate and its variants, basalt and its variants, and gray wool.
+Contains soul sand, soul fire and soul lanterns, as well as candles and skeleton skulls.
+Contains chests with unique loot, like the Swift Sneak enchantment.
+Has different levels and open spaces.
+Deep dark
+
+New biome at the "deepest depths of the world".
+Tends to generate under continental/mountainous areas, exclusively within the deepslate layer between Y=-1 and Y=-64.
+Contains ancient cities.
+The floor is covered in sculk and contains all sculk-related blocks.
+Wardens can spawn there through the activation of sculk shriekers.
+With the exception of spawners, no mobs other than wardens can spawn there, similar to mushroom fields.
+
+
+==== Command format ====
+/warden_spawn_tracker
+
+Controls the spawning timers used by the warden: changing it to 3 summons a warden.
+Likely temporary/experimental due to success messages being bare translation strings.
+
+
+==== Gameplay ====
+Effects
+
+ Darkness
+A status effect triggered by the sculk shrieker, causing the player's camera to dim in brightness, thus limiting the vision of players.
+Lowers the gamma down at an equivalent of “Moody” while having this effect.
+Enchanting
+
+Added the Swift Sneak enchantment.
+This enchantment can be found exclusively in chests in ancient cities.
+Cannot be obtained by fishing, enchanting, or other loot chests, similar to Soul Speed.
+Has three levels.
+Can only be applied on boots.
+Is incompatible with Soul Speed, Frost Walker, or Depth Strider.
+Allow the player to walk faster while sneaking, up to 75% of normal speed at level III.
+
+
+==== General ====
+Options
+
+A new accessibility slider has been added in the options menu called “Darkness Effect”.
+It controls how dark the Darkness effect gets when a warden or sculk shrieker gives it to the player.
+Particles
+
+Added four new particles: shrieks, sculk_souls, sculk_charge_pops, and sculk_charge.
+shrieks has an extra parameter representing the delay in ticks before the particle appears.
+Tags
+
+Added the ancient_city_replaceables block tag.
+Contains the #deepslate_blocks block tag and gray wool.
+Added the deepslate_blocks block tag.
+Contains deepslate, cobbled deepslate, deepslate bricks, deepslate tiles, cracked deepslate bricks, cracked deepslate tiles, chiseled deepslate, deepslate brick stairs, deepslate brick slab, deepslate tile slab, deepslate brick wall and deepslate tile wall.
+Added the sculk_replaceable block tag.
+Contains the #base_stone_overworld, #base_stone_nether, #dirt, #sand, #terracotta, #nylium block tags, gravel, soul sand, soul soil, calcite, smooth basalt, clay block, dripstone block, sandstone, red sandstone, and end stone.
+Added the sculk_replaceable_worldgen block tag.
+Contains the #sculk_replaceable block tag, cobbled deepslate, deepslate bricks, deepslate tiles, cracked deepslate bricks, and cracked deepslate tiles.
+Added the skip_occlude_vibration_when_above block tag.
+Contains sculk.
+Added the warden_events_can_listen game event tag.
+Contains the #vibrations event tag, sculk_sensor_tendrils_clicking and shriek.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Sculk sensor
+
+Has been re-added to the creative inventory.
+Can now only be obtained with Silk Touch, otherwise they drop experience.
+Now always activate when stepped on, even when sneaking.
+
+
+==== Mobs ====
+Parrots
+
+Can now imitate wardens.
+
+
+==== Gameplay ====
+Advancements
+
+The deep dark biome is now required to be visited to obtain the "Adventuring Time" advancement.
+
+
+== 22w11a ==
+22w11a is the first proper snapshot for Java Edition 1.19, released on March 16, 2022, which adds the first features of The Wild Update, pack filters, space glyph provider, 3D directional audio, new tags and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Froglight
+
+Added froglights, with 3 variants: ochre, pearlescent and verdant.
+Emit a light level of 15.
+Dropped when frogs eat small magma cubes.
+When eaten by temperate frogs, drop ochre froglight.
+When eaten by cold frogs, drop verdant froglight.
+When eaten by warm frogs, drop pearlescent froglight.
+ Frogspawn
+
+Non-solid blocks that can be placed on the surface of water.
+Laid by frogs after mating.
+Hatches tadpoles after some time.
+Does not drop upon breaking, even with Silk Touch.
+ Mangrove Leaves
+
+A new type of leaves.
+Are currently uncompostable.
+ Mangrove Log
+
+A new type of log, as well as a stripped variant.
+Can be used to craft mangrove woods and planks.
+Can be smelted into charcoal.
+ Mangrove Planks
+
+A new type of plank.
+Can be used to craft mangrove buttons, doors, fences, fence gates, pressure plates, signs, slabs, stairs, and trapdoors.
+ Mangrove Propagule
+
+A new type of sapling.
+Can be grown by bonemealing the mangrove leaves, grows from the exposed bottom of it.
+Propagules can also grow spontaneously from leaves, but only if they're naturally generated (not player-placed leaves).
+Have 4 stages to fully grown, can be accelerated by bonemealing.
+Can break off a fully grown one, and plant it to grow a mangrove tree (currently not added, generates an oak tree instead).
+Can be planted underwater.
+Can be placed in flower pots.
+Bees can pollinate them.
+Bees follow players holding them and can be bred with them.
+ Mangrove Roots
+
+A see-through block just like leaves, but can be waterlogged.
+Water currently doesn't spread outward like with other waterlogged blocks.
+Mining faster when using axes.
+Unlike leaves, it does not break when moved by a piston.
+If the roots are waterlogged, the water vanishes.
+Can be powered.
+ Mangrove Wood
+
+A new type of wood, as well as a stripped variant.
+Can be used to craft mangrove planks.
+Can be smelted into charcoal.
+ Mud
+
+Doesn't generate naturally yet.
+When walking on mud, entities sink down a bit.
+Like soul sand, but without the slowdown.
+Can be made by using a water bottle (directly or through a dispenser) on dirt, coarse dirt and rooted dirt.
+Enderman holdable.
+ Mud Bricks
+
+Can be crafted from 4 packed mud.
+Can be used to craft into mud brick slabs, stairs, and walls using a crafting table or stonecutter.
+ Muddy Mangrove Roots
+
+Can be crafted from 1 mud and 1 mangrove root.
+Unlike regular roots, they are an opaque block that can't be waterlogged and can be rotated.
+Mining faster when using shovels.
+ Packed Mud
+
+Can be crafted from 1 mud and 1 wheat.
+ Sculk
+
+Generates in the deep dark biome.
+Has an animated texture.
+Drops only experience when broken without Silk Touch.
+Sculk blocks grow when a mob dies near a sculk catalyst.
+ Sculk Catalyst
+
+Generates in the deep dark biome.
+Emits soul particles after a mob dies within 8 blocks, and grows sculk-related blocks.
+Spreads sculk blocks to wherever a nearby mob dies. The amount it spreads depends on the amount of experience the mob is meant to drop.
+Even if the mob doesn't drop experience as it wasn't killed by a player, the blocks would still spread based on the amount of experience it normally drops.
+Experience does not drop in these cases.
+The charge decays over time, faster the furthest away from the catalyst it moves.
+If a charge decays more than 4 blocks away from the catalyst, it has a chance of creating either a sculk sensor (90%) or a sculk shrieker (10%).
+If a charge decays more than 24 blocks away from the catalyst, it merely vanishes.
+Drops only experience when broken without Silk Touch.
+Emits a light level of 6.
+ Blooms when activated.
+Can spread sculk only on blocks in the sculk_replaceable tag.
+ Sculk Shrieker
+
+Generates in the deep dark biome.
+Has two soul-shaped patterns in the center.
+Drops only experience when broken without Silk Touch.
+Currently doesn't do anything due to the warden not being in this snapshot.
+ Sculk Vein
+
+Generates in the deep dark biome on the edge of sculk patches.
+Generates in a layer on top of blocks and can be placed in all directions, like glow lichen.
+Has an animated texture.
+Some have parts that are transparent, allowing the player to see the block it is on top of.
+Can be waterlogged.
+Drops nothing when broken without Silk Touch.
+
+
+==== Items ====
+ Bucket of Tadpole
+
+Can be obtained by catching a tadpole using a water bucket.
+ Mangrove Boat
+
+Crafted with mangrove planks.
+Spawn eggs
+
+ Frog spawn egg
+ Tadpole spawn egg
+
+
+==== Mobs ====
+ Frogs
+
+Can croak, jump, swim, and slowly walk on land.
+Are able to jump over 5 blocks.
+Are faster in water than on land.
+Preferred to jump to lily pad and big dripleaf.
+Have 10HP health points.
+Come in three variants: temperate, warm, and cold.
+The temperate variant is orange, the warm variant is white, and the cold variant is green.
+Eat small slimes, dropping slimeballs in the process.
+Can be tempted and bred using slimeballs.
+Lay eggs on water after mating.
+Grow from tadpoles.
+Variants depend on the temperature of the biome it turns from a tadpole to a frog in.
+ Tadpoles
+
+Jump around like fish when on land, and eventually die.
+Grow up into frogs after 20 minutes in the world, which can be sped up using slimeballs.
+Frog type dependent on which temperature a tadpole grows in.
+Have 6HP health points.
+Are hunted down by axolotls.
+Can be held in a water bucket.
+
+
+==== World generation ====
+Deep Dark
+
+New biome at the "deepest depths of the world".
+Tends to generate under continental/mountainous areas, exclusively within the deepslate layer between Y=-1 and Y=-64.
+Currently can extend above the deepslate layer, sometimes up to around Y=33.
+The surface is covered in sculk and contains all sculk-related blocks.
+With the exception of spawners, no mobs can spawn there, similar to mushroom fields.
+Upgrading of old worlds
+
+Now support 3D biome blending, so it blends the underground biomes as well.
+
+
+==== General ====
+Chunk format
+
+Added blending_data.min_section and blending_data.max_section that determines which sections are used for data for blending.
+Data pack and resource pack
+
+Can have filter section in pack.mcmeta now.
+This section has a mandatory field block, which is a list of patterns (regular expressions) for namespaces and paths.
+If any of the files in packs added before one with filter section matches any pattern inside block, it is filtered out (i.e. treated as if not present in the first place).
+filter section does not apply to a pack containing it, only to packs loaded before it.
+Both namespace and path can be omitted: if they are, the game works as if they had been specified as a ".*". The missing field matches every value. When they are included, these fields contain a regular expression pattern.
+For example, adding a pack with this section in pack.mcmeta after the vanilla pack hides all recipes and advancements defined by the vanilla pack:
+
+World presets/types and super flat world presets in “Create World” screen can now be controlled by datapacks.
+New registry types worldgen/world_preset and worldgen/flat_level_generator_preset were added to data-driven presets (like "Amplified" or "Single Biome").
+Debug screen and profiling
+
+Added estimated GPU utilization percentage to performance profiling metrics and F3 debug screen.
+This is available only for graphics devices that support GPU timer queries.
+Added "Blending" row, above the "Noise Router" row.
+Fonts
+
+Added new glyph provider type space, to allow creation of space-like glyphs.
+New provider has a single argument called advances which is a map of a codepoint to glyph advance (width).
+Rendering of space glyph is no longer hardcoded (needs to be declared manually in the font).
+Options
+
+Added "Directional Audio" sound option, for 3D Directional Audio simulation.
+Uses HRTF-based directional audio to improve the simulation of 3D sound, making it easier to distinguish which direction a sound comes from (including if it is above or below the player).
+Requires HRTF-compatible audio hardware.
+This option is best experienced with headphones.
+Toggled off by default.
+Particles
+
+Added three new particles: sculk_soul, sculk_charge_pops, and sculk_charge.
+server.properties
+
+Added server property max-chained-neighbor-updates to limit the number of consecutive neighbor updates before skipping additional ones. Negative values remove the limit.
+Splashes
+
+Added the following splash text:
+"Shriek like a Sculk Shrieker!"
+"Who let the frogs out?"
+"RIBBIT!"
+"Croak team!"
+"Nooooooooooooo!"
+"Flower forest TM perfume"
+"Hat Fridays!"
+Tags
+
+Added the following block tags:
+#convertable_to_mud: contains dirt, coarse_dirt, and rooted_dirt.
+#dragon_transparent: contains light and #fire.
+This tag controls blocks the ender dragon cannot destroy but can fly straight through.
+#frog_prefer_jump_to: contains lily_pad and big_dripleaf.
+#mangrove_logs: contains mangrove_log, mangrove_wood, stripped_mangrove_log, and stripped_mangrove_wood.
+#sculk_replaceable: contains #base_stone_overworld, #dirt, #terracotta, #nylium, #base_stone_nether, #sand, gravel, soul_sand, soul_soil, calcite, smooth_basalt, clay, dripstone_block, end_stone, red_sandstone, and sandstone.
+#sculk_replaceable_world_gen: contains #sculk_replaceable, deepslate_bricks, deepslate_tiles, cobbled_deepslate, cracked_deepslate_bricks, and cracked_deepslate_tiles.
+Added following item tags:
+#mangrove_logs: contains mangrove_log, mangrove_wood, stripped_mangrove_log, and stripped_mangrove_wood.
+Added following biome tags:
+#allows_surface_slime_spawns: contains swamp.
+#allows_tropical_fish_spawns_at_any_height: contains lush_caves.
+#has_closer_water_fog: contains swamp.
+This tag controls which biomes have a shorter view distance.
+#is_end: contains all End biomes.
+#is_overworld: contains all Overworld biomes.
+#is_savanna: contains savanna, savanna_plateau, and windswept_savanna
+#more_frequent_drowned_spawns: contains #is_river.
+#only_allows_snow_and_gold_rabbits: contains desert.
+#plays_underwater_music: contains #is_ocean and #is_river.
+This tag controls which biomes the player hears the special underwater music when underwater.
+#polar_bears_spawn_on_alternate_blocks: contains frozen_ocean and deep_frozen_ocean.
+#produces_corals_from_bonemeal: contains warm_ocean.
+This tag controls which biomes that coral can be farmed by bonemealing.
+#reduce_water_ambient_spawns: contains #is_river.
+#required_ocean_monument_surrounding: contains #is_ocean and #is_river.
+This tag defines which biomes must be present around a location that a monument possible to generate.
+#spawns_cold_variant_frogs: contains snowy_plains, ice_spikes, #is_mountain, and #is_end.
+#spawns_warm_variant_frogs: contains desert, #is_jungle, #is_savanna, #is_nether, and #is_badlands.
+#stronghold_biased_to: contains badlands, bamboo_jungle, birch_forest, dark_forest, desert, dripstone_caves, eroded_badlands, flower_forest, forest, frozen_peaks, grove, ice_spikes, jagged_peaks, jungle, lush_caves, meadow, mushroom_fields, old_growth_birch_forest, old_growth_pine_taiga, old_growth_spruce_taiga, plains, savanna_plateau, savanna, snowy_plains, snowy_slopes, snowy_taiga, sparse_jungle, stony_peaks, sunflower_plains, taiga, windswept_forest, windswept_gravelly_hills, windswept_hills, windswept_savanna, and wooded_badlands.
+These contents are exactly the same with the previous #has_structure/stronghold biome tag.
+#water_on_map_outlines: contains #is_ocean, #is_river, and swamp
+This tag controls which biomes appear as water on map outlines.
+#without_patrol_spawns: contains mushroom_fields.
+#without_wandering_trader_spawns: contains the_void.
+#without_zombie_sieges: contains mushroom_fields.
+Added the following structure tags:
+#cats_spawn_as_black: contains swamp_hut.
+#cats_spawn_in: contains swamp_hut.
+Added the following flat level generator preset tag, to control the order of elements displayed in the "Configure Flat World" screen:
+#visible: contains classic_flat, tunnelers_dream, water_world, overworld, snowy_kingdom, bottomless_pit, desert, redstone_ready, and the_void.
+This tag controls all the visible presets in the UI and their order.
+Added the following world preset tags, to control values shown on the "World Type" button in the "Create World" screen:
+#normal: contains normal, flat, large_biomes, amplified, and single_biome_surface.
+#extended: contains #normal and debug_all_block_states.
+This tag controls which world presets appear only when holding down the Alt key.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+ Brewing Stand
+
+Slightly changed its texture, to make their arms connect to their bases, which changed it from .
+ Cocoa Pod
+
+Slightly changed the stage2's top and bottom texture, to make width consistency with other sides' textures, which changed it from .
+ Doors
+
+The top of doors no longer flips in an unnatural way when opening in certain directions.
+ End Portal Frame
+
+Slightly changed its texture, to make a better transition with the end stone texture, which changed it from .
+ End Rod
+
+Removed unused pixels in its texture.
+ Mycelium
+
+Slightly changed its side texture, to match other dirt-based blocks, which changed it from .
+ Scaffolding
+
+When used as fuel for furnaces, they now burn equally as long as a bamboo does.
+ Sculk Sensor
+
+Has been re-added to the creative inventory.
+Can now be obtained only with Silk Touch, otherwise it drops experience.
+ Smoker
+
+Rotated pixels at the bottom left corner in their textures, to make a correct direction.
+
+
+==== Items ====
+ Shield
+
+They now properly spin around their own center axis and show up in the right place in item frames.
+
+
+==== Mobs ====
+ Spiders and Cave Spiders
+
+Fixed texture mapping of both types of spiders, which changed it from .
+ Wolves
+
+Fixed texture mapping of the ears of wolves.
+
+
+==== World generation ====
+Custom world generation
+
+The dimension folder is no longer present in the vanilla world generation reference pack, but dimension files still work as they used to inside a custom data pack.
+There's a new file type that the data report generator can output in the biome_parameters folder, containing all the biome parameters for the default vanilla dimensions.
+Custom dimensions no longer require a separate seed field, and in fact can no longer have a custom seed - the world seed is now always used for all dimensions.
+
+
+==== Command format ====
+/bossbar
+
+Fixed rendering of boss bars, now they have the correct appearance even when several boss bars with the notched style are visible at once.
+
+
+==== Gameplay ====
+Advancements
+
+The "Deep Dark" biome is now required to be visited to obtain the "Adventuring Time" advancement.
+
+
+==== General ====
+Chunk format
+
+Removed blending_data.old_noise, now existence of blending_data in chunk data determines if a chunk is considered old.
+Data pack and resource pack
+
+Data pack version is now 10, resource pack version is now 9.
+Debug screen
+
+The H for "humidity" has been changed to a V for "vegetation".
+Predicates
+
+Renamed the feature field in location predicates to structure.
+server.properties
+
+level-type now supports world presets instead.
+Tags
+
+Following tags are changed due to the addition of new features mentioned above:
+Mangrove button is now part of the #wooden_buttons block and item tag.
+Mangrove door is now part of the #wooden_doors block and item tag.
+Mangrove fence gate is now part of the #fence_gates block tag.
+Mangrove fence is now part of the #wooden_fences block and item tag.
+Mangrove leaves is now part of the #leaves block and item tag.
+Mangrove planks is now part of the #planks block and item tag.
+Mangrove pressure plate is now part of the #wooden_pressure_plates block and item tag.
+Mangrove propagule is now part of the #flowers and #saplings block and item tags.
+Mangrove roots is now part of the #mineable/axe block tag.
+Mangrove sign is now part of the #standing_signs block tag and #signs item tag.
+Mangrove slab is now part of the #wooden_slabs block and item tag.
+Mangrove stairs is now part of the #wooden_stairs block and item tag.
+Mangrove trapdoor is now part of the #wooden_trapdoors block and item tag.
+Mangrove wall sign is now part of the #wall_signs block tag.
+Mud brick slab is now part of the #slabs block and item tag.
+Mud brick stairs is now part of the #stairs block and item tag.
+Mud brick wall is now part of the #walls block and item tag.
+Mud bricks, mud brick stairs, mud brick slab and packed mud are now part of the #mineable/pickaxe block tag.
+Mud is now part of the #enderman_holdable block tag.
+Muddy mangrove roots and mud are now part of the #mineable/shovel block tag.
+Potted mangrove propagule is now part of the #flower_pots block tag.
+Sculk vein is now part of the #inside_step_sound_blocks block tag.
+Sculk, sculk catalyst, sculk vein and sculk shrieker are now part of the #mineable/hoe block tag.
+Tadpole is now part of the #axolotl_hunt_targets entity tag.
+Block and item tag #mangrove_logs is now part of the logs_that_burn block and item tag, respectively.
+Light block is now part of the #wither_immune block tag.
+#polar_bears_spawnable_on_in_frozen_ocean block tag is renamed to #polar_bears_spawnable_on_alternate.
+#has_structure/stronghold biome tag now reference only the #is_overworld biome tag.
+Configured structure feature tags are now called structure tags.
+World creation
+
+A short screen showing the message "Preparing for world creation" appears before the "Create New World" screen appears.
+Others
+
+The "out of memory" error screen can now be translated.
+
+
+=== Fixes ===
+40 issues fixed
+From released versions before Java Edition 1.19
+
+MC-67308 – Door top and side textures flip illogically when opened and closed.
+MC-74211 – Door placed in spawn protection only half disappears.
+MC-85780 – Rapidly swapping hands with a door or double flower can cause half door/double flower.
+MC-95103 – Shield item rendering not adjusted to the center.
+MC-99930 – Brewing stand extends its arms and inverts its texture when bottles are placed.
+MC-106510 – Long structure names (over 64 characters) do not fit in the structure block GUI.
+MC-109055 – Large cocoa pod texture is inconsistent.
+MC-124984 – Command syntax help does not recognize invalid tags.
+MC-127885 – The textures on the spider models aren't mirrored properly.
+MC-132428 – Client-side block model (of fences, iron bars, walls ...) is not updated when placement is cancelled.
+MC-134158 – Doors open one half when they fail to open / desync when interacting with a door.
+MC-136188 – # disappears from item/block tag suggestions, but not function/entity tag suggestions.
+MC-148795 – Ghost blocks can occasionally be created when placing scaffolding too quickly.
+MC-157020 – /fill fails when removing large amounts of blocks under redstone.
+MC-158668 – Vex continues to attack its target after it has been killed.
+MC-159349 – Bottom half of door is missing when an entity is passing through while placing it.
+MC-165036 – Boss bars with the notched style are rendered incorrectly if more than one boss bar is active.
+MC-165990 – Crafting bamboo into scaffolding gives you 8 times the furnace fuel for free.
+MC-166437 – Interaction with multi-blocks in spawn protection creates desync.
+MC-172550 – Ghost blocks sometimes appear when insta-mining.
+MC-183309 – Player reach is different for client and server when crawling.
+MC-195717 – Custom dimensions JSON requires seed.
+MC-200661 – Trying to dye a sheep that is 6 blocks above you plays hand animation (and dye sound).
+MC-201150 – Unused pixels in end rod texture.
+MC-202580 – Transition between end stone texture and end portal frame is not as seamless as it previously was.
+MC-202940 – Hand animation plays although item frame is out of reach.
+MC-212036 – Hand animation still plays when 7 blocks under a boat.
+MC-219843 – Mycelium's side texture differs from other dirt-based blocks.
+MC-219852 – Corner in smoker_bottom texture is still rotated incorrectly.
+MC-219875 – You can cause a desync when repeatably picking up liquids.
+MC-221639 – Light block isn't dragon or wither immune.
+MC-225837 – The word "Recipe" is spelled as "Reciple" within the "narration.recipe" string.
+MC-227382 – Goats and frogs don’t bounce on bouncy blocks upon landing from long jumps.
+MC-230603 – Wolf ears and legs aren't mirrored.
+MC-231185 – Server crash while loading Superflat world based on Rails // java.lang.StackOverflowError: Exception while updating neighbours.
+MC-235964 – Crash on "Saving world" when F3+L profiling is active - java.lang.NullPointerException: Cannot read field "f" because "this.D" is null.
+MC-237306 – NBT suggesting is not present in clear command when using an item tag.
+MC-238070 – Brewing stand arms do not connect with their bases.
+MC-238807 – "Out of memory!" message is untranslatable.
+MC-248936 – Minecraft icon on macOS is not showing the correct icon.
+
+
+== 22w12a ==
+22w12a is the second snapshot for Java Edition 1.19, released on March 24, 2022, which adds boats with chests, the warden, along with the Darkness effect and Swift Sneak enchantment, makes leaves waterloggable, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Items ====
+Spawn eggs
+
+ Warden spawn egg
+
+
+==== Mobs ====
+ Warden
+
+The first fully blind mob (bats have basic vision, both in game and in real life).
+Has a sense of smell. It can detect and path find toward the general location of a player or mob through a "smelling" action.
+Prioritizes smelling the player or mob that it is most suspicious of, rather than the one closest to it.
+Has a sense of vibration. When sensing movement, it path finds toward the source of the movement.
+It follows and attacks players, mobs, and other entities that make vibrations.
+When it detects a vibration, the growths on its head rattle and light up, similar to the sculk sensor.
+If any projectile (e.g. egg, snowball, arrow) lands near it, the warden inspects the location where the projectile landed, due to the projectile creating significant vibrations. This feature can be used in order to cause a distraction.
+Does not detect players that are sneaking.
+Can detect players or mobs that have the Invisibility effect.
+Becomes more suspicious of a player or mob as it detects its location more through vibrations and/or smelling. When it suspects the target enough, it identifies its exact location, which aggravates it, causing it to pathfind toward the target to attack regardless of outside distractions.
+Spawns when a player activates sculk shriekers three times.
+It is the only mob that spawns in the deep dark biome.
+"Emerges" from the ground when spawned by sculk shriekers.
+Digs back into the ground when it doesn't sense any vibration after 60 seconds.
+Like how name tags prevent despawning, name tags can also prevent wardens from being able to burrow back to the ground.
+Wardens don't dig back when they're in water.
+Has 500HP × 250 health points and does 30HP × 15 damage on Normal difficulty, bringing players wearing full netherite armor from full health to 7HP health points.
+Is about 3.5 blocks tall, making it one of the tallest mobs in the game, exceeding the iron golem and enderman in height and width (the same).
+Wardens have long melee reach, being able to hit the player when on top of a four block pillar, thus making it capable of countering certain cheese tactics, such as pillaring.
+Wardens disable shields when they hit the players with their fists.
+The warden doesn't qualify as a target for the advancement "Monster Hunter" and isn't needed to receive the advancement "Monsters Hunted" due to its role.
+Warden's chest has a glowing core that appears to brighten and dim in tandem with the Darkness effect.
+The core creates a low throbbing or "heartbeat" sound as it pulses. The sound and animation speed up rapidly as the warden gets more suspicious of or closer to attacking a player or mob.
+Is immune to lava and can float up lava columns very fast.
+Is immune to knockback and never slows down in water.
+
+
+==== Non-mob entities ====
+ Boat with chest
+
+Function similarly to minecart with chests, but in boats instead, so player can take a journey on the water and carry things.
+Crafted by combining a chest with any boat.
+Opening its inventory or breaking it makes nearby adult piglins angry.
+Breaking it drops itself (as opposed to a minecart with chest, which splits into its components), and all its items.
+Can hold only one entity.
+The chest on the "Boat with Chest" is 1 pixel smaller then a normal chest.
+
+
+==== Gameplay ====
+Effects
+
+ Darkness
+A status effect triggered by the sculk shrieker, causing the player's camera to dim in brightness, thus limiting the vision of players.
+Lowers the gamma down at an equivalent of “Moody” while having this effect.
+Enchanting
+
+Added the Swift Sneak enchantment.
+Has three levels.
+Can only be applied on leggings.
+Allow the player to walk faster while sneaking, up to 75% of normal speed at level III.
+Currently cannot be obtained in Survival.
+
+
+==== General ====
+Options
+
+A new accessibility slider has been added in the options menu called “Darkness Pulsing”.
+It controls how dark the Darkness effect gets when a warden or sculk shrieker gives it to the player.
+Particles
+
+Added a new particle: shriek, for the pulse that is admitted when triggering a sensor.
+Tags
+
+Added the chest_boats item tag.
+Contains all types of boat with chests.
+Added the warden_events_can_listen game event tag.
+Contains the contents of the #vibrations event tag (except flap), sculk_sensor_tendrils_clicking and shriek.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Leaves
+
+Are now waterloggable.
+Mangrove leaves are now compostable.
+Sculk catalyst
+
+Can no longer generate sculk shriekers.
+Sculk sensor
+
+Now always activate when stepped on, even when sneaking.
+Sculk shrieker
+
+Added functionality.
+Has the ability to "shriek", emitting ring-like/sonic particles.
+Is activated by a sculk sensor, redstone signal or player's stepping.
+Sculk shriekers summon wardens only if there isn't one within 48 blocks.
+Gives players the Darkness effect when activated.
+If activated three times, a warden is summoned from the ground.
+Player has 4 levels of [Int] warning_level (0-3). Every time a shrieker is activated, the level increases by 1, and never decreases.
+If a player had successfully summoned a warden, only one activation is required to summon a warden next time.
+Currently does not drop when broken, even when using Silk Touch.
+
+
+==== Items ====
+Boats
+
+Changed item textures of all boats, except mangrove.
+Now their paddles represent their respective wood color and their inside rims of the boats are darker, to match Bedrock Edition.
+Oak boat item texture in Java Edition and Bedrock Edition still have differences.
+
+
+==== Mobs ====
+Parrots
+
+Can now imitate wardens.
+
+
+==== World generation ====
+Deep dark
+
+Now less flooded than surrounding areas.
+
+
+==== Command format ====
+/locatebiome
+
+Now searches in 3D properly, which means it locates cave biomes correctly.
+Now returns all three coordinates in the output.
+
+
+==== General ====
+Debug keys
+
+Removed debug hotkey cycling render distance (F3 + F).
+Particles
+
+The parameters to the vibration particle have changed: instead of specifying the start position as an extra parameter, the regular source of the particle is now used.
+Shaders
+
+There are now shader files for translucent entity rendering.
+Tags
+
+Mangrove boat and the #chest_boats item tag are now part of the #boats item tag.
+Mangrove leaves is now part of the #mineable/hoe block tag.
+
+
+=== Fixes ===
+39 issues fixed
+From released versions before Java Edition 1.19
+
+MC-11783 – Stacking snow lighting inconsistency (smooth lighting).
+MC-51418 – Changing brightness/gamma above in-game limit using options.txt.
+MC-88677 – High FoV (manually changed in options.txt) causes X-ray effect.
+MC-94161 – Boat paddles in the inventory are oak instead of their respective wood type.
+MC-100923 – Entities with knockback resistance can get knocked back using Punch.
+MC-143209 – All mobs with passengers float in the air, but not horses with passengers.
+MC-149805 – While editing a book, player cannot use Ctrl + Home or Ctrl + End to jump to the beginning or end of the text.
+MC-165503 – Fence gates (between walls) aren't affected by ambient occlusion/smooth lighting.
+MC-176081 – Striders with NoAI still get cold.
+MC-177321 – Soul sand doesn't have smooth lighting / ambient occlusion.
+MC-179916 – Foxes path towards origin (0,0) during a thunderstorm.
+MC-189214 – Modifying the type compound of the end dimension erases the dragon fight.
+MC-190661 – Pressing Esc or using the Cancel button in the "Experimental Settings" warning returns to main menu.
+MC-197854 – Cannot use Ctrl + ⌫ Backspace to delete entire words in Edit sign GUI.
+MC-201626 – Taking saddle off of a horse makes the horse move.
+MC-207260 – Casting issue: Sculk vibrations come from the wrong positions at high coordinates.
+MC-236149 – Cannot use Ctrl + ⌫ Backspace to delete words in the book and quill GUI.
+MC-236212 – Cannot use Ctrl + Arrow to navigate the cursor between words in the book and quill GUI.
+MC-238009 – Some end cities can generate floating above the ground.
+MC-239019 – /locatebiome command doesn't consistently locate the nearest cave biome.
+MC-248621 – TagKey creation leads to memory leak.
+From the previous development version
+
+MC-249073 – Mangrove Fence Gate & Mangrove Fence are in the wrong tab in the creative inventory.
+MC-249081 – Placing water inside the mangrove propagule breaks it.
+MC-249098 – Mud brick slabs uses generic stone sound.
+MC-249112 – Ender dragon fight is not triggered upon entering the End.
+MC-249134 – Subtitle "Frog hatches" should be "Tadpole hatches".
+MC-249143 – Mud, Mangrove Roots, and their variants are too loud in comparison with other blocks.
+MC-249171 – Map color for mangrove log is incorrect.
+MC-249172 – Map color for mangrove slab is incorrect.
+MC-249173 – Map color for mangrove trapdoor is incorrect.
+MC-249174 – Map color for mud bricks, mud brick stairs, and mud brick walls is incorrect.
+MC-249181 – Powered rail / activator rail update order is reversed.
+MC-249184 – The mangrove fence recipe is not grouped with the fence recipes of other wood types.
+MC-249195 – Some Mangrove Propagules float after leaves decayed.
+MC-249253 – Bee tries to pollinate a waterlogged mangrove propagule and dies.
+MC-249270 – Mangrove leaves do not have a hoe as their preferred tool.
+MC-249303 – Mangrove Leaves cannot be composted.
+MC-249312 – Mud Brick Slab has a slower mining speed then other mud bricks.
+MC-249316 – Mangrove fence, fence gate and boat cannot be used for fuel.
+
+
+== 22w13a ==
+22w13a is the third snapshot for Java Edition 1.19, released on March 31, 2022, which adds the allay, ancient cities, reinforced deepslate, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Reinforced deepslate
+
+A new block only found in ancient cities shaped as a large frame.
+Is not craftable.
+Is completely blast-resistant, and takes an incredibly long amount of time to mine (82.5 seconds).
+Can be broken, but won't drop anything, even with Silk Touch.
+Cannot be moved with pistons.
+
+
+==== Items ====
+Spawn eggs
+
+ Allay spawn egg
+
+
+==== Mobs ====
+ Allay 
+
+Can collect the same items from the world as it holds in its hand.
+If holds an item it got from a player, it follows that player.
+It can be made to hold an item by interacting with the allay (pressing use).
+The item can also be removed by interacting with the allay (pressing use) while with an empty hand.
+Able to drop items at nearby note blocks, and stay close to a note block that has been played near them.
+If they have items in their inventory, they attempt to give them to their owner.
+When playing a note block near them, that note block becomes their favorite one for 30 seconds, and they attempt to drop off items at the note block rather than at the player.
+Sometimes spawn in cages next to pillager outposts (similar to iron golem), and inside woodland mansions.
+Has a delay for picking new items after delivering items.
+Immune to damage from its owner while holding an item.
+Have 10HP health points.
+
+
+==== World generation ====
+ Ancient city
+
+Generates within the deep dark biome and includes all of the deep dark features within it.
+Always generates at Y=-51.
+Made of deepslate and its variants, basalt and its variants, and gray wool.
+Contains soul sand, soul fire and soul lanterns, as well as candles and skeleton skulls.
+Contains chests with unique loot, like the Swift Sneak enchantment.
+Other valuable loot includes the "otherside" music disc, potions of Regeneration II, enchanted books, enchanted iron and diamond leggings, enchanted diamond hoes, and enchanted golden apples.
+If the frame of reinforced deepslate generates with a chest in front, it always contains one golden carrot (a hint about how to open the secret door below).
+Has different levels and open spaces, with several types of ruins and wall structures.
+Some of these structures contain dark oak logs, planks, and fences; cyan, light blue, and blue wool and carpets; ladders; ice and its variants; note blocks; stone pressure plates; and iron trapdoors opened with levers.
+Hidden underneath the frame of reinforced deepslate are several rooms containing redstone mechanisms that serve to introduce new players to their function.
+There is a silenced sculk sensor that needs a signal strength of 8 to open a redstone door. Taking the golden carrot from the chest placed near the structure and eating it reveals the entrance.
+Each variant of the city center has a different redstone puzzle concealing the entrance, requiring slightly different strategies to solve.
+The mechanisms are made with redstone dust, redstone torches, redstone repeaters, redstone comparators, redstone lamps, blocks of redstone, sticky pistons, a sculk sensor, a target, and a lectern.
+One variant includes a lever, and another includes a furnace containing 24 deepslate and a wooden shovel.
+
+
+==== Gameplay ====
+Advancements
+
+Added three new advancements:
+Bukkit bukkit
+Catch a tadpole in a bucket
+It spreads
+Kill a mob near a sculk catalyst
+With our powers combined!
+Have all froglights in your inventory
+Added kill_mob_near_sculk_catalyst advancement trigger.
+Triggered when a player kills an entity next to sculk catalyst, with following conditions:
+[NBT List / JSON Array] player: a player for which this trigger runs.
+[NBT List / JSON Array] entity: a predicate for the entity that was killed.
+[NBT Compound / JSON Object] killing_blow: a predicate for how the entity was killed.
+
+
+==== General ====
+Particles
+
+Added a new particle: allay_dust.
+Tags
+
+Added following block tags:
+#ancient_city_center_replaceable: deepslate, deepslate_bricks, deepslate_tiles, deepslate_brick_slab, deepslate_tile_slab, deepslate_brick_stairs, deepslate_tile_wall, deepslate_brick_wall, cobbled_deepslate, cracked_deepslate_bricks, and cracked_deepslate_tiles.
+#ancient_city_replaceable: #ancient_city_center_replaceable and gray_wool.
+Added following game event tag:
+#ignore_vibrations_on_occluding_block: hit_ground and step.
+Added following biome tag:
+#has_structure/ancient_city: deep_dark
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Mangrove leaves
+
+Are now able to drop sticks when broken.
+Note block
+
+Only wool and carpets now block the sounds coming from note blocks.
+Sculk shrieker
+
+Can generate from sculk catalyst spread again.
+Now drops if mined using Silk Touch.
+Added can_summon blockstate, which determines it summon a warden or not.
+Set to true by default for sculk shriekers placed via world generation.
+Set to false by default for sculk shriekers placed by a player or generated via sculk spread.
+
+
+==== Mobs ====
+Warden
+
+Can now walk over rails.
+
+
+==== Non-mob entities ====
+Minecart with chest, minecart with furnace, minecart with TNT and minecart with hopper
+
+Crafting recipes are now shapeless.
+Now drop themselves when broken.
+
+
+==== Gameplay ====
+Advancements
+
+Breeding frogs are now required for "Two by Two" advancement.
+
+
+==== General ====
+Game events
+
+Renamed some game events, to make them more grammatically consistent:
+drinking_finish -> drink
+entity_killed -> entity_die
+entity_damaged -> entity_damage
+elytra_free_fall -> elytra_glide
+mob_interact -> entity_interact
+ravager_roar -> entity_roar
+wolf_shaking -> entity_shake
+The following events have been collapsed into block_activate and block_deactivate:
+block_press
+block_unpress
+block_switch
+block_unswitch
+ring_bell has been removed and replaced with block_change.
+Both shulker_open and shulker_close have been removed in favour of using container_open and container_close.
+fishing_rod_cast and fishing_rod_reel_in have been renamed to item_interact_start and item_interact_finish.
+entity_interact should be dispatched more often when interacting with various mobs.
+Tags
+
+Renamed #carpets block and item tag to #wool_carpets.
+Reinforced deepslate is now part of the #dragon_immune, #features_cannot_replace, and #wither_immune block tags.
+The #spawns_cold_variant_frogs biome tag no longer contains the #is_mountain biome tag.
+Frozen peaks, jagged peaks, snowy slopes, frozen ocean, deep frozen ocean, grove, deep dark, frozen river, snowy taiga, snowy beach are now part of the #spawns_cold_variant_frogs biome tag.
+Warm ocean is now part of the #spawns_warm_variant_frogs biome tag.
+Changed game events in the #vibrations game event tag:
+Include all game events changes mentioned above.
+Added note_block_play.
+Removed minecart_moving.
+Changed game events in the #warden_events_can_listen game event tag:
+Include all game events changes mentioned above.
+Added flap and note_block_play.
+Removed minecart_moving.
+
+
+=== Fixes ===
+28 issues fixed
+From released versions before Java Edition 1.19
+
+MC-195468 – World Generation Settings not working on dedicated server.
+MC-210331 – Sculk sensors are not activated upon wandering traders drinking milk or witches drinking potions.
+MC-210485 – Sculk sensors are not activated upon evokers summoning vexes.
+MC-212503 – Sculk sensors are not activated upon collecting fish, axolotls, or tadpoles using water buckets.
+MC-214652 – Naming inconsistency for game events for eating/drinking.
+MC-249493 – Breaking a minecart with chest/furnace/TNT/hopper separates the minecart and the block it contains.
+From the Java Edition 1.19 development versions
+
+MC-249103 – Z-fighting can be seen on the underside of frogs' feet.
+MC-249110 – Z-fighting textures inside the frog's mouth.
+MC-249115 – Frogs spawn with wrong color in some biomes.
+MC-249132 – Frogs are not required to be bred for the Two by Two advancement.
+MC-249168 – Dispensing a Bucket of Tadpole above or below a dimension dispenses the item, instead of a tadpole.
+MC-249349 – Dispensing a Bucket of Tadpole dispenses the item, instead of water with a tadpole.
+From the previous development version
+
+MC-249380 – The locks of chests within chest boats are positioned slightly too high.
+MC-249382 – Boats with chest do not drop items contained in chest when destroyed in Creative.
+MC-249385 – Boat with chest cannot be placed by dispenser.
+MC-249389 – GUI Scale is a slider instead of a button.
+MC-249392 – Options have missing or untranslated names.
+MC-249397 – Bottom face of Warden's right arm missing in warden_bioluminescent_layer texture.
+MC-249398 – Game crash regarding warden.
+MC-249404 – Boats with Chest aren't grouped in the recipe book.
+MC-249405 – chatScale option defaults to 0.0 instead of 1.0, causing chat to disappear.
+MC-249409 – Furnaces, blast furnaces and smokers don't cook without fuel in the bottom slot, even if they are already fired up.
+MC-249431 – The server occasionally fails to save chunks.
+MC-249437 – Sculk shriekers no longer appear to be capable of spawning from charges.
+MC-249474 – Four-legged mobs do not sit correctly in a boat with a chest.
+MC-249501 – Boats with chest have items inside deleted when they break into planks and sticks.
+MC-249529 – Mangrove boat cannot be placed by dispenser.
+MC-249642 – Wardens can't pass over rails.
+
+
+== 22w14a ==
+22w14a is the fourth snapshot for Java Edition 1.19, released on April 6, 2022, which adds mangrove trees, mangrove swamps, echo shards, and recovery compasses, and fixes some bugs related to ancient cities and wardens.
+
+
+=== Additions ===
+
+
+==== Items ====
+ Echo shard
+
+Can only be found in loot chests in ancient cities.
+Can be used to craft recovery compasses.
+ Recovery compass
+
+A new type of compass which can point to the last place where player died.
+Randomly spins if not held by a player, the player hasn't died, or when the player is not in the same dimension of the death point.
+Can be crafted with a compass surrounded by 8 echo shards.
+
+
+==== World generation ====
+Mangrove swamp
+
+A new swamp biome with teal water that often generates in warmer clusters, usually next to jungles and deserts.
+Contains mangrove trees, a new type of tree.
+Has an unique shape, with a root system of mangrove roots leading up to a forking trunk and mangrove leaves.
+It has a chance to generate a bee nest.
+Grows from mangrove propagules.
+Naturally spawns warm frogs and slimes, but there are no sheep, cows, pigs or chickens.
+Does not generate witch huts.
+The floor is coated with a single layer of mud.
+
+
+==== Gameplay ====
+Advancements
+
+Added two new advancements:
+You Got a Friend in Me
+Have an Allay deliver items to you
+Birthday Song
+Have an Allay drop a cake at a note block
+Added item_delivered_to_player advancement trigger.
+Triggered when an allay delivers an item to a player, with following conditions:
+[NBT List / JSON Array] player: a player for which this trigger runs
+Added allay_drop_item_on_block advancement trigger.
+Triggered when an allay drops an item on a block, with following conditions:
+[NBT List / JSON Array] player: a player for which this trigger runs
+[NBT Compound / JSON Object] location: a predicate for the block that the item was dropped on
+[NBT Compound / JSON Object] item: a predicate for the item that was dropped
+
+
+==== General ====
+Player.dat format
+
+Added a new [NBT Compound / JSON Object] LastDeathLocation field, which contains a [String] dimension string and a list of three integers representing the block position of the player's last death called [Int Array] pos.
+Tags
+
+Added following block tags:
+#dead_bush_may_place_on: #sand, #terracotta, #dirt, and mud.
+#mangrove_logs_can_grow_through: mud, muddy_mangrove_roots, mangrove_roots, mangrove_leaves, mangrove_log, and mangrove_propagule.
+#mangrove_roots_can_grow_through: mud, muddy_mangrove_roots, and mangrove_roots.
+Added following item tag:
+#compasses: compass and recovery_compass.
+Added following entity tag:
+#frog_food: slime and magma_cube.
+Added following game event tag:
+#shrieker_can_listen: sculk_sensor_tendrils_clicking
+Added following cat variant tag (new type):
+#default_spawns: tabby, black, red, siamese, british, calico, persian, ragdoll, white, and jellie.
+#full_moon_spawns: #default_spawns and all_black.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Dead bush
+
+Can now be placed on mud.
+Mangrove propagule
+
+Now correctly grows into mangrove trees instead of oak trees.
+Mud
+
+Now can convert into clay by placing mud above a block which has pointed dripstone underneath.
+Small dripleaf
+
+Can now be planted on mud if it is underwater.
+
+
+==== Mobs ====
+Frogs
+
+Now actually kill their food, using a base attack strength of 10.
+Warden
+
+Now get angry at all mobs that bump into it, not just players.
+Can no longer spawn on water.
+Can now pathfind through lava.
+Shadow is now the appropriate size.
+
+
+==== World generation ====
+Ancient city
+
+Removed small_portal_statue, intact_horizontal_wall_stairs_upward, top_piece, bottom_piece and variant structures because they duplicate existing structures.
+Changed some structures:
+Slightly changed city_center_2 blocks around the chest so that vibrations generated there are always detected by the sculk sensor below.
+A missing sculk sensor was added for the redstone lamp in bottom_1.
+Replaced the light blue and blue carpets in ice_box_1 with gray carpets, and the trapdoor there is no longer open by default.
+entrance_path_5 is now able to generate.
+Changed the loot found in chests:
+There's now an extra roll of loot for every chest, with one possible loot option being now 1-3 echo shards.
+Replaced the golden carrot in city_center_2 chest with a golden apple.
+
+
+==== Gameplay ====
+Advancements
+
+The mangrove swamp is now required to be visited for the "Adventuring Time" advancement.
+Removed field location from triggers location, slept_in_bed, hero_of_the_village, and voluntary_exile. It was handled exactly the same as player.location.
+
+
+==== General ====
+Entity format
+
+Replaced [Int] CatType field in cats' entity format with [String] variant.
+Accepted type of value is changed from numeric values to strings IDs. (e.g. 5 -> minecraft:calico)
+There's also have a similar change to frogs' entity format like the cats' one.
+Loot tables
+
+The special case size-dependent loot drops of slimes and magma cubes are now data driven and part of their loot tables, using the new sub-predicate types.
+The loot drops for frog food are now part of the food's death loot, instead of dropping hard-coded item types.
+Predicates
+
+player, fishing_hook, lightning_bolt, and catType fields have been replaced with type_specific.
+type_specific has field [String] type (one of player, fishing_hook, lightning_bolt, or cat) and same fields as removed fields.
+Example:
+Before:
+
+After:
+
+catType has been wrapped to match new format and now uses new cat variant names instead of texture names.
+Before:
+
+After:
+
+New type_specific options:
+frog has [String] variant field matching frog variant (minecraft:warm, minecraft:temperate, or minecraft:cold).
+slime applies for slimes and magma cubes, has [Int] Size field matching slime size (smallest is 1).
+Tags
+
+Mangrove swamp is now part of the #allows_surface_slime_spawns, #has_closer_water_fog, #has_structure/mineshaft, #has_structure/ruined_portal_swamp, #is_overworld, #spawns_warm_variant_frogs, and #water_on_map_outlines biome tag.
+Removed #ancient_city_center_replaceable block tag, and merged all its contents into the #ancient_city_replaceable block tag.
+Renamed #warden_events_can_listen game event tag to #warden_can_listen, then:
+Removed sculk_sensor_tendrils_clicking.
+Added #shrieker_can_listen.
+
+
+=== Fixes ===
+57 issues fixed
+From released versions before Java Edition 1.19
+
+MC-91364 – Mob loot cannot be specified for small magma cube and big/medium slime.
+MC-176621 – Entity spawn packets use integers for yaw and pitch instead of bytes.
+MC-207289 – Sculk sensor wool occlusion has directional bias.
+MC-207522 – Sculk sensors don't react to horses kicking.
+MC-207635 – Sculk sensors react differently to wool occlusion depending on the global direction.
+MC-209905 – Sculk sensors are not activated upon milking entities.
+MC-228533 – Sculk sensors don't detect the feeding of untamed/trusting mobs.
+From the Java Edition 1.19 development versions
+
+MC-249075 – Sculk shrieker isn't grouped with other sculk related blocks in the decorations tab of creative inventory.
+MC-249122 – block.sculk_catalyst.bloom has no subtitle.
+MC-249124 – block.sculk_shrieker.shriek currently has no subtitle.
+MC-249254 – Frogs eating named slimes or magma cubes isn't logged in console.
+MC-249255 – Sculk catalyst does not spread when a frog kills a slime or a magma cube.
+MC-249264 – Frogs can make eating sounds ("Frog eats") when they can't get close to their target, even without opening their mouths.
+MC-249369 – Frogs instantly kill small slimes regardless of their total health or resistance.
+MC-249384 – Warden can create Light, barriers or structure voids particles when digging.
+MC-249386 – The entity shadows of wardens are too small in relation to the size of their models.
+MC-249387 – Warden's digging sound is the same as its emerging sound.
+MC-249400 – The vertical movement of wardens when they're in liquids is too sensitive.
+MC-249401 – Warden spawn egg isn't alphabetized correctly.
+MC-249415 – Wardens won't pathfind through lava even though they're immune to it.
+MC-249422 – Some subtitles relating to the warden don't contain possessive apostrophes where appropriate.
+MC-249426 – Angered wardens play the "warden takes notice angrily" sound when hit in survival on top of their hurt sound.
+MC-249430 – Wardens remember players in creative mode.
+MC-249434 – The warden indefinitely roars when attacked by multiple entities.
+MC-249447 – Activated sculk shriekers fail to summon the warden if you run away.
+MC-249451 – Warden doesn't appear in spawner.
+MC-249455 – "Not a string" appears in log when serializing angered Warden.
+MC-249473 – Some Warden sounds play in Peaceful difficulty.
+MC-249476 – Warden can spawn in water.
+MC-249479 – Wardens will attack their teammates.
+MC-249496 – Large amounts of wardens cause performance issues.
+MC-249499 – Warden summoned with silent tag still plays heartbeat sounds.
+MC-249504 – The sounds of wardens groaning angrily aren't controlled by the "Hostile Creatures" sound slider.
+MC-249509 – Warden is invisible for a split second when spawned in by spawner or spawn egg.
+MC-249517 – Warden doesn't detect non-player mobs colliding with them.
+MC-249526 – Sculk shriekers are not activated when the player is riding something.
+MC-249530 – Warden's hitbox shows up in peaceful difficulty.
+MC-249531 – Warden indefinitely roars when the attack target is invulnerable.
+MC-249646 – The warden sniffs excessively after killing a mob.
+MC-249659 – Sculk Catalyst and Sculk Veins only drop when broken by Silk Touch hoe.
+MC-249674 – Wardens forget their targets on world reload.
+From the previous development version
+
+MC-249712 – Server hangs and game stops responding when loading a chunk containing a structure with an allay.
+MC-249714 – Z-fighting can be seen on the wings of allays during their death animation.
+MC-249720 – Allay's wings are not attached to its body.
+MC-249727 – Wardens stop sensing vibrations after world reload.
+MC-249728 – Lava can generate in ancient cities and burn wool.
+MC-249729 – Z-fighting can be seen on the underside of allays' heads.
+MC-249751 – Warden UV overlapping.
+MC-249758 – Z-fighting can be seen when the arms of allays intersect their bodies.
+MC-249761 – Trapdoor of Ice Box in Ancient Cities is by default open.
+MC-249764 – Second lamp in the centers of ancient cities is missing its sculk sensor.
+MC-249768 – entrance_path_5 can never generate.
+MC-249769 – Unused structures in ancient cities.
+MC-249800 – Redstone door sculk sensor in the Ancient City center is too far away to consistently detect the player eating.
+MC-249816 – Wardens hitbox doesn't adjust when emerging and digging.
+MC-249825 – Frogs ignore doMobLoot gamerule.
+MC-249910 – Warden "Nearby Closest" sound is unused.
+
+
+== 22w15a ==
+22w15a is the fifth snapshot for Java Edition 1.19, released on April 13, 2022, which adds ranged attack for wardens, two new advancements, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Gameplay ====
+Advancements
+
+Added two new advancements:
+"Sneak 100"
+Sneak near a sculk sensor, sculk shrieker or warden to prevent it from hearing you
+"When the Squad Hops into Town"
+Get each frog variant on a lead
+Added avoid_vibration advancement trigger.
+Triggered when a vibration event is ignored because the source player is holding the sneak key, with following conditions:
+player: a player for which this trigger runs
+Added thrown_item_picked_up_by_player advancement trigger.
+Triggered when a player picks up an item that was thrown by an entity, with following conditions:
+player: a predicate for the player picking up the item.
+entity: a predicate for the entity that threw the item.
+item: a predicate for the item.
+
+
+==== General ====
+Particles
+
+Added a new particle: sonic_boom.
+Tags
+
+Added following block tags:
+#completes_find_tree_tutorial: #logs, #leaves, and #wart_blocks.
+#dampens_vibrations: #wool and #wool_carpets.
+#nether_carver_replaceables: #base_stone_overworld, #base_stone_nether, #dirt, #nylium, #wart_blocks, soul_sand, and soul_soil.
+#overworld_carver_replaceables: #base_stone_overworld, #dirt, #sand, #terracotta, #iron_ores, #copper_ores, water, gravel, sandstone, red_sandstone, calcite, snow, packed_ice, raw_iron_block, and raw_copper_block.
+Added following item tags:
+#completes_find_tree_tutorial: #logs, #leaves, and #wart_blocks.
+#wart_blocks: nether_wart_block and warped_wart_block.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+ Carpets
+
+Now dampen the vibrations caused by their placing, breaking or dropping as items, just like wool.
+Now also dampen the vibrations caused by running and jumping over them.
+  Glow Lichen and Sculk Veins
+
+Can now be placed on the top and sides of soul sand, mud and maximum height snow.
+ Mangrove Leaves
+
+Texture changed from .
+Are now able to drop when using Silk Touch tools.
+ Mangrove Roots
+
+Can now be composted.
+ Mud
+
+Now allows sugar cane, bamboo, and big dripleaves to be planted on top of it.
+ Muddy Mangrove Roots
+
+Now allows flowers, saplings and grass to be planted on top of it.
+ Note Block
+
+Reverted the change made in 22w13a in which only wool and wool carpets would block sounds.
+ Sculk Shrieker
+
+Changed model and side texture.
+ Vines
+
+Can now be placed on the sides of soul sand, mud and maximum height snow.
+
+
+==== Gameplay ====
+Advancements
+
+Changed "You Got a Friend in Me" to "You've Got a Friend in Me".
+Fixed capitalization issues in several advancements.
+
+
+==== Items ====
+Boats and Boats with Chests
+
+Changed item textures of all types of boats and boats with chests.
+ Recovery Compass
+
+Can no longer be used on a lodestone.
+
+
+==== Mobs ====
+ Allay
+
+Now have a natural health regeneration of 2HP per second.
+ Wandering Trader
+
+Now sells 1 mangrove propagule for 5 emeralds.
+ Warden
+
+Can now charge a ranged attack when the player is building high, hiding behind walls or being out of range of their melee attack.
+Their rib cages open up to shriek a sonically charged ranged attack that can penetrate walls.
+The ranged attack deals 30HP × 15 damage in Normal and can hit at a horizontal distance of 15 blocks.
+The ranged attack can only hit one target at a time.
+Can now smell players from further away.
+The vertical range wardens get angry at a target while sniffing is now 20 blocks instead of 6 blocks.
+
+
+==== Non-mob entities ====
+ Boats with Chests
+
+Now, the inventory can be accessed by right click directly when there is already a passenger inside of it.
+ Item Frame
+
+Now adjusts its hitbox to account for the larger size of a framed map.
+
+
+==== World generation ====
+Mangrove swamp
+
+Mud now generates all the way from the surface down to stone.
+Cave carvers can now cut through mud.
+Tall mangroves are far more common than short mangroves now.
+Moss carpet now generates on top of some mangrove tree's roots.
+Tropical fish now spawn in water.
+Water fog color is now cyan instead of yellow like in the normal swamp.
+
+
+==== Gameplay ====
+Advancements
+
+The Darkness effect is now required for the "How Did We Get Here" advancement.
+The parent advancement of the "With our powers combined!" advancement is changed from "Bukkit bukkit" to "When the Squad Hops into Town".
+The ID of the "Birthday Song" advancement is changed from allay_deliver_cake_to_noteblock to allay_deliver_cake_to_note_block.
+Removed item_delivered_to_player advancement trigger.
+
+
+==== General ====
+Bonus chest
+
+Now has a chance to contain mangrove logs.
+Creative inventory
+
+All types of wooden stairs are now found together in the same order as other wooden blocks.
+The recovery compass is now found next to the regular compass.
+Panorama
+
+Changed to reflect The Wild Update, showing a mangrove swamp.
+Tags
+
+Renamed #ignore_vibrations_on_occluding_block game event tag to #dampenable_vibrations.
+Renamed #occludes_vibration_signals item tag to #dampens_vibrations, and added #wool_carpets to it.
+Mud is no longer part of the #dead_bush_may_place_on and #enderman_holdable block tags.
+Mud and muddy mangrove roots are now part of the #dirt block and item tag.
+This change effectively keeps mud in, and adds muddy mangrove roots, to the #dead_bush_may_place_on and #enderman_holdable block tags.
+Moss carpet and vine are now part of the #mangrove_logs_can_grow_through block tag.
+Moss carpet, vine, mangrove propagule and snow are now part of the #mangrove_roots_can_grow_through block tag.
+
+
+=== Fixes ===
+60 issues fixed
+From released versions before Java Edition 1.19
+
+MC-147686 – Joining a world that uses custom resources shows default resources until fully loaded.
+MC-183520 – Phantoms with [Byte] NoAI can go through blocks.
+MC-210805 – Wool incorrectly occludes the vibration of walking along blocks placed on top of it that are under 5⁄16 blocks tall.
+MC-210868 – Wool occlusion doesn't work as it should when combining both vertical and horizontal motion.
+MC-212610 – Glow lichens cannot be put on soul sand.
+MC-212629 – Leashes from two or more invisible entities connect to each other.
+MC-216567 – Vines cannot be placed on the sides of 8 layers of snow.
+MC-216569 – Glow lichen cannot be placed on the side of 8 layers of snow.
+MC-219642 – Vines cannot be placed on the sides of soul sand.
+MC-226430 – Several 1.17 advancement strings are improperly capitalized.
+MC-228862 – Game freezes when client fails to download server resource pack.
+MC-231458 – The word "ingot" within the "Serious Dedication" advancement description is improperly capitalized.
+MC-235035 – Sleeping in a custom dimension with [Boolean] natural set to false causes crash.
+MC-237920 – "Feels like home" advancement is incorrectly capitalized.
+MC-237922 – "Jukebox" in Sound of Music description is incorrectly capitalized.
+MC-237924 – The word "villager" within the "Star Trader" advancement description is improperly capitalized.
+From the Java Edition 1.19 development versions
+
+MC-249072 – Sculk shriekers replace water blocks.
+MC-249087 – The inside texture of mangrove roots darkens when solid blocks are placed adjacent to them.
+MC-249111 – sculk_charge cannot be used in /particle command.
+MC-249208 – Vines, glow lichens, and sculk veins cannot be placed on the side or top faces of mud.
+MC-249315 – Mangrove Roots cannot be composted.
+MC-249347 – Map color for mangrove sign and mangrove wall sign is incorrect.
+MC-249423 – Player can't open the boat with chests without a ⇧ Shift, even when player can't get into the boat.
+MC-249424 – Hand animation still plays when trying to get into a boat with chest that already has an entity in it.
+MC-249445 – Activated sculk shriekers fail to summon the warden when broken.
+MC-249488 – Darkness pulsing option is not saved.
+MC-249495 – Inconsistent shading in boat item sprites.
+MC-249632 – The Darkness effect is not required for the "How Did We Get Here?" advancement.
+MC-249664 – Warden despawns when far away.
+MC-249688 – Mangrove stairs come after nether wood stairs in the Building Blocks tab.
+MC-249737 – Allay can be pushed around with {NoAI:1b}.
+MC-249741 – New advancement names are not properly capitalized.
+MC-249785 – Warden can be pushed when emerging and digging.
+MC-249824 – Allays can pass through walls client-side as a result of them not colliding with entities properly.
+From the previous development version
+
+MC-249917 – Mangrove trees don't replace certain blocks with roots.
+MC-249923 – Recovery compass isn't sorted with regular compass in creative inventory.
+MC-249927 – Player can use a Recovery Compass on a Lodestone.
+MC-249931 – Growing a Mangrove Tree with bone meal creates a ghost block.
+MC-249933 – Game crash related to the frog occurred (Accessing LegacyRandomSource from multiple threads).
+MC-249934 – Mangrove roots sometimes don't generate waterlogged when generating within water.
+MC-249936 – Cave carvers don't cut through mud.
+MC-249938 – Mangrove Leaves do not drop from Silk Touch tools.
+MC-249942 – Water got removed after waterlogged Mangrove Propagule grows.
+MC-249947 – Top of Sculk Shrieker model is vertically squished.
+MC-249968 – Powering a beacon disconnects player from server.
+MC-249977 – Harsh chunk borders appear when upgrading a 1.18.2 world.
+MC-249979 – Chance to have mangrove roots not waterlogged when growing from a sapling while underwater.
+MC-249984 – "note_block" is inconsistently spelled as "noteblock" in the allay_deliver_cake_to_noteblock advancement.
+MC-250017 – [Int Array] UUID launch argument required.
+MC-250025 – The "You Got a Friend in Me" advancement is incorrectly presented in the past tense.
+MC-250063 – Warden doesn't attack anything after dismounting as a passenger.
+MC-250081 – Wandering trader doesn't trade mangrove propagule.
+MC-250099 – Mangrove Log and Mangrove Planks don't spawn in bonus chest.
+MC-250101 – Can't plant sugar cane on mud.
+MC-250103 – Can't plant bamboo on mud.
+MC-250104 – Can't plant big dripleaf on mud.
+MC-250106 – Overworld vegetation cannot be placed on muddy mangrove roots.
+MC-250115 – Mud does not generate underwater in mangrove swamps.
+MC-250135 – Sculk veins cannot be placed on the top or sides of soul sand.
+MC-250136 – Sculk veins cannot be placed on eight layers of snow.
+
+
+== 22w16a ==
+22w16a is the sixth snapshot for Java Edition 1.19, released on April 20, 2022, which introduces new music, tweaks to the allay, more predictable randomized events, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Items ====
+ Disc fragment
+
+Added a new music disc fragment titled "5".
+Can only be obtained from the chests in the ancient cities. They are extremely rare and hard to obtain.
+Music disc
+
+ Added a new music disc by Samuel Åberg titled "5".
+Can only be obtained through crafting by using 9 "Disc Fragment 5"s.
+
+
+==== Non-mob entities ====
+Painting
+
+ Added unused painting earth, wind, fire, and water from Bedrock Edition.
+These paintings are not placeable by default, but can be added through commands (such as /summon painting ~ ~ ~ {variant:"water"}) or through a data pack.
+
+
+==== Command format ====
+Game rules
+
+Added doWardenSpawning game rule, to control whether wardens can be spawned or not, defaults to true.
+
+
+==== General ====
+Debug screen
+
+Added a heap memory allocation metric.
+Music
+
+Added new music, all by Lena Raine.
+"Ancestry" only plays in the deep dark.
+"Aerie", "Firebugs", and "Labyrinthine" play in the lush caves, all types of swamps, forests, and jungles, as well as the title screen.
+Tags
+
+Added the following block tag:
+#frogs_spawnable_on: grass_block, mud, mangrove_roots, muddy_mangrove_roots, and moss_carpet.
+Added the following painting variant tag (new type):
+#placeable: kebab, aztec, alban, aztec2, bomb, plant, wasteland, pool, courbet, sea, sunset, creebet, wanderer, graham, match, bust, stage, void, skull_and_roses, wither, fighters, pointer, pigscene, burning_skull, skeleton, and donkey_kong.
+These paintings are placeable in Survival mode.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Froglights
+
+Now movable by pistons.
+
+
+==== Items ====
+Bucket of tadpole
+
+Now plays sounds when picking up or releasing tadpoles.
+
+
+==== Mobs ====
+Allay
+
+Raised health from 10HP to 20HP × 10.
+Lowered the delay after item throw from 5 seconds to 3 seconds.
+Raised item search range from 9 to 32.
+Changed movement speeds:
+Now slower when just wandering.
+Now faster when collecting items, going to the player or going to a note block.
+Changed throwing arc to make them hit their target more consistently.
+Now drop the item they were holding when dying.
+Are now unable to despawn if they are holding an item they have been given.
+Now make a sound when they toss an item.
+Frog
+
+Can now spawn on grass block, mud, moss carpet, mangrove roots and muddy mangrove roots.
+Tadpole
+
+Now make a sound when they grow up into a frog.
+
+
+==== World generation ====
+Mangrove swamp
+
+Atmospheric water color has been changed to a pale green tint.
+
+
+==== General ====
+LWJGL
+
+Updated LWJGL library to 3.3.1.
+Music
+
+The places where the following existing music can be played are changed:
+"Stand Tall", "Wending", and "Infinite Amethyst" can no longer be played in the main menu.
+"Left to Bloom" and "One More Day" can no longer be played in the main menu, and can be played in all types of forests, jungles, and old growth taigas.
+"Floating Dream" and "Comforting Memories" can be played in all types of forests, jungles, and old-growth taigas.
+Particles
+
+Removed the particle allay_dust.
+Randomized events predictability
+
+Following randomized events are now more predictable, and no longer have a possibility of extreme behaviors:
+Placement and velocity of things dropped from droppers or dispensers.
+Placement and velocity of items spawned from containers upon destruction.
+Randomized follow_range component attribute for mobs.
+Velocity of horses spawned from skeleton traps.
+Blaze random position and randomized speed of blaze projectiles.
+Randomized portion of damage and velocity of arrows.
+Randomized flight pattern of firework rockets.
+Bobbing patterns and time until a fish for fishing rods.
+Tags
+
+The #music_discs item tag now includes the new music_disc_5.
+
+
+=== Fixes ===
+47 issues fixed
+From released versions before Java Edition 1.19
+
+MC-81870 – Editing entity data of Painting does not reflect in-game until chunk reload.
+MC-111809 – Paintings unrender when entity data is updated rapidly.
+MC-121376 – Cannot bind the "caps" key in control settings.
+MC-122421 – On Linux, simultaneously pressing two keys introduces a delay for one of the keys pressed.
+MC-134546 – Mouse won't move first couple seconds after you open your inventory.
+MC-187188 – Painting NBT and registry contain a typo: "Motive" instead of "Motif".
+MC-189897 – Game hangs while loading world saves when entering the singleplayer world selection menu.
+MC-210887 – Game launch crashes on Linux with Unicode home folder/username.
+MC-226184 – Axolotls pathfinding to water can sometimes fall in wide holes.
+MC-227041 – Axolotls will spin constantly on honey blocks that are placed above water.
+MC-228049 – Axolotl can't pathfind through open doors.
+MC-229182 – JVM crash in org.lwjgl.system.JNI.invokePPPP.
+MC-237106 – JVM crash in atio6axx.dll at org.lwjgl.opengl.GL11C.nglDrawElements(IIIJ)V.
+MC-244957 – "Search" Option in Social Interactions Screen is not labeled in the right order when using ↹ Tab.
+MC-245001 – "Manage with Microsoft account" button in Social Interactions menu is not centered.
+MC-249169 – Paintings do not have their packet coordinates set on spawn.
+MC-249246 – Strider can't pathfind through open doors.
+From the Java Edition 1.19 development versions
+
+MC-249084 – No sound is present for placing a Bucket of Tadpole.
+MC-249092 – Mangrove Stripped Log, Stripped Wood and Wood are in the incorrect order in the creative inventory.
+MC-249120 – Some sound events introduced in 22w11a are missing from the game.
+MC-249176 – Froglights are not visible on maps.
+MC-249179 – Rain/Snow can go through froglights.
+MC-249193 – Frog can't pathfind through open doors.
+MC-249217 – Fluid level next to froglights is too low.
+MC-249265 – Some blocks cannot be placed on froglights.
+MC-249459 – Cactus is not destroyed by froglights.
+MC-249653 – Parity Issue: Oak Boat texture in Java does not match Bedrock Edition.
+MC-249663 – The subtitles of some parrot imitation sounds are inconsistent with the original sounds' subtitles.
+MC-249679 – Incorrect activation of warden's sniffing animations and behavior.
+MC-249715 – Allays don't drop their held items upon death.
+MC-249734 – The minecraft:entity.allay.flap sound event doesn't have a translation key.
+MC-249754 – The minecraft:entity.allay.flap sound event is unused.
+MC-249766 – Allays can despawn after being given an item if they haven't picked up any items yet.
+MC-249790 – Allay follows and drops items for players in spectator mode.
+MC-249814 – The minecraft:entity.allay.throw sound event is unused.
+MC-249838 – Allays lose their idle animation once they start moving.
+MC-249855 – Parity Issue: Allays don't have a flying animation in Java.
+MC-249912 – minecraft:ancient_city/city_center_3 is one block shorter compared than the other ancient city centers.
+MC-249928 – Mangrove tree roots do not update blocks around them when generating.
+MC-250039 – Wardens can get angry at mobs outside world border.
+MC-250040 – Wardens can hear mobs beyond the world border.
+MC-250041 – Wardens can spawn outside of world border.
+MC-250044 – Observers don't detect mangrove roots when tree grows.
+MC-250094 – Wardens ignore /kill execution whilst they're emerging or digging.
+MC-250095 – Wardens can spawn in very narrow places, causing them to suffocate.
+From the previous development version
+
+MC-250293 – The allay_dust particle is unused.
+MC-250294 – Parity Issue: Allays item detection range is significantly smaller than in Bedrock.
+
+
+== 22w16b ==
+22w16b is the seventh snapshot for Java Edition 1.19, released on April 20, 2022, which fixes a bug related to a crash.
+
+
+=== Fixes ===
+2 issues fixed
+From the Java Edition 1.19 development versions
+
+MC-249786 – Allay has trouble throwing items onto targets at different heights.
+From the previous development version
+
+MC-250312 – Game crashing when clicking singleplayer: java.lang.NullPointerException: Cannot invoke "java.lang.Comparable.compareTo(Object)" because "pivot" is null.
+
+
+== 22w17a ==
+22w17a is the eighth snapshot for Java Edition 1.19, released on April 27, 2022, which adds goat horns from Bedrock Edition, makes changes to allays and wardens, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Items ====
+ Goat horn
+
+Added from Bedrock Edition.
+Drops when a goat rams coal ore, emerald ore, iron ore, log, packed ice, or stone.
+Can play a loud sound that can be heard from afar, with a cooldown around 7 seconds between each use.
+Has 8 variants, each variant has its own unique sound.
+"Ponder", "Sing", "Seek", "Feel" can be obtained from the regular goats' ramming, or the chest in pillager outposts with a 50% chance.
+"Admire", "Call", "Yearn", "Dream" can only be obtained from the screaming goats' ramming.
+The variant of horn that a goat may drop is completely random.
+
+
+==== Gameplay ====
+Death messages
+
+Added new death messages to wardens' ranged attack:
+"<player> was obliterated by a sonically-charged shriek"
+If a player or mob attacks the dead player before they die, the death message is "<player> was obliterated by a sonically-charged shriek whilst trying to escape <player/mob>".
+
+
+==== General ====
+Chat
+
+Chat messages between players are now cryptographically signed.
+Players are given a Mojang provided key-pair on startup.
+Chat styling is now handled via server resource packs with the translation key chat.type.text.
+Entity format
+
+Added [Byte] HasLeftHorn and [Byte] HasRightHorn boolean fields to goats' entity format.
+Decides the visibility and dropability of their horns.
+Item modifier
+
+Added the item function set_goat_horn_sound.
+server.properties
+
+Added server property enforce-secure-profile to allow servers to requiring a player to having a Mojang-signed public key.
+Defaults to false.
+Enforcing secure profiles prevents players without a Mojang-signed public key from connecting.
+Tags
+
+Added the following block tags:
+#overworld_natural_logs: acacia_log, birch_log, oak_log, jungle_log, spruce_log, dark_oak_log, and mangrove_log.
+#snaps_goat_horn: #overworld_natural_logs, stone, packed_ice, iron_ore, coal_ore, and emerald_ore.
+Added the following item tag:
+#overworld_natural_logs: acacia_log, birch_log, oak_log, jungle_log, spruce_log, dark_oak_log, and mangrove_log.
+Added the following game event tag:
+#allay_can_listen: note_block_play
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Brewing stand
+
+Updated base UVs and texture to match a graphical fix in Bedrock Edition, which has no effect on visuals.
+Mangrove roots
+
+Changed its block model, to make the inner faces have the same size with the outer faces.
+Piston and sticky piston
+
+Changed their textures, to match the color of the oak planks on the piston head.
+Sculk
+
+Its blast resistance has been lowered.
+Sculk catalyst
+
+Sculk spreading can now replace soul sand and mud.
+TNT
+
+Ores, sculk blocks, and spawners blown up by TNT ignited by a player now drop experience.
+
+
+==== Items ====
+Fence
+
+Changed the model when in an item frame, to make their two horizontal bars thicker, matching the thickness in their block form.
+Leather cap
+
+Changed its texture, to extend the center bar on the back face to the bottom.
+
+
+==== Mobs ====
+Allay
+
+Connecting with note blocks is now better visualized by the vibration particle.
+Connecting with note blocks can now be blocked by wool again, by placing wool between the allay and the note block.
+Several sounds have been updated.
+Evoker, illusioner and witch
+
+Changed their models, now their last two rows of pixels on their robes can render.
+Goat
+
+Now can drop 2 horns each.
+The number of horns left to drop is represented on the model.
+Llama
+
+Changed all variants' chest texture, to use the chest texture since the texture update.
+Pillager
+
+Changed its model, slightly shortened its coat to match its actual texture.
+Villager
+
+Changed their models, now their last two rows of pixels on their robes can render.
+Changed their textures in all biomes.
+The color of the top and bottom of their legs now matches the sides correctly.
+Removed the identical part in savanna villagers' texture with the villager base texture.
+Slightly changed jungle villagers' shoes texture.
+Vindicator
+
+Changed its model, slightly shortened its coat to match its actual texture.
+Changes its crossed arm's texture.
+The "gap" between their two arms connects correctly now.
+Changed the color of the seam face between their upper and lower arms, which is not visible in default.
+Warden
+
+Ranged attack now:
+Bypasses shields and armor.
+Deals damage of 10HP instead of 16HP × 8 (Easy) / 30HP × 15 (Normal) / 45HP × 22.5 (Hard).
+Has a reduced cooldown of 2 seconds instead of 5 seconds.
+Now drops a sculk catalyst upon death.
+Wolf
+
+Reverted the mirroring change for ears and legs in 22w11a. 
+
+Zombie villager
+
+Changed their models, now their last two rows of pixels on their robes can render.
+Changed their clothes texture in all biomes (except desert and swamp).
+The color of the top and bottom of their legs now matches the sides correctly.
+Added "shirt" part in savanna zombie villagers' clothes, to match other zombie villagers.
+Slightly changed jungle zombie villagers' shoes texture.
+Removed extra textures on weaponsmith zombie villagers' arm's top.
+
+
+==== General ====
+HUD
+
+Changed the texture of the "half" armor bar, moved the highlighted pixel from the right to the left.
+Realms
+
+Replaced realms subtle selected world highlight with a clear green checkmark.
+Splashes
+
+Removed "Привет Россия!"
+Tags
+
+Polished deepslate are now part of the #sculk_replaceable_world_gen block tag.
+Removed #dampenable_vibrations game event tag.
+
+
+=== Fixes ===
+49 issues fixed
+From released versions before Java Edition 1.19
+
+MC-13103 – Texture Z-Fighting at Wolf[/]Cat snout.
+MC-53312 – Illager/(zombie) villager/witch robes do not render the last two rows of pixels.
+MC-106627 – Leather cap texture overlay does not align correctly.
+MC-141064 – Cleric collar z-fighting.
+MC-166686 – Villagers with taiga outfits show Z-fighting around their neck.
+MC-176840 – Ores no longer drop experience when blown up.
+MC-208597 – Boats ridden over wool are detected by sculk sensor.
+MC-208771 – Projectiles landing on wool trigger sculk sensors.
+MC-210712 – Sculk sensors are not activated upon backwards movement in a boat.
+MC-210901 – Sculk sensors are not activated upon entities sliding on ice.
+MC-224709 – Full armor icon does not match empty armor icon.
+MC-226761 – Parity issue: Goats do not drop horns.
+MC-248161 – Weaponsmith zombie villager texture has leftover pixels from the regular weaponsmith texture.
+MC-248292 – Llama uses pre-1.14 chest texture.
+MC-248555 – Mismatches within (zombie) villager textures.
+MC-248556 – Savanna Zombie Villager missing a body texture.
+MC-248557 – Savanna villager body defines pixels identical to base villager texture.
+MC-248561 – Vindicator's crossed arms element has miscolored pixels on the faces touching the other arm elements.
+MC-248562 – Iron golem has unused pixels in the texture.
+MC-249032 – Fence item model's bars inconsistent with placed block.
+MC-249039 – "Half" armor bar icon texture is incorrect.
+MC-249962 – Exploding an End Crystal does not produce explosion vibration.
+MC-250921 – Spawners do not drop experience when blown up.
+From the Java Edition 1.19 development versions
+
+MC-249190 – Sculk blocks do not drop experience orbs when blown up.
+MC-249192 – Mangrove propagules break lily pads and frogspawn directly above them when attempting to grow.
+MC-249262 – Sculk cannot replace soul sand or mud when mobs die on top of them.
+MC-249601 – Z-fighting occurs on a Warden's tendrils when clicking.
+MC-249669 – tadpole.png has unused frog egg texture.
+MC-249745 – If allay is holding an item, it can be equipped with armor using a dispenser.
+MC-249780 – Blocks that require support can generate floating in ancient cities.
+MC-249919 – Pillar in Ancient City can generate with waterlogged stairs.
+MC-250000 – Allays and villagers create ghost items when they take items from a stack and cannot fit the whole stack in their inventory.
+MC-250027 – Allays ignore the dimension when checking for liked note blocks.
+MC-250075 – The inner two planes in mangrove roots are smaller than they should be.
+MC-250076 – Shading is disabled for the two inner planes in mangrove roots, even though it is not for all the other planes.
+MC-250165 – Doing /locate stronghold in some single biomes causes an unexpected error.
+MC-250171 – Warden Sonic Boom attack can be completely mitigated by shields.
+MC-250240 – Z-fighting can be seen around the backs of frogs when they open their mouths.
+MC-250243 – Warden sonic boom attacks can hit endermen, shulkers or players who have finished eating chorus fruit and players who have used ender pearls within range, even if they have teleported.
+MC-250288 – Some blocks in Ancient City structures can only be covered by sculk veins and cannot be converted into a sculk block.
+MC-250321 – Flying and aquatic mobs pathfinding in certain blocks cause crash || The game crashed whilst ticking entity Error: java.lang.NullPointerException: Cannot invoke "dnm.a()" because "$$1" is null.
+MC-250331 – Chunk rendering is glitchy / incorrect when redrawing.
+From the previous development version
+
+MC-250339 – Paintings are off-centered in multiplayer servers.
+MC-250379 – Teleporting armor stands results in visual desync and abnormal behavior.
+MC-250396 – /locatebiome command displays Y-axis of -64 in certain cave biomes, causing the player to die when teleported.
+MC-250400 – Blocks and items can cause the world to render invisibly.
+MC-250411 – Sculk can spread in ancient city structures and replace soul sand with fire on top, extinguishing fires.
+MC-250429 – Narrator improperly narrates chat.
+MC-250460 – The rendering of players is delayed for others.
+
+
+== 22w18a ==
+22w18a is the ninth snapshot for Java Edition 1.19, released on May 4, 2022, which adds the /place command, makes tweaks to allays, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/place
+
+A new command which replaces /placefeature and can place features, jigsaws and structures at a given location, with following syntaxes:
+/place feature <feature> [<pos>]
+Works like the removed /placefeature.
+feature: The namespaced ID of a feature to try to place.
+/place jigsaw <pool> <start> <depth> [<pos>]
+Works as hitting the "generate" button inside the user interface of a jigsaw block: it generates a jigsaw structure starting in a certain template pool at a given jigsaw anchor, then does a given number of levels of expansion from there.
+pool: The namespaced ID of a template pool to start generating.
+start: The namespaced ID name of a jigsaw to use as the starting anchor.
+depth: The maximum number of jigsaw connections to traverse during placement.
+/place structure <structure> [<pos>]
+Works by placing an entire structure just like it is done in world generation.
+structure: The namespaced ID of a structure to try to generate.
+pos: The position to use as the origin for the generation. (if omitted, ~ ~ ~ is used)
+
+
+==== General ====
+Chat
+
+Chat from the /say, /msg, /teammsg, and /me commands are now all also cryptographically signed.
+Servers can now define different chat style formats for clients, which can now be controlled by the server through the chat_type registry (found under the worldgen folder in the vanilla report).
+These are synchronized to clients when they join the server.
+The translation key or translation format can be defined, like chat.type.text or %s says: "%s".
+Chat can be similarly optionally narrated with a custom translation key or format.
+The entire message can have formatting applied, such as italics or a specific color (but currently not click or hover events).
+Item modifier
+
+Added the item function set_instrument, to sets item tags needed for instrument items to a random value selected from a tag, with following parameter:
+options: a tag reference specifying the instrument options to randomly pick from.
+Tags
+
+Added following block tags:
+#snow_layer_can_survive_on: honey_block, soul_sand, and mud.
+#snow_layer_cannot_survive_on: ice, packed_ice, and barrier.
+Added following banner pattern tags (new type):
+#no_item_required: square_bottom_left, square_bottom_right, square_top_left, square_top_right, stripe_bottom, stripe_top, stripe_left, stripe_right, stripe_center, stripe_middle, stripe_downright, stripe_downleft, small_stripes, cross, straight_cross, triangle_bottom, triangle_top, triangles_bottom, triangles_top, diagonal_left, diagonal_up_right, diagonal_up_left, diagonal_right, circle, rhombus, half_vertical, half_horizontal, half_vertical_right, half_horizontal_bottom, border, curly_border, gradient, gradient_up, and bricks.
+Defines banner patterns which can be made on loom and do not need a pattern item.
+#pattern_item/creeper: creeper
+#pattern_item/flower: flower
+#pattern_item/globe: globe
+#pattern_item/mojang: mojang
+#pattern_item/piglin: piglin
+#pattern_item/skull: skull
+Added following instrument tags (new type):
+#goat_horns: #regular_goat_horns and #screaming_goat_horns.
+#regular_goat_horns: ponder_goat_horn, sing_goat_horn, seek_goat_horn, and feel_goat_horn.
+#screaming_goat_horns: admire_goat_horn, call_goat_horn, yearn_goat_horn, and dream_goat_horn.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Sculk catalyst
+
+No longer spreads sculk upon death of mobs that do not drop experience (such as baby animals).
+
+
+==== Mobs ====
+Allay
+
+Now follow their liked player even if they can't see them.
+Now only lose track of a player if they are more than 64 blocks away.
+
+
+==== Gameplay ====
+Advancements
+
+Changed the description for the "Sneak 100" advancement from "Sneak near a Sculk Sensor, Sculk Shrieker or Warden to prevent it from hearing you" to "Sneak near a Sculk Sensor or Warden to prevent it from detecting you".
+Vibration
+
+Vibration listeners such as sculk sensors, sculk shriekers and wardens now listen to the closest vibration instead of the first vibration in the tick.
+
+
+==== Command format ====
+/placefeature
+
+Merged into the new /place command.
+
+
+==== General ====
+Data pack
+
+The built-in vanilla pack, the report generated by the game, and the vanilla world generation reference pack now store their object keys sorted alphabetically (with the exception of type fields and parent fields, which get listed first).
+This makes diffing the files easier after changes, and avoids false positive changes from fields moving around.
+Item modifier
+
+Removed the item function set_goat_horn_sound.
+Particles
+
+Changed the texture of the sonic boom particle.
+Tags
+
+Removed flap game event from the #vibrations and #warden_can_listen game event tag.
+General
+
+The bundled Java runtime has been upgraded to 17.0.3.
+
+
+=== Fixes ===
+36 issues fixed
+From released versions before Java Edition 1.19
+
+MC-179447 – More than six banner patterns can be added to a banner.
+MC-207935 – Simultaneous vibrations don't trigger as expected.
+MC-229295 – JVM crash when starting Minecraft (java.util.jar.Attributes.read).
+MC-232009 – Minecraft does not resolve SRV records correctly.
+MC-249021 – The invitation and news buttons aren't consistently displayed within the realms menu.
+From the Java Edition 1.19 development versions
+
+MC-249129 – The walking animation of frogs doesn't change in relation to their movement speed.
+MC-249175 – Only one sculk vein drops when using a Silk Touch hoe on multiple in a single block space.
+MC-249454 – Sculk Catalysts will spread sculk if a baby mob that does not drop experience dies around it.
+MC-249527 – Sky effects are visible through Darkness.
+MC-249562 – When the warden is stuck in the bubble column, it won't try to find its way out.
+MC-249732 – Allays lose picked up items on world restart.
+MC-249739 – Parity: Allay flies far slower on Java Edition.
+MC-249740 – Allays leashed to a fence do not move and refuse to pick up items.
+MC-249857 – Parity Issue: Allays don't follow the player / note blocks as closely on Java.
+MC-250139 – Snow layers cannot be placed on top of mud.
+MC-250143 – Improper advancement description for "Sneak 100".
+MC-250144 – "Sneak 100" advancement includes sculk shriekers as a block that can "hear" the player.
+MC-250145 – Warden/frogs continue animations when the game is paused.
+MC-250163 – Warden can still detect things after it dies.
+MC-250183 – Warden continues to roar when angered by an ignited creeper.
+MC-250198 – Warden continues to roar when the target of the enraged warden suffers an unnatural death.
+MC-250207 – Warden continues to roar at disconnected players.
+MC-250216 – Warden continues to roar at targets in unloaded chunks.
+MC-250218 – Warden continues to roar at despawned target.
+MC-250244 – Warden continues to roar when the target enters the nether portal, end portal or end gateway.
+MC-250245 – Warden sonic boom attacks can hit player even if the player has entered another dimension.
+MC-250292 – Wardens can sometimes freeze when overwhelmed with enemies/attacks/sounds.
+MC-250506 – Mangrove leaves can appear at a higher altitude when grown below y = 0.
+MC-250557 – Allay permanently stuck trying to pick up item stack if its slots contain stack of the same type with differing NBT (and vice versa).
+MC-250662 – minecraft:sonic_boom particle frames are misordered during animation.
+MC-250864 – Game fails to load worldgen settings when .DS_Store files are present in datapack.
+From the previous development version
+
+MC-250926 – There is a goat horn in the creative Destroy Item slot / all tabs within the creative inventory contain goat horns.
+MC-250937 – User skins don't load in singleplayer.
+MC-250939 – Game crashes when a goat horn with an invalid sound variant is used / java.lang.ArrayIndexOutOfBoundsException: Index <index> out of bounds for length 8.
+MC-250954 – Player is assigned a new UUID in singleplayer.
+MC-250974 – MinecraftClientHttpException when opening/creating a world.
+
+
+== 22w19a ==
+22w19a is the tenth and final snapshot for Java Edition 1.19, released on May 12, 2022, which introduces chat preview, merges /locate and /locatebiome into the new /locate, adds the ability to locate a POI (Point of Interest), the ability to place a template, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/locate
+
+Added /locate poi, can locate a POI (Point of Interest), with following syntax:
+/locate poi <poi>
+poi: The namespaced ID of a POI, or a POI tag.
+/place
+
+Added /place template, can place templates at a given location, with following syntax:
+/place template <template> [<pos>] [<rotation>] [<mirror>] [<integrity>] [<seed>]
+Works like using the load button in the UI for a structure block.
+template: The namespaced ID of a template ("structure block file") to load and place.
+pos: The position to use as the origin for the generation. (if omitted, ~ ~ ~ is used)
+rotation: The rotation to apply. (if omitted, none is used)
+mirror: The mirroring to apply. (if omitted, none is used)
+integrity: The structure integrity value between 0 and 1.
+seed: The seed to use for the randomized degradation when integrity is less than 1.
+
+
+==== General ====
+Chat
+
+Servers can now enable chat preview, which displays a server-controlled preview above the chat edit box, showing how the message appears when sent.
+Can be used by servers to preview messages with styling applied, such as emojis or chat coloring.
+Chat preview sends chat messages to the server as they are typed, even before they're sent.
+The server then sends back the styled preview in real time.
+This allows servers to apply dynamic message stylings while still allowing chat to be securely signed.
+A warning toast message is shown on the client when joining a server with chat preview, and it can be globally disabled in chat settings.
+Dynamic chat styling can also be controlled by the server, although this is only signed when chat preview is enabled.
+Clients can prefer to always show the original, signed message by enabling "Only Show Signed Chat" in chat settings.
+Options
+
+Added "Chat Preview" chat option, for enabling chat preview. Toggled on by default.
+Added "Only Show Signed Chat" chat option, for clients who prefers to always show the original, signed message. Toggled off by default.
+options.txt
+
+Added chatPreview and onlyShowSignedChat.
+Protocol
+
+Servers now also send an additional icon and MOTD packet after a player has connected.
+This allows servers with enable-status=false to set an icon and MOTD for players that successfully connect.
+server.properties
+
+Added server property previews-chat to enable chat preview.
+Defaults to false.
+Added temporary server property test-rainbow-chat, for this snapshot only.
+Tags
+
+Added following point_of_interest_type tags (new type):
+#acquirable_job_site: armorer, butcher, cartographer, cleric, farmer, fisherman, fletcher, leatherworker, librarian, mason, shepherd, toolsmith, and weaponsmith.
+This tag defines job sites sought by villagers with none profession.
+#bee_home: beehive and bee_nest.
+This tag defines POIs that bees target.
+#village: #acquirable_job_site, home, and meeting.
+This tag defines POIs that belongs to villages.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Iron golem
+
+Now make sure to spawn above something solid, so they can now spawn on top of glass and leaves and are no longer blocked by things like string.
+Tadpole
+
+Hitbox is now reduced from 0.5×0.4 to 0.4×0.3.
+Warden
+
+Now make sure to spawn above something solid, so they can now spawn on top of glass and leaves and are no longer blocked by things like string.
+Ranged attack damage is now affected by difficulty.
+
+
+==== World generation ====
+Mineshafts
+
+No longer intersect with ancient cities.
+
+
+==== Command format ====
+/locate and /locatebiome
+
+Merged into the new /locate command:
+/locate -> /locate structure
+/locatebiome -> /locate biome
+
+
+==== General ====
+Point of Interest types
+
+Removed unemployed and nitwit types.
+
+
+=== Fixes ===
+29 issues fixed
+From released versions before Java Edition 1.19
+
+MC-197647 – Players cannot jump off the edge of blocks when sneaking if they have a block above.
+MC-199326 – Unable to escape block bound box when you have levitation and holding shift.
+MC-200282 – Players with knockback resistance cannot be knocked off of edges when sneaking.
+MC-231600 – Sculk sensor continuously receives vibrations when next to a powered big dripleaf.
+From the Java Edition 1.19 development versions
+
+MC-249130 – Tadpoles hatch inside of adjacent blocks, causing them to suffocate and die.
+MC-249434 – The warden indefinitely roars when attacked by multiple entities.
+MC-249634 – Warden's sniffing behavior continues after being distracted.
+MC-249664 – Warden despawns when far away.
+MC-249780 – Blocks that require support can generate floating in ancient cities.
+MC-249833 – Right-clicking certain items in the off-hand can generate vibrations.
+MC-249888 – Warden is not angered when hit by a blaze fireball.
+MC-249910 – Warden "Nearby Closest" sound is unused.
+MC-249966 – Warden can stop chasing a target it just roared at.
+MC-250172 – Warden doesn't turn toward the direction it is firing the Sonic Boom attack.
+MC-250233 – A warden summoned from a spawn egg suddenly losing its AI.
+MC-250272 – Warden spawns in blocks that have no collision.
+MC-250292 – Wardens can sometimes freeze when overwhelmed with enemies/attacks/sounds.
+MC-250319 – Warden approaches sounds still plays, despite the doWardenSpawning gamerule is disabled.
+MC-250353 – Warden cannot spawn on a single snow layer like other mobs.
+MC-250357 – Sculk sensors and Wardens detect when a player holds up a shield.
+MC-250948 – Warden's ranged attack is no longer affected by the game's difficulty.
+MC-250966 – Dying to the warden's sonic boom doesn't count as the warden's kill.
+MC-251029 – Warden froze and stopped being hostile toward the player.
+MC-251263 – "Invalid signature for profile public key" when trying to open a singleplayer world.
+From the previous development version
+
+MC-251316 – The game crashes when loading chunks that consist of jigsaw blocks.
+MC-251321 – Warden can be pushed by explosions while emerging.
+MC-251350 – /give @s goat_horn gives an unregistered goat horn.
+MC-251396 – java.lang.IllegalArgumentException: Name and ID cannot both be blank.
+MC-251464 – When passive mobs take damage from warden's sonic boom, they don't flee in panic.
+
+
+== 1.19 Pre-release 1 ==
+1.19 Pre-release 1 (known as 1.19-pre1 in the launcher) is the first pre-release for Java Edition 1.19, released on May 18, 2022, which makes some tweaks and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Sculk sensor
+
+Item interaction vibrations are now emitted when player starts or finishes "using" an item with a start and finish state (such as bows, crossbows, goat horns, shields, food).
+Item interaction vibrations are now ignored when sneaking.
+Now activates upon entities being summoned by a spawner.
+Added the following game events that the sculk sensor reacts to, along with corresponding frequency value:
+note_block_play with a vibration frequency of 6.
+instrument_play with a vibration frequency of 15.
+
+
+==== Mobs ====
+Cat
+
+The ID of the british cat variant has been renamed to british_shorthair.
+Endermen, skeletons, and wither skeletons
+
+Now spawn from light level 0 to 11 in the Nether, which is wider range than before.
+Iron golem
+
+The spawning change introduced in the previous snapshot has been reverted.
+Tadpole
+
+No longer drop experience on death.
+May now be tempted with slimeballs.
+Warden
+
+Now require a full solid surface on the block they are spawning on.
+
+
+==== World generation ====
+Custom world generation
+
+Dimension types now have two new fields for controlling monster spawns.
+[Int] monster_spawn_block_light_limit is an integer controlling the block light needed to prevent monster spawns.
+[Int] monster_spawn_light_level is an int provider which is evaluated to find a value to compare the current overall brightness with to determine if a monster should be allowed to spawn.
+Mangrove swamp
+
+Slightly reduced the number of mangrove trees (25 attempts per chunk to place a tree, down from 30).
+
+
+==== Gameplay ====
+Advancements
+
+The parent advancement of the "It Spreads" advancement is changed from "Adventure" to "Monster Hunter".
+
+
+==== Command format ====
+/place
+
+Auto-completion is now available for the <template> argument to /place template.
+
+
+==== General ====
+Chat
+
+Now, a chat preview is also shown for chat-related commands, such as /say and /msg.
+Options
+
+Renamed the "Only Show Signed Chat" chat option to "Only Show Secure Chat".
+Also updated its description.
+The description of the FOV effects setting now correctly mentions all gameplay effects rather than only speed effects.
+options.txt
+
+Renamed onlyShowSignedChat to onlyShowSecureChat
+Protocol
+
+Custom servers can now enable or disable chat preview for certain clients by sending a new network packet.
+Realms
+
+The message when opening the Realms menu in a snapshot version has been changed from "Your client is outdated and not compatible with Realms. Please update to the most recent version of Minecraft." to "Your client is not compatible with Realms. Please use the most recent version of Minecraft. Realms is not compatible with snapshot versions.".
+server.properties
+
+Removed the temporary server property test-rainbow-chat.
+Sound
+
+Equipping armor using the inventory now plays a sound.
+Placing items that aren't armor (such as pumpkins and skulls) in the headwear slot now plays a generic equip sound.
+The entity.frog.tounge sound event is now correctly named as entity.frog.tongue
+Tags
+
+The #default_spawns cat variant tag has been updated to contain british_shorthair instead of british.
+Added item_interact_start, and item_interact_finish game events to the #ignore_vibrations_sneaking game event tag.
+Added instrument_play game event to the #vibrations, and #warden_can_listen game event tags.
+
+
+=== Fixes ===
+51 issues fixed
+From released versions before Java Edition 1.19
+
+MC-45838 – Certain chat messages exceed 32767 byte limit and disconnect clients.
+MC-94060 – Equipping armor/elytra through inventory or dispenser doesn't play sounds.
+MC-131740 – Re-running the data generator in the same folder causes previously generated -reports and- .snbt files to be deleted.
+MC-134892 – PacketBuffer.writeString's max length is in bytes, while readString is in characters.
+MC-202319 – Dedicated server text filter does not apply to all messages.
+MC-209222 – Attempting to open the Minecraft Realms menu claims that the client is outdated, even if the snapshot may be newer than the release.
+MC-210231 – Sculk sensors are not activated upon using the riptide enchantment.
+MC-210279 – Sculk sensors are not activated upon entities being summoned by a spawner.
+MC-210329 – Sculk sensors are not activated upon armor on entities breaking.
+MC-213823 – Minecart placed on wool is detected by sculk sensors but minecart driven over wool is not.
+MC-213915 – Equipping armor through the inventory does not count as a vibration.
+MC-218222 – Distance value for Sculk Sensors is limited to integers.
+MC-225195 – Goats don't panic when tempted with their favorite food.
+MC-230735 – "FOV Effects" setting description is innacurate.
+From the Java Edition 1.19 development versions
+
+MC-249118 – Crash on M1 computer.
+MC-249141 – No subtitles are produced upon frogs stepping.
+MC-249164 – The entity.frog.tounge sound is misspelled.
+MC-249209 – Frogs don't panic when tempted with their favorite food.
+MC-249260 – Tadpoles are not tempted by slime balls.
+MC-249328 – Frogs can jump around while being tempted with slimeballs.
+MC-249456 – Tadpoles drop experience, unlike other baby mobs.
+MC-249619 – The comparator frequency of sculk sensors when you are stepping on it is the last frequency it heard.
+MC-249711 – Items collected off the ground by allays travel too high above their hitboxes.
+MC-249757 – 'It Spreads' advancement is not a child of 'Monster Hunter'.
+MC-249834 – Swapping items to the player's off-hand can generate vibrations.
+MC-249980 – The Birthday Song advancement description doesn't capitalise the word Cake.
+MC-250006 – ID of the british cat doesn't match texture name.
+MC-250019 – Sculk catalyst triggers when a villager converts into zombie villager by a zombie.
+MC-250022 – Modifying offhand slot via /item command does not produce sound, but still triggers sculk sensors.
+MC-250317 – The subtitle for picking up a Tadpole with a bucket is the generic "Bucket fills" subtitle.
+MC-250351 – /tp "argument" duplicated on the tab options.
+MC-250919 – The server crashes when attempting to load chunks that contain command blocks that consist of large numbers of characters within the previous output field.
+MC-250932 – Goat horn subtitles are improperly capitalized.
+MC-250940 – Goat horn playing isn't detected as a vibration.
+MC-251132 – Server logs "Game test server" messages.
+MC-251312 – Entity selectors in /say commands are no longer evaluated.
+MC-251355 – Potted mangrove propagule model is incorrect.
+MC-251396 – java.lang.IllegalArgumentException: Name and ID cannot both be blank.
+MC-251405 – Structure Block messages are formatted as chat.
+MC-251479 – Duplicate object key [lang file].
+MC-251550 – Failed to launch the game on 32-bit operating system.
+From the previous development version
+
+MC-251640 – io.netty.handler.codec.EncoderException when using special characters in chat message.
+MC-251641 – Game crash regarding warden anger.
+MC-251647 – Chat closes itself if the control for Open Chat is set to ↵ Enter.
+MC-251649 – Clicking "incomplete command" message removes / in chat.
+MC-251650 – Iron golems can spawn on non spawnable blocks such as leaves, glass, sea lanterns, etc.
+MC-251652 – Warden emerge/roar/sonic charge/dig animation (and possibly other similar animations) don't start unless the player looks at the Warden first.
+MC-251656 – /say command fails to apply server message styling when sent from a command block, server console, or RCON, unlike /msg.
+MC-251690 – Wardens can spawn on any non-full block, as long as it's solid.
+MC-251762 – You can run commands with double slash prefix.
+MC-251773 – The --dev argument for the data generators no longer converts NBT to SNBT properly.
+
+
+== 1.19 Pre-release 2 ==
+1.19 Pre-release 2 (known as 1.19-pre2 in the launcher) is the second pre-release for Java Edition 1.19, released on May 23, 2022, which makes some tweaks, and fixes bugs, many of which are relating to sculk sensors' vibration detection.
+
+
+=== Additions ===
+
+
+==== General ====
+Tags
+
+Added following biome tag:
+#mineshaft_blocking: contains deep_dark.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Sculk sensor
+
+Added the teleport game event that the sculk sensor reacts to, with frequency value 5.
+
+
+==== Items ====
+Goat horn
+
+Now dropped when a goat rams copper ore as well.
+
+
+==== Mobs ====
+Warden
+
+Now despawn when stuck in a liquid instead of staying for a long time.
+
+
+==== Gameplay ====
+Advancements
+
+"It Spreads" is no longer granted when a mob that drops no experience is killed near a sculk catalyst.
+
+
+==== General ====
+Sound
+
+Reverted using generic equip sound when equipping non-armor items in the head slot in the last version: they no longer emit a sound.
+However, they are still able to activate sculk sensors.
+Tags
+
+Added copper_ore to the #snaps_goat_horn block tag.
+Added teleport game event to the #vibrations, and #warden_can_listen game event tags.
+
+
+=== Fixes ===
+62 issues fixed
+From released versions before Java Edition 1.19
+
+MC-186148 – death.attack.witherSkull.item displays raw translation string (is untranslated).
+MC-186851 – death.attack.sting.item displays raw translation string (is untranslated).
+MC-207268 – Sculk sensors don't detect stripping logs, tilling dirt, or pathing grass.
+MC-208759 – Sculk Sensor's 'block placed' doesn't trigger with villagers placing crops.
+MC-208760 – Sculk Sensor's 'block placed' doesn't trigger when snow golems place snow layers.
+MC-208761 – Sculk Sensor's 'block destroyed' doesn't trigger when blocks are destroyed by pistons.
+MC-209701 – Sculk sensors are not activated upon placing food onto campfires.
+MC-209900 – Sculk sensors are not activated upon inserting or retrieving music discs from jukeboxes.
+MC-210330 – Sculk sensors are not activated upon throwing eyes of ender.
+MC-210489 – Sculk sensors are not activated upon pointed dripstone filling partially filled cauldrons.
+MC-210496 – Sculk sensors are not activated upon harvesting sweet berry bushes.
+MC-210801 – Wool incorrectly occludes the vibration of item frames being placed.
+MC-212428 – Sculk sensors are not activated upon cleaning items in water cauldrons.
+MC-212430 – Sculk sensors are not activated upon rain or snow filling partially filled cauldrons.
+MC-213387 – Sculk sensors don't detect endermen/shulkers teleporting from a place to another.
+MC-220086 – Sculk sensors do not detect using an axe to clear the wax/weathering of a copper block.
+MC-220087 – Sculk sensors do not detect using a honeycomb to wax copper.
+MC-238716 – The minecraft:item.armor.equip_TYPE sound can be heard only by other players when taking armor off armor stands.
+MC-246227 – The minecraft:item.armor.equip_TYPE sound can be heard only by other players when switching wearable items between hands.
+From the Java Edition 1.19 development versions
+
+MC-249696 – Certain void worlds fail to spawn the player on the stone platform.
+MC-249748 – The minecraft:item.armor.equip_TYPE sound is played when giving wearable items to allays.
+MC-250259 – Warden AI doesn't function properly when it rides on entities.
+MC-250641 – Warden cannot despawn when stuck in lava or water.
+MC-250941 – Goats' horns don't snap on copper ore.
+MC-250956 – Baby goats with horns lose their horns when fed.
+MC-251052 – Wardens will not chase targets from a height.
+MC-251314 – Goats loaded from older worlds lose their horns.
+MC-251336 – Darkness fog flashes at high duration values.
+MC-251412 – Warden afflicting Darkness to players in the same team.
+MC-251500 – Wardens ignore [Byte] PersistenceRequired and dig away.
+MC-251601 – Darkness rendering incorrectly when reloading the game.
+MC-251639 – Warden emerging particles don't match up with block they emerge on the entire way.
+MC-251646 – death.attack.sonic_boom.item displays raw translation string (is untranslated).
+MC-251670 – Villager sometimes won't refill their stock.
+MC-251675 – Mesa Mineshafts no longer generate with /place command outside of badlands biomes despite saying the structure has been generated successfully.
+MC-251736 – Reflected ghast fireball cannot hit the ghast.
+MC-251824 – Wardens aren't angered by being hit with damageless projectiles.
+MC-251854 – "It Spreads" advancement can be granted when killing a mob that does not give experience.
+From the previous development version
+
+MC-251860 – The item.armor.equip_generic sound is produced when giving items to allays.
+MC-251862 – Shift clicking the destroy item button in the creative inventory creates a vibration when there is nothing in your equipment slots.
+MC-251864 – The item.armor.equip_generic sound is produced when filling water buckets with fish, axolotls, or tadpoles.
+MC-251871 – The item.armor.equip_generic sound is produced and can only be heard by other players when switching items between hands.
+MC-251873 – Using /item replace command can trigger Sculk Sensor unexpectedly.
+MC-251876 – Villagers produce armor equipping sound when previewing armor.
+MC-251889 – io.netty.handler.codec.EncoderException when evaluating too many entity selectors in chat preview.
+MC-251890 – run_command click events send value as command instead of chat message.
+MC-251915 – Milking cows, mooshrooms and goats plays gear equipping sound.
+MC-251916 – Eating food items that return empty containers plays gear equipping sound.
+MC-251919 – Equipping a player head, skull or carved pumpkin displays the generic "Gear equips" subtitle.
+MC-251920 – Taking a plant from a pot plays the gear equipping sound and subtitle.
+MC-251921 – Equipping horse armor onto a horse plays the "Gear equips" sound.
+MC-251922 – "Gear equips" sound plays when equipping or removing a saddle from a horse wearing horse armor.
+MC-251924 – Gear equipping sounds and subtitles are played when foxes pick up any item.
+MC-251925 – Gear equipping sounds and subtitles are played when dolphins throw around items.
+MC-251927 – Gear equipping sounds and subtitles are played when [Byte] CanPickUpLoot mobs pick up items.
+MC-251928 – Gear equips sound plays when filling a single bottle with honey.
+MC-251929 – Gear equips sound plays when filling a single bottle with water from a water source.
+MC-251977 – The item.armor.equip_generic sound is produced when filling and emptying buckets with substances.
+MC-252005 – Skeleton spawn eggs make an armor equipment sound when used.
+MC-252041 – Gear equip sound plays when mobs spawn in with weapons or armor.
+MC-252056 – The item.armor.equip_generic sound is produced when giving piglins gold ingots.
+MC-252103 – Gear equips sound plays when giving any item to an armor stand with arms.
+
+
+== 1.19 Pre-release 3 ==
+1.19 Pre-release 3 (known as 1.19-pre3 in the launcher) is the third pre-release for Java Edition 1.19, released on May 25, 2022, which makes tweaks, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Sculk sensor
+
+item_interact_start is no longer detectable as a vibration, to allow more specific actions be detected, like drink or eat.
+
+
+==== Mobs ====
+Warden
+
+Wardens' sonic boom attack now bypasses the damage reduction by armor enchantments such as Protection.
+
+
+==== Non-mob entities ====
+Item frame
+
+Reverted the change made in 22w15a, which made a larger hitbox size when put a map inside it.
+
+
+==== General ====
+Tags
+
+Removed moss_carpet from the #frogs_spawnable_on block tag.
+Removed item_interact_start from the #vibrations, and #warden_can_listen game event tag.
+
+
+=== Fixes ===
+18 issues fixed
+From released versions before Java Edition 1.19
+
+MC-209932 – Sculk sensors only detect the last turtle egg being broken when being stepped on.
+MC-210277 – Sculk sensors are not activated upon chickens laying eggs.
+MC-210278 – Sculk sensors are not activated upon bees entering or leaving their hive or nest.
+MC-214622 – Sculk sensors do not detect daylight detector mode switching.
+From the Java Edition 1.19 development versions
+
+MC-249094 – Unexpected culling of inner sculk shrieker faces.
+MC-249097 – Sides and bottoms of sculk shrieker not culled by solid blocks.
+MC-249230 – Frogs prioritize eating entities over panicking when being damaged.
+MC-250162 – Placing a map in an item frame will break any intersecting paintings and item frames with a map inside.
+MC-250238 – Frogs attempt to pathfind to entities outside of their reach causing them to spin and twitch constantly.
+MC-250983 – Allays can get stuck and freeze inside non-full blocks.
+MC-251220 – Block lighting on extended parts are a lot darker in 22w17a compared to 1.18.2.
+MC-251420 – Demo Mode: The "Purchase Now!" link's destination is incorrect.
+MC-251858 – Subtitles are higher than in previous versions.
+MC-251872 – The game output and server console are logged with warnings regarding chat packets with invalid signatures when using entity selectors within commands.
+MC-251878 – Sculk sensors hearing items being dropped on the ground doesn't alert shriekers even if a player drops it.
+MC-251968 – /execute running chat related commands logs "Received chat packet without valid signature" warning.
+MC-252071 – Warden still detects after death if signal is traveling before death.
+MC-252078 – Allays no longer flee or panic when taking damage.
+
+
+== 1.19 Pre-release 4 ==
+1.19 Pre-release 4 (known as 1.19-pre4 in the launcher) is the fourth pre-release for Java Edition 1.19, released on May 30, 2022, which adds a new language and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Language
+
+Added Malay written in Arabic script (Jawi).
+
+
+=== Fixes ===
+7 issues fixed
+From released versions before Java Edition 1.19
+
+MC-220067 – Chunk corruption with command block full of certain Unicode characters.
+MC-245504 – Touchscreen mode crash // java.lang.ClassCastException: class eec$a cannot be cast to class eec$c (eec$a and eec$c are in unnamed module of loader ‘app’).
+MC-250918 – Players are disconnected from servers when opening command blocks that consist of large numbers of characters within the previous output field.
+From the Java Edition 1.19 development versions
+
+MC-249831 – Aquifers can cut themselves off at chunk borders.
+MC-251840 – Game crash whilst getting block state: cwj: Missing Palette entry for index 8.
+MC-251859 – Gear equipping sound plays every time armor/elytra durability changes while equipped.
+MC-251989 – Cannot send chats or use commands in multiplayer since 1.19 Pre-release 1.
+
+
+== 1.19 Pre-release 5 ==
+1.19 Pre-release 5 (known as 1.19-pre5 in the launcher) is the fifth and final pre-release for Java Edition 1.19, released on June 1, 2022, which fixes bugs.
+
+
+=== Fixes ===
+12 issues fixed
+From released versions before Java Edition 1.19
+
+MC-252352 – URL in eula.txt (dedicated server) points to the wrong location.
+From the Java Edition 1.19 development versions
+
+MC-249121 – Sculk is missing subtitles for some sounds.
+MC-249323 – Modifying a world preset to not include overworld settings will not give a datapack error, but selecting the world type will instantly crash your game.
+MC-250034 – Standing on top of mud as it converts to clay causes the player to fall through or be pushed out of the block.
+MC-250295 – Allay’s head does not rotate to where it looks.
+MC-251030 – Standing on top of soul sand or mud that converts to sculk will cause entities to fall through it.
+MC-251323 – Mobs target emerging warden/ warden faces attacking mob while emerging if dealt melee damage.
+MC-251594 – Leads are leashed too high on allays.
+MC-251726 – Java runtime manifest is missing when launching Minecraft.
+MC-252038 – Warden attacks immediately if hit during emerging animation.
+MC-252108 – Eating a food item no longer opens the piston doors in city_center_2.
+MC-252157 – [String] CustomName NBT tag still prevents wardens from digging down.
+
+
+== 1.19 Release Candidate 1 ==
+1.19 Release Candidate 1 (known as 1.19-rc1 in the launcher) is the first release candidate for Java Edition 1.19, released on June 2, 2022, which fixes a bug related to Darkness effect.
+
+
+=== Fixes ===
+1 issue fixed
+From the previous development version
+
+MC-252398 – Darkness effect fading in death screen causes subtle flashing.
+
+
+== 1.19 Release Candidate 2 ==
+1.19 Release Candidate 2 (known as 1.19-rc2 in the launcher) is the second and the final release candidate for Java Edition 1.19, released on June 3, 2022, which fixes an unspecified crash.
+
+
+=== Fixes ===
+3 issues fixed
+From released versions before Java Edition 1.19
+
+MC-228944 – Minecraft 1.17 crashes upon opening new world on Apple M1, even with Rosetta.
+MC-249558 – All versions crash on M1 Mac with JVM crash when attempting to launch.
+Other
+
+Fixed a crash.
+
+
+== Notes and references ==
+
+
+== Navigation ==

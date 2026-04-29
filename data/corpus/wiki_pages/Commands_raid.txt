@@ -1,0 +1,52 @@
+/raid is a command that can be enabled with the debug property -DMC_DEBUG_DEV_COMMANDS. It controls raids.
+
+
+== Syntax ==
+raid start <omenlvl>
+
+Starts a raid of the specified level if there is a village near the execution position and there is no ongoing raid.
+raid stop
+
+Stops a raid if there is one at a village near the execution position.
+raid check
+
+Checks if there is a raid at a village near the execution position, and prints information about it if there is. The information includes the number of waves spawned as of yet, the level of the raid, the number of raiders left in the current wave, and the total health of all raiders left in the current wave.
+raid sound <type>
+
+If the specified text component evaluates to the string local (without resolution), plays a raid horn sound 5 blocks on the X axis away from the execution position. Otherwise, does nothing.
+raid spawnleader
+
+Spawns a pillager as a raid captain at the execution position.
+raid setomen <level>
+
+Sets the level of an ongoing raid at a village near the execution position to the specified level.
+raid glow
+
+Applies the Glowing effect to all current raiders for 50 seconds.
+
+
+== Arguments ==
+<omenlvl>: integer
+
+Specifies the Bad Omen level to start a raid with.
+Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ). And it must be between 0 and 2147483647 (inclusive).
+<type>: component
+
+Specifies the text component whose string value should be local for a raid horn sound to be played.
+It must be a valid text component.
+<level>: integer
+
+Specifies the Bad Omen level to set a raid's level to.
+Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ). And it must be between 0 and 2147483647 (inclusive).
+
+
+== Result ==
+
+
+== Output ==
+
+
+== History ==
+
+
+== Navigation ==

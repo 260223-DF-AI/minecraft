@@ -1,0 +1,32 @@
+Certain non-solid blocks, such as short grass, pointed dripstone, and some flowers do not have their textures or hitboxes centered on blocks they are placed on, and are instead staggered in a pseudorandom manner. The offset of a block depends solely on its X and Z coordinates, and not the world seed. This means that, for example, a row of flowers at the same coordinates will always be staggered the same way between worlds, and this will not be changed by a player breaking or replacing them.
+All blocks with an offset have their hitbox and/or texture translated in the X and Z axis. Some blocks such as short grass or the fern additionally have an offset in the Y axis for their textures only. The base X, Y, and Z offsets of a block are consistent between all blocks at a certain coordinate. However, some blocks (such as bamboo‌[Bedrock Edition  only] or pointed dripstone‌[Java Edition  only]) may use the base offset slightly differently than most blocks for block placement.
+
+
+== List of blocks subject to offset ==
+The following is a list of blocks subject to an offset in game. Most blocks have their hitbox offset to match their texture being offset, but some do not.
+
+
+== Effects of block offset on textures and hitboxes ==
+
+In Java Edition, X and Z offsets are added to the coordinates of the center of the block to determine the new center of the texture or hitbox. In Bedrock Edition, X and Z offsets are used differently depending on the block. On both versions, the Y offset is directly added to the Y coordinate of the block to determine what Y level a texture will start. A Y offset will always be negative or zero, meaning a block's texture or hitbox may be translated downwards but never upwards.
+
+
+== Calculation of block offset ==
+
+
+=== X and Z offset ===
+The following algorithm is used to calculate X and Z offsets of blocks in Java Edition (except for pointed dripstone and sulfur spikes​[upcoming: Chaos Cubed]), given a block's X and Z coordinates. Note that two's compliment arithmetic while treating all integers as signed 64 bit numbers must be used for correct results.
+
+The X and Z offsets of pointed dripstone and sulfur spikes​[upcoming: Chaos Cubed] are given by calculating the x_offset and z_offset above, and clamping the values between -0.125 and 0.125. All other blocks have their X and Z offsets clamped between -0.25 and 0.25.
+
+
+=== Y offset ===
+The Y offset in Java Edition depends solely on the X and Z coordinates of a block and the block type. For all blocks with a Y offset besides small dripleaf, the Y offset is given by (using the variable temp2 from above):
+
+The Y offset for small dripleaf is half as much as the Y offset for other blocks at the same coordinates.
+
+
+=== Calculator ===
+
+
+== Notes ==

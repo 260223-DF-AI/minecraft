@@ -1,0 +1,57 @@
+Graphics is one of the game's many visual settings, which allows for the game's rendering of an assortment of features to be adjusted to match computer specifications.
+There are currently three‌[JE  only]/four‌[BE  only] different options for graphics to be set to, in order of computing expense: Fast, Fancy and Fabulous!‌[Java Edition  only], or Simple, Fancy, Ray Traced, and Vibrant Visuals‌[Bedrock Edition  only], each bringing their own dedicated visual improvements.
+
+
+== Differences between settings ==
+
+
+=== Summary ===
+
+
+==== Java Edition ====
+
+
+==== Bedrock Edition ====
+In Bedrock Edition, there are 4 graphics modes: Simple, Fancy, Vibrant Visuals, and Ray Traced. Vibrant Visuals and ray tracing have additional minimum requirements, and ray tracing requires a compatible resource pack. In general, the Simple and Fancy graphics modes are equivalent to Java Edition's Fabulous! graphics and do not make compromises, while still providing a better performance. Most graphical features, such as transparent leaves, are controlled by their own settings. There are a few differences between Simple and Fancy graphics modes, but Vibrant Visuals and ray tracing enable advanced rendering techniques with far more graphical features.
+The graphics mode cannot be switched in-game by default and requires the "In-Game Graphics Mode Switching" option to be enabled. This is not available on lower-end devices, because especially switching from/to/between Vibrant Visuals and ray tracing requires high performance and memory.
+
+
+=== Detailed analysis ===
+
+
+==== Java Edition ====
+
+
+===== Leaves =====
+
+When graphics are set to Fast, leaves are rendered as completely opaque blocks when placed in the world. (In item form, they still appear transparent.) This is likely meant to improve framerates by treating leaves more like full, solid cubes, and allowing their faces to be culled by each other, resulting in the game having to render fewer faces in forested areas; this, however, does not happen.
+Leaves do not use a separate texture file for their appearance in Fast graphics - rather, all transparent regions in the texture are set to fully opaque, and appear black.​[more information needed]
+Leaves are the only block subject to this - other transparent cubes, such as monster spawners are still rendered transparent, likely due to their comparative rarity.
+
+
+===== Translucency =====
+When graphics are set to Fast or Fancy, the game makes compromises on the rendering of many translucent elements of the game.
+A notable example of this involves viewing the world through translucent blocks such as stained glass, tinted glass, and ice. When this is done, the game does not attempt to render particles, rain, snow, or clouds behind the block.
+There are also many, much more subtle cases which can be seen. Experience orbs have many associated cases - for example, they can block the rendering of their own shadows, as well as of other entities, including entity-rendered blocks such as chests, as well as non-entity-rendered translucent blocks such as stained glass, and other things like the outlines of targeted blocks.
+The effects seem to be time-specific, and often differ depending on the age of the entities in question - different effects can be seen for experience orbs that existed in the world before the entity behind them than experience orbs that came into existence afterward.
+More obscure cases can be sighted as well, such as with the dying animation of the ender dragon, the world border, and structure block annotations. Untested cases involve F3+G chunk borders and shulker bullets. Blocks such as tripwire, slime blocks, and honey blocks may cause even more strange effects.
+
+
+==== Bedrock Edition ====
+
+The following table lists the main differences between graphics modes. Unknown differences or graphical features controlled by their own settings are not included.
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== References ==
+
+
+== Navigation ==

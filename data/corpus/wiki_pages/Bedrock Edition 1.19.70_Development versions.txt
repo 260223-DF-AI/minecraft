@@ -1,0 +1,666 @@
+This is a list of Bedrock Edition 1.19.70 development versions.
+
+
+== Preview 1.19.70.20 ==
+Beta 1.19.70.20 (Android) or Preview 1.19.70.20 (Windows, iOS, iPadOS, Xbox) is the first beta/Preview version for Bedrock Edition 1.19.70, released on January 26, 2023, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+End Crystal
+
+Increased end crystal collision box size to match Java Edition.
+End crystals with obsidian or bedrock below them now will not damage blocks below them when they explode.
+Hopper
+
+Hoppers can now collect items through all blocks that have a lower height than a full block.
+Wool
+
+The ID's of the wools have now been split up into their own ID's.
+
+
+==== Gameplay ====
+Sneaking
+
+Player’s hitbox height now reduces to 1.5 blocks while sneaking.
+Sneaking will automatically be initiated while stuck in a gap of less than 1.8 blocks.
+Sneaking will lower the player camera height respective of these changes.
+Sneaking now requires enough space to stand in order to exit sneaking.
+Players will transition from swimming to sneaking if they are unable to stand up but would be able to sneak.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Next Major Update" and "Beta APIs" experimental toggle.
+
+
+==== Changes ====
+
+
+===== Blocks =====
+Heads
+
+Piglin Head Blocks rendered in the hotbar or inventory no longer have the ear overlapping the rest of the head. (MCPE-164605)
+
+
+===== Mobs =====
+Camel
+
+Players can now receive damage when falling while riding a camel.
+
+
+===== Technical =====
+Commands
+
+Fixed a crash with deferred command execution when the executing actor is removed before execution.
+API
+
+ItemStack
+Item lore can now be cleared by calling setLore(undefined) or setLore([]).
+Added function clearLore - Clears the item lore.
+ItemStack
+Fixed a bug where calling function getComponent or ItemStack.getComponents would fail on ItemStacks returned from EntityItemComponent.itemStack.
+BeforeChatEvent
+Renamed function tell to sendMessage.
+Block
+Added function isAir - Returns if the block is an air block (i.e. empty space).
+Added function isLiquid- Returns if the block is a liquid (e.g., a water block and a lava block are liquid, while an air block and a stone block are not).
+Added function isSolid - Returns if the block is solid (e.g., a cobblestone block and a diamond block are solid, while a ladder block and a fence block are not).
+The following blocks now have an inventory component:
+Barrel
+Beacon
+Blast Furnace
+Brewing Stand
+Dispenser
+Dropper
+Furnace
+Hopper
+Jukebox
+Lectern
+Smoker
+World Events
+Added event entityDie - It is fired when an entity dies.
+Modified projectileHit to be a readOnly property on the Events class.
+Player
+Added method getSpawnPosition: Gets the spawnPoint position.
+Added property spawnDimension: Gets the spawnPoint dimension.
+Added method setSpawn(spawnPosition : Vec3, spawnDimension : Dimension): Sets spawnPoint with a position and dimension.
+Added method clearSpawn: Sets the spawnPoint position and dimension to undefined.
+World
+Renamed function say to sendMessage.
+Added method getDefaultSpawnPosition: Gets the spawnPoint position.
+Added method setDefaultSpawn(spawnPosition : Vec3): Sets the spawnPoint position within 'overworld' dimension.
+BeforeChatEvent
+Added function getTargets(): Player[] - Gets chat Player targets.
+Added function setTargets(players: Player[]) - Sets chat Player targets.
+Removed property targets.
+BeforeDataDrivenEntityTriggerEvent
+Added function getModifiers(): DefinitionModifier[] - Gets entity definition modifiers.
+Added function setModifiers(modifiers: DefinitionModifier[]) - Sets entity definition modifiers.
+Removed property modifiers.
+BoolBlockProperty
+Added function getValidValues(): boolean[] - Gets all valid boolean values for the BoolBlockProperty.
+Removed property validValues.
+Converted BlockHitInformation to an interface.
+ChatEvent
+Added function getTargets(): Player[] - Gets chat Player targets.
+Removed property targets.
+Converted Color to an interface.
+DataDrivenEntityTriggerEvent
+Added function getModifiers(): DefinitionModifier[] - Gets Entity definition modifiers.
+Removed property modifiers.
+DefinitionModifier
+Added function getComponentGroupsToAdd(): string[] - Gets component groups that will be added with the DefinitionModifier.
+Added function setComponentGroupsToAdd(newGroups: string[]): void - Sets component groups that will be added with the DefinitionModifier.
+Added function getComponentGroupsToRemove(): string[] - Gets component groups that will be removed with the DefinitionModifier.
+Added function setComponentGroupsToRemove(removedGroups: string[]): void - Sets component groups that will be removed with the DefinitionModifier.
+Added function getTriggers(): Trigger[] - Gets event triggers of the DefinitionModifier.
+Added function setTriggers(newTriggers: Trigger[]): void - Sets event triggers of the DefinitionModifier.
+Removed property componentGroupsToAdd.
+Removed property componentGroupsToRemove.
+Removed property triggers.
+DirectionBlockProperty
+Added function getValidValues(): Direction[] - Gets all valid direction enum values for the DirectionBlockProperty.
+Removed property validValues.
+Entity
+Added function getViewDirection(): Vector3 - Gets view direction of the Entity.
+Added function getRotation(): XYRotation -  Gets rotation of the Entity.
+Added function getVelocity(): Vector - Gets velocity of the Entity.
+Removed property viewDirection.
+Removed property rotation.
+Removed property velocity.
+EntityAgeableComponent
+Added function getDropItems(): string[] - Gets items that drop when entity grows.
+Added function getFeedItems(): EntityDefinitionFeedItem[] - Gets items that can be fed to the entity.
+Removed property dropItems.
+Removed property feedItems.
+EntityBreathableComponent
+Added function getBreatheBlocks(): BlockPermutation[] - Gets blocks entity can breathe in.
+Added function getNonBreatheBlocks(): BlockPermutation[] - Gets blocks entity can't breathe in.
+Removed property breatheBlocks.
+Removed property nonBreatheBlocks.
+EntityHealableComponent
+Added function getFeedItems(): FeedItem[] - Gets healing items for the EntityHealableComponent.
+Removed property items.
+Converted EntityHitInformation to an interface.
+EntityRideableComponent
+Added function getFamilyTypes(): string[] - Gets supported rider entity types.
+Added function getSeats(): Seat[] - Gets rider information for each seat.
+Removed property familyTypes.
+Removed property seats.
+EntityTameableComponent
+Added function getTameItems(): string[] - Gets tame items of the EntityTameableComponent.
+Removed property tameItems.
+FeedItem
+Added function getEffects(): FeedItemEffect[] - Gets effect of the FeedItem.
+Removed property effects.
+IntBlockProperty
+Added function getValidValues(): number[] - Gets all valid integer values for the IntBlockProperty.
+Removed property validValues.
+ItemDurabilityComponent
+Added function getDamageRange(): NumberRange - Gets the range of numbers that describes the chance of the item losing durability.
+Removed property damageRange.
+Converted NumberRange to an interface.
+ProjectileHitEvent
+Added function getBlockHit(): BlockHitInformation - Gets block hit information from the ProjectileHitEvent.
+Added function getEntityHit(): EntityHitInformation - Gets entity hit information from the ProjectileHitEvent.
+Removed property blockHit.
+Removed property entityHit.
+StringBlockProperty
+Added function getValidValues(): string[] - Gets all valid string values for the StringBlockProperty.
+Removed property validValues.
+
+
+=== Fixes ===
+Vanilla Parity
+
+Bells that are connected to multiple blocks no longer drop when one block is broken.
+Breeding horses can now produce random variants. (MCPE-129071)
+Fixed an issue where dead players prevented other players from skipping night.
+Eating and drinking animations will now always be centered, regardless of screen aspect ratio.
+Note Block sound attenuation over a distance is now linear. (MCPE-164935)
+Gameplay
+
+Players no longer take rapid damage when touching damaging blocks. (MCPE-165347)
+Fixed a crash that could occur when entering a 1.7.1.0 world in 1.8 or above. (MCPE-165564)
+Projectiles shot while swimming/gliding no longer spawn from above the player's position. (MCPE-31896)
+Items dropped while swimming/gliding, manually or on death, no longer spawn from above the player's position. (MCPE-31896)
+The player's crosshair now properly mines/interacts with items in front of them while swimming/gliding, rather than 1 block above their position. (MCPE-57257)
+Written Books can now be moved in the inventory even when the player has identical Written Books.
+Double-clicking on the Furnace output slot will no longer drop the item (MCPE-165079).
+Fixed a bug where Observers would not detect changes due to corrupted data. (MCPE-150506)
+Blocks
+
+Destroying Mangrove Log or Mangrove Wood now properly cause leaves to decay.
+End Crystals occupying the same space as a block will no longer cause that block to disappear.
+Graphical
+
+Fixed an issue where the "Mine" tooltip was appearing when targeting a block with a Trident in Creative game mode. (MCPE-44846)
+Mobs
+
+Parrots will no longer shake while on a player riding a Horse that is turning mid-jump.
+Fixed a bug causing global entities (e.g. Ender Dragon and projectiles) to stop rendering when out of normal entity render distance. (MCPE-161136)
+Touch Controls
+
+Updated the How to Play screen with info on new touch controls.
+Changing input modes from Gamepad to Touch while an item is selected will return the selected to the inventory or drop it.
+Fixed an issue on the Furnace screen where double-tapping the output window caused other slots to become unselectable.
+Fixed a bug where progressive select was automatically initiated on the first slot when opening a small Chest.
+Mobile
+
+When starting a new world in Pocket UI, removed the "Press Open Chat to open chat" message for players with text-to-speech turned off.
+User Interface
+
+Ocean Explorer, Woodland Explorer, and Treasure Maps now show the proper icon in the inventory. (MCPE-163464)
+Fixed a bug where mouse scrolling on the Friend Options dropdown would not scroll the dropdown contents.
+Resolved an issue where graphical elements of the Sign-In/Sign-Up screen could extend beyond the bounds of the dialog container.
+Commands
+
+/replaceitem and /loot replace block commands no longer place items in Cauldrons. (MCPE-129472)
+Rotation in the teleport command is now relative to the executor of the command instead of the target. Old usage of rotations in commands will stay relative to the target mob for backwards compatibility.
+Technical
+
+Tropical Fish spawn rules .json file is now located in the correct folder. (MCPE-165963)
+Witch potion drinking and ranged attack behavior is now defined in its .json file.
+Creative
+
+The game will no longer create a content error when Bee spawn eggs are used on a Spawner.
+Behavior packs with scripts can now be removed from worlds.
+
+
+== Preview 1.19.70.21 ==
+Beta 1.19.70.21 (Android) or Preview 1.19.70.21 (Windows, iOS, iPadOS, Xbox) is the second beta/Preview version for Bedrock Edition 1.19.70, released on February 1-7, 2023, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Command format ====
+/clone, /fill and /setblock
+
+Removed tileData: int argument.
+/execute
+
+Removed data: int argument.
+/testforblock
+
+Removed dataValue: int argument.
+
+
+==== Mobs ====
+Zombified Piglin
+
+Now spawn at light levels of 11 and below.
+
+
+==== Technical ====
+General
+
+Crafting Table component no longer appends "tile." when defaulting to use block name for crafting table label.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Next Major Update" and "Beta APIs" experimental toggle.
+
+
+==== Changes ====
+
+
+===== Blocks =====
+Heads
+
+Piglin and Dragon Head blocks no longer animate in the hotbar or inventory. (MCPE-164535, MCPE-32654)
+
+
+===== Technical =====
+API
+
+Added function playAnimation(animationName: string, options?: PlayAnimationOptions) - Plays the specified animation for an entity.
+ItemStack
+ItemStack can now be constructed using a string identifier.
+Removed constructor parameter data.
+Removed property data.
+Removed function clearLore To clear lore, call setLore with an empty array or undefined.
+Setting nameTag to an empty string will now clear the name tag.
+Setting nameTag to a string longer than 255 characters will now result in an exception.
+Setting amount greater than the maximum stack size will now clamp the value to the maximum stack size.
+Setting amount to a value less than 1 will now result in an exception.
+ContainerSlot
+Removed function clearItem- To clear the item, call setItem with undefined.
+Removed function clearLore- To clear lore, call setLore with an empty array or undefined.
+GameTest Framework
+
+Test
+Added optional searchDistanceparameter to assertEntityPresent(entityTypeIdentifier: string, blockLocation: BlockLocation, searchDistance?: number, isPresent?: boolean).
+Added assertEntityInstancePresentInArea(entity: Entity, isPresent?: boolean) to check if an entity instance is present in the test area.
+Made the searchDistance parameter optional in assertItemEntityPresent.
+JSON
+
+In JSON formats 1.19.70 and later, blocks fail to load if the "condition" field in Block Permutations is not a valid Molang string.
+
+
+=== Fixes ===
+Gameplay
+
+Players are now able to place top Slabs in blocks that are only partially blocked by an entity. (MCPE-155016)
+Players can no longer see through partial blocks when sneaking or riding in third person. (MCPE-156273)
+Error messages about building outside the world height limits no longer appear when simply interacting with blocks at the world height limits from certain angles. (MCPE-152935)
+Players are now able to interact with functional blocks while sneaking in a gap without the sneak button held.
+Vanilla Parity
+
+Minecarts can now eject mobs into liquid blocks. (MCPE-120078)
+Touch Controls
+
+Allowed left and right D-pad buttons to keep input when the forward button is pressed.
+Added the leave Boat button when the player falls from a height within in the boat.
+Fixed an issue that prevented players from removing equipped armor by tapping on an item or block in the Creative inventory. (MCPE-165790)
+Performance and Stability
+
+Fixed an issue where simultaneously pressing the "Mine" and "Place" button on any input device while targeting a Structure Block could cause the game to crash. (MCPE-155689)
+Marketplace
+
+Navigating right with controller left stick on sidebar now collapses it.
+Commands
+
+Volume arguments no longer floor the selector's position. (MCPE-162237)
+Selecting targets by volume will now select all entities whose hitbox collides with the volume box. This is versioned for 1.19.70 and later. (MCPE-162237)
+Previous behavior works as expected on versions less than 1.19.70.
+Volume arguments for selectors (dx, dy, dz) now support float values. (MCPE-163863)
+
+
+== Preview 1.19.70.22 ==
+Beta 1.19.70.22 (Android) or Preview 1.19.70.22 (Windows, iOS, iPadOS, Xbox) is the third beta/Preview version for Bedrock Edition 1.19.70, released on February 8-11, 2023, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Vines
+
+Now drop nothing when mined with Silk Touch enchanted tools except shears.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Next Major Update" and "Beta APIs" experimental toggle.
+
+
+==== Changes ====
+
+
+===== Blocks =====
+Bamboo Fences and Bamboo Fence Gates
+
+Removed black lines along the edges of Bamboo Fences and Bamboo Fence Gates. (MCPE-163360)
+Bamboo Hanging Sign and Mangrove Hanging Sign 
+
+Mangrove and Bamboo Hanging Signs are now placed correctly in the Creative Inventory. (MCPE-163340)
+
+
+===== Mobs =====
+Camels
+
+Camels can once again overcome obstacles as high as one block and a half. (MCPE-166452)
+
+
+===== Technical =====
+API
+
+Replaced general setVelocity call with methods to apply impulses to entities:
+Added function clearVelocity(): void - Sets the current velocity of the Entity to zero.
+Added function applyImpulse(vector: Vector3): void - Applies impulse vector to the current velocity of the Entity.
+Added function applyKnockback(directionX: number, directionZ: number, horizontalStrength: number, verticalStrength: number): void - Applies ** knockback to the Entity in specified direction based on vertical and horizontal strength.
+Removed function setVelocity.
+BeforeExplosionEvent
+Added function getImpactedBlocks(): Vector3[] - Gets the blocks locations that are impacted by the explosion.
+Added function setImpactedBlocks(blocks: Vector3[]): void - Sets the blocks locations that are impacted by the explosion.
+Removed property impactedBlocks.
+BeforeItemUseOnEvent
+Added function getBlockLocation(): Vector3 - Gets the location of the block being impacted.
+Removed property blockLocation.
+BlockInventoryComponent
+Removed property location.
+BlockLavaContainerComponent
+Removed property location.
+BlockPistonComponent
+Added function getAttachedBlocks(): Vector3[] - Gets the blocks locations that are impacted by the activation of this piston.
+Removed property attachedBlocks.
+Removed property location.
+BlockPotionContainerComponent
+Removed property location.
+BlockRecordPlayerComponent
+Removed property location.
+BlockSignComponent
+Removed property location.
+BlockSnowContainerComponent
+Removed property location.
+BlockWaterContainerComponent
+Removed property location.
+Added function getHeadLocation(): Vector3 - Gets the head location of the Entity.
+Removed property headLocation.
+ExplosionEvent
+Added function getImpactedBlocks(): Vector3[] - Gets the blocks locations that are impacted by the explosion.
+Removed property impactedBlocks.
+ItemStartUseOnEvent
+Added function getBlockLocation(): Vector3 - Gets the location of the block being impacted.
+Added function getBuildBlockLocation(): Vector3 - Gets the location of the resulting build block.
+Removed property blockLocation.
+Removed property buildBlockLocation.
+ItemStopUseOnEvent
+Added function getBlockLocation(): Vector3 - Gets the location of the block being impacted.
+Removed property blockLocation.
+ItemUseOnEvent
+Added function getBlockLocation(): Vector3 - Gets the location of the block being impacted.
+Removed property blockLocation.
+NavigationResult
+Added function getPath(): Vector3[] - Gets the locations of the blocks that comprise the navigation route.
+Removed property path.
+Player
+Added function getHeadLocation(): Vector3 - Gets the head location of the Player.
+Removed property headLocation.
+ItemStack
+Added read-only property getMaxAmount: number - Returns the maximum stack size for the item.
+Added read-only property isStackable: bool - Returns whether the item is stackable.
+Added function isStackableWith(itemStack: ItemStack): bool - Returns whether the item can be stacked with the given item.
+Added read-only property type: ItemType - Returns the type of the item.
+Added function clone(): ItemStack - Returns a copy of the item stack.
+Added property keepOnDeath: bool - Sets whether the item is kept on death.
+Added property lockMode: ItemLockMode - Sets whether the item can be moved or dropped.
+Added function setCanPlaceOn(blockIdentifiers?: string[]) - Sets which blocks the item can be placed on.
+Added function setCanDestroy(blockIdentifiers?: string[]) - Sets which blocks this item can destroy.
+
+
+=== Fixes ===
+Vanilla Parity
+
+Impact sounds of projectiles on Amethyst blocks and clusters are now audible.
+Dead Bush will now drop Sticks when broken with any tool except Shears, even those with the Silk Touch enchantment. Vines will drop nothing in the same situation. (MCPE-163246)
+Bells no longer break when a block is placed underneath or above them. (MCPE-166742)
+Spectator Mode
+
+Phasing through blocks in third person view no longer makes the camera zoom in and out towards the player’s head. (MCPE-160467)
+End Gateways can no longer be used in Spectator Mode. (MCPE-165689)
+Gameplay
+
+Redstone source can now power a single block from different sides at the same time. (MCPE-163651)
+Players are no longer able to begin flying if they have no space to stand up. (MCPE-166413)
+Players can now fall off of an edge while sneaking if not holding the sneak button.
+Blocks
+
+Composter now always consumes an item when becoming full. (MCPE-162020)
+Mobs
+
+Witches will drink a Fire Resistance Potion when standing on a Campfire.
+Items
+
+Crossbow now shakes while charging arrows. (MCPE-152952)
+Loot table conditions are no longer ignored in-game when used inside functions. (MCPE-164582)
+Spawn eggs for Snow Golem, Wither, and Trader Llama now appear correctly in the inventory and hotbar.
+Marketplace
+
+Added a new 'Marketplace' icon to the Marketplace screen sidebar.
+User Interface
+
+Carrots now display the proper name in item tooltips when used in can_place_on and can_destroy item components. (MCPE-160838)
+Tweaked the keyboard interaction on Android devices for text input fields.
+Commands
+
+The /summon command no longer causes some entities to be spawned in at an angle.
+
+
+== Preview 1.19.70.23 ==
+Beta 1.19.70.23 (Android) or Preview 1.19.70.23 (Windows, iOS, iPadOS, Xbox) is the fourth beta/Preview version for Bedrock Edition 1.19.70, released on February 15 and 18, 2023, which adds the Sniffer, Archaeology, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/summon
+
+Re-added rotation arguments for the /summon command.
+New syntax: /summon <entityType: EntityType> [spawnPos: x y z] [yRot: value] [xRot: value] [spawnEvent: string] [nameTag: string]
+Previous syntax: /summon <entityType: EntityType> [spawnPos: x y z] [spawnEvent: string] [nameTag: string]
+
+
+==== General ====
+Experiments
+
+Added the "Sniffer" experimental toggle.
+Enables all sniffer-related features.
+The sniffer, torchflowers, and torchflower seeds.
+
+
+==== Technical ====
+JSON
+
+Released block properties and permutations out of experimental in JSON formats 1.19.70 and higher.
+Added a content warning when loading world with more than 65536 custom block permutations. Custom block permutation counts are logged in debug log.
+
+
+=== Changes ===
+
+
+==== Gameplay ====
+Horse breeding
+
+When breeding horses, the baby horse now has a chance of being better than its parents in speed, jump strength, and health.
+This change is intended to make horse breeding a viable way of getting great horses, if a player starts with good parents and puts in enough time and golden carrots.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Next Major Update", "Sniffer", and "Beta APIs" experimental toggle.
+
+
+==== Additions ====
+
+
+===== Blocks =====
+Decorated Pot
+
+Can be crafted with any 4 pottery shards or brick items, shaped rhombic.
+The type of crafting material decides which picture would occur on the certain side of the crafted decorated pot.
+The possible pictures are decided by the type of pottery shard which is used to craft.
+The brick item will not have a picture.
+Very fragile, and very easy to break it:
+Will break apart into its crafting materials when breaking it using any block-breaking tool.
+Will drop itself when breaking it using empty hand.
+Suspicious Sand
+
+Generates in desert temples and desert wells.
+Brushing the suspicious sand with a brush will extract objects.
+Torchflower
+
+A new type of flower, grows from torchflower seeds.
+Only drop itself when broken.
+Can be crafted into a orange dye.
+Can be planted in the flower pot.
+
+
+===== Items =====
+Brush
+
+An item which can be used to brush things.
+Can be crafted with 3 string and 2 sticks, like the shape of crafting pickaxes.
+Pottery Shard
+
+They have pictures on them.
+They cannot be crafted and are only found by brushing suspicious sand.
+Spawn Egg
+
+Added sniffer spawn egg.
+Torchflower Seeds
+
+A new type of seed, which can be planted on farmland and grows into a torchflower.
+Can only be obtained if a sniffer digs up a torchflower seed.
+
+
+===== Mobs =====
+Sniffer
+
+A new passive friendly mob, which is the mob vote winner of Minecraft Live 2022, and considered as the first "ancient" mob.
+Cannot spawn naturally.
+Cannot be tempted or tamed.
+Often sniff in the air and occasionally dig for torchflower seeds.
+Can be bred with torchflower seeds.
+Drop moss block when killed.
+
+
+===== Technical =====
+API
+
+BlockPermutation
+Added method matches(blockName: string, properties?: BlockProperties): boolean which is used to match a block with optional states against a BlockPermutation.
+Added method withProperty(name: string, value: boolean | number | string): BlockPermutation; which returns a new block permutation with a given property set to a specific value. Throws if the provided data cannot be resolved as a valid block permutation.
+Added function static resolve(blockName: string, properties?: BlockProperties): BlockPermutation which resolve a BlockPermutation from a block name and optional states. Throws if the provided data cannot be resolved as a valid block permutation.
+BlockProperties
+Added new class to expose BlockPropertyType.
+BlockPropertyType
+Added new class to track "definitional" data about block properties. This is how you can find which values are valid for each block property.
+
+
+==== Changes ====
+
+
+===== World generation =====
+Desert Pyramid
+
+Now includes a new room filled with sand and suspicious sand.
+Some sands will appear exposed, and can be found at the same height as the blue terracotta.
+Desert Well
+
+Now includes suspicious sands under its water.
+
+
+=== Fixes ===
+Gameplay
+
+Fixed a bug where an Allay holding a Lead wasn't able to be leashed unless the player held a full stack of 64 Leads in hand.
+Audio
+
+Sounds from all Button types and Lever are now controlled by "Blocks" slider in Audio Settings. (MCPE-166420)
+The sound volume of Ghasts will now fade the further they are from the player. (MCPE-35222)
+Blocks
+
+Fixed a bug where Hoppers would not pull in items after being unpowered from Redstone. (MCPE-166434)
+General
+
+The swap item animation now plays when switching hotbar items of the same type with the same durability.
+Graphical
+
+The loading screen no longer flickers when entering the Nether in immersive VR mode.
+Items
+
+Fixed loaded Crossbow staying loaded after shooting. (MCPE-166827)
+Mobs
+
+Villagers will now emit anger particles when hit by a player outside of a village.
+Horses cannot be pushed over Fences covered by Carpets anymore. (MCPE-164717)
+User Interface
+
+Fixed a bug where moving the player or camera with a controller while text-to-speech for UI was turned on would cause the narrator to say "X of Y".
+Fixed a bug where the Edit World screen couldn't be opened for a world if the corresponding world directory had a space in it. (MCPE-166763)
+
+
+== Preview 1.19.70.24 ==
+Beta 1.19.70.24 (Android), Preview 1.19.70.24 (Windows, Xbox) or Preview 1.19.70.25 (iOS, iPadOS) is the fifth beta/Preview version for Bedrock Edition 1.19.70, released on February 23-24, 2023, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Gameplay ====
+Sneaking
+
+Reverted the changes related to 1.5 gap sneaking.
+
+
+=== Fixes ===
+Gameplay
+
+Players now stop sneaking in Powder Snow after letting go of the sneak button. (MCPE-166518)
+Marketplace
+
+Fixed an error that could occur when clicking on a Minecoin bundle.
+
+
+== Preview 1.19.70.26 ==
+Beta 1.19.70.26 (Android) or Preview 1.19.70.26 (Windows, iOS, iPadOS, Xbox) is the fifth and final beta/Preview version for Bedrock Edition 1.19.70, released on March 1-2, 2023, which fixes bugs.
+
+
+=== Fixes ===
+General
+
+Fixed several issues that were affecting the gameplay experience and stability of the game.
+Fixed an issue that prevented Boat paddling sounds from playing. (MCPE-166558)
+Items no longer float away after they are thrown out of water. (MCPE-167251)
+Technical
+
+Player projectiles no longer snap to the block grid when spawned from an event with born spawn method.
+
+
+== Notes and references ==
+
+
+== Navigation ==

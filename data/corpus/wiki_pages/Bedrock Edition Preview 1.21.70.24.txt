@@ -1,0 +1,133 @@
+Beta 1.21.70.24 (ChromeOS, Android) or Preview 1.21.70.24 (Windows, iOS, iPadOS, Xbox, PlayStation) is the fourth beta/Preview version for Bedrock Edition 1.21.70, released on February 19, 2025, which adds new sounds for wolves, changes spawn egg textures, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Mobs ===
+Wolf
+
+Added 6 new wolf audio variants with unique ambient, hurt, death, growl, whine, and pant sounds.
+Every wolf will have a random audio variant assigned to it from the 6 new variants and the original one.
+The audio variant is not related to the texture variant.
+
+
+== Changes ==
+
+
+=== General ===
+Experiments
+
+Removed the Experimental "Third Person Cameras" toggle and added an Experimental "Creator Camera Features" toggle for all future experimental cameras.
+UI
+
+Taking screenshots no longer takes the player out of the pause screen.
+Changes have been made to the Multiplayer tab. Player permission icons have been updated, and on PlayStation and Nintendo consoles now show a message informing the player that they need to sign in to access multiplayer features. Below the message there's a button that will take the player to respective console sign in flow.
+
+
+=== Items ===
+Spawn eggs
+
+Overhauled the visuals of each spawn egg to improve readability and accessibility.
+Each spawn egg now has their own unique visual which captures the personality and character of the mob it spawns.
+Each egg visual varies in shape to reflect the in-world size of the mob it spawns.
+For example, smaller mobs tend to have a smaller spawn egg.
+
+
+=== Gameplay ===
+Sounds
+
+Lowered volume in sound files for leaf litter (break, step, place).
+Lowered volume in sound files for grass (dig).
+
+
+=== Technical ===
+API
+
+@minecraft/server 1.18.0
+Moved CameraFixedBoomOptions from beta to stable.
+Moved LiquidType enum from beta to stable.
+Moved liquid detection methods in Block from beta to stable.
+Moved liquid detection methods in BlockPermutation from beta to stable.
+Moved method Player.spawnParticle from beta to stable.
+Blocks
+
+The minecraft:material_instances component supports an optional tint_method field in its instance definitions.
+tint_method is a string field that multiplies a face color with a tint computed with the biome the block is in. Supported values are none, default_foliage, birch_foliage, evergreen_foliage, dry_foliage, grass, and water.
+Held block-items are tinted as if they were in the plains biome. Example:
+
+Creator
+
+ItemTag support in the match_tool loot table condition no longer requires enabling the "Upcoming Creator Features" experiment toggle.
+Goals
+
+Added use_home_position_restriction field to minecraft:behavior.float_wander AI goal to control whether mobs respect home position restrictions when selecting target positions.
+Defaults to false for entities with format version below 1.21.70, and true for 1.21.70 and later.
+When true, the mob will respect home position restrictions when selecting target positions.
+Network Protocol
+
+Added ActorFlags::WASD_AIR_CONTROLLED.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs" experimental toggle.
+
+
+=== Changes ===
+
+
+==== Technical ====
+API
+
+@minecraft/server 2.0.0-beta
+Raised the limit for Lore Entry length from 50 to 1000 and the number of lines from 20 to 100 when using ItemStack.setLore.
+Added three new methods to Player. These Entity Overrides are only applied to the target Player. Changes are not applied until the next tick and will not apply to other players.
+setPropertyOverrideForEntity: Overrides an Entity Property on the target Entity to the provided value. This property must be client synced.
+removePropertyOverrideForEntity: Removes the override of the specified Entity Property on the target Entity.
+clearPropertyOverridesForEntity: Removes all overrides of any Entity Properties on the target Entity.
+Components
+
+Added the minecraft:input_air_controlled component, that enables controlling flying rideables.
+Functions similarly to minecraft:input_ground_controlled, but instead of limiting acceleration to the XZ-plane, this component applies acceleration in the direction the player is looking in three dimensions.
+Supports adjustments to strafing and backward movement speeds, allowing entities to fly at equal speeds in all directions or move slower when strafing or reversing.
+This component is experimental and as such requires use_beta_features to be enabled.
+It may undergo significant changes or even be replaced as development progresses.
+Graphical
+
+Added 4 optional components to the Client Biome JSON 1.21.70 Schema. However, these components are intended for future use with the Deferred Technical Preview and have no effect in current builds, Preview or otherwise. With this change, Deferred resource pack rules have changed slightly:
+The game will now load all valid JSON files in the atmospherics, color_grading, lighting and water directories of a Deferred resource pack. Every valid JSON file in each category must have a unique identifier field in its schema.
+Reserved filenames for each schema category (e.g., atmospherics/atmospherics.json or lighting/global.json) will still be treated as the global/default settings for a pack.
+If a Biome JSON in a Deferred resource pack contains any of these new identifier components, then the identifiers will be validated against the identifiers found in the respective set of Deferred configurations. For instance, if a Biome JSON contains a minecraft:water_identifier entry, then the supplied identifier must correspond to a valid identifier in one of the pack's Water JSONs.
+If a Biome JSON doesn't contain one of the new identifiers, then the global/default identifier from the reserved filenames will automatically be added to said biome.
+
+
+== Fixes ==
+16 issues fixed
+From released versions before 1.21.70
+
+MCPE-181679 – Decorated pots have a glitched texture in the Deferred Technical Preview
+MCPE-188459 – Animated blocks still play their animation when the game is paused
+MCPE-188464 – Fire overlay animation still plays when the game is paused
+MCPE-189689 – Summoning a pig with commands or a spawn egg in snowy plains creates temperate pig
+MCPE-189693 – Leaves in cold biomes no longer turn white while it's snowing
+MCPE-189712 – Leash on pigs float above them when the "Drop 1 2025" experiment is enabled
+MCPE-189749 – Pig saddle texture is no longer symmetrical
+MCPE-189751 – Saddle model change breaks Marketplace resource packs because it was not given a v2 texture
+MCPE-189800 – Pig saddle attachable change causes resource packs with old pigs to show 2 saddles
+MCPE-190225 – Pink petals/wildflowers/leaf litter do not display "Place" controller tooltip when 1/4 of the block is placed in the block
+From the previous development version
+
+MCPE-190218 – Bow, crossbow, trident, shield, and spyglass are positioned incorrectly when the game is paused
+MCPE-190290 – Breath bobbing animations resume at different position when the game is unpaused
+MCPE-190366 – Jungle bush feature reverts back to using jungle leaves when the Drop 1 2025 experiment is enabled
+Other
+
+Fixed an issue where destroying and picking up a Shulker box would make it appear invisible in the inventory until world reload.
+Fixed an issue where chunks weren't saving properly on older worlds.
+Fixed a bug where the typeid property of the Effect class was being translated based on your language option.
+
+
+== References ==
+
+
+== Navigation ==

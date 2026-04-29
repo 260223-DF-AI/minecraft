@@ -1,0 +1,100 @@
+Invisibility is a status effect that turns players and mobs completely transparent and see-through, but has no effect on held items, worn armor, or certain parts of some mobs. Invisible entities, especially those wearing no armor, can get significantly closer to most mobs without being detected.
+
+
+== Effect ==
+
+Invisibility has three effects: It causes the affected entity's model to disappear, it decreases the distance the player can be detected by mobs, and it hides the player's waypoint from the locator bar.
+
+
+=== Rendering ===
+While under the invisibility effect, the model and name of mobs and players are not rendered, making the mob or player appear to be invisible. This does not prevent the mob or player from interacting with the world.
+Certain features of mobs and players are not affected by Invisibility:
+
+Worn armor (including horse armor, wolf armor, and nautilus armor)
+Held items
+Particles being emitted (including particles from the Invisibility effect)
+Fire from entities set on fire
+Arrows and bee stingers stuck in players ‌[Java Edition  only]
+A shulker's head (whether opened or closed)
+Carpets equipped to llamas and trader llamas
+Saddles equipped to pigs, striders, horses, donkeys, mules, camels, nautiluses, and zombie nautiluses
+Harnesses equipped to happy ghasts
+The aura of a charged creeper
+The eyes of spiders, cave spiders, endermen, phantoms, and creakings
+The eyes and wind effects of breezes
+Chests on donkeys, mules, llama, and trader llamas are not rendered when the host mob is invisible.
+
+
+=== Mob detection range ===
+When a player is under the Invisibility effect, the distance at which mobs detect the player is much shorter. After detecting a player, the mob behaves as if the player did not have the Invisibility effect; hostile mobs follow and attack the player until the player is outside of the mob's normal detection range.
+A mob's detection range is determined by the follow_range attribute. When a player does not have any items equipped in armor slots (including elytra), the player is detected at 7% of a mob's normal detection range.
+When a player has items equipped in armor slots, the detection range is 17.5% times the number of pieces of armor. With 4 pieces of armor, the player is detected at 70% of a mob's normal detection range.
+Invisibility stacks with other methods of reducing a mob's detection range:
+
+Sneaking reduces detection range to 80% of the normal range
+Wearing the corresponding mob head reduces detection range of skeletons, zombies, creepers, piglins and piglin brutes to 50% of the normal range. Mob heads are worn in an armor slot, and result in a larger detection range than not wearing the mob head.
+The final detection range is given by the maximum between 2 and the detection range after the reduction, so the final detection range is at least 2.
+The exact numerical information is in the table below:
+
+In addition:
+
+Sculk sensors, wardens, cats and villagers do not behave any differently toward invisible entities.
+Pillagers point their crossbows at invisible players outside their reduced detection range, but do not attack.
+
+
+=== Locator bar ===
+The waypoint of a player affected by Invisibility is not shown on other players' locator bar. In Java Edition, this is done by applying a 100% reduction on the waypoint_transmit_range attribute.
+
+
+== Causes ==
+
+
+== Immune mobs ==
+Withers and ender dragons are immune to Invisibility.
+
+
+== Data values ==
+
+
+=== ID ===
+
+Java Edition:
+
+Bedrock Edition:
+
+
+== Advancements ==
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+=== Legacy Console Edition ===
+
+
+== Issues ==
+Issues relating to "Invisibility" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Trivia ==
+Players in Spectator mode see invisible entities as translucent instead.
+In Java Edition, Invisibility prevents the rendering of entity hitboxes by pressing F3 + B.
+In Java Edition, The attack indicator still appears when facing an invisible entity.
+
+
+== Gallery ==
+
+
+=== Screenshots ===
+
+
+== References ==
+
+
+== Navigation ==

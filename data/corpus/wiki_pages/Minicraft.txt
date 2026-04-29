@@ -1,0 +1,108 @@
+Minicraft is a 2D top-down action game made by Markus "Notch" Persson, for the 2011 48-hour game programming contest Ludum Dare 22. The game was released on December 19, 2011, and since then, it has never received any official updates.
+After its discontinuation, it became open source and its popularity increased as many players created their own versions of Minicraft. Notch was also developing a sequel called Minitale, but it was never released and little is known about it.
+
+
+== Controls ==
+W, A, S, D or the ↑ Up, ← Left, ↓ Down, and → Right keys to move and to scroll through the inventory
+C or Space to attack
+X to open the inventory (which pauses the game) and to use items (select an item in the inventory to equip it)
+
+
+== Gameplay ==
+
+The gameplay is in some ways similar to Minecraft. The player must gather materials to craft tools to mine ore, chop trees, farm wheat, dig pits, and kill zombies and slimes. In order to win they must defeat the boss, the air wizard. The theme of the Ludum Dare competition the game was created for was "Alone", and the game's submission description reads, "The goal of the game is to kill the only other sentient being in the world, making sure you'll be alone forever."
+Players spawn in a series of islands, with a border at the edges of the map. Minicraft has 5 surface biomes, which are forest, plain, desert, mountain, and ocean, as well as 3 cave biomes, which are dry caves, water caves, and lava caves, along with a sky biome.
+The player has 10 health and 10 energy. Energy rapidly regenerates, while health must be restored with food. Energy is depleted by doing things such as attacking and eating, and these actions cannot be done if the player does not have enough energy. When the player runs out of energy, they are unable to use items and their movement speed is reduced. The more energy a player has, the more damage a tool does to its target when used. Each tier of tool is more powerful and uses less energy than the last; wood tools consume 5 energy when used on most tiles and 7 when used on ore, and each subsequent tool tier uses 1 less energy per action. Eating food consumes 6 energy. If the player runs out of health, they die and have to restart the game. The player also has an inventory with no limit on how many items they can carry and no maximum stack sizes.
+
+
+== Entities ==
+
+Entities are mobile objects in the game world.
+
+
+=== Mobs ===
+All other mobs are hostile toward the player, pursuing them when close and dealing damage on contact.
+
+
+=== Furniture ===
+Furniture are objects that can be placed in the world. They collide with players and mobs, and the player can push them around, or pick them up with the power glove. There are six furnitures in the game, the  Workbench, the  Chest, the  Oven, the  Furnace, the  Anvil and the  Lantern. All of them except the lantern can be interacted with and used to craft or store items.
+
+
+=== Other entities ===
+The other entities in the game are Dropped items, which are automatically picked up on contact with the player, and begin to blink and then despawn soon after dropping; and Sparks, which are the projectiles fired by the air wizard, which move slowly away from it and deal 1 damage on contact with the player and other monsters.
+
+
+== Tiles ==
+Tiles are the two-dimensional equivalent of blocks and make up the world of Minicraft.
+
+Cactus - Found in desert regions, deals 1 damage to mobs and the player on contact, has 10 hp and drops 1-2 cactus items.
+Cloud cactus - Found in the sky and resembles ore, deals 3 damage on contact and has 10 hp.
+Cloud - Makes up the terrain of the sky. Using a shovel on it does not destroy it, but does cause it to drop cloud items.
+Dirt - Found on the surface underneath grass, sand and rock, and can be used to fill holes and replace liquid tiles.
+Farm - Created by tilling grass, dirt or stone with a hoe, and can have crops planted on it. Eventually turns back into dirt or stone if nothing is planted on it, and has a chance of turning back when stepped on. Also turns back upon harvesting its crops or using a shovel on it.
+Flower - Found in patches on grass. Each flower tile contains two white and yellow flowers resembling oxeye daisies. Breaking the tile drops 1-2 flower items, each of which can be planted to create a flower tile with two flowers on it, making them easily renewable. Flowers can also spread to adjacent dirt tiles when grass grows on them.
+Grass - Generates on top of dirt in most areas of the surface and can spread to adjacent dirt tiles. Flowers and trees can be planted on it. When a hoe or shovel is used on grass, it has a chance of dropping seeds instead of breaking.
+Hard rock - Eight hard rock tiles encase each staircase to the sky, which can be mined only with a gem pick. Has the same drops as rock and 200 hp.
+Hole - Using a shovel on exposed dirt or stone creates a hole, which liquids can flow into, and which monsters cannot cross. Placing a dirt item in a hole turns it back into a dirt or stone tile.
+Infinite fall - The tile used for the gaps between clouds in the sky. The player, slimes and zombies cannot walk on it, but the air wizard can.
+Lava - Generates in the lowest underground level, emits light and deals a lot of damage on contact. Monsters cannot enter it.
+Ore - There are three types of ore, each found exclusively in a different underground level: iron, gold and gem. They take damage only from a full-energy hit from a pickaxe. They have a chance of dropping ore with each hit, and drop more ore upon being broken. They all deal 3 damage on contact, requiring the player to be careful while mining.
+Rock - Generates in the mountainous areas of the surface and makes up most of the underground, forming walls the player must mine through. Has 50 hp and drops 1-4 stone and 0-1 coal.
+Sand - Generates in the desert areas of the surface on top of dirt, and can have cacti planted on it. Players and mobs leave footprints when they walk on sand (including slimes, despite not having feet), which disappear after a random amount of time.
+Sapling - The premature stage of a newly planted tree or cactus.
+Stairs - The passageways between levels, found throughout the world. A staircase going down on one level connects to a staircase going up on another. Cannot be destroyed.
+Stone - Makes up the floor of the underground levels. Functionally identical to dirt, drops dirt when excavated, and dirt placed underground becomes stone.
+Tree - Generates on grass throughout the surface, cannot be passed through, and has a chance to drop an apple whenever a player hits it. Has 20 hp and drops 1-2 wood and 0-2 acorns. When four trees are placed next to each other, a fifth tree appears between them, which is purely visual.
+Water - Generates on the surface and in the middle underground level. The player loses energy by swimming in water and starts to take damage if their energy runs out. Monsters cannot enter it.
+Wheat - Created by planting seeds on farmland, and goes through six growth stages. The higher the stage, the more seeds and wheat items are dropped upon breaking it.
+
+
+== Items ==
+Items are obtained from killing mobs, breaking tiles and crafting other items.
+
+
+== Levels ==
+
+There are 5 levels in the Minicraft world, connected by staircases. These are:
+
+Surface - Where the player spawns. It is always lit by sunlight, and only green monsters spawn here. The surface can be roughly divided up into 5 different biomes:
+Forest - A region covered in grass and trees.
+Plain - A region covered in grass without trees.
+Desert - A region covered in sand and cacti.
+Mountain - A region covered in rock and stairs.
+Ocean - A region covered in water.
+Dry caves - The first level of the underground is made up of winding cave systems filled with veins of iron ore. Red and green monsters spawn here.
+Water caves - The second level of the underground is filled with large lakes of water and veins of gold ore. White, red and green monsters spawn here.
+Lava caves - The third level of the underground is filled with large lakes of lava and veins of gem ore. Black, white, red and green monsters spawn here.
+Sky - Using a gem pick, the player can break through the hard rock barriers on the surface that surround the stairs to the sky, a level made up of cloud platforms and bottomless dropoffs, which is inhabited by black monsters and the air wizard.
+
+
+== Trivia ==
+A web version of Minicraft is hosted on this page (but is no longer playable on modern browsers due to the deprecation of Java Applets).
+Notch livestreamed himself coding the game on Twitch.
+The Power Glove in Minicraft also appears in another one of Notch's games, Prelude of the Chambered, which was made for another Ludum Dare four months earlier.
+Many features later added to Minecraft first appeared in Minicraft, such as apples dropping from trees, zombie variants, anvils, white flowers, storage objects that keep their inventory when picked up, special furnaces for cooking food, lanterns, large underground lakes, and wind-themed enemies.
+The sky level is similar to the unimplemented sky dimension.
+Minitale was an unreleased sequel to Minicraft. Notch announced a few days after completing the original game that he was planning to keep working on it, then confirmed a sequel was being worked on, originally called Minicraft 2, then announced the name. It was going to have saving and loading, replays, a new level generator, improved lanterns, and a widescreen resolution.
+The game's "about" page contains a dedication to Notch's father, who died a few days before Notch created the game.
+
+
+== Gallery ==
+Notch's screenshots:
+
+
+== See also ==
+Minicraft on Wikipedia.
+Original Ludum Dare page for Minicraft (archived).
+A download link of Minicraft.
+Minicraft Wiki (mainly covers modded versions).
+Minicraft+, a modified version of Minicraft.
+Official website for Minitale (archived).
+Minecraft 4k, another game created for a contest.
+Prelude of the Chambered, another game created for a contest.
+
+
+== References ==
+
+
+== Navigation ==

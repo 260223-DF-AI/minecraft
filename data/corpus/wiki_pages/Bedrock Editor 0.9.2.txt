@@ -1,0 +1,25 @@
+Bedrock Editor v0.9.2 is a minor beta release for the Bedrock Editor released on March 18, 2025, which adds trim actions and fixes bugs.
+
+
+== Additions ==
+Added a new toggle group for Trim Actions.
+Added 2 new trim actions:
+Trim - shrink the selection bounding volume to include only the specified non-air blocks.
+Remove Air - remove all air blocks (and specified blocks) from the selection to create a new selection containing only the specified blocks.
+Added a new editorConstants object to the player context. This provides access to a number of constant values and methods that are commonly used across Editor (both in TypeScript and Native code).
+Added game rules to Export: Limited Crafting, Show Death Message, Show Item Tags, Command Block Output, Send Command Feedback, Max Command Chain Length, Fire Damage, Freeze Damage, Fall Damage, Drowning Damage, Insomnia, Show Border Effect, Function Command Limit.
+
+
+== Fixes ==
+Fixed a bug where visualizations beyond 100x100x100 in the Repeater tool would appear.
+Fixed crash on exit Editor when selection volume is visible.
+Fixed the brush visualization reset when jumping from matches to no matches (artifacts of the old match state were left attached to the visualization).
+
+
+== Gallery ==
+
+
+== References ==
+
+
+== Navigation ==

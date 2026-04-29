@@ -1,0 +1,136 @@
+Animation placeholder textures are special textures stored in pre-defined texture atlases which serve as stand-ins for animated textures. When texture atlases are loaded into memory, the placeholder textures are internally overwritten with the animated versions; thus, these textures will typically never be seen in normal gameplay and have no effect on the final appearance of the texture.
+Animation placeholder textures effectively "reserve" areas of the texture atlas that are going to hold animated textures, preventing an unwitting developer from accidentally placing new textures there and having them be overwritten. They also serve as fallback versions of animated textures, displaying in some cases where the animated versions fail to load or intentionally do not load.
+While these were originally intended to be placeholders for procedurally generated textures, they remained present in Legacy Console Edition and for some time in Pocket Edition even after all procedural textures were replaced with pre-made animated versions.
+
+
+== Info ==
+It is worth noting here that flowing liquids use a texture twice the size of most block textures (32×32 as opposed to the usual 16×16). This is not unique to placeholder textures, and can also be noted when viewing the equivalent pre-made textures for liquids in later versions, as well as applying internally for generated liquid textures. A larger texture is used here since the texture is rotated accordingly to match the flow direction, while otherwise remaining at the same resolution. As a result, 16×16 textures would be too small to show a continuous texture if rotated at all, as with the most extreme case, a 45 degree rotation, there would be clear gaps at the corners, as one corner to the other would cross ~22.6 pixels rather than 16.
+
+
+=== Viewing animation placeholder textures in-game ===
+In some versions of Java Edition​[more information needed] and Legacy Console Edition, they can appear if the game is paused upon first loading the world, which can be done by having the game window not be in focus while the world is loaded.
+From Java Edition Beta 1.8[is this the correct version?] until 1.5, if a texture pack is used which resizes terrain.png or items.png to dimensions larger than 256x256, the procedurally generated textures will become misplaced and partially overwrite other block/item textures due to using hardcoded coordinate offsets. This causes the actual blocks these textures were intended for to display the respective placeholder textures instead.
+From Pocket Edition v0.1.0 alpha until v0.7.0 alpha, various animation placeholder textures could potentially be seen in-game. Water would display its placeholder textures on certain low-end devices. Lava, while rarely encountered, would display its placeholder texture on all devices. Fire, if hacked into the game, appeared invisible when placed - however, if the player got set on fire by standing in it, the on-screen overlay would display the corresponding placeholder texture.
+From Pocket Edition v0.7.0 alpha to v0.14.1, they could be seen if the "Animated water" option was disabled in graphics settings.
+
+
+== Water ==
+
+
+=== Java Edition ===
+When the generated animation was added for water in 0.0.19a, the old water texture used before that point was kept in as a placeholder texture.
+A second copy of the water texture was added in the 20091223-0040 Indev build, which was without a doubt linked to the addition of the flowing water texture.
+In the 20100616-1808 build of Infdev, the water placeholder textures were moved to the bottom-right of terrain.png. The still water texture remained as a single texture square, and the flowing water texture became a 2×2 square of water textures, as explained earlier.
+With the split of terrain.png into separate textures and addition of animated texture images in 13w02a, these textures were decommissioned and removed soon after.
+
+
+=== Bedrock Edition ===
+Due to the first terrain.png in Pocket Edition being based off of the terrain.png from Beta 1.3, both the still and flowing water texture placeholders from said version are there by default. They were used as the water texture on certain devices, seemingly on either very new or very old devices relative to 2011-12. It seems that as of v0.7.0 alpha, the generated water textures would always be used. The placeholder textures were always used on Pi Edition (a modified version of v0.6.1 alpha).
+They were updated in v0.10.0 alpha to more closely resemble the generated water textures, becoming opaque as a result. In v0.14.2, the procedurally generated water textures were replaced with animated image versions, but the placeholder textures remained unchanged until the removal of terrain_atlas.tga as a whole in v0.15.0.
+
+
+=== Legacy Console Edition ===
+Due to the first terrain.png in Xbox 360 Edition being the same as the terrain.png from Beta 1.6.6, both the still and flowing water texture placeholders from said version are there by default, and would carry over to the other consoles. The procedurally generated water textures were replaced with animated image versions in TU12, but the placeholder textures remained unchanged.
+They were later updated in TU25 and equivalent versions to match the animated water textures, and were updated again in TU31 and equivalent versions alongside all other translucent textures to appear more translucent. In a PS4 version sometime between 1.76 and 1.92,​[more information needed] they were updated again to match Bedrock Edition's water placeholder textures (despite the animated water textures being unchanged).
+
+
+== Lava ==
+
+
+=== Java Edition ===
+When the generated animation was added for lava in 0.0.19a, the old lava texture used before that point was kept in as a placeholder texture.
+A second copy of the lava texture was added in the 20100110 Indev build, presumably for flowing lava, despite flowing lava not appearing visually distinct from still lava until the 20100616-1808 build of Infdev. It is currently unknown whether this even represents where flowing lava would be at all, or if versions before 20100110 and inclusively after 20091223-0040 would use the same placeholder texture for would-be "flowing" lava (in an identical situation to water) as it would still lava or if it would use the texture at this position instead which was a duplicate of the top of grass at the time.
+In the 20100616-1808 build of Infdev, the lava placeholder textures were moved to the bottom-right of terrain.png. The still lava texture remained as a single texture square, and the flowing lava texture became a 2×2 square of lava textures, as explained earlier.
+With the split of terrain.png into separate textures and addition of animated texture images in 13w02a, these textures were decommissioned and removed soon after.
+
+
+=== Bedrock Edition ===
+Due to the first terrain.png in Pocket Edition being based off of the terrain.png from Beta 1.3, both the still and flowing water texture placeholders from said version are there by default. They were used for all lava seemingly regardless of device up until v0.7.0 alpha, when lava became animated on seemingly all devices.
+They were updated in v0.14.2 to match the animated lava textures introduced in that version, and removed shortly after alongside terrain_atlas.tga as a whole in v0.15.0.
+
+
+=== Legacy Console Edition ===
+Due to the first terrain.png in Xbox 360 Edition being the same as the terrain.png from Beta 1.6.6, both the still and flowing lava texture placeholders from said version are there by default, and would carry over to the other consoles. The procedurally generated lava textures were replaced with animated image versions in TU12, but the placeholder textures remained unchanged.
+They were later updated in TU25 and equivalent versions to more closely resemble the animated lava texture. In a PS4 version sometime between 1.76 and 1.92,​[more information needed] they were updated again to match Bedrock Edition's lava placeholder textures (despite the animated lava textures being unchanged).
+
+
+== Fire ==
+
+
+=== Java Edition ===
+
+Despite fire being added in early Indev in January, a dedicated placeholder texture for fire was not added until late Infdev in June. Initially, the placeholder texture was a messy red-orange scribble, but was changed several days later to a red square with "FIRE TEX! HNST" (Fire texture! Honest) cut out of it.
+In Beta 1.2, a second fire texture was added for additional variation; a corresponding identical placeholder texture was added to terrain.png below the original copy.
+With the split of terrain.png into separate textures and addition of animated texture images in 13w02a, these textures were decommissioned and removed soon after.
+
+
+=== Bedrock Edition ===
+
+Due to the first terrain.png in Pocket Edition being based off of the terrain.png from Beta 1.3, both of the spaces that held fire texture placeholders also hold fire texture placeholders here. Interestingly, however, all of the fire placeholders which exist throughout Pocket Edition are different from any of those seen in Java Edition. The first texture, in v0.1.0 alpha, resembles a red U-shape. This texture was quickly changed to a translucent orange texture in v0.1.3 alpha, which, upon further investigation, can be seen to be based off of the water placeholder texture. In v0.8.0 alpha build 1, despite the scrapping of terrain.png, two new fire texture placeholders were created, which could be seen in terrain-atlas.tga, resembling small orange rectangles.
+From Pocket Edition v0.1.0 alpha - v0.1.2 alpha and from v0.2.0 alpha - v0.6.1 alpha, the fire placeholder texture would appear in front of burning players, successfully functioning as a stand-in for the fire texture. It also appeared as the item texture for fire as an item until v0.7.0 alpha, which made fire render correctly.
+The procedural fire textures were replaced with animated image versions in v0.14.2, but these placeholder textures remained unchanged until their removal in v0.15.0 alongside terrain_atlas.tga as a whole.
+
+
+=== Legacy Console Edition ===
+Due to the first terrain.png in Xbox 360 Edition being the same as the terrain.png from Beta 1.6.6, both fire texture placeholders from said version are there by default, and would carry over to the other consoles. The procedurally generated fire textures were replaced with animated image versions in TU12, but the placeholder textures remained unchanged.
+In a PS4 version sometime between 1.76 and 1.92,​[more information needed] they were updated to match the animated fire textures.
+
+
+== Nether portals ==
+
+
+=== Java Edition ===
+The Nether portal placeholder texture was added in Alpha v1.2.0, alongside the Nether portal block itself. It remained unchanged until its removal in 13w02a alongside terrain.png as a whole.
+
+
+=== Bedrock Edition ===
+Due to the first terrain.png in Pocket Edition being based off of the terrain.png from Beta 1.3, the Nether portal texture placeholder from said version is there by default. However, due to the absence of Nether portals in this version, it remained unused until its removal in v0.8.0 alpha build 2. A different placeholder texture was added when Nether portals were actually added in v0.12.1 alpha build 1; this texture appears to be the result of resizing the entire 512x16 Nether portal animation strip down to a single 16x16 tile using bilinear filtering.
+
+
+=== Legacy Console Edition ===
+Due to the first terrain.png in Xbox 360 Edition being the same as the terrain.png from Beta 1.6.6, the Nether portal texture placeholder from said version is there by default, and would carry over to the other consoles. The procedurally generated Nether portal texture was replaced with an animated image version in TU12, but the placeholder texture remained unchanged.
+In a PS4 version sometime between 1.76 and 1.92,​[more information needed] it was updated to match the animated Nether portal texture.
+
+
+== Gears ==
+
+
+=== Java Edition ===
+The gear placeholder textures were added in the January 28, 2010 build of Indev, alongside gears themselves. There were two gear placeholders, corresponding to the two possible rotation directions. These were removed in Alpha v1.0.1 alongside gears themselves.
+
+
+== Other animated textures ==
+
+
+=== Legacy Console Edition ===
+
+Due to Legacy Console Edition storing block and item textures in terrain.png and items.png for its entire lifespan, placeholder textures existed for every additional animated texture added to the game. While most​[more information needed] of them were simply a copy of the first frame of the animated texture, they nevertheless still served the purpose of being placeholders for said animated versions.
+The following textures had placeholder versions like this:
+
+Prismarine
+Sea Lantern
+Magma Block
+Potion in a cauldron
+Seagrass
+Tall Seagrass
+Kelp (top and middle)
+Campfire base and flame
+Lantern
+Blast Furnace front
+Smoker front
+Stonecutter blade
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+=== Legacy Console Edition ===
+
+
+== Navigation ==

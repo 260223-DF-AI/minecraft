@@ -1,0 +1,145 @@
+Beta 1.21.110.22 (ChromeOS, Android) or Preview 1.21.110.22 (Windows, iOS, iPadOS, Xbox, PlayStation) is the second beta/Preview version for Bedrock Edition 1.21.111, released on July 30, 2025, which adds copper horse armor, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Items ===
+Copper Horse Armor
+
+Added copper horse armor.
+Has the same loot table and chance of generating as iron horse armor.
+Give 4 ().
+
+
+== Changes ==
+
+
+=== Blocks ===
+Copper Golem Statue
+
+Scraping and reviving an unoxidized copper golem statue now damages the axe.
+Added controller input hint text for using block to change pose.
+Lightning Rod
+
+Lightning rods now oxidize like other copper blocks and the lightning rod on the copper golem.
+Shelf
+
+Hoppers and droppers can now add or remove items to/from the shelf.
+Shelves can now be waterlogged.
+Shelf storage now affects comparator's output signal depending on which slots are occupied:
+Each shelf slot corresponds to 1 bit
+The signal strength is determined by converting the 3 bits of the slots into a decimal value
+All slots empty [000] means a signal strength of 0
+Only the first slot occupied [100] means a signal strength of 1
+Only the second slot occupied [010] means a signal strength of 2
+Only the third slot occupied [001] means a signal strength of 4
+All slots occupied [111] means a signal strength of 7
+Non-solid blocks can no longer be placed on the top, bottom, front or sides of the shelf.
+Powered shelves now connect even when they are made of different types of wood.
+
+
+=== Gameplay ===
+Camera
+
+Rider rotation lock now applies to cameras when using camera relative movement.
+
+
+=== General ===
+Blending
+
+Enabled blending for legacy chunks.
+This fixes an issue where blocks were missing from the terrain after loading into the world on some starter biomes.
+UI
+
+Resized the "Textures & More" button icon to be in line with the other button icons.
+
+
+=== Technical ===
+AI Goals
+
+Made the schemas for the following goals stricter when parsing and will fail to load an entity json that has invalid data in versions 1.21.110 and newer:
+minecraft:behavior.roar
+minecraft:behavior.slime_attack
+minecraft:behavior.slime_float
+minecraft:behavior.slime_keep_on_jumping
+minecraft:behavior.slime_random_direction
+minecraft:behavior.sniff
+minecraft:behavior.sonic_boom
+minecraft:behavior.stay_near_noteblock
+minecraft:behavior.swim_idle
+minecraft:behavior.swim_up_for_breath
+minecraft:behavior.swim_wander
+minecraft:behavior.swoop_attack
+Commands
+
+Updated /locate biome to support underground biomes:
+Y axis is more accurate to exactly where the biome is.
+Components
+
+Updates to minecraft:dash_action:
+Added new field direction taking either entity or passenger as its value. Defaults to entity:
+entity:
+Behaves like before.
+passenger:
+Momentum applied from the dash action will now instead be applied in the view direction of the passenger entity, using the horizontal_momentum as forward momentum and vertical_momentum as upward momentum in the direction of the passenger. Short of it: looking up with horizontal momentum will launch you upwards.
+Old schemas with format version older than 1.21.110 will automatically receive the entity direction.
+Entity Components
+
+Changed the schema for the minecraft:experience_reward entity component so that the on_bred and on_death members no longer accept arrays; only single Molang expressions are now supported for each member.
+Gameplay
+
+From 1.21.110 onward, the free camera and fixed boom cameras use camera relative strafe as default scheme.
+Item Components
+
+Repairing an item using the minecraft:repairable item component no longer fails when a stack larger than strictly needed is used as repair material.
+Added the new minecraft:fire_resistant item component, which determines whether an item is immune to burning when dropped in fire or lava.
+Functions like netherite items.
+Items
+
+poly_mesh is now documented as a deprecated feature:
+It was already treated as deprecated, but the documentation did not reflect this.
+texture_meshes is no longer documented as an experimental feature:
+It was already treated as non-experimental, but the documentation did not reflect this.
+Network Protocol
+
+Modified the binary format of PlayerArmorDamagePacket.
+
+
+== Fixes ==
+20 issues fixed
+From released versions before 1.21.111
+
+MCPE-62252 – Block directional placement is asymmetrical for command blocks when certain coordinates are negative
+MCPE-152962 – Armor pieces don't display toughness stat
+MCPE-179110 – Invert Y-Axis for touch controls does not work in Spectator mode
+MCPE-184808 – "Switch sneaking and jumping" option also changes flying and swimming up
+MCPE-223011 – Parity issue: Glass blocks held by endermen are visually opaque
+MCPE-223744 – The title inside Copper Chest container is incorrect
+MCPE-223876 – Copper Golem takes fall damage
+From the previous development version
+
+MCPE-225217 – Nether wood shelves flammable
+MCPE-225226 – Shelves do not interact with comparators
+MCPE-225315 – Crimson Shelf and Warped Shelf can be used as fuel for the Furnace.
+MCPE-225441 – Full bundles in shelf became empty after returning from the Nether
+Other
+
+Fixed position of copper golem spawn egg to be after the iron golem spawn egg.
+Fixed an issue with being unable to continue destroying valid blocks in adventure mode when they are behind water.
+Fixed the shelf place and take item sounds not playing.
+Fixed the shelf power on and off sounds not playing.
+Fixed attempting to place a painting on a block that already has a painting spamming its place sound effect even though it cannot be placed.
+Colored text on signs no longer appear dark in Vibrant Visuals.
+Fixed Realms crash in liquid sensing system.
+Fixed a crash when wearing some character creator pieces that support custom colorization.
+Fix for custom biomes no longer appearing in game.
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,299 @@
+This is a list of Java Edition 1.4.6 development versions.
+
+
+== 12w49a ==
+12w49a is the first snapshot for Java Edition 1.4.6, released on December 7, 2012, which added nether brick slabs, enchanted books and fireworks.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Nether brick slabs
+
+New kind of slab.
+Made by using 3 nether bricks blocks in a horizontal line.
+Came from a suggestion at Minecon 2012.
+
+
+==== Items ====
+ Firework rocket
+
+New kind of shootable projectible.
+Sound effects will come soon.
+Fireworks are customizable by crafting.
+ Firework star
+
+Used for crafting firework rockets.
+ Enchanted books
+
+Used for enchanting items.
+In this snapshot due to a bug, any item could be given any enchantment in Survival mode using an anvil.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+General 
+
+When holding sneak, the player can place blocks and items (like redstone, repeaters, and levers) directly onto blocks such as crafting tables, furnaces, and dispensers.
+Cobwebs
+
+Can be harvested utilizing Silk Touch shears.
+
+
+==== Items ====
+Shears
+
+Can now have the Silk Touch enchantment by using the anvil.
+
+
+==== Mobs ====
+Ghasts
+
+The blast radius of fireballs a specific ghast shoots can be customized with an editor.
+
+
+=== Removals ===
+
+
+==== General ====
+Distance effects
+
+Falling block behavior has changed - they are no longer capable of infinitely producing dropped items at high coordinate values.
+
+
+=== Fixes ===
+16 issues fixed
+From released versions before Java Edition 1.4.6
+
+MC-96 – using the number keys to move an item out of a furnace does not give XP.
+MC-256 – Mobs can still revert farmland to dirt even if mobGriefing gamerule is set on false.
+MC-498 – Setting an enderman on fire with flint and steel, or lava, will not make it teleport away.
+MC-721 – Animals on fire do not flee.
+MC-1140 – Boats always get placed in the same direction and not based on how they get placed.
+MC-1240 – Endermen cannot dodge flame arrow. When the arrow is shot the Enderman moves out of the way but is still set on fire.
+MC-1311 – When entering the Nether, the game auto-selects the first item on the toolbar.
+MC-1847 – Leaves have the incorrect tool tip.
+MC-2145 – "Drowning" in Creative mode.
+MC-2504 – Enchant command cannot enchant with ID 0 (Protection).
+MC-3332 – The XP level-up sound, which appears every 5 levels, does not play.
+MC-3490 – Minecarts and falling entities flicker.
+MC-3501 – Passive mob spawn eggs are not consumed upon use.
+MC-3565 – Endermen do not open their mouth when attacked by other mobs.
+MC-4069 – Pressing F3 + B displays hitboxes rendering invisibility potions useless.
+MC-4117 – The wither can sometimes destroy its own star due to the posthumous detonation of wither skulls.
+
+
+== 12w50a ==
+12w50a is the second snapshot for Java Edition 1.4.6, released on December 13, 2012, which added new Christmas chest textures and the Thorns enchantment.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+Chests
+
+Added 3 new textures: xmaschest.png, largexmaschest.png, and skis.png.
+xmaschest.png changes the chest texture to resemble a red gift.
+largexmaschest.png changes the large chest texture to resemble a green gift.
+skis.png is unused, dummy file. Dinnerbone said he added this file as a red herring.
+Chests use these textures on December 25.
+
+
+==== Items ====
+Tools
+
+Added tool highlight when switching items in the hotbar.
+Renamed items display the changed name.
+To disable it, player needs to open options.txt and change heldItemTooltips to false.
+
+
+==== Mobs ====
+Villagers
+
+Enchanted books are now available through villager trading.
+
+
+==== World generation ====
+Dungeons
+
+Enchanted books can be found in dungeons with special enchantments normally not obtainable.
+
+
+==== Gameplay ====
+Enchanting
+
+Added Thorns enchantment for armor.
+When player wearing such armor gets hit by a mob, the mob receives damage.
+
+
+=== Changes ===
+
+
+==== Items ====
+General 
+
+Item entities are rendered as 3D objects in the world when in fancy graphics mode.
+This includes items placed in item frames.
+Items now show their enchantments when dropped on the ground.
+Firework rocket
+
+Tweaked the effect the item gives and sounds.
+
+
+==== Gameplay ====
+Creative
+
+Removed the firework rocket from the Creative inventory.
+Enchanting
+
+Efficiency now has no effect when using tools on the wrong block types.
+Protection is no longer as effective as all the other Protection-type enchantments combined.
+Unbreaking can be applied to anything with durability using enchanted books.
+
+
+==== General ====
+Controls
+
+Pressing CTRL+Q by default (Or the "Drop" button if changed in controls), the player drops a full stack instead of one item.
+Notices
+
+Added a notice/warning for users still playing on PowerPCs or Java 5 (Java 1.5).
+Mojang plans to drop support for Java 5 by version 1.6. This is due to the most recent versions of LWJGL no longer supporting Java 5, with PowerPC also no longer supported by Apple to be made compatible with Java 6 or newer.
+
+
+=== Fixes ===
+14 issues fixed
+MC-255 – Graphical issue with trading.
+MC-312 – Item textures of spawn eggs and firework stars not aligned properly when stacked.
+MC-674 – Items different only in damage cannot be swapped.
+MC-1626 – Z-fighting in beacon block bottom.
+MC-1959 – Placing double slabs ignore damage values.
+MC-1969 – minecarts cant travel through nether portals.
+MC-3593 – Lightning does not flash.
+MC-4499 – Beacon tiers do not work at y=0.
+MC-4510 – Enchantment not showing in item frame.
+From the previous development version
+
+MC-4193 – Firework star duplication glitch.
+MC-4199 – Deaths not logged to console.
+MC-4200 – The Nether and the End generating random blocks clientside in multiplayer.
+MC-4203 – Enchanted Books: Unenchantable item can receive any enchantment.
+MC-4433 – Falling sand spawners failing to save properly, and causing crashes.
+
+
+== 12w50b ==
+12w50b is the third and final snapshot for Java Edition 1.4.6, released on December 14, 2012, to fix some of the bugs and crashes in 12w50a. This is the final snapshot released in 2012.
+
+
+=== Changes ===
+
+
+==== Gameplay ====
+Enchanting
+
+Thorns damage is now customizable.
+Fire Protection now extinguishes players more quickly.
+Blast Protection now reduces explosion recoil.
+
+
+=== Fixes ===
+11 issues fixed
+From released versions before Java Edition 1.4.6
+
+MC-133 – Mobs walking slow when the player hits them.
+MC-4024 – Chest glitch; server/client desyncronization.
+MC-4528 – Flaming arrows take a few seconds to visibly catch fire.
+MC-4634 – Cannot remove XP bars using the /xp -1L command when between levels 0 and 1.
+From the Java Edition 1.4.6 development versions
+
+MC-4191 – Unusable ingredients in fireworks are used when crafting.
+From the previous development version
+
+MC-4534 – Tool highlight shows when item stack changes.
+MC-4537 – NullPointerException when nothing in their hand.
+MC-4553 – zombies sometimes stop attacking.
+MC-4580 – Unbreaking does not work on armor.
+MC-4584 – Opening an GUI will show the item name in the hotbar again.
+MC-4612 – Enchanted item bug in 3D.
+
+
+== 1.4.6 (pre-release) ==
+Pre-release 1.4.6 is the first and only pre-release for Java Edition 1.4.6, released on December 17, 2012.
+This version was re-uploaded on the same day to fix an issue with mobs spinning.
+The release version of 1.4.6 differs from this reupload by fixing a crash issue.
+This is the final pre-release released in 2012.
+
+
+=== Changes ===
+
+
+==== Items ====
+Bows
+
+A high pitched sound is played when a player hits another player from far away with a bow.
+
+
+==== General ====
+Options
+
+Added an option to toggle touchscreen mode.
+
+
+=== Fixes ===
+38 issues fixed
+From released versions before Java Edition 1.4.6
+
+MC-429 – When a bat flies through the water, it gets stuck, and it will stay stuck.
+MC-678 – Water splash sound gets overridden by other sounds.
+MC-756 – Player not shown in actual location after breaking boat.
+MC-833 – Inventory items, when placed in an ender chest, disappears.
+MC-971 – Mis-identified server version.
+MC-1005 – Fresh install of 1.4.2 on fresh install of OS X 10.6.8 hangs.
+MC-1347 – Items do not "update looks" when stacked on ground.
+MC-1348 – Dropped items only auto-stack when moving, not when going through portals.
+MC-1599 – File Handle leak in RegionFileCache (MCP).
+MC-1734 – Duplicating Sand/Gravel/Dragon Egg still works with tweaks to an existing design.
+MC-1883 – Destroying a Jukebox NPE&Kick.
+MC-1957 – Minecraft graphics messed up.
+MC-2442 – Redstone directional bug.
+MC-2568 – Ghost block bug.
+MC-2610 – Game freezes at the start of a previously saved game.
+MC-2622 – Cannot modify the Render Distance setting - Stays at "Far" regardless of changes.
+MC-2673 – Shift-Clicking smelted ores out of furnace cause minor visual bug.
+MC-2712 – The player cannot look around without moving vertically or horizontally.
+MC-2747 – Minecraft client crashs when connection times out.
+MC-2873 – Minecarts disappearing.
+MC-2879 – Error 50% of the time when the player tries to join their server. Failed to login: Error
+MC-2904 – Zombie pigman knockback stunlocks Iron Golems, defeating their intended purpose.
+MC-3122 – The player cannot change texture packs.
+MC-3255 – Blaze fire ball crashes the game.
+MC-3280 – Some textures appear as dark terrain.png images.
+MC-3346 – Minecraft crashing every time the player gets on for a little while.
+MC-3632 – Game only loads the chunk the player currently standing on when they logged in. Then the game freezes and crashes.
+MC-3860 – Client crashes when underground near piston and redstone machine.
+MC-3899 – Skeletons will come close to attacker.
+MC-3934 – Particle overload when returning from AFK.
+MC-3988 – Slime audio bug.
+MC-4432 – Minecart off track and into walls.
+MC-4784 – Skeletons not retaliating to Iron Golems/Wolves.
+MC-4792 – Minecraft crashed, exception world.
+MC-4829 – Game client gets stuck on 'building terrain' screen.
+From the Java Edition 1.4.6 development versions
+
+MC-4644 – Mobs running in circles and not jumping when chasing/running away.
+Other fixes
+
+Fixed mouse wrongly positioned in fullscreen.
+From the current version, reuploaded
+
+Fixed a mob spinning bug.
+
+
+== Notes and references ==
+
+
+== Navigation ==

@@ -1,0 +1,88 @@
+Custom is a world type that allows users to change the generation of the Overworld, Nether, and End dimensions as well as the ability to create custom dimensions. It is edited using a JSON file that is imported on the world creation screen.
+
+
+== Access ==
+To customize a world by using a JSON file, it needs to be imported before world creation: 
+
+in the world creation menu, go to "More World Options..." and select the "Import Settings" option. Then, select a world generation JSON file. A warning appears saying that custom worlds are experimental. Click "Yes" to continue.
+then, in the world creation menu, the "World Type" button becomes gray and displays text: "World Type: Custom", so that the user is not able to change the world type anymore for the world being created.
+The only way to access added dimensions is through commands, such as /execute in <dimension name> run tp @s ~ ~ ~, which teleports the player to the specified dimension (see § JSON format).
+
+
+== JSON format ==
+
+Custom generation files take the following format:
+
+
+=== Generator types ===
+
+
+== Defaults ==
+Moved to Custom world generation#Noise settings
+
+
+=== Noise generator preset defaults ===
+These are the settings used by the 6 presets available for the minecraft:noise generator.
+
+
+==== Structure defaults ====
+These are the default values for all namespaced structures. Every preset uses the same values for all of these structures, with the exception of minecraft:ruined_portal.
+
+*Placeholder values, have no effect
+**Salt values aren't used for theses structures; changing them produces no effect
+
+
+=== Biome parameter defaults ===
+
+These are the default values used for each biome in the multi_noise biome_source. Interestingly, although only the values for nether biomes are accessible through a preset, several overworld biomes have default values as well.
+
+
+=== Dimension type defaults ===
+These are the settings used by the 3 dimensions present in Vanilla and the additional Overworld Caves settings provided by Minecraft.
+
+
+== Examples ==
+
+
+=== Default settings ===
+This one will change to 1.19.3-typed later.
+The following is the settings for an exported default Minecraft world.
+
+
+==== Expanded default settings ====
+This file contains the same settings used to produce a default world, but with all of the presets expanded to their default values. Note that there is a bug that makes it impossible to create the ender dragon fight without using the dimension type preset minecraft:the_end, as the flag that creates the fight is hardcoded and not accessible through JSON. However, it is otherwise identical to the default world.
+
+
+=== Custom superflat dimension ===
+
+This dimension is a Superflat world with a layer of grass on four layers of coarse dirt on top of five layers of basalt. The entire world is full of village houses as spacing is set to 3 (default: 32) and separation is set to 1 (default: 8). The world starts by default at time 1000.
+
+
+== History ==
+
+
+== Issues ==
+Issues relating to "Custom" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Gallery ==
+
+
+=== Screenshots ===
+
+
+== External links ==
+Example settings
+Detailed guide of the generator settings
+JSON generator website
+
+
+== See also ==
+Custom dimension
+Custom world generation
+
+
+== References ==
+
+
+== Navigation ==

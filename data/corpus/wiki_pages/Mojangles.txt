@@ -1,0 +1,100 @@
+Mojangles, or Minecraft Seven, internally referred to as default in Java Edition, is the primary font used in Minecraft for in-game text. Its design has been present in all ports of the game.
+As of Java Edition 1.21,[verify] this font contains 2,426 characters.
+
+
+== Definition ==
+In Java Edition, the default font references 4 files:
+
+ascii.png
+accented.png
+nonlatin_european.png
+unifont.zip
+The final file is used as a fallback, since any character not (yet) defined in this font will use GNU Unifont instead; said font is covered on its own page.
+
+
+== Supported characters ==
+
+
+=== Java Edition ===
+ascii.png
+This contains the most-used characters and some other symbols. Its filename is a misnomer: it does not contain solely ASCII characters.
+In particular:
+
+Glyphs U+0020  SPACE through U+007E ~ TILDE display the Basic Latin Unicode block characters; this mirrors ASCII.
+Glyphs U+007F DELETE through U+00FF ÿ LATIN SMALL LETTER Y WITH DIAERESIS display the Code page 437 characters.
+Each character is drawn as an 8×8 pixel image, with the ascent 7 pixels from the top. The characters are arranged in a 16×16 atlas.
+Note: the font used by the wiki is incomplete and outdated, and therefore some of the more obscure characters below will not be displayed correctly.
+
+accented.png
+This contains mostly versions of letters with accents, diacritics, or ligatures. However, it also contains some exceptions such as circled numbers and letters.
+Each character is drawn as a 12×9 pixel image, with the ascent 10 pixels from the top. As of 25w04a, the characters are arranged in a 75×16 atlas. New characters expand the atlas downward. In comparison to ascii.png, the characters can be up to 3 px taller, 1 px lower, and 1 px wider. Due to the characters being taller than usual, the top pixels might stick out of some interfaces or overlap with text above them.
+
+nonlatin_european.png
+This contains many accented characters and most of the miscellaneous symbols. Contrary to its name, it also includes characters that are non-European, and some obscure Latin script characters.
+Each character is drawn as a 8×8 pixel image, with the ascent 7 pixels from the top. As of 25w04a, the characters are arranged in a 67×16 atlas. New characters expand the atlas downward.
+
+unifont.zip
+This is the file used for the GNU Unifont fallback characters; see that page for more info.
+
+
+==== Emoji ====
+
+As of 1.20.2, Minecraft has support for 43 emojis.
+
+
+=== Bedrock Edition ===
+
+default8.png (and related)
+A modified copy of the Java Edition 1.12.2 font. The U+00A9 © COPYRIGHT SIGN has been changed. The file ascii_sga.png also reflects Java Edition; it is the SGA minecraft:alt font used when enchanting.
+
+Characters U+00C0 À LATIN CAPITAL LETTER A WITH GRAVE through U+00A9 © COPYRIGHT SIGN are actually mapped to the C0 control codes (U+0000..U+001F). The U+007F DELETE character is mapped to the U+2302 ⌂ HOUSE character instead. Despite the upper two rows and ⌂ appearances, they are mapped to the characters U+0000..U+001F and U+007F. The last character is U+00A0 NO-BREAK SPACE. When using the windows ALT codes in the chat in Bedrock Edition, the resulting characters are different than they would be when used in another program, alt codes 0-255 are mapped to the characters in the default8.png image, if you convert the alt code to hex then the first digit plus 1 is the column and the second plus 1 is the row in default8.png, for example the alt code 159 is 9F in hex, and will be the character at column 10 row 16 in default8.png (ƒ). This means that typing a control character instead shows a character that is unlike the expected representation. Most fonts either show nothing, or a box with the abbreviation inside, as does GNU Unifont. The glyph_##.png files reflect Java Edition's Legacy Unicode provider. The numbers in the glyph file name represent the first 2 numbers in the Unicode code, while the location in the file is the next 2 numbers. They cover characters U+0000..U+D7AF, some of U+E000..U+E1FF, and U+F900..U+FFFF.
+There exist 2 Private Use Area sheets: glyph_E0.png glyph_E1.png. E0 contains glyphs for control icons, such as  and . E1 contains glyphs for miscellaneous icons, including the minecoin and Agent icon. E0 characters are categorized in emoticons.json.
+
+
+== Downloads ==
+Several versions of the font exist on Mojang's servers for use either by the website, or occasionally for use with the game itself.
+
+Other versions of the font file are obtainable through other means:
+
+A file called minecraft.ttf can be found in versions of Pocket Edition from v0.8.0 alpha build 2 to v0.10.4 alpha; it can be obtained via opening the apk file as though it were a zip or jar file, and removed from the archive accordingly.
+The Mojangles font file used by Bedrock Edition can be found at C:\Program Files\WindowsApps\Microsoft.MinecraftUWP\data\fonts on Windows, however permissions for the WindowsApps folder will need to be adjusted as to permit access.
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+=== Changed characters ===
+
+
+==== ascii.png ====
+
+
+==== accented.png ====
+
+
+==== nonlatin_european.png ====
+
+
+== Issues ==
+Issues relating to "Default font", "Mojangles", or "Minecraft Seven" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Trivia ==
+The name is closely similar to that of Bojangles.
+The general typographic design has been present in many previous games by Markus Persson, such as Legend of the Chambered.
+According to the Bedrock Edition Chat Settings and the Bedrock Edition game files, the name of the font used by Bedrock Edition is called "Mojangles".
+According to Java Edition 1.13-pre6, the name of the font used by Java Edition is called "Minecraft Seven".
+The characters U+00B8 CEDILLA ¸ and U+0327 COMBINING CEDILLA ◌̧ used to be swapped.
+The New Nintendo 3DS Edition's font is a combination of the pre-1.12 JE font and some select characters from GNU Unifont. In addition, the ® sign was changed.
+
+
+== References ==
+
+
+== Navigation ==

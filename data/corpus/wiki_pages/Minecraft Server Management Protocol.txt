@@ -1,0 +1,211 @@
+Minecraft Server Management Protocol is a server management API (JSON-RPC over WebSocket) for dedicated servers.
+
+
+== Access ==
+The API is disabled by default and can be enabled in the server.properties file. A server-specific secret can be configured using the management-server-secret property. Clients must authenticate to access the API by providing this secret in one of two ways: 
+
+In the Authorization header as a bearer token containing the secret (ex. Authorization: Bearer ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmo)
+In the Sec-WebSocket-Protocol header following the string minecraft-v1, (ex. Sec-WebSocket-Protocol: minecraft-v1,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmo). This enables use via the web as this header is populated by the JavaScript WebSocket constructor.
+
+The API is accessible at ws://<management-server-host>:<management-server-port> when enabled. It uses the WebSocket protocol and adheres to JSON-RPC 2.0 specification.
+An example command for creating a compatible keystore: keytool -genkeypair -alias testkey -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore test-keystore.p12 -validity 3650
+
+
+== Methods ==
+
+
+=== Allowlist ===
+Endpoints are accessible at minecraft:allowlist
+
+
+=== Bans ===
+Endpoints are accessible at minecraft:bans
+
+
+=== IP Bans ===
+Endpoints are accessible at minecraft:ip_bans
+
+
+=== Players ===
+Endpoints are accessible at minecraft:players
+
+
+=== Operators ===
+Endpoints are accessible at minecraft:operators
+
+
+=== Server ===
+Endpoints are accessible at minecraft:server
+
+
+=== Server Settings ===
+Endpoints are accessible at minecraft:serversettings
+
+
+=== Gamerules ===
+Endpoints are accessible at minecraft:gamerules
+
+
+== Notifications ==
+
+
+=== Server ===
+Endpoints are accessible at minecraft:notification/server
+
+
+=== Players ===
+Endpoints are accessible at minecraft:notification/players
+
+
+=== Operators ===
+Endpoints are accessible at minecraft:notification/operators
+
+
+=== Allowlist ===
+Endpoints are accessible at minecraft:notification/allowlist
+
+
+=== IP Bans ===
+Endpoints are accessible at minecraft:notification/ip_bans
+
+
+=== Bans ===
+Endpoints are accessible at minecraft:notification/bans
+
+
+=== Gamerules ===
+Endpoints are accessible at minecraft:notification/gamerules
+
+
+== Schemas ==
+
+
+=== Untyped Game Rule ===
+Properties:
+
+value: string
+key: string
+
+
+=== Incoming IP Ban ===
+Properties:
+
+reason: string
+expires: string (ISO-Instant)
+ip: string
+source: string
+player: Player
+
+
+=== System Message ===
+Properties:
+
+receivingPlayers: Array<Player>
+overlay: boolean
+message: Message
+
+
+=== Kick Player ===
+Properties:
+
+player: Player
+message: Message
+
+
+=== IP Ban ===
+Properties:
+
+reason: string
+expires: string (ISO-Instant)
+ip: string
+source: string
+
+
+=== Typed Game Rule ===
+Properties:
+
+type: string ("integer", "boolean")
+value: string
+key: string
+
+
+=== User Ban ===
+Properties:
+
+reason: string
+expires: string (ISO-Instant)
+source: string
+player: Player
+
+
+=== Message ===
+Properties:
+
+translatable: string
+translatableParams: Array<string>
+literal: string
+
+
+=== Version ===
+Properties:
+
+protocol: integer
+name: string
+
+
+=== Server State ===
+Properties:
+
+players: Array<Player>
+started: boolean
+version: Version
+
+
+=== Operator ===
+Properties:
+
+permissionLevel: integer
+bypassesPlayerLimit: boolean
+player: Player
+
+
+=== Player ===
+Properties:
+
+name: string
+id: string (UUID)
+
+
+== History ==
+
+
+== Issues ==
+Issues relating to "Minecraft Server Management Protocol" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Notes ==
+Supports querying and updating of server state (players, allowlist, operators, settings, game rules).
+Sends notifications on state changes (e.g. player joins, game rule updates).
+Calling {"jsonrpc":"2.0","method":"rpc.discover","id":1} returns an API schema containing supported methods and notifications of the currently running server.
+The Data Generator produces an API schema (json-rpc-api-schema.json) in the reports output folder mirroring the contents returned by the rpc.discover method.
+The API adheres to the JSON-RPC 2.0 specification.
+Uses namespaced methods and the reserved namespaces are minecraft (e.g. minecraft:players, minecraft:allowlist/add) and notification (e.g. notification:players/joined).
+Extensible via custom namespaces for additional methods and events.
+Core method groups: players, allowlist, operators, server (save, stop), server settings, game rules.
+Example method call:
+Request: {"method":"minecraft:allowlist/add","id":1,"params":[[{"name":"jeb_"}]]}
+Response: {"jsonrpc":"2.0","id":1,"result":[{"id":"853c80ef-3c37-49fd-aa49-938b674adae6","name":"jeb_"}]}
+Example notification:
+{"jsonrpc":"2.0","method":"minecraft:notification/players/joined","params":[{"id":"853c80ef-3c37-49fd-aa49-938b674adae6","name":"jeb_"}]}
+Example error:
+Request: {"method": "minecraft:foo/bar","id": 1}
+Response: {"jsonrpc":"2.0","id":1,"result":{"jsonrpc":"2.0","id":1,"error":{"code":-32601,"message":"Method not found","data":"Method not found: minecraft:foo/bar"}}}
+Errors and error codes follow JSON-RPC 2.0 error object format.
+
+
+== Example implementations ==
+https://github.com/Aliorpse/mcutils (client, Kotlin Multiplatform)
+https://github.com/TechnoBro03/MC-SMP (client, Python)
+
+
+== Navigation ==

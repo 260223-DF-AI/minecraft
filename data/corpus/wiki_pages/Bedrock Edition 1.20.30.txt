@@ -1,0 +1,714 @@
+1.20.30 is a minor update to Bedrock Edition released on September 19, 2023, which makes experimental changes to the villager and wandering trader trades, brings more parity with Java Edition, and fixes bugs. What was going to be 1.20.20 was merged into this version during development.
+
+
+== Additions ==
+
+
+=== Gameplay ===
+Game rules
+
+Added doLimitedCrafting, controlling whether players can craft only those recipes that they have unlocked, defaults to false.
+Needs the recipesUnlock game rule set to true to work properly.
+Added playersSleepingPercentage, set to 100 by default.
+Controls what percentage of players must sleep to skip the night.
+When set to 0 or a negative value, a single player is sufficient to skip the night, and night is skipped immediately without the falling asleep transition.
+When set over 100, the night cannot be skipped.
+Added recipesUnlock, controlling whether the player needs to collect items to unlock recipes in the recipe book, defaults to true.
+
+
+=== General ===
+Experiments
+
+Added the "Villager Trade Rebalancing" experimental toggle.
+Contains updated trades for villagers for the purpose of rebalancing.
+Settings
+
+Added "Recipe unlocking" game and advanced option. (recipesUnlock game rule)
+Added alerts for iOS and iPadOS users who have run out of disk space.
+Now is displayed a message when the players presses the camera perspective change button but a particular perspective is already set via the /camera command.
+Added "Vertical Sync" video option.
+Added Improved Input Response experimental video option.
+Only available for players on Windows.
+Reduces input latency.
+Enabling this setting will increase battery consumption.
+options.txt
+
+Added the following options:
+deferred_viewdistance, defaults to 8.
+deferred_upscaling, defaults to 1.
+gfx_resizableui, defaults to 0.
+new_video_settings, defaults to 0.
+graphics_mode, defaults to 2.
+shadow_quality, defaults to 3.
+point_light_loding_quality, defaults to 3.
+bloom_enabled, defaults to 1.
+ctrl_improvedInputResponse, defaults to 0.
+
+
+=== Technical ===
+Add-ons
+
+Added support for the allow_random_seed option in world template manifests.
+Move PlacementDirection (minecraft:placement_direction) and PlacementPosition (minecraft:placement_position) block traits out of experimental. These traits can be used for blocks with format_version >= 1.20.20.
+JSON
+
+Released the following components out of experimental in JSON formats 1.20.30 and higher:
+minecraft:wearable item component.
+minecraft:digger item component.
+minecraft:hand_equipped item component.
+minecraft:use_duration item component.
+minecraft:stacked_by_data item component.
+minecraft:use_animation item component.
+minecraft:allow_off_hand item component.
+minecraft:should_despawn item component.
+minecraft:liquid_clipped item component.
+minecraft:damage item component.
+minecraft:enchantable item component.
+minecraft:food item component.
+Added minecraft:interact_button item component to enable and set text on the interact button in JSON formats 1.20.30 and above.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Block Breaking
+
+Changed the hardness and blast resistance of 188 blocks to match Java Edition.
+
+Cherry Leaves
+
+Will now generate particle effects at a relatively large distance based on system performance.
+Concrete Powder
+
+The different block states for the concrete_powder ID have now been split up into their own IDs.
+
+Pumpkin
+
+Using shears on it now produces a carving sound to match Java Edition.
+Sculk Sensor and Calibrated Sculk Sensor
+
+Can now detect the following events:
+Throwing an eye of ender.
+Minecarts, consistently when moving on rails while empty.
+Collecting fish, axolotls, and tadpoles with buckets.
+Cleaning items in cauldrons.
+Dying leather armor in cauldrons.
+Tipping arrows in cauldrons.
+Using dyes to change cauldrons' water color.
+Non-player actors event when equipping shields in their off-hand slot.
+Applying a nametag.
+Evokers summoning vexes or fangs.
+Chickens, frogs, and turtles laying eggs.
+Using bone meal.
+Chiseled bookshelves when books are inserted into them using hoppers.
+Extinguishing fire.
+Mounting or dismounting a vehicle.
+Rabbits eating carrot crops.
+Foxes eating sweet berry bushes.
+Unequipping armor.
+Placing a banner, bamboo sapling, lily pad, or a head.
+Placing frogspawns.
+Placing or adding sea pickles.
+Adding/destroying a turtle egg.
+Turtle eggs cracking.
+Snow
+
+Now different layers of snow have different heights to match Java Edition.
+Stained Glass
+
+The different block states for the stained_glass ID have now been split up into their own IDs.
+
+Stained Glass Pane
+
+The different block states for the stained_glass_pane ID have now been split up into their own IDs.
+
+Stained Terracotta
+
+The different block states for the stained_hardened_clay ID have now been split up into their own IDs.
+
+
+=== Command format ===
+/camera
+
+Now is available without using the "Experimental Cameras" experimental toggle.
+/recipe
+
+Now is available without using the "Recipe Unlocking" experimental toggle.
+Updated the syntax to match Java Edition.
+Old syntax:
+/recipe <victim: target> give <recipe: string>
+/recipe <victim: target> take <recipe: string>
+New syntax:
+/recipe give <player: target> <recipe: string>
+/recipe take <player: target> <recipe: string>
+Now the recipes are suggested by the command auto-complete.
+Now an output message appears after the command is executed.
+Renamed the victim: target argument to player: target.
+/scriptevent
+
+Now is available without using the "Beta APIs" experimental toggle.
+Amethyst Cluster
+
+Now uses the minecraft:block_face block state instead of facing_direction.
+minecraft:block_face uses six string values ["down", "east", "north", "south", "up", "west"].
+Anvil, Big Dripleaf, Blast Furnace, Calibrated Sculk Sensor, Campfire, End Portal Frame, Furnace, Lectern, Pink Petals, Redstone Comparator, Redstone Repeater, Small Dripleaf, Smoker, and Soul Campfire
+
+Now they use the minecraft:cardinal_direction block state instead of direction or facing_direction.
+minecraft:cardinal_direction uses four string values ["east", "north", "south", "west"].
+Slabs
+
+Now uses the minecraft:vertical_half block state instead of top_slot_bit.
+minecraft:vertical_half uses two string values ["bottom", "top"].
+
+
+=== Gameplay ===
+Crawling
+
+The ability to crawl is now available without using the "Crawling" experimental toggle.
+The player now gets forced out of crawl state when riding.
+Players can now toggle flying when crawling in Creative mode.
+Recipe book
+
+The new recipe unlocking system and its features are now available without using the "Recipe Unlocking" experimental toggle.
+Now are behind the recipesUnlock game rule.
+The recipe book search has been updated when playing in Survival, with the following changes:
+The search will only match the beginning of any word in the item's name.
+For example, searching for "tor" will now show torch, soul torch, and redstone torch but not the activator rail.
+All recipes, including those that have not been unlocked, will now show up in search results.
+Updated the recipe notification sound to match Java Edition.
+Now the duration of the recipe notifications are calculated based on how many recipes got unlocked.
+Sneaking
+
+The player now gets forced out of sneak state when riding.
+Players can now toggle flying when sneaking in Creative mode.
+
+
+=== General ===
+Creative Inventory
+
+Removed the suspicious stew from the Creative inventory.
+Experiments
+
+Removed the "Recipe Unlocking" and "Crawling" experimental toggles.
+General
+
+The normal game's application icon has been updated.
+For Minecraft Preview the application icon has been changed from a grass block to dirt.
+Main menu
+
+Changed the in-game logo for Minecraft Preview.
+Music
+
+The places where the following existing music can be played are changed:
+"Aerie", "Firebugs", and "Labyrinthine" can no longer be played in the menu screens.
+"A Familiar Room", "Bromeliad", "Crescent Dunes", and "Echo in the Wind" can now be played in the menu screens.
+New death screen
+
+Enabled the new version of the death Screen. The user can opt-in or opt-out using a feature toggle under Settings-Video Tab.
+Now has partial support (color, static obfuscation) for "Formatting codes".
+
+Settings
+
+"Text to Speech" narrator will now read out the instruction text as well as the confirm button in the "Safe Area" menu.
+Changed the "Joystick Always Visible" and "Joystick Visible When Unused" touch options to "Joystick Visibility Option" dropdown menu.
+Changed the "Sneak Toggle" touch option to "Sneak" dropdown menu.
+Moved "Sync Old World" button to the storage section.
+Renamed the "Lefty" touch option to "Left hand mode".
+Renamed the "Extra Large GUI Scaling" accessibility and video option to "Extra Large New UI".
+"Text to Speech" narrator now read the disconnected message in the game menu when opened without an internet connection.
+Renamed the "Manage" button to "Cancel" in "Options" > "Subscriptions".
+Pause menu
+
+The "Pause menu" has been renamed to "Game menu".
+UI
+
+Updated the menu HUD icons for touch controls.
+Added three new user-friendly disconnection error messages and improved two others.
+
+
+=== Mobs ===
+Hoglin
+
+Now have their own sound when transforming into zoglins.
+Husk
+
+Now plays a sound when converting to a drowned.
+Pig
+
+Now emit sounds when transformed into zombified piglin.
+Snow Golem
+
+Now plays a sound when they throw snowballs.
+Villagers
+
+The discount for curing a villager is no longer multiplied if the villager is reinfected and cured again.
+When killed they no longer drop items held in their hands.
+Wandering Trader
+
+Now can sell 1 cherry sapling for 5 emeralds.
+Witch
+
+Now throws Healing and Regeneration potions at raiders during village raids.
+Zombie Villager
+
+Now displays their rank in appearance.
+
+
+=== Non-mob entities ===
+Falling Block 
+
+Will now break when falling onto a boat or cocoa beans.
+
+
+=== World generation ===
+Ore distribution
+
+Diamond ore is now generated more frequently in the deepslate layers of the Overworld.
+Added a new ore blob placement: Uniform distributed, from height -64 to -4, with blob size 8, generation frequency 2 and a 50% chance of discarding when exposed to air.
+Other existing diamond ore placements remain untouched.
+
+
+=== Technical ===
+Server
+
+Linux dedicated server: Ubuntu 20.04 LTS (Focal Fossa) is now the minimum supported version of Ubuntu. Ubuntu 18.04 LTS is no longer supported.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Villager Trade Rebalancing", "Beta APIs", "Molang Features", and "Experimental Cameras" experimental toggles.
+
+
+=== Additions ===
+
+
+==== Technical ====
+API
+
+Added camera scripting APIs for the following APIs:
+setCamera(): to set the camera to a specified preset.
+fade(): to start a camera fade.
+clear(): to clear the current settings on the camera.
+JSON
+
+Exposed DimensionType to scripting.
+Exposed the following feature placement rules:
+minecraft:aggregate_feature.
+minecraft:cave_carver_feature.
+minecraft:fossil_feature.
+minecraft:geode_feature.
+minecraft:growing_plant_feature.
+minecraft:multiface_feature.
+minecraft:nether_cave_carver_feature.
+minecraft:ore_feature.
+minecraft:partially_exposed_blob_feature.
+minecraft:scatter_feature.
+minecraft:search_feature.
+minecraft:sequence_feature.
+minecraft:single_block_feature.
+minecraft:snap_to_surface_feature.
+minecraft:structure_template_feature.
+minecraft:surface_relative_threshold_feature.
+minecraft:tree_feature.
+minecraft:underwater_cave_carver_feature.
+minecraft:vegetation_patch_feature.
+minecraft:weighted_random_feature.
+
+
+=== Changes ===
+
+
+==== Gameplay ====
+Trading
+
+Changed the trading mechanism of librarians selling enchanted books.
+Instead of offering every possible enchanted book, librarians will now be offering specific enchanted books depending on which biome they come from.
+Jungle and swamp villages do not generate naturally. Thus, players must breed villagers or cure zombie villagers in these biomes to access their trades.
+All tradable enchanted books now split to special books and normal books.
+Special books have a specific enchantment with a fixed level, and are only available from master librarians with full XP.
+Normal books have a specific enchantment without a fixed level, just like before.
+All enchantments used for crossbow, fishing rod, and trident are removed from trading.
+
+Changed the wandering trader trades.
+Trade list now made up by following trades, in order:
+Buying Trade (new) × 2
+Special Selling Trade × 2
+Ordinary Selling Trade × 5
+Added new buying trades, some selling trades, and changed some existing selling trades:
+
+
+==== Technical ====
+API
+
+Converted set_block_property to set_block_state for custom blocks.
+Added defineVector to DynamicPropertiesDefinition.
+EntityEquipmentInventoryComponent
+Implemented slot validation for setEquipment, which now returns a boolean indicating whether the item can be equipped to the specified slot.
+EntityEquipmentInventoryComponent is currently limited to players only.
+Moved getDay to 1.4.0.
+Moved getTimeOfDay to 1.4.0.
+Moved setTimeOfDay(timeOfDay: number | TimeOfDay) to 1.4.0.
+Moved getAbsoluteTime to 1.4.0.
+Moved setAbsoluteTime(absoluteTime: number) to 1.4.0.
+Moved TimeOfDay to 1.4.0.
+Added length restrictions to setLore - Up to 20 lines with up to 50 characters per line.
+Moved function setLore to 1.4.0.
+Moved function getLore to 1.4.0.
+Moved class SystemAfterEvents to 1.4.0.
+Moved class ScriptEventCommandMessageAfterEvent to 1.4.0.
+Moved player onScreenDisplay to 1.4.0.
+Moved titleDisplayOptions to 1.4.0.
+Moved screenDisplay to 1.4.0.
+Removed MinecraftBlockTypes defined in @minecraft/server.
+Moved ItemUseBeforeEvent to 1.4.0.
+Moved ItemUseOnBeforeEvent to 1.4.0.
+Moved ItemUseAfterEvent to 1.4.0.
+Moved ItemUseOnAfterEvent to 1.4.0.
+Moved ItemStartUseOnAfterEvent to 1.4.0.
+Moved ItemStopUseAfterEvent to 1.4.0.
+Moved ItemStopUseOnAfterEvent to 1.4.0.
+Moved ItemCompleteUseAfterEvent to 1.4.0.
+Moved ItemReleaseUseAfterEvent to 1.4.0.
+Moved ItemStartUseAfterEvent to 1.4.0.
+Moved DimensionLocation to 1.4.0.
+Renamed PositionInUnloadedChunkError to LocationInUnloadedChunkError and moved it to 1.4.0.
+Renamed PositionOutOfWorldBoundariesError to LocationOutOfWorldBoundariesError and moved it to 1.4.0.
+Moved getSpawnPoint to 1.4.0.
+Moved setSpawnPoint to 1.4.0.
+Moved getDefaultSpawnLocation to 1.4.0.
+Moved setDefaultSpawnLocation to 1.4.0.
+WorldAfterEvents
+Removed projectileHit.
+Added projectileHitBlock.
+Added projectileHitEntity.
+Added class ProjectileHitBlockAfterEvent export class:
+ProjectileHitBlockAfterEvent { readonly dimension: Dimension; readonly hitVector: Vector3; readonly location: Vector3; readonly projectile: Entity; readonly source?: Entity; getBlockHit(): BlockHitInformation; }
+Added class ProjectileHitEntityAfterEvent export class:
+ProjectileHitEntityAfterEvent { readonly dimension: Dimension; readonly hitVector: Vector3; readonly location: Vector3; readonly projectile: Entity; readonly source?: Entity; getEntityHit(): EntityHitInformation; }
+Released Scoreboard API's from beta to 1.4.0.
+Updated Scoreboard.getObjective, getObjectiveAtDisplaySlot, and clearObjectiveAtDisplaySlot to return '| undefined '.
+Released isValid() from beta to 1.4.0 for the following classes:
+Block
+Container
+Entity
+Player
+SimulatedPlayer
+Moved Direction to 1.4.0.
+Moved EntityDamageSource to 1.4.0.
+Moved EntityDieAfterEvent to 1.4.0.
+Moved EntityEventOptions to 1.4.0.
+Moved EntityHitBlockAfterEvent to 1.4.0.
+Moved EntityHitEntityAfterEvent to 1.4.0.
+Moved EntityHurtAfterEvent to 1.4.0.
+Moved EntityHealthChangedAfterEvent to 1.4.0.
+Moved Dimension.getBlockFromRay method to 1.4.0.
+Moved Dimension.getEntitiesFromRay method to 1.4.0.
+Moved Entity.getBlockFromViewDirection method to 1.4.0.
+Moved Entity.getEntitiesFromViewDirection method to 1.4.0.
+Moved BlockRaycastHit to 1.4.0.
+Moved BlockRaycastOptions to 1.4.0.
+Moved EntityRaycastHit to 1.4.0.
+Moved EntityRaycastOptions to 1.4.0.
+Moved PressurePlatePushEvent to 1.4.0.
+Moved PressurePlatePopEvent to 1.4.0.
+Moved TripWireTripEvent to 1.4.0.
+Moved TargetBlockHitEvent to 1.4.0.
+Made property id accessible even if entity is not valid.
+Made property typeId accessible even if entity is not valid.
+Changed item event source properties from type Entity to Player.
+Removed MinecraftItemTypes from @minecraft/server and replaced with version from @minecraft/vanilla-data.
+Added function remove- Removes the entity. This cannot be called on players but can be used on simulated players in Gametest.
+MolangVariableMap
+Added setFloat function.
+Changed return type of setColorRBG, setColorRGBA, setSpeedAndDirection, and setVector3 to void.
+Changed the MolangVariableMap property on spawnParticle to be optional: spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap): void.
+Renamed Colorinterface to RGBA.
+Added interface RGB.
+Added script binding functions to get/set the CompoundBlockVolume origin.
+Added additional params to some methods to query the children of CompoundBlockVolume for their positional relativity to the parent.
+Added additional params to some methods to freeze positional relativty when origin changes are submitted.
+Converting the CompoundBlockVolume container to use relative coordinates to an internal origin.
+Moved ProjectileHitBlockAfterEvent to 1.5.0.
+Moved ProjectileHitEntityAfterEvent to 1.5.0.
+Moved ProjectileHitBlockAfterEventSignal to 1.5.0.
+Moved ProjectileHitEntityAfterEventSignal to 1.5.0.
+Moved BlockHitInformation to 1.5.0.
+Moved EntityHitInformation to 1.5.0.
+Moved spawnParticle(effectName: string, location: Vector3, molangVariables?: MolangVariableMap) to 1.5.0.
+Moved setColorRGB(variableName: string, color: RGB) to 1.5.0.
+Moved setColorRGBA(variableName: string, color: RGBA) to 1.5.0.
+Moved setFloat(variableName: string, number: number) to 1.5.0.
+Moved setSpeedAndDirection(variableName: string, speed: number, direction: Vector3) to 1.5.0.
+Moved setVector3(variableName: string, vector: Vector3) to 1.5.0.
+RGB
+Moved RGB to 1.5.0.
+Moved RGBA to 1.5.0.
+Moved triggerEvent(eventName: string) to 1.5.0.
+Renamed EntityEquipmentInventoryComponent to EntityEquippableComponent.
+Updated isSolid, isLiquid, and isAir to be properties instead of methods.
+ScriptEventCommandMessageAfterEvent
+Made initiator, sourceBlock, and sourceEntity optional types.
+ItemStack
+Added getCanPlaceOn() and getCanDestroy().
+Added upper maximum limit of 255 to amount property - will throw if exceeds.
+Entity
+Added function getProperty(identifier: string): boolean | number | string | undefined - Gets an entity property.
+Added function setProperty(identifier: string, value: boolean | number | string): void - Sets an entity property during the next tick.
+Added function resetProperty(identifier: string): boolean | number | string; - Resets an entity property to its default value during the next tick and returns the default value.
+beforeEvents
+Added event/property removeEvent.
+afterEvents
+Renamed event/property removedEvent to removeEvent.
+Class EntityRemovedAfterEvent
+Renamed field removedEntity to removedEntityId: removedEntityId: string.
+Added field typeId: string.
+Added class EntityRemovedBeforeEvent.
+Added field removedEntity: Entity.
+Moved EquipmentSlot to 5.0 and changed enum values to uppercase.
+Moved EntityEquippableComponent to 5.0.
+Scoreboard
+setObjectiveAtDisplaySlot return type now correctly set to ScoreboardObjective or undefined.
+ScoreboardIdentity
+getEntity return type now correctly set to Entity or undefined.
+setWeather API can now take an optional duration parameter to set the weather duration.
+Added read-only property heightRange: NumberRange - Gets min/max dimension height limits.
+Adding Player.isSleeping and Player.isEmoting.
+Changed scoreboardIdentity to be valid even after the entity has been killed.
+World Events
+Renamed BlockBreakAfterEvent to PlayerBreakBlockAfterEvent.
+Added read-only itemStackAfterBreak?: ItemStack (undefined if empty hand).
+Added read-only itemStackBeforeBreak?: ItemStack (undefined if empty hand).
+Renamed BlockBreakAfterEventSignal to PlayerBreakBlockAfterEventSignal.
+subscribe function now takes options?: BlockEventOptions.
+Added PlayerBreakBlockBeforeEvent with the following members.
+cancel: boolean, cancels event from happening.
+itemStack?: ItemStack, the item stack in use by the player (undefined if empty hand).
+read-only player: Player, the player breaking the block.
+Added PlayerBreakBlockBeforeEventSignal.
+Renamed BlockPlaceAfterEvent to PlayerPlaceBlockAfterEvent.
+Renamed BlockPlaceAfterEventSignal to PlayerPlaceBlockAfterEventSignal.
+subscribe function now takes options?: BlockEventOptions.
+Added PlayerPlaceBlockBeforeEvent with the following members.
+cancel: boolean, cancels event from happening.
+readonly face: Direction, the face the block is being placed on.
+readonly faceLocation: Vector3, the location on the face the block was placed on.
+itemStack: ItemStack, the item stack being used to place the block.
+read-only player: Player, the player placing the block.
+Added PlayerPlaceBlockBeforeEventSignal.
+Modified WorldAfterEvents.
+Renamed blockBreak to playerBreakBlock.
+Renamed |blockPlace to playerPlaceBlock.
+Modified WorldBeforeEvents.
+Added playerBreakBlock.
+Added playerPlaceBlock.
+Added BlockEventOptions with the following members.
+blockTypes?: string[], names of blocks to be filtered against.
+permutations?: BlockPermutation[], specific block permutations to be filtered against.
+Added class EntityLoadAfterEvent.
+New field entity: Entity.
+Added class EntityLoadAfterEventSignal.
+Class EntitySpawnAfterEvent.
+Added property reado-nly cause: EntityInitializationCause.
+Class WorldAfterEvents.
+Added property read-only entityLoad: EntityLoadAfterEventSignal.
+Added enum EntityInitializationCause.
+JSON
+
+Deprecate minecraft:creative_category component in JSON formats 1.20.20 and higher.
+Creative group and command visibility can now be set in the description field in JSON formats 1.20.20 and higher.
+Changed fire enchant duration used on projectiles from a ShooterItemComponent to match vanilla behavior.
+Sound definitions now accept both float and integer values for min_distance and max_distance.
+Render controllers without textures will now result in a content error and be ignored.
+minecraft:entity_placer will now content error when invalid blocks are named in the use_on and dispense_on lists.
+Removed MinecraftEntityTypes from @minecraft/server and replaced with version from @minecraft/vanilla-data.
+Exposed MoonPhase and World.getMoonPhase to script.
+Removed the minecraft:animates_in_toolbar component.
+Removed the minecraft:explodable component.
+Extra damage hover text now appears on all component items that have an applied Sharpness enchantment.
+The minecraft:shooter component now supports the Quick Charge enchantment with minecraft:enchantable when charge_on_draw is true.
+Remove nonfunctional entity slot options from minecraft:wearable component, ie. saddle, entity armor, and chest.
+Custom items with minecraft:wearable component auto-equip when dropped from a dispenser, matching parity with vanilla armor items.
+Removed the server-authoritative-sound bool from server.properties.
+Deprecate on_dig parameters from minecraft:digger item component in JSON formats 1.20.20 and higher.
+Removed the minecraft:ignores_permission component.
+Removed the minecraft:mirrored_art component.
+Moved the protection field from minecraft:armor component to minecraft:wearable component in JSON formats 1.20.20 and higher
+Deprecate minecraft:armor component in JSON formats 1.20.20 and higher.
+Removed nonfunctional and redundant slot options from minecraft:wearable component, ie. mainhand, hotbar, inventory, enderchest, and equippable.
+Items with the minecraft:wearable component using the weapon.offhand slot will no longer equip when item is used in hotbar.
+Equipping custom wearable items trigger generic equip sound.
+Custom items with minecraft:wearable component can now be equipped by clicking and dragging in inventory or shift-clicking.
+Added Scoreboard.addScore and improved Scoreboard.setScore to return the updated score.
+cooldown field for target descriptors now properly work in minecraft:behavior.nearest_prioritized_attackable_target goal.
+Deprecated minecraft:mining_speed in JSON formats 1.20.30 and higher.
+Fixed an issue where items with format version 1.20.20 and above using the menu_category field in a world with the "Holiday Creator Features" experimental toggle enabled would not load.
+Removed minecraft:requires_interact component.
+Molang
+
+Renamed block_property and has_block_property to block_state and has_block_state.
+
+
+== Fixes ==
+137 issues fixed
+From released versions before 1.20.0
+
+MCPE-19700 – Wrong elytra texture in item frame and hand.
+MCPE-33139 – No anvil step sound.
+MCPE-43402 – Trident channeling sound is unused.
+MCPE-43831 – Trident w/loyalty doesn't make the returning sound to the player but the trident.
+MCPE-44296 – Fence gates don't have the correct model in the inventory.
+MCPE-46490 – Crossbow durability decreases after charging.
+MCPE-50609 – Missing sounds when a hostile mob shoots arrows or throws trident.
+MCPE-52452 – Coral blocks take too long to break.
+MCPE-60024 – Snow layer collision only changes twice.
+MCPE-62797 – Pickaxes don't speed up piston breaking.
+MCPE-68721 – Scaffolding and sweet berry bushes cannot be broken instantly in Survival.
+MCPE-77746 – Burning mobs do not catch player on fire.
+MCPE-80924 – Adult zombie villagers use the farmer texture regardless of their actual profession.
+MCPE-81790 – Villagers can change their profession in the night time/during raids.
+MCPE-85429 – Camera does not pass through glass, glass panes and iron bars.
+MCPE-85888 – Horizon changes color when standing under blocks.
+MCPE-87379 – Hoglins play wrong conversion sounds.
+MCPE-94722 – Nether portal make no breaking animation or sound when obsidian is broken.
+MCPE-95872 – Netherite items make burn sounds in lava.
+MCPE-96015 – Items burning in lava doesn't make the burning sound and is inconsistent when doing so.
+MCPE-98861 – Significant input delay on devices with render dragon.
+MCPE-101180 – Hyphae mining speed is faster than stems.
+MCPE-101644 – Crimson and warped stems/hyphae lower blast resistance than other types of wood.
+MCPE-114425 – There is no /gamerule playerssleepingpercentage in Bedrock Edition.
+MCPE-114602 – The mining speed of end stone bricks does not match the speed of end stone.
+MCPE-119083 – When a snow golem throws a snowball it plays the arrow shoot sound.
+MCPE-123488 – Big dripleaf tilting up sounds uses tilt down sounds instead.
+MCPE-128117 – No sound when conduit deactivates.
+MCPE-130070 – Stuck swimming down/falling issue.
+MCPE-131572 – Cannot use the mouse or touch to navigate text menus.
+MCPE-132408 – Deepslate variants have a significantly lower blast resistance than stone variants.
+MCPE-132511 – Sound not playing while getting out of water.
+MCPE-136484 – Respawn anchor ambient sound doesn't play.
+MCPE-137449 – End stone bricks has a lower blast resistance, compared to normal end stones.
+MCPE-138995 – Potion trajectory is broken.
+MCPE-139021 – Game crashes while entering a world where you are going through the endportal back to the overworld.
+MCPE-139242 – Copper and cut copper blocks have a weaker blast resistance compared to Java Edition.
+MCPE-139246 – Copper ore blast resistance is weaker compared to other ores.
+MCPE-151745 – Undead mobs equips illager banner instead of hold it in mainhand slot.
+MCPE-154378 – min_distance / max_distance requires decimal numbers, silently fails with integers.
+MCPE-154428 – Large enchants on table are blocked by overlayed items.
+MCPE-157055 – Powering or unpowering a repeater or comparator in flowing water briefly blocks the water flow.
+MCPE-159217 – Vignette overlaps hotbar and other HUD elements with "Fancy Graphics" enabled.
+MCPE-159409 – Hasitem/data argument does not on items that use data as "damage".
+MCPE-159736 – Duplicating stackable armor when equipping from hotbar.
+MCPE-160889 – Warden does not detect falling items.
+MCPE-161134 – Renamed entity or some blocks have container with format "(text)text" display $container_title.
+MCPE-161165 – Sculk sensor does not send a signal to shrieker when player drops item.
+MCPE-161438 – Raid boss bar becomes automatically empty when defeated.
+MCPE-162061 – See transparent blocks through end portal off a chunk border.
+MCPE-162253 – Book and quill not making sounds while using Xbox controller bumpers.
+MCPE-163050 – Xbox: Error says I'm out of storage space, quits to menu with weird background.
+MCPE-163497 – Camels don't make sand sounds on red sand or concrete powder.
+MCPE-163671 – Xbox: Mouse movement is jittery / pixel-based / not smooth.
+MCPE-164634 – My Minecraft world keeps crashing when I approach a specific area.
+MCPE-165062 – Sleeping under an end portal causes the game to get stuck on the loading screen and summons a nether portal.
+MCPE-165301 – Unknown block.
+MCPE-166152 – Book and quills text line breaks are erased when previous text is changed [on iOS and iPadOS].
+MCPE-166565 – Crouching and then swimming makes player constantly descend.
+MCPE-167403 – Cannot crouch while flying in Creative with touch controls.
+MCPE-168789 – Nametags are completely invisible while sneaking.
+MCPE-168887 – Sculk sensors do not detect when chiseled bookshelf changes with using hoppers and droppers.
+MCPE-168998 – Redstone transmission through custom minecraft:block is inconsistent.
+MCPE-169557 – Pigs do not make death sound upon being converted.
+MCPE-169728 – Bulk item crafting buggy.
+MCPE-169840 – Backspace does not erase all text when pressed.
+MCPE-171213 – Wrong camera collision with the composter in 3rd person.
+MCPE-172381 – Top snow has inconsistent collision for dropped items.
+MCPE-172429 – Structure void can't be targetted.
+From the 1.20.0 version
+
+MCPE-163456 – Hanging signs placed by commands has a very large hitbox compared to the normal ones.
+MCPE-168805 – Some brushing sounds missing.
+MCPE-168813 – Calibrated sculk sensor doesn't fully light up when activated.
+MCPE-170033 – Campfires are lit up instead of extinguished inside the trail ruins structure.
+MCPE-170841 – Camera speed ​​difference when crawling or using riptide parity.
+MCPE-171254 – Character creator features do not match preview icon.
+MCPE-171383 – Bone meal not working underwater after 1.20.
+MCPE-171461 – Sleep fade black screen turns completely black.
+MCPE-171489 – Trails & Tales soundtrack does not play in game and in main menu.
+MCPE-171521 – Wandering trader does not trade cherry saplings.
+MCPE-171560 – Pink petals cannot be farmed using bone meal in a dispenser.
+From 1.20.x versions
+
+MCPE-171822 – Cherry grove uses the 1.16.100 water fog.
+MCPE-172704 – Sculk sensor triggers repeatedly when there are arrows, tridents, or thrown items on top of it.
+MCPE-172835 – Pressing enter while not at end of text in chat deletes everything ahead of it.
+MCPE-172910 – Setting the playerssleepingpercentage gamerule to 0 or on negative numbers skips the sleeping animation.
+MCPE-172917 – There is no chat message for when skipping the night is not possible with playerssleepingpercentage set above 100.
+MCPE-172920 – [ScriptAPI] ScoreboardObjective::removeParticipant  is not synced with clients.
+MCPE-173028 – "Detected lost connection" and "Abandoned connection closed" error message is untranslated.
+MCPE-173189 – [ScriptAPI] Some characters are counted as 2 or 3 characters in the character count check of the setLore() method.
+MCPE-173323 – Pillager outposts do not generate in cherry groves.
+MCPE-173524 – Multiple /camera commands in the same tick are ignored.
+MCPE-173706 – Chunk-wide block rendering lag triggered by block updates along chunk borders.
+MCPE-174073 – [Script API] Unexpected change to properties of native classes.
+From the 1.20.10 version
+
+MCPE-170870 – Crawl mode don't get disabled when riding.
+MCPE-170907 – When switching to a Spectator, the player does not stop sneaking or crawling.
+MCPE-170969 – Swimming mechanics have been altered to where you have to look up at the sky to take a breath.
+MCPE-170994 – Crawl parity issue.
+MCPE-171065 – /recipe doesn't send a chat output when correct syntax is entered.
+MCPE-171086 – Entering /recipe command doesn't show suggestions.
+MCPE-171098 – /recipe command syntax doesn't match Java Edition.
+MCPE-171112 – Recipe unlocking UI can appear in pause menu or world settings.
+MCPE-171116 – The "Recipe Unlock Toast" sound does not match Java Edition.
+MCPE-171141 – Translated toast recipe unlocked content is cut off and unreadable.
+MCPE-171225 – Players suffocate while crawling at Y=1 and Y=2.
+MCPE-171797 – The player can enable flight mode while flying the elytra.
+MCPE-171800 – Pick blocking a decorated pot from the Creative inventory gives invalid inventory description.
+MCPE-171812 – Spectators still adapt to small spaces.
+Others
+
+Empty maps now emit the appropriate sound when players draw them.
+The third-person camera will no longer clip through terrain when near water or lava.
+Fixed Creative mode players not being ignited when standing in fire.
+The player no longer gets forced into sneak or crawl during the riptide animation.
+Players should no longer accidentally trigger crawling when they shouldn't.
+Fixed bottom face of portal effect so its color and transparency match the other faces.
+Fixed an issue where players would disappear temporarily when joining a game for the first time.
+iOS and iPadOS: Fixed crash in blocks JSON loading.
+Fixed a crash that could occur when the game lost focus while entering a world.
+Fixed an issue where screen narration would read recipe book folder items as the first item in the folder.
+Fixed held map not being centered when playing on narrow aspect ratio screens.
+Xbox: Fixed missing low disk space warning.
+Third person camera no longer clips through snow, mud, and soul sand.
+Fixed an issue with the client failing to attempt connection to dedicated server in some situations.
+Fixed a bug that autocomplete suggestions for values coming after brackets are missing if there is no space between tilde (as Z coordinate) and block name in commands.
+The game no longer crashes when it tries to place an invalid custom feature.
+Crouch-jumping while aiming forward and holding down the build button will no longer continue to build blocks upwards past where the player is aiming.
+Fixed a crash in the Deferred Technical Preview that could occur while generating terrain.
+Fixed an issue with content errors occurring with the Holiday Creator Features toggle turned on when using a json object version of max_stack_size, can_destroy_in_creative, hover_text_color.
+Fixed worlds downloaded from Realms not loading packs correctly.
+Collecting fish, axolotls, and tadpoles with buckets now emits vibrations at the right position.
+Fixed ZL/ZR icons for Joy-Con and Switch Pro controller on Android.
+Fixed lighting of items in hand in the "Deferred Technical Preview".
+Optimization and fixes for point light contributions.
+Fixed feedback button behavior in the new "Play screen" not linking to the feedback page.
+Fixed various pixel scaling issues on the HUD screen.
+Fixed an issue where content errors for items at the latest format version would appear for other items.
+The game menu gamepad shortcut on the new death screen now works correctly.
+Concrete powder blocks are now the correct color for worlds imported from previous versions.
+Fixed an issue where the boat wouldn't spawn on the water if the block underneath the water was highlighted.
+Fixed a bug in Education mode that prevented summon NPC commands from working if the users did not have worldbuilder permission when the base version of the world was before 1.19.80.
+1 issue fixed
+From released versions before 1.20.0
+
+BDS-17527 – Multiple server crashes due to memory leak when loading chunks.
+
+
+== Trivia ==
+1.20.20 is the sixth skipped version of Bedrock Edition, after 1.3.0, 1.15.0, 1.16.230, 1.17.20, and 1.18.20 being skipped.
+This is the update in the 1.20 cycle to have the most Previews/Betas, having 10.
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,128 @@
+Rotation (also known as perspective, viewpoint or viewing angle) is the direction an entity is facing. Rotation in Minecraft consists of Y-rotation or yaw and X-rotation, declination or pitch, each affecting the directions of the body and the head of the entity. For entities without heads, they can sometimes rotate entirely around the X-axis. The "X" and "Y" refers to the axis about which they rotate. Rotation can limit what a mob or player can see, but other entities (e.g. boats and item frames) also have a rotation.
+
+
+== Representation ==
+
+
+=== Entity hitbox ===
+
+Rotation is visualized by entity_hitboxes debug renderer as a long blue tint placed in-line with the (red) eye height hitbox and shows which direction the entities are looking.
+
+
+=== Entity format ===
+
+Rotation is internally represented with two float values in degrees.
+
+Y-rotation varies from -180° (facing due north) to -90° (facing due east) to 0° (facing due south) to +90° (facing due west) to +180° (facing due north again).
+For X-rotation, horizontal is 0°, with positive values looking downward and negative values looking upward. It does not exceed positive or negative 90°.
+
+
+== Debug screen ==
+
+With F3 + B, the rotation of all entities show up as a blue beam.
+The player's own rotation can be seen in the debug screen under Facing. First the cardinal direction and axis are mentioned, followed by the two angles for direction and head tilt.
+
+
+== Y-rotation (Yaw Angle) ==
+A change in the Y-rotation angle changes the direction it is facing, to the left or right of its direction of motion. They are represented in the debug screen correct to 1 decimal place. (The X and Z coordinates are represented correct to 3 decimal places.)
+Here, "anticlockwise angle from +X in a 2D system" is thought of as anything in (-180°, 180°], or -180° < x ≤ 180°, where x is one of the angles.
+
+
+== Algorithm for the Y-rotation angle ==
+
+
+=== Explanation ===
+The angle transformation to get the correct Y-rotation angle will not only require rotating the Y-rotation circle, but also reflecting the yaw table horizontally or vertically through the diameter.
+
+
+==== Initial and Desired ====
+Think of this part as the top half of a semicircle standing on the +X axis. It will be rotated for getting the outputs as in the yaw table (and we will check if we need to flip). 
+
+
+==== Adding 90° ====
+
+Reflecting the semicircle along the (imaginary) horizontal diameter will produce the desired angles (Top will be changed to bottom and vice-versa).
+
+
+==== Subtracting 90° ====
+
+Reflecting the semicircle along the vertical diameter will produce the desired angles (Right will be changed to left and vice-versa).
+
+
+=== Wrapping back ===
+For the yaw, the range is (-180°, 180°], which means that anything greater than the absolute value of 180 degrees must be wrapped back inside the yaw table. However, after the angle transformations, all the angles beyond the range will have to be wrapped. 
+There can be many more approaches for wrapping other than the ones stated below. 
+
+
+==== Approach 1: Using the modulus ====
+Required: the size and the minimum and the maximum values.
+The size is 360° because the whole circle is being considered.
+Therefore,
+−190≡170(mod360)181≡−179(mod360)
+In various programming languages, the mod(a, n) operator is used. When exactly one of the operands is negative, the basic definition breaks down, and programming languages differ in how these values are defined. Here, n = 360. Therefore, 'a' should be changed to a positive value before performing the modulo operation.
+
+
+==== Approach 2: Adding or subtracting by 360 degrees ====
+360 degrees is a full revolution. Moving by positive or negative 360 degrees is the same thing as not moving inside the orbit.
+Thus, we can use:
+f(x)={x−360,if x>180x+360,if x≤−180x,otherwise
+
+This has been achieved using the following code in JavaScript:Here, angle is the variable x.
+
+
+=== The final code ===
+Here is the final code in JavaScript. There are two coordinates here, namely (xcurrent, zcurrent) and (xdest, zdest).
+
+The function in Approach 2 has not been replicated one-to-one.
+
+
+== Place blocks ==
+The viewing angle affects the placement of some blocks: depending on how the player look, for example, a banner or a sign rotated accordingly. The viewing angle also plays a role when placing stairs or scaffolding.
+
+
+== Target selection ==
+Target selection properties allow entities to be selected that have a specific viewing angle:
+
+Angle ranges are specified with two points, e.g. B. 43..47.
+
+/title @a[y_rotation=<view angle>] actionbar {"text":"View direction (compass direction)"}
+
+/title @a[x_rotation=<head tilt angle>] actionbar {"text":"head tilt (up)"}
+
+Examples of the cardinal directions:
+
+/execute if entity @p[y_rotation=135..-135] run say North
+/execute if entity @p[y_rotation=-135..-45] run say East
+/execute if entity @p[y_rotation=-45..45] run say South
+/execute if entity @p[y_rotation=45..135] run say West
+
+
+== Save perspective ==
+Blinking angles can be read out and saved in a score: To do this, create a score target for the direction and the inclination.
+
+/scoreboard objectives add direction dummy "viewing angle direction" 
+/scoreboard objectives add tilt dummy "viewing angle inclination"
+
+Then, read out the direction and inclination using the command /data and save them in the respective score.
+
+/execute as @a store result score @s direction run data get entity @s Rotation[0]
+/execute as @a store result score @s tilt run data get entity @s Rotation[1]
+
+
+== Set perspective ==
+The commands /teleport and /rotate can be used to set the perspective of entities. The entities can move freely after teleportation if they have AI, but they start with the fixed viewing angle.
+Additionally, all entities except players can be realigned using the command /data via the property Rotation
+
+
+== Viewpoint coordinates ==
+
+Circumflexes (^) allow the position to be determined depending on the rotation of an entity.
+
+
+== History ==
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,89 @@
+Damage types are JSON files located in data packs that define different kinds of damage that entities can take. They control which attributes the damage has as well as which death message is used when an entity dies due to that type of damage.
+Additionally, the built-in damage type tags control many aspects of how damage is applied by the game.
+Custom damage types can be applied only by using the /damage command.
+
+
+== JSON format ==
+Damage types are stored as JSON files within a data pack, at the path data/<namespace>/damage_type/<name>.json.For example, here is JSON for the built-in minecraft:arrow:
+
+
+== List of damage types ==
+
+
+== Scaling ==
+Damage types control whether damage scales with difficulty.​[more information needed]
+Possible values of [String] scaling:
+
+never: Damage is always the same.
+always: Damage always scales with difficulty.
+when_caused_by_living_non_player: Damage scales with difficulty if the attacker was a living entity and was not a player.
+
+
+== Effects ==
+Damage types control how incoming damage is shown to the player.
+Possible values of [String] effects:
+
+hurt (default): The default hurt sound.
+thorns: Thorns hurt sound.
+drowning: Drowning sound.
+burning: A single tick of burning sound.
+poking: Berry bush poke sound.
+freezing: Freezing tick sound.
+
+
+== Death messages ==
+Damage types control the death messages displayed when players or pets die.
+Possible values of [String] death_message_type:
+
+default (default): Use the standard death message logic.
+fall_variants: Use the fall damage death messages, e.g. death.fell.assist.item.
+intentional_game_design: Show the "intentional game design" death message.
+
+
+=== Default message type ===
+When standard death message logic is being used, messages are generated as follows, making use of the [String] message_id tag:
+
+If the killing blow was caused by an attacker and the attacker was holding a named item in their main hand at the time of death, this is categorized as an item death. A translated message is displayed using the translation key death.attack.<message_id>.item with the following insertions available:
+The name of the dying entity.
+The name of the attacker.
+The name of the item.
+If the killing blow was not caused by an attacker, but the dying entity had recently​[more information needed] taken damage that was caused by a living entity, this is categorized as an assisted death. A translated message is displayed using the translation key death.attack.<message_id>.player with the following insertions available:
+The name of the dying entity.
+The name of the recent attacker.
+If neither of the above apply, this is categorized as a normal death. A translated message is displayed using the translation key death.attack.<message_id> with the following insertions available:
+The name of the dying entity.
+The name of the attacker, if there was one.
+
+
+=== Design ===
+Because of how the default death messages are set up, most vanilla damage types are divided into ones that always have an attacker and ones that never have an attacker. Depending on whether there was an attacker, the translation for normal deaths (death.attack.<message_id>) has either one or two available insertions. Translations have no safe way to access an insertion that may or may not be there, so the primary options are:
+The death type is planned to always have an attacker.
+
+The translation looks like
+The translation key death.attack.<message_id>.player is not provided, since assisted deaths are impossible.
+The death type is planned to never have an attacker.
+
+The translation looks like
+The translation key death.attack.<message_id>.item is not provided, since item deaths are impossible.
+The death type may or may not have an attacker.
+
+The translation looks like
+The translation key death.attack.<message_id> avoids using the second insertion, since it may or may not be present.
+The translation is a little awkward, because the death message when killed by a player mention them only if they're holding a named weapon.
+To avoid the awkwardness of the third option there can be two different damage types, one for use with an attacker, and one for use without an attacker:
+
+
+== History ==
+
+
+== External links ==
+Damage type Generator on misode.github.io
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

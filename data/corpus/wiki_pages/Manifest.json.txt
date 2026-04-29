@@ -1,0 +1,41 @@
+manifest.json is a manifest file that contains metadata information for the Minecraft package format. It is required by resource packs, behavior packs, skin packs, and world templates in order to be successfully imported into the game.
+
+
+== JSON format ==
+
+
+=== Version 3 ===
+
+
+=== Version 2 ===
+
+
+== Old versions ==
+
+
+=== Version 1 ===
+The previous iteration of manifest.json only ever contains few basic information about the package, such as header, modules, and dependencies, being very similar to version 2 without the modern features.
+These manifest files are documented from multiple built-in resource packs, which are found in the game's directory:
+
+
+=== Version 0 ===
+The very first version of manifest.json, at the time was named pack_manifest.json, is used back in the v0.16.0 alpha versions. Its syntax is very different from version 1, containing the header object with different properties that would be renamed in the next iteration. Notably, modules and dependencies are contained inside the header object.
+It is retroactively called version 0 in the Creator Documentation. Additionally, when the pack containing this manifest is loaded in later versions, it would get converted to version 1 with the new manifest.json, while the old pack_manifest.json would get backed up as pack_manifest.json.old.
+Version 0 resource packs are separated into the client and server packs, both serve very similar purposes to the modern resource pack (client) and behavior pack (server).
+These manifest files are documented from multiple built-in resource packs, which are found in the game's directory:
+
+
+== History ==
+
+
+== External links ==
+"manifest.json for Behavior/Resource/Skin Packs and World Templates"     – Microsoft Learn.
+Manifest file examples in the bedrock-samples provided by Mojang:
+"behavior_pack/manifest.json"     by Mojang  – GitHub.
+"resource_pack/manifest.json"     by Mojang  – GitHub.
+
+
+== References ==
+
+
+== Navigation ==

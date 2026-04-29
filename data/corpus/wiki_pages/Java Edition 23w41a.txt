@@ -1,0 +1,144 @@
+23w41a is the second snapshot for Java Edition 1.20.3, released on October 11, 2023, which adds Realms support for all versions, new functionality for decorated pots, reintroduces function-related commands, improves command limits, and fixes bugs.
+
+
+== Additions ==
+
+
+=== General ===
+Particles
+
+Added new dust_plume particle type.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Decorated pot
+
+Now can store items, up to a single stack.
+Hoppers, minecart with hoppers and droppers can now insert and/or extract items from them.
+Comparators can now read the number of items in them.
+Players can interact with them and insert items into them.
+Player interactions cause pots to wobble and trigger a vibration frequency of 11.
+They have no GUI, and need to be broken to retrieve their content by players.
+Now can be smashed by projectiles, which cause them to shatter and drop their contents.
+Now can stack up to 64.
+
+
+=== Non-mob entities ===
+General
+
+The name of them is now shown if looked at and a CustomName is set, or always displayed if CustomNameVisible is set, similar to living entities.
+
+
+=== Command format ===
+Function
+
+/function command has been changed to better accommodate new /return command.
+Functions no longer have any result unless they use /return or there was an error during lookup or instantiation.
+That means /function command no longer returns (or even displays) the number of commands run during execution.
+Error conditions:
+Calling non-existent function.
+Calling empty function tag.
+Macro instantiation failure.
+"Result" in this context means values that would be stored with /execute store.
+The previous behavior where every command in a function would perform store if a function was called with /execute store ... run function is removed.
+That means that a single call to function stores at most once (zero times if /return was not called).
+For function tags with multiple entries, function results are accumulated, but partial results are stored at the end of every function.
+Existing limits for functions have been refined to accommodate new execution rules and prevent a wider range of exploits:
+Limits apply even if run from command line (so it now always behaves as if they were placed in a function).
+For example, all functions called by /execute as @e run function count towards the same limit.
+Executions from command blocks still count as separate ones.
+Limit maxCommandChainLength for functions now counts "operations" like:
+Execution of command for a single context.
+Execution of a stage in /execute (no matter how many contexts were modified).
+Invocation of function.
+A new limit with game rule maxCommandForkCount now restricts the total amount of context that can be created by single state of functions like /execute.
+Example: if there are 5 entities in world, /execute as @e creates 5 contexts, while /execute as @e at @e creates 5*5 = 25 contexts.
+/execute
+
+Re-added (if|unless) function subcommand.
+A new execute sub-command that runs a function or function tag and matches the return value(s). If a tag is given, all functions run regardless of the results of prior functions.
+Syntax: /execute (if|unless) function <function> -> [execute]
+Arguments:
+function: The function or tag to run.
+The matching of the result value of the function(s) that run:
+At least one of the functions must succeed for the match to succeed.
+A successful call is defined as a function that:
+Uses the /return command to return a value.
+The return value is not 0.
+If no functions exited with /return, neither if nor unless runs.
+/return
+
+Re-added run subcommand: /return run <command>.
+This takes the result value from running the specified command and returns that as the return value of the function.
+If command did not return any value (like, for example, call to a function without /return), /return doesn't execute and function continues execution.
+If the given command fails, the return value is 0.
+In all other aspects, it works like /return with a specified return value.
+In case of fork (for example /return run execute as @e run some_command), the first execution of the command returns.
+If there are no executions (for example in /return run execute if @e[something_impossible] run some_command), function doesn't return and continues execution.
+
+
+=== General ===
+Data pack
+
+The pack format version is now 20.
+Realms
+
+Are now available in snapshots, pre-releases, and release candidates.
+Any player who has an active Realms subscription is eligible to create a free snapshot realm.
+Snapshot realms are separate from the regular realms to prevent any issues from impacting regular realms.
+The version of the last played world on a realm is displayed in the realms list.
+Experiments are available for newly created worlds.
+
+
+== Fixes ==
+28 issues fixed
+From released versions before 1.20
+
+MC-16937 – Shooting an arrow into the nether portal can hurt anybody when PvP is disabled.
+MC-50319 – Player owned projectiles lose their player ownership when exiting portals.
+MC-81656 – Field determining whether or not a wither skull is blue is not saved to and read from NBT.
+MC-118403 – Vexes summoned by evoker do not have evoker team applied.
+MC-143266 – Nested function calls reevaluate maxCommandChainLength before queueing commands.
+MC-143269 – Nested intermediate functions are skipped when maxCommandChainLength commands are already queued.
+MC-189227 – First time tutorial uses old textures.
+MC-198113 – Incomplete commands do not prevent functions from loading.
+MC-233276 – You can feed adult donkeys, horses, llamas or mules with maximum Temper value, and hand animation is not played.
+MC-234323 – Performance issue with text parsing.
+MC-236341 – You can feed hay bales to adult donkeys, horses or mules, and animal eating animation/sounds are not played.
+MC-236501 – Renamed minecarts and boats don't show their name tag in the world.
+MC-249408 – Boats with Chests lose their name when placed.
+MC-260576 – Incomplete /execute summon command still runs.
+MC-261395 – When in mcfunction files, the /damage command does not trigger player_hurt_entity and player_killed_entity advancements the correct number of times.
+MC-262027 – Result consumer created by /execute store is invoked for every command within a function.
+MC-262105 – Entities can block brushing actions when players look very close to their hitboxes.
+From 1.20
+
+MC-261682 – Brushing can continue when block goes out of range.
+From 1.20.1
+
+MC-263575 – When an item is extracted from suspicious sand/gravel, gravity does not work on this block.
+MC-263660 – "Sign wobbles" subtitle is the same for signs and hanging signs, causing translation issues.
+From 1.20.2
+
+MC-264595 – /return command cannot run function when inside another function.
+MC-264699 – Functions return the output of commands only if the command doesn't start with /return run.
+MC-264710 – /execute if function always fails and /execute unless function always succeeds if run from a function.
+MC-264880 – GUI slider uses new texture with programmer art.
+MC-265516 – The "Cancel" button within some realms menus can be deselected using keyboard navigation despite it being the only element within the said menu.
+MC-265814 – Minecart with TNT explodes or just dies depending on the type of explosion that hits it.
+From the previous development version
+
+MC-265647 – Shield arm position is incorrect while in a boat.
+MC-265656 – Pumpkins can no longer be sheared.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

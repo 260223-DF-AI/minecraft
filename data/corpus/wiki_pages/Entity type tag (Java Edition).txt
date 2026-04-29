@@ -1,0 +1,230 @@
+An entity type tag is a group of entity types. It can be used in type target selector arguments and loot table conditions with #<resource location>, which checks if the entity's type matches any of the entity types specified in the tag. Entity type tags are also used to control a number of other gameplay features; see below for the use of each tag.
+
+
+== List of tags ==
+
+
+=== accepts_iron_golem_gift ===
+Entities in this tag can have poppies placed onto their head by iron golems.
+Used in the #candidate_for_iron_golem_gift tag.
+
+
+=== aquatic ===
+Contains all aquatic mobs. Unused in vanilla aside from being used in other tags.
+Used in the #sensitive_to_impaling tag.
+
+
+=== arrows ===
+Entities in this tag are affected by the Power and Punch enchantments.
+Used by the advancement "Take Aim".
+Used in the #impact_projectiles tag.
+
+
+=== arthropod ===
+Contains all arthropod mobs. Unused in vanilla aside from being used in other tags.
+Used in the #sensitive_to_bane_of_arthropods tag.
+
+
+=== axolotl_always_hostiles ===
+Axolotls are always hostile toward entities in this tag.
+
+
+=== axolotl_hunt_targets ===
+Axolotls exhibit the cooldown-based "hunt" behavior toward entities in this tag.
+
+
+=== beehive_inhabitors ===
+Entities in this tag can be in beehives.
+
+
+=== boat ===
+Used by the advancement "Whatever Floats Your Goat!".
+
+
+=== burn_in_daylight ===
+Entities in this tag burn in direct sunlight. Wither skeletons remain unaffected due to being immune to fire.
+
+
+=== can_breathe_under_water ===
+Entities in this tag cannot drown underwater.
+
+
+=== can_equip_harness ===
+Entities in this tag can be equipped with a harness.
+Note: this does not mean that the Harness will function, just that it can be equipped into the body slot.
+
+
+=== can_equip_saddle ===
+Entities in this tag can be equipped with a saddle.
+Note: this does not mean that the Saddle will function, just that it can be equipped into the saddle slot.
+
+
+=== can_float_while_ridden ===
+Entities in this tag can float in water while being ridden by a player.
+
+
+=== can_turn_in_boats ===
+Entities in this tag are not forced to face forward in boats.
+
+
+=== can_wear_horse_armor ===
+Entities in this tag can be equipped with horse armor in their body slot.
+
+
+=== can_wear_nautilus_armor ===
+Entities in this tag can be equipped with nautilus armor in their body slot.
+
+
+=== candidate_for_iron_golem_gift ===
+Iron golems will offer poppies to entities in this tag.
+
+
+=== cannot_be_age_locked ===
+Baby variants of entities in this tag cannot be permanently set to a baby using a golden dandelion. Note that this tag does not include baby mobs that do not grow up in the first place, such as baby zombies (and variants), zoglins, and piglins.
+
+
+=== cannot_be_pushed_onto_boats ===
+Entities in this tag will not automatically enter boats when nearby enough.
+
+
+=== deflects_projectiles ===
+Projectiles bounce off entities in this tag.
+Breezes are hard-coded to still be vulnerable to wind charges despite their inclusion in this tag; if other entities are added to this tag, they will also deflect wind charges.
+
+
+=== dismounts_underwater ===
+Entities in this tag will force their riders to dismount when fully submerged.
+
+
+=== fall_damage_immune ===
+Entities in this tag cannot take fall damage.
+
+
+=== followable_friendly_mobs ===
+Adults of entities in this tag will be followed by ghastlings.
+
+
+=== freeze_hurts_extra_types ===
+Entities in this tag take 5x more damage from the freezing effect.
+
+
+=== freeze_immune_entity_types ===
+Entities in this tag cannot be frozen.
+
+
+=== frog_food ===
+Entities in this tag are eaten by frogs.
+
+
+=== ignores_poison_and_regen ===
+For entities that cannot be affected by Poison and Regeneration effects.
+
+
+=== illager ===
+Contains all illager mobs. Unused in vanilla aside from being used in other tags.
+Used in the #illager_friends tag.
+
+
+=== illager_friends ===
+Illagers consider entities in this tag to be allies, unless on a different team.
+
+
+=== immune_to_infested ===
+Entities in this tag cannot be afflicted with the Infested effect.
+
+
+=== immune_to_oozing ===
+Entities in this tag cannot be afflicted with the Oozing effect.
+
+
+=== impact_projectiles ===
+Entities in this tag can break chorus flowers and decorated pots when hit, provided they are capable of activating targets.
+If removed from this tag, tridents additionally lose the ability to break pointed dripstone when hit.
+
+
+=== inverted_healing_and_harm ===
+Entities in this tag are healed by Instant Damage and harmed by Instant Health.
+
+
+=== nautilus_hostiles ===
+Nautiluses and zombie nautiluses are hostile to entities in this tag.
+
+
+=== no_anger_from_wind_charge ===
+Entities in this tag do not retaliate if damaged by a wind charge.
+
+
+=== non_controlling_rider ===
+Entities in this tag do not override the AI of entities they are riding.
+
+
+=== not_scary_for_pufferfish ===
+Entities in this tag do not cause nearby pufferfish to inflate.
+
+
+=== powder_snow_walkable_mobs ===
+Entities in this tag can walk on top of powder snow without sinking.
+
+
+=== raiders ===
+Entities in this tag gain the Glowing effect when a bell is rung, and do not override a ravager's AI when riding one.
+Used in the advancement "Voluntary Exile".
+
+
+=== redirectable_projectile ===
+Projectile entities in this tag get reflected by left clicking them.
+
+
+=== sensitive_to_bane_of_arthropods ===
+Entities in this tag are affected by the Bane of Arthropods enchantment.
+
+
+=== sensitive_to_impaling ===
+Entities in this tag are affected by the Impaling enchantment.
+
+
+=== sensitive_to_smite ===
+Entities in this tag are affected by the Smite enchantment.
+
+
+=== skeletons ===
+Used in the 'entities/creeper.json' loot table to determine whether a random item in #creeper_drop_music_discs should drop.
+Used in the #undead tag.
+
+
+=== undead ===
+Armadillos roll up if entities in this tag are nearby.
+Used in the #can_breathe_under_water, #ignores_poison_and_regen, #inverted_healing_and_harm, #sensitive_to_smite, and #wither_friends tags.
+
+
+=== wither_friends ===
+Entities in this tag are not targeted by and cannot hurt withers.
+
+
+=== zombies ===
+Contains all zombie mobs. Unused in vanilla aside from being used in other tags.
+Used in the #undead tag.
+
+
+== Removed tags ==
+
+
+=== axolotl_tempted_hostiles ===
+Replaced with #axolotl_always_hostiles.
+Version added: 20w51a. Version removed: 21w13a.
+
+
+=== deflects_arrows ===
+Replaced with #deflects_projectiles.
+Version added: 23w45a. Version removed: 24w03a.
+
+
+=== deflects_tridents ===
+Replaced with #deflects_projectiles
+Version added: 23w45a. Version removed: 24w03a.
+
+
+== History ==
+
+
+== Navigation ==

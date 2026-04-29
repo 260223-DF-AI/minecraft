@@ -1,0 +1,233 @@
+15w44b is the thirty-eighth snapshot for Java Edition 1.9, released on October 30, 2015, which adds the Luck and Bad Luck status effects, makes various items available in Survival, and fixes bugs and crashes.
+
+
+== Additions ==
+
+
+=== Items ===
+Potion of Luck
+
+Gives the Luck effect for 5 minutes.
+Also comes in splash and lingering potion forms as well as for tipped arrows ("Arrow of Luck").
+Uncraftable potion
+
+Has no effect, unknown use.
+Cannot be obtained in Survival.
+Has tag Potion:"minecraft:empty".
+Also comes in splash and lingering potion forms as well as for tipped arrows (just called "Tipped Arrow").
+Tipped arrows
+
+Now exist for mundane potions, thick potions, and awkward potions.
+Have no effects and are unobtainable since lingering potions of these kinds do not leave a cloud behind.
+
+
+=== Gameplay ===
+Status effects
+
+New status effects: Luck and Bad Luck.
+Increase/decrease the luck attribute by ±1 per level.
+Luck has a clover icon.
+Bad Luck has a withered clover.
+
+
+=== General ===
+Attributes
+
+generic.luck, ranging from -1024 to 1024.
+Used when processing loot tables along with the quality or bonus_rolls tag. Currently used for opening chests and chest minecarts, fishing, and player-killed mob drops.
+Loot tables
+
+Added bonus_rolls tag, to give additional rolls on a pool with good Luck (or to remove rolls with bad Luck).
+
+
+== Changes ==
+
+
+=== Blocks ===
+End rod
+
+Can now be crafted using a popped chorus fruit in the bottom and a blaze rod on top.
+Yields 4 per craft.
+Hay bale
+
+Falling onto a hay bale does only 20% of normal fall damage.
+The highest the player can fall, and live, without armor, is 100.27 blocks.
+The highest the player can fall with Feather Falling is 169.19 blocks.
+
+
+=== Items ===
+End crystals
+
+Can now be crafted using an eye of ender in the middle, a ghast tear on the bottom and 7 glass blocks on the remaining squares.
+Are no longer dropped by undead horses.
+Fire charges
+
+Once again shoot as blaze fireballs when ejected from a dispenser (since 15w33c they had shot as ender dragon fireballs).
+Potions
+
+Removed many unused base potions from the game.
+For a full list, see removed features.
+Tipped arrow
+
+Can now be obtained in Survival.
+Splashing down a lingering potion first, then shooting regular arrows through that cloud produces a tipped arrow.
+For effects with duration, the duration is 1⁄8 that of the corresponding potion.
+
+
+=== Mobs ===
+Guardians
+
+Rare drops from player kills on normal guardians are returned to what they were in Java Edition 1.8, namely, they only include fish, and not fishing junk or fishing treasure.
+Elder guardians still drop junk and treasure.
+Horses
+
+Horses, donkeys, and mules drop 0–2 leather, affected by Looting, which is a return to pre-15w43a behavior.
+Skeleton and zombie horses no longer drop end crystals; they again drop 1 bone or 1 rotten flesh, respectively.
+
+
+=== Command format ===
+NBT format
+
+Entity: Arrow
+Potion (string): Potion effect of the arrow.
+e.g. /summon Arrow ~ ~5 ~ {Potion:"minecraft:long_invisibility"}.
+CustomPotionEffects (list): List of custom potion effects.
+e.g. /summon Arrow ~ ~5 ~ {CustomPotionEffects:[{Id:1,Duration:100}]}.
+Entity: AreaEffectCloud
+Potion (string): Potion effect of the cloud.
+e.g. /summon AreaEffectCloud ~ ~5 ~ {Potion:"minecraft:long_invisibility"}.
+
+
+=== Gameplay ===
+Entities
+
+TippedArrow has been removed. Arrow is used instead.
+Fishing
+
+Luck of the Sea and the new Luck effect affect fishing again, and effects stack. Each point increases the weight of treasure by 2, decreases the weight of fish by 1, and decreases the weight of junk by 2.
+
+
+=== General ===
+Loot tables
+
+Replaced luck_multiplier with quality.
+Formula is now weight += quality * luck, formerly weight += weight * luck_multiplier * luck.
+
+
+== Fixes ==
+93 issues fixed
+From released versions before 1.9
+
+MC-119 – Mobs visually sinking through solid blocks.
+MC-881 – Boat inflicts fall damage if it runs aground in some fashion (slabs, mobs, soul sand).
+MC-1003 – Stairs in desert temple are not facing the right way.
+MC-1349 – While riding a pig, horse or minecart and using F5, the hand of player's character is misplaced.
+MC-3004 – Can walk through piston arm if piston placed facing east (f = 3),
+MC-8522 – Pushing a button makes the button side textures look wrong.
+MC-12823 – Powered redstone lamp transparent.
+MC-13844 – When player is "holding" the Leash it doesn't Connect with him.
+MC-25876 – Logs with damage values have wrong name.
+MC-34074 – Use ender pearl to get past 29999999.7 blocks.
+MC-58405 – Cauldron bottom model rendering glitch.
+MC-61474 – Hoppers/droppers put multiple empty buckets into furnace, they then get replaced by one water bucket when smelting wet sponge.
+MC-64804 – Minecraft crashing when walking into the Farlands void.
+MC-64900 – Players cannot push stacked mobs.
+MC-64964 – Boats break on soul sand.
+MC-79820 – Player can obtain item with count 0.
+MC-84774 – Cobblestone wall fence gate facing south has different texture mapping (uvlock tag issue).
+MC-85027 – Villager selling null crashes clients.
+MC-85317 – Silverfish with weakness and attack damage set to 0 still deal damage.
+MC-85988 – Cannot /clear written book.
+MC-87454 – Mobs summoned with ActiveEffects do not get the potion effects unless they are splashed with a thrown potion of that effect.
+MC-87533 – "stat.useItem.minecraft.shears" stat doesn't work.
+MC-88665 – Can't ride a "MinecartRideable riding a MinecartChest".
+MC-91897 – HurtTime not ran on wolves.
+From the 1.8 development versions
+
+MC-46401 – Spectator mode frozen entities and vision overlay.
+MC-64117 – Extreme overloaded worlds cause problems/opening a world two times or more.
+MC-70190 – F3 and T leaves player in chat mode.
+From the 1.9 development versions
+
+MC-82864 – Items floating in both hands.
+MC-82969 – Corrupt pack.mcmeta causes a crash.
+MC-82983 – Ender Dragon Staying Still when out of render distance.
+MC-83001 – Two ender dragons bug.
+MC-83030 – When a shulker dies, no death particles are given off upon death.
+MC-83045 – EnderDragon Breath does no damage.
+MC-83252 – No sound while having item in dominant hand and hitting grass with a sword.
+MC-83333 – Shulker projectiles have some issues with water.
+MC-83413 – Water causes graphics bug on shulkers.
+MC-83566 – levitating and hitting a ceiling glitchy.
+MC-83639 – Dragon doesn't fly at you when at height.
+MC-83703 – Ender pearl isn't infinity in Creative mode.
+MC-83726 – Duel wielding sword glitch.
+MC-83732 – Using pick-block on any potion tipped arrow, a water bottle arrow is given.
+MC-83756 – Reeling fishing rod doesn't count as right click action.
+MC-84224 – Shift does not work with the off-hand slot.
+MC-84245 – The ender dragon fight has a "safe spot" exploit when it shoots its acid.
+MC-84311 – Ender dragon death light is too much.
+MC-84336 – Enderpearls disappear in creative mode.
+MC-84347 – Placing a block from player's off-hand retracts the fishing line.
+MC-84582 – Chorus plants do not make sounds when water breaks them.
+MC-84593 – Fire charges shot out of dispensers are dragon fireballs.
+MC-84905 – Shulker projectile and vision bug.
+MC-84969 – The player can fill a water bottle and an empty bucket simultaneously.
+MC-85066 – Burning mobs glitch.
+MC-85154 – Endermen go back to neutral after being hit by the player.
+MC-85189 – Shulker radius doesn't apply when on top of them.
+MC-85569 – End city despawned after relog.
+MC-85723 – Unbreakable with data values.
+MC-85951 – Ender dragon respawning works even if there is an existing dragon.
+MC-86091 – Lingering potion disappears in Spectator mode.
+MC-86128 – Getting hit with an arrow while blocking a shield still adds an arrow to the target.
+MC-86371 – Eating item in the main hand while holding edible food in off hand.
+MC-86416 – Zombies don't try to follow and attack players when players are in water.
+MC-86719 – Ender dragon is not interested in the player.
+MC-86721 – Spectating someone while they eat/block with a shield crashes the game.
+MC-86745 – When a player uses a repeating command block and closes world and re-opens world, game crashes.
+MC-86817 – Tellraw doesn't respect command-block chain order.
+MC-86954 – Nameplate displacement on armor stands.
+MC-87007 – Client disconnects from the server as a result of IndexOutOfBoundsException.
+MC-87021 – Spawnpoint does not function with specific coordinates.
+MC-87118 – Chunks disappear after reload after using clone in a repeat command block.
+MC-87147 – Hoppers can't remove empty bottles left in brewing stands by Dragon's Breath.
+MC-87215 – Pumpkin and melon vines disappear on logout/relog.
+MC-87459 – Spread players not working sometimes.
+MC-87538 – Cannot use right-hand item with a shield on.
+MC-87598 – Sleeping in a bed and teleporting to unloaded chunks.
+MC-87613 – Logmessage: "Unable to resolve BlockEntity for ItemInstance: minecraft:shield".
+MC-87840 – Breeding 2 pigs consumes 3 food items.
+MC-87956 – If a spawner's delay is 0, right-clicking with a spawn egg on it doesn't change the id.
+MC-87974 – Quirky tool and weapon animations (attack strength feature).
+MC-88376 – Staying underwater doesn't drown the player.
+MC-88431 – Mobs stand still, won't burn or move.
+MC-88433 – Pressure plates didn't work until world reload.
+MC-88958 – Iron golems can't fight back against the new skeletons.
+MC-89123 – Regular stairs reconfigure when next to inverted stairs.
+MC-89353 – End crystals don't respawn instantly after the explosions when respawning Ender Dragon.
+MC-89924 – Rideable animals (horses, pigs) are broken.
+MC-89946 – Cannot control minecarts.
+MC-90115 – Boat texture bug.
+MC-91075 – Loot table entries with min count 0 create items with count 0 in a container.
+MC-91281 – MinecartChest using abandoned_mineshaft.json loot table does not wait for chest to be opened.
+From the previous development version
+
+MC-91521 – Combining items in an anvil causes the item to disappear.
+MC-91551 – Unable to respawn dragon in old worlds because of strict exit portal location check.
+MC-91581 – One ender crystal is not destroyed by the dragon spawning sequence.
+MC-91624 – End crystal drops from a normal horse.
+
+
+== Videos ==
+
+
+== Trivia ==
+15w44b was previously removed from the launcher for some time, but was added back in September 2018.
+15w44b was released exactly 5 years after the Halloween Update.
+
+
+== References ==
+
+
+== Navigation ==

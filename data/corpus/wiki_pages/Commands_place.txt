@@ -1,0 +1,131 @@
+Places a configured feature, structure, structure template, or template pool if possible.
+
+
+== Syntax ==
+
+
+=== Java Edition ===
+place feature <feature> [<pos>]
+Place the configured feature.
+place jigsaw <pool> <target> <max_depth> [<position>]
+Place a jigsaw structure starting with the specified template pool, starting jigsaw block and maximum depth.
+place structure <structure> [<pos>]
+Place the structure.
+place template <template> [<pos>] [<rotation>] [<mirror>] [<integrity>] [<seed>] [strict]
+Place the structure template. (Works like using the load button in the UI for a structure block.)
+
+
+=== Bedrock Edition ===
+place feature <feature: features> [position: x y z]
+place featurerule <featurerule: featureRules> [position: x y z]
+Place the feature.
+place jigsaw <pool: filepath> <jigsawTarget: string> <maxDepth: int> [pos: x y z] [keepJigsaws: Boolean] [includeEntities: Bolean] [liquidSettings: LiquidSettings]
+Place a jigsaw structure starting with the specified template pool, starting jigsaw block and maximum depth.
+place structure <structure: string> [pos: x y z] [ignoreStartHeight: Boolean] [keepJigsaws: Boolean] [includeEntities: Boolean] [liquidSettings: LiquidSettings]
+Place the structure.
+Only Trail Ruins and Trial Chambers and custom jigsaw structures can be placed.
+
+
+== Arguments ==
+JE: <feature>: resource_key
+
+Specifies the configured feature to place. See Feature for vanilla configured features.
+Must be a resource location, which resolves during command execution into a registry entry in minecraft:worldgen/configured_feature registry.
+JE: <structure>: resource_keyBE: structure: string: basic_string
+
+Specifies the structure. See Structure for vanilla structures.
+Must be a resource location, which resolves during command execution into a registry entry in minecraft:worldgen/structure registry.
+JE: <pool>: resource_keyBE: pool: filepath: CommandFilePath
+
+Specifies the start template pool to start generating a jigsaw.
+Must be a resource location, which resolves during command execution into a registry entry in minecraft:worldgen/template_pool registry.
+JE: <target>: resource_locationBE: jigsawTarget: string: basic_string
+
+Specifies the jigsaw block that is connected to when generating the start structure pool.
+Must be a resource location for an unregistered content.
+JE: <max_depth>: integerBE: maxDepth: int
+
+Specifies the max depth of the jigsaw.
+Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ). And it must be between 1 and 20 (inclusive).
+BE: <keepJigsaws: Boolean>: enum
+
+Specifies whether the jigsaws should be kept or not. If not specified, defaults to false.
+Must be a [Boolean]Boolean (either true or false).
+JE: <template>: resource_location
+
+Specifies the structure template to place.
+Must be a resource location for an unregistered content.
+JE: <pos>: block_pos and <position>: block_pos
+BE: <pos: x y z>: CommandPosition
+
+Specifies the start position of the placement.
+Must be a block position composed of <X>, <Y> and <Z>, each of which must be an integer or a tilde and caret notation.
+BE: feature: features: enum
+
+Specifies the feature.
+Must be a string. And it must be a single word that has no space or a double-quoted string (When quoted, \ can be used to escape characters).
+BE: featurerule: featureRules: enum
+
+Specifies the feature rule.
+Must be a string. And it must be a single word that has no space or a double-quoted string (When quoted, \ can be used to escape characters).
+BE: <ignoreStartHeight: Boolean>: enum
+
+Specifies whether the structure should start generating at the given Y coordinate or follow its set height placement rules. If not specified, defaults to false.
+Must be a [Boolean]Boolean (either true or false).
+BE: <includeEntities: Boolean>: enum
+
+Specifies whether the structure will include the entities saved in it or not. If not specified, defaults to false.
+Must be a [Boolean]Boolean (either true or false).
+BE: <liquidSettings: LiquidSettings>: ?
+
+Specifies whether the structure will waterlog present blocks or not.
+Must be either ignore_waterlogging, or apply_waterlogging. If omitted, defaults to apply_waterlogging.
+JE: <rotation>: template_rotation
+
+Specifies the rotation to apply to the placed template.
+Must be either none, clockwise_90, counterclockwise_90, or 180. If omitted, defaults to none.
+JE: <mirror>: template_mirror
+
+Specifies the mirroring to apply to the placed template.
+Must be either none, front_back, or left_right. If omitted, defaults to none.
+JE: <integrity>: float
+
+Specifies the integrity value to apply to the placed template (how complete the template that gets placed is). If omitted, defaults to 1.0.
+Must be a [Float]Single-precision floating-point number (from -(2-2-23)×2127 (≈-3.4×1038) to (2-2-23)2×127 (≈3.4×1038) ). And it must be between 0.0 and 1.0 (inclusive).
+JE: <seed>: integer
+
+Specifies the seed to use for randomized degradation of the placed template when integrity is less than 1. If omitted, defaults to 0.
+Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ).
+JE: strict
+
+Makes the command place blocks as-is without triggering block updates and shape updates.
+
+
+== Result ==
+
+
+== Output ==
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== Issues ==
+The check to ensure that the target position is loaded works by testing if blocks are placeable at Y=0 in the target chunk. If this check is made in a custom dimension where Y=0 is out of the world, it will always fail, preventing the command from ever succeeding.
+Issues relating to "Commands/place" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== References ==
+
+
+== External links ==
+"/place Command"     – Microsoft Learn, January 30, 2025.
+
+
+== Navigation ==

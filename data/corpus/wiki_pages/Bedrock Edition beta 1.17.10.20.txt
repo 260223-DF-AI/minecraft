@@ -1,0 +1,128 @@
+Beta 1.17.10.20 is the first beta version for Bedrock Edition 1.17.10, released on May 26, 2021, which fixes bugs.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Block of Quartz, Crafting Table, Polished Blackstone Bricks, Cracked Polished Blackstone Bricks, and Sculk Sensor
+
+Changed the textures to match Java Edition.
+Rooted Dirt
+
+Rooted dirt texture is now randomly rotated, matching the behavior of the regular dirt block (MCPE-123197).
+
+
+=== Items ===
+Dried Kelp, Netherite Axe, Netherite Boots, Netherite Hoe, Netherite Ingot, Netherite Pickaxe, and Netherite Sword
+
+Changed the texture to match Java Edition.
+
+
+=== Mobs ===
+Axolotl
+
+When fed with a bucket of tropical fish, it will now return a water bucket instead of a bucket (MCPE-127382).
+Axolotl's hitbox is now smaller to match the size of the mob.
+Axolotls no longer move their tails while playing dead (MCPE-123309).
+Skeleton
+
+Skeletons now turn into strays after 20 seconds inside powder snow, instead of 45 seconds.
+
+
+=== Non-mobs entities ===
+End Crystal
+
+Changed the models to have three cubes again instead of two, and to match Java Edition.
+
+
+=== General ===
+Settings
+
+Added a new accessibility icon in the Settings menu.
+
+
+=== Technical ===
+General
+
+Added query.show_bottom - a query for determining whether or not the entity's bottom is rendered.
+Added query.death_time - a query for determining the elapsed ticks since a mob started dying.
+Added math.min_angle - a math expression for minimizing the angle magnitude (in degrees) into the range [-180, 180].
+Gameplay
+
+Loot chests with Seed = 0 now correctly randomize if placed on the same coordinates.
+Note that pickblocking a Vanilla loot chest before opening it will now result in identical loot in each copy unless the player set the seed to 0 in the NBT.
+Data Driven Mobs
+
+Ender dragon and end crystal rendering and animations are now fully data-driven.
+Graphics
+
+Graphics hardware that supports a maximum D3D11 feature level of 9_3 or below are no longer supported.
+Stability and Performance
+
+Added better error handling for JSON parsing. Also added several new content errors for item parsing as well as for loot tables.
+Actors
+
+Incoming client-sync properties for newly seen types will properly register with client-side Actor Property Manager groups.
+
+
+== Fixes ==
+Vanilla Parity
+
+Thunderstorms now happen as often as on Java Edition (MCPE-72798).
+Axolotl
+
+Guardians and elder guardians now attack axolotls on sight.
+Drowned now attack axolotls on sight.
+Azalea
+
+Azalea can now be bone-mealed when placed on clay.
+Using Pick Block on azalea leaves and flowering azalea leaves now results in the correct blocks being picked (MCPE-128092).
+Copper Ore
+
+Copper ore is now placed after other Overworld ores in the Creative inventory (MCPE-119724).
+Deepslate
+
+Deepslate is now placed after other stones in the Creative inventory (MCPE-127592).
+Glow Item Frame
+
+Glow item frame is now placed after regular item frame in the Creative inventory (MCPE-117532).
+Hanging Roots
+
+Hanging roots are now destroyed by water (MCPE-121676, MCPE-127677).
+Lightning Rod
+
+Lightning rod no longer breaks falling blocks that land on it (MCPE-116545).
+Commands
+
+/title clear now correctly clears the title and subtitle from the HUD (MCPE-97636).
+Dressing Room
+
+Profile screen reload button is now localized.
+Gameplay
+
+Fixed split-screen players not able to rename items on anvils (MCPE-108405).
+Graphical
+
+Projectiles such as snowballs and eggs no longer cast shadows.
+Items
+
+All dropped items now have a similar floating height.
+Data-driven items now swing faster when not targeting blocks (MCPE-119702).
+Firework rockets obtained from /replaceitem command now have a flight duration (MCPE-109037).
+Firework stars obtained from /replaceitem command now have proper color values (MCPE-109037).
+Lush Caves
+
+Small dripleaf now only drops itself when broken with shears.
+Powder Snow
+
+Burning mobs can no longer destroy powder snow when the Mob Griefing gamerule is disabled.
+User Interface
+
+Hotbar item tooltip duration now scales with the length of the tooltip's text.
+
+
+== References ==
+
+
+== Navigation ==

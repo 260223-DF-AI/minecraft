@@ -1,0 +1,61 @@
+This page documents an exhaustive list of items that no longer exist in current versions of Java Edition.
+
+
+== Blocks previously obtainable as items ==
+
+
+=== Obtainable in Survival ===
+
+Note that the section below does not include blocks that can be obtained by world editing, commands, or version manipulation (upgrading/downgrading), only blocks that can be obtained in legitimate Survival gameplay are listed. Also, only blocks whose ID's have not been replaced are listed here. This means that classic cloth, locked chests and similar blocks are not on this list. 
+The first table does not include blocks pre-generated inside inventories, the second table includes block items only obtainable through the Inventory, Starting House, or Beta 1.6 TB3 chests.
+
+
+== Potions ==
+
+
+=== Beta 1.9 Prerelease 2 potions ===
+Beta 1.9 Prerelease 2 implemented 32 types of potions for a complex brewing system involving cauldrons, which were functional but unavailable. These potions had effects and appeared to have different colors than the current potions. Beta 1.9 Prerelease 3 replaced the cauldron brewing system with the brewing stand system used in the final game, and removed the effects and colors of the old potions. Only the mundane, awkward, and thick potions were used in the final brewing system, leaving 29 types of potions with no effect unused in the game. They were later removed in snapshot 15w44b for 1.9.
+These potions could be obtained only by using the following command: /give @p minecraft:potion 1 <data-value> {CustomPotionEffects:[]}. Adding a multiple of 64 to the value would result in the same potion. As with other potions at the time, adding 16384 to the value would result in a splash version of the given potion.
+
+
+=== Reverted potions ===
+
+Before snapshot 15w31a for 1.9, potions had a form known as "reverted". In the inventory, reverted potions looked identical to their base potion, much like mundane and mundane (extended) potions, and their usage was also identical to their base potions, with the exception of turning into reverted potions rather than base potions. The only difference was the data values.
+There were two general methods to create reverted potions, one of which involved the addition of fermented spider eyes. Reversion, in general, referenced changing a longer, upgraded potion into its original weaker potion (for example, changing from a potion of Poison (extended) into a potion of Harming (reverted) by adding fermented spider eye).
+
+The first method involved adding glowstone dust (typically) to an already upgraded tertiary potion. Since these tertiary potions have already been modified with redstone dust (typically), they could be changed to their original (reverted) unmodified states depending on which modifier was added previously. Not all potions could be reverted (or react, for that matter) when glowstone dust or redstone dust was added to an upgraded tertiary potion (for example, adding redstone dust to an already extended potion did not yield a new potion).
+The second method involved the addition of fermented spider eyes, followed by glowstone dust (usually). Method two worked by adding a fermented spider eye to an extended positive potion (i.e. an extended tertiary potion). In almost all cases, this would corrupt the potion and produce a negative potion of equal strength (in this case, extended). Then, glowstone dust (depending on the recipe) was added to the extended negative potion. Since these negative tertiary potions (regardless of origin) have already been modified with redstone dust, the addition of glowstone dust would revert the potion to a potion of lesser duration.
+A good example of this process at work is the reversion of a potion of Weakness. A potion of Weakness can be made in two ways. The first method is by adding a fermented spider eye to a mundane potion (water bottle + ghast tear / glistering melon slice / blaze powder / magma cream / sugar / spider eye), then adding redstone dust to produce a potion of Weakness (extended). The second method is by adding a fermented spider eye to either a potion of Strength or a potion of Regeneration. Potions of Strength and Regeneration, in their base or extended forms, produce potions of Weakness with equal magnitude (for the sake of this example, fermented spider eye is added to a potion of Strength (extended) to produce a potion of Weakness (extended)).
+Now, there should be two potions of Weakness (extended). Glowstone dust could be added to the potion of Weakness (extended), which reverted the potion into a base potion of Weakness. The act of reducing the duration from 4:00 to 1:30 was reversion.
+
+
+=== Glowstone dust ===
+
+
+=== Redstone dust ===
+
+
+=== Fermented spider eye ===
+
+
+== Horse saddle ==
+
+Horse saddles worked just like regular saddles, but for horses instead of pigs. They were added in the 13w16a snapshot. They could be crafted from 5 leather and 3 iron ingots. Horse saddles were removed in 13w18a.
+
+
+== Slowness arrows ==
+
+In Java Edition 1.10, Slowness arrows dropped by strays contained a different tag from Slowness arrows crafted. The different tag was fixed in 1.10.1
+
+
+== Data-retaining minecarts ==
+In Java Edition 1.10.2, when a minecart of any type was broken a specially named minecart was dropped. In this version, the game messed up when separating the minecart from the item inside, and accidentally let the minecart retain its previous data. The minecart obtained would be named "entity.MinecartRideable.name", "entity.TNTMinecart.name", "entity.FurnaceMinecart.name", "Minecart with Chest", "entity.MinecartCommandBlock.name", "entity.SpawnerMinecart.name", and "Minecart with Hopper".
+Obtaining:
+File:Data retaining minecarts.mp4
+Link to the bug report on the Minecraft bug tracker
+
+
+== References ==
+
+
+== Navigation ==

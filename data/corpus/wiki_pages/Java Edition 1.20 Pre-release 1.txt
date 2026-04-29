@@ -1,0 +1,101 @@
+1.20 Pre-release 1 (known as 1.20-pre1 in the launcher) is the first pre-release for Java Edition 1.20, released on May 10, 2023, which brings more parity from Bedrock Edition and fixes bugs.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Beds, carpets, and wool
+
+Colored variants can now be dyed any other color.
+
+
+=== Command format ===
+/data
+
+string data sources now accept negative boundaries, which are interpreted as index counted from the end of the string.
+
+
+=== General ===
+Damage type
+
+Added outside_border, and generic_kill.
+Players outside the world border are now hurt by the damage type outside_border instead of in_wall.
+Forcibly removing an entity using i.e. the /kill command now uses damage type generic_kill instead of out_of_world.
+Death messages
+
+Changed death message used for the /kill command.
+Changed from  "<player> fell out of the world" to "<player> was killed".
+Changed death message used for deaths caused by the world border.
+Changed from  "<player> suffocated in a wall" to "<player> left the confines of this world".
+Loot table
+
+Random sequences for loot tables are now deterministic.
+The game now uses named random sequences to deterministically produce loot for loot tables.
+Each random sequence produces a unique sequence based on the world seed and sequence identifier, which means a loot table will produce the same results when ran with the same parameters in the same world.
+The identifier of the random sequence to use for a loot table is specified as a resource location in a new field called random_sequence.
+server.properties
+
+Changes in encoding.
+The file is now read in UTF-8 initially, with previous encoding (ISO 8859-1/Latin 1) as a fallback.
+File is now written with UTF-8 encoding.
+Tags
+
+Removed pumpkin, and melon from #maintains_farmland block tag.
+Added generic_kill, and outside_border to #bypasses_armor damage type tag.
+Added generic_kill to #bypasses_invulnerability, and #bypasses_resistance damage type tags.
+
+
+== Fixes ==
+36 issues fixed
+From released versions before 1.20
+
+MC-180 – When reaching the other side of a nether portal the animation plays forever until stepped out of.
+MC-2215 – Encoding errors in server.properties.
+MC-18060 – Several realms strings are untranslatable.
+MC-21520 – Death message for /kill is "<player> fell out of the world"
+MC-35078 – Breaking animation is one frame off.
+MC-107224 – World border death message states "suffocated in a wall"
+MC-123081 – Placing an end crystal when entering The End prevents Ender Dragon from spawning.
+MC-146582 – When entering spectator mode while standing on the ground, the player moves down by 0.19051 blocks, which makes you fall down.
+MC-188595 – "gamemode" string in F3 + N description is inconsistent with "game mode" string in F3 + F4 description
+MC-193749 – Nether portals play the trigger sound again when the other dimension is loaded.
+MC-195781 – The "Include entities:" string displayed within the structure block GUI is improperly capitalized.
+MC-195825 – "datapacks" string is inconsistent with "data pack" string in datapackFailure.title text.
+MC-196428 – The nausea effect resets its distortion severity when players' NBT data is reloaded.
+MC-197270 – Item icons in F3+F4 screen display over fading in Mojang Studios screen when reloading resource packs using F3+T at the exact same time.
+MC-198202 – Options background texture does not match dirt texture.
+MC-203039 – Incorrect use of colon in options.hideMatchedNames.tooltip.
+MC-206548 – Leash knot subtitles are not properly capitalized.
+MC-226454 – The "Light as a Rabbit" advancement description has no space after the ellipsis.
+MC-236606 – Lightning bolt related string lacks capitalization.
+MC-241736 – Company names are still inconsistent and partly misspelled in the credits.
+MC-250571 – Gamerule description strings within the world creation menu consist of inconsistent concluding punctuation.
+MC-256424 – Game mode is sometimes referred to as "gamemode".
+MC-257336 – Some chiseled bookshelf interaction subtitles are improperly capitalized.
+From the 1.20 development versions
+
+MC-262006 – Melon and Pumpkin are in the default #maintains_farmland tag despite not maintain farmland.
+MC-262208 – In the credits, "Lionbridge" is misspelt in one place (no "g").
+MC-262253 – Music composers not listed in credits.
+MC-262265 – Changing resource pack that overrides a font crashes JVM.
+From the previous development version
+
+MC-262296 – Rabbits are no longer affected by jump boost.
+MC-262300 – Menu text is now rendered in front of the Mojang Studios loading screen fade animation.
+MC-262304 – The stepping_on predicate condition does not correctly succeed on trapdoors.
+MC-262308 – Entities do not stick to honey blocks pushed by pistons if their center isn't over the honey block.
+MC-262313 – Nether won't load in upgraded worlds.
+MC-262317 – Items don't respect properties of the block they are supported on.
+MC-262351 – Worldgen deadlock caused by supporting block checks.
+MC-262363 – Player can still gain a normal jump off of a honey block with precise timing.
+MC-262424 – Sprinting particles on the edges of blocks are still incorrect.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

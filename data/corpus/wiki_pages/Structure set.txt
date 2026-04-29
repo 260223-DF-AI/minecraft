@@ -1,0 +1,29 @@
+A structure set is used to determine the position of structures in the world during world generation. They are configured using JSON files stored within a data pack in the path data/<namespace>/worldgen/structure_set or an add-on in the path <root BP>/worldgen/structure_sets. Structure sets are not referenced in a dimension or biome. Instead, the existence of the resource is enough to make the structures generate. The valid biomes of a structure are determined by the structure itself (see Structure/JSON format). 
+The structure sets uses the [NBT Compound / JSON Object] placement to determine the placement of structures. For any position a random structure is selected from the [NBT List / JSON Array] structures list. If the selected structure can't be placed because its not in a valid biome, a different structure is selected.
+
+
+== JSON format ==
+Java Edition:
+
+
+== Placement types ==
+The placement type determines how the structures are spread in a world. There are two placement types.
+
+
+=== random_spread ===
+Structures are spread evenly in the entire world. In vanilla, this placement type is used for most structures (like bastion remnants or swamp huts‌[Java Edition  only]). The world is split into squares with side length of [Int] spacing chunks. One structure is placed in a random position within each square. A structure can't be placed in [Int] separation chunks along the positive X/Z edge of a square.
+
+
+=== concentric_rings ===
+
+A fixed number of structures is placed in concentric rings around the origin of the world. In vanilla, this placement is only used for strongholds. 
+
+
+== Default structure sets ==
+
+
+== External links ==
+Structure set Generator on misode.github.io
+
+
+== Navigation ==

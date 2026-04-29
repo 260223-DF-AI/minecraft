@@ -1,0 +1,169 @@
+Entities include all dynamic, moving objects throughout the Minecraft world.
+
+
+== General behavior ==
+Properties all or most entities have are:
+
+A position, rotation, and velocity
+A bounding box consisting of one or more non-rotating, three-dimensional boxes with a fixed height and width
+The ability to be on fire, displayed as flames on or around the entity
+The ability to have a status effect, such as from potions
+A view point, even if it has no eyes
+Most entities can be pushed around by water currents, and some can have their trajectory altered by explosions if already traveling at speed. Some entities can be renamed by using a name tag on them.
+Most entities have a health status, including mobs, players, armor stands, boats, boat with chests, items, and minecarts. Moving blocks, shot or thrown projectiles, area effect clouds, and experience orbs do not have health.
+Most entities collide with solid blocks, though some entities, like vexes, ender dragons and thrown eyes of ender, do not. Most types of entities prevent blocks from being placed in the space they occupy, except for dropped items and experience orbs, which are automatically pushed out of the block to open air. If a solid block enters an entity's space, such as falling sand or a swinging door, then it is free to move out of the solid block but not back in. For example, if a door is closed on the player, player can jump up and stand on top of the bottom-half door block, if there is air above the door.
+Entities are lit according to the light level of the block their position is in. For example, if a minecart runs over a non-straight track directly into a solid block, it turns black because solid blocks always have a light level of 0; arrows are also sometimes seen to turn black, especially if fired shallowly into the ceiling; players in Bedrock Edition sometimes also turn black when sleeping.
+
+
+=== Immovable entities ===
+Item frames, glow item frames, paintings, and leash knots, unlike most entities, align to the block grid, and are completely immobile.
+
+
+=== Boats and minecarts ===
+
+Boats, boats with chests and minecarts appear to recover health over time. For example, they can be broken by hitting them quickly, but cannot be destroyed by hits with unarmed hand with a pause after each hit. The amount of wobbling displayed by boats and minecarts when struck appears to indicate their current health. All minecart, boat and boat with chest variants have 6HP.
+
+
+==== Gravity-affected blocks ====
+
+Gravity-affected blocks include sand, gravel, anvils, red sand, dragon eggs, concrete powder, scaffolding, and pointed dripstone, along with snow layers in Bedrock Edition.
+A gravity-affected block normally exists as a block, but when its support is removed, it becomes a falling block entity and falls down until hitting the top surface of another block. If there is valid space, it places itself as a block at the nearest on-grid position, or drops as an item if that position is occupied by a block without a solid top surface, such as a torch or a bottom slab.
+While a falling block ordinarily falls straight down, its trajectory can be affected by explosions, bubble columns, pistons, reeling it in, and moving slime blocks, and can slide down the side of honey blocks. It is also possible to modify the velocity and direction of a falling block by using commands such as /data‌[Java Edition  only] or third-party programs. A falling block despawns and drops as an item if it does not land after existing for 600 ticks (30 seconds), or 100 ticks (5 seconds) if falling into the void[verify].
+If a cave generates underneath sand, gravel, or red sand, the blocks remain stationary until they receive a block update. If a single block is updated and falls down, neighboring blocks are updated in a chain reaction that can cause the collapse of an entire region of gravity-affected blocks.
+
+
+=== Interactions with "use" control ===
+Entities with use interactions (such as boats, boat with chests, minecarts, cats, villagers, tamed parrots, and tamed wolves) do not stop the use action of a tool the player is holding. For example, using a water bucket on a tamed wolf causes the wolf to sit, but also empties the bucket near or onto the wolf.
+
+
+== Riding ==
+
+Entities can ride on, or be attached to, other entities. When this is the case, only the lower/"outer" entity's volume collides with other things, and only that entity can control movement.‌[Java Edition  only] However, there are exceptions: players riding minecarts, boats, boats with chests, saddled horses, a happy ghast, a nautilus, a donkey, a mule, a camel, or baby zombies riding chickens, or skeletons riding horses or boats.
+The only current legitimate combinations of riding entities are:
+
+A mob or player in a minecart, boat or boat with chests.
+A boat or boat with chest in a minecart‌[Java Edition  only].
+A player on a saddled pig, horse, donkey, mule, skeleton horse, zombie horse, llama, strider, camel, camel husk, nautilus or zombie nautilus.
+A player on a happy ghast with a harness.
+Any type of skeleton on a spider or cave spider‌[Bedrock Edition  only]; also known as a spider jockey.
+Any type of baby zombie or zombified piglin‌[Java Edition  only] on a chicken or other mobs‌[Bedrock Edition  only]; also known as a chicken jockey.
+A drowned riding a zombie nautilus, known as a zombie nautilus jockey.
+Skeletons riding skeleton horses.
+Pillager, vindicator, or evoker riding a ravager.
+Baby piglin, riding a baby hoglin.
+Baby piglin, riding a baby piglin on a baby hoglin.
+Baby piglin, riding a baby piglin, riding a baby piglin on a baby hoglin.
+A strider, riding another strider.
+Zombified piglin riding a strider.
+A villager or a witch riding a chicken (this is feasible by curing a baby zombie villager chicken jockey, and then potentially turning the villager into a witch using a lightning bolt)
+A player riding a zombified piglin (by turning a ridden pig into a zombified piglin using a lightning bolt)
+A parrot perched on player's shoulder isn't considered as riding.
+It is possible to have even more levels, such as a baby piglin on another baby piglin who is riding a hoglin in a boat in a minecart.
+Entities can also be stacked on top of each other with the use of the /summon and /data commands in Java Edition. For example, using /summon spider ~ ~ ~ {Passengers:[{id:skeleton}]} summons a spider jockey, or using /ride in Bedrock Edition.
+If an entity is riding another entity, the top entity cannot teleport because as soon as the teleport is made, the entity is teleported back to riding the other entity.‌[Java Edition  only]
+Starting from the Nether Update, entities that are riders or passengers of other entities cannot despawn.[verify]‌[Java Edition  only]
+
+
+== Appearance ==
+The textures on the surfaces of entities usually integrate images applied to all parts of an entity into one single file, similar to player skins. The heights and widths of objects inside the texture file are typically multiplies of 60px. Each entity renders the texture in different three-dimensional models, and all entities have animations rendered with the model.
+With Vibrant Visuals, the game uses multiple texture files on top of the color textures, which affects how light and reflections behave on the surface. The MERS texture map is used to define per pixel how metallic (reflects all light), emissive (produces its own light), or rough (absorbs all light) it is, with an additional subsurface scattering map (how light is scattered on the surface) which can replace metalness. With resource packs, other texture maps are also used, including normal and heightmaps. These change depth of the entity, and can add multiple 3D effects.
+Using resource packs, the player can change the textures of entities. They can also change the shapes and animations of entities using models.
+
+
+== Types of entities ==
+The table below lists types of entities that currently exist in Minecraft. 
+Entities listed as "solid" obstruct the passage of other entities. 
+
+
+== Motion ==
+Gravity works differently in Minecraft than the real world, as not everything is subject to the same acceleration. Additionally, there is a drag force proportional to velocity, again dependent on the entity.
+In general, entities perform 3 operations to calculate movement each tick:
+
+Apply acceleration: Add acceleration to the current velocity (for most entities, the only acceleration is gravity),
+Apply drag: Multiply the current velocity by a drag coefficient (which may be different for the horizontal and vertical components),
+Update position: Add the current velocity to the current position.
+Different entities perform these operations in different orders within the tick, which changes their behavior. For example, a living entity in the air is described by the following code each tick:
+
+Just substituting the correct values for acceleration and drag and ordering the three operations correctly is enough to exactly simulate any entity listed below.
+
+
+=== Formulas ===
+It can be useful to have a closed-form formula for and entity's position and velocity. These are not exact like a program would be, because the in-game movement is subject to floating-point rounding errors and mathematical formulas are not. A detailed explanation of how these formulas were derived can be found here.
+
+
+==== Velocity ====
+Applying an initial velocity initialVelocity on an entity, the entity's velocity after travelling for a number of ticks ticksPassed can be given by the formulas:
+
+Drag applied before acceleration:
+finalVelocity=dragticksPassed×(initialVelocity−acceleration1−drag)+acceleration1−drag
+Drag applied after acceleration :
+finalVelocity=dragticksPassed×(initialVelocity−drag × acceleration1−drag)+drag × acceleration1−drag
+Initial velocity and acceleration should be interpreted as vectors, and drag as a diagonal matrix. This means that the formulas work for each X, Y, and Z component separately if drag, initialVelocity, and acceleration are replaced with their corresponding X, Y, or Z components.
+
+
+==== Position ====
+Here d is drag, a is acceleration, t is ticksPassed, and v0 is initialVelocity. Then an entity starting at initialPosition will end at a finalPosition given by:
+
+Position, Drag, Acceleration:
+finalPosition=initialPosition+1−dt1−d(v0−11−da)+t1−da
+Position, Acceleration, Drag:
+finalPosition=initialPosition+1−dt1−d(v0−d1−da)+dt1−da
+Acceleration, Position, Drag:
+finalPosition=initialPosition+1−dt1−d(v0−d1−da)+t1−da
+Drag, Acceleration, Position:
+finalPosition=initialPosition+d(1−dt)1−d(v0−11−da)+t1−da
+Drag, Position, Acceleration:
+finalPosition=initialPosition+d(1−dt)1−d(v0−11−da)+dt1−da
+Acceleration, Drag, Position:
+finalPosition=initialPosition+d(1−dt)1−d(v0−d1−da)+dt1−da
+Like before, initial position, initial velocity and acceleration should be treated as vectors and drag as a diagonal matrix.
+
+
+=== Calculator ===
+
+
+== Data values ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== Videos ==
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+=== Legacy Console Edition ===
+
+
+== Trivia ==
+When an entity is moving away from its block radius, the solid block can be placed but it does not emit a place sound effect or the player's placing animation.‌[Java Edition  only]
+in Bedrock Edition however, the block place sound effect can be played and emitted and the player's placing animation plays but it does not when using a controller or keyboard and mouse connection.
+
+
+== Issues ==
+Issues relating to "Entity" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== See also ==
+Block entity – unlike the entities mentioned above, these are simply blocks that store additional data.
+
+
+== References ==
+
+
+== External links ==
+MinecraftMotionTools – a GitHub repository with some in-depth explanation about motion in-game.
+
+
+== Navigation ==

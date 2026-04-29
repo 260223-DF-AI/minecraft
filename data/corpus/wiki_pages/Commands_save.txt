@@ -1,0 +1,86 @@
+These commands manage server saves.
+
+
+== save-all ==
+
+Saves the server to the data storage device.
+
+
+=== Syntax ===
+save-all
+
+Normal mode. Saves player data immediately. Marks all chunks as needing to be saved. They get saved over time to the data storage device.
+This includes when auto-saving has been disabled using the "save-off" command. (see below)
+save-all flush
+
+All the players and chunks are saved to the data storage device immediately, freezing the server for a short time.
+
+
+=== Result ===
+
+
+=== Output ===
+
+
+== save-off ==
+
+Disables the server writing to the level files (except player, advancement, stat files), in order to copy them for backup. All level changes are temporarily queued.
+This option is reset each time the server restarts.
+
+
+=== Syntax ===
+save-off
+
+
+=== Result ===
+
+
+=== Output ===
+
+
+== save-on ==
+
+Enables the server writing to the level files.
+
+
+=== Syntax ===
+save-on
+
+
+=== Result ===
+
+
+=== Output ===
+
+
+== save ==
+
+Prepares a backup, queries its status, or resumes.
+
+
+=== Syntax ===
+save hold
+Disables the server writing to the world files. All changes are temporarily queued.
+save query
+Shows the path of every file and the amount of bytes to truncate it separated by a colon.
+save resume
+Enables the server writing to the world files.
+
+
+=== Result ===
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== External links ==
+"/save Command"     – Microsoft Learn, October 11, 2023.
+
+
+== Navigation ==

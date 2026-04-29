@@ -1,0 +1,167 @@
+14w07a is the twelfth snapshot for Java Edition 1.8, released on February 14, 2014, which adds iron trapdoors and the /execute and /testforblocks commands.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Iron trapdoor
+
+Can only be opened and closed using redstone, similar to an iron door.
+Crafted by placing iron ingots in a 2×2 pattern, yields 1 iron trapdoor.
+
+
+=== Command format ===
+/execute 
+
+Allows commands to be run from the position of specified entities using.
+Example: /execute @e[type=Chicken] ~ ~ ~ fill ~-1 ~-1 ~-1 ~1 ~1 ~1 minecraft:glass.
+/testforblocks
+
+Compares two areas of a world.
+Example: /testforblocks 100 64 100 107 69 107 0 64 0 masked.
+Scoreboard
+
+Scoreboard objectives for fake players with a name starting with # never show up on the sidebar.
+New /scoreboard subcommands: /scoreboard operation and /scoreboard test.
+The operation subcommand can apply arithmetic operation to scores (+ – * / %) and accumulate player scores.
+Example: /scoreboard players operation #teamscores redScore += @a[team=red] blueKills adds every red player's count of kills on blue to the red team's score of kills.
+The test subcommand can be used to test if a scoreboard value is between a min and a max value.
+Example: /scoreboard players test #global anObjective 12 19 checks whether the global score of the given objective is between 12 and 19, inclusive.
+Different teams can now have different objectives displayed in the sidebar.
+Example: /scoreboard objectives set display sidebar.team.yellow objectiveName (referring to team color, not team name).
+Teams can now have settings on how the nametags are to be shown - /scoreboard teams option red nametagVisibility hideForOtherTeam. Also possible: hideForOwnTeam, never, always (default).
+Target selectors 
+
+New selector parameters for entity selectors to detect entity rotations with rxm – x rot min, rx – x rot max, rym – y rot min, ry – y rot max.
+Example: @a[rxm=-15,rx=15,rym=-45,ry=45], /say @a[rxm=30,rx=90] , don't look down!.
+
+
+== Changes ==
+
+
+=== Blocks ===
+General
+
+Updated the block model format.
+Now less exploitable.
+UV has to be [0,1] (Textures can no longer be "borrowed" from neighboring block textures).
+Planes need to have 1 axis 'identical' (so aligned to either x, y, or z).
+Plane rotation can only be -45/45 on a single axis.
+From/to and uv coordinates are now in 'pixelspace' (multiples of 1/16th of a block).
+Cocoa
+
+Invalid metadata versions now have no model.
+Command blocks
+
+Now show the @e target selector variable.
+Dispensers
+
+Can now place command blocks with pre-configured commands, rather than dispensing it
+Ladders
+
+Invalid metadata versions now have no model.
+End portal frames
+
+Invalid metadata versions now have no model.
+Redstone torches, torches
+
+Now have an angled top side when placed on walls.
+
+
+=== Items ===
+Blaze rods
+
+Are now held similarly to tools.
+
+
+=== Command format ===
+/testfor, /testforblock, /clear
+
+Can now test for partial matches of NBT lists.
+Example: /testfor @p {Inventory:[{Slot:6b,id:"minecraft:diamond_sword"}],SelectedItemSlot:6}.
+/tellraw
+
+Can now insert values from scoreboards into messages.
+Example: /tellraw @p {text:"Have ",extra:[{score:{name:"Searge",objective:"reward"}},{text:" diamonds"}]}.
+
+
+=== Gameplay ===
+Creative mode
+
+Players can create a copy of a block entity in their hotbar, including all NBT data, with ctrl+pick block.
+Spectator mode
+
+Players can now share LAN.
+
+
+=== General ===
+Debug screen
+
+Looking at a block in the world shows the coordinates of that block on the debug screen.
+BlockItem instances can now hold a custom tag that is merged into a block entity when it's placed.
+Example: /give @p command_block 1 0 {BlockEntityTag:{Command:"setblock ~ ~ ~ minecraft:diamond_block"}}.
+Inventory system
+
+Rewrote the inventory system.
+Reverted before the full release of Java Edition 1.8.
+Fixes some bugs, improves performance and allows easier improvements.
+Allows custom NBT that isn't handled by the game to be added onto items.
+Custom tags remain even if the item's NBT is changed in-game. (i.e. by renaming).
+Resource packs
+
+Resource packs can now be bundled with a world, put it in the map save directory and name it "resources.zip".
+Example: .minecraft/saves/TheMapWithTheThing/resources.zip.
+
+
+== Fixes ==
+33 issues fixed
+From released versions before 1.8
+
+MC-1818 – Skullowner is lost when "picking" the skull in Creative.
+MC-4837 – Zombie/player held beacon experience Z-fighting.
+MC-7133 – Texture of burning furnace (ID62) shows no face in Inventory.
+MC-11270 – Scoreboard don't work with offline / non-existant players.
+MC-36947 – /weather clear <time in seconds> doesn't clear weather for anywhere near the amount given.
+MC-41594 – Game crashes when Ender crystal is stacked on top of horse.
+MC-44829 – Unable to load Twitch libraries.
+MC-46431 – Iron golem breaks lead.
+From the 1.8 development versions
+
+MC-46696 – Too many flowers near lake .
+From the previous development version
+
+MC-44489 – /kill @e doesn't kill ender dragons.
+MC-45106 – Mipmapping strength is not applied to non-standard blocks.
+MC-45571 – Farmer type villagers don't generate on superflat without grass.
+MC-45773 – Chest not spawning in monster dungeons.
+MC-46400 – Player arm invisible after using F5 in spectator mode and switching to creative.
+MC-46559 – Spectating a mob leaves the player at two blocks tall view.
+MC-46838 – /testfor NBT parsing error.
+MC-47212 – /testfor + inventory bug.
+MC-47520 – Standing under block with water/lava on top will apply blue/red filter.
+MC-47543 – Items stacked with items that have PickupDelay set to 32767 can no longer be picked up.
+MC-47545 – CanPlaceOn does not work with wooden doors.
+MC-47555 – Cannot place boats.
+MC-47596 – Items of the same type (IE, stone, and stone) ignore data values and stack anyway.
+MC-47598 – The color of sugar canes doesn't change depending on the biome.
+MC-47642 – Hopper: java.lang.ArrayIndexOutOfBoundsException: 4.
+MC-47653 – Torches causing missing texture when placed on bottom side of block.
+MC-47685 – Hopper: java.lang.ArrayIndexOutOfBoundsException: 3.
+MC-47796 – Leaves, grass, and tall grass all have a more brightly colored tint.
+MC-47817 – Baby zombie pigman running with strange speed.
+MC-47821 – Ghasts do not despawn in Peaceful mode
+MC-48043 – Held blaze rod not in hand.
+MC-48341 – Locking chests, furnaces, etc.
+MC-48357 – Cubic selectors return out-of-order (per-chunk?) results. (/kill).
+MC-48784 – Duplication of items using gravity.
+
+
+== Trivia ==
+14w07a was previously removed from the launcher for some time, but was added back in September 2018.
+
+
+== References ==
+
+
+== Navigation ==

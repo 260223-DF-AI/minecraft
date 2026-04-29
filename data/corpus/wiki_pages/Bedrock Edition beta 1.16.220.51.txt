@@ -1,0 +1,42 @@
+Beta 1.16.220.51 is the second beta version for Bedrock Edition 1.16.220, released on March 11, 2021, which had technical changes and fixes bugs.
+
+
+== Changes ==
+
+
+=== Technical ===
+GameTest Framework
+
+Renamed all references of Actor to Entity.
+Renamed BlockPos to BlockLocation.
+Added startSequence in GameTest which allows finer control over advanced test sequences.
+GameTest sequence callbacks no longer take tests a parameter as the initial test object now lives as long as the whole test.
+
+
+== Fixes ==
+General
+
+Sounds of ditching/collecting Powder Snow with bucket are now assigned to the correct sound categories (MCPE-111739).
+Player no longer constantly emits particles when on fire after exiting Powder Snow (MCPE-111679).
+Powder Snow block is no longer present in Creative Menu (MCPE-105407).
+Fixed Drowned holding tridents backwards during attack (MCPE-118213).
+Enabled "Find Friends" button on Xbox.
+Performance and Stability
+
+Improved input latency on Windows 10 when V-Sync is enabled (MCPE-98861).
+Accessibility
+
+Fixed a bug where UI screen reader didn't read out default controller focus and checkbox state on the Online Play is not Rated pop-up.
+Technical
+
+Updated behavior packs to require explicit module dependencies when using other native modules.
+Identifiers within render_controllers will now be considered content errors if there is no render controller matching that name.
+Entity json before version 1.16.100 will no longer give a content error for the deprecated field minecraft:foot_size.
+Modified condition in "animation_controllers.json" to allow mobs to enter "wield_third_person_raise" (MCPE-118213).
+Fixed an issue where loading into a world would cause continuous molang errors around "unhandled request for unknown variable".
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,40 @@
+A block state provider is used to provide a (potentially randomized) block and block state to be placed by configured features.
+
+
+== JSON format ==
+Block state providers are defined using the following format: 
+
+
+== Types ==
+The following block state provider types exist.
+
+
+=== simple_state_provider ===
+Specifies a single block state directly
+
+
+=== rotated_block_provider ===
+Randomly rotates axially-rotated blocks, such as logs, chain.
+
+
+=== weighted_state_provider ===
+Chooses a block state from a weighted list.
+
+
+=== randomized_int_state_provider ===
+Assigns a random value to an integer block property.
+
+
+=== noise_provider ===
+Randomly chooses a block state according to a noise value.
+
+
+=== dual_noise_provider ===
+Randomly chooses a block state according to two noise values.
+
+
+=== noise_threshold_provider ===
+Uses different block states when a noise value above or below the threshold.
+
+
+== Navigation ==

@@ -1,0 +1,69 @@
+This page is detailing keys that controls can be bound to in the latest version of Java Edition, but which are not explicitly named in-game (see MC-170376). Hardware and operating system specifics are listed accordingly.
+Note that the key must be explicitly tested in Java Edition and the lack of a proper name confirmed for inclusion in this list.
+
+
+== List of keys ==
+
+
+=== Windows ===
+
+
+==== Dedicated keys ====
+Cases where a single, nonstandard key causes scancode.### to be displayed when any control is bound to it.
+
+
+===== scancode.256 =====
+scancode.256 on Windows appears to be a generic fallback for several unrecognized keyboard inputs, and as such many different unrelated inputs can cause this to appear. This appears to arise from a bug in GLFW, which may be fixed at some point in the future. The following is a list of known examples from single buttons:
+
+
+==== Key combos ====
+Cases where specific key combinations cause scancode.### to appear, or keys that would otherwise have named bindings causing scancode.### to appear when another key (e.g. F Lock) is in a certain state.
+It may be Mojang's intention to not fix cases where the exact same key in the exact same position can put out different codes, and that the same key should always give the same in-game behavior (for example, you cannot bind a control to @ by holding shift and then binding something to the 2 key, so it might be intended that the F2 key would always bind F2 regardless of whether the Fn key is held or not).
+
+
+===== scancode.256 =====
+For much the same reason as the prior section, key combinations can also result in controls being bound to this specific code.
+
+
+=== Linux ===
+evdev, which is used by Linux for keyboard inputs, is also used by FreeBSD.
+The windowing system may affect the keycodes produced, although both X and Wayland use xkb so this is unlikely to be relevant. The kernel build could also affect these, but this is even less likely to be an issue.
+For some specific keyboards, according to evtest, only a "scan" event is sent for some rare keys - no "key" event is sent. This is likely a bug with the Linux kernel itself - a report for this is planned.
+
+
+==== Dedicated keys ====
+
+
+==== Key combos ====
+
+
+== Device info ==
+
+
+=== Computers ===
+
+
+==== Windows ====
+
+
+=== Keyboards ===
+
+
+=== OS versions ===
+
+
+==== Windows ====
+
+
+==== Linux ====
+
+
+== Notes ==
+
+
+== References ==
+
+
+== See also ==
+Key codes
+Java Edition key codes/Before 1.13

@@ -1,0 +1,197 @@
+Fonts are used for rendering text in Minecraft. Several fonts are used in the game; the primary font used is known as either Mojangles or Minecraft Seven.
+Multiple fonts can be defined and referenced with resource packs.
+
+
+== Fonts available ==
+
+
+=== Java Edition ===
+In Java Edition, there are 4 default fonts.
+
+Mojangles – Minecraft's pixelated font for most in-game text.
+Standard Galactic Alphabet – The glyphs in the enchanting table GUI.
+GNU Unifont – Replaces Mojangles if the text contains unsupported characters.
+Illageralt – Unused.
+
+
+=== Bedrock Edition ===
+In Bedrock Edition, there are 6 default fonts. In the chat settings, the font for all text in chat messages (including closed captions) can be changed between Mojangles and Noto Sans. 
+
+Mojangles – Minecraft's pixelated font for most in-game text.
+Noto Sans – Used in some large text bodies like Marketplace content.
+Minecraft Ten – Used for various header texts in menus.
+GNU Unifont – Replaces Mojangles if the text contains unsupported characters.
+Standard Galactic Alphabet – The glyphs in the enchanting table GUI.
+smooth/ – Unknown.
+
+
+=== Legacy Console Edition ===
+In Legacy Console Edition, there are 2 default fonts.
+
+Mojangles – Minecraft's pixelated font for most in-game text.
+Mojangles 11 – Used in various GUIs.
+
+
+=== Other sources ===
+Some sources, like the Minecraft website, contains different fonts in different pages.
+
+Minecraft Ten – Used mainly for top-level headers.
+Mojangles – Used mainly for mid-level headers.
+Minecraft Five – Used mainly for top-level headers in the Dungeons page.
+Noto Sans – Used for main content and descriptions.
+Minecraft Sixteen – Used mainly for top-level headers in the Dungeons II page.
+
+
+== Display modifications ==
+
+
+=== Bold text ===
+Bold text is rendered by drawing each character twice: once at its normal position and again one pixel to the right. This technique creates the appearance of thicker, bolder text without modifying the font itself.
+
+
+=== Experience bar text ===
+The text on the experience bar is bright green Mojangles with a black outline. This is done by drawing the text in black ( #000000) offset by one scaled unit in each orthogonal direction, then drawing the text in green ( #80FF20) at the original position.
+
+
+=== Shadow ===
+In most places text is rendered, a shadow appears beneath every character.
+This shadow is a copy of the character's glyph, with the red, green, and blue values divided by 4 and positioned 12.5% south-east of the character, relative to its spacing.
+Regardless of the resolution of the character's texture, the shadow is always moved by 12.5%.
+In the default font (assets/minecraft/textures/font/ascii.png), the shadow position is moved 1 pixel down and to the right.
+For pixels where the glyph overlaps with the shadow, the above glyph's channels have 1 subtracted from them. For example, in areas where a white (#FFFFFF) glyph's pixel overlaps a shadow's, the white pixel becomes #FEFEFE.
+
+
+=== Glowing text ===
+
+Glow ink sac applied on a sign causes a character to create eight copies of itself in all eight directions. This results in the font appearing to have a thick outline. Glowing text always renders with an emissive texture, so it appears bright in darkness. The text takes priority over the outline; outlines appear below a character's pixels if they conflict.  However, it is a rendering effect that does not actually emit any light. The player can use a black ink sac on the sign to remove the glow.
+In a sign's block data, [NBT Compound / JSON Object] front_text or [NBT Compound / JSON Object] back_text's [Boolean] has_glowing_text controls whether the text glows.
+
+
+== Emoji support ==
+Minecraft has included textures for a number of emojis. The earliest emoji textures were for ☺☻.
+Since 1.15, this support has expanded. Emojis are monochromatic and behave just as any other character. The game does not support modifiers, such as skin tone, joining, or emoji presentation. The skin tone modifiers U+1F3FB..U+1F3FF 🏻 🏼 🏽 🏾 🏿 do not apply colored skin tones to their applicable emojis, and instead show tones as their Unifont glyphs. Joining multiple emojis via U+200D ‍ ZERO WIDTH JOINER to create 1 single emoji is not supported; multi-sequence emoji such as 👨‍👩‍👧 instead show as 👨‌👩‌👧 with dotted boxes showing ZWJ between them. Variation selectors, which control presentation, are displayed as dotted boxes with VSnumber.
+For characters supported in the default font, as opposed to the fallback fonts, see Mojangles#Emoji.
+Bedrock Edition does not support any character above U+FFFF, which includes many modern emoji. It does not include any textures for emojis below that either; only those provided by GNU Unifont below U+FFFF are included and visible.
+
+
+=== Private-area emojis ===
+Instead of emojis in font files, Bedrock Edition has several hard-coded Private Use Unicode symbols that it automatically converts to emoji-like symbols in any font, which can also be entered with a shortcode (:heart:). These are used in in-game texts including How to Play and controller hints, but can also be used by the player anywhere where normal letters can, such as in signs, books, item names, chat, etc. Emojis are not supported by Ore UI menu screens.
+There exist 2 Private Use Area sheets: glyph_E0.png glyph_E1.png. E0 contains glyphs for control icons, such as  and . E1 contains glyphs for miscellaneous icons, including the minecoin and Agent icon. E0 characters are categorized in emoticons.json.
+
+
+==== Blocks & items ====
+
+
+==== HUD ====
+
+
+==== Marketplace ====
+
+On non-PlayStation devices, both :minecoin: and :token: will display the Minecoin emoji.
+
+
+==== Recipe book ====
+
+
+==== Controls ====
+
+
+==== Other ====
+
+
+== Special characters ==
+In Java Edition, there are 2 characters that are accessible only through technical means:
+
+The first is U+FFFD � REPLACEMENT CHARACTER, which appears when either the U+FFFD character is typed, or there is an invalid UTF-8 multi-byte sequence.
+The second is the "notdef" character, seen when a character that has no texture in the currently-used font is typed. It is hardcoded and cannot be modified through resource packs. It is sometimes called "tofu" in the typographical community because of it resembles a block of tofu. More information on this character can be found at Missing textures and models#Missing font character.
+In Bedrock Edition, a character with no texture data appears as a blank space. The U+FFFD � REPLACEMENT CHARACTER shown belongs to GNU Unifont.
+
+
+== Providers ==
+
+A font is constructed from a list of providers, sources that provide characters to use. Different providers use different formats and methods of constructing characters. The default font uses all except for ttf.
+A font file uses the following format:
+
+
+=== Bitmap provider ===
+The bitmap provider defines simple bitmap glyphs – glyphs from textures.
+
+UTF-16 codepoints encoded in UTF-8 sequences can be used by use of surrogate pairs. To convert a character into a surrogate pair, one can use the following equations, where C is the codepoint in decimal:
+
+High Surrogate (first codepoint): ((C − 65536) − (C % 1024))  ÷  1024 + 55296
+Low Surrogate (second codepoint): (C % 1024) + 56320
+When the length of either chars or its strings is not a divisor of the resource's dimensions, it can result in an unexpected division of glyphs. The Unicode escape \u0000 can be used to add padding in the list. Padding acts as a "dummy character", so that the glyph data at that corresponding position in the file is not assigned a character.
+
+
+=== Space provider ===
+The space provider defines the width of a character's glyph.
+
+By default, the game has two widths defined:
+
+U+0020 <SPACE> SPACE is 4
+U+200C <ZWNJ> ZERO WIDTH NON-JOINER is 0
+
+
+=== TTF provider ===
+The ttf provider embeds already-compiled TrueType and OpenType fonts.
+
+
+=== Unihex provider ===
+The unihex provider is a replacement for the Legacy Unicode provider. It uses the GNU Unifont .hex format. It references a ZIP archive that contains a number of .hex files.
+
+
+=== Reference provider ===
+The reference provider serves one purpose: to include another provider only once. It can be used to include providers from other fonts in other resource packs.
+Referenced providers are guaranteed to be loaded only once, no matter how many times they are included.
+
+
+=== Legacy Unicode provider ===
+
+The legacy_unicode provider is similar to the bitmap provider in that it loads glyphs from only textures. This format is deprecated, and is prioritized only when the "Force Unicode Font" option is turned on. It acts as a "fallback" for glyphs that no other provider has defined a texture for.
+
+Templates, specified by the template field, are name-based, and are all PNG files. Each template file must have equal width and height. The template numbering scheme works based off of the Unicode BMP. The number used is equal to a BMP codepoint's high byte. These template textures are called "pages". Template page "22" must cover characters U+2200 to U+22FF. Page numbers go from 00 to FF. Characters beyond U+FFFF cannot be changed through this provider. By default, each glyph is 16×16 pixels wide, so each individual template page is 256×256 pixels (16 glyphs on each line, 16 lines). Its default textures are an outdated version of GNU Unifont.
+The file referenced by the sizes field must have the following format. Each character width is one byte large. The high nibble records the starting position, while the lower nibble records the ending position in the 16×16 glyph grid. For this reason, the file must be 0xFFFF bytes long (65535 in decimal).
+A specific character's width is determined by finding its codepoints byte. The character 'A' has a codepoint of U+0041, so byte offset 0x41 (65 in decimal) would be addressed. A square character occupying the entire grid (pixel width #1 [0, 0x0] through #16 [15, 0xF]) would have a value of 0x0F (15 in decimal).
+Widths cannot extend past 16 pixels, and characters whose codepoints are greater than U+FFFF are not handled. Some codepoints are invalid on their own. These are the surrogate pairs; they are used to encode codepoints higher than U+FFFF in UTF-16. This means that the template pages D8, D9, DA, DB, DC, DD, DE, and DF are invalid and cannot be used.
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+=== Legacy Console Edition ===
+
+
+== Issues ==
+Issues relating to "Font" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Trivia ==
+Although not in the changelog or specification, the default copy of the unihex provider also includes a [NBT List / JSON Array] __ranges field in the [NBT Compound / JSON Object] entries of [NBT List / JSON Array] size_overrides. It is a list of strings, being the Unicode block names of the applying range.
+The New Nintendo 3DS Edition's font is a combination of the pre-1.12 JE font and some select characters from GNU Unifont. In addition, the ® sign was changed.
+
+
+== Gallery ==
+
+
+== See also ==
+Language
+Sign
+
+
+== Notes ==
+
+
+== References ==
+
+
+== External links ==
+GNU Unifont
+
+
+== Navigation ==

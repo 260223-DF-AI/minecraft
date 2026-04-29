@@ -1,0 +1,50 @@
+Bedrock Editor v0.6.10 is a minor alpha release for the Bedrock Editor released on August 1, 2024, which updates the Client Widget System and API changes.
+
+
+== Changes ==
+Client Widget System
+
+Revamped Client Widget System:
+Refactored the Client Widget system to use components for base widget functionality.
+Added Editor Client Renderer Helper Service to aid with Editor in-world widget rendering.
+Changed Gizmo movement to be completely free moving and snap to grid on release.
+Added new widget components for Entities, Text, Gizmos, Height Guide, and basic Render Primitives.
+PropertyPane API
+
+Additional updates to the PropertyPane API:
+Removed IPropertyPane addBlockPicker and addEntityPicker methods in favor of addComboBox API that leverages type safe IObservableProp value.
+Added interfaces IComboBoxPropertyItem and IComboBoxPropertyItemOptions.
+Combo box supports different data types for additional validation with ComboBoxPropertyItemDataType. Entity and Block types work similarly to the old component, Custom type allows user defined list and it's the default.
+Added an alternative Property Pane addNumber API that leverages type safe IObservableProp value API.
+Added interfaces INumberPropertyItem and INumberPropertyItemOptions for the new property item.
+Renamed function to create property bag number item to addNumber_deprecated.
+Updated theme colors for input fields, and center aligned number input field values.
+Added an alternative Property Pane addDropdown API that leverages type safe IObservableProp value.
+Added interfaces ropdownPropertyItem, IDropdownPropertyItemOptions and IDropdownPropertyItemEntry for the new property item. Each dropdown entry now supports imageData?: ImageResourceData property to render an image.
+Renamed function to create property bag number item to addDropdown_deprecated.
+Added an alternative Property Pane addColorPicker API that leverages type safe IObservableProp value API.
+Added interfaces IColorPickerPropertyItem and IColorPickerPropertyItemOptions for the new property item.
+Renamed function to create property bag color picker item to addColorPicker_deprecated.
+Added an alternative Property Pane addString API that leverages type safe IObservableProp value API.
+Added interfaces IStringPropertyItem and IStringPropertyItemOptions for the new property item.
+Renamed function to create property bag string item to addString_deprecated.
+Other
+
+Added the following functions to ExtensionContext.settings.theme: addNewTheme(name: string): void, deleteTheme(name: string): void, getCurrentTheme(): string, and updateThemeColor(name: string, key: ThemeSettingsColorKey, newColor: minecraftserver.RGBA): void. These functions will throw if minecraft:default or any other built-in theme is passed to them. updateThemeColor and deleteTheme will also throw if the theme does not exist.
+Added block image support to block picker modal.
+Added validation to prevent adding already existing block in a probability palette item.
+
+
+== Fixes ==
+Fixed theming and content alignment issues for the dropdown UI elements.
+Fixed missing Summon Tool icon.
+Fixed a bug where typing certain characters in the block or entity picker caused an error.
+
+
+== Gallery ==
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,156 @@
+Ambience (also called ambience sounds or ambient noises) are sounds that can be heard in specific conditions. Ambience is divided into 2 groups: environmental ambience and block ambience.
+All ambience sounds can be played using the /playsound command. The volume of environmental and block ambient sounds can be changed together through the sound settings by changing the "Ambient/Environment"‌[Java Edition  only] or separately by changing the "Environmental audio" or "Block audio" sliders respectively‌[Bedrock Edition  only]. However, certain other sounds are also affected by the settings, such as those made by firework rockets or placed and destroyed blocks.
+
+
+== Environmental ambience ==
+Environmental ambience refers to sounds that play based on the player's presence in specific environments. 
+In Java Edition, apart from cave ambience, environment ambience sounds are not described in the subtitles.
+
+
+=== Cave ambience ===
+Cave ambience (also known as cave sounds, or eerie noises according to the subtitles) are sounds that occasionally play when the player is underground or in a dark area, based on the mood algorithm. These sounds can play in both the Overworld and in the End, but not in the Nether.
+The code name for cave ambience is ambient.cave. There are 23 different cave ambience sounds in total.
+
+
+=== Underwater ambience ===
+Underwater ambience plays while the player's head is underwater. It can be heard within a body of water of any size and in any dimension.
+Underwater ambience is divided into 4 groups that all play independently of each other:
+
+There are 22 different underwater ambience sounds in total.
+
+
+=== Nether ambience ===
+Nether ambience plays while the player is in the Nether. Each of the five biomes has its own unique ambience.
+Nether ambience is divided into 3 groups that all play independently of each other:
+
+There are 126 different Nether ambience sounds in total.
+
+
+==== Basalt deltas ====
+Basalt deltas share their mood sounds with the Nether wastes.
+
+
+==== Crimson forest ====
+
+
+==== Nether wastes ====
+
+
+==== Soul sand valley ====
+
+
+==== Warped forest ====
+
+
+== Mood algorithm ==
+Cave ambience and Nether mood play based on "mood", a value ranging from 0 to 100. The mood increases when the player is in a dark place, and decreases otherwise. When the mood reaches 100%, one of the sounds plays and the mood resets back to 0%.
+This process is updated every tick. It involves selecting a random block within a 17×17×17 area centered around the player's eye position and adjusting the mood accordingly:
+
+If the block has sky light, the mood decreases by 1⁄1000 for each sky light level.
+If the block has a block light level above 1, the mood decreases by (block light level - 1)⁄6000.
+If the block has a block light level of 0, the mood increases by 1⁄6000.
+This is the simplified algorithm for computing this value in pseudocode:
+
+Players in complete darkness will hear cave ambience every 6000 ticks (or 5 minutes).
+In Java Edition, the mood appears on the debug screen.
+
+
+== Block ambience ==
+Block ambience describes sounds emitted by blocks sporadically, generally under additional conditions.
+
+
+=== Creaking heart ===
+Creaking hearts emit ambience sounds when active and surrounded by any types of logs, stripped logs, wood, or stripped wood in all 6 directions.
+These sounds are referred to as "eerie sounds" in the subtitles.
+The resource location for these sounds is block.creaking_heart.idle.
+
+
+=== Dead bush ===
+Dead bushes emit ambient sounds when placed on top of 2 blocks of sand, red sand or terracotta.
+These sounds are referred to as "dry sounds" in the subtitles.
+The resource location for these sounds is block.deadbush.idle.
+
+
+=== Dry grass ===
+Short dry grass and tall dry grass emit ambience sounds when placed on top of 2 blocks of sand, red sand or terracotta.
+These sounds are referred to as "windy sounds" in the subtitles.
+The resource location for these sounds is block.dry_grass.ambient.
+
+
+=== Eyeblossom ===
+Eyeblossoms emit ambience sounds when placed on top of pale moss.
+These sounds are referred to as "eerie noise" in the subtitles but as "eyeblossom whispers" in the Crowdin strings.
+The resource location for these sounds is block.eyeblossom.idle.
+
+
+=== Firefly bush ===
+Firefly bushes emit ambience sounds at night (between 12600 and 23400 ticks) if no collidable blocks (excluding leaves) are placed above it.
+These sounds are referred to as "fireflies buzz" in the subtitles.
+The resource location for these sounds is block.firefly_bush.idle.
+
+
+=== Pale hanging moss ===
+Pale hanging moss emit ambience sounds when attached to pale oak leaves or pale oak logs.
+These sounds are referred to as "eerie noise" in the subtitles.
+The resource location for these sounds is block.pale_hanging_moss.idle.
+
+
+=== Sand ===
+Sand and red sand emit ambience sounds when there is a sand or red sand block 8 blocks away in 3 of the 4 horizontal directions.
+These sounds are referred to as "sandy sounds" in the subtitles.
+The resource location for these sounds is block.sand.idle.
+
+
+== Videos ==
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+=== Legacy Console Edition ===
+
+
+=== Mood algorithm ===
+
+In Java Edition, prior to 20w12a, the mood algorithm worked differently.​[more information needed for Bedrock Edition]
+Every 6000 to 18000 ticks (5 to 15 minutes), the game picked one of the following blocks (with the player's feet as the origin, i.e. (0,0,0)): {(x,y,z)∣x,y,z∈{−4,0,4}}
+The game then checked these conditions:
+
+If the block is different from the player's feet (i.e. (0,0,0)).
+If the block is air.
+If the sky light is 0.
+If the block light is less than or equal to random(0,8).
+When all conditions were met, the game played a random cave ambience sound.
+
+
+== Issues ==
+Issues relating to "Ambience", "Cave ambience", "Underwater ambience", or "Nether ambience" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Trivia ==
+
+When "Cave 14" is put into a spectrogram, you see a creeper face. Samuel Åberg said that he made this sound with a spectrogram program.
+"Cave 21" is spelling out "BEHIND" in International Morse code.
+"Warped Forest Additions 1-5" are a mix of vanilla enderman sounds and those of the endermen from Minecraft Dungeons.
+"Warped Forest Addition 6" is the sound of an enderman screaming, slowed down, and in reverse.
+"Warped Forest Mood 9" is a slowed-down and reverberated idle sound of the witch.
+"Dark 4" is a slowed and pitched down scream of a ghast.[verify]
+All cave and Nether ambient sounds in Bedrock Edition can play at different pitches. In Java Edition, cave sounds stay at normal pitch, but some of the nether ambient sounds can play at different pitch. For example, "Warped Forest Help 1 and Help 2" sometimes play at 0.7X pitch.
+In Bedrock Edition, all "enish" sounds play either at 0.2X pitch or 0.25X pitch instead of normal pitch. In Java Edition, these same sounds play at 0.5X pitch.
+
+
+== See also ==
+Music
+Sounds.json
+
+
+== References ==
+
+
+== Navigation ==

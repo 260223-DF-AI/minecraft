@@ -1,0 +1,122 @@
+19w06a is the twentieth snapshot for Java Edition 1.14, released on February 6, 2019, which adds a new startup screen.
+
+
+== Additions ==
+
+
+=== Items ===
+General
+
+Added a new tag for item forms of blocks called BlockStateTag.
+Formatted as {BlockStateTag:{state:"value",state2:"value2",stateN:"valueN"}}.
+Does not affect item model.
+
+
+=== General ===
+Startup screen
+
+Made logo higher resolution.
+Added a loading bar to the startup screen.
+Once loading is complete, the startup screen now fades into the main menu.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Cartography tables
+
+Added sounds for the block.
+
+
+=== Mobs ===
+Wandering traders
+
+Now drink potions of Invisibility at night.
+When day comes, they drink milk to clear the potion effect.
+Now have a WanderTarget data tag containing a block position. When set, they pathfind to that position.
+
+
+=== World generation ===
+Jungle pyramids 
+
+Now spawn in bamboo jungles.
+Villages
+
+Improved village blacksmith building generation to prevent them from catching on fire from lava inside them.
+Desert blacksmith buildings have been removed.
+
+
+=== General ===
+LWJGL
+
+Updated to 3.2.1.
+Particles
+
+Are now broken up into individual textures files per frame rather than being in particles.png.
+Do not use .mcmeta files for their animation – those are still hard-coded.
+Performance
+
+Slightly improved startup time.
+
+
+== Fixes ==
+43 issues fixed
+From released versions before 1.14
+
+MC-11532 – Empty map is consumed upon right-clicking in creative.
+MC-79357 – Armor stand with Marker tag "true" still creates particles when fall.
+MC-87049 – Firework light flash glitches from many explosions.
+MC-89000 – Falling Sand doesn't get killed if falling on edge of block.
+MC-90523 – falling_block entity floating on fences/walls.
+MC-91404 – Falling sand does not land on shulker.
+MC-94420 – Falling block dropped on any boat will float above this boat in a 3×3 grid and never land.
+MC-114561 – Baby mobs can grow while dying.
+MC-119808 – Minecarts drop their items offset in the positive direction.
+MC-126010 – Ocean ravines can intersect normal ravines.
+MC-126302 – Game freezes if splash text 231 is the only one in splashes.txt.
+MC-131356 – The firework light flash is missing.
+MC-136400 – 'Serious Dedication' advancement not given when using up diamond hoe.
+MC-139493 – Falling blocks float on snow layers.
+From the 1.14 development versions
+
+MC-138389 – Slime balls sneezed by pandas cannot be picked up.
+MC-138617 – Jungle pyramids not spawning in bamboo jungles.
+MC-139122 – Players or entities sometimes become invisible after death.
+MC-139477 – Ravager falls with NoAI:1.
+MC-140009 – Pandas can eat while swimming.
+MC-140240 – plains_big_house_1 in new plains villages is missing a floor.
+MC-140286 – Village stair not connecting.
+MC-140698 – The snowy_small_house_7 house from new snowy villages is missing a light source.
+MC-140703 – Weaponsmith building catches fire.
+MC-140710 – Pillagers require skylight to spawn from spawners.
+MC-140759 – Some of the new village structures are missing a jigsaw block.
+MC-140985 – Scheduled ticks get lost when leaving chunks (Redstone components get stuck).
+MC-141004 – desert_weaponsmith_1 structure duplicates desert_blacksmith_1 structure.
+MC-141070 – Cats losing owner and collar color.
+MC-141368 – [Client] java.lang.NullPointerException: Rendering screen.
+MC-141823 – End gateways on the main end island take you to a tiny island.
+MC-141898 – Extinguished campfire creates ghost items.
+MC-141906 – Campfire smoke particles not showing with programmer art texture pack.
+MC-141940 – Crafting table shows campfire and stonecutter recipes.
+MC-142655 – Client crashes when opening resolved book on lectern containing malformed text components.
+MC-142813 – Lava buckets destroy lava when placed in scaffolding.
+MC-142893 – Magma cube riding zombie causes crash in lava.
+MC-142916 – Recipe toasts for stonecutter use crafting table icon.
+MC-142958 – Water disappears when placed on double slab.
+MC-143069 – An armor stand which is Marker:1b doesn't collide with a block.
+From the previous development version
+
+MC-143347 – Ravager spawn egg is not sorted alphabetically within the spawn egg list.
+MC-143350 – Wandering trader subtitle missing; shows translation string.
+MC-143351 – Item frames and leash knots appear at the wrong location.
+MC-143354 – Filling a composter is silent.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

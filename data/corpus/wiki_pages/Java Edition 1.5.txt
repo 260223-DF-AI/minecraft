@@ -1,0 +1,533 @@
+1.5, the release of the Redstone Update, is a major update to Java Edition, released on March 13, 2013, which added a number of new redstone-related blocks and a new decorative block – the block of quartz. Also included was a scoreboard system, a new texture pack format and a lighting engine optimization.
+A pre-release version of 1.5 was released on March 7, 2013. This pre-release was later reuploaded, and this reupload was used as the full release of 1.5.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Nether Quartz Ore
+
+Drops 1 Nether quartz item when mined.
+Can be smelted in a furnace to obtain Nether quartz.
+Can be legitimately obtained with Silk Touch enchantment.
+Drop more when mined with Fortune enchantment.
+ Block of Redstone
+
+Emits constant redstone signal, the same as a redstone torch.
+Works as pushable redstone power source.
+
+ Daylight Sensor
+
+Outputs a signal with a strength corresponding to the intensity of the sun.
+Only works with the sun's light (not man-made light such as torches).
+Rain affects the sensor's output.
+
+ Hopper
+
+Places and takes out items in hoppers, chests, furnaces, minecart with chests, minecart with hoppers, dispensers, droppers, and brewing stands.
+Allows for the automation of many processes collecting drops.
+Powering the hopper stops it from taking in items and releasing them.
+Redstone signal emitted when a redstone comparator is placed against it directly - signal length depends on its fullness.
+1 item gives a signal strength of 1, a third of a stack (21 for items which stack to 64) gives a signal strength of 2.
+The number of full stacks × 3 = Signal strength.
+
+ Redstone Comparator
+
+Based on the idea of the capacitor mentioned at Minecon 2012.
+It is the same as a repeater, but with 2 inputs.
+If input A is stronger or equal to input B, it either repeats the signal or outputs the difference between A and B, so this can be used as an easier way make redstone contraptions like piston doors.
+Output is toggleable by right-clicking.
+If input A is weaker than input B, then there is no output.
+All containers output a redstone signal when a redstone comparator is placed against it directly. The strength of it depends on how full the container is and what disc number is used in a jukebox.
+This works with trapped chests as well, meaning it can provide two redstone signals with different causes at the same time.
+
+ Trapped Chest
+
+Gives out a signal depending on the amount of players looking inside.
+Large trapped chests can be staggered with large chests to allow more compact storage.
+Transmit signal downward through one block. This does not apply horizontally.
+Texture is slightly different than a normal chest, with a red stain around the latch.
+
+ Weighted Pressure Plates
+
+Used to detect item drops.
+Gold (light) version reaches full strength at 60 items.
+Iron (heavy) version reaches full strength at 600 items.
+Proportional, so 10 strength signal means twice as many items as a 5 strength signal.
+
+ Activator Rail
+
+Used to trigger minecart with TNT.
+Used to stop item passing on minecart with hopper.
+Needs to be powered by redstone.
+Transmits redstone signal to 8 activator rails far.
+
+ Block of Quartz
+
+Decorative block.
+
+ Chiseled Quartz Block
+
+Decorative block.
+
+ Quartz Pillar
+
+Decorative block.
+Pillar quartz blocks can be placed sideways, using the side of the block to place similar to sideways log.
+
+ Quartz Slab
+
+Can be placed upside down.
+Decorative block.
+
+ Quartz Stairs
+
+Can be placed upside down.
+
+ Dropper
+
+Places items in containers in front of them, if there is no container it dispenses the item without using it.
+A dispenser "shoots" items at the player, while a dropper "throws" items at the player.
+Can face all 6 directions, with a different texture when facing up or down.
+Needs redstone signal to drop items.
+Fires once when the input becomes powered.
+Redstone signal emitted when a redstone comparator is placed against it directly - signal length depends on its fullness.
+
+ Smooth sandstone
+
+Implemented; functionally a double slab for now.
+ Smooth quartz
+
+Currently unobtainable.
+ Multiple snow heights
+
+Fully implemented - previously, a world editor could be used for different heights of snow.
+Drops one snowball for every layer of snow.
+Each level of snow has its own height collision.
+The topmost layer of snow does not have collision, so the player is always slightly sunken in the snow.
+Visually, four layers of snow are the same height as a slab. However, five layers of snow have the same collision height as a slab.
+For each thin layer of snow crafted, the player loses exactly half the snowballs required to produce it.
+
+
+=== Items ===
+ Nether Brick (item)
+
+Obtained by smelting  netherrack.
+Used to make Nether bricks.
+ Nether Quartz
+
+Picked up when the player breaks or smelts Nether quartz ore.
+Is a crafting ingredient for daylight sensors and redstone comparators.
+Can be crafted into decorative blocks.
+
+
+=== Non-mob entities ===
+ Minecart with TNT
+
+The crafting recipe is 1  TNT and 1  minecart.
+Triggered by activator rails.
+Explodes even more violently the faster it goes.
+Doesn't destroy rails and supporting blocks.
+Still blows up redstone materials.
+
+ Minecart with Hopper
+
+Crafting recipe is a  hopper on top of a  minecart.
+Can only be emptied by passing over a hopper.
+Can pick up items from containers when it passes over.
+
+ Minecart with Spawner
+
+Only obtainable with world editors.
+Have only the entity not the item.
+Uses the same NBT format as a normal monster spawner.
+
+
+=== World generation ===
+ Nether Quartz Ore
+
+Found in the Nether.
+There is an average of roughly 70 ores per chunk.
+As common as iron ore in the Overworld.
+
+
+=== Gameplay ===
+Scoreboard System
+
+Intended for map makers or server administrators.
+Used via /scoreboard command or command block.
+Track, edit and display certain objectives per player, such as kill count or health (read-only).
+Group players into teams to have the option to assign custom nametag colors, disable friendly fire and allow invisible teammates to be seen.
+NBT Related
+
+Minecarts can now carry any block and have any minecart function (TNT, hopper, chest, furnace, ridable).
+FallingSand can now be a TileEntity.
+Named entities can display their nametag when in nametag range.
+Minecarts can now act as spawners.
+Entities can now permanently ride other entities.
+Can be achieved by using Sethbling's MCEdit filter (Stack Entities). Can be found here
+No longer dismount upon reload.
+Allows for a lot of customization, including "riding" bats by spawning a bat with a minecart on top, spider jockeys etc.
+
+
+=== Command format ===
+/testfor
+
+Tests for whether specified player is online (testfor [player]), or at specified coordinate and/or in radius (/testfor @p[x,y,z], /testfor @p[r=radius] or /testfor @p[x,y,z,r=radius])
+Signal output to any redstone comparators surrounding the command block like testing content of a chest.
+/effect
+
+Usage: /effect <player> <effect> [seconds] [amplifier]
+To remove effects: /effect <player> <effect> 0
+Maximum number of seconds is 1,000,000.
+Amplifier increases level of the chosen status effect.
+/scoreboard
+
+Used to interact with the scoreboard system.
+
+
+=== General ===
+Minecraft Realms
+
+Currently a preview.
+Subscription-based vanilla server rental service provided by Mojang.
+Server can't be modded, no Ops can be appointed and a whitelist is mandatory.
+Only added to 100 randomly chosen players.
+Used on menu screen, when activated.
+
+
+== Changes ==
+
+
+=== Blocks ===
+ Beacon
+
+Increased range
+1 layer: 20 blocks (previously 16)
+2 layers: 30 blocks (previously 24)
+3 layers: 40 blocks (previously 32)
+4 layers: 50 blocks (previously 40)
+ Brewing stand 
+
+Redstone signal emitted when a redstone comparator is placed against it directly - signal length depends on its fullness.
+ Chest 
+
+Redstone signal emitted when a redstone comparator is placed against it directly - signal length depends on its fullness.
+ Detector rail 
+
+Redstone signal emitted when a redstone comparator is placed against it directly - signal length depends on the fullness of the container on the rail.
+Added activated detector rail texture.
+ Dispenser
+
+Now equip armor to players that are up to 1 block away.
+Can place and activate TNT.
+Now use bone meal on a crop or sapling in front of them.
+Can create fire in front of them with flint and steel, which consumes durability.
+They can now face all 6 directions and use a different texture when facing up or down.
+No longer fire while updated, instead they fire when their input becomes powered.
+Redstone signal emitted when a redstone comparator is placed against it directly - signal length depends on its fullness.
+Fences
+
+The hitboxes of fences with inner corners have changed - they now much more closely match the shape of the fence itself, rather than being its convex hull (a solid cuboid).
+ Jukebox 
+
+Redstone signal emitted when a redstone comparator is placed against it directly - signal length depends on the disc used.
+Lava 
+
+Updated texture from  to .
+Flows faster in the Nether.
+Can be found as hidden single blocks in the Nether.
+ Locked chest
+
+Now uses the missing texture.
+ Nether brick block
+
+The crafting recipe is 4  Nether brick items.
+Renamed to "Nether bricks" in a later version.
+Stairs
+
+Improved lighting.
+Stairs no longer prevent sprinting.
+ Smooth stone
+
+Supported in a more official capacity; seamless stone slabs have been removed. More information on the corresponding pages.
+ Water 
+
+Updated texture slightly.
+It is now possible to form a source block above another source block. This prevents players from ruining oceans or rivers with buckets.
+
+
+=== Items ===
+ Bone meal
+
+Nerfed significantly.
+Now picks a random stage of growth each time as opposed to automatically pushing them to the final growth stage.
+Saplings take 2-4 bone meal to sprout into a tree.
+Gives off green particles when used.
+
+
+=== Mobs ===
+All mobs
+
+Mobs no longer walk over rails unless they are pursuing the player.
+ Skeleton
+
+Now shoot from 15 blocks away, instead of 10.
+They now shoot faster when their target is closer.
+Their accuracy changes depending on the difficulty.
+ Slimes
+
+Slime spawn rates in swamps now depend on the current moon phase.
+ Zombie
+
+Now group upon targets.
+They now set players on fire when on fire themselves.
+Now are stronger the more damaged they are, dealing more damage (this was removed in 1.6).
+Increased player detection range to 40 blocks.
+
+
+=== World generation ===
+Mineshaft 
+
+Now spawn items in minecarts with chests, instead of chests.
+
+
+=== Gameplay ===
+Inventory management
+
+Double click items to fill the stack up as much as possible.
+Drag item stacks around to divide them up over the dragged-over slots.
+Drag item stacks around with the right mouse button to place one of that stack in each dragged-over slot, if that slot is not occupied already.
+⇧ Shift+ double click items in a crafting area to place all items in the inventory.
+⇧ Shift+ double click an item stack to move all other item stacks of that kind to that part of the inventory.
+Pressing Q while the mouse is over an item in the inventory or a container drops it.
+Held armor can be equipped by right-clicking.
+Death messages
+
+Include the cause of death, the player the deceased player was fighting at time of death and name of the item used to kill.
+Player fell off a ladder
+Player fell off some vines
+Player fell out of the water
+Player fell from a high place
+Player was doomed to fall
+Player was doomed to fall by Player or Mob
+Player walked into fire whilst fighting Player or Mob
+Player was burnt to a crisp whilst fighting Player or Mob
+Player tried to swim in lava while trying to escape Player or Mob
+Player walked into a cactus while trying to escape Player or Mob
+Player was shot by Player using Weapon
+Player was slain by Player or Mob using Weapon
+Player was killed trying to hurt Player or Mob
+Renaming
+
+Renamed item containers now display that name when viewing the container's contents.
+Renamed command blocks now use their name instead of @ in the chat.
+Renamed spawn eggs now give mobs spawned with it that name, which also appear in the death message.
+Renamed boss mobs show their name above their health bar.
+Nametags are displayed when looking at a renamed entity.
+Language files
+
+Language files can be updated via the background downloader.
+A new Minecraft release is not needed to update the language files.
+Options & title screen
+
+Moved Texture Packs button to the options menu, instead of the title screen.
+New chat settings in Multiplayer Settings.
+Scale, Focused Height, Unfocused Height and Width is configurable.
+Smooth lighting can be changed to "Minimum", "Maximum" and "Off".
+Minimum uses the old smooth lighting, and maximum fixes a bug with stairs.
+Creative Mode
+
+All potions are categorized.
+In Creative mode, players can hit mobs or other players from five blocks away.
+
+
+=== General ===
+Lighting
+
+Engine optimizations.
+Support for more realistic lighting.
+Lighting interacts correctly with slabs and stairs.
+Note: active furnaces still emit light only from the front surface (as before), and black spots have not been fixed.
+Texture packs
+
+Textures now use one file per block/item, which are stitched together at runtime.
+Each texture can have its own resolution and may be animated by putting the frames underneath each other - a text file is needed to specify frame order and duration.
+Special rules apply for water & lava (double size) and compass & clock (non-animatable, frames are used for moving parts).
+Vanilla textures are used for missing texture files.
+Fonts are changeable as well, even to HD fonts.
+Support for HD texture packs.
+Server list
+
+The direct connect IP is now saved even after closing the game.
+ Enchantments
+
+Fortune now affects apples and potatoes.
+Tools enchanted with efficiency now only speed up the mining of blocks that the tool is intended for, (a diamond pickaxe with efficiency no longer breaks dirt or wood faster).
+
+
+== Removals ==
+
+
+=== General ===
+Distance effects 
+
+Fence block collision boxes no longer lose precision at extreme coordinates.
+This is without a doubt linked to the hitbox changes mentioned above.
+
+
+== Fixes ==
+99 issues fixed
+From released versions before 1.3.1
+
+MC-16 – TP Bug when you sit in Minecart/boat/riding pig.
+MC-32 – Minecart going in a circle will make any minecart close to them go super fast.
+MC-49 – Sounds: Fire extinguish sound does not work in survival.
+MC-68 – Spawning in the air after creating a new world.
+MC-69 – Pigs constantly jumping, when player control them on half slabs and stairs.
+MC-122 – Unicode font text shadow misaligned.
+MC-127 – Piston extended and retracted at the same time.
+MC-136 – Visual glitch on retracting piston.
+MC-151 – Pushing TNT with a piston and activating it at the same time duplicates it.
+MC-177 – Clocked piston arm turns invisible when exiting game/dying/etc.
+MC-184 – (Powered) redstone doesn't update right.
+MC-195 – Flowing water still drags the player while flying.
+MC-220 – Z-fighting of iron bars / glass panes with the block below / above.
+MC-221 – Players and Mobs fall off vehicles and other ridden entities upon world reload, glitching through blocks.
+MC-266 – Placing a solid block near TNT and above redstone torch won't update the TNT.
+MC-302 – TNT explosion delayed until exiting and re-entering world.
+MC-320 – The player could place vines into other vines.
+MC-515 – Chest glitch that lets them appear as if they are opened while they are not.
+MC-519 – Achievements lost after update.
+MC-547 – Arrows don't land properly.
+MC-562 – Breeding cows can consume more than one wheat.
+MC-592 – Dying stacked leather armor duplicates the armor.
+MC-666 – Spawn Protection not working properly.
+MC-737 – Map scaling breaks the map sometimes.
+MC-835 – In the server log, /say commands performed by the server do not appear to be in the console but do appear to the players.
+MC-846 – Dispenser and dropper shooting out when updated.
+MC-855 – Graphical piston glitch.
+MC-916 – Water does not form source blocks properly on top of existing source blocks.
+MC-1086 – [FIXED] Command block/Repeater acting weirdly.
+MC-1324 – /difficulty command doesn't produce any messages.
+MC-1352 – crowdin.net: Entry entity.WitherBoss.name is missing – German translation is "Withern".
+MC-1361 – Self-Powered Redstone Lamp / Breaking a repeater with a piston pointing at a block won't stop the circuit.
+MC-1446 – Different timings on pistons in near same environment.
+MC-1505 – Grass fades under upside-down stairs (except oak wood ones).
+MC-1524 – Baby mob collision boxes are too large.
+MC-1570 – Levers have random orientation when placed.
+MC-1619 – Infinite rail duplication glitch.
+MC-1642 – Minecart noise gets stuck on long cart rides. Bumping, choppy sound.
+MC-1680 – Potatoes are not affected by the Fortune enchantment.
+MC-1688 – Ender Egg falling render problems.
+MC-1775 – Hash size breaks redstone.
+MC-1914 – Mob spawners sometimes show up as pig spawners.
+MC-1972 – Redstone torch sometimes update instantly (not the North/South quirk).
+MC-2196 – Map item placed in item frame experiences Z-fighting.
+MC-2257 – Minecraft VERY slow to join/update a server, takes LONG time to login (30 seconds/ 1 min).
+MC-2416 – Suffocation/jittering/stuck when spawning in a newly created world.
+MC-2503 – Boats and minecarts should not be dropped in Creative.
+MC-2512 – Village lamp post floating torches.
+MC-2526 – Rain animation glitches through the ceiling.
+MC-2582 – Powered/activator rail on slope stays powered/activated.
+MC-2711 – Jukebox crashes when breaking with no record inside.
+MC-2806 – Anvils will sometimes hit the edge of a block and break instead of being placed.
+MC-2974 – Anvil name change cost.
+MC-2987 – Can't sprint going up stairs.
+MC-2989 – Block "resets" when right clicked with a food item.
+MC-3114 – Activated detector-rails moved by a piston keep their activated state.
+MC-3169 – Wither In Peaceful spawns very glitchy.
+MC-3259 – Long redstone wire does not update/behaves strange in newly loaded chunks.
+MC-3287 – Inconsistency with pistons pushing items.
+MC-3316 – Armor enchantments (besides Thorns) have no effect on mobs.
+MC-3339 – Tile entity crashing bug.
+MC-3409 – Single player mode, creative mode, E to select block, select block from grid, E to return to game, game freezess, crash log created.
+MC-3449 – Block breaking resets when the item you're holding changes.
+MC-3458 – Server crashes if spaces are input on the console.
+MC-3597 – Floating minecart tracls when pushed by one-pulse piston.
+MC-3662 – Pistons and other Non-Solid blocks.
+MC-3887 – Issues with name color in tab list.
+MC-3981 – Dispensers no longer dispense item through blocks in the downward direction.
+MC-4009 – When a repeater is placed when facing the direction f=0 it flashes for one tick then goes off.
+MC-4052 – Powered redstone mechanisms react to change in redstone power level.
+MC-4232 – SpawnPotentials list working incorrectly.
+MC-4268 – Wither skeletons have wrong hitbox.
+MC-4752 – Failed to save player profile.
+MC-4770 – Chat Shown: commands only broken - displays all chats but prevents me from submitting commands with "cannot send chat message".
+MC-5117 – Minecart does not make sound when riding it.
+MC-5214 – All the different Firework stars stack.
+MC-5413 – Items with NBT data do not stack correctly due to serialization.
+MC-5588 – Swords do not lose durability when used on the Ender dragon.
+MC-5621 – Blocks like redstone dust, repeaters, doors, and levers don't drop when the underlying block is pushed by a piston.
+MC-5691 – 1.4.6 - Windows 8 64x - Mouse: View issues/Accuracy error?
+MC-6131 – Crash upon reloading texture pack.
+MC-6223 – Night Vision Potions that are edited to last longer create a potentially seizure-inducing flashing sky background.
+MC-6551 – Creative Menu potion values are not the same as when brewed (issue redo).
+MC-6699 – Reading Bytes in Minecraft code has a possible flaw.
+MC-7196 – Nether cave/tunnel generator produces incorrect/cut tunnels.
+MC-7247 – Named tools/armor disappearing from inventory/
+MC-7254 – Furnace tile entities reproducing - Internal performance bug.
+MC-7344 – Trapdoor is closed when redstone repeater is one block below and powered.
+MC-8437 – URL parser does not detect 4 letter TLDs.
+MC-8487 – Wither doesn't generate health when in minecart.
+MC-8510 – Gamerule doMobLoot doesn't affect xp drops.
+MC-8647 – Death messages are not translatable.
+MC-9066 – Infinite duration bug.
+MC-9259 – FallingSand support for block IDs > 128.
+MC-9289 – Hitting mobs with a sharpness I wooden sword and weakness III crashes the game.
+MC-10112 – /clear with command blocks not working with armor that has been worn with custom damage values.
+MC-10543 – Last direct Multiplayer connection does not get saved.
+MC-10956 – Animals can breed over distances up to almost 8 blocks when only separated by fences.
+Others 
+
+Fixed "<player> was knocked into the void by <player>" failing to show.
+
+
+=== Release fixes ===
+These fixes occurred between the last development version for 1.5 and the full release of 1.5.
+
+28 issues fixed
+From released versions before 1.3.1
+
+MC-454 – Spider Jockey: Spider moves, but Skeleton not.
+MC-804 – Piston extension remains after piston is destroyed.
+MC-1522 – Fence gate closes when destroying adjacent block.
+MC-1523 – Breaking a Dragon Egg in Survival with a high Haste effect crashes the game.
+MC-1548 – Fence Glitch.
+MC-1594 – Trying to walk from a block with a collision box shorter than 1 block to another block that is also shorter, causes you to momentarily glitch into the ground.
+MC-3069 – Map Not Updating.
+MC-3513 – Items Droped  [sic] on fences jump around.
+MC-3953 – Anvils don't do enough damage.
+MC-4560 – Items in equipment slot/crashes if CanPickUpLoot is set to 1 in level.dat/player.dat files.
+MC-6060 – Command Block Gamerule Update Problem.
+MC-6872 – Upon creating the wither, It leaves ghost blocks.
+MC-8624 – Undespawning entities at long range or Unloaded spawners still spawn.
+MC-8966 – /clear <player> <item id> Not functioning as expected.
+MC-9353 – Compatibility issue with Windows 8 upgrades and minecraft.
+MC-9646 – Game crashes when I click "single player" in the main menu.
+MC-9877 – Multiplayer, slow chunk loading and or read timeout kick.
+From the 1.3.1 development versions
+
+MC-5774 – Blocks being constantly pushed by pistons turn invisible after some time.
+MC-5778 – Redstone dust apperance stays powered or unpowered when it's powered state is toggled fast.
+MC-8776 – Comparators do not update their output signal.
+MC-8923 – Powered mechanisms (except for Dispensers and Droppers) react when they should not.
+MC-9065 – Crash when giving item 31 with damage 3.
+MC-9115 – Incorrect death messages in non-english languages.
+MC-9431 – DisplayTile, DisplayData, DisplayOffset are not saved with MinecartSpawners.
+MC-9740 – Mob Spawners Cannot Store Movement Data for Mobs.
+MC-10638 – Minecart Glitches Through Block.
+MC-10677 – Pistons fire more than once per tick / block teleporting.
+MC-10874 – The Esc key doesn't work when you're in the command block menu and when placing signs.
+
+
+== Trivia ==
+Before September 2018, 1.5 was the only release version which was not immediately available to play from the launcher.
+This version is mistaken as a snapshot in the launcher despite being a release version.
+
+
+== References ==
+
+
+== Navigation ==

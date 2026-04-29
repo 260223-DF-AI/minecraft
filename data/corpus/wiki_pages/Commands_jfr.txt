@@ -1,0 +1,37 @@
+Starts and stops profiling with Java Flight Recorder (JEP) as well as a few custom events.
+
+
+== Usage ==
+When profiling, it records several information about CPU, memory, and threads usage of the client while it was running, and saves them on a .jfr file under the .minecraft/debug folder.
+The file can be opened using an external tool or software, such as VisualVM or JMC. It contains JVM and operating system events, with several Minecraft-related custom events below:
+
+Network group, which contains:
+Network Packet Received and Network Packet Sent: network packet events, containing information about their protocol ID, packet ID, packet direction (server or client bound), remote address, and bytes size. See Java Edition protocol for list of protocol and packet IDs.
+Network Summary: summary information of received and sent packets count and their bytes size.
+Storage group, which contains:
+Region File Read and Region File Write: region file events, containing information about region and chunk positions, dimension, and type of compression algorithm.
+Ticking group, which only contains a single custom event:
+Server Tick Time: sampling event of the average server tick duration at one second intervals.
+World Generation group, which contains:
+Chunk Generation: time taken to generate individual chunk stages.
+Create/Load World: initial world loading duration when loading a world.
+The .jfr file is accompanied by a summary JSON report is written both to the log file and in the debug folder.
+
+
+== Syntax ==
+jfr start
+Start JFR profiling.
+jfr stop
+Stop JFR profiling.
+
+
+== Result ==
+
+
+== Output ==
+
+
+== History ==
+
+
+== Navigation ==

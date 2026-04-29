@@ -1,0 +1,39 @@
+The .mclevel map format is an old map format created by Notch. It is based on the NBT format and is GZip compressed.
+The map format was in use since Indev 0.31 20100122-2251 up until Infdev 20100325-1640.
+While Alpha (and Infdev) levels use NBT files, they have a very different file format.
+For details on the infinite map format, see Java Edition Alpha level format.
+
+
+== NBT structure ==
+Calculating "Pos" tag of the tile entity:
+pos = x + (y << 10) + (z << 20)
+Calculating X, Y, and Z from "Pos" tag:
+x = pos % 1024
+y = (pos >> 10) % 1024
+z = (pos >> 20) % 1024
+
+
+== Blocks ==
+The block byte array is used to define the types of blocks that occupy a map.
+The number of bytes in the array may be calculated by multiplying the dimensions of the map.
+Y being the up direction rather than Z.
+For hex values see Block IDs.
+To access a specific block from either the block or data array from XYZ coordinates, use the following formula:
+arrayindex=(y*length+z)*width+x
+
+
+== Data ==
+The data byte array is used for lighting and extra block data.
+For extended information on block metadata, refer to Java Edition data value/Indev.
+
+
+== Lighting ==
+
+There are 16 levels of lighting for a block ranging from 0x0 (0, no light) to 0xF (15, full light).
+
+
+== External links ==
+Indev level format specification on minecraft.net (archived)
+
+
+== Navigation ==

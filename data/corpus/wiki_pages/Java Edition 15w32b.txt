@@ -1,0 +1,94 @@
+15w32b is the fifth snapshot for Java Edition 1.9, released on August 6, 2015 to fix some bugs and crashes from 15w32a, along with adding and changing some features.
+
+
+== Additions ==
+
+
+=== General ===
+Scoreboard
+
+Added /scoreboard players tag ...
+Players can add and remove tags for any entity based on NBT data of that entity/player.
+For example /scoreboard players tag @a add test {OnGround:0b} adds the tag "test" to all players that are in the air.
+Tags can be accessed by using the parameters after the selector; /give @a[tag=test] stone 1 gives 1 stone to all players that have the tag "test".
+Players can use /scoreboard players tag <player> list to see what tags are on an entity (Note that in this current version, players can't use tab to get "list").
+Tags are stored in the playerdata file as strings, not in the scoreboard files.
+This means that any tag the player binds, has to be bound to an existing online player or an existing entity.
+Unlike objectives, tags cannot be displayed on the sidebar or anywhere else.
+Only via the list subcommand can you see which tags an entity has.
+Added three new objective types: XP, hunger and oxygen.
+"xp" can be used to track the players exact amount of XP points.
+"food" can be used to track the hunger level of the player (ranges from 0 to 20).
+"air" can be used to see for how long the player has been underwater.
+Starts at 300 (out of water) and then decreases 1 per tick as long as the player's head is underwater (resets when the player exits the water).
+The Water Breathing effect freezes the timer and the Respiration enchantment slows down the countdown each time more with each level.
+World selection screen
+
+Now displays a thumbnail per world showing a glimpse of the world (it takes a screenshot when player has just created or opened it for the first time in this snapshot or higher).
+When the world hasn't been opened in snapshot 15w32b or before, or if the game couldn't make a screenshot thumbnail, a gray-scale image is displayed.
+The thumbnail is saved in the world folder under .minecraft/saves with the name "icon.png".
+
+
+== Changes ==
+
+
+=== Mobs ===
+ Ender Dragon
+
+Now flies over the portal and dies if the final hit is applied elsewhere.
+ Shulker
+
+No longer teleport by themselves if NoAI is set to 1.
+Can now be teleported using /tp or /spreadplayers.
+
+
+=== Command format ===
+NBT format
+
+Entity tags now work on spawn eggs.
+The corresponding mob spawns with the assigned tags.
+
+
+=== Gameplay ===
+Creative inventory
+
+Removed arrow of Splashing.
+
+
+=== General ===
+World selection screen
+
+The exclamation mark from last snapshot, indicating that the world has not been played in the current snapshot yet, is now shown on top of the thumbnail.
+It also warns if a world was played in a newer version of Minecraft before, telling the player that the world may corrupt, if they open it in an older version.
+The version number now displays in red if it has been played in a newer version before.
+The player can now click the play arrow on the thumbnail, just like a server, to open the world.
+
+
+== Fixes ==
+9 issues fixed
+From the 1.9 development versions
+
+MC-82925 – Potions in new snapshot turn into water bottles with no texture/missing texture.
+MC-82968 – Kicked from server when in certain area: com.google.gson.stream.MalformedJsonException: Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1.
+MC-83309 – Unable to open the inventory on riding a horse.
+MC-83448 – Dragon respawns in old world.
+MC-83604 – Shulker teleports despite NoAI:1b.
+MC-83894 – /replaceitem cannot place non-armor items into armor stands' head slot.
+MC-84035 – Ender dragon can't die unless perched on portal.
+From the previous development version
+
+MC-85110 – Crash on shooting ender dragon with an arrow.
+MC-85152 – Command block minecarts despawn after loading world.
+
+
+== Videos ==
+
+
+== Trivia ==
+This version was previously removed from the launcher for some time, but was added back in September 2018.
+
+
+== References ==
+
+
+== Navigation ==

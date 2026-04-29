@@ -1,0 +1,169 @@
+Beta 1.20.70.21 (Android) or Preview 1.20.70.21 (Windows, iOS, iPadOS, Xbox) is the second beta/Preview version for Bedrock Edition 1.20.70, released on January 31, 2024, which adds vaults behind experimental toggle and fixes bugs.
+
+
+== Additions ==
+
+
+=== Command format ===
+Target selectors
+
+Added the has_property target selector argument, which allows for selection based on the type and value of entity properties.
+
+
+=== General ===
+Realms Stories
+
+Added a new story type called "Realm Events". These new stories are automatically posted to the feed when interesting events happen on a Realm.
+
+
+== Changes ==
+
+
+=== Command format ===
+/damage
+
+Renamed the suicide damage type to self_destruct.
+
+
+=== Items ===
+Spawn Eggs
+
+Are now called "<Mob> Spawn Egg" instead of "Spawn <Mob>" to match Java Edition.
+
+
+=== Mobs ===
+Baby mobs
+
+When fed, now emit both sounds and particles.
+
+
+=== Technical ===
+API
+
+Removed ItemFrameDropItemPacket.
+Item
+Moved ItemFoodComponentfrom from beta to 1.9.0.
+@minecraft/server.Entity.playAnimation
+Moved Entity.playAnimation from beta to stable.
+Moved enum BlockPistonStatefrom from beta to 1.9.0.
+Moved class BlockPistonComponent from beta to 1.9.0.
+Moved class PistonActivateAfterEvent from beta to 1.9.0.
+Moved class PistonActivateAfterEventSignal from beta to 1.9.0.
+JSON
+
+Entities
+damage_sensor component's damage_modifier and damage_multiplier fields are now properly considered during damage immunity calculations, so that damage adjusted to be lesser or equal to the highest damage received during an entity's immunity period will be accurately ignored. This requires a format_version of 1.20.70 or higher.
+Entity filters
+Added new entity filter was_last_hurt_by, which checks if the subject is the last player or mob to have recently attacked the entity.
+Other
+
+Custom armor trim patterns can now be defined and applied to custom armor items.
+Armor trim patterns on custom armor requires a format_version of 1.20.60 or higher for the attachable and item.
+Molang
+
+surface_particle_color, query.surface_particle_texture_coordinate, and query.surface_particle_texture_size are now versioned with 1.20.70 to allow the three queries to see leaf blocks as the surface texture below the block.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Armadillo and Wolf Armor", "Update 1.21", "Beta APIs", and "Render Dragon Features for Creators" experimental toggles.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+Vault
+
+A block that holds locked treasure and loot.
+When activated with a trial key it ejects rewards.
+Found throughout trial chambers, containing the structure's most valuable loot.
+Currently reuse the same loot table that reward chests previously used in the trial chambers.
+This loot table is temporary and will be completely renewed.
+Can be unlocked by an unlimited amount of players.
+It can be only activated once per player. After a player has unlocked a vault, they cannot unlock that vault again.
+If a player has not unlocked that vault before, an orange stream of particles will flow from the player to the vault when nearby.
+Has a keyhole that will be open or closed depending on the players nearby.
+If any nearby player has not unlocked the vault, the keyhole will be open.
+If all nearby players have unlocked the vault, the keyhole will be closed.
+Within its cage, it will cycle through and display items which are possible to eject from its loot table.
+The rewards it ejects are randomized from its loot table each time it is unlocked.
+Cannot be obtained in Survival, is explosion-resistant, can't be moved, and does not drop anything when mined.
+
+
+==== General ====
+Particles
+
+Added new vault_connection_particle particle type.
+
+
+=== Changes ===
+
+
+==== Items ====
+Trial Key
+
+Changed the texture to match the vault.
+Can now be used to open the vault.
+
+
+==== Mobs ====
+Armadillo
+
+Now regard the last player that hit them as a threat for 10 seconds.
+Updated sounds for when armadillos are damaged while rolled up.
+Breeze
+
+Is now aggressive toward iron golems in addition to players.
+No longer retaliates against attacks from skeletons, strays, zombies, husks, spiders, cave spiders, and slimes. These mobs will not retaliate when hurt by the breeze's wind charge projectile.
+
+
+==== Technical ====
+API
+
+Entity Components
+Added EntityTypeFamilyComponent with functions getTypeFamilies(): string[] and hasTypeFamily(typeFamily: string): boolean.
+Item
+Added function matches(itemName: string, states?: Record<string, boolean | number | string>): boolean.
+Removed class BlockVolumeUtils. Moving utility functions onto BlockVolumeBase and BlockVolume.
+Added class BlockVolumeBase. Is the base class from which block volumes will extend.
+BlockVolume
+Converted BlockVolume from an interface to a class which extends BlockVolumeBase.
+Dimension
+Dimension.getEntities now only returns the entities within the dimension that's being queried.
+Graphical
+
+Enabled the Deferred Technical Preview for iOS and iPadOS devices.
+Added point light shadows to the Deferred Technical Preview. This new feature allows light sources such as torches and lanterns to cast shadows.
+
+
+== Fixes ==
+13 issues fixed
+From released versions before 1.20.70
+
+MCPE-133125 – Phantom flapping sounds don't work properly.
+MCPE-159481 – Warden roar sound and animation don't play when the player is facing away from it.
+MCPE-174865 – Inappropriate word in /damage command.
+MCPE-175550 – Game freezes at 35-41% after newest update.
+From the previous development version
+
+MCPE-178407 – Incorrect resource pack definition/ID for double slabs.
+Others
+
+All sounds emitted by armadillos are now audible even when the player is facing away.
+Fixed an issue with time stamps on Stories being centered instead of displaying in the top right corner.
+Fixed a crash caused by Realms Stories pagination.
+Fixed a crash that could occur when using a gamepad to go back from the Members tab in Realms Stories.
+Fixed issue with time blocks not rendering correctly after changing the time zone on PlayStation.
+Fixed an issue with the screen reader narrating unavailable Realms pages.
+Fixed an issue where GUI scaling being turned off caused most of Realms Plus PDP text to be missing.
+Fixed an issue where user would get an error message incorrectly displaying on the "Choose a Preview Realm" screen after they had backed out of the "Choose a Subscription" screen.
+1 issue fixed
+From released versions before 1.20.70
+
+REALMS-10477 – Destroying one sea turtle egg on a stack of more than one in Creative mode destroys 2 at once.
+
+
+== References ==
+
+
+== Navigation ==

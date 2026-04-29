@@ -1,0 +1,219 @@
+The text component format, historically also known as raw JSON text, is used by Minecraft to send and display rich-text to players. It can also be sent by players themselves using commands (such as /tellraw and /title) and data packs.
+
+
+== Java Edition ==
+
+Text components are written in SNBT, for example {text: "Hello world"}. They are used for rich-text formatting in written books, signs, custom names and the /tellraw, /title, /bossbar, /scoreboard and /team commands.
+The format is made up of text components. There is a single root component, which can have child components, which can have their own children and so on. Components can also have formatting and interactivity added to them, which is inherited by their children.
+A component can be a [String] string, [NBT List / JSON Array] list or a [NBT Compound / JSON Object] object. Strings and lists are both shorthand for longer object structures, as described below.
+
+Due to the [NBT List / JSON Array] extra tag, the above format may be recursively nested to produce complex and functional text strings. However, a text component doesn't have to be complicated at all: virtually all properties are optional and may be left out.
+
+
+=== Content types ===
+Text components can display several types of content. These tags should be included directly into the text component object.
+
+
+==== Plain Text ====
+Displays plain text.
+
+
+==== Translated Text ====
+Displays a translated piece of text from the currently selected language. This uses the client's selected language, so if players with their games set to different languages are logged into the same server, each will see the component in their own language.
+Translations are defined in language files in resource packs, including the built-in resource pack.
+Translations can contain slots for text that is not known ahead of time, such as player names. When displaying the translated text, slots will be filled from a provided list of text components. The slots are defined in the language file, the translate key, the fallback key and generally take the form %s (displays the next component in the list), or %3$s (displays the third component in the list; replace 3 with whichever index is desired). For example, the built-in English language file contains the translation "chat.type.advancement.task": "%s has made the advancement %s",.
+
+
+==== Scoreboard Value ====
+Displays a score from the scoreboard.
+
+
+==== Entity Names ====
+Displays the name of one or more entities found by a selector.
+If exactly one entity is found, the entity's name is displayed by itself. If more are found, their names are displayed in the form "Name1, Name2, Name3", with gray commas. If none are found, the component is displayed as no text.
+Hovering over a name shows a tooltip with the name, type, and UUID of the target. Clicking a player's name suggests a command to whisper to that player. Shift-clicking a player's name inserts that name into chat. Shift-clicking a non-player entity's name inserts its UUID into chat.
+
+
+==== Keybind ====
+Displays the name of the button that is currently bound to a certain configurable control. This uses the client's own control scheme, so if players with different control schemes are logged into the same server, each will see their own keybind.
+
+
+==== NBT Values ====
+Displays NBT values from entities, block entities, or command storage.
+By default, NBT values are displayed as SNBT, with special coloring added to the SNBT keys and values. If [Boolean] plain is set to true, no special coloring is added. If [Boolean] interpret is set to true, the game will attempt to interpret the NBT value as a text component instead of showing it as SNBT. If [Boolean] interpret is true and the NBT value is not a valid text component, it is displayed as no text. If more than one NBT value is found, either by selecting multiple entities or by using a multi-value path, they are displayed in order, with the [Undefined] separator value between them.
+
+
+==== Object ====
+Displays objects as single sprites in component messages. Sprites are rendered as 8x8 pixels squares. This will ignore bold and italic styles!
+
+
+===== Atlas Object Type =====
+When specifying [String] object as "atlas", it displays a single sprite from a texture atlas as a character. 
+
+
+===== Player Object Type =====
+When specifying [String] object as "player" it displays the 2D face sprite of a player profile.
+
+
+=== Component resolution ===
+Text component resolution is the process of converting "advanced" (server-side) text components into "simple" (client-side) text components so that they can be displayed to the user.
+Certain text component types, such as text, translate, keybind, and object, can be directly displayed by a player client, as the client does not need any additional information to interpret them. Those are known as "client-side" or "simple" text components.
+Other types, such as score, selector, and nbt, require additional work from the server before they can be displayed by the client. Those are known as "server-side" or "advanced" text components. As the client does not have access to the information that these text components are meant to display, they need to be resolved by the server, which involves retrieving appropriate data from the world and replacing the server-side text components with client-side ones which the client knows how to render.
+If the client receives unresolved server-side text components, score and nbt text components display as empty text, but selector text components display the selector itself.
+Additionally, text component resolution fixes a single value in place based on the appropriate data at the moment of resolution. Therefore, these content types are not dynamic, and don't update to reflect later changes. For example, {score:{name:"@p",objective:"points"}} may resolve to "100", and will stay that way even if the player's "points" score increases or decreases.
+Text component resolution can be done in many ways:
+
+Displaying text in chat or title slots with commands such as /tellraw and /title.
+Writing a text component to any line on a sign.
+Writing a text component to a text display's text tag.
+Using the set_name and set_lore item modifers, but only if their [String] entity field is set and that entity context exists.
+A text component in a written book will be resolved once first opened by an operator or, once placed into a lectern. However, if the resulting text component is too large then it will fail to resolve.
+Setting a boss bar name using /bossbar set <id> name while the command is executing as an entity.
+Setting a scoreboard objective's display name using /scoreboard objectives modify <objective> displayname while the command is executing as an entity.
+Setting a score holder's display name using /scoreboard players display name while the command is executing as an entity.
+Setting a score holder or scoreboard objective's number format to a fixed text component using /scoreboard players display numberformat or /scoreboard objectives modify <objective> numberformat fixed while the command is executing as an entity.
+There are several places where text components are not automatically resolved, such as:
+
+Writing directly to data components such as custom_name, item_name, lore, and written_book_content. The previously mentioned item modifiers can be used to resolve text components when writing to these data components.
+Writing directly to entities' CustomName tag.
+All text in dialogs.
+Most JSON files in data packs, such as advancement names, chat types, painting variant authors/titles, etc.
+
+
+=== Click events ===
+Click events control what happens when the player clicks on the text. Can be one of the following:
+
+
+==== open_url ====
+Opens the specified URL in the user's default web browser.
+
+
+==== open_file ====
+Opens the specified file on the user's computer. This is used in messages automatically generated by the game (e.g., on taking a screenshot) and cannot be sent by servers for security reasons.
+
+
+==== run_command ====
+Runs the specified command. This runs as if the player typed the specified command in chat and pressed enter. However, this can only be used to run commands that do not send chat messages directly (like /say, /tell, and /teammsg). Since they are being run from chat, the player must have the required permissions.
+
+On signs, the command is run by the server at the sign's location, with the player who used the sign as the command executor (that is, the entity selected by @s). Since they are run by the server, sign commands have the same permission level as a command block instead of using the player's permission level, and are not restricted by chat length limits.
+
+
+==== suggest_command ====
+Opens chat and fills in the specified text or command. If a chat message was already being composed, it is overwritten.This does not work in books.
+
+
+==== change_page ====
+Can only be used in written books. Changes to the specified page if that page exists.
+
+
+==== copy_to_clipboard ====
+Copies the specified text to the clipboard.
+
+
+==== show_dialog ====
+Opens the specified dialog.
+
+
+==== custom ====
+Sends a custom event to the server; has no effect on vanilla servers.
+
+
+=== Hover events ===
+Hover events control what happens when the player hovers over the text. Can be one of the following:
+
+
+==== show_text ====
+Shows a text component.
+
+
+==== show_item ====
+Shows the tooltip of an item as if it was being hovering over it in an inventory.
+
+
+==== show_entity ====
+Shows an entity's name, type, and UUID. Used by [String] selector.
+
+
+== Bedrock Edition ==
+Unlike Java Edition, text components in Bedrock Edition are written in JSON.
+
+Basic raw text example
+
+/tellraw @a { "rawtext" : [ { "text" : "Hello world" } ] }
+This sends a message to all players saying "Hello World" in English only. See the Translate action to see how to send localized texts.
+
+
+=== Appending ===
+Raw text takes in an array of text objects. Each object in the list is added to the previous object. For example, /tellraw @a { "rawtext" : [ { "text":"Hello" }, { "text" : " World" } ] }
+outputs the same "Hello World" as the first example. Appending text can be useful to combine 2 different localized texts, or apply different colors to each word etc.
+
+
+=== Breaking lines ===
+You can go down a line by using "\n". For example,
+/tellraw @a { "rawtext" : [ { "text" : "Hello\nNext line" } ] }
+
+
+=== Translate ===
+The translate object allows creators to provide localized text to users. If translate is specified along with text, translate overrides the text object. The string to provide to translate is the name of the string in the language files. For example, in Vanilla Minecraft "commands.op.success" is the string that displays when /op is used on a player successfully.
+/tellraw @a { "rawtext": [ { "translate" : "commands.op.success" } ] }
+This outputs "Opped %s" to all players. Note that because of text being ignored with translate specified, the following example outputs the same text:
+/tellraw @a { "rawtext" : [ { "text":"Hello World", "translate":"commands.op.success" } ] }
+
+
+=== With ===
+In the translate example above, it outputs "Opped %s". To have a name or other text show up instead of %s, "with" needs to be specified as well. Note that "with" only works with "translate" and also requires an array [] instead of curly brackets {} .
+/tellraw @a { "rawtext": [ { "translate" : "commands.op.success", "with": [ "Steve" ] } ] }
+If you want to use a translated text inside the "with" component, instead of an array it needs to be another rawtext component (which consists of an array of text components). The following example outputs "Opped Apple".
+/tellraw @a { "rawtext": [ { "translate" : "commands.op.success", "with": { "rawtext": [ { "translate" : "item.apple.name" } ] } } ] }
+
+
+=== %%s ===
+"translate" and "%s" can be used without needing a corresponding string in the localization files. For example:
+/tellraw @a { "rawtext": [ { "translate" : "Hello %%s", "with": [ "Steve" ] } ] }
+This outputs "Hello Steve" to all players.
+
+
+=== Multiple %s ===
+%%s can be used multiple times. They are filled in, in the order specified
+/tellraw @a { "rawtext": [ { "translate" : "Hello %%s and %%s", "with": [ "Steve", "Alex" ] } ] }
+Outputs: "Hello Steve and Alex"
+You can again use a rawtext component to replace the plain string array, like so
+/tellraw @a { "rawtext": [ { "translate" : "Hello %%s and %%s", "with": { "rawtext" : [ { "text" : "Steve" }, { "translate" : "item.apple.name" } ] } } ] }
+Outputs: "Hello Steve and Apple"
+
+
+=== Ordering with %%# ===
+The order to fill in %%s can be changed by instead specifying it with %%#, replacing # with an actual number. For example, to swap the position of Steve and Alex in the above example, instead run the following:
+/tellraw @a { "rawtext" : [ {"translate" : "Hello %%2 and %%1", "with": [ "Steve", "Alex"] } ] }
+Outputs: "Hello Alex and Steve"
+
+
+=== Formatting ===
+String formatting is still possible, but not using the text component format used in Java Edition.  Instead, formatting codes are used to change text color and style.
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== See also ==
+Commands
+Formatting code
+
+
+== Notes ==
+
+
+== References ==
+
+
+== External links ==
+Text component generator on misode.github.io
+
+
+== Navigation ==

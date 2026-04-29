@@ -1,0 +1,15 @@
+A loot context is a set of parameters available to loot tables, predicates, item modifiers, and number providers. As different uses have different available parameters, a loot context is used to determine if a given loot table or predicate is valid to that use case, allowing this check to be done when the data pack is loaded, rather than at runtime.
+
+
+== Loot context types and uses ==
+
+
+=== Used in loot tables ===
+These loot context types are used in loot tables and can be set as the [String] type of a loot table.
+
+
+=== Only used in predicates ===
+These loot contexts cannot be set at type of a loot table. Instead, they are used for other invocation of predicates and item modifiers.
+
+
+== Navigation ==

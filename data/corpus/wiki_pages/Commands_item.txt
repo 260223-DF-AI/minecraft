@@ -1,0 +1,86 @@
+Manipulate or copy items in the inventories of blocks (chests, furnaces, etc.) or entities (players or mobs).
+
+
+== Syntax ==
+item modify (block <pos>|entity <targets>) <slot> <modifier>
+Modifies the items in the specified slot with the specified item modifier.
+item replace (block <pos>|entity <targets>) <slot> with <item> [<count>]
+Replaces the items in the specified slot with the specified items.
+item replace (block <pos>|entity <targets>) <slot> from (block <sourcePos>|entity <sourceTarget>) <sourceSlot> [<modifier>]
+Copies the source items to the target slot and optionally modifies it with the modifier.
+Syntax displayed in various ways
+
+
+== Arguments ==
+<pos>: block_pos
+
+Specifies the position of the block to be modified.
+Must be a block position composed of <X>, <Y> and <Z>, each of which must be an integer or a tilde and caret notation.
+<targets>: entity
+
+Specifies one or more entities to modify.
+Must be a player name, a target selector or a UUID. 
+<slot>: item_slot
+
+Specifies the inventory slot to be modified. Valid values depend on whether a block or an entity is being modified.
+Must be a string notation that refer to a single slot in the inventory, which consists of "slot type" and optional "slot number", in the format of <slot_type> or <slot_type>.<slot_number>. See Slot for details.
+<modifier>: loot_modifier
+
+Specifies the item modifier to apply on the chosen item.
+Specifies a item modifier with a resource location or in SNBT format. Must be a valid item modifier definition in SNBT format, or a resource location of an existing item modifier (an entry in minecraft:item_modifier registry). For NBT tag, if it is a string tag, the tag is also parsed into a resource location and resolved into an existing item modifier; otherwise, the tag is parsed as a new item modifier definition.
+<item>: item_stack
+
+Specifies the item to be placed in the block or entity's inventory slot.
+It must be in the format of item_id[data_components], in which [data_components] can be omitted when they are not needed. See minecraft:item_stack for details.
+<count>: integer
+
+Specifies the number of items to be placed in the block or entity's inventory slot.
+Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ). And it must be between 1 and 99 (inclusive).
+<sourcePos>: block_pos
+
+Specifies the position of the block to copy items from.
+Must be a block position composed of <X>, <Y> and <Z>, each of which must be an integer or a tilde and caret notation.
+<sourceTarget>: entity
+
+Specifies an entity to copy items from.
+Must be a player name, a target selector or a UUID.
+<sourceSlot>: item_slot
+
+Specifies the inventory slot to copy the items from. Valid values depend on whether the source is block or an entity.
+Must be a string notation that refer to a single slot in the inventory, which consists of "slot type" and optional "slot number", in the format of <slot_type> or <slot_type>.<slot_number>. See Slot for details.
+
+
+== Result ==
+
+
+== Output ==
+
+
+== Examples ==
+To replace the items in the bottom-right slot of a single chest two block above with four spruce saplings:
+/item replace block ~ ~2 ~ container.26 with minecraft:spruce_sapling 4
+To replace the items in the rightmost hotbar slot of the nearest player with four spruce saplings:
+/item replace entity @p hotbar.8 with minecraft:spruce_sapling 4
+To replace the item in the offhand of the selected player with the item in their main hand:
+/item replace entity @s weapon.offhand from entity @s weapon.mainhand
+To put a brown banner on a player's head
+/item replace entity @s armor.head with minecraft:brown_banner
+To increase the count of the item in your main hand:
+/item modify entity @s weapon.mainhand example:increase_count
+file in a data pack: data/example/item_modifier/increase_count.json
+To increase the count of the item in your main hand without external files:
+item modify entity @s weapon.mainhand {"function":"minecraft:set_count","count":1,"add":true}
+To put the item in your hand, on your head:
+/item replace entity @s armor.head from entity @s weapon.mainhand
+
+
+== History ==
+
+
+== See also ==
+/data — can also replace items in a container's or mob's inventory, or modify the drop chances of armor and weapons
+/give — give items to players without specifying specific inventory slots or overwriting other items
+/replaceitem — The Bedrock Edition equivalent
+
+
+== Navigation ==

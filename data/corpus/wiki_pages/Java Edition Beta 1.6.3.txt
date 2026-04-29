@@ -1,0 +1,33 @@
+Beta 1.6.3 is a version of Java Edition Beta released on May 26, 2011, which fixes some of the bugs and crashes in Beta 1.6.2.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Water
+
+Water that is 2 blocks deep no longer prevents fall damage.
+Players need at least 3-block-deep water to prevent fall damage.
+
+
+=== General ===
+Options
+
+The renderer is now capped at 100 fps while there are chunks to be generated. The excess time will be spent generating chunks instead of rendering frames.
+The "limit framerate" option now limits the game to 40 fps and will spend at least 10 ms per frame sleeping.
+The "limit framerate" option has been reset to "off" for all players, enable it again if wanted.
+
+
+== Fixes ==
+3 bugs fixed
+
+Fixed some block updates not updating lighting properly under some circumstances by reverting the fix in 1.6 that lead to block data not always being sent.
+Fixed a major CPU load issue in the server where a very tight loop would starve all other threads.
+Fixed furnaces dropping/duplicating their contents when they change state from lit to unlit or back.
+
+
+== References ==
+
+
+== Navigation ==

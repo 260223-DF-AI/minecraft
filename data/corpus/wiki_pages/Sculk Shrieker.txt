@@ -1,0 +1,127 @@
+A sculk shrieker is a sculk block that will "shriek" if any player touches its top (even indirectly) or activates a nearby sculk sensor. Only players can trigger it. 
+Naturally-generated sculk shriekers also inflict Darkness and may summon a warden if triggered, but shriekers placed by players or sculk catalysts are completely inert and harmless.
+
+
+== Obtaining ==
+
+
+=== Breaking ===
+A sculk shrieker can be mined with any tool, but hoes are the quickest. It drops itself only if mined with any tool enchanted with Silk Touch. If mined with a non-Silk Touch tool, it drops 5 experience instead. When a sculk shrieker is broken it loses the ability to summon wardens, even if mined with Silk Touch.
+
+
+=== Natural generation ===
+Sculk shriekers can be found infrequently within the deep dark biome, and they are much more common within ancient cities. All naturally generated shriekers can summon wardens.
+
+
+=== Post-generation ===
+A sculk catalyst has a 1% chance of generating a sculk shrieker on top of a sculk block. These shriekers do not summon wardens.
+
+
+== Usage ==
+
+Sculk shriekers "shriek" after being activated. A sculk shrieker activates when any player stands on the black part in the center of the block, even when sneaking. Sculk shriekers are also activated by any sculk sensor triggered within an 8-block spherical radius of itself, but only if the vibration was caused by a player. However, a sculk sensor cannot activate the sculk shrieker if the line between the two contains a wool block. The shrieker shrieks for 90 game ticks (4.5 seconds). 
+
+
+=== Spawning wardens ===
+
+Sculk shriekers that naturally generate in the deep dark biome are capable of inflicting the Darkness effect upon players and summoning wardens. In Bedrock Edition, when a warden is summoned from a sculk shrieker, the spawn event minecraft:spawn_emerging is applied to it. This spawn event is what allows the warden to play the emerging animation with the minecraft:behavior.emerge component. If a sculk shrieker is placed by a player or generated via a sculk catalyst, the tag can_summon is set to false, and therefore a warden cannot be summoned and Darkness cannot be inflicted by that sculk shrieker. Each time a naturally generated sculk shrieker is activated, it adds 1 to a "warning" level to alert a warden. The warning level is specific to each player, not each sculk shrieker, meaning that the same player can activate a different sculk shrieker for each of the four times, and a warden still spawns on the fourth activation, even though any particular shrieker had been activated once. If a player does not activate any sculk shrieker, the warning level decreases by 1 every 10 minutes (12000 ticks). In multiplayer, all other players in a 16-block spherical radius are also "blamed" for a sculk shrieker's activation, and all blamed players will have their warning level set to one more than the highest warning level among blamed players, and all of their warning level timers will be reset. After the shrieking ends, all players in Survival or Adventure mode within 40 blocks are given the Darkness effect for 12 seconds. After a warden is summoned, a player's warning level does not reset back to 0, meaning multiple wardens can be summoned.
+Naturally generated sculk shriekers have a 10-second cooldown per player. This means that if a player triggers one shrieker, they are completely unable to trigger any other shrieker within 10 seconds. The cooldown period includes the 4.5-second shrieking, which means 5.5 seconds after the previous shrieking ends, the player can activate sculk shriekers again.
+When a player's warning level reaches level 4, the sculk shrieker attempts to spawn a warden after its shrieking ends. If the shrieker is broken before it ends shrieking, a warden spawns immediately. Up to 20 attempts are made to spawn a warden within an 11×13×11 box centered on the shrieker. If there isn't another warden within 24 blocks, a warden emerges from the ground. The warden always spawns at the highest available block. If all 20 spawning attempts fail, a loud roaring sound is played. Spawning a warden does not decrease the player's warning level, so a warden can be immediately summoned again after the 10-second cooldown. However, the warning level will not increase above 4.
+In Peaceful difficulty or in Java Edition, if the game rule doWardenSpawning is set to false, naturally generated sculk shriekers behave as if they are placed by a player: they do shriek, but there is no shrieking cooldown, the player's warning level does not increase, no Darkness effect is inflicted, and no warden spawns.
+If the player that triggered the sculk shrieker is outside the shrieker's range when the shrieking ends, the sculk shrieker does not apply the Darkness effect to any player. The player's warning level still increases by 1.
+It is possible to make a warden spawn from a distance, by shooting a projectile into the direction of known sensors that are near shriekers.
+The warnings have unique subtitles at different levels of warning: 
+
+Warden approaches
+Warden advances
+Warden draws close
+
+
+=== Vibration filter ===
+
+Since sculk shriekers only activate in response to vibrations caused by a player, it has the potential be used for systems that require player-only vibrations. Activated sculk shriekers can also be detected by an observer, making it useful for sending a pulse to redstone components.
+
+
+=== Piston interactivity ===
+Sculk shriekers cannot be moved by pistons or sticky pistons.
+
+
+== Sounds ==
+
+
+=== Generic ===
+Java Edition:
+
+Bedrock Edition:
+
+
+=== Unique ===
+Java Edition
+
+Bedrock Edition:
+
+
+== Data values ==
+
+
+=== ID ===
+Java Edition:
+
+Bedrock Edition:
+
+
+=== Block states ===
+
+Java Edition:
+
+Bedrock Edition:
+
+
+=== Block data ===
+A sculk shrieker has a block entity associated with it that holds additional data about the block.
+Java Edition:
+
+Bedrock Edition:
+
+See Bedrock Edition level format/Block entity format.
+
+
+== Advancements ==
+
+
+== History ==
+
+
+=== Announcement ===
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== Issues ==
+Issues relating to "Sculk Shrieker" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Trivia ==
+The sculk shrieker's design was inspired by the human larynx.
+The old trypophobia shrieker was a combination of the modern day shrieker and scrapped sculk jaw as it would both scream and show teeth.
+
+
+== Gallery ==
+
+
+=== Screenshots ===
+
+
+== References ==
+
+
+== External links ==
+"Block of the Month: Sculk shrieker"     by Duncan Geere  – Minecraft.net, May 2, 2024.
+"Block of the Month: Sculk shrieker"     by Duncan Geere  – Minecraft.net, June 20, 2024.
+
+
+== Navigation ==

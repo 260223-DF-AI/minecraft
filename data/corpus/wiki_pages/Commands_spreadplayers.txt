@@ -1,0 +1,86 @@
+Teleports entities to random surface locations within an area. Despite its name, this command can be used to teleport any entities, not just players.
+
+
+== Usage ==
+In Java Edition, targets are always placed on the highest non-air block at a horizontal position. If in under mode, targets are always placed on the highest non-air block that is under the specified maximum height and with two air blocks above it. The horizontal coordinates are invalid if there's no such non-air block.
+In Bedrock Edition, targets are always placed one block above the highest solid block at a horizonal position. If with maxHeight: value argument, targets are always placed one block above the highest solid block that is under the specified maximum height. The horizontal coordinates are invalid if there's no such solid block, or if the solid block does not have two air blocks above it.
+Targets are never placed on lava, water, bubble column, or fire. Positions above these blocks are invalid. In Bedrock Edition, magma block, wither rose, campfire, soul campfire, sweet berry bush, nether portal, end portal, and end gateway are also invalid positions.
+In Java Edition, the entities are spread into the command's execution dimension.
+In Bedrock Edition, the command changes an entity's position without changing dimension. But the valid position is calculated in the command's execution dimension.
+If there are no valid position, or the targets are too many to satisfy the minimum distance (<spreadDistance> or spreadDistance: float) requirement within valid positions, no entities are spread.
+
+
+== Syntax ==
+Java Edition
+spreadplayers <center> <spreadDistance> <maxRange> <respectTeams> <targets>
+Spreads players to positions on the top non-air block.
+spreadplayers <center> <spreadDistance> <maxRange> under <maxHeight> <respectTeams> <targets>
+Spreads players to positions under the maximum height, on the highest non-air block with two air blocks above it.
+Bedrock Edition
+spreadplayers <x: value> <z: value> <spreadDistance: float> <maxRange: float> <victim: target> [maxHeight: value]
+
+
+== Arguments ==
+JE: <center>: vec2
+BE: x: value: RelativeFloat and z: value: RelativeFloat
+
+Specifies the center of the region to spread targets to.
+Must be two-dimensional coordinates with double-precision floating-point number‌[Java Edition  only] or single-precision floating-point number‌[Bedrock Edition  only] elements. Accepts tilde notations.
+JE: <spreadDistance>: floatBE: spreadDistance: float: float
+
+Specifies the minimum distance between each two targets.
+Must be a [Float]Single-precision floating-point number (from -(2-2-23)×2127 (≈-3.4×1038) to (2-2-23)2×127 (≈3.4×1038) ). And it should be at least 0.0.
+JE: <maxRange>: floatBE: maxRange: float: float
+
+Specifies the maximum distance on each horizontal axis from the center of the area to spread targets (thus, the area is square, not circular).
+Must be a [Float]Single-precision floating-point number (from -(2-2-23)×2127 (≈-3.4×1038) to (2-2-23)2×127 (≈3.4×1038) ). In Java Edition, it must be greater than or equal to 1.0. In Bedrock Edition, it should be at least 1.0 greater than spreadDistance: float.
+JE: <maxHeight>: integer
+BE：maxHeight: value: RelativeFloat
+
+Specifies the maximum height for the target positions.
+In Java Edition, must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ).
+In Bedrock Edition, must be a [Float] float. Accepts tilde notation.
+JE: <respectTeams>: bool
+
+Specifies whether to keep entities on the same team together. If true, targets on the same team are teleported to the same position.
+Must be a [Boolean]Boolean (either true or false).
+JE: <targets>: entityBE: victim: target: CommandSelector<Actor>
+
+Specifies the targets to spread.
+Must be a player name, a target selector or a UUID‌[Java Edition  only]. 
+
+
+== Result ==
+
+
+== Output ==
+
+
+== Examples ==
+In Java Edition, to teleport all players by team to random surface locations in a 1,000×1,000-block area centered on (0,0), with a minimum distance between teams of 200 blocks:
+spreadplayers 0 0 200 500 true @a‌[Java Edition  only]
+In Java Edition, to teleport one random player from each of three teams (Red, Blue, and Green), as well as Alice and Bob, to random surface locations in a 200×200-block area centered on (0,0), with a minimum distance between players of 50 blocks:
+spreadplayers 0 0 50 100 false @r[team=Red] @r[team=Blue] @r[team=Green] Alice Bob‌[Java Edition  only]
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== See also ==
+/tp and /teleport — different commands that teleport a single player or entity to a specific position (even underground).
+
+
+== References ==
+
+
+== External links ==
+"/spreadplayers Command"     – Microsoft Learn, August 1, 2024.
+
+
+== Navigation ==

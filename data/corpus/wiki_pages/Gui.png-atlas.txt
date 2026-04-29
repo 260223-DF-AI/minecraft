@@ -1,0 +1,26 @@
+gui.png-atlas is a procedurally-generated texture atlas used to store textures for many GUI elements.
+
+
+== Format ==
+gui.png-atlas is a generated 1024×512-pixel file that stores textures for many GUI elements.
+
+
+== Bleeding ==
+There are several known ways in which to render parts of this atlas through unintended means:
+
+In 23w31a, editing the NBT of a furnace such that its fuel time or cooking duration exceeds normal values causes these elements to display areas outwith the normal bounds.
+Having a greater amount of XP than what is needed to reach the next level also causes the atlas to bleed. For some versions, this requires resizing of the window to see. Values of XpP 11734884 and above will instead render an empty bar.
+If the border value for nine_slice scaling is specified to be greater than or equal to 230 in mcmeta files, the elements in question is replaced with other parts of the atlas accordingly due to integer overflow.
+
+
+== History ==
+
+
+=== Versions of the atlas ===
+Note: atlasdumper is currently broken for versions 25w08a and beyond, so accurate, consistent versions of the atlas cannot currently be obtained.
+
+
+== References ==
+
+
+== Navigation ==

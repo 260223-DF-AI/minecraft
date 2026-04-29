@@ -1,0 +1,47 @@
+Controls or queries what mob events are allowed to run.
+
+
+== Syntax ==
+mobevent <event: MobEvent> [value: Boolean]
+
+
+== Arguments ==
+event: MobEvent: enum
+
+Specifies the event(s) to control or query. Must be one of the following:
+minecraft:ender_dragon_event for the event that spawns an ender dragon,
+minecraft:pillager_patrols_event for the event that spawns an illager patrol,
+minecraft:wandering_trader_event for the event that spawns a wandering trader,
+events_enabled for the whole mob event subsystem. When this is disabled, no mob events occur; when enabled, only enabled events occur.
+value: Boolean: enum
+
+If specified, true enables the event(s) and false disables them. If omitted, the current enabled status is displayed.
+Must be a [Boolean]Boolean (either true or false).
+
+
+== Result ==
+
+
+== Output ==
+
+
+== Examples ==
+To disable all events:
+
+/mobevent events_enabled false
+To enable wandering traders to be spawned (while the event subsystem is enabled):
+
+/mobevent minecraft:wandering_trader_event true
+To query the status of pillager patrol generation:
+
+/mobevent minecraft:pillager_patrols_event
+
+
+== History ==
+
+
+== External links ==
+"/mobevent Command"     – Microsoft Learn, October 11, 2023.
+
+
+== Navigation ==

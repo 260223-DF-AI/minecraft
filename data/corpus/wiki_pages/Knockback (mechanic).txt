@@ -1,0 +1,94 @@
+Knockback represents the pushback from attacks or natural causes.
+
+
+== Attack knockback ==
+When receiving damage from players, mobs, explosions, and most projectiles, entities are also knocked back. The direction of knockback is determined by the direction of the incoming attack.
+
+
+=== Versus grounded entities ===
+Knockback dealt to grounded entities knocks them into the air and away from the attack.
+
+
+=== Versus airborne entities ===
+Knockback dealt to airborne entities differs between Java Edition and Bedrock Edition. In Java Edition, knockback against airbone entities only knocks them away from the attack and does not knock them further into the air. In Bedrock Edition, knockback against airborne entities is identical to knockback against grounded entities.
+
+
+=== Versus entities in vehicles ===
+Entities inside minecarts or boats, as well as entities that are riding mountable entities like horses and camels, never receive any knockback when attacked.
+
+
+=== Versus entities during attack invulnerability time ===
+Knockback dealt to entities during attack invulnerability time, the 0.5 seconds (500ms) of invulnerability received after taking damage, differs between Java Edition and Bedrock Edition.
+
+In Java Edition, knockback against invulnerable entities is completely negated, except for when attacking with a sword or spear that has the Knockback enchantment.
+In Bedrock Edition, knockback against invulnerable entities is applied in the same way as non-invulnerable entities, which results in high CPS (clicks per second) dealing massive knockback. Note that certain featured servers available on Bedrock Edition opt to fix this bug, however the bug is present in a fully vanilla multiplayer setting.
+
+
+== Knockback sources ==
+
+
+=== Natural damage ===
+Most natural damage sources, damage sources that are received indirectly, cause a stutter in movement but do not deal any horizontal knockback. Natural damage sources that cause a movement stutter include damage from burning, drowning, lightning, falling, suffocation, entity cramming, starvation, and status effects like Poison, Wither, and Instant Damage. Block-inflicted damage from fire, cactus, lava, magma blocks, campfires, and sweet berry bushes also cause the same movement-stuttering knockback.
+Other indirect damage sources deal knockback in the traditional manner rather than causing a movement stutter. This includes the breath attack of the ender dragon, the beam attack of guardians and elder guardians, the sonic boom attack of wardens, the roar attack of ravagers, evoker fangs, damage from the Thorns enchantment, and the effect cloud from lingering potions of Harming.
+Knockback received from players or mobs using a sword enchanted with Knockback is greater than normal.
+
+
+=== Damageless attacks ===
+Attacks that deal 0HP or less fail to deal knockback. The Weakness status effect can cause attacks that deal 0HP, causing them to deal no knockback.
+
+
+=== Snowballs and eggs ===
+Thrown eggs and snowballs cause knockback to mobs even if they do not deal any damage. In Bedrock Edition, thrown eggs and snowballs also apply knockback to players.
+
+
+== Sprint-knockback attack ==
+
+Doing a melee attack while sprinting causes a sprint-knockback attack to be performed, inflicting extra knockback. In Java Edition, sprint-knockback attacks play a unique sound when performed, and they require an attack cooldown charge of at least 84.8%. Spears are the only item type that cannot do sprint-knockback attacks.
+In Java Edition, sprint-knockback attacks cannot be performed at the same time as critical hits or sweep attacks. If a sprint-knockback attack is performed at the same time as a critical hit, the sprint-knockback attack takes priority. They can however be performed at the same time as smash attacks and crushing blows.
+The extra inflicted knockback stacks with the Knockback enchantment. Like the Knockback enchantment, sprint-knockback attacks do not increase knockback against entities that are immune to knockback, such as iron golems or shielding players. The only exceptions to this are armor stand and boats, which ordinarily do not take knockback when hit but do when hit by a sprint-knockback attack.
+
+
+== Knockback resistance ==
+
+
+=== Attributes ===
+
+
+==== Knockback resistance ====
+Knockback resistance reduces knockback by multiplying the velocity value that a mob receives from an attack's knockback. If the velocity the mob would have without any knockback resistance is v, and the mob has a knockback resistance of r%, then the mob's actual velocity is determined by the formula A=v×(1−r100). Each piece of netherite armor adds 10% knockback resistance to its wearer, giving 40% knockback resistance with a full set.
+
+
+==== Explosion knockback resistance ====
+
+Explosion knockback resistance reduces knockback from explosions and fireworks. It is received through the Blast Protection enchantment, and uses the formula (15 × level)%. The effect stacks with multiple armor pieces, with two pieces of Blast Protection IV armor resulting in 100% explosion knockback resistance. It also reduces the knockback affect of wind charges and the Wind Burst enchantment.
+
+
+=== Natural knockback resistance ===
+
+Certain mobs have natural knockback resistance that causes them to resist knockback from attacks. Iron golems, shulkers, agents, NPCs, wardens, and ender dragons have 100% knockback resistance, while other mobs have varying levels of knockback resistance.
+
+
+== Sounds ==
+Java Edition:
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Legacy Console Edition ===
+
+
+=== Java Edition Combat Tests ===
+
+
+== Issues ==
+Issues relating to "Knockback" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== References ==
+
+
+== Navigation ==

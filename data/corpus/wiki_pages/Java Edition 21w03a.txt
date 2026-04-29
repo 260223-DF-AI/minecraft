@@ -1,0 +1,182 @@
+21w03a is the sixth snapshot for Java Edition 1.17, released on January 20, 2021, which adds glow squid, glow ink sacs, glow lichen, glow item frames, and fixes bugs. This is the first snapshot released in 2021.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Glow item frames
+
+Placeable entities which appear to glow.
+Do not affect the light level, only appearing as if lit up themselves.
+Items placed inside also glow.
+Crafted using an item frame and a glow ink sac.
+Includes application to maps.
+ Glow lichen
+
+A naturally occurring light source found rarely in caves, growing on any face of a block.
+Has a light level of 7.
+Obtained with shears, otherwise breaks.
+Does not spread naturally, although bone meal can be used to spread it.
+It spreads to adjacent spaces horizontally, up to 4.
+Can be waterlogged.
+Unlike vines, it does not pop off when underwater, and is not climbable.
+Up to 6 can be put on the same block space, merging into one block.
+
+
+=== Items ===
+ Glow ink sacs
+
+Dropped by glow squid when killed.
+Can be used to craft glow item frames.
+Can be used to make text glow on signs.
+Spawn eggs
+
+ Glow squid spawn egg
+
+
+=== Mobs ===
+ Glow squid
+
+Originates from the mob with the same name from Minecraft Earth.
+Underwater mob that behaves like a regular squid.
+Does not naturally spawn yet.
+Is attacked by axolotls without provocation.
+Drops glow ink sacs when killed.
+Does not affect the light level, only appearing as if lit up itself.
+Stops glowing for a short time and swims away fast after taking damage.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Dripstone blocks
+
+Can now be crafted from 4 pointed dripstone.
+Signs
+
+Can now be tinted with glow ink sacs to make the text glow.
+Glowing signs do not affect the light level, only appearing as if the text itself is illuminated.
+A new lit block state had been added to indicate whether the sign text is lit up.
+Regular ink sacs can be used to remove the glowing effect.
+Now has sounds for being dyed.
+
+
+=== Gameplay ===
+Death messages
+
+Added unique death messages for dying from falling on a stalagmite.
+"<player> was impaled on a stalagmite" and "<player> was impaled on a stalagmite whilst fighting <entity>".
+Previously, this death would use the generic fall damage death messages.
+Recipe book
+
+The chiseled polished blackstone crafting recipe is now unlocked by having a polished blackstone slab, instead of polished blackstone.
+Subtitles
+
+Changed Lava drips into cauldron to Lava drips into Cauldron.
+Changed Water drips into cauldron to Water drips into Cauldron.
+Changed Shulker bullet explodes to Shulker Bullet explodes.
+Changed Shulker bullet breaks to Shulker Bullet breaks.
+
+
+=== General ===
+Block models
+
+Made the vines block model much simpler.
+Servers
+
+Changed the error message for failing to connect to the authentication servers. Now says they are "not reachable" instead of "down for maintenance".
+Tags
+
+Added glow squid to the axolotl_always_hostiles entity type tag.
+Obfuscation map
+
+Changed the license included in the obfuscation map.
+World selection
+
+Added unique warnings for downgrading a world.
+Languages
+
+Removed the following languages due to incomplete translations:
+Gothic
+Kabyle
+Maori
+Mohawk
+Nuk
+Ojibwe
+Talossan
+Customized world
+
+World height/depth can now be adjusted to a max of Y=-2048 to Y=2031, mountain and cave generation scales accordingly similar to amplified world type.
+
+
+== Fixes ==
+48 issues fixed
+From released versions before 1.17
+
+MC-89087 – Command block GUI takes a brief time to update (output bar shown when disabled, mode buttons in wrong state).
+MC-89880 – Spawner with weight 0 crashes the game.
+MC-91522 – Shulker rendering position desync and generates ghost shulker when destroying shulker-ridden boat or minecart.
+MC-92349 – Players cannot tempt animals with food while other players are closer to the animal.
+MC-92867 – Setting JSON text value to null throws exceptions and crashes.
+MC-96322 – Shulkers are unable to attack from boat.
+MC-99098 – Shulker open and close hitbox is not updated, when they ride boat, minecart or mobs.
+MC-105344 – Shulkers in boats and minecarts do not sit up if previousely attached to blocks sideways.
+MC-108717 – Shulkers cannot be pushed back.
+MC-111196 – Using a monster spawner to spawn shulkers spawns white shulkers.
+MC-113177 – Shulkers cannot be pushed inside non-solid blocks.
+MC-119051 – Random transparent line in shulker box GUI texture.
+MC-121897 – Gaps in an animation's used frames throws ArrayIndexOutOfBoundsException.
+MC-131564 – Models that have locked uv in blockstates ignore texture rotation.
+MC-139265 – Shulkers do not teleport correctly when going through a portal.
+MC-156109 – Turtles do not follow players in Creative mode holding seagrass.
+MC-161334 – Shulker boxes cannot be opened if next to a shulker mob.
+MC-168900 – Shulkers teleport with original dimension coordinates after passing through portals.
+MC-174216 – Shulkers riding a vehicle sometimes appear in the ground after reopening world.
+MC-174876 – Shulker spawn egg spawns shulker inside soul sand, snow layers, farmland, grass path and honey block.
+MC-183067 – Shulkers can push marker armor stands.
+MC-183884 – Shulkers are afraid of being next to another shulker.
+MC-186172 – Shulkers open into blocks when unable to teleport.
+MC-190677 – Shulkers are notaligned to the grid for a split second after being spawned in.
+MC-193386 – Shulkers spawned attached to the groud attaches themselves to a wall after another shulker is spawned.
+MC-194089 – Shulkers at some Y positions refuse to get a Peek value.
+MC-200195 – Boats do not try dismounting the player on land.
+MC-202202 – Servers are unable to prevent a player from dismounting a vehicle, causing a desync.
+MC-203373 – Shulker bullet subtitles are not capitalized correctly.
+MC-203397 – Ceiling vines rotate when other vines are placed in the same block space.
+MC-208639 – Chiseled Blackstone Recipe unlocks when you get polished blackstone, not polished blackstone slab.
+MC-210791 – Dropping an item on a shulker launches the item off.
+From the 1.17 development versions
+
+MC-203571 – Right-clicking an empty bundle sometimes plays hand animation.
+MC-204337 – Bundle use stat never increases.
+MC-205076 – Game mode selection is ordered differently.
+MC-206118 – "type" in loot table number providers is not optional anymore.
+MC-206510 – Game crashes when trying to shift-click a chest into the inventory of a donkey whose chest is being removed.
+MC-206550 – block.pointed_dripstone.drip_[liquid/cauldron] has no subtitles.
+MC-206923 – Dripstone subtitles are not capitalized properly.
+MC-207250 – Dripstone caves biome name is not properly capitalized.
+MC-207254 – Dripstone caves generate merging dripstones in impossible ways.
+MC-207293 – Dripstone generated in dripstone caves can replace lava sources which looks weird.
+MC-207335 – Mobs cannot spawn in dripstone caves.
+MC-207388 – Issues with chunk rendering when height limit is large.
+MC-207900 – Summoning "dust" or "dust_color_transition" particles kicks nearby players when on a server.
+MC-208336 – "player" sub-predicate of "entity_properties" predicate only passes if game mode is specified.
+From the previous development version
+
+MC-208611 – Shulker boxes and bundles duplicate items when destroyed by two fire blocks simultaneously.
+MC-208666 – Shulker boxes and bundles drop their items twice when thrown into a lava cauldron.
+
+
+== Videos ==
+
+
+== See also ==
+Bedrock Edition beta 1.16.210.59
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,234 @@
+1.17 Pre-release 1 (known as 1.17-pre1 in the launcher) is the first pre-release for Java Edition 1.17, released on May 27, 2021, which re-added candles to Survival mode, changed credits and the glowing on signs, added new advancements and splashes, and fixed bugs. This is the first pre-release released in 2021.
+
+
+== Additions ==
+
+
+=== Blocks ===
+Candles
+
+Re-added candles to the creative inventory.
+Candles can be crafted again.
+Potted azalea and potted flowering azalea
+
+Obtained by planting azalea or flowering azalea into a flower pot.
+
+
+=== Command format ===
+/perf
+
+Starts a recording for 10 seconds capturing metrics such as tick durations, used heap sizes and other more detailed stats.
+Executing again before the 10-second limit ends the recording early.
+
+
+=== Gameplay ===
+Advancements
+
+Added eleven new advancements:
+Whatever Floats Your Goat!
+Float in a boat with a goat.
+Wax On
+Apply wax to a copper block.
+Wax Off
+Scrape wax off a copper block.
+The Cutest Predator
+Catch an axolotl in a bucket.
+The Healing Power of Friendship!
+Team up with an axolotl and win a fight.
+Glow and Behold!
+Make a sign glow.
+Light as a Rabbit
+Walk on powder snow with leather boots.
+Surge Protector
+Have lightning strike a lightning rod near a villager without setting the area on fire.
+Is It a Bird?
+Look at a parrot through a spyglass.
+Is It a Balloon?
+Look at a ghast through a spyglass.
+Is It a Plane?
+Look at an ender dragon through a spyglass.
+Adds new advancement triggers.
+started_riding
+Triggered when player starts riding a vehicle or entity starts riding vehicle currently ridden by player.
+lightning_strike
+Triggers for any player on the server when lightning finishes (i.e. entity disappears).
+using_item
+Triggered for every tick of using items (like crossbows, spyglass, fishing rods, etc).
+
+
+=== General ===
+Predicate
+
+Added lightning_bolt sub-predicate.
+Splashes
+
+Added the following splash texts:
+"[this splash text has been delayed until part 2]"
+"Contains simulated goats!"
+"Home-made!"
+"There's <<a cat on ,my keyboard!~" [sic]
+"The cutest predator you'll ever meet!"
+"Now you are thinking with pistons!"
+"Get to the coppah!"
+"Board game version also available!"
+"Honey, I waxed the copper!"
+"Plant-based light sources!"
+"Made by "real" people!"
+Tags
+
+Added lava_pool_stone_replaceables block tag.
+Includes the #features_cannot_replace block tag and the #leaves block tag.
+Added geode_invalid_blocks block tag.
+Includes bedrock, water, lava, ice, packed ice, and blue ice.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Candles
+
+Candles now have a different texture when lit.
+Signs
+
+Glowing text on signs now has an outer glow, making text in dark colors more visible in the dark.
+
+
+=== Items ===
+Big dripleaf and small dripleaf
+
+Changed the held item models in the player's right hand.
+
+
+=== Command format ===
+/debug
+
+Removes debug report command.
+Replaced by F3 + L and /perf.
+
+
+=== Gameplay ===
+Advancements
+
+Added source condition to effects_changed trigger.
+Crafting
+
+It is now no longer possible to craft suspicious stew using flowering azalea or flowering azalea leaves.
+
+
+=== General ===
+Credits
+
+Updated the credits, which were brought over from Bedrock Edition; as a result, the credits are significantly longer, as they include people and corporations that did not work on Java Edition.
+Changed the format from .txt to .json.
+Now scroll faster when holding Space.
+Predicate
+
+Added passenger, stepping_on and lightning_bolt properties to entity_properties predicate
+Added looking_at (entity currently viewed by player) condition to player sub-predicate.
+Expanded item field on item predicate to items.
+Now accepts an array of item types.
+Expanded block field on block predicate to blocks.
+Now accepts an array of block types.
+Splashes
+
+Removed "Woo, /v/!"
+Tags
+
+Added flowering azalea and flowering azalea leaves to the flowers block and item tags.
+Removed flowering azalea and flowering azalea leaves from the small_flowers block and item tags.
+This prevents endermen from picking up these blocks, as well as crafting suspicious stew with them.
+Removed moss carpet from the mineable/axe block tag.
+Added potted azalea bushes and potted flowering azaleas bushes to the flower_pots block tag.
+Added non-waxed oxidized copper variants to the needs_stone_tool block tag.
+
+
+== Fixes ==
+64 issues fixed
+From released versions before 1.17
+
+MC-19690 – Reducing maxHealth / max_health can cause fake death.
+MC-65587 – Lag spike while loading player head textures/player skins.
+MC-99680 – Heart jittering effect doesn't take absorption into account.
+MC-104897 – End crystals placed on exit portals generated before 1.9 do not respawn the ender dragon.
+MC-118757 – Increasing Game State Rain Level values make the game increasingly laggier and distorts UI.
+MC-130523 – Void World spawns you at y=0 even if you entered 64 air blocks in customization.
+MC-148809 – Structure block data length limited to 12.
+MC-163945 – Intersecting structures can create corrupted block entities (spawner / chest).
+MC-189336 – ⇧ Shifting around servers in the server list crashes the game (ArrayIndexOutOfBoundsException).
+MC-190952 – Apostrophe in "Developers of Mo' Creatures" heading is inconsistent with other apostrophes in credits.
+MC-192889 – When placing certain heads or putting them in entities' head slot the game stutters.
+MC-197942 – Leaves change to stone near Lava Pool (Recurrence of MC-48340).
+MC-198957 – End Portal Frames change to Stone near Lava Pool.
+MC-202249 – Angering passive mobs in new nether chunks very far away from previously generated chunks, then entering a nether portal causes server to completely freeze.
+MC-203131 – Setting the weight in Template Pool to high values will lag world and can cause out of memory error.
+MC-209819 – Server crash when pathfinding to player that is teleporting away.
+MC-213062 – A ruined portal generated in an end portal.
+MC-218112 – SynchedEntityData is using locks incorrectly.
+MC-218972 – The glowing effect outline omits parts of entities if the entity is invisible.
+MC-224778 – Game crashes when there is a block with no facing block state in #wall_corals and a warm ocean tries to generate.
+From the 1.17 development versions
+
+MC-203558 – Lighting a candle is sometimes delayed.
+MC-203661 – Flowing liquids look very dark through tinted glass.
+MC-203704 – Candles don't show flame animations when particles are set to "Minimal".
+MC-204649 – Amethyst blocks don't make chime sounds when walked on by certain mobs.
+MC-205035 – Powder Snow Bucket is not grouped with Snowball or buckets in creative inventory.
+MC-208604 – While the mainhand is empty and there's a loaded crossbow in the offhand, the mainhand will appear invisible.
+MC-211601 – Entities are loaded after scheduled ticks are processed causing detector rails, pressure plates, etc. to turn off.
+MC-212142 – Applying glow ink on signs doesn't render the text bright without also having applied a custom color.
+MC-212146 – Glow lichen can generate floating inside underground structures.
+MC-212207 – Geodes generating inside icebergs.
+MC-213799 – Dripleaf isn't properly held in the player's hand.
+MC-214057 – Entities no longer showing flame animation when in water/lava at the same time.
+MC-214636 – Small dripleaf leafs can overlap each other and cause z-fighting.
+MC-214684 – Azaleas cannot be placed in flower pots.
+MC-216276 – Lava pools break bedrock with custom world generation.
+MC-218831 – Lots of missing shaders in the game assets.
+MC-219762 – More performant noise blending algorithm in BlendedNoise.
+MC-221554 – When searching, the goat spawn egg appears in the middle of the different boat types.
+MC-221819 – Inconsistency: Enderman is able to pick up flowering azalea leaves, while unable to hold other types of leaves.
+MC-221820 – Inconsistency: Enderman is able to pick up flowering azalea, while unable to hold normal azalea bush.
+MC-223021 – glShaderSource fails on some AMD drivers resulting in a crash on 1.17.
+MC-223843 – Mycelium inside enderman_holdable.json twice.
+MC-224159 – Absorbtion hearts don't have the wither heart effect.
+MC-224349 – Attempting to save multiple debug profiles during the same second fails to properly save all but the first profile.
+MC-224445 – Reloading resource packs with fabulous graphics causes screen to become black, after a few times causes crash for AMD drivers.
+MC-224861 – Falling blocks disappear for a moment when landing.
+MC-224862 – Azalea and Flowering Azaleas can take bone meal despite being on clay.
+MC-225010 – Closing the inventory in creative mode while having an item on the cursor turns it into a ghost item.
+MC-225129 – Players do not despawn until they respawn.
+MC-225193 – Goats will attempt to ram entities that are outside of the world border.
+MC-225315 – Selected text on signs blinks.
+MC-225404 – The axe is still an appropriate tool for moss carpets.
+MC-225722 – java.lang.IllegalArgumentException: bound must be positive.
+MC-225773 – Axolotls can make ambient noises when they're playing dead.
+MC-226192 – Crash upon attempting to create a new scoreboard objective: java.lang.NullPointerException: Cannot invoke "String.toLowerCase(java.util.Locale)" because "â˜ƒ" is null.
+From the previous development version
+
+MC-225843 – Snow layers can still generate floating over lakes.
+MC-225850 – Grass, tall grass, flower, double flower, fern, large fern and tree can generate on sand or gravel.
+MC-225853 – Minecraft sometimes crashes when trying to start 21w20a for the first time.
+MC-225895 – Floating grass can still generate above lava lakes.
+MC-225916 – Non-waxed oxidized copper blocks don't require at least stone tier to be mined.
+MC-225919 – Coal Ore from fossils can generate through bedrock.
+MC-225929 – Item statistic sorting not functioning.
+MC-225978 – Non-waxed weathered copper blocks appear twice in needs_stone_tool.json.
+Private issues
+
+MC-213869 – Ender dragon's death animation resets when the chunk it is in is reloaded.
+
+
+== Videos ==
+
+
+== Gallery ==
+
+
+== References ==
+
+
+== Notes ==
+
+
+== Navigation ==

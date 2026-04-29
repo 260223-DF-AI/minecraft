@@ -1,0 +1,180 @@
+14w31a is the forty-first snapshot released for Java Edition 1.8, released on July 30, 2014.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Banners
+
+Added missing upward gradient and right solid half patterns, upside-down diagonal halves, bottom half, and right half.
+Changed the name of existing patterns according to Vexillology.
+Can be used as fuel in furnaces.
+Cobblestone stairs
+
+Renamed "Stone Stairs" to "Cobblestone Stairs".
+Daylight sensors
+
+Can be inverted with a right click.
+Reaches full strength at the opposite time than it would when set to normal.
+This can allow for a light that turns on at night rather than day without the need of a NOT gate.
+Ladders & melons
+
+Mined faster using axes.
+
+
+=== Items ===
+Maps
+
+Zoomed maps now snap to a grid rather than being centered on the original map.
+
+
+=== Mobs ===
+Rabbits
+
+Now take fall damage.
+Now have sounds.
+Have 'hurt', 'death', 'hop', and 'idle' sounds.
+The 'hop' and 'idle' sounds are barely audible.
+Changed model.
+Added tail.
+
+
+=== World generation ===
+World border
+
+The time parameter of the world border size changing can now be larger.
+Only players get damage outside of the world border.
+
+
+=== Command format ===
+/debug
+
+Can now be run in single player.
+New arguments for debug /debug <start|stop|chunk> [<x> <y> <z>].
+x/y/z are required and valid only for chunk mode.
+May be removed, as the command was supposed to be dev only.
+
+
+=== Gameplay ===
+Inventory
+
+Items which have been renamed have their tooltips displayed as italic when highlighted, rather than just being straight.
+Trading
+
+Clerics now sell bottles o' enchanting, prices range from 3 to 11 emeralds each.
+
+
+=== General ===
+Optimizations
+
+Threaded mob pathfinding.
+More optimizations.​[more information needed]
+
+
+== Fixes ==
+88 issues fixed
+From released versions before 1.8
+
+MC-129 – Chunks not loading surface, revealing caves, etc.
+MC-1831 – Incorrect fire charge noise.
+MC-2053 – Inconsistent door texture.
+MC-2071 – Pausing the game or opening any GUI in a nether portal does not work.
+MC-3100 – Stone stairs are named incorrectly. They should be called cobblestone stairs.
+MC-5206 – Renamed items' name isn't shown in italic or colored on item switching.
+MC-5585 – The Ender dragon is not affected by the sharpness and power enchantment.
+MC-5991 – Hoppers use wood sounds for placing/breaking.
+MC-6773 – Renaming a slime or magma cube, once it splits it no longer has its custom name.
+MC-7443 – Temporary floating minecart by pistons.
+MC-7807 – Thrown eggs look like snowballs when hitting something.
+MC-9275 – TNT is not ignited when right-clicked by a fire charge.
+MC-9406 – Underwater effect on held item at high aspect ratios.
+MC-9664 – Blaze / ghast fireballs can make fire with MobGriefing off.
+MC-9806 – No name color when using /say.
+MC-11651 – UTF-8 domaine name support.
+MC-15084 – Leads not dropping when a leashed mob is killed.
+MC-15707 – Wild and hostile wolves can be leashed.
+MC-17035 – Can teleport dead and unrespawned player.
+MC-17047 – Placing heads doesn't cause block updates.
+MC-19702 – Wither armor has wrong texture.
+MC-24778 – Opening and closing sound bug.
+MC-29518 – "stat.damageTaken" and "stat.damageDealt" track # of hits vs # of hp damage.
+MC-29559 – 2 block tall grass/fern does not produce seeds when broken.
+MC-30589 – Item frame only drops item upon explosion.
+MC-33558 – Agro tags don't work with neutral mobs that have new AI.
+MC-35617 – Cactus has incorrect inventory image.
+MC-36639 – Zoomed out maps do not properly align.
+MC-37661 – DataTag parsing/escaping issue.
+MC-39825 – Floating anvil using TNT.
+MC-43010 – Non-standard texture resolutions cause rendering errors with mipmap.
+MC-44597 – Unable to play unknown soundEvent: minecraft:mob:witch.idle.
+MC-50176 – Asterisk as name for score chat component not effective as translatable argument.
+MC-51655 – Ladders don't break faster with an axe.
+MC-53215 – TNT destruction nerfed.
+MC-54584 – Crash when creating an item with an AttributeModifier with an Operation of > 2.
+MC-58322 – Connecting to server that uses resource pack displays "Texture pack".
+MC-64287 – Incorrect display for Failed to Login screen.
+MC-64851 – Getting off of Horse while jumping makes a player fly (In Creative).
+MC-65060 – Heads glitch.
+From the 1.8 development versions
+
+MC-44413 – Villagers no longer trade xp bottles with the player.
+MC-46051 – Item frame block/item entities are lit incorrectly.
+MC-46365 – Server crash when pushing villager through Nether portal.
+MC-46460 – Spectators show burning effect in lava.
+MC-46470 – Flying through water in spectator mode plays the splashing sound.
+MC-47878 – /spreadplayers not working with entities.
+MC-48294 – Items a player holding go black when players walk on soul sand.
+MC-48372 – Crash when using /clone on complex structure (command block and pulser).
+MC-48538 – Monsters can spawn on barriers.
+MC-49305 – Server scoreboard "36>16" bug.
+MC-49580 – Swimming in water causes held items to "darken".
+MC-49590 – stat.damageTaken bug.
+MC-50176 – Asterisk as name for score chat component not effective as translatable argument.
+MC-50572 – Upward facing droppers/dispensers only shoot items west.
+MC-51754 – Fully grown cocoa beans only drop 1 item when wood log they're attached to is retracted.
+MC-53430 – when /gamerule randomTickSpeed is typed in gives wrong tab completion.
+MC-53638 – Pigs spawned inside gravel, invisible on layer 256.
+MC-55191 – /clone, /fill, and /setblock do not set blocks outside world border.
+MC-55253 – The new {selector:"@…"} tellraw feature fails on failing selectors.
+MC-57159 – 2d rendered objects (tall grass, plants, fire, etc) are darker on one side.
+MC-57524 – Nether portals don't generate or generate unlit.
+MC-57861 – Projectiles going north or south appear sideways.
+MC-58524 – Using shears on double fern results in pink and black box in inventory. When placing said box on dirt, player would get dead grass *(i.e. desert).
+MC-58838 – Breaking an active jukebox doesn't destroy the block.
+MC-58985 – Blocks pushed by pistons above Y=256 are deleted.
+MC-59043 – Using "Pick Block" on lapis lazuli ore creates missing texture.
+MC-59472 – Item frames drop as an item when not supported by block even when game rules say not to.
+MC-59556 – Wearing a skull loses its name.
+MC-59602 – Hoppers can't take water bucket out of furnace.
+MC-59845 – Rabbits do not take damage from falling.
+MC-59962 – Rabbits have no sounds.
+MC-60306 – Rabbit foot in incorrect creative tab.
+MC-60331 – Pie chart debug menu doesn't disappear in F1 mode.
+MC-61794 – Damaged anvils are placed as undamaged ones.
+MC-62972 – Hoppers doesn't take empty bucket from furnace.
+MC-63026 – Spectator gamemode (gamemode 3) is useless underground.
+MC-63157 – Fishing rod/carrot on a stick not held correctly/line not attached to pole.
+MC-63310 – Several mirror banner crafting recipes not in game.
+MC-63357 – Sleeping in bed underground and saw sky.
+MC-63592 – /replaceitem not working twice.
+MC-63735 – Natural world border 14w30b (30000000 block).
+From the previous development version
+
+MC-63492 – Guardians deal damage when hit with TNT.
+MC-63506 – Hopper: java.lang.ArrayIndexOutOfBoundsException: -1.
+MC-63507 – Clicking 'Snooper Settings' crashes Minecraft.
+MC-63595 – Endermen get angry when hit in Creative.
+MC-63785 – comparator_unlit has invalid cullface.
+MC-64362 – Anvil durability is restored when anvil is broken and placed back down.
+MC-64395 – Tamed rabbits would teleport to the player as wolves and cats.
+
+
+== Trivia ==
+14w31a was previously removed from the launcher for some time, but was added back in September 2018.
+
+
+== References ==
+
+
+== Navigation ==

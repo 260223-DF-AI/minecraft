@@ -1,0 +1,184 @@
+24w10a is the eleventh snapshot for Java Edition 1.20.5, released on March 6, 2024, which adds eight new wolf variants found in different biomes, simplified forms for item stack components, updated inventory slot names, allows item components in recipes, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Mobs ===
+Wolf
+
+Added variants of wolves.
+ The familiar pale wolf now spawns in taigas.
+ The rusty wolf spawns in sparse jungles.
+ The spotted wolf spawns in savanna plateaus.
+ The black wolf spawns in old growth pine taiga.
+ The striped wolf spawns in wooded badlands.
+ The snowy wolf spawns in groves.
+ The ashen wolf spawns in snowy taigas.
+ The woods wolf spawns in forests.
+ The chestnut wolf spawns in old growth spruce taiga.
+Wolves spawned with a spawn egg spawn as the variant associated with the biome the egg is used in. They default to pale wolf in any other biome.
+
+
+=== General ===
+Entity predicate
+
+Added entity sub-predicate slots, used to check single or multiple slots on any entity.
+For slot ranges, only one slot needs to match for whole entry to pass.
+The field contains a map of slot names (same as ones used in item commands) to item predicate.
+Example:
+
+Inventory
+
+Added new slot names:
+container.*: contains container.0 to container.53.
+hotbar.*: contains hotbar.0 to hotbar.8.
+inventory.*: contains inventory.0 to inventory.26.
+enderchest.*: contains enderchest.0 to enderchest.26.
+villager.*: contains villager.0 to villager.7.
+horse.*: contains horse.0 to horse.14.
+weapon.*: contains weapon.mainhand and weapon.offhand.
+armor.*: contains armor.head, armor.chest, armor.legs, armor.feed, and armor.body.
+player.cursor: item held by player on screen except Creative mode.
+player.crafting.0, player.crafting.1, player.crafting.2, player.crafting.3, and player.crafting.*: player's crafting slots.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Grindstone
+
+No longer accepts items with [NBT Compound / JSON Object] unbreakable component that do not have an enchantment.
+If the item above has durability, it can be repaired with an unbreakable item and the output doesn't inherit [NBT Compound / JSON Object] unbreakable component. If the order is swapped, the item is neither repaired nor disenchanted. If the only item in the slots is an enchanted unbreakable item, it is disenchanted and [NBT Compound / JSON Object] unbreakable component remains.
+No longer disenchants two enchanted books at the same time.
+Player head
+
+Now stores item name in custom_name tag.
+Tags SkullOwner and ExtraType are replaced with profile to keep a consistent format with the item component form.
+
+
+=== Items ===
+General
+
+Now count is stored again when there is only 1 item.
+Defaults to 1 if this field is invalid.
+
+
+=== Mobs ===
+Wolf
+
+Now spawns on coarse dirt and podzol blocks.
+Now spawns in sparse jungle, savanna plateau, and wooded badlands biomes.
+
+
+=== World generation ===
+Grove
+
+Rabbits, wolves, and foxes are now the only passive mobs spawning in the grove biome.
+
+
+=== Command formats ===
+/execute
+
+if and unless sub-commands can now use items to compare or count items.
+execute if|unless items <source> <slots> <item_predicate>
+<source> is the same one as used in /item.
+e.g. block <x> <y> <z> or entity <target> (selector can return multiple entities)
+<slots> can accept single slot (like container.0) or a range (like container.*)
+<item_predicate> is the same as item predicate in /clear command.
+If used alone, it returns total number of items in stacks that match predicates.
+
+
+=== General ===
+Data packs
+
+The data pack version is now 34.
+Banner patterns are now be loaded into the registry from data/<namespace>/banner_pattern/<id>
+
+Item stack components
+
+[String][NBT Compound / JSON Object] profile no longer requires [String] name field.
+Some additional item stack components now support alternative, simple definitions:
+[NBT Compound / JSON Object] profile can now be defined as [String] profile for a player name. e.g. profile="jeb_".
+[NBT Compound / JSON Object] dyed_color can now be defined as [Int] dyed_color. e.g. dyed_color=16711680.
+[NBT Compound / JSON Object] attribute_modifiers can now be defined as [NBT List / JSON Array] attribute_modifiers. e.g. attribute_modifiers=[{type:'generic.scale',uuid:[1,2,3,4],name:'Big!',amount:1.0,operation:'add_multiplied_base'}].
+[NBT Compound / JSON Object] potion_contents can now be defined as a single potion id [String] potion_contents. e.g. potion_contents="invisibility".
+[NBT Compound / JSON Object] enchantments and [NBT Compound / JSON Object] stored_enchantments can be defined as an inline map of enchantment id to level: enchantments={sharpness:1}.
+When stored, they still are in full formats.
+[NBT Compound / JSON Object] container now applies to all containers instead of only shulker boxes.
+[NBT Compound / JSON Object] lodestone_target is renamed to [NBT Compound / JSON Object] lodestone_tracker.
+[Int Array] pos and [String] dimension are now moved to [NBT Compound / JSON Object] target (optional).
+When [NBT Compound / JSON Object] target does not exist, the compass spins.
+[NBT List / JSON Array] lore and [NBT List / JSON Array] fireworks/explosions now allows 256 entities.
+Items with [NBT Compound / JSON Object] can_break and [NBT Compound / JSON Object] can_place_on can now be stacked properly.
+Recipe
+
+Can now specify item component.
+[NBT Compound / JSON Object] result field for crafting_shaped, crafting_shapeless, stonecutting, and smithing_transform now accepts [NBT Compound / JSON Object] components.
+[String] result field for smelting, blasting, smoking, and campfire_cooking recipes are now an item stack without count. That is, [String] id must be specified and [NBT Compound / JSON Object] components is now accepted.
+Tags
+
+Added coarse_dirt and podzol to #wolves_spawnable_on.
+Tooltip
+
+No longer appears when hovering outside the containing element.
+
+
+== Experimental ==
+
+
+=== Changes ===
+Vault
+
+The left pixels in the disabled vault have been updated to match the other vault textures.
+
+
+== Fixes ==
+31 issues fixed
+From released versions before 1.20
+
+MC-131636 – One additional character at the end is allowed in JSON text components.
+MC-140397 – When combining two enchanted unbreakable items, the result will be two stacked items.
+MC-157133 – Enchanted books with curses can be stacked using a grindstone.
+MC-167324 – Multiple UI buttons can be highlighted at the same time.
+MC-174496 – Player heads lose their name after being placed.
+MC-187746 – Game rule buttons on "Edit game rules" screen are highlighted despite being covered.
+MC-217084 – Player head NBT "ExtraType" is no longer saved but doesn't use DataFixerUpper upgrade path.
+From the 1.20.5 development versions
+
+MC-268392 – Setting gravity attribute to 0.0 kicks player for flying.
+MC-268462 – Saturation suspicious stew now grants 7 seconds of effect instead of 7 ticks.
+From the previous development version
+
+MC-268800 – All tools have 4 attack damage, and 1.6 attack speed.
+MC-268801 – Shulker boxes in saved hotbars inconsistently update to item components.
+MC-268813 – Crash when spawning item with can_break/can_place_on component containing unknown/invalid tag.
+MC-268824 – Disenchanted books from grindstone don't stack with books that were in the inventory.
+MC-268830 – Effect particles appear when specifying no particles using /effect command.
+MC-268834 – Vault texture is inconsistent.
+MC-268842 – Crash when saving world with painting/on wandering trader spawn/when pressing escape.
+MC-268845 – Items with can_break/can_place_on components update every time the inventory is changed in Creative mode.
+MC-268850 – Attribute modifier: Not updated when switching items in hotbar.
+MC-268851 – Crossbows don't make a firing sound.
+MC-268853 – Unable to load paintings for any variants.
+MC-268856 – Loading shulker box/bundle with a single 'invalid' item in it renders the whole component invalid.
+MC-268864 – An item modifier with a duplicate item stack component prevents the entire data pack from (re)loading, rather than ignoring that one specific item modifier.
+MC-268879 – Having a high damage value breaks and crashes the game.
+MC-268897 – Cannot select entities who have any item stack with the count being 1.
+MC-268904 – Suspicious stew not giving effects.
+MC-268921 – Arrows lose particles after unloading world.
+MC-268971 – Lodestone compass stops being a lodestone compass after breaking its tracked lodestone.
+MC-269005 – Player heads from previous versions cause game crash and/or are converted incorrectly.
+MC-269062 – Bundles with "Bundle Contents" component removed return after right clicking.
+MC-269066 – Item modifier cannot remove `custom_name`.
+MC-269091 – AttributeModifiers NBT with missing fields is not upgraded correctly to components.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

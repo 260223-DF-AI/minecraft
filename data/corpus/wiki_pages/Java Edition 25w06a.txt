@@ -1,0 +1,220 @@
+25w06a is the fifth snapshot for Java Edition 1.21.5, released on February 5, 2025, which adds cactus flowers, short and tall dry grass, new chicken variants and fixes bugs.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Cactus flower
+
+A new type of flower which has a chance of generating on cacti in deserts and badlands.
+Can be placed on cactus blocks or any block which has center support at the top of the block.
+Has a chance of growing on cactus blocks.
+If a cactus is one or two blocks high the flower has a 10% chance to grow instead of the cactus getting higher.
+If a cactus is three blocks or higher the flower has a 25% chance to grow.
+Cactus flowers will only grow if they have space on all four sides.
+Can be mined without any tool.
+Can be used in the composter, with a 30% chance to add a layer.
+Can be used to craft 1 pink dye.
+
+ Short dry grass 
+
+Is one block high.
+Generates in the desert and badlands.
+Can be placed on types of sand, terracotta and dirt blocks like the dead bush.
+Can be obtained using shears or a Silk Touch tool.
+Can be bone mealed.
+Using bone meal on short dry grass grows it into a tall dry grass.
+Can be used in the composter, with a 30% chance to add a layer.
+Sheep can eat short dry grass to regrow its wool.
+Can be used as fuel for smelting, where they smelt half an item.
+ Tall dry grass
+
+Is one block high.
+Generates in the desert and badlands.
+Can be placed on types of sand, terracotta and dirt blocks like the dead bush.
+Can be obtained using shears or a Silk Touch tool.
+Can be bone mealed.
+Using bone meal on tall dry grass places a neighbouring short dry grass next to the block if possible.
+Can be used in the composter, with a 30% chance to add a layer.
+Sheep can eat tall dry grass to regrow its wool.
+Can be used as fuel for smelting, where they smelt half an item.
+
+
+=== Items ===
+ Blue egg
+
+A variant of the egg laid by the cold chicken variant.
+Spawns the cold chicken variant when hatched.
+ Brown egg
+
+A variant of the egg laid by the warm chicken variant.
+Spawns the warm chicken variant when hatched.
+
+
+=== Mobs ===
+ Chicken
+
+New Chicken variants have been added.
+Temperate Chicken: The pre-existing chicken variant.
+Spawns by default where the cold and warm chicken variants do not spawn.
+Cold Chicken: A variant that spawns in the following biomes:
+Old Growth Pine Taiga
+Old Growth Spruce Taiga
+Taiga
+Snowy Taiga
+Windswept Hills
+Windswept Gravelly Hills
+Windswept Forest
+Warm Chicken: A variant that spawns in the following biomes:
+Savanna
+Savanna Plateau
+Windswept Savanna
+Jungle
+Sparse Jungle
+Bamboo Jungle
+Eroded Badlands
+Wooded Badlands
+Badlands
+When bred by a player, a baby chicken variant will not be chosen by the current biome, but instead randomly selected from one of the parents' variants.
+
+
+=== General ===
+Game rule
+
+Added the allowFireTicksAwayFromPlayer game rule.
+Default value: false.
+When true, Fire and Lava ticks can occur outside of an 8 chunk range of a player.
+Tag
+
+Added the #edible_for_sheep block tag.
+Contains blocks that can be eaten by sheep to regrow their wool.
+Added the #eggs item tag.
+Contains all variants of the egg item.
+
+
+== Changes ==
+
+
+=== Blocks ===
+ Bush
+
+The hitbox now reaches all the way to the ground.
+No longer prevents trees from growing.
+Fire
+
+Will no longer burn or spread if no player is within 8 chunks.
+Firefly bush
+
+Conditions for the firefly bush playing ambient sounds have changed. It now plays when all of the following conditions are met:
+The firefly bush is not blocked from above by any collidable block (except leaves).
+It is nighttime.
+No longer prevents trees from growing.
+Leaf litter
+
+Can now be placed on any block which has center support at the top of the block.
+Now have a more appropriate color on maps.
+General
+
+Any block in the simulation distance of a player or loaded by another source of chunk loading (such as ender pearls) may now receive random ticks, instead of just 8 chunks around players.
+For example: if a chunk is loaded by an ender pearl or is in the spawn chunks, crops are able to grow, ice can melt, snow can fall, and a cauldron can be filled by rain.
+Mob spawning, lava spreading fire, and lightning strikes still occur in the previous radius of 8 chunks around players.
+
+
+=== Items ===
+Cakes and pumpkin pies
+
+Can now be crafted using blue eggs or brown eggs.
+
+
+=== Mobs ===
+Bees
+
+Are now attracted to, and can be bred using cactus flowers.
+
+
+=== World generation ===
+Villages
+
+Pigs and cows spawned in desert villages are now of the warm variant.
+
+
+=== Gameplay ===
+Advancements
+
+The "Country Lode, Take Me Home" advancement has been moved from the Nether category to the Adventure category.
+
+
+=== General ===
+Data pack
+
+The pack format version is now 66.
+Entity data
+
+The armor and off-hand equipment of players is now also stored in the equipment field.
+Although items written into the Inventory using armor and off-hand slot numbers still work.
+Entity variant components
+
+Chicken variants can be data-driven adding entries to data/<namespace>/chicken_variant/<id>.json.
+This feature is experimental.
+Fields in file:
+model - one of: normal, cold.
+asset_id - namespaced id for this variant asset, resolves to assets/<namespace>/textures/<path>.png.
+spawn_conditions - field described in uniform variant selection above.
+Resource pack
+
+The pack format version is now 51.
+Added new textures for chicken variants:
+cold_chicken
+warm_chicken
+The texture chicken has been renamed to temperate_chicken.
+The temperate_chicken texture has been moved to a new folder:
+entity/chicken.png -> entity/chicken/temperate_chicken.png
+Tag
+
+The #dead_bush_may_place_on block tag has been renamed to #dry_vegetation_may_place_on.
+Added cactus_flower to the #bee_attractive, and #flowers block tags, and the #bee_food item tag.
+Added bush, firefly_bush, short_dry_grass, and tall_dry_grass to the #replaceable_by_mushrooms, and #replaceable_by_trees block tags.
+Added short_dry_grass, and tall_dry_grass to the #replaceable block tag.
+Added many biomes to the #spawns_cold_variant_farm_animals, and #spawns_warm_variant_farm_animals biome tags.
+Tooltip
+
+Tooltips for fireworks and crossbows now show a compact form of multiple repeated stars or projectiles that are identical.
+
+
+== Fixes ==
+19 issues fixed
+From released versions before 1.21
+
+MC-157196 – Tamed animals cannot be added to a team.
+MC-186241 – World border faces are rendered incorrectly with "Fabulous!" graphics.
+From the 1.21.5 development versions
+
+MC-279205 – Leaf litter map color is incorrect.
+MC-279207 – Leaf Litter can only be placed on dirt-like blocks.
+MC-279223 – Country Lode Take Me Home Advancement can be completed in the overworld but is still listed as a Nether advancement.
+MC-279235 – Certain farm animals are not spawned as their cold variant in some cold biomes due to an incomplete tag.
+MC-279242 – Kelp, twisting vines, weeping vines, and cave vines can no longer be stacked above or below one another by placing.
+MC-279261 – Making a mob its own owner causes persistent crashes.
+MC-279279 – Dismounting places player in same space as mount.
+MC-279292 – Pigs spawn as temperate in desert villages.
+MC-279309 – Wildflowers item has a misplaced transparent pixel.
+MC-279464 – Fire placed with /setblock doesn't tick/burn out.
+MC-279719 – Tooltip description for saddle attribute modifier slot is not translated.
+From the previous development version
+
+MC-279912 – You can use bone meal on bushes in situations where nothing grows.
+MC-279914 – The hitboxes of bushes don't reach the ground and are too wide compared to other similar blocks.
+MC-279924 – Bushes cannot be replaced by trees or mushrooms.
+MC-279933 – Firefly bushes cannot be replaced by trees or mushrooms.
+MC-279950 – Modifying command data storage throws an error.
+MC-279972 – Using /setblock & /fill with fluids of levels at a non-full-block no longer updates the fluid.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

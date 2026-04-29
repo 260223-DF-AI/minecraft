@@ -1,0 +1,153 @@
+The player head is a block based on the head of a player's skin (Steve by default). Player heads cannot be obtained in Survival.
+
+
+== Obtaining ==
+The player head can be obtained only by using Creative inventory, picking block or executing /give.
+
+
+=== Breaking ===
+No tool can accelerate the breaking process of player head.
+
+Player head drops itself when it's destroyed.
+When destroyed by an explosion, the player head always drops as an item.
+
+
+== Usage ==
+
+
+=== Decoration ===
+Player heads can be oriented in 16 different directions when placed on top of a block, and in 4 directions when placed on the sides of blocks, similar to signs. They can be placed either on top of or beside blocks by shift-clicking.
+
+
+=== Wearing ===
+The player can wear player heads, similarly to pumpkins or helmets. This overlays the second layer of the player's skin.
+
+
+=== Dispensers ===
+A dispenser can equip a player head on a player, mob, or armor stand with an empty helmet slot, within the block the dispenser is facing.
+
+
+=== Enchantments ===
+Player heads can receive the following enchantments, but only through an anvil.
+
+
+=== Piston interactivity ===
+Player head is destroyed when the piston tries to push it. It can't be pulled by the sticky piston.
+
+
+== Player skins ==
+
+Player heads can be given NBT data so that they appear with the skin of any Minecraft account. This means if a player knows that a specific account has a head that is desired to display, the NBT data can be edited to make it appear. Commonly, this kind of head is called a custom head.
+The command to give the player a head with the skin of another player is /give @s minecraft:player_head[minecraft:profile={name:PlayerName}]. This command will give a dynamic player head, which will update when the player updates their skin. A static player head instead saves the skin of the player from the time it was created, meaning if the player changes their skin, the head still displays the original texture. The command to get a static player is twofold: first type /fetchprofile name PlayerName, then click on the "Give Item" option to give yourself a static player head of the player named.
+Note that it is therefore necessary to be connected to the internet to load the texture of a skin, whatever the property used.
+When they are loaded for the first time by the client, the skins textures are cached in .minecraft\assets\skins\(subfolders)\(files).
+If the client does not have access to the internet when it first loads, the player's head displays a regular head (Steve's skin) which is also cached.
+Afterward, even if the client reconnects to the internet, in order to display the skin correctly, it is necessary to clear the cache manually by deleting the recently created files in .minecraft\assets\skins\(subfolder), then restarting the game.
+
+
+=== Marc's Head Format ===
+
+Marc Watson created a number of accounts with specific skins so map makers could use common player heads without the risk of someone changing their skins. Nowadays, since heads do not update the skin if a player changes their skin, this is not something map-makers need to worry about, though these skins are still useful. These accounts have names in the format MHF_<name>, for example MHF_PigZombie is the name of a Minecraft user with a zombified piglin head. MHF stands for "Marc's Head Format". There are also a few blocks and "bonus" heads, for more variety. These player heads have not been updated in compliance with the Texture Update, and are outdated.
+Because these are names of player accounts, these player heads are obtained or placed using the minecraft:profile component, for instance: /give @s minecraft:player_head[minecraft:profile=MHF_<name>].
+The following names/heads have been made available:
+
+Mobs
+
+Blocks
+
+Bonus
+
+
+== Sounds ==
+
+
+=== Generic ===
+Java Edition:
+
+Bedrock Edition:
+
+
+=== Unique ===
+Java Edition:
+
+Bedrock Edition:
+
+
+== Data values ==
+
+
+=== ID ===
+Java Edition:
+
+Bedrock Edition:
+
+
+=== Item data ===
+Java Edition:
+
+
+=== Block states ===
+
+Java Edition:
+Floor
+
+Wall
+
+Bedrock Edition:
+
+
+=== Block data ===
+A player head has a block entity associated with it that holds additional data about the block.
+Java Edition:
+
+Bedrock Edition:
+
+See Bedrock Edition level format/Block entity format.
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+=== Legacy Console Edition ===
+
+
+=== New Nintendo 3DS Edition ===
+
+
+=== Data history ===
+
+
+==== Java Edition ====
+
+
+==== Bedrock Edition ====
+
+
+== Issues ==
+Issues relating to "Player Head" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Trivia ==
+When breaking a player head, the particle effect of breaking it is the same as soul sand.
+Despite there being a default Steve head, heads for the other protagonist skins cannot be obtained without using custom names.
+
+
+== Gallery ==
+
+
+=== Screenshots ===
+
+
+=== Development images ===
+
+
+== References ==
+
+
+== Navigation ==

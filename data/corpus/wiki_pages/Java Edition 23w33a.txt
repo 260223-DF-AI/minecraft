@@ -1,0 +1,143 @@
+23w33a is the third snapshot for Java Edition 1.20.2, released on August 17, 2023, which adds skin and name report, changes mob attack reach calculation, and fixes bugs.
+
+
+== Additions ==
+
+
+=== General ===
+Options
+
+Added "Narrator Hotkey" option to accessibility settings, opened by default.
+Pressing Ctrl + B doesn't open narrator if it is turned off.
+options.txt
+
+Added narratorHotkey, defaults to true.
+Social interactions
+
+Player skins and names can now be reported in the social interactions screen.
+Like chat reports, player skin and name reports are handled by a human.
+If a skin or name is reported, and found to be violating the Community Standards, following actions can be take by Minecraft moderators:
+Ban the skin from being used by any player.
+Ban the name from being used by any player.
+Suspend the player from online play in the case of repeated offences.
+When a skin is banned, players with that skin:
+Will have their skin removed.
+Will be notified when they launch the game.
+Will be automatically assigned one of the default skins.
+Can still play multiplayer and singleplayer.
+Can select a new custom skin at any time.
+When a player's name is banned, that player:
+Will need to choose a new name.
+Will be notified when they launch the game.
+Will not be able to play online until they change their name.
+Can still play singleplayer.
+A skin or name that has been banned cannot be used by any player in the future.
+Added following report category:
+I want to report them
+I'm annoyed with them / they have done something I do not like.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Jukebox and tripwire hook
+
+Now uses plank sounds instead of stone.
+Lever, redstone comparator and redstone repeater
+
+Now uses stone sounds instead of plank.
+Sculk sensor
+
+Can now detect armor unequip vibration while in any game mode.
+Sponge and wet sponge
+
+They now have custom sounds.
+
+
+=== Items ===
+Chorus fruit
+
+Now resets fall distance when eating it.
+
+
+=== Mobs ===
+Bee
+
+Can now collect pollen from chorus flower or spore blossom.
+General
+
+Changed mob attack reach calculation.
+In horizontal directions, mobs' attack reach are now their bounding box extended in horizontal directions, instead of using horizontal width to determine.
+For example, a ravager won't be able to attack through a few block thick walls.
+In vertical directions, mobs' attack reach are now the exact vertical range of their bounding box. When there's no overlap between their bounding box and their target's bounding box in vertical direction, they can not attack, in specific:
+Riding a medium-sized mob (e.g. horse) can get rid of attacks from short mobs (e.g. baby zombie).
+Riding a tall mob (e.g. camel) can get rid of attacks from standard size mobs (e.g. zombie).
+Some mob's reaching height is now extended (e.g. enderman, safety height changed from 1.5 to 3).
+
+
+=== General ===
+Data pack
+
+Added decal field to armor trim patterns (default: false).
+If true, the pattern texture is masked based on the underlying armor, as in 23w32a.
+Debug screen
+
+Renamed "Debug" row to "Debug charts", and changed its style.
+"Pie" chart now called "Profiler" chart.
+The charts on the debug screen can now be toggled with the key combinations F3 + 1 (profiler chart), F3 + 2 (FPS and TPS), and F3 + 3 (bandwidth and ping) instead of ⇧ Shift + F3, Alt + F3 and Ctrl + F3.
+Debug screen no longer be closed while switching charts.
+Multiple charts now can appears at the same time, unless it's conflict with each other.
+Current chart layout is kept when debug screen is re-enabled.
+Social interactions
+
+Changed following reporting categories:
+Defamation, impersonation, or false information
+Someone is damaging your or someone else's reputation, pretending to be someone they're not, or for example sharing false information with the aim to exploit or mislead others.
+Imminent harm - Self-harm or suicide
+Someone is threatening to harm themselves in real life or talking about harming themselves in real life.
+Imminent harm - Threat to of harm to others
+Someone is threatening to harm you or someone else in real life.
+Tag
+
+Added chorus_flower and spore_blossom to #flowers block and item tags.
+
+
+== Fixes ==
+23 issues fixed
+From released versions before 1.20
+
+MC-2310 – Wrong attack radius calculation damages/kills entities through blocks and corners.
+MC-96409 – Creepers can't blow up the boat and boat with chest they ride, when it is on the land.
+MC-112133 – Eating chorus fruit does not reset fall distance.
+MC-118616 – The sounds of magma cubes and slimes aren't controlled by the "Hostile Creatures" sound slider.
+MC-122645 – Narrator hotkey cannot be customized or disabled.
+MC-125046 – RepairCost NBT tag is created on any renamed item using anvils which can cause items to not stack properly.
+MC-173643 – Zombies don't attack villager when elevated below them.
+MC-181109 – Grindstone adds RepairCost: 0.
+MC-182820 – Repeaters and comparators use wood sounds for placing/breaking despite being made mostly of stone.
+MC-197473 – Renamed block entities don't stack properly.
+MC-200484 – Jukeboxes use stone sounds despite being composed predominantly of wood.
+MC-214126 – Bees don't pollinate themselves with spore blossoms or chorus flowers.
+MC-217627 – Spore blossoms are not part of the #minecraft:flowers tag.
+MC-217628 – Levers use wood sounds rather than stone.
+MC-217629 – Tripwire hooks use stone sounds, rather than wood.
+MC-227338 – Vindicators have insane range when riding a ravager.
+MC-256652 – Endermen are almost unable to attack Players on a Camel.
+MC-257909 – Zoglins, hoglins, and pandas can still attack players riding camels.
+From the previous development version
+
+MC-264741 – Unequip vibration only works in creative mode.
+MC-264743 – The "Debug" line on the debug screen that shows which debug graphs are enabled doesn't mention the ping and network traffic chart.
+MC-264746 – Armor trims no longer render their second layer.
+MC-264753 – Eye armor trim on chainmail helmets now has absolutely no effect.
+MC-264773 – There's a misplaced label in the network traffic graph, overlapping minimum B/s rate text.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

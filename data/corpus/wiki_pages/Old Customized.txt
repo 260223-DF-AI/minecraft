@@ -1,0 +1,55 @@
+Old Customized (known as Customized prior to 20w21a) was a world type that allowed players to thoroughly customize the terrain generation of the Overworld. The ability to create Old Customized worlds was removed in 18w06a with the rewrite of world generation. A new world type known as Buffet was added to replace it in 18w16a, though the only configurable options were biome and terrain shaping type. A new format for Custom worlds was added in 20w21a.
+
+
+== Customization ==
+
+
+=== Basic settings ===
+There were 18 customization options that affected whether structures generate, among other environmental factors.
+
+
+=== Ore settings ===
+Each of the eleven sections of this page modifies the generation settings for each type of ore. These settings can be used to change the distribution of almost all any ore and mineral type. The only exception is emerald ore, as it generates only in extreme hills biomes, and the blob size is always one block; as its distribution is hard coded, it cannot be changed. The distribution of natural resources in the Nether (Nether quartz ore and magma block) also cannot be changed.
+Apart from the above exceptions, the blob size, number and distribution are set. Here are the default settings:
+
+Notes
+
+
+=== Advanced settings ===
+There are 16 customization options that can be used to affect various aspects of Minecraft's terrain generator. These settings appear on two pages: one with sliders, and one that allows for text input. On the manual text input page, typing in any value lower or higher than the allowed parameter changes the value to the lowest or highest value possible for that customization option. The settings change only the mountains and valleys of the landscape; structures and other environmental factors (which are set on page 1) remain unaffected.
+Minecraft uses noise generators, specifically those making use of Perlin noise to create the randomness of its terrain. Perlin noise is a method for generating noise that transitions smoothly and looks more natural than 'regular' noise.
+The Minecraft world generator uses many Perlin noise functions to generate the surface terrain. Three Perlin noise functions are combined to form the standard hills: a main function (Main Noise), a lower limit (Lower Limit) and a ceiling (Upper Limit). The world generator is calculated for each coordinate (X, Z) by comparing the average value between the lower limit and upper limit to the value of the main function. The base height (Depth Base) determines the separation between the standard hills and valleys and is independent from sea level.
+The default scenery is not seen in the finished world, because each biome has specific properties. Plains are flat, hills have small to medium elevations, extreme mountains are high mountain ranges, oceans have deep valleys, savannas and mesas have low mountains with flat plateaus, etc. Each biome type has an individual biome depth (Biome Depth) and an individual biome factor (Biome Scale) in order to perform the biome specific deformations.
+
+
+=== Presets ===
+
+
+== Videos ==
+
+
+== History ==
+
+
+== Gallery ==
+
+
+=== Screenshots ===
+
+
+== Trivia ==
+The customized world type is based on a Minecraft mod Ryan Holtz made in 2012 called Wedge.
+The following preset can be used to generate a world similar to the Amplified world type:
+{"coordinateScale":684.412,"heightScale":684.412,"lowerLimitScale":512.0,"upperLimitScale":512.0,"depthNoiseScaleX":200.0,"depthNoiseScaleZ":200.0,"depthNoiseScaleExponent":0.5,"mainNoiseScaleX":80.0,"mainNoiseScaleY":160.0,"mainNoiseScaleZ":80.0,"baseSize":8.5,"stretchY":12.0,"biomeDepthWeight":2.0,"biomeDepthOffset":1.0,"biomeScaleWeight":4.0,"biomeScaleOffset":1.0,"seaLevel":63,"useCaves":true,"useDungeons":true,"dungeonChance":8,"useStrongholds":true,"useVillages":true,"useMineShafts":true,"useTemples":true,"useRavines":true,"useWaterLakes":true,"waterLakeChance":4,"useLavaLakes":true,"lavaLakeChance":80,"useLavaOceans":false,"fixedBiome":-1,"biomeSize":4,"riverSize":4,"dirtSize":33,"dirtCount":10,"dirtMinHeight":0,"dirtMaxHeight":256,"gravelSize":33,"gravelCount":8,"gravelMinHeight":0,"gravelMaxHeight":256,"graniteSize":33,"graniteCount":10,"graniteMinHeight":0,"graniteMaxHeight":80,"dioriteSize":33,"dioriteCount":10,"dioriteMinHeight":0,"dioriteMaxHeight":80,"andesiteSize":33,"andesiteCount":10,"andesiteMinHeight":0,"andesiteMaxHeight":80,"coalSize":17,"coalCount":20,"coalMinHeight":0,"coalMaxHeight":128,"ironSize":9,"ironCount":20,"ironMinHeight":0,"ironMaxHeight":64,"goldSize":9,"goldCount":2,"goldMinHeight":0,"goldMaxHeight":32,"redstoneSize":8,"redstoneCount":8,"redstoneMinHeight":0,"redstoneMaxHeight":16,"diamondSize":8,"diamondCount":1,"diamondMinHeight":0,"diamondMaxHeight":16,"lapisSize":7,"lapisCount":1,"lapisCenterHeight":16,"lapisSpread":16}
+If the Far Lands are re-enabled using mods, increasing the "Coordinate Scale" causes them to generate much closer to the origin.
+The Farther Lands generate exactly Main Noise Scale X/Z times further away than the Far Lands do. As they are 80 by default, they generate 80 times further; manually editing the preset text to set it a value lower than 1 can result in them generating before the Far Lands do.
+
+
+== Issues ==
+Issues relating to "Old Customized" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,43 @@
+Bedrock Editor v1.3.5 is a minor release for the Bedrock Editor released on April 21, 2026.
+
+
+== Additions ==
+Added Cherry, Mangrove, Pale Oak, Crimson, and Warped tree types to the Tree Generator sample tool.
+Added Melon as a crop option in the Farm Generator tool.
+Added tooltip with keyboard shortcut information to the Flood Tool "Apply Flood" button.
+Implemented Jigsaw auto-save for changing structure and weight in pool.
+Implemented auto-save for Prefab template layout changing.
+Added Minimap click and hover interactions.
+Added click-to-teleport on the minimap and markers.
+Added hover tooltips showing block, biome, and coordinate info on the minimap, and label info on markers.
+Improved Minimap architecture and added new features.
+Status bar now displays the biome under the cursor.
+Added three new export types to Export Settings (Project Backup, World Template, Shareable World).
+Project Backup: Creates a packaged backup of the current editor project into the archive folder. (.mcproject file)
+World Template: Creates a packaged World Template (.mctemplate) with all Editor settings and metadata removed into the archive folder.
+Shareable World: Creates a packaged playable world (.mcworld) with all Editor settings and metadata removed into the archive folder.
+Added a new flag to Bedrock Dedicated Server to allow converting standard vanilla worlds to an Editor Project when launching BDS as Editor.
+
+
+== Changes ==
+Moved block scanning to a client-driven model with spread-over-frames processing to avoid frame spikes.
+Added marker system with Multiplayer, Location, and Custom marker types.
+Added FollowPlayer and FreeCenter tracking modes.
+Added Y-level control for top-block scanning depth.
+Added client-side block change detection via BlockSourceListener.
+Changed minimap position types from Vec2 to VecXZ.
+Reworked MinimapItem script API with typed marker methods and options-based createMinimap.
+Added comprehensive unit tests for minimap services, cache, and block change tracking.
+
+
+== Fixes ==
+Fixed Flood Tool preview placement and movement not supporting Undo and Redo actions.
+Fixed Flood Tool preview being visually displaced by one block when placed at Y coordinate of 0 or lower.
+Fixed a bug where adding a new Jigsaw collection would cause the selected collection to switch to the last one alphabetically instead of staying on the newly created collection.
+The Line Tool with two control points now respects the maximum allowable distance when moving the second point.
+
+
+== References ==
+
+
+== Navigation ==

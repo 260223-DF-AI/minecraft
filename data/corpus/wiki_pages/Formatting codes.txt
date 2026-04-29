@@ -1,0 +1,121 @@
+Formatting codes (also known as color codes) add color and modifications to text in-game.
+Text in Minecraft can be formatted with the section sign (§). In Bedrock Edition, the section sign can be used in signs, book and quills, anvils and cartography tables (to rename items and maps), the chat input field (including in commands such as /say and /title), and text in resource packs displayed in-game. In Java Edition, section signs may be used in server.properties, pack.mcmeta, splashes.txt, language files, world titles, commands (such as /tellraw and /title) in data packs, and server names. External programs can be used to insert it in other locations.
+
+
+== Usage ==
+Text can be formatted using the section sign (§) followed by a character. A § symbol followed by a hex digit in the message tells the client to switch colors while displaying text. In Bedrock Edition, the § symbol can be used in any text input and resource pack texts, while in Java Edition, it may be used in server.properties, pack.mcmeta, splashes.txt, language files, world titles, commands (such as /tellraw and /title) in datapacks, and server names.
+
+
+=== Java Edition ===
+
+If a color code is used after a formatting code, the formatting code is disabled beyond the color code point. For example, §cX§nY displays as XY, whereas §nX§cY displays as XY. Therefore, when using a color code in tandem with a formatting code, ensure the color code is used first and reuse the formatting code when changing colors. Also, you could put §r§f in an anvil to rename an item as non-italic.
+
+
+=== Bedrock Edition ===
+
+Formatting codes persist after a color code. Furthermore, if an obfuscated code is used and a reset code is not used before the end of the line in server names, the client GUI continues to obfuscate text past the MOTD and into the version number display.
+
+
+=== Color codes ===
+
+Messages sent from the server to the client can contain color codes, which allow the coloring of text for various purposes.
+
+
+=== Formatting codes ===
+
+The random characters placed after §k are always the same width as the original characters. For example, any random character cycled through in place of the letter "m" would be a wide character while any random character in place of the letter "i" would be a narrow character.
+§r resets the styles of following characters; e.g., §nXXX§rYYY displays as XXXYYY, which can be used to remove the default italics formatting when renaming an item in an Anvil.
+
+
+=== Typing ===
+
+To enter "§" on Windows with most US/UK English keyboards type Alt + NUMPAD2NUMPAD1 (alt code on cp437) or Alt + NUMPAD7NUMPAD8NUMPAD9. For any other keyboard, the Windows ANSI version Alt + NUMPAD0NUMPAD1NUMPAD6NUMPAD7 often works.
+If EnableHexNumpad is enabled in the Windows registry, Alt + NUMPAD+ANUMPAD7 (using the main keyboard for "A") works for any language due to it being Unicode.
+On a Mac with a US keyboard, type ⌥ Option + 6 (or ⌥ Option + 5 for US Extended). For any other keyboard, type ⌥ Option + 00a7.
+On Linux with the compose key activated, type Composeso. The symbol can also be typed by using Unicode shortcuts: ⌃ Control + ⇧ Shift + ua7↵ Enter.
+To enter "§" on a Nintendo Switch, select languages (globe icon), scroll to the bottom to find the "Symbols" language, and then select Page 2 to find the symbol to the right in the bottom line.
+For various Android keyboards:
+Google Keyboard (GBoard): The "§" is in the More Symbols section the symbols. To access it, press the Numbers and Symbols button (?123), then press the More Symbols button (=\<). Note that on previous versions of GBoard, it was behind the Paragraph Symbol "¶" in the same position, but they were recently swapped so that now "¶" is behind "§".
+Samsung Keyboard: The "§" is under the "s" key. To access, hold down on the "s" and then slide over to the "§" mark.
+For iOS:
+On the iPad the "§" is under the percent sign. To access, tap the number/symbol button and then swipe down on the percent sign.
+On the iPhone the "§" is under the ampersand "&". To access, tap the number/symbol button then hold down the ampersand key and slide over to the "§" mark.
+For Xbox:
+On the Xbox One the "§" is under the paragraph mark "¶". To access, use , hold down  while on ¶ until other options pop up. Move the cursor over to the "§" mark and use  to select.
+One can also highlight the S key on the standard alphanumeric keyboard, then press and hold  to reveal several "alternate" characters, including "§". This method also works on the Windows 10 version.
+For Nintendo Switch:
+In the bottom left corner of the keyboard is a language button. Tapping it or pressing  on it will open a list of keyboard languages. Scroll down to the bottom and select the "Symbol" keyboard. The "§" character is located on page 2.
+When part of JSON text, the symbol can be written as \u00A7 or \u00a7.
+Alternatively in Bedrock Edition, the character can be copied from this page (§) and pasted into virtually any text field by pressing Ctrl + V (Windows) or ⌘ Command + V (macOS). If pasting does not work it may be necessary to use the JSON format or another method.
+While in chat in Java Edition, usage of this character disconnects the user, even in 'offline' single player mode, and thus cannot be used directly in commands such as /say.
+
+
+=== Sample text ===
+The following text can be pasted into a Book and Quill in Java Edition to produce what is shown in the picture. Strikethrough and colored text appears colored instead in Bedrock Edition.
+
+
+=== Formatting code editor ===
+This tool converts input text into plain text with formatting codes.
+Note: The dice icon highlights text, which, in the real game, will appear as obfuscated text.
+
+
+== Use in server.properties and pack.mcmeta ==
+In order to get a server MOTD colored or formatted, \u00A7 must be used instead of §; for example, §5 would be \u00A75. The full list of them is listed below.
+Colors can be used in conjunction with formatting. The formatting must be done after the color.
+Given that pack.mcmeta files accept text components as descriptions, the usage of § can be replaced by text components with different color and style, though using § still works.
+
+
+=== Compatibility with older versions ===
+Formatting codes can be used in the motd line in a server.properties file, but the section signs must be escaped as \u00A7. If a section sign is entered directly, the server replaces it with \u00C2\u00A7 (Â§); clients display the \u00C2 character as a question mark. Delete the \u00C2 character in the MOTD if it comes with a bunch of question marks: this happens if something is not compatible.
+
+
+== Use in custom language packs ==
+Formatting codes can be used to color names and description in language files by using § then any of the numbers/letters displayed above. This is also used in end.txt and credits.txt. An example of this is §dDiamond to make the name of a diamond appear as Diamond.
+§r cannot be used to remove italics from custom translation tags within language files. For example, if the translation tag "item.example.test": "§rTest Item" is applied to the Name display data of a custom item ({display:{Name:'{translate:"item.example.test"}'}), it still appears as Test Item rather than simply Test Item. This is not true of any other formatting options.
+
+
+== Use in world names ==
+
+In Java Edition, with the help of external tools, such as NBTExplorer, world names can have custom colors and formatting codes. To modify the name, choose the LevelName tag in the world's level.dat. For example, the LevelName tag can be set to §1R§2e§3d§4s§5t§6o§7n§8e §9C§ar§be§ca§dt§ei§fo§1n§2s to make the world name a colorful one.
+Additionally, the player can rename the world's folder to contain the codes. Then, in the world selection menu, the specified colors or effects will appear.
+The player can also use a resource pack with § character(s) already present in the world name, and in this case, when creating a new world, all the player has to do is to change the color codes after the § characters.
+In Bedrock Edition, the player is allowed to use a § inside of the world name when creating the world. This allows for using custom colors and formatting codes inside of the world name without having to modify the game.
+
+
+== Use in server names ==
+
+With the use of a third party tool such as NBTExplorer, server names can have custom colors. To utilize this functionality, select the Name attribute in the servers.dat file inside the .minecraft directory using a third party tool. In the following example, the Name tag is set to
+§4§lMinecraft §6§lServer:
+
+
+== History ==
+
+In early Java Edition Classic versions, the character used was & instead of §.
+In Java Edition Alpha 1.0.12, text coloring from color codes were changed for the first time ​[more information needed].
+Obfuscated format §k has changed 3 times in Java Edition after being introduced in Beta 1.9 Prerelease 6. On the right is an image of how the obfuscated text of 1234567890abcdefghijklmnopqrstuvwxyz~!@#$%^&*()-=_+{}[] looks in 4 different versions. At first glance, they might look similar, but in reality,  there are some differences. One major difference is that as font textures get updated with new characters and symbols, the obfuscated character cycles through more characters. That change can be clearly seen when any character gets obfuscated in versions 1.6.4-1.12.2. However, when 1.13 came out, if the obfuscated format was used on any character, it looped only through the ASCII character set. Nevertheless, an obfuscated character can still add a character to its loop. If a character that matches its dimensions was written into the chat by a player, it is inserted to the loop automatically. As for 1.13+, the whole system got reworked. All characters cycle through all characters that can be written in the game no matter what kind of character is getting obfuscated. The difference is that the condition that identifies similar characters, became more diverse in its identification, which made it include several unicode font characters. This can be spotted in one pixel width characters i!:;., which are the most used characters by players, as they display a unique effect when used with obfuscation rather than it being what it's for, "Obfuscation". Followed by @~ in older versions.
+In Bedrock Edition Preview 1.19.80.21, added 10 new color codes, for trimming tooltips.
+
+ #E3D4D1 §h material_quartz
+ #CECACA §i material_iron
+ #443A3B §j material_netherite
+ #971607 §m material_redstone
+ #B4684D §n material_copper
+ #DEB12D §p material_gold
+ #119F36 §q material_emerald
+ #2CBAA8 §s material_diamond
+ #21497B §t material_lapis
+ #9A5CC6 §u material_amethyst
+In Bedrock Edition Preview 1.21.50.25, added new color code —  #EB7114 §v material_resin.
+In Java Edition 25w36a, formatting codes have now been stripped from the code of conduct files.
+Since Java Edition 1.21.6, pasting paragraph symbols into books is no longer possible, making formatting in Survival impossible.
+
+
+== Trivia ==
+The first 16 color codes almost exactly match, in order, the 16 colors available using a Color Graphics Adapter (CGA), as released in 1981. Only color 6 differs; the value for color 6 in Minecraft –  #FFAA00 – differs from that made for CGA –  #AA5500.
+Obfuscated format (§k) displays as dots in Bedrock Edition if any font except Mojangles is used.
+
+
+== References ==
+
+
+== Navigation ==

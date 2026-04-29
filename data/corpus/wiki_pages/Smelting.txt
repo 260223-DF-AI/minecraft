@@ -1,0 +1,113 @@
+Smelting is the process of obtaining refined goods from raw materials by heating them in a furnace, blast furnace or smoker. When items are smelted in either type of furnace, experience is dropped. Like crafting, smelting uses recipes to determine what item is produced.
+
+
+== Methods ==
+
+
+=== Furnace ===
+
+The furnace interface contains three item slots: the upper left slot for the item that needs to be smelted, the lower left slot for fuel, and the right slot where output items accumulate and can be retrieved by the player. Flames above the fuel slot act as a gauge showing the amount of fuel left of the current fuel item. An arrow in the middle shows the progress of smelting the current item.
+The furnace takes 10 seconds (200 in-game ticks) to smelt an item. It begins to smelt if both input item and fuel are placed into the corresponding slots, and there is space in the output slot.
+When starting, a fuel item is consumed immediately, filling the fuel gauge. Different fuels will fuel the furnace for different amounts of time. The fuel gauge indicates how much of that fuel's burn time remains, and gradually decreases even if the input slot becomes empty. When a fuel item is fully consumed and the input slot is not empty, another one is taken from the fuel slot, and the gauge resets.
+The furnace processes one input item at a time, which remains in the input slot during the 10-second process. So if multiple types of items or more than one stack of item need to be smelted, the player need to move in the item manually or using hoppers.
+The arrow indicates the progress on how much the input has been smelted and how much more it needs to be smelted. When the arrow is full, the input item is removed from the input stack and an output item is added to the output stack. Smelting of the next input item then begins immediately.
+Furnaces stop smelting under any of four conditions:
+
+When the furnace runs out of smeltable items: The input slot becomes empty or contains item that cannot be smelted.
+The furnace runs out of fuel: The fuel input slot is empty, and the current fuel item is fully consumed (that is, the fuel gauge becomes empty).
+The output slot becomes full: Either the slot has a full stack of the output, or the output contains the wrong output item for the current input item (for example, if the output contains iron ingots, but the input contains raw beef). In this case, smelting (but not fuel consumption) is paused until the output slot becomes available (usually because items were removed by either a player or a hopper). If a fuel item burns out in this condition, a new one is not used until the output slot is again available.
+The furnace is broken: The contents of all the slots, any accumulated experience, and the furnace itself are dropped. The currently-burning fuel item is lost since it is removed from the fuel slot before burning begins. The furnace block itself may not be dropped if it was destroyed by an explosion.
+If smelting stops while a fuel item is still burning, the furnace continues to run visually, but no more input items are processed. If the fuel has been exhausted when an item has been partly smelted, the smelting progress is undone at double speed, and the item remains in the input stack.
+Smelting is suspended if the chunk the furnace is in becomes unloaded. It resumes when the chunk is loaded again.
+
+
+=== Blast furnace and smoker ===
+Smokers and blast furnaces use the same GUI interface as regular furnaces and function similarly to regular furnaces. They smelt twice as quickly as furnaces, requiring only 5 seconds (100 game ticks) to smelt 1 item; they consume the same amount of fuel as regular furnaces per item smelted. Blast furnaces can only smelt ores, while smokers can only cook food; any other item can be smelted only in regular furnaces.
+
+
+== Recipes ==
+All smelting recipes can be used in the furnace, but only subsets are available in the blast furnace and smoker.
+The furnace, blast furnace and smoker keep track of experience for each item as smelting is completed for them, accumulating it in a hidden counter. The counter remembers the total earned experience even if a hopper is used to remove the items from the output slot. Experience is awarded to the player who uses the interface to remove items manually, after which the counter is reset. If the player takes some of the output but leaves some in the slot, the experience corresponding to items left in the furnace is retained and not awarded to the player. For fractional experience values, first multiply this value by the number of smelted items removed from the furnace, then award the player the integer part, and if there is a fractional part remaining, this represents the chance of an additional experience point.
+
+For example, when smelting 1 coal ore and removing the coal, the value is 0.1, so every ten coal removed grants one experience point on average.
+When smelting 6 sea pickles and removing all 6 lime dye, the value is 0.2×6 = 1.2, so this grants 1 point, plus a 20% chance of another 1 point.
+The fractional experience stays within the furnace when the final total is not an integer, so the leftover experience is attributed to the next round of smelting.
+
+
+=== Food ===
+All food recipes can be used in a furnace or smoker. Food can alternatively be cooked on a campfire.
+
+
+=== Ores ===
+All ore recipes can be used in a furnace or blast furnace.
+
+The following additional ores can be smelted, but it's more efficient to mine them with an appropriate pickaxe. In most cases mining them saves fuel and yields more product and experience, especially if the pickaxe has a Fortune enchantment. Smelting them, though, allows obtaining them from an automatic device. The ore blocks themselves can be obtained only with the Silk Touch enchantment.
+
+
+=== Gear ===
+These recipes can be used in a furnace or blast furnace to recycle unneeded gear (tools, weapons, armor and horse armor).
+
+
+=== Furnace-only ===
+These recipes are exclusive to the furnace.
+
+
+== Fuel ==
+
+There are multiple fuels that can be used to smelt items.
+A single lava bucket or a block of coal can smelt more items than can fit in the furnace, a lava bucket being able to smelt 100 blocks and a block of coal being able to smelt 80 —both input and output are limited to a maximum of a stack.
+This is the specific table for all the fuels:
+
+
+== Hopper automation ==
+
+The smelting process can be automated with hoppers on the top and bottom of the furnace. For larger smelting jobs, a third hopper on the side of the furnace can feed in fuel and, in case of lava being used as fuel, any empty buckets come out of the bottom hopper. This automatically feeds and empties the furnace so that different materials can be smelted in the same batch with no loss.
+Whenever a hopper or minecart with hopper removes items from a furnace, any experience earned from cooking or smelting the removed items is saved in the furnace and awarded to the next player who either breaks the furnace or manually removes an item from the furnace's output slot. This saved experience is in addition to that earned for the manually removed item(s).
+
+
+== Achievements ==
+
+
+== Advancements ==
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+=== New Nintendo 3DS Edition ===
+
+
+== Issues ==
+Issues relating to "Smelting" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Trivia ==
+A wooden tool burns the same regardless of its remaining durability. A used-up tool is just as effective as fuel as a new tool.
+"Smelting" is a broad term in the context of Minecraft while in the real world, smelting has a more precise definition.
+
+
+== Gallery ==
+
+
+=== Screenshots ===
+
+
+== See also ==
+Smelting on Wikipedia
+Brewing
+Cooked food
+Crafting
+Enchanting
+Furnace
+
+
+== References ==
+
+
+== Navigation ==

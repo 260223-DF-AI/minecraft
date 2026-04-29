@@ -1,0 +1,76 @@
+15w35a is the fourteenth snapshot for Java Edition 1.9, released on August 24, 2015.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Command blocks
+
+Now have an option of "Needs Redstone" or "Always Active".
+"Needs Redstone" is the previous behavior (default).
+"Always Active" causes the command block to always behave as if it was powered.
+Also changeable via the auto tag for all command blocks.
+New textures.
+Darkened outlines on the center panel.
+The back of the arrow texture is now curved when the command block is set to conditional.
+
+
+=== Mobs ===
+Zombie villagers
+
+New VillagerProfession tag is used to determine what profession the mob is represented as, as well as what profession it becomes when cured.
+Zombie villagers now have different textures based on their profession and career.
+The tag is always conserved upon transformation and curing.
+
+
+=== Gameplay ===
+Combat
+
+Shovel base attack damage reduced from 4.5 to 2.5.
+Pickaxe attack speed reduced from 1.5 to 1.2.
+Axe base attack damage reduced from 8 to 7.
+Axe attack speed increased from 0.85 to 0.9.
+This slightly reduces the damage per second.
+Hoe attack damage is now always 1.
+Hoe attack speed now increases by 1 every tier, starting at 1.
+
+
+=== General ===
+Attributes
+
+The Slot string tag within AttributeModifiers determines which slot the modifier is applied to.
+Available slots are: "mainhand", "offhand", "feet", "legs", "torso", "head".
+e.g.: give @p minecraft:diamond_chestplate 1 0 {AttributeModifiers:[{AttributeName:"generic.maxHealth",Name:"Test",Amount:10.0,Operation:0,UUIDLeast:1l,UUIDMost:1l,Slot:"torso"}]}.
+Optimization
+
+Experimental performance enhancements.
+Fixed client memory leaks.
+
+
+== Fixes ==
+5 issues fixed
+From released versions before 1.9
+
+MC-2664 – Floating mob heads above baby mobs that wear them/baby zombie hitbox too high.
+MC-45763 – Some blocks are facing the wrong way if placed in an item frame.
+From the previous development version
+
+MC-86925 – Running out of memory when exiting.
+MC-86937 – Empty chunks duplicate one-another and cause weird behavior.
+MC-87050 – (2 bugs in one) glitch with adding attributes to items in 1.9.
+
+
+== Videos ==
+
+
+== Trivia ==
+Unlike most of the first-of-the-week snapshots, this was released on a Monday instead of Wednesday.
+This version was previously removed from the launcher for some time, but was added back in September 2018.
+Zombies that spawn in this version don't have AI.
+
+
+== References ==
+
+
+== Navigation ==

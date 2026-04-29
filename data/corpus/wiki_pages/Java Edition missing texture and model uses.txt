@@ -1,0 +1,149 @@
+This page documents all known cases where missing textures and models are or were used in vanilla Java Edition.
+For this page, due to the nature and intended use of missing textures and missing models, "vanilla" is defined in a much more strict sense than normal: alongside having no mods installed, use of non-default texture packs or resource packs, as well as non-default data packs, are also forbidden, as these can allow for the arbitrary occurrence of error handling assets. This includes invalid image files saved as pack.png.
+
+
+== Missing texture ==
+This section only covers cases where the texture arises due to a texture being absent or invalid. Cases where the texture appears due to a model being absent or invalid are documented in the missing model subsection.
+
+
+=== Blocks ===
+
+
+=== Items ===
+
+
+=== Entities ===
+
+
+=== Particles ===
+Block and item particles (breaking, broken, sprinting on, falling on, iron golem walking on, eating, ...)
+From 13w02a to 13w17a, the missing texture was positioned at the very top-left of the texture atlas. As such, it was used in multiple cases not due to it being the missing texture, but due to it being at the top-left. Only cases in which the texture is used due to being the missing texture are listed here; cases where it is used due to its position are listed at Java Edition default texture uses.
+
+Other particles
+
+
+=== User interface ===
+
+
+=== Other ===
+
+
+== Missing model ==
+
+
+=== Blocks ===
+Blocks and variants accessible through normal gameplay
+
+Blocks and variants accessible via commands, intentional
+
+Blocks and variants accessible via commands, unintentional
+
+
+=== Items ===
+Valid data values
+
+Invalid data values
+
+
+=== Entities ===
+
+
+=== Other ===
+
+
+== Missing font character ==
+Many different characters use this, so a comprehensive list will not be made.
+
+
+== Invalid data value blocks and items ==
+Invalid item data values tend to almost exclusively use the missing model in the later versions of their existence. Only states which show the missing model are listed here; those which use the normal textures, or appear invisible, are not included in this list.
+
+
+=== Blocks ===
+
+
+=== Items ===
+
+The vast majority of item-damage combinations will have an absent model from versions 14w25a to 17w46a. A section detailing this in more specifics is pending.
+Due to 17w47a's changes, giving oneself an item with an invalid damage value will no longer display the missing model or missing texture, as the entire concept of data value variants of items no longer exists. Existing such items will be converted into something else entirely, with a defined, functional model.
+
+
+== Example commands ==
+This section lists reproduction commands which would be excessive to include within table notes sections.
+
+
+=== Air particles before 24w09a ===
+The following commands will create particles for the minecraft:air block in the following version ranges:
+
+14w29a to 15w47c: /particle blockcrack_0 ~ ~ ~ 0 0 0 0.1 1
+15w49a to 17w43b: /particle blockcrack ~ ~ ~ 0 0 0 0 1 0 @p 0
+17w45a to 17w46a: /particle blockcrack minecraft:air ~ ~ ~ 0 0 0 0 1
+The following commands will create particles for the minecraft:air item in the following version ranges:
+
+14w29a to 15w47c: /particle iconcrack_0 ~ ~ ~ 0 0 0 0.1 1
+15w49a to 17w43b: /particle iconcrack ~ ~ ~ 0 0 0 0 1 0 @p 0
+17w45a to 17w46a: /particle iconcrack minecraft:air ~ ~ ~ 0 0 0 0 1
+
+
+=== Invalid ID particles ===
+The following commands will create particles for a nonexistent block with ID 512 (beyond the upper limit of 255) in the following version ranges:
+
+14w29a to 15w47c: /particle blockcrack_512 ~ ~ ~ 0 0 0 0.1 1
+15w49a to 17w43c: /particle blockcrack ~ ~ ~ 0 0 0 0 1 0 @p 512
+The following commands will create particles for a nonexistent item with ID 512 and damage 256 in the following version ranges:
+
+14w29a to 15w47c: /particle iconcrack_512_156 ~ ~ ~ 0 0 0 0.1 1
+15w49a to 17w43c: /particle iconcrack ~ ~ ~ 0 0 0 0 1 0 @p 512 256
+The IDs and (for items) damage can be changed to any desired value to produce missing texture particles, provided the metadata in question does not correspond to a valid block or item.
+
+
+=== Spyglass particles ===
+Example ways to reproduce this:
+
+Particle command: /particle minecraft:item{item:"minecraft:spyglass"}
+Area effect cloud: /summon minecraft:area_effect_cloud ~ ~ ~ {Particle:{type:item,item:"minecraft:spyglass"},Radius:10,Duration:200}
+Panda consumption: /summon minecraft:panda ~ ~ ~ {HandItems:[{id:"minecraft:spyglass",Count:1}]}
+The item_model item component can also be used to reassign the spyglass model to existing items from versions 24w36a to 24w44a:
+
+Player consumption: /give @s minecraft:sweet_berries[minecraft:item_model="minecraft:spyglass_in_hand"], then eat
+Fox consumption: Drop the item obtained with the above command, have a fox pick it up, and wait
+Egg breaking: /give @s minecraft:egg[minecraft:item_model="minecraft:spyglass_in_hand"], then throw at a block
+Armor/tool breaking: /give @s minecraft:iron_chestplate[item_model="minecraft:spyglass_in_hand",max_damage=1], equip, then take damage
+Missing texture particles also appear when breaking placed spyglass items in Java Edition 22w13oneBlockAtATime.
+
+
+=== Air item particles ===
+Producing air particles is similar to producing spyglass particles via using a separate item with the spyglass model in earlier versions:
+
+Player consumption: /give @s minecraft:sweet_berries[minecraft:item_model="minecraft:air"], then eat
+Fox consumption: Drop the item obtained with the above command, have a fox pick it up, and wait
+Egg breaking: /give @s minecraft:egg[minecraft:item_model="minecraft:air"], then throw at a block
+Armor/tool breaking: /give @s minecraft:iron_chestplate[item_model="minecraft:air",max_damage=1], equip, then take damage
+
+
+=== Template particles ===
+Refer to the "air item particles" section above, but replace minecraft:air with one of the following six template models:
+
+minecraft:generated
+minecraft:handheld
+minecraft:handheld_rod
+minecraft:handheld_mace
+minecraft:template_bed
+minecraft:template_shulker_box
+These work from 24w36a to 24w44a; 24w45a now uses item_model to refer to assets/minecraft/items rather than assets/minecraft/models/item, and as such these will have no model at all rather than simply appearing empty.
+
+
+=== Paintings ===
+This command can be used from 25w03a to 25w15a to give a painting item which places an invalid variant: /give @s minecraft:painting[painting/variant={asset_id:"",width:2,height:1}]
+This command can summon a painting with an invalid variant from 24w18a to 25w03a (before 24w20a this will kick the player from the world, and from 25w04a will create the default painting variant): /summon minecraft:painting ~ ~ ~ {variant:{asset_id:"",width:1,height:1}}
+In both cases, the width and height can be adjusted to be from any value 1 to 16.
+
+
+== April Fools' versions ==
+
+
+== Trivia ==
+It is also possible, through some methods, to display the contents of atlases themselves, which will include the missing texture.
+
+
+== Notes ==

@@ -1,0 +1,93 @@
+The third version of Minecraft Infdev was released on March 13, 2010.
+
+
+== Additions ==
+
+
+=== World generation ===
+World boundary
+
+Now exists at 32,000,000 blocks.
+The stone wall "far lands" are inaccessible without the use of modification as a result.
+
+
+=== Gameplay ===
+Daylight cycle
+
+Re-implemented the daylight cycle, but its duration is shorter than it was in Indev.
+One cycle lasts around 16 minutes. Both daytime and nighttime are 8 minutes long.
+Light
+
+Re-added working light.
+Re-added dynamic lighting.
+
+
+== Changes ==
+
+
+=== Items ===
+Diamond axe, hoe, pickaxe, shovel, and sword
+
+Diamond tools' durability has been increased from 257 to 513.
+
+
+=== Gameplay ===
+Controls
+
+Pressing F now reloads chunks too instead of just hiding them behind a fog.
+Fog is now further from the player.
+Fog is now slightly blueish.
+Hotbar
+
+The player spawns with more items when creating a new world: 999 glass blocks, 999 planks, 999 torches, 999 pairs of flint and steel, 999 diamond shovels, 999 diamond pickaxes, 999 lava source blocks, and 999 water source blocks.
+Sky
+
+Faster brightness re-calculation.
+
+
+=== General ===
+The game now keeps a cyclic buffer of near chunks in memory, so it no longer runs out of memory when players walk for a long distance.
+However, the game does not yet save anything to the disk, so players lose data from chunks they unload.
+
+
+== Removals ==
+
+
+=== Structures ===
+Obsidian wall
+
+
+=== General ===
+The test skybox has been removed; the sky now more closely resembles what it is in modern versions.
+
+
+== Fixes ==
+8 bugs fixed
+
+Fire, gears, torches, and crops have a texture when placed.
+Torches can be placed on the sides of blocks again.
+Furnaces have a face.
+Block breaking cracks now show up consistently.
+Fixed a significant bug at high distances that causes chunks to detach and intensely jitter with camera movement.
+The wireframe hitbox for blocks no longer jitters at high distances, and no longer distorts at high distances for certain GPUs.
+Blocks no longer stop being solid after X/Z: 16,777,216.
+Particles are no longer distorted at high distances.
+
+
+== Bugs ==
+4 bugs reported
+
+Opening the inventory crashes the game.
+However, the player can still access their inventory through a workbench.
+Slabs have lighting bugs.
+Sometimes, the game crashes while generating a world, with a java.lang.IllegalArgumentException error being thrown.
+Torches, flowers, saplings, and seeds lose precision and appear 2D at large distances.
+
+
+== Gallery ==
+
+
+== References ==
+
+
+== Navigation ==

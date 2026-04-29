@@ -1,0 +1,147 @@
+Game rules are a set of customizable options for a specific in-game world.
+
+
+== Modifying game rules ==
+
+In Java Edition, game rules can be changed using toggle buttons on the "Edit Game Rules" menu built into the "Create World" and "World Options" screens. The game rules are split into categories named "Player", "Mobs", "Spawning", "Drops", "World updates", "Chat", and "Miscellaneous".
+In Bedrock Edition, about half of the game rules can be changed from the "Create New World" screen and the world options in both the "Edit World" screen and the game settings in the pause menu. The remainder can be changed only with commands, or in the "Export" interface in the Bedrock Editor.
+When in-game, game rules can be changed using the /gamerule command, using the syntax /gamerule <rule> [<value>], where <rule> is the name of the game rule and <value> is an allowed value, which depends on the type of the game rule. The types are boolean (where the allowed values are either true, or false) and integer (where any whole number is able to be entered).
+
+
+== List of game rules ==
+The following is a list of game rules available in-game, their allowed values, and their availability in Java Edition and Bedrock Edition.
+The categorization of game rules is based on Java Edition, except for Bedrock Edition exclusive game rules. The minecraft: prefix has been excluded from this list for the sake of brevity.
+Some game rules can be changed in Bedrock Edition without cheats (either by /gamerule command or the world menus, e.g., World Options and Create New World), thus safely keeping achievements enabled while configuring these game rules.
+
+
+=== Chat ===
+Rules affecting chat output, including command feedback, death messages, and advancements.
+
+
+=== Drops ===
+Rules controlling item drops from blocks, entities, and mobs, including drop decay mechanics.
+
+
+=== Miscellaneous ===
+A collection of technical or utility rules that do not fit into other specific categories, such as command limits, debug info, and other mechanics.
+
+
+=== Mobs ===
+Rules that manage mob behavior, such as mob griefing, anger mechanics, and raids.
+
+
+=== Player ===
+Rules directly impacting player mechanics, such as damage sources, keep inventory, and respawning behavior.
+
+
+=== Spawning ===
+Rules that toggle the natural spawning of various mobs and entities.
+
+
+=== World Updates ===
+Rules related to the world environment, including time progression, weather cycles, and fluid dynamics.
+
+
+=== Bedrock Edition exclusive ===
+Game rules that are specific to Bedrock Edition and do not have direct equivalents in Java Edition.
+
+
+=== Notes ===
+
+
+== Additional behavior ==
+
+This section explains more complex behaviors of certain gamerules.
+
+raids
+When false, the Bad Omen effect is not removed from a player when entering a village.
+Stops a raid if set to false while a raid is in progress, but the existing raid mobs do not despawn.
+JE: entity_dropsBE: doentitydrops
+When false, removing items from item frames do not drop them.
+JE: mob_dropsBE: domobloot
+Does not affect drops not related to a mob's death, such as chicken laying eggs, or sheep dropping wool when sheared.
+Does not affect the dropping of wither roses when mobs are killed by the wither.
+JE: spawn_mobsBE: domobspawning
+Affects only natural mob spawning. Mobs from structures,‌[Java Edition  only] monster spawners, and events still spawn when set to false.
+JE: block_dropsBE: dotiledrops
+When false, containers still drop their contents, but not themselves.
+Shulker boxes do not drop anything, causing the items in them to be lost.
+When false, destroying an armor stand does not drop it nor any armor it had equipped.
+When false, item frames still drop themselves and their items.
+When false, infested blocks do not spawn silverfish when broken.
+JE: drowning_damageBE: drowningdamage
+When false, the player still loses air, but does not take damage when the air is depleted.
+JE: fire_damageBE: firedamage
+When false, the player may still be set on fire, but does not take damage when on fire.
+forgive_dead_players
+Every neutral mob that can be aggravated remain aggravated even after the offending player dies, with the exception of piglins when a player does not wear golden armor and iron golems when it is created from a village where the player has a reputation of -100 or lower.
+JE: keep_inventoryBE: keepinventory
+When true, players also retain their experience upon death.
+When true, health and hunger are still reset as normal upon death.
+When true, all effects are still removed upon death.
+When true, items enchanted with Curse of Vanishing do not disappear upon death.
+JE: mob_griefingBE: mobgriefing
+When false, prevents all mobs from modifying the environment in any way. This includes trampling crops and turtle eggs, picking up items, destroying blocks, or moving blocks. Specifically, it prevents:
+Allays from picking up dropped items.
+Blazes from creating fire or lighting campfires.
+Creepers from destroying blocks when they explode, although they still damage entities.
+Dolphins from picking up dropped items.‌[JE  only]
+End crystals from destroying blocks when they explode, although they still damage entities.
+Ender dragons from destroying blocks, causing it to just fly through them instead.
+Endermen from picking up or placing blocks.
+Evoker from turning blue sheep red.‌[JE  only]
+Foxes from picking sweet berries from a sweet berry bush and picking up dropped items.
+Ghast fireballs from exploding blocks and creating fire. They still damage entities.
+Piglins from attempting to barter by picking up dropped items; using the item on them still works.
+Rabbits from eating carrot crops.
+Ravagers from destroying crops and leaves.
+Sheep from turning grass blocks into dirt, but does not prevent the regrowth of wool. They still act as if they are eating the grass and regrow their wool upon doing so, but the grass remains and the grass breaking sound does not play.
+Silverfish from hiding in infested blocks and destroying those blocks when hatching.
+Snow golems from creating snow trails.
+Villagers from farming and picking up items. However, they can still open doors and throw items.
+Withers and their heads from destroying blocks with their explosions. Entities are still damaged, and a wither rose drops as an item.
+Zombies from breaking doors, picking up items, and attacking turtle eggs.
+Prevents cobwebs from spawning when a mob with the Weaving effect dies.
+Has no effect on bees, breezes, frogs, turtles or the player.
+JE: players_sleeping_percentageBE: playerssleepingpercentage
+When set to 0, at least one player is still required to sleep to skip the night.
+When set to a number greater than 100, night is not skipped no matter how many players are sleeping.
+JE: random_tick_speedBE: randomtickspeed
+Does not affect:
+Death of coral blocks, coral, and coral fan.
+Hatching of frogspawn and sniffer eggs.
+max_snow_accumulation_height
+When set to 0, snow layers do not form at all.
+When set to 8 or higher, snow forms up to the level of a full block, but no greater than that.
+JE: tnt_explodesBE: tntexplodes
+When set to false, TNT Minecarts cannot be ignited.
+This includes through Activator Rails, Cramming, and destruction while in motion.
+universal_anger
+Every neutral mob that can be aggravated targets all nearby players whenever they are aggravated.
+Bees attack all nearby players when their beehive is broken, regardless of the setting of this gamerule.
+Bees becoming angry when attacked works as expected.
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== Issues ==
+Issues relating to "Game rule" or "Gamerule" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Gallery ==
+
+
+=== Screenshots ===
+
+
+== References ==
+
+
+== Navigation ==

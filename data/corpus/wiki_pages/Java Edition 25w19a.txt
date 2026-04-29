@@ -1,0 +1,100 @@
+25w19a is the fifth snapshot for Java Edition 1.21.6 released on May 6, 2025.
+
+
+== Changes ==
+
+
+=== Non-mob entities ===
+Projectiles
+
+Projectiles now have a target tolerance margin that changes over time.
+All projectiles start with no margin for the first two ticks of their flight.
+After that, the target margin will expand by 0.05 blocks per tick until it reaches the previous fixed 0.3 blocks margin.
+This allows for better precision close to the shooting player or entity, while still allowing for some collision leeway when the projectile is further away.
+
+
+=== General ===
+Attributes
+
+The scale attribute for the happy ghast now has a limit of 1.0.
+Data pack
+
+The pack format version is now 76.
+--quickPlaySingleplayer command line argument can now be used without an identifier to launch into the last played world.
+Entity format
+
+tnt
+The entity that primed the TNT is now stored in an optional owner field (UUID of Living entity).
+vex
+The owner of a vex is now stored in an optional owner field (UUID of Mob).
+Resource pack
+
+The version is now 60.
+Panorama textures must now all be the same size, and square.
+Shaders
+
+Shader fog
+The fog is now split into environmental and render-distance-based.
+Previously both those concepts were mixed in the same uniforms.
+Environmental fog is supposed to represent the "fogginess" of the environment the player is in: lava, water, and now also atmosphere.
+Render distance fog is supposed to obscure the border of visible terrain.
+Environmental fog uses spherical distance to determine its intensity, render distance fog uses cylindrical distance.
+The resulting fog value for any given vertex is the maximum of both.
+Fog uniform block
+FogStart was renamed to FogRenderDistanceStart and now represents the render distance fog start.
+FogEnd was renamed to FogRenderDistanceEnd and now represents the render distance fog end.
+FogEnvironmentalStart is new and represents the start of environment-based fog.
+FogEnvironmentalEnd is new and represents the end of environment-based fog.
+FogShape was removed. Render distance fog is now cylindrical and environmental for is spherical.
+Sounds
+
+The sound event block.dried_ghast.hit has been removed.
+UI sprites
+
+mob_effects.png-atlas has been merged into gui.png-atlas and no longer exists.
+This means Mob Effect sprites now support GUI sprite scaling properties.
+
+
+== Fixes ==
+20 issues fixed
+From released versions before 1.21
+
+MC-69821 – TNT "forgets" the player that ignited it when the world is reloaded.
+MC-118430 – Vex summoner is not stored in NBT despite being used for AI task.
+MC-118432 – Vex summoner is not reset once it is dead.
+From 1.21.1
+
+MC-277486 – Mob effect icons ignore "scaling" parameter in mcmeta files.
+From 1.21.3
+
+MC-277903 – Creative inventory tab icons can display item cooldown overlay.
+From 1.21.5
+
+MC-295690 – Players stay on fire for a while after barely touching fire.
+MC-296701 – Transformed entities do not retain their custom_data component.
+MC-296709 – All non-default jukebox_playable components are deleted from existing items when updating past 1.21.4.
+MC-297347 – Tamed animals no longer sit when their owner changes dimension.
+MC-297461 – Equipment and sleeping pos data cannot be loaded in 1.21.4, but can be loaded in 1.21.5 to bees spawned from bee nest and bee hive.
+From the 1.21.6 development versions
+
+MC-296432 – The ability to stand on top of happy ghasts which have a larger scale attribute becomes unreliable or even impossible.
+MC-296460 – Debug crosshair renders incorrectly.
+MC-296494 – The player sometimes falls from a happy ghast when reconnecting to a world.
+MC-296797 – The movement of happy ghasts for non-controlling passengers is jittery.
+MC-296813 – The panorama isn't slightly blurred anymore which causes some "flickering" effects.
+MC-296970 – The dried ghast block has a hit sound event.
+MC-297142 – The "Leave Bed" button is invisible.
+MC-297235 – Clouds not fully rendered depending on angle when very high above the world.
+MC-297271 – Waypoint packet is handled by network thread instead of render thread, causing crash.
+From the previous development version
+
+MC-297339 – Sign text is non-functional.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

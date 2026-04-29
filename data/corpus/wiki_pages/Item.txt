@@ -1,0 +1,190 @@
+An item is an object that can exist within inventories of players, mobs, or armor stands; in various storage blocks (like chests or droppers), as well as in item frames, glow item frames, and shelves.
+
+
+== Behavior ==
+Some items when used, place a block (ItemBlock) or entity (minecart, spawn eggs, etc.) version of themselves into the game world. Put simply, they are an item when in the inventory, and a block when placed. For example, boats turn into an entity when placed, and beds turn into a group of blocks when placed. When selected in the hotbar, items briefly display their names above the HUD.
+The only methods by which an item can be properly displayed within the game environment is to place it into an item frame, shelf, or armor stand. Displayed items, either on these blocks, the hand (both third-person and first-person), or thrown, are rendered in-game with MERS texture sets with Vibrant Visuals, and can show shadows, reflections, or caustics. Various items have emissive lighting and glow in the dark.
+
+
+=== Thrown items ===
+If an item that does not become a block is dropped, it becomes an entity represented by a sprite that floats above the ground. It remains for 5 minutes in a loaded chunk before despawning (except for the Nether star), unless the player walks over it to pick it up, it is picked up by a mob, hopper or minecart with hopper, or it is destroyed by fire, lava, cactus, explosion, void, or /kill.
+Dropped netherite items cannot be destroyed by fire or lava, and dropped Nether stars cannot be destroyed by explosions.
+A submerged object ascends toward the water's surface. If the water is flowing, the object is pushed along with it.
+Hoppers draw in any items that are placed above them if they are not powered by redstone.
+
+
+=== Stacking ===
+Items can either stack up to 64 or 16, or not stack at all:
+
+Most items can stack to 64. This includes all full blocks, whose outlines take up an entire block when placed.
+Some items, such as snowballs, empty buckets, eggs, signs, and ender pearls, can stack up to a maximum of 16.
+Some other items do not stack at all, such as anything with a durability (weapons, armor, and tools), filled buckets, and potions.
+All items can technically be forced to stack up to 99‌[JE  only] or 127‌[BE  only] using commands.
+
+
+== Lists of items ==
+
+
+=== In the game ===
+
+
+==== Items that create blocks, fluids or entities ====
+
+
+===== Items that directly correspond to blocks =====
+
+
+====== Technical blocks ======
+
+Technical blocks serve various purposes during events within the game, or use a separate name spaced ID in order to avoid unnecessary combinations of block states. In Java Edition technical blocks do not exist as items, while in Bedrock Edition they may be obtained using inventory editors or add-ons.
+
+
+==== Items with use in the world ====
+These items, when highlighted in a player's hotbar (or "held"), in the off hand, or equipped in an armor slot, can be used by either attack or use, or can serve a specific purpose (for example, offer the player advantage or disadvantage). Some can be used any time, others only when aiming at specific blocks or entities. 
+
+
+==== Items with indirect use in the world ====
+The player cannot interact with or directly use these items; however, they are used for trading, brewing, enchanting, or crafting ingredients for other items that do have direct uses. Clocks and recovery compasses are exceptions, as they merely serve an informative function (although clocks also attract piglins as a dropped item entity).
+
+
+==== Spawn eggs ====
+Spawn eggs spawn the entity inside them. They cannot be obtained in Survival mode.
+
+
+=== Minecraft Education items ===
+These items are exclusive to Minecraft Education and Bedrock Edition when the "Minecraft Education features" cheat setting is enabled. The portfolio is exclusive to Minecraft Education, and the poster, slate, and camera are obtainable in Bedrock Edition only through inventory editing or add-ons. The garbage item is obtainable only through invalid lab table recipes or via inventory editing.
+
+
+==== Blocks ====
+
+
+=== Unimplemented items ===
+Some items are unimplemented, or have been mentioned to be implemented in the future.
+
+ Ruby (texture)
+
+
+=== Removed items ===
+Removed items no longer exist in current versions of the game.
+
+Copper Horn
+Block Inspector
+debug_fourj_item
+Horse Saddle
+Studded Helmet
+Studded Chestplate
+Studded Leggings
+Studded Boots
+Quiver
+
+
+==== Blocks ====
+
+
+===== Outright removed blocks =====
+These blocks were removed from the game entirely.
+
+
+===== Removed through substitution =====
+These blocks were "retconned" into other blocks through a major simultaneous name and texture change.
+
+
+===== Non-standard metadata variants =====
+Some blocks and states of blocks were distinguished via numerical metadata in previous versions of the game. Having metadata values outside of the accepted range could produce unintended results for some block IDs.
+
+
+=== Joke items ===
+Joke items are present only in April Fools' Day joke versions in the game.
+
+
+=== Blocks ===
+These blocks only exist in April Fools' Day joke versions of the game.
+
+
+== Display of items ==
+
+
+=== By entities ===
+Mobs and some other entities are capable of holding items as well as having them equipped in certain slots; in some cases, this results in the item being visually represented. A table of mobs that do this is as follows.
+Note that this does not count equipment, which uses a separate system.
+
+
+=== Item shading ===
+
+3D items in the inventory, i.e. that of blocks, are often displayed as those models rather than as flat graphics. The appearence of these items is affected by shading, which has changed by default throughout game versions, and can be changed inside of the model via the "gui_light" parameter. The default for 3D items is "side", whereas the default for flat items is "front".
+The following tables show the results of using a solid white texture, assuming the default windowed resolution of 854x480.
+
+Inventory items
+From Beta 1.8 Pre-release to 12w32a, items in the inventory would render darker than they would in the hotbar or in chests. It is not known why this was the case. Both 3D and flat items were affected. This was ultimately fixed in 12w34a.
+
+Rotated block items
+In 1.8 snapshots 14w10a to 14w21b, certain items with usually-unattainable damage values (specifically rotated logs, hay bales and quartz pillars) would have their shade intensity per block face cycled around in a different way from other block-items. The level of shading is still the same as typical blocks in this version range, simply with a 90-degree rotation in 3D, manifesting as either a 120-degree reflection alone or one with a horizontal flip in 2D.
+
+Early Indev world loading
+When the player first loads up in-20091223-1459 (other versions cannot be checked due to not being archived so far), all three visible sides of blocks in the inventory will appear equally dark (white becomes #666666):
+
+
+== Videos ==
+
+
+== History ==
+
+
+=== Item additions and removals ===
+ 
+
+
+==== Java Edition ====
+
+
+==== Bedrock Edition ====
+
+
+==== Legacy Console Edition ====
+
+
+==== New Nintendo 3DS Edition ====
+
+
+==== MinecraftEdu ====
+
+
+==== Minecraft Education ====
+
+
+=== Other changes ===
+
+
+==== Java Edition ====
+
+
+==== Bedrock Edition ====
+
+
+=== April Fools items ===
+
+
+== Issues ==
+Issues relating to "Item" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Gallery ==
+
+
+=== Mojang images ===
+
+
+== See also ==
+Item repair
+Item durability
+Item (entity)
+List of items by version
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

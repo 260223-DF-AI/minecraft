@@ -1,0 +1,35 @@
+A version of Minecraft Infdev was released on March 30, 2010, at 12:03 UTC.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Furnace
+
+The smelting time of furnaces has been increased from 4 seconds to 8 seconds.
+
+
+== Technical ==
+Level format
+
+[Byte] TerrainPopulated tag
+Set to 1 if the chunk is populated (trees and ores have been generated).
+Chunks generated during inf-20100327 do not have this tag, so they generate new trees and ores.
+This fixes the bug causing trees and ores to regenerate under the right conditions.
+
+
+== Fixes ==
+5 bugs fixed
+
+Fixed a bug which caused the contents of containers (i.e. chests and furnaces) to sometimes not be saved.
+Fixed the broken lighting on slabs.
+The top of the world is no longer fully lit, and it no longer temporarily hangs the game while mass updating lighting.[verify for Java Edition]
+Fixed a bug that caused trees and ores to regenerate if the world was reloaded.
+Blocks no longer keep their data value when being broken, which was resulted in newly-planted crops to take on the block data (and therefore growth stage) of block previously occupying that space.
+
+
+== References ==
+
+
+== Navigation ==

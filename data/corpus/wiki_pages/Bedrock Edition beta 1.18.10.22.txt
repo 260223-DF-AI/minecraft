@@ -1,0 +1,144 @@
+Beta 1.18.10.22 is the third beta version for Bedrock Edition 1.18.10, released on December 9, 2021, which brought more parity from Java Edition and fixes bugs. Due to quality issues, this version is not available on Windows.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Anvil
+
+Slightly changed the hammer texture on its GUI.
+Barrel
+
+Changed the bottom texture to match the spruce planks.
+Carrot
+
+Texture of crop stage3 was changed from [verify for Bedrock Edition] to [verify for Bedrock Edition], removed an extra pixel.
+Cartography Table
+
+Texture was changed from  to , to match the dark oak planks texture after being updated a second time in the Texture Update.
+Cocoa Beans
+
+Textures of cocoa pods (stage0 and stage1) were changed.
+Dirt Path
+
+Side texture was changed to better match its top texture.
+Door
+
+Changed spruce door's model,[verify for Bedrock Edition] to fix top/bottom texture.
+Changed textures of oak doors and iron doors to remove a horizontal line.
+Glass Pane
+
+Top texture was changed to better match its side texture.
+Lectern
+
+Base texture was changed to match the oak planks texture after being updated a second time in the Texture Update.
+Logs
+
+Changed the top texture of dark oak log.
+Changed the side texture of stripped dark oak log, to match the color of its top texture.
+Stained Glass
+
+Changed textures of blue stained glass and red stained glass, to match transparency of other types of stained glass.
+
+
+=== Items ===
+Beetroot Seeds and Melon Seeds
+
+Textures were moved down by 1 pixel.
+
+
+=== Mobs ===
+Axolotl
+
+Texture of the wild axolotl was changed.
+Evoker, Vindicator and Witch
+
+Removed hoods in their textures.
+Vindicator now have blue eyes.
+Parrot
+
+The bottom texture of all parrots' wings has been flipped.
+Slimes
+
+Now attack snow golems again.
+
+
+=== Non-mob entities ===
+Armor Stand
+
+Smooth stone outline texture was changed.
+
+
+=== General ===
+RenderDragon
+
+All Android devices now use new rendering engine RenderDragon.
+
+
+=== Technical ===
+General
+
+Reduced the number of network packets sent with the subchunk request system and packet optimizations.
+Items
+
+Added 9 new shapeless recipe JSON files, replacing hard-coded Smithing Table crafting recipes.
+Molang
+
+Add non-experimental is_name_any, is_item_name_any, and is_owner_identifier_any queries.
+
+
+== Fixes ==
+Blocks
+
+Worlds with inconsistent layers of bedrock between Y=1 and Y=4, inclusive, (such as those where non-bedrock has generated or been placed in those layers) now correctly and consistently replace bedrock with deepslate (MCPE-149251).
+Light Blocks can now be placed on other Light Blocks while sneaking (MCPE-137744).
+Gameplay
+
+Fixed a crash that could occur when trading Maps with Cartographer Villagers (MCPE-142388).
+Fixed food giving effects 20 times too long (MCPE-148553).
+Fixed Honey Bottles not removing poison effect.
+Fixed players not teleporting after eating Chorus Fruit.
+Players’ viewing direction will no longer snap when facing South in a Boat (MCPE-148460).
+When a player dies, the camera now tilts to the right instead of the left (MCPE-148604).
+Lava hitbox no longer extends beyond lava. (MCPE-148506)
+Graphical
+
+Updated Dirt Path side texture (MCPE-148568).
+Changed 'door_oak' texture filename back to 'door_wood' (MCPE-148502).
+Reversed Parrot head and wing bottom textures (MCPE-148573).
+Moved Beetroot and Melon Seed textures 1 pixel row down to match Java Edition (MCPE-148561).
+Removed unused pixels in Cocoa Beans stage 0 and stage 1 textures to match Java Edition.
+Updated Smooth Stone texture in Armor Stand base (MCPE-148565).
+Removed horizontal lines in Oak and Iron upper Door textures (MCPE-148566).
+Removed hood in Witch, Evoker, and Vindicator textures to match Java Edition.
+Changed alpha values of Red and Blue Stained Glass textures to match Java Edition (Vanilla Parity).
+Fixed the hammer icon's color palette on the Anvil screen (MCPE-148575).
+Updated Dark Oak Planks on the Cartography table textures (MCPE-148562).
+Updated Spruce Planks on the Barrel bottom texture.
+Updated Planks on the Lectern base texture (MCPE-148567).
+Fixed highlight inconsistencies in Gold and Diamond Armor textures (MCPE-148591).
+Removed wandering pixel in the Carrot stage 3 texture (MCPE-148563).
+Centered the back texture of Axolotls (MCPE-148571).
+Updated Glass Pane top to match the new texture on Java Edition (MCPE-148572).
+Fixed the top texture of Dark Oak Logs (MCPE-148577).
+Updated Stripped Dark Oak side texture to match the new texture on Java Edition (MCPE-148576).
+Fixed a bug where End Crystal beams would stop rendering when an End Crystal is out of the players sight (MCPE-149159).
+Fixed an issue with Drowned textures on some devices with RenderDragon not correctly discarding alpha/transparent pixels.
+Mobs
+
+Slimes are once again aggressive towards Snow Golems (MCPE-146651).
+User Interface
+
+Fixed the player visual on the inventory screen while gliding. It was previously off-center and could hide elements of the interface.
+The "Invite to Game" button on the pause screen now disables correctly when a server is full.
+Technical
+
+Fixed relative_block_has_all_tags block_neighbor_has_all_tags and biome_has_all_tags queries to require all tags rather than just any tags.
+Fixed nested conditional (ternary) operator parsing to go right-to-left instead of left-to-right.
+
+
+== References ==
+
+
+== Navigation ==

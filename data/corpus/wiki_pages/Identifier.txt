@@ -1,0 +1,255 @@
+Identifiers (also known as resource locations, namespaced IDs, namespaced identifiers, resource identifiers, or namespaced strings) are a way to declare and specify game objects in Minecraft, which can identify built-in and user-defined objects without potential ambiguity or conflicts.
+
+
+== Introduction ==
+Identifiers are used as plain strings to reference blocks, items, entity types, and various other objects in vanilla Minecraft.
+A valid identifier has a format of namespace:path, where only certain characters can be used.
+
+
+=== Legal characters ===
+
+
+==== Java Edition ====
+The namespace and the path of an identifier should only contain the following symbols:
+
+0123456789 Numbers
+abcdefghijklmnopqrstuvwxyz Lowercase letters
+_ Underscore
+- Hyphen/minus
+. Dot
+The following characters are illegal in the namespace, but acceptable in the path:
+
+/ Forward slash (directory separator)
+The preferred naming convention for either namespace or path is snake_case.
+
+
+==== Bedrock Edition ====
+The namespace and the path of a namespaced ID can contain all symbols with the exception of slashes and colons.
+The following characters are illegal in the namespace, but acceptable in the path of loot tables and functions.
+
+/ Forward slash (directory separator)
+The preferred naming convention for either namespace or path is snake_case.
+
+
+=== Conversion to string ===
+An identifier is converted to a string by concatenating its namespace with a : (colon) and its path.
+Examples:
+
+
+=== Conversion from string ===
+All identifiers can be converted to strings; however, not all strings can be converted to identifiers.
+For a string to be converted, it must follow these restrictions:
+
+The string may have at most one : (colon) character
+The rest of the string must fulfill the requirement for legal characters. This includes disallowing / (forward slash) characters before the :, if a : is present
+When the : is present, the part of the string before the : becomes the namespace, and the part of the string after the : becomes the path.
+In Java Edition, and in some cases in Bedrock Edition, when the : is absent, minecraft becomes the namespace and the whole string becomes the path.
+It is recommended to always include a : in the string format of identifiers.
+
+Examples
+
+
+== Java Edition usage ==
+ 
+In Java Edition, identifiers act mainly as main keys of objects in registries or file paths of contents in data packs and resource packs. Some non-customizable contents also use identifiers to identify them.
+
+
+=== Registries and registry objects ===
+
+
+=== Pack contents ===
+Identifiers are also used to represent file paths in data packs or resource packs.
+
+Data pack
+
+Tags
+Advancements
+Recipes
+Predicates
+Loot tables
+Item modifier
+Functions
+Structure files
+Dimensions
+Dimension types
+World generator contents
+Biomes
+Configured carvers
+Configured features
+Configured structure features
+Placed features
+Structures
+Structure sets
+Processor lists
+Template pools
+Noise
+Noise generator settings
+Density functions
+Flat level generator presets
+World presets
+Resource pack
+
+Block state model definitions
+Models
+Textures
+Sounds
+Fonts
+Font resource files
+Particles
+Shaders
+
+
+==== Locating contents in packs ====
+Given that objects in resource packs and data packs are files, the identifiers are constructed from their path relative to the data or assets folder.
+Though the locations vary by object type and the pack type the object type belongs to, there is a pattern to follow. In general, the location is in the fashion of pack_type/namespace/object_type/name.suffix, where all the / (forward slash) symbol (may be part of object_type or name) is replaced by operating system-dependent directory separator.
+Given the type of content we want to locate, we can find out the corresponding pack_type, object_type, and suffix. Then, we can substitute in and find out the final file location of the content.
+
+
+==== Registered pack contents ====
+A registried pack content refers to pack content that is registered into a registry when the pack is loaded. For a registried pack content, its identifier works as both main key of registry entry and path of its resource file.
+
+
+=== Other contents ===
+Customizable contents
+
+Boss bars
+Command storages
+Hardcoded contents
+
+Cat types for predicates (e.g. textures/entity/cat/tabby.png, textures/entity/cat/jellie.png)
+Criteria triggers
+Item properties (i.e. item predicates in models. e.g. angle, custom_model_data)
+Loot context param sets (i.e. types of loot table. e.g. barter, generic)
+Unaccessible contents:
+Suggestion providers for autocompletion of commands (e.g. summonable_entities, all_recipes)
+Entity models
+Loot context params (e.g. this_entity, origin, tool)
+
+
+== Bedrock Edition usage ==
+Unlike Java Edition, where there is a unified standard and handling methods of them, namespaced identifiers are usually treated as normal strings in Bedrock Edition. Moreover, some objects are identified based on their path (e.g. the identifier for recipes and trades) rather than what was defined in their file. In these cases, it is recommended that a folder named after the namespace is parented before the file at hand.
+The following is a list of all places that use namespaced identifiers: 
+
+
+=== Built-in contents ===
+Blocks
+Block traits
+Block entities
+Items
+Entities
+Status effects
+Dimensions
+Biomes
+Structures
+Features
+Entity attributes
+Item NBT components
+Item components
+Block components
+Entity components
+JSON schemas
+GameTest script-enabled components
+
+
+=== Registried add-on entries ===
+A registried add-on entry refers to any add-on content that is registered with an identifier declared within the content's file definition. Custom content under these types are able to be created.
+Here is a list of registried add-on entries whose identifiers are namespaced.
+
+Behavior pack contents
+
+Blocks
+Block states
+Entities
+Entity events
+Items
+Spawn rules
+Biomes
+Features
+Feature rules
+Recipes
+Structures
+GameTests
+Dialog scenes
+Spawn groups
+Structure sets
+Template pools
+Processor lists
+Catalog groups
+Resource pack contents
+
+Attachables
+Cameras
+Entity client definitions
+Particle effects
+Biome client definitions
+Fog settings
+Lighting settings
+Atmosphere settings
+Color grading settings
+Water effect settings
+Some custom fields in add-on files can also be namespaced, such as custom block properties and entity component groups, which aren't listed here.
+
+
+==== Others ====
+Structures saved from a structure block
+
+
+=== Script-registered entries ===
+Some content may also be registered within the scripts of behavior packs. These are read as the world is generating.
+
+Block components
+Item components
+Commands
+
+
+== Namespaces ==
+
+A namespace is a domain for content. It is to prevent potential content conflicts or unintentional overrides of objects of the same name.
+For example, two data packs add two minigame mechanisms to Minecraft; both have a function named start. Without namespaces, these two functions would clash and the minigames would be broken. When they have different namespaces of minigame_one and minigame_two, the functions would become minigame_one:start and minigame_two:start, which no longer conflict.
+
+
+=== minecraft namespace ===
+Minecraft reserves the minecraft namespace. When a namespace is not specified, an identifier falls back to minecraft‌[Java Edition  only]. As a result, the minecraft namespace should only be used by content creators when the content needs to overwrite or modify existing Minecraft data, such as adding a function to the minecraft:load function tag.
+
+
+=== Custom namespace ===
+The namespace should be distinct for different projects or content creations (e.g. a data pack, a resource pack, a mod, backing data/resource packs for a custom map, etc.)
+To prevent potential clashes, it is recommended that the namespace should be as specific as possible:
+
+Avoid alphabet soups. For example, a project named "nuclear craft" should not use the namespace nc, as this is too ambiguous.
+Avoid words that are too vague. battle_royale would not be informative to look up as well, but player_name_battle_royale would be much better.
+For add-ons, use a shortened creator name followed by the name of the project in a format like creatorname_packname.
+In either case, these poorly chosen namespaces reduce the exposure of a project and bring difficulties for debugging when there are multiple content creations applied to the game.
+
+
+=== Other built-in namespaces ===
+In Java Edition, the vanilla Minecraft resource pack declares Realms-oriented language files in the realms namespace (located at assets/realms/lang/.json) and game-related language files in the minecraft namespace, even though translation keys are not identifiers. The realms jar itself also declares its en_us.json language file and its various textures in the realms namespace.
+In the IDs of command argument types, a brigadier namespace also appears for command argument types that are native to Brigadier.
+In Bedrock Edition, the internal resource and behavior packs for Bedrock Editor contain some entities and items namespaced with editor.
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== See also ==
+Java Edition data values
+Bedrock Edition data values
+Resource pack
+Data pack
+Add-on
+
+
+== References ==
+
+
+== External links ==
+Namespaces, as explained in "Minecraft Snapshot 17w43a"     – Minecraft.net..
+
+
+== Navigation ==

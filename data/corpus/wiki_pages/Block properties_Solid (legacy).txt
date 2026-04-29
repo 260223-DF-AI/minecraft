@@ -1,0 +1,93 @@
+The legacy solid block property, usually simply called solid, determines if a block is considered "solid" for a number of game mechanics. It is distinct from many other notions of solidity, such as whether the block is opaque, conductive, has a collision box, is a full block, or allows mob spawning.
+The blocks motion block property, also sometimes called blocks movement, motion-blocking, or movement-blocking, is nearly synonymous with legacy solid, with two exceptions: cobwebs and bamboo saplings are legacy solid, but they are not motion-blocking. Since the two properties are so similar, it can be useful to consider motion-blocking a variant of legacy solid rather than a truly distinct property. As such, this article describes the effects of both variants.
+Many gameplay mechanics are affected by the legacy solid property, including support for certain attached blocks like candles, conversion of farmland to dirt, destruction of cactus, summoning of iron golems, and pathfinding. Additionally, the blocks motion property influences random teleportation and certain fluid mechanics.
+
+
+== Effects ==
+
+Both legacy solid and blocks motion are arguably misnomers, as many so-called solid blocks do not have collision, do not graphically appear solid, and do not obstruct movement. Rather, these properties exclusively affect the (largely unrelated) game mechanics described in this section.
+As the word legacy in legacy solid implies, these properties tend to be used by older game mechanics that predate introduction of other, more granular block properties. In some cases, their continued use may intentionally preserve historical behavior so as not to break players' designs.
+
+
+=== Support, placement, and survival conditions ===
+Item frames, glow item frames, and paintings can only be supported by legacy solid blocks and the side faces of redstone repeaters and redstone comparators. Banners, signs, and cakes can only be supported by legacy solid blocks. Other attached blocks, including but not limited to torches, buttons, hanging signs, and, ladders, use other mechanisms to determine whether they have sufficient support and are not affected by the legacy solid property.
+Cactus cannot be placed horizontally adjacent to any legacy solid block, and it uproots and drops as an item if a legacy solid block is placed horizontally adjacent to it.
+Dirt path converts to dirt if any legacy solid block other than a fence gate is immediately above it. Farmland converts to dirt if any legacy solid block other than a fence gate or moving piston is immediately above it.
+
+
+=== Fluid flow ===
+
+Flowing water that is adjacent to two water source blocks will only form a new source above legacy solid blocks or other water sources.
+
+A fluid will only spread towards other blocks it can flow into, but the shape and flow direction of each specific fluid block is affected by which blocks around it are motion-blocking. This means that if a fluid is trying to flow down to a diagonally adjacent fluid of the same type, but is prevented from doing so by a non-motion-blocking block, then the shape and flow direction of the top fluid will behave as if it still could.
+
+
+=== Iron golem summoning ===
+
+Iron golems summoned by panicking villagers can only spawn on top of legacy solid blocks or powder snow. However, there are several exceptions: Iron golems are explicitly prohibited from spawning on top of cactus, glass (including stained glass, tinted glass, and their glass pane variants), leaves, conduits, ice, TNT, glowstone, beacons, sea lanterns, or frosted ice, even though all of those blocks have the legacy solid property.
+For historical reasons, the set of blocks naturally summoned iron golems may spawn on top of are sometimes referred to as solid-blocking.
+
+
+=== Random wandering and teleportation ===
+When mobs select a random target destination to walk, swim, or fly to, the selected destination is adjusted upwards until it is not inside of any legacy solid block.
+When a dolphin checks to see if it can jump, it checks certain blocks along the path of the jump to ensure the path is clear. If the blocks are motion-blocking or do not contain water, the jump fails.
+When an enderman teleports, a player teleports by eating a chorus fruit, or a cat teleports just before giving the player a morning gift, the y coordinate of the selected destination is lowered until the block immediately below it blocks motion. This is a necessary but not sufficient condition: the selected destination also must not collide with any blocks or fluids, otherwise the teleportation attempt fails.
+
+
+=== Breaking ice ===
+When ice is broken above a motion-blocking block or a fluid, the ice is replaced with a water source block. Otherwise, the ice is simply destroyed and replaced with air like any other block.
+
+
+=== Heightmaps ===
+Only blocks that are motion-blocking will be considered as part of the OCEAN_FLOOR and OCEAN_FLOOR_WG heightmaps. It is also used to determine the MOTION_BLOCKING heightmap, with the exception of any block that does not have an empty fluid state (meaning that fluids and waterlogged blocks are excluded). The MOTION_BLOCKING_NO_LEAVES has the additional exception of leaves.
+These heightmaps are used for various mechanics related to sky exposure (like weather and ice formation), underwater feature placement (like kelp patches and ocean ruins), mob spawning, and world generation (like making sure underground features like fossils and buried treasure are placed below the ocean floor).
+
+
+== Blocks ==
+A block is considered "solid" if the average of three dimensions (width, depth, height) of the collision box is greater than or equal to 35/48 or if the height of the block is a full block or greater (like for fences and walls).
+This is overwritten for some blocks which are defined to be solid regardless of their collision box:
+
+Cobweb
+Moving piston
+Signs and hanging signs
+Pressure plates
+Oak fence, fence gates, and walls (even though they would already be solid)
+Cake
+Chains
+Banners
+Corals, coral fans, and coral blocks (even though the latter would already be solid)
+Shulker boxes
+Turtle egg
+Dried ghast
+Conduit
+Bamboo sapling and bamboo
+Bell
+Lantern and soul lantern (no copper lantern)
+Amethyst cluster
+Sculk vein
+Lightning rod
+Pointed dripstone
+Firefly bush
+This is overwritten for some blocks which are defined to be non-solid regardless of their collision box:
+
+Ladder
+Snow
+End rod
+Chorus plant and chorus flower
+Azalea and flowering azalea
+Big dripleaf
+
+
+== History ==
+
+
+== See also ==
+Solid block
+
+
+== References ==
+
+
+== External links ==
+https://joakimthorsen.github.io/MCPropertyEncyclopedia/?selection=blocks_motion
+https://joakimthorsen.github.io/MCPropertyEncyclopedia/?selection=solid

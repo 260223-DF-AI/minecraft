@@ -1,0 +1,680 @@
+This is a list of Bedrock Edition 1.21.40 development versions.
+
+
+== Preview 1.21.40.20 ==
+Beta 1.21.40.20 (ChromeOS, Android) or Preview 1.21.40.20 (Windows, iOS, iPadOS, Xbox, PlayStation) is the first beta/Preview version for Bedrock Edition 1.21.40, released on September 4, 2024, which brings more parity with Java Edition, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Mushroom Block
+
+The all-sided pore mushroom block has been removed from the creative inventory.
+Mushroom Stem
+
+mushroom_stem is now its own block and is no longer a variant of red_mushroom_block and brown_mushroom_block.
+Mushroom stems used on the composter have had their fill chance adjusted from 85% to 65%.
+Heads
+
+The different data values for the skull ID have been split up into their own IDs.
+
+
+==== Command format ====
+/effect
+
+Added infinite duration option to the command:
+/effect <player: target> <effect: Effect> infinite [amplifier: int] [hideParticles: Boolean]
+Added specific effect removal option to the command:
+/effect <player: target> clear <effect: Effect>
+
+
+==== General ====
+Realms
+
+Added a new Realm Event.
+UI
+
+Added a new message to explain when a Marketplace Template is not available on a specific platform.
+
+
+==== Technical ====
+API
+
+BlockLiquidContainerComponents API (water, lava, potion, snow) has been replaced with BlockFluidContainerComponent.
+Moved isHardcore from beta to 1.15.0.
+Commands
+
+Added new overloads for the /schedule command which allows you to clear a queued function:
+/schedule clear <function name> - Clears all queued functions matching the given name.
+/schedule on_area_loaded clear function <function name> - Clears all queued functions that are scheduled as on_area_load by name.
+/schedule on_area_loaded clear tickingarea <tickingarea name> [function name] - Clears all queued functions that are scheduled as on_area_load by ticking area name (and optionally also checks function name too).
+Components
+
+The restriction_type field has been added to the minecraft:home component, allowing to define how an entity is restricted to its home position:
+Its values are:
+none, which poses no restriction.
+random_movement, which restricts randomized movement around the home position.
+all_movement, which restricts any kind of movement around the home position.
+The all_movement value is currently in [Beta] and is planned to be fully released at a later date.
+Entities that have moved too far from their home will always be able to move closer to it if prompted.
+The radius of the restriction is still specified with restriction_radius.
+Entities with a format version prior to 1.21.40 will be upgraded to use the new field in a way that preserves their existing behavior.
+Added the minecraft:dimension_bound component, which prevents entities from changing dimension through portals.
+In Vanilla content, this is used by the Ender Dragon, the fishing hook, and some projectiles.
+Added the minecraft:transient component, entities with this component will never be saved. In Vanilla content, this is currently used for the fishing hook.
+Entity Components
+
+behavior.fire_at_target is no longer usable if it is missing a projectile definition and will now throw a content error if so.
+Entity Event Responses
+
+Added the execute_event_on_home_block entity event response, which allows the entity to execute an event on the block at its home position:
+The event field allows to specify the event to execute.
+For this to work properly, the entity must have a minecraft:home component with a set home position.
+General
+
+Made the following changes to minecraft:single_block_feature:
+places_block now supports a list of weighted block specifiers.
+New randomize_rotation property.
+New may_not_attach_to placement conditions.
+Added diagonal as a new option for may_attach_to conditions.
+File format version increased to 1.21.40.
+Molang
+
+Molang queries wing_flap_position and wing_flap_speed now work for the chicken.
+Resource and Behavior Packs
+
+Built-in packs now include archive files for improved load performance on some platforms.
+Stability and Performance
+
+Increased the size of biome ids in saved chunk data from 8 bit to 16 bit values.
+Technical blocks
+
+Merged the separate and direct item form of the heads (item.skull).
+This change is reverted in later versions (the direct item form of heads (item.skull) still exists).
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs", "Bundles", and "Creator Cameras: New Third Person Presets" experimental toggles.
+
+
+==== Changes ====
+
+
+===== Items =====
+Bundle
+
+When a Bundle is used in the hotbar, one group of items is emptied at a time instead of everything being emptied at once.
+
+
+===== Technical =====
+API
+
+Moved EntityBreathableComponent from beta to 1.15.0.
+Moved breathesAir from beta to 1.15.0.
+Moved breathesLava from beta to 1.15.0.
+Moved breathesSolids from beta to 1.15.0.
+Moved breathesWater from beta to 1.15.0.
+Moved generatesBubbles from beta to 1.15.0.
+Moved inhaleTime from beta to 1.15.0.
+Moved suffocateTime from beta to 1.15.0.
+Moved totalSupply from beta to 1.15.0.
+Moved componentId from beta to 1.15.0.
+Moved getBreatheBlocks() from beta to 1.15.0.
+Moved getNonBreatheBlocks() from beta to 1.15.0.
+Moved class BlockLocationIterator from beta to 1.15.0.
+Moved class InvalidIteratorError from beta to 1.15.0.
+Moved property BlockVolumeBase.getBlockLocationIterator from beta to 1.15.0.
+Moved enum BlockVolumeIntersection from beta to 1.15.0.
+Moved class BlockVolume from beta to 1.15.0.
+Added the DyeableItemComponent to beta.
+Cameras 
+
+Added minecraft:camera_attach_to_player to minecraft:follow_orbit.
+Added align_target_and_camera_forward option to the camera preset behavior pack JSON which can be used when the third person camera preset experiment is enabled.
+3rd person camera experiment - The radius property of the creator cameras is now constrained to a value between 0.1 and 100.
+Third person boom camera will now reset to the starting rotation values specified in json when the default parameter is passed in the camera command.
+Added the entity_offset parameter to the command.
+Graphical
+
+Removed the dark aura around the moon in the Deferred Technical Preview.
+
+
+=== Fixes ===
+47 issues fixed
+From released versions before Bedrock Edition 1.21.40
+
+MCPE-28531 – Potion tooltips missing % sign on mobile.
+MCPE-49126 – No sound when placing cocoa beans.
+MCPE-57498 – Player body located wrong in pocket UI.
+MCPE-91187 – Piglins are attracted to powered rails.
+MCPE-103061 – Enchanted Golden Apple gives wrong effects.
+MCPE-103592 – Armor GUI still shows when almost broken armor breaks.
+MCPE-114752 – The message of death by thorns is wrong.
+MCPE-119761 – Chat messages overlap.
+MCPE-120971 – Delayed chunk, block, and sound loading.
+MCPE-121058 – Sound event for pillager is unused due to typo.
+MCPE-122488 – Polar bears killed by fire/lava does not drop cooked fish.
+MCPE-128393 – Beehives/nests work as furnace fuel.
+MCPE-131854 – Vines placed with /setblock are invisible.
+MCPE-150684 – Dyeing mobs has no sound.
+MCPE-151765 – Tamed wolves ignoring player while chasing skeletons and won't teleport back soon enough.
+MCPE-152134 – Spawn point cannot be set at night when monsters are nearby.
+MCPE-161140 – Item text moves up when pointing to entities, even when the old interact button is not there.
+MCPE-166008 – Icon ? do not connected with the UI button X in loom and smithing table menu.
+MCPE-167134 – Controller hints show in villager menu when turned off.
+MCPE-174398 – Pink Screen Glitch when opening Microsoft Live Account Login Menu.
+MCPE-177192 – The health bar and the hunger bar are not centered in Classic UI Profile on mobile.
+MCPE-177299 – Gamerule showrecipemessages is considered a Cheat.
+MCPE-178148 – [ScriptAPI] Invalid ModalFormData and ActionFormData never resolve the Promise.
+MCPE-179008 – Creeper doesn't drop a music disc when killed by bogged.
+MCPE-182876 – Action bars reappear when re-entering a world.
+MCPE-185268 – Air bubbles are not aligned with hunger bar in HUD.
+MCPE-185460 – Emptying a bundle into the ground doesn't play sound and animations.
+MCPE-185504 – When the Clear Hotbar option is enabled, "Take from Bundle" button clears hotbar.
+MCPE-185868 – Item Display Transforms break when using bone visibility.
+Other
+
+Bundles now display the bar showing their fullness level when placed in the hotbar.
+Bundle tooltip placement now takes screen safe area into account.
+The "Swap" button hint is now shown when hovering an item over another item with a game controller.
+The "Place" button hint is now shown on all screens when holding an item on the cursor with a game controller.
+Wind Charges can't be hit and redirected shortly after throwing them.
+Players hitting the edge of the generated world will keep their velocity. Example: While flying with the elytra, the player will stay floating instead of looing all speed instantly.
+Wolves, cats, and parrots trying to catch up to their owner now seamlessly resume navigation after teleporting to them.
+Wolves, cats, and parrots now teleport to their owner when panicking and far enough away.
+Fixed a bug that would prevent activation of addon for a Realm via Marketplace.
+Fixed a bug where the close button subpanel in the stonecutter panel was empty instead of hidden while using controller.
+Bogged now drops poison arrows when killed by mobs tamed by a player.
+Fixed an issue which prevented the new 1.21.30 trade table format from loading in-game.
+Fixed method ItemStack.getComponents from returning components that are unsupported in the current @minecraft/server version.
+Fixed a bug where the tessellation of redstone dust does not match the powered state of the dust for the following blocks:
+minecraft:*_slab
+minecraft:chain
+minecraft:chorus_flower
+minecraft:chorus_plant
+minecraft:farmland
+minecraft:grass_path
+minecraft:heavy_core
+minecraft:jigsaw
+minecraft:sea_lantern
+minecraft:sniffer_egg
+minecraft:structure_block
+Fixed a bug where extremely fast moving entities would cause the game to crash. Entities can now no longer move more than 16 blocks in a single tick. (For reference, an entity with Speed 255 will move ~11 blocks in a single tick.)
+Game will no longer crash when loading a world near an End city.
+Fixed an issue where rider_rotation_lock of minecraft:rideable had no effect when using the minecraft:follow_orbit camera.
+
+
+== Preview 1.21.40.21 ==
+Beta 1.21.40.21 (ChromeOS, Android) or Preview 1.21.40.21 (Windows, iOS, iPadOS, Xbox, PlayStation) is the second beta/Preview version for Bedrock Edition 1.21.40, released on September 11, 2024, which reorganizes items and blocks in the creative inventory, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Monster Spawner
+
+Its step sounds and hit sounds now play at their intended volume.
+Trial Spawner
+
+Its hit sounds now play at their intended volume.
+
+
+==== Gameplay ====
+Creative inventory
+
+Items and blocks in the creative inventory have been reorganized, with the goal of making overall sorting more intuitive:
+Trial chamber items:
+Trial keys were moved to be next to ominous trial keys.
+Ominous bottles were moved next to the existing potions and were made into its own "Ominous Bottle" group.
+Stone group in the "Nature" tab:
+Stone was moved into the "Stone" group.
+Stone is now the front block of the "Stone" group.
+Basalt and smooth basalt were moved into the "Stone" group.
+Tuff and polished tuff were moved into the "Stone" group.
+"Decorative Stone" in the "Construction" tab:
+Smooth stone was moved into "Decorative Stone".
+Tuff bricks, chiseled tuff, and chiseled tuff bricks were moved from the "Nature" category to "Decorative Stone" in the "Construction" category.
+Prismarine bricks were moved from the "Decorative Stone" group, now they are next to prismarine and dark prismarine.
+Copper family:
+Reordered raw iron, raw copper, raw gold to raw copper, raw iron, raw gold.
+The copper, iron, and gold blocks were moved to match the raw versions ordering.
+The copper doors were moved to all the other doors.
+The copper trapdoors were moved to the group with all the other trapdoors.
+Copper blocks and copper grates are now sorted by block type then by oxidation level, instead of oxidation level then block type.
+Tuff family:
+Tuff stairs, tuff slabs, tuff walls, and their polished versions were moved from the "Nature" tab to the "Construction" tab into their respective groups.
+Other blocks
+Bricks are now placed before the "Slabs" group.
+This change only affects bricks made from clay and not all the brick blocks.
+Chiseled nether bricks and cracked nether bricks were moved next to the nether bricks block and red nether bricks.
+Quartz bricks placed next to the other quartz blocks.
+Rooted dirt is now next to the other dirt blocks.
+Many dirt blocks and grass variants were shuffled around for a greater parity with Java Edition.
+Gravel is now ordered after the "Stone" group and is next to sand and red sand.
+Clay was moved from the "Construction" category to the "Nature" category, placed next to the mud block.
+
+
+==== General ====
+Settings
+
+Removed some Keyboard key bindings from Settings that should only exist in Minecraft Education: Control Tips, Code Builder, and Immersive Reader.
+UI
+
+LAN worlds are now visible in the "Worlds" tab for the OreUI Play screen (Preview only).
+
+
+==== Items ====
+Mace
+
+Mobs can now perform mace smash attacks again.
+
+
+==== Technical ====
+Behavior Packs
+
+Updated references to old block names in behavior pack wood recipe files.
+Updated references to old block names in remaining behavior pack recipe files.
+Blocks
+
+Added content warning when carried_textures or blockshape are incorrectly written in blocks.json.
+Components
+
+Renamed the minecraft:lookat component to minecraft:looked_at to better reflect its functionality:
+Its look_event field was also renamed to looked_at_event.
+Its look_cooldown field was also renamed to looked_at_cooldown.
+Expanded the minecraft:looked_at component functionality with the addition of six new [Beta] fields:
+find_players_only restricts the search for entities looking at the owner entity to players only, ensuring that the closest player satisfying the specified filters is selected.
+look_at_locations defines the parts of the owner entity that are targeted for being looked at:
+For these parts, a line-of-sight check is performed to ensure no blocks obstruct the view.
+Supported values are head, body, and feet.
+not_looked_at_event specifies the event to trigger when no suitable entity is looking at the owner entity.
+field_of_view defines the width of the field of view, in degrees, for entities looking at the owner entity:
+If scale_fov_by_distance is set to true, this value corresponds to the field of view at a distance of one block between the entities.
+scale_fov_by_distance determines if the field of view narrows as the distance between the owner entity and the entity looking at it increases.
+This ensures that the width of the view cone at the owner entity position remains relatively constant, regardless of distance.
+line_of_sight_obstruction_type defines which block shape is considered when checking for line-of-sight obstructions.
+Supported values are outline, collision, and collision_for_camera.
+Moreover, et_target now supports three different values:
+never, looking entities are never set as targets, but events are emitted.
+once_and_stop_scanning, the first detected looking entity is set as target, but scanning and event emission is suspended if and until the owner entity has a target.
+[Beta] once_and_keep_scanning, the first detected looking entity is set as target, but scanning and event emission continues.
+All these fields are planned to be taken out of [Beta] and fully released at a later date.
+Entity Event Responses
+
+Added the reset_target entity event response, which allows an entity to reset its target.
+Feature
+
+Using unsupported feature placement in pregeneration_pass will now throw a content error instead of crash.
+Graphical
+
+Add new the_end.client_biome.json as the first new type of file to contain per-biome rendering and audio settings in resource packs.
+Items
+
+The minecraft:item object is parsed with a strict loader from 1.21.40:
+Numbers and booleans are no longer interchangeable in the JSON input.
+Floating point numbers are no longer accepted where an integer is expected.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs", and "Upcoming Creator Features" experimental toggles.
+
+
+==== Additions ====
+
+
+===== Technical =====
+Graphical
+
+Added a slider in the Deferred Technical Preview video settings for controlling the upscaling resolution factor.
+Molang
+
+Adding under upcoming creator features:
+query.client_memory_tier. Returns a number representing the client RAM memory tier, 0 = "Undetermined", 1 = "SuperLow", 2 = 'Low", 3 = 'Mid", 4 = "High", or 5 = "SuperHigh". Available on the Client (Resource Packs) only.
+query.server_memory_tier. Returns a number representing the server RAM memory tier, 0 = "Undetermined", 1 = "SuperLow", 2 = 'Low", 3 = 'Mid", 4 = "High", or 5 = "SuperHigh". Available on the server side (Behavior Packs) only.
+Scripting
+
+Added enum MemoryTier:
+   export enum MemoryTier {
+       Undetermined = 0,
+       SuperLow = 1,
+       Low = 2,
+       Mid = 3,
+       High = 4,
+       SuperHigh = 5
+   }
+
+Added base class SystemInfo:
+Field MemoryTier.
+Added class ClientSystemInfo:
+Field MemoryTier.
+Class Player:
+Added property clientSystemInfo.
+Class System:
+Added property serverSystemInfo.
+
+
+==== Changes ====
+
+
+===== Technical =====
+Graphical
+
+Improved lighting for maps when held in hand and when placed in frames in the Deferred Technical Preview.
+
+
+=== Fixes ===
+17 issues fixed
+From released versions before Bedrock Edition 1.21.40
+
+MCPE-116364 – Stone and end stone are not in the Stone group in the Creative inventory.
+MCPE-176383 – Tuff blocks variants aren't grouped together to their block variants respectively.
+MCPE-176384 – Copper group in creative inventory is disorganized.
+MCPE-178959 – Bogged's head does not move together with equipped Skull & Carved Pumpkin.
+MCPE-179608 – No longer able to move "open inventory" touch control to the left side.
+MCPE-180278 – Ominous Bottles are not grouped together as its own item group in the creative menu.
+MCPE-180280 – Ominous Trial Key are not grouped with normal trial key in the creative inventory.
+MCPE-180640 – Oozing, weaving and wind charged don't work on the player.
+MCPE-183431 – New Bed Screen shows an incorrect message when playerssleepingpercentage is set to >100.
+MCPE-185502 – Renamed bundle doesn't have italic formatting.
+MCPE-185913 – Wither Skeleton’s new step sounds are too quiet.
+MCPE-186235 – Slabs in Shipwrecks can be the wrong half.
+From the previous development version
+
+MCPE-186343 – Some blocks have no ambient occlusion.
+Other
+
+Fixed an issue where packs were not downloaded or applied when joining a server that had CDN enabled.
+Fixed an issue where user choice for downloading/applying resource packs during server join was ignored when CDN is enabled on the server.
+Fixed an issue where trades with negative max_use values could not be traded.
+Fixed water surface shaking that would occur when upscaling was enabled in the Deferred Technical Preview.
+
+
+== Preview 1.21.40.22 ==
+Beta 1.21.40.22 (ChromeOS, Android) or Preview 1.21.40.22 (Windows, iOS, iPadOS, Xbox, PlayStation) is the third beta/Preview version for Bedrock Edition 1.21.40, released on September 18, 2024, which adds dyed bundles in all 16 colors, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== General ====
+Realms
+
+Added a new Realm Event.
+
+
+==== Mobs ====
+Bats
+
+Updated the rules under which they spawn in the world:
+Bats can now spawn at any height, provided the area is covered and sufficiently dark.
+They must spawn on one of the following blocks: stone, granite, diorite, andesite, tuff, or deepslate.
+As a result, bats may now happen to spawn above the surface.
+
+
+==== Technical ====
+API
+
+Moved getRedstonePower from beta to 1.15.0.
+Blocks
+
+Updated the jigsaw block:
+Updated the jigsaw block UI.
+Added selection priority and placement priority fields.
+Updated references to old block names in behavior pack color recipe files.
+Updated references to old block names in behavior pack feature files.
+Updated references to old block names in biome definition files.
+Camera
+
+The minecraft:follow_orbit preset is no longer behind the experimental toggle.
+Components
+
+Moved the minecraft:redstone_conductivity component out of the Upcoming Creator Features experiment for format_versions 1.21.30 and above.
+Entity Components
+
+Expanded minecraft:explode with the following new fields:
+damage_scaling: A scale factor applied to the explosion's damage to entities. A value of 0 prevents the explosion from dealing any damage. Negative values cause the explosion to heal entities instead:
+toggles_blocks: If true, the explosion will toggle blocks in the explosion radius.
+knockback_scaling: A scale factor applied to the knockback force caused by the explosion.
+particle_effect: The name of the particle effect to use. The accepted strings are wind_burst or breeze_wind_burst. All other inputs will use the default explosion particles.
+sound_effect: The name of the sound effect played when the explosion triggers.
+negates_fall_damage: Defines whether the explosion should apply fall damage negation to players above the point of collision.
+allow_underwater: If true, the explosion will affect blocks and entities underwater.
+Graphical
+
+Starting with base game version 1.21.40, built-in biomes_client.json files will no longer be loaded. That file from other packs will continue to be loaded. Water and fog settings are now in individual client_biome.json  files in resource packs. When both biomes_client.json and the individual client_biome.json file specify competing values, the loaded biomes_client.json from creator content will have priority.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs", "Bundles", "New Third Person Presets", and "Upcoming Creator Features" experimental toggles.
+
+
+==== Additions ====
+
+
+===== Technical =====
+Add-ons and Script Engine
+
+Add support for custom items with the minecraft:block_placer item component to use the referenced "block" as the icon for the item:
+If the minecraft:icon component is specified, it will override the "block" icon.
+Requires the "Upcoming Creator Features" toggle. Must use item json version 1.21.40 or higher.
+API
+
+Added enum PlatformType export enum PlatformType { Console = 'Console', Desktop = 'Desktop', Mobile = 'Mobile', } Class ScriptClientSystemInfo:
+Added field platformType.
+Added field maxRenderDistance.
+Camera
+
+Added camera relative movement to the "New Third Person Presets" experimental toggle:
+Camera relative movement is enabled on any camera that inherits from minecraft:follow_orbit and sets align_camera_and_target_forward to false.
+
+
+==== Changes ====
+
+
+===== Items =====
+Bundles
+
+ They can now be dyed 16 different colors using dyes.
+
+
+===== Technical =====
+API
+
+Moved PlayerInteractWithBlockBeforeEvent and PlayerInteractWithBlockAfterEvent from beta to 1.15.0.
+Moved PlayerInteractWithEntityBeforeEvent and PlayerInteractWithEntityAfterEvent from beta to 1.15.0.
+Graphical
+
+Updated some JSON schemas for Deferred Technical Preview resource packs. Creators must update their packs to the new format. Documentation on the Creator Learning Portal will be updated accordingly:
+Split up the contents of lighting/global.json into 3 files: lighting/global.json, point_lights/global.json and pbr/global.json. They contain directional lights + emissive desaturation, point light colors and MERS fallbacks respectively.
+The schema for lighting/global.json is now wrapped in a new minecraft:lighting_settings object and also requires a description object with an identifier string to act as a unique name for your settings. The format_version field has also been modified to require a string as opposed to an array of integers, and must use a version of 1.21.40.
+The filepath for atmospheric scattering files has been relocated to atmospherics/atmospherics.json.
+The schema for atmospherics/atmospherics.json is now wrapped in a new minecraft:atmosphere_settings object and also requires a description object with an identifier string to act as a unique name for player's settings. It also requires a format_version string, which must be a version of 1.21.40.
+The schema for color_grading/color_grading.json now requires a format_version string, which must be a version of 1.21.40.
+The schema for water/water.json now requires a format_version string, which must be a version of 1.21.40.
+
+Molang
+
+Added query.client_max_render_distance. It returns the max render distance in chunks of the current client. Available on the Client (Resource Packs) only.
+
+
+=== Fixes ===
+21 issues fixed
+From released versions before Bedrock Edition 1.21.40
+
+MCPE-73593 – Items sometimes become stuck in the crafting grid
+MCPE-109595 – Identical lodestone compasses don't stack
+MCPE-128464 – Item categories are shown when the recipe book window is closed
+MCPE-159557 – Sneak button disappear when (swaped, lefty, touching a part of the screen
+MCPE-175113 – Pressure-sensitive Left and right triggers on controller now "double-tap" after pressing
+MCPE-176922 – Jump boost does not affect the breeze's jump
+MCPE-176991 – Breeze can jump on top of honey blocks
+MCPE-181055 – TNT explosion cancels the downward momentum of other falling lit TNT instead of accelerating it
+MCPE-181405 – Jigsaw Blocks Don't hold data
+MCPE-181789 – Cannot break blocks by tapping when using "Joystick & aim crosshair" Control Mode
+MCPE-184090 – New Bed screen has a different background overlay when Screen Animations is off
+MCPE-185643 – Minecart stopping on rail and will not proceed when pushed
+MCPE-185952 – Wrong death message is displayed when being killed by a mob's smash attack
+MCPE-186255 – Some flattened IDs are still incorrectly overwritten by original ID in blocks.json with format_version 1.21.20 or higher
+MCPE-186324 – When attempting to respawn, it shows a loading icon and never actually respawns you.
+From the previous development version
+
+MCPE-186359 – Bundle items cannot be accessed in Creative Mode with Clear Hotbar enabled
+Other
+
+Zombified piglins spawned by a nether portal now have 15-second cooldown before it can use the portal.
+Fixed a bug where Realms invite links could overflow past their text boxes.
+Fixed an issue where the new Bed screen wouldn't be narrated fully in certain scenarios (Preview only).
+Fixed some cases when the entityRemove world event would sometimes not be triggered.
+Wind charges now use the minecraft:explode component instead of minecraft:wind_burst.
+
+
+== Preview 1.21.40.23 ==
+Beta 1.21.40.23 (ChromeOS, Android) or Preview 1.21.40.23 (Windows, iOS, iPadOS, Xbox, PlayStation) is the fourth beta/Preview version for Bedrock Edition 1.21.40, released on September 25, 2024, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== General ====
+Accessibility
+
+Added text-to-speech voiceover for items in Marketplace Pass content tab and Realms content tab.
+Experiments
+
+Removed the "Bundles" experimental toggle.
+UI
+
+Added support for unread Realms Stories badge notifications on the new play screen (Preview Only).
+Added the possibility to edit the thumbnail of a world in the new OreUI edit world screen.
+
+
+==== Items ====
+Bundles
+
+They have been de-experimentified and are now available during normal gameplay.
+Bundle icon now matches Java Edition.
+
+
+==== Technical ====
+Components
+
+The minecraft:damage_sensor component's deals_damage field now supports three values:
+yes, received damage is applied to the entity.
+no, received damage is not applied to the entity.
+no_but_side_effects_apply, received damage is not applied to the entity, but the side effects of the attack are.
+This means that the attacker's weapon loses durability, enchantment side effects are applied, etc.
+Pre-existing content will be automatically updated to maintain its original behavior.
+Items
+
+The minecraft:bundle_interaction, and minecraft:bundle_interaction item components have been de-experimentified.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs", and "Focus Target Camera" experimental toggles.
+
+
+==== Additions ====
+
+
+===== Technical =====
+Add-Ons and Script Engine
+
+Added replace_block_item field to the minecraft:block_placer item component. This field allows player to specify that this item should replace the default item created for the data-driven block it places. To use this field, the identifier of the item must match the identifier of the block it places. This field is optional and defaults to false.
+Cameras
+
+Added horizontal and vertical rotation limits to the Focus Target Camera experimental toggle.
+Added continue_targeting bool to the Focus Target Camera experimental toggle for tracking entities outside of set rotation limits.
+Graphical
+
+Added the ability to data-drive the ambient light in the Deferred Technical Preview. The ambient light is used as the indirect specular contribution when SSR and IBL are not available or when they are insufficient to illuminate metal objects in low light conditions. It is also used as the minimum value that ambient contribution can have, thus avoiding scenes from being completely black if no light sources are present. See updated documentation on the Creator portal for more information.
+
+
+==== Changes ====
+
+
+===== Technical =====
+Behavior Packs
+
+Updated references to old block names in remaining behavior pack files.
+Graphical
+
+Made a breaking schema change to JSON files associated with the Deferred Technical Preview to hoist the format_version field out to the root level. The following files are affected:
+atmospherics/atmospherics.json
+color_grading/color_grading.json
+lighting/global.json
+pbr/global.json
+point_lights/global.json
+water/water.json
+For example, the previous schema for lighting/global.json was:
+{
+    "minecraft:lighting_settings": {
+        "format_version": "1.21.40",
+        ...
+    }
+}
+But should now be written as:
+{
+    "format_version": "1.21.40",
+    "minecraft:lighting_settings": {
+        ...
+    }
+}
+Stability and Performance
+
+Worlds created with Experimental Custom Biomes before Caves & Cliffs update will have their Custom Biomes in Chunks replaced with a default Biome (Ocean for Overworld)
+
+
+=== Fixes ===
+14 issues fixed
+From released versions before Bedrock Edition 1.21.40
+
+MCPE-185132 – Shields, spyglass, trident, crossbow and bow glitch out when a photo is taken using the photograph button on the pause screen
+MCPE-185316 – Horse armor does not render on a horse when using resource packs with a minimum engine version of 1.17.0 or lower
+MCPE-185457 – Bundle fullness bar can not be seen when in another bundle
+MCPE-185481 – Empty bundle shows progress bar when selected
+MCPE-185519 – Bundle texture is inconsistent between Java & Bedrock Edition
+MCPE-186676 – Trading for emeralds using second slot causes game to crash
+From the previous development version
+
+MCPE-186627 – Ghost blocks appear when placing blocks on vaults
+MCPE-186684 – Water is no longer transparent
+Other
+
+Bundle dye recipes are now unlocked when getting dye instead of undyed variant.
+Issue where some commands did not recognize certain block or item names has been fixed.
+New Beta options in minecraft:looked_at and minecraft:home entity components now properly require that use_beta_features is specified in the root JSON object.
+Fixed a crash that could occur with getDimension when called within onBeforeActorRemove on an entity that was invalid.
+Custom biome ids are now assigned with values starting at 30,000 and are stored in BiomeIdsTable in world data so their id assignments persist for the duration of the world.
+Fixed a bug with point light shadows that would cause circles to appear on nearby surfaces. As a consequence, the edges of point light shadows are now jagged. This will be resolved in a later update.
+
+
+== Preview 1.21.40.25 ==
+Beta 1.21.40.25 (ChromeOS, Android) or Preview 1.21.40.25 (Windows, iOS, iPadOS, Xbox, PlayStation) is the fifth and final beta/Preview version for Bedrock Edition 1.21.40, released on October 3, 2024, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Technical ====
+Components
+
+Removed support for the allow_invulnerable field from the minecraft:looked_at component.
+This field never had any functionality, so this change won't affect pre-existing or future content in any way.
+The field will be ignored for any content with a format version lower than 1.21.40.
+A content error will be emitted for any content with a format version equal to or higher than 1.21.40 that still uses this field.
+
+
+=== Fixes ===
+1 issue fixed
+From released versions before Bedrock Edition 1.21.40
+
+MCPE-185038 – Transparent objects like water render as solid materials on Samsung Xclipse GPU devices
+
+
+== Notes and references ==
+
+
+== Navigation ==

@@ -1,0 +1,122 @@
+23w18a is the sixth and final snapshot for Java Edition 1.20, released on May 3, 2023.
+
+
+== Additions ==
+
+
+=== Gameplay ===
+Advancements
+
+The Power of Books
+Read the power signal of a Chiseled Bookshelf using a Comparator.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Smithing table
+
+No longer requires a smithing template to be in the template slot before placing an item into the other slots.
+
+
+=== Mobs ===
+Slimes and magma cubes
+
+Are now affected by the Jump Boost effect.
+
+
+=== General ===
+Advancements
+
+All fields in placed_block, item_used_on_block, and allay_drop_item_on_block advancement triggers have been collapsed to a single location field.
+New location is similar to the player field - it's a list of loot conditions/predicates.
+All conditions in this list must match for a trigger to run.
+Conditions are evaluated in a new loot context called advancement_location. It has access to:
+Player as this entity.
+Position of the placed/interacted block.
+Block state of the placed/interacted block.
+Held/used item as "tool".
+Migration guide:
+Contents of old location field should be migrated to a location_check condition.
+Contents of item field should be migrated to a match_tool condition.
+Contents of block and state fields should be migrated to a block_state_property condition.
+Advancement fields now have a new boolean field called sends_telemetry_event.
+Data packs
+
+Version is now 15, accounting for predicate/loot table and advancement changes.
+Creative inventory
+
+Jukebox has been added to the "Redstone Blocks" tab.
+Predicates
+
+Condition alternative has been renamed to any_of.
+Added new condition all_of that passes only when all sub-conditions pass.
+It has the same syntax as any_of.
+Sounds
+
+Walking on a block now always plays a step sound.
+It was previously not the case if the player was walking along the edge of a block with air or fluid beside it.
+Walking on the ocean floor produces a step sound for the block the player is walking on, but at a lower volume and pitch.
+Telemetry
+
+Added new property: launcher_name.
+A new global property sent with every event.
+This is set based on the minecraft.launcher.brand system property.
+This helps developers troubleshoot game launch related bugs more effectively, as they are able to see whether the issue originated in the Minecraft launcher or a third-party program.
+Added new property realms_map_content to event world_loaded.
+When loading into a Realms Map Content world (Minigame), the world_loaded event receives the name of that map.
+This is to help developers understand how Java Realms users interact with Java Realms adventure or minimap content.
+Added new optional event advancement_made.
+This event is triggered when a player completes an advancement.
+This allows developers to see the advancement ID and the time when the advancement was completed, and helps them as a studio understand player progress and limits, which informs their game design.
+Added new optional event game_load_times.
+An event that is triggered when the game client is loaded, and includes the time it took for the client to load.
+This is so that developers can work on improving and reducing the time it takes to load the game client.
+
+
+== Fixes ==
+28 issues fixed
+From released versions before 1.20
+
+MC-1133 – Whether or not a player experiences some effect is calculated based on the block under the center of the player.
+MC-2604 – Walking on non-solid blocks with no collision plays their respective walking sounds.
+MC-48923 – Slime/magma cubes not affected by jump boost potion effect.
+MC-75721 – Arrow buttons within the book GUI are rendered above tooltips.
+MC-130089 – Turtle eggs break weird at block edges.
+MC-158154 – Players can bounce on beds even when not directly touching it.
+MC-199952 – Skylight does not propagate across certain chunk borders upon world generation.
+MC-203317 – There is a missing torch in one of the Stronghold rooms leaving a Light source.
+MC-207290 – Sculk sensors don't detect vibrations while walking on the edge of a block.
+MC-212583 – Sculk sensors are not activated upon walking inside of scaffolding that has air below it.
+MC-217447 – "Walking" on nether wart produces stone footstep sounds instead of nether wart sounds.
+MC-240098 – Minecraft can't be correctly profiled to Windows 11 version.
+MC-242105 – When landing on some non-full blocks while touching a thin block, impact particles use the thin block's texture.
+MC-244307 – Dark Chunks when exploring since 1.18.
+MC-252389 – When landing (or jumping) on wool with your hitbox over the edge, it produces a vibration.
+MC-257269 – Sculk sensor detects player walking between carpet and wool.
+MC-259978 – Minecraft telemetry data detected Windows 11 as Windows 10.
+MC-260279 – Jukebox is not in the Redstone Blocks tab in the creative inventory.
+MC-261417 – The hitboxes of sniffers are not adjusted when they lay down.
+MC-262067 – The type of sniffer digging particles that are produced is determined by the block that sniffers are located on instead of the block that sniffers are digging.
+MC-262069 – Sniffers continue digging after their target block is destroyed.
+From the 1.20 development versions
+
+MC-261952 – Clocks flicker rapidly when enchanted and in an unnatural dimension.
+MC-262003 – Bundle tooltip does not show its interface.
+MC-262104 – Rendering of FPS graph seems to be performing worse than before.
+From the previous development version
+
+MC-262123 – Advancement titles of new advancements are improperly capitalized.
+MC-262133 – Strong lag spikes when moving above a cleared area with exposed void.
+MC-262185 – Partially transparent pixels in font glyphs appear more opaque than they should in the tooltip.
+MC-262218 – Block light updates don't cross chunk borders properly in 23w17a.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

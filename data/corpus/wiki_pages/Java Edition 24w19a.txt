@@ -1,0 +1,171 @@
+24w19a is the second snapshot for Java Edition 1.21, released on May 10, 2024, which optimizes chunk loading performance, and fixes bugs.
+
+
+== Additions ==
+
+
+=== General ===
+Sounds
+
+Added 4 new cave ambient sounds:
+
+
+== Changes ==
+
+
+=== Blocks ===
+ Copper bulb
+
+Replaced the sounds for "turn off" and "turn on" with one "toggle" sound.
+Sculk sensor and calibrated sculk sensor
+
+Added frosted ice being placed by Frost Walker to the list of events that produce a "Block Placed" vibration (frequency 13).​[more information needed]
+ Trial spawner
+
+Updated the top face texture and the active state texture.
+
+
+=== Items ===
+ Mace
+
+Fire Aspect can be applied to maces again.
+
+
+=== Gameplay ===
+Enchantments
+
+Breach and Density are now incompatible.
+
+
+=== General ===
+Data pack
+
+The pack format version is now 43.
+Registry decorated_pot_patterns has been renamed to decorated_pot_pattern.
+Renamed directories; each directory that used the plural name of its element now matches registry name:
+
+Data component format
+
+The custom_data component can now be specified as an SNBT string to preserve type information in JSON.
+This is the same as is used in the set_custom_data loot function and custom_data predicate.
+The food item component has new fields:
+using_converts_to: item with components (optional).
+Once consumed, the food item is replaced with the specified item.
+e.g. food={nutrition:1,saturation:0,using_converts_to:{id:"poisonous_potato",components:{"minecraft:custom_name":'"Wait what?"'}}}.
+Entity format
+
+Removed power tag and replaced with acceleration_power tag with a number value that control the projectile's acceleration (and maximum speed).
+This change affects the following projectiles; dragon_fireball, large_fireball, small_fireball, fireball, breeze_wind_charge, wind_charge, wither_skull.
+Custom structure
+
+New tag dimension_padding for structures.
+Ensures that a structure is not generating through the edges of a dimension by adding vertical padding to its bounding box.
+Default is 0.
+Trial chambers have a padding of 10 since they are generated deep underground and would sometimes intersect with bedrock layer.
+Entity effect types
+
+Adds optional field trigger_game_event for effect types replace_block, replace_disc and set_block_properties.
+Game event ID for a game event to trigger when a block has been replaced.
+Tags
+
+Added fire_aspect_lightable to each block that should be possible to light by hitting it with a tool that has Fire Aspect.
+Damage type predicate
+
+New option: is_direct - optional boolean.
+When present, true requires the damage to be direct and false requires the damage to be indirect.
+Damage is direct when its direct and source entities are the same.
+Performance
+
+When reading an already generated chunk from disk, surrounding chunks are no longer unnecessarily loaded, reducing memory and CPU overhead.
+
+
+== Fixes ==
+75 issues fixed
+From released versions before 1.21
+
+MC-9568 – Mobs suffocate/go through blocks when growing up near a solid block.
+MC-9644 – Launched falling_block entities do not travel through portals.
+MC-14923 – Players can be kicked for spamming in a Singleplayer world with cheats disabled.
+MC-16345 – Reducing the player's base max health using /attribute does not always reduce their current health.
+MC-26304 – Brewing stands reset brew cycle when unloaded.
+MC-93833 – Only if Health is provided, maxHealth attribute is used as maximum Health value.
+MC-96198 – Boats/rafts move into blocks when landing in less than one block deep water.
+MC-110815 – Slimes are summoned with the wrong amount of health.
+MC-175619 – Dispenser drops honey bottle unless empty slot is available.
+MC-178383 – Horses, donkeys, mules and llamas spawned from spawn eggs or /summon command have 53 health.
+MC-195931 – Incorrect amount of damage heart particles shown when hitting some entities for the first time.
+MC-252846 – Mobs can pass through fences with carpets on top when growing up.
+MC-253791 – Frogs suffocate when growing.
+MC-254004 – Falling block entities do not process their end gateway cooldown timer.
+MC-267947 – Ender pearls can teleport players in Spectator mode.
+MC-267951 – The game freezes and eventually crashes when creating a world with the "spawnChunkRadius" gamerule set to high values.
+MC-267968 – Medium slimes from trial chamber spawners take damage incorrectly when first hit.
+MC-267981 – The "Trial Spawner crackles" subtitle is only displayed for a split second upon the "minecraft:block.trial_spawner.ambient" sound being played.
+MC-268106 – Entities' current health is not capped at their max health in all applicable situations.
+MC-268772 – Fall damage multiplier attribute has unintuitive coloring.
+MC-269318 – Books placed on a lectern in Creative mode are consumed.
+MC-269601 – Mace smash attack does not knock back other players when they are not the attacked entity.
+MC-269633 – Placing an oversized filled bucket resets the stack size to 1.
+MC-269642 – Eating an oversized soup/stew resets the stack size to 1.
+MC-269674 – Oversized book and quill stacks reset count when signed.
+MC-269685 – Buckets are lost when consuming oversized milk buckets.
+MC-269686 – Oversized music disc stacks can be duplicated with jukeboxes.
+MC-269708 – Dispensers using an oversized stack of water bottles resets the stack size to 1.
+MC-269717 – Cauldron deletes overstacked tinted shulker boxes.
+MC-269809 – Feeding an axolotl an oversized tropical fish bucket resets the stack size to 1.
+MC-270296 – Ominous item spawner spawns unstackable arrows with potion effects.
+MC-270584 – Vault/ominous vault loot isn't predetermined, allowing players to create backups of their worlds to get desired rewards.
+MC-270635 – Trial spawner textures are inconsistent.
+MC-270684 – set_attributes loot function doesn't accept an empty list.
+MC-270779 – Getting data with /data command from a block/chest with a large amount of data can cause the game to crash.
+MC-270818 – Data generator items report is not deterministic.
+MC-270926 – "foodSaturationLevel" can be negative.
+MC-270965 – The data type of the "minecraft:custom_data" component of the recipe result will be forcibly modified.
+MC-270988 – Iron golem and snow golem spawn eggs from before 1.13 do not upgrade to 1.20.5 correctly
+MC-271001 – Items in a container can be given a count above 99 (to max integer), and can crash the world.
+MC-271005 – Knowledge books with a max stack size over 1 consume all items in the stack when used.
+MC-271026 – Components that set a status effect sometimes lose parts of the data.
+MC-271094 – Entity ID inside EntityTag is ignored when updating a world to 1.20.5.
+MC-271159 – Banner pattern entries without colors are invalidated when upgrading to 1.20.5.
+MC-271170 – Unexpected error when modifying skull's custom name to an invalid value.
+From the previous development version
+
+MC-271398 – Crafting ingredients remain in the grid after crafting certain items, causing item duplication.
+MC-271400 – The Quick Charge enchantment on crossbows no longer increases the crossbow loading speed.
+MC-271402 – Sharpness and mob-specific damage enchantments reduce attack damage instead of increasing it.
+MC-271404 – Breach and Density enchantments aren't mutually exclusive.
+MC-271406 – Blocks reappear when mined instantly.
+MC-271422 – Soul Speed causes your FOV to change whenever you jump.
+MC-271423 – Riptide enchantment does not work properly.
+MC-271427 – Sweep attacks no longer trigger consistently.
+MC-271434 – Campfires knockback the player.
+MC-271435 – Moving while being attacked no longer deals knockback correctly.
+MC-271436 – Mace can no longer be enchanted with Fire Aspect.
+MC-271441 – Fire Protection tooltip is displayed in red text despite being a positive effect.
+MC-271442 – The Fire Aspect enchantment can change the "lit" states of redstone lamps, redstone torches, copper bulbs, furnaces, smokers, and blast furnaces.
+MC-271444 – The Fire Aspect enchantment can turn on campfires and candles while underwater.
+MC-271449 – Player momentum no longer affects ender pearls, eggs, or snowballs.
+MC-271455 – When holding a Fire Aspect weapon in the mainhand, thrown tridents in the offhand will set mobs on fire.
+MC-271459 – Frost Walker deletes waterlogged blocks.
+MC-271461 – Interacting with certain villagers with the villager trade rebalance enabled causes client crash.
+MC-271477 – "projectile_spawned" enchantment effect always activates at 0, 0, 0.
+MC-271484 – Lighting candles and campfires with Fire Aspect doesn't sent vibration to sculk sensors.
+MC-271556 – The drop rate of wither skeleton skulls is lowered by 0.01.
+MC-271562 – "projectile_spawned" enchantment component triggers the enchantment effects before setting the projectile's default NBT.
+MC-271565 – The game can crash when upgrading worlds with zombie villagers from before 1.9.
+MC-271632 – Weapon with Bane of Arthropods can only give the target Slowness I instead of Slowness IV.
+MC-271637 – The enchantment entity effect type "run_command" always runs the command in the overworld.
+MC-271652 – Holding items enchanted with Thorns in your hand no longer works as if you were wearing them.
+MC-271654 – Enchantments granting bonus damage to melee weapons aren't producing particles.
+MC-271710 – Key Binds background is darker than the rest of UI.
+MC-271725 – Enchantment entity effect "apply_mob_effect" never applies an amplifier even if one is defined.
+MC-271726 – The item.trident.thunder sound can no longer be heard by the player who was struck by a lightning.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

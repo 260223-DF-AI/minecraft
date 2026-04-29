@@ -1,0 +1,87 @@
+Creates particles.
+
+
+== Syntax ==
+Java Edition
+particle <name> [<pos>]
+particle <name> <pos> <delta> <speed> <count> [force|normal] [<viewers>]
+Bedrock Edition
+particle <effect: string> [position: x y z]
+
+
+== Arguments ==
+JE: <name>: particleBE: effect: string: basic_string
+
+Specifies the particle type to create.
+In Java Edition, it must be in the format of particle_type_id{configuration tags} for particle types with configurations, or the format of particle_type_id for particle types without configurations.In Bedrock Edition it must be a single word that has no space or a double-quoted string (When quoted, \ can be used to escape characters). And it should be the namespaced identifier of a particle (the namespace cannot be omitted).
+JE: <pos>: vec3BE: position: x y z: CommandPositionFloat
+
+Specifies the position at which to create particle. If not specified, defaults to the position of the commmand execution.
+Must be three-dimensional coordinates with double-precision floating-point number‌[Java Edition  only] or single-precision floating-point number‌[Bedrock Edition  only] elements. Accepts tilde and caret notations.
+JE: <count>: integer
+
+Specifies the number of particle effects to create. If 0, see below for what it results in.
+Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ). And it must be between 0 and 2147483647 (inclusive).
+JE: <delta>: vec3 — Must be three-dimensional coordinates with double-precision floating-point number elements. Accepts tilde and caret notations.
+JE: <speed>: float — Must be a [Float]Single-precision floating-point number (from -(2-2-23)×2127 (≈-3.4×1038) to (2-2-23)2×127 (≈3.4×1038) ). And it must be greater than or equal to 0.0.
+
+<delta> and <speed> parameters determine where the particles are created and the parameters to pass into the particles (see the table Extra parameters of particle types below). Based on whether <count> is 0 or not, the two parameters have different meanings.
+if <count> is 0, creates a single particle at the <pos>. Multiplies each of the three values in<delta> by <speed> value, then passes them into the particles as three parameters.
+This means that for most particles that receive parameters, if <count> is 0, the <delta> acts as motion values for the particle, with <speed> acting as a multiplier, so the particle move in the direction of <delta>.
+If <count> is not 0, the specified count of particles are created at random positions. The positions obey normal distributions in each of the X, Y, and Z directions. Each normal distribution has a mean value of each value in <pos>, meaning that particles are more likely to be created closer to the <pos>. Each normal distribution has a standard deviation of each value in <delta> (e.g. 1 1 1 means that the coordinates on X, Y, and Z axes obey three standard normal distributions, meaning that there is a 99.7% probability that the particle is created in a 6×6×6 cuboid region centered at the <pos>; 2 2 2 means that the particle has a 99.7% probability of being created in a 12×12×12 cuboid region centered at the <pos>). Negative values are accepted in <delta>, but have the same effect as their positive counterparts (e.g. -1 -1 -1 has the same effect as 1 1 1). Each of the extra parameters to be passed into the particles also follows a normal distribution, with a mean of 0 and a standard deviation of each value in <speed>.
+<delta> accepts relative coordinates and local coordinates, which are converted to absolute coordinates, so relative coordinates and local coordinates are generally useless here.
+If not specified, <delta> defaults to 0 0 0; <speed> defaults to 0.
+JE: force|normal
+
+Specifies the display mode: normal or force.
+normal: The particle(s) are sent to players within 32.0 blocks (exclusive), may not be shown if the "Particles" option in Video Settings is "Minimal" (depending on the particle type, some particle types still displays when it is "Minimal")
+force: Allows the particle(s) to be sent to players within 512.0 blocks (exclusive). Always shown even if the "Particles" option in Video Settings is "Minimal".
+Defaults to the normal mode.
+JE: <viewers>: entity
+
+Allows control of which player should view this particle instead of everyone in the viewing range of the particle.
+Must be a player name, a target selector or a UUID.  And the target selector must be of player type.
+
+
+=== Extra parameters of particle types ===
+
+
+== Result ==
+
+
+== Output ==
+
+
+== Examples ==
+To create a stationary huge explosion particle 10 blocks to the east:
+
+Java Edition: /particle minecraft:explosion_emitter ~10 ~ ~
+Bedrock Edition: /particle minecraft:huge_explosion_emitter ~10 ~ ~
+Using the particle format arguments in Java Edition to create purple dust with large particles:
+
+/particle minecraft:dust{color:[1, 0, 1], scale:4} ~ ~ ~ 1 1 1 1 10
+Using the <delta> and <speed> arguments to pass parameters to the command and make a single particle move downward (note that count must be zero):
+
+/particle minecraft:white_smoke ^ ^1 ^2 0 -1 0 0.1 0
+The same command with <count> nonzero instead uses <delta> to determine particle distribution, producing a vertical cloud of particles:
+
+/particle minecraft:white_smoke ^ ^1 ^2 0 -1 0 0.1 10
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== References ==
+
+
+== External links ==
+"/particle Command"     – Microsoft Learn, October 11, 2023.
+
+
+== Navigation ==

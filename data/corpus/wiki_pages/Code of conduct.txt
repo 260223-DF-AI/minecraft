@@ -1,0 +1,15 @@
+The Code of Conduct is a server feature allowing administrators to show the rules of their server to players when they join for the first time.
+
+
+== Behavior ==
+If enabled and configured on a server, the Code of conduct will be shown to a player if one of the two following condition is met:
+
+The player is joining for the first time
+The player is joining but accepted an old version of the Code of conduct
+The Code of conduct is shown in the same language as the client (see the next section), but if this language is not present it shows the default, en_us[needs testing]. 
+Two buttons are shown with the code of conduct: Acknowledge and Disconnect
+
+
+== Configuration ==
+The Code of conduct can be enabled via the enable-code-of-conduct field in the server.properties file.
+The content of the Code of conduct is stored in text files located in the /codeofconduct folder. Each file of this folder corresponds to a language, and should contain the code of conduct translated to the corresponding language. Files name matches <lang>.txt, where <lang> is the id of the language (e.g. en_us).

@@ -1,0 +1,124 @@
+Functions are data pack files, allowing players to run lists of commands.
+
+This page covers how functions are defined and invoked in Java Edition.
+
+
+== Definition ==
+A function is a text file with the file extension .mcfunction. Function files are part of the data pack directory structure, highlighted below:
+
+As with all other data pack files, the function folder may also contain subfolders to further organize the function files within a namespace. These subfolders must be referenced when invoking the function.
+Within the .mcfunction file, one valid command is placed per line, without the usual forward slash (/). Individual commands in functions can be longer than the 32,500 character limit in command blocks.
+Comments can be added within the function text file by beginning a line with #. A line can have tabs and spaces before and after the command.
+A single backslash \ as the last non-whitespace character of a line allows a command to be continued on the next line, and the leading and trailing whitespace of the following line are stripped before appending.
+
+
+== Invocation ==
+Functions can be invoked in several different manners from other data pack files.
+
+
+=== Invocation from commands ===
+Functions can be invoked using the /function command and /execute (if|unless) function command.
+A single function can be invoked by specifying its resource location.
+Functions are supported by tags, allowing them to be grouped together. /function also accepts a function tag, invoking all listed functions.
+
+
+=== Invocation from function tags ===
+As mentioned above, functions can be grouped together using function tags. Functions in a tag get executed in the defined order, but only the first occurrence of the same function if it occurs multiple times.
+In addition, there are two function tags within the minecraft namespace that have special behavior:
+
+Functions listed in the minecraft:load tag run when the world is loaded, or when the server is started. Listed functions also run whenever the data pack is reloaded.
+These functions run before the player joins the world, meaning any target selectors do not find players. Therefore, commands like /tellraw and /title do not appear for any player.
+Functions listed in the minecraft:tick tag run at the beginning of each tick, repeating every tick.
+
+
+=== Invocation from advancements ===
+Advancements can run a function once as a reward for completing them. The commands in the function are run through the player who completed the advancement.
+Reward functions are called within advancement JSON files using the following format:
+
+
+=== Invocation from scheduling ===
+The /schedule command schedules a function to be invoked after a certain amount of time. The function is invoked by the server when the scheduled time arrives.
+
+
+=== Invocation from enchantments ===
+Enchantment entity effect run_function can run a function once as an enchantment effect.
+
+
+== Behaviors ==
+
+
+=== Loading and Parsing ===
+Each time a level or a server is opened, the game loads all the functions in the data pack.
+In a running level, if function files are changed, use /reload to reload them from disk.
+When a function is loaded or reloaded, all non-macro lines are parsed as commands, and if any of the lines in a function file is unparseable, the function file cannot be loaded. Macro lines are parsed into commands each time before the function executes.
+
+
+=== Executing ===
+In a singleplayer or a LAN world, like a command block, a function can run any command that is no more restrictive than permission level 2.
+On the default multiplayer software, a function can run any command that is no more restrictive than the permission level prescribed in function-permission-level setting in server.properties.
+Functions run all their commands in a single tick and other functions called from within also run their commands in the same tick as their parent. The total number of commands run inside a function obeys /gamerule maxCommandChainLength, which is 65,536 commands by default; any commands beyond this limit are ignored.
+Functions use the execution context of whatever is invoking the function. This includes executing entity, as well as execution position, rotation, dimension, and anchor. Contextual parameters are preserved for every command in the function. An /execute command can change the context, but that change does not carry through to any following commands in the same function.
+For example:
+
+Where, the function foo:bar is:
+
+When invoked, this function teleports the nearest player 5 blocks up, places an emerald block one block below their original position before the teleport, and then places a diamond block one block below their new position after the teleport.
+As seen in the above example, contextual parameters can be changed as usual by their respective /execute sub-commands.
+
+
+==== Execution order ====
+The order that functions get executed within a single tick is:
+
+Functions invoked from advancements.
+Functions invoked from enchantments.
+Functions that belong to #minecraft:tick, from top to bottom.
+Functions that are scheduled on that tick, from whichever one was added to the queue first.
+Functions invoked from command blocks and by players
+In addition, upon (re)loading a data pack, #minecraft:load is executed before any of the ones above.
+
+
+=== Macros ===
+Functions can include macro lines, lines preceded by $. Macro lines act similar to normal commands but can reference the compound NBT tag provided when invoking the function with the /function command. Values from this compound tag can be referenced with their associated key by using $(<key>) anywhere in the macro line.
+Macro lines are evaluated each time before the function executes, substituting the variable specifications with the associated values and parsing the resulting command. The compound tag provided must contain one entry for each variable used in the macro function, but may contain entries not referenced by the macro function. If any variables are not provided, or any commands evaluated from macro lines are unparseable, the entire function is not invoked and no commands in it run.
+Valid characters for a <key> are:
+
+a-z
+A-Z
+0-9
+_
+Tags in the compound tag can be of any type. The method in which the values are inserted vary by type:
+
+For strings, the value of the string is inserted directly. (That is, without the quotes.)
+For all numeric types, the value is converted to plain text.
+The type suffix is not included. (For example, 10b is converted to 10)
+The number is rounded to a maximum of 15 fraction digits.
+true and false are equivalent to 1b and 0b, so they are converted to 1 and 0 respectively.
+For lists, compound tags, and the array types, the canonical SNBT representation is used.
+For example, running the command:
+
+With the function foo:bar being:
+
+Would teleport you 10 blocks up, as well as show in chat the following: Macro functions can also harness stored NBT data using the with instruction that may follow the function name. The argument succeeding with must specify a NBT source (a block, entity, or command storage) followed by the NBT path of a compound tag. 
+For example:
+
+And the function foo:bar2 is:
+
+
+=== Returning ===
+A function can be forcibly stopped by a /return command. Following a /execute (if|unless) ... run or a forking /execute command that may terminate, a /return command can be restricted to only execute under certain conditions. With this, under different conditions a function can stop at different lines, thus achieving more complex behaviors.
+After execution, the function can return a return value and a successfulness. The return value is an integer, and the successfulness is failure or success. If no /return command is executed in the function, the function is a void function that does not return any return value or successfulness. With /return executed, the function is stopped and its return value and successfulness are set.
+If the function is called by a /function command, its return value and successfulness is returned to the /function command. See also /function article for the details.
+If the function is called by a /execute if function command, its return value is checked whether it is not 0.
+
+
+== History ==
+
+
+== Issues ==
+Issues relating to "Function command", "Function datapack", "Function pack", "Function json", "Function macro", "Function file", "Mcfunction", "Function folder", "Function comment", "Function return", "Function schedule", "Function execute", "Function invoke", "Function call", "Function run", "Function parse", "Function output", "Function success", "Function fail", or "Function feedback" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== References ==
+
+
+== Navigation ==

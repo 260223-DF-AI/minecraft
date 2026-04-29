@@ -1,0 +1,524 @@
+This is a list of Java Edition exclusive features. Some of these exclusive features may eventually be added to Bedrock Edition to bring parity.
+
+
+== General ==
+Minecraft Launcher
+
+Supports launching previous versions of Java Edition, including versions dating back to 2009.
+Not all versions of Java Edition are available in the Launcher. Additionally, all versions prior to Alpha v1.1.2_01 do not have working sound, as the sound assets for these versions have been removed from the Minecraft servers.
+Supports loading custom/modified versions of Minecraft, such as OptiFine, Forge, and Fabric.
+Particles
+
+The types of particles and their technical names are displayed below. Particle names in italics are shown when using the "Minimal" particles setting.
+
+Recipes
+
+To save space, some recipes in the recipe book are grouped together and can be selected by pressing the right button on the mouse.
+Statistics
+
+A game feature that allows players to track how many times they have completed certain tasks.
+Creative inventory
+There are 72 items, and 34 more in the Operator Utilities tab, for a total of 106 Java Edition Creative inventory exclusives including operator utilities. The items are as follows:
+
+Luck effect tipped arrow, potion, splash potion, and lingering potion
+Four no-effect tipped arrows: arrow of splashing, awkward tipped arrow, thick tipped arrow, and mundane tipped arrow
+Spectral arrow
+Minecart with furnace
+Sweeping Edge enchanted books, all three levels.
+Firework star, no color.
+Firework rocket, all three flight durations.
+Painting, 46 individual pre-defined paintings, plus four additional in operator utilities.
+All 34 items in the Operator Utilities tab if "Operator Items Tab" is enabled.
+
+
+== Gameplay ==
+Advancements
+
+Uses the advancement system instead of the achievement system.
+Can be used to gain experience.
+Breaking
+
+The range of breaking blocks is 5 blocks in Creative mode, and 4.5 blocks otherwise.
+Brewing
+
+The potion of Luck cannot be brewed, and can be obtained only by commands such as /give @p minecraft:potion{Potion:"minecraft:luck"} 1, or through the creative inventory.
+Chat
+
+Is uncensored by default, though a profanity filter exists for Realms.
+Default font uses much more updated version of Mojangles, with implementation of more characters and even certain emojis.
+There are also more and different font styles such as Illageralt and they are more up-to-date
+Combat
+
+The "attack strength" combat mechanic.
+A meter shows up after switching items or attacking.
+Damage done depends on the fullness of the meter, with a quadratic reduction (attack does 20%–100% of normal damage as the meter fills).
+Fills at different rates depending on the new attack speed attribute (see table on the changes to gameplay section for a complete list).
+The Haste effect causes the meter to fill faster.
+Can be displayed next to the hotbar (left or right based on the player's main hand), under the crosshair or turned off.
+Looks like the icon for the old Strength effect icon on the side of the hotbar, or like a dagger under the crosshair.
+This is controlled in video settings.
+A cooldown animation is displayed of the tool slowly being lifted up, when either first switching to it or after attacking.
+Sounds are played when attacked strongly and weakly, as well as sprint-knockback attacks and sweeping attacks.
+Actions can be performed as fast as the player can click. This includes eggs, spawn eggs, etc.
+Damage
+
+When the player is in third person while suffocating, the view automatically switches to first person.
+The player takes damage from falling into the void, even in Creative mode.
+Debug screen
+
+By default, can be opened with the F3 key.
+Shows the chunk cache, the memory usage, various parameters, the player's map coordinates and a graph that measures the game's current frame rate.
+Enchanting
+
+The player can enchant any item with any enchantment in Creative mode with enchanted books, allowing any applied effects to exhibit themselves.
+Sweeping Edge enchantment.
+Increases sweeping attack damage.
+Health
+
+For players, a "You Died!" screen (or "Game Over!" in Hardcore mode) instantly appears upon death. It also displays the player's score.
+Death messages are broadcast to everyone upon the death of a player, and to the pet's owner on the death of a pet (wolf, cat, or parrot).
+Death message: "<Player> fell from a high place", caused by a fall greater than 5 blocks.
+Spectator mode
+
+Can be entered by using F3 + N, or F3 + F4, if commands are enabled.
+Players in Spectator mode can teleport to other players using the hotbar.
+Players in Spectator mode can click other entities to spectate them, or spectate via /spectate.
+Status effect
+
+Summary of effects:
+
+
+== Blocks ==
+Ancient Debris
+
+Can replace basalt, and blackstone when generating.
+Buttons
+
+Can be placed in any direction if placed on the top or bottom of a block.
+Do not catch on fire.
+Carpet
+
+Carpet can be used as a fuel in furnaces, smelting 0.335 items per carpet.
+Chest
+
+Bonus chests always contain the same items.
+The top three rows for a large chest correspond to the western or northern half and the bottom three to the southern or eastern half.
+Holding ⇧ Shift and double-clicking while holding an item moves all items of the type clicked on in or out of the chest, to the extent that space is available for them.
+A chest can be "locked" by setting its Lock tag using the /data command. If a chest's Lock tag is not blank, the chest cannot be opened except by players holding an item with the same name as the Lock tag's text. For example, to lock a chest at (0,64,0) so that only players holding an item named "Player's Key" can open the chest, use /data merge block 0 64 0 {Lock:"Player's Key"}.
+Cobweb
+
+Paintings can be placed on their sides.
+Jumping vibrates the player, similar to jumping in a 2-block-high space.
+Primed TNT can pass through cobwebs without slowing down if shot through fast enough.
+Dispenser and Dropper
+
+Support quasi-connectivity.
+Farmland
+
+Transparency: Partial (blocks light)
+Mobs smaller than 0.512 cubic block cannot destroy farmland. This includes parrots, rabbits, chickens, bats, ocelots, wolves, cave spiders, endermites, silverfish, baby mobs, small slimes, and small magma cubes.
+Piston and Sticky Piston
+
+Cannot push or pull block entities.
+Sticky pistons drop blocks when a single redstone tick pulse occurs, rather than retracting them.
+Redstone wire runs next to pistons instead of curving into them.
+Support quasi-connectivity.
+Wool
+
+Can be used as fuel in furnaces, smelting 0.5 items per wool block.
+
+
+== Items ==
+Bone Meal
+
+Has a 5% chance of being dropped by any kind of fish.
+Debug Stick
+
+Can be used to change block states.
+Dyes
+
+Leather armor, leather horse armor, and wolf armor can be dyed by combining them with dyes in a crafting grid.
+Fish
+
+Tropical fish and pufferfish can be fed to ocelots and cats, like raw cod and salmon.
+Knowledge Book
+
+A utility item that reveals crafting recipes to the player when used.
+Lingering Potion
+
+What makes it a lingering potion as opposed to a splash potion is that their Potion tag stores a minecraft:lingering_potion item.
+Spawn Egg
+
+Each spawn egg has a different ID.
+
+
+== Entities ==
+General
+
+All zombies and skeleton varians, and zombified piglins have a chance to wear carved pumpkins or jack o'lanterns on October 31.
+Zombies, zombie villagers, and zombified piglins have a chance to spawn other zombies as reinforcements on Hard difficulty.
+Newly generated chunks have a chance to generate an initial set of mobs.
+Armor Stands
+
+If arms are visible, shields are always placed in the off-hand.
+Can be placed by dispensers.
+Hitting an armor stand wearing armor enchanted with Thorns deals damage.
+Stand on top of powder snow when wearing leather boots.
+Have 20 health points.
+Arrows
+
+Get visually stuck in players.
+Have a unique sound when an arrow shot by a player hits another player.
+Axolotls
+
+Regeneration effect given to players is limited to 2 minutes.
+Bats
+
+Collision box does not interact with the player or redstone components‌.
+Bees
+
+Stinger is visible on the player after successfull attack.
+Blazes
+
+Sink in water and lava.
+Boats
+
+Can be destroyed in one hit by weapons that deal more that 4HP damage.
+Sink when submerged.
+Mobs riding a boat don't despawn.
+Falling boats stop on top of other entities.
+Breezes
+
+Their eyebrows and surrounding wind are unaffected by Invisibility.‌
+Float upwards in water and lava faster than other mobs.
+Camel‌s
+
+Spawn in any light level.
+Cats
+
+All cats spawned within the swamp hut always spawn as black.
+Each cat has 70% chance of giving a gift when they cannnot reach a player.
+Hiss at phantoms that are currently pursuing a player.‌
+Chickens
+
+Drop 10XP experiance orbs if they were part of a chicken jockey.
+Cods
+
+Can drop bone meal.
+Creepers
+
+The detection range is reduced to half of their normal range (8 blocks) when the player is wearing a creeper head.
+Can be ignited with fire charge.
+An explosion of a creeper with status effect creates an area effect cloud.
+Display
+
+Are used to display blocks, items, or‌ text.
+Dolphins
+
+Grant the Dolphin's Grace effect.
+Are lured by dropped items.
+Elder Guardians
+
+Drop any fish variant.
+Drop 0-1 cooked cod or cooked salmon if killed by fire.
+Ender Dragon
+
+Drop only 500XP experience points when re-summoned.
+Endermen
+
+Staring an aggravated enderman in the eyes causes it to stop moving as long as the player maintains eye contact.
+Start shaking when provoked.
+Arrows that are unable to teleport bounce off the enderman.
+Continue to chase the player regardless of the distance or dimension of the targeted player.
+Endermites
+
+Become hostile toward any mob that attacks them.
+Evokers
+
+Are given three seconds of the Glowing effect if a bell is rung.
+Fish
+
+Drop bone meal instead of bones.
+Ghasts
+
+Only target players.
+Do not retaliate when attacked by other mobs.
+Giants
+
+A giant-sized zombie.
+Have no AI, do not fight back when hit.
+Can be summoned via commands only.
+Glow Squids
+
+Can swim against a current.
+Goats
+
+Two screaming goats always produce a screaming baby.
+Two normal goats have a 2% chance of producing a screaming baby.
+Guardians
+
+Drop any fish variant.
+Drop 0-1 cooked cod or cooked salmon if killed by fire.
+Do not attack players under the Invisibility effect that wear one or no piece of armor.
+Hoglins
+
+An adult knock their target upward.
+Retaliate when attacked by a goat.‌
+Illusioners
+
+An unused illager hostile mob.
+Attack using a bow and casting spells, such as creating clones of itself.
+Can be summoned via commands only.
+Interaction
+
+Record the UUID of the last player that left-clicked and right-clicked them.
+Items
+
+Can be reeled by fishing rods.
+Manequins
+
+Function like a player avatar.
+Markers
+
+Entities intended for use in data packs and map-making.
+Minecarts
+
+Can be merged by pushing them into each other.
+They do not lose speed while traveling on straight rails.
+Minecart with Furnace
+
+Can be powered with coal or charcoal.
+Can be used to move other minecarts.
+Minecart with Monster Spawner
+
+Behaves the same way as normal monster spawners.
+Parrots
+
+Can imitate piglins, hoglins and piglin brutes.
+Piglins
+
+Retaliate to being rammed by a goat.
+Piglin Brutes‌
+
+Their axe may be enchanted.
+Pufferfish
+
+Can spawn in lukewarm ocean and deep lukewarm ocean.
+Rabbits
+
+Can spawn in old growth spruce taiga and old growth pine taiga.
+Have a hostile variant, The Killer Bunny, that can only be spawned using commands.
+Ravagers
+
+Attacked ravager alerts other ravagers in the area to target the attacker.
+Can spawn with vindicator riding them.
+Shulkers
+
+There is a chance for a new shulker to spawn when a shulker is hit with a shulker bullet.
+Silverfish
+
+Can also spawn on stone types they can enter at any light level.
+Skeleton, Stray, and Bogged
+
+They use different AI, and strafe side to side when shooting arrows instead of standing still.
+Their bow is animated like the player's, with the arrow visibly being drawn back before shooting.
+Their detection range is reduced to half of their normal range (8 blocks) when the player is wearing a skeleton skull.
+Holding tipped arrows in their offhand causes them to shoot that type of arrow; these arrows are not consumed.
+Skeleton Horses
+
+Can be equipped with a saddle.
+Snow Golems
+
+Take damage when are in contact with water in savannas.
+Leave a trail of snow in any biome.
+Spiders
+
+Occasionally spawn with status effects in Hard difficulty.
+If a spider tries to go through the world border, it starts climbing the world border instead.‌
+Squid
+
+Can swim against a current.
+Striders
+
+Are slightly faster than in Bedrock Edition.
+Villagers
+
+A dispenser can be used to equip armor on a villager.
+Throw a gift toward a nearby player with the Hero of the Village effect.
+If a villager have at least 24 food items, it gives the extra amount to a villager with 4 or fewer.
+Display water particles on random occasions as if sweating during a raid..
+Clicking use on an unemployed or nitwit causes it to grunt and bobble their head.
+Wandering Trader
+
+Wandering traders spawned with a spawn egg via commands do not spawn with trader llamas.
+Withers
+
+Regenerate health.
+Have a "wither armor" effect if itheir health drops below half, which makes it immune to damage from arrows and thrown tridents.
+Wolves
+
+Sit after being tamed.
+Zoglins
+
+Adult zoglins attack once every two seconds.
+Zombies
+
+Up to 20 zombies may spawn in a village at midnight.
+Prioritize players.
+Raise their arms up higher when pursuing a player.
+Zombie Villagers
+
+Zombie villager spawned in igloo basement is always a cleric.
+Zombified Piglins
+
+Non-hostile zombified piglins do not prevent a nearby player from sleeping in a bed.
+
+
+== World generation ==
+General
+
+Solid terrain, structures and biomes can generate all the way to 30 million blocks in a vanilla game, or 2,147 million blocks if the hardcoded 30-million-block limit is removed by modifying the game.
+Single Biome world type
+
+Consists of only a single biome.
+Large Biomes world type
+
+A world type that has its biome scale set to 6.
+Debug mode world type
+
+Used to test block states, block models, and textures.
+Biomes
+
+Badlands and eroded badlands
+Red sandstone can generate in regular badlands and eroded badlands.
+Igloo
+
+If the player smelts a number of items in the igloo furnace, the light generated melts the igloo window, turning the ice into a water source block.
+If generates with a villager, it's always a villager without profession.
+Strongholds
+
+They generate in rings with the strongholds evenly spaced around the circle until the total of 128 is reached.
+Superflat world type
+
+Also allows the player to access the End, which generates as in a normal world, by finding a stronghold or by creating an end portal in Creative mode.
+Structures such as villages can generate in superflat worlds.
+World boundary
+
+By default, a customizable world border appears to prevent players passing through.
+
+
+== Commands ==
+/advancement
+
+Gives, removes, or checks player advancements.
+/attribute
+
+Adds, removes or sets an entity attribute.
+/ban
+
+Adds player to banlist.
+/ban-ip
+
+Adds IP address to banlist.
+/banlist
+
+Displays banlist.
+/bossbar
+
+Creates, modifies and lists bossbars.
+/data
+
+Modifies the data tag of a block or entity.
+/datapack
+
+Manages and lists datapacks, creates empty datapack directory.
+/debug
+
+Starts or stops a debugging session.
+/defaultgamemode
+
+Sets the default game mode.
+/dialog
+
+Manages dialog screens.
+/experience
+
+The maximum experience that the player can earn from the /experience command is 2,147,483,647 levels.
+/fetchprofile
+
+Fetches the profile of a target player.
+/fillbiome
+
+Fills a selected area with a specific biome.
+/forceload
+
+Force chunks to load constantly or not.
+/item
+
+Manipulate items in inventories.
+/jfr
+
+Starts or stops a JFR profiling.
+/pardon
+
+Removes entries from the banlist.
+/perf
+
+Captures information and metrics about the game.
+/publish
+
+Opens singleplayer world to the local network.
+/random
+
+Generates a random integer.
+/return
+
+Controls the execution of a function.
+/rotate
+
+Changes the rotation of an entity.
+/seed
+
+Displays the world seed.
+/setidletimeout
+
+Sets the time before idle players are kicked.
+/spectate
+
+Causes a player in spectator mode to spectate another entity.
+/team
+
+Controls teams.
+/teammsg
+
+Sends message to all players in a team.
+/test
+
+Manage and execute GameTests.
+/tick
+
+Controls the tick rate of the game.
+/trigger
+
+Sets a trigger to be activated.
+/version
+
+Presents the server's game version.
+/waypoint
+
+Manages waypoints.
+/worldborder
+
+Manages the world border.
+
+
+== Command format ==
+Data Tag
+
+Data tags are used in commands to specify complex data for players, entities, and some blocks.
+Target selector
+
+Most selector arguments were renamed and remade, and some behave differently. Others, like distance and level, support a range (1 is exactly one, 1.. is one or more, ..1 is one or less, and 1..10 is between one and ten, inclusive).
+
+
+== Navigation ==

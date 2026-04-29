@@ -1,0 +1,102 @@
+0.0.13a is a version of Java Edition Classic released on May 22, 2009 at 17:42 UTC, which added level saving for players with accounts and made changes. This version is not archived or available in the launcher.
+An early development version of 0.0.13a, mislabelled as its released counterpart, is available in the launcher. It was used for testing the world size, and can only generate flat terrain, instead of the actual terrain used in the full release. Many features from 0.0.12a are still present, such as using the "generating level" screen from that version instead of the one from 0.0.13a.
+
+
+== Additions ==
+
+
+=== Gameplay ===
+Controls
+
+Added a thin black block selection outline.
+This causes a bug where the white overlay vanishes when very close to a block on one or more of its sides.
+Pressing Esc now opens the pause menu.
+
+
+== Changes ==
+
+
+=== Blocks ===
+ Lava
+
+Texture changed from .
+Is no longer transparent.
+The mist underneath lava is now a thick red, instead of the previous shade of orange.
+ Sapling 
+
+Texture changed from .
+ Water
+
+Texture changed from .
+
+
+=== Non-mob entities ===
+Player
+
+Player jump height reduced to its 0.0.11a value.
+Swimming and sinking down in water is now much faster.
+
+
+=== World generation ===
+General
+
+Surface dirt layer is more uniform.
+There is almost always a layer of grass with dirt under it above stone.
+Cliff faces can no longer be made of pure dirt and grass.
+
+
+=== Gameplay ===
+Controls
+
+Holding down R no longer causes the player to cycle between different locations - holding the key now has the same effect as simply pressing it.
+Holding the jump key no longer allows for auto jumping.
+
+
+=== General ===
+Menu screens
+
+The world generating screen now shows darker dirt.
+Resolution
+
+Changed the game's resolution from 640×480 to 854×480.
+
+
+== Technical ==
+Levels
+
+Added level saving for players with accounts.
+Feature for registered and logged in players only.
+Five slots in total.
+Could be played at the URL http://www.minecraft.net/play.jsp?name=<username>&id=<the slot saved in, starting from 0>.
+
+
+== Fixes ==
+4 bugs fixed
+
+The block being used is once again shown in the top right corner.
+Fixed textures touching the top and bottom of the map not being shown.
+The terrain is no longer always generated a block above water.
+Lava and water now always produce stone.
+
+
+== Bugs ==
+3 bugs reported
+
+Transparency issue with water.
+Level saving sometimes does not work.
+The reason is because Opera and older versions of Java did not support a workaround Notch made to allow connecting to a host from an applet in LWJGL.
+When facing at certain angles, a block can be placed where a block already is.
+
+
+== Videos ==
+
+
+== Notes ==
+
+
+== References ==
+IRC logs, #tigirc.20090521.log (May 21, 2009, UTC+2)
+IRC logs, #tigirc.20090522.log (May 22, 2009, UTC+2)
+
+
+== Navigation ==

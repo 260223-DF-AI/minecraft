@@ -1,0 +1,50 @@
+Force chunks to load constantly or not, or lists/queries forceloaded chunks.
+
+
+== Usage ==
+
+Forced chunks get load ticket with load level of 31, the same level as the ticket caused by a player, which means that the said chunks process all aspects of the game, while adjacent chunks get activated by the load level's spreading. But since it increases its load level per chunk when spreading, adjacent chunks don't process every aspect of the game as well.
+As of version 1.21.5, crops do grow in forceloaded chunks even without a nearby player.  Blocks in forceloaded chunks receive random ticks (see chunk ticks) and process all updates except for mob spawning, lightning strikes, and fire spreading (unless game rule allowFireTicksAwayFromPlayer is set to true).
+Coordinates are actually block coordinates. In order to forceload chunks 0,0 to 1,2, the player should use commands like /forceload add 0 0 31 47, which loads chunks 0,0 to 1,2 (1,2 inclusive, 2×3 chunks). When using /forceload add 0 0 10 30 chunks 0,0 to 0,1 are actually loaded (one chunk equals 16×16 blocks on x/z axis).
+Similarly, /forceload query uses block coordinates as well.
+
+
+== Syntax ==
+forceload add <from> [<to>]
+
+Forces the chunk at the <from> block position (through the <to> block position, if set) in the dimension of the command's execution to be loaded constantly.
+forceload remove <from> [<to>]
+
+Unforces the chunk at the <from> block position (through the <to> block position, if set) in the dimension of the command's execution to be loaded constantly.
+forceload remove all
+
+Unforces all chunks in the dimension of the command's execution to be loaded constantly.
+forceload query [<pos>]
+
+If block coordinates are given, displays the specified chunk in the dimension of the command's execution is force loaded; otherwise, lists which chunks in the dimension of the command's execution are force loaded.
+
+
+== Arguments ==
+<from>: column_pos and <to>: column_pos
+
+Specifies the targeted chunks based on block position.
+Must be a column coordinates composed of <X> and <Z>, each of which must be an integer or tilde notation.
+<pos>: column_pos
+
+Specifies a chunk to query based on block position.
+Must be a column coordinates composed of <X> and <Z>, each of which must be an integer or tilde notation.
+
+
+== Result ==
+
+
+== Output ==
+
+
+== History ==
+
+
+== References ==
+
+
+== Navigation ==

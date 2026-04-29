@@ -1,0 +1,50 @@
+v0.10.0 alpha build 1 is the first build version released for v0.10.0.
+
+
+== Additions ==
+Upgraded the rendering system to use OpenGL ES 2.0 (coming from 1.1), using OpenGL 3.0 where available.
+Ported tinted lighting from Java Edition.
+Ported the round fog from Java Edition.
+Some performance increase on most devices.
+Mesa biomes have gold at every elevation and can spawn mine shafts on the surface.
+Added dust particles falling from unstable gravel and sand.
+Added more wood types for fences and gates.
+Added adjustable brightness (gamma) setting to adjust the darkness of dark terrain.
+iOS: Added a 64-bit build for compatible iOS devices.
+
+
+== Changes ==
+New double-sided lighting on entities and clouds that's more coherent with the terrain.
+Enabled mipmaps on Android devices supporting GLES 3.0.
+New water shader.
+Water is now brownish in swamps.
+Faster rebuilding of chunks.
+Added smooth lighting on water and smooth color transitions.
+Huge mushrooms now spawn in swamps.
+Ignore swipes from outside the screen so exiting fullscreen/activating Control Center doesn't turn the view.
+The selection overlay on vines/tall grass now has the correct shape.
+Added a selection overlay on Chests and Signs.
+The error messages when a World can't be opened are now more informative about what happened.
+Enabled Day/night cycle in Creative.
+
+
+== Fixes ==
+14 bugs fixed
+
+Fixed a crash when rendering Mob Spawners.
+iOS: Fixed freezing when receiving a notification/showing the Control Center.
+iOS: Fixed a crash/memory leak happening when showing the system keyboard - signs and the chat.
+Android: fixed a corruption and possible crash when switching apps.
+Fixed the "spawning in the air" bug.
+Fixed a crash when creating lava during world generation.
+Water now pushes things
+Fixed a white artifact on torches held in hand.
+Fixed holes appearing in the clouds.
+Fixed a brown artifact appearing on the bottom of Minecarts.
+Fixed a random crash in multiplayer.
+Fixed a possible crash when selecting double chests.
+The time of day is now more accurately synced in multiplayer.
+Fixed chunks vibrating and becoming detached at high X/Z coordinates.
+
+
+== Navigation ==

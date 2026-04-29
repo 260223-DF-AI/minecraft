@@ -1,0 +1,146 @@
+Beta 1.18.0.21 is the second beta version for Bedrock Edition 1.18.0, released on October 14, 2021, which makes tweaks to world generation and fixes bugs.
+
+
+== Additions ==
+
+
+=== Command format ===
+/loot
+
+Added the /loot command with spawn loot overload.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Copper ore
+
+Now drops 2–5 units of raw copper when mining instead of 2–3.
+Stonecutter
+
+Blocks of copper can be converted to 4 cut copper using a stonecutter.
+
+
+=== Mobs ===
+Axolotls
+
+Now only spawn in water above clay blocks in lush caves.
+Cod, salmon, pufferfish, tropical fish, squid, and dolphins
+
+Now only spawn in water from Y=50 to Y=64.
+Additionally, tropical fishes now also spawn in lush caves at any height.
+Glow squid
+
+Now only spawn in water blocks under Y=30.
+Goats
+
+No longer spawn in stony peaks.
+
+
+=== World generation ===
+Amethyst geodes
+
+Now only generate up to Y=30.
+Rarity has been increased to match 1.17 levels.
+Biomes
+
+Non-cave biomes (e.g. savannas) no longer change with height.
+Tweaked the relative size of some biomes, to match 1.17 a bit closer.
+Increased the average size of most biomes.
+Tweaked the blending of frozen biomes.
+Canyons
+
+Canyons are now placed on the same height as on pre-1.18 world generation.
+Dungeons
+
+Increased the amount of dungeons, especially below Y=0.
+Gravel
+
+Increased the number of ore blobs.
+Lakes
+
+Water lakes were removed, because aquifers could provide local water levels.
+
+Ore distribution
+
+Copper ore now generates between Y=-16 and Y=112, generating the most at Y=48, and the number of ore blobs has been increased.
+Added more unexposed diamonds.
+Extra gold generates below Y=-48.
+Decreased minimum generation height of the upper range of iron ore from Y=112 to Y=80, and increased the number of ore blobs.
+Villages
+
+Now slightly more spread out.
+
+
+=== General ===
+Title screen
+
+Main menu background is changed to reflect Caves & Cliffs: Part II.
+The new background, however, is not visible due to the beta resource packs being applied in all beta versions.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Enable GameTest Framework" experimental toggle.
+
+
+=== Technical ===
+GameTest framework
+
+deltaTime
+Added deltaTime read-only property to TickEvent which represents the time between the last Level tick in seconds.
+
+
+== Fixes ==
+Caves & Cliffs
+
+Fixed shifted sub-chunks on Caves & Cliffs flat worlds (MCPE-140428).
+Hoodoos now generate in eroded badlands again (MCPE-141083).
+Strange pillars no longer generate below eroded badlands (MCPE-141342).
+Water and lava springs now correctly generate at the expected frequency.
+Fixed issue with copper ore hanging mid-air in ravines (MCPE-141189).
+Actors
+
+Lightning bolts do not have a shadow anymore (MCPE-140689).
+Blocks
+
+Snowy grass blocks and all types of snow blocks now use similar colors (MCPE-57022).
+Bone meal
+
+Nether sprouts once again generate when using bone meal on warped nylium (MCPE-139672).
+Gameplay
+
+Re-entering a Caves & Cliffs world when in a danger zone at a valid negative Y position no longer teleports player to positive Y (MCPE-141039).
+Copper ore now drops 2–5 (increased from 2–3) units of raw copper (MCPE-144071).
+In the stonecutter, a block of copper can be converted to four cut copper (MCPE-144067).
+Player
+
+Fixed player hitbox not resetting after gliding with elytra (MCPE-109925).
+Fixed player flight with elytra being cancelled when hitting a wall and taking damage (MCPE-54031).
+Items
+
+Ender pearls no longer generate as glow sticks in woodland mansion chests (MCPE-137440).
+Mobs
+
+Fixed an issue preventing tropical fish from spawning in lush caves (MCPE-144070).
+Particles
+
+Water drips now trigger splash effects.
+Technical
+
+Fixed caching support for subchunk requests where it would sometimes not use the cache.
+Fixed a versioning error with animation controllers that was causing the wrong schema to be utilized on marketplace worlds with an animation controller version 1.8.0.
+User interface
+
+Renamed some occurrences of "level" in the user interface to the more accurate "world".
+When a value for a stepped slider does not correspond to a step, it will display at the closest step.
+Fixed the "Always Day" option missing from world settings (MCPE-137790).
+Vanilla parity
+
+Shield blocking animation now plays smoothly (MCPE-125951).
+
+
+== References ==
+
+
+== Navigation ==

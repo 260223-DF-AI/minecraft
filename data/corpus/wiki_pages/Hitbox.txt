@@ -1,0 +1,135 @@
+A hitbox defines the physical boundary (or an approximation) of a block or entity. Hitboxes are used in the calculations of collisions and targeting.
+Unlike with block models, all hitboxes' sizes are hard-coded and cannot be changed independently without modification.
+In Java Edition, hitboxes can be seen through the F3 + B debug hotkey.
+
+
+== Entity hitboxes ==
+
+
+=== Bounding box ===
+
+An entity's bounding box manages their collision with blocks and other entities. It's also used for detecting hits and other interactions from players, villagers, arrows, and other entities. In Java Edition, it's shown as a white color coded hitbox around the entities' model, and moves with the entity but maintains a static orientation without rotating.
+When the bounding boxes between two entities overlap, a small force is applied to each entity proportional to the distance between them to push them away from each other horizontally. Because there is no vertical collision, it is possible to put multiple entities in the same block by dropping them in from above.
+An entity's bounding box can transform into different shapes depending on certain situations, typically unique to the entity itself. For instance, a pufferfish when approached by players gradually expands its shape, from unpuffed, to semi-puffed, then to fully puffed. It instantly shrinks its shape back to normal once it cools down. Players can also change their bounding box by sneaking, crawling, swimming, gliding, or any other means.
+Bounding boxes can be scaled by minecraft:scale attribute, or for specific entities, like interaction, it can be changed by modifying their entity data.
+
+
+=== Eye height ===
+
+The eye height shows an entity's eyes placement. It's used for detecting when an entity is submerged in a fluid or phasing through a solid block. In this state, the game usually times the entity drowning or suffocating. In Java Edition, it's shown as red box typically appearing on entities' eyes or head.
+The eye height is also used to determine if two entities can see and follow each other by their eye contact.
+
+
+==== View vector ====
+A blue arrow starting from the eye position and sticking forward 2 blocks shows the orientation the entities are facing, this is called the view vector. This arrow does not indicate a hit-scan or line of sight test, instead, the mechanic is handled as a part of the mob AI and a different method.
+
+
+=== Passenger attachment point ===
+The passenger attachment point is a hitbox that shows the point where an entity passenger is attached on a mountable entity. It's shown as a small green hitbox. It appears on a mountable entity when it is mounted by another entity, and aligns precisely with the bottom side of the hitbox.
+
+
+== Block hitboxes ==
+
+
+=== Collision box ===
+
+The collision box manages a block's collision with entities. They are usually shaped in cubes, but some may have different shapes, like slabs, lecterns, lily pads, fences, walls, and stairs.
+A collision box may not be present for all blocks; non-solid blocks such as grass, sign, button, lever, and torch have no collision box.  
+
+While most blocks have their collision box identical to their interaction box or an empty collision box if it is a non-solid block, some may have a different collision box compared to their interaction box counterpart. For instance, a lectern's collision box does not extend into the upper part of their interaction box, and a fence's collision box is a bit taller than their interaction box. The table below shows all the exceptions in Java Edition:
+
+In Java Edition, it is possible to visualize the collision boxes by enabling visualize_collision_boxes in the debug renderer. It is also possible to see when the debug property SHAPES is enabled, indicated by a dark gray outline.
+
+
+=== Interaction box ===
+
+The interaction box manages block interactions with players, such as block placement, destruction, use actions, etc. When looking at the given block, the interaction box is shown as a black outline around the block's edges; this is especially visible in the barrier block. The interaction box appears only if the block the player is looking at is inside of the interaction range.
+A block's interaction box is usually contained within its own 1×1×1 cube space. However, some blocks, such as the ones reported below, are capable of extending outside of this space.
+
+The arm of an extended piston – specifically the part that protrudes into the piston's block space.
+The very top part of a lectern's head.‌[Java Edition  only] This is particularly noticeable when a block is placed above the lectern, making the lectern's outline overlap with the block.
+The extended top of an opened shulker box.
+The interaction box isn't visible when aiming the crosshair at the part that extends outside of the cube.
+In Java Edition, the interaction box outline is cyan ( #57ffe1) with a small black outline if "Options" → "Accessibility Settings" → "High Contrast Block Outlines" is enabled. When the debug property SHAPES is enabled, the interaction box outline is white.
+
+
+== Miscellaneous hitboxes ==
+
+
+=== Blocks visual box ===
+In most instances where Minecraft uses line clipping for detection, it utilizes the collision box or the interaction box of the blocks. For example, when a player tries to interact with a block, the game draws a line from it to the interaction range and looks for the first block whose interaction box the line intersects with. In the case of movement, the game draws a line in the direction of movement to find the first collision box to limit movement instead of crossing it.
+However, there are five situations in the game where line clipping uses neither the interaction box nor the collision box, instead, the game uses the visual box. The visual box attempts to simulate what a sight would look like; however, most game sight simulations, such as a mob AI searching for a target, use line clipping with a collision box.
+For fences, mud, snow, and soul sand the visual box and the interaction box are identical. For all copper bars, copper grates, glass, glass pane, iron bars, powder snow, stained glass, stained glass pane, and tinted glass the visual box are empty. For all other blocks, the visual box and the collision box are identical.
+Note that many transparent blocks have an empty visual box; this is so they can be ignored when drawing a line of sight, because they are transparent. However, not all transparent blocks are ignored; for example, the barrier, ice, and leaves have a full visual box.
+Below are all the uses of the visual box in Java Edition:
+
+Third-person view camera: To position the third-person view camera, the game calculates the distance from the player based on the visual box, using it to avoid collisions.
+Looking at the creaking: Visual boxes are used by the creaking to know if it is in a player's line of sight; if so, it stops. This is different from endermen, which use the collision box to detect when a player is looking at them.
+Trial spawner detecting a player:  When the trial spawner attempts to detect a player in order to activate, or detect a player with Trial Omen, the player needs to be looking at the spawner, and for that, a visual box is used. However, if the spawner already has a player in its list of detected players, new players will not need to look at the spawner unless they want to use the Trial Omen effect to convert the spawner into an ominous trial spawner.
+Trial spawner mob spawning: When attempting to spawn a mob, the trial spawner checks if the position where it will spawn is visible starting from the center of the block where it is located. For this, it uses the visual box.
+Ominous item spawner: When an ominous item spawner spawns above an entity, it first defines a point between 2 and 5 blocks above the top of the entity's hitbox. Then, it draws a line from the entity to that point, stopping at the chosen point or one block below the first collision found by the visual box. Note that this means that if an entity is directly below, for example, a glass block, the ominous item spawner will be spawned above the glass.
+
+
+=== Particle collision box ===
+Some particles have physics: for example, the smoke particles from campfires. Particles with physics have a collision box that collides with collision box of blocks. Upon collision, the particle's motion is brought to zero along one of the axes, depending on the direction of the collision.
+However, particles are generated even if their collision box intersects the collision box of a block. When this happens, the particle ignores the collision box. 
+A lit campfire creates smoke particles between 0 and 2 blocks above it, with a symmetric triangular distribution, by the formula pos.getY() + random.nextDouble() + random.nextDouble(), when pos.getY() is the Y coordinates of the campfire and random.nextDouble() is a random number between 0 and 1. Each particle has a 4×4×4 pixels (0.25×0.25×0.25 blocks) collision box. Therefore, the closer a collision box is above the campfire, the more likely a smoke particle is to pass through it, and when the collision box is at 2.25 blocks or more, no particle will pass through it. 
+For example, 71.9% of smoke particles pass through a full collidable block one block above the campfire, 28.1% pass through a top slab one block above the campfire, 3.13% pass through a full collidable block two blocks above the campfire, only 0.195% pass through a cauldron two blocks above the campfire, and no particle passes through a top slab two block above the campfire.
+
+
+== List of entities' hitbox sizes ==
+
+Most entities' bounding boxes are shaped in cuboids, and do not always overlap with the models of the entities. For example, the witch's bounding box does not include the upper part of its hat, and the wither's bounding box does not include the two heads on its sides. Because most bounding boxes are cuboids, it is standard to measure them by their width and height, with both being measured in blocks tall.
+
+
+=== Base hitbox size ===
+Below is a table of every entities' hitboxes, mainly sourced from Java Edition, unless stated otherwise. The list shows sizes of the entities' base bounding box size; other hitboxes may be noted.
+Some entities' hitbox size is marked with "Varies", this indicates that the entity has variable hitbox sizes, see § Variable hitbox size. For others, "None" marks that the entity does not have hitbox, and "N/A" indicates no data is available yet for the entity in the wiki. An empty cell indicates that the entity may not have hitbox or no data is available yet ("None" or "N/A").
+
+
+=== Variable hitbox size ===
+
+The size of an entity's hitbox is not necessarily static and may change depending on certain situations. For instance, a player's hitbox gets smaller while crouching, and a pufferfish's hitbox changes while its puffing. Some entities may also spawn in different sizes, like slime, magma cube, and salmon‌[Bedrock Edition  only].
+Below is the list of entities whose hitbox can change sizes given specific situations or states:
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+==== Block hitboxes ====
+
+
+==== Entity hitboxes ====
+
+
+=== Bedrock Edition ===
+
+
+==== Entity hitboxes ====
+
+
+== Issues ==
+Issues relating to "Hitbox" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Trivia ==
+In Java Edition, the visually shown entity hitboxes that appear when F3 + B sometimes do not render where the hitbox actually is, as it is just highlighting the area relative to the position of the entity that has the hitbox. This can be quite prominent if the player runs /tick freeze when a mob is moving.
+In Java Edition, if an entity has the Invisibility effect, its hitbox is not visually shown when F3 + B is pressed.
+
+
+== Gallery ==
+
+
+=== Screenshots ===
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

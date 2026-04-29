@@ -1,0 +1,85 @@
+Item repair is a feature that allows players to repair damaged items with durability (tools, armor, and weapons) by combining them in the crafting grid or a grindstone.
+
+
+== Usage ==
+Two items of the same type and material can be placed anywhere on the crafting grid or grindstone, which results in a single repaired item. The durability of the repaired item equals the sum of the old items' durability plus a 'repair bonus' of 5% of the item's maximum uses, up to a limit of the maximum durability for that item. Repairing gives a slight benefit in conserving inventory space, as it combines two non-stackable objects into one.
+The repaired object is never enchanted even if both items were to have the exact same enchantments, with the exception of curse enchantments, which are transferred to the repaired item. Therefore, using a "junk" item in a repair may sometimes be useful for removing an unwanted enchantment from an item prior to enchanting it again. Tools made of different materials (for example, a wood and a stone pickaxe) cannot be combined.
+All items with durability can be repaired this way.
+
+
+== Formula for uses restored ==
+The formula for determining how many uses a repaired item can have restored to it in the crafting box, is as follows:
+
+min(Item A uses + Item B uses + floor(Max uses / 20), Max uses)
+
+where "floor" means round down to the smaller integer, and "min(x,y)" means the smallest of x or y.
+Example: Two stone axes have 10 and 45 uses. A newly crafted stone axe would have 61 uses.
+
+10 + 45 + 131⁄20 = 55 + 6.55 = 61
+Or, in terms of percentage (approximated):
+
+7.6% + 34% + 5% = 46.6%
+The greatest benefit is gained when the two items have a combined durability of at most approximately 95%, in any combination, such as 47.5% + 47.5%, 94% + 1%, 10% + 10% or any other values that total 95% or less. The order in which items are combined does not matter; one sequence of repairs gives exactly the same durability as any other.
+In the example, repairing a stone tool restores a bonus of 6 durability, which is actually only 6⁄132 = 4.5%. The precise combined durability for efficient repairs is shown in the following table.
+
+A perfect repair is theoretically possible, but unlikely in practice. Combining items whose combined durability is more than 100% actually wastes more resources than simply using tools until they break.
+The precise combined durability for efficient repairs for all types of armor is shown in the following table.
+
+
+== Anvil repair ==
+
+An anvil can also repair items in two different ways. This costs experience levels, but unlike the grindstone, the anvil preserves or can even enhance the target's enchantments. The anvil can combine the enchantments on two similar items, or rename any item (not just the ones it can repair). The costs are complex, so a summary is given here.
+The repair cost is stored in a repairCost value.
+
+
+=== Combination ===
+Two items of the same type are put into the input slots; the first one is the item to be repaired and the second one is to be merged into the first. The second item's durability is added to the first, and if applicable, some or all enchantments from the second item are added. If two of the same enchantments have the same level and there is a level above that the enchantments will combine increasing the level of the enchantment by one. 
+
+
+=== Unit repair ===
+Some items can be repaired by "covering" the damage with a specific material. The item to be repaired is put into the first input slot, and the corresponding material is put into the second slot. Each material item (unit) heals the item's durability by 25% its maximum durability, rounded down.
+
+Anything not listed below does not have a unit repair item, and can be repaired only by consuming another instance of itself.
+
+
+== Videos ==
+
+
+== History ==
+
+
+=== Development ===
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+=== Legacy Console Edition ===
+
+
+== Issues ==
+Issues relating to "Repair" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Trivia ==
+Working on an anvil doesn’t remove enchantments to items, but they can be removed by repairing them on a crafting grid or grindstone.
+
+
+== Gallery ==
+
+
+=== Screenshots ===
+
+
+== See also ==
+Crafting
+Tiers
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,122 @@
+25w21a is the seventh and final snapshot for Java Edition 1.21.6, released on May 20, 2025.
+
+
+== Additions ==
+
+
+=== Gameplay ===
+Sounds
+
+Added entity/leashknot/break for when a lead snaps.
+The following sounds have been added for shearing saddles, horse armor, and carpets from llamas.
+mob/horse/armor_unequip
+mob/horse/saddle_unequip
+mob/llama/unequip
+
+
+== Changes ==
+
+
+=== Mobs ===
+Horse, donkey, and mule
+
+Can now be fed carrots to heal, grow, and improve their temper, with the same effect as apples.
+
+
+=== Gameplay ===
+Sounds
+
+The following sounds have been renamed:
+entity/leashknot/break1 -> entity/leashknot/unleash1
+entity/leashknot/break2 -> entity/leashknot/unleash2
+entity/leashknot/break3 -> entity/leashknot/unleash3
+entity/leashknot/place1 -> entity/leashknot/leash1
+entity/leashknot/place2 -> entity/leashknot/leash2
+entity/leashknot/place3 -> entity/leashknot/leash3
+
+
+=== General ===
+Clouds
+
+The pattern of clouds has been changed.
+Data pack
+
+The pack format version is now 78.
+Dialogs
+
+run_command click actions will now correctly close dialogs and book screens even if the command does not require elevated permissions.
+Dialogs should now correctly return to the previous non-dialog screen on close in all cases.
+If a new dialog is received by the client while warning screen is visible, it will not replace it, but when user clicks the "Back" button, the new dialog will be restored instead.
+The sizes of elements in dialogs are now restricted:
+buttons - between 1 and 1024 (inclusive).
+minecraft:plain_message dialog body - between 1 and 1024 (inclusive).
+minecraft:item dialog body
+width of description - between 1 and 1024 (inclusive).
+width - between 1 and 256 (inclusive).
+height - between 1 and 256 (inclusive).
+minecraft:text input control - between 1 and 1024 (inclusive).
+minecraft:single_option input control - between 1 and 1024 (inclusive).
+minecraft:number_range input control - between 1 and 1024 (inclusive).
+minecraft:text input control
+max_length - maximum length of input, positive integer with default of 32.
+multiline - if present, allows users to input multiple lines, optional object with fields:
+max_lines - if present, limits maximum lines, optional positive integer.
+height - height of input, optional integer in range 1 to 512.
+If this field is omitted, but max_lines is present, the height will be chosen to fit the maximum number of lines.
+If this and max_lines are both omitted, it will default to a height that fits 4 lines.
+minecraft:number_range input control
+The steps field has been replaced with a new field:
+step - step size, optional positive float.
+If present, only values of initial + <any integer> * step will be allowed.
+If absent, any value from range the is allowed.
+initial - if not specified, now defaults to the middle of the range.
+minecraft:multi_action_input_form dialog type.
+Added new field columns - positive integer describing number of columns, default: 2.
+Resource pack
+
+The version is now 62.
+Tags
+
+Added carrot to #horse_food item tag.
+
+
+== Fixes ==
+21 issues fixed
+From released versions before 1.21
+
+MC-36696 – Clicking on the statistics button on the menu screen advances the game by 1 tick.
+MC-112730 – Beacon beam and structure block render twice per frame.
+MC-236464 – Beacon beams emitted from below the player are invisible after reloading chunks.
+MC-239701 – Rendering issue when breaking ice and flying with "Chunk Builder" set to Threaded.
+MC-258336 – Frost Walker causes frequent visual corruption near chunk borders on Threaded and Semi-Blocking Chunk Builder.
+From 1.21.5
+
+MC-296337 – Minecarts cause memory usage increases and crashes.
+MC-297264 – Cat breeds are not seed based anymore.
+From the 1.21.6 development versions
+
+MC-297336 – Experience orbs from thrown bottles o' enchanting are very prone to getting stuck inside blocks when thrown against a corner.
+MC-297615 – Untranslatable error message when trying to join a closed Realm.
+From the previous development version
+
+MC-297803 – The string menu.custom_screen_info.contents misspells "personal" as "pesonal".
+MC-297806 – music.game.swamp.labyrinthine misspells the song's title.
+MC-297808 – music.game.oxygene is missing the grave accent sign.
+MC-297812 – Bold text is rendered differently than in previous versions.
+MC-297813 – Amos Roddy is not listed in the credits.
+MC-297823 – music.game.mice_on_venus is using wrong capitalization.
+MC-297845 – Clicking the Statistics button in Singleplayer does not play the button click sound until you resume playing.
+MC-297846 – The music toast flashes in the pause menu when the Music slider is set to zero.
+MC-297875 – Text shadow from underlined text overlaps the text below it in chat messages.
+MC-297888 – Text no longer renders in a consistent order across different fonts.
+MC-297917 – The client stops responding when showing a dialog with an extremely wide button.
+MC-297977 – Dialog columns layout has extra spacing between the grid and the overflow linear layout.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

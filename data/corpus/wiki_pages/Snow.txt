@@ -1,0 +1,150 @@
+Snow is a ground cover and gravity-affected‌[Bedrock Edition  only] block found on the surface in snowy biomes. It can be replenished during snowfall.
+
+
+== Obtaining ==
+
+
+=== Breaking ===
+Breaking snow with a shovel yields 1 snowball per layer in Java Edition, or between 1 and 4 depending on its height in Bedrock Edition (detailed below). Explosions, such as by TNT or creepers, also cause snow to drop snowballs in the same amount as if mined with a shovel. In Bedrock Edition, snow can be instantly removed by using a shovel on it if there is no block directly above the snow layer, yielding the same amount of snowballs as when breaking it.
+Snowball drops in Bedrock Edition
+
+1 snowball for 1–3 layers
+2 snowballs for 4–5 layers
+3 snowballs for 6–7 layers
+4 snowballs for 8 layers
+If a shovel is enchanted with Silk Touch, snow drops itself at one item per layer, except for 8 layers, which drop a snow block instead. Breaking snow with any other tool, even if enchanted with Silk Touch, drops nothing. 
+
+Snow breaks and drops nothing if:
+
+water or lava flows into its space.
+in Java Edition, a piston extends or moves a block into its space.
+in Java Edition, its support block is removed.
+In Bedrock Edition, snow breaks and drops 1-4 snowballs, depending on its height, if a ravager walks on it, or if a piston extends or moves a block into its space. 1 snowball is dropped — regardless of the number of layers — if snow falls into an invalid block space after its support block is removed.
+
+
+=== Natural generation ===
+Snow naturally generates covering all blocks in biomes with a temperature that allows snowfall, which depends on the elevation. Only blocks with direct access to the sky can generate snow layers naturally (with the exception of some buildings in snowy villages, which generate extra snow in areas inaccessible to the sky). In Bedrock Edition, snow can also generate snowlogged in certain types of vegetation.
+Snow generates where there is sky access atop buildings in snowy taiga villages.‌[Bedrock Edition  only]
+Snow generates as piles and in multiple layers as part of many snowy plains village structures.
+By default, snow generates exclusively in single layers in Java Edition, it can be modified with /gamerule max_snow_accumulation_height. Snow can generate in multiple layers in Bedrock Edition.
+Snow also generates in ancient cities.
+
+
+=== Crafting ===
+
+
+=== Post-generation ===
+
+
+==== Weather ====
+In snowy biomes or in cold biomes at higher altitudes, the weather can produce snow instead of rain. In snowy weather, snow generates on random blocks with a complete solid top surface at integer y-values, with a block light level of 9 or less, with the exception of ice and packed ice. The rate at which snow forms is affected by the game rule randomTickSpeed. In Bedrock Edition, snow can also generate snowlogged in certain types of vegetation.
+Below are the altitudes at which rain ends and snow begins, depending on the biome. The exact height of the snow line is randomized. In taigas, for example, the lowest possible snow layer forms at y level 153, and the lowest height where snow forms at all locations is y=168, with snow lines ranging between y levels 153 and 168 across different locations.
+
+In Bedrock Edition, anywhere from 1-12 layers of snow can build up during snowfall, depending on the biome. In Java Edition, snowfall creates one layer of snow by default, and the number of layers that can accumulate can be altered by the game rule snowAccumulationHeight: the default value being 1, while setting it to 0 makes no snow form at all, and setting it to 8 or above lets snow form up to the level of a full block.
+Snow layers do not generate if the game rule doWeatherCycle has been set to false.‌[Bedrock Edition  only]
+
+
+==== Snow golems ====
+
+Snow golems generate a trail of snow in snowy, cold, and some medium biomes, or any non-dry biome in Bedrock Edition.
+
+
+== Usage ==
+
+Snow can be placed only on a solid block that is not ice. In Java Edition, snow can be placed on a block with the snow_layer_can_survive_on tag, or a block with a full top face and not with the snow_layer_cannot_survive_on tag. In Java Edition, snow breaks if its support block is removed. In Bedrock Edition, snow is affected by gravity and falls if it becomes unsupported, and breaks if it falls onto an unsuitable block. A player can jump up 1 block and 3 snow layers.
+
+
+=== Cover ===
+
+If the snow is on a grass block (or mycelium or podzol in Java Edition) the ground cover turns white on the top and around the sides. Snow does not damage tilled and hydrated field areas – it cannot be placed on farmland. A gravity-affected block like sand or gravel does not fall if snow covers the block below it, but the gravity-affected block does replace a snow layer when falling onto it. The texture of the grass block changes to snowy when a single layer of snow is placed on top. Thicker layers of snow causes the grass block to revert to plain dirt when the block receives a random tick, similar to regular grass when covered by an opaque block. A plain dirt block with a single layer of snow on top gains a snowy texture if grass spreads to it.
+Snow layers placed on top of nylium revert it to netherrack.
+In Bedrock Edition, if leaves are topped with a layer of snow, particles of snow appear to fall through the leaves from the snow layer.
+In Bedrock Edition, snow layers can occupy the same space as one-block flowers, mushrooms, and one-block ferns and short grass and can be layered and mined normally. Snow cannot occupy the same block as two-block-tall plants. Placing snow on plant blocks causes snow to appear around them, but placing plants into an area where there is snow removes the snow.
+
+
+=== Melting ===
+
+Snow melts if there is a heat block‌[BE & edu  only] or block light level of 12 or more. In Bedrock Edition, it also melts in biomes without snowfall, regardless of block light or daylight level. If there are multiple layers, layers melt gradually in Bedrock Edition, but they melt all at once in Java Edition.
+Some light sources can melt snow but many cannot. The melt radius is taxicab distance.
+
+
+=== Foxes ===
+When a fox gets stuck in the snow after missing an attack on prey, it emits particles as it emerges from the snow.
+
+
+== Sounds ==
+Java Edition:
+
+Bedrock Edition:
+
+
+== Data values ==
+
+
+=== ID ===
+Java Edition:
+
+Bedrock Edition:
+
+
+=== Block states ===
+
+Java Edition:
+
+Bedrock Edition:
+
+
+=== Falling block entity ===
+Bedrock Edition:
+[NBT Compound / JSON Object]: The entity's root tag.
+[NBT Compound / JSON Object] FallingBlock
+Tags common to block
+[Byte] Time: The number of ticks the entity has existed. If set to 0, the moment it ticks to 1, it vanishes if the block at its location has a different ID than the entity's FallingBlock.Name. If the block at its location has the same ID as its FallingBlock.Name when Time ticks from 0 to 1, the block is deleted, and the entity continues to fall, having overwritten it. When Time goes above 600, or above 100 while the block is below Y=1 or is outside building height, the entity is deleted. [needs testing]
+
+
+== History ==
+
+
+=== Development ===
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+=== Legacy Console Edition ===
+
+
+=== New Nintendo 3DS Edition ===
+
+
+=== Data history ===
+
+
+== Issues ==
+Issues relating to "Snow", "Snow layer", or "Top snow" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Trivia ==
+Snow can be stacked to a full block beside a cactus without destroying the cactus.
+Snow layers of 2 to 7 thickness prevent hostile mobs from spawning.
+In Spectator mode, a player positioned at the correct height can see the snowy texture of the top of the grass blocks.
+Snow sounds were created by Daniel Rosenfeld scrunching a bag of corn starch.
+
+
+== Gallery ==
+
+
+=== Screenshots ===
+
+
+== See also ==
+Snowlogging
+
+
+== References ==
+
+
+== Navigation ==

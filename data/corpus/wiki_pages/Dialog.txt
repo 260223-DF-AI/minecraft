@@ -1,0 +1,163 @@
+Dialogs are simple modal windows that can display information and receive player input.
+
+
+== Usage ==
+Dialogs can be displayed to players using the /dialog command by server operators while in gameplay. Additionally, they can be displayed through a show_dialog action in a text component or another dialog (see § Action format). They can also be configured for the pause menu and when pressing the quick actions hotkey (see § Dialog tag).
+Dialogs enable various forms of interaction with the game, including:
+
+Sending messages or information using text components, including rich text formatting and clickable links (excluding type nbt, score and selector);
+Receiving player input through input control fields such as textbox, toggle, slider, and option selection;
+Executing commands via action buttons (privileged commands can only be executed by server operators); and
+Navigating between multiple dialogs using nested structures.
+Dialogs mostly comprise of these three elements, however their exact contents are dependent of the type:
+
+Header, which contains the title and warning button;
+Body elements, which may be labels, inputs, buttons, and submit actions (scrollable if needed); and
+Optional footer, which may contain confirmation buttons and submit actions.
+When a dialog window opens, player controls are disabled temporarily until the user exits the window through an exit action button, the escape key (Esc), or the warning button next to the dialog's title (which returns the user back to the title screen). In singleplayer, a dialog can be configured to pause the game, in which case the game also autosaves.
+
+
+== Definition ==
+Dialog can be defined in data packs, as part of the directory structure below.
+
+
+== Dialog format ==
+Dialogs have different structure depending on their type, which is specified by [String] type tag. The structure below applies to every dialog types:
+
+*: If parent field is written, this field is required.
+
+
+=== notice ===
+
+A dialog screen with a single action button in footer, specified by [NBT Compound / JSON Object] action. By default, the exit action (which returns the player back to gameplay) is the same [NBT Compound / JSON Object] action button.
+
+
+=== confirmation ===
+
+A dialog screen with two action buttons in footer, specified by [NBT Compound / JSON Object] yes and [NBT Compound / JSON Object] no. By default, the exit action is [NBT Compound / JSON Object] no button.
+
+
+=== multi_action ===
+
+A dialog screen with a scrollable list of action buttons arranged in columns. If [NBT Compound / JSON Object] exit_action is present, a button for it will appear in the footer, otherwise the footer is not present. [NBT Compound / JSON Object] exit_action is also used for the Escape action.
+
+
+=== server_links ===
+
+A dialog screen with scrollable list of server links, arranged in columns. If [NBT Compound / JSON Object] exit_action is present, a button for it will appear in the footer, otherwise the footer is not present. [NBT Compound / JSON Object] exit_action is also used for the Escape action.
+
+
+=== dialog_list ===
+
+A dialog screen with scrollable list of buttons leading directly to other dialogs, arranged in columns. Titles of those buttons will be taken from [String] external_title fields of targeted dialogs. If [NBT Compound / JSON Object] exit_action is present, a button for it will appear in the footer, otherwise the footer is not present. [NBT Compound / JSON Object] exit_action is also used for the Escape action.
+
+
+== Body format ==
+All dialogs have a list of body elements describing contents between title and actions or inputs.
+
+
+=== plain_message ===
+A multiline label.
+
+
+=== item ===
+An item with optional description. It appears like it is in the inventory slot when the mouse hovers over the item. The size does not scale even if width and height are set to other values than the default. If the description is present, then it appears next to the right side of the item.
+
+
+== Input control format ==
+
+Input controls are used to receive certain information from the players. These information can be used with the associated [String] key tag, for example, when an action button is clicked, the [String] key can be used to reference information stored on that input control, either when running a command with macro substitution, or a custom NBT tag sent to the server (see § Dynamic action types).
+All input control types have a label field. 
+
+
+=== text ===
+A basic, single line, text input.
+Output values:
+
+As template substitution: contents with special characters escaped using escape sequences to fit into an SNBT string.
+As tag: a string tag with contents without modification.
+
+
+=== boolean ===
+A checkbox.
+Output values:
+
+As template substitution: [String] on_true when checked, [String] on_false when unchecked.
+As tag: 1b when checked, 0b when unchecked.
+
+
+=== single_option ===
+A preset option selection.
+
+
+=== number_range ===
+A number slider.
+Output values:
+
+As template substitution: text representation of current value.
+Whole numbers will be sent without decimal point.
+As tag: a float tag with current value.
+
+
+== Action format ==
+
+
+=== Static action types ===
+Static actions are actions that don't depend on the value of an input field. They are identical to text component events (except for open_file). They use the same format but with the action tag replaced with type.
+For example, when using show_dialog, entry for action button will look like:
+
+
+==== open_url ====
+Opens the specified URL in the user's default web browser.
+
+
+==== run_command ====
+Runs the specified command. This runs as if the player typed the specified command in chat and pressed enter. However, this can only be used to run commands that do not send chat messages directly (like /say, /tell, and /teammsg). Since they are being run from chat, the player must have the required permissions.
+
+
+==== suggest_command ====
+Opens chat and fills in the specified text or command. If a chat message was already being composed, it is overwritten.
+
+
+==== change_page ====
+Can only be used in written books. Changes to the specified page if that page exists.
+
+
+==== copy_to_clipboard ====
+Copies the specified text to the clipboard.
+
+
+==== show_dialog ====
+Opens the specified dialog.
+
+
+==== custom ====
+Sends a custom event to the server; has no effect on vanilla servers.
+
+
+=== Dynamic action types ===
+Can be used in conjunction with input controls.
+
+
+==== dynamic/run_command ====
+This action will build a run_command event using a provided macro template (example: /say $(message) if you have a text input with an ID message)
+
+
+==== dynamic/custom ====
+This method will build a minecraft:custom event using all input values.
+All input contents will be sent together inside a [NBT Compound / JSON Object] compound tag, with tag value of each input put under id from key field of that input.
+Additional static fields can be added to payload.
+
+
+== Dialog tag ==
+
+A data pack can apply one or more dialogs to the pause screen and the quick actions hotkey using the #minecraft:pause_screen_additions and #minecraft:quick_actions tags. If multiple dialogs are applied to the same method, the built-in minecraft:custom_options or minecraft:quick_actions dialog is shown instead which by default feature a list of all dialogs in the respective tags, using the [String] external_title tag in the dialogs.
+
+
+== History ==
+
+
+== References ==
+
+
+== Navigation ==

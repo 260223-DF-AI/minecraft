@@ -1,0 +1,50 @@
+Grants operator status to the player(s).
+In Java Edition, adds the players into the ops.json file with the default op permission level specified by op-permission-level in the server.properties.
+In Bedrock Edition, changes the player's permission in the "Player Permission" screen to the "Operator" option . In dedicated servers, it is also recorded in permissions.json. The permissions.json file can be reloaded with /permission command.
+
+
+== Syntax ==
+Java Edition
+op <targets>
+Bedrock Edition
+op <player: target>
+
+
+== Arguments ==
+JE: <targets>: game_profileBE: player: target: CommandSelector<Player>
+
+Specifies the player to be granted op.
+In Java Edition:
+Specifies one or more game profiles (player profiles). Must be a player name (should be a real one if the server is in online mode) or a player-type target selector.
+In Bedrock Edition:
+Must be a player name or a target selector. 
+
+
+== Result ==
+
+
+== Output ==
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== Example ==
+Give Steve OP:/op Steve
+
+
+== See also ==
+/deop: Revokes operator status from a player.
+
+
+== External links ==
+"/op Command"     – Microsoft Learn, October 11, 2023.
+
+
+== Navigation ==

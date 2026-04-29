@@ -1,0 +1,14 @@
+Pistons cannot move blocks that require a support block, as they break and drop as an item (when applicable). There are however some exceptions, listed down below.
+
+
+===== Exceptions =====
+Carpets: since they consider all blocks excluding air as valid supports, moving carpets with pistons without them breaking is fairly easy.
+A carpet can even stay on top of a moving block without breaking.
+Rails: they can be moved as long as they remain on top of a block's full face (if it has one) in their new position. Once the piston finishes to push or pull the rail, the block below can only be a moving block if its collision box is at the final position, otherwise the rail does not consider it a valid support.
+When the rail and the block supporting it are on two vertically parallel extending pistons, the rail doesn't break. Trying to move the rail and its support block with perpendicular pistons causes the rail to break (although in Java Edition, due to the bug MC-75716,  it visually appears to not break). In Java Edition, the piston moving the block can be powered 1 block event after the piston moving the rail in order for the rail to be moved reliably without breaking.
+Rails re-orient themselves after being pushed, similar to when placed manually.
+Dead coral and dead coral fans: in Java Edition, they can be pushed similarly to how rails can; however in some situations the coral will both break and get moved by the piston, emitting block updates at its original position.
+This mechanic is frequently used in TNT dupers.
+
+
+== References ==

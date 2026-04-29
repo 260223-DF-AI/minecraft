@@ -1,0 +1,440 @@
+This article documents the protocol which Pocket Edition used before it was replaced by a newer Pocket Edition protocol.[when?]
+Unlike the Java Edition protocol, this protocol uses UDP with (so far observed, at least) one message per packet. This makes the protocol easier to work with when it comes to packet serialization, and might offer latency improvements, but will inevitably have the usual UDP issues (packets lost, truncated, duplicated, out-of-order, etc.).
+As of v0.9.0 alpha, clients appear to search for servers on only port 19132.
+Clients don't pick any specific port to listen on.
+Please note that even where packet field names are written in this page, these are still largely hypothetical and could well be incorrect guesses. Some packets are fixed to the RakNet protocol, and will be marked as "RakNet Packet", which means that these packets will not change on future versions.
+It has been determined that PM uses RakNet for its networking library, some documentation that seems relevant.
+
+
+== Terminology ==
+PM
+Pocket Minecraft (aka Minecraft PE or Minecraft Pocket Edition)
+
+
+== Types ==
+
+
+== Login Packets ==
+All packets start with a single byte that identifies the packet type, the rest of the packet follows it.
+Please note that packets 0x09 through 0x13 are not documented (yet).
+
+
+=== ID_CONNECTED_PING_OPEN_CONNECTIONS (0x01) ===
+Client to Broadcast
+
+RakNet Packet
+
+Clients start out by sending this packet to the IP broadcast address on port 19132 repeatedly (approx once per second) when joining a server was chosen on the main screen, and stops when the user selects a server (or leaves the screen). The ping ID from the client increases over time, and appears to be the number of milliseconds since the client program was started (might be used to measure server response latency).
+
+
+=== ID_UNCONNECTED_PING_OPEN_CONNECTIONS (0x02) ===
+Client to Broadcast
+NOTE: THIS PACKET APPEARS TO BE UNUSED. Use a 0x01 packet instead
+RakNet Packet
+
+Same as ID_CONNECTED_PING_OPEN_CONNECTIONS (0x01), but with the Packet ID changed.
+
+
+=== ID_OPEN_CONNECTION_REQUEST_1 (0x05) ===
+Client to Server
+
+RakNet Packet
+
+If the version is different than yours, reply with a 
+ID_INCOMPATIBLE_PROTOCOL_VERSION (0x1A)
+Sent from the client after the player taps on the server in the world list The client will repeatedly send this with reducing sizes until it successfully receives a reply. Observed behavior is that the client will send packets ~0.5s apart in the following way, until it gets a 0x06 response packet, or reaches the end of these:
+
+4 packets of Null Payload length of 1447
+4 packets of Null Payload length of 1155
+5 packets of Null Payload length of 531
+If the server doesnt't reply the client, the client will display a "Connect Error" window
+
+
+=== ID_OPEN_CONNECTION_REPLY_1 (0x06) ===
+Server to Client
+
+RakNet Packet
+
+Sent from server after it receives packet 0x05.
+
+
+=== ID_OPEN_CONNECTION_REQUEST_2 (0x07) ===
+Client to Server
+
+RakNet Packet
+
+Sent from client in response to packet 0x06.
+
+
+=== ID_OPEN_CONNECTION_REPLY_2 (0x08) ===
+Server to Client
+
+RakNet Packet
+
+Sent from server in response to packet 0x07.
+
+
+=== ID_INCOMPATIBLE_PROTOCOL_VERSION (0x1A) ===
+Server to Client
+
+RakNet Packet
+
+Sent when the server doesn't support the RakNet protocol specified in 0x05.
+
+
+=== ID_UNCONNECTED_PING_OPEN_CONNECTIONS (0x1C) ===
+Server to Client
+
+RakNet Packet
+
+Server sends this packet in response to a 0x01 packet.
+If the Server is invisible, this packet will be sent without username
+In order for the server to show up in the world list, the server name must have "MCCPP;MINECON;" in front of it.
+Since MCPE 0.11.0, the server name has a different format.
+
+
+=== ID_ADVERTISE_SYSTEM (0x1D) ===
+Server to Client
+
+RakNet Packet
+THIS PACKET IS UNUSED, Use a 0x1c packet instead.
+
+Same as ID_UNCONNECTED_PING_OPEN_CONNECTIONS (0x1C), but with the Packet ID changed. Depends of the version to send a 0x1D or a 0x1C
+
+
+=== Custom Packet (0x80-0x8F) ===
+Two-Way
+This packet is part of the real Minecraft PE implementation. The structure can change anytime.
+
+The receiver will use the Packet number in the 0xC0 packet and send it back.
+
+
+=== NAK (0xA0) ===
+Two-Way
+RakNet Packet
+
+Send these when a packet was lost, or reply to this resending the lost packet.
+
+
+=== ACK (0xC0) ===
+Two-Way
+RakNet Packet
+
+Sent after a 0x8X. It's used to ACK recieval of packets.
+The second packet number is optional and only there when bool is false.
+
+
+== Packet Encapsulation format ==
+The payload in 0x80-0x8F packets is encoded using different schemes.
+To decode them, you've to use the Encapsulation ID to check wich type you should use.
+The Encapsulation ID is the first byte of the payload.
+Multiple Data Encapsulation packets could be present in one packet. If you want to send data, use 0x00.
+Length field is in bits, not bytes. To get the length in bytes, use length_in_bytes = length / 8. The length field is excluding the header -- both the 0x8X packet header, as well as the encapsulated packet header.
+
+
+=== 0x00 ===
+
+
+=== 0x40 ===
+
+
+=== 0x60 ===
+
+
+== Encapsulated Login packets ==
+After packets 0x05 through 0x08 are sent, the client will send the first encapsulated packets (0x09 through 0x13). After 0x13 the game begins. You can check the login sequence here.
+
+
+=== Client Connect (0x09) ===
+Client to Server
+This is a Data Packet. It is encoded using packet encapsulation format.
+
+
+=== Server Handshake (0x10) ===
+Server to Client
+This is a Data Packet. It is encoded using packet encapsulation format..
+
+Data Array
+The data array section is unknown, but we do know how to get it right. Below is some code on how to create the array (C#).
+
+  public void putDataArray()
+       {
+           byte[] unknown1 = new byte[] { 0xf5, 0xff, 0xff, 0xf5 };
+           byte[] unknown2 = new byte[] { 0xff, 0xff, 0xff, 0xff };
+           this.putTriad(unknown1.Length);
+           this.putBytes(unknown1);
+           for (int i = 0; i < 9; i++)
+           {
+               this.putTriad(unknown2.Length);
+               this.putBytes(unknown2);
+           }
+       }
+
+A triad is a 3 byte integer.
+Credit goes to InusualZ (https://github.com/InusualZ/CraftMine/blob/master/src/Network/Packets/Minecraft/ServerHandshake.cs).
+
+
+=== Client Handshake (0x13) ===
+Client to Server
+This is a Data Packet. It is encoded using packet encapsulation format..
+
+Data Arrays
+Array 1
+The first array is just a series of bytes, starting with the first byte which has the length of the rest of the array. This can be decoded as follows (Java):
+
+  buffer.get(new byte[(int) buffer.get()]);
+
+The buffer variable is really a ByteBuffer object found in the package java.nio.
+Array 2
+The second array is a little more complicated. The first section is a triad (3 bytes) which specifies how many bytes to read next. This is repeated 9 times. An example is below (Java):
+
+       for(int i = 0; i < 9; i++){
+       
+       	int l = NetworkUtils.getTriad(buf);
+       
+       	buf.get(new byte[l]);
+       
+       }
+
+Again, the buf object is a ByteBuffer object.
+
+
+=== Client Cancel Connect (0x15) ===
+Client to Server
+This is a Data Packet. It is encoded using packet encapsulation format.
+
+This appears to be sent whenever the user clicks the "cancel" button when connecting.
+
+
+== Ping/Pong ==
+The client will repeatedly send ping packets to the server each containing an identifier (long). The server then must reply with a pong packet containing the identifier found in the ping. This is observed to happen sometime during the encapsulation login.
+
+
+=== Ping Packet (0x00) ===
+Client to Server
+This is a Data Packet. It is encoded using packet encapsulation.
+
+
+=== Pong Packet (0x03) ===
+Server to Client
+This is a Data Packet. It is encoded using packet encapsulation. 
+
+
+== Data Packets ==
+This information has been generated using PocketBurger, then edited manually.
+This information was generated based on:
+Minecraft: Pocket Edition v0.7.3, protocol #11
+RakNet Protocol version #5
+However, these packets seem to be unchanged since then, and will (most likely) work with the current version.
+Current Version:
+Minecraft: Pocket Edition v0.10.4, protocol #20
+RakNet Protocol version #5
+
+
+=== LoginPacket (0x82) ===
+Client to Server
+
+
+=== LoginStatusPacket (0x83) ===
+Server to Client
+
+The three type of status are:
+0: Everything is good.
+1: If the server is outdated.
+2. If the game is outdated. 
+If everything is good you need to send StartGamePacket.
+
+
+=== ReadyPacket (0x84) ===
+Client to Server
+
+
+=== MessagePacket (0x85) ===
+Two-Way
+
+
+=== SetTimePacket (0x86) ===
+Client to Server
+
+
+=== StartGamePacket (0x87) ===
+Client to Server
+
+
+=== AddMobPacket (0x88) ===
+Client to Server
+
+
+=== AddPlayerPacket (0x89) ===
+Client to Server
+
+
+=== RemovePlayerPacket (0x8a) ===
+Client to Server
+
+
+=== AddEntityPacket (0x8c) ===
+Client to Server
+
+
+=== RemoveEntityPacket (0x8d) ===
+Client to Server
+
+
+=== AddItemEntityPacket (0x8e) ===
+Client to Server
+
+
+=== TakeItemEntityPacket (0x8f) ===
+Client to Server
+
+
+=== MoveEntityPacket (0x90) ===
+Client to Server
+
+
+=== MoveEntityPacket_PosRot (0x93) ===
+None
+
+
+=== MovePlayerPacket (0x94) ===
+Two-Way
+
+
+=== PlaceBlockPacket (0x95) ===
+Two-Way
+
+
+=== RemoveBlockPacket (0x96) ===
+Server to Client
+
+
+=== UpdateBlockPacket (0x97) ===
+Client to Server
+
+
+=== AddPaintingPacket (0x98) ===
+Client to Server
+
+
+=== ExplodePacket (0x99) ===
+Client to Server
+
+
+=== LevelEventPacket (0x9a) ===
+Client to Server
+
+
+=== TileEventPacket (0x9b) ===
+Client to Server
+
+
+=== EntityEventPacket (0x9c) ===
+Two-Way
+
+
+=== RequestChunkPacket (0x9d) ===
+Server to Client
+
+
+=== ChunkDataPacket (0x9e) ===
+Client to Server
+
+
+=== PlayerEquipmentPacket (0x9f) ===
+Two-Way
+
+
+=== PlayerArmorEquipmentPacket (0xa0) ===
+Two-Way
+
+
+=== InteractPacket (0xa1) ===
+Two-Way
+
+
+=== UseItemPacket (0xa2) ===
+Server to Client
+
+
+=== PlayerActionPacket (0xa3) ===
+Server to Client
+
+
+=== HurtArmorPacket (0xa5) ===
+Client to Server
+
+
+=== SetEntityDataPacket (0xa6) ===
+Client to Server
+
+
+=== SetEntityMotionPacket (0xa7) ===
+Client to Server
+
+
+=== SetRidingPacket (0xa8) ===
+Client to Server
+
+
+=== SetHealthPacket (0xa9) ===
+Two-Way
+
+
+=== SetSpawnPositionPacket (0xaa) ===
+Client to Server
+
+
+=== AnimatePacket (0xab) ===
+Two-Way
+
+
+=== RespawnPacket (0xac) ===
+Two-Way
+
+
+=== SendInventoryPacket (0xad) ===
+None
+
+
+=== DropItemPacket (0xae) ===
+Server to Client
+
+
+=== ContainerOpenPacket (0xaf) ===
+Client to Server
+
+
+=== ContainerClosePacket (0xb0) ===
+Two-Way
+
+
+=== ContainerSetSlotPacket (0xb1) ===
+Two-Way
+
+
+=== ContainerSetDataPacket (0xb2) ===
+Client to Server
+
+
+=== ContainerSetContentPacket (0xb3) ===
+Client to Server
+
+
+=== ContainerAckPacket (0xb4) ===
+None
+
+
+=== ChatPacket (0xb5) ===
+Client to Server
+
+
+=== SignUpdatePacket (0xb6) ===
+Two-Way
+
+
+=== AdventureSettingsPacket (0xb7) ===
+Client to Server
+
+
+== Navigation ==

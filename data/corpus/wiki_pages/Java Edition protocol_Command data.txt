@@ -1,0 +1,76 @@
+From Minecraft 1.13, the Command Graph data structure defines commands which can be used in chat or in command blocks, and how they're parsed. For more information see the page on command argument types.
+
+
+== Graph Structure ==
+The graph consists of nodes of type root, literal and argument. A node may point to a number of child nodes, or redirect to another node, or neither. The root node is nameless, and its children are literal nodes for familiar commands ("msg", "me", etc). 
+Nodes are marked as executable if the node stack to this point constitutes a valid command. E.g. this is false for /ban but true for /ban Dinnerbone and /ban Dinnerbone created this crazy format.
+When including redirects, this structure is a directed graph that may include cycles (e.g. consider /execute run execute run execute ...). When excluding redirects, the structure no longer contains cycles but may still not be a tree, as a node may have multiple parents.
+
+
+== Node Format ==
+
+
+=== Flags ===
+
+
+=== Parsers ===
+Clients are expected to implement all parsers, including properties (if any). If an unknown parser is encountered by a client, unpacking of the  Commands  packet should stop immediately, as the structure of the remainder of the packet cannot be guessed.
+Since 1.19, parsers are identified by their ID in the Node Format. Parsers (as well as parser IDs) are provided only for argument nodes. If properties for parser are not specified, then this parser has no properties and "Properties" section in Node Format contains no data.
+
+
+==== brigadier:double ====
+Specifies min and max values.
+
+
+==== brigadier:float ====
+Specifies min and max values.
+
+
+==== brigadier:integer ====
+Specifies min and max values.
+
+
+==== brigadier:long ====
+Specifies min and max values.
+
+
+==== brigadier:string ====
+A VarInt Enum.
+
+
+==== minecraft:entity ====
+Has a single flags byte.
+
+
+==== minecraft:score_holder ====
+Has a single flags byte.
+
+
+==== minecraft:time ====
+
+
+==== minecraft:resource_or_tag ====
+Has a single identifier.
+
+
+==== minecraft:resource_or_tag_key ====
+Has a single identifier.
+
+
+==== minecraft:resource ====
+Has a single identifier.
+
+
+==== minecraft:resource_key ====
+Has a single identifier.
+
+
+==== minecraft:resource_selector ====
+Has a single identifier.
+
+
+=== Suggestions Types ===
+If the provided suggestion type is not recognized by Notchian client, it will use minecraft:ask_server.
+
+
+== Example Graphs ==

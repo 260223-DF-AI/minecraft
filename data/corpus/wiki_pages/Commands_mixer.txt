@@ -1,0 +1,51 @@
+Controls Mixer interactivity.
+Due to the shutdown of the Mixer service, this command was removed and permanently unusable, due to it requiring the Interactive lab setup inside the Mixer website.
+
+
+== Syntax ==
+mixer <stop: string>
+mixer <scene: string> <sceneName: string>
+mixer <start: string> <version: int> [shareCode: string]
+
+
+== Arguments ==
+start
+
+Starts the interactive board.
+version
+
+Specifies the version ID of the player's board.
+Example: 000001
+shareCode
+
+Specifies the share code of the player's board.
+Example: 0000aaaa
+scene
+
+Changes scene.
+sceneName
+
+Specifies the name of the scene the player wants to change to.
+Example: default
+stop
+
+Specifies that the player wants to stop the interactive board.
+
+
+== Result ==
+start mode:
+
+The MixPlay board begins.
+scene mode:
+
+The scene changes.
+stop mode:
+
+The MixPlay board shuts down.
+Fails if the arguments are not specified correctly.
+
+
+== History ==
+
+
+== Navigation ==

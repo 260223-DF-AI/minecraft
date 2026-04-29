@@ -1,0 +1,108 @@
+Bedrock Edition uses a modified version of Google's LevelDB, which uses the Zlib compression format for world storage. The world storage files are located in a world file in com.mojang.
+
+
+== LevelDB based format ==
+
+
+=== Mojang variant LevelDB format ===
+Mojang has modified Google's Original LevelDB to add Zlib compression and Windows support. The code is available at https://github.com/Mojang/leveldb, and the building instructions are documented by Tommaso at https://twitter.com/_tomcc/status/477950809427427328.
+For a Java implementation of LevelDB + Zlib, see https://github.com/HiveGamesOSS/leveldb-mcpe-java
+Google's leveldb library has evolved extensively since Mojang released their version, but the Mojang version still works (as of 2022). The code does require some minor tweaks to compile:
+
+db/snappy_compressor.cc should refer include <snappy.h> instead of <snappy/snappy.h>
+table/table_test.cc contains two references to snappy that are unresolvable but irrelevant. port::Snappy_Compress and leveldb::SnappyCompressor. If these are simply commented out, the rest compiles and functions properly.
+The database is stored in the db/ subdirectory of a Bedrock Edition world. The database path which is passed to the LevelDB API is this directory path, not the path to any file within it. It seems this is also where terrain generation is stored. This is because you can turn an old world infinite by replacing its db folder with one from an infinite world.
+
+
+=== Chunk key format ===
+A database key for data regarding a chunk is the concatenation of:
+
+Two signed 32-bit little-endian integers (x and z in chunk coordinates, respectively),
+An optional third 32-bit little-endian integer (1 for the Nether, 2 for the End, omitted for the Overworld),
+A one-byte tag specifying the type of record represented by the key (see table), and
+(for a "SubChunkPrefix" record) a one-byte subchunk index (from 0 to 15).
+Accordingly, such a key may be 9, 10, 13 or 14 bytes long. Not all subchunks necessarily exist for a given chunk.
+The "BlockEntity", "Entity" and "PendingTicks" records are represented by a sequence of concatenated root tags in a variant of NBT which stores the lengths and the multi-byte integer types in little-endian format, as opposed to the big-endian format used by Java Edition or the original NBT specification.
+The value 0 is used in the "Version" record in old style worlds; higher values are used in infinite worlds.
+
+
+=== Other keys ===
+There's also the special key ~local_player for an entity data entry that holds the local player entity. The value associated with the ~local_player key is NBT encoded and has only a single compound tag at the root level.
+There's also a special key for remote players which consists of two parts. The first part is the prefix "player_" (without the quotes) and the second part is the client ID which is contained in the remote player's clientid.txt file. For example, player_-12345678 would be the key for a remote client with an client ID of -12345678. The value associated with the "player_" prefixed key is NBT encoded and has only a single compound tag at the root level.
+There's also a special "game_flatworldlayers" key of length 20 for flat worlds. The value associated with this key is a set of numbers in ASCII text format. An example of a value associated with the "game_flatworldlayers" key is "[7,3,3,2]" where the value length for this example is 9.
+There are several keys related to villages. Depending on the dimension, the village key is prefixed with VILLAGE_DIMENSION_[0-9a-f\\-]+_, with DIMENSION being replaced with the dimension's name.
+
+DWELLERS
+Consists mainly of an entity/mob ID's. Dwellers include villagers, iron golems, and cats.
+INFO
+Includes the village bounding box.
+POI
+Provides a mapping between villagers and their beds, village center (bell) and work station.
+PLAYERS
+Other keys start with the following strings
+
+actorprefix
+digp
+map_
+portals
+schedulerWT
+structuretemplate
+tickingarea
+DynamicProperties
+scoreboard
+Overworld
+Nether
+TheEnd
+AutonomousEntities
+BiomeData
+mobevents
+LevelChunkMetaDataDictionary
+RealmsStoriesData_
+DedicatedServerForcedCorruption
+SST_SALOG
+SST_WORD
+SST_WORD_
+An official explanation from Microsoft about how entities (actors) are stored in LevelDB can be found on Microsoft Learn / Minecraft Bedrock Edition.
+
+
+=== Sample parsers of Bedrock level-db ===
+An example implementation of a Bedrock level-db parser can be found in minecraft_mmccoo. This implementation walks the NBTs of all block, entities/mobs, elevations, and village related items.
+A TypeScript implementation can be found on the mcbe-leveldb NPM package.
+
+
+=== NBT structures ===
+The following articles document NBT structures of block entity and entity.
+
+Bedrock Edition level format/Entity format
+Bedrock Edition level format/Entity format/Components
+Bedrock Edition level format/Block entity format
+Bedrock Edition level format/Item format
+Bedrock Edition level format/Other data format
+
+
+== level.dat ==
+The level.dat is still in uncompressed NBT format. The file begins with an 8-byte header, consisting of a little-endian 4-byte integer indicating the version of the file, which is currently 10. It is followed by another integer containing the length of the file, minus the header.
+
+
+=== NBT Structure ===
+
+
+== LOG ==
+The LOG files are located at the /db path of a level, and are part of the leveldb format, used in between compaction of the LDB files. It is similar to a Log file for a program. The format is:
+YYYY/MM/DD-Hour/Minute/Second.StepName "Info"
+Example:
+2014/07/24-22:20:08.400488 4a3638 Recovering log #3
+
+
+== History ==
+
+
+== See also ==
+Java Edition level format
+Java Edition chunk format
+
+
+== References ==
+
+
+== Navigation ==

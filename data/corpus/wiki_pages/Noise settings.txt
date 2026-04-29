@@ -1,0 +1,29 @@
+Noise settings are for generating the shape of the terrain and noise caves, and what blocks the terrain is generated with, stored as JSON files within a data pack in the path data/<namespace>/worldgen/noise_settings, and are used with the minecraft:noise generator in a dimension. Vanilla settings include minecraft:overworld for normal Overworld generation, minecraft:amplified for Amplified Overworld generation, minecraft:nether for regular Nether generation, minecraft:caves for Cave (Nether-like generation but with Overworld terrain features) generation, minecraft:end for regular End generation, and minecraft:floating_islands for Floating Islands (similar to The End outer islands) generation.
+
+
+== JSON format ==
+
+
+== Noise router ==
+
+The noise router is a collection of density functions. Density functions compute a value for each block position. They are used for terrain generation, biome layout, aquifers, ore veins, and more. 
+
+
+== Surface rule ==
+
+Surface rules are used to determine the block for each solid position of the terrain. Noise settings contains one root [NBT Compound / JSON Object] surface_rule field that contains all the logic for placing the different surface blocks.
+
+
+== Defaults ==
+These are the default settings for some vanilla presets. For brevity, some fields are summarized or omitted entirely; the vanilla data pack's minecraft/worldgen/noise_settings directory has them in full.
+Amplified and large biomes are the same as Overworld generation, but the [NBT Compound / JSON Object] noise_router is adjusted.
+
+
+== History ==
+
+
+== External links ==
+Noise settings Generator on misode.github.io
+
+
+== Navigation ==

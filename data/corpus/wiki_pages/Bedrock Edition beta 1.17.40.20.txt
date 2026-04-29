@@ -1,0 +1,208 @@
+Beta 1.17.40.20 is the first beta version for Bedrock Edition 1.17.40, released on September 15, 2021, which brought changes to the new world generation from Java Edition 1.18 experimental snapshots, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Blocks ===
+Client request placeholder block
+
+Visually transparent and has an unknown use.
+Can be obtained in item form via the use of external software such as inventory editors.
+Mysterious frame
+
+Would eventually become reinforced deepslate.
+Mysterious frame slot
+
+
+== Changes ==
+
+
+=== General ===
+RenderDragon
+
+Used only by selected Android devices that run on ARMv7
+
+
+=== Technical ===
+Data Driven Items
+
+Updated documentation for Block Rotation Component.
+Added required toggles to documentation and to content error for block components.
+Data Driven Blocks
+
+Updated documentation for BlockExplosionResistance.
+Graphics
+
+Added a content error for using a material but not providing the required number of textures to the render controller.
+Testing RenderDragon engine across subset of Android devices (ARMv7).
+Molang
+
+Add new compile errors for expressions like 'text' + 3, which were previously ignored (This is a Versioned Change as of engine version 1.17.40).
+User Interface
+
+Added an ImGUI window for easier viewing of content errors.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Caves & Cliffs" and "Enable GameTest Framework" experimental toggle.
+
+
+=== Mobs ===
+Donkey and Sheep
+
+Can now spawn in meadow biome.
+Fox
+
+Can now spawn in grove biome.
+Goat
+
+Now only spawn in snowy slopes, stony peaks, lofty peaks, and snow capped peaks biomes.
+Rabbit
+
+Can now spawn in meadow and snowy slopes biome.
+
+
+=== World generation ===
+Biomes
+
+Re-added ice spikes, eroded badlands, jungle edge, and savanna plateau.
+Caves
+
+The cavern now generates in 2 layers of different stone bases depending on the depth.
+Cavern layer above Y=0 is made up of regular stone.
+Stone transitions to deepslate from Y=0 to Y=-7.
+Deepslate now completely replaces stone from Y=-8 to bedrock.
+Certain types of ores and structures still generate in the deepslate layer.
+Dirt, diorite, granite and andesite do not generate in this layer.
+Mountains
+
+Meadows sometimes spawn a lone oak or birch, often with a bee nest.
+Infested stone now generate in the new mountain biomes.
+
+Ore distribution
+
+Tweaked ore distribution to match in parity with Java Edition.
+Pillager outposts
+
+Now generate in all the new mountain biomes.
+Stony peaks
+
+A new mountains biome that is a variant of lofty/snowcapped peaks that uses stone and strips of gravel, instead of snow and ice.
+Is used to avoid temperature clashes.
+Villages
+
+Now generate in meadows.
+General
+
+Tweaked biome placement, river size, and terrain shapes for a better overworld experience.
+
+
+=== General ===
+Clouds
+
+Raised cloud level from 128 to 192.
+
+
+=== Technical ===
+GameTest Framework
+
+Renamed method succeedWhenBlockTypePresent to succeedWhenBlockPresent
+Fixed a bug where property idwould return "Unknown" for custom entities (MCPE-137786)
+Identifier strings returned from property idnow include the item's namespace
+GameTestSequence
+Removed method thenWaitWithDelay
+Added method thenWaitAfter(delayTicks: number, callback: () => undefined) - After a delay, executes the given callback every tick until it succeeds. Exceptions thrown within the callback will end sequence execution
+Player
+Fixed a bug where the location property would return an incorrect height for players
+Added property id
+Block
+Replaced method getLocationwith property location
+Replaced method getPermutationwith property permutation
+Replaced method getTypewith property type
+Replaced methods isWaterloggedand setWaterlogged with property isWaterlogged
+Replaced method getBlockDatawith property permutation
+Replaced method isEmptywith property isEmpty
+Removed property canBeWaterlogged
+BlockType
+Replaced method getNamewith property id
+Replaced method canBeWaterloggedwith property canBeWaterlogged
+BlockPermutation
+Replaced method getTypewith property type
+
+
+== Known issues ==
+Beehives generates too frequently in this version.
+
+
+== Fixes ==
+Experimental 
+
+Maps now correctly show the colors of blocks below a Y level of zero (MCPE-136638)
+Vines now generate in Lush Caves instead of generating above the surface (MCPE-125800)
+Vines can now grow down below zero height
+Villages now generate in the style of the biome they are located in (MCPE-136939)
+Blocks
+
+Falling stalactites are now offset properly to avoid interacting with entities outside their intended hitbox (MCPE-132772).
+Beehives now generate in the world facing south.
+Candle Cake Blocks
+
+Pressing the 'use' button on a Candle Cake now consumes the correct amount of cake slices (MCPE-135519).
+Character Creator
+
+Fixed a crash that could occur when using Character Creator.
+Tweaked color tint for default Steve skin to match default Steve (MCPE-120818).
+Altered message for when friends change skins (MCPE-92772).
+Commands
+
+Education Edition items are no longer shown as an option when using @e[type=] (MCPE-78363).
+Gameplay
+
+Fixed a bug that caused players to be set on fire upon changing dimensions if there was Lava underneath the Nether Portal (MCPE-28765).
+Players can no longer eat food at full hunger in Survival mode (MCPE-60807).
+Sea Grass no longer spawns under Lily Pads during world generation to avoid breaking them.
+Villagers can no longer spam doors open and closed (MCPE-28055).
+Cartographers now more consistently give new maps on all platforms.
+World Generation
+
+Amethyst geodes are now much less likely to generate in Strongholds, and if they do they will not destroy End Portals (MCPE-129861, MCPE-128799).
+Graphical
+
+Improved world visibility culling for underground situations to eliminate seeing sky at the end of tunnels/stairs (MCPE-128372).
+Mobs
+
+Improved mob pathing around partial blocks (MCPE-127381).
+Armor no longer renders on Pillagers and Vindicators, but are still granted armor effects (MCPE-74242).
+Fixed an issue with mob rendering that caused Vindicator Axes to be visible even when they're not attacking on older Resource Packs (MCPE-123229).
+More mobs will spawn underground in the Overworld.
+Powder Snow
+
+Powder Snow no longer disappears when looking at it from a distance (MCPE-127565).
+Structure Block
+
+Trapdoors now rotate correctly when loaded from a Structure block (MCPE-66933).
+User Interface
+
+Fixed an issue where the d-pad and directional keys could not be used to navigate in certain parts of the UI (MCPE-132826).
+Fixed an issue where an error message could be shown after suspending the game on the achievements screens with screen animations disabled (MCPE-132269).
+Fixed an issue where an obscure gamerule was added to settings (MCPE-139025).
+Fix keyboard/d-pad navigation from custom server to edit server button.
+New achievements screens are available on Windows 10 ARM-based PCs.
+The sign in text on the start screen will no longer overlap the Marketplace button.
+Add space between tab title and the word 'Tab' for text-to-speech on Settings screen.
+Added "More Info" button to failed sign-in modal.
+Technical
+
+Command blocks with 'Needs Redstone' and a non-zero 'Delay in Ticks' will now execute only if they remain powered for the delay duration (MCPE-74281).
+Fix alignment of the sidebar display from the /scoreboard command when text length changes.
+Fixed failure to render leash when attached to a mob outside of viewport (MCPE-63931).
+Fixed ability to summon experience orbs via /summon command (MCPE-130835).
+Fixed display only entity destruction in chunk discard scenarios.
+Fixed query.item_remaining_use_duration having improperly scaled or inverted results (This fix is a Versioned Change as of engine version 1.17.30).
+
+
+== References ==
+
+
+== Navigation ==

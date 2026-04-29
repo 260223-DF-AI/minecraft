@@ -1,0 +1,53 @@
+Manages dialog screens displayed to players. Allows server operators to show custom or predefined dialogs in data pack to specified players, and clear any displayed dialogs on their screen.
+
+
+== Syntax ==
+/dialog show <targets> <dialog>
+Shows a dialog screen from inline SNBT or minecraft:dialog registry (usually defined in a data pack) to specified players.
+/dialog clear <targets>
+Clears currently displayed dialogs for specified players.
+
+
+== Arguments ==
+<targets>: entity
+
+Specifies the players whose dialog is shown or cleared.
+Must be a player name, a target selector or a UUID.  And the target selector must be of player type.
+<dialog>: dialog
+
+Specifies the dialog to show to the players. This argument is only used with /dialog show.
+Must be either:
+A namespaced ID of a dialog defined in a data pack (e.g., custom:my_dialog or minecraft:server_links). These are stored in the minecraft:dialog registry.
+An inline SNBT defining the dialog structure directly in the command. See Dialog § Dialog format for the structures.
+
+
+== Result ==
+
+
+== Output ==
+
+
+== Examples ==
+
+To show the nearest player a dialog located at data/custom/dialog/example/test.json in a loaded data pack:
+/dialog show @p custom:example/test
+To show all players the built-in minecraft:server_links dialog:
+/dialog show @a minecraft:server_links
+To show nearest players a notice dialog with title "Hello" and an "Ok" button in the footer:
+/dialog show @p {type:"minecraft:notice",title:"Hello"}
+To show all players a simple confirmation dialog with two action buttons with the label "Yes please" and "Nope". If the player presses "Yes please", the game runs a command to give the player a diamond, otherwise, if they press "Nope", the game closes the dialog:
+/dialog show @a {type:"minecraft:confirmation",title:"Give yourself diamond?",yes:{label:"Yes please","action":{"type":"run_command","command":"give @s diamond"}},no:{label:"Nope"}}
+To clear any currently visible dialogs for all players:
+/dialog clear @a
+
+
+== History ==
+
+
+== Gallery ==
+
+
+== References ==
+
+
+== Navigation ==

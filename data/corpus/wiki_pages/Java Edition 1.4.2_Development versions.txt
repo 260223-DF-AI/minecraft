@@ -1,0 +1,1257 @@
+This is a list of Java Edition 1.4.2 development versions.
+
+
+== 12w32a ==
+12w32a is the first snapshot for Java Edition 1.4.2, released on August 9, 2012.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Command blocks
+
+Intended for adventure maps.
+It can run commands when triggered by a redstone signal.
+This block is not craftable and is currently not available in the Creative inventory, but can be obtained via the command /give 137.
+ Work in Progress
+
+Would later be known as beacons.
+By building a pyramid composed of mineral blocks such as emerald blocks or diamond blocks and placing this block on top, the player gains access to several powers.
+A full pyramid can provide level II powers, should the player select the level I variation in the primary powers section.
+It cannot be crafted, although a crafting recipe is planned.
+It can be obtained via the "Miscellaneous" tab in the Creative inventory, or with the /give 138 command.
+The minimum range is 16 blocks.
+Gives off a light level of 15.
+Players within the blocks' range are given the selected effects every 4 seconds.
+The best configuration of blocks requires 164 blocks.
+
+
+==== Items ====
+Potions
+
+A working potion of Night Vision is in the Creative inventory.
+
+
+==== Mobs ====
+ Zombie villagers
+
+Villagers have a chance of turning into zombie villagers after being killed by a zombie on Hard difficulty.
+Zombie spawn eggs may spawn zombie villagers.
+Zombie villagers can naturally spawn.
+Zombie villagers can be cured, becoming normal villagers again.
+To do this, player needs to first use a splash potion of Weakness on a zombie villager. Then, they need right-click the zombie villager with a regular golden apple. After several minutes, it turns back into a normal villager.
+  Baby zombies
+
+Do not spawn naturally.
+Regular baby zombie can only be brought into the game through external editors.
+Baby zombie villagers are created when a baby villager is infected by a zombie.
+
+
+==== Command format ====
+General
+
+Added target selectors to use instead of the <player> field in commands.
+@p: targets nearest player.
+@a: targets all players.
+@r: targets random player.
+/difficulty
+
+Added <new difficulty> command.
+/gamerule <rule name> [value]
+
+Value can be defined as false, / and true.
+All rules, except keepInventory are true by default.
+The available rules are as follows:
+doFireTick (false=fire cannot spread)
+doMobLoot (false=mobs do not drop loot)
+doMobSpawning (false=mobs do not spawn)
+doTileDrops (false=blocks do not drop items when breaking)
+keepInventory (true=keep inventory on death)
+mobGriefing (false=creeper explosions do not damage blocks)
+/spawnpoint [player]
+
+Added [<x> <y> <z>] coordinates.
+/weather <clear/rain/thunder>
+
+The duration is now in seconds.
+
+
+==== General ====
+Data folder
+
+New villages.dat file in the Data folder of world saves.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+General
+
+Zombies, skeletons and zombie pigmen sometimes spawn wearing equipment including enchanted weapons and any type of armor, depending on the difficulty level.
+Iron golems
+
+Now attack slimes and magma cubes.
+Sheep
+
+Sheep from spawn eggs can now spawn naturally-colored sheep (white, gray, brown, pink, etc.).
+Villagers
+
+Now react positively on performing new trades, and negatively if player hurts them.
+This effect only takes place if the villager recognizes nearby housing, most commonly with naturally spawned villagers.
+There is an unused particle effect added of a villager's face looking angry. 
+No longer remove trades, but trading something else may be required to renew the old ones.
+Several trades had their quantities altered:
+The farmer's gravel & emerald trade now produces 4 or 5 flint, up from 2 or 3 flint before.
+The librarian's buy paper trade now requires 24 to 35 paper, up from 19 to 29 paper before.
+The librarian's buy book trade now requires 11 to 12 books, down from 12 to 14 books before.
+The farmer's buy arrow trade now sells 9 to 12 arrows, changed from only 5 arrows before. The 5 arrows resulted from a bug in the code where the minimum and maximum values for the arrow trade were swapped.
+Zombies
+
+Zombie attack animation now shows when it's holding a weapon.
+
+
+==== General ====
+End credits
+
+The attribution of the quotation at the end of the credits was changed from "Mark Twain" to "Unknown".
+
+
+=== Bugs ===
+Silk Touch does not work.
+
+
+=== Fixes ===
+2 bugs fixed
+
+Fixed /me command only working for ops.
+Fixed /tell command not working.
+
+
+== 12w34a ==
+12w34a is the second snapshot for Java Edition 1.4.2, released on August 23, 2012.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Flower pots
+
+Can contain mostly any plant-based block.
+ Wooden buttons
+
+They are currently uncraftable.
+ Cobblestone wall
+
+Acts like fences.
+ Mossy cobblestone wall
+
+Similar to cobblestone walls.
+
+
+==== Items ====
+ Carrots
+
+Added carrots and golden carrots.
+Carrots can be planted on farmland.
+ Potatoes
+
+Added potatoes, baked potatoes and poisonous potatoes.
+Potatoes can be planted on farmland.
+Potions
+
+ Potion of Invisibility.
+Brewed by adding a fermented spider eye to a potion of Night Vision.
+A mob will not attack an invisible player unless the player bumps into them.​[more information needed]
+Being invisible also hides the player's name tag.
+
+
+==== Mobs ====
+ Withers
+
+New boss mob.
+Only available through external modification such as editing mob spawners, mods, or hacks.
+It shoots exploding projectiles, wither skulls, and destroys nearby blocks.
+Also has a boss health bar.
+Zombies 
+
+Now have a chance to drop carrots and potatoes.
+
+
+==== Non-mob entities ====
+Item frames
+
+Crafted like a painting but with leather instead of wool.
+Used to hang items on a wall.
+Items in item frames can be rotated in 8 directions.
+
+
+==== General ====
+Settings
+
+Added new fullscreen toggle to the video settings.
+Added new use Vsync toggle in the video settings.
+Added an unused texture in gui/items.png.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Beacons
+
+Removed the "Work in Progress" block from the Creative menu.
+Fire 
+
+Spreads differently based on difficulty.
+Mob spawners
+
+Now give less experience when the player farms them continuously.
+Saplings
+
+Now have a smaller hitbox.
+Stairs
+
+Now auto-arrange into corners.
+TNT 
+
+Ignites if shot by a flaming arrow.
+Trapdoors 
+
+Can be placed in top-most position (based on cross-hair aim).
+
+
+==== Items ====
+Dyes
+
+Leather armor can be dyed.
+The default color of leather has changed.
+The player can right-click a full cauldron with dyed armor to remove dye.
+Tamed wolves' collars can be dyed.
+Fire charges 
+
+Shot from a dispenser or a Blaze creates the "fireball" sound effect.
+Maps
+
+Maps now align to a grid, making it easier to create adjacent maps.
+A compass and paper now create an empty map.
+An empty map has no data on it until the player right click with it.
+The point on the player's world where the player right clicked it is the map's center.
+A map (with data) can be cloned. Cloned maps are stackable.
+Maps can be zoomed out (but not zoomed in).
+Potions
+
+The potion of Night Vision can now be brewed by adding a golden carrot to an awkward potion.
+
+
+==== Mobs ====
+General
+
+Mobs (and all other entities) can travel through portals.
+Villagers
+
+The particle effect when a trade with a Villager has been successful has changed.
+
+
+==== General ====
+Debug screen
+
+f: item on the debug screen now shows the exact direction the player is looking, between -180 and 180 degrees from the south.
+F3 + P toggles the auto-pause when the window loses focus (mainly for debugging).
+F3 + H toggles detailed item descriptions (also for debugging).
+
+
+=== Fixes ===
+4 bugs fixed
+
+Fixed zombies not burning in the sun.
+Fixed graphical glitch with chests and ender chests.
+Fixed crash bug with beacons.
+[12w32a] Silk Touch now works again.
+
+
+== 12w34b ==
+12w34b is the third snapshot for Java Edition 1.4.2, released on August 24, 2012 to fix some of the bugs and crashes in the 12w34a snapshot.
+
+
+=== Additions ===
+
+
+==== Gameplay ====
+Bosses
+
+Added boss names above boss health.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+ Buttons
+
+Changed recipes for stone/wood buttons.
+Now require 1 stone block/planks to craft.
+
+
+==== Items ====
+Armor
+
+Leather and diamond armor textures slightly changed:
+Leather armor sleeves are extended by one pixel.
+Their item texture has been changed to match the new texture.
+Diamond armor sleeves now have a notch on the inner side.
+ Maps
+
+Now have a zoom level, which was fixed at 1:8 prior to snapshot 12w34a, but now starts at 1:1 and can be increased up to 1:16 by re-crafting an existing map.
+Are no longer numbered on the top-left corner and is labeled through the tooltip.
+
+
+==== Mobs ====
+ Hostile mobs
+
+Occasionally, zombies, skeletons, and zombie pigmen spawn with the ability to pick up items on the ground.
+Armor automatically equips. Items are held instantly, which is not exclusive to weapons. This means zombies can be found holding items they have come across, such as rotten flesh.
+This causes zombie pigmen to drop their sword, and skeletons to drop their bow.
+The attribute applied to allow them to pick up items is called CanPickUpLoot.
+ Zombie Pigmen
+
+In the Overworld, zombie pigmen are eager to get back in the nether portal (e.g., if the player makes a portal and spawns zombie pigmen in Creative, they run into the portal).
+ Withers
+
+When taken down to half health, they gain wither armor, making them immune to arrows.
+
+
+=== Fixes ===
+2 bugs fixed
+
+Fixed item frame crashes.
+Fixed some nether portal stuff.
+
+
+== 12w36a ==
+12w36a is the fourth snapshot for Java Edition 1.4.2, released on September 6, 2012.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+Mob heads
+
+Five types in this version:
+Skeleton skull
+Wither skeleton skull
+Zombie head
+Creeper head
+Player head
+Wither skeleton skulls are dropped very rarely by wither skeletons.
+Other heads are only available via the Creative inventory.
+Can be equipped in helmet slot.
+Painting
+
+Added one new painting depicting the creation of a wither.
+
+
+==== Items ====
+Carrot on a stick
+
+Used to maneuver pigs.
+Can also attract pigs.
+Main purpose is to control saddled pigs while ridden.
+Nether star
+
+Used as a crafting ingredient for the beacon block.
+
+
+==== Mobs ====
+ Wither skeletons
+
+Only spawn in the Nether.
+Give players Wither effect when hitting them.
+Carry and rarely drop stone swords when killed by players.
+Drop bones and coal.
+Have a high chance to spawn from a skeleton spawn egg if used in the Nether.
+Wither skeletons can replace skeletons on spider jockeys.
+Spawned by using a spider spawn egg in the Nether.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Beacon
+
+New model and textures.
+Can now be crafted by surrounding a nether star with 3 blocks of obsidian on the bottom and 5 blocks of glass around the top.
+
+
+==== Items ====
+Carrot 
+
+Now found in villages.
+Can be used to breed pigs.
+Golden carrot
+
+Retextured.
+Leather armor
+
+Now uses two overlayed textures, one being the color.
+Minor changes to the leather dyeing – colors attempt to maintain intensity and not dilute as much.
+ Potatoes
+
+Now found in villages.
+
+
+==== Mobs ====
+Blaze
+
+Spawn a bit less often in nether fortresses (chance decreased from 43.5% to 35.7%).
+Chicken
+
+Now use seeds instead of wheat to breed.
+They follow the player when a seed is in hand.
+Magma cube
+
+Are slightly rarer in nether fortresses (chance decreased from 13% to 10.7%).
+Pig
+
+Can be bred with carrots.
+Can no longer be bred with wheat.
+If saddled, now always drop their saddle on death.
+Skeleton
+
+Picked up items now always drop on death.
+Wither
+
+Player needs to place 4 pieces of soul sand in a vertical T-shape and place 3 wither skeleton skulls on top to create it.
+Drops one nether star upon death.
+When spawned in the Overworld, the sky gets darker.
+Gives players Wither II effect when hitting them.
+Its name is now displayed correctly above its HP bar.
+Zombie
+
+Model and texture changed.
+No visual difference, except that it breaks old texture packs.
+Picked up items now always drop on death.
+Zombie pigman
+
+Appear a lot less often in nether fortresses (chance decreased from 43.5% to 17.9%).
+Model and texture changed.
+No visual difference.
+
+
+== 12w37a ==
+12w37a is the fifth snapshot for Java Edition 1.4.2, released on September 13, 2012, which adds pumpkin pies, /clear command and changes the superflat GUI.
+
+
+=== Additions ===
+
+
+==== Items ====
+ Pumpkin pie
+
+Crafted from pumpkin, egg, and sugar.
+Restores 8 () hunger and 4.8 saturation.
+
+
+==== Command format ====
+/clear 
+
+Empties the inventory.
+
+
+==== General ====
+World selection menu
+
+Added "Re-create" option.
+Allows players to create a new world as a copy of an existing save, defaulting all of the world options and the world seed to match the original.
+Superflat 
+
+New customization GUI:
+Comes with 7 presets: "Classic Flat", "Tunnelers' Dream", "Water World", "Overworld", "Snowy Kingdom", "Bottomless Pit" (broken), and "Desert".
+Custom starts off with "Classic Flat" with three options: "Add Layer", "Edit Layer", and "Remove Layer". Adding and editing are not yet included.
+Players can customize superflat without add/edit layer option using the "seed" in the preset list.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Buttons
+
+Time of the redstone signal extended from 9 to 12 redstone ticks.
+Heads
+
+Now correctly centered.
+Can now be customized to be player heads using an NBT.
+
+
+==== Items ====
+Apples, bread, cooked chicken, cooked porkchop, Nether stars, raw beef, raw chicken, raw porkchop, steak
+
+No longer have a dark outline on their texture.
+Armor
+
+Leather armor now has a non-dyed layer.
+Baked potatoes
+
+Removed the steam pixels above the main texture.
+Carrots
+
+"Carrots" renamed to "Carrot".
+Sprite changed to match singular title.
+Golden carrots
+
+Sprite changed to match new carrot sprite.
+
+
+==== Mobs ====
+General
+
+Hostile mobs are now a little bit more fearless in Hard difficulty.
+Mobs risk taking fall damage to reach the player, provided fall is not deadly for them.
+Pigs
+
+Are now able to jump when players ride on them.
+Cease to move when ridden in water.
+Wither
+
+Creates an explosion around itself once it is done regenerating from spawning.
+Now randomly shoots slow blue-colored versions of wither skull projectiles when idle.
+Wither skeletons
+
+Increased spawning rate inside Nether fortresses.
+
+
+==== Gameplay ====
+Fishing
+
+Now gives the player experience.
+
+
+== 12w38a ==
+12w38a is the sixth snapshot for Java Edition 1.4.2, released on September 20, 2012.
+
+
+=== Additions ===
+
+
+==== Mobs ====
+ Bats
+
+A passive mob.
+Spawns in dark caves.
+Spawns in Peaceful difficulty.
+Sleeps during the day.
+Hangs on the ceiling when idle, starts flying when players come near.
+A corresponding spawn egg is provided in Creative mode.
+ Witches
+
+A hostile mob.
+Its nose slowly bobs up and down when not hostile.
+Throws splash potions of Poison, Slowness, Weakness, and Instant Damage at the player.
+Regenerates health over time.
+Hold a glass bottle and raise their noses when attacking.
+Drink potions of Instant Health and Fire Resistance to defend themselves in combat.
+Rarely drop potions of Instant Health and Fire Resistance.
+Is 85% resistant to damage from magic, including Poison, Instant Damage, and Thorns, but not Strength, Sharpness, or Power.
+Does not spawn naturally (yet), but a spawn egg exists for it in Creative mode.
+
+
+==== Command format ====
+Target selectors
+
+Target parameters have been upgraded.
+These can be added after the @ selector in brackets.
+x: X coordinate of search center
+y: Y coordinate of search center
+z: Z coordinate of search center
+r: range; 0 means no range limit
+There is a short syntax for x,y,z,r options, e.g. [,64,] targets y=64
+m: gamemode; -1 means no gamemode limit
+c: count; 0 means no count limit; use - to return results from end to start.
+Example: @p[c=-1] targets the farthest player.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Beacons 
+
+Artwork was changed.
+Beam of light was changed.
+Texture of bedrock under the beacon was removed.
+Glass
+
+New block breaking sounds.
+Grass blocks
+
+New footstep sounds.
+Gravel
+
+New footstep sounds.
+New block placing sounds.
+Ladders
+
+New footstep sounds.
+Lava
+
+Now has constant noise.
+Plants
+
+New block placing sounds.
+Sand
+
+New footstep sounds.
+New block breaking sounds.
+Snow
+
+New footstep sounds.
+New block breaking sounds.
+Soul sand
+
+New footstep sounds.
+Stone
+
+New footstep sounds.
+New block placing sounds.
+Torches
+
+New block placing sounds.
+Log
+
+Now have a different rotation algorithm.
+Instead of using the player's position, they rotate based on the face they are placed upon, like a lever.
+This is mainly a test feature.
+New block placing sound.
+New block breaking sound.
+Water
+
+Now has new sounds.
+The water overlay is more saturated blue.
+Flowing water now has constant noise.
+
+
+==== Items ====
+Flint and steel
+
+Has new sounds.
+Hoes
+
+New sounds when a player tills dirt.
+Shears
+
+New sounds when shearing sheep.
+
+
+==== Mobs ====
+Cows, chickens, endermen, pigs, skeletons, slimes, spiders, and zombies
+
+New mob sounds.
+Withers
+
+Added sound when withers break blocks.
+
+
+==== World generation ====
+Extreme hills
+
+Rarely generate stone monster egg blocks underground.
+The Nether
+
+Loads faster when going through a portal.
+
+
+==== Gameplay ====
+Creative mode
+
+Teleportation is now instantaneous.
+Experience
+
+Added a level up sound.
+Will be changed later for a shorter one.
+Sounds
+
+Updated and added new sounds by C418.
+Some new sounds are unintended and are the same as in the Pocket Edition.
+
+
+==== Commands ====
+Added item argument to /clear.
+Added commandBlockOutput to /gamerule.
+Items obtained by /give are now given directly to the player instead of being dropped around them.
+
+
+=== Fixes ===
+4 bugs fixed
+
+Item frames no longer despawn when the player moves 20 blocks away.
+Fixed entities losing momentum when going through portals.
+Fixed the "Bottomless Pit" superflat preset having the wrong blocks.
+Fixed not receiving a fishing rod when the carrot on a stick is used up.
+
+
+== 12w38b ==
+12w38b is the seventh snapshot for Java Edition 1.4.2, released on September 21, 2012 to fix some of the bugs and crashes in the 12w38a snapshot.
+
+
+=== Changes ===
+
+
+==== Items ====
+Fire charge
+
+Now makes the same sound as flint and steel when used.
+
+
+==== Mobs ====
+Creepers
+
+New fall mechanics.
+Creepers explode if they fall on players from a certain height.
+ Witches
+
+Can't inflict damage upon themselves.
+Slight texture change.
+New drops:
+Misc potion ingredients
+Sticks
+Chance to drop what they're holding at the time of death.
+
+
+==== Non-mob entities ====
+Minecart
+
+New sounds.
+
+
+==== World generation ====
+Caves
+
+New sound.​[more information needed]
+
+
+==== Gameplay ====
+Damage 
+
+Changed fall-damage sound.
+Experience
+
+Changed level-up sound.
+Sounds
+
+Updated sound engine library which resulted sounds no longer being cut off.
+Changed the new block placing sounds (implemented in 12w38a) back to original sounds.
+
+
+=== Fixes ===
+1 bug fixed
+
+/say works again.
+
+
+== 12w39a ==
+12w39a is the eighth snapshot for Java Edition 1.4.2, released on September 27, 2012.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Witches
+
+Changed texture dimensions from 64x126 to 64x128 pixels.
+
+
+==== Gameplay ====
+Lighting
+
+System was overhauled.
+Many blocks (stairs, slabs, pistons, etc.) previously incorrectly lit now interact correctly with lighting.
+Sounds
+
+Several tweaks to pre-existing sounds.
+
+
+==== General ====
+Debug screen
+
+Now shows which chunk the player is in, as well as where in that chunk, next to the X and Z coordinates.
+
+
+=== Fixes ===
+4 bugs fixed
+
+Sound fixes:
+Placing glass, glass pane, glowstone, redstone lamp or ice no longer make the same sound of breaking it.
+After shooting an arrow into the water, it does not play continuously the water splash sound until removed.
+Fixed witch being white for some players.
+Unlit areas (black patches) should be fixed for newly generated chunks and worlds.
+
+
+== 12w39b ==
+12w39b is the ninth snapshot for Java Edition 1.4.2, released on September 28, 2012 to fix some of the bugs and crashes in the 12w39a snapshot.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+Mob spawners
+
+More options to customize spawners.
+Can now have their range and maximum spawn limit customized.
+
+
+==== Items ====
+Custom potions
+
+Only available by editing in with a world editor.
+Players can create potions with multiple effects.
+
+
+==== Command format ====
+/xp
+
+Added a command variable to the command.
+Use L after number to represent number of levels, not number of xp.
+Target selectors
+
+Added command block arguments.
+Added l and lm arguments for indicating players with a maximum level, and minimum level, respectively.
+Added rm argument for indicating the minimum range to which players are affected.
+
+
+=== Fixes ===
+7 bugs fixed
+
+Fixed block placement issues with lighting.
+Game performance is now better from before.
+Fixed "Bottomless Pit" preset.
+Jack o' lantern emitting stronger light from the wrong face fixed.
+Fixed the witch's texture being weird.
+Partially fixed Nether lag by making the server do some of what used to be the client's work and increasing chunk load time slightly.
+Fixed some lighting bugs related to upside down slabs and stairs and farmland.
+
+
+== 12w40a ==
+12w40a is the tenth snapshot for Java Edition 1.4.2, released on October 4, 2012.
+
+
+=== Additions ===
+
+
+==== World generation ====
+Swamp huts
+
+New generated structure.
+Located in swamp biomes.
+Spawn witches.
+
+
+==== General ====
+NBT format
+
+Custom items can now be named using NBT data (intended for custom map makers).
+Using the NBT, it is possible to add custom [String] Name to items, as well as a [NBT List / JSON Array] Lore list for that item.
+Superflat
+
+Added preset "Redstone Ready" with 52 layers of sandstone, 3 layers of stone and 1 layer of bedrock.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Beacons
+
+Texture has been altered.
+Beam texture has also been changed.
+Fire
+
+Spreading has been nerfed to prevent infinitely spreading fires.
+
+
+==== Items ====
+Eye of ender
+
+Can now be used in superflat worlds, if the stronghold generation is enabled.
+
+
+==== Mobs ====
+Slimes
+
+Now spawn in swamp biomes at low light level.
+
+
+==== Gameplay ====
+Inventory
+
+Better management.
+The pick block action now works on blocks that are represented as items in the inventory (e.g.: redstone repeater, redstone dust, and tripwire).
+Pressing the 1-9 hotkeys while hovering over an item puts that item into the corresponding hotbar slot.
+If there is already an item in the assigned hotbar slot, the hotbar item and the selected item swap position.
+When in Creative inventory, a full stack of that item is transferred to that hotbar slot.
+In Creative mode, players can now shift-click items between the hotbar and the Survival inventory.
+The left-click action no longer opens doors, pulls levers, pushes buttons or opens trapdoors.
+When in Creative mode, pick block on an item picks up a stack of that item.
+
+
+==== General ====
+Superflat
+
+Configuration now allows the player to generate trees, strongholds etc.
+Now pumpkins, short grass, ferns, flowers, trees, mineshafts, dungeons, strongholds, lakes, desert wells, ravines and ores spawn on superflat maps.
+
+
+=== Fixes ===
+13 bugs fixed
+
+Fixed the wither's starting explosion not being disabled by the mobGriefing gamerule
+Fixed a few crash bugs related to world generation, map item expansion, and other things.
+Reverted lighting changes that had been introduced in snapshot 12w39a. This change corrected such bugs as:
+The Nether being extremely CPU intensive.
+Map generation taking extremely long.
+Fixed mob AI considering cobblestone walls as blocks of normal height.
+Fixed a few texture oddities with the witch.
+Fixed entities in water producing glitchy water sound.
+Gaining multiple levels at a time no longer plays the leveling up sound over itself as many times as leveled.
+Fixed the "A 64 bit Java installation is recommended for 'Far' render distance (you have 32 bit)" message being covered by the bottom 2 buttons.
+Fixed pets teleporting around randomly.
+Fixed being unable to place paintings larger than 1x2 and them popping off if they have been placed before.
+Fixed destroying blocks under the player with efficiency-enchanted gear.
+Fixed potion spawners crashing the game.
+
+
+== 12w40b ==
+12w40b is the eleventh snapshot for Java Edition 1.4.2, released on October 5, 2012 to fix some of the bugs and crashes in 12w40a and add a new commands feature.
+
+
+=== Additions ===
+
+
+==== Command format ====
+Tilde notation 
+
+Added tilde notation (~) to allow relative coordinates specification in commands.
+
+
+=== Fixes ===
+3 bugs fixed
+
+Fixed a bug causing block breaking to carry over to the next block player starts to break.
+Fixed beacon beam rendering at short and tiny render distance.
+Fixed a crash related to maps in strongholds.
+
+
+== 12w41a ==
+12w41a is the twelfth snapshot for Java Edition 1.4.2, released on October 11, 2012.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Anvil
+
+Used for repairing, merging & naming items.
+Three different damage states: "Anvil", "Slightly Damaged Anvil", and "Very Damaged Anvil".
+Anvils cannot only rename tools and armor, but any item.
+Renamed placeable items don't retain their name if placed.
+Anvils can merge enchantments.
+Items with two different enchantments give an item with both.
+Items with the same enchantment increase the level of the enchantment if they have the same level or take only the highest if they don't.
+Some enchantments can be lost during the merging because of incompatibility (ex: Sharpness I + Smite I).
+The first item seems to have the priority (the lost enchantments are on the second item).
+Anvils can also be dropped in a similar manner to sand, gravel, and dragon eggs.
+When landing on a mob, the anvil deals damage relative to the distance it fell.
+
+
+==== Mobs ====
+Creepers
+
+Now can have custom explosion radius and fuse timer using edited mob spawners and NBT data (ExplosionRadius & Fuse).
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Beacons
+
+Potion-like effects given by the beacon now use semi-transparent particles, to be less intrusive.
+Normal potions remain unchanged.
+
+
+==== Mobs ====
+General
+
+No longer forget that they are aggressive against a player in Creative mode after a few seconds.
+
+
+==== Gameplay ====
+Experience 
+
+Can now be obtained by breeding animals.
+Level-up sound now only plays every 5 levels.
+Sound has been tweaked.
+
+
+==== General ====
+Debug screen
+
+F3 + H now shows tool and armor durability on damaged items – on maps it shows the zoom level.
+Now shows which cardinal direction the player is facing on the "f" value.
+The pie chart on the debug overlay is now shown when opening it using ⇧ Shift + F3 instead of vice versa.
+Settings menu
+
+Renamed "Chat Settings" to "Multiplayer Settings".
+Contains the old chat settings menu.
+Option for cape-owners to hide their capes in game.
+
+
+=== Fixes ===
+5 bugs fixed
+
+When placing the anvil in mid-air in a certain orientation the entity will be sideways until it lands.
+Breaking the block under any anvil resets it to a regular anvil.
+When using the /kill command, an error appears. When holding a block, it gives the normal message, but player doesn't die.
+When in a multiplayer server and trying to rename an item, the client crashes if an entire name is erased.
+Using Fortune ≥ IV (normally impossible to obtain) on gravel causes a game crash.
+
+
+== 12w41b ==
+12w41b is the thirteenth snapshot for Java Edition 1.4.2, released on October 12, 2012 to fix some of the bugs and crashes in the 12w41a snapshot.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Anvils
+
+Are damaged by falling depending on distance fallen.
+
+
+=== Fixes ===
+3 bugs fixed
+
+Fixed anvils repairing themselves when falling.
+Fixed a few crashes in multiplayer when renaming items.
+Fixed /kill command not working and screenshot message not showing.
+
+
+== 12w42a ==
+12w42a is the fourteenth snapshot for Java Edition 1.4.2, released on October 17, 2012.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Anvils
+
+New crafting recipe, now costs 31 iron ingots instead of 55.
+The player can repair items (tools and armor) using their source material.
+To get a tool or piece of armor to its maximum durability when it is nearly broken, one must use four of its source material (planks, cobblestone, iron, gold or diamonds).
+However, hoes are not able to be repaired.
+Reduced experience level cost.
+Redstone repeaters
+
+When powering either side of a repeater directly with another repeater, it locks the current state of the other repeater until the signal to the powering repeater is turned off.
+If a repeater that is on is locked, it stays on.
+If a repeater that is off is locked, it cannot output a signal.
+When locked, the repeater's second torch is no longer be visible and a bar textured similarly to bedrock appears.
+
+
+==== Mobs ====
+Bats
+
+Can no longer trample crops, activate pressure plates or tripwire.
+
+
+==== General ====
+Language
+
+Updated language file.
+Servers
+
+IPs can now be individually hidden.
+Controls
+
+Added the ability to use numbers to move items from or to the hotbar in an inventory GUI.
+
+
+=== Fixes ===
+9 bugs fixed
+
+Fixed very damaged anvils dropping from at least 6 blocks becoming a glitched entity that cannot be removed until the map is reloaded.
+Fixed digging straight down glitching the player into blocks again.
+Fixed PvP-disabled servers still allowing players to set other players on fire using Fire Aspect enchanted swords.
+Fixed dropping from low heights doing damage on certain occasions.
+Fixed dropping an anvil on an end crystal crashing the game.
+Fixed the game sometimes crashing when using F3 + H to show durability on items and then moving the mouse over a non-blank map.
+Fixed the game crashing when maximizing the game while in the anvil UI.
+Fixed a stack overflow error when dispensers attempted to place water or lava into a solid block.
+Fixed the crafting table and cauldron that spawn in swamp huts spawning at the top of the hut.
+
+
+== 12w42b ==
+12w42b is the fifteenth and final snapshot for Java Edition 1.4.2, released on October 18, 2012 to fix some of the bugs and crashes in the 12w42a snapshot.
+
+
+=== Additions ===
+
+
+==== Mobs ====
+Bats 
+
+Added sounds.
+Silverfish
+
+Added step sound.
+Zombies
+
+Added three new sound effects.
+Zombie pigmen
+
+Added sounds.
+
+
+==== Gameplay ====
+Sounds
+
+Added a number of sound events, but the sound effects are not added yet.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Redstone repeater 
+
+Lock mechanism is now slightly more stable and predictable.
+Sand
+
+Falling sand now properly "pops" when falling on non-solid blocks (such as torches).
+
+
+==== General ====
+Servers
+
+Server ping now tells if the server and client have mismatching protocol versions.
+Translations
+
+Updated translation files.
+
+
+=== Fixes ===
+1 bug fixed
+
+Fixed tooltip width for renamed items.
+
+
+== 1.4 ==
+1.4 is the first pre-release for Java Edition 1.4.2 released on October 19, 2012.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Anvils
+
+New sound effects.
+
+
+==== Mobs ====
+ Bats
+
+New sound effects.
+ Ender dragons
+
+New sound effects.
+ Withers
+
+New sound effects.
+ Zombies
+
+New sound effects (infecting a villager).
+ Zombie villagers
+
+New sound effects (curing a zombie villager and conversion sound).
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Anvils
+
+Level cap on anvils removed in Creative mode.
+
+
+==== General ====
+Servers
+
+Servers show their version in multiplayer menu if not matching the client.
+
+
+== 1.4.1 ==
+1.4.1 is the second pre-release for Java Edition 1.4.2 released on October 23, 2012, which fixes bugs. It was later reuploaded at 13:42 UTC to fix invisible falling sand.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+ Anvils
+
+Tweaked naming costs.
+
+
+==== Items ====
+ Paintings
+
+Implemented the wither painting.
+
+
+==== Mobs ====
+ Bats
+
+Now spawn less frequently.
+
+
+==== Gameplay ====
+General
+
+Added [Boolean] PersistenceRequired to all entity NBT. When set to 1b, the entity will not despawn naturally.
+Experience
+
+Tweaked the experience point reward for smelting.
+
+
+=== Bugs ===
+Retracting a piston pastes its head texture onto the extending face (making it look like it has 2 heads)
+
+
+=== Fixes ===
+9 issues fixed
+MC-236 – Half slab and pistons graphical glitch.
+Fixed mobs glitching through wooden floors.
+Fixed players glitching through beacons.
+Fixed redstone repeaters getting stuck in 'on' state.
+Fixed a number of minor font issues.
+Fixed wet wolves looking way too scary.
+Fixed a bug that allowed any item to be placed in the armor slots.
+Fixed monster spawners spawning mobs too quickly.
+Reupload: Fixed invisible falling sand entities.
+
+
+== Notes and references ==
+
+
+== Navigation ==

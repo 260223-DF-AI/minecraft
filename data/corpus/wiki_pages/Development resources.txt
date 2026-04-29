@@ -1,0 +1,47 @@
+Minecraft is written in Java and C++, and although the class files are obfuscated, the community has figured out most of the inner workings of Minecraft. Notch himself gave notes on a common format used by Minecraft, the NBT format. From this, the community has derived information for the files that use the NBT format.
+
+
+== NBT format ==
+The NBT format is used by almost every file in Minecraft. It is a GZipped tree structure of tags, where each tag has a type, name, and payload based on the type. In 1.2 snapshot 12w07a and above, an additional tag type was added to the original tag types that existed since Indev.
+
+
+== Level formats ==
+Each edition of Minecraft uses its own file format to store levels. The following information about the different level file formats can be used by software developers to create map editors, servers, level generators, and other programs. Blocks, items, data values, and entities are common to all map types.
+
+
+=== Java Edition ===
+Java Edition Classic level format used by Classic.
+Java Edition Indev level format used by Indev.
+Java Edition Alpha level format used by Alpha (previously Infdev).
+Java Edition level format used by 1.0
+Anvil file format used by 1.0 (from 1.2)
+Region file format used since Beta (from Beta 1.3).
+Chunk format for the individual 16×256×16 chunks contained in regions.
+Map item format used to store the colors on the craftable map items.
+player.dat format used to store the state of players.
+Structure file format used to store structures saved by the structure block.
+villages.dat format used to store the state of villages in a level.
+
+
+=== Bedrock Edition ===
+Bedrock Edition level format used by Bedrock Edition.
+
+
+== Other formats ==
+Servers.dat format used to store the list of saved multiplayer servers.
+Schematic files are NBT files used by a few 3rd party utilities to store sections of a map for later use.
+
+
+== Libraries ==
+These are community-created libraries to interact with the various files used by Minecraft.
+
+
+== Server protocol ==
+Classic server protocol used by the Minecraft Classic Creative Multiplayer server.
+For info on the current multiplayer protocol, see the wiki.vg merge project on this wiki.
+
+
+== Resources ==
+
+
+== Navigation ==

@@ -1,0 +1,398 @@
+This page is a near-comprehensive list of all known distance effects throughout the game's history. A page that only accounts for those that affect the latest versions of the game can be found at Java Edition distance effects.
+
+
+== Table of known effects ==
+
+Note: This history section is sorted by when each case was fixed, shaded areas in gray in the introduction/fix columns are non-actual versions or testing for versions needed, and shaded areas in yellow indicate distance effects affecting in the development versions only.
+
+
+=== High-distance precision loss bugs ===
+
+
+=== High-time precision loss bugs ===
+
+While not strictly distance effects, these similarly concern precision loss issues with the floating-point arithmetic (especially for the 32-bit floats) casting that happen due to excessive time values, regardless of spatial position.
+
+
+=== Other float precision loss issues ===
+
+
+== Analysis ==
+
+
+=== Model issues ===
+Model issues were permanently fixed in 1.8, due to hardcoded block models being replaced with standardized models using JSON files.
+
+
+==== Redstone wire ====
+First affected version: Alpha v1.0.1Last affected version: 14w11bNotable changes in Beta 1.5, Beta 1.8 Pre-release and 14w02a
+
+262,144 - 1,048,575 blocks
+
+Between Alpha v1.0.1 and Beta 1.7.3 inclusive, the first distortions of redstone wire can be seen beyond 262,144 blocks. After this point, if redstone wire climbs a block face perpendicular to the direction 262,144 blocks are exceeded on, it will appear in the same plane as that block face, resulting in major z-fighting. This effect remains like this until 16,777,216 blocks, where error exceeds a full block.
+In Beta 1.8 Pre-release and later, vertically travelling redstone is no longer affected by precision loss.
+
+1,048,576 - 4,194,303 blocks
+
+Between Alpha v1.0.1 and release 1.8 snapshot 14w11b inclusive, redstone wire first begins to distort beyond 1,048,576 blocks. This distortion is rather subtle, and solely affects the dot - other connections are unaffected. In the screenshot, the redstone at the top (which is the smallest) is before 1,048,576 blocks on both axes, and thus appears at its normal size. The bottom redstone, which is beyond this position, appears bigger. The other two dots are beyond this position on only one axis each, and appear slightly rectangular as a result.
+
+4,194,304 - 8,388,607 blocks
+
+Beyond 4,194,304 blocks, redstone starts to distort more significantly and in more ways. Notably, single dots are invisible - since at these coordinates, precision can only be half a block, this splits a block's top surface into a 2×2 grid with 9 possible vertices. As the redstone dot is centered on the block, the vertices of the model are presumably rounded to the center of the block, producing an invisible 0-dimensional result. Corner turns of redstone dust are now somewhat shrunken as to only cover a corner of the block face, and T-shapes are stretched to cover only half of the block's top face. Crosses and lines are unaffected.
+
+8,388,608 - 16,777,215 blocks
+
+Redstone rendering degrades further upon another subsequent doubling of the distance. Redstone dots' model vertices are now rounded out to the corners of the block rather than the center, producing an again visible result which now covers the full block face. T-shapes and corner turns now also cover the full block top face. Lines and crosses remain unaffected at this point due to them covering the full top face in the first place.
+
+16,777,216 - 33,554,431 blocks
+
+Beyond 16,777,216 blocks, precision loss exceeds one full block, and redstone renders even more oddly as a result. For example, only half (if exceeded on one axis) / a quarter (both axes) of all redstone dust placed here will actually render - the rest, while it still exists, functions and influences the visual connections of redstone that does render, will remain entirely invisible. Of what does render, redstone will be stretched to visually occupy two blocks if over this distance on one axis, or a 2×2 space of blocks if beyond it on two.
+Beyond this distance on only one axis, the stretching on each block is as follows:
+
+4n: Invisible
+4n+1: Renders, stretched towards the negative direction
+4n+2: Renders, stretched towards the positive direction
+4n+3: Invisible
+For both axes, these effects mix, and therefore only redstone whose coordinates are both 4n+1 and 4n+2 can render.
+In versions 14w02a until this effect's fixing, the rendering is as follows:
+
+4n: Invisible
+4n+1: Invisible
+4n+2: Renders, stretched towards the positive direction
+4n+3: Invisible
+
+For vertically travelling redstone, depending on the version, it can appear very distant from the block it is climbing. This ranges from the redstone line floating off of its supporting block by a full block, being flush with its surface and z-fighting, or being inside of the block and therefore invisible under usual circumstances (viewing would require x-raying in some capacity, as at the time redstone did not render from its rear). The possible vertically travelling arrangements are as follows:
+Going in the positive direction (would display on the negative face of the block it travels up if closer to spawn):
+
+4n: Displays a full block off of the face it climbs
+4n+1: Flush with the block face, causing z-fighting
+4n+2: Displays inside of the block it climbs - requires x-ray to see
+4n+3: Flush with the block face, causing z-fighting
+From Alpha v1.0.1 through Beta 1.4_01 inclusive, vertically travelling redstone would also appear stretched. From Beta 1.5 through to Beta 1.7.3 inclusive, it no longer appeared stretched, but still appeared disconnected from its supporting block as described previously. As vertically travelling redstone can only have a line appearance, it would not be able to appear stretched before 16,777,216 blocks, as it would already be taking up the full block face area and no precision would be able to be lost.
+
+33,554,432+ blocks
+Beyond every power of two, redstone dust will stretch more and more, and vertically travelling redstone will become more and more disjoint from its intended position in versions where such effects exist, both effects obviously doubling for each integer exponent of 2 surpassed. These effects can only be seen in modded versions, or (in Beta 1.7.3 and prior) via editing coordinates externally and exploiting the spawn chunk glitch (see Java Edition hard limits#Spawn chunk glitch (X/Z: ±524,288–X/Z: ±1,073,741,824)).
+Past X/Z: 536,870,912, a single unit of redstone dust renders large enough to cover four chunks at a time, and beyond X/Z: 1,073,741,824, will appear as large as 128 blocks wide. For a redstone dot, this would result in a single pixel being 128/6 = 64/3 = 21.3333333333333... blocks wide.
+Were worlds to theoretically function out to the 64-bit limit (X/Z: ±9,223,372,036,854,775,807), a single unit of redstone dust placed at the correct position would be 2.2 trillion blocks wide.
+
+
+==== Tripwire and tripwire hooks ====
+
+First affected version: 12w22aLast affected version: 1.7.10
+
+262,144 - 8,388,607 blocks
+Beyond 262,144 blocks on both axes, tripwire string simply stops rendering. Beyond this point on only one axis, it will only stop rendering in the direction perpendicular to the axis it is exceeded on. Of what remains, some subtle z-fighting can be seen.
+
+8,388,608 - 16,777,215 blocks
+
+Things become especially odd for tripwire specifically when precision loss is one full block. The texture ends up becoming ridiculously stretched to cover the entire block face and somewhat visually resembles a shag carpet.
+
+When attached to a tripwire hook, the results vary visually depending on the version being played on. From 12w22a through 13w01b inclusive, it appears effectively identical to the tripwire itself. However, from 13w02a through to 1.7.10, the section attached to the hook has a very thick gray section. This is almost certaintly due to a model change that affected the brightness and shape of tripwire in that same snapshot, making that section of wire less dotty and more linear; stretching that line perpendicularly to itself would create a planar sheet, as opposed to stretching dots which would create lines.
+
+16,777,216+ blocks
+After this point, tripwire once again stops rendering perpendicular to the axis of travel.
+
+
+==== Pistons ====
+First affected version: Beta 1.7Last affected version: 1.7.10Note: this section deals with stationary pistons and does not include pistons in motion.
+
+2,097,152 - 4,194,303 blocks
+The arm section of a piston begins to distort at this point. If the piston's direction is perpendicular to that of the direction of travel (including vertically facing), the arm will now appear completely flat on that axis. If beyond this point on both axes and extending in a vertical direction, this will result in the arm to appear completely 1-dimensional and therefore invisible.
+
+4,194,304 - 8,388,607 blocks
+The above details still apply at this point. Pistons now gain an additional distortion at this point. If it is extending parallel to the direction of travel, it will now appear shorter, and detached from the piston body slightly. At 4,194,303 blocks exactly, the texture on the arm will appear slightly squished if facing in the negative direction (as tested on only one positive axis). Beyond this point, the texture mapping will no longer be squished, but part of the arm will be inside of the head (to compensate for its detachment), which can be seen by clipping inside of it.
+
+8,388,608 - 16,777,215 blocks
+Piston arms now become extremely distorted after this point. Arms parallel to the direction of travel still look the same as their 4,194,304+ counterparts, but those which run perpendicularly are dramatically stretched to cover a full block's width. If on both axes, this can cause a vertically extended piston to appear like two stacked full blocks.
+
+16,777,216 - 33,554,431 blocks
+The appearance of piston arms is now very dependent on the position of the block itself. If beyond this point on only one axis, pistons which extend parallel to the travel will usually have completely invisible arms (presumably these are reduced to 2D planes which have no texture on the faces anyway due to these parts of the piston arm never being normally visible). It seems that this is always the case for pistons extending in the positive direction. However, for pistons extending in the negative direction, one in every four will have the arm appear stretched to be two full blocks wide. Specifically, the piston must be placed such that the arm extends into block 4n+2.
+For arms extending in the two directions perpendicular, the arm will appear completely flat, and either at the very edge of the piston block, or offset from it by a whole block (occurs for pistons at 4n+1)​[more information needed].
+Effects can be mixed by exceeding this distance on both axes. Vertically facing pistons will obviously always have invisible arms due to them being compressed into being one-dimensional. Other effects can be seen, though - for example, a piston at a coordinate 4x-1 and 4z+1 made to extend towards the negative X direction will result in a thin piston arm stretched to be two blocks wide and offset from the piston by a full block.
+
+
+==== Cauldrons and hoppers ====
+First affected version: Beta 1.9 Prerelease 2 (cauldron), 13w01a (hopper)Last affected version: 1.7.10
+
+2,097,152 - 16,777,215 blocks
+Between these points, cauldrons and hoppers become very slightly distorted, in that the inner face becomes coplanar with the outer face. This causes the inside of the block to appear slightly larger.
+
+16,777,216 - 33,554,431 blocks
+Cauldron and hopper inner face behavior becomes very interesting at this point onwards. Assuming one axis:
+
+4n: the internal faces are outright invisible
+4n+1: the inner face in the positive direction is missing
+4n+2: both inner faces will be offset outwards to adjacent blocks
+4n+3: the inner face in the positive direction is missing
+
+
+==== Flower pots ====
+First affected version: 12w34aLast affected version: 1.7.10
+
+1,048,576 - 2,097,151 blocks
+Beyond this point is where flower pots first become distorted. While not immediately obvious, paying attention to the dirt reveals that more of it is visible than previously. A flower pot at exactly 1,048,576 blocks will only be distorted on the positive half of the pot - the negative half will remain normal. Beyond this point, both the positive and negative halves on the applicable axes will be distorted.
+
+2,097,152 - 4,194,303 blocks
+Distortion on flower pots becomes more obvious beyond this point. The internal faces of the pot now are rounded to be closer to the center, rather than slightly farther from it like before. As a result, looking down into the pot allows the sides to be seen out through.
+Similar to the previous entry, a pot at exactly 2,097,152 blocks will have the old distortion in the negative half, and the new distortion in the positive half.
+It is worth noting for this entry and all subsequent flower pot entries that these internal faces are only rendered from the intended angle and are invisible from behind due to them never being normally seen from behind. This is intended design and is not a distance effect.
+
+4,194,304 - 8,388,607 blocks
+The flower pot's internal planes have now been completely ejected from the pot itself, such that there are now two full block pixels between the intended edge of the pot and the new position of the planes.
+Similar to the previous entry, a pot at exactly 4,194,304 blocks will have the old distortion in the negative half, and the new distortion in the positive half.
+
+8,388,608 - 16,777,215 blocks
+Interestingly, distortion beyond this point is now positionally dependent, despite the precision loss not being  greater than a full block at this point. Assuming only one axis exceeds this coordinate:
+
+2n: the internal planes simply appear absent. However, some faces now appear at full brightness  where they would usually not. This may mean that the internal faces are offset to coincide with the pot's faces in these cases, as the internal faces are always drawn at full brightness in these versions.
+2n+1: pots will have their internal planes outright offset into adjacent blocks.
+For mixing offsets, pots at double even coordinates have no inner faces and are fully bright, pots at an odd-even coordinate will have two fully bright faces and two offset faces, and double-odd pots will have all four faces offset (which can all be seen at once).
+
+16,777,216 - 33,554,431 blocks
+Distortion increases again beyond this point. Assuming only one axis:
+
+4n: have no visible inside faces and some fully bright outside faces
+4n+1: both of the inside faces will be offset in the negative direction
+4n+2: have no visible inside faces and some fully bright outside faces
+4n+3: both of the inside faces will be offset in the positive direction
+Mixing coordinates functions as follows: for pots at double even coordinates, internal faces will be absent and the pot will be completely unaffected by ambient occlusion. At an odd-even coordinate, two outside faces will be fully lit, two inner faces will be absent, and the other two inner faces will be offset to the nearest multiple of 4 block. At a double-odd coordinate, two faces will be offset to one of the two closest multiple of 4 blocks, and the other two will be offset to the other.
+
+
+==== Flowing water and flowing lava ====
+First affected version: Infdev 2010-06-16Last affected version: Beta 1.7.3
+
+16,777,216 - 33,554,431 blocks
+
+As a fluid block's "footprint" always stretches across an entire block face, the effects of precision loss here can only be seen once precision itself can no longer represent blocks (integers) individually.
+Interestingly, despite often having angular features, these are not actually lost with the precision loss as one may expect, and are somewhat preserved. However, the angle becomes clearly shallower.
+
+33,554,432+ blocks
+
+As with other distance effects, exceeding each integer power of two will double the error systematically, allowing for fluid sides as long as 128 blocks to be witnessed in semi-vanilla bounds.
+
+
+==== Rails, powered rails and detector rails ====
+First affected version: Infdev 2010-06-18 (rail), Beta 1.5 (detector rail, powered rail)Last affected version: Beta 1.7.3
+
+16,777,216 - 33,554,431 blocks
+
+As a rail block's "footprint" always stretches across an entire block face, the effects of precision loss here can only be seen once precision itself can no longer represent blocks (integers) individually.
+Beyond this point, a rail block will be stretched along the axes exceeded. Only half (a quarter if on both axes) of all rails placed will render,[verify] with the remaining half still being existent, but not visible.
+Sloped rails will become stretched in much the same way as flat rails. If stretched in the direction of vertical travel, this will also result in the angle the rail makes with the terrain becoming shallower, as can be seen in a screenshot below.
+
+33,554,432+ blocks
+Just like other precision loss issues, every power of two exceeded will cause rails to become even bigger, allowing rails up to 128 blocks big in vanilla bounds. These effects can only be seen by editing coordinates using map editors and exploiting the spawn chunk glitch (more details).
+
+
+==== Gears and ladders ====
+
+First affected version: Indev 2010-01-?? (gears), Infdev 2010-06-16 (ladders)Last affected version: Alpha v1.0.1 (gears), Beta 1.7.3 (ladders)
+
+16,777,216 - 33,554,431 blocks
+Since gears and ladders cover the entire block face, the precision loss can only be noticed after this point, as blocks (integers) can no longer be represented individually after here.
+Beyond this point, gears and ladders will be stretched and become two blocks wide. Furthermore, only half of all gears and ladders placed here will render - the ones that are placed on "invalid" locations will not.
+
+33,554,432+ blocks
+Just like other distance effects, every power of two causes gears and ladders to become stretched even further. They are 32 blocks wide beyond 268,435,456 blocks, and 128 blocks wide beyond 1,073,428,854 blocks. (That is the maximum size that they can be, since blocks no longer render past 2,147,483,519 blocks in these versions).
+
+
+==== Fire ====
+
+In some Infdev versions, fire particles render strangely at very high distances.
+
+
+==== Torches, crops and cross models ====
+In Infdev 20100313, beyond 8,388,608 blocks, torches, crops, flowers, saplings, and other cross models would lose precision, causing them to appear as 2D rectangles.
+
+
+==== Translucent rendering ====
+First affected version: 13w41a
+Last affected version: 1.21.2
+
+8,388,608 - 16,777,215 blocks
+The effects of this can first be seen after this point. The preferred method of testing this involves stacking two translucent blocks, such as two different colors of stained glass, in a square shape, and then walking up against this square to slow movement. When crossing from one block into another, the top face of the bottom block should not render at all until a certain distance is covered, at which point it should pop into view as expected.
+
+16,777,216 - 33,554,431 blocks
+The buggy effect's precision is now halved, allowing for the tops of two blocks at a time to appear periodically invisible.
+
+33,554,432+ blocks
+The effect's intensity will again double for every power of two crossed beyond this point. It also becomes very obvious in natural generation at extreme distances, specifically in cold areas; as ice and water are both translucent blocks and are intended to be visible through each other, viewing them when at such far distances from the origin will make very exaggerated versions of this effect obvious.
+
+
+=== Hitbox issues ===
+
+
+==== Fences, fence gates and walls ====
+First affected version: Beta 1.9 Prerelease 2 (fences), 12w01a (fence gates), 12w34a (walls)Last affected version: 13w06a (fences), 15w38a (fence gates), 1.4.3 (walls)
+
+2,097,152 - 8,388,607 blocks
+At this point, the hitboxes for fences, fence gates and walls begin to break. Before this point, pushing into a fence in the positive direction would allow the player to go as far as .07500 blocks into the space the fence occupies; beyond this point, the limit becomes .20000 blocks. It is also possible to easily see inside of walls due to this.
+
+8,388,608 - 16,777,215 blocks
+In this bracket, fence and wall hitboxes expand to fill out the entire block they occupy, similarly to how fences and fence gates were prior to Beta 1.8 Pre-release and release 1.1 respectively. This is obviously due to the integers being the only representable numbers with 32-bit floats beyond this point.
+
+16,777,216 - 33,554,431 blocks
+
+Hitboxes beyond this point become very strange, and virtually non-existent in some cases. Assuming this distance is exceeded on only one axis and in the positive direction, a fence at a 4n coordinate will have an extremely thin hitbox at the negative side of the fence. A fence at a coordinate 4n+1 will have no hitbox at all, one at a 4n+2 coordinate will again have a thin hitbox at the negative side, and one at a 4n+3 coordinate will have its thin hitbox at the positive side. The image to the right showcases the solid faces approximately marked by signs.
+
+
+==== Cakes and cacti ====
+First affected version: Alpha v1.0.11 (cacti), Beta 1.2 (cakes)Last affected version: 15w38a (collision boxes), 15w49a (outline boxes)Fixing of cake outline box impossible to see due to MC-106300
+
+1,048,576 - 2,097,151 blocks
+After 1,048,576 blocks, the first breakdown of hitboxes can be witnessed for cakes and cacti. Previously, their hitboxes would perfectly fit their cuboidal shape, however any placed past this point would experience a minor distortion; the hitboxes would be stretched to a full block width on whatever axis this distance was surpassed on. This also affects their collision boxes - previously pressing against these on their negative-facing side would get a value of .76250, but after this point this value is now .70000, like a full block. Cacti can still cause damage with this expanded hitbox.
+
+As cakes can also be eaten to change their hitbox, partially eaten cakes will also experience hitbox breakdowns. Cakes with more than six slices taken out of them are affected in much the same way.
+Before:
+
+After:
+
+2,097,152 - 4,194,303 blocks
+4,194,304 - 8,388,607 blocks
+8,388,608 - 16,777,215 blocks
+
+16,777,215 - 33,554,431 blocks
+Beyond this point, the hitboxes of these blocks start to become quite strange. As a block's collision box cannot extend outside of the block space it occupies, it becomes very easy to outright clip through the blocks in several cases. On one axis, the hitbox will either be a plane or stretched to occupy two different blocks at once.
+
+
+=== Rendering bugs ===
+
+
+==== Infdev-Beta terrain rendering offset/jitter ====
+
+First affected version: Infdev 2010-06-24Last affected version: Beta 1.7.3
+
+Many effects are noticeable after traveling millions of blocks away from the center of the map. The first effect that becomes evident from Infdev 2010-06-24 to Beta 1.7.3 is the jumpy or stuttering movement of the map. In old versions of Minecraft, when the game renders the map around the player, there are two different versions that are generated, the rendering of the blocks themselves (i.e. entities, how much the block generates) and the visual aspect to the blocks (e.g. the hitbox, block pixels etc.). In Beta 1.7 and prior, the visual aspect of world rendering loses precision, resulting in the jumpy movement. The reason the world loses precision in the first place is that the rendering engine uses double-double precision, which determines the position of the world around the player. The rendering engine then uses a floating point integer to determine how far the already rendered blocks move around the player when they move. Unfortunately, this floating point integer cuts the double-double precision number in half, and thus the rendering engine doesn't have enough information to render the terrain correctly, and the information gets cut in half every time the player doubles their distance. Removing the floating text from the rendering engine fixes the stuttering movement.       
+This jumpy movement is notable even at an X/Z of ±16,384, becoming increasingly noticeable around ±524,288. The intensity of such glitches doubles every time the player passes a coordinate that is a power of two (e.g. 2,097,152 or 4,194,304). After about X/Z 16,777,216, the hitbox is a full block off, which makes placing and destroying blocks almost impossible. The floating point precision errors are no longer noticeable past X/Z 2,147,483,519, as surface textures stop rendering and blocks no longer generate. At the center of the world, the world would be off by only 1⁄4194304 (0.000000238...) blocks. Past the 32-bit limit, the world would be off by 256 blocks. For any position between n and 2n, where n is a power of 2, the world is offset by n⁄8388608 blocks, or n⁄524288 block pixels.
+
+
+==== Piston offset/jitter ====
+First affected version: Beta 1.7Last affected version: 1.10.2
+At excessive X/Z positions, the rendering of moving pistons break, causing them to follow the player's position. Although affecting Beta 1.7.x versions, it is impossible to notice this in these versions due to the world rendering being broken there as well. While world rendering was fixed in Beta 1.8, moving piston rendering was not fixed in this version and persisted until 1.11 when moving piston rendering was finally fixed.
+
+
+==== Infdev 20100227 chunk detaching issue ====
+
+X/Z ±32,768: Chunks begin to shake. This effect doubles for every power of two that the player walked away from the spawn point.
+X/Z: ±2,097,152: World stops rendering completely at certain angles.
+X/Z: 268,435,456: Gaps between chunks become multiple blocks long, causing the world to look like either stripes or a grid (depending on the axes which exceed this distance).
+Note: This issue could have been present in game versions prior to Infdev 20100227, but the world stopped rendering beyond 2560 blocks anyway in these versions, so this couldn't be noticed there. The world may also periodically stop rendering entirely at far distances.
+A similar glitch occurred in snapshot 14w30a/b.
+
+
+==== 14w30a/b chunk detaching issue ====
+
+Whether or not this issue occurs appears to be tied to the VBOs setting - switching this on will cause the issue to go away, and disabling VBOs will cause it to happen.
+
+
+==== World renderer precision loss ====
+
+First affected version: Infdev 2010-06-24Last affected version: Beta 1.7.3
+
+At excessive X/Z positions (depends on the operating system and version, but usually occurs between X/Z: ±268,435,456 and ±2,147,483,647, and early versions such as Beta), world render glitches out, resulting in terrain that appears to flicker. This does happen at X/Z: <±268,435,456, but it becomes very noticeable at X/Z: >±268,435,456 and gets worse every power of 2 beyond that. This could most likely be that past X/Z: ±268,435,456 the Minecraft world is 32 blocks off, which is as large as 2 chunks, though it is unconfirmed.First affected version: Beta 1.8Last affected version: Release 1.7.10
+World rendering would lose precision, resulting in chunks vanishing from the player's view.
+
+
+==== Indev/Infdev hitbox rendering issue ====
+
+Every power of 2 that the player goes, the hitbox of the block that the player is facing becomes more and more distorted.
+The hitbox becomes increasingly more corrupted and distorted until it disappears entirely at X/Z ±2,147,483,648.
+X/Z ±2,048: Hitbox begins to flicker slightly around blocks.
+X/Z ±131,072: The shape of the hitbox begins to deform.
+The shape of the hitbox distorting and becoming non-cubic is also possible on some GPUs.
+
+
+==== Falling block rendering issue ====
+
+The shape of the block distorting and becoming non-cubic is also possible on some GPUs.
+
+
+=== Gameplay ===
+
+
+==== Indev entity movement ====
+
+Every power of 2 that the player goes, it becomes harder and harder to walk along the axis the player is traveling on.
+At X/Z ±4,194,304, the player falls through the blocks. However, if the player teleports beyond this point they can still stand on the blocks but cannot move along that axis.
+At X/Z ±8,388,608, the player can no longer stand on the blocks and falls into the void.
+
+
+==== Infdev 0227 blocks solidness issue ====
+
+X/Z ±16,777,216: Blocks are no longer solid; the player falls and hits a layer of lava.
+
+
+==== Sculk vibration positioning errors ====
+First affected version: 20w49aLast affected version: 22w11a
+
+4,194,304 - 8,388,607 blocks
+Precision will be a factor of two times as accurate for every power of two crossed before this point. Beyond 4,194,304 blocks, vibrations will only be able to come from one of three lines on a block - one for each edge, and another through the center. Past this on both axes, precision loss will allow vibrations to only originate from nine points on a block: the center, the middle of each of the four edges, and the four corners.
+
+8,388,608 - 16,777,215 blocks
+After this point, precision will be half as precise again. Vibrations will lose the ability to come from the center of blocks, being relegated to one of two edges, or, if beyond this on both axes, one of the four corners.
+
+16,777,216 - 33,554,431 blocks
+Beyond 16,777,216 blocks, vibrations can come from completely separate positions than the actual source. If a button is placed at (4x+1,4z+1), the vibration will first appear at the center of the four blocks directly northwest of it. However, this does not appear to allow the sculk sensor to detect vibrations from any farther away than it should.
+
+
+==== Bed positioning ====
+First affected version: Beta 1.3Last affected version: 1.13.2
+
+8,388,608 - 16,777,215 blocks
+The effects of this can be first seen after this point. Sleeping on a bed beyond this point causes the player to be placed on the edge of the bed, as the center can no longer be represented due to precision errors.
+
+16,777,216 - 33,554,431 blocks
+The position of the player sleeping on a bed becomes interesting beyond this point. If exceeded on one axis, sleeping can sometimes place the player outside of the bed depending of the position of the bed block. If beyond this point on both axes, sleeping can sometimes place the player on the center of the bed, but at a lower position than usual.
+
+
+=== World generation ===
+
+
+==== Terrain features ====
+
+16,777,216 - 33,554,431 blocks
+
+
+==== Blocky terrain ====
+First affected version: Likely Pre-classic rd-20090515Last affected version: Infdev 2010-03-25
+At very high distances, the terrain start to become distorted and form blocky shapes. This can be first be seen at 4,194,304 blocks. At 8,388,608 blocks it becomes more noticeable. At 16,777,216 blocks and beyond the terrain becomes very distorted, all the way to the Far Lands in these versions. This is presumably caused due to the noise coordinate losing precision at high distances, althrough this is yet to be confirmed.
+First affected version: Infdev 2010-03-27Last affected version: 1.17.1 (?)
+Beyond 255 blocks especially, terrain starts to distort and form blocky shapes, due to gradient noise sampling losing precision.
+
+
+=== Table: ===
+ 
+
+
+== Gallery ==
+
+
+=== Fixed bugs ===
+
+
+==== Particle errors ====
+
+
+== Mods and map editors ==
+
+
+=== OptiFine ===
+Up until 1.1, there was a bug with the OptiFine mod which would progressively break world rendering when traveling a far enough distance away, with effects manifesting as soon as 10,000 blocks. The effects would appear to get more intense continuously when moving far away from the center of the world, as opposed to having cutoffs every 2n blocks, due to this rendering bug also taking rotation into account (although if the rotation is kept constant and along one axis discrete jumps become noticeable). The bug existed due to the mod undoing vanilla's fix for said bug.
+
+
+=== MCEdit ===
+When viewing the Far Lands in MCEdit, the player encounters errors. The selection cubes start to distort and the map distorts when viewing. In addition, when the player rotates their view around a selected area, blocks are not lined up right and change how poorly lined up they are at random, making the whole world seem to shake.
+
+
+== References ==
+
+
+== External links ==
+Video showcasing several high distance effects present in Minecraft 1.0.0[dead link]
+Video showcasing several high distance effects present in Minecraft 1.4.2[dead link]
+Video showcasing several high distance effects present in Minecraft 1.6.4
+Video showcasing several high distance effects present in Minecraft 1.7.2
+Video showcasing several high distance effects present in Minecraft 1.7.10
+
+
+== Navigation ==

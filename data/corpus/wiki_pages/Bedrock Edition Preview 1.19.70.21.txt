@@ -1,0 +1,103 @@
+Beta 1.19.70.21 (Android) or Preview 1.19.70.21 (Windows, iOS, iPadOS, Xbox) is the second beta/Preview version for Bedrock Edition 1.19.70, released on February 1-7, 2023, which fixes bugs.
+
+
+== Changes ==
+
+
+=== Command format ===
+/clone, /fill and /setblock
+
+Removed tileData: int argument.
+/execute
+
+Removed data: int argument.
+/testforblock
+
+Removed dataValue: int argument.
+
+
+=== Mobs ===
+Zombified Piglin
+
+Now spawn at light levels of 11 and below.
+
+
+=== Technical ===
+General
+
+Crafting Table component no longer appends "tile." when defaulting to use block name for crafting table label.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Next Major Update" and "Beta APIs" experimental toggle.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Heads
+
+Piglin and Dragon Head blocks no longer animate in the hotbar or inventory. (MCPE-164535, MCPE-32654)
+
+
+==== Technical ====
+API
+
+Added function playAnimation(animationName: string, options?: PlayAnimationOptions) - Plays the specified animation for an entity.
+ItemStack
+ItemStack can now be constructed using a string identifier.
+Removed constructor parameter data.
+Removed property data.
+Removed function clearLore To clear lore, call setLore with an empty array or undefined.
+Setting nameTag to an empty string will now clear the name tag.
+Setting nameTag to a string longer than 255 characters will now result in an exception.
+Setting amount greater than the maximum stack size will now clamp the value to the maximum stack size.
+Setting amount to a value less than 1 will now result in an exception.
+ContainerSlot
+Removed function clearItem- To clear the item, call setItem with undefined.
+Removed function clearLore- To clear lore, call setLore with an empty array or undefined.
+GameTest Framework
+
+Test
+Added optional searchDistanceparameter to assertEntityPresent(entityTypeIdentifier: string, blockLocation: BlockLocation, searchDistance?: number, isPresent?: boolean).
+Added assertEntityInstancePresentInArea(entity: Entity, isPresent?: boolean) to check if an entity instance is present in the test area.
+Made the searchDistance parameter optional in assertItemEntityPresent.
+JSON
+
+In JSON formats 1.19.70 and later, blocks fail to load if the "condition" field in Block Permutations is not a valid Molang string.
+
+
+== Fixes ==
+Gameplay
+
+Players are now able to place top Slabs in blocks that are only partially blocked by an entity. (MCPE-155016)
+Players can no longer see through partial blocks when sneaking or riding in third person. (MCPE-156273)
+Error messages about building outside the world height limits no longer appear when simply interacting with blocks at the world height limits from certain angles. (MCPE-152935)
+Players are now able to interact with functional blocks while sneaking in a gap without the sneak button held.
+Vanilla Parity
+
+Minecarts can now eject mobs into liquid blocks. (MCPE-120078)
+Touch Controls
+
+Allowed left and right D-pad buttons to keep input when the forward button is pressed.
+Added the leave Boat button when the player falls from a height within in the boat.
+Fixed an issue that prevented players from removing equipped armor by tapping on an item or block in the Creative inventory. (MCPE-165790)
+Performance and Stability
+
+Fixed an issue where simultaneously pressing the "Mine" and "Place" button on any input device while targeting a Structure Block could cause the game to crash. (MCPE-155689)
+Marketplace
+
+Navigating right with controller left stick on sidebar now collapses it.
+Commands
+
+Volume arguments no longer floor the selector's position. (MCPE-162237)
+Selecting targets by volume will now select all entities whose hitbox collides with the volume box. This is versioned for 1.19.70 and later. (MCPE-162237)
+Previous behavior works as expected on versions less than 1.19.70.
+Volume arguments for selectors (dx, dy, dz) now support float values. (MCPE-163863)
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,42 @@
+Bedrock Editor v0.6.8 is a minor alpha release for the Bedrock Editor released on July 10, 2024, which adds a few quality-of-life improvements to the Deferred Lighting panel and adds sliders.
+
+
+== Additions ==
+Entity transactions
+
+Implemented single entity transaction payload for entity delete/create.
+Implemented Undo/Redo of single entity creation and deletion.
+Deferred Lighting editor
+
+Added Global Illumination settings to the Deferred Lighting property editor.
+Added localized field names into the Deferred Lighting property editor dropdown.
+UI
+
+Added "Attach Debugger" action bar shortcut for attaching to the scripting debugger.
+Added copy to clipboard button to log panel messages.
+API
+
+Added isFloat to support floating point values in addNumber Editor Property Pane API.
+
+
+== Changes ==
+Palettes
+
+Updated set of blocks and entities that appear within the Editor picker.
+API
+
+Removed fallback display text properties from API in favor of single localized property.
+Added labelproperty to IDropdownItem API, removed displayAltText and displayStringId properties.
+Added labelproperty to IMenuCreationParams API, removed name and displayStringId properties.
+Added titleproperty to IPropertyItemOptions and IPropertyItem APIs, removed titleAltText and titleStringId properties.
+Added title and tooltip properties to ModalToolCreationParameters API, removed titleAltText, titleStringId, tooltipAltText and tooltipStringId properties.
+
+
+== Fixes ==
+Fixed a bug that caused visual artifacts when enabling Deferred Lighting in Editor.
+
+
+== References ==
+
+
+== Navigation ==

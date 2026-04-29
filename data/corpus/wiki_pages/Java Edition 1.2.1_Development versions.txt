@@ -1,0 +1,575 @@
+This is a list of Java Edition 1.2.1 development versions.
+
+
+== 12w03a ==
+12w03a is the first snapshot for Java Edition 1.2.1, released on January 19, 2012, which added jungle biomes and jungle trees.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Jungle log
+
+Slightly-mossy brown textured with horizontal bark.
+Generates as part of jungle trees.
+ Jungle leaves
+
+Generates as part of jungle trees.
+Drops oak saplings.
+
+
+==== World generation ====
+Biomes
+
+Jungle
+Thick canopy with jungle trees, vines, fern, and brightly-colored grass.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+ Ladders
+
+Regained collision box.
+ Vines
+
+Are now climbable if the player was pushed into a solid block while next to them.
+
+
+==== Items ====
+ Spawn eggs
+
+Dispensers can spawn mobs when dispensing spawn eggs.
+Spawn eggs are now stackable to 64.
+
+
+==== Mobs ====
+ Wolves
+
+Have new AI.
+Can be bred by using raw chicken, cooked chicken, raw porkchop, cooked porkchop, raw beef, steak, and rotten flesh when tamed.
+ Zombies
+
+Have new path-finding AI.
+
+
+==== Gameplay ====
+Fog
+
+The Nether fog now appears closer to the player.
+
+
+==== General ====
+Languages
+
+Updated language files.
+
+
+== 12w04a ==
+12w04a is the second snapshot for Java Edition 1.2.1, released on January 26, 2012, which adds ocelots, jungle saplings, bottles o' enchanting, and fire charges.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Jungle sapling
+
+Can be grown into the new jungle trees.
+Growing a 4×4 square of jungle saplings to create large jungle trees.
+
+
+==== Items ====
+ Bottle o' enchanting
+
+Can be thrown similarly to splash potions and spawns experience orbs upon breaking.
+Bottles o' enchanting can currently be obtained only in Creative mode.
+ Fire charge
+
+Can be shot out of dispensers to launch fireballs and can be placed to create fire.
+Can now be crafted from blaze powder, coal, and gunpowder.
+
+ Ocelot spawn egg
+
+Spawns the ocelot mob.
+
+
+==== Mobs ====
+    Ocelots and cats
+
+New jungle-specific mob that can be tamed with raw fish.
+Ocelots turn into cats when tamed.
+
+
+==== World generation ====
+ Desert wells
+
+Newly generated structures which are exclusive to desert biomes.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+ Dispensers
+
+Texture changed from .
+ Oak saplings
+
+Texture changed from .
+Vines
+
+Players are slowed when going through vines due to their nature of being a collisionless ladder.
+
+
+==== Items ====
+Spawn eggs
+
+Eggs set to spawn arbitrary data IDs (such as giants, ender dragons, ender crystals) no longer spawn those entities.
+Now only spawn the mobs available in the Creative inventory.
+
+
+==== Mobs ====
+General
+
+Mobs have a new AI with new and improved behaviors.
+Skeletons and zombies burning from sunlight flee to darkness or jump in water.
+Mobs no longer attempt to jump over wooden fences.
+
+
+==== Gameplay ====
+Chat
+
+Formatting codes can no longer be typed in chat using the vanilla client.
+
+
+==== General ====
+Languages
+
+Updated language files.
+
+
+== 12w05a ==
+12w05a is the third snapshot for Java Edition 1.2.1, released on February 2, 2012, which makes minor changes to mobs.
+12w05a was reuploaded later on February 2, 2012, to fix a bug where the game would crash when right-clicking a sitting cat empty-handed, as well as fixing racist translation griefings.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+ Dead bushes
+
+Can be obtained by breaking them using shears.
+
+
+==== Items ====
+ Fire charges
+
+Can be crafted using charcoal.
+
+
+==== Mobs ====
+ Creepers
+
+Have new AI: they now stalk the player.
+ Ghasts
+
+Updated hitbox to incorporate their whole body, prior to this ghasts could only be injured by hitting their tentacles and lower body.
+ Ocelots
+
+Are now easier to tame, and tamed ocelots can now be told to sit.
+Ocelots and cats have now become immune to fall damage.
+Ocelots and cats now frighten creepers.
+Villagers
+
+Try to detect village houses and live in them.
+Now have the ability to open and close doors.
+
+
+==== World generation ====
+Mineshafts
+
+Now bridge over ravines.
+
+
+==== General ====
+Enchanting
+
+No longer requires experience in Creative mode.
+Languages
+
+Updated language files.
+Sounds
+
+Lava sounds now function.
+
+
+=== Fixes ===
+2 bugs fixed
+
+Corrected a duplication bug involving Nether portals.
+Removed racial slur from the title screen when using the Afrikaans language.
+
+
+== 12w05b ==
+12w05b is the fourth snapshot for Java Edition 1.2.1, released on February 3, 2012, which makes small changes to mob AI and fixes a few bugs.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+ Creepers
+
+Have a slightly improved AI.
+Now run away from tamed cats and ocelots.
+
+
+==== General ====
+Death screen
+
+Has a slight delay before buttons become active, to avoid accidentally clicking buttons when killed.
+
+
+=== Fixes ===
+2 bugs fixed
+
+Fixed shift-clicking the result from crafting only giving half the items and consuming all leftover materials.
+Fixed cats being unable to sit when right-clicked with an empty hand.
+
+
+== 12w06a ==
+12w06a is the fifth snapshot for Java Edition 1.2.1, released on February 9, 2012, which adds new sounds and modifies block placement rules and mob AI.
+
+
+=== Additions ===
+
+
+==== General ====
+Sounds
+
+Cats now meow, cry, howl, purr and hiss.
+Doors now make banging sounds when zombies hit them.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Doors
+
+Doors have been changed to properly detect if they are open or closed. Double doors in existing maps are not affected.
+Placing two pressure plates directly in front of doors and stepping on them opens doors correctly.
+When stepping on a single pressure plate, only the door on that side opens.
+When stepping on both pressure plates, both doors open.
+Redstone
+
+Can now be placed on glowstone.
+
+
+==== Mobs ====
+General
+
+Added rare item drops for mobs.
+Improved movement when mobs are in water.
+Most mobs now move slower.
+When a player is targeted by a hostile mob, it continues to track the player despite being attacked by other mobs.
+Cave spiders
+
+Now swim extremely fast with the water stream toward the player, but seem to be almost not moving against the water stream.
+Skeletons
+
+Now have a rare chance to drop a bow, which may be enchanted.
+Snow golems
+
+Now take damage from rain and water.
+Villagers
+
+AI has been improved.
+Now socialize with each other and other passive mobs.
+Now go inside shelter when it is raining.
+Now run away from zombies.
+Zombies
+
+AI has been improved.
+On Hard difficulty and Hardcore, zombies now break down wooden doors.
+On Normal and Easy difficulty, zombies attack but don't break down wooden doors.
+Now chase and attack villagers.
+Now attack doors when attempting to escape sunlight.
+Now have a rare chance to drop an iron ingot, iron helmet, iron shovel, or iron sword.
+Zombie pigmen
+
+Now have a rare chance to drop golden armor, a gold ingot, or a golden sword which may be enchanted.
+Now swim faster when in water.
+
+
+==== General ====
+Debug keys
+
+Pressing F1 to hide the HUD additionally disables hitbox outlines on blocks and the block breaking animation.
+
+
+=== Fixes ===
+5 bugs fixed
+
+Creepers no longer explode after death.
+Villagers can no longer open iron doors.
+Ocelots, zombies, wolves, and skeletons no longer spin in circles on non-full-height blocks.
+Cobwebs prevent the player from receiving fall damage.
+Monster spawners now show correct mobs in multiplayer.
+
+
+== 12w07a ==
+12w07a is the sixth snapshot for Java Edition 1.2.1, released on February 15, 2012, which adds redstone lamps and updates the world type from Region to Anvil, which increases the height limit from 128 blocks to 256.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Redstone lamp
+
+Crafted using glowstone and redstone.
+If powered by redstone, the lamp turns on.
+
+
+==== General ====
+World file format
+
+Worlds now use the new Anvil file format instead of Region.
+World files now save with .mca suffixes instead of .mcr.
+World height is now 256 blocks instead of 128 blocks.
+Up to 4096 block IDs can now be used.
+Maltese language
+
+Re-added after being removed in 12w01a.
+Server.properties
+
+New setting:
+max-build-height
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Glass
+
+No longer drops itself when broken using a tool with Silk Touch.
+Redstone torches
+
+Can now be placed on the top of glass.
+Torches
+
+Can now be placed on the top of glass.
+Water
+
+Now only two blocks are required to break a fall from the maximum build height to y = 0 instead of four.
+
+
+==== Items ====
+Hoe
+
+No longer tills dirt or grass blocks when they have another block on top of them.
+
+
+==== Mobs ====
+Drops
+
+Decreased chance for the rare mob drops.
+Added zombie sieges, a rare event where a horde of zombies attacks a village at midnight.
+AI
+
+All animals now use the new AI system.
+Animals can now move their heads when walking.
+Baby animals now follow wheat.
+Villagers
+
+Added baby villagers.
+Villagers can now breed in order to repopulate villages based on how many houses there are available.
+
+
+==== World generation ====
+Villages
+
+The player may add houses to villages, provided they are enclosed with a roof and wooden door.
+
+
+==== General ====
+Multiplayer
+
+Multiplayer light recalculations no longer cause affected blocks to be transmitted to clients; instead the clients recalculate the effects when it is updated client-side.
+
+
+=== Fixes ===
+3 bugs fixed
+
+Fixed wolf AI: they no longer teleport huge distances when the player is hit.
+Removed zombies' ability to break iron doors.
+Fixed cows breeding with mooshrooms.
+
+
+== 12w07b ==
+12w07b is the seventh snapshot for Java Edition 1.2.1, released on February 15, 2012, which fixes bugs from 12w07a.
+
+
+=== Fixes ===
+3 bugs fixed
+
+Fixed blocks being destroyed when a block on fire is hit.
+Fixed crash when mobs were spawned above Y=255.
+Fixed sheep animation in multiplayer.
+
+
+== 12w08a ==
+12w08a is the eighth and the final snapshot for Java Edition 1.2.1, released on February 23, 2012, which adds iron golems and debug camera controls.
+
+
+=== Additions ===
+
+
+==== Mobs ====
+ Iron golems
+
+New utility mob.
+One iron golem may spawn in a village for every 16 villagers
+Can also be spawned by arranging 4 iron blocks and a pumpkin.
+
+
+==== General ====
+Controls
+
+Added camera controls.
+These were accidentally added. Jeb noted them as "deadmau5 camera" controls and would likely be removed again in an upcoming snapshot.
+Pressing F6 causes the player to get "stuck" to the camera until F6 is pressed again. This allows players to appear to phase into blocks.
+Pressing F9 causes the camera to freeze in its position, allowing to see the player model rotating in third person view.
+Pressing Y, H, U, O, I, K, J, L, N and M change the camera positioning in a variety of ways. While pressing two functionally connected keys at the same time the camera may be reset (example: Y + H reverts that view back to normal, but U + O does not).
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Stairs
+
+Can now be placed upside-down.
+
+
+==== World generation ====
+General
+
+Lava ponds and flat stone areas now generate on the surface more frequently.
+
+
+==== General ====
+Languages
+
+Removed some Canadian English stereotypes.
+
+
+=== Fixes ===
+1 bug fixed
+
+Fixed the End and caverns generation.
+
+
+== 1.2 ==
+1.2 is the first and only pre-release for Java Edition 1.2.1, released on February 29, 2012, which adds chiseled stone bricks. This is the first pre-release released in 2012.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Chiseled stone bricks
+
+New type of stone bricks.
+Creative-exclusive block.
+  Sandstone
+
+Two new textures have been added to the terrain.png file. They look similar to sandstone but instead they contain hieroglyphics. These blocks have not been added to the game yet.
+
+
+==== Mobs ====
+ Iron Golems
+
+Now have sounds.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+ Ladders
+
+Crafting recipe now produces 3 ladders instead of 2.
+ Redstone lamps
+
+Changed the textures of the Redstone Lamp from .
+ Slabs
+
+Crafting recipe now produces 6 slabs instead of 3.
+Can now be placed upside-down when placed against the bottom of a block.
+ Powered rails
+
+Are not affected by quasi connectivity anymore.
+
+
+==== Items ====
+ Golden boots
+
+Renamed "Golden boots" to "Golden Boots".
+
+ Lava bucket
+
+Renamed "Lava bucket" to "Lava Bucket".
+
+
+==== General ====
+Controls
+
+Removed camera controls accidentally added in 12w08a.
+Debug screen
+
+Pressing F3 now displays what biome the player is currently in.
+Raw, sky & block brightness values called rl, sl & bl respectively.
+
+
+=== Fixes ===
+21 bugs fixed
+
+Nerfed iron golem spawn rate.
+Fixed bug with updating powered rail when placing redstone.
+Fixed stairs being placed upside down when placed on snow.
+Fixed not being able to put torches on upside-down stairs, probably normal stairs too.
+Fixed jukeboxes not playing above level 128.
+Fixed not being able to grow huge mushrooms above level 128.
+Fixed bug with growing trees above level 128 with bone meal.
+Fixed crash bug with iron golem building.
+When building an iron golem, the block above them is no longer destroyed.
+Fixed tamed wolves still attacking sheep.
+Fixed some language bugs.
+Fixed some Anvil bugs.
+Fixed the client not properly handling biome values greater than 22.
+Fixed mobs spawning half as quick due to the code checking in invalid spawning places half of the time due to the new world height.
+Fixed lava lakes generating over bedrock.
+Fixed iron golem's texture being white or invisible.
+Fixed the iron golem model.
+Fixed villagers being restless at night.
+Fixed nether wart dropping from soul sand.
+Fixed lag from iron golems.
+Iron golems no longer drown.
+
+
+=== Trivia ===
+1.2 is the first version to be released on a leap day.
+It is also one of only two versions in Java Edition to be released on a leap day, the other one being 1.9 (2016).
+
+
+== Notes and references ==
+
+
+== Navigation ==

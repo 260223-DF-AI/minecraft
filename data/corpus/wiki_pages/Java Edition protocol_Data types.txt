@@ -1,0 +1,172 @@
+This article defines the data types used in the Java Edition protocol. All data sent over the network (except for VarInt and VarLong) is big-endian, that is the bytes are sent from most significant byte to least significant byte. The majority of everyday computers are little-endian, therefore it may be necessary to change the endianness before sending data over the network.
+
+
+== Definitions ==
+
+
+== Identifier ==
+Identifiers are a namespaced location, in the form of minecraft:thing.  If the namespace is not provided, it defaults to minecraft (i.e. thing is minecraft:thing).  Custom content should always be in its own namespace, not the default one.  Both the namespace and value can use all lowercase alphanumeric characters (a-z and 0-9), dot (.), dash (-), and underscore (_). In addition, values can use slash (/). The naming convention is lower_case_with_underscores.  More information.  
+For ease of determining whether a namespace or value is valid, here are regular expressions for each:
+
+Namespace: [a-z0-9.-_]
+Value: [a-z0-9.-_/]
+
+
+== VarInt and VarLong ==
+Variable-length format such that smaller numbers use fewer bytes.  These are very similar to Protocol Buffer Varints: the 7 least significant bits are used to encode the value and the most significant bit indicates whether there's another byte after it for the next part of the number.  The least significant group is written first, followed by each of the more significant groups; thus, VarInts are effectively little endian (however, groups are 7 bits, not 8).
+VarInts are never longer than 5 bytes, and VarLongs are never longer than 10 bytes. Within these limits, unnecessarily long encodings (e.g. 81 00 to encode 1) are allowed.
+Pseudocode to read and write VarInts and VarLongs:
+
+Sample VarInts:
+
+Sample VarLongs:
+
+
+== Position ==
+Note: What you are seeing here is the latest version of the Data types article, but the position type was different before 1.14.
+64-bit value split into three signed integer parts:
+
+x: 26 MSBs
+z: 26 middle bits
+y: 12 LSBs
+For example, a 64-bit position can be broken down as follows:
+Example value (big endian): 01000110000001110110001100 10110000010101101101001000 001100111111
+
+The red value is the X coordinate, which is 18357644 in this example.
+The blue value is the Z coordinate, which is -20882616 in this example.
+The green value is the Y coordinate, which is 831 in this example.
+Encoded as follows:
+
+((x & 0x3FFFFFF) << 38) | ((z & 0x3FFFFFF) << 12) | (y & 0xFFF)
+
+And decoded as:
+
+val = read_long();
+x = val >> 38;
+y = val << 52 >> 52;
+z = val << 26 >> 38;
+
+Note: The above assumes that the right shift operator sign extends the value (this is called an arithmetic shift), so that the signedness of the coordinates is preserved. In many languages, this requires the integer type of val to be signed. In the absence of such an operator, the following may be useful:
+
+if x >= 1 << 25 { x -= 1 << 26 }
+if y >= 1 << 11 { y -= 1 << 12 }
+if z >= 1 << 25 { z -= 1 << 26 }
+
+
+== Fixed-point numbers ==
+Some fields may be stored as fixed-point numbers, where a certain number of bits represent the signed integer part (number to the left of the decimal point) and the rest represent the fractional part (to the right). Floating point numbers (float and double), in contrast, keep the number itself (mantissa) in one chunk, while the location of the decimal point (exponent) is stored beside it. Essentially, while fixed-point numbers have lower range than floating point numbers, their fractional precision is greater for higher values.
+Prior to version 1.9 a fixed-point format with 5 fraction bits and 27 integer bits was used to send entity positions to the client. Some uses of fixed point remain in modern versions, but they differ from that format.
+Most programming languages lack support for fractional integers directly, but you can represent them as integers. The following C or Java-like pseudocode converts a double to a fixed-point integer with n fraction bits:
+
+ x_fixed = (int)(x_double * (1 << n));
+
+And back again:
+
+ x_double = (double)x_fixed / (1 << n);
+
+
+== Arrays ==
+The types Array and Prefixed Array represent a collection of X in a specified order.
+
+
+=== Array ===
+Represents a list where the length is not encoded. The length must be known from the context. If the array is empty nothing will be encoded.
+A String Array with the values ["Hello", "World!"] has the following data when encoded:
+
+
+=== Prefixed Array ===
+Represents an array prefixed by its length. If the array is empty the length will still be encoded.
+
+
+== Bit sets ==
+The types BitSet and Fixed BitSet represent packed lists of bits. The vanilla implementation uses Java's BitSet class.
+
+
+=== BitSet ===
+Bit sets of type BitSet are prefixed by their length in longs.
+
+The ith bit is set when (Data[i / 64] & (1 << (i % 64))) != 0, where i starts at 0.
+
+
+=== Fixed BitSet ===
+Bit sets of type Fixed BitSet (n) have a fixed length of n bits, encoded as ceil(n / 8) bytes. Note that this is different from BitSet, which uses longs.
+
+The ith bit is set when (Data[i / 8] & (1 << (i % 8))) != 0, where i starts at 0. This encoding is not equivalent to the long array in BitSet.
+
+
+== Registry references ==
+
+
+=== ID or X ===
+Represents a data record of type X, either inline, or by reference to a registry implied by context.
+
+
+=== ID Set ===
+Represents a set of IDs in a certain registry (implied by context), either directly (enumerated IDs) or indirectly (tag name).
+
+
+== Registry data ==
+These types are commonly used in conjuction with ID or X to specify custom data inline.
+
+
+=== Sound Event ===
+Describes a sound that can be played.
+
+
+=== Chat Type ===
+Describes a direct chat type that a message can be sent with.
+
+The chat type decorations look like:
+
+
+== Teleport Flags ==
+A bit field represented as an Int, specifying how a teleportation is to be applied on each axis.
+In the lower 8 bits of the bit field, a set bit means the teleportation on the corresponding axis is relative, and an unset bit that it is absolute.
+
+
+== Light Data ==
+
+
+== Game Profile ==
+Describes a Minecraft player profile.
+
+The Properties field looks like the response of querying a player's skin and cape from Mojang's official API, with the difference being the usage of the protocol format instead of JSON. That is, each player will usually have one property with Name being “textures” and Value being a JSON string encoded using Base64. An empty properties array is also acceptable, and will cause clients to display the player with one of the default skins depending on their UUID. For more information, refer to the aforementioned Mojang API page.
+
+
+== Resolvable Profile ==
+
+
+== Debug subscriptions ==
+Types used in certain packets that are meant to help with debugging the game.
+
+
+=== Debug Subscription Event ===
+
+
+=== Debug Subscription Update ===
+
+
+=== Debug Subscription Data ===
+
+
+=== Debug Path Node ===
+
+
+=== Debug Structure Info ===
+
+
+== LpVec3 ==
+Encodes 3 doubles in (usually) 6 bytes. Only used in Java Edition protocol/Packets#Spawn Entity and Java Edition Protocol/Packets#Set Entity Velocity.
+If the absolute maximum of every double is beneath 132766≈3.05×10−5, it will only encode it as a single byte containing 0x00.
+If the rounded up absolute maximum of every double is below 3, the continuation flag will not be set, and the absolute maximum is sent as 2 unsigned bits.
+If the rounded up absolute maximum of every double is above 3, the continuation flag will be set, and the least significant two bits will be sent. The rest will be sent afterwards as a VarInt.
+The protocol packs the doubles by dividing by their combined absolute maximum (Thus scaling them to a range of -1 to 1). Afterwards, they will be scaled to the range 0 to 1 and multiplied by 32766, to scale them to the range of a 16 bit short. As the resulting number will always be positive, so the sign bit can be discarded and thus represented as a 15 bit unsigned value.
+
+The protocol then sends the first 2 bytes in little-endian, and the last 4 bytes in big-endian:
+
+Pseudocode to read and write LpVec3:
+
+Sample LpVec3:
+
+
+== Navigation ==

@@ -1,0 +1,70 @@
+Before Java Edition 1.21.5, the text component format was very different. The biggest difference is that text components were represented exclusively in JSON and saved as strings containing JSON, rather than being represented as SNBT and saved as NBT objects.
+For example, instead of {text: "Hello World", color: "red"}, you would write {"text": "Hello World", "color": "red"} or '{"text":"Hello World","color":"red"}' depending on the context.
+The biggest reason why this was the case is that NBT did not support heterogenous lists whereas JSON did, but in 1.21.5 this was changed so text components no longer needed to be saved as JSON.
+
+
+== Format ==
+The format is made up of text components. There is a single root component, which can have child components, which can have their own children and so on. Components can also have formatting and interactivity added to them, which is inherited by their children.
+A component can be a [String] string, [NBT List / JSON Array] array or a [NBT Compound / JSON Object] object. Strings and arrays are both shorthand for longer object structures, as described below.
+
+Due to the [NBT List / JSON Array] extra tag, the above format may be recursively nested to produce complex and functional text strings. However, a text component doesn't have to be complicated at all: virtually all properties are optional and may be left out.
+
+
+=== Content types ===
+Text components can display several types of content. These tags should be included directly into the text component object.
+
+
+==== Plain Text ====
+Displays plain text.
+
+
+==== Translated Text ====
+Displays a translated piece of text from the currently selected language. This uses the client's selected language, so if players with their games set to different languages are logged into the same server, each will see the component in their own language.
+Translations are defined in language files in resource packs, including the built-in resource pack.
+Translations can contain slots for text that is not known ahead of time, such as player names. When displaying the translated text, slots will be filled from a provided list of text components. The slots are defined in the language file, and generally take the form %s (displays the next component in the list), or %3$s (displays the third component in the list; replace 3 with whichever index is desired). For example, the built-in English language file contains the translation "chat.type.advancement.task": "%s has made the advancement %s",.
+
+
+==== Scoreboard Value ====
+Displays a score from the scoreboard.
+
+
+==== Entity Names ====
+Displays the name of one or more entities found by a selector.
+If exactly one entity is found, the entity's name is displayed by itself. If more are found, their names are displayed in the form "Name1, Name2, Name3", with gray commas. If none are found, the component is displayed as no text.
+Hovering over a name shows a tooltip with the name, type, and UUID of the target. Clicking a player's name suggests a command to whisper to that player. Shift-clicking a player's name inserts that name into chat. Shift-clicking a non-player entity's name inserts its UUID into chat.
+
+
+==== Keybind ====
+Displays the name of the button that is currently bound to a certain configurable control. This uses the client's own control scheme, so if players with different control schemes are logged into the same server, each will see their own keybind.
+
+
+==== NBT Values ====
+Displays NBT values from entities, block entities, or command storage.
+NBT strings display their contents. Other NBT values are displayed as SNBT, with no spacing between symbols. If [Boolean] interpret is set to true, the game will instead attempt to parse and display that text as its own text component. That usually only works on strings, since JSON and SNBT are not compatible. If [Boolean] interpret is true and parsing fails, the component is displayed as no text. If more than one NBT value is found, either by selecting multiple entities or by using a multi-value path, they are displayed in the form "Value1, Value2, Value3, Value4".
+
+
+=== Component resolution ===
+Certain text content types ([NBT Compound / JSON Object] score, [String] selector, and [String] nbt) do not work in all contexts. These content types need to be resolved, which involves retrieving the appropriate data from the world, rendering it into "simple" text components, and replacing the "advanced" text component with that. This resolution can be done by signs, by written books when they are first opened, by boss bar names, by text displays, and by commands such as /tellraw and /title. It can also be done by the item modifers set_name and set_lore, but only if their [String] entity tag is set. Custom item names, custom entity names and scoreboard objective names cannot by themselves resolve these components.
+Additionally, resolution fixes a single value in place. Therefore, these content types are not dynamic, and don't update to reflect changes in their environment, while "simple" components usually do.
+
+
+== History ==
+
+
+== See also ==
+JSON
+Commands
+Formatting code
+
+
+== External links ==
+Text component Generator on misode.github.io
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

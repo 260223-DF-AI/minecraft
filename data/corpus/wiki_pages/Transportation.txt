@@ -1,0 +1,86 @@
+Transportation is how players move around the world or between dimensions (the Overworld, the Nether, and the End).
+
+
+== Methods ==
+
+These speeds assume that the form of transportation is not under the effect of the Speed or Slowness status effects if they can be, unless mentioned. In Bedrock Edition, there is a speed limit of 320 m/s, or 16 blocks per tick.
+Note: As 1 block is 1 m3, 1 m/s is equal to 1 block per second. Thus for convenience, all speeds are shown in SI units. 1 m/s equals 3.28 ft/s and 1 km/h equals 0.621 mph.
+
+Notes
+
+
+=== Potions ===
+Using effects from potions or beacons, walking and sprinting speeds become competitive with other methods of transportation.
+Each additional level of Speed allows the player to walk at nearly the sprinting speed of the previous level, and sprinting with Speed II is only slightly slower than a minecart at full speed or a boosted pig. With adequate food and potion supplies, sprinting may be more cost-effective than building high-speed transportation systems.
+
+
+=== Commands ===
+Using the /effect command, extremely high or low speeds become reachable. At exceedingly high levels (100+), the player moves faster than the chunks can load.
+
+
+=== Vertical transportation ===
+
+There are some examples of purely vertical transportation methods:
+
+Falling speed is more complex: Every tick (1⁄20 second), non-flying players and mobs have their vertical speed decremented (less upward motion, more downward motion) by 0.08 blocks per tick (1.6 m/s), then multiplied by 0.98. This can be described as a formula: 
+v(t)=0.98×(v(t−1)−0.08)
+Where v(t)is the speed (in blocks/second) at the t-th tick. v(1) corresponds to the initial speed of the jump: v(1)={0Freefall0.42+0.1EJumpBoostJumping} where EJumpBoost is the level of the jump boost. Because "Speed" (in Minecraft) is defined as the Y coordinate difference between the current tick and the previous tick, the initial speed is v(1) instead of v(0).
+This would produce a terminal velocity of 3.92 blocks per tick or 78.4 m/s. However, the sky isn't quite high enough for that: Falling from layer 320 to bedrock takes around 8 seconds, with impact at 3.70925 blocks per tick (74.185 m/s). It is possible to fly higher in Creative mode, or by flying with an elytra and then removing it, reaching terminal velocity by falling from "above the sky".
+
+By solving the recurrence relation, it is possible to get an exact function to calculate the vertical speed of a falling player:
+v(t)=0.98t−1(v(1)+3.92)−3.92
+Where the velocity v is in blocks (meters) per tick, the time t is in ticks and downward motion is negative. Note that if the initial velocity is zero, the function can be simplified to v(t)=3.92×(0.98t−1).
+An exact function to calculate the displacement of the player is the following:
+d(t)=d(0)+50(v(1)+3.92)(1−0.98t)−3.92t
+Where the displacement d is in blocks (meters), the time t is in ticks, d(0) is the initial displacement and downward displacement is negative. If the initial velocity and displacement is zero, it can be written as:
+d(t)=3.92×(50×(1−0.98t)−t)
+An approximate function to calculate the time it takes to fall from some height is the following:
+t(d)=50+0.255102d+49.498316×W0(−0.367861×0.994859d)
+Where the height d is in blocks (meters), the time t is in ticks, initial velocity and displacement is zero, downward displacement is negative and W is the Lambert W function.
+
+
+=== Other modes of transportation ===
+Players are also able to use pistons for transport.
+It is possible to construct complex flying machines using pistons, blocks of redstone, slime blocks, and honey blocks.
+Dying is an instant mode of transportation to the player's bed or spawn point, but at the cost of all items and XP (if the keepInventory gamerule is disabled) and the world (on Hardcore).
+If the player has already defeated the ender dragon, and is near a stronghold/end portal, they can enter and exit the End to instantly be transported to their bed or spawn point without dying.
+Explosion knockback can send an adjacent player flying for a short distance, depending on the strength of the explosion. This is not recommended in Survival mode without strong armor and/or a totem of undying.
+It is possible to position boats in a line with each boat being 4-5 blocks (inclusive) from each other. By rapidly pressing the interact button. This also works with saddled pigs (provided they stay in position. (placed on posts)) and minecarts, however those are much more expensive.
+
+
+== Calculator ==
+
+
+== Achievements ==
+
+
+== Advancements ==
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+=== Legacy Console Edition ===
+
+
+=== New Nintendo 3DS Edition ===
+
+
+== Issues ==
+Issues relating to "Transportation" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Trivia ==
+Sprinting with Soul Speed 3 on soul sand while having Speed 2 is almost as fast as the fastest possible horse breed (12.6896 m/sec).
+
+
+== References ==
+
+
+== Navigation ==

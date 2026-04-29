@@ -1,0 +1,63 @@
+The Slot data structure defines how an item is represented when inside an inventory window of any kind, such as a chest or furnace.
+This page presents the new Slot data structure, using structured components. You can find the documentation of the old structure, that utilizes raw NBT data, here.
+
+
+= Format =
+
+
+= Hashed Format =
+Similar to the usual slot format, but with the notable difference that data component values are encoded as CRC32C (note: CRC32C is not the same thing as CRC32) checksums. The way the checksum is generated is currently undocumented. It's currently only used in the click container packet.
+
+
+= Structured components =
+The complete list of available components is described below.
+For a more in-depth description, and information on how the items below are encoded with the NBT format, check here.
+
+
+== Other types ==
+Common types used in multiple components are described below.
+
+
+=== Block Predicate ===
+Describes a predicate used when block filtering is necessary. It can be parameterized to account for any combination of the type of block, the values of specific block state properties, or block entities' NBT data or data components.
+
+
+==== Property ====
+
+
+==== Exact Data Component Matcher ====
+
+
+==== Partial Data Component Matcher ====
+
+
+=== Dye Color ===
+A color from one of the 16 dye types.
+
+
+=== Firework Explosion ===
+Represents a firework explosion, consisting of a shape, colors, and extra details.
+
+
+=== Potion Effect ===
+Describes all the aspects of a potion effect.
+
+The Detail structure is defined as follows:
+
+
+=== Trim Material ===
+
+
+=== Trim Pattern ===
+
+
+=== Consume Effect ===
+
+
+=== Instrument ===
+
+
+=== Jukebox Song ===
+
+
+=== Banner Pattern ===

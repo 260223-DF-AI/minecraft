@@ -1,0 +1,551 @@
+This is a list of Bedrock Edition 1.16.200 development versions.
+
+
+== beta 1.15.0.8 ==
+Beta 1.15.0.8 is the first RenderDragon beta version for Bedrock Edition 1.16.200, released on April 16, 2020, which introduces RenderDragon to the Windows 10 port. This is also the first ever RTX Beta released in 2020.
+
+
+=== Additions ===
+
+
+==== General ====
+Settings
+
+Added the Advanced Video settings.
+Added the DirectX Ray Tracing toggle.
+Used to toggle the Ray Tracing on or off.
+Added the Upscaling toggle.
+Used to boost frame rates on GeForce RTX graphics cards with NVIDIA DLSS 2.0.
+Added the Ray Tracing View Bobbing toggle.
+Used to toggle the "bobbing" motion of the camera while using ray tracing.
+Added the Ray Tracing Render Distance toggle.
+Used to control the chunk render distance ray tracing are visible at once.
+
+
+=== Changes ===
+
+
+==== General ====
+Options
+
+Fancy Leaves, Fancy Bubbles, Render Clouds, Beautiful Skies, Smooth Lighting, Fancy Graphics, and View Bobbing are now moved to the Advanced Video settings.
+Resource Packs
+
+Resource packs now support ray tracing.
+
+
+== beta 1.15.0.9 ==
+Beta 1.15.0.9 is the second RenderDragon beta version for Bedrock Edition 1.16.200, released on April 28, 2020, which fixes some bugs. It is possible to run ray-tracing on non-RTX GPUs via a registry hack
+
+
+=== Fixes ===
+Crash fixes.
+Items in hand look identical to the same items placed in the world.
+Sun shadows and god rays look brighter and more correct through glass.
+Performance enhancements.
+Tweaks to address the brightness at night.
+Fix for per-pixel emissives on low resolution textures.
+Fix for better looking glass in reflections.
+
+
+== beta 1.15.0.11 ==
+Beta 1.15.0.11 is the third RenderDragon beta version for Bedrock Edition 1.16.200, released for Windows 10 on July 17, 2020.
+
+
+=== Changes ===
+Unknown
+
+
+== beta 1.15.0.7 ==
+Beta 1.15.0.7 is an unreleased RTX beta for Bedrock Edition 1.16.200, which includes ray tracing features in early development.
+
+
+=== Changes ===
+This beta contains the ray tracing features introduced to the public in Bedrock Edition beta 1.15.0.8. It is unknown what the exact differences are with that version.
+
+
+=== Gallery ===
+
+
+== beta 1.16.200.50 ==
+Beta 1.16.200.50 is an unreleased beta version for Bedrock Edition 1.16.200 developed in October 15 ~ 22, 2020. This beta exists in Google Play store's database, and can be obtained from there via specific methods.
+
+
+== beta 1.16.200.51 ==
+Beta 1.16.200.51 is the first beta version for Bedrock Edition 1.16.200, released on October 22, 2020, which makes changes to death messages and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Gameplay ====
+Death messages
+
+Added the following new death messages:
+"<player> was sniped by <player/mob>" (Killed by a shulker bullet)
+"<player> was spitballed by <player/mob>" (Killed by llama spit)
+
+
+=== Changes ===
+
+
+==== Gameplay ====
+Death messages
+
+Changed the following new death messages to match Java Edition:
+"<player> was shot by skeleton" (Replaces "...shot by arrow" for skeletons)
+"<player> was impaled to death by <player/mob>" (Replaces "...slain by Trident")
+"<player> was fireballed by <player/mob>" (Replaces "...slain by Blaze/Ghast")
+
+
+==== General ====
+RenderDragon
+
+Re-enabled in this beta.
+
+
+=== Fixes ===
+Accessibility Features
+
+Fixed a bug where UI screen reader did not read the screen title in-game
+Fixed a bug where the UI screen reader did not read the shortcut button on the Pause Screen
+Fixed a bug where the UI screen reader did not read the title on the Profile and Edit Character screens
+Fixed an issue where the numbering of buttons in the Pause screen was wrong when using text-to-speech
+Fixed several issues regarding text contrast
+Gameplay
+
+Death message bugfixes (MCPE-30360, MC-116558)
+Death message for being shot by Shulker is now "sniped by shulker" instead of "slain by shulkerBullet"
+Death message for being fireballed by Blaze or Ghast is now "fireballed by <Blaze | Ghast>" instead of "slain by <Blaze | Ghast>"
+Death message for being shot by Skeleton is now "shot by skeleton" instead of "shot by arrow"
+Death message for being spit at by Llama is now "spitballed by Llama" instead of "slain by Llama spit"
+Death message for being killed with a trident is now "was impaled to death by " instead of "slain by Trident"
+Nether Brick Blocks are once again craftable (MCPE-101736)
+Fixed the number of Nether Bricks in the Crafting Table (MCPE-101818)
+Mobs
+
+Increased allowed spawn distance for raid mobs as well as improved the ability to find a valid raid spawn position
+Components
+
+Armor with the lock in inventory component can now be placed in the armor slots (MCPE-102244)
+Items
+
+Fixed an issue of anyone using query.get_equipped_item_name with an item that was renamed wouldn't get the right result.
+
+
+== beta 1.16.200.52 ==
+Beta 1.16.200.52 is the second beta version for Bedrock Edition 1.16.200, released on October 28, 2020, which added some of the first Caves & Cliffs features behind experimental gameplay toggle, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Grass Path
+
+Renamed to “Dirt Path”
+Can now be made on top or side of dirt, coarse dirt, mycelium, and podzol.
+
+
+==== Items ====
+Netherite leggings
+
+Changed the texture of the worn netherite leggings model.
+
+
+==== General ====
+Scripting, Add-Ons, and Technical
+
+Changed set_block and set_block_at_pos to use BlockDescriptor  when specifying block_type
+Items with the item lock component no longer cause the recipe book to show invalid recipe results
+Blocks 
+
+Added query.cardinal_facing_2d to get a ground plane direction that doesn't return up or down
+Added the ability to put block models into the models/blocks folder
+Added the ability for item triggers to send events to the block they are interacting with (when there is one such as on_use_on)
+Added the ability to query the interacted face for both interactions with blocks and using minecraft:on_use_on in an item. Face can be queried with query.block_face
+Event Responses
+
+add_mob_effect and remove_mob_effect no longer throw content errors when valid effect names are passed in
+Added documentation for remove_mob_effect to make creators aware they can use the value "all" in effect to remove all mob effects from a target
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Caves & Cliffs" experimental toggles.
+
+
+==== Blocks ====
+Powder Snow
+
+Currently only available through the creative inventory.
+Entities, including mobs and players, can enter powder snow blocks.
+Their movement is slowed down while inside, and fall damage is ignored.
+Powder snow can be climbed similar to ladders or scaffolding. Downward movement cannot be accelerated.
+Have a slightly different texture than regular snow blocks.
+When the player is inside the block, a powder snow block fog is rendered around them and an overlay texture is rendered on the HUD.
+Currently behind Experimental Gameplay toggle (Caves and Cliffs sub-toggle)
+
+
+==== Items ====
+Goat Horns
+
+Dropped by a goat if it rams into a block.
+When used for a short period of time, it makes a sound identical to the horn heard during raids.
+Currently behind Experimental Gameplay toggle (Caves and Cliffs sub-toggle)
+Spawn Eggs
+
+Added goat spawn eggs.
+Currently behind Experimental Gameplay toggle (Caves and Cliffs sub-toggle)
+
+
+==== Mobs ====
+Goats
+
+Spawn in the Extreme Hills biome.
+Take reduced fall damage.
+Will sometimes attempt to ram other mobs, including players.
+The ram target can be up to 16 blocks away, but the ram itself only goes 9 blocks. Goats will attempt to get closer to targets that are too far to be reached.
+Have a cooldown of 10 to 15 seconds between attacks.
+Will not attack goats and shulkers.
+Ram will be canceled if attacked.
+Drops a horn when they ram into a tree.
+Can be bred with wheat.
+Breeding results in 3 to 8 baby goats.
+Have 10HP health.
+On death, they do not drop items, but adults will drop experience.
+Can be milked with a bucket, similar to cows.
+Can be attached to a lead.
+Currently behind Experimental Gameplay toggle (Caves and Cliffs sub-toggle).
+
+
+=== Fixes ===
+Performance and Stability
+
+Fixed several crashes that could occur during gameplay
+Large numbers of scheduled instant updates should no longer crash the game (MCPE-94942)
+Fixed occasional crash when going through a portal or flying around
+Fixed a crash that would occasionally occur while flying or moving around the game world
+General
+
+Only preview items will be shown in crafting screen when auto crafting an item on controller. This prevents rapid updates of the recipe book
+Fixed a bug where End Portal blocks were not removed after an End Portal Frame block is destroyed. Filled blocks other than end portal blocks will remain in place
+Fixed paperdoll such that it can now always be rotated with the mouse when in the dressing room (MCPE-101210)
+Accessibility
+
+Emote wheel now supports the screen reader
+Fixed a bug where UI screen reader did not read the screen title and shortcut buttons on the Invite to game Screen
+Fixed an issue where the screen reader was not reading updates often enough on some devices
+Fixed the screen reader so messages with controller icons in the Chat Screen are read correctly
+UI Screen Reader now reads the Open Chat Message while Text To Speech For Chat is turned off
+Gameplay
+
+Double chests no longer lose contents when reloading the world (MCPE-102970)
+Compass is no longer consumed when used on a Lodestone in creative mode (MCPE-96258)
+Cocoa Pods generated in jungle now generate in the proper direction (MCPE-102399)
+Signs no longer replace decorations when attempting to place in the same space as the decoration
+Right-clicking a snow block with a shovel no longer breaks the snow block
+Dirt paths (formerly grass path) can now be made by using a shovel on dirt, podzol, mycelium or course dirt (as well as grass)
+Updated the Netherite leggings texture (MCPE-103016)
+Twisting Vines can no longer be placed on Composter blocks while sneaking (MCPE-78973)
+Mobs
+
+Villagers will no longer steal workstations from each other (MCPE-43071)
+Mobs no longer randomly stop attacking and following their targets (MCPE-48144)
+Piglins that are close together can no longer pick up the same item if it's dropped between them
+Mobs no longer spawn in Wither Roses (MCPE-97331)
+Bees now only exit at the front of Bee Hives and Bee Nests
+Commands
+
+/playsound commands now play the sound correctly for all players in range
+/effect command duration is now capped at 1,000,000 seconds (MCPE-92916)
+Add ticking area commands performed in the same tick now disallow adding areas with the same name twice
+Placeholder text message for the /titleraw command success no longer returns to player (MCPE-63618)
+FadeOut argument is no longer ignored in /title's times command
+Graphics, Textures, and User Interface
+
+Update Zombified Piglin texture to remove flickering of loincloth (MCPE-96793)
+"Classic Controls - Intense" font color now matches the surrounding text in VR Controls menu
+[X] button in Chat Settings is no longer present when using a controller
+Profile screen has been improved, now characters will be visible and can be selected or modified as soon as they load
+Fixed a bug where the visual focus indicator was lost when hovering on tabs
+Glowsticks no longer use placeholder textures (Education Feature) (MCPE-45686, MCPE-68417)
+Loading screen tips won't display the key tips.game.62
+Avoid purchasing Realm if player cancels out of "Purchase History Needed" dialog
+Technical 
+
+Fixed face occlusion with data driven blocks to properly account for unit cube transparent vs unit cube opaque
+Fixed a crash caused by heap corruption with entity_collision and pick_collision components
+Data-driven blocks no longer have their top faces rotated 180 degrees when carried or in inventory (MCPE-63134)
+Mobs are no longer teleported back and forth outside solid objects if there is not enough space for multiple entities (MCPE-101202)
+Fixed items not being placeable in additional horse equipment slots. Does not fix all equippable behaviors
+Inventory size on the minecraft:inventory component has to be increased to match the equippable slots in order for the server to accept the item placement
+The tooltip for item with item lock component will no longer show when game rule showtags is disabled
+
+
+== beta 1.16.200.53 ==
+Beta 1.16.200.53 is the third beta version for Bedrock Edition 1.16.200, released on November 5, 2020, which added new sounds settings, ray-tracing features from RTX Beta, parity from Java Edition and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+
+Settings
+
+Added more settings to the Audio settings to be in parity with Java Edition:
+Master Volume
+Ambient/Environment
+Blocks
+Hostile Creatures
+Friendly Creatures
+Players
+Jukeboxes/Note Blocks
+Weather
+Added "Upscaling", "Ray Tracing" and "Ray Tracing Render Distance" to the Video settings, ported from the RTX Beta. These options can only be toggled if the user has the required min-spec hardware. https://help.minecraft.net/hc/en-us/articles/360052769812
+Upscaling used to boost frame rates on GeForce RTX graphics cards with NVIDIA DLSS 2.0.
+Ray Tracing used to toggle the Ray Tracing on or off.
+Ray Tracing Render Distance used to control the chunk render distance ray tracing are visible at once.
+
+
+=== Changes ===
+
+
+==== General ====
+Marketplace
+
+Added various UI elements to communicate ray tracing capabilities in the Marketplace (Windows 10 Only)
+Resource packs in the Marketplace are now aware of ray tracing capabilities and will display a label indicating support in the UI
+Attempting to purchase and/or download a resource pack that requires ray tracing will notify the user of a purchasing error when that user does not have the required min-spec hardware.
+Settings
+
+Renamed "Master Volume" to "Main" in the Audio settings.
+
+
+=== Fixes ===
+Performance and Stability
+
+Fixed several crashes that could occur during gameplay
+Fixed a bug where Minecraft would occasionally crash when loading a local world
+General
+
+'Strawberry Blonde' color now has correct name in the character creator (MCPE-102674)
+Fixed a bug where if the view bobbing setting was disabled the player's hand would still bob (MCPE-79380)
+Fixed an issue where loot tables with a set_data function produced incorrect loot items
+Accessibility
+
+Fixed an issue where the Servers tab would not correctly read text-to-speech prompts when not signed into a Microsoft account
+Fixed various issues where text-to-speech indices on the start screen were not correct
+Fixed issues where user interface controls would be improperly indexed in text-to-speech for popup modals
+Reduced transparency on top row of buttons in Touch UI to improve readability
+Gameplay
+
+Netherite Armor now gives a 90% reduction in Knockback (MCPE-77430)
+Mobs
+
+Bees will no longer stray more than 22 blocks from their home Beehive (MCPE-60252)
+Graphics, Textures, and User Interface
+
+Ghost items in the crafting grid now have a different colored background depending on item availability in the inventory
+The Player Permissions menu can now be navigated using a controller regardless of the players permission level
+Marketplace
+
+Owned packs are now refreshed correctly after restarting the game
+
+
+== beta 1.16.200.54 ==
+Beta 1.16.200.54 is an unreleased beta version for Bedrock Edition 1.16.200 developed on November 5 ~ 11, 2020. This beta exists in Google Play store's database, and can be obtained from there via specific methods.
+
+
+== beta 1.16.200.55 ==
+Beta 1.16.200.55 is the fourth beta version for Bedrock Edition 1.16.200, released on November 11, 2020, which adds a UI startup screen for outdated graphics drivers and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+
+Menu screen
+
+Added a UI startup screen to inform players if they are on outdated graphics drivers.
+
+
+=== Fixes ===
+General
+
+Fixed a bug that caused mobs such as pillagers to hide away from sunlight.
+Fixed an issue where some mobile devices would lose audio after suspend and resume (MCPE-101027).
+Fixed a bug that caused vertical knockback to be too weak.
+Fixed an issue in RTX when flying around would stutter and have poor frame rate (MCPE-103532).
+Technical
+
+Fix so that old command versions use the previous position instead of current one.
+Fixed issue where query.cardinal_block_face_placed_on no longer worked with on_player_placing.
+Changed texture atlas padding size from 0 to 1 when disabling mipmap.
+Fixed issue of blocks listed in the minecraft:block_placer component wouldn't work correctly.
+MoLang
+
+Geometry, Material, and Texture variable names can once again contain dots.
+
+
+== beta 1.16.200.56 ==
+Beta 1.16.200.56 is the fifth beta version for Bedrock Edition 1.16.200, released on November 18, 2020, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== General ====
+Technical 
+
+Added a limit to how many log messages could be processed to the GUI per frame to prevent delay on load.
+
+
+=== Fixes ===
+Vanilla Parity
+
+Basalt can no longer be destroyed by Ghast fireballs. (MCPE-75252).
+Basalt blocks now take slightly more time to destroy.
+Dragon Egg now always drops as an item when it's destroyed by an explosion. (MCPE-52632).
+General
+
+The Founder's Cape will now show up within the capes tab of the dressing room again if owned by user.
+Fixed a server/client desync with blocks when using the /fill command at the edge of render distance.
+If available GPU memory cannot be queried, the maximum render chunk distance will now default to 16.
+Fixed an issue that caused a crash on Nintendo Switch when trying to load a 256x resolution resource pack.
+The system now blocks that selection and notifies the player they cannot select it.
+Technical
+
+Fixed some culling issues with data-driven blocks larger than 1x1x1 when placed on a chunk boundary. Also added content warnings for larger blocks.
+Fixed custom spawn egg generation in template worlds.
+Fixed player smaller hitbox while swimming and gliding from being reset after an event is sent on the player.
+
+
+== beta 1.16.200.57 ==
+Beta 1.16.200.57 is the sixth and final beta version for Bedrock Edition 1.16.200, released on November 24, 2020, which fixes bugs.
+
+
+=== Fixes ===
+Performance and Stability 
+
+Improved terrain building speed when flying with Elytra. (MCPE-85614).
+Fixed a bug that would crash the game when using the crafting table on Creative mode.
+Fixed an issue with a runaway block ticking queue that occurred on a looping data-driven block that changed itself to a different permutation. The bug could cause memory issues, increase load and save times, as well as stalling the game periodically.
+Technical Changes  
+
+Reduced content warning spam with data-driven block geometry.
+A fix for dedicated server that copies the experimental toggle state to LevelSettings while initializing the server instance to make sure it uses the values specified in the loading world.
+Fixed data-driven blocks to shrink UVs the same was as actors to prevent UV bleeding.
+
+
+== beta 1.16.30.52 ==
+Beta 1.16.30.52 is the fourth RenderDragon beta version for Bedrock Edition 1.16.200, released on September 1, 2020, which brought the Nether Update to RTX beta users.
+
+
+=== Additions ===
+
+
+==== Gameplay ====
+Marketplace
+
+Added two additional free worlds in Marketplace.
+
+
+==== General ====
+
+Updated to Nether Update.
+
+
+=== Changes ===
+
+
+==== General ====
+Updated to DXR v1.1
+
+
+=== Fixes ===
+General 
+
+Improved End Dimension in ray tracing
+Various performance and stability fixes
+Graphical and Rendering  
+
+Player's Hand no longer clips through blocks with Raytracing enabled
+Many map rendering issues resolved
+Updated DLSS upscaling
+Improved dark noise at edges of view when turning the camera
+Improved ‘ghosting’ when removing lights, more responsive shadows
+Disocclusion improvements in dark areas
+Improvement to how glass looks when you see it in reflections
+Fix for missing detail in per-pixel emissives with low res textures
+Improved specular reflections of metals
+Improvements to night vision
+Sky and Brightness Improvements 
+
+Improved cloud appearance
+Improved sky appearance at different times of day
+Sky lighting matches weather during rain and thunder
+Improved brightness and volumetrics when teleporting or changing time of day
+General brightness improvements
+Improved sun and moon intensity
+Improvements to the End sky
+Sunlight no longer visible when some chunks are not rendered in Nether
+Texture Creation 
+
+Flipbook textures are now supported with physically based materials
+Grassy dirt blocks support PBR
+
+
+== beta 1.16.30.53 ==
+Beta 1.16.30.53 is the fifth RenderDragon beta version for Bedrock Edition 1.16.200, released on September 14, 2020, which fixes bugs.
+
+
+=== Fixes ===
+General 
+
+Various performance and stability fixes
+Fixed the bug causing blue squares to appear on some textures like gravel and grass (MCPE-98780)
+Fixed an issue that could cause the screen to appear split up if drivers were out of date (MCPE-98683)
+Fixed the bug where unlit torches can emit light
+
+
+== beta 1.16.30.56 ==
+Beta 1.16.30.56 is the sixth RenderDragon beta version for Bedrock Edition 1.16.200, released on October 20, 2020, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== General ====
+Updated fog settings
+New format for PBR materials - Texture Sets
+These changes will break existing worlds in the RTX Beta. Updating the RTX world templates from the Marketplace will get the latest changes to continue playing
+Added glint effect to held and dropped enchanted items
+Added support for Blindness effect
+Support for solid colored banners
+Added cracking animation when player is above water, but mining blocks underwater
+Improved appearance of sand and ice during day-night cycle
+
+
+=== Fixes ===
+General
+
+Various performance and stability improvements
+Reduced mouse and keyboard latency
+Fixed several blue squares appearing on some textures (MCPE-98780)
+Fixed a variety of shimmering item issues, including items in hand, in frames, on armor stands, and bobbing on the ground
+
+
+== beta 1.16.30.57 ==
+Beta 1.16.30.57 is the seventh and final RenderDragon beta version for Bedrock Edition 1.16.200, released on October 22, 2020, which improves performance. This is the final RTX Beta released in 2020.
+
+
+=== Fixes ===
+Improved performance while playing with ray tracing enabled.
+
+
+== Notes and references ==
+
+
+== Navigation ==

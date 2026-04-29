@@ -1,0 +1,31 @@
+Enable encryption for WebSocket connections.
+
+
+== Usage ==
+Allowing only the WebSocket side connected by the player to execute.
+If the player has the encrypted WebSocket option turned on, the connected WebSocket server must execute this command.
+
+
+== Syntax ==
+enableencryption <publicKey: string> <salt: string> [ciper_mode: EncryptionCommandCipher]
+
+
+== Arguments ==
+publicKey: string: basic_string
+
+Specifies the public key to be used for WebSocket connections.
+salt: string: basic_string
+
+Used for interference.
+ciper_mode: EncryptionCommandCipher: enum
+
+Specifies an encrypton cipher. Must be one of:
+cfb
+cfb128
+cfb8
+
+
+== Result ==
+
+
+== Navigation ==

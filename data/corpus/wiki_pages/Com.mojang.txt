@@ -1,0 +1,40 @@
+com.mojang is a game directory which contains the player's save data, such as worlds, custom resource packs and behavior packs, screenshots, game settings, and more.
+
+
+== Location ==
+Below is a table showing the default path of  com.mojang.
+
+
+=== Windows ===
+On Windows, every signed in user has its own  com.mojang directory, located in the Users directory. A shared  com.mojang directory for all players and signed out players is stored in Users\Shared\games.
+This means that worlds, options, and add-ons are stored separately for every player. User data in the directory of a signed in user is not visible for signed out players or different accounts.
+Each player's data is synchronized with the Xbox cloud storage. The game synchronizes with the cloud during startup.
+
+
+=== Android ===
+On Android, there are two distinct  com.mojang directories - internal and external. If the File Storage Location option is set to Application, all data is stored in the internal directory. If it's set to External, some data (such as worlds) is stored in the external directory, but the internal directory is still used for other data.
+The external directory can be viewed and edited by users, though it might require workarounds in newer Android versions. The internal directory cannot be viewed or edited without root access. It's not possible to migrate worlds and other data between those directories without root access.
+The user ID is usually 0, but differs if the user is a secondary user. /storage/emulated/user ID is often presented as Internal storage or similar by file managers, or when you access the device via MTP (connected to a Linux, macOS or Windows computer).
+
+
+== Directory structure ==
+
+
+=== Root directory ===
+On Windows devices, the root directory for Minecraft user data is  Minecraft Bedrock or  Minecraft Bedrock Preview. This directory contains some data outside of user-specific data in  com.mojang, such as Marketplace content.
+
+
+== History ==
+
+
+== See also ==
+Bedrock Edition installation files, the directory which stores all vanilla resources and app assets.
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,32 @@
+0.1.1 is a server version of Java Edition Alpha released for client version v1.0.16 on August 12, 2010.
+This version was reuploaded for unknown reasons.
+
+
+== Additions ==
+
+
+=== Command format ===
+Added support for the /ban and /pardon commands to ban and unban a player from the game.
+Added support for the /ban-ip and /pardon-ip commands to ban and unban a specific IP.
+Added support for the /op and /deop commands to add/remove a player from the op list.
+
+
+=== General ===
+Authentication
+
+Added online authentication for online servers.
+The server can now be started in either online/secure mode or offline/insecure mode. A secure server requires all connecting players to first authenticate on minecraft.net, then checks that the authentication matches, before letting the player in. A server running in offline mode doesn't do any such checks, nor does it ask the client to authenticate, but players cannot be sure that people who connect really are who they claim they are. Offline mode is meant for LAN play where the player knows the people connecting to the server.
+Ops
+
+Added player ops who can send server commands by typing a slash followed by a server command.
+Server ops can also build/destroy blocks near the spawn area.
+
+
+== Changes ==
+Made the server save terrain more frequently.
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,77 @@
+Adds, removes or queries player experience.
+
+
+== Syntax ==
+Java Edition
+experience add <targets> <amount> [levels|points]
+xp add <targets> <amount> [levels|points]
+Increases or decreases experience amount or experience level.
+If experience amount, it is counted into the player's Score.
+If experience level, it is not counted into the player's score. The amount of experience points in the current experience bar is scaled proportionally, keeping the progress of experience bar unchanged.
+experience set <targets> <amount> [levels|points]
+xp set <targets> <amount> [levels|points]
+Setting experience amount or experience level. Does not change the player's score.
+If setting experience amount, the experience level is not changed. If the specified amount is greater than or equal to the remaining capacity of a player's current experience bar, the setting does not work for the player.
+If setting experience level, the amount of experience points in the current experience bar is scaled proportionally, keeping the progress of experience bar unchanged.
+experience query <targets> (levels|points)
+xp query <targets> (levels|points)
+Queries experience level or the experience amount in the current experience bar.
+Bedrock Edition
+xp <amount: int> [player: target]
+Increases experience amount.
+xp <amount: int>L [player: target]
+Increases or decreases experience level. The amount of experience points in the current experience bar is scaled proportionally, keeping the progress of experience bar unchanged.
+
+
+== Arguments ==
+JE: <amount>: integer (in add mode)
+
+Specifies the amount of experience points or levels to give to the player. Negative values remove experience instead of adding them.
+Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ).
+JE: <amount>: integer (in set mode)
+
+Specifies the amount of experience points or levels to be set to the player.
+Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ). And it must be between 0 and 2147483647 (inclusive).
+BE: amount: int: int
+
+Specifies the amount of experience points or levels to be added to the player. This amount may represent either an amount of points or an amount of levels.
+If an L is added to the end, adds levels. Negative values remove experience instead of adding them.
+Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ). If the amount is expressed in points, it must be not lower than 0.
+JE: <targets>: entity (in add and set mode)
+BE: player: target: CommandSelector<Player>
+
+Specifies the target of the command. In Bedrock Edition, if not specified, defaults to the command's executor.
+Must be a player name, a target selector or a UUID‌[Java Edition  only].  And the target selector must‌[JE  only]/should‌[BE  only] be of player type. In Bedrock Edition, the target selector should be of player type.
+JE: <targets>: entity (in query mode)
+
+Specifies the target of the command.
+Must be a player name, a target selector or a UUID.  And the target selector must be of single-player type.
+
+
+== Result ==
+
+
+== Output ==
+
+
+== Examples ==
+To display Steve's current level: experience query Steve levels‌[Java Edition  only]
+To give 7 experience to yourself: xp 7‌[Bedrock Edition  only] or experience add @s 7‌[Java Edition  only]
+To give 3 levels to Alice: xp 3L Alice‌[Bedrock Edition  only] or xp add Alice 3 levels‌[Java Edition  only]
+To remove all levels from all players: xp -2147483648L @a‌[Bedrock Edition  only] or xp set @a 0‌[Java Edition  only] or xp set @a 0 levels‌[Java Edition  only]
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== External links ==
+"/xp Command"     – Microsoft Learn, August 1, 2024.
+
+
+== Navigation ==

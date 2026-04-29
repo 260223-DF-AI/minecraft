@@ -1,0 +1,194 @@
+The first version of Minecraft Infdev was released on February 27, 2010, at 14:14 UTC. 
+In order to test infinite world generation, the height limit was reduced and many parts of the game were temporarily removed, such as caves, ores, music, and mobs.
+
+
+== Additions ==
+
+
+=== Items ===
+ Golden apple
+
+Restores 20HP × 10 health, making it the best food in the game at the time.
+Crafted with 8 blocks of gold surrounding an apple.
+It is unobtainable in normal gameplay.
+
+
+=== World generation ===
+
+ General 
+
+Worlds can now generate infinitely.
+At X/Z +1,024/-512, the skybox around the world stops rendering, giving way to a blank light blue sky.
+At around X/Z ±65,536 blocks away, the hitbox begins to lose its shape.
+At X/Z ±131,072, the gaps between chunks begin to become jumpy and distorted. These effects begin to double every exponent of two that the player walks from here.
+At X/Z ±2,097,152, the effects become so severe that the world seems to not render completely at certain angles.
+At X/Z ±16,777,216, blocks are no longer solid, allowing the player to fall and hit a layer of lava, however the player can still swim through water.
+At X/Z ±2,147,483,647 (32-bit integer limit), terrain disappears completely and the game crashes.
+The terrain generates much like it did during Classic.
+The world now only generates grass, dirt, stone, water and dandelions for the terrain, and bricks and obsidian for generated structures.
+ Brick pyramid
+
+Generates at the exact same positions regardless of world seed.
+Top of it is cut off due to height limit change.
+ Far Lands
+
+As the world now generates infinitely (or at least to 32-bit integer limit), the world generation breaks at X/Z ±33,554,432, making all terrain go to maximum possible height.
+Are a giant wall of stone blocks that go from sea level to the height limit.
+ Obsidian wall
+
+Generate at 0 on X and Z axes.
+Used to mark the center of a world.
+
+
+=== General ===
+Sky
+
+A 1536×1536 test skybox, which is completely blue (hex:  #0000FF).
+
+
+== Changes ==
+
+
+=== Blocks ===
+General
+
+Blocks no longer update on their own.
+This means that sand and gravel do not fall, crops and saplings do not grow, sponges do not work, and liquids do not spread.
+Gravel
+
+No longer generates in the map and is now unobtainable by normal means.
+Sand
+
+No longer generates in the map and is now unobtainable by normal means.
+
+
+=== Items ===
+ Apples
+
+Texture changed from .
+Are now dropped by players named Notch.
+Paintings
+
+Are now crafted with sticks instead of planks.
+
+
+=== Gameplay ===
+Hotbar
+
+The player now spawns with 999 glass and 990 planks in new worlds.
+Map configuration
+
+Map theme, map shape, and map type no longer have any effect, as all Infdev maps are of the same type.
+Level saving
+
+No longer functional, as saving a level produces an empty .mclevel file.
+Creative
+
+The player can take damage.
+
+
+=== General ===
+Height limit
+
+Changed world height from 256 to 128.
+
+
+== Technical ==
+Debug screen
+
+"T" value no longer displays values.
+"O", "E", "B". and "I" values no longer function.
+Removed "L" lighting update value.
+
+
+== Removals ==
+
+
+=== Mobs ===
+Creepers
+
+Removed.
+Pigs
+
+Removed.
+Sheep
+
+Removed.
+Skeletons
+
+Removed.
+Spiders
+
+Removed.
+Zombies
+
+Removed.
+
+
+=== Non-mob entities ===
+Drops
+
+Removed.
+Player
+
+The player no longer renders. Third person view does not render the player (although the camera is still pulled out).
+
+
+=== World generation ===
+Caves
+
+Removed.
+Ore generation
+
+Removed.
+Starting house
+
+Removed.
+Trees
+
+Removed.
+World boundary
+
+Removed.
+
+
+=== Gameplay ===
+Daylight cycle
+
+Removed.
+
+
+=== General ===
+Dynamic lighting
+
+Removed.
+Music
+
+Removed.
+
+
+=== Distance effects ===
+Entities (including the player) no longer use single-precision floating point arithmetic for positions.
+
+
+== Bugs ==
+7 bugs reported
+
+The player can place a block inside themselves.
+The skybox cuts off after a while.
+Chests and furnaces crash the game when opened.
+Some blocks do not display their textures when placed (fire, gears, torches, crops). (They can still be selected however.)
+Furnaces do not have a face.
+Fire cannot be extinguished normally. Punching the fire instead punches the block behind it. Mining the block below it turns the fire invisible, though it is still there. Placing a block on the fire (replacing the fire with the block) removes the fire.
+Torches cannot be placed on the sides of a block.
+
+
+== Trivia ==
+An early developer screenshot showed this version marked as "Minecraft Indev".
+This is the first time the world height was decreased.
+
+
+== References ==
+
+
+== Navigation ==

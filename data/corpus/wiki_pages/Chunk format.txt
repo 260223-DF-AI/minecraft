@@ -1,0 +1,43 @@
+Chunks store the terrain and entities within a 16×384×16 area in The Overworld, and 16×256×16 in The Nether and The End by default. They also store precomputed lighting, heightmap data for Minecraft's performance, and other meta information.
+
+
+== NBT structure ==
+
+Chunks are stored as tags in regional Minecraft Anvil files, which are named in the form r.x.z.mca. They are stored in NBT format, with the following structure (updated for 1.18):
+
+
+== Block format ==
+In the Anvil format, block positions are ordered YZX for compression purposes.
+The coordinate system is as follows:
+
+X increases East, decreases West
+Y increases upward, decreases downward
+Z increases South, decreases North
+This means indices are ordered like in a book, with its top to the North, read from beneath and with words written backward: each letter is a different X-index, each line a Z-index, and each page a Y-index. In case of a flat 2D array, the Y-index is omitted, and the array reads like a single page.
+
+Each section is a 16×16×16-block area, with up to 16 sections in a chunk : from 0 at the bottom, to 15 on top. Empty sections are not saved. Each section has a "Y" byte for its Y-index (0 to 15), a "Palette" list linking IDs to block states, and a "BlockStates" long array storing the IDs per block location, compressed by fitting multiple IDs inside each entry (see NBT_structure above for details on the compression). There might be an additional section at the top and or bottom of the world used to store light, so that light travels properly over and under the world limits.
+The pseudo-code below shows how to access individual block information from a single section.
+
+byte Nibble4(byte[] arr, int index){
+	return index%2 == 0 ? arr[index/2]&0x0F : (arr[index/2]>>4)&0x0F;
+}
+int BlockPos = y*16*16 + z*16 + x; 
+compound Block = Palette[change_array_element_size(BlockStates,Log2(length(Palette)))[BlockPos]];
+string BlockName = Block.Name; 
+compound BlockState = Block.Properties; 
+byte Blocklight = Nibble4(BlockLight, BlockPos); 
+byte Skylight = Nibble4(SkyLight, BlockPos);
+
+
+== Tile tick format ==
+Tile Ticks represent block updates that need to happen because they could not happen before the chunk was saved. Examples reasons for tile ticks include redstone circuits needing to continue updating, water and lava that should continue flowing, recently placed sand or gravel that should fall, etc. Tile ticks are not used for purposes such as leaf decay, where the decay information is stored in the leaf block data values and handled by Minecraft when the chunk loads. For map makers, tile ticks can be used to update blocks after a period of time has passed with the chunk loaded into memory.
+
+
+== ToBeTicked format ==
+This [NBT List / JSON Array] List is always present, and contains 16 [NBT List / JSON Array] Sublists, each representing one of the "sections" of the chunk. Those inside lists may contain [Short] Shorts, each representing a packed coordinate relative to the section : The 4 most significant bits are always 0, then each group of 4 bits (or nibble) represents a section-relative coordinate, from 0 to 15. The order of sections in the list appear to be ordered from bottom to top, and the packing order of the coordinates is 0ZYX, where 0 refers to the chunk section. When converting proto-chunks to full chunks, only coordinates that are stored in PostProcessing appear to receive a tick update, tick updates stored in block_ticks, and fluid_ticks are ignored. [verify]
+
+
+== History ==
+
+
+== Navigation ==

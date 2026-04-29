@@ -1,0 +1,49 @@
+Ominous item spawners are entities spawned by ominous trial spawners that display an item for 3 to 6 seconds before dispensing it downwards.
+
+
+== Spawning ==
+
+When an ominous trial spawner detects at least one player within its activation range, every 8 seconds it spawns an ominous item spawner above any such player or any mob that was spawned by this ominous trial spawner. The location where it should spawn is determined by first performing a raycast from the feet of the entity to a random height between 2 and 6 blocks above the entity. If it hits a block, this block is used, otherwise the end of the line is used. Which block can be hit is determined by the same algorithm as the third-person view. The item spawns in the center of the block below it, unless the block has a collision box. 
+
+
+== Behavior ==
+An ominous item spawner displays an item rotating in the air for a specified amount of time. When spawned by an ominous trial spawner, that time varies between 3 and 6 seconds. After that time, the item is dispensed downwards. If the item is a projectile, it is shot as an entity. Otherwise the item is dropped.
+
+
+== Sounds ==
+Java Edition:
+
+Bedrock Edition:
+
+
+== Data values ==
+
+
+=== ID ===
+Java Edition:
+
+Bedrock Edition:
+
+
+=== Entity data ===
+Ominous item spawners have entity data associated with them that contain various properties.
+Java Edition:
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== Issues ==
+Issues relating to "Ominous Item Spawner" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== References ==
+
+
+== Navigation ==

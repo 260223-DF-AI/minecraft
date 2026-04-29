@@ -1,0 +1,128 @@
+Loot tables are technical JSON files that are used to dictate what items should generate in various situations, such as what items should be in naturally generated containers, what items should drop when breaking a block or killing a mob, what items can be fished, and more. It does not affect dropped experience, or dropped non-item entities such as slimes from larger slimes or silverfish from infested blocks. In the /loot command, a loot table can be specified in SNBT format.
+
+
+== Definition ==
+Loot tables are part of the data pack directory structure, highlighted below:
+
+All loot tables are defined in data packs (vanilla data packs or custom data packs).
+In the /loot command, a loot table can be specified in SNBT format.
+
+
+== Usage ==
+Custom data packs use loot tables to change what loot can spawn in containers or drop by mobs. They can either modify existing loot tables or create new ones.
+
+
+=== Vanilla usages ===
+Vanilla loot tables are grouped into categories with some tables being in subfolders of those.
+For example, the file for zombies would go in  <data pack name>/data/minecraft/loot_table/entities/zombie.json. Editing this file in a datapack would make every zombie in a Minecraft world use the modified datapack's loot table rather than the default zombie loot table.
+To edit the loot tables of other entities, one would edit the entity's corresponding JSON file under the  <data pack name>/data/minecraft/loot_table/entities directory, which is typically said entity's name in the singular form (e.g.   ghast.json rather than  ghasts.json).
+The various subfolders and files include:
+
+ archaeology: The items from brushing suspicious sand or suspicious gravel.
+ blocks: The items dropped when mining blocks.
+ chests: Loot in various structures in chests or barrels.
+ dispensers: The items inside dispensers in trial chambers.
+ entities: The loot dropped by mobs when killed.
+ equipment: The equipment of mobs spawned by trial spawners in trial chambers.
+ gameplay: Gameplay mechanics such as:
+ fishing.json: Items obtained via fishing.
+ cat_morning_gift.json: Items gifted by cats after sleeping.
+ piglin_bartering.json: Items obtained via bartering with piglins.
+ chicken_lay.json: Items dropped when a chicken periodically lays an egg.
+ armadillo_shed.json: Items dropped when an armadillo sheds, either periodically or when brushed.
+ hero_of_the_village: Items gifted by villagers to a player with the Hero of the Village effect.
+ unemployed_gift.json: Gifts given by unemployed villagers.
+ baby_gift.json: Gifts given by baby villagers.
+ pots: The loot inside decorated pots in trial chambers.
+ shearing: The items dropped when shearing sheep, mooshrooms, snow golems, or bogged.
+ spawners: The reward after defeating trial spawners.
+Some blocks, such as bedrock, end portals, and other blocks unbreakable in survival, do not have loot tables, some blocks share loot tables (namely wall and floor variants of blocks) and some drops, such as the wither's nether star, are not covered by loot tables.
+
+
+=== NBT data ===
+The loot tables are structured as a String tag that determines the table to use, and a Long tag determining the seed. Containers or mobs with the same seed and table drop the same items. Loot tables do not determine the container's slot to be used; that is randomly determined based on the seed. Once there is an interaction with the container (e.g. opening or destroying), the two tags are removed, and loots appear in the container.
+For barrel, chest, trapped chest, hopper, minecart with chest, boat with chest, minecart with hopper, dispenser, dropper, shulker box, dyed shulker box, and decorated pot:
+
+For mobs:
+
+Vaults use loot tables in their config to determine the items to eject when unlocking the vault, and items to display in the vault. 
+Trial spawners use loot tables in their vault configs to determine the items to give as reward, and the items used by ominous item spawners spawned during the active phase when ominous.
+Monster spawners and trial spawners use loot tables to determine what equipment the spawned mobs have.
+
+
+=== Others ===
+Loot tables can be invoked directly by the /loot command.
+Loot tables can also be invoked in advancement rewards.
+
+
+== Format ==
+Loot tables are defined using JSON files stored within a data pack in the path data/<namespace>/loot_table.
+In the /loot command, a loot table can be specified in SNBT format.
+
+
+== Pool ==
+There are several entries in a pool. The number of rolls of a pool is specified by [NBT Compound / JSON Object] rolls and [Float][NBT Compound / JSON Object] bonus_rolls). In each roll of a pool, the pool draws one entry from all its entries. Each roll of a pool is independent.
+
+
+== Entry ==
+There are two types of loot entry: Singleton Entry and Composite Entry.
+A singleton entry defines an item generating behavior that may generate zero, one or more item stacks. Every singleton entry has a weight. Each roll selects a weighted singleton entry from the pool.
+Composite entries are not weighted entries to be rolled. Instead, they are expanded/flattened before rolling, i.e., some children entries in it are extracted out. If an extracted children entry is also a composite entry, it is further expanded until there are only singleton entries. Then, these singleton entries are added into the pool.
+Once all composite entries have been expanded, there're only singleton entries in the pool. Then, singleton entries that do not meet their conditions ([NBT List / JSON Array] conditions field) are removed from the pool. After that, in the pool are only singleton entries that meet their conditions. Each singleton entry has a weight (defined by the [Int] weight and [Int] quality fields). The game randomly selects one weighted singleton entry from the pool as the result of a roll.
+The tag entry is a special entry. Whether it is a singleton or composite entry is determined by the [Boolean] expand field. If [Boolean] expand is true, it is a composite entry that expands into multiple singleton entries like item but do not apply item modifiers due to a bug.
+The format of an entry is:
+
+The possible values for [String] type and associated extra fields are listed below.
+
+
+=== Singleton entry ===
+Fields common to all singleton entries:
+
+Possible singleton entries:
+
+
+=== Tag entry ===
+If [Boolean] expand is false, it is a singleton entry:
+
+When selected in a roll, generates item stacks for all items in the specified item tag. The default, if not changed by item modifiers, each item stack is 1 item with its default data components.
+If [Boolean] expand is true, it is a composite entry:
+
+Expands into multiple singleton entries with the specified weight and conditions, for each item in the item tag. The item count of each item stack is 1, and each item is generated with its default data components. Item modifiers do not work.
+
+
+=== Composite entry ===
+Fields common to all composite entries:
+
+Possible composite entries:
+
+
+== Number provider ==
+Loot tables use number providers in some places that accept an [Int] or [Float]. They can either be defined as a constant value or as an object.
+
+Or:
+
+Or:
+
+The possible values for [String] type and associated extra contents:
+
+
+== Loot context types ==
+
+The [String] type field is used when loading the data pack to check whether the context parameters used by this loot table match the specified context type. The field makes it possible to check for errors in the loot table files without applying them in-game. If the loot table is used for a specific context, specifying the type field allows the game to check whether the loot table file uses parameters that are not provided in that context.
+
+
+== History ==
+
+
+== Issues ==
+Issues relating to "Loot" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== External links ==
+Loot Table Generator on misode.github.io
+
+
+== References ==
+
+
+== Navigation ==

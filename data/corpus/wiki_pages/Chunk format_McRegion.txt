@@ -1,0 +1,127 @@
+Chunks store the terrain and entities within a 16x16x128 area. They also store precomputed lighting, heightmap data for Minecraft's performance and other meta information.
+Chunks were first introduced in Minecraft Infdev. Before the addition of the region file format in Beta 1.3, chunks were stored as individual chunk files. The file names contained the chunk's position encoded in Base36 and the extension ".dat".
+The Data, SkyLight, and BlockLight are arrays of 4-bit values.  The low bits of the first byte of one of these corresponds to the first block in the Blocks array.
+Prior to 1.2, chunk sizes changed to 16x16x256, for higher building.
+
+
+== NBT Structure ==
+
+
+== Block Format ==
+Blocks are laid out in sets of vertical columns, with the rows going east-west through chunk, and columns going north-south. Blocks in each chunk are accessed via the following method:
+unsigned char BlockID = Blocks[ y + z * ChunkSizeY(=128) + x * ChunkSizeY(=128) * ChunkSizeZ(=16) ];
+The coordinate system is as follows:
+
+X increases East, decreases West
+Y increases upwards, decreases downwards
+Z increases South, decreases North
+The Data, BlockLight, and SkyLight arrays have four bits (a nibble) for each byte of the Blocks array. Note that these arrays use a kind of 'little endian' nibble order: e.g. the least significant four bits of the first byte of the Data, BlockLight, or SkyLight arrays correspond to the first byte of the Blocks array, and the most significant four bits correspond to the second byte, etc.
+
+
+== Tile Tick Format ==
+(added in version RC2)
+
+
+== Entity Format ==
+Every entity is an unnamed TAG_Compound contained in the Entities list of a chunk file. The sole exception is the Player entity, stored in level.dat.
+All entities share this base:
+
+
+=== Mobs ===
+Known Mob Entity ids: Blaze, CaveSpider, Chicken, Cow, Creeper, EnderDragon, Enderman, Ghast, Giant, LavaSlime, Mob, Monster, MushroomCow, Ozelot, Pig, Sheep, Silverfish, Skeleton, Slime, SnowMan, Spider, Squid, Villager, Wolf, Zombie, and PigZombie
+Additional fields for mobs:
+
+ Pig has one additional field: 
+
+ Sheep has two additional fields:
+
+ Creeper has one additional/optional field:
+
+ Slime has one additional field, and it can't be used as the Entity ID of a Monster Spawner:
+
+ Wolf has three additional fields:
+
+ PigZombie has one additional field:
+
+ Enderman has two additional fields:
+
+
+=== Projectiles ===
+Known Projectile Entity ids: Arrow, Snowball, Egg, Fireball, SmallFireball, ThrownEnderpearl
+     Additional fields for Arrow, Snowball, Egg, Fireball (from Ghasts), SmallFireball (from Blazes), and ThrownEnderpearl:
+
+
+=== Items ===
+Known Item Entity ids: Item,  Painting, XPOrb
+ Additional fields for Item:
+
+ Additional fields for Painting:
+
+ Additional fields for XPOrb:
+
+
+=== Vehicles ===
+Known Vehicle Entity ids: Minecart, Boat
+ Additional fields for Minecart:
+
+ For a minecart with a furnace there are three additional fields:
+
+ For a minecart with a chest there is one additional field:
+
+
+=== Dynamic Tiles ===
+Known Dynamic Tile Entity ids: PrimedTnt, FallingSand
+ Additional fields for PrimedTnt
+
+ Additional fields for FallingSand:
+
+
+== Tile Entity Format ==
+Known TileEntity ids: Furnace, Sign, MobSpawner, Chest, Music, Trap, RecordPlayer, Piston, Cauldron, EnchantTable, and End portal
+All tile entities share this base:
+
+
+=== Unique Tile Entity fields ===
+
+
+=== Furnace ===
+
+
+=== Sign ===
+
+
+=== MobSpawner ===
+
+
+=== Chest ===
+
+
+=== Music ===
+
+
+=== Trap ===
+
+
+=== RecordPlayer ===
+
+
+=== Piston ===
+This tile entity is that of Block 36, not any part of the piston itself.
+
+
+=== Cauldron ===
+Note that despite being called "Cauldron", this Tile Entity only appears on Brewing Stands as of 1.9pre3.
+
+
+=== EnchantTable ===
+The enchantment table has no extra tags besides the base ones. It is used for the rotation and opening/closing of the floating book.
+
+
+=== End Portal ===
+This is the tile entity associated with the enterable End Portal (not the End Portal Frame). It has no extra tags.
+
+
+== References ==
+
+
+== Navigation ==

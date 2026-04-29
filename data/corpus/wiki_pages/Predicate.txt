@@ -1,0 +1,88 @@
+Predicates are JSON structures invoked to check conditions within the world. They return a pass or fail result to the invoker, which acts differently based on the result. They can be defined and invoked by data packs or by commands. In practical terms, predicates are a flexible way for data packs to encode "if this, then that" logic without needing custom code.
+Predicate files are standalone data pack files containing one or more predicates.
+This article describes how predicates are defined and invoked, and also describes the JSON structure of a predicate.
+
+
+== Definition ==
+A predicate file is defined with the JSON format.
+Predicate files are part of the data pack directory structure, highlighted below:
+
+The root element of a predicate file can be either an [NBT Compound / JSON Object] object following the predicate structure below, or an [NBT List / JSON Array] array containing multiple predicates. In the latter case all predicates must evaluate to true.
+
+
+== Usage ==
+Predicates and predicate files can be invoked in several different manners from other data pack files:
+
+
+=== Commands ===
+Commands or functions can invoke predicate files in two ways:
+
+Target selectors: The selector argument predicate= checks predicate files as a filter for entity selection. The predicate file is invoked once per entity that needs filtering, each time being at the entity's location.
+/execute: A subcommand, /execute if predicate, can invoke a predicate file or an in-line predicate definition to either return a result or to decide whether to continue with a subcommand chain. The predicate is invoked once at the current contextual position of execution.
+
+
+=== Other predicates ===
+The condition type minecraft:reference invokes a predicate file and returns the result to the invoker.
+
+
+=== Presence in other files ===
+In addition to predicate files, predicates themselves are used in other locations within other data pack files such as advancements and loot tables.
+
+
+== Examples ==
+Below are a few simple predicate examples for context.
+
+
+=== Example 1: Check if player is holding a diamond sword ===
+{
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "equipment": {
+      "mainhand": {
+        "items": ["minecraft:diamond_sword"]
+      }
+    }
+  }
+}
+
+
+=== Example 2: Only run if it’s daytime ===
+{
+  "condition": "minecraft:time_check",
+  "value": { "min": 0, "max": 12000 },
+  "period": 24000
+}
+
+
+=== Example 3: Nested example using any_of ===
+{
+  "condition": "minecraft:any_of",
+  "terms": [
+    { "condition": "minecraft:random_chance", "chance": 0.25 },
+    { "condition": "minecraft:weather_check", "raining": true }
+  ]
+}These snippets can be placed inside data/<namespace>/predicate/ within a data pack, then referenced using commands such as:/execute if predicate my_pack:daytime_check run say Good morning!
+
+
+== JSON format ==
+This section describes the JSON format of a predicate.
+
+The possible values for [String] condition and associated extra contents:
+
+
+== History ==
+
+
+== See also ==
+Data pack – where predicates are defined and stored
+Loot table – one of the most common predicate users
+Advancement – another system that embeds predicates
+Execute – command subcomponent that can run predicates
+
+
+== External links ==
+Predicate Generator on misode.github.io
+
+
+== Navigation ==

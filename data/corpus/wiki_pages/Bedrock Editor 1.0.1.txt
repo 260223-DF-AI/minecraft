@@ -1,0 +1,27 @@
+Bedrock Editor v1.0.1 is a minor release for the Bedrock Editor released on June 10, 2025.
+
+
+== Additions ==
+Added ability to specify directional placement of blocks for any brush operation using DirectionalPlacementMode enum and setDirectionalPlacementMode.
+Added ability to toggle that Ctrl will either erase or add blocks with the addition of setInverseEraseMode.
+
+
+== Changes ==
+Updated default brush shape and sizes for the terrain tool to apply smooth and roughen stronger on first use.
+Updated Cone and Cylinder Brush Shapes so that the origin is included in radius measurements.
+Updated component tooltip property to support new TooltipContent type.
+TooltipContent allows for a custom title to be added to the tooltip.
+Removed support for the SimpleTool framework API. Tools using this feature must now use IPlayerUISession controls instead.
+
+
+== Fixes ==
+Fixed a bug where Realms panel was opening in an empty state.
+Fixed a bug where 'Multiplayer' and 'visible to LAN Players' didn't export.
+Fixed navigation and focus issues in the Editor graph, fixed arrow key movement when the graph is locked. Improved handling of clicks outside of the graph.
+Fixed edge cases where values in X and Z dimensions would produce different results.
+
+
+== References ==
+
+
+== Navigation ==

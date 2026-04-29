@@ -1,0 +1,109 @@
+Manage and execute GameTests.
+
+
+== Syntax ==
+test (clearall [<radius>]|clearthat|clearthese)
+Clears the structures and blocks associated with the tests.
+test create <id> [<width>] [<height> <depth>]
+Creates a test.
+test locate <tests>
+Locates tests in loaded chunks.
+test pos [<var>]
+Shows the local coordinates to the block pointed at in the test.
+test (resetclosest|resetthat|resetthese)
+Resets the structures for the tests.
+test run <tests> [<numberOfTimes>] [<untilFailed>] [<rotationSteps>] [<testsPerRow>]
+test (runclosest|runthat|runthese) [<numberOfTimes>] [<untilFailed>]
+test runmultiple <tests> [<amount>]
+Runs one or more tests.
+test runfailed [<numberOfTimes>] [<untilFailed>] [<rotationSteps>] [<testsPerRow>]
+test runfailed [<onlyRequiredTests>] [<numberOfTimes>]
+Runs failed tests.
+test stop
+Stops all tests.
+test verify <tests>
+Verifies tests.
+test (export <test>|exportclosest|exportthat|exportthese)
+Exports tests. Only available in IDE environment.
+
+
+== Arguments ==
+clearall
+
+Clears all tests within a specified radius.
+resetclosest, runclosest, and exportclosest
+
+Resets, runs, and exports the closest test within a radius of 15.
+clearthat, resetthat, runthat, and exportthat
+
+Clears, resets, runs, and exports the test where the crosshair points.
+clearthese, resetthese, runthese, and exportthese
+
+Clears, resets, runs, and exports all the tests within a radius of 200.
+<radius>: integer
+
+Specifies the radius to clear tests within. Defaults to 200.
+Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ).
+<id>: resource_location
+
+Specifies the ID of a test.
+Must be a resource location for an unregistered content.
+<width>: integer
+
+Specifies the width of the test structure. Defaults to 5.
+Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ).
+<height>: integer
+
+Specifies the height of the test structure. Defaults to the value of <width>.
+Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ).
+<depth>: integer
+
+Specifies the depth of the test structure. Defaults to the value of <width>.
+Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ).
+<var>: string
+
+Specifies the variable name to include in the copied code snippet. Defaults to pos.
+Must be a string.
+<tests>: resource_selector
+
+Specifies the ID of a test.
+<numberOfTimes>: integer
+
+Specifies the number of times to repeat each test in different batches. Defaults to 1.
+Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ).
+<untilFailed>: bool
+
+Specifies if the test should be stopped as soon as one iteration fails. Defaults to false.
+Must be a [Boolean]Boolean (either true or false).
+<rotationSteps>: integer
+
+Specifies the number of extra 90 degree steps to apply to the test. Defaults to 0.
+Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ).
+<testsPerRow>: integer
+
+Specifies the number of tests to place per row in a grid layout. Defaults to 8.
+Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ).
+<amount>: integer
+
+Specifies the number of times to repeat each test in the same batch. Defaults to 1.
+Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ).
+<onlyRequiredTests>: bool
+
+Specifies if only necessary tests are needed. Defaults to false.
+Must be a [Boolean]Boolean (either true or false).
+<test>: resource
+
+Specifies the ID of a test.
+Must be an existing registered resource location in correct registry.
+
+
+== Result ==
+
+
+== Output ==
+
+
+== History ==
+
+
+== Navigation ==
