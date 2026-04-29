@@ -46,7 +46,7 @@ def safe_filename(title):
     return re.sub(r'[\\/*?:"<>|]', "_", title)
 
 def save_pages(pages):
-    os.makedirs("wiki_pages", exist_ok=True)
+    os.makedirs("corpus/wiki_pages", exist_ok=True)
 
     for title in pages:
 
@@ -56,7 +56,7 @@ def save_pages(pages):
         text = get_page_text(title)
 
         filename = safe_filename(title) + ".txt"
-        with open(os.path.join("wiki_pages", filename), "w", encoding="utf-8") as f:
+        with open(os.path.join("corpus/wiki_pages", filename), "w", encoding="utf-8") as f:
             f.write(text)
 
         time.sleep(0.5)  # IMPORTANT: avoid rate limits
