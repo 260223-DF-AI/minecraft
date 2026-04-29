@@ -16,10 +16,16 @@ from typing import List
 from langchain_core.documents import Document
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import SentenceTransformersTokenTextSplitter
-import datetime
+from datetime import datetime
 from langchain_aws import ChatBedrock
 from langchain_aws import BedrockEmbeddings
 from langchain_pinecone import PineconeVectorStore
+#from langchain_community.embeddings import OllamaEmbeddings # deprecated swapping to langchain_ollama
+from langchain_ollama import OllamaEmbeddings
+from pinecone import Pinecone
+from pinecone import ServerlessSpec
+
+load_dotenv() # load environment variables from .env file
 def parse_args() -> argparse.Namespace:
     """Parse ingestion CLI arguments."""
     parser = argparse.ArgumentParser(description="Ingest documents into Pinecone.")
@@ -54,7 +60,8 @@ def load_documents(input_dir: str) -> list:
     for filename in os.listdir(input_dir):
         if filename.endswith(".pdf"):
             # load pdf using pypdf or LangChain's PyPDFLoader
-            loader = PyPDFLoader(filename)
+            filepath = os.path.join(input_dir, filename)
+            loader = PyPDFLoader(filepath)
             pages = loader.load()
             for page in pages:
                 docs.append(
@@ -62,20 +69,21 @@ def load_documents(input_dir: str) -> list:
                         page_content=page.page_content,
                         metadata={# metadata for the document (source and page number)
                             "source": filename,
-                            "page": page.metadata.get("page", None)
+                            "page": page.metadata.get("page", "1")
                         }
                     )
                 )
         elif filename.endswith(".txt"):
             # load .txt files
-            with open(filename, "r") as f:
+            filepath = os.path.join(input_dir, filename)
+            with open(filepath, "r") as f:
                 text = f.read() # read the contents of the file
             docs.append(
                 Document(
                     page_content=text,
                     metadata={ # metadata for the document (source and page number)
                         "source": filename,
-                        "page": None
+                        "page": "1"
                     }
                 )
             )
@@ -89,10 +97,10 @@ def chunk_documents(documents: list) -> list:
     Split documents into smaller chunks for embedding.
 
     TODO:
-    - Use RecursiveCharacterTextSplitter or sentence-level splitting.
+    - Use r or sentence-levRecursiveCharacterTextSplitteel splitting.
     - Attach chunk metadata (chunk_id, source, page_number, timestamp).
     """
-    splitter = SentenceTransformersTokenTextSplitter(chunk_size=256) # make splitter 256 tokens per chunk
+    splitter = SentenceTransformersTokenTextSplitter(chunk_size=700) # make splitter 700 tokens per chunk
 
     chunks = splitter.split_documents(documents)
 
@@ -104,8 +112,8 @@ def chunk_documents(documents: list) -> list:
             page_content=c.page_content,
             metadata={
                 **c.metadata,  # keep any existing metadata from splitter
-                "source": c.metadata.get("source",None),
-                "page_number": c.metadata.get("page", c.metadata.get("page_number",None)),
+                "source": c.metadata.get("source","1"),
+                "page_number": c.metadata.get("page", c.metadata.get("page_number","1")),
                 "chunk_id": i,
                 "timestamp": timestamp
             }
@@ -123,18 +131,28 @@ def generate_embeddings(chunks: list) -> list:
       or Bedrock Titan Embeddings.
     - Process in batches for efficiency (see W5 Monday — batch embedding).
     """
-    embeddings_model = BedrockEmbeddings(
-        model_id="amazon.titan-embed-text-v2:0",
-        region_name="us-east-1"
-    )
+    # embeddings_model = BedrockEmbeddings(
+    #     model_id="amazon.titan-embed-text-v2:0",
+    #     region_name="us-east-1"
+    # )
+    # enrich the metadata with source and page number (for better context)
 
-    texts = [c.page_content for c in chunks]
+    # replace bedrock with ollama embedding for local testing
+
+    # using nomic-embed-text because I saw that it has a large context window and still has good performance
+    embeddings_model = OllamaEmbeddings(
+        model="nomic-embed-text"
+    )
+    texts = [
+    f"[Source: {c.metadata.get('source', '')}, Page: {c.metadata.get('page_number', '')}]\n{c.page_content}"
+    for c in chunks
+    ]
     vectors = embeddings_model.embed_documents(texts)
 
     return vectors
 
 
-def upsert_to_pinecone(embeddings: list, namespace: str) -> None:
+def upsert_to_pinecone(embeddings: list, namespace: str, chunks: list) -> None:
     """
     Upsert embedding vectors and metadata into the Pinecone index.
 
@@ -142,8 +160,43 @@ def upsert_to_pinecone(embeddings: list, namespace: str) -> None:
     - Initialize the Pinecone client using env vars.
     - Upsert vectors with rich metadata into the specified namespace.
     """
-    vector_store = PineconeVectorStore(index = "mcdb", namespace = namespace, embeddings = embeddings)
+    # 1. get pinecone key and call our index mcdb
+    pinecone = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
 
+    index_name = "mcdb"
+    # code to create the index if not exists (from trainer code demo)
+    if not pinecone.has_index(index_name):
+        pinecone.create_index(
+            name = index_name,
+            dimension = 768, # nomic-embed-text has 768 dimensions
+            metric = "cosine",
+            spec=ServerlessSpec(cloud="aws", region="us-east-1")
+        )
+
+    index = pinecone.Index(name=index_name)
+
+
+    # 2. Prepare metadata + IDs
+    metadatas = [c.metadata for c in chunks]
+
+    ids = [
+        f"{m.get('source','unknown')}_p{m.get('page_number','na')}_c{m.get('chunk_id')}"
+        for m in metadatas
+    ]
+
+    # 3. zip it up for upserting
+    vectors = list(zip(ids, embeddings, metadatas))
+
+    # 4. Batch upsert (recommended to me by chatGPT)
+    batch_size = 100
+
+    for i in range(0, len(vectors), batch_size):
+        batch = vectors[i:i + batch_size]
+
+        index.upsert(
+            vectors=batch,
+            namespace=namespace
+        )
 
 def main() -> None:
     """Orchestrate the full ingestion pipeline."""
@@ -153,9 +206,10 @@ def main() -> None:
     documents = load_documents(args.input_dir)
     chunks = chunk_documents(documents)
     embeddings = generate_embeddings(chunks)
-    upsert_to_pinecone(embeddings, args.namespace)
+    upsert_to_pinecone(embeddings, args.namespace, chunks)
 
     print(f"✅ Ingested {len(chunks)} chunks into namespace '{args.namespace}'.")
+
 
 
 if __name__ == "__main__":
