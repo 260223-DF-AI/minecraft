@@ -6,6 +6,7 @@ All nodes read from and write to this shared state.
 """
 
 from typing import TypedDict
+from langchain_core.documents import Document
 
 
 class ResearchState(TypedDict):
@@ -27,7 +28,8 @@ class ResearchState(TypedDict):
     """
     question: str
     plan: list[str]
-    retrieved_chunks: list[dict]
+    plan_index : int
+    retrieved_chunks: list[Document]
     analysis: dict
     fact_check_report: dict
     confidence_score: float
