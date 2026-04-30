@@ -259,7 +259,7 @@ source .venv/bin/activate  # Linux/Mac
 pip install -r requirements.txt
 
 # 4. Configure environment variables
-cp .env.example .env
+cp .env .env
 # Edit .env with your API keys (AWS, Pinecone, LangSmith)
 
 # 5. Ingest documents

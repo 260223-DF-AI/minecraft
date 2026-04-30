@@ -5,7 +5,7 @@ Reads PDF/text files from an input directory, chunks them,
 generates embeddings, and upserts them into a Pinecone index.
 
 Usage:
-    python scripts/ingest.py --input-dir ./data/corpus --namespace primary-corpus
+    python scripts/ingest.py --input-dir ./data/corpus/wiki_pages --namespace primary-corpus
 """
 
 import argparse
