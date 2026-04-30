@@ -1,0 +1,120 @@
+1.18 Pre-release 1 (known as 1.18-pre1 in the launcher) is the first pre-release for Java Edition 1.18, released on November 11, 2021, which readds AMPLIFIED and large biomes, makes some tweaks, and fixes bugs.
+
+
+== Additions ==
+
+
+=== General ===
+World types
+
+Readded "AMPLIFIED" and "Large Biomes". Their implementation has been adapted accordingly to the terrain generation overhaul.
+AMPLIFIED worlds now have terrain with the following characteristics:
+Terrain rounded at Y=320, instead of Y=256.
+Doubled offset above sea level.
+Greatly increased 3D noise values, resulting in lower factor values inversely.
+Doubled peak jaggedness.
+Large biome worlds now have terrain with the following characteristics:
+Most biomes, except mountain peaks and rivers, are four times larger.
+Multinoise slowed down by factor 4 for temperature, vegetation, continentalness, and erosion, but not for ridge noise.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Conduit
+
+Now has an assigned tool, the pickaxe.
+
+
+=== World generation ===
+Lava lakes
+
+Now only generate above Y=0.
+Upgrading of old worlds
+
+Changed transition between old and new terrain to be less cliff-like.
+Surface height, biomes, and caves will now blend much more smoothly.
+Deepslate and bedrock now properly generate in upgraded chunks.
+Cave carvers now properly generate in upgraded chunks.
+Features
+
+Rewrote feature generation system.
+Now feature generations are configured with placed feature files.
+
+
+=== General ===
+Data generator
+
+--report option now creates full worldgen reference files instead of just biomes.
+World creation screen
+
+Removed "Caves" and "Floating islands".
+
+
+== Fixes ==
+49 issues fixed
+From released versions before 1.18
+
+MC-46584  Clicking and dragging MOUSE3 (mouse wheel) over item slots incorrectly attempts to place full stacks in Survival.
+MC-50888  Can get out of 30,000,000 area.
+MC-53444  You can get outside of the world border by mounting a rideable entity (boat, pig, etc.) outside of it.
+MC-54119  Can place/take water/lava/lily pads outside world border and inside spawn protection.
+MC-62550  World border not correctly initialized for the End and Nether.
+MC-96535  Ambient property of potion effects with ShowParticles:0b is not disregarded.
+MC-101334  Required space for placing a boat is too small.
+MC-113425  Player can interact with entities outside the world border.
+MC-117800  Half bed can be placed outside the world border.
+MC-121997  Every dimension's world border is operating independently, and doesn't appear where it actually is.
+MC-131808  Forests don't spawn trees near the positive edges, but overstretch bounds on the negative edges.
+MC-135947  Conduit takes a long time to break when underwater.
+MC-136523  Invisible world border in the End dimension.
+MC-147122  You can set your spawn point outside the world border using a bed or respawn anchor.
+MC-187174  World border does not take Nether coordinates into account.
+MC-206620  Cauldron invisible when crawling in it.
+MC-206660  Stalactites don't fall properly if there are blocks directly below it.
+MC-214963  Mineshaft generation is non-deterministic.
+MC-215139  Some water in caves will not start flowing.
+MC-219035  Fossil structures can't generate in far east and south blocks of a chunk.
+MC-222388  Acacia trees under Y=0 often grow with bare branches.
+MC-229013  Lava lake decorator config is unused.
+MC-229517  Conversion sounds for strays and drowned is controlled by Friendly Creatures mixer, not Hostile Creatures.
+MC-231666  Dragon egg can teleport to outside the world border.
+MC-240021  Cullface arguments in cauldrons are excessive.
+From the 1.18 development versions
+
+MC-236610  Lava lakes generate without stone around.
+MC-236628  Lava pools cause sand to fall now instead of putting sandstone beneath it.
+MC-236652  Weather can be incorrect sometimes within a biome.
+MC-236659  Lava lakes spawn more on the surface than usual.
+MC-236803  Extremely low amount of pillager spawns in outpost on jagged peaks, groves, snowy slopes and frozen peaks.
+MC-237040  Falling blocks still sometimes disappear for a moment when landing.
+MC-237598  Projectiles glitch around in the air when exiting simulation distance.
+MC-237621  Missing biome definitions in some peak grid cells cause unintended ocean placement.
+MC-237791  Villager spawn eggs used on grove, frozen peaks, snowy slopes and jagged peaks don't spawn snowy plains villagers.
+MC-237954  The "Sound of Music" and "Feels like home" advancements are internally located in the incorrect tab folder.
+MC-238038  Newly added advancements' namespace ID does not match its translation key.
+MC-238972  Deserts generate with little or no sandstone.
+MC-239714  Doing /locate desert_pyramid on a desert Superflat world freezes the world.
+MC-239851  Upgrading old worlds causes leaves to change to surface builder blocks.
+MC-239852  Lava pools intersecting strongholds can cause end portal frames to be deleted.
+From the previous development version
+
+MC-240481  Deepslate doesn't generate in the new cave generation under old chunks.
+MC-240482  There is no bedrock in the Overworld in old chunks.
+MC-240495  Deepslate does not generate below Y=0 in badlands or wooded badlands biomes.
+MC-240503  Bedrock doesn't generate in badlands or wooded badlands.
+MC-240516  Cave carvers don't generate below old chunks.
+MC-240531  Block simulation distance is always 8 chunks regardless of the slider's value.
+MC-240534  Clicking a JFR link copies full server-side path to clipboard.
+MC-240631  Extremely slow End terrain generation.
+MC-240998  Portals no longer load chunks as non entity processing.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

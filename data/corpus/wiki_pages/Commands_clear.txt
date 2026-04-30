@@ -18,7 +18,7 @@ clear [player: target] [itemName: Item] [data: int] [maxCount: int]
 JE: <targets>: entityBE: player: target: CommandSelector<Player>
 
 Specifies the player(s) whose items are cleared. If not specified, defaults to the player who executes the command.
-Must be a player name, a target selector or a UUID‌[Java Edition  only].  And the target selector must‌[JE  only]/should‌[BE  only] be of player type. In Bedrock Edition, the target selector should be of player type.
+Must be a player name, a target selector or a UUID[Java Edition  only].  And the target selector must[JE  only]/should[BE  only] be of player type. In Bedrock Edition, the target selector should be of player type.
 JE: <item>: item_predicateBE: itemName: Item: enum
 
 Specifies the item to be cleared. If not specified, all items are cleared.
@@ -29,7 +29,7 @@ Specifies the data value of the item to be cleared. If not specified, or if -1, 
 Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ). Should be between -1 and 2,147,483,647 (inclusive, without commas).
 JE: <maxCount>: integerBE: maxCount: int: int
 
-Specifies the maximum number of items to be cleared. If not specified, or if -1‌[Bedrock Edition  only], all items that match item, or itemName: Item and data: int are cleared. If 0, instead of clearing of items, detects and queries the amount of specified items.
+Specifies the maximum number of items to be cleared. If not specified, or if -1[Bedrock Edition  only], all items that match item, or itemName: Item and data: int are cleared. If 0, instead of clearing of items, detects and queries the amount of specified items.
 Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ). In Java Edition, it must be between 0 and 2147483647 (inclusive). In Bedrock Edition, it should be between -1 and 2147483647 (inclusive).
 
 
@@ -42,11 +42,11 @@ Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231
 == Examples ==
 To clear your entire inventory: clear
 To clear all items from Alice's inventory: clear Alice
-To clear all wool items from Alice's inventory: clear Alice #minecraft:wool‌[Java Edition  only]
-To clear all orange wool items from the inventory of all players: clear @a minecraft:wool 1‌[Bedrock Edition  only] or  clear @a minecraft:orange_wool
+To clear all wool items from Alice's inventory: clear Alice #minecraft:wool[Java Edition  only]
+To clear all orange wool items from the inventory of all players: clear @a minecraft:wool 1[Bedrock Edition  only] or  clear @a minecraft:orange_wool
 To clear all golden swords with the "Sharpness I" enchantment from the nearest player
-clear @p minecraft:golden_sword{Enchantments:[{id:"minecraft:sharpness",lvl:1s}]}‌[Java Edition  only]
-To test if a random player has stone in their inventory: clear @r minecraft:stone 0 0‌[Bedrock Edition  only] or  clear @r minecraft:stone 0‌[Java Edition  only]
+clear @p minecraft:golden_sword{Enchantments:[{id:"minecraft:sharpness",lvl:1s}]}[Java Edition  only]
+To test if a random player has stone in their inventory: clear @r minecraft:stone 0 0[Bedrock Edition  only] or  clear @r minecraft:stone 0[Java Edition  only]
 
 
 == History ==
@@ -59,15 +59,15 @@ To test if a random player has stone in their inventory: clear @r minecraft:ston
 
 
 == See also ==
-/data — can change or remove items in block or entity inventories
-/give — give items to player
-/kill — can destroy item entities
-/item‌[Java Edition  only] — can manipulate items in block or entity inventories
-/replaceitem‌[Bedrock Edition  only] — can replace items in block or entity inventories
+/data  can change or remove items in block or entity inventories
+/give  give items to player
+/kill  can destroy item entities
+/item[Java Edition  only]  can manipulate items in block or entity inventories
+/replaceitem[Bedrock Edition  only]  can replace items in block or entity inventories
 
 
 == External links ==
-"/clear Command"     – Microsoft Learn, October 11, 2023.
+"/clear Command"      Microsoft Learn, October 11, 2023.
 
 
 == Navigation ==

@@ -9,9 +9,9 @@ World coordinates are expressed as a set of three absolute world coordinates (X 
 === Coordinate system ===
 World coordinates are based on a grid where three lines or axes intersect at the origin point. 
 
-The x-axis indicates the player's distance east (positive) or west (negative) of the origin point—i.e., the longitude,
-The z-axis indicates the player's distance south (positive) or north (negative) of the origin point—i.e., the latitude,
-The y-axis indicates how high or low (from -64 to 320, with 63 being sea level) the player is—i.e., the elevation,
+The x-axis indicates the player's distance east (positive) or west (negative) of the origin pointi.e., the longitude,
+The z-axis indicates the player's distance south (positive) or north (negative) of the origin pointi.e., the latitude,
+The y-axis indicates how high or low (from -64 to 320, with 63 being sea level) the player isi.e., the elevation,
 The unit length of the three axes equals the side of one block. And, in terms of real-world measurement, one block equals 1 cubic meter.
 The origin point marks the zero point for the x and z coordinates. Hence, it may be thought of as the 0,0 coordinate:
 
@@ -31,12 +31,12 @@ There are available interactive calculators (hosted on this wiki) that may be us
 
 
 ==== Java Edition ====
-In Java Edition, pressing F3 (or Fn + F3 on Macs and some laptops or Alt + Fn + F3 on newer Macs[verify]) brings up a debug screen that shows the player's current coordinates (XYZ) and rotation in the upper left part of the screen. It also shows other useful in-game information, like the block position of the player, and the position of this block within the current chunk. The debug screen also replaces the crosshair with a display of these three directions: +X in red, +Y in green, +Z in blue (eastward, upward, and southward, respectively). Some information can be hidden using /gamerule reducedDebugInfo true command.
+In Java Edition, pressing F3 (or Fn + F3 on Macs and some laptops or Alt + Fn + F3 on newer Macs[verify]) brings up a debug screen that shows the player's current coordinates (XYZ) and rotation in the upper left part of the screen. It also shows other useful in-game information, like the block position of the player, and the position of this block within the current chunk. The debug screen also replaces the crosshair with a display of these three directions: +X in red, +Y in green, +Z in blue (eastward, upward, and southward, respectively). Some information can be hidden using /gamerule reducedDebugInfo true command.
 
 
 ==== Bedrock Edition ====
 In Bedrock Edition, the block position of the player can be displayed by changing the world options. The coordinates are displayed in a box in the top left, if the "Show Coordinates" option is turned on in the game settings screen or /gamerule showcoordinates true is used.
-The coordinates can also be shown in the chat by enabling "Copy Coordinate UI" in the creator settings, which is independent from the world options. The player's coordinates are shown with two decimals, and the player can also choose to show the coordinates of the block the player is currently facing. Both coordinates can also be copied with a customizable hotkey, Ctr + Alt + C for the player's coordinates and Ctr + Alt + X for the facing coordinates by default.
+The coordinates can also be shown in the chat by enabling "Copy Coordinate UI" in the creator settings, which is independent from the world options. The player's coordinates are shown with two decimals, and the player can also choose to show the coordinates of the block the player is currently facing. Both coordinates can also be copied with a customizable hotkey, Ctr + Alt + C for the player's coordinates and Ctr + Alt + X for the facing coordinates by default.
 
 
 == Commands ==
@@ -44,16 +44,16 @@ Some commands use require the player to specify coordinates. They can be express
 
 
 === Relative world coordinates ===
-When specifying coordinates, each coordinate can alternatively be expressed as a relative world coordinate, written in tilde notation (~ΔX ~ΔY ~ΔZ). A number following a tilde (~) describes an offset from execution position along one of the world axes, and a lone tilde assumes an offset of 0.
-For example, the position 32 blocks NNE ~10 ~ ~-30 means "10 blocks east (+X) and 30 blocks north (–Z) of here." And ~ ~ ~ means the command's current position.
+When specifying coordinates, each coordinate can alternatively be expressed as a relative world coordinate, written in tilde notation (~X ~Y ~Z). A number following a tilde (~) describes an offset from execution position along one of the world axes, and a lone tilde assumes an offset of 0.
+For example, the position 32 blocks NNE ~10 ~ ~-30 means "10 blocks east (+X) and 30 blocks north (Z) of here." And ~ ~ ~ means the command's current position.
 Relative world coordinates can mix with absolute coordinates; for example, /tp ~ 64 ~ keeps the sender's X and Z positions unchanged but teleports them to an absolute height of 64 blocks.
 The /execute command can update a command's current position, changing the meaning of ~ ~ ~.
 
 
 === Local coordinates ===
-The other way to describe positions is with local coordinates, written in caret notation (^ΔXlocal ^ΔYlocal ^ΔZlocal).
+The other way to describe positions is with local coordinates, written in caret notation (^Xlocal ^Ylocal ^Zlocal).
 Like relative coordinates, these describe positions relative to where a command is executed from, but with different directions. A number following a caret (^) is an offset within a moving, entity-centric frame: This coordinate system is centered at the executor's position, with +Xlocal directed to its left, +Ylocal directed upward, and +Zlocal directed in the direction the sender faces. (Note that an entity with rotation 0 0 has its local frame aligned with the world frame.)
-Described in other terms, these coordinates express ^ΔSway ^ΔHeave ^ΔSurge
+Described in other terms, these coordinates express ^Sway ^Heave ^Surge
 For example, /tp ^ ^ ^5 teleports the player 5 blocks forward. If they turn around and repeat the command, they are teleported back to where they started.
 In Java Edition, pressing F3+B displays the +Zlocal direction for all entities as a blue ray centered on their heads.
 Local coordinates cannot be mixed with world coordinates (e.g. ^ 0 ^,  ^ 0 ~1), and attempting so alerts the typist, "Cannot mix world & local coordinates (everything must either use ^ or not)." So such a command fails to be parsed. However, this effect can be achieved using /execute rotated ~ 0 to "globalize" the y coordinate, and /execute rotated 0 ~ to "globalize" the x and z coordinates. For example, /execute rotated ~ 0 run tp ^ ^ ^3 teleports the player 3 blocks in forward, but at the same Y level.

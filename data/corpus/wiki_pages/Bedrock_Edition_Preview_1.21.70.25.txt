@@ -1,0 +1,135 @@
+Beta 1.21.70.25 (ChromeOS, Android) or Preview 1.21.70.25 (Windows, iOS, iPadOS, Xbox, PlayStation) is the fifth beta/Preview version for Bedrock Edition 1.21.70, released on February 26, 2025, which fixes bugs.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Leaf Litter
+
+Add biome based tinting to leaf litter.
+
+
+=== Mobs ===
+Sheep
+
+Reverted the change from Preview 1.21.70.23 that allowed blue, light blue, cyan, yellow, orange and red sheep to spawn naturally in different biomes.
+Black sheep will still be the most common type to spawn in cold biomes, and brown Sheep will be the most common type in warm biomes.
+Pink sheep will still be very rare and able to spawn anywhere where sheep can spawn.
+Sheep wool texture has been tweaked to remove stark line at the back.
+Wandering Trader
+
+Wandering traders' buying trades can now be used twice before they lock instead of only once.
+
+
+=== Gameplay ===
+Achievements
+
+Enabled earning achievements while playing in a world with add-ons applied.
+
+
+=== General ===
+Settings
+
+Enabled Filter Profanity toggle on mobile platforms.
+UI
+
+Touch controls: camera perspective can now be changed from a HUD button., enable this in the touch settings.
+
+
+=== Technical ===
+Biomes
+
+Client Biome Components
+Add minecraft:dry_foliage_color component to override color for dry_foliage tint method.
+Blocks
+
+Add dry_foliage tint method which uses the textures/colormap/dry_foliage.png color map.
+Exposed the block component minecraft:destruction_particles as a JSON object. This represents the particles used when the block is destroyed.
+There is two fields for it:
+texture is a required string field to set the texture used by the particles.
+tint_method is an optional string field that multiplies the texture color with a predefined tint. Default to none. Supported values are none, default_foliage, birch_foliage, evergreen_foliage, dry_foliage, grass and water.
+Block format before 1.21.70 will be upgraded to have the component added using the texture from the down or * of the minecraft:material_instances component if present and none for tint_method. This was the old behavior.
+Block format from 1.21.70 without the component will not be upgraded and uses the invalid texture. Examples:
+
+or
+
+Commands
+
+Removed set_movement_authority command.
+Dedicated Server
+
+Exposed a new parameter for dedicated server. This will make the server more strict on entity interactions. Look in server.properties for more information on what these do.
+server-authoritative-entity-interactions-strict default to false and can be set to true. Will affect entity interaction acceptance.
+Removed server-authoritative-movement parameter. It will now always use server-auth-with-rewind.
+General
+
+Server Authoritative movement is now turned on by default.
+Particles
+
+Multiple controllers transitioning out of a state at the same time will now properly expire all intended particles instead of just the last one.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs" experimental toggle.
+
+
+=== Changes ===
+
+
+==== Technical ====
+API
+
+BlockMapColorComponent scripting API is now read-only.
+BlockMapColorComponent scripting API fields color and tintMethod are now properties instead of methods.
+Deprecated ItemUseOnBeforeEvent in @minecraft/server 2.0.0-beta. Use PlayerInteractWithBlockBeforeEvent instead.
+Deprecated ItemUseOnAfterEvent in @minecraft/server 2.0.0-beta. Use PlayerInteractWithBlockAfterEvent instead.
+BlockDestructionParticlesComponent API has been added to @minecraft/server 2.0.0-beta.
+EntityScaleComponent has been changed to read-only in version 2.0.0-beta.
+Graphical
+
+Reduced emissive intensity by a factor of 15 in the Deferred Technical Preview, creators will likely need to adjust their emissive texture values.
+Adjusted air and fog densities for volumetric scattering for more visible light rays in Deferred Technical Preview.
+Made slight adjustments to auto exposure and eye adaptation in the Deferred Technical Preview.
+
+
+== Fixes ==
+26 issues fixed
+From released versions before 1.21.70
+
+MCPE-189501  Attacking a mob while sprint jumping randomly removes all of the player's momentum, sometimes even teleporting the player backwards
+MCPE-190418  Outdated Enchanting Table name still used in Minecraft Encyclopedia and Achievements
+MCPE-190550  Crafting a Bundle consumes materials but does not create a new Bundle if holding one in Survival
+MCPE-190552  New bedrock pvp is broken after update
+MCPE-190604  Sleeping in a bed causes the player's collision to break
+MCPE-190606  Hover Note is broken on bedrock
+From the previous development version
+
+MCPE-190209  Wildflowers item have an misplaced transparent pixel
+MCPE-190291  Mooshroom mushrooms flicker
+MCPE-190404  Cactus flower's hitbox is slightly larger than it should be
+MCPE-190422  Flower pot flowers are stretched twice as much as normal flowers
+Other
+
+Potted plants are no longer clipping through flower pots.
+Fixed wildflower item texture being slightly offset compared to Java.
+Temperate cows no longer have harsh borders on their legs.
+Red and brown mooshrooms no longer have harsh borders on their legs.
+Fixed iron golem cracked texture not appearing at appropriate damage levels.
+Fixed texture on the sides of a cold cow's head to be mirrored correctly.
+Fixed a bug where using items with a use duration (fishing rods, food, potions, etc.) and changing slots would force your slot back to the original slot.
+Stacks are now correctly splitting across slots when moving cursor and holding the button to split stack.
+Fixed a potential crash that could occur when splitting stacks of items in the creative inventory.
+Fixed an issue which prevented some users from accessing the Create New World screen in iOS Preview and PlayStation Preview.
+Empty bell blocks no longer crash the game when moved by a sticky piston.
+Fixed a bug where /fill, /clear and /testforblock commands would recognize IDs of some flattened blocks as block group names and affect all variants under those groups.
+Fixed an issue that occurs when cancelling world resource pack download.
+Fixed a crash that occurs when initializing minecraft:decorated_pot renderer.
+Fixed mirroring and rotation of crafter blocks when part of a structure that is being placed.
+Fixed an issue where native constructors were not properly checking privileges when being called. Constructors now check privileges properly and produce correct errors when being used in Early Execution privilege.
+
+
+== References ==
+
+
+== Navigation ==

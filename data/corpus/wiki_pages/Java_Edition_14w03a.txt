@@ -1,0 +1,138 @@
+14w03a is the fourth snapshot for Java Edition 1.8, released on January 16, 2014, which adds the /clone and /fill commands as well as /gamerule logAdminCommands.
+
+
+== Additions ==
+
+
+=== Command format ===
+/clone
+
+Clones all the blocks (not entities) from a given area to a different given area.
+Up to 4096 blocks can be copied.
+The clone can be masked or replace - replace copies every block, masked only copies non-air blocks.
+Usage: /clone <x1> <y1> <z1> <x2> <y2> <z2> <x> <y> <z> [mode].
+Example: /clone 1001 3 1002 1011 3 992 1001 5 992 masked.
+/fill
+
+Fills a given volume with a specified block.
+Up to 4096 blocks can be filled.
+oldBlockHandling works like with /setblock, but with additional options: hollow to only fill the outer layer of blocks and fill the inner part with air, outline to fill the outer layer of blocks and ignore the inner part.
+Works similarly to /setblock
+Usage: /fill <x1> <y1> <z1> <x2> <y2> <z2> <TileName> [dataValue] [oldBlockHandling] <dataTag>.
+Example: /fill 1001 3 1002 1011 5 992 wool 6 replace.
+Gamerules
+
+logAdminCommands
+If set to false, prevents all command blocks from outputting to the client console.
+If used on a server, it also does not log player executed commands in the server's log.
+Players still see other players' executed commands in chat.
+
+
+== Changes ==
+
+
+=== Items ===
+Player heads
+
+No longer only have one layer.
+
+
+=== Mobs ===
+Iron golems
+
+Now only drop iron ingots when killed by the player, either through combat or potions, or player-activated mechanisms such as manually lit TNT.
+If killed without player intervention, only drops poppies.
+Villagers
+
+When struck by lightning, now transform into witches, similar to pigs transforming to zombie pigmen and creepers to charged creepers.
+Zombie pigmen
+
+Now only drop gold nuggets and rare drops when killed by the player, either through combat or potions, or player-activated mechanisms such as manually lit TNT.
+If killed without player intervention, only drops rotten flesh.
+
+
+=== World generation ===
+Desert pyramids
+
+Now spawn with stained clay  rather than wool .
+Villages
+
+Now spawn with cobblestone under the gravel pathways.
+
+
+=== Command format ===
+/tp
+
+Now supports rotation arguments.
+Example: /tp @p ~ ~ ~ ~20 ~40 teleports the player so that they face 20 degrees to the right and 40 degrees downwards.
+Target selectors
+
+Now supports cubic areas.
+Example: @e[x=0,y=0,z=0,dx=10,dy=10,dz=10] gets all entities between 0,0,0 and 10,10,10.
+The radius value in selectors is now based on the block center.
+A radius of 0 works for exact block positions.
+
+
+=== Gameplay ===
+Item tooltips
+
+Now shows the internal name for use in commands (F3 + H mode).
+
+
+=== General ===
+Block IDs
+
+NBT data in commands can now use block/item names in place of numerical IDs.
+Old IDs still work, but are being phased out slowly.
+Other occurrences of blocks/items now need to be named IDs.
+Regular IDs in commands no longer work. /give [player] 1 is now /give [player] stone.
+F3 hotkeys
+
+F3 + D: Clear chat history (including previously typed commands).
+Skin customization
+
+Uses a char.png file with new layout and new dimensions.
+Dimensions for the file are now 6464.
+Right and left arms and legs are now editable independently.
+The hat layer is now full-body, can be transparent.
+Overlays for arms, legs, head, and body are called sleeves, pants legs, hat, and jacket respectively.
+Backward-compatible with older skins.
+Old skins still work, but do not have the new features.
+New skins when used in pre-14w02a versions act like old skins.
+New "Skin Customization" button in the options menu.
+Cape visibility is now toggled from here.
+Players can toggle the visibility of overlays, independent for each limb/body part.
+
+
+== Fixes ==
+14 issues fixed
+From released versions before 1.8
+
+MC-14671  1-Tick pulse sustaining with repeaters.
+MC-26572  Mob/player head blocks don't render the hat layer.
+MC-34919  Hopper: java.lang.NullPointerException: Rendering screen.
+MC-36494  /setworldspawn does not update compass.
+MC-42312  Range with command blocks subtly messed up.
+MC-44881  Command block custom radius.
+From the 1.8 development versions
+
+MC-44389  Leaves not changing color depending on biome.
+MC-44556  /clear doesn't clear items in armor slot (NPE).
+MC-44684  14w02a teleporting changes cause side effects to endermen teleportation.
+From the previous development version
+
+MC-44618  Spawn point @a/@p/@r not working.
+MC-44758  CommandBlock @ selectors are offcentered.
+MC-44785  r=65536 in command block doesn't work anymore.
+MC-44824  Hopper: java.lang.NullPointerException: Rendering Block Entity.
+MC-44848  Hopper: java.lang.NullPointerException: Unexpected error.
+
+
+== Trivia ==
+14w03a was previously removed from the launcher for some time, but was added back in September 2018.
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,723 @@
+This is a list of Bedrock Edition 1.16.210 development versions.
+
+
+== beta 1.16.210.50 ==
+Beta 1.16.210.50 is the first beta version for Bedrock Edition 1.16.210, released on December 2, 2020, which added new ambient sounds to the Nether, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Ambience
+
+Added new ambient sounds to the Nether.
+Different sounds play in each Nether biome.
+
+
+=== Fixes ===
+General
+
+Players are once again able to join servers when the server has view-distance set to 4 or less (BDS-8855).
+Animations for custom mobs based on vanilla actor types for their "runtime_identifier" (such as Pandas and Polar Bears) will now work properly (MCPE-95898).
+Brought back capability to rejoin a server after it has been suspended and resumed.
+Accessibility
+
+Fixed the screen reader not reading the title on the Permissions screen.
+Achievement Screen
+
+Removed the input legend of the Achievement page Summary panel when narration is enabled.
+Fixed an issue where the scrollbar could be hidden behind the input legend.
+Fixed achievement details page getting its content hidden behind the Input legend.
+Updated size of achievement reward frame.
+Updated frame art for locked achievements.
+
+
+== beta 1.16.210.51 ==
+Beta 1.16.210.51 is the second beta version for Bedrock Edition 1.16.210, released on December 9, 2020, which changes the goats and powder snow behavior, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Powder Snow
+
+Now shows the block breaking animation when being mined.
+No longer transparent when looked at through clouds.
+
+
+==== Items ====
+Shields
+
+Now grants partial knockback protection from the goat ram attack.
+Spawn Eggs
+
+Goat spawn egg texture has been updated.
+
+
+==== Mobs ====
+Creepers
+
+No longer attack back after being rammed by a goat.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Caves & Cliffs"  experimental toggles.
+
+
+==== Mobs ====
+Goats
+
+Now drops 12 raw mutton upon death.
+Model has been updated to have correct rotation for its head.
+Now only breed one baby at a time.
+No longer set ram attack position to unreachable block behind obstacle.
+Can now jump to several non-full blocks like slabs and stairs.
+No longer jump from honey.
+No longer jump onto magma blocks.
+No longer attack armor stands.
+Now only drop 2 horns each.
+The number of horns left to drop is represented on the model.
+No longer perform radically high jumps.
+No longer overshoot or undershoot their jumps.
+Now flip their knockback target slightly higher in the air.
+Can now go through non-solid blocks (like grass and flowers) when they ram.
+Now knock back the first target it intersects.
+Baby goats now knockback their target at a shorter distance.
+Baby goats don't jump as far as the adults.
+
+
+=== Fixes ===
+Vanilla Parity
+
+Pouring water on top snow no longer creates snowballs.
+Using bone meal in warm ocean biomes now only generates seagrass, coral, and coral fans. (MCPE-100085)
+General
+
+Updated outdated loading screen tips. (MCPE-98977, MCPE-102293)
+Gameplay
+
+Mining a crimson hyphae with Silk Touch now returns a placeable block.
+Mobs
+
+Fixed a bug where parrots could fly upwards indefinitely.
+Zombie villagers spawned from zombie spawners on Marketplace worlds that were created after version 1.11 now correctly spawn as V2 zombie villagers. When cured, they will now correctly turn into V2 villagers.
+Horses, donkeys, mules, skeleton horses, and zombie horses can now properly be given custom names, and identified using their respective runtime_identifier.
+Graphical
+
+Fixed an issue with maps rendering over transparent objects when attached to item frames in RTX worlds.
+Reduced ghosting of fish when viewed through the water with DLSS enabled.
+
+
+== beta 1.16.210.53 ==
+Beta 1.16.210.53 is the third beta version for Bedrock Edition 1.16.210, released on December 17, 2020, which brought changes to powder snow, added full screen keyboard shortcut, and fixes bugs. This is the final beta released in 2020.
+
+
+=== Additions ===
+
+
+==== Command format ====
+Gamerules
+
+freezeDamage
+Whether entities take damage from freezing inside of powder snow.
+
+
+=== Changes ===
+
+
+==== Items ====
+Leather armor
+
+Wearing any piece of leather armor now prevents freezing entirely.
+
+
+==== Command format ====
+/clone, /fill, /setblock
+
+Added new slash command options for passing in a list of block states to set on the block being spawned.
+/mixer
+
+Now removed entirely from the game.
+
+
+==== Gameplay ====
+Death messages
+
+Added death messages for freezing:
+"<player> froze to death".
+
+
+==== General ====
+Controls
+
+Fullscreen can now be toggled with F11 keyboard shortcut.
+Settings
+
+Broadcasting options are now completely removed from the game since Mixer streaming services are no longer available.
+Particles
+
+Added a new particle type: snowflake_particle.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Caves & Cliffs"  experimental toggles.
+
+
+==== Items ====
+Powder Snow Bucket
+
+Using a bucket on powder snow creates a powder snow bucket.
+Powder snow buckets can be used to place powder snow.
+
+
+==== Blocks ====
+Powder Snow
+
+Now emits particles when an entity is moving inside of it, or landing on it.
+Freezing effect is now removed from any mobs or players that catch fire.
+Mobs that have sunk into powder snow now can navigate through it.
+Entities on fire now have their fires extinguished when stepping into powder snow.
+Redstone dust, torches, and item frames can no longer be placed on powder snow.
+Gravity blocks no longer break when landing on powder snow.
+While within powder snow blocks third person camera is no longer pushed to the inside of the character's head.
+Mobs spawned inside Powder snow no longer have a risk of spawning underground.
+Powder snow block forms are no longer present in Creative Inventory anymore (MCPE-105407).
+Powder snow no longer stops projectiles in Bedrock (MCPE-104940).
+Lightweight mobs now can climb and navigate through powder snow blocks.
+Rabbits, silverfish, and endermites don't fall through powder snow blocks.
+An entity walking through powder snow will make the correct step sound regardless of which block is being walked on.
+Wearing Leather Boots now allows entities to climb powder snow Blocks (MCPE-105410).
+Powder snow now has unique interaction sounds.
+
+
+==== Mobs ====
+Goat
+
+Now avoids walking into powder snow while path-finding.
+
+
+=== Fixes ===
+Nether Ambient Sounds
+
+Mobile players now experience ambient sounds in The Nether (MCPE-74756).
+General
+
+Shulker Boxes no longer lose their inventory when undyed in cauldrons (MCPE-108196).
+Added new logic for mobs dismounting rideables.
+This also introduces a more fine-grained entity height check allowing different dismount places for entities of different heights.
+The player will no longer dismount into liquids (lava or water) from rideables such as boats.
+Sign-in failures now have a more helpful error message and provide error codes.
+Gameplay
+
+In all worlds created with the same seed, the same chest will now always generate the same content in the same order (MCPE-72432).
+Double Chests placed at chunk borders don't become partially invisible and don't crash the title when they are opened (MCPE-106030).
+Golden Apple and Enchanted Apple now have colored hotbar text when selecting them (MCPE-64427).
+Technical
+
+Changing RideableComponent property rotate_rider_by to function for custom mobs.
+
+
+== beta 1.16.210.54 ==
+Beta 1.16.210.54 is the fourth beta version for Bedrock Edition 1.16.210, released on January 7, 2021, which brought changes to commands, and fixes bugs. This is the first beta released in 2021. 
+
+
+=== Additions ===
+
+
+==== General ====
+Settings
+
+Added text-to-speech setting to the Audio settings.
+
+
+=== Changes ===
+
+
+==== Command format ====
+/camerashake
+
+Added stop action command.
+/mixer
+
+Re-added back into the game.
+/structure
+
+Can now delete saved structure list with /structure delete command.
+
+
+==== General ====
+Accessibility 
+
+Changed the following options names:
+"Enable Text To Speech For Chat" to "Text To Speech For Chat".
+"Enable Text To Speech with Device Settings" to "Text To Speech with Device Settings".
+"Enable UI Screen Reader" to "Text To Speech For UI".
+
+
+=== Fixes ===
+General 
+
+Ink Sac from Wandering Trader can now be used for crafting and it can be stacked (MCPE-101087).
+Character Creator
+
+Emote wheel now supports Screen Reader on Android and iOS devices.
+Split-screen characters are now stored in memory and re-joining the game will keep the character that the player had (MCPE-58640).
+Marketplace
+
+Fixed upgrade path for format_version 1.13.0 boats to be properly upgraded to 1.16.100, which resolves a bug where boats in templated worlds with a version lower than 1.16.100 had no gravity (MCPE-104934).
+Commands
+
+Documentation for Bedrock Server Commands has been updated to show the correct commands for permission reloading and listing (BDS-2341).
+Teleport command now correctly aligns the rotation with the destination entity (MCPE-35979).
+Selector argument options can again be seen and auto-completed correctly after specifying one (MCPE-59794).
+Spawn events now show as suggestions for the /summon command (MCPE-101112).
+SendCommandFeedback no longer prevents display of outgoing messages (MCPE-95217).
+Multiple /tickingarea add or /tickingarea remove commands performed during the same tick will no longer result in inaccurate messages about the number of ticking areas in use.
+Players can no longer overrun the maximum number of standalone ticking areas in use by adding them all in the same tick.
+Scoreboards
+
+Score values on the scoreboard now align on the right of the table (MCPE-64973).
+
+
+== beta 1.16.210.55 ==
+Beta 1.16.210.55 is the fifth beta version for Bedrock Edition 1.16.210, released on January 13, 2021, which fixes bugs.
+
+
+=== Fixes ===
+Stability and Performance 
+
+Fixed a crash that could occur when changing language settings.
+General 
+
+Fixed an issue that was causing the Ender Dragon animation to appear jittery (MCPE-105892).
+Fixed a bug that prevented Actors from initializing their animation component.
+
+
+== beta 1.16.210.56 ==
+Beta 1.16.210.56 is the sixth beta version for Bedrock Edition 1.16.210, released on January 20, 2021, which added pointed dripstone and sculk sensor, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Gameplay ====
+Particles
+
+New particle types: vibration_signal and sculk_sensor_redstone_particle
+
+
+=== Changes ===
+
+
+==== General ====
+Loading tips
+
+Added a new loading tip:
+"Playing on iOS, Android, or FireOS? Get the free Minecraft Original Music Pack from the Marketplace for the full Minecraft experience."
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Caves & Cliffs" experimental toggles.
+
+
+==== Blocks ====
+Pointed Dripstone 
+
+Does not generate anywhere currently, is only available from the creative inventory.
+Can be placed on the floor or ceiling, creating stalagmites or stalactites respectively.
+Can be combined to form longer stalactites and stalagmites.
+Stalagmites break if not attached to something below, and hurt entities which fall on top of them.
+Enemies that fall on the stalagmites deal three times more fall damage
+Stalactites fall if unsupported, and hurt entities they fall on.
+Sculk Sensor
+
+A new redstone component.
+Detects vibrations, and emits a redstone signal.
+Will emit a different strength if connected to a comparator, and the signal strength is based on the vibration's frequency.
+Currently can only be obtained via the creative inventory or commands such as /give.
+
+
+=== Fixes ===
+General 
+
+Fixed Pork Chop achievement and trophy being unlocked by raw porkchop (MCPE-95446)
+Fixed a bug where foxes wouldn't knock off and eat sweet berries (MCPE-70790)
+Clicking "Download Template" when missing required templates of an existing world now correctly downloads the required templates
+Fixed bug that allowed players to place custom spawn eggs by default in Adventure mode
+Commands 
+
+The /setblock command now supports setting the connected state for the soul_lantern block (MCPE-89609)
+The /setblock command now supports setting the rotation state for the chain block (MCPE-105912)
+'SetBlock' and 'SetBlockAtPos' events now support custom block states
+Blocks 
+
+Fix for certain Marketplace worlds having incorrect block data when played on Realms and multiplayer between mobile and PC
+World Generation 
+
+Mcstructure files saved with entities no longer crash game when loaded into the world (MCPE-63387)
+Technical
+
+A boolean parameter called "ignore_game_mode" is added for the block event response "decrement_stack", set to false by default. Thus "decrement_stack" no longer decreases the item stack when playing in Creative by default.
+
+
+== beta 1.16.210.57 ==
+Beta 1.16.210.57 is the seventh beta version for Bedrock Edition 1.16.210, released on January 28, 2021, which added the copper related features, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Dispensers
+
+Can now put honeycomb to wax copper blocks.
+Redstone
+
+Now renamed as "Redstone Dust" to match Java Edition.
+
+
+==== Mobs ====
+Drowned
+
+Now drops copper ingots instead of gold ingots.
+Only possible with Caves & Cliffs experiments toggle enabled.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Caves & Cliffs" experimental toggles.
+
+
+==== Blocks ====
+Copper Block
+
+Can be crafted with 4 copper ingots, and can also be crafted back into 4 copper ingots.
+Oxidizes and changes texture to a turquoise-green over time.
+Can be stopped from oxidizing by combining it with a honeycomb to create a Waxed Copper Block.
+Can be crafted into cut copper.
+Available under experimental gameplay.
+Copper Ore
+
+Generates randomly underground in small blobs, but this has been confirmed to be a placeholder.
+Has the same rarity as iron.
+Generating starts at the same minimum level(s) as iron.
+Can be smelted into a copper ingot.
+Can be randomly rotated.
+Available under experimental gameplay.
+Cut Copper Block
+
+Can be made into stair and slab variants.
+Oxidizes and changes texture over time.
+Can be stopped from oxidizing by combining it with a honeycomb to create Waxed Cut Copper Block.
+Available under experimental gameplay.
+Cut Copper Slab
+
+Oxidizes and changes texture over time.
+Can be stopped from oxidizing by combining it with a honeycomb to create a Waxed Cut Copper Slab.
+Available under experimental gameplay.
+Cut Copper Stairs
+
+Oxidizes and changes texture over time.
+Can be stopped from oxidizing by combining it with a honeycomb to create Waxed Cut Copper Stairs.
+Available under experimental gameplay.
+Lightning Rod
+
+Can be crafted with 3 copper ingots.
+Nearby lightning strikes within a 64-block radius get redirected to the lightning rod.
+Gives off a redstone signal with a strength of 15 if hit by lightning.
+Available under experimental gameplay.
+
+
+==== Items ====
+Copper Ingot
+
+Obtained by smelting copper ore or as a rare drop from drowned.
+Used to craft copper blocks and lightning rods.
+Available under experimental gameplay.
+
+
+=== Fixes ===
+Accessibility 
+
+Keyboard inputs can now adjust slider settings when the cursor is outside the UI frame.
+Screen Reader now informs the player when the "Chat Settings" menu has been opened.
+Fixed a bug where the UI screen reader did not read the permission toggles' titles on the Permissions Screen.
+Screen Reader now reads Whisper and Announcement messages.
+Performance and Stability 
+
+Improved the smoothness of UI transition animations for some devices (MCPE-41772).
+Improved performance for actors using TemptGoal.
+General 
+
+Fixed an issue that prevented player interaction after using the '/clone' command on a double chest block (MCPE-109119).
+Using the /clone command to clone a block of the same type is no longer treated as a failed operation (MCPE-83352).
+Fixed players taking fall damage when opening Shulker Boxes (MCPE-105490).
+Nether Brick now gives XP from being smelted (MCPE-100030).
+All mobs that use a melee attack have had their ability to hit targets above and below them restored.
+The target still must be within melee attack distance to be hit.
+This only affects world versions greater than or equal to 1.16.210.
+Graphical and User Interface 
+
+Tool and armor recipes now display the selected item background when selected in the recipe list
+Wireframe of a structure block in the Overworld will no longer render in Nether and The End (MCPE-75231)
+Audio sliders will now always highlight when hovered over with a mouse
+Durability bar is now visible when holding items with decreased durability in a window (MCPE-105893)
+Added more helpful Video Settings messages for ray tracing on supported and non-supported platforms.
+Structure block
+
+Structure blocks no longer auto-save the data when the structure name text box is deselected (MCPE-101055).
+The scoreboard data of an entity is no longer removed if the entity is being teleported to an unloaded area of the world.
+Teleporting away from a structure animation to unload it no longer causes the game to crash.
+Commands, Scripting, and Add-ons 
+
+A warning now appears when attempting to move a locked item in and from containers.
+
+
+== beta 1.16.210.58 ==
+Beta 1.16.210.58 is the eighth beta version for Bedrock Edition 1.16.210, released on February 3, 2021, which brought technical changes and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Command format ====
+/mixer
+
+Now removed entirely from the game again.
+
+
+==== General ====
+Settings
+
+Broadcasting options are now completely removed from the game again, since Mixer streaming services are no longer available.
+
+
+==== Technical ====
+Component Variables
+
+main_hand - An optional object storing optional transform data for first_person and third_person for the player's right hand.
+off_hand - An optional object storing optional transform data for first_person and third_person for the player's left hand.
+first_person - An optional object storing 3 vectors 'position', 'rotation', 'scale' used to build the first person matrix.
+third_person - An optional object storing 3 vectors 'position', 'rotation', 'scale' used to build the third person matrix.
+Render Offsets Component
+
+Simple items, like swords or pickaxes, can have an optional offset applied to them to modify the way they are rendered.
+Note this component should not be added to an attachable item.
+
+
+=== Fixes ===
+Accessibility
+
+The screen reader now properly announces edit/create character button text for each character on the profile screen.
+Performance and Stability
+
+Fixed a number of crashes that could occur during gameplay.
+Fixed a crash that could occur when opening the achievements screen when the anti-aliasing setting was set to 1 (MCPE-110164).
+General
+
+Fixed ticks not affecting blocks changing states - this means that things like crops and saplings will once again grow correctly (MCPE-116221).
+Fixed the player being unable to interact with a tool in their inventory after breaking blocks with it in survival (MCPE-115341).
+Fixed dried kelp block bottom and carried textures so that rope pixels are aligned (MCPE-35476).
+Fixed an issue where snow accumulated in lines with certain simulation distances (MCPE-73468).
+TNT submerged in water will once again launch players in Survival mode.
+Fixed an issue where achievement names and descriptions would not be translated, independent of language selection. (MCPE-85813).
+The online status of cross-platform friends' shown on the invite screen will now update when a change has been detected (MCPE-70004).
+Fixed an issue that prevented achievement rewards from showing correctly after changing the language setting.
+Owned and purchasable skins no longer get mixed into different categories while offline.
+Emote title no longer shows previously previewed emote upon re-entering tab.
+Updated the in-game links to the feedback site and bug tracker.
+Graphics
+
+Goat and other tinted spawn eggs now look correct when held in hand (MCPE-104145).
+Fixed an issue with screen resolution which could flicker when resizing a window (MCPE-69721).
+Entities that use material state "Blending" now render correctly behind transparent parts.
+Technical
+
+On the "Dragons!" Marketplace map, behavior animation controller will no longer stop working after reloading the map with a saddled dragon.
+Disabled loading of entities in custom biome features.
+Fixed UVs of data-driven blocks to not be slightly shrunk, which caused texel warping.
+Fixed data driven blocks being pushed by pistons not working correctly.
+
+
+== beta 1.16.210.59 ==
+Beta 1.16.210.59 is the ninth beta version for Bedrock Edition 1.16.210, released on February 11, 2021, which added glow squid behind the experimental toggle, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Signs
+
+Using dyes will now change the text color.
+Can now be tinted with glow ink sacs to make the text glow.
+Glowing signs do not affect the light level, only appearing as if the text itself is illuminated.
+Regular ink sacs can be used to remove the glowing effect.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Caves & Cliffs" experimental toggles.
+
+
+==== Blocks ====
+Glow Item Frames
+
+An item frame which appears to glow.
+Do not affect the light level, only appearing as if lit up themselves.
+Items placed inside also glow.
+Crafted using an item frame and a glow ink sac.
+
+
+==== Items ====
+Glow Ink Sacs
+
+Dropped by glow squid when killed.
+Can be used to craft glow item frames.
+Can be used to make text glow on signs.
+Spawn Eggs
+
+Added glow squid spawn egg.
+
+
+==== Mobs ====
+
+Glow Squid
+
+Originates from the mob with the same name from Minecraft Earth.
+Underwater mob that behaves like a regular squid.
+Does not naturally spawn yet.
+Drops glow ink sacs when killed.
+Does not affect the light level, only appearing as if lit up itself.
+Stops glowing for a short time.
+
+
+=== Fixes ===
+Accessibility
+
+The screen reader now announces the names of the A/B Button Swap and X/Y Button Swap options correctly.
+Fixed an issue where the screen reader would intermittently fail to announce some button names.
+Performance and Stability
+
+Fixed a number of crashes that could occur during gameplay.
+Fixed a crash that could occur when leaving a world.
+Fixed a crash that occasionally occurred on dedicated servers around villages (BDS-10666).
+Fixed a crashing issue related to corrupted biomes during world load for various Marketplace worlds.
+General
+
+Command blocks no longer censor numbers (MCPE-106296).
+Fixed inability to resume mining with touch controls after being interrupted (MCPE-115507).
+Fixed an issue where crafting a bed with the recipe book unlocked the "Change of Sheets" trophy.
+Minecarts now properly update their effects (looping sound, player coordinates) when the minecart is not being rendered for the rider (MCPE-104044).
+Fixed Skin Preview navigation when using a controller.
+Fixed arrows getting stuck in the air after hitting a player with high latency.
+Fixed template tabs overlapping in Create New menu.
+Fixed missing Incompatible button on the Marketplace Inventory screen.
+Fixed an issue that allowed in-game patch notes to show more than once.
+Fixed some interface issues with scrolling and clearing store filters.
+Graphics
+
+Fog once again correctly displays in the Nether (MCPE-111680).
+Cloud Storage (Xbox)
+
+Resolved an issue where, in certain cases, a world could not be properly synced to the cloud (Xbox only).
+Technical
+
+Fixed an issue with animating structures when chunks were unloaded and the animation not continuing.
+Attachable items created in 1.16.2 and before will not render for their player in first person. Attachable items created after 1.16.2 will render for their player in first person unless they are armor.
+Custom blocks now can only drop default state when broken, even with Silk Touch.
+Fixed validation of 'render_offset' as string in component item JSON schema.
+The /schedule command will once again execute from the entity it originated from if the area was already loaded.
+
+
+== beta 1.16.210.60 ==
+Beta 1.16.210.60 is the tenth beta version for Bedrock Edition 1.16.210, released on February 18, 2021, which added the GameTest automation tool, removed glow squid related features, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/gametest
+
+New command to test the GameTest features.
+
+
+==== Technical ====
+GameTest Framework 
+
+A server-side test automation tool that is based on pairing test code with test structures.
+Not functional on console platforms.
+Currently only accessible with Experimental Gameplay.
+
+
+==== General ====
+Experiments
+
+Added new experiments toggle: "Enable GameTest Framework.
+
+
+=== Experimental ===
+These Temporarily Removed and changes are no longer accessible by enabling the "Caves & Cliffs" experimental toggles.
+
+
+==== Blocks ====
+Glow Item Frames
+
+Temporarily removed due to a crash.
+Signs
+
+Color on dyed signs disappears and the text turns back to black.
+Signs with applied glowing effect as well as color stops glowing and color is removed.
+
+
+==== Items ====
+Glow Ink Sacs
+
+Temporarily removed due to a crash.
+Spawn Eggs
+
+Glow squid spawn egg is temporarily removed alongside the mob itself.
+
+
+==== Mobs ====
+Glow Squid
+
+Temporarily removed due to a crash.
+
+
+=== Fixes ===
+Performance and Stability 
+
+Fixed crash that could occur when loading a structure block that contained a Sculk Sensor (MCPE-115443).
+Fixed a crash that could occur when interacting with a sign (MCPE-117513).
+General 
+
+Raised the time limit for selecting whether to download a resource pack on connect from 5 seconds to 5 minutes.
+New UI 
+
+The new achievements screens are now enabled by default (except in VR, on PS4, or on touch devices with narration enabled).
+Multiplayer 
+
+The in-game invite screen will now refresh when you return to it from the add members screen.
+Character Creator 
+
+Fixed a bug where changes to the character creator are lost when application is out of context.
+Fixed a bug where tabbing out after changing to the "Character Creator" tab from "Classic Skins" tab will cause Classic Skin to be equipped instead of Character Creator persona.
+A new character is now created if no valid character exists when the dressing room is opened.
+
+
+== beta 1.16.210.61 ==
+Beta 1.16.210.61 is the eleventh and final beta version for Bedrock Edition 1.16.210, released on February 24, 2021, which fixes minor bugs.
+
+
+=== Fixes ===
+Fixed several crashes that could occur during gameplay.
+Fixed a crash that could occur when using Code Connection.
+Fixed the map in offhand blocking the view when opening inventory in several Marketplace worlds.
+
+
+== Notes and references ==
+
+
+== Navigation ==

@@ -1,0 +1,128 @@
+23w05a is the third snapshot for Java Edition 1.19.4, released on February 1, 2023, which introduces a new design for the "Create New World" screen, makes all armor trimmable, and fixes bugs.
+
+
+== Additions ==
+
+
+=== General ===
+Options
+
+Added the "Glint Speed" and the "Glint Strength" accessibility options for adjusting the speed and transparency of enchantment glints.
+
+
+== Changes ==
+
+
+=== Items ===
+Armor and elytra
+
+Now it is possible to swap an equipped piece of gear with another one by using the latter.
+
+
+=== Command format ===
+/effect
+
+infinite is now a valid option for effect durations.
+Infinite effect durations show up as "" in the player inventory view.
+
+
+=== General ===
+
+"Create New World" screen
+
+Now organized into three tabs:
+The Game tab allows to set the world name, gamemode, difficulty, and whether to allow cheats.
+The World tab allows to set the world type and world seed, and to toggle the generation of structures and the bonus chest.
+The More tab provides access to game rules, experiments, and the data pack selection screen.
+Removed the Import Settings button and the corresponding Export Settings button in the Edit World screen.
+Options
+
+Changed how tooltips in the menu UI are positioned.
+
+
+== Experimental ==
+These changes only take effect when the 1.20 experimental data pack is enabled.
+
+
+=== Changes ===
+
+
+==== Items ====
+Smithing templates
+
+The following common armor trim smithing templates now always generate 2 each in a chest when found:
+Dune armor trim
+Coast armor trim
+Wild armor trim
+Sentry armor trim
+Netherite upgrade smithing templates have been made twice as common.
+1 eye armor trim is now guaranteed to generate in every stronghold library chest.
+Woodland mansions now have a greatly increased chance of generating the vex armor trim.
+Across the board, smithing templates have been made slightly more common.
+The texture of the dune armor trim has been tweaked, so that the symbol on the chestplate is moved up a few pixels.
+
+
+==== Gameplay ====
+Armor
+
+Armor trims can now be applied to leather armor.
+Armor can now have trims of the same material it is made out of.
+
+
+==== General ====
+Data pack
+
+The following data is now also defined by a trim material:
+override_armor_materials: an optional map of armor material to overridden color palette.
+Map key is the armor material that this trim material wants to override with a different color palette.
+Map value is the name of the color palette that will be used when this trim material is applied to an armor piece with the corresponding armor material.
+The following data is no longer defined by a trim material: incompatible_armor_material
+Tags
+
+Added leather_helmet, leather_chestplate, leather_leggings, and leather_boots to #trimmable_armor item tag.
+
+
+== Fixes ==
+21 issues fixed
+From released versions before 1.19
+
+MC-127749  Cape is jittering; movement way sharper than in snapshot 18w03b.
+MC-147711  Drowned no longer have a different swimming animation.
+MC-190146  Game mode descriptions are grammatically incorrect/inconsistent.
+MC-211194  Debug worlds are shown as being created in the incorrect game mode.
+MC-216270  It's not possible to replace armor by right clicking while holding the armor item.
+From 1.19
+
+MC-252625  Frogs play a running animation after the NoAI NBT is applied.
+MC-254074  Frogs don't play their walking animation when they take damage.
+From 1.19.2
+
+MC-256650  Frogs don't have smooth transitions to their idle states when they stop moving.
+MC-257464  Axolotl walking animation stutters when moving slowly.
+From 1.19.3
+
+MC-256479  Camels don't play their walking animations when they are damaged.
+MC-256493  Camels don't have smooth transitions to their idle states when they stop moving.
+MC-256664  Camels play their walking animations after the NoAI NBT tag is applied to them.
+MC-258669  Warning Menu when import generation data for a new world does not react when click "Yes".
+From the 1.19.4 development versions
+
+MC-259206  The accessibility onboarding screen can not display any language other than English (US).
+From the previous development version
+
+MC-259357  Text inside the smithing table GUI renders behind the armor stand model in some languages.
+MC-259362  The item.minecraft.smithing_template.netherite_upgrade.additions_slot_description string is missing an article before the word "Netherite".
+MC-259370  Stronghold library loot table has been replaced by stronghold altar loot table.
+MC-259389  Incompatible crafting arrow overlay in the new smithing GUI uses the position of the legacy smithing GUI.
+MC-259399  The armor stand model within the smithing table GUI doesn't render the output item after resizing the game window.
+MC-259418  Camels with large LastPoseTick NBT values still behave strangely and cause a variety of issues.
+MC-259420  Pixels not present in the palettes get erased, not kept.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,849 @@
+This is a list of Bedrock Edition 1.11.0 development versions.
+
+
+== beta 1.11.0.10 ==
+Beta 1.11.0.10 is the eighth and final beta version for Bedrock Edition 1.11.0, released on April 11, 2019, which optimizes performance around villages and fixes bugs.
+
+
+=== Changes ===
+
+
+==== General ====
+Optimizations
+
+Optimized the use of target selectors.
+Made various performance optimizations around villages.
+Seed picker
+
+Removed most content in the seed picker with 7 original seeds remaining, added 11 more.
+
+
+=== Fixes ===
+3 bugs fixed
+
+Fixed villagers wandering constantly when there is no village nearby. (MCPE-43958)
+Fixed a crash that sometimes occurred after opening the skin picker.
+Fixed local multiplayer games not being playable between Nintendo Switch devices after playing a regular multiplayer game.
+
+
+== beta 1.11.0.1 ==
+Beta 1.11.0.1 is the first beta version for Bedrock Edition 1.11.0, released on February 21, 2019, which adds illager banners, illager captains, pillager patrols, raids, and the Bad Omen and Hero of the Village status effects.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+Illager banners
+
+A unique type of banner dropped by illager captains.
+
+
+==== Mobs ====
+Illager captains
+
+Spawn in pillager patrols, raids, and around pillager outposts
+Are pillagers, vindicators or evokers that wear illager banners on their heads.
+Give the player the Bad Omen status effect when killed.
+
+
+==== Game play ====
+Pillager patrols
+
+A group of 25 random illagers that spawn in the world.
+One of the illagers are a illager captain.
+Raids
+
+Triggered when a player enters a village with the Bad Omen status effect applied to them.
+A large group of pillagers that come to attack villages and kill the villagers.
+Mobs appear in waves  the amount of mobs and length of waves is increased per Bad Omen level.
+A raid boss bar shows the player how many enemies are left.
+A sound similar to a battle horn goes off before each raid wave.
+Status effects
+
+Added Bad Omen and Hero of the Village status effects.
+Hero of the Village is currently unused.
+Sounds
+
+Added new sounds for bells, campfires, grindstones, lanterns, raids, ravagers, and sweet berry bushes.
+Villagers
+
+Updated the villager trading UI for pocket and classic UI profiles.
+Added villager economy supply system:
+The supply of trades is only restored when the villager is given the opportunity to work at their job site block.
+When the villager's trades are restored to full, it takes whatever supply was used up (number of trades), and converts that into a price increase called "demand". Demand goes up by the amount of supply used, and down by the amount of supply not used.
+When villagers make trades, they gain experience. When they gain enough experience, they level up. Leveling up unlocks new trades, which are locked until the villager is at the appropriate level.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Barrels, bells, blast furnaces, composters, smokers, and stonecutters
+
+Added functionality.
+Cartography tables and grindstones
+
+Added functionality.
+Can now be crafted with multiple wood types.
+Campfires
+
+Updated texture and model.
+Added smoke particles, sounds, and extinguishing.
+Added cooking functionality.
+Added missing recipes.
+Lecterns
+
+Lecterns holding a book now emit a redstone signal when a page is turned.
+Stonecutters
+
+Moved all stonecutter recipes to the normal recipe list with tags.
+Wood, stripped wood, and stripped logs
+
+Added missing recipes.
+
+
+==== Mobs ====
+Evokers, pillagers, and vexes
+
+No longer attack baby villagers.
+Illager beasts
+
+Renamed illager beast to ravager.
+Added ravager bite and roar attacks.
+Ravagers now get stunned when their attack is blocked.
+Ravagers can now be ridden by vindicators and pillagers
+Added sounds for the ravager.
+Now destroy crops and leaves, and avoid cacti and sweet berry bushes.
+No longer attack baby villagers.
+Iron golems
+
+Now properly spawn in pillager outpost cages.
+An iron golem now spawns in each village.
+Villagers
+
+Old villagers in existing worlds now convert to new villagers.
+Villagers no longer teleport through or get stuck in walls when trying to sleep.
+Farmers now choose their profession based on composter blocks rather than farmland blocks.
+Vindicators
+
+Can now break down doors.
+No longer attack baby villagers.
+
+
+==== World generation ====
+Bamboo forests
+
+Are no longer only available through Experimental Gameplay.
+Pillager outposts
+
+Gray banners now generate instead of black banners.
+Are now less common.
+Are no longer embedded in the ground too much.
+Villages
+
+Village chests now all contain loot.
+
+
+==== General ====
+Map making and add-ons
+
+Added data-driven furnace recipes.
+Custom furnace recipes can be added to the game using JSON.
+Furnace recipes are one per file, like other craft recipes.
+Added tags to furnace recipes and made the UI screens use them to filter the recipes down.
+Recipes now have tags so they can be filtered by crafting type.
+Leash positions now use vanilla positions if not specified in the pack.
+Baby zombie pigmen now properly scale their sword in Marketplace content.
+Sound-event is now displayed in the scripting documentation.
+Renamed blocks in resource packs now keep their custom names.
+Particles
+
+Removed all the particles including prefix example_.
+
+
+=== Fixes ===
+Crashes
+
+Fixed several crashes that could occur during gameplay.
+Fixed a crash that could occur when enabling texel anti-aliasing.
+Fixed a crash that could occur if a villager trade was too expensive.
+Fixed a crash that could occur when spawning a villager in the Luxury Life Marketplace pack.
+Fixed a crash that could occur when generating the new villages.
+Fixed a crash that could occur when trading with the wandering trader.
+Fixed a crash that could occur when replacing a world with an unsynced world.
+Fixed a crash that could occur when loading in mob geometry.
+Fixed a crash that could occur when interacting with villagers with custom trades.
+General
+
+Global resource packs now stay applied even after restarting the game.
+The shield hotbar item now only shakes when durability is lost.
+The fishing float now sits slightly higher in water. (MCPE-32976)
+The "Treasure Hunter" achievement now unlocks when the map is placed in the off-hand slot. (MCPE-33382)
+Global resource reset message now shows up if the load screen is taking too long on some devices.
+The "No Available Space" message no longer shows unexpectedly when downloading Marketplace bundles.
+Renamed empty maps now stay named after becoming a filled map.
+Gameplay
+
+Players on split-screen no longer have limited visibility underwater. (MCPE-39539)
+Scaffolding that is placed over the void now supports the player. (MCPE-38064)
+Chorus fruits now play the teleporting sound properly after players eat them.
+Farmer villagers no longer produce infinite amounts of bread after players give them certain items. (MCPE-33608)
+Signs can now be used as fuel in furnaces.
+Players can now climb vines and ladders using the jump button again.
+Lightning no longer has a downward area of effect when hitting blocks, therefore, no longer striking mobs sheltering underneath blocks.
+Creative players no longer get additional buckets when collecting water or lava.
+Renaming items using an anvil no longer increases the prior work penalty. (MCPE-36931)
+Sweet berry bushes no longer supply infinite amounts of berries. (MCPE-41211)
+World generation
+
+Fixed mineshaft generation to no longer generate in a giant cluster that causes them to cross over each other, and should more closely resemble those found in the Java Edition. (MCPE-28485)
+Mesa plateau biomes now generate more like those in the Java Edition.
+Mobs
+
+Fixed panda eating animation being too slow. (MCPE-40743)
+Shulker shells now have a greater chance to drop with a bigger amount when shulkers are killed with swords with a looting enchantment applied. (MCPE-39893)
+Vexes no longer attack baby villagers.
+Vindicators no longer become passive when renamed. (MCPE-27927)
+Fixed baby villagers showing their trades when a player holds a certain item in their hand.
+Fixed guardians being able to spawn out of the water. (MCPE-39941)
+Fixed villager scheduling: Villagers now spend less time standing around doing nothing.
+Grass, bell, and trapdoor placement fixes.
+Village town centers now generate at or above water level.
+Sand blocks now have supportive sandstone blocks underneath.
+Fixed a bug causing some village elements to be buried underground.
+Balanced the number of job sites generated in villages.
+Flowing water is no longer generated in villages.
+Lava in village blacksmiths is no longer a fire hazard.
+Animals can spawn in villages again.
+Fixed the rotation of terracotta blocks.
+Balanced sea pickle generation.
+Bell block and crop block fixes.
+Fixed an issue with snow layer generation.
+Fixed an issue with ravines near desert villages.
+Playful pandas no longer roll into dangerous blocks when spawned.
+Fixed a bug related to the polar bear attack animation.
+Fixed polar bear hitbox being offset, and is positioned properly when riding a boat. (MCPE-41299)
+Fixed wither boss armor geometry.
+Creepers now flash white during their pre-explosion animation. (MCPE-41258)
+Fixed polar bear model size being too small.
+Snow golems now take damage when walking over campfires.
+Creepers can now spawn in a 1.8 high space. (MCPE-24120)
+Farmers and librarians now properly go to work.
+Villager work goal is properly cleaned up between schedule changes.
+Fixed villager work goal to have a cooldown, max active time, and better ranges.
+Villagers no longer get launched when waking up from their beds.
+Blocks
+
+Grindstones can no longer support scaffolding.
+Grass now spreads to normal dirt blocks, not coarse dirt. (MCPE-41198)
+Items
+
+Renamed firework stars and firework rockets now display their new names.
+Leather horse armor is now properly colored. (MCPE-40124)
+Banners no longer render as wall variants when held. (MCPE-41228)
+Shields held in the off-hand are no longer upside-down.  (MCPE-41221)
+Graphical
+
+Fixed issues with the armorer and cleric textures.
+Fixed armorer villager arm texture.
+Surrounded leaves are now the correct color.
+User interface
+
+Items can now be split if they are spread in a crafting grid on touch devices.
+Stonecutters now only make a noise when there's something to take.
+Commands
+
+Different cauldron types no longer overwrite each other in the player's inventory when using the /give command.
+Add-ons and script engine
+
+A component group is now correctly removed on the second activation of minecraft:damage_sensor.
+Target selectors are no longer case-specific.
+Scoreboard scores are no longer saved earlier than other information when exiting a world.
+
+
+== beta 1.11.0.3 ==
+Beta 1.11.0.3 is the second beta version for Bedrock Edition 1.11.0, released on February 28, 2019, which adds a raid bossbar and the /mobevent command.
+
+
+=== Additions ===
+
+
+==== Gameplay ====
+Raids
+
+Added raid bossbar.
+Are currently just a placeholder.
+
+
+==== Command format ====
+/mobevent
+
+Enables or disables events such as raids, wandering trader spawn cycles, and pillager patrols.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Fletching tables, smithing tables and sweet berry bushes
+
+Are no longer only available through Experimental Gameplay.
+Grindstones
+
+Now have the durability of a stone slab.
+Hoppers
+
+Can now be used to fill and empty composters.
+
+
+==== Items ====
+Splash water bottles
+
+Can now be used to extinguish campfires.
+Sweet berries
+
+Are no longer only available through Experimental Gameplay.
+
+
+==== Mobs ====
+Cats
+
+Now respawn based on the number of beds in the village.
+One cat spawns for every four beds in the village.
+Total caps at 10 cats per village.
+Ravagers
+
+Are no longer only available through Experimental Gameplay.
+Trader llamas
+
+Can no longer be bred.
+Can no longer spawn as baby variants.
+Now spit at mobs that are hostile to their owner.
+Player damage triggers the llama to become aggressive, but does not cause the trader to hide.
+New villagers
+
+Are no longer only available through Experimental Gameplay.
+Now heal when they wake up in the morning.
+Wandering traders
+
+Now drink an invisibility potion during dusk.
+Now drink an invisibility potion to escape hostile mobs or when struck by projectiles and magic attacks.
+New zombie villagers
+
+Are no longer only available through Experimental Gameplay.
+
+
+==== World generation ====
+Pillager outposts
+
+Are no longer only available through Experimental Gameplay.
+Now generate with illager banners.
+New villages
+
+Are no longer only available through Experimental Gameplay.
+
+
+==== Gameplay ====
+Pillager patrols
+
+Illagers now follow the patrol captain.
+Raids
+
+Players can now trigger a raid when entering a village with the Bad Omen status effect.
+Players receive the Bad Omen status effect when killing an illager captain.
+Raid states are saved and loaded between sessions.
+Ravagers are sometimes ridden by a pillager or vindicator when spawning in a raid.
+Raids now use the "dweller component" to track raiders, even when they are unloaded.
+Pillagers, vindicators, witches, and ravagers spawned from a raid move toward their village dictated from the dweller component.
+Status effects
+
+Updated the Hero of the Village and Bad Omen effect artwork.
+
+
+=== Fixes ===
+Crashes
+
+Fixed the crash that would occur when launching the game on Windows 10. (MCPE-42317)
+Fixed several crashes that could occur during gameplay.
+Using pick block on a nether portal no longer causes the game to crash. (MCPE-41735)
+Giving the player a cobblestone wall variant no longer crashes the game. (MCPE-41657)
+Fixed a crash that could occur when signing in or out of Xbox Live on Xbox One.
+Fixed a crash that could occur when resuming gameplay while connected to a server.
+Fixed a crash that could sometimes occur when trampling on pumpkin and melon stems.
+Fixed several crashes on Android when suspending and resuming the game.
+General
+
+Players on Xbox are no longer prompted to sign in to Xbox Live if they have already done so.
+Players can no longer suffocate in the ground while spawning into the world. (MCPE-42310)
+Gameplay
+
+Players can once again travel through End gateway portals without suffocating and no longer encounter world loading issues. (MCPE-41533), (MCPE-40538)
+Berry bushes are prickly again. (MCPE-41277), (MCPE-42407)
+Smooth stone can now be smelted again. (MCPE-42331)
+Smelting smooth stone now gives the player XP. (MCPE-41551)
+Fixed villages not registering beds that have slabs and stairs above them.
+Players using VR controllers no longer fly after swimming. (MCPE-39833)
+Silk touch tools now work correctly right up to their very last use. (MCPE-41789)
+Fixed the pillager and vindicator captains not giving Bad Omen upon death. (MCPE-42330)
+World generation
+
+More village generation fixes:
+Lower ladder blocks are no longer missing in structures.
+Basements no longer have broken structures and redundant dirt blocks inside.
+Fixed igloo-like houses that would sometimes not generate correctly.
+Floors no longer have missing blocks.
+Animal pens no longer allow animals to escape.
+Mobs
+
+Villagers now use available job sites indoors when it rains.
+Raiders no longer get stuck when trying to path find to a village.
+Illager captains spawned in outposts no longer leave due to patrolling behavior.
+The wandering trader now holds trade interest items the right way up.
+Mobs now rotate correctly after exiting boats. (MCPE-41341)
+Drowned mobs converted from a zombie now attack players.
+Villagers no longer get stuck on lanterns.
+Blocks
+
+Coral plants and seagrass now break when a supporting block is removed.
+Armor stands and grindstones are now craftable again. (MCPE-42350)
+Smooth and chiseled quartz blocks no longer have directional placement. (MCPE-39074)
+Graphical
+
+Fixed a rendering issue on the bell texture.
+Wandering traders no longer have two right feet.
+User interface
+
+Items can now be split properly in the inventory and crafting grid. (MCPE-42313)
+The keyboard no longer obscures text entry when writing in a book on Xbox One.
+Commands
+
+Fixed the command suggestion icons being offset. (MCPE-41169)
+Add-ons and script engine
+
+/replaceitem now takes selector arguments into account when replacing items in the offhand slot.
+
+
+== beta 1.11.0.4 ==
+Beta 1.11.0.4 is the third beta version for Bedrock Edition 1.11.0, released on March 7, 2019, which revamps the trading system and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Gameplay ====
+Chat
+
+A message "Press T,  Enter, or Gamepad Button8 to open chat" is now sent when the player opens a world.
+Raids
+
+Pillagers and vindicators now drop new loot during a raid.
+When a raid starts, a horn is heard by every player in the dimension, coming from the direction of the raid's spawn point.
+Trading
+
+Revamped the trading system, for each villager type.
+An experience bar shows the player the villager's level and how many trades are available.
+Players now receive a discount from villager trades while they have the Hero of the Village status effect.
+
+
+==== General ====
+Options
+
+Added a screen for "Accessibility" in settings.
+Text-to-speech can be enabled for chat.
+UI screen reader can be enabled to say the name of controls and their current state.
+Skin packs
+
+When choosing a skin from a skin pack, the selected skin is now available between Bedrock devices using the same account.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Bells
+
+Can now be used to direct nearby villagers into their houses when rung.
+Cartography tables
+
+Can now be used to lock maps with a glass pane.
+Locked maps do not update to reflect explored areas or changes in the world. Unexplored areas remain unexplored.
+Locked maps cannot be extended but can still be copied.
+Scaffolding
+
+Increased the amount of scaffolding that can be placed out from its initial support from 4 to 6.
+
+
+==== Mobs ====
+Iron golems
+
+Improved pathfinding.
+Villagers
+
+Now resupply their trades when arriving at their job site.
+Now hide in houses during raids.
+Can no longer be traded with during a raid, and will emit sweat particles.
+Improved villager pathfinding.
+Shields can now be bought from armorer villagers.
+Wandering traders
+
+Are no longer only available through Experimental Gameplay.
+No longer resupply trades, and despawn when out of trades.
+Zombie villagers
+
+Now update to the new zombie villagers when not part of template worlds.
+
+
+==== World generation ====
+Villages
+
+Improved spawning and generation.
+Increased the radius for job site blocks, so villagers can get to them more often and are less angry.
+
+
+==== Gameplay ====
+Settings
+
+How to Play screen has now been updated with Village & Pillage tips.
+Updated the scaffolding guide in How to Play slightly, to change the diagram of how much scaffolding can be placed from its support.
+Status effects
+
+Hero of the Village can now be obtained by defeating a raid, and lasts for three days.
+Added a use for the status effect, allowing a villager trading discount.
+
+
+=== Fixes ===
+Crashes
+
+Fixed the crash from the previous beta that could occur when re-joining a world while the ender dragon was in view.
+Fixed a crash that occurred when opening the chest inside a taiga village fletcher's house.
+Fixed several crashes that could occur during gameplay.
+Fixed the black screen that appeared after a suspend/resume on Android devices.
+Template worlds using custom villager trades no longer crash the game.
+Fixed a crash that occurred when using invalid characters on signs. (MCPE-41671)
+General
+
+Windows 10 players with Minecraft installed on a different drive no longer get an error message saying that they are out of storage space, unless they are truly out of space. (MCPE-32501)
+Gameplay
+
+Increased the visibility of the raid boss bar past the village bounds.
+Hero of the Village is now granted for three in-game days instead of one after completing a raid.
+Bells now ring in the preparation phase of raids.
+Players no longer float around beds while sleeping. (MCPE-41344)
+Bad Omen now disappears after five in-game days, drinking milk, or dying.
+World generation
+
+Lily pads once again generate in the world. (MCPE-42560)
+Fixed some buildings in villages not containing loot inside their chests.
+Fixed ground level blocks getting cut from underneath village structures.
+Beds now more commonly generate in villages.
+Mobs
+
+Villagers from 1.10 worlds are now properly converted to new villagers.
+Villagers can no longer get stuck inside composters.
+Villagers now actually follow proper etiquette and close doors behind them. (MCPE-41170)
+Villagers no longer spend too much time at their job sites.
+Villager children no longer stay out playing too late.
+Villagers that the player is trading with no longer run and hide when a bell is rung until after the trade is complete.
+Underwater mobs no longer spawn on land. (MCPE-40783)
+Sorted out the wandering trader's priorities so they won't get attacked as easily.
+Raiding mobs now attack players and villagers if they are spotted on the way to a village.
+Evokers now count towards the raid counter.
+Fixed a white stripe that appeared on the librarian's shoulder.
+Skeletons once again turn before shooting.
+Tamed cats now lay on their sides when sleeping on a bed. (MCPE-40726)
+Blocks
+
+Composters now have proper lighting. (MCPE-42561)
+Lanterns can once again be placed under stairs.
+Corrected the breaking particles for the grindstone.
+Sounds now play for job site blocks when villagers are using them.
+Fixed campfires not looking right when using HD textures.
+Using Ctrl + Pick block no longer creates a new bed with extra data attached. (MCPE-42494)
+Items
+
+Banners can once again be copied in the crafting grid. (MCPE-42534)
+Banners can once again be seen by players joining a world and no longer cause a crash when viewed in the inventory. (MCPE-42529)
+User interface
+
+The anvil output slot once again updates when removing items from the input slot. (MCPE-42420)
+Bad Omen status now shows remaining time displayed on the mob effects screen.
+
+
+== beta 1.11.0.5 ==
+Beta 1.11.0.5 is the fourth beta version for Bedrock Edition 1.11.0, released on March 14, 2019, which changes some textures and fixes bugs.
+
+
+=== Changes ===
+
+
+==== General ====
+Settings
+
+Text to Speech now reads all dialog boxes and in-game notifications.
+Raids
+
+If all villagers are killed or if all beds are destroyed during a raid, all players in the village now receive Bad Omen.
+Texture Update
+
+Added even more new textures to blocks and items, such as stained glass, grass blocks, and status effect icons.
+User interface
+
+Changed the user interface background from gray to transparent black.
+
+
+=== Fixes ===
+Crashes
+
+Fixed several crashes that could occur during gameplay.
+Fixed a crash that could occur when importing a 1.10 beta world with Experimental Gameplay disabled.
+Fixed a crash that could occur when villagers died.
+Raids
+
+Removed the placeholder explosion sound when a raid ends.
+A directional horn sound now plays to help find remaining raiders.
+Fixed the boss bar not emptying when a raid wave was completed.
+Fixed raids not starting on Android devices.
+Raids no longer break when switching to Peaceful difficulty, then back to Normal.
+Raiding mobs now attack players that attack them.
+Raiding mobs now move through water to get to a village.
+Raiding mobs can no longer spawn on leaves.
+Ravagers can now spawn with evokers riding them during raids.
+Witches now have a higher priority to move into villages during raids.
+Removed particles around players that have Hero of the Village.
+Improved spawn locations of mobs during raids.
+General
+
+Text to Speech audio prompts no longer overlap one other.
+Text to Speech now properly reads controller bindings.
+World generation
+
+Fences generated in water in villages are now surrounded with water.
+Trees no longer spawn one block above the ground in village animal pens.
+Mobs
+
+Fixed some sleepwalking villagers.
+Mobs can now path their way through waterlogged blocks, such as seagrass. (MCPE-37005)
+Wither skeletons and guardians once again spawn in the world. (MCPE-42922)
+Updated supply values for various villager trades.
+Wandering traders no longer change their offers after exiting and re-entering a world.
+Iron golems that spawn in a village now retaliate against attacking players.
+Improved ravager pathfinding.
+Villagers now take breaks every once in a while.
+Pillagers no longer float in mid-air after killing a ravager with a riding pillager.
+Blocks
+
+XP can now be stored for auto smelters using blast furnaces and smokers.
+TNT once again launches away from an explosion. (MCPE-42731)
+Added a placeholder sound for villagers interacting with the fletching table.
+Happy villager particles now appear over a job site block when it is claimed by a villager or angry particles when a villager cannot reach the block.
+Items
+
+Maps once again show underwater terrain differences. (MCPE-40740)
+User interface
+
+The output slot of the cartography table no longer overlaps the text field with Pocket UI on Android devices.
+Selecting a trade on the left side of the trading screen with a controller now completes a trade.
+The outline of the saddle item on the horse inventory screen now matches the new saddle texture.
+Fixed the lack of controller tooltip for interacting with the lectern.
+The loom screen now displays banner patterns correctly when using HD texture packs.
+Fixed overlapping boss bars when using touch devices.
+Trades no longer auto-populate the trade input slot.
+Villager trades that are locked no longer appear until the villager levels up.
+
+
+== beta 1.11.0.7 ==
+Beta 1.11.0.7 is the fifth beta version for Bedrock Edition 1.11.0, released on March 20, 2019, which adds an on screen animation when acquiring the Bad Omen and Hero of the Village status effects and changes the crafting recipe for the cartography table, fletching table, and smithing table.
+
+
+=== Additions ===
+
+
+==== General ====
+Skin packs
+
+When choosing a skin from a skin pack, the selected skin now roams between Bedrock devices using the same account.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Cartography tables, fletching tables and smithing tables
+
+Changed crafting recipe.
+
+
+==== Gameplay ====
+Raids
+
+A message is now displayed if a raid expires after two in-game days.
+Vindicators can now break doors during raids.
+Status effects
+
+Added new animation popups when acquiring Bad Omen and Hero of the Village.
+Trading
+
+Right-clicking on a trade now auto-trades items.
+
+
+=== Fixes ===
+Crashes
+
+Fixed several crashes that could occur during gameplay.
+Fixed a crash that could occur when stepping into a nether portal at the same time as a phantom. (MCPE-43115)
+An evocation fang without an owner no longer crashes the game when it tries to deal damage. (MCPE-43042)
+Downloading missing resource packs when creating a new world no longer makes the game unresponsive.
+Performance
+
+Improved performance on the villager trading screen.
+General
+
+Fixed a lot of accessibility features and text to speech issues.
+Disabling the "Multiplayer Game" setting now applies when the world is packaged as a world template.
+Gameplay
+
+Fixed players falling through blocks at around 65K blocks on the X or Z axes. (MCPE-39299)
+Raid loading is no longer canceled if a player saves and quits.
+Ringing a bell no longer locks players out of trading with villagers.
+Mobs
+
+Reduced the range of drowned attacking the nearest player.
+Villagers heads no longer clip through walls while sleeping. (MCPE-42478)
+Adjusted some incorrect prices for villager trades.
+Patrols can no longer stack up in the same spawn area.
+Patrols now avoid spawning near players if they are in a village.
+Villagers no longer lose their job site association with smokers and blast furnaces while they are smelting.
+Ravagers now move faster when moving into a village during raids.
+Ravagers can no longer deal damage to villagers and other mobs from behind walls.
+Pillagers can now spawn inside the pillager outpost structure.
+Blocks
+
+Fixed particles not appearing while mining blocks.
+Cobblestone slabs are no longer slabs and blocks at the same time. (MCPE-42352)
+Lingering potions no longer cause bells to repeatedly ring.
+Composters can no longer drop an endless amount of bone meal when pushed by pistons. (MCPE-42429)
+Items
+
+Fixed some items having invisible bits when placed in item frames. (MCPE-42415)
+Damaged tools can once again be smelted to recover gold/iron ingots. (MCPE-42533)
+Cacti can once again be smelted into green dye. (MCPE-42497)
+User interface
+
+Updated the How to Play page on scaffolding to show the change to the length of scaffolds.
+Add-ons / script engine
+
+Fixed inconsistent spawn eggs for villagers and zombie villagers for template worlds that require the original entities.
+Fixed pivot point changes to Endermen made with add-ons.
+
+
+== beta 1.11.0.8 ==
+Beta 1.11.0.8 is the sixth beta version for Bedrock Edition 1.11.0, released on March 27, 2019, which fixes bugs.
+
+
+=== Fixes ===
+Crashes
+
+Fixed several crashes that could occur during gameplay.
+Fixed a crash that could occur when entities like XP orbs touch bell blocks. (MCPE-43224)
+Fixed a crash that could occur when using a crafting table in Creative mode.
+Fixed a crash that could occur when spawning a vile spider from the MINECON add-on pack.
+Sneezing pandas no longer crash the game.
+Fixed a crash that could occur when suspending the game on Gear VR.
+Fixed a bug that could cause the game to freeze when selecting Save & Quit.
+Fixed a crash that could occur on Bedrock Dedicated Server.
+Fixed a crash that could occur when viewing owned skin packs.
+Fixed a crash that could occur when the text to speech feature tried to read a special character.
+Performance
+
+Improved the performance when opening the player inventory with the crafting recipes open. (MCPE-41772, MCPE-41166, MCPE-27167)
+General performance improvements.
+Improved performance by adjusting the 'RandomStroll' mob behavior.
+General
+
+Text to Speech now only operates when the focus is on Minecraft.
+Text to speech no longer stops working if too many punctuation marks are used.
+Choosing the "Allow Games to Speak to Me" option on Xbox now works correctly with Minecraft.
+Updated text to speech popup text.
+Text to Speech now correctly reads the generating world dialog boxes.
+Text to speech now only auto-enables when the client is set to English.
+Text to speech for touch now uses single tap for focus and double tap for press.
+Fixed a bug where the text to speech narrator would read world names twice.
+Made further improvements to world saving, to prevent worlds becoming disappearing from the world list.
+Worlds should no longer get stuck on the 'generating world' screen when the player is in the end dimension. (MCPE-41513)
+Free preview skins now roam across devices when signed in to Xbox Live.
+Gameplay
+
+If a player exits and re-enters a world during a raid, the boss bar no longer disappears, and the 'Hero of the Village' effect can still be obtained.
+Raids no longer fail to spawn waves while the player is flying.
+Reverted the fix for players falling through blocks around blocks 65k from spawn. (MCPE-39299)
+Mobs
+
+Skeleton horses spawned in from earlier versions can be ridden once again. (MCPE-40857)
+Removed the distance restriction for phantom spawning, meaning they should spawn more readily now. (MCPE-43736)
+Villagers can now properly access the entire village outskirts, without showing frustrated particles because it's too far.
+Spawned villagers who are leveled up now start with the preferred profession and won't change when introduced to a new village.
+Blocks
+
+End portal blocks can no longer drop as items. (MCPE-42991)
+Items
+
+Crafted items once again stack correctly with partial stacks already in the player's inventory. (MCPE-42719)
+Graphical
+
+Clouds are now three-dimensional again. (MCPE-43505)
+On screen animation no longer plays for all mob effects. (MCPE-43502)
+User interface
+
+Ratings button for server consumables now shows "Rate this pack!" instead of the purchase button.
+Add-ons / script engine
+
+Added component references for new villagers.
+Original villager and zombie variant spawn eggs can still be obtained and used in Marketplace content that utilized them.
+
+
+== beta 1.11.0.9 ==
+Beta 1.11.0.9 is the seventh beta version for Bedrock Edition 1.11.0, released on April 3, 2019, which fixes bugs.
+
+
+=== Fixes ===
+Crashes
+
+Fixed scripting crash when accessing health component on entities that don't have health (boats, leads, etc).
+Fixed a crash that can occur if the primary user exits the current world while a split-screen player is trying to join.
+Fixed a crash that could occur when receiving the Bad Omen effect.
+Fixed several crashes that could occur during gameplay.
+General
+
+The correct button tooltips are now shown when reassigning them on Nintendo Switch.
+Fixed a bug on Nintendo Switch that would prevent the command buttons from working after running a command or typing in chat.
+Players can now select the Mario skins from the expanded skin pack list when in-game.
+The skin picker is no longer limited to 15 owned skin packs.
+Remapping controls on Nintendo Switch now toggle correctly in the settings.
+Text-to-speech now works more consistently on Nintendo Switch.
+Text to speech now reads modal popups correctly.
+Players can view the skin selection menu when offline on Nintendo Switch without receiving internet connection message.
+Gameplay
+
+TNT now knocks back healing players.
+Interacting with a grindstone no longer 'uses' a held item.
+Blocks
+
+Seagrass can no longer delete blocks above it as it grows. (MCPE-43617)
+Mobs
+
+Mobs now spawn properly in icy biomes.
+Graphical
+
+Replaced the tripwire texture.
+Note particle color now corresponds to note block pitch.
+Reverted to old particle system for note blocks.
+Commands
+
+Using the /clear command no longer shows an error if a block value is not included.
+
+
+== Notes and references ==
+
+
+== Navigation ==

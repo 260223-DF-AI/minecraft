@@ -1,0 +1,98 @@
+17w14a is the fourth snapshot for Java Edition 1.12, released on April 5, 2017. 
+
+
+== Changes ==
+
+
+=== Mobs ===
+Parrots
+
+They are now able to make sounds while sitting on the player's shoulders.
+ Parrots now dance and change colors if playing music on a nearby jukebox.
+Changed the right-click action:
+Right-click on a tamed parrot tells it to sit down.
+Walking over/through/near a tamed parrot while crouching cause it to sit on the player's shoulders.
+Zombies
+
+New ConversionPlayerLeast and ConversionPlayerMost tags.
+Contains the UUID of the player that is converting the zombie.
+Used with the "minecraft:cured_zombie_villager" trigger for advancements.
+
+
+=== General ===
+Advancements
+
+Added 8 advancements, 7 of which are in the new "Adventure" tab.
+Advancements added in this version include:
+
+Changes to some existing advancements:
+"Summon the Wither" now works properly when player summons a wither.
+"Brew a Potion" changed to "Brew a Weakness Potion"; now requires specifically taking a potion of Weakness out of a brewing stand.
+Icon of the advancement was changed to a potion of Healing.
+"Create a full beacon" is now a "goal" type advancement instead of a "challenge".
+Pop-up notification for when players advance.
+New sliding effect.
+Comes in two different colors - yellow for normal advancements, and pink for "challenge" advancements.
+NBT format
+
+recipeBook: Now a compound tag (was a string) containing recipe book information
+isFilteringCraftable: Becomes 1 if the player has enabled the "Show Craftable" feature in the recipe book.
+isGuiOpen: Checks if the player has left the GUI open.
+unlocked
+recipes: Contains information about all recipes the player has seen.
+displayed: Checks if the player has tried out the recipe in the recipe book before (by clicking it/viewing it)
+Recipe book
+
+Changed the icon on the trigger button, from a standard book to the knowledge book.
+Added a shift-click ability to the recipe book that puts all available materials in the crafting grid.
+Added a new white-and-gray colored notification that pops up when the player unlocks new recipes.
+The notification only appears upon reloading the world; Dinnerbone has stated that this is a bug.
+If player searches "excited" (changed in 17w18a) in the recipe book, language switches to Pirate Speak.
+Splashes
+
+"Now Java 6!" changed to "Now Java 8!"
+
+
+== Fixes ==
+21 issues fixed
+From the 1.12 development versions
+
+MC-114879  Picking up an item has a chance to duplicate it
+MC-114896  Parrots don't make any sounds when they are on your shoulder
+MC-114943  Items in crafting table disappear when selecting a recipe
+MC-114976  Parrots don't show up on subtitles
+MC-114987  Unknown recipe message not translated
+MC-114989  recipe command causes unknown errors with invalid player argument
+MC-114999  Hover text of items in crafting grid is rendered behind crafting help
+MC-115028  Crafting recipe pop-up renders above items in the inventory gui
+MC-115054  Recipe interface doesn't remember "showing all/craftable" preference when inventory closed
+MC-115065  "loot" reward for advancements does not provide items
+MC-115067  All instances of entity-matching conditions do not function for advancements
+MC-115074  Potion effects are still rendered under the recipe book
+MC-115100  Hover text of items in crafting help does not use same text and text box like hovering over item in inventory
+MC-115107  Helmet does not render after using autorecipe feature
+MC-115123  Parrots keep moving their legs even if they are on shoulders
+MC-115129  Missing crafting recipe resources render in front of item description
+MC-115153  recipe command not showing an error with invalid first argument
+MC-115175  New crafting menu texture bug
+MC-115204  Crash when canceling/changing recipe in recipe book with full inventory
+From the previous development version
+
+MC-115191  Parrots disappear completely when leaving the End via a portal
+MC-115209  Crafting Book Not Accounting for Item Count
+
+
+== Videos ==
+
+
+== Trivia ==
+17w14a was previously removed from the launcher for some time, but was added back in September 2018.
+
+
+== Gallery ==
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,145 @@
+1.12-pre3 is the third pre-release for Java Edition 1.12, released on May 17, 2017.
+It was later reuploaded due to an issue with advancements crashing the game.
+
+
+== Additions ==
+
+
+=== General ===
+Advancements
+
+Added Resistance to the list of required effects in the "How Did We Get Here?" hidden challenge.
+Now gives 1000 experience as a reward.
+Added more required food items to the "A Balanced Diet" challenge.
+Now requires both types of golden apples, both types of cooked fish, and four types of raw fish (previously only one in each group), which brings the total number of needed foods from 30 to 35.
+Advancements now remember the tab that was last selected.
+Changed requirements of advancements to an AND of ORs.
+Controls
+
+Added new keybinding for opening advancements (default "L").
+Functions
+
+Now use a new file extension ".mcfunction" instead of ".txt".
+Sounds
+
+Added new sounds for sound events entity.player.hurt_drown and entity.player.hurt_on_fire.
+
+
+== Changes ==
+
+
+=== Mobs ===
+Parrots
+
+Changed parrots to be tamed with seeds, not cookies.
+Attempting to feed a parrot a cookie instantly kills the parrot.
+The parrot gives off Poison particles as it dies.
+Displays the message "Parrot was slain by <player>".
+Allowed parrots to spawn in old jungles.
+Withers
+
+Can no longer break end gateway blocks and piston extensions.
+
+
+=== General ===
+Functions
+
+Commands on each line no longer begin with "/" (forwards slash).
+Now only use "#" to comment (not "//").
+Functions should recurse as expected, even while mixing /function and /execute.
+Optimizations
+
+Huge optimizations to both recipe book and Creative inventory searching.
+Some optimizations to advancements.
+Tutorial hints
+
+Now smarter about deciding whether or not to display.
+
+
+== Fixes ==
+63 issues fixed
+From released versions before 1.12
+
+MC-92324  Players become invisible
+MC-96555  Wolves, ocelots and parrots can teleport in all non-full cube blocks near owner including path, lava, fire
+MC-101234  Stack trace is not printed in log when exception occurs while running command
+MC-103067  The unit for "Minutes Played" statistic is not always minutes
+MC-108304  "Level Requirement" message is not translatable
+MC-108343  Minecraft crashes with "java.lang.NullPointerException: Ticking screen" while pinging server on multiplayer server list (previously due to network issues, now more frequent)
+MC-110243  Sneaking + hit -> moved wrongly / no knockback
+MC-111054  Invalid lang in options.txt leads to connection error
+MC-112017  The anvil rename field accepts 31 characters but the server rejects it if it is over 30
+MC-112425  Hitting rabbits with fire aspect sword: "Couldn't smelt 0xtile.air@0 because there is no smelting recipe"
+MC-112765  hoverEvent JSON with specified color does not share among new lines
+MC-113255  Server does not test if some files exist before trying to interact with them
+MC-113429  Wither can break piston extension and end gateway
+MC-114110  Constructor for playerlist header and footer packet SPacketPlayerListHeaderFooter is missing footer parameter
+MC-114281  MutableBlockPos leak
+MC-115407  Loot entries serialize incorrectly
+MC-116422  Fires put out by splash water bottles do not cause block update
+MC-117197  Message for non-existent team specified in entity NBT data is logged as info instead of warning or error
+From the 1.12 development versions
+
+MC-115033  Recipes for certain item subtype are unlocked for any subtype of item
+MC-115404  Items can duplicate if the item entity gets modified
+MC-116373  Glazed terracotta blocks can be pulled with slime blocks
+MC-116409  Popup instructions for new players invasive for experienced users
+MC-116422  Fires put out by splash water bottles do not cause block update
+MC-116505  Other sneaking players appear lower than you in multiplayer
+MC-116533  Glazed terracotta can't be pushed by branched slime block
+MC-116663  Empty advancement file crashes server when loading world
+MC-116667  Advancement GUI loading random textures if no background is defined
+MC-116735  "Previous Output" in command blocks shows under textbox
+MC-116808  @s is described as "target yourself" in a command block
+MC-116905  Dispenser recipe uses enchanted bow
+MC-116924  Invalid advancement frame type crashes server
+MC-116925  Messages for narrator library are not logged properly
+MC-116926  Advancement file containing only null crashes server
+MC-116927  Server crashes with null as advancement title or description value
+MC-116934  Advancement trigger changed_dimension ignores End to Overworld
+MC-116973  /fill only supports block entity tags for one of the filled blocks
+MC-116982  Block particles displayed in corner of area when using destroy option in /fill command
+MC-117009  Some blocks can't trigger placed_block of advancements
+MC-117012  placed_block trigger doesn't detect corresponding block from buckets (but does detect the bucket item itself)
+MC-117022  /fill does not always send block updates
+MC-117035  Selected advancement tab is forgotten when menu is closed
+MC-117117  Parrots disappear when entering the back of a boat
+MC-117138  "Loaded 'X' advancements" console spam
+MC-117197  Message for non-existent team specified in entity NBT data is logged as info instead of warning or error
+MC-117223  /reload feedback does not mention functions
+MC-117268  /function feedback says "commands" despite functions being able to contain only one command
+MC-117313  Advancements inherit "hidden": "true" field from their parent and cannot be overwritten
+MC-117318  Advancement title is not highlighted in hover text of advancement announcement in chat
+MC-117331  Tripwire hooks and ladders can be placed on blocks that they should not be able to
+MC-117518  Recipe book "Click and hold for more" option does not default to items you have in your inventory
+From the previous development version
+
+MC-117319  /executeselectors are broken
+MC-117321  [Functions] Anything commands executed relative to anything doesn't doesn't run the command
+MC-117332  Gamerule sendCommandFeedback and commandBlockOutput doesn't stop functions from writing errors
+MC-117341  "How Did We Get Here?" does not require the Resistance effect
+MC-117352  Advancements misaligned off-screen
+MC-117382  "How did we get here" advancement does not give the reward
+MC-117402  Recipe book does not correctly add items to already placed but offset items in crafting grid invalidating recipe
+MC-117419  Advancement conditions with NBT data do not work correctly for inventory_changed
+MC-117471  Obtaining charcoal unlocks block of coal recipe
+MC-117481  Cannot place levers on hoppers anymore
+MC-117545  Recipe book tabs are cut off/misaligned
+Private issues
+
+MC-111859  Movement validation wrong
+MC-116425  Invalid map can crash server
+
+
+== Videos ==
+
+
+== Trivia ==
+1.12-pre3 was previously removed from the launcher for some time, but was added back in September 2018.
+This version was released 8 years after Classic 0.0.11a, the first publicly released version of Minecraft.
+
+
+== References ==
+
+
+== Navigation ==

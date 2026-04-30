@@ -21,11 +21,11 @@ Specifies the entity to post command stats from. Must be a player name or a targ
 stat
 
 Specifies the command stat whose selector and objective are to be cleared or set. Must be one of:
-AffectedBlocks — returns the number of blocks affected by a command
-AffectedEntities — returns the number of entities affected by a command
-AffectedItems — returns the number of items affected by a command
-QueryResult — returns the result of a command query
-SuccessCount — returns a command's success count
+AffectedBlocks  returns the number of blocks affected by a command
+AffectedEntities  returns the number of entities affected by a command
+AffectedItems  returns the number of items affected by a command
+QueryResult  returns the result of a command query
+SuccessCount  returns a command's success count
 selector (set mode only)
 
 Specifies the selector to be evaluated when a command is run by the specified block or entity to determine which entity(ies) scoreboard objective is to be updated with the result returned by stat. May be anything because it is not evaluated until a command is run by the specified block or entity, but only a player name or a target selector produces useful results (though player names can be fake, so even real players don't need to be online).
@@ -53,8 +53,8 @@ stats entity @e[type=wither_skull,c=1] set AffectedBlocks #FakePlayer NumBlocks
 
 == See also ==
 Tutorial:Command stats
-/blockdata — can also change the selector and objectives of blocks by altering data tags directly
-/entitydata — can also change the selector and objectives of entities by altering data tags directly
+/blockdata  can also change the selector and objectives of blocks by altering data tags directly
+/entitydata  can also change the selector and objectives of entities by altering data tags directly
 
 
 == Navigation ==

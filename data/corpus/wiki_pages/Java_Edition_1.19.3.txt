@@ -1,0 +1,755 @@
+1.19.3 is a minor update to Java Edition released on December 7, 2022. This update adds experimental features scheduled for 1.20, overhauls the Creative inventory, tweaks settings and tags, and much more. This version is not compatible with 1.19.2 servers.
+This update was originally planned to be released on December 6, 2022, but it had been postponed and released on December 7, 2022. This is the final version released in 2022.
+
+
+== Additions ==
+
+
+=== Items ===
+Spawn eggs
+
+ Ender dragon spawn egg
+ Wither spawn egg
+ Iron golem spawn egg
+ Snow golem spawn egg
+Ender dragon spawn egg and wither spawn egg are only available through commands to prevent accidental destruction of player builds.
+
+
+=== Command format ===
+/fillbiome
+
+A new command to change biome entries for an area.
+Because biomes are not stored per-block, affected positions may not match input precisely.
+Syntax: /fillbiome [<from>] [<to>] [<biome>] replace [<filter>]
+from: One corner of the area to fill.
+to: The other corner of the area to fill.
+biome: The biome to set.
+filter: A biome or biome tag to replace.
+
+
+=== Gameplay ===
+Game rules
+
+Added blockExplosionDropDecay, mobExplosionDropDecay and tntExplosionDropDecay.
+When set to false, all blocks drop loot.
+When set to true, blocks drop loot randomly depending on how far from the explosion center.
+Defaults to false for TNT, true for block and mob.
+Added snowAccumulationHeight.
+When it is snowing, this game rule determines the maximum number of snow layers that can be accumulated in each block.
+Defaults to 1.
+Set to 0 makes no snow form at all.
+Set to 8 or above lets snow form up to the level of a full block.
+Added waterSourceConversion and lavaSourceConversion.
+When set to true, allows new sources of that fluid to form.
+Defaults to true for water and false for lava.
+Added globalSoundEvents, controlling whether certain gameplay moments are heard by all players regardless of location, defaults to true.
+
+
+=== General ===
+Chat
+
+Added drafts for player reports, which can keep player reports temporarily while connected to a server.
+When exiting the player reporting screen, the report can be either discarded or kept as a draft.
+The draft always is kept if the screen was forcefully closed (e.g. player dying).
+Draft reports are kept until the player leaves the current server or world.
+When leaving, the player is prompted to either discard or finish and send the report.
+Data packs
+
+Added a subsection called chat_type.
+Added a subsection called datapacks.
+Contains vanilla data packs that enable certain features.
+The vanilla world generation data pack is now visible within the game's jar.
+This means categories such as dimension_type and worldgen are now visible, along with their contents.
+Feature flags
+
+Option to enable or disable certain groups of game elements (i.e. blocks, entities, and items).
+Enabled via data packs.
+New pack metadata section called features, containing enabled feature flags in list named enabled.
+Game elements controlled by feature flags are hardcoded and stored per world.
+Built-in data packs now enable features and provide other things such as associated recipes and advancements.
+Feature flags can affect:
+Blocks
+Disabled blocks are not recognized by commands, won't spawn in structures, won't be loaded as part of entities, and can't be interacted with by players.
+Entities
+Disabled entities are not recognized by commands, do not spawn or load in the world, and spawn eggs for disabled entities do not function.
+Items
+Disabled items are not recognized by commands, are hidden from the Creative menu, can't be used by players for interacting or attacking, and recipes and loot tables cannot create disabled items.
+Languages
+
+Added Nahuatl.
+Added Rusyn.
+Options
+
+Added a new "Panorama Scroll Speed" accessibility option.
+Added "Operator Items Tab" option in the "Controls" menu, which is off by default.
+Added telemetry data collection screen.
+Displays information about the type of data that is sent.
+The level of data sent can be controlled between "Minimal" and "All".
+"Minimal" sends only the required data.
+"All" sends the required data, as well as optional data.
+The default data level is "Minimal".
+Player
+
+Added new default skins for offline players.
+The old skins have been removed, with the new skins being located on a new folder.
+Predicate
+
+Added new entity sub-predicates for some entity types with variants:
+axolotl
+variant - values: lucy, wild, gold, cyan, blue.
+boat
+Works for all boats and all boat with chests.
+variant - values: oak, spruce, birch, jungle, acacia, dark_oak, mangrove, bamboo.
+fox
+variant - values: red, snow.
+mooshroom
+variant - values: red, brown.
+painting
+variant - values: see painting_variant registry.
+rabbit
+variant - values: brown, white, black, white_splotched, gold, salt, evil.
+horse
+variant - values: white, creamy, chestnut, brown, black, gray, dark_brown.
+Markings are separate value and not matched.
+llama
+variant - values: creamy, white, brown, gray.
+villager
+variant - values: see villager_type registry.
+Also works for zombie villagers.
+Profession and level are separate values and not matched.
+parrot
+variant - values: red_blue, blue, green, yellow_blue, gray.
+tropical_fish
+variant - values: kob, sunstreak, snooper, dasher, brinely, spotty, flopper, stripey, glitter, blockfish, betty, clayfish.
+server.properties
+
+Added initial-enabled-packs and initial-disabled-packs.
+Allows for which packs to be selected to load during world creation.
+initial-enabled-packs contains a list of packs to be enabled (feature packs need to be explicitly enabled).
+initial-disabled-packs contains a list of packs that are not enabled automatically.
+Data packs added after world creation are disabled if they require features that are not enabled for the loaded world.
+Splashes
+
+Added the following splash texts:
+"You are valid!"
+"I'm glad you're here!"
+"You are welcome here!"
+"Your gender is valid!"
+"Contains infinite genders!"
+"Made with lave!"
+Many of these new splashes reference gender identity.
+Tags
+
+Added the all_signs block tag.
+Contains #signs.
+Added the creeper_igniters item tag.
+Contains flint_and_steel, and fire_charge.
+Added the fence_gates item tag.
+Contains acacia_fence_gate, birch_fence_gate, dark_oak_fence_gate, jungle_fence_gate, oak_fence_gate, spruce_fence_gate, crimson_fence_gate, warped_fence_gate, and mangrove_fence_gate.
+Added the invalid_spawn_inside block tag.
+Contains end portal and end gateway.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Chorus flower
+
+Mobs no longer spawn on this block.
+Fence gates
+
+No longer provide center support beneath them.
+For example, hanging signs cannot be placed under fence gates.
+Invisible blocks
+
+Barriers and structure voids no longer produce particles when broken, for consistency with the light block.
+Scaffolding
+
+Changed its texture.
+Mobs no longer spawn on this block.
+Shulker box
+
+Now pops off blocks attached (such as torches) to the opened faces when opening.
+While open, blocks which require support cannot be placed on these open faces.
+Spawners
+
+No longer have a default mob spawn type when placed by a player, which was a pig previously.
+Do not emit fire particles when a mob spawn type has not been defined.
+Renamed to "Monster Spawner" to match Bedrock Edition, and removed purple text color.
+Pick-block now works for spawner blocks.
+The mob type is now displayed in the hover description of a spawner item stack.
+If a mob type has not been defined yet, the hover description describes how to set it.
+
+
+=== Items ===
+Bucket
+
+Water buckets can now be emptied into waterlogged blocks.
+Spawn eggs
+
+Changed the colors of polar bear spawn egg, to distinguish it from the ghast spawn egg.
+
+
+=== Mobs ===
+Creepers
+
+Can now be ignited by using a fire charge on it.
+Enderman
+
+Now only spawn at light level 7 and below in the Nether, instead of 11 and below, to nerf certain portal-based mob farms.
+Blocks carried by endermen now use loot tables to generate drops when killed.
+This is done by simulating the block being mined using a Silk Touch diamond axe.
+Rabbits
+
+Now always drop one raw rabbit when killed, or one cooked rabbit when killed by fire.
+Skeleton and wither skeleton
+
+Now only spawn at light level 7 and below in the Nether, instead of 11 and below, to nerf certain portal-based mob farms.
+The process of converting to stray can be interrupted now.
+Turtles
+
+Now have a 5 minute cooldown after breeding.
+Vex
+
+Changed its model and textures.
+Retains a slightly oversized hitbox to make it easier to fight.
+
+
+=== Non-mob entities ===
+Minecart with spawners
+
+No longer have a default mob spawn type when placed by a player, which was a pig previously.
+Do not emit fire particles when a mob spawn type has not been defined.
+Renamed to "Minecart with Monster Spawner".
+
+
+=== World generation ===
+Stronghold
+
+The placement code has been changed to be more efficient, causing stronghold positions to shift.
+They are still placed in concentric rings, but their positions in the rings may change by a few degrees.
+
+
+=== Command format ===
+/execute
+
+Can now be conditional on biomes.
+Syntax: /execute if|unless biome [<pos>] [<biome>]
+/publish
+
+Now has new arguments to enable commands and set the default game mode.
+New syntax: /publish [<allowCommands>] [<gamemode>] [<port>]
+
+
+=== Gameplay ===
+Advancements
+
+The advancement "Birthday Song" is now a regular advancement instead of a challenge.
+Creative inventory
+
+The ordering of tabs and the contents in the Creative inventory have been overhauled to make the experience of finding relevant blocks and items easier.
+Blocks and items have been moved into categories that fit them better.
+Blocks are now ordered by their material as much as possible.
+For example, all oak blocks and variants are now next to each other.
+Some items can now be found in more than one tab.
+Various tabs have been renamed or collapsed into others.
+The new tabs for blocks are "Building Blocks", "Natural Blocks", "Functional Blocks", "Redstone Blocks", and "Colored Blocks".
+The new tabs for items are "Tools & Utilities", "Combat", "Food & Drinks", "Ingredients", and "Spawn Eggs".
+The search tab now lists items sequentially grouped by the other tabs.
+For example, items found in building blocks always appear before items in redstone blocks.
+Changed the icons of Creative tabs for better color coding as well as to show most iconic visuals.
+Petrified oak slab has been removed from the Creative inventory, but can still be accessed through commands.
+Operator-only blocks and items can now be found in the "Operator Utilities" tab when a player has both the "Operator Items Tab" option in controls menu set to ON and the required operator permissions.
+This includes the barrier, all variants of command blocks, debug stick, jigsaw block, light block (level 0-15), minecart with command block, structure void, and the structure block.
+The tab is hidden if operator permissions are lost while inventory is open.
+Tooltips for all items in Creative menu outside single-category tabs show categories where this item can be found.
+Previously this only happened on the search tab.
+The textures for the tabs are now skinnier.
+Pause screen
+
+The 'Game Menu' text heading has been moved to the top of the screen instead of being just right above the buttons.
+Spectator
+
+"Teleport to Team Member" option in spectator menu now only shows up for teams with viable target players.
+
+
+=== General ===
+Chat
+
+Removed chat preview.
+Chat messages deleted by server moderators are no longer completely hidden, but rather replaced with text stating "This chat message has been deleted by the server."
+Deleted chat messages are now displayed in the chat window for at least 3 total seconds before being hidden.
+The "Chat Trust Status" indicators have been tweaked:
+The 'Modified' tag no longer displays for server-modified messages where only style has been changed.
+The 'Modified' tag icon and indicator is now dark gray.
+The 'Not Secure' tag is now light gray and does not have an icon.
+Partially filtered chat messages now show the filtered text as gray hashes with a hover text saying that it was filtered.
+The chat reporting screen now shows when the player being reported rejoined chat.
+Logging
+
+Every telemetry event sent from the client is now logged to disk.
+Old log files are removed after 7 days.
+These can be found under the logs/telemetry directory.
+A shortcut to this directory is available via the "Open My Data" button on the telemetry data collection screen.
+Multiplayer
+
+Makes changes to the "Open to LAN" screen.
+Now allows selecting the port on which to host the LAN world.
+The game mode and allow cheats buttons are now initialized with the default values of the world.
+Music
+
+The Wild Update music has been tweaked to be slightly less loud.
+Options
+
+Merged the "Minimum" and "Maximum" options for the smooth lighting video setting, since there's no difference between them.
+Protocol
+
+The network protocol now supports adding player entities to the world without being added to the 'tab' player list.
+Servers can now lazily distribute players' profile public keys along with their first chat packet.
+Message 'headers' within the secure chat protocol no longer need to be distributed when private messages are sent.
+Contextual message references are now deduplicated for efficiency within the Secure Chat network protocol.
+Profile public keys are now refreshed without reconnecting.
+Clients now reset their chat session on receiving a login packet.
+Realms
+
+The "Realms News" button now shows a confirmation screen before opening the link.
+Recipes
+
+Many recipe files were made to be formatted more consistently.
+Blocks and items that are crafted using nine of a single item are now considered shapeless recipes, though this has no impact on gameplay.
+Crafting book categories/tabs can now be controlled by recipe definitions.
+Categories available for shaped/shapeless and various special crafting recipes:
+building
+redstone
+equipment
+misc (default)
+Categories available for smelting, blasting, smoking, campfire_cooking
+food
+blocks
+misc (default)
+Some crafting books collapse multiple categories into a single tab.
+The exact mappings might change in the future.
+Resource pack
+
+The pack format version is now 12.
+Removed "fixers" for resource packs with versions 3 and 4 (pre-flattening).
+Game no longer tries to adapt packs with those versions to the current version.
+To improve loading performance, block and item textures are now loaded before they are processed by block and item models.
+By default, textures not in the textures/item and textures/block directories are no longer automatically recognized and fail to load.
+Can have configuration files now, located in the new atlases directory, that control which images are included in the atlases. That directory contains following JSON entries for configuring atlases:
+blocks: textures used by block and item models.
+banner_patterns, beds, chests, shield_patterns, shulker_boxes, signs: used to render some special-case models.
+mob_effects: textures used for effect icons in the UI.
+paintings: textures used for paintings.
+particles: textures used for particles (referenced by the textures field in files within the particles directory).
+If multiple packs include those files, they are merged by their order within the pack (same as tags in data packs).
+Inside these files is a JSON object with a single list called sources.
+Every entry in sources runs in during load, in order of definition, adding or removing new files to the texture list; to be later referenced by block models, particles, etc.
+Types of sources:
+directory: lists all files in a directory and its subdirectories, across all namespaces.
+source: directory in pack to be listed (relative to textures directory)
+prefix: string to be appended to the sprite name when loaded.
+single: adds a single file.
+resource: location of a resource within the pack (relative to textures directory, implied .png extension).
+sprite: sprite name (optional, defaults to resource).
+filter: removes sprites matching the given pattern.
+namespace, path: patterns (regular expressions, regex) of ids to be removed (only works for entries already in the list), if omitted, any value is matched.
+unstitch: copies rectangular regions from other images.
+resource: location of a resource within the pack (relative to textures directory, implied .png extension)
+divisor_x, divisor_y: used for determining the units used by regions.
+regions: list of regions to copy from the source image.
+sprite: sprite name.
+x, y: coordinates of the top-left corner of the region.
+width, height: size of the region.
+Values such as x are transformed to real image coordinates via dividing by their divisor, and then multiplying by the real image size.
+Example:
+If a pack has a file named assets/test/textures/fancy/iridium.png and source is {"type": "directory", "source": "fancy", "prefix": "custom/"}, the texture is available in models as test:custom/iridium.
+Sounds
+
+Various wood types now have unique sounds when placed, broken, or walked on.
+There are three sets of unique sounds: Overworld wood types, Nether wood types, and bamboo.
+Step sounds can now be heard when walking on carpets, lily pads and small amethyst buds.
+Step sounds can now be heard when walking through crimson roots, glow lichen, nether sprouts and warped roots.
+Tags
+
+Removed #non_flammable_wood block tag.
+Removed #overworld_natural_logs item tag.
+Added crimson roots, glow lichen, lily pad, moss carpet, nether sprouts, small amethyst bud, warped roots and #wool_carpets to the #inside_step_sound_blocks block tag.
+Telemetry
+
+Added WorldUnloaded event, and removed client Java version from the WorldLoaded event.
+They are required events.
+Data includes game mode, client or server modded status and game version.
+Can be used to calculate how long the world session has lasted (in seconds and ticks).
+Data from WorldLoaded is sent when a world is launched, and data from WorldUnloaded is sent when a world is shut down (quitting to title, disconnecting from a server).
+Added 2 new optional events:
+PerformanceMetrics
+Data includes frame rates, rendering performance, memory usage, operating system, and the modded status of the client and server.
+With game version, it can be used to compare the performance profile for new versions of Minecraft.
+WorldLoadTimes
+Data includes the total time in milliseconds for the world to load, whether this was a new world, as well as game version and platform details.
+Can indicate what impacts load times when added new features or do larger technical changes.
+User interface
+
+When tabbing through buttons, tooltips are displayed above or below them.
+Tooltips displayed when hovering are displayed next to the cursor.
+Tooltips from focused buttons (focused by pressing tab) take priority over tooltips from hovered buttons.
+Updated knowledge book textures on crafting UI and tutorial hints to the revision updated in the texture update.
+General
+
+Migrated linear algebra types to Java OpenGL Math Library (JOML).
+Translation files and pack.mcmeta are now including non-ASCII characters (encoded as UTF-8) directly instead of using escape sequences.
+Optimized some exceptionally slow cases of structure lookup.
+
+
+== Experimental ==
+These additions and changes only take effect when the 1.20 experimental data pack is enabled, the exception to this is the re-addition of bundles, which only takes effect when enabling its respective experimental data pack.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Bamboo mosaics
+
+A plank variant exclusive to the bamboo wood set.
+Can be crafted with 2 bamboo slabs arranged in a vertical strip.
+The bamboo mosaic has its own stair and slab variant.
+ Block of bamboo and  block of stripped bamboo
+
+Two new log-like blocks.
+Block of bamboo can be crafted from 9 bamboo and can be stripped like other wood logs.
+Bamboo planks crafted from block of bamboo yield only 2 planks compared to 4 for wood logs.
+ Buttons,  doors,  fences,  fence gates,  planks,  pressure plate,  signs,  slabs,  stairs, and  trapdoors
+
+Added their bamboo variants.
+Bamboo planks can be crafted using 1 block of bamboo (stripped or unstripped) to craft 2 bamboo planks.
+ Chiseled bookshelves
+
+Can be crafted with 6 planks and 3 wooden slabs.
+Can store up to 6 books, books and quills, written books, and enchanted books.
+Books in chiseled bookshelves can be added or removed from any slot by targeting the specific slot.
+Books are directly added and removed, so there is no interface.
+Can interact with redstone comparators (giving a signal strength matching that of the slot that was last interacted with).
+Do not increase the power of enchanting tables.
+Require a Silk Touch axe to mine.
+ Hanging signs
+
+A more expensive version of normal signs, which can be crafted with 2 chains and 6 stripped logs, resulting 6 of them.
+Has a total of 10 wood variants: oak, spruce, birch, jungle, acacia, dark oak, mangrove, bamboo, crimson, and warped.
+Can be hung up in the following ways:
+Underneath a block that provides support in the center, like a fence or an iron bar.
+When the hanging sign is placed underneath a non-full block, or when placed while sneaking, chains take on an upside-down v-shape. Signs in this configuration can be placed in 16 different angles, similar to an armor stand.
+Underneath a full block.
+When the hanging sign is placed underneath a full block, chains are on parallel sides of the sign. Signs in this configuration can be placed in the 4 cardinal directions, North, South, East, and West.
+Attached to the solid side of a block.
+When attached to the side of a block, its chains are parallel, hanging onto a horizontal bar sticking out from the side of said block. Hanging signs in this configuration display text perpendicular to the side of the block they were attached to.
+Attached to the side or underneath another hanging sign.
+This displays the same way as being placed underneath a non-full block.
+Cannot be placed directly on the ground without support from the side or above.
+However, hanging signs that have a horizontal bar do not break when the supporting block is removed.
+If it is hanging underneath of a block and that block is broken, the hanging sign also breaks immediately.
+Unlike regular signs, the space available for text is much smaller.
+Text can be dyed with any color of dye and tinted with glow ink sacs to make text glow.
+ Piglin head
+
+Piglins now drop their heads when killed by a charged creeper.
+Piglin head flaps its ears when powered by redstone, or when worn by a player while walking, similar to the ender dragon head.
+
+
+==== Items ====
+ Bundle
+
+Moved behind its own feature toggle.
+Spawn eggs
+
+ Camel spawn egg.
+
+
+==== Mobs ====
+ Camel
+
+A rideable entity, which can be equipped with a saddle and ridden by two players.
+Has 32HP  16 health points.
+Spawns naturally in desert villages.
+Can be bred with cacti, and follows players holding a cactus on hand.
+Mobs that are 2 blocks tall and lower cannot reach the player (except spiders) when the player is riding it, due to its height.
+Can walk over 1.5 block tall obstacles (such as fences and blocks with a slab on top).
+Randomly sits down.
+While sitting, it is difficult to convince them to move.
+Can either walk slowly or sprint quickly.
+Can also dash forward (if the player uses the jump key while riding it) but loses stamina for a while.
+When it loses stamina, it cannot sprint or dash again for a few seconds.
+A dash can extend more than 10 blocks when executed perfectly.
+
+
+==== Non-mob entities ====
+ Boats and  Boats with Chests
+
+Added bamboo raft and bamboo raft with chest.
+Can be crafted with bamboo planks instead.
+They function the same as ordinary boats, but have a unique look to them.
+
+
+==== General ====
+Tags
+
+Added the all_hanging_signs block tag.
+Contains the ceiling_hanging_signs, and wall_hanging_signs tags.
+Added the #bamboo_blocks block and item tag.
+Contains bamboo_block, and stripped_bamboo_block.
+Added the ceiling_hanging_signs block tag.
+Contains all ceiling versions of hanging sign blocks.
+Added the wall_hanging_signs block tag.
+Contains all wall versions of hanging sign blocks.
+Added the bookshelf_books item tag.
+Contains book, written book, enchanted book, and book and quill.
+Added the hanging_signs item tag.
+Contains all hanging sign items.
+Added #bamboo_blocks, bamboo mosaic slab and bamboo mosaic stairs to the #mineable/axe block tag.
+Added crimson hanging sign and warped hanging sign to the #non_flammable_wood item tag.
+Added relevant bamboo blocks to the planks, wooden_buttons, wooden_doors, wooden_fences, wooden_pressure_plates, wooden_slabs, wooden_stairs, and wooden_trapdoors block and item tags.
+Added relevant bamboo blocks to the fence_gates, standing_signs, and wall_signs block tags.
+Added relevant bamboo items to the boats, chest_boats, and signs item tags.
+Added bamboo fence gate to the new #fence_gates item tag, as the additional part when built-in data pack enabled.
+Added #all_hanging_signs to the new #all_signs block tag, as the additional part when built-in data pack enabled.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Note block
+
+When placing a mob head on a note block, that note block now plays one of the ambient sounds of that mob when played by a player or powered by redstone.
+Player head
+
+Now can contain a [String] note_block_sound NBT tag.
+Must be a resource location for a valid sound event.
+When present, this determines the sound a note block makes when the head is placed on top of it.
+
+
+==== Gameplay ====
+Advancement
+
+Camels are now required for the "Two by Two" advancement.
+"Glow and Behold!" advancement can be obtained by using a glow ink sac on a hanging sign now.
+The description now says "Make the text of any sign glow".
+
+
+== Fixes ==
+196 issues fixed
+From released versions before 1.19
+
+MC-14167  Mobs build up fall damage when dangling on a lead.
+MC-26757  Large item tooltips can get cut off at the edges of the screen.
+MC-30954  Chat pop-ups being displayed when chat disappears.
+MC-50605  The pick block function doesn't work with mob spawners.
+MC-55718  Dragon egg doesn't appear in Creative inventory.
+MC-58668  Smooth Lighting Minimum and Maximum levels no longer differ.
+MC-75699  Villager restock hover text is not automatically wrapped making it cut off at edge of screen.
+MC-80032  Horses can suffocate when going through nether portals.
+MC-84873  DeathTime values 20+ cause corrupted mobs.
+MC-92017  Shield damage direction is incorrect.
+MC-96449  Rabbits sometimes don't drop any raw rabbit upon being killed.
+MC-108597  Shulker box still plays the close sound, even if it is destroyed or replaced.
+MC-108707  Potion effects, particles, and fire animations persist client-side after death in server environments.
+MC-118140  Result map tooltip when zooming out a map shows previous zoom value instead of new one.
+MC-121865  High potion effect durations being displayed as **:** is misleading.
+MC-127110  You can't empty water buckets into waterlogged blocks.
+MC-128003  When destroying one block of tall seagrass, the other block becomes air when destroyed, rather than water.
+MC-130754  Jumping on farmland pushes the player a bit.
+MC-132820  Spawner isn't in the creative inventory.
+MC-135973  Can't hold Q to drop items rapidly from container inventories.
+MC-136152  Placing mob spawner renders a pig for up to a second.
+MC-137136  Lily Pads use incorrect sound.
+MC-137306  Turtles don't have breeding delay.
+MC-145748  Clicking a settings button when there's a slider under the mouse in the next screen plays the click sound twice.
+MC-146930  The "Programmer Art" resource pack is internally called programer_art.
+MC-147605  Text cursors can exist in multiple fields.
+MC-149395  Burning zombies are not extinguished by splash / lingering water bottles.
+MC-150488  Mobs can spawn on scaffolding.
+MC-151412  "Edit Server Info" window does not focus "Server Name" text field automatically
+MC-152752  Jukebox music sound originates from north-west edge of the block.
+MC-152823  Buckets ignore fluid placement check for replaceable or non-solid-blocking LiquidBlockContainers.
+MC-156663  Villager pathfinding broken in water.
+MC-160610  Mobs are able to spawn on Chorus Flowers.
+MC-165686  Knowledge book texture in the crafting UI hasn't been updated.
+MC-170457  Chest latch doesn't rotate properly.
+MC-170817  Click sound of sliders in the video settings noticeably louder than anywhere else.
+MC-171621  Crimson and Warped roots don't make a sound when walked on, unlike nether sprouts.
+MC-175313  Composter filling sounds originate from the bottom northwest corner of the block.
+MC-176597  Petrifried oak slab isn't under #non_flammable_wood in creative menu.
+MC-177141  Cleric working subtitle is "Brewing Stand bubbles" instead of "Cleric works".
+MC-177523  Enderman angry/screaming sound event subtitled identically to idle sound.
+MC-177596  Weaponsmith working subtitle is "Grindstone used" instead of "Weaponsmith works".
+MC-177676  Armorer working subtitle is "Blast Furnace crackles" instead of "Armorer works".
+MC-177738  Spawnpoint set on respawn anchor using /spawnpoint depletes glowstone charge, and doesn't stay on respawn anchor if its charge is depleted.
+MC-177789  Shulker box doesn't destroy twisting vines when placed on top.
+MC-182708  Nether and warped wart blocks do not come after leaves in the Creative inventory.
+MC-183069  Donkeys, mules and undead horses cannot be saddled by right-clicking.
+MC-183502  The sounds for collecting honey in a bottle and collecting honeycomb with shears is categorised under friendly creatures.
+MC-183831  Villagers breed when not standing up.
+MC-183899  You can set your spawn point inside an end portal, causing the player to become stuck in the End.
+MC-185279  "Done" and "Cancel" buttons in the game rules screen are not selected in the right order when navigating using  Tab.
+MC-185618  Creepers can't be ignited with a fire charge.
+MC-187539  #tick function tag runs before #load instead of the other way around.
+MC-187744  "Place pack files here" hover text on pack selection screen shows everywhere when "Open pack folder" button has focus.
+MC-187812  The buttons are not selected in the right order using  Tab in the new datapacks and resource packs menus.
+MC-187816  Using  Tab multiple times to select a datapack / resource pack from the list does not deselect it.
+MC-188247  Explosions from end crystals can't be blocked by shields.
+MC-188506  AngryAt cannot be manually applied to endermen.
+MC-189111  Bees get stuck on non-full blocks.
+MC-189872  Certain mobs don't have spawn eggs.
+MC-189911  Splash water bottles don't extinguish mobs and player.
+MC-191790  Re-creating a world doesn't allow a blank seed and uses recreated world's seed instead of random.
+MC-191948  Ghast fireballs explosions still inflict damage when blocked by a shield.
+MC-193297  Ghast fireball explosion does not credit the "Owner" of the fireball if the one who was damaged was not directly hit.
+MC-193360  Inconsistent eye level between piglins or zombified piglins and piglin brutes.
+MC-194390  A firework rocket from the creative inventory doesn't show a flight duration.
+MC-194501  IllegalArgumentException (Cannot set property) when using a block without the axis property in fancy_tree_placer.
+MC-195060  Right-clicking a tamed, ridden horse while sneaking plays the hand-swinging animation and doesn't use held items.
+MC-195780  "Data mode" and "Load mode" aren't capitalized while "Save Mode" and "Corner Mode" are.
+MC-197150  Horse armor and carpets cannot be equipped onto horses or llamas by right-clicking them whilst having these items held in your hand.
+MC-197476  Some hover texts are wrapped too late making them cut off at edge of screen.
+MC-198493  Villagers lose their discounts when relogging while it is a zombie villager.
+MC-199044  Bees get stuck in sweet berry bush patches, specifically around walls.
+MC-199162  One farmland block in plains_large_farm_1 has moisture level 0.
+MC-200000  Merchant trade select packet (C2S) does not check for negative indices.
+MC-200006  Explosions from beds and respawn anchors can't be blocked by shields.
+MC-201684  Torches and soul torches aren't grouped together in the creative inventory.
+MC-201759  Obsidians aren't grouped together in Creative.
+MC-201769  Copying deeply nested NBT causes StackOverflowError.
+MC-202513  Weeping vines and twisting vines are not grouped with regular vines in creative inventory.
+MC-202607  Cat can get off lead by teleporting when it gives a gift after sleeping.
+MC-205563  Endermen holding powder snow drop a powder snow bucket when killed.
+MC-208051  Chests/trapped chests/barrels do not 'open' after respawning.
+MC-209621  Endermen holding potted plants do not drop the pot nor the plant.
+MC-216733  Basalt and blackstone are not grouped together with other "polishable" stone types in the Creative inventory.
+MC-217644  Wart blocks and shroomlights are in different Creative tabs.
+MC-218534  Blackstone stairs & slabs are not grouped with the other stone type stairs & slabs.
+MC-220489  Beds and respawn anchors are not grouped in the Creative inventory.
+MC-220668  Shulker boxes can open when blocked by Big Dripleaf.
+MC-220708  Shulker boxes can be opened when blocked by small dripleaves.
+MC-221421  A list tag can be modified during insertion into itself.
+MC-221568  Inconsistency: Barriers and structure voids produce particles when broken, but light blocks do not.
+MC-221722  Squids use the new texture when using Programmer Art.
+MC-222099  Endermen holding candle cakes do not drop the candle or the cake upon being killed.
+MC-222407  Endermen holding big dripleaf stems don't drop big dripleaves upon being killed.
+MC-222879  Netherite scrap comes after netherite ingot in the creative inventory.
+MC-224921  Mob pathfinding fails under certain circumstances / mobs fall on closed turns.
+MC-226184  Axolotls pathfinding to water can sometimes fall in wide holes.
+MC-226566  Inconsistency: Blocks are not placed correctly in Creative inventory.
+MC-228475  Pointed dripstone is not grouped with dripstone blocks in the creative inventory.
+MC-228976  Entity collision is run on render thread.
+MC-233042  Server Address field isn't focused when Direct Connection menu is opened.
+MC-233051  Server crashes as player logs in.
+MC-234029  You cannot hold any key to rapidly navigate between elements quickly after opening the inventory.
+MC-234161  You cannot hold the  Tab key to navigate between buttons quickly in the "Optimize World" menu.
+MC-234240  You cannot hold the  Tab key to navigate between buttons quickly in the "Superflat Customization" menu.
+MC-234408  You cannot hold the  Tab key to navigate between buttons quickly in the "Reset world" realms menu.
+MC-234409  You cannot hold any key to rapidly execute the same function in the "World options" realms menu.
+MC-234446  Moss Block appears in the wrong creative inventory tab.
+MC-234572  You cannot hold the  Tab key to navigate between buttons quickly in the "Delete Server" menu.
+MC-234621  You cannot hold the  Tab key to navigate between buttons quickly in the "remove player" realms menu.
+MC-234702  In adventure mode, you can interact with light block.
+MC-234782  You cannot hold the  Tab key to navigate between buttons quickly in the "Close realm" realms menu.
+MC-234846  You cannot hold the  Tab key to navigate between buttons quickly in the "switch world" realms menu.
+MC-234904  You cannot hold the  Tab key to navigate between buttons quickly in the "Data Packs" menu.
+MC-235414  Player desynchronization with Nether Portals.
+MC-239465  Emerald block in creative inventory looks out of place.
+MC-240724  There are no shadows on text displayed within the subtitles overlay.
+MC-242097  Ghast and Polar Bear Spawn Eggs are nearly indistinguishable.
+MC-242663  Melons can generate underwater.
+MC-243458  Worldgen data packs don't work on servers at first launch.
+MC-244550  Empty Tags match Empty Slots in Shaped Recipes.
+MC-244694  The sounds of goats stomping and ramming aren't controlled by the "Friendly Creatures" sound slider.
+MC-244721  "Erase cached data" is not capitalized.
+MC-245503  The configuration of moss block spreading cannot be modified by data pack.
+MC-245697  Certain mobs can't get out of water that is at least two blocks deep.
+MC-248589  World border texture jumps back and forth between two positions as the player's y level changes.
+MC-248753  Pressure plates don't activate even though visually they should.
+MC-248926  Setting spectatorsGenerateChunks to false and relogging freezes the game on the Loading Terrain screen.
+MC-249059  Loading terrain screen cannot close before 2 seconds have passed.
+MC-249294  Rabbits ignore the MoreCarrotTicks value, causing them to always try to eat carrots.
+MC-249691  Nylium is not grouped with netherrack in the Creative inventory.
+MC-251744  Datapacks cannot change sapling growth.
+MC-252107  Demo Mode introduction popup displays twice when re-joining after death.
+MC-254597  Mobs hurt by water don't take water damage when they are on a boat.
+From 1.19
+
+MC-249106  Water rendering incorrectly through frogspawn hitbox/model.
+MC-249232  Frogs can sometimes fall into deep holes when pathfinding to entities.
+MC-249257  The sounds of splashing when creating mud aren't controlled by the "Blocks" sound slider.
+MC-249419  Map color for mud brick slab is no longer consistent with map color for other mud brick blocks.
+MC-249463  Shulkers in boats with chests are lowered.
+MC-249513  Frogspawn is not grouped with turtle eggs in the Creative inventory.
+MC-249720  Allay's wings are not attached to its body.
+MC-249765  Allays don't render semi-transparent when invisible where appropriate.
+MC-249806  Allay renders too low in boat, boat with chest, minecart and entities.
+MC-249842  Allays attempt to pathfind to items that are outside of the world border.
+MC-249875  Parity Issue: Allays hesitate for a few seconds before following, throwing items, or doing other actions in Java.
+MC-249935  New advancement "Birthday Song" grants no experience.
+MC-250113  Muddy mangrove roots are not grouped with mud in the Creative inventory.
+MC-250212  Custom world import settings always fails with "Error Importing Settings".
+MC-250249  Parity Issue: Allays pick up arrow/potion items with other effects than the ones they're holding.
+MC-250262  Players sometimes get stuck on the "Loading terrain..." screen after switching dimensions whilst dead.
+MC-250311  The minecraft:entity.tadpole.grow_up sound event doesn't have a translation key.
+MC-250423  Frog frequently fails to long jump to small blocks.
+MC-250428  Narrator does not narrate the death screen.
+MC-250943  minecraft.used:minecraft.goat_horn doesn't increase when using goat horns.
+MC-251296  Allay has a transparent texture but it is not transparent in game.
+MC-251688  Chat preview can overlap chat contents if the message is long enough.
+MC-251744  Datapacks cannot change sapling growth.
+MC-252089  The chat preview warning menu is forcibly closed when the player dies or changes dimensions.
+MC-252214  Going into water does not extinguish the fire on you if you're in a boat.
+MC-252239  Sculk Shrieker count resets when entering exit end portal.
+MC-252415  Bedrock Edition's new 1.19.10 splash text is not available on Java 1.19.
+MC-252831  Bees freeze and fall near certain blocks in 1.19.
+MC-253076  Allay duplicates Items when its NBT data is updated every tick.
+MC-253107  Chat reporting screen is forcibly closed upon dying or changing dimensions.
+MC-253367  The screen is sometimes flashed with the "Loading terrain..." screen after proceeding with the chat preview warning when all nearby chunks are loaded.
+MC-253387  Frog walking animation is slowed down when applied with slow falling.
+MC-253542  Spawner blocks with SpawnPotential and no SpawnData will crash during worldgen.
+MC-253738  Vibration particle faces at a constant pitch of about 60 degs, not pointing towards the target.
+MC-253901  "Failed to add PDH Counter" issues (caused by outdated OSHI).
+MC-254036  Entity data sometimes doesn't get properly updated in multiplayer.
+MC-254119  Breeding a Screaming Goat and a Regular Goat never results in a screaming goat.
+MC-254189  Parity issue: Allay cannot be interacted with while it is inside a boats or minecarts in Java.
+MC-254535  Nether portals cannot replace snow layers.
+MC-254634  POIs are not created properly when upgrading worlds.
+From 1.19.1
+
+MC-253125  Allays can dance while panicking.
+MC-253189  Allays with NoAI can dance.
+MC-254395  Command suggestions can overlap the chat preview field when the chat preview option is set to "When Sending".
+MC-254427  Secure chat warning toast can appear on singleplayer worlds.
+MC-254435  Neither the secure chat warning toast nor the chat preview warning screen is presented to the player when joining a server using the --server argument.
+MC-254695  "Narrator Disabled" pop-up doesn't render fully.
+MC-254774  Crash when a villager with a gossip of value 0 shares gossips.
+MC-254809  You cannot get water bottles from water in creative mode if there's a potion in your inventory.
+From 1.19.2
+
+MC-255115  Lily pads do not produce sounds when walking on them.
+MC-255133  Extra copper ore generates in deep dark.
+MC-255151  net.minecraft.client.Camera#getMaxZoom(double) issue.
+MC-255164  Sculk Shrieker warning level resets to 0 after player's death.
+MC-255370  Chat hover & click events are offset if "Line Spacing" chat setting is used.
+MC-255715  Menu panorama stops spinning after several days.
+MC-255743  Bees' path finding system may cause performance issues.
+MC-256217  Explosions create ghost blocks on servers at high coordinates.
+MC-256308  limit selector parameter with "arbitrary" sorting does not stop searching early.
+MC-256685  In a small window, when in a scrollable option menu, the tooltip from option 1 of row 8 appears at the top of the screen when hovering over it.
+MC-256706  Carpet texture is cut off in the recipe book.
+MC-257530  When Chat is set to Hidden, the Chat Hidden Warning appears in chat instead of the actionbar when attempting to send a message whilst sleeping or switching gamemode.
+MC-258279  Particle groups are not cleared on resource reload.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

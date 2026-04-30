@@ -1,0 +1,90 @@
+The debug screen, debug overlay or F3 screen functions as a menu for accessing debugging information, but it also provides useful in-game information like player coordinates. It is triggered when F3 is pressed. 
+The debug screen consists of info text lines and five toggleable graphs: profiler, frame rate, tick rate, bandwidth, and ping time graphs.
+
+
+== Information lines ==
+
+The debug screen consists of 28 elements (referred to as "debug screen text" in the debug options menu). Each of these elements can be individually disabled through the debug options menu, which is accessed by pressing F3 + F6:
+
+"OFF" removes the given element from the debug overlay.
+"In Overlay" adds the given element to the debug overlay.
+"Always" causes the element to display on-screen even when the debug overlay is not open.
+There are 2 built-in configurations: "Default Profile" and "Performance Profile".
+Setting the reduced_debug_info game rule to true prevents some elements from being displayed, even if the player has toggled them to "In Overlay" or "Always".
+
+
+== Graphs ==
+
+
+=== Profiler graph ===
+
+The profiler graph, known informally as the pie chart, can be toggled using F3 + 1 (previously  Shift + F3) and displays profiling information. To access a sub-section, press  Shift + N, which N is the section number within square brackets under the pie chart.
+While the profiler graph is open, clicking a number on the keyboard results in going into that profiler category. Where 0 is used to traverse back. It's currently impossible to navigate to numbers past 9. Traversal is limited to KeyCode 48 to 57, where input -- 48 results into the number category to traverse into.
+While the chart is open, any entry that gets added into the chart may not disappear unless the chart is reopened by re-toggling F3, thus giving the player a refreshed result. For instance, if inspecting the blockRenderer, if the player were in the range of a specific block and went out of it, the block may still be visible in the chart while actually not being rendered anymore; to have better results, the player would have to open the Debug Screen.
+
+
+=== FPS graph ===
+
+The frame rate graph (or simply FPS graph) displays on the left side of the screen when enabled with F3 + 2 (previously Alt + F3). It shows the last 240 frames of gameplay. The height of each bar is proportional to the time a frame took to generate.
+The minimum, average, and maximum frame times for the last 240 frames are shown on top.
+The colors are on a gradient from neon green (good) ( #00FF00) through yellow ( #FFFF00) to neon red (bad) ( #FF0000).
+
+
+=== TPS graph ===
+
+The tick rate graph (or simply TPS graph) displays on the right side of the screen when enabled with F3 + 2 if in singleplayer or playing as an operator on a server. It shows the last 240 ticks of gameplay. The height of each bar is proportional to the time a tick took to process.
+The minimum, average, and maximum tick times for the last 240 ticks are shown on top.
+The colors stack. From top to bottom:
+
+Light green/yellow/red: Idling, waiting for next tick (color gradient like the FPS graph above)
+Purple: Miscellaneous (all other code during the tick)
+Light brown: Scheduled tasks
+Dark red: Main logic of the server tick
+
+
+=== Bandwidth graph ===
+
+The bandwidth graph displays on the left side of the screen when enabled with F3 + 3. It shows the last 240 packets. Higher the bar is, the higher the bandwidth it uses. The minimum, average, and maximum size is shown on top, typically in KiB.
+The colors are cyan for small-sized packets and light purple for larger ones.
+
+
+=== Ping graph ===
+
+The ping graph displays on the right side of the screen when enabled with F3 + 3. It shows the last 240 ping times. Higher is longer time. The minimum, average and maximum are shown on top.
+The colors are on a gradient from neon green (good) ( #00FF00) through yellow ( #FFFF00) to neon red (bad) ( #FF0000).
+
+
+== History ==
+
+
+=== Pre-1.8 legend ===
+
+
+== Issues ==
+Issues relating to "Debug screen" or "F3" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Trivia ==
+The biome and lighting values do not display when the player is outside of the build limits.
+Deeper into the profiler ( Shift + F3), some tasks have numbers higher than 9 and can't be accessed. Pressing the two keys simultaneously does not open the task.
+The warning stating that the Debug Options is for testing purposes contains a joke possibility as the last item in the list. This joke is changed depending on the game language.
+
+
+== Gallery ==
+
+
+=== Historical screenshots ===
+Most of these screenshots show debug screen exclusively used by the developers of Minecraft.
+
+
+== Notes ==
+
+
+== References ==
+
+
+== External links ==
+What is in the Debug Menu in Minecraft: Java Edition?  Minecraft Help Center
+
+
+== Navigation ==

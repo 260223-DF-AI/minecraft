@@ -19,7 +19,7 @@ BE: from: x y z: CommandPosition and to: x y z: CommandPosition
 
 Specifies any two opposing corner blocks of the region to be filled (the "fill region").
 In Java Edition, must be a block position composed of <X>, <Y> and <Z>, each of which must be an integer or a tilde and caret notation. In Bedrock Edition, must be a three-dimensional coordinates composed of <X>, <Y> and <Z>, each of which must be a single-precision floating-point number or tilde and caret notation.
-Block position is the coordinates of the point at the lower northwest corner of a block. Because of this, the lesser coordinates of each axis are on the region boundary, but the greater coordinates are one block from the boundary, and the block volume of the source region is (xgreater - xlesser + 1) × (ygreater - ylesser + 1) × (zgreater - zlesser + 1). For example, 0 0 0 0 0 0 has a 1-block volume, and 0 0 0 1 1 1 and 1 1 1 0 0 0 both identify the same region with an 8-block volume.
+Block position is the coordinates of the point at the lower northwest corner of a block. Because of this, the lesser coordinates of each axis are on the region boundary, but the greater coordinates are one block from the boundary, and the block volume of the source region is (xgreater - xlesser + 1)  (ygreater - ylesser + 1)  (zgreater - zlesser + 1). For example, 0 0 0 0 0 0 has a 1-block volume, and 0 0 0 1 1 1 and 1 1 1 0 0 0 both identify the same region with an 8-block volume.
 JE: <block>: block_stateBE: tileName: Block: enum
 
 Specifies the block to fill the region with.
@@ -56,13 +56,13 @@ Must be a blockstate argument as ["<state1>"=<value1>,"<state2>"=<value2>,...]. 
 
 
 == Examples ==
-/fill 52 63 -1516 33 73 -1536 minecraft:gold_block replace minecraft:orange_glazed_terracotta‌[Java Edition  only]
-/fill 52 63 -1516 33 73 -1536 gold_block [] replace orange_glazed_terracotta‌[Bedrock Edition  only]
+/fill 52 63 -1516 33 73 -1536 minecraft:gold_block replace minecraft:orange_glazed_terracotta[Java Edition  only]
+/fill 52 63 -1516 33 73 -1536 gold_block [] replace orange_glazed_terracotta[Bedrock Edition  only]
 Replaces all the orange glazed terracotta in the selected area with gold blocks.
 /fill ~-3 ~-3 ~-3 ~3 ~-1 ~3 water
-Replaces the blocks in a 7×3×7 region directly beneath the command execution's location with water.
-/fill ~-3 ~ ~-4 ~3 ~4 ~4 stone hollow‌[Java Edition  only]
-/fill ~-3 ~ ~-4 ~3 ~4 ~4 stone 0 hollow‌[Bedrock Edition  only]
+Replaces the blocks in a 737 region directly beneath the command execution's location with water.
+/fill ~-3 ~ ~-4 ~3 ~4 ~4 stone hollow[Java Edition  only]
+/fill ~-3 ~ ~-4 ~3 ~4 ~4 stone 0 hollow[Bedrock Edition  only]
 Creates a house-sized box around the command execution's location, replacing any blocks that would have been inside the box with air.
 /fill ~-15 ~-15 ~-15 ~15 ~15 ~15 stone
 Creates a solid cube of stone centered on the command execution's location.
@@ -80,7 +80,7 @@ Replaces the specific blocks around the command execution's location with waterl
 
 
 == External links ==
-"/fill Command"     – Microsoft Learn, July 17, 2024.
+"/fill Command"      Microsoft Learn, July 17, 2024.
 
 
 == Navigation ==

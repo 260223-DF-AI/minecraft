@@ -1,0 +1,186 @@
+23w04a is the second snapshot for Java Edition 1.19.4, released on January 24, 2023, which adds smithing templates and fixes bugs.
+
+
+== Additions ==
+
+
+=== Command format ===
+/execute
+
+Added a new relation origin for /execute on, which can select:
+Shooter, if the executing entity is a projectile (like arrow, fireball, trident, firework, thrown potion, etc.)
+Thrower, if the executing entity is an item.
+Source of effects, if the executing entity is an area effect cloud.
+Igniter, if the executing entity is a primed TNT.
+Summoner, if the executing entity is evoker fangs or a vex.
+
+
+== Changes ==
+
+
+=== Items ===
+General
+
+Enchantment glint on items and armor is now more subtle.
+
+
+=== General ===
+User interface
+
+Placeholder icons for empty slots such as armor or in a brewing stand have been lightened.
+Change has not been applied to the loom menu.
+Setting the resource pack to programmer art does not revert this change (despite the change being made to the textures themselves).
+
+
+== Experimental ==
+These additions and changes only take effect when the 1.20 experimental data pack is enabled.
+
+
+=== Additions ===
+
+
+==== Items ====
+Smithing Templates
+
+New item series for armor trimming and netherite upgrading, with twelve of them.
+ Netherite Upgrade
+Armor trims:
+ Coast Armor Trim
+ Dune Armor Trim
+ Eye Armor Trim
+ Rib Armor Trim
+ Sentry Armor Trim
+ Snout Armor Trim
+ Spire Armor Trim
+ Tide Armor Trim
+ Vex Armor Trim
+ Ward Armor Trim
+ Wild Armor Trim
+They can be obtained randomly from chests generated in structures accordingly.
+Exceptions:
+While randomly generated in other rooms, a netherite upgrade smithing template is also guaranteed in every treasure room in a bastion remnant.
+A single tide armor trim smithing template is sometimes dropped by elder guardians upon death.
+Some armor trims are rarer.
+Consumed when used to upgrade an item in the smithing table.
+Can not be crafted directly, but can make a copy of them by crafting in crafting tables as following pattern:
+7 diamonds, shaped as iron ingots in cauldron crafting recipe.
+1 block of material that the template is made out of, placed in the center slot of the crafting grid.
+1 smithing template, placed in the remaining slot.
+
+
+==== General ====
+Data pack
+
+Added registry trim_pattern and trim_material, which defines trim patterns and materials respectively, to allow add them via data packs.
+These are synchronized to clients when they join the server, but the accompanying resource pack is required on client to make them visible.
+The paths to these textures are inferred based on the filename of the pattern json, and try to find the textures within the same namespace as the trim pattern's name field.
+trim_pattern defines following data:
+asset_id: a namespaced ID used to infer texture locations and localization.
+template_item: the ID of the smithing template item used to apply the trim pattern.
+description: a text component used for displaying the pattern name of an armor trim when hovering an armor itemstack.
+trim_material defines following data:
+asset_name: a string used as a suffix for armor trim texture locations.
+ingredient: the ID of the ingredient item used to apply the trim material.
+item_model_index: a float number which defines the item model override each armor item model should target to change their visuals for this material.
+incompatible_armor_material: an optional ID of the armor material this trim material cannot be applied to.
+description: a text component used for displaying the material name of an armor trim when hovering an armor itemstack.
+The style defined in this description is applied to the armor trim pattern description as well.
+player.dat format
+
+Added new flag (value 128) to HideFlags NBT field for hiding armor trim item tooltips.
+Recipe
+
+Added smithing_transform and smithing_trim recipe serializers for the updated netherite upgrade and the new armor trim recipe respectively.
+Resource pack
+
+Added paletted_permutations, which is a new type of atlas configuration source used to dynamically generate new textures in memory based on a set of color palettes.
+Color palettes allows to swap out the colors of a texture without having to supply all files for the variants of a texture in a resource pack.
+This is useful for things like armor trims. It can change the their color directly without create a new texture for each color.
+The paletted_permutations source has a set of required parameters:
+textures: a list of namespaced locations of base textures.
+These textures are used to generate variants of them that have been modified by color palettes.
+palette_key: a namespaced location of a color palette key file.
+A color palette key is used to define the set of key pixel colors we want to swap out with the color palettes defined below.
+permutations: a map of permutations from suffix to a namespaced location of a color palette file.
+The suffix is appended at the beginning to the resource location of the output variant textures, with a _ character separating the suffix and the base texture name.
+The color palette is a texture file with a set of pixels that are used for replacing pixels that match the color palette key in each base texture.
+The number of pixels in each color palette must be the same as that of the palette_key defined for this source.
+Key matching is done by comparing the RGB values of each pixel in the palette_key to the RGB values of each pixel in the color palette.
+Alpha channel is ignored for key matching, but in the resulting texture the alpha channel is multiplied with the color palette's alpha channel.
+Pixels that do not match the palette_key are copied over to the resulting texture as-is.
+After defining a paletted_permutations source, those namespaced output textures can be referenced in other resources in resource pack.
+For example, if the following paletted_permutations source exists:
+
+The resulting textures can be referenced in other resources like this:
+
+Tags
+
+Added following item tags:
+#trim_materials: contains amethyst_shard, copper_ingot, diamond, emerald, gold_ingot, iron_ingot, lapis_lazuli, netherite_ingot, quartz, and redstone.
+#trim_templates: contains coast_armor_trim_smithing_template, dune_armor_trim_smithing_template, eye_armor_trim_smithing_template, rib_armor_trim_smithing_template, sentry_armor_trim_smithing_template, snout_armor_trim_smithing_template, spire_armor_trim_smithing_template, tide_armor_trim_smithing_template, vex_armor_trim_smithing_template, ward_armor_trim_smithing_template, and wild_armor_trim_smithing_template.
+#trimmable_armor: contains chainmail_boots, chainmail_chestplate, chainmail_helmet, chainmail_leggings, diamond_boots, diamond_chestplate, diamond_helmet, diamond_leggings, golden_boots, golden_chestplate, golden_helmet, golden_leggings, iron_boots, iron_chestplate, iron_helmet, iron_leggings, netherite_boots, netherite_chestplate, netherite_helmet, netherite_leggings, and turtle_helmet.
+
+
+=== Changes ===
+
+
+==== Items ====
+Armor
+
+Now can be visually customized with a variety of unique trims at the smithing table, except leather armor.
+Purely visual with no gameplay benefits, and can only be applied to helmets, chestplates, leggings and boots.
+All trim patterns are visually the same on an armor's item icon, but the color still changes based on the trim material.
+The name of the trim pattern is displayed on the item's tooltip.
+Armor trim has 2 properties: pattern and material.
+Pattern: Defined by the smithing template used to apply the trim, and represents the visual pattern of the trim.
+Material: Defined by what ingredient is used to apply the trim, and represents the color of the trim.
+Available ingredients:
+Amethyst shard
+Copper ingot
+Diamond
+Emerald
+Gold ingot
+Iron ingot
+Lapis lazuli
+Nether quartz
+Netherite ingot
+Redstone dust
+Armor cannot have the same material it is made of applied to it as a trim, except for diamond armor with netherite trim being upgraded to netherite armor.
+
+
+==== Gameplay ====
+Smithing Table functionality
+
+Redesigned: it is now a workstation for physical equipment upgrades and modifications.
+Added a slot used by smithing templates to the left of the old 2 slots.
+Smithing templates define what type of upgrade is made to equipment.
+It specifies both what type of items that can upgrade, and which ingredients are valid to customize the upgrade.
+Netherite equipment crafting now also requires a netherite upgrade smithing template.
+Two menu types:
+Old menu without the smithing template slot has been renamed to legacy_smithing, and will be removed when armor trims are no longer an experimental feature.
+New menu with smithing template slot was added, called smithing.
+
+
+== Fixes ==
+4 issues fixed
+From released versions before 1.19
+
+MC-198809  Blast Protection does not reduce explosion knockback except at very high levels.
+From the previous development version
+
+MC-259189  Narrator: Not Available isn't grayed out on accessibility splash.
+MC-259204  All goat horns display as Ponder goat horns and play the Ponder instrument.
+MC-259211  You cannot select incompatible resource packs within the resource packs menu via keyboard navigation.
+
+
+== Videos ==
+
+
+== Trivia ==
+Unlike most of the first-of-the-week snapshots, this one was released on a Tuesday, instead of a Wednesday.
+
+
+== References ==
+
+
+== Navigation ==

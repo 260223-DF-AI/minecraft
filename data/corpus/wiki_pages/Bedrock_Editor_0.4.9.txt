@@ -1,0 +1,23 @@
+Bedrock Editor v0.4.9 is a minor alpha release for the Bedrock Editor released on November 15, 2023, which tweaks the UI, the /reload command and adds a new API.
+
+
+== Additions ==
+Commands
+
+Added an all optional parameter to the /reload slash command when running in Editor mode which enables a full warm reload of the entire Editor.
+API
+
+Simulation paused state is now available for editor scripting via the editor global object's simulation property.
+UI
+
+Menu items now have a checked property, of type boolean | undefined. If the value is defined, the menu will show a checkmark if the value is true.
+
+
+== Fixes ==
+Fixed editor screen freeze bug caused by ctrl +  Tab shortcut (issue #1113035).
+
+
+== References ==
+
+
+== Navigation ==

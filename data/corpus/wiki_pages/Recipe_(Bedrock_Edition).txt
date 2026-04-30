@@ -1,0 +1,91 @@
+Recipes provide a structured way for players to perform item and block transformations in-game. Every crafting, smelting, brewing, blasting, campfire cooking, smoking, stonecutting and smithing recipe uses this system. Recipes are data driven and can be configured by add-ons.
+
+
+== Obtaining ==
+Recipes can be obtained in various ways. Acquiring an item from the recipe causes the player to automatically discover it. Recipes can also be granted using the /recipe command.
+Once a recipe has been discovered, it is added to the player's recipe book.
+
+
+== Usage ==
+
+Discovered recipes can be found in the player's recipe book. However, recipes do not need to be discovered for the player to be able to use them, unless the doLimitedCrafting game rule is enabled. The game rule recipesUnlock can be used to disable the unlocking of recipes, making them all accessible and visible.
+Recipes appear in the inventory's recipe book if they are 22 in size, otherwise they will only appear if the player is using a crafting table.
+The anvil, cartography table, loom, and grindstone don't use the recipe system; they use different, hardcoded systems for their mechanics.
+
+
+== JSON format ==
+Vanilla recipes are stored as separate JSON files in the behavior_packs/vanilla/recipes or behavior_packs/<version> /recipes within the game files.
+Vanilla recipes can be easily accessed in the behavior_pack/recipes folder on the official sample github for addons.
+Custom recipe files are stored in the behavior_packs/<add-on name>/recipes in a add-on, but it is allowed to add the recipe to a subfolder, allowing the creation of new recipes and the editing of vanilla recipes.
+Recipe JSON files have different structures depending on their type. These types are listed below.
+
+
+=== recipe_shaped ===
+Represents a crafting recipe with shape in a crafting table, the inventory, and the crafter.
+The key used in the pattern can be any single character except the space character  , which is reserved for empty slots in a recipe, can also be omitted to accept the recipe format in any location that has enough space. This format is the only format that accepts multiple results.
+
+Usage example json:
+
+
+=== recipe_shapeless ===
+Represents a shapeless crafting recipe in a crafting table, inventory and the crafter, and is also used for the stonecutter.
+The ingredient list must have at least one and a maximum of nine entries. Unlike a recipe shaped, multiple results are not possible.
+
+Crafting table example json:
+
+Stonecutter Example Json:
+
+
+=== recipe_furnace ===
+Represents a smelting recipe in a furnace, blast furnace, smoker, campfire and the soul campfire.
+It is not possible to set the amount of experience you will receive when smelting the item.
+
+Usage example json:
+
+
+=== recipe_smithing_trim ===
+Represents a smithing recipe at a smithing table for adding trims.
+It is not possible to create a custom one this is for documentation purposes only.
+
+Usage example json:
+
+
+=== recipe_smithing_transform ===
+Represents a smithing recipe at a smithing table to perform a upgrading.
+
+Usage example json:
+
+
+=== recipe_brewing_mix ===
+Represents a brewing recipe on a brewing stand.
+Vanilla potions use this system minecraft:potion_type:<potion_effect> can be added long_ or strong_ for other types like minecraft:potion_type:strong_poison also accepted is minecraft:potion, minecraft:splash_potion and minecraft:lingering_potion.
+
+Usage example json:
+
+
+=== recipe_brewing_container ===
+Represents a brewing recipe focused on changing one type into another in a brewing stand.
+Vanilla potions use this system minecraft:potion_type:<potion_effect> can be added long_ or strong_ for other types like minecraft:potion_type:strong_poison also accepted is minecraft:potion, minecraft:splash_potion and minecraft:lingering_potion.
+
+Usage example json:
+
+
+=== recipe_material_reduction ===
+
+Represents a Minecraft Education recipe in a material reducer.
+
+Usage example json:
+
+
+== History ==
+
+
+== Issues ==
+Issues relating to "Recipe (Bedrock Edition)" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== External links ==
+Recipe Generator on misode.github.io
+
+
+== Navigation ==

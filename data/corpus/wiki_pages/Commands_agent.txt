@@ -5,47 +5,47 @@ If a player summons an agent using an NPC then the only way to remove it from th
 
 == Syntax ==
 agent . . .
-… move <direction>
+... move <direction>
 Moves an agent in a specified direction.
-… turn <turnDirection>
+... turn <turnDirection>
 Rotates an agent in a specified direction by 90 degrees.
-… attack <direction>
+... attack <direction>
 Makes an agent attack in a specified direction.
-… destroy <direction>
+... destroy <direction>
 Makes an agent destroy a block or item in a specified direction.
-… drop <int:slotNum> <int:quantity> <direction>
+... drop <int:slotNum> <int:quantity> <direction>
 Makes an agent drop specified inventory slot numbered items in a specified quantity in a specified direction.
-… dropall <direction>
+... dropall <direction>
 Makes an agent drop all its items from all slots onto the ground by one block in a specified direction.
-… inspect <direction>
+... inspect <direction>
 Makes an agent return the name of the block in a specified direction.
-… inspectdata <direction>
+... inspectdata <direction>
 Makes an agent returns the data value of the block of a specified direction.
-… detect <direction>
+... detect <direction>
 Makes an agent detect if there is a collidable block in a specified direction.
-… detectredstone <direction>
+... detectredstone <direction>
 Makes an agent detect a redstone signal of a specified direction.
-… transfer <int:srcSlotNum> <int:quantity> <int:dstSlotNum>
+... transfer <int:srcSlotNum> <int:quantity> <int:dstSlotNum>
 Transfers a specified quantity of items from one slot to another of an agent's inventory.
-… create
+... create
 Creates an agent at the current player's position.
-… tp <coordinates>
+... tp <coordinates>
 Teleports an agent to a specified position.
-… collect <string:item>
+... collect <string:item>
 Makes an agent collect all items within a one block from agent in three dimensions.
-… till <direction>
+... till <direction>
 Makes an agent till grass in a specified direction.
-… place <int:slotNum> <direction>
+... place <int:slotNum> <direction>
 Makes an agent place a block in a specified direction.
-… setitem <int:slotNum> <int:quantity> <int:amount> <int:data>
-​[more information needed]
-… getitemcount <int:slotNum>
+... setitem <int:slotNum> <int:quantity> <int:amount> <int:data>
+[more information needed]
+... getitemcount <int:slotNum>
 Makes an agent return the number of items in a specified slot, as in how many the player could use before it would be empty.
-… getitemspace <int:slotNum>
+... getitemspace <int:slotNum>
 Makes an agent return the number of spaces remaining in a specified slot, as in the number of items you could add before it would be full.
-… getitemdetail <int:slotNum>
+... getitemdetail <int:slotNum>
 Makes an agent return the name of the item in a specified slot.
-… getposition
+... getposition
 Makes an agent retrieve its position in the world.
 
 

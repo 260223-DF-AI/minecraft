@@ -1,0 +1,122 @@
+14w20a is the twenty-third snapshot for Java Edition 1.8, released on May 15, 2014, which adds the /title command.
+
+
+== Additions ==
+
+
+=== Command format ===
+/title
+
+Can make text display on a players screen in the form of a title and/or subtitle.
+/title <player> times <fadeIn> <stay> <fadeOut>
+Set the fade in time, the stay on screen time and the fade out time for the title.
+/title <player> title <raw json message>
+Set and start showing the title.
+/title <player> subtitle <raw json message>
+Set and start the subtitle.
+/title <player> clear
+Clear titles immediately.
+/title <player> reset
+Reset all title parameters to defaults (fade times).
+
+
+=== General ===
+Splashes
+
+Added the following splashes:
+"Run, coward! I hunger!"
+"Blue warrior shot the food!"
+"Warning! A huge battleship "STEVE" is approaching fast!"
+"Rise from your grave!"
+
+
+== Changes ==
+
+
+=== Blocks ===
+General
+
+Blocks no longer have bits for metadata, the freed up bits are now used for block ids (dynamically).
+
+
+=== Mobs ===
+Slimes
+
+"Slime sizing was moved to a post-spawn method, so the slime's canSpawn() method would report spawnability based on the initial size, not the final size. There is an added secondary check which fixes the issue."
+
+
+=== World generation ===
+Caverns
+
+Now generate on the surface of desert, mesa, mega taiga and mushroom biomes.
+World border
+
+If a player is stuck outside the world border, it is possible for them to freely fly/walk around (not possible to freely walk through the border).
+
+
+=== Command format ===
+/tellraw
+
+Now has a selector argument.
+Allows to print player's names.
+Example: /tellraw @a {selector:"@a[team=TeamRed]"} prints everyone who is on TeamRed.
+Also works with /title.
+
+
+=== Gameplay ===
+Spectator mode
+
+Adjusting fly speed in Spectator mode now works vertically too.
+Player list
+
+Made tab-list more consistent and a little prettier when using health display objective.
+Now groups together teams.
+Now sorts players by name.
+
+
+=== General ===
+Debug screen
+
+The 'Towards Positive/Negative X/Z' was re-added.
+
+
+== Fixes ==
+23 issues fixed
+From released versions before 1.8
+
+MC-8881  Mobs treat any layered snow as non-solid.
+MC-26203  Scoreboard: player does not appear in sidebar after setting initial score to zero.
+MC-33084  /give command at dead players.
+MC-41234  "/summon"ed or spawned LeashKnots always spawn at 0, 0, 0.
+MC-51776  32000 Command block character limit only works as a 16000 character limit within Minecraft.
+MC-52881  Knockback distance incorrect, depends on login order.
+From the 1.8 development versions
+
+MC-44331  Interacting with invalid villagers crashes the game.
+MC-45303  Surface dungeons generating without spawner, chests, and most of floor.
+MC-46765  Leaves, Block of Redstone, TNT and Glowstone cause suffocation damage.
+MC-48442  Mob Dungeon spawning without floor / with broken chests / overwritten spawner.
+MC-48535  Creeper explosion animation missing if mobGriefing set to false.
+MC-49577  Slime spawning bug.
+MC-50275  Leads don't show knot on fence posts and cannot be right clicked.
+MC-50323  Chest not openable with item frame on, standing too close.
+MC-50852  /scoreboard players reset * objective clears sidebar for other scoreboard objectives.
+MC-50974  Renamed items not displaying name in item frames after respawn.
+MC-51080  Endermite ignore PersistenceRequired tag.
+MC-53380  Staying outside border makes you unable to move at all.
+MC-53435  Debug screen: Facing towards negative/Positive X/Z removed.
+MC-53469  Sliders have incorrect values causing world to never be created (java.lang.IllegalArgumentException: n must be positive).
+MC-54164  footstep, hugeexplosion and largeexplode particles don't appear.
+MC-54228  Respawning after death outside of world border places player at Y=256.
+MC-54381  /scoreboard players operation doesn't work on a player that's not on a scoreboard, but also does work.
+
+
+== Trivia ==
+14w20a was previously removed from the launcher for some time, but was added back in September 2018.
+"Warning! A huge battleship "STEVE" is approaching fast!" is a reference to Darius, a series of games with the same sentence, showing before boss fights.
+
+
+== References ==
+
+
+== Navigation ==

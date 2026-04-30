@@ -1,0 +1,222 @@
+Beta 1.20.20.20 (Android) or Preview 1.20.20.20 (Windows, iOS, iPadOS, Xbox) is the first beta/Preview version for Bedrock Edition 1.20.30, released on June 28, 2023, which brings more parity from Java Edition and fixes bugs.
+
+
+== Additions ==
+
+
+=== Technical ===
+Add-ons
+
+Added support for the allow_random_seed option in world template manifests.
+JSON
+
+Released the following components out of experimental in JSON formats 1.20.20 and higher:
+minecraft:hand_equipped item component.
+minecraft:use_duration item component.
+minecraft:stacked_by_data item component.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Cherry Leaves
+
+Now generate particle effects at a relatively large distance based on system performance.
+Snow
+
+Different layers of snow have different heights to match Java Edition.
+
+
+==== Command format ====
+/scriptevent
+
+Now is no longer behind the "Beta APIs" experimental toggle.
+Amethyst Cluster
+
+Now uses the minecraft:block_face block state instead of facing_direction.
+minecraft:block_face uses six string values ["down", "up", "north", "south", "east", "west"].
+Slabs
+
+Now uses the minecraft:vertical_half block state instead of top_slot_bit.
+minecraft:vertical_half uses two string values ["bottom", "top"].
+
+
+=== Gameplay ===
+Sneaking
+
+Now player gets forced out of sneak when riding.
+
+
+=== General ===
+Creative Inventory
+
+Removed the suspicious stew from the Creative inventory.
+Menu screen
+
+Changed the in-game logo for Minecraft Preview.
+Settings
+
+Changed "Joystick Always Visible" to "Joystick Visibility Option" dropdown.
+Changed "Sneak Toggle" to "Sneak" dropdown.
+Moved "Sync Old World" button to the save screen.
+General
+
+The Minecraft Preview application icon has been changed from a grass block to dirt.
+
+
+=== Mobs ===
+Villager
+
+When killed they no longer drop items held in their hands.
+Wandering Trader
+
+Now can sell 1 cherry sapling for 5 emeralds.
+Zombie Villager
+
+Now displays their rank in appearance.
+
+
+=== Non-mob entities ===
+Falling Block 
+
+Now break when falling onto a boat.
+
+
+=== Technical ===
+Server
+
+Linux dedicated server: Ubuntu 20.04 LTS (Focal Fossa) is now the minimum supported version of Ubuntu. Ubuntu 18.04 LTS is no longer supported.
+JSON
+
+Deprecate minecraft:creative_category component in JSON formats 1.20.20 and higher.
+Creative group and command visibility can now be set in the description field in JSON formats 1.20.20 and higher.
+Changed fire enchant duration used on projectiles from a ShooterItemComponent to match vanilla behavior.
+Sound definitions now accept both float and integer values for min_distance and max_distance.
+Render controllers without textures now result in a content error and are ignored.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Crawling", "Recipe Unlocking", and "Beta APIs" experimental toggles.
+
+
+=== Changes ===
+
+
+==== Command format ====
+/recipe
+
+Updated the syntax to match Java Edition.
+Old syntax:
+/recipe <victim: target> give <recipe: string>
+/recipe <victim: target> take <recipe: string>
+New syntax:
+/recipe give <victim: target> <recipe: string>
+/recipe take <victim: target> <recipe: string>
+Now the recipes are suggested by the command auto-complete.
+Now an output message appears after the command is executed.
+
+
+=== Gameplay ===
+Crawling
+
+Now player gets forced out of crawl when riding.
+Recipe book
+
+Updated the recipe notification sound to match Java Edition.
+Now the duration of the recipe notifications are calculated based on how many recipes got unlocked.
+
+
+=== General ===
+Settings
+
+Now is displayed a message when the players presses the camera perspective change button but a particular perspective is already set via the /camera command.
+
+
+==== Technical ====
+API
+
+Converted set_block_property to set_block_state for custom blocks.
+Added defineVector to DynamicPropertiesDefinition.
+EntityEquipmentInventoryComponent
+Implemented slot validation for setEquipment, which now returns a boolean indicating whether the item can be equipped to the specified slot.
+EntityEquipmentInventoryComponent is currently limited to players only.
+Moved getDay to 1.4.0.
+Moved getTimeOfDay to 1.4.0.
+Moved setTimeOfDay(timeOfDay: number | TimeOfDay) to 1.4.0.
+Moved getAbsoluteTime to 1.4.0.
+Moved setAbsoluteTime(absoluteTime: number) to 1.4.0.
+Moved TimeOfDay to 1.4.0.
+Added length restrictions to setLore - Up to 20 lines with up to 50 characters per line.
+Moved function setLore to 1.4.0.
+Moved function getLore to 1.4.0.
+Moved class SystemAfterEvents to 1.4.0.
+Moved class ScriptEventCommandMessageAfterEvent to 1.4.0.
+Moved player onScreenDisplay to 1.4.0.
+Moved titleDisplayOptions to 1.4.0.
+Moved screenDisplay to 1.4.0.
+JSON
+
+Removed the minecraft:ignores_permission component.
+Removed the minecraft:mirrored_art component.
+Moved the protection field from minecraft:armor component to minecraft:wearable component in JSON formats 1.20.20 and higher.
+Deprecate minecraft:armor component in JSON formats 1.20.20 and higher.
+Removed nonfunctional and redundant slot options from minecraft:wearable component, ie. mainhand, hotbar, inventory, enderchest, and equippable.
+Items with the minecraft:wearable component using the weapon.offhand slot no longer equips when the item is used in the hotbar.
+Equipping custom wearable items trigger generic equip sound.
+Custom items with minecraft:wearable component can now be equipped by clicking and dragging in inventory or shift-clicking.
+
+
+== Fixes ==
+34 issues fixed
+From released versions before 1.20.30
+
+MCPE-33139  No anvil step sound.
+MCPE-43402  Trident channeling sound is unused.
+MCPE-43831  Trident w/loyalty doesn't make the returning sound to the player but the Trident.
+MCPE-50609  Missing sounds when a hostile mob shoots arrows or throws trident.
+MCPE-60024  Snow layer collision changes only twice.
+MCPE-80924  Adult zombie villagers use the farmer texture regardless of their actual profession.
+MCPE-94722  Nether portal make no breaking animation or sound when obsidian is broken.
+MCPE-123488  Big dripleaf tilting up sounds uses tilt down sounds instead.
+MCPE-128117  No sound when conduit deactivates.
+MCPE-136484  Respawn anchor ambient sound doesn't play.
+MCPE-154378  min_distance / max_distance requires decimal numbers, silently fails with integers.
+MCPE-159736  Duplicating stackable armor when equipping from hotbar.
+MCPE-162061  See transparent blocks through end portal off a chunk border.
+MCPE-163671  Xbox: Mouse movement is jittery / pixel-based / not smooth.
+MCPE-164634  My Minecraft world keeps crashing when I approach a specific area.
+From v1.20.0
+
+MCPE-170841  Camera speed difference when crawling or using riptide parity.
+MCPE-171521  Wandering trader does not trade cherry saplings.
+From v1.20.10
+
+MCPE-170870  Crawl mode don't get disabled when riding.
+MCPE-170907  When switching to a spectator, the player does not stop sneaking or crawling.
+MCPE-170994  Crawl parity issue.
+MCPE-171065  /recipe doesn't send a chat output when correct syntax is entered.
+MCPE-171086  Entering /recipe command doesn't show suggestions.
+MCPE-171098  /recipe command syntax doesn't match Java Edition.
+MCPE-171116  The "Recipe Unlock Toast" sound does not match Java Edition.
+MCPE-171225  Players suffocate while crawling at Y=1 and Y=2
+MCPE-171797  The player can enable flight mode while flying the elytra.
+MCPE-171800  Pick blocking a decorated pot from the creative inventory gives invalid inventory description.
+MCPE-171812  Spectators still adapt to small spaces.
+Others
+
+Empty maps now emit the appropriate sound when players draw them.
+The third-person camera no longer clips through terrain when near water or lava.
+Fixed Creative mode players not being ignited when standing in fire.
+The player no longer gets forced into sneak or crawl during the riptide animation.
+Players should no longer accidentally trigger crawling when they shouldn't.
+Fixed bottom face of portal effect so its color and transparency match the other faces.
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

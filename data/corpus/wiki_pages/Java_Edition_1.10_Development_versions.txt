@@ -1,0 +1,651 @@
+This is a list of Java Edition 1.10 development versions.
+
+
+== 16w20a ==
+16w20a is the first snapshot for Java Edition 1.10, released on May 18, 2016, which adds bone, magma, and Nether wart blocks; husks and strays as zombie and skeleton variants, respectively; polar bears; and fossils that spawn underground.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Bone blocks
+
+Crafted by filling a 33 square in the crafting table with bone meal.
+Can be crafted back into 9 bone meal.
+Found underground in desert and swamps as part of fossils.
+ Magma blocks
+
+Found in the Nether, generating 4 blobs per chunk between Y=27 and Y=36.
+It has a similar frequency to blocks like andesite in the Overworld.
+Crafted using four magma cream.
+Mobs and players take 1HP damage every second while touching it, similar to a cactus.
+Unlike cactus or fire, this block doesn't destroy items that touch it.
+If the player is sneaking, wearing Frost Walkerenchanted armor, or under the Fire Resistance effect, it does not take damage.
+If the player dies by standing on it, a new death message appears: "player discovered that floor was lava".
+If the player dies by the block, but after being damaged by a mob or player, the death message is: "player walked into danger zone due to entity".
+Removes water blocks on top when randomly ticked.
+It produces smoke particles under the rain.
+It emits as much light as it receives from other sources.
+e.g. A magma block next to a torch emits light at level 13, as that was the light level it received from the torch.
+If the torch is removed, magma block searches for the next brightest source of light; if no source is found then it doesn't produce light.
+ Nether wart blocks
+
+Crafted by filling a 33 square in the crafting table with Nether wart.
+It cannot be crafted back into Nether wart.
+It is broken by flowing water or lava, like most plants are.
+ Red Nether bricks
+
+Crafted by placing a 22 checkerboard of 2 Nether brick and 2 Nether wart.
+ Structure voids
+
+Used for the structure block to keep the blocks in that location.
+Intended to be a replacement for the function barrier blocks used to convey, so they can form part of the structure itself.
+They are invisible and have a small hitbox.
+They are only visible when using the feature in (save) structure void.
+Allows for empty spaces in a structure.
+Unlike air, it doesn't overwrite blocks where it is loaded.
+Example: If the player loads a 2-block-high structure with air at the top and a structure void at the bottom into a 2-block-high area of stone, the top block becomes air but the bottom stays stone.
+
+
+==== Items ====
+Spawn eggs
+
+ Cat spawn egg
+ Donkey spawn egg
+ Elder guardian spawn egg
+ Husk spawn egg
+ Mule spawn egg
+ Polar bear spawn egg
+ Skeleton horse spawn egg
+ Stray spawn egg
+ Wither skeleton spawn egg
+ Zombie horse spawn egg
+
+
+==== Mobs ====
+ Husks
+
+80% of zombies spawned above ground in desert biomes, and their variants, are husks.
+All spawns where the zombie does not have a view of the sky are normal zombies or zombie villagers.
+Behaves mostly like a regular zombie.
+Its ZombieType tag is 6.
+Does not burn in sunlight.
+Can spawn as a baby or as a chicken jockey.
+Applies 7 seconds of Hunger when attacking in Easy, 14 in Normal, and 21 in Hard difficulty.
+Visually 2 pixels taller than zombies, but has the same hitbox.
+ Polar bears
+
+Adults and cubs spawn randomly as passive mobs in ice plains, ice mountains, and ice plains spikes.
+When hit, the adults attack the player, the cubs run away (very fast, similar to baby zombies).
+Additionally, adults always attack the player when their cubs are around.
+Can swim faster in water than the player.
+Cubs follow their parents.
+Drops 02 raw fish (75% chance) or 02 salmon (25% chance), each increased by 1 per level of Looting.
+ Stray
+
+80% of skeletons spawned above ground in ice plains biomes, and their variants, are strays.
+All spawns where the skeleton does not have a view of the sky are normal skeletons.
+Spiders spawned in cold biomes have a chance of having a stray riding it.
+Acts mostly like a regular skeleton.
+Its SkeletonType tag is 2.
+Drops are the same as skeletons, but also have a 50% chance to drop 0-1 tipped arrow of Slowness when killed by the player. With Looting, chance increases to 2level+12level+2.
+Shoots tipped arrows of Slowness (0:30) at the target.
+
+
+==== World generation ====
+Fossil
+
+Generates 1524 blocks underground in deserts, swamplands, and their variants. Each chunk has a 164 chance of generating a fossil.
+Composed of bone blocks and some coal ore, arranged as to resemble the skulls and spines of giant extinct creatures.
+There are 4 variants of the skull, and 4 variants of the spine sections.
+
+
+==== Command format ====
+NBT format
+
+[Int] ZombieType: Determines the kind of zombie a specific zombie is.
+0: default, 1-5: villager, 6: husk.
+This tag, in effect, unifies the characteristics of being a zombie, a specific zombie villager and a husk into a single variable.
+Intended to replace the [Byte] IsVillager and [Int] VillagerProfession tags.
+These tags are kept for backward compatibility, but no newly generated entities have them.
+Sound events
+
+Added block.enchantment_table.use.
+Added entity.polar_bear.ambient.
+Added entity.polar_bear.baby_ambient.
+Added entity.polar_bear.death.
+Added entity.polar_bear.hurt.
+Added entity.polar_bear.step.
+Added entity.polar_bear.warning.
+
+
+==== General ====
+Debug screen
+
+F3 + G toggles the visibility of chunk borders around the player.
+Shows a blue outline for the chunk the player is currently in and a yellow outline for individual air blocks in the vicinity of the chunk.
+The blue outline in particular, outlines the chunk horizontally on top of the solid blocks on the ground.
+The outlines extends arbitrarily up, but ends at bedrock level.
+Loot tables
+
+A new tag limit for the looting_enchant function.
+It determines the maximum amount of mob drops the player can expect to receive when using the Looting enchantment of any level.
+Options
+
+A new 'Auto-jump' toggle has been added, which automatically makes the player jump when running towards a one block tall obstacle.
+Enabled by default, can be disabled in Options.
+Particles
+
+A new fallingdust particle has been added.
+Appears underneath gravity-affected blocks that are generated or placed suspended in midair.
+Does not apply to dragon eggs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+End stone bricks
+
+Are no longer craftable.
+Structure blocks
+
+Are now available in item form; can be given or summoned.
+Similarly to command blocks, its placement, destruction, and modification are restricted to opped players in Creative.
+Now comes with an integrated GUI and new textures.
+Has four modes:
+ Save - build structure in world, tell the block where it is and it saves it to file.
+ Load - loads saved structure files, replacing blocks with saved blocks except for structure void blocks.
+ Corner - for automatic size calculation.
+ Data - for chest markers and other blocks that require data (default).
+Structures are limited to a size of 32 blocks in each direction.
+The coordinates used by the blocks are relative to themselves.
+When in use, it shows the outline of the structure it relates to in white.
+Can rotate and mirror structures before they are placed.
+Small red and blue cubes can be displayed in the selection area.
+Blue is for air blocks, red is for structure void blocks.
+Save and Load structure blocks can be activated by redstone.
+The game protects against maps saving arbitrarily massive amounts of data to disk.
+Display a name tag above them indicating their mode and structure name.
+New tags:
+powered: Whether or not the structure block is currently being powered with redstone.
+showboundingbox: Whether or not the bounding box of the structure is being outlined.
+showair: Whether or not air blocks are indicated within the structure.
+
+
+==== Items ====
+Firework rockets
+
+Recipe now produces three rockets rather than only one.
+
+
+==== Mobs ====
+Endermen
+
+Can now rarely spawn in the Nether with a 1153 rate.
+Compared to 100153 for zombie pigmen.
+Can now naturally pick up netherrack.
+Magma cubes
+
+Spawn about twice as often in the Nether.
+The rate is now 2153, compared to 1151 before.
+Zombies
+
+The "Zombie Generic Villager" is removed, due to the new zombietype tag.
+
+
+==== World generation ====
+Caves
+
+No longer turn adjacent sand blocks in the ceiling into sandstone when generating.
+Ice plains and variants 
+
+Don't spawn any other passive mobs than rabbits and the new polar bears anymore.
+Also have a lower chance of spawning passive mobs during world generation than other biomes (7% versus 10%).
+Mesas and variants
+
+Terracotta and the dyed forms of terracotta no longer generate more than 15 blocks deep, if the mesa is more than 15 blocks above sea level.
+In addition to the normal 2 blobs of gold ore below Y=32, attempts to generate 20 blobs between Y=32 and Y=79.
+Generate the new type of mineshafts, described below.
+Mineshafts
+
+New mineshaft type that generates in mesa biomes (including all variants).
+Placed so that the midpoint of the structure is near sea level, rather than so that the top is 10 blocks or more below sea level.
+Uses dark oak wood for wooden structures.
+New tag MST on mineshaft structure pieces to indicate the type. 0 is the traditional mineshaft, 1 is the new mesa mineshaft.
+Features generate differently if above ground (i.e. the sky light where they generate is 8 or more). This is not dependent on mineshaft type.
+Cave spider spawners no longer generate if sky light is 8 or more.
+Various wooden pieces no longer generate if the block above is air and/or if sky light is 8 or more.
+Rails in corridors are more complete if sky light is below 8.
+90%, versus 70% in 1.9 and in above-ground corridors.
+Plains and sunflower plains
+
+Now have some trees in 5% of its chunks (13 large oaks, 23 normal oaks).
+Villages
+
+Village structures are no longer restricted by biome boundaries.
+Meaning that a village that starts in a valid biome can now spread into an adjacent invalid biome.
+Now generate in taigas (but not variants).
+They are made with spruce log.
+Savanna villages are now made with acacia wood instead of oak.
+In savannas, acacia logs replace cobblestone in all structures except churches.
+Paths no longer generate below sea level, and in non-desert villages they are made with different material depending on the existing terrain.
+If replacing grass blocks, the path is made from grass path blocks.
+If replacing water or lava, the path is made from planks.
+Otherwise, the path is gravel on top of cobblestone (including bridges across ravines).
+Sandstone paths still always generate in desert villages.
+They have a 2% chance of being a zombie village, determined by Zombie tag in Village.dat.
+All generated villagers are instead zombie villagers.
+There are no doors or torches in the village.
+
+
+==== Command format ====
+NBT format
+
+NoGravity now works for all entities, not only armor stands.
+A mob in midair affected by it, still responds to knockback by moving horizontally.
+Although the AI doesn't permit any mob to move on their own, horses and pigs ridden by the player move normally.
+Very similarly, boats in the air ridden by the player move as if they were in water.
+
+
+==== Gameplay ====
+Huge mushrooms
+
+Huge mushrooms have a 112 chance of generating twice as tall as normal.
+These new mushrooms, which can be up to 13 blocks tall, can appear during world generation or by being planted by the player.
+
+
+=== Fixes ===
+4 issues fixed
+From released versions before Java Edition 1.10
+
+MC-44579  Cannot summon green-robed villager, even though its zombie counterpart works.
+MC-87739  /setblock with signs missing Text tags kicks all players loading the sign.
+MC-89848  /playsound/sound engine pitch algorithm isn't working properly.
+MC-98779  Skeletons spawned with /summon or natural spawning algorithm are not in the correct height.
+More fixes
+
+Fixed some broken uses of relative coordinates.
+
+
+== 16w21a ==
+16w21a is the second snapshot for Java Edition 1.10, released on May 25, 2016, which made minor changes to the behavior of blocks and items and fixed bugs.
+
+
+=== Additions ===
+
+
+==== Command format ====
+NBT format
+
+FallFlying
+Allows mobs to use elytra when they fall.
+Mobs lose their ability to fly after touching the ground.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Bone blocks
+
+No longer transparent.
+Dispensers
+
+Can now equip shields onto entities.
+Rails (all types)
+
+Bounding box for ascending rails is a full block (formerly only 532 of a block tall).
+Structure blocks
+
+No longer emit light.
+Added "Structure Integrity and Seed" to load mode (NBT tags integrity and seed respectively).
+
+
+==== Items ====
+Chorus fruits
+
+Can now teleport riders from their mounts.
+Ender pearls
+
+Can now teleport riders from their mounts.
+Fishing rods
+
+Can now pull items to the player.
+
+
+==== Mobs ====
+Wolves
+
+No longer despawn.
+
+
+==== World generation ====
+End portals
+
+Now replace any blocks inside the portal frame ring when activating.
+Villages
+
+Blacksmiths now generate with cobblestone in all biomes (rather than acacia logs in savannas and sandstone in deserts).
+
+
+==== Command format ====
+NBT format
+
+IsVillager and VillagerProfession tags are now fully removed, replaced by the ZombieType first added in 16w20a.
+
+
+==== General ====
+Particles
+
+fallingdust now can be summoned, making use of the params argument like blockcrack and several other particles do.
+Example: /particle fallingdust ~ ~ ~ 0 0 0 0 1 0 @p 10 summons a particle matching the color of lava (block ID 10).
+
+
+=== Fixes ===
+25 issues fixed
+From released versions before Java Edition 1.10
+
+MC-10046  Random destination routine has a small statistical tendency to move more northwest (fix included).
+MC-28424  Untamed wolves and ocelots disappear.
+MC-82425  Insertion tag (tellraw) will not work on servers.
+MC-84422  No teleportation from any vehicle.
+MC-93642  XPOrb texture turns gray right before reaching player.
+MC-93830  Wolf tail height is not based on ratio of health to maxHealth.
+MC-95910  Unable to activate end portal with non-air blocks in the middle.
+MC-95973  Adult horse/donkey pathfinding Issue: 1 block elevations treated as 'non-traversable' terrain in certain configurations.
+MC-96131  /execute detect command causing entities within a chunk to be scoreboard reset.
+MC-96269  Skeletons, stray, witches, blazes, guardians and snowmen cannot shoot while in boats.
+MC-97201  Elytra stops working on relog.
+MC-97526  Signs, banners, skulls and chests are flashing when item spawner is nearby.
+MC-97602  Shift+clicking shield from inventory to shield slot.
+MC-99945  Cooked fish with numeric IDs not imported properly.
+MC-101001  Fishing rod cannot pull items.
+MC-101680  Batching chunks.
+From the previous development version
+
+MC-102052  Structure blocks do not save properly.
+MC-102068  fallingdust Particle doesn't seem to work.
+MC-102069  Bone block is handled as a transparent block.
+MC-102085  Polar bears get stuck in standing position.
+MC-102091  Block hitbox/F3 crosshair issues.
+MC-102103  Savanna village blacksmith buildings burn themselves down.
+MC-102125  AreaEffectCloud with fallingdust particle crashes client "Exception while adding particle".
+MC-102209  Structure blocks melt snow.
+MC-102238  Surface-level abandoned mineshafts generate outside mesa and its variants.
+
+
+== 16w21b ==
+16w21b is the third and final snapshot for Java Edition 1.10, released on May 26, 2016, which adds a few splashes, modifies the /tp command, and fixes some bugs from 16w21a.
+
+
+=== Additions ===
+
+
+==== General ====
+Splashes
+
+Added the following splashes:
+"Rule #1: it's never my fault".
+"Replaced molten cheese with blood?"
+"Absolutely fixed relatively broken coordinates".
+"Boats FTW".
+
+
+=== Changes ===
+
+
+==== Command format ====
+/tp 
+
+Relative coordinates are now relative to the executor of the command, not the teleported entity.
+/execute can be used to get the old behavior.
+/tp can now teleport the player to a Y-coordinate in the range -4096 to 4096 (increased from -512 to 512).
+
+
+=== Fixes ===
+5 issues fixed
+From the previous development version
+
+MC-102509  Block breaking/fallingdust particles have the wrong color.
+MC-102511  Lava texture is incorrectly displayed.
+MC-102524  Lighting bug in inventory.
+MC-102543  Everything related to structure blocks is black.
+MC-102572  Sign's GUI is dark.
+
+
+== 1.10-pre1 ==
+1.10-pre1 is the first pre-release for Java Edition 1.10, released on June 2, 2016, which split /tp into a separate /teleport command, adds sounds for mobs added in previous snapshots, modifies villagers, and fixes bugs in the 1.10 snapshots.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/teleport
+
+Usage: /teleport <entity> [<x> <y> <z>] [<y-rot> <x-rot>].
+Teleports a selected entity to the executor's relative position.
+Example: /teleport @e[type=Cow] ~ ~10 ~ 60 10 reorients all cows and teleport them up 10 blocks.
+NBT tags
+
+New ParticleParam1 and ParticleParam2 integer tags for area effect cloud entities.
+These work just like the two <params> arguments work, in /particle.
+Example: /summon AreaEffectCloud ~ ~1 ~ {Duration:600,Radius:2.0f,Particle:"iconcrack",ParticleParam1:351,ParticleParam2:3}.
+Summons a cloud of iconcrack particles with the texture of item 351 (dye), and data value 3 (cocoa beans).
+Example: /summon AreaEffectCloud ~ ~1 ~ {Duration:600,Radius:2.0f,Particle:"blockcrack",ParticleParam1:12289}.
+Summons a cloud of blockcrack particles with the texture of block 1 (stone), and data value 3 (diorite), using the formula 1+(34096).
+Sound events
+
+Added entity.husk.ambient
+Added entity.husk.death
+Added entity.husk.hurt
+Added entity.husk.step
+Added entity.stray.ambient
+Added entity.stray.death
+Added entity.stray.hurt
+Added entity.stray.step
+Added entity.wither_skeleton.ambient
+Added entity.wither_skeleton.death
+Added entity.wither_skeleton.hurt
+Added entity.wither_skeleton.step
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Nether wart blocks
+
+No longer destroyed by water or lava.
+Structure voids
+
+Indestructibility removed.
+Blast resistance reduced to 0 (was 3600000.6).
+
+
+==== Items ====
+Spawn eggs
+
+Now uses the actual names of entities, rather than entity codes (i.e. entity.mule.name).
+
+
+==== Mobs ====
+General
+
+Mobs now avoid magma blocks that are in the way.
+Polar bears
+
+Adult polar bears now jump in water if on fire.
+Skeletons
+
+Skeletons holding a tipped arrow in their off hand now shoot that type of arrow.
+This overrides strays' normal shooting of Slowness arrows.
+The arrows in the off hand are not consumed.
+Burning skeletons have a 50% chance of shooting flaming arrows if raw regional difficulty is 3 or greater.
+Villagers
+
+Now run away from nearby husks.
+Witches
+
+Now additionally drink a potion of Fire Resistance if the most recent damage taken (within the past 2 seconds) was fire damage instead of only when burning.
+Zombies
+
+Chance of setting the target on fire when burning, and the duration of the effect, now depends on raw regional difficulty.
+Chance is now equal to (30  RegionalDifficulty)%; formerly 30% on Easy, 60% on Normal, 90% on Hard.
+Duration is now equal to 2  floor(RegionalDifficulty) seconds; formerly 2 seconds on Easy, 4 on Normal, 6 on Hard.
+Husk hunger effect duration now depends on raw regional difficulty.
+Duration is now equal to 7  floor(RegionalDifficulty) seconds; formerly 7 seconds on Easy, 14 on Normal, 21 on Hard.
+
+
+==== World generation ====
+Villages
+
+Now generate grass under stairs instead of a dirt path.
+Villages in savanna and taiga biomes now use the appropriate type of wooden fences.
+Cobblestone now generates around wells instead of gravel.
+Paths now only replace grass blocks with air above water, lava, sand, sandstone, and red sandstone. All other blocks are ignored, with blocks below (down to sea level) considered for replacement instead.
+This allows paths to generate properly under trees.
+This removes the ability for paths to bridge ravines.
+Zombie villagers generated in zombie villages no longer despawn (i.e. they have the PersistenceRequired flag set).
+
+
+==== Command format ====
+/tp 
+
+Behavior is reverted back to 16w20a and previous versions.
+The new behavior has been given to /teleport instead.
+
+
+==== General ====
+Options
+
+options.txt now displays the data version the file was last saved in.
+VBOs are now enabled by default, overriding old options when upgrading.
+Particles
+
+fallingdust particle now collides with blocks.
+
+
+=== Fixes ===
+35 issues fixed
+From released versions before Java Edition 1.10
+
+MC-3437  Flowers/tall grass are placed on top of village paths by the world generator.
+MC-86295  The Ender Crystal beam is going the other way.
+MC-98430  Endermen can drop a cacti that has a missing texture.
+MC-98654  Legacy ender dragon not moving.
+MC-101118  Mobs' pathfinding is confused by grass paths.
+MC-101325  Loading Village.dat containing player reputation causes NullPointerException.
+From the Java Edition 1.10 development versions
+
+MC-102048  Particle fallingdust does not collide with blocks below it.
+MC-102049  witches don't drink Fire Resistance potion while on magma block.
+MC-102050  Spawn Eggs names of some mob variant are called Spawn entity.X.name
+MC-102051  Unable to place anything on nether wart blocks.
+MC-102070  Nether wart block unable to be set on fire.
+MC-102081  The oxygen value of mobs is too low.
+MC-102096  Some stairs in villages generate with path blocks below, instead of dirt.
+MC-102119  Polar Bear gets stuck in blocks when trying to chase the player.
+MC-102135  Structure block: empty names allowed.
+MC-102146  Cannot type/or : into structure blocks.
+MC-102159  Gravel generates around village wells, instead of grass paths.
+MC-102178  Structure block border lines are invisible in spectator mode (/gamemode 3).
+MC-102203  Structure blocks don't rotate skulls.
+MC-102207  Crash when using fishing rod in same tick as @e command with type= or name=.
+MC-102270  Village paths generate incorrectly under trees.
+MC-102278  Mob pathfinding does not avoid the magma block.
+MC-102372  Fences in savanna and taiga villages use oak fence instead of acacia/spruce fence.
+MC-102378  Signs, banners, end rods and anvils mirrored incorrectly.
+MC-102401  Relative teleportation interrupts elytra flight.
+MC-102455  Mob pathfinding does not regard nether wart block as obstruction/unable to pathfind on top.
+MC-102460  Zombie villages generate without zombies/zombies despawning.
+MC-102530  AreaEffectCloud: wrong fallingsand particle command does not show mobSpell default particle.
+MC-102557  Wrong item frame placement after loading by structure block.
+MC-102575  In crash reports, the CPU is bcw$7@<memory address>.
+MC-102598  /tping entities results in teleportation relative to the player.
+From the previous development version
+
+MC-102607  Villagers don't run away from zombies during the day.
+MC-102614  Able to paste invalid characters into structure blocks.
+MC-102679  Villagers are attacked by husks, but they don't run away from them.
+MC-102740  Teleporting players with relative coordinates behaves like before 16w21b when used in a command block [minecart].
+
+
+== 1.10-pre2 ==
+1.10-pre2 is the second and final pre-release for Java Edition 1.10, released on June 7, 2016, which adds new sounds and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Command format ====
+Sound events
+
+Added sound assets for existing events:
+block.enchantment_table.use
+entity.husk.ambient
+entity.husk.death
+entity.husk.hurt
+entity.husk.step
+entity.polar_bear.baby_ambient
+entity.polar_bear.ambient
+entity.polar_bear.death
+entity.polar_bear.hurt
+entity.polar_bear.step
+entity.polar_bear.warning
+entity.stray.ambient
+entity.stray.death
+entity.stray.hurt
+entity.stray.step
+Added new ambient sounds:
+ambient/cave/cave15
+ambient/cave/cave16
+
+
+=== Changes ===
+
+
+==== Blocks ====
+End stone bricks
+
+Are craftable again, albeit giving 1 instead of 4.
+
+
+==== Items ====
+Spawn eggs
+
+Removed all spawn eggs added in 16w20a except for the polar bear spawn egg.
+
+
+=== Fixes ===
+16 issues fixed
+From released versions before Java Edition 1.10
+
+MC-78688  Invulnerable mobs still act like they are taking damage in fire.
+MC-89141  Shulker spawn instant position is crooked (not aligned to block grid).
+MC-94576  Player head in inventory causes buggy rendering of certain inventory slots, potion effect display, and attack cooldown.
+MC-94896  Tab completion works incorrectly when text is already selected.
+MC-95554  Tab-complete does not work correctly for /playsound.
+MC-98224  JSON signs with scoreboard objectives erase their block data upon chunk load.
+From the Java Edition 1.10 development versions
+
+MC-102139  Polar bears eat wheat and give off hearts but do not breed.
+MC-102152  Auto jump directional bug.
+MC-102177  The end stone bricks crafting recipe is missing.
+MC-102360  Auto jump does not include jump boost.
+MC-102364  Auto jump starts flying in Creative mode.
+MC-102709  Mobs cannot receive shields in mainhand with /replaceitem.
+MC-102835  Hostile mobs can spawn on magma blocks.
+From the previous development version
+
+MC-102891  /teleport (not /tp) has a wrong tab-auto-completion.
+MC-102894  Item frame and painting hitboxes are offset and dark.
+MC-103014  Mob do not know how to bypass the magma block wall.
+
+
+== Notes and references ==
+
+
+== Navigation ==

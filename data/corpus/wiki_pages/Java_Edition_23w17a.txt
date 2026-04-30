@@ -1,0 +1,174 @@
+23w17a is the fifth snapshot for Java Edition 1.20, released on April 26, 2023, which adds a new music disc, new advancements, new music, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Items ===
+Music disc
+
+ Added a new music disc by Aaron Cherof titled "Relic".
+Can only be obtained when brushing suspicious gravels within trail ruins, with 112 chance appeared as a rare loot.
+Gives a comparator output signal strength of 14 when in a Jukebox.
+
+
+=== Gameplay ===
+Advancements
+
+Added seven new advancements:
+Smells interesting
+Obtain a Sniffer Egg
+Little sniffs
+Feed a Snifflet
+Planting the past
+Plant any Sniffer seed
+Crafting a new look
+Craft a trimmed armor at a Smithing Table
+Smithing with style
+Apply these smithing templates at least once: Spire, Snout, Rib, Ward, Silence, Vex, Tide, Wayfinder
+Respecting the remnants
+Brush a Suspicious block to obtain a Pottery Sherd
+Careful restoration
+Make a Decorated Pot out of 4 Pottery Sherds
+
+
+=== General ===
+Font
+
+Added unihex glyph provider.
+A new glyph provider for reading Unifont HEX files.
+HEX format describes bitmap font glyphs.
+Height of every glyph is 16 pixels.
+Width of glyph can be 8, 16, 24 or 32 pixels.
+Every line is made of two hexadecimal numbers separated by :.
+First value describes codepoint - it must have 4, 5 or 6 hex digits.
+Second value describes glyph as a stream of bits, line by line.
+When rendering, empty columns on left and right side of glyph are removed.
+Custom glyph widths can be set with size_overrides.
+Provider requires two fields:
+hex_file: Path to ZIP archive containing one or more *.hex files (files in archive with different extensions are ignored).
+size_overrides: List of codepoint ranges that should have width different that auto-detected (based on empty space in glyph). Fields:
+from, to: Start and end of codepoint range (inclusive).
+left, right: Integers describing position of left-most and right-most columns of glyph in range.
+Any bits in columns outside this range are discarded.
+Added reference glyph provider.
+New glyph provider can be used to include providers from other fonts.
+Providers are guaranteed to be loaded only once, no matter how many times they are included.
+Provider has one field id, that describes other font to be included in currently loaded one.
+Inclusion is performed after all fonts are loaded, so it includes all providers for a given font defined in all resource packs.
+Loot tables
+
+Added sniffer_digging: contains torchflower_seeds and pitcher_pod.
+Controls what can be found by sniffers when digging.
+Music
+
+Added new ambient soundtracks, all by Aaron Cherof.
+"A Familiar Room" plays in Survival mode (all biomes without biome-specific music), as well as the title screens.
+"Bromeliad" plays in bamboo jungle, cherry grove, flower forest, forest, jungle, sparse jungle, as well as the menu screens.
+"Crescent Dunes" plays in desert, all types of badlands, as well as the menu screens.
+"Echo in the Wind" plays in cherry grove, flower forest, lush caves, all types of badlands, as well as the menu screens.
+Tags
+
+Added following item tag:
+#decorated_pot_ingredients: contains brick and #decorated_pot_sherds.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Calibrated sculk sensor
+
+Now lasts 10 game ticks when in active phase instead of 20.
+Now lasts 10 game ticks when in cooldown phase instead of 1.
+Decorated pot
+
+The materials used in crafting are displayed on the tooltip now.
+Sculk sensor
+
+Now lasts 30 game ticks when in active phase instead of 40.
+Now lasts 10 game ticks when in cooldown phase instead of 1.
+
+
+=== General ===
+Credits
+
+Updated to add some Mojang employees.
+Can be scrolled upwards by pressing  Up now.
+Debug screen
+
+Font textures are included in debug texture dump (F3 + S).
+Music
+
+The places where the following existing music can be played are changed:
+"Aerie", "Firebugs", and "Labyrinthine" can no longer be played in the menu screens, and all types of jungle biomes.
+Resource packs
+
+Version is now 15, accounting for the font and credits update.
+legacy_unicode glyph provider has been removed.
+Bitmaps used by uniform font have been removed.
+uniform font has been updated to use Unifont 15.0.01.
+That changes shape of multiple characters, while also adding support for new ones.
+Combining characters no longer include circle overlayed over them.
+Added second level of organization of entries in credits.json on top of titles, called disciplines.
+Tags
+
+Removed brick from #decorated_pot_sherds item tag.
+Added music_disc_relic to #music_discs item tag.
+General
+
+Improved performance of the light engine.
+
+
+== Fixes ==
+32 issues fixed
+From released versions before 1.20
+
+MC-30939  Nether portal continues emitting light, even if portal is broken.
+MC-108045  Minecraft not using latest unifont unicode chart; characters are missing.
+MC-127394  Minecraft does not render characters in Unicode mb4 range.
+MC-166260  Light from fire that has gone out lingers at the border of chunks.
+MC-172980  Block light updates don't cross chunk borders properly when updated.
+MC-179867  Unicode Characters swapped in Minecraft.
+MC-197772  Missing textures in minecraft:uniform font.
+MC-199446  Characters  (U+FE17) and  (U+FE18) are swapped in game.
+MC-213712  "Ideographic Space" Unicode character is not displayed correctly.
+MC-225742  When light emitting blocks generate as ores, they do not emit light.
+MC-234681  Tai Viet characters are not supported.
+MC-241725  In the credits, an opening parenthesis is missing for Riley Manns.
+MC-241730  In the credits, a closing parenthesis is missing for Konrad Jowko.
+MC-241732  In the credits, "Lionbridge" is misspelt in one place.
+MC-241733  In the credits, "Insight" is misspelt in one place.
+MC-241741  Certain names are listed twice in the credits.
+MC-241803  credits.json: Line 2632 has typo in (C instead of O).
+MC-245819  Lighting can still occasionally lag behind world generation.
+MC-249341  Some Mojang employees are not mentioned in the credits.
+MC-249508  Light emitted from cave vines and glow lichens upon world generation still sometimes doesn't propagate across chunk borders.
+MC-254506  Font file of some Korean completed font area is wrong.
+MC-258926  Space is no longer treated as padding in fonts.
+MC-260307  Cherry Grove biome has empty music sound event.
+MC-261626  Reversed Comma doesn't render properly when using the Unicode font.
+MC-261900  Sniffers cannot properly pathfind into water while burning.
+From the 1.20 development versions
+
+MC-261413  Particles spawned by brushes held by left-handed players move in the wrong direction.
+MC-261938  Sniffer animation is not smooth on slime blocks.
+From the previous development version
+
+MC-261997  Game crashes when generating new chunk / java.lang.IllegalStateException: Asking for biomes before we have biomes.
+MC-262012  Telemetry Tooltip out of screen.
+MC-262022  Tooltips get cut off at the bottom of the screen.
+MC-262024  Sniffer eggs are sometimes spawned in the ground when sniffers breed.
+MC-262030  Sniffers stand a bit too close to players that are tempting them.
+
+
+== Videos ==
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

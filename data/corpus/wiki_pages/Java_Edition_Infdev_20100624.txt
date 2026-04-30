@@ -1,0 +1,115 @@
+A version of Minecraft Infdev was released on June 24, 2010, which made changes, improves performance and fixed crashes from Infdev 20100618.
+
+
+== Additions ==
+
+
+=== General ===
+Added a black vignette around the screen in dark areas.
+Controls
+
+Lagometer that appears when holding F6.
+
+
+== Changes ==
+
+
+=== Blocks ===
+ Door
+
+Right sided doors now use the textures of left-sided doors, but mirrored.
+Rails
+
+Tweaked rail laying code.
+Water
+
+Water will destroy and drop any plant (rose, dandelion, sapling, red mushroom, brown mushroom, or wheat) it flows into.
+
+
+=== Non-mob entities ===
+  Minecarts
+
+Model changed from .
+Texture changed from .
+You can now sit in it.
+It no longer has an interface.
+You can't put things in it anymore.
+
+
+=== Mobs ===
+Sheep
+
+Now drop white cloth instead of light gray.
+
+
+=== World generation ===
+General
+
+World generation tweaked to make mountains less tall, mainly to avoid mountains getting cut off by the height limit.
+
+
+=== General ===
+New save format.
+New crash report screen.
+Fancy clouds no longer use the  fluff.png texture, rendering it unused.
+Changed button "Quit Game" to "Save and quit to title".
+Mob spawning rates increased.
+
+
+== Technical ==
+
+
+=== General ===
+Debug screen
+
+Added second "E" value.
+Displays number of empty chunk sections which may be skipped due to not yet being loaded and rendered, or has nothing to draw in the current render pass; all render passes are counted.
+ Performance 
+
+Improved performance.
+
+
+== Removals ==
+
+
+=== Blocks ===
+Water spawner and lava spawner
+
+If a chunk loads containing these blocks or the player has them in the inventory, it crashes the game with a Java NullPointerException error due to not having a block ID in these blocks anymore.
+Cloth
+
+Removed all cloth colors except white.
+Removed all cloth block IDs except white as well leading to a crash if they are rendered in the player's inventory/world, or when opening a chest.
+The block ID previously used for  light gray cloth is now used for white cloth, meaning that white cloth (ID 36) has been removed as well in some sense. This also means all light gray cloth blocks and items are converted to white cloth and do not result in a crash.
+
+
+=== General ===
+Removed right door graphics.
+Removed the "Change world..." button from the pause menu.
+
+
+== Fixes ==
+Fixed crashes.[more information needed]
+
+
+== Bugs ==
+6 bugs reported
+
+When turning on a minecart track while riding a minecart, the camera turns in the opposite direction of the minecart (e.g. minecart turns left, the camera turns right).
+Minecarts have unopenable "ghost" chests in them.
+This is the version that introduces the famous far lands jitter effect (see Java Edition distance effects/Historical effects for more info). It would not be fixed until Beta 1.8.
+Chunks sometimes don't save.
+Lag spikes occur randomly in certain instances. This happens when the player walks at far distances and can cause high chunk updates. This bug was not fixed until the full release.
+* Map generation creates "bad chunk" areas of the map in which the player and all mobs stutter when moving through.
+
+
+== Gallery ==
+
+
+=== Videos ===
+
+
+== References ==
+
+
+== Navigation ==

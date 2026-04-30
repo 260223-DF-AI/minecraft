@@ -1,0 +1,58 @@
+Bedrock Editor v0.9.1 is a minor beta release for the Bedrock Editor released on March 11, 2025, which changes the selection system and fixes bugs.
+
+
+== Additions ==
+Added a new RelativeVolumeListBlockVolume volume type for Editor use to replace CompoundBlockVolume.
+Added a new Client Widget Bounding Box and Volume Outline components.
+Added keyboard repeat to cursor controls.
+Added visualization to Smart Fill tool.
+Added visualization to Extrude tool.
+Added visualization to Line tool.
+Added fields "Spawn Position", "Time of Day" and "Weather" in a new section of initial play settings.
+Added feedback UI to show the progress and result.
+Added a "Custom Mapping" subpane to the Workbench extension which adds the ability to add mappings for custom block properties.
+Added global keybind for activating Workbench.
+Added a tool mode key shortcut for Reload operation, it will be unbound by default.
+
+
+== Changes ==
+Selection
+
+Selection system has been completely overhauled and now leverage client widgets.
+Selection Marquee now support click and drag to select.
+Selection Marquee still supports opposing corner mode using CTRL key.
+Marquee and Freehand selection now support undo and redo.
+Widgets colors are integrated with the theme manager.
+Updates to keyboard shortcuts:
+Keyboard control for selection volumes now supports keyboard repeat.
+(Marquee)  Shift + Click create multiple volumes.
+(Freehand)  Shift + CTRL removes brush voxels from selection.
+(Freehand)  Shift adds brush voxels to existing selection.
+ALT + Arrow keys move the selection volume (Marquee & Freehand).
+CTRL + Arrow keys resize the selection volume (Marquee only).
+ Enter selects a volume.
+ Shift +  Enter selects an additional volume.
+CTRL + S enters selection mode. CTRL + S again (while in selection mode) cycles between Marquee and Freehand.
+Other
+
+Improved performance on Smart Fill & Extrude.
+Updated brush shape settings to be local to the modal tool and specific configuration of that tool.
+Removed registerBrushShape from BrushShapeManager API, only core brushes will be supported for core tools.
+Updated icon for delete inside the selection tool.
+Updated naming of color setters and getters in the Widget system to use the same terminology (Outline for borders, Hull for fills, Highlight for specialized borders).
+Removed deprecated property pane API.
+Removed CompoundBlockVolume usage in Editor Script APIs.
+
+
+== Fixes ==
+Fixed a bug that prevented theme to be changed to Redstone from UI Settings.
+Fixed a bug that caused Keyboard Settings buttons to be misaligned in certain resolutions.
+
+
+== Gallery ==
+
+
+== References ==
+
+
+== Navigation ==

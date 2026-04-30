@@ -1,11 +1,11 @@
-In Minecraft, the distance between two points is the measurement of how far apart the two points are. The sides of a block are considered to be 1 meter (3.28084 feet or 1250⁄381 feet) in length. Distance in the game is measured in one of three ways, Euclidean distance, taxicab distance, or Chebyshev distance, depending on whether geometric accuracy or calculation efficiency is required.
+In Minecraft, the distance between two points is the measurement of how far apart the two points are. The sides of a block are considered to be 1 meter (3.28084 feet or 1250381 feet) in length. Distance in the game is measured in one of three ways, Euclidean distance, taxicab distance, or Chebyshev distance, depending on whether geometric accuracy or calculation efficiency is required.
 In the following formulas, let two points in three dimensions have coordinates (x1,y1,z1) and (x2,y2,z2) and let d be the distance between them.
 
 
 == Euclidean distance ==
 Euclidean distance, also known as straight-line distance, measures the distance between two points using the length of the line segment between them. It is calculated via the Pythagorean theorem:
 
-d=(x1−x2)2+(y1−y2)2+(z1−z2)2
+d=(x1x2)2+(y1y2)2+(z1z2)2
 
 
 === Spherical distance ===
@@ -23,7 +23,7 @@ Trial spawners detect players within 14 blocks of Euclidean distance.
 Mob despawning range in Java Edition.
 Disks in rivers and lakes generate as blocks within a Euclidean distance from a central block. (Small disks with a radius of up to three blocks including the center appear identical to a taxicab diamond, however larger sizes correctly reveal a more circular shape.)
 Effects of explosions.
-A Lightning rod redirects lightning within a Euclidean sphere with a radius of 128‌[JE  only]/64‌[BE  only] blocks, centered on the rod.
+A Lightning rod redirects lightning within a Euclidean sphere with a radius of 128[JE  only]/64[BE  only] blocks, centered on the rod.
 The /locate command prints the Euclidian distance from the caller to the located object in chat.
 Nether portal searches for destination portals.
 Sculk sensors and calibrated sculk sensors detect vibration emission in a spherical region.
@@ -36,7 +36,7 @@ A zombie siege is started based on Euclidean distance between a player and the v
 
 Taxicab distance, also known as rectilinear distance, city block distance, Manhattan distance, and other names, is a metric in taxicab geometry for measuring distance, as an alternative to Euclidean distance. It eliminates the square root and squaring operations by simply calculating the absolute value (positive value) of the difference between each coordinate value and is defined as:
 
-d=|x1−x2|+|y1−y2|+|z1−z2|
+d=|x1x2|+|y1y2|+|z1z2|
 
 
 === Usages ===
@@ -44,8 +44,8 @@ Minecraft uses taxicab distance as an efficient range measurement in several ele
 Situations in which Minecraft calculates taxicab distance:
 
 Light from light sources such as torches, campfires, lanterns, glowstone, etc. illuminate surfaces according to taxicab distance.
-As a direct result of this, torches melt snow layers within 2 blocks and ice within 3 blocks taxicab distance. Several other light-emitting blocks also melt snow in a taxicab radius; see Snow § Melting.
-Heat blocks‌[Minecraft Education  only] melt snow layers and ice within 2 blocks taxicab distance, but do not emit light.
+As a direct result of this, torches melt snow layers within 2 blocks and ice within 3 blocks taxicab distance. Several other light-emitting blocks also melt snow in a taxicab radius; see Snow  Melting.
+Heat blocks[Minecraft Education  only] melt snow layers and ice within 2 blocks taxicab distance, but do not emit light.
 Liquid (water or lava) flowing horizontally on a flat surface flows from the source in taxicab distance. For example, if flowing water is forced into a 1-block-wide stream and turns corners, it travels 7 blocks. If it is allowed to flow freely on a surface, it also travels 7 blocks taxicab distance.
 Redstone wire signals spread this way, as can be seen if a large plane of the substance is laid out.
 Levers and buttons emit a redstone signal in a 1-block planar taxicab distance around them.
@@ -57,13 +57,13 @@ Using bone meal on sea pickles that are on coral blocks creates more sea pickles
 A block of copper is oxidized according to a taxicab distance search for unwaxed copper blocks within 4 blocks of the block being considered for oxidation.
 Shulkers can move along only one of the three grid axes at a time and on integer steps, meaning that they move according to taxicab geometry.
 Some redstone components produce block updates up to two blocks away by taxicab distance, including up and down.
-In basalt deltas, blobs of basalt and blackstone propagate from the center within a 3—7 block taxicab distance.
+In basalt deltas, blobs of basalt and blackstone propagate from the center within a 37 block taxicab distance.
 
 
 == Chebyshev distance ==
 Chebyshev distance, also know as the chessboard distance or maximum metric, is the maximum absolute difference between two points in one of three axes:
 
-d=max⁡(|x1−x2|,|y1−y2|,|z1−z2|)
+d=max(|x1x2|,|y1y2|,|z1z2|)
 A "circle" drawn with a Chebyshev-distance radius would appear as an axis-aligned square, and a "sphere" would appear as a cube.
 
 
@@ -72,11 +72,11 @@ Computationally, Chebyshev distance is roughly as efficient as taxicab distance,
 Situations in which Minecraft calculates Chebyshev distance:
 
 Determining whether farmland is hydrated by a block of water in range of 4 blocks.
-A villager in Java Edition detects an iron golem within ±16 blocks on any axis.
-An iron golem in Bedrock Edition spawns within ±8 blocks horizontally and ±6 blocks vertically from the village center block.
+A villager in Java Edition detects an iron golem within 16 blocks on any axis.
+An iron golem in Bedrock Edition spawns within 8 blocks horizontally and 6 blocks vertically from the village center block.
 The horizontal range of a beacon, which is 20, 30, 40 or 50 blocks depending on the size of the beacon pyramid.
-Phantoms in Java Edition spawn 20–34 blocks above the player, and off to the side by a Chebyshev distance of up to 10 blocks.
-The spawning range of wardens from naturally generated sculk shriekers is ±5 blocks horizontally and ±6 blocks vertically from the shrieker.
+Phantoms in Java Edition spawn 2034 blocks above the player, and off to the side by a Chebyshev distance of up to 10 blocks.
+The spawning range of wardens from naturally generated sculk shriekers is 5 blocks horizontally and 6 blocks vertically from the shrieker.
 In Java Edition, the load level of a chunk decreases in a square pattern.
 
 

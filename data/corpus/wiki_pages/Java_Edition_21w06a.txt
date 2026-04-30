@@ -1,0 +1,111 @@
+21w06a is the ninth snapshot for Java Edition 1.17, released on February 10, 2021, which adds new cave generation and increased the build height limit to 384.
+Worlds created prior to this snapshot or after 21w15a cannot be loaded and edited in this version without NBT editors, due to there being no upgrade path towards the expanded height limits in this snapshot. However, it is possible to use Combat Test snapshot worlds due to the data version exceeding that of the 1.17 snapshots.
+
+
+== Additions ==
+
+
+=== World generation ===
+Caves
+
+Added new noise caves, which come in two types: "spaghetti" and "cheese" caves.
+Added flooded aquifer caves.
+The old "carver" cave generation still generates, combining with the new caves.
+Spaghetti caves
+
+Long, narrow caves.
+Utilize noise generators for generation.
+Can form cave entrances when they intersect with land.
+Cheese caves
+
+Utilize noise generators for generation.
+Often form caverns of various sizes.
+Can form cave entrances when they intersect with land.
+Aquifers
+
+Used to generate bodies of water in new caves.
+Currently only used below Y=31, meaning any noise caves between Y=31 and Y=63 are flooded with water. This is fixed in Java Edition 1.18 Experimental Snapshot 1.
+Magma blocks may generate at the bottom of these new water bodies, creating downward bubble columns.
+Replaces the old underwater cave carvers/canyons.
+Fish spawn in aquifers if it is under an ocean or river.
+
+
+=== General ===
+Data packs
+
+Added [Boolean] aquifers_enabled and [Boolean] noise_caves_enabled to worldgen/noise_settings/*.json.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Big dripleaf
+
+No longer stops tilting while sneaking on, jumping on, or even jumping off it.
+Now tilts quicker.
+Now tilts when hit with a projectile, instead of being broken.
+Can now be used with redstone.
+Powering a dripleaf now prevents it from tilting down (except for projectiles).
+Powering an already tilted dripleaf tilts it back up.
+Unpowering a dripleaf down allows it to tilt down again.
+Hanging roots
+
+Texture has been changed.
+Lava
+
+No longer replaces air.
+Small dripleaf
+
+Texture has been changed.
+
+
+=== World generation ===
+Chunks
+
+The Overworld now has a total height of 384 blocks.
+The world has been extended 64 blocks up and 64 blocks down, which means it's now possible to build from layer -64 to layer 319 in the Overworld.
+Ore placement below Y=0 is temporary, and underground lava does not generate properly yet.
+Mineshafts
+
+Mineshaft pieces no longer generate if they were fully floating in the air.
+Corridors now generate with (bark) wood pillars for support if needed.
+Cobwebs no longer generate floating without an adjacent block.
+
+
+=== General ===
+
+World selection menu
+
+Disabled the loading of old worlds temporarily.
+This can be bypassed by setting the data version in level.dat to 2694 or higher. However, this may cause issues.
+
+
+== Fixes ==
+6 issues fixed
+From released versions before 1.17
+
+MC-105035  Floating mineshafts generating incorrectly in shade.
+From the 1.17 development versions
+
+MC-205227  Wither Skeletons don't die in powdered snow unless fully submerged.
+MC-213813  Small dripleaf can destroy any block.
+MC-213941  Big dripleaf inconsistently play sounds when in the unstable state.
+From the previous development version
+
+MC-214118  When mobGriefing is disabled, big dripleaves can still be destroyed by projectiles shot by mobs.
+MC-214346  Big dripleaf can be broken with arrows in spawn protection.
+
+
+== Videos ==
+
+
+== Trivia ==
+This snapshot marks the first time since 12w07a, almost exactly 9 years prior, that the height limit was increased.
+This is also the first time that the build limit has been increased downwards.
+
+
+== References ==
+
+
+== Navigation ==

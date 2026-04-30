@@ -1,0 +1,32 @@
+1.19.4 Release Candidate 1 (known as 1.19.4-rc1 in the launcher) is the first release candidate for Java Edition 1.19.4, released on March 9, 2023, which fixes bugs. This is the first release candidate released in 2023.
+
+
+== Changes ==
+
+
+=== Non-mob entities ===
+Display
+
+Changes to interpolation:
+Interpolation always starts at the beginning on client tick.
+Field interpolation_start is replaced with start_interpolation, with a different meaning.
+start_interpolation describes amount of ticks from the start of next client tick after receiving an update to start of interpolation.
+For example, value 0 means that interpolation starts at the beginning of next client tick after receiving the update.
+start_interpolation is not stored in entity data.
+When using /data commands, if interpolated value is updated, but start_interpolation is not present in modified tag, interpolation continues from the time of previous update, but with new values.
+
+
+== Fixes ==
+1 issue fixed
+From the previous development version
+
+MC-260857  Display entities summoned with initial transformation interpolate incorrectly from default transformation during next transformation.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

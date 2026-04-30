@@ -1,0 +1,132 @@
+This is a list of Java Edition 1.9.3 development versions.
+
+
+== 16w14a ==
+16w14a is the first snapshot for Java Edition 1.9.3, released on April 7, 2016, which fixes an important memory leak related to pathfinding.
+
+
+=== Fixes ===
+1 issue fixed
+From version 1.9.2
+
+MC-100382  Pathfinding memory leak.
+
+
+== 16w15a ==
+16w15a is the second snapshot for Java Edition 1.9.3, released on April 11, 2016, which fixes a bug related to mob pathfinding which caused performance issues.
+
+
+=== Fixes ===
+1 issue fixed
+From released versions before Java Edition 1.9.3
+
+MC-94438  Server: Mob pathfinding induced massive lag in any versions 15w49a and later.
+
+
+== 16w15b ==
+16w15b is the third and final snapshot for Java Edition 1.9.3, released on April 13, 2016, which improves performance and fixed bugs.
+
+
+=== Fixes ===
+5 issues fixed
+From released versions before 1.9.2
+
+MC-17630  Zombie pathfinding to unreachable targets causes server lag.
+MC-98994  Chunk generation performance regressed by 20-30%.
+MC-100692  Collisions cause extreme lag.
+From version 1.9.2
+
+MC-100442  DEV - Navigation Listener very slow code.
+From the previous development version
+
+MC-100848  Glitch upon entering the edge of the world sitting on the boat/horse/minecart.
+
+
+== 1.9.3-pre1 ==
+1.9.3-pre1 is the first pre-release for Java Edition 1.9.3, released on April 21, 2016, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Command format ====
+/tp
+
+No longer teleports the player to a Y-coordinate outside the range -512 to 512.
+
+
+=== Fixes ===
+4 issues fixed
+From released versions before 1.9.2
+
+MC-82464  Colored 'dead' skin template parts cause in-game issues.
+MC-88357  Crash when going outside height limit or into the void with F3.
+MC-89760  Skin's jacket parts do not show up under specific conditions.
+From version 1.9.2
+
+MC-100410  Corrupting world by teleporting to y=(-) infinity.
+
+
+== 1.9.3-pre2 ==
+1.9.3-pre2 is the second pre-release for Java Edition 1.9.3, released on April 27, 2016, which adds /stopsound, tests server blocking, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/stopsound
+
+Permits the player to choose which specific sounds should be stopped from playing.
+Syntax: /stopsound <player> [source] [sound].
+
+
+=== Changes ===
+
+
+==== General ====
+Networking
+
+In this version, the game checks https://sessionserver.mojang.com/blockedservers when connecting to a multiplayer server, and if the server is on the blocked server list, it reports to the user that the server is unavailable.
+This behavior was removed in 1.9.3-pre3.
+
+
+=== Fixes ===
+4 issues fixed
+From released versions before 1.9.2
+
+MC-87907  Endermen don't become aggressive when players look at their head/feet.
+MC-96526  Crash caused by StackOverflowError when trading too many items at once.
+From the previous pre-release
+
+MC-101150  Notch skin appears black.
+MC-101155  Game crashes when opening my redstone world or joining the server.
+
+
+== 1.9.3-pre3 ==
+1.9.3-pre3 is third and final pre-release for Java Edition 1.9.3, released on May 3, 2016, which removes the server blocking test from the previous pre-release and fixes bugs.
+
+
+=== Changes ===
+
+
+==== General ====
+Networking
+
+The game no longer checks https://sessionserver.mojang.com/blockedservers, as it had begun to in the previous pre-release.
+
+
+=== Fixes ===
+2 issues fixed
+From the previous development version
+
+MC-101545  Problem with the new pre-release.
+Other fixes:
+
+Fixed a potential crash with spreading water or lava.
+
+
+== Notes and references ==
+
+
+== Navigation ==

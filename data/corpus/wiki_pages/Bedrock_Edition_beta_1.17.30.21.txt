@@ -1,0 +1,79 @@
+Beta 1.17.30.21 is the sixth beta version for Bedrock Edition 1.17.30, released on August 12, 2021, which fixes bugs.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Monster Spawner
+
+No longer emits light to match Java Edition.
+
+
+=== Gameplay ===
+Experimental Gameplay
+
+Re-added "Experimental Molang Features" toggle to support experimental Molang features.
+
+
+=== Technical ===
+Graphics 
+
+Added DragonFX materials to support rasterized g-buffer pre-pass of raytracing resources.
+Data Driven Items 
+
+Updated documentation for DamageableItemComponent.
+Molang 
+
+Moved experimental Molang queries (other than those related to Actor Properties) to a new 'Experimental Molang Features' toggle.
+
+
+== Experimental ==
+These changes are accessible by enabling the "Experimental Molang Features" experimental toggle.
+
+
+=== Technical ===
+Data Driven Blocks 
+
+Adds BlockPartVisibilityComponent
+Allows creators to specify Molang conditions for each bone listed in the geometry JSON that turn on/off bones based on the block state
+Molang 
+
+Adds experimental block_neighbor_has_any_tags and block_neighbor_has_all_tags MoLang queries
+Takes a block relative position and a set of tags
+Returns 0/1
+
+
+== Fixes ==
+Stability and Performance 
+
+Fixed several crashes that could occur during gameplay.
+Fixed an issue that could cause a crash when downloading large marketplace worlds.
+Fixed an issue that could cause a crash or prevent worlds from being accessed or opened on some Android 11 devices (MCPE-137652).
+Vanilla Parity 
+
+Matched respawn from bed behavior with Java by attempting to avoid placing the player on damage-dealing blocks when waking up from a bed.
+Matched respawn from bed behavior with Java by attempting to place the player on the side of the bed they entered from when waking up from a bed (MCPE-118654).
+Mob spawners no longer emit light.
+Mobs 
+
+Staying close to Powder Snow doesn't protect undead mobs from burning under sunlight (MCPE-131005).
+Character Creator 
+
+Infinite loading no longer appears after selecting the "See pack in store" button within the skin pack description section of the dressing room.
+User Interface and HUD 
+
+Fixed an issue where the item category text color did not match the item text color if it was changed in resource packs.
+Fixed an issue where patterns in the loom would not display correctly with some texture packs.
+Technical
+
+Fixed experimental query.bone_orientation_trs to have correct translation Y and scale results.
+Crash will no longer occur when entering a world with a custom resource pack that contains query.armor_color_slot (MCPE-106437).
+Fixed controller support when editing NPC dialog.
+Parsing of UI JSON field "ignored" now throws a content_error if it is invalid.
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,99 @@
+17w43a is the first snapshot for Java Edition 1.13, released on October 25, 2017, adding the first features of what was then called "Technically Updated". Although this is the first snapshot of 1.13, no Update Aquatic features were implemented yet because at the time the Update Aquatic was set to be released as 1.14 instead of 1.13, and as such snapshots from 17w43a to 18w06a mainly add or modify commands.
+
+
+== Additions ==
+
+
+=== General ===
+Data packs
+
+Like resource packs, but for loot tables, advancements, functions, and structures.
+Used by placing them into the datapacks folder of a world.
+Data packs are .zip files or folders with a pack.mcmeta in the root. See Tutorial:Creating a resource pack for more info.
+Structures will load from (world)/generated/structures/(namespace)/(file).nbt before checking data packs.
+However, this directory should not be used to distribute structures. Instead, move these files into data packs.
+Reloadable using /reload.
+Structure: pack.mcmeta, data folder containing a namespace folder determining the namespace of its contents.
+A namespace should only contain the following symbols: 0123456789abcdefghijklmnopqrstuvwxyz-_.
+Inside the namespace folder, there can be folders for functions, loot_tables, advancements and  structures.
+Options
+
+Fullscreen resolution
+Is used to change the resolution when in fullscreen.
+
+
+== Changes ==
+
+
+=== General ===
+Controls
+
+The name of keybindings now describes the actual key (e.g. 'LBUTTON' is changed to 'Left Button' and 'BACKSLASH' is changed to '\').
+Missing texture
+
+Changed from  to , shifting the positions of each constituent square.
+Options
+
+Removed 3D Anaglyph completely.
+Other
+
+Game library updates
+Upgraded to LWJGL 3.1.2
+Loading or creating a world shows the percentages of the loading stages.
+Preparing spawn area now shows as a loading stage.
+Resource packs
+
+The default resource pack can now be moved up and down, just like other resource packs.
+Something has changed about loading resources - it appears as though all textures are preloaded in 1.12.2, but not necessarily from this snapshot onward.[verify for Java Edition]
+
+
+== Fixes ==
+31 issues fixed
+LWJGL 2-related issues
+
+MC-1519  Key gets stuck when toggling fullscreen.
+MC-3643  CTRL/CMD key get stuck on OS X/Text box backspace deletes whole word or whole line on Mac and Linux.
+MC-5520  Crash when toggling fullscreen mode: Keyboard must be created before the player can read events.
+MC-6436  Incomplete support of dead keys on non-U.S. QWERTY Keyboard on OS X.
+MC-9974  Initialization of OpenAL fails sometimes.
+MC-29501  Unable to rebind to F# keys on devices that require pressing FN.
+MC-32327  Half-resolution on MBP Retina.
+MC-40227  Mouse button 4 in combination with a modifier key is detected as mouse button 5.
+MC-49755  OS X: Pressing arrow or Fn keys in sign/command block/book and quill inserts invisible characters.
+MC-53549  Minecraft can't be put in fullscreen mode in Linux.
+MC-55506  Minecraft unloads monitor calibrations when closed.
+MC-68754  Exiting fullscreen disables window resize.
+MC-71279  Accentuated character act like sticky keys for moving.
+MC-72856  Control settings use partwise US keyboard layout (on German keyboard layout).
+MC-77279  Game sets monitor to half resolution on exit on Linux.
+MC-78394  "Use Item" not working while sneaking and "Use Item" bound to NUMPAD0.
+MC-79733  Alt combinations don't work on chat.
+MC-80282  On Linux in fullscreen, character sometimes cannot fully turn around.
+MC-81818  When resizing the window, players may end up spinning around.
+MC-89288  Can't sneak and jump if the jump key is on the numpad.
+MC-100556  "Alt Gr" on keyboard becomes "LCONTROL" in controls menu (interfering with "Ctrl").
+MC-106650  Minecraft does not release mouse focus.
+MC-109376  Unsupported keys in inventory with foreign keyboard on Linux.
+MC-120989  Screen goes blank on exit.
+MC-122740  In full-screen mode, the mouse cannot leave the window/screen on a multi-monitor setup.
+From released versions before 1.13
+
+MC-31222  Crash on pressing the inventory close key and an item manipulation key at the same time in large chests.
+MC-55751  Gamemode descriptions are off-center.
+MC-90265  UI accounts for significant FPS reduction.
+MC-111288  Opening a singleplayer world shows 0% for a short moment.
+MC-112992  Right clicking a command block minecart opens GUI and uses held item.
+MC-117705  Cannot click in Creative search bar to change cursor position.
+
+
+== Videos ==
+
+
+== Trivia ==
+17w43a was released exactly 5 years after the Pretty Scary Update, and exactly 4 years after The Update that Changed the World.
+
+
+== References ==
+
+
+== Navigation ==

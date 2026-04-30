@@ -1,0 +1,1491 @@
+This is a list of Java Edition 1.20 development versions.
+
+
+== 23w12a ==
+23w12a is the first snapshot for Java Edition 1.20 released on March 22, 2023, which adds calibrated sculk sensors, sniffer eggs, suspicious gravel, trail ruins, more armor trims and pottery shards, and new sign mechanics.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Calibrated sculk sensor
+
+A type of sculk sensor which does not generate naturally and allows players to filter vibrations based on their frequency level.
+Can only be crafted with one sculk sensor and three amethyst shards in the crafting table.
+One side of the calibrated sculk sensor can receive a redstone signal as an input.
+Emits light level of 1.
+The strength of that redstone signal is the only vibration frequency the calibrated sculk sensor listens to.
+ Pitcher plant
+
+A type of plant which grows from the pitcher pod after 4 stages (5 stages in total).
+Can be obtained by breaking a fully grown pitcher crop.
+Can be crafted into a cyan dye.
+Cannot be placed in a flower pot.
+ Sniffer egg
+
+Can be found in the suspicious sand generated in warm ocean ruins.
+Also dropped when two sniffers breed.
+Hatches into a snifflet.
+When placed on a moss block, it hatches after approximately 10 minutes.
+On all other blocks, it hatches in approximately 20 minutes.
+ Suspicious gravel
+
+The suspicious gravel looks rougher than the gravel block.
+Affected by gravity and vanishes when landing.
+Drops nothing when mined or moved, even if mining with Silk Touch.
+Generates naturally in cold ocean ruins.
+Brushing the suspicious gravel with a brush extracts objects.
+Has four stages of extracting and recovers gradually when stop brushing.
+Turns to regular gravel when the extraction is done.
+Only suspicious gravels with a valid archaeological loot table (the ones naturally generated) can extract an item.
+
+
+==== Items ====
+ Pitcher pod
+
+Can be planted on farmland and grows into a pitcher plant.
+Can only be obtained if a sniffer digs up a pitcher pod.
+Drops pitcher plant when fully grown, otherwise drops itself.
+Pottery shards
+
+Added 16 pottery shards, they can be found in following archaeological sites:
+Desert pyramid
+Miner
+Desert well
+Brewer
+Ocean ruins (cold)
+Blade
+Explorer
+Mourner
+Plenty
+Ocean ruins (warm)
+Angler
+Shelter
+Snort
+Trail ruins
+Burn
+Danger
+Friend
+Heart
+Heartbreak
+Howl
+Sheaf
+Smithing templates
+
+Five more armor trim smithing templates have been added.
+Trail ruins: they can be obtained randomly from suspicious sand or suspicious gravel generated in these structures accordingly (1.786% chance each), and are duplicated using a terracotta block.
+Host armor trim
+Raiser armor trim
+Shaper armor trim
+Wayfinder armor trim
+Ancient city: they can be obtained randomly from chests generated in these structures accordingly, and are duplicated using a cobbled deepslate block.
+Silence armor trim
+This is the hardest one to get, with only an 1.25% chance per chest.
+
+
+==== World generation ====
+ Trail ruins
+
+A buried generated structure from a lost culture.
+Generates in taigas, snowy taigas, old growth taigas (both types), old growth birch forests, and jungles.
+Comprised of a tower, a path across the bottom, and a few additional rooms attached to the side.
+Contains suspicious sand and suspicious gravel, as well as mud bricks and several colors of terracotta and glazed terracotta.
+Four armor trims and seven pottery shards can be found here.
+
+
+==== General ====
+Tags
+
+Added combination_step_sound_blocks block tag.
+Contains #wool_carpets, crimson_roots, moss_carpet, nether_sprouts, snow, and warped_roots.
+Controls which blocks can produce a combination of step sounds.
+Added has_structure/trail_ruins biome tag.
+Contains taiga, snowy_taiga, old_growth_pine_taiga, old_growth_spruce_taiga, old_growth_birch_forest, and jungle.
+Added sniffer_egg_hatch_boost block tag.
+Contains moss_block.
+Added trail_ruins_replaceable block tag.
+Contains sand, gravel, dirt, and coarse_dirt.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Block of amethyst
+
+Added a new behavior called "vibration resonance" when it is placed adjacent to sculk sensors.
+If that sculk sensor receives a vibration, the block of amethyst re-emits its frequency as a separate vibration at its location.
+Decorated pot
+
+Added a new property named cracked.
+Is used to determine the sounds the block use upon breaking.
+Sculk sensor
+
+Vibration frequencies of many actions in the game have been tweaked and greatly simplified to prevent unwanted interference, as following:
+
+Signs
+
+Text can now be edited by interacting with it after being placed in the world.
+Previous dye and glow ink sac effects are kept after editing.
+Both sides of the sign can now have separate text and colors.
+By default, a sign prompts the player to input the front side's text when placed.
+To apply text to the back-side, the player must walk to the other side and interact with that face to edit it.
+Signs can now also be waxed with honeycomb, preventing any further edits to its text.
+Click commands on signs can only be invoked when the sign is waxed.
+If a sign with a click command is not waxed, interacting with it doesn't invoke the command and instead opens up the edit screen as usual.
+Suspicious sand
+
+Now generates naturally in warm ocean ruins.
+
+
+==== Items ====
+Potions
+
+Wither effect particle colors have been adjusted to make them more distinguishable.
+Potion of Slow Falling has had its color tweaked to make it more distinguishable from the potion of Invisibility.
+Smithing templates
+
+The dune armor trim now has a new pattern and smithing template icon.
+The sentry armor trim now uses dune armor trim's old pattern and has a new icon to fit this pattern.
+The sentry armor trim's old pattern is now used by the new shaper armor trim.
+
+
+==== World generation ====
+Ocean ruins
+
+Now include suspicious sand and suspicious gravel blocks.
+
+
+==== Non-mob entities ====
+Display
+
+Previous values are now always discarded if interpolation_duration is 0.
+Made sure that render properties are applied at the same time (so block_state is applied at the same time as transformation, i.e. at next tick after receiving update).
+Entities are not rendered unless initial data is received. That means display entities might not show on the first tick.
+Due to how game handles updates, changes to entities made after summoning might be delivered to clients with later tick.
+
+
+==== General ====
+Data packs
+
+The data pack version is now 13, accounting for sign data format changes.
+Feature flags
+
+Removed update_1_20 feature flag and built-in datapack.
+All features and changes from the "Update 1.20" experimental pack are now part of the game.
+Game events
+
+piston_contract game event has been removed in favor of block_deactivate.
+piston_extend and dispense_fail game events have been removed in favor of block_activate.
+Many game events have new vibration frequencies:
+
+Sounds
+
+Step sounds can now combine for blocks walked through and stepped on.
+Occurs for carpets, snow, nether sprouts as well as warped and crimson roots.
+The top-most block the player is walking on is played as normal.
+The block underneath is played at a lower volume and pitch.
+Structure Post-processors
+
+A capped post-processor has been added which can limit how many blocks a delegated post-processor randomly transform in a structure.
+This can be used to configure a structure piece to have an exact amount of specific blocks, instead of using random distribution.
+It has following required parameters:
+delegate - A post-processor which performs the actual block transformation.
+limit - Maximum amount of blocks that the delegated post-processor can transform.
+The blocks inside a structure are all randomly passed to the delegated post-processor until it has transformed the limited amount.
+Either constant or random number generator sampled during post-processing.
+Previously a rule could specify an optional fixed output_nbt which would be added to the processed output block entity; this field has now been changed to reference a block_entity_modifier.
+Existing block_entity_modifiers are:
+passthrough: Retains existing fields on the block entity.
+This is the default if no block_entity_modifier is specified.
+append_static: Similar to previous output_nbt this provides fixed fields to add to the block entity.
+A minor change is that this modifier appends configured fields to the processed block instead of replacing existing fields.
+clear: Removes any existing fields on the block entity.
+append_loot: Appends a loot table and seed to the block entity through required parameter:
+loot_table: Referenced loot table to add to block entity as LootTable field.
+Field LootTableSeed is also added to the block entity using random seeded by block position.
+Tags
+
+Added the cherry grove to the is_overworld biome tag.
+Added wayfinder_armor_trim_smithing_template, shaper_armor_trim_smithing_template, silence_armor_trim_smithing_template, raiser_armor_trim_smithing_template, and host_armor_trim_smithing_template to the #trim_templates item tag.
+Added angler_pottery_shard, blade_pottery_shard, brewer_pottery_shard, burn_pottery_shard, danger_pottery_shard, explorer_pottery_shard, friend_pottery_shard, heart_pottery_shard, heartbreak_pottery_shard, howl_pottery_shard, miner_pottery_shard, mourner_pottery_shard, plenty_pottery_shard, sheaf_pottery_shard, shelter_pottery_shard, and snort_pottery_shard to the #decorated_pot_shards item tag.
+Removed moss_carpet, snow, nether_sprouts, warped_roots, crimson_roots, and #wool_carpets tags from the #inside_step_sound_blocks block tag.
+
+
+=== Fixes ===
+44 issues fixed
+From released versions before Java Edition 1.20
+
+MC-44514  Teleporting ridden entity in unloaded chunks does not cause chunks to load for riding player.
+MC-74955  Fences play sound when jumping and walking/sprinting beside them.
+MC-117809  The sign GUI doesn't close when you get too far away from the said sign.
+MC-157727  The small cube in honey/slime blocks isn't displayed in inventory.
+MC-165221  3D Modeled Potions are not rendered correctly in the "GUI Display".
+MC-167957  Horizontally fired rockets can create footstep sounds.
+MC-197241  Players can change the color of a wolf's collar even if they're not its owner.
+MC-201647  Entity riding an entity can cause location/coordinate desync.
+MC-209104  Flying with elytra while inside or near blocks produces their step sounds.
+MC-212278  Sculk sensors do not detect signs being dyed.
+MC-212420  Sign dyeing sound and hand animation plays even when not consuming a dye.
+MC-213936  "Minecart moving" event does not trigger the right vibration frequency.
+MC-214619  Sculk sensors cannot detect application of ink sacs to signs.
+MC-256488  Bamboo Raft and Raft with Chest models float above ground.
+MC-256551  Baby camels have a visible inventory.
+MC-256585  Z-fighting occurs on the text of hanging signs.
+MC-259201  The tops and bottoms of donkeys' ears are miscolored.
+MC-259879  Display entities with a rather large shadow_radius value can cause performance issues.
+MC-260020  Reloading the world resets the Brown Mooshroom's given flower.
+MC-260043  Decorated Pots don't play breaking sound in creative mode.
+MC-260047  Decorated pots from the creative inventory and new blank decorated pots with no NBT will match their texture to the last decorated pot you crafted.
+MC-260053  When rotating a decorated pot with the debug stick, it will spawn a decorated pot item.
+MC-260061  Sniffer's ears and head z-fight.
+MC-260069  Growing cherry trees inside each other causes their leaves to decay.
+MC-260197  Item drop from Decorated Pot has no pickup delay.
+MC-260251  The walking animations of sniffers don't change in relation to their movement speed.
+MC-260282  Sniffers can sniff out and follow players in spectator mode.
+MC-260296  Pink petal block models are not optimized.
+MC-260301  Decorated Pots drop from setblock/fill air replace.
+MC-260315  Parity Issue: Pottery Shards have different textures compared to Bedrock.
+MC-260317  Sniffers try to sniff out obstructed blocks they can't reach.
+MC-260326  Dying sniffers continue to dig.
+MC-260409  Cherry Grove biome is not in the #is_overworld biome tag.
+MC-260503  Sniffers refuse to dig into soil with a non-solid block on top.
+MC-260632  Riding an entity that is far away causes client/server desync.
+MC-260678  Potion of Invisibility looks too similar to the Potion of Slow Falling.
+MC-260750  Magma blocks use unnecessary random ticking for an outdated feature, causing performance issues.
+MC-260757  Updating a large amount of Iron Bars causes the game to hang in-game or during the Saving world screen.
+MC-260777  Sniffers ignore some dangerous blocks while sniffing and pathfinding resulting in them being damaged.
+MC-260799  The word "Sand" is not capitalized in the brush subtitle.
+MC-260839  Mobs can replace weapons held in their main hand with armor.
+MC-260885  Display entities summoned with initial transformation interpolate incorrectly from default transformation during next transformation.
+MC-260897  Display entity's previous state of interpolation doesn't work as expected.
+MC-261015  Parity Issue: Suspicious Sand does not generate in ruins in a lukewarm ocean compared to Bedrock.
+
+
+== 23w13a ==
+23w13a is the second snapshot for Java Edition 1.20, released on March 29, 2023, which adds the ability to change the GUI scale by holding Ctrl and scrolling the mouse wheel, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Items ====
+Raiser armor trim and wayfinder armor trim
+
+Changed textures, were offset by one pixel.
+
+
+==== Mobs ====
+Sniffer
+
+No longer drops a moss block.
+
+
+==== Gameplay ====
+Advancements
+
+"A Seedy Place" is now granted when planting pitcher pods.
+
+
+==== General ====
+Options
+
+GUI can be scaled on the "Video Settings" screen by holding Ctrl and scrolling the mouse wheel.
+Tags
+
+Added pitcher_crop to the #crops block tag.
+Added potted_torchflower to the #flower_pots block tag.
+Added pitcher_plant to the #tall_flowers block and item tags.
+
+
+=== Fixes ===
+48 issues fixed
+From released versions before Java Edition 1.20
+
+MC-159637  Mobs with passengers have broken movements.
+MC-160332  Horses with non-player passengers have improper orientation when walking.
+MC-230916  "Potted Flowering Azalea Bush Plant" uses the wrong texture.
+MC-256503  Camel can swim sitting down.
+MC-256506  Camels riding entities get permanently stuck in dash mode.
+MC-257246  Horses do not make step_wood sounds when walking on Nether wood, cherry wood, bamboo wood, or stems.
+MC-257268  The dashing animations of camels sometimes aren't displayed for other players.
+MC-259364  The item.minecraft.smithing_template.netherite_upgrade.base_slot_description string is missing a serial comma.
+MC-259778  Placing a saddle on a Skeleton Trap stops the Skeleton Horse from moving.
+MC-260075  Player holds brush by ferrule in third person.
+MC-260080  Sniffers play their walking animations after the "NoAI" NBT tag is applied to them.
+MC-260081  Sniffers don't play their walking animations when they are damaged.
+MC-260086  Entities riding sniffers are positioned too low down.
+MC-260090  Sniffers ignore the minecraft:generic.movement_speed attribute.
+MC-260093  Particles spawned by brushes in the left hand move in the wrong direction.
+MC-260146  Pink petals are not next to other flowers in the creative inventory.
+MC-260238  Sniffer digging particles are produced slightly too high up.
+MC-260247  Sniffers constantly play their walking animations when they're pushed into blocks.
+MC-260252  Sniffer walking animation is broken when walking on ice.
+MC-260320  Parity Issue: Snifflets (Baby Sniffers) have an inconsistent model with Bedrock.
+MC-260435  Sniffers don't play their walking animation when moving through cobwebs.
+MC-260454  Decorated pots are translated off-center when displayed on head.
+MC-260465  The torchflower crop still has an age 2 blockstate that looks like the regular torchflower.
+MC-260693  potted_torchflower is still not part of the #flower_pots block tag.
+MC-260834  "Alpha" can play during gameplay.
+MC-260874  Display entity chained interpolation has inconsistent behavior.
+MC-260898  Brushes can be used through entities.
+MC-260974  Aggressive mobs can't control "vehicle" mobs.
+MC-261275  Sniffers drop moss blocks when killed.
+From the previous development version
+
+MC-261164  Sniffer eggs don't block rain.
+MC-261170  Sniffer egg faces aren't culled when covered by blocks.
+MC-261181  The "Glow and Behold!" advancement is granted when interacting with waxed signs while holding glow ink sacs.
+MC-261190  Signs no longer resolve JSON text components.
+MC-261191  Pitcher plants aren't part of the #minecraft:flowers or #minecraft:tall_flowers block tags.
+MC-261193  Calibrated sculk sensor placed by commands is waterlogged by default.
+MC-261204  When is farmland broken under a pitcher crop, the crop doesn't get broken.
+MC-261205  Using bone meal on pitcher pod (crop) advances several growth stages at once.
+MC-261206  "A Seedy Place" advancement not granted when planting Pitcher Pods.
+MC-261213  Sniffer eggs can be destroyed by fluids which is different from turtle eggs.
+MC-261223  Editing a hanging sign with a right click doesn't work while holding a placeable object.
+MC-261224  Editing sign from an angle (or the side) will edit the back instead of the front.
+MC-261229  Crashes and Chunk Resetting involving Suspicious Sand with Loot Tables updating from 1.19.4.
+MC-261232  Texture minecraft:block/sniffer_egg_slightly_cracked with size 40x32 limits mip level from 4 to 3.
+MC-261237  Using bone meal on upper pitcher crop doesn't advance the age of the lower half.
+MC-261241  Saddle equips sound plays twice when equipping a saddle on a camel.
+MC-261243  Pitcher Crop isn't part of the #crops tag.
+MC-261262  Raiser and Wayfinder smithing templates are offset by one pixel.
+MC-261264  The advancement "Two by Two" is no longer obtainable due to the change to sniffer's breeding.
+
+
+== 23w14a ==
+23w14a is the third snapshot for Java Edition 1.20, released on April 5, 2023, which changes the logo and panorama and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Tags
+
+Added enchantment_power_provider block tag.
+Contains bookshelf.
+Added enchantment_power_transmitter block tag.
+Contains #replaceable.
+Contains blocks that do not invalidate enchanting bonuses when placed between a enchanting table and bookshelves.
+Added replaceable block tag.
+Contains air, water, lava, grass, fern, dead_bush, seagrass, tall_seagrass, fire, soul_fire, snow, vine, glow_lichen, light, sunflower, lilac, rose_bush, peony, tall_grass, large_fern, structure_void, void_air, cave_air, bubble_column, warped_roots, nether_sprouts, crimson_roots, and hanging_roots.
+Contains blocks on which another block can be placed
+Added replaceable_by_trees block tag.
+Contains #leaves, grass, fern, dead_bush, vine, glow_lichen, sunflower, lilac, rose_bush, peony, tall_grass, large_fern, hanging_roots, pitcher_plant, water, seagrass, tall_seagrass, warped_roots, nether_sprouts, and crimson_roots.
+Contains changeable blocks that growing trees can replace.
+Added sword_efficient block tag.
+Contains #leaves, #saplings, #small_flowers, #crops, grass, fern, dead_bush, vine, glow_lichen, sunflower, lilac, rose_bush, peony, tall_grass, large_fern, hanging_roots, pitcher_plant, brown_mushroom, red_mushroom, sugar_cane, pumpkin, carved_pumpkin, jack_o_lantern, melon, attached_pumpkin_stem, attached_melon_stem, lily_pad, cocoa, pitcher_crop, sweet_berry_bush, cave_vines, cave_vines_plant, spore_blossom, moss_carpet, pink_petals, big_dripleaf, big_dripleaf_stem, small_dripleaf, nether_wart, warped_fungus, warped_roots, nether_sprouts, crimson_fungus, weeping_vines, weeping_vines_plant, twisting_vines, twisting_vines_plant, crimson_roots, chorus_plant, and chorus_flower.
+Contains blocks that break faster with a sword.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Block of amethyst
+
+Sculk shriekers and wardens are now triggered by vibrations emitted by a resonating amethyst block.
+Added to the "Redstone Blocks" tab in the creative inventory.
+ Buttons
+
+Changed their UV texture map.
+Calibrated sculk sensor
+
+Now glows when it triggers, just like a regular sculk sensor.
+Now detects vibrations up to 16 blocks radius instead of 8 blocks.
+Now has a 1 second active cooldown instead of 2 seconds.
+Now accepts signals into the calibration input side more consistently with other Redstone components.
+For example, signals can now be received through a block.
+Default redstone output has been modified to be more reliable for distance calculations.
+Now strongly powers the block they are placed on.
+Can now be activated by sniffers digging.
+Decorated pot
+
+Now can be waterlogged normally.
+Enchanting table
+
+A replaceable block between them and bookshelves no longer invalidates bonuses.
+ Hopper
+
+Changed the texture of bottom.
+ Large chest and large trapped chest
+
+Slightly changed their texture.
+Pitcher plant and pitcher crop
+
+Can now be destroyed by ravagers.
+Their hitbox now changes according to their age.
+Moved near other large plants in the creative inventory.
+Can now be crafted into two cyan dye instead of one.
+Sculk sensor
+
+Default redstone output has been modified to be more reliable for distance calculations.
+Now strongly powers the block they are placed on.
+Can now be activated by sniffers digging.
+Sculk shrieker
+
+Scream sounds are no longer heard if block is waterlogged.
+Added to the "Redstone Blocks" tab in the creative inventory.
+Signs
+
+Signs with click commands can now be interacted with, even if the sign is not waxed.
+Signs with non-text chat components can no longer be edited, even if the sign is not waxed.
+Now save text even if the edit screen is closed by the player being moved far away.
+Suspicious gravel
+
+Now has an assigned tool (shovel).
+Can now have bamboo planted on it.
+ Suspicious sand
+
+Now has an assigned tool (shovel).
+Can now have cacti and sugar cane planted on it.
+Can no longer be replaced by sculk when a sculk catalyst triggers.
+Torchflower
+
+Moved near other small flowers in the creative inventory.
+
+
+==== Items ====
+Brush
+
+The brushing sound is now controlled by the "Blocks" sound slider instead of the "Players" sound slider.
+Torchflower seeds
+
+Can now be picked up by farmer villagers.
+
+
+==== Mobs ====
+Sniffer
+
+Can now be tempted using torchflower seeds.
+If it has a given name, it now appears in the correct place.
+Previously the name tag appeared in the model.
+Can now dig mud.
+Now emits a sound when laying a sniffer egg.
+Snifflets scenting sounds now use a pitched volume like the other baby mobs.
+ Villager
+
+Slightly changed the texture of desert villagers' arms and sandals.
+ Zombie villager
+
+Changed the texture of desert zombie villagers' arms.
+
+
+==== World generation ====
+Desert pyramid
+
+Suspicious sand is now visible on the top layer of the newly added room.
+
+
+==== General ====
+Loot tables
+
+Added new loot table function called reference.
+New function reference allows functions to call sub-functions (similar to reference condition).
+Fields: name - location of function to call.
+Resource pack
+
+The pack format version is now 14.
+Updated the sprite layout of minecraft.png.
+Removed the overriding minecraft.png from the "Programmer Art" resource pack.
+Updated the sprite layout of invite_icon.png.
+Tags
+
+Added suspicious gravel to the #bamboo_plantable_on and #overworld_carver_replaceables block tags.
+Added suspicious gravel and suspicious sand to the #mineable/shovel block tag.
+Removed the #sand block tag from the #sculk_replaceable block tag, replacing it with sand, and red_sand.
+Removed replaceable_plants in favor of replaceable_by_trees.
+Title screen
+
+The panorama was changed to showcase a cherry grove biome.
+The Minecraft logo was changed.
+Made "Java Edition" text bigger.
+Made "Minecraft" text smaller.
+The Minceraft easter egg now has its own logo texture.
+The format of the invite icon was slightly changed.
+The Minecraft Realms logo was changed.
+Other
+
+Removed the server & port arguments as their functionality has been replaced by Quick Play.
+Added support for four new command line arguments that allow the game to be launched directly into a world.
+quickPlayPath takes a specified path for logging (relative to the run directory).
+If a path is provided, the following is logged upon joining a world:
+type: is either singleplayer, multiplayer, or realms.
+identifier: represents the world player wants to join.
+For singleplayer, the folder name of the world.
+For multiplayer, the IP address of the server.
+For realms, the Realms ID.
+port: The server port, only logged for multiplayer.
+name: The name of the world.
+gamemode: The gamemode of the world.
+lastPlayedTime: The time player joined the world.
+Example:
+--quickPlayPath "quickPlay/log.json" resolves into .minecraft/quickPlay/log.json
+quickPlaySingleplayer, quickPlayMultiplayer and quickPlayRealms all take their respective identifier.
+If one of these arguments is provided, the game tries to launch directly into the given world.
+Examples:
+--quickPlaySingleplayer "New World"
+--quickPlayMultiplayer "localhost:25565"
+--quickPlayRealms "1234"
+
+
+=== Fixes ===
+82 issues fixed
+From released versions before Java Edition 1.20
+
+MC-2474  Transparent blocks placed between bookshelves and enchanting tables negate bonuses received from bookshelves.
+MC-58961  Back button and kick message can overlap.
+MC-138358  Levers on top of item frames Z-fighting with blocks in item frames.
+MC-155084  Horses' armor, reins, and bridles experience z-fighting.
+MC-165773  /execute run does not cause syntax error when arguments are missing.
+MC-176309  Illusioner has a few misplaced pixels left in their texture.
+MC-203399  Hoppers use the side texture on the bottom.
+MC-203406  Kelp and seagrass models appear to reference biome tints despite not using any.
+MC-212271  Glow squid and squid show Z-fighting.
+MC-212892  Right-clicking a non-glowing sign using an ink sac (or vice versa) doesn't fire the clickEvent.
+MC-224433  Clouds texture contains semi-transparent background.
+MC-224648  Pressed buttons placed on painting can cause z-fighting.
+MC-230792  Cat's tail shows Z-Fighting.
+MC-236117  Music disc texture isn't centered properly.
+MC-237556  Legs of black cat model are white at the top.
+MC-241314  Filled cauldrons' bottom faces are still culled when they should not be.
+MC-241347  Purple glazed terracotta still uses old sword design.
+MC-241850  Miscolored pixels on double chest.
+MC-246459  Drowned have some transparent pixels within their inner body texture.
+MC-249047  The minecraft:ui.button.click sound isn't played when joining realms through double-clicking on them.
+MC-249514  Button UV appears to be upside-down.
+MC-251536  Desert zombie villager feet still mismatch the sides of the feet.
+MC-251537  Desert (zombie) villager has solid-color on inner of arm, unlike other villagers.
+MC-251538  Desert villager missing some pixels for the sandals.
+MC-252099  Incorrect texture mapping in potted mangrove propagule (mirror effect).
+MC-254588  Miscolored pixel on slowness effect icon.
+MC-256419  Incomplete commands run through aliases don't produce errors.
+MC-256540  The top texture of the camel's front left leg contains some redundant gray pixels.
+MC-256688  Birch wall hanging sign uses "snare" instrument when placed under note block, instead of "bass" as other hanging signs.
+MC-258939  Non-atomic cached state can cause multithreaded crashes.
+MC-259574  Crash trading with a custom villager: java.lang.NullPointerException: Cannot invoke "cdp.S_()" because the return value of "cdt.c()" is null.
+MC-259873  Skeleton/Zombie Horse's chests are outdated.
+MC-260036  Can't plant cactus and sugar cane on suspicious sand.
+MC-260042  Cannot waterlog a decorated pot by using a water bucket or dispenser.
+MC-260105  The name tags of sniffers are partly inside their models.
+MC-260152  Sculk sensors are not activated by sniffers digging.
+MC-260202  The sound of using the brush isn't affected by blocks.
+MC-260233  Suspicious Sand has no assigned tool.
+MC-260240  Sniffers that are in love sometimes don't attempt to approach one another to breed.
+MC-260347  Falling suspicious sand does not break when reopening the world.
+MC-260348  Sniffers will never dig in normal mud despite being a "sniffer_diggable" block.
+MC-260401  When Brush is broken in offhand, the broken Particle is the Item in mainhand.
+MC-260459  Baby sniffers don't sound high pitched when sniffing.
+MC-260467  Torchflower is not grouped with other small flowers in the creative inventory.
+MC-260478  Torchflower crop hitboxes don't change in size according to their age.
+MC-260527  The coordinates of the sniffer "minecraft:sniffer_explored_positions" tag do not check the dimension.
+MC-260778  Sniffer tries to sniff out blocks outside the world border.
+MC-260779  Sniffers can dig into blocks outside the world border.
+MC-260810  Villagers can't pick up torchflower seeds, despite being able to farm torchflowers.
+MC-260992  Cannot return to title screen from Realms screen (except using ESC).
+MC-261020  Double-clicking on a Realm to join it no longer works.
+MC-261029  Progress bar for uploading a world to Realms is much larger than normal.
+MC-261487  Z-fighting occurs on the backs of sniffers' heads.
+From the Java Edition 1.20 development versions
+
+MC-261167  Suspicious gravel does not have an assigned tool.
+MC-261171  You can't plant bamboo on suspicious gravel.
+MC-261172  Pitcher crop hitboxes don't change in size according to their age.
+MC-261174  Suspicious gravel is not part of the #overworld_carver_replaceables tag, causing carvers to not cut through it.
+MC-261176  Pitchers don't maintain the farmland used to grow it.
+MC-261179  Attempting to interact with a waxed sign plays a sound but displays no subtitle.
+MC-261183  Sniffer egg sound events are listed under "entity" instead of "block".
+MC-261186  Entities don't recognize sniffer eggs as obstacles when pathfinding.
+MC-261187  Entities will often spin while pathfinding on top of sniffer eggs.
+MC-261189  Inconsistent naming of block states for sniffer and turtle eggs.
+MC-261196  Torchflowers and pitcher plants can't burn.
+MC-261197  Players can edit signs in adventure mode.
+MC-261198  Calibrated sculk sensors don't glow like original sculk sensors.
+MC-261201  Pitcher plant can be replaced by the use of placed blocks, which is not consistent with other tall flowers.
+MC-261208  Pitcher Plant has unused bottom texture.
+MC-261222  Unsneaking while standing still for a long time or after moving while sneaking triggers sculk sensor.
+MC-261226  Calibrated sculk sensors have to be 'hard' powered by redstone from the side.
+MC-261235  Sign editing GUI forcibly closing does not save entered text in some cases.
+MC-261253  Sculk sensor no longer triggers the advancement "Sneak 100" by just sneaking.
+MC-261255  Amethyst Block isn't in "Redstone" tab in creative inventory.
+MC-261297  Pitcher plant doesn't craft into two dyes, which is inconsistent with other two block tall flowers
+MC-261298  Pitcher plant is not next to other two tall plants in the creative inventory.
+MC-261304  Cyan dye crafting recipes are not grouped.
+MC-261346  Sniffers have no egg laying sound, despite laying them like chickens.
+MC-261356  Sculk shriekers and wardens aren't triggered by vibrations emitted by a resonating amethyst block.
+MC-261365  Players being hurt is not detected by a calibrated sculk sensor set to 7.
+From the previous development version
+
+MC-261423  Pitcher pod crop with a block on top consumes bone meal despite being unable to grow.
+MC-261503  Ravager cannot destroy pitcher crop.
+MC-261547  Suspicious Sand on Java Edition can be replaced with Sculk by a Sculk Catalyst, unlike in Bedrock Edition or its gravel counterpart.
+
+
+== 23w16a ==
+23w16a is the fourth snapshot for Java Edition 1.20, released on April 20, 2023, which adds a new command and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/return
+
+A new command that can be used to control execution flow inside functions and change their return value. Effects:
+Skip remaining separate top-level commands in the currently executing function (if any).
+The result value of the function command that triggered the execution is changed from the number of commands executed to the value.
+The result value of the return command is also the value.
+Syntax: /return <value>
+value: An integer return value.
+
+
+==== Gameplay ====
+Advancements
+
+Added recipe_crafted advancement trigger; triggered when crafting a recipe.
+Conditions:
+recipe_id: The resource location of the recipe crafted.
+ingredients: An array of predicates for the item stacks used in the recipe.
+A single item stack can only be used to fulfill one predicate.
+Each predicate needs to be fulfilled to trigger the advancement. This allows for seperation between recipes that have same identifier but use different ingredients.
+This field is optional. When not provided, or left empty, only the recipe_id dictates the success of the trigger.
+
+
+==== General ====
+Splashes
+
+Added splashes:
+This sand is sus
+Remember to brush your... ...teeth
+Has working bookshelves!
+Sniff sniff...
+Place hanging sign here
+Tags
+
+Added block tags:
+#maintains_farmland: contains pumpkin_stem, pumpkin, attached_pumpkin_stem, melon_stem, melon, attached_melon_stem, beetroots, carrots, potatoes, torchflower_crop, torchflower, pitcher_crop, and wheat
+Blocks that don't cause farmland to be converted into dirt when placed on top of it.
+Added item tags:
+#villager_plantable_seeds: contains wheat_seeds, potato, carrot, beetroot_seeds, torchflower_seeds, and pitcher_pod.
+Seeds that villagers use to farm.
+Added block and item tags:
+#stone_buttons: contains stone_button and polished_blackstone_button.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+ Polished Blackstone Button
+
+Now breaks in the same time as other buttons.
+ Calibrated Sculk Sensor
+
+The model has been changed from : the top of the amethyst is now unshadowed and stretched to match the model of the amethyst cluster.
+ Pitcher Crop
+
+Hitbox shape has been changed for each stage of its growth.
+ Pitcher Plant
+
+Is now flammable.
+  Sculk Sensor and sculk Shrieker
+
+If a vibration is scheduled to be received by a sculk sensor or sculk shrieker, they stay queued until all adjacent chunks are loaded and ticking.
+This prevents vibration resonance setups from breaking when unloading their chunks from a distance.
+ Torchflower
+
+No longer makes farmland turn into dirt.
+Is now flammable.
+ Decorated Pot
+
+Tag for pot decorations renamed from shards to sherds (to match items).
+
+
+==== Items ====
+ Pottery Sherd
+
+Renamed from "Pottery Shard".
+
+
+==== Mobs ====
+ Sniffers
+
+No longer sniff while panicking.
+No longer dig while having the Levitation effect.
+Can now enter minecarts.
+ Villagers
+
+Can now plant torchflower seeds and pitcher pods.
+
+
+==== Non-mob entities ====
+Display
+
+item_display items have been rotated 180 degrees around Y axis to better match transformation applied when rendering items on armor stand head and in item frames.
+For reference, order of transformations applied to model (starting from innermost) is item_transform, rotate Y 180, transformation field, entity orientation (billboard option + Rotation field + Pos field).
+
+
+==== World generation ====
+ Trail Ruins
+
+Reworked and added more variants.
+No longer generates with sand and suspicious sand.
+Tweaked the amount of gravel, dirt, and suspicious gravel.
+Split the archaeological loot tables for the suspicious gravel within the structure.
+Rare loot items and common loot items now each have their own dedicated archaeological loot table.
+
+
+==== General ====
+Data packs
+
+Version is now 14.
+Loading world screen
+
+Changed chunk colormap a little.
+Tags
+
+Removed stone_button and polished_blackstone_button from the #buttons block and item tags, newly added #stone_buttons is used instead.
+Removed stone_button from the #mineable/pickaxe block tag, newly added #stone_buttons is used instead.
+Removed sand, dirt, and coarse_dirt from the #trail_ruins_replaceable block tag.
+Renamed #decorated_pot_shards item tag to #decorated_pot_sherds, and renamed all its members accordingly.
+General
+
+The game's application icon has been changed from crafting table to grass block.
+Uses dirt icon for snapshots.
+Added native support for ARM64 machine architecture on Windows.
+Needs to manually specify a native Java Executable in the launcher currently.
+
+
+=== Fixes ===
+36 issues fixed
+From released versions before Java Edition 1.20
+
+MC-117125  Narrator still crashes on Linux, flite installed.
+MC-128011  F3 toggles debug menu while viewing inventory.
+MC-151882  Favicon in game window shows old crafting table texture.
+MC-162253  Lag spike when crossing certain chunk borders.
+MC-169498  Empty top subchunks don't update skylight in some cases.
+MC-170010  Sky-lightmaps not properly initialized.
+MC-170012  Lightmaps are missing for initial skylight.
+MC-188295  Placing fallling blocks using /setblock can cause a client-side lag spike in some circumstances.
+MC-199752  Polished Blackstone Button takes longer to break than other buttons.
+MC-207251  Sculk sensors and shriekers do not work correctly when cloned, generated on superflat worlds or placed with custom structures.
+MC-249450  Sculk shriekers placed with NBT don't receive signals from nearby sculk sensors.
+MC-252786  SculkSensorBlockEntity and SculkShriekerBlockEntity leak VibrationListeners on update.
+MC-254410  /setidletimeout set to a timer longer than 35791 disconnects idle player immediately.
+MC-257178  Chiseled Bookshelf redstone behavior is inconsistent.
+MC-260038  Sniffer does not have smooth animation transitions for some of its animations, like sniffing.
+MC-260219  Sniffer eating sounds aren't played when feeding them the last item of torchflower seeds within a stack.
+MC-260221  Sniffers can still dig when floated by levitation status effect.
+MC-260237  Sniffers can sniff while panicking.
+MC-260466  Torchflower doesn't maintain farmland used to grow it.
+MC-260849  Sniffer can't get into minecart.
+MC-261804  Expired Key preventing players from logging in on servers.
+MC-261857  Using the "/setblock", "/fill", or "/clone" commands to create little amounts of blocks in completely isolated areas causes large client-side stutters.
+From the Java Edition 1.20 development versions
+
+MC-261214  Amethyst in calibrated sculk sensor is shaded and not stretched.
+MC-261286  Walking near liquids causes stone footstep sounds to play.
+MC-261515  You can't brush blocks if a dropped item is between you and the block.
+From the previous development version
+
+MC-261605  Splash text sometimes covers several letters of "Java Edition".
+MC-261608  Sculk sensors and calibrated sculk sensors lack a cooldown state.
+MC-261609  The subtitle 'subtitles.block.sign.waxed_interact_fail' isn't displayed
+MC-261620  Crash when modifying age property of a pitcher crop.
+MC-261625  "Programmer Art" and "High contrast" built-in Resource Packs are incompatible.
+MC-261643  Villagers can't plant torchflower seeds or pitcher plant pods, despite picking them up.
+MC-261646  Subtitle for Sniffers laying eggs is "Chicken plops".
+MC-261740  Feeding a Sniffer while it is digging causes it to lay motionless for a while then dig again with no animation.
+MC-261746  Incorrect sound event ID spelling for "block.sniffer.egg_crack" and "block.sniffer.egg_hatch".
+From the current version, hotfixed
+
+MC-261981  Click any buttons on the Accessibility Onboarding Screen crashes the game.
+MC-261984  Clicking the Narrator button on the Accessibility settings menu causes crash.
+
+
+== 23w17a ==
+23w17a is the fifth snapshot for Java Edition 1.20, released on April 26, 2023, which adds a new music disc, new advancements, new music, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== Items ====
+Music disc
+
+ Added a new music disc by Aaron Cherof titled "Relic".
+Can only be obtained when brushing suspicious gravels within trail ruins, with 112 chance appeared as a rare loot.
+Gives a comparator output signal strength of 14 when in a Jukebox.
+
+
+==== Gameplay ====
+Advancements
+
+Added seven new advancements:
+Smells interesting
+Obtain a Sniffer Egg
+Little sniffs
+Feed a Snifflet
+Planting the past
+Plant any Sniffer seed
+Crafting a new look
+Craft a trimmed armor at a Smithing Table
+Smithing with style
+Apply these smithing templates at least once: Spire, Snout, Rib, Ward, Silence, Vex, Tide, Wayfinder
+Respecting the remnants
+Brush a Suspicious block to obtain a Pottery Sherd
+Careful restoration
+Make a Decorated Pot out of 4 Pottery Sherds
+
+
+==== General ====
+Font
+
+Added unihex glyph provider.
+A new glyph provider for reading Unifont HEX files.
+HEX format describes bitmap font glyphs.
+Height of every glyph is 16 pixels.
+Width of glyph can be 8, 16, 24 or 32 pixels.
+Every line is made of two hexadecimal numbers separated by :.
+First value describes codepoint - it must have 4, 5 or 6 hex digits.
+Second value describes glyph as a stream of bits, line by line.
+When rendering, empty columns on left and right side of glyph are removed.
+Custom glyph widths can be set with size_overrides.
+Provider requires two fields:
+hex_file: Path to ZIP archive containing one or more *.hex files (files in archive with different extensions are ignored).
+size_overrides: List of codepoint ranges that should have width different that auto-detected (based on empty space in glyph). Fields:
+from, to: Start and end of codepoint range (inclusive).
+left, right: Integers describing position of left-most and right-most columns of glyph in range.
+Any bits in columns outside this range are discarded.
+Added reference glyph provider.
+New glyph provider can be used to include providers from other fonts.
+Providers are guaranteed to be loaded only once, no matter how many times they are included.
+Provider has one field id, that describes other font to be included in currently loaded one.
+Inclusion is performed after all fonts are loaded, so it includes all providers for a given font defined in all resource packs.
+Loot tables
+
+Added sniffer_digging: contains torchflower_seeds and pitcher_pod.
+Controls what can be found by sniffers when digging.
+Music
+
+Added new ambient soundtracks, all by Aaron Cherof.
+"A Familiar Room" plays in Survival mode (all biomes without biome-specific music), as well as the title screens.
+"Bromeliad" plays in bamboo jungle, cherry grove, flower forest, forest, jungle, sparse jungle, as well as the menu screens.
+"Crescent Dunes" plays in desert, all types of badlands, as well as the menu screens.
+"Echo in the Wind" plays in cherry grove, flower forest, lush caves, all types of badlands, as well as the menu screens.
+Tags
+
+Added following item tag:
+#decorated_pot_ingredients: contains brick and #decorated_pot_sherds.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Calibrated sculk sensor
+
+Now lasts 10 game ticks when in active phase instead of 20.
+Now lasts 10 game ticks when in cooldown phase instead of 1.
+Decorated pot
+
+The materials used in crafting are displayed on the tooltip now.
+Sculk sensor
+
+Now lasts 30 game ticks when in active phase instead of 40.
+Now lasts 10 game ticks when in cooldown phase instead of 1.
+
+
+==== General ====
+Credits
+
+Updated to add some Mojang employees.
+Can be scrolled upwards by pressing  Up now.
+Debug screen
+
+Font textures are included in debug texture dump (F3 + S).
+Music
+
+The places where the following existing music can be played are changed:
+"Aerie", "Firebugs", and "Labyrinthine" can no longer be played in the menu screens, and all types of jungle biomes.
+Resource packs
+
+Version is now 15, accounting for the font and credits update.
+legacy_unicode glyph provider has been removed.
+Bitmaps used by uniform font have been removed.
+uniform font has been updated to use Unifont 15.0.01.
+That changes shape of multiple characters, while also adding support for new ones.
+Combining characters no longer include circle overlayed over them.
+Added second level of organization of entries in credits.json on top of titles, called disciplines.
+Tags
+
+Removed brick from #decorated_pot_sherds item tag.
+Added music_disc_relic to #music_discs item tag.
+General
+
+Improved performance of the light engine.
+
+
+=== Fixes ===
+32 issues fixed
+From released versions before Java Edition 1.20
+
+MC-30939  Nether portal continues emitting light, even if portal is broken.
+MC-108045  Minecraft not using latest unifont unicode chart; characters are missing.
+MC-127394  Minecraft does not render characters in Unicode mb4 range.
+MC-166260  Light from fire that has gone out lingers at the border of chunks.
+MC-172980  Block light updates don't cross chunk borders properly when updated.
+MC-179867  Unicode Characters swapped in Minecraft.
+MC-197772  Missing textures in minecraft:uniform font.
+MC-199446  Characters  (U+FE17) and  (U+FE18) are swapped in game.
+MC-213712  "Ideographic Space" Unicode character is not displayed correctly.
+MC-225742  When light emitting blocks generate as ores, they do not emit light.
+MC-234681  Tai Viet characters are not supported.
+MC-241725  In the credits, an opening parenthesis is missing for Riley Manns.
+MC-241730  In the credits, a closing parenthesis is missing for Konrad Jowko.
+MC-241732  In the credits, "Lionbridge" is misspelt in one place.
+MC-241733  In the credits, "Insight" is misspelt in one place.
+MC-241741  Certain names are listed twice in the credits.
+MC-241803  credits.json: Line 2632 has typo in (C instead of O).
+MC-245819  Lighting can still occasionally lag behind world generation.
+MC-249341  Some Mojang employees are not mentioned in the credits.
+MC-249508  Light emitted from cave vines and glow lichens upon world generation still sometimes doesn't propagate across chunk borders.
+MC-254506  Font file of some Korean completed font area is wrong.
+MC-258926  Space is no longer treated as padding in fonts.
+MC-260307  Cherry Grove biome has empty music sound event.
+MC-261626  Reversed Comma doesn't render properly when using the Unicode font.
+MC-261900  Sniffers cannot properly pathfind into water while burning.
+From the Java Edition 1.20 development versions
+
+MC-261413  Particles spawned by brushes held by left-handed players move in the wrong direction.
+MC-261938  Sniffer animation is not smooth on slime blocks.
+From the previous development version
+
+MC-261997  Game crashes when generating new chunk / java.lang.IllegalStateException: Asking for biomes before we have biomes.
+MC-262012  Telemetry Tooltip out of screen.
+MC-262022  Tooltips get cut off at the bottom of the screen.
+MC-262024  Sniffer eggs are sometimes spawned in the ground when sniffers breed.
+MC-262030  Sniffers stand a bit too close to players that are tempting them.
+
+
+== 23w18a ==
+23w18a is the sixth and final snapshot for Java Edition 1.20, released on May 3, 2023.
+
+
+=== Additions ===
+
+
+==== Gameplay ====
+Advancements
+
+The Power of Books
+Read the power signal of a Chiseled Bookshelf using a Comparator.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Smithing table
+
+No longer requires a smithing template to be in the template slot before placing an item into the other slots.
+
+
+==== Mobs ====
+Slimes and magma cubes
+
+Are now affected by the Jump Boost effect.
+
+
+==== General ====
+Advancements
+
+All fields in placed_block, item_used_on_block, and allay_drop_item_on_block advancement triggers have been collapsed to a single location field.
+New location is similar to the player field - it's a list of loot conditions/predicates.
+All conditions in this list must match for a trigger to run.
+Conditions are evaluated in a new loot context called advancement_location. It has access to:
+Player as this entity.
+Position of the placed/interacted block.
+Block state of the placed/interacted block.
+Held/used item as "tool".
+Migration guide:
+Contents of old location field should be migrated to a location_check condition.
+Contents of item field should be migrated to a match_tool condition.
+Contents of block and state fields should be migrated to a block_state_property condition.
+Advancement fields now have a new boolean field called sends_telemetry_event.
+Data packs
+
+Version is now 15, accounting for predicate/loot table and advancement changes.
+Creative inventory
+
+Jukebox has been added to the "Redstone Blocks" tab.
+Predicates
+
+Condition alternative has been renamed to any_of.
+Added new condition all_of that passes only when all sub-conditions pass.
+It has the same syntax as any_of.
+Sounds
+
+Walking on a block now always plays a step sound.
+It was previously not the case if the player was walking along the edge of a block with air or fluid beside it.
+Walking on the ocean floor produces a step sound for the block the player is walking on, but at a lower volume and pitch.
+Telemetry
+
+Added new property: launcher_name.
+A new global property sent with every event.
+This is set based on the minecraft.launcher.brand system property.
+This helps developers troubleshoot game launch related bugs more effectively, as they are able to see whether the issue originated in the Minecraft launcher or a third-party program.
+Added new property realms_map_content to event world_loaded.
+When loading into a Realms Map Content world (Minigame), the world_loaded event receives the name of that map.
+This is to help developers understand how Java Realms users interact with Java Realms adventure or minimap content.
+Added new optional event advancement_made.
+This event is triggered when a player completes an advancement.
+This allows developers to see the advancement ID and the time when the advancement was completed, and helps them as a studio understand player progress and limits, which informs their game design.
+Added new optional event game_load_times.
+An event that is triggered when the game client is loaded, and includes the time it took for the client to load.
+This is so that developers can work on improving and reducing the time it takes to load the game client.
+
+
+=== Fixes ===
+28 issues fixed
+From released versions before Java Edition 1.20
+
+MC-1133  Whether or not a player experiences some effect is calculated based on the block under the center of the player.
+MC-2604  Walking on non-solid blocks with no collision plays their respective walking sounds.
+MC-48923  Slime/magma cubes not affected by jump boost potion effect.
+MC-75721  Arrow buttons within the book GUI are rendered above tooltips.
+MC-130089  Turtle eggs break weird at block edges.
+MC-158154  Players can bounce on beds even when not directly touching it.
+MC-199952  Skylight does not propagate across certain chunk borders upon world generation.
+MC-203317  There is a missing torch in one of the Stronghold rooms leaving a Light source.
+MC-207290  Sculk sensors don't detect vibrations while walking on the edge of a block.
+MC-212583  Sculk sensors are not activated upon walking inside of scaffolding that has air below it.
+MC-217447  "Walking" on nether wart produces stone footstep sounds instead of nether wart sounds.
+MC-240098  Minecraft can't be correctly profiled to Windows 11 version.
+MC-242105  When landing on some non-full blocks while touching a thin block, impact particles use the thin block's texture.
+MC-244307  Dark Chunks when exploring since 1.18.
+MC-252389  When landing (or jumping) on wool with your hitbox over the edge, it produces a vibration.
+MC-257269  Sculk sensor detects player walking between carpet and wool.
+MC-259978  Minecraft telemetry data detected Windows 11 as Windows 10.
+MC-260279  Jukebox is not in the Redstone Blocks tab in the creative inventory.
+MC-261417  The hitboxes of sniffers are not adjusted when they lay down.
+MC-262067  The type of sniffer digging particles that are produced is determined by the block that sniffers are located on instead of the block that sniffers are digging.
+MC-262069  Sniffers continue digging after their target block is destroyed.
+From the Java Edition 1.20 development versions
+
+MC-261952  Clocks flicker rapidly when enchanted and in an unnatural dimension.
+MC-262003  Bundle tooltip does not show its interface.
+MC-262104  Rendering of FPS graph seems to be performing worse than before.
+From the previous development version
+
+MC-262123  Advancement titles of new advancements are improperly capitalized.
+MC-262133  Strong lag spikes when moving above a cleared area with exposed void.
+MC-262185  Partially transparent pixels in font glyphs appear more opaque than they should in the tooltip.
+MC-262218  Block light updates don't cross chunk borders properly in 23w17a.
+
+
+== 1.20 Pre-release 1 ==
+1.20 Pre-release 1 (known as 1.20-pre1 in the launcher) is the first pre-release for Java Edition 1.20, released on May 10, 2023, which brings more parity from Bedrock Edition and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Beds, carpets, and wool
+
+Colored variants can now be dyed any other color.
+
+
+==== Command format ====
+/data
+
+string data sources now accept negative boundaries, which are interpreted as index counted from the end of the string.
+
+
+==== General ====
+Damage type
+
+Added outside_border, and generic_kill.
+Players outside the world border are now hurt by the damage type outside_border instead of in_wall.
+Forcibly removing an entity using i.e. the /kill command now uses damage type generic_kill instead of out_of_world.
+Death messages
+
+Changed death message used for the /kill command.
+Changed from  "<player> fell out of the world" to "<player> was killed".
+Changed death message used for deaths caused by the world border.
+Changed from  "<player> suffocated in a wall" to "<player> left the confines of this world".
+Loot table
+
+Random sequences for loot tables are now deterministic.
+The game now uses named random sequences to deterministically produce loot for loot tables.
+Each random sequence produces a unique sequence based on the world seed and sequence identifier, which means a loot table will produce the same results when ran with the same parameters in the same world.
+The identifier of the random sequence to use for a loot table is specified as a resource location in a new field called random_sequence.
+server.properties
+
+Changes in encoding.
+The file is now read in UTF-8 initially, with previous encoding (ISO 8859-1/Latin 1) as a fallback.
+File is now written with UTF-8 encoding.
+Tags
+
+Removed pumpkin, and melon from #maintains_farmland block tag.
+Added generic_kill, and outside_border to #bypasses_armor damage type tag.
+Added generic_kill to #bypasses_invulnerability, and #bypasses_resistance damage type tags.
+
+
+=== Fixes ===
+36 issues fixed
+From released versions before Java Edition 1.20
+
+MC-180  When reaching the other side of a nether portal the animation plays forever until stepped out of.
+MC-2215  Encoding errors in server.properties.
+MC-18060  Several realms strings are untranslatable.
+MC-21520  Death message for /kill is "<player> fell out of the world"
+MC-35078  Breaking animation is one frame off.
+MC-107224  World border death message states "suffocated in a wall"
+MC-123081  Placing an end crystal when entering The End prevents Ender Dragon from spawning.
+MC-146582  When entering spectator mode while standing on the ground, the player moves down by 0.19051 blocks, which makes you fall down.
+MC-188595  "gamemode" string in F3 + N description is inconsistent with "game mode" string in F3 + F4 description
+MC-193749  Nether portals play the trigger sound again when the other dimension is loaded.
+MC-195781  The "Include entities:" string displayed within the structure block GUI is improperly capitalized.
+MC-195825  "datapacks" string is inconsistent with "data pack" string in datapackFailure.title text.
+MC-196428  The nausea effect resets its distortion severity when players' NBT data is reloaded.
+MC-197270  Item icons in F3+F4 screen display over fading in Mojang Studios screen when reloading resource packs using F3+T at the exact same time.
+MC-198202  Options background texture does not match dirt texture.
+MC-203039  Incorrect use of colon in options.hideMatchedNames.tooltip.
+MC-206548  Leash knot subtitles are not properly capitalized.
+MC-226454  The "Light as a Rabbit" advancement description has no space after the ellipsis.
+MC-236606  Lightning bolt related string lacks capitalization.
+MC-241736  Company names are still inconsistent and partly misspelled in the credits.
+MC-250571  Gamerule description strings within the world creation menu consist of inconsistent concluding punctuation.
+MC-256424  Game mode is sometimes referred to as "gamemode".
+MC-257336  Some chiseled bookshelf interaction subtitles are improperly capitalized.
+From the Java Edition 1.20 development versions
+
+MC-262006  Melon and Pumpkin are in the default #maintains_farmland tag despite not maintain farmland.
+MC-262208  In the credits, "Lionbridge" is misspelt in one place (no "g").
+MC-262253  Music composers not listed in credits.
+MC-262265  Changing resource pack that overrides a font crashes JVM.
+From the previous development version
+
+MC-262296  Rabbits are no longer affected by jump boost.
+MC-262300  Menu text is now rendered in front of the Mojang Studios loading screen fade animation.
+MC-262304  The stepping_on predicate condition does not correctly succeed on trapdoors.
+MC-262308  Entities do not stick to honey blocks pushed by pistons if their center isn't over the honey block.
+MC-262313  Nether won't load in upgraded worlds.
+MC-262317  Items don't respect properties of the block they are supported on.
+MC-262351  Worldgen deadlock caused by supporting block checks.
+MC-262363  Player can still gain a normal jump off of a honey block with precise timing.
+MC-262424  Sprinting particles on the edges of blocks are still incorrect.
+
+
+== 1.20 Pre-release 2 ==
+1.20 Pre-release 2 (known as 1.20-pre2 in the launcher) is the second pre-release for Java Edition 1.20, released on May 16, 2023, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Gameplay ====
+Creative inventory
+
+Fish buckets are now listed in the same order as the fish items.
+Dead coral blocks are now listed in the same order as the live corals.
+Wither rose is now grouped with other small flowers.
+Mangrove roots and muddy mangrove roots are now grouped with logs rather than leaves.
+
+
+==== General ====
+Title screen
+
+Game now displays message box on startup if user enabled text-to-speech functionality, but it is not available.
+Recipe
+
+"item": "minecraft:air" can now be used to denote an ingredient that matches an empty slot.
+The following recipe types, however, do not allow for an empty ingredient:
+minecraft:crafting_shaped
+minecraft:crafting_shapeless
+minecraft:smelting
+minecraft:blasting
+minecraft:smoking
+minecraft:campfire_cooking
+minecraft:stonecutting
+Tag
+
+Removed sunflower, lilac, rose_bush, and peony from #replaceable block tag.
+
+
+=== Fixes ===
+56 issues fixed
+From released versions before Java Edition 1.20
+
+MC-1310  Dispensed boats and rafts get stuck inside of dispensers used to place them.
+MC-117815  The sign GUI remains open when the said sign is destroyed.
+MC-121433  Non English letters are lower case in controls setting, while English are upper case.
+MC-124327  Changing the name of an item and then emptying the text field in an anvil doesn't make the rename unavailable, keeps last non-empty name on output item.
+MC-132076  Lowercase Letters in controls menu + "Not Bound" is missing.
+MC-159633  Command feedback messages are unnecessarily created during function execution.
+MC-165562  Command suggestion report "incorrect argument" when cursor is at the start of a node without suggestions.
+MC-175504  Single quotation marks are not supported in NBT paths.
+MC-220096  Graphics warning button(s) improperly capitalized.
+MC-224976  NativeImage.setPixelRGBA throws exception with message getPixelRGBA.
+MC-226344  Changing the Owner tag of a projectile doesn't affect the outcome of the projectile unless the world is reloaded.
+MC-227890  If you are falling with leather boots through powder snow, you still fall through.
+MC-228529  Tutorial keybind components are lowercase.
+MC-237960  New potion effect GUI doesn't work when using Programmer Art.
+MC-250197  Glass bottles are inconsistently referred to throughout some advancement description strings.
+MC-252216  65540: Invalid scancode -1 logged in key bind menu when an option is unbound.
+MC-252408  Chat restriction strings consist of inconsistent concluding punctuation.
+MC-256833  Ridable entities that can be steered build up fall damage when on climbable blocks.
+MC-257052  You cannot double-click on languages within the "Language" menu to select them.
+MC-257370  Buckets of fish are not sorted in the same order as the fish items.
+MC-257512  Dead tube coral in creative inventory is in wrong order.
+MC-258360  Horse armor loses its NBT data when equipped on horses via right-clicking.
+MC-258461  The "Detect structure size and position:" string displayed within the structure block GUI is improperly capitalized.
+MC-260468  Wither rose is not grouped with other small flowers in the creative inventory.
+MC-260602  /data modify from string index failure does not return 0 for /execute store success.
+MC-260711  Some words within /datapack list command feedback messages are always pluralized.
+MC-260712  Some words within /scoreboard command feedback messages are always pluralized.
+MC-260713  Some words within /team command feedback messages are always pluralized.
+MC-260715  Some words within /bossbar command feedback messages are always pluralized.
+MC-260716  Some words within /fill, /fillbiome, and /clone command feedback messages are always pluralized.
+MC-261024  /execute if loaded does not guarantee entities are loaded.
+MC-261080  Player can fall through scaffolding when loading a world.
+MC-261433  Shield doesn't block TNT explosion.
+MC-262440  Sniffers can sniff while in love and pathfinding to their lover.
+MC-262518  The mco.configure.world.uninvite.player string contains an unnecessary space before the question mark.
+From the Java Edition 1.20 development versions
+
+MC-261233  Minecart movement is not reliably detected by sculk sensors.
+MC-261349  Chiseled Bookshelf won't rotate when placed as part of a structure.
+MC-261816  Most two block tall flowers do not block enchanting tables / are part of #minecraft:replaceable.
+MC-261988  Inconsistency with Mangrove Roots and Leaves in the Creative Tab.
+MC-262033  The command block GUI remains open when the said command block is destroyed.
+MC-262106  Smithing recipe must have template to work.
+MC-262135  Recipe book GUI is positioned incorrectly.
+MC-262181  NBSP is a valid invisible character that can be used to rename items to have blank names.
+MC-262213  Baby sniffer's head is smaller on the first frame of existing.
+MC-262310  Telemetry description strings consist of inconsistent concluding punctuation.
+MC-262311  The telemetry.event.game_load_times.description string is missing an article before the word "execution".
+MC-262355  Death messages for falling from climbable blocks do not work.
+MC-262441  Baby sniffers stand a bit too far away from players that are tempting them.
+MC-262445  The text cursor no longer renders above text.
+MC-262446  Text within buttons renders above the semi-transparent black lines at the edges of menus.
+MC-262471  Random skylight underwater where it shouldn't be, that cuts off at the chunk border.
+From the previous development version
+
+MC-262506  Parts of beds render through the alternative recipe GUI in the recipe book.
+MC-262508  torchflower_crop causes the game to crash and locks the world when pollinated by bees.
+MC-262531  death.attack.genericKill.player displays raw translation string (is untranslated).
+MC-262542  Loot tables have the same loot sequence in each dimension.
+MC-262557  Ender Dragon respawns and exit portal does not open if the world was Saved and Quit in End before killing the dragon.
+
+
+== 1.20 Pre-release 3 ==
+1.20 Pre-release 3 (known as 1.20-pre3 in the launcher) is the third pre-release for Java Edition 1.20, released on May 19, 2023, which fixes bugs.
+
+
+=== Fixes ===
+18 issues fixed
+From released versions before Java Edition 1.20
+
+MC-121788  Jump boost, slow falling and levitation don't apply to ridden horses, pigs or striders until after a relog.
+MC-135809  Armor stands with Marker tag can still activate pressure plates.
+MC-150183  Iron golems produce walking particles for barrier blocks.
+MC-152258  Riding an entity with slow falling will not stop fall damage.
+MC-170468  World icons can get messed up when a world's icon is reset.
+MC-181280  Incorrect textures can sometimes be displayed.
+MC-221864  Iron golems produce walking particles for light blocks.
+MC-259912  Saddled horses can infinitely retain Levitation effect.
+MC-260653  Markers, interaction, and display entities can prevent pressure plates from deactivating.
+MC-260903  Less recent attacker can be credited for kill.
+MC-262684  Game icon has low resolution.
+From the Java Edition 1.20 development versions
+
+MC-261202  Teleporting a display entity jitters the player riding on the stack.
+MC-262324  Teleporting a mob while riding it doesn't work well.
+MC-262505  Iron golems can produce particles for blocks they're not colliding with.
+MC-262593  The word "occurred" is misspelled as "occured" within two realms strings.
+From the previous development version
+
+MC-262709  Dispensers do not dispense boats at the correct height.
+MC-262712  Alternative recipes in recipe book do not appear on right-click.
+MC-262714  The key.keyboard.unknown string displayed within the key binds menu is improperly capitalized.
+
+
+== 1.20 Pre-release 4 ==
+1.20 Pre-release 4 (known as 1.20-pre4 in the launcher) is the fourth pre-release for Java Edition 1.20, released on May 19, 2023, which fixes bugs.
+
+
+=== Fixes ===
+2 issues fixed
+From the previous development version
+
+MC-262760  The multiplayer selection screen turns blank after attempting to add a server and then canceling the process.
+Other
+
+Fixed a crash in the Multiplayer screen introduced in the last pre-release.
+
+
+== 1.20 Pre-release 5 ==
+1.20 Pre-release 5 (known as 1.20-pre5 in the launcher) is the fifth pre-release for Java Edition 1.20, released on May 23, 2023, which updates Unifont to 15.0.03, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== General ====
+Resource pack
+
+uniform font has been updated to use Unifont 15.0.03.
+During the updates of Unifont, some CJK unified ideographs in Plane 2 were added to the basic Unifont font files for coverage of the General Standard Chinese Characters set, and some in Plane 3, notably the character biang from Biangbiang noodles.
+Updated full width punctuations and symbols in the range U+FF00 to U+FFEF so they no longer appear stretched.
+Minor updates to other individual glyphs, notably a much improved skunk glyph (U+1F9A8).
+
+
+=== Fixes ===
+15 issues fixed
+From released versions before Java Edition 1.20
+
+MC-572  Anvils sometimes destroy items when falling on them even if they aren't placed successfully.
+MC-120158  Anvils and other falling_blocks with HurtEntities set to true kill items and xp orbs.
+MC-163467  Jack o'lanterns can be enchanted with curses.
+MC-207803  Security Issue: Can connect to a server twice for remote access to other players.
+MC-261294  Jack o'lantern can be placed on the player or armor stand head without commands and without appearing the blur.
+From the Java Edition 1.20 development versions
+
+MC-262334  Item display entities have wrong lighting when they're rotated.
+MC-262504  Recipes for colored wool, carpets, and beds in the recipe book are not grouped.
+MC-262513  Blocks placed in the spot of a previously broken block will display the first frame of the breaking animation until updated.
+MC-262514  Unbreakable blocks display the first breaking animation frame when attempting to mine them.
+MC-262690  The player can still jump from the edge of the honey block.
+MC-262730  Biomes being partially overwritten / regenerated in 1.20pre2 inside old world.
+From the previous development version
+
+MC-262773  Markers, interaction, and display entities prevent weighted pressure plates from deactivating.
+MC-262778  Losing control of a ridden mob with levitation and then re-gaining control causes levitation to persist indefinitely.
+MC-262797  Book model not rendering in Enchanting Table GUI.
+MC-262801  Z-fighting occurs on trimmed enchanted armor in the inventory.
+
+
+== 1.20 Pre-release 6 ==
+1.20 Pre-release 6 (known as 1.20-pre6 in the launcher) is the sixth pre-release for Java Edition 1.20, released on May 25, 2023, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Gameplay ====
+Advancement
+
+"Smithing with Style" is now a challenge advancement.
+
+
+==== General ====
+Loot table
+
+The ID of the random sequence is now an optional field. If no sequence name is given, loot is drawn using a non-deterministic random source.
+Recipe
+
+"item": "minecraft:air" can no longer be used in data pack recipes.
+Ingredients in array form are now also allowed in smithing_trim, and smithing_transform recipes on fields template, base and addition.
+Those fields also allow empty arrays, which signalize that slot needs to be left empty.
+
+
+=== Fixes ===
+7 issues fixed
+From released versions before Java Edition 1.20
+
+MC-230799  Sculk sensors detect the movement of crouching players after they respawn if toggle-sneak is enabled.
+MC-237042  Killing players in the sneaking state that have their sneak option set to "Toggle" in their accessibility settings, results in other players not being able to see them in this state when they respawn.
+MC-241326  Thomas Guimbretiere's name is listed twice and misspelt in the credits.
+MC-260411  Re-summoned dragons don't spawn end gateways when exiting the world before killing the dragon.
+From the Java Edition 1.20 development versions
+
+MC-262134  'Smithing with Style' advancement doesn't have non-square image in Advancements menu.
+MC-262340  Iron Golems can spawn on transparent blocks.
+MC-262575  Company names are still inconsistent in the credits.
+
+
+== 1.20 Pre-release 7 ==
+1.20 Pre-release 7 (known as 1.20-pre7 in the launcher) is the seventh and final pre-release for Java Edition 1.20, released on May 29, 2023, which adds symbolic link validation, and fixes a bug.
+
+
+=== Changes ===
+
+
+==== General ====
+Tag
+
+Added bamboo_mosaic_slab to #slabs block and item tags.
+Added bamboo_mosaic_stairs to #stairs block and item tags.
+General
+
+To improve safety, the game now detects symbolic links used inside world directory.
+If the target of a symbolic link is not on the user-configured allow-list, the game does not proceed with loading the world.
+Note: world directory itself can still be linked.
+The list of allowed symbolic link targets is stored in file allowed_symlinks.txt in client or server top directory.
+The file consists of entries (one per line) with following formats allowed:
+Lines starting with # are comments and are ignored.
+[type]pattern, where type can be glob, regex or prefix.
+prefix matches start of path with given pattern (so for /test paths /test, /test/, and /test/foo.txt would match).
+regex matches regular expression against whole path.
+glob uses OS-specific path matching mechanism (for example *.txt would usually match files with txt extension).
+Note: paths use OS-specific separators.
+pattern, which uses default prefix type.
+
+
+=== Fixes ===
+1 issue fixed
+From released versions before Java Edition 1.20
+
+MC-257778  Bamboo Mosaic Slabs and Stairs are not in the #slabs and #stairs block and item tags.
+
+
+== 1.20 Release Candidate 1 ==
+1.20 Release Candidate 1 (known as 1.20-rc1 in the launcher) is the first and only release candidate for Java Edition 1.20, released on May 31, 2023, which fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Splashes
+
+Added "Joule is neat too!"
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Chiseled bookshelf
+
+Knowledge books can now be placed inside them.
+
+
+==== General ====
+Tag
+
+Added knowledge_book into the #bookshelf_books item tag.
+
+
+=== Fixes ===
+3 issues fixed
+From released versions before Java Edition 1.20
+
+MC-256477  Knowledge books can't be placed in chiseled bookshelves.
+MC-262325  Ice/Slime blocks don't give speed when landing towards the very edge of the block.
+From the Java Edition 1.20 development versions
+
+MC-262853  Pitcher plant breaks and floats when growing without enough light.
+
+
+== Notes and references ==
+
+
+== Navigation ==

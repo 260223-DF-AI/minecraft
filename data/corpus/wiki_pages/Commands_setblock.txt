@@ -25,10 +25,10 @@ Must be a blockstate argument as ["<state1>"=<value1>,"<state2>"=<value2>,...]. 
 destroy|keep|replace and destroy|keep|replace|strict
 
 Specifies how to handle the block change. Must be one of:
-destroy — The old block drops both itself and its contents (as if destroyed by a player). Plays the appropriate block breaking noise.
-keep — Only air blocks are changed (non-air blocks are unchanged).
-replace — The old block drops neither itself nor any contents. Plays no sound.
-strict — Place blocks as-is without triggering block updates and shape updates.
+destroy  The old block drops both itself and its contents (as if destroyed by a player). Plays the appropriate block breaking noise.
+keep  Only air blocks are changed (non-air blocks are unchanged).
+replace  The old block drops neither itself nor any contents. Plays no sound.
+strict  Place blocks as-is without triggering block updates and shape updates.
 If not specified, defaults to replace.
 
 
@@ -40,13 +40,13 @@ If not specified, defaults to replace.
 
 == Examples ==
 Put a chest facing east at your feet
-setblock ~ ~ ~ chest[facing=east]‌[Java Edition  only]
-setblock ~ ~ ~ chest ["minecraft:cardinal_direction"="east"]‌[Bedrock Edition  only]
+setblock ~ ~ ~ chest[facing=east][Java Edition  only]
+setblock ~ ~ ~ chest ["minecraft:cardinal_direction"="east"][Bedrock Edition  only]
 Place a sign next to it in Java Edition
 setblock ~ ~ ~-1 birch_sign{Text1:'"My chest"',Text2:'"Do not open!"'} (Note the two sets of quotes around the text. They are required.)
 Put a top quartz slab at the top of your head
-setblock ~ ~2 ~ quartz_slab[type=top]‌[Java Edition  only]
-setblock ~ ~2 ~ quartz_slab ["minecraft:vertical_half"="top"]‌[Bedrock Edition  only]
+setblock ~ ~2 ~ quartz_slab[type=top][Java Edition  only]
+setblock ~ ~2 ~ quartz_slab ["minecraft:vertical_half"="top"][Bedrock Edition  only]
 
 
 == History ==
@@ -59,16 +59,16 @@ setblock ~ ~2 ~ quartz_slab ["minecraft:vertical_half"="top"]‌[Bedrock Edition
 
 
 == See also ==
-/data — modifies the data tags of a block or entity
-/clone — copies blocks from one region to another
-/fill — fills a region with a block
+/data  modifies the data tags of a block or entity
+/clone  copies blocks from one region to another
+/fill  fills a region with a block
 
 
 == References ==
 
 
 == External links ==
-"/setblock Command"     – Microsoft Learn, June 17, 2024.
+"/setblock Command"      Microsoft Learn, June 17, 2024.
 
 
 == Navigation ==

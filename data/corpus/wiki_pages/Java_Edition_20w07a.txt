@@ -1,0 +1,181 @@
+20w07a is the second snapshot for Java Edition 1.16, released on February 14, 2020, which adds piglins, baby hoglins and some changes to endermen and beacons.
+This snapshot contains a bug which causes all villagers with saved memory disappear when upgrading to it, which was fixed in the following snapshot.
+
+
+== Additions ==
+
+
+=== Items ===
+Spawn eggs
+
+ Piglin spawn egg
+Spawns piglins.
+
+
+=== Mobs ===
+ Hoglins
+
+Added baby hoglins.
+ Piglins
+
+Spawn in crimson forests and nether wastes biomes.
+Randomly spawns with golden sword or crossbow.
+Adults are hostile; babies are passive.
+Don't attack players wearing golden armor.
+Adult piglins turn aggressive when a player is mining blocks of gold or opening chests, even if they are wearing gold armor.
+The player can barter with them by right-clicking with gold ingots or drop them on the ground, which makes them drop at least one item or block.
+Common barters (10109 or about 9.17%) are 14 soul sand, 14 brown mushrooms, 14 red mushrooms, 14 crimson fungi, 14 nether bricks, 38 flint, or 412 rotten flesh.
+Uncommon barters (5109 or about 4.59%) are 1 shroomlight, 1 fire charge, 412 gravel, 25 raw porkchops, 27 leather, or 12 warped fungi.
+Rare barters (2109 or about 1.83%) are 24 glowstone dust, 13 magma cream, or 24 ender pearls.
+Very rare barters (1109 or about 0.92%) are 1 warped nylium, 14 nether quartz, or 1 obsidian.
+Attack adult hoglins sometimes.
+Baby piglins do not attack and adult piglins do not attack baby hoglins.
+Attack wither skeletons.
+Avoid soul fire, soul fire torches, soul fire lanterns, and zombie pigmen.
+Prefer to hunt and fight in groups.
+Convert to a zombie pigman when in the Overworld.
+
+
+=== General ===
+Tags
+
+Added block tag beacon_base_blocks.
+Contains block of iron, block of gold, block of diamond, block of emerald, and block of netherite.
+Controls what blocks can be used to build a beacon base.
+Added block tag wall_post_override.
+Contains lantern, soul fire lantern, torch, soul fire torch, redstone torch, and tripwire.
+Controls what non-solid blocks can transform walls into their pillared block state.
+Added block tag wither_summon_base_blocks.
+Contains soul sand and soul soil.
+Controls what blocks can be used to build a wither.
+Added item tag beacon_payment_items.
+Contains iron ingot, gold ingot, diamond, emerald and netherite ingot.
+Controls what items can be used as payment in a beacon's GUI. This does not affect the items displayed by the beacon's GUI.
+Text
+
+Added text for translation string death.attack.magic.player which appears when a player dies to a potion of Harming after being attacked by a player. It now says "Player was killed by magic whilst trying to escape attacker".
+Textures
+
+Added the zombified piglin entity texture.
+Added the leather, chainmail, iron, golden, diamond and netherite helmet textures used for piglins.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Beacons
+
+Netherite blocks can be used as the base of a beacon and netherite ingots can be used as the fuel for a beacon.
+Soul fire lanterns
+
+Now have an animated texture.
+Removed the wood colors from the texture.
+
+
+=== Items ===
+Spawn eggs
+
+Changed the texture of the hoglin spawn egg.
+Using a spawn egg on a mob that doesn't have a baby variant now spawns an adult of that mob type.
+
+
+=== Mobs ===
+Endermen
+
+Can now pick up nylium, crimson roots, warped roots, and Nether fungi variants.
+No longer pick up netherrack.
+Hoglins
+
+Attack players on sight.
+Drop pork and sometimes leather.
+Breed when fed crimson fungi.
+Are hunted by adult piglins sometimes.
+Are not hunted by baby piglins and baby hoglins are not hunted at all.
+Move away from placed warped fungi.
+Have new sounds.
+Withers
+
+Can now be summoned using soul soil in the base.
+
+
+=== Non-mob entities ===
+ Armor stands
+
+No longer delete replaceable blocks such as snow, grass, fire etc. when placed inside them.
+
+
+=== Gameplay ===
+Advancements
+
+Piglins and hoglins now count towards the Monster Hunter and Monsters Hunted advancements.
+
+
+=== Commands ===
+/clear
+
+Now clears item in the inventory crafting grid.
+
+
+=== General ===
+Tags
+
+Removed netherrack and added Nether fungi, crimson roots, warped roots, and nylium variants to the enderman_holdable block tag.
+
+
+== Fixes ==
+37 issues fixed
+From released versions before 1.16
+
+MC-64871  Cannot sleep while on fire, even with fire resistance.
+MC-65951  Armor stands fall through fences.
+MC-75328  /clear does not clear items in the inventory crafting grid.
+MC-79944  Various statistics overflow at 32-bit integer limit.
+MC-89043  Slime blocks moved by pistons often fail to bounce up the player.
+MC-93813  Snow golems throwing snowballs play arrow shooting sound.
+MC-94094  Snow golems do not drop their pumpkin when sheared.
+MC-94730  Endermen become passive when teleporting randomly during the day while being aggressive.
+MC-123453  Armor stands can't be placed in a 1 block high space if the EntityTag "Small:1b" is set.
+MC-132967  Mushrooms show as green dots on map.
+MC-133088  Missing translation string death.attack.magic.player.
+MC-135034  Burning mobs are extinguished by snow in cold biomes, but not in snowy biomes.
+MC-136063  Incorrect spacing for "entity.minecraft.tropical_fish.type.sunstreak"s value.
+MC-148067  Snow golems are damaged by snowfall in mountain and cold biomes.
+MC-155977  Enchanting a book makes the book lose its name.
+MC-159672  Vex will occasionally try to attack the player in creative/spectator.
+MC-160053  Enderman keeps following the player after becoming neutral/passive.
+MC-166245  No sound for shearing snow golems.
+MC-167561  All players can make a [wolf] stand up or sit down.
+MC-167692  Infested blocks do not spawn silverfish when blown up.
+MC-172025  Several misrotated blocks in snowy_medium_house_2.
+From the previous development version
+
+MC-170816  Debug pie chart freezes in place when closing the F3 menu and stays there.
+MC-170846  Stacked walls create pillars when they should not, depending on the order of placement.
+MC-170848  Hoglin and zombie pigman spawn eggs look identical.
+MC-170849  Hoglin's hitbox is way too small.
+MC-170852  Breaking a warped or crimson doors drops two items in Survival mode.
+MC-170853  Cannot spawn baby hoglin using spawn eggs on adult hoglin.
+MC-170862  Soul "lights" do not update walls.
+MC-170869  Soul fire lantern animation missing.
+MC-170881  Fire does not burn items.
+MC-170886  Alt + F3 debug graph no longer functions.
+MC-170899  Netherite cannot power beacons.
+MC-170939  Walls do not create pillars with string or tripwire above.
+MC-170951  Cannot teleport entities outside of the world.
+MC-171023  Walls do not stack properly in some directions when placed next to blocks.
+MC-171211  Observers no longer detect a piston base starting to retract.
+MC-171333  Killing a hoglin does not grant the Monster Hunter or Monsters Hunted advancements.
+
+
+== Videos ==
+
+
+== Trivia ==
+20w07a was released on a Friday, which almost never happens with a first snapshot.
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,611 @@
+This is a list of Bedrock Edition 1.19.50 development versions.
+
+
+== Preview 1.19.50.20 ==
+Beta 1.19.50.20 (Android) or Preview 1.19.50.20 (Windows, iOS, iPadOS, Xbox) is the first beta/Preview version for Bedrock Edition 1.19.50, released on October 13, 2022, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Gameplay ====
+Spectator mode
+
+Moved from an experimental toggle into the base game.
+
+
+==== General ====
+Experiments
+
+Removed the 'Spectator Mode' toggle.
+
+
+==== Technical ====
+General
+
+Min/Max distance values in sound events now only affect the sound event and not all events using the same sound. (MCPE-154376)
+Added client-side-chunk-generation-enabled toggle to server.properties.
+Networking
+
+Added server property 'enable-lan-visibility' to disable the explicit LAN discovery by clients. This will prevent unexpected port conflicts when running multiple dedicated servers on a single host. Clarified port use in server logs and made error messaging more clear. (BDS-1094)
+Stability and Performance
+
+Fixed a crash that would occur if the texture_index of a spawn egg was out of bounds. Now a content log error will be presented instead.
+Added null ptr check when retrieving actor ref in CameraAPI to prevent crashing.
+Fixed an issue where game would crash when Ender Dragon breath attack hadn't hit blocks or fell into the void. (MCPE-161204)
+Fixed a crash that could occur when navigating down in the Villager screen with the keyboard.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Upcoming Creator Features" and "Beta APIs" experimental toggle.
+
+
+==== Changes ====
+
+
+===== Technical =====
+General
+
+Crafting Table UI updates when a block changes to a permutation with a different minecraft:crafting_table block component.
+Scripting, APIs, and GameTest Framework
+
+Fixed wireframes still rendering after using the /gametest clearall for distant gametest structures command.
+Entity
+Removed function runCommand. Consider runCommandAsync as an alternative.
+Dimension
+Removed function runCommand. Consider runCommandAsync as an alternative.
+Converted BlockRaycastOptions to an interface.
+Converted EntityEventOptions to an interface.
+Converted ScoreboardObjectiveDisplayOptions to an interface.
+Location type updated to IVec3
+Vector
+add - updated a and b arguments to accept an IVec3 interface type.
+cross - updated a and b arguments to accept an IVec3 interface type.
+distance - updated a and b arguments to accept an IVec3 interface type.
+divide - updated a and b arguments to accept an IVec3 interface type.
+lerp - updated a and b arguments to accept an IVec3 interface type.
+max - updated a and b arguments to accept an IVec3 interface type.
+min - updated a and b arguments to accept an IVec3 interface type.
+multiply - updated a and b arguments to accept an IVec3 interface type.
+slerp - updated a and b arguments to accept an IVec3 interface type.
+
+
+=== Fixes ===
+Spectator Mode
+
+Players can go in and out of Spectator Mode using the Personal game mode in the Settings Menu or the /gamemode spectator command, if cheats are enabled. (MCPE-156688)
+Open container, Command Block or Structure Block screens now close when players enter. Spectator Mode
+Spectator Mode now appears on the list of Personal Game Modes in Settings. (MCPE-156688)
+Blocks
+
+Dirt Path and Farmland collision are now one pixel lower. (MCPE-12109)
+Players swimming above Mud will not have their screen covered. (MCPE-153737)
+Projectiles landing on Mud will not repeatedly shake. (MCPE-153744)
+Amphibious mobs no longer have trouble pathfinding around Mud Blocks. (MCPE-153961)
+Mud and Soul Sand Block bounding boxes now matches their visual bounding boxes for when a player places the blocks. (MCPE-162252)
+Sugar Cane will break on next random tick when its water source is removed. (MCPE-162351)
+Fixed a bug where placed Light Blocks were invisible even while selecting a Light Block.
+Gameplay
+
+Fixed blocks flickering when moved by Pistons.
+Fixed an issue where breeding mobs with applied effects would result in the offspring having the effect bonuses permanently applied. (MCPE-81890)
+Piston's arm now extends more smoothly. (MCPE-155987)
+Blocks attached to Pistons now move more smoothly. (MCPE-146597)
+Fixed a bug that could cause the player to teleport back to a portal after exiting it. (MCPE-157494)
+Fixed an issue where signs would not play a placement sound when placed.
+Maps corrupted by black pixels can now be repaired by revisiting corrupted areas. Previously affected maps can now be repaired by holding in main or off hand. (MCPE-162421)
+General
+
+Fixed Bat resting location being offset when at negative world height.
+Fixed a bug where fully charged items were lost when going through a portal. (MCPE-55279)
+Bubble columns are now properly generated above underwater Magma Blocks.
+Graphical
+
+Applied ambient light to blocks moved by Pistons. (MCPE-136928)
+Fixed the brightness of the night sky when enabling RTX. (MCPE-162445)
+Items
+
+Freshly crafted tools and armor now work the first time they are used. (MCPE-161151)
+Weapons, tools, and armor can now be dropped from the players inventory the first time after being renamed. (MCPE-162132)
+Fixed an issue where an entity at coordinate 0,0,0 prevented Pressure Plates from being placed. (MCPE-161377)
+Mob Effects
+
+Jump Boost now consistently affects mobs ridden by players. (MCPE-45823)
+Slow Falling now consistently affects mobs ridden by players. (MCPE-126604)
+Mobile Data
+
+Added a new Mobile Data Blocked screen on Android/iOS/iPadOS/Fire when mobile data is available but disabled in-game and Wi-Fi is not connected.
+Mobs
+
+Increased Enderman follow range from 32 to 64. (MCPE-35306)
+Touch Controls
+
+"Split Control" option will only appear in Classic control mode and only affect the Classic control scheme.
+Fixed an issue where hotbar slots could not be touched in Crosshair and Touch control schemes in certain situations.
+Scrolling the inventory screen is easier as the dwell time has been increased to 180 milliseconds (was 120 previously). The dwell time is the length of time an item must be held before a drag action begins.
+Untangled the connections between "Lock Joystick", "Joystick Always Visible", and "Joystick Visible When Unused".
+Added toggle "Delayed Block Breaking (Creative Only)" in Touch Settings to control this functionality.
+Fixed an issue where double tapping touch control buttons can be difficult on high refresh rate screens. (MCPE-156351)
+Improved the way that button presses and camera movements work in tandem in the new Touch Controls.
+Action buttons now show up when in a Boat while using Crosshair mode. (MCPE-159376)
+User Interface
+
+Fixed a bug where the boss bar name would not update when the boss's name changed. until the bar was reloaded by the player.
+A warning now appears when the player is about to lose changes when moving away from the Create New World screen.
+Changed the error handling of copying worlds to display a modal pop-up instead of a toast notification.
+Fixed a bug causing the HUD to not rotate with the player's direction while riding in a Boat in VR.
+Changed the color of the description text for the Allow mobile data for online play option to be more readable. (MCPE-162459)
+Hotbar item text background is now affected by the Text Background Opacity slider. (MCPE-79331)
+Commands
+
+Using the /enchant command to apply the same level of enchantment no longer results in a higher level being applied. (MCPE-153204)
+Fixed an issue where hasItem wouldn't correctly detect an item with a data value if hasItem wasn't provided a data value. (MCPE-162460)
+
+
+== Preview 1.19.50.21 ==
+Beta 1.19.50.21 (Android) or Preview 1.19.50.21 (Windows, iOS, iPadOS, Xbox) is the second beta/Preview version for Bedrock Edition 1.19.50, released on October 19, 2022, which adds the first 1.20 features to the game, and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Experiments
+
+Added the "Next Major Update" experimental toggle.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Buttons
+
+Added unique button click sound for wooden buttons to match Java Edition.
+Doors, fence gates and trapdoors
+
+Now use the same opening and closing sound effects as Java Edition.
+Pressure Plates
+
+Updated to have different pitches based on their behavior to match Java Edition.
+
+
+==== Mobs ====
+Villager
+
+While playing tag, baby villagers will now run at a quicker speed that matches Java Edition.
+
+
+==== Gameplay ====
+Sound
+
+Various wood types now have unique sounds when placed, broken, or walked on.
+There are three sets of unique sounds: Overworld wood types, Nether wood types, and bamboo.
+
+
+==== General ====
+Touch Controls
+
+Removed the action delay from Attack and Interact buttons.
+When the joystick is unlocked, the draggable range has been changed to be the same as the when the joystick is locked.
+In both modes, if auto-sprinting is enabled, it will start when the joystick is dragged slightly above the background. The auto-sprint will disengage if the joystick control is subsequently moved back into the joystick background area.
+A tap gesture will now fire a charged crossbow. Previously it was necessary to hold the gesture for 400 milliseconds before the bolt would fire.
+
+
+==== Technical ====
+Actor Properties
+
+Actor Properties are no longer experimental (this includes Molang queries and property filters, but not Permutations).
+AI Goals
+
+Exposed new data parameters for the minecraft:offer_flower AI behavior to specify such things as the time that the mob offers the flower for, the chance that the goal will start, and the dimensions of the AABB used to search for a mob to offer a flower to.
+The minecraft:offer_flower AI behavior can now be used by any mob, not just the iron golem.
+The minecraft:offer_flower AI behavior will now search through all mobs in the specified range rather than just the closest one, meaning that this goal has the potential to be used more consistently than before.
+Exposed new data parameters for the minecraft:take_flower AI behavior to specify such things as the conditions to be met to start the goal, the min and max wait times before taking the flower, and the dimensions of the AABB used to search for a mob to take a flower from.
+The minecraft:take_flower AI behavior can now be used by any mob, not just baby Villagers.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Upcoming Creator Features", "Beta APIs", and "Next Major Update" experimental toggle.
+
+
+==== Additions ====
+
+
+===== Blocks =====
+Bamboo Mosaics
+
+A plank variant exclusive to the bamboo wood set.
+Can be crafted with 2 bamboo slabs arranged in a vertical strip.
+The bamboo mosaic has its own stair and slab variant.
+Buttons, doors, fences, fence gates, planks, pressure plates, signs, slabs, stairs, and trapdoors
+
+Added their bamboo variants.
+Bamboo planks can be crafted by arranging 4 bamboo in a 22 format in the crafting grid.
+Chiseled Bookshelves
+
+Can be crafted with 6 planks and 3 wooden slabs.
+Can store up to 6 books, books and quills, written books, and enchanted books.
+Can interact with redstone comparators.
+Hanging Signs
+
+A more expensive version of normal signs, which can be crafted with 2 chains and 6 stripped logs, resulting 6 of them.
+Can be hung up in the following ways:
+Underneath a block that can provide support in the center.
+When the hanging sign is placed underneath a full block, the chains will be on parallel sides of the sign.
+When the hanging sign is placed underneath a non-full block, such as a fence, or when placed while sneaking, the chains will take on an upside-down v-shape.
+Attached to the solid side of a block.
+Attached to the side or underneath another hanging sign.
+Cannot be placed directly on the ground without support from the side or above.
+However, hanging signs that have a horizontal bar will not pop when the supporting block is removed.
+
+
+===== Mobs =====
+Camels
+
+Can be equipped with a saddle and ridden by two players.
+Spawn naturally in desert villages.
+Can walk over fences.
+Will randomly sit down.
+While sitting, it is difficult to convince them to move.
+Can either walk slowly or sprint quickly.
+Can also dash forward but will lose stamina for a while.
+
+
+===== Non-mob entities =====
+Boats and boat with chests
+
+Added bamboo raft and bamboo raft with chest.
+Can be crafted with bamboo planks instead.
+They function the same as ordinary boats, but have a unique look to them.
+
+
+==== Changes ====
+
+
+===== Technical =====
+Commands
+
+As a preview of upcoming potential changes to how commands run, new experimental functionality within the "Upcoming Creator Features" experiment causes all command execution to run at the end of the current tick.
+General
+
+Removed the functionality of the minecraft:breathability component. Component will have no effect on the custom defined block.
+API
+
+Initial APIs are releasing out of beta and will be usable without an experimental flag.
+The first module to release is @minecraft/server as version 1.0.0. The APIs included with this are listed below.
+Non-beta APIs like those included in the @minecraft/server 1.0.0 module do not require the Beta APIs experiment to be turned on, and will be more stable over time.
+@minecraft/server will continue to develop in Beta and those Beta APIs have been incremented in version to 1.1.0-beta; if you wish to continue to use Beta. @minecraft/server APIs, manifest.json references will need to be updated to 1.1.0-beta.
+APIs included in the @minecraft/server version 1.0.0 release:
+System type (Exposed via systemglobal instance)
+run() - runs a function on the next tick (can be used to maintain a game loop tick over tick).
+World type (exposed via worldglobal instance)
+getDimension().
+getAllPlayers().
+MinecraftDimensionTypes type
+nether.
+overworld.
+theEnd.
+Dimension type
+id.
+runCommandAsync().
+CommandResult type
+commandResult.
+Entity type
+id.
+typeId.
+dimension.
+runCommandAsync().
+Player type
+name.
+
+
+=== Fixes ===
+Spectator Mode
+
+Allays no longer throw items to players in spectator mode. (MCPE-162873)
+User Interface
+
+You can now bind the copy coordinate keys with full keyboard gameplay turned on. (MCPE-163082)
+World and Dimensions
+
+Fixed a bug that could cause players to get stuck on the "Building Terrain" screen when changing dimensions. (MCPE-158215)
+Gameplay
+
+Temporarily reverted the fix for effects being inherited by bred mobs, while a related issue is addressed first. (MCPE-81890)
+Add-Ons and Script Engine
+
+Fixed an issue where changing the subpack of Resource Packs that have subpacks, would not apply changes until the game was restarted. (MCPE-162002)
+Stability and Performance
+
+Fixed a crash that would occur if Education Edition items were rendered without the Education Edition toggle turned on. (MCPE-161587)
+Touch Controls
+
+Fixed an issue where players couldn't drag/drop in the anvil screen.
+
+
+== Preview 1.19.50.22 ==
+Beta 1.19.50.22 (Android) or Preview 1.19.50.22 (Windows, iOS, iPadOS, Xbox) is the third beta/Preview version for Bedrock Edition 1.19.50, released on October 26, 2022, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== General ====
+Dressing Room
+
+Added a new flow to introduce the new Minecraft Cast Characters and how to use said characters as one's appearance.
+
+
+==== Technical ====
+Molang
+
+Fixed has_property to return 1 when a property exists and 0 when not, rather than the opposite of that.
+Recipes
+
+Recipes that have the same inputs but have different outputs will now display content errors (excludes, crafting table and stonecutter recipes).
+User Interface
+
+Fixed contrast issue of the little arrow in dropdown components on hover, the unselected toggle components and the toggle/sliders in chat settings.
+JSON
+
+Released BlockCollisionBoxComponent outside of experimental toggle in JSON formats 1.19.50 and higher.
+Released BlockCraftingTableComponent outside of experimental toggle in JSON formats 1.19.50 and higher.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Next Major Update" experimental toggle.
+
+
+==== Changes ====
+
+
+===== Mobs =====
+Camels
+
+Camels now slowly heal over time.
+Changed the Camel's walk animation.
+Camel walking animation now matches its movement speed.
+A camel now keeps dashing until it touches ground or water.
+The length of a camel dash is now influenced by the Speed and Jump Boost effects.
+
+
+===== Items =====
+Spawn Eggs
+
+Camel spawn egg now has new colors to better fit the color palette.
+
+
+===== General =====
+Tooltips
+
+Added controller tooltip "Place Book" if the player looks at a non-full Chiseled Bookshelf holding a book, book and quill, written book or enchanted book.
+Added controller tooltip "Remove Book" if the player looks at a non-empty Chiseled Bookshelf while holding nothing or anything else than a book, book and quill, written book or enchanted Book.
+
+
+=== Fixes ===
+Blocks
+
+Chiseled and Cut Red Sandstone now have smooth undersides. (MCPE-20006)
+Experimental
+
+Fixed the recipe for Chiseled Bookshelf so that it can be constructed from any type of Planks and wooden Slabs that have the standard tags.
+Gameplay
+
+Fixed an issue where the player could clip through some walls while stuck inside blocks. (MCPE-136536)
+When stuck inside a block, players will now be pushed towards the nearest open area.
+Graphical
+
+Fixed choppy performance after resuming the game due to incorrectly presented frames.
+Mob shadows render properly on Android devices using ANGLE. (MCPE-155354)
+Items
+
+Using the Anvil to enchant or fix items will no longer rename items unintentionally. (MCPE-154453)
+Mobs
+
+Fixed a bug where Slimes and Magma Cubes could break Shield durability every tick. (MCPE-119451)
+Fixed a bug where Pufferfish could break Shield durability every tick. (MCPE-143689)
+Armor Stands will now drop their offhand item upon destruction. (MCPE-158228)
+Fixed a bug that caused the Ender Dragon to not load if the world was saved and loaded while it was alive. (MCPE-156528)
+Spectator Mode
+
+Spectator Mode players can no longer spawn a Warden through Sculk Shriekers.
+Spectator Mode players can no longer activate Sculk Sensors or Pressure Plates. (MCPE-163177)
+Spectators no longer block players from interacting with other entities (blocks, buttons, levers, etc.)
+Stability and Performance
+
+Fixed an issue that could cause a crash when loading into some Marketplace worlds on low memory devices. (MCPE-161866)
+Fixed a crash that could occur when actors with a non-player owner went through End Portals.
+Touch Controls
+
+Fixed an issue on mobile devices when swimming; charging a Bow, Crossbow, or Trident, no longer launch the weapon immediately. (MCPE-136625)
+Fixed an issue where joystick gestures were stopped if your finger overlapped with the hotbar. (MCPE-159870)
+Fixed an issue where players couldn't interact with the hotbar in some resource packs with the new touch controls. (MCPE-157748)
+The sprint and descend buttons in the crosshair mode now have the same color as other buttons. (MCPE-156740)
+Resolved an issue where quickly tapping "Ascend" and "Descend" would cancel flying in the new touch controls. Going forward, double tapping "Descend" is how flying is cancelled. (MCPE-162240)
+Status icons now follow the safe zone when in touch mode.
+Adjusted status icons to form in one row across width of screen when in touch to account for new touch controls.
+Vanilla Parity
+
+Lily Pads now pop with sound and particles when run into by a Boat. (MCPE-65138)
+Most blocks destroyed from lack of support now have visual particles, audio effects, and cause vibration events.
+Coral Fans can no longer be placed on the side of Slab blocks. (MCPE-116986)
+Coral Fans can now survive on top of solid transparent blocks like Glass. (MCPE-112407)
+
+
+== Preview 1.19.50.23 ==
+Beta 1.19.50.23 (Android) or Preview 1.19.50.23 (Windows, iOS, iPadOS, Xbox) is the fourth beta/Preview version for Bedrock Edition 1.19.50, released on November 3, 2022, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Command format ====
+/execute
+
+The updated /execute command syntax, more similar to Java Edition, is no longer behind the "Upcoming Creator Features" experimental toggle.
+
+
+==== Technical ====
+Graphical
+
+Added D3D12 support for Intel Integrated/Dedicated Graphics for compatible drivers.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs" and "Next Major Update" experimental toggle.
+
+
+==== Changes ====
+
+
+===== General =====
+Commands
+
+Removed the "Upcoming Creator Features" requirement for the new /execute command syntax.
+Sound
+
+Fixed an issue where Hanging Signs would not be affected by block volume.
+
+
+===== Blocks =====
+Signs and Hanging Signs
+
+The "Place" prompt is now displayed correctly for all variations of Sign and Hanging Sign when using a controller.
+Mobs now pathfind properly on top of side-attached Hanging Signs.
+Fixed an issue where Hanging Signs could replace Spore Blossoms and Big Dripleaf.
+Fixed an issue where Hanging Signs could attach to Bamboo Saplings.
+Slabs
+
+Fixed an issue where using pick-block on a double Bamboo Mosaic Slab or breaking it would give a Bamboo Slab. (MCPE-163906)
+
+
+===== Mobs =====
+Camel
+
+Players can no longer ride Camels through/in deep water. (MCPE-163608)
+Sitting Camels do not play the sitting down animation on load anymore, instead they are loaded already sitting.
+Camels can now auto step up one and a half blocks without jumping. (MCPE-163322)
+
+
+===== Non-mob entities =====
+Boats and Boat with Chests
+
+The name displayed for Bamboo Raft with Chest is now Raft with Chest. (MCPE-163327)
+When dismounting from Raft and Raft with Chest the correct tooltip is now shown. (MCPE-163326)
+
+
+===== Technical =====
+API
+
+Fixed a bug where property velocity would return incorrect values in certain situations. (MCPE-152715)
+Added function canPlace - Returns if it is valid to place the desired block type or block permutation at a specified location (and optional face of the block).
+Added function trySetPermutation - Attempts to place the desired block permutation at a location by first checking canPlace.
+
+
+=== Fixes ===
+Gameplay
+
+Boats and Boats with Chest are no longer teleported to (0, 0, 0) when pushed by a Piston. (MCPE-163330)
+Fixed Bamboo Saplings not breaking when pushed by Pistons.
+General
+
+Fixed improper LevelChunk blending when upgrading pre-1.18 worlds. (MCPE-162480)
+Items
+
+Fixed issues with Book & Quill not able to be signed and closed. (MCPE-163325)
+Fixed a bug where Chain Command Blocks would not activate when Delay in Ticks was greater than 0.
+Realms
+
+Shortened text when uploading worlds and add-ons so it fits in the dialog.
+You will no longer get an error message when joining a Realm that has been empty for several minutes.
+Stability and Performance
+
+Navigating through the Recipe Book when the player had items that contain mobs in their inventory no longer causes significant drops in performance. (MCPE-146462)
+Reduced server lag with items going in and out of Hoppers. (MCPE-68796)
+Fixed Xbox controller stick deadzone and sensitivity. (MCPE-162847)
+Touch Controls
+
+Fixed the Dismount button in the New Touch Control Schemes looking blurry. (MCPE-156722)
+User Interface
+
+Fixed a bug in Pocket UI Inventory screen, where items could not be dropped back to inventory in Creative Mode.
+Fixed a bug in Pocket UI Inventory screen, where the Craftable/All toggle could only be changed in the Search tab but not in any other tab.
+On Xbox, camera movement with mouse no longer changes mouse position when menu is reopened. (MCPE-162890)
+Text color for a selected item stack count is now white instead of yellow.
+Vanilla Parity
+
+Getting killed by a mob with a renamed weapon no longer produces a death message with a redundant 's' at the end. (MCPE-163283)
+Spectator Mode
+
+When entering Spectator Mode while typing on a Sign, the Sign text screen now closes.
+If you swap into Spectator Mode while standing alone on a Pressure Plate, you lose weight and the Pressure Plate releases. (MCPE-163177)
+Commands
+
+Running /execute as from Command Blocks no longer inherits rotation from entity. (MCPE-162680)
+
+
+== Preview 1.19.50.24 ==
+Beta 1.19.50.24 (Android) or Preview 1.19.50.24 (Windows, iOS, iPadOS, Xbox) is the fifth beta/Preview version for Bedrock Edition 1.19.50, released on November 9, 2022, which changes the model and texture for vexes, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Vex
+
+Updated Vex model and texture.
+The vex retains a slightly larger hitbox to make it easier to fight.
+
+
+==== Technical ====
+General
+
+input_ground_controlled no longer implies increased auto step when controlled by player. The variable_max_auto_step component can be used instead. To have consistency with previous versions use base_value: 1.0625 and jump_prevented_value: 0.5625.
+
+
+=== Fixes ===
+Gameplay
+
+Fixed a bug where players could get moved to the other side of a wall when close to a retracting piston.
+Fixed beehives not incrementing their honey level when a Bee with nectar exits. (MCPE-163938)
+Touch Controls
+
+Made keyboard input consistent with other control modes when the player is flying and using touch controls. Now, double pressing the "Space" key can correctly disable flying in touch control mode.
+Fixed an issue which prevented items from being discarded in the extended Creative Mode inventory by dropping them on another item. (MCPE-162124)
+Commands
+
+Running /execute align xyz entity now produces a command error instead of crashing. (MCPE-162733)
+
+
+== Preview 1.19.50.25 ==
+Beta 1.19.50.25 (Android) or Preview 1.19.50.25 (Windows, iOS, iPadOS, Xbox) is the sixth and final beta/Preview version for Bedrock Edition 1.19.50, released on November 16, 2022, which fixes bugs.
+
+
+=== Changes ===
+
+
+==== General ====
+Touch
+
+The new touch controls are now enabled by default.
+
+
+=== Fixes ===
+Gameplay
+
+Reverted change to player being pushed while stuck inside a block to iron out some issues with pistons. (MCPE-136536)
+Touch
+
+Removed the trivial joystick when the player is on the raft in the classic control mode. (MCPE-163758)
+User Interface
+
+Fixed frame rate dropping when hovering over item slots on the Creative inventory screen. (MCPE-162277)
+Recipes relying on wood slabs (eg. composter and lectern) are now previewed properly on the crafting table screen.
+
+
+== Notes and references ==
+
+
+== Navigation ==

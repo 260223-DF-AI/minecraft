@@ -1,0 +1,158 @@
+14w04a is the sixth snapshot for Java Edition 1.8, released on January 23, 2014, which adds the /particle command.
+14w04a was reuploaded an hour and a half later to fix the server not working.
+
+
+== Additions ==
+
+
+=== Command format ===
+/particle
+
+Spawns particles in a given area.
+It can also be relative to entities.
+Usage: /particle <name> <x> <y> <z> <xd> <yd> <zd> <speed> [count] [player:entity].
+Example: /particle lava ~ ~1 ~ 1 1 1 0.5 2 @e[type=Chicken].
+List of particles: hugeexplosion, largeexplode, fireworksSpark, bubble, suspended, depthsuspend, townaura, crit, magicCrit, smoke, mobSpell, mobSpellAmbient, spell, instantSpell, witchMagic, note, portal, enchantmenttable, explode, flame, lava, footstep, splash, wake, largesmoke, cloud, reddust, snowballpoof, dripWater, dripLava, snowshovel, slime, heart, angryVillager, happyVillager, iconcrack_(ID)_(DATA), blockcrack_(ID)_(DATA), blockdust_(ID)_(DATA).
+
+
+== Changes ==
+
+
+=== Blocks ===
+Anvils
+
+Prior work cost increase changed from linear (1 per repair) to exponential (times 2 plus 1 per repair).
+Repairing with a "sacrifice" now costs 2 levels rather than only 1.
+Button
+
+Can now be placed on ceiling/floors.
+Dead bushes
+
+Now flammable.
+Furnaces
+
+When a furnace runs out of fuel, the smelting progress reverses at twice the normal speed.
+Item frames
+
+Items in item frames can now be rotated by 45 degrees (eight possible orientations).
+Item frames can give off a signal detected by comparators, based on the item's current orientation.
+Signal strength is as follows: 0: empty; 1: item; 2: item rotated once; 3: item rotated twice; ...; 8: item rotated 7 times.
+Moss stone
+
+Now craftable in a shapeless recipe with one cobblestone and one vine.
+
+
+=== Mobs ===
+Iron golem
+
+Can drop iron ingots again by any means of death.
+Can be spawned with pumpkins + dispenser.
+Snow golem 
+
+Can be spawned with pumpkins + dispenser.
+Withers
+
+Can be spawned with skulls + dispenser.
+Villagers
+
+Now harvest, collect and replant grown potatoes, wheat, and carrots.
+They do not have unlimited seeds; seeds must be replenished to replant crops.
+Craft wheat into bread, and drop it to other villagers.
+Can now become willing to breed by consuming food: 3 bread, 12 potatoes or 12 carrots.
+Zombie pigman
+
+Can drop gold nuggets again by any means of death.
+
+
+=== Command format ===
+/fill
+
+Added the ability to filter block types, as long as the filler block is not a tile entity
+Only if it's used to fill in replace mode with "normal" blocks.
+Syntax: /fill [x] [y] [z] [x] [y] [z] [BlockName] [Data] replace [filterBlockName] [filterData].
+
+
+=== Gameplay ===
+Enchantments
+
+Looting now gives an extra 1% chance of getting rare loot per level.
+Village mechanics
+
+Doors are now added to the closest village.
+This does not break iron farms, but change them a little, enough to make them "practically pointless".
+
+
+=== General ===
+Debug screen
+
+The x coordinate line is now bold when looking east/west, similarly the z coordinate line is now bold when looking south/north.
+The crosshair displays 3 short colored lines to indicate the direction of each axis: x/red, y/green, z/blue.
+Rendering & performance
+
+Only transparent blocks now render as transparent (eliminates the use of x-ray texture packs).
+Skin customization
+
+Now displays the right arm's second layer in first person view.
+Skins and capes are now distributed through servers.
+Skins server outages will occur less frequently and have less impact.
+Server-altered skins/capes are not possible  only signed URLs are stored server-side.
+Skin changes will no longer require client restarting, at worst re-logging will update the skin for everybody.
+Duplicate skins no longer need to be downloaded twice.
+Server traffic will barely be affected.
+
+
+== Fixes ==
+37 issues fixed
+From released versions before 1.8
+
+MC-78  Villagers crowd into a single building.
+MC-888  /difficulty command doesn't change the default difficulty in the ESC menu (singleplayer).
+MC-1253  Ladder, sign, fence, gate, trapdoor causes block it is placed in to darken.
+MC-1580  Ghost items from trading with SHIFT-click.
+MC-3668  When going through nether portals with (potion) effects, the effect animations (particles, fire, visibility, additional hearts) are lost.
+MC-5824  Cactus can grow next to blocks.
+MC-8662  Items are not centered correctly within frames.
+MC-9582  Whole-word selection behaves erratically in chat.
+MC-16457  Pumpkin texture flips when made into snowman.
+MC-18284  New AI mobs see through invisibility.
+MC-25370  Mouse is centered when going to previous menu with ESC.
+MC-29999  Realms button is still visible even though the client is a snapshot.
+MC-30995  /setblock replace doesn't replace same block with different tile entity/NBT data.
+MC-31081  Stone monster eggs spawn 2 silverfish.
+MC-31203  Furnace progress remains after changing ingredient.
+MC-32301  Lava fizz sound plays whenever a flowing lava block destroys an air block.
+MC-36847  No colon after game mode in world options.
+MC-37355  server-icon.png alpha channel display.
+MC-45087  Id for cooked fish is "minecraft:cooked_fished".
+MC-45235  Double Shift = Sprint .
+From the 1.8 development versions
+
+MC-44368  After setting the difficulty lock, and changing it with a command block, the lock would not revert to what the command block says.
+MC-44467  Overpopulated flowers near lake
+MC-44551  Silverfish can infest granite/andesite/diorite.
+MC-44592  Fire from lava spreads further than it should.
+MC-44700  /me @e crash.
+MC-44890  Doors get added to the list of village doors over and over a.gain.
+MC-44893  /kill not killing invulnerable entity.
+MC-45011  /clone doesn't clone TileEntity orientation.
+MC-45063  Tripwire is invisible.
+MC-45071  The world freezes if an Enderman is being hit.
+MC-45084  Skin's second layers invisible in first person.
+From the previous development version
+
+MC-45172  New skin layer jacket acts enchanted when enchanted pants equipped.
+MC-45278  /spawnpoint won't update to chosen coordinates second time unless world file is reloaded.
+MC-45345  /fill Tile Entity: java.lang.ClassCastException.
+MC-45459  Debug code streaming in console.
+MC-45557  Server does no longer produce a logfile.
+MC-45595  Server seems locked in debug mode, spams console.
+
+
+== Trivia ==
+14w04a was previously removed from the launcher for some time, but was added back in September 2018.
+
+
+== References ==
+
+
+== Navigation ==

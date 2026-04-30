@@ -1,0 +1,128 @@
+17w18a is the tenth snapshot for Java Edition 1.12, released on May 3, 2017. It was later reuploaded to fix an aspect ratio issue.
+
+
+== Additions ==
+
+
+=== Gameplay ===
+Gamerules
+
+/gamerule announceAdvancements
+Defaults to true.
+Toggles announcing of advancements in chat, replacing the old server.properties entry.
+
+
+=== Command format ===
+/reload
+
+Command to reload advancements and loot tables from disk.
+This command is available to all opped players in single player and to all level 4 operators on a multiplayer server.
+Cannot be run from a command block.
+
+
+=== General ===
+Advancements
+
+Re-introduced announcements to chat when someone earns an advancement.
+Shows the description on hover, like before with achievements.
+Added three advancements to the "Adventure" tab:
+
+Added new minecraft:tick trigger.
+Activates for each player on every tick, provided that the advancement was revoked before the next tick starts.
+Added new minecraft:tame_animal trigger.
+Activates whenever the player tames an animal. The entity condition can be specified to check that the animal that was tamed.
+Added new show_toast display option.
+Optional boolean defaulting to true. When false, the specified advancement does not display the toast popup when the advancement is fulfilled.
+Added new announce_to_chat display option.
+Optional boolean defaulting to true. When false, this specific advancement does not announce the player fulfilling it to the chat for all players to see.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Command blocks
+
+Optimized error conditions.
+
+
+=== Items ===
+Maps
+
+Changed some map colors around, again.
+Reverted the wool colors on maps.
+Moved dyed blocks such as banners to the new terracotta map color palette.
+
+
+=== Command format ===
+/give and /replaceitem
+
+Now reinforce item-specific stacking restrictions.
+This is a reverse of 16w32a. (MC-105965 resolved as "Works as Intended")
+
+
+=== General ===
+Advancements
+
+"entity" objects and the minecraft:levitation trigger now use a shared "distance" object.
+Check if the player is within or outside of the specified range on the x, y, or z axis (in either the positive or negative direction).
+absolute and horizontal ranges check if the player is within range on all axes, though horizontal excludes the Y axis.
+Changed the "Great View From Up Here" advancement to 50 vertical blocks.
+Changed the "Sniper Duel" advancement to horizontal distance.
+Advancement loading is now strict JSON.
+Narrator
+
+Optimized, it should work for more people now.
+Recipe books
+
+Some optimizations.
+If the player searches "excitedze" in the recipe book, their language switches to Pirate Speak.
+Searching "excited" no longer does this.
+
+
+== Fixes ==
+21 issues fixed
+From the 1.12 development versions
+
+MC-113374  Map color palette changed
+MC-114966  Advancements overlap other advancements
+MC-115323  Parrots spawn rarely in Jungle
+MC-115577  Parrot play the flapping wings(fly) sound, when player push it
+MC-115774  Parrots still make sounds when they are on player shoulder and Silent:1b
+MC-115810  Custom resource pack added sounds not playing
+MC-115902  Flying parrots will not avoid lava
+MC-116482  The server.properties file still has announce-player-achievements
+MC-116498  You can't place ladders on the back of stairs
+MC-116515  Placing a torch on a wall with a fence gate underneath causes crash
+MC-116534  Pressing "Showing craftable" sometimes doesn't show any recipes
+MC-116537  Stopping jukebox music while a sitting parrot is dancing occasionally causes the parrot's entire upper body to be misplaced.
+MC-116574  "showing craftable" option has several issues
+MC-116586  Items in crafting grid disappear if the inventory is not properly closed
+MC-116638  Oak Wood in Recipe Book
+MC-116670  No toast is shown for first advancement made
+MC-116675  Debug messages are printed in log when levitating
+MC-116704  The sound block.note.chime is sharp
+MC-116713  Creating new world with same name crashes with NullPointerException
+From the previous development version
+
+MC-116931  Crash when placing a snow layer on top of a fence gate
+From the current version, hotfixed
+
+Fixed an aspect ratio issue.
+
+
+== Videos ==
+
+
+== Trivia ==
+17w18a (the reuploaded version) was previously removed from the launcher for some time, but was added back in September 2018.
+The pre-reupload of this snapshot is currently the latest unarchived version of Java Edition.
+
+
+== Gallery ==
+
+
+== References ==
+
+
+== Navigation ==

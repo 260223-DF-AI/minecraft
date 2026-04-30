@@ -1,0 +1,522 @@
+This is a list of Bedrock Edition 1.20.40 development versions.
+
+
+== Preview 1.20.40.20 ==
+Beta 1.20.40.20 (Android) or Preview 1.20.40.20 (Windows, iOS, iPadOS, Xbox) is the first beta/Preview version for Bedrock Edition 1.20.40, released on September 7, 2023, which adds further experimental changes to villagers, explorer maps, more parity from Java Edition, and fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Note Block
+
+Updated the sound thats played when wither skeleton skulls are placed on top.
+Sculk
+
+No longer drops XP when mined with Silk Touch.
+Sculk Sensor and Calibrated Sculk Sensor
+
+Can now detect closing the inventory of a boat with chest, a bamboo raft with chest, or a minecart with chest.
+Water
+
+Mobs no longer receive fall damage when falling into a 1 block deep water pool.
+
+
+==== Command format ====
+/give
+
+The sound for picking up items is now played when using the command.
+Chest, Ender Chest, Stonecutter, and Trapped Chest
+
+Now they use the minecraft:cardinal_direction block state instead of facing_direction.
+minecraft:cardinal_direction uses four string values ["east", "north", "south", "west"].
+
+
+==== General ====
+World options
+
+The "Respawn radius" advanced option is now set to 10 by default instead of 5.
+
+
+==== Items ====
+Glass Bottle
+
+Now emit sounds when filling it from water.
+Pouring liquid from a bottle into a cauldron emits the appropriate sound.
+Filling a bottle from a cauldron now emits the appropriate sound.
+Drinking from a bottle now emits the appropriate sound.
+Explorer Map
+
+Updated structure icons on explorer maps sold by cartographers.
+
+
+==== Mobs ====
+Cat
+
+Now plays a sound when begging for food.
+Guardian and Elder Guardian
+
+Makes flopping sounds again when on land.
+Villager
+
+Cartographers no longer offer exploration maps as a trade item when not in the overworld.
+Wither Skeleton
+
+Now have their own unique sounds.
+Zombie Villager
+
+Curing time is now randomized between 3 and 5 minutes, to match Java Edition.
+
+
+==== Non-mob entities ====
+Boat and Boat with Chest
+
+Falling from a great height while riding it no longer deals fall damage.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Villager Trade Rebalancing", "Beta APIs", "Molang Features", and "Render Dragon Features for Creators" experimental toggles.
+
+
+==== Changes ====
+
+
+===== Gameplay =====
+Trading
+
+Added seven new maps which cartographers can selling, depending on the biome they come from.
+Jungle and swamp villages do not generate naturally. Thus, players must breed villagers or cure zombie villagers in these biomes to access their trades.
+Village maps points to a village in specific biome. Jungle explorer map points to a jungle pyramid. Swamp explorer map points to a swamp hut.
+
+Changed trades of armorers, change summary:
+Buying diamond armor now also requires a small amount of diamonds.
+Most master-level armorers buy iron blocks and pay 4 emeralds for them.
+Chainmail armor is exclusively sold by jungle and swamp armorers.
+The savanna armorer sells cursed diamond armor at reduced prices.
+The taiga armorer can swap one piece of diamond armor for another.
+
+
+===== World generation =====
+Ancient City
+
+Increases the chance of generating enchanted books with Mending.
+Desert Pyramid
+
+Increases the chance of generating enchanted books with Unbreaking (level I to III).
+Jungle Temple
+
+Increases the chance of generating enchanted books with Unbreaking (level I to III).
+Mineshaft
+
+Increases the chance of generating enchanted books with Efficiency (level I to V).
+Pillager Outpost
+
+Increases the chance of generating enchanted books with Quick Charge (level I to III).
+
+
+===== Technical =====
+API
+
+Changed the names of the CameraSetOptions options to not include the word 'Script'.
+Added the chat(message: string) method.
+Changed get to return ItemType | undefined.
+Changed source on ItemDefinitionTriggeredAfterEvent to be optional.
+Added the following methods to Player:
+above(steps?: number): Block | undefined
+below(steps?: number): Block | undefined
+north(steps?: number): Block | undefined
+east(steps?: number): Block | undefined
+south(steps?: number): Block | undefined
+west(steps?: number): Block | undefined
+offset(offset: Vector3): Block | undefined
+center(): Vector3
+bottomCenter(): Vector3
+Made getItemStack function return ItemStack or undefined.
+playMusic(trackId: string, musicOptions?: MusicOptions): void
+queueMusic(trackId: string, musicOptions?: MusicOptions): void
+stopMusic(): void
+BlockStates
+Made get function return BlockStateType or undefined.
+Updated ExplosionAfterEvent and ExplosionBeforeEvent.
+getUpdatedBlocks() will now return Block[].
+setUpdatesBlocks(blocks: Block[]) now takes in a Block[].
+Dynamic Properties
+Property registration is no longer required and propertyRegistry has been removed from the worldInitialize event.
+Removed limits on the count and size of properties that can set on an entity or the world.
+Default values have been removed. getProperty will now always return undefined for unset properties.
+String dynamic property values are now restricted to a length of 32767 bytes.
+Removed function removeDynamicProperty.
+Added function getDynamicPropertyIds - Returns an array of all dynamic property ids on an entity/world used by the behavior pack.
+Added function getDynamicPropertyTotalByteCount - Returns the total number of bytes used by all dynamic properties on an entity/world by the behavior pack.
+Added function clearDynamicProperties - Removes all dynamic properties added by this behavior pack from an entity/world.
+Dynamic property numbers are now stored with double precision (64 bits)
+Adding PlayerInteractWithBlock and PlayerInteractWithEntity before & after events.
+Adding PlayerDimensionChangeBeforeEvent and PlayerDimensionChangeAfterEvent.
+JSON
+
+Added a content error when attempting to load a damage sensor with an invalid "cause" value.
+Allow single value parsing for minecraft:icon item component.
+The camel mob dash component can now be applied to rideable mobs other than horse, donkey, and mule using minecraft:dash.
+Trade items now have a filters property to determine if a trade should be considered.
+Trade items no longer support the biome property to check villager biome types, the is_mark_variant filter can be used in the filters property instead to check the villager biome type.
+Molang
+
+Updated to version 1.20.40.
+Render Dragon Features for Creators
+
+Soul torches are now treated as point lights in the "Deferred Technical Preview".
+Allow data-driving of point lights and their colors for any block via resource packs in the "Deferred Technical Preview".
+Improved chunk rendering performance in "Deferred Technical Preview".
+
+
+=== Fixes ===
+25 issues fixed
+From released versions before 1.20.0
+
+MCPE-26929  Guardians no longer make flopping sounds while on land.
+MCPE-73307  Elytra ceiling clip.
+MCPE-99972  Sheep don't drop wool after being previously sheared.
+MCPE-100598  Buckets instantly pick up liquids after placing (MLG/bucket clutch doesn't work).
+MCPE-131980  Rabbits rarely eat carrot crops.
+MCPE-152129  Item name overlaps oxygen bar.
+MCPE-152130  Item name overlaps mob health bar.
+MCPE-152131  Item name overlaps Absorption health bar.
+MCPE-152753  Boats no longer negate fall damage.
+MCPE-154385  New UI for brewing stand doesn't fit the screen.
+MCPE-157918  Missing sound for filling water bottles from source blocks and cauldrons.
+MCPE-160290  Command /damage override type not working correctly.
+MCPE-164734  Command candidates are not displayed if @e[type=item] is entered in /execute.
+MCPE-168369  Purple border and tooltip text are broken when upgrading diamond gear to netherite.
+MCPE-173155  Soul speed effect does not work when crawling on soul soil.
+From 1.20.0 version
+
+MCPE-169577  Diagonal patterns get inverted in shields.
+From 1.20.x versions
+
+MCPE-172377  Zombie villagers don't have biome or rank overlays.
+MCPE-172785  Player can pass through blocks by spamming jump and sneak.
+MCPE-173362  /recipe is still highlighted in blue in the chat box.
+MCPE-173898  Foxes can't pick up equippable items (armor, mob heads, carved pumpkin, etc.).
+Others
+
+Fixed an issue where text to speech did not say how to open chat or emotes.
+Text-to-speech message for popup title/description is now played properly.
+Clicking off the game window will not unselect a friend.
+Fixed a bug where the tooltip for the v-sync setting was showing without being hovered.
+Fixed a bug where "PBR" was not included in HUD while in level using "Deferred Technical Preview".
+
+
+== Preview 1.20.40.21 ==
+Beta 1.20.40.21 (Android) or Preview 1.20.40.21 (Windows, iOS, iPadOS, Xbox) is the second beta/Preview version for Bedrock Edition 1.20.40, released on September 13, 2023,  which fixes bugs.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Water
+
+The ambient sounds for entering exiting water is now played only when an entity is submerged below eye-level in water, matching Java Edition.
+The splash sound for entering water has been updated to match Java Edition.
+
+
+==== Mobs ====
+Wither
+
+The boss bar on the HUD is now same color as Java Edition.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Villager Trade Rebalancing" and "Beta APIs" experimental toggles.
+
+
+==== Changes ====
+
+
+===== Items =====
+Explorer Maps
+
+The seven new explorer maps from cartographers can now also point to structures in already explored chunks.
+
+
+===== Technical =====
+API
+
+Released World.getMoonPhase, MoonPhase, and MoonPhaseCount v1.6.0.
+JSON
+
+Deprecated minecraft:weapon component starting in version 1.20.40.
+Deprecated minecraft:on_use component starting in version 1.20.40.
+Deprecated minecraft:on_use_on component starting in version 1.20.40.
+
+
+=== Fixes ===
+12 issues fixed
+From released versions before 1.20.0
+
+MCPE-38566  D-Pad Touch controls not calibrated properly (up/down buttons).
+MCPE-43591  Incorrect wither boss bar texture in Bedrock.
+MCPE-52904  When you block a tipped arrow or shulker bullet with a shield, you still get the affect.
+MCPE-85954  Villages in the nether or end are unstable.
+From the version 1.20.0
+
+MCPE-172674  Camel is missing the dash button on smartphone touch controls.
+From the previous versions
+
+MCPE-173006  Iron golems spawn in 2 block high space.
+MCPE-173799  minecraft:transformation scale key without limit.
+MCPE-174524  Water splash sounds no longer plays after the addition of entering/exiting water sound.
+MCPE-174529  Water from a waterlogged block cannot be removed with an empty bucket without aiming at the block in the water.
+Others
+
+Fixed a crash that could occur when running in the archold room in the spellrune marketplace map.
+Fixed an issue where particles were not consistently lit while in the "Deferred Technical Preview".
+Camels can no longer dash while in lava or water.
+
+
+== Preview 1.20.40.22 ==
+Beta 1.20.40.22 (Android) or Preview 1.20.40.22 (Windows, iOS, iPadOS, Xbox) is the third beta/Preview version for Bedrock Edition 1.20.40, released on September 20, 2023, which brings more parity with Java Edition and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Controls
+
+Added the ability to customize touch controls.
+Settings
+
+Added "Customize Controls" experimental touch option, OFF by default.
+Enables the ability to customize touch controls.
+It can only be done within a world.
+
+
+=== Changes ===
+
+
+==== Gameplay ====
+Game rules
+
+The spawnradius game rule is now set to 10 by default to match Java Edition.
+
+
+==== Items ====
+Goat Horns
+
+Now have a range of 256 blocks.
+
+
+==== Mobs ====
+Iron Golem and Snow Golem
+
+Now have a crumbling-like particle effect when they are created.
+Witch
+
+Now target players within a 16 block distance.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs", "Molang Features", "Experimental Cameras", and "Render Dragon Features for Creators" experimental toggles.
+
+
+==== Changes ====
+
+
+===== Technical =====
+API
+
+Camera APIs moved from beta to 1.6.0.
+Released Entity.is* APIs from beta to 1.6.0:
+isSleeping.
+isSneaking.
+isSprinting.
+isSwimming.
+isClimbing.
+isOnGround.
+isInWater.
+isFalling.
+Released player level & XP APIs from beta to 1.6.0:
+addLevels.
+addExperience.
+level.
+getTotalXP.
+xpEarnedAtCurrentLevel.
+totalXpNeededForNextLevel.
+resetLevel.
+Released Player.is* APIs from beta to 1.6.0:
+isEmoting.
+isGliding.
+isJumping.
+isFlying.
+Updated all methods besides show on ActionFormData, MessageFormData, and ModalFormData to be callable in read-only mode.
+BlockInventoryComponent
+container member variable now correctly reflects it can be a Container or undefined.
+Fixed a versioning bug preventing @minecraft/server-ui module from working with @minecraft/server above version 1.2.0.
+WeatherType moved to 1.6.0:
+Moved function setWeather to 1.6.0.
+Moved event/property entityRemove from beta to 1.6.0.
+Moved event/property entityRemove from beta to 1.6.0.
+Moved class EntityRemovedAfterEvent from beta to 1.6.0.
+Moved class EntityRemoveAfterEventSignal from beta  to 1.6.0.
+Moved class EntityRemovedBeforeEvent from beta to 1.6.0.
+Moved class EntityRemoveBeforeEventSignal from beta to 1.6.0.
+Moved event/property entityLoad from beta to 1.6.0.
+Moved class EntityLoadAfterEvent from beta to 1.6.0.
+Moved class EntityLoadAfterEventSignal from beta to 1.6.0.
+Moved event/property entitySpawn from beta to 1.6.0.
+Moved enum EntityInitializationCause from beta to 1.6.0.
+Moved class EntitySpawnAfterEvent from beta to 1.6.0.
+Moved class EntitySpawnAfterEventSignal from beta to 1.6.0.
+Moved event/property playerBreakBlock from beta to 1.6.0.
+Moved event/property playerBreakBlock from beta to 1.6.0.
+Moved class PlayerBreakBlockAfterEvent from beta to 1.6.0.
+Moved class PlayerBreakBlockAfterEventSignal from beta to 1.6.0.
+Moved class PlayerBreakBlockBeforeEvent from beta to 1.6.0.
+Moved class PlayerBreakBlockBeforeEventSignal from beta to 1.6.0.
+Moved event/property playerPlaceBlock from beta to 1.6.0.
+Moved class PlayerPlaceBlockAfterEvent from beta to 1.6.0.
+Moved class PlayerPlaceBlockAfterEventSignal from beta to 1.6.0.
+Moved class BlockEventSignalOptions from beta to 1.6.0.
+Move isAir(): boolean from beta to 1.6.0.
+Move isLiquid(): boolean from beta to 1.6.0.
+Moved amount from beta to 1.6.0.
+Moved keepOnDeath: boolean from beta to 1.6.0.
+Moved lockMode: ItemLockMode from beta to 1.6.0.
+Moved nameTag?: string from beta to 1.6.0.
+Moved clone(): ItemStack from beta to 1.6.0.
+Moved getTags(): string[] from beta to 1.6.0.
+Moved hasTag(tag: string): boolean from beta to 1.6.0.
+Moved setCanDestroy(blockIdentifiers?: string[]): void from beta to 1.6.0.
+Moved getCanDestroy(): string[] from beta to 1.6.0.
+Moved setCanPlaceOn(blockIdentifiers?: string[]): void from beta to 1.6.0.
+Moved getCanPlaceOn(): string[] from beta to 1.6.0.
+Moved function getProperty to 1.6.0.
+Moved function resetProperty to 1.6.0.
+Moved function setProperty to 1.6.0.
+Added function getWeather.
+JSON
+
+The behavior.random_look_around_and_sit now has the field continue_sitting_on_reload.
+behavior.is_scenting renamed to generic behavior.timer_flag_1.
+behavior.is_rising renamed to generic behavior.timer_flag_2.
+behavior.is_feeling_happy renamed to generic behavior.timer_flag_3.
+behavior.timer_flag 1: Fires an event when this behavior starts, then waits for a duration before stopping. When stopping due to that timeout or due to being interrupted by another behavior, fires another event. query.timer_flag_1 will return 1.0 on both the client and server when this behavior is running, and 0.0 otherwise.
+behavior.timer_flag 2: Fires an event when this behavior starts, then waits for a duration before stopping. When stopping due to that timeout or due to being interrupted by another behavior, fires another event. query.timer_flag_2 will return 1.0 on both the client and server when this behavior is running, and 0.0 otherwise.
+behavior.timer_flag 3: Fires an event when this behavior starts, then waits for a duration before stopping. When stopping due to that timeout or due to being interrupted by another behavior, fires another event. query.timer_flag_3 will return 1.0 on both the client and server when this behavior is running, and 0.0 otherwise.
+Molang
+
+Added a new query.is_in_lava query function to Molang, to know if a mob is currently in lava.
+Render Dragon Features for Creators
+
+Disabled the "Deferred Technical Preview" on some Android devices that dont support the current requirements for compute shaders (GL_MAX_COMPUTE_WORK_GROUP_INVOCATIONS >= 256).
+
+
+=== Fixes ===
+14 issues fixed
+From released versions before 1.20.0
+
+MCPE-41103  Lava flowing down or fully spread out does not change to cobblestone when touched by water from the side.
+MCPE-153254  Goat Horn has a very short sound range with other players.
+MCPE-168913  Invalid data in sound_definitions.json can crash the game.
+MCPE-169067  Editing sign in angle/side will edit back instead of the front.
+From the version 1.20.0
+
+MCPE-169666  Camels appear to slide when walking.
+MCPE-172369  Camels indefinitely dash while in lava.
+MCPE-172846  Camel's legs won't stop moving when idle.
+MCPE-172917  There is no chat message for when skipping the night is not possible with playerssleepingpercentage set above 100.
+MCPE-173028  "Detected lost connection" and "Abandoned connection closed" error message is untranslated.
+MCPE-173189  [ScriptAPI] Some characters are counted as 2 or 3 characters in the character count check of the setLore() method.
+From the previous development versions
+
+MCPE-173934  Crash when enabling "Deferred Render" experimental feature.
+Others
+
+Fixed an extremely rare bug (~0.000003% chance) that could cause item frames to not drop their item when hit or destroyed.
+Fixed a bug where closing the game while having the portfolio open resulted in a crash.
+Autocompleting text now moves the caret to end of the line.
+
+
+== Preview 1.20.40.23 ==
+Beta 1.20.40.23 (Android) or Preview 1.20.40.23 (Windows, iOS, iPadOS, Xbox) is the fourth beta/Preview version for Bedrock Edition 1.20.40, released on September 27, 2023, which fixes bugs.
+
+
+=== Experimental ===
+These additions and changes are accessible by enabling the "Beta APIs" and "Molang Features" experimental toggles.
+
+
+==== Additions ====
+
+
+===== Technical =====
+JSON
+
+Unlocked behavior.random_search_and_dig.
+target_blocks field added. List of blocks that the mob can dig on. Default if target_blocks isn't added is dirt, grass, podzol, dirt with roots, moss, mud, and muddy mangrove roots.
+item_table field added. Path to a loot table that specifies what the mob can dig up. item_table takes precedence over items.
+Content errors added if the behavior has trouble reading or finding item_table and if unable to get an item from items.
+on_item_found event now fires on item found AND digging finished. Before the event firing caused the digging to stop early.
+
+
+==== Changes ====
+
+
+===== Technical =====
+API
+
+Added matches function called on an entity, which takes in EntityQueryOptions and returns true if the entity matches and false otherwise.
+Moved getRotation from Beta to 1.6.0.
+Move setRotation from beta to 1.6.0.
+Added PlayerLeaveBeforeEvent - This event fires when a player leaves the server, before the Player object is removed.
+Releasing PlayerDimensionChangeAfterEvent beta to 1.6.0.
+
+
+=== Fixes ===
+14 issues fixed
+From released versions before 1.20.0
+
+MCPE-169001  Random light sources in the world.
+From the version 1.20.0
+
+MCPE-169765  Warped fungus on a stick is held backwards in 1st person.
+MCPE-173010  3rd person perspective goes through the east and south sides of the cauldron.
+MCPE-173073  Minecraft world can't interact and save (Windows and Android).
+From the previous development versions
+
+MCPE-174524  Water splash sounds no longer plays after the addition of entering/exiting water sound.
+MCPE-174859  Powder snow does not prevent fall damage.
+MCPE-175156  Goat Horn sounds are again controlled by "Hostile Creatures" instead of "Jukebox/Note Blocks".
+Others
+
+Lightweight mobs and entities wearing leather boots once again sink into the top layer of Powder Snow when falling from a height of more than two and a half blocks.
+Splash particles are now emitted at an actor's waist instead of above their head
+Fixed a crash related to tessellation of water blocks.
+Placing invalid items into offhand slot will no longer cause them to drop.
+Fixed a bug where the sniffer ended digging as soon as item was created, not at the end of the specified dig duration.
+Fixed a bug that prevented summon NPC commands from working if the users did not have worldbuilder permissions where the base version of the world was before 1.19.80.
+High emissive values (> 0.25) no longer obscure surface detail in the "Deferred Technical Preview".
+
+
+== Preview 1.20.40.24 ==
+Beta 1.20.40.24 (Android) or Preview 1.20.40.24 (Windows, iOS, iPadOS, Xbox) is the fifth and final beta/Preview version for Bedrock Edition 1.20.40, released on October 4, 2023, which fixes bugs.
+
+
+=== Fixes ===
+5 issues fixed
+From the 1.20.x versions
+
+MCPE-174480  Special characters all delete text behind them when typed after [on iOS and iPadOS]
+MCPE-175072  Unable to type any text after writing on a sign and pressing Esc
+MCPE-175114  Tap-and-hold full stack crafting no longer works on mobile
+MCPE-175119  Buttons and non-full blocks do not prevent spiders from spawning
+Others
+
+Fixed several crashes that could occur during gameplay.
+
+
+== Notes and references ==
+
+
+== Navigation ==

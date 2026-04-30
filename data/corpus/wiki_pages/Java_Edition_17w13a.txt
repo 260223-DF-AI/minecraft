@@ -1,0 +1,144 @@
+17w13a is the second snapshot for Java Edition 1.12, released on March 30, 2017, which adds parrots, knowledge books, changes textures of some glazed terracotta, and replaces achievements with advancements.
+17w13a was reuploaded an hour and a half after release to fix an issue on macOS.
+
+
+== Additions ==
+
+
+=== Items ===
+ Knowledge books
+
+A green-colored book.
+Currently obtainable only with the /give @p knowledge_book command.
+A knowledge book with a Recipes tag, which contains a list of item IDs, is consumed and unlocks the specified items' recipes for any player that uses it.
+Especially useful when /gamerule doLimitedCrafting is set to true.
+Spawn eggs
+
+ Parrot spawn egg
+Spawns parrots.
+
+
+=== Mobs ===
+Parrots
+
+Tamable with cookies.
+Fly around, but sit when "tired".
+Follow and crowd around nearby mobs.
+Imitates sounds of other mobs.
+Using tamed parrots places them on the player's shoulder.
+Let go if the player jumps.
+Can fly with players during elytra flight.
+Have 6HP health.
+Come in red, blue, green and cyan.
+
+
+=== Gameplay ===
+Gamerules
+
+doLimitedCrafting
+Off by default.
+Enabling only allows players to craft recipes they have unlocked.
+
+
+=== Command format ===
+/recipe <give|take> [player] <name|*>
+
+Can unlock, or lock, the given recipes for the given player.
+If * is specified, it locks or unlocks all recipes for the player.
+/advancement <grant|revoke|test> <player> <advancement> [criterion]
+
+Can grant, test or revoke advancements, and particular advancement criteria, for a given player.
+
+
+=== General ===
+
+Advancements
+
+Replaces achievements.
+Can be customized via JSON files.
+Tab-based UI.
+Currently only has one tab ("Minecraft") with 22 advancements.
+Different background per tab, single texture on repeat for now.
+Data-driven UI, including positioning and layout.
+Advancements in this version include:
+
+Narrator
+
+CTRL + B toggles a text-to-speech engine that automatically reads player chat messages, including the name.
+The narrator doesn't read commands or command outputs, nor it reads messages produced with /me.
+NBT format
+
+ShoulderEntityLeft / ShoulderEntityRight: Contains entity data about an entity on the left and right shoulders of the player.
+seenCredits: Changes to 1 if the player leaves the End through the portal.
+recipeBook: A string containing a list of recipes, formatted as JSON, that the player has seen.
+Recipes: A list of crafting recipes to unlock for the player that right-clicks while holding a knowledge book.
+If this is not specified, the knowledge book is not consumed.
+Recipe books
+
+Catalogs recipes that are unlocked when the criteria are met.
+When a recipe is clicked, it appears in the crafting grid, and can be crafted if materials are available.
+recipes folder added with all item recipes as .json files.
+
+
+== Changes ==
+
+
+=== Blocks ===
+
+Glazed terracotta
+
+Textured changed for cyan, magenta, orange, and white glazed terracotta, to remove unintentional and potentially offensive imagery.
+Beacons
+
+Now display their name when hovering over them.
+Enchantment tables
+
+Now display their name when hovering over them.
+
+
+=== Items ===
+Fishing rods
+
+Changed the sound of bobbers being thrown.
+
+
+=== General ===
+Achievements
+
+Removed and replaced by advancements.
+Crafting
+
+Closing the crafting interface with items inside no longer drops the items in front of the player, but sends them instead to the inventory.
+Java version
+
+This is the first snapshot to use, and thus require, Java 8.
+Moving backwards
+
+The player's body now entirely faces to the front, when moving backwards.
+Prior to this snapshot, moving backwards would cause the player model to rotate one side, making it look like the player was strafing backwards somewhat.
+
+
+== Fixes ==
+3 issues fixed
+From the previous development version
+
+MC-113377  New block Swastika
+MC-113844  White Glazed Terracotta symbol (looks like the symbol of the Hungarian Nazi party)
+From the current version, hotfixed
+
+Fixed the game not loading on macOS.
+
+
+== Videos ==
+
+
+== Trivia ==
+17w13a was previously removed from the launcher for some time, but was added back in September 2018.
+17w13a has the longest wait between snapshots on the same development version, with 50 days having elapsed since the release of 17w06a on February 8, 2017.
+Until this point, the longest waits had been those between 14w11b and 14w17a, which spanned 42 days.
+
+
+== References ==
+
+
+== Navigation ==

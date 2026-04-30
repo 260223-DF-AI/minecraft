@@ -1,0 +1,231 @@
+This is a list of Pocket Edition v0.10.0 alpha development versions.
+
+
+== v0.10.0 alpha build 1 ==
+v0.10.0 alpha build 1 is the first build version released for v0.10.0.
+
+
+=== Additions ===
+Upgraded the rendering system to use OpenGL ES 2.0 (coming from 1.1), using OpenGL 3.0 where available.
+Ported tinted lighting from Java Edition.
+Ported the round fog from Java Edition.
+Some performance increase on most devices.
+Mesa biomes have gold at every elevation and can spawn mine shafts on the surface.
+Added dust particles falling from unstable gravel and sand.
+Added more wood types for fences and gates.
+Added adjustable brightness (gamma) setting to adjust the darkness of dark terrain.
+iOS: Added a 64-bit build for compatible iOS devices.
+
+
+=== Changes ===
+New double-sided lighting on entities and clouds that's more coherent with the terrain.
+Enabled mipmaps on Android devices supporting GLES 3.0.
+New water shader.
+Water is now brownish in swamps.
+Faster rebuilding of chunks.
+Added smooth lighting on water and smooth color transitions.
+Huge mushrooms now spawn in swamps.
+Ignore swipes from outside the screen so exiting fullscreen/activating Control Center doesn't turn the view.
+The selection overlay on vines/tall grass now has the correct shape.
+Added a selection overlay on Chests and Signs.
+The error messages when a World can't be opened are now more informative about what happened.
+Enabled Day/night cycle in Creative.
+
+
+=== Fixes ===
+14 bugs fixed
+
+Fixed a crash when rendering Mob Spawners.
+iOS: Fixed freezing when receiving a notification/showing the Control Center.
+iOS: Fixed a crash/memory leak happening when showing the system keyboard - signs and the chat.
+Android: fixed a corruption and possible crash when switching apps.
+Fixed the "spawning in the air" bug.
+Fixed a crash when creating lava during world generation.
+Water now pushes things
+Fixed a white artifact on torches held in hand.
+Fixed holes appearing in the clouds.
+Fixed a brown artifact appearing on the bottom of Minecarts.
+Fixed a random crash in multiplayer.
+Fixed a possible crash when selecting double chests.
+The time of day is now more accurately synced in multiplayer.
+Fixed chunks vibrating and becoming detached at high X/Z coordinates.
+
+
+== v0.10.0 alpha build 2 ==
+v0.10.0 alpha build 2 is the second build version released for v0.10.0.
+
+
+=== Changes ===
+Added smooth lighting back on leaves.
+Smoother depth transitions between swamps and normal water.
+The "round fog" is now actually round.
+
+
+=== Fixes ===
+28 bugs fixed
+
+Added back the cross-hair when using Split Controls or the bow.
+Fixed a lot of graphical issues when using Fancy on some old GPUs (PowerVR SGX535, SGX531, SGX540)
+Fixed a crash when rendering minecarts.
+Fixed a random crash when starting some worlds.
+Fixed a crash when emitting particles.
+Fixed disappearing GUI and weird mob bodies when having certain items on screen.
+Fixed missing sides on slabs.
+Fixed signs text showing through walls.
+Fixed items having incorrect lighting.
+Fixed items blinking white when next to a blinking TNT.
+Items no longer push you when falling.
+Fixed an issue with 3rd person camera not raycasting through non-solid blocks.
+Fixed arrows getting stuck on non-solid blocks.
+Fixed falling tiles getting stuck on torches.
+Fixed mineshafts spawning a ton of wooden platforms if discovered at night.
+Fixed mushrooms being able to generate anywhere in chunks loaded in at night.
+Fixed black lines on torches.
+Mooshrooms now consume bowls when "milked".
+Fixed a possible crash when falling under the world.
+Bed undersides now have the correct texture.
+Fixed Mob Spawner particles.
+Fixed damage bars in inventories.
+Water in dark places does not have bright borders anymore.
+Fixed water transparency under lily pads in swamps.
+Glass blocks do not have flickering faces between each other anymore.
+Fixed colors of vines.
+Baby animals are now able to swim without sinking.
+Fixed weird water colors when placing blocks on deep water.
+
+
+== v0.10.0 alpha build 3 ==
+v0.10.0 alpha build 3 is the third build version released for v0.10.0, which fixes bugs.
+
+
+=== Fixes ===
+6 bugs fixed
+
+The game doesn't get stuck on a black screen anymore on devices where it happened.
+The player won't spawn anymore in the air or under bedrock.
+Resolved an issue in old worlds with specific seeds that could cause the world's spawn point to be placed inside the invisible bedrock border.
+Fixed a graphics corruption/crash happening when starting the game with Fancy OFF and turning it on.
+Fixed flickering terrain and water in the distance on some devices.
+The game doesn't freeze anymore when going to sleep.
+
+
+== v0.10.0 alpha build 4 ==
+v0.10.0 alpha build 4 is the fourth build version released for v0.10.0.
+
+
+=== Changes ===
+Glass walls have again only one side as in PC.
+The game now limits its CPU usage when in the background.
+
+
+=== Fixes ===
+12 bugs fixed
+
+Fixed all black screen issues.
+Fixed missing stencil shadows on many devices.
+Removed black lines from torches and flowers on PowerVR devices.
+Fixed excessively close underwater fog with Fancy disabled.
+Slope rails now have a correct hitbox.
+Fixed the number of dyes obtained from flowers and bones.
+Fixed spawning in leaves.
+Fixed a crash/corruption happening on app switch/reset.
+Fixed a memory leak on world creation.
+Now showing shadows on alpha tested tiles (glass, leaves).
+Chickens don't have a black artifact under their head anymore.
+The brightness of the player in the armor inventory doesn't follow the in-world brightness anymore.
+
+
+== v0.10.0 alpha build 5 ==
+v0.10.0 alpha build 5 is the fifth build version for v0.10.0 release on November 3, 2014, which fixes bugs.
+
+
+=== Fixes ===
+9 bugs fixed
+
+Fixed a crash or graphics corruption when underwater
+Fixed black screen on startup on yet more devices
+Fixed black lines on the sides of doors
+Reenabled OpenGLES 3 and mipmaps
+Possibly fixed some depth precision issues
+Chat messages are now cleared when switching worlds
+The game doesn't forget the settings change if quitting before exiting the options screen now
+Fixed sensitivity lowering itself automatically
+Destroying a door by removing the underlying block now correctly yields a door item
+
+
+== v0.10.0 alpha build 6 ==
+v0.10.0 alpha build 6 is the sixth build version released for v0.10.0.
+
+
+=== Changes ===
+Walking animations are generally faster and have been tweaked per-animal.
+Better fog on clouds, starting farther away and following the sky color.
+
+
+=== Fixes ===
+9 bugs fixed
+
+Chunks shouldn't fail anymore to be saved.
+Fixed (again) the black screen problem on Android.
+Fixed a possible crash on clients when the server quits the game.
+Fixed growing crops not being saved.
+Fixed empty chests and mob spawners found in mineshafts and strongholds.
+Joining a world as a client doesn't reset the spawn position to the log-in position anymore.
+Mobs don't disappear anymore on clients if the client selects "Peaceful" difficulty.
+Clients on "Peaceful" don't auto-heal anymore if playing on a "Normal" difficulty server.
+The underwater fog now has the correct color in swamps.
+
+
+== v0.10.0 alpha build 7 ==
+v0.10.0 alpha build 7 is the seventh build version released for v0.10.0.
+
+
+=== Changes ===
+The clouds and the terrain are now tinted red during sunset.
+Modders can now use shader version 300 if they wish to.
+Possibly made text rendering (especially non-ASCII) much faster.
+Added back water sounds.
+
+
+=== Fixes ===
+4 bugs fixed
+
+Fixed an issue with server discovery.
+(Android) Fixed audio remaining muted after switching apps.
+Can sleep again when connecting to a server.
+The player is now rotated correctly when sleeping.
+
+
+== v0.10.0 alpha build 8 ==
+v0.10.0 alpha build 8 is the eighth build version released for v0.10.0.
+
+
+=== Fixes ===
+2 bugs fixed
+
+Fixed text on signs being colored white.
+Fixed non-ASCII characters not being rendered correctly.
+
+
+== v0.10.0 alpha build 9 ==
+v0.10.0 alpha build 9 (RC1) is the ninth and final build version and first and only release candidate for v0.10.0, as well as the final build released in 2014.
+
+
+=== Changes ===
+Beds are now easily placed on replaceable tiles like tallgrass
+
+
+=== Fixes ===
+5 bugs fixed
+
+Fixed number of blocks or items not showing up in toolbar and item panes
+Fixed crash when shutting down server while client has chest/furnace open
+Fixed entities in multiplayer. They should now work as expected
+Door is now correctly updated (when opened/closed) on clients
+Added back the opening top animation in chests
+
+
+== Notes and references ==
+
+
+== Navigation ==

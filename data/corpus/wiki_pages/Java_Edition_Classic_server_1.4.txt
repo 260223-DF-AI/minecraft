@@ -1,0 +1,30 @@
+1.4 is a server version of Java Edition Classic released on June 13, 2009, at 13:30 UTC.
+Server 1.4 was reuploaded at 14:22 UTC (52 minutes after release) to fix a bug where the player could click outside of the map.
+
+
+== Additions ==
+Commands
+
+Added server support for the /teleport command.
+
+
+== Changes ==
+Multiplayer
+
+The server now checks all incoming strings, verifies that they are all within reasonable limits, and kicks the sender if they are not.
+Logging
+
+Server output is now logged in file server.log.
+
+
+== Fixes ==
+Fixed an exploit where people could crash everyone connected to a server by sending a fake text message.
+The client would gladly attempt to render weird unicode characters, but would crash when trying to look up entry ten thousand in a 256 entry array.
+
+
+== References ==
+June 13 IRC logs: IRC logs on Archive.org; #minecraft.20090613.log. June 13, 2009 (UTC5).
+June 14 IRC logs: IRC logs on Archive.org; #minecraft.20090614.log. June 14, 2009 (UTC5).
+
+
+== Navigation ==

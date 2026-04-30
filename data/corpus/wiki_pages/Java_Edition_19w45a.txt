@@ -1,0 +1,166 @@
+19w45a is the twelfth snapshot for Java Edition 1.15, released on November 7, 2019.
+
+
+== Additions ==
+
+
+=== General ===
+Tags
+
+Added the arrows entity tag.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Composters
+
+Now crafted with wooden slabs (like in Bedrock Edition), instead of fences and wooden planks.
+End stone bricks
+
+Now have a hardness of 3.
+Now have a blast resistance of 9.
+
+
+=== Mobs ===
+Bees
+
+Now search up to 10 blocks away from itself in all directions to find a nest/hive to claim.
+Parrots
+
+No longer imitate endermen.
+
+
+=== World generation ===
+Trees
+
+Birch trees generate in the dark forest biome once again.
+
+
+=== Gameplay ===
+Advancements
+
+The advancement "Take Aim" can now be unlocked by damaging an entity with a spectral arrow.
+Recipe book
+
+The composter recipe now unlocks with wooden slabs instead of wooden fences.
+Trading
+
+Librarians now sell one bookshelf for nine emeralds, instead of three bookshelves for six emeralds.
+
+
+=== General ===
+Textures
+
+Shield pattern textures now use alpha level for determining what gets the color, instead of the brightness (i.e., textures no longer store transparency as black).
+Changed the unused textures for the Java Edition 1.13 menu panorama to be 11 pixels.
+Removed textures for customized world type preset icons, except Isles.
+Grass and foliage tints no longer vary within a biome, with the exception of swamps.
+
+
+== Fixes ==
+82 issues fixed
+From released versions before 1.15
+
+MC-3591  Cured zombie villagers do not drop picked up items.
+MC-24336  Withers are harmed by the explosions of their wither skulls.
+MC-58177  Night vision rendered darker and orange when nearing light sources with brightness on moody.
+MC-94013  End stone bricks are less durable than end stone and destroyed by the ender dragon.
+MC-117635  Rear legs of sitting tamed wolf are displayed hovering.
+MC-133877  Extreme lag from decaying leaves.
+MC-136757  End gateway magenta beam height varies based on the distance from the player.
+MC-147548  Terrible performance with large forest fires.
+MC-149181  Biome blend causes massive stuttering when loading chunks or when placing/breaking blocks.
+MC-149343  Chunk block lag when a tall spruce tree is grown in that chunk.
+MC-152159  Players can hit the dragon during its death animation.
+MC-152683  Spectral arrow does not count for "Take Aim" achievement.
+MC-153334  Cured villagers sell bookshelves for 1 emerald and buy books for 1 emerald, allowing players to easily get an unlimited amount of emeralds.
+MC-153697  Iron golems will occasionally attack players in creative/spectator mode.
+MC-155289  Mob spawning rate in the Overworld is reduced.
+MC-155758  Endermen do not pick up non-collidable blocks.
+MC-159496  Player death uses incorrect sound event.
+MC-160177  Block breaking animation does not show for other players.
+MC-161002  Endermen do not turn to face the player when looked at.
+MC-162905  Kelp naturally generates with age too low.
+MC-164397  Birches no longer generate in dark forest biome.
+From the 1.15 development versions
+
+MC-159350  Bees freeze if they cannot execute their current AI task / bees do not seem to have a wandering AI.
+MC-159368  Bees do not follow players holding tall flowers.
+MC-159410  Bees with NoAI can get angry.
+MC-159418  Bees do not update their home hive even if there are empty hives nearby.
+MC-159447  Bees occasionally get stuck on fences, fence gates, and walls.
+MC-159514  Bees are flying back to original nest.
+MC-159576  Yiddish is displayed left-to-right instead of right-to-left.
+MC-159646  Bees get stuck on cocoa beans.
+MC-159648  Bees can claim hives behind walls.
+MC-159803  Bees wander too far from their nest and get lost.
+MC-160291  Bees leave their nest/hive when it is sheared or used to fill bottles, even there is a campfire below it and it is night time.
+MC-160978  Foxes do not consume food anymore.
+MC-161009  Bee nests and hives drop-in Creative mode even if /gamerule doTileDrops is set to false.
+MC-161277  Graphics card information displays method calls on the debug/F3 screen.
+MC-161302  Banners appear blank white for a split of a second when placing them.
+MC-161849  Items in inventory, subtitles, background, chat, notifications on the screen and game menu are darker and have a blue tint when players have the night vision effect.
+MC-161896  Some transparent items make transparent blocks and beacon beams do not render behind them.
+MC-161923  Breaking animation is rendered behind water and nether portals.
+MC-161927  Pillagers do not have any arms if they are not carrying a crossbow.
+MC-161948  Models with alpha channels do not render all faces consistently.
+MC-161976  Enchanted trident loses enchanted glint when thrown into the ground.
+MC-162013  Player model in inventory is affected by light level.
+MC-162078  Bees cannot pathfind if they are submerged in water.
+MC-162279  Beacon beam loses color at high altitudes.
+MC-162338  Entity shadows do not display properly on transparent blocks.
+MC-162368  Burning mobs are no longer bright.
+MC-162519  Block hitboxes are rendered transparent.
+MC-162569  Placing torches in water causes serious lag and stuttering.
+MC-162736  Text cursor disappears when editing sign text.
+MC-162808  Poppies are positioned incorrectly when held by an iron golem.
+MC-163012  Bees no longer have an animation while pollinating flowers.
+MC-163048  Barrier particle changes to a random texture after changing resource pack.
+MC-163054  Bee Flower tracking/pollination AI broken.
+MC-163064  Character skin is too dark in inventory.
+MC-163079  Chunk borders are rendered in front of all non-transparent blocks.
+MC-163084  Beacon beam lighting depends on viewing angle.
+MC-163113  Placing a banner cause an error in the game output.
+MC-163144  World border is rendered in front of all non-transparent blocks.
+MC-163233  Entity shadows render in front of block hitboxes.
+MC-163242  Blocks on armor stands render shadows based on camera vector.
+MC-163282  Shadows are z-fighting when riding an entity.
+MC-163353  Left wings and legs of the ender dragon are shaded darker than right wings and legs.
+MC-163412  Elder guardian particle is rendering too dark.
+MC-163789  Mysterious blinking pixels when in lava.
+MC-163854  Breaking animation is flipped horizontally on some sides.
+MC-163870  Advancements menu still is not clipped properly on small GUI scale.
+MC-164012  3D inventory models transformed into 2D inventory models have a non-transparent background.
+MC-164020  Bees are not taking pollen from tall flowers anymore.
+MC-164070  Dispensed armor stands only face south.
+MC-164114  Falling blocks no longer support glowing effect.
+MC-164121  Entities in spawners are rendered too dark.
+MC-164289  Entity shadows cause clouds behind them to not render.
+MC-164448  While trading with villagers, the experience progress bar shoots beyond the GUI.
+MC-164485  Superflat preset icons cause text to not render.
+MC-164514  Blazes and ghasts can light campfires even when mobGriefing is false.
+MC-164593  Transparent block model displays do not render inside faces like normal blocks.
+From the previous development version
+
+MC-164732  When lighting a campfire below a beehive, the campfire does not light up and instead, the hive starts to burn.
+MC-164759  Potions held by witches float above their arm.
+MC-164778  Parrots can still imitate endermen.
+Private issues
+
+MC-136984  Game crash exploit.
+MC-164383  Game crash exploit.
+
+
+== Videos ==
+
+
+== Trivia ==
+Unlike most of the first-of-the-week snapshots, this was released on a Thursday instead of Wednesday, similar to the snapshots before 14w26a.
+
+
+== References ==
+
+
+== Navigation ==

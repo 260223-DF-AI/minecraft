@@ -1,0 +1,175 @@
+Beta 1.20.80.20 (Android) or Preview 1.20.80.20 (Windows, iOS, iPadOS, Xbox, PlayStation) is the first beta/Preview version for Bedrock Edition 1.20.80, released on February 29, 2024, which releases the armadillo and wolf armor from experimental gameplay and fixes bugs.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Cocoa Beans
+
+Fully grown cocoa pods now consistently drop 3 cocoa beans.
+Sapling
+
+The different sapling type block states for the sapling ID have now been split up into their own IDs.
+
+Coral Fan
+
+The different coral color block states for the coral_fan ID have now been split up into their own IDs.
+
+
+=== Items ===
+Wolf Armor
+
+Wolf armor has been de-experimentified and is now available during normal gameplay.
+Wolf armor can now be dyed.
+Wolf armor now acts as a shield, absorbing most damage directed to the wolf:
+The wolf armor now has 64 durability.
+More cracks appear on the wolf armor as it takes more damage.
+The cracked textures of the wolf armor is slightly different from Java Edition.
+If the wolf armor is dealt damage beyond 0 durability, it will break.
+Wolf armor can now be repaired by using armadillo scutes on a sitting wolf.
+
+
+=== Mobs ===
+Armadillo
+
+The armadillo has been de-experimentified and is now available during normal gameplay.
+Breeding cooldown is no longer reset after roll-up.
+
+
+=== General ===
+Experiments
+
+Removed the "Armadillo and Wolf Armor" experimental toggle.
+Realms Stories
+
+The Members and Timeline tabs are now limited to rendering at most 300 Realm players, to avoid performance issues on large Realms. All players will still be searchable in the Members tab.
+When adding a new story, the text box is no longer cleared when the player leaves the Add Story screen. Essentially, players can save a draft of their Story.
+When posting a Realm Story, the players avatar will only have the Online badge if they are currently playing in a game hosted by a Realm.
+Added screen reader narration to Realms Stories Opt In screen.
+Added info button to Timeline tab.
+Updated description text of certain Realms Stories settings.
+Added unread story indicator on Story Feed tab.
+Added a Realms Stories page to How to Play section of Minecraft.
+UI
+
+The feedback button has been moved from Main Menu to the Settings screen under the General tab with label Help Center.
+Added a toggle for enabling/disabling game tips and a button for restarting them in the Settings under the General section.
+Increased the time interval for showing a standard loading tip.
+Add Import Retail Worlds button to the Settings/Storage screen.
+Worlds imported in the new Play screen now has a space before the (imported) suffix. (Preview only)
+On touch devices, when items are swapped the icons now move in the correct direction.
+Custom decorated pots and dyed banners are now rendered correctly in crafter output slot.
+On touch devices, the selected item now has a blue background on all screens.
+Flying item animation is no longer missing in touch-screen versions of beacon, cartography table, and smithing table screens.
+
+
+=== Technical ===
+API
+
+Removed EntityHealableComponent.filters as they currently have no backing implementation.
+Added PaletteColor enum to beta for use with ItemColorComponent/ItemColor2Component.
+Added ItemColor2Component to beta for reading minecraft:color2.
+Setting a dynamic property with a key larger than 32kb now will result in an exception.
+Cameras
+
+Added the extend_player_rendering camera component which allows for players (and any entities they are connected to through riding and leashes) to be rendered even if they are beyond the max entity render distance.
+Added extend_player_rendering component to the minecraft:free camera.
+This component is intended to be an enhancement and improvement to current functionality and as such will be set to true by default.
+Setting this component to false will remove the added rendering capability. Documentation will be undated prior to release.
+The server now sends chunks and actors around the camera to the client if that information already exists on the server even when the camera is placed far away from the player.
+Components
+
+The interact components fields equip_item_slot and drop_item_slot now support both armor and inventory slots:
+Armor slots are specified as slot.armor.head, slot.armor.chest, slot.armor.legs, and slot.armor.feet.
+Inventory slots are specified as positive numbers, now expressed as strings.
+This change requires a world version of 1.20.80 or higher.
+Added repair_entity_item field to the interact component, which allows to repair an item in one of the entitys inventory or armor slots.
+Entity Filters
+
+Added new entity filter is_sitting, which checks if the entity is sitting.
+Added new entity filter has_damaged_equipment, which checks if the entity has a certain damaged piece of equipment in the specified slot.
+Molang
+
+Added new query query.armor_slot_damage, which returns the damage value of the armor item in the specified slot.
+Stability and Performance
+
+Removed FilterTextPacket.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Update 1.21" and "Beta APIs" experimental toggles.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Vault
+
+Vault hit sound pitch corrected to match Java Edition.
+Updated vault visuals.
+
+
+==== World generation ====
+Trial Chambers
+
+Trial chambers are now placed in the same location and configuration as Java Edition.
+
+
+==== Technical ====
+Blocks
+
+Added minecraft:custom_components block component under the Beta APIs feature flag.
+Graphical
+
+Added a dedicated quality slider for Point Light Shadows in the Deferred Video Settings menu.
+Added a new feature to the lighting model in the Deferred Technical Preview: Sub Surface Scattering. This effect approximates rays of light passing through translucent surfaces. For now, this feature is limited to only affect Leaves.
+Increased the contrast and saturation of the world in the Deferred Technical Preview.
+API
+
+Block Custom Components
+Added BlockComponentStepOnEvent for beta.
+Added BlockRegistry for beta.
+Added WorldInitializeBeforeEvent.
+Added BlockCustomComponent.
+Creator Settings menu has a new option to automatically connect the debugger on world load (or /reload). This will make it easier to set (and catch) breakpoints at load and avoids the hassle of typing out the debugger slash command.
+Added class ListBlockVolume which extends BaseBlockVolume - A volume that stores multiple block locations.
+Structure
+Renamed class StructureTemplate to Structure.
+Added read-only property size: Vector3 - Returns the size of the structure in blocks.
+Added function getBlockPermutation(location: Vector3): BlockPermutation undefined; - Returns the block permutation at the given location within the structure.
+Added function isValid(): boolean - Returns false if the structure has been deleted.
+Added function getIsWaterlogged(location: Vector3): boolean; - Returns whether the block at the given location is waterlogged.
+
+
+== Fixes ==
+14 issues fixed
+From released versions before 1.20.80
+
+MCPE-31121  [Wolf's] Geometry - the tail is not connected to the wolf
+MCPE-139168  Tamed wolfs float when sliding down honey from a high place
+MCPE-172622  Harvesting sweet berries with Fortune enchantment
+MCPE-178351  Wolf's new collar textures does not have shading despite like Java Edition
+MCPE-178399  Button touching range is smaller than before in new D-Pad & tap to interact mode
+MCPE-178887  Spiders and cave spiders do not flee from armadillos, when enabling "Update 1.21" experimental toggle
+MCPE-179187  Pre-1.16 wooden slabs do not stack
+Others
+
+Horses and Boats no longer slide to unexpected previous locations upon mounting or dismounting.
+Fixed an issue where the Realms Stories button would lose focus on the play screen.
+Fixed the Realms Stories Opt In screen sometimes appearing visually broken.
+Fixed a bug where selecting the same screenshot again would de-select the screenshot instead of just keeping the selected one.
+Fixing some component isValid methods where they did not properly return false in cases where the component had been removed from the Entity.
+Fixed /hud command so that changes only effect the targeted player(s).
+Partially fixed full block shapes (e.g. redstone lamps, froglights, glowstone, etc.) that are marked as point lights in resource packs in the Deferred Technical Preview. They can still be turned into point lights, but will not have occlusion/shadows.
+
+
+== Trivia ==
+This is the only version of Bedrock Edition to be released on a leap day.
+
+
+== References ==
+
+
+== Navigation ==

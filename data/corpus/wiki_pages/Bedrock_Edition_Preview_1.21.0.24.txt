@@ -1,0 +1,217 @@
+Beta 1.21.0.24 (Android) or Preview 1.21.0.24 (Windows, iOS, iPadOS, Xbox, PlayStation) is the fifth beta/Preview version for Bedrock Edition 1.21.0, released on May 1, 2024, which adds 15 new paintings, 3 new music discs, 9 new music tracks, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Items ===
+Music Discs
+
+Added 3 new music discs, which play songs with the same names from the Minecraft: Tricky Trials (Original Game Soundtrack):
+ "Precipice" by Aaron Cherof.
+Can be found rarely in standard vaults.
+Has a comparator output of 13 when played in a jukebox.
+ "Creator" by Lena Raine.
+Can be found rarely in ominous vaults.
+Has a comparator output of 12 when played in a jukebox.
+ "Creator (Music Box)" by Lena Raine.
+Can be found rarely in decorated pots broken in trial chambers.
+Has a comparator output of 11 when played in a jukebox.
+Paintings
+
+Added fifteen new paintings by artist Kristoffer Zetterstrand:
+
+
+=== Music ===
+Added 9 new background music tracks. These can all play on the menu screens.
+
+"Featherfall" can play in every "other" biome, but it also plays in the specific biomes listed above.
+Removed "A Familiar Room", "Bromeliad", "Crescent Dunes", and "Echo in the Wind" from the menu screens.
+
+
+=== General ===
+Player Profile
+
+The updated Player Profile page is now available for all platforms. (Preview only)
+
+
+== Changes ==
+
+
+=== Blocks ===
+Tuff blocks
+
+The tuff wall, polished tuff wall, and tuff brick wall are now visible on maps.
+The tuff brick slab and polished tuff slab now have the correct blast resistance values.
+Copper Doors and Copper Trapdoors
+
+Copper doors and trapdoors are now crafted from copper ingots instead of copper blocks.
+Only copper doors and copper trapdoors can now be crafted; other variants are no longer craftable.
+Ominous Trial Spawner
+
+Now correctly ejects ominous trial keys instead of trial keys.
+Mobs spawned with equipment that is part of an ominous trial no longer have a chance to drop that equipment upon death.
+Mobs that can wear equipment now usually spawn with enchanted weapons and armor.
+Armor enchantments include Protection IV, Projectile Protection IV, and Fire Protection IV.
+Weapon enchantments include Sharpness I, Knockback I, Power I, and Punch I.
+Doubled the total number of mobs that ominous trial spawners can spawn when they spawn mobs that are unable to wear equipment (i.e. double the total mob count).
+Increased the number of simultaneous mobs that those spawners can have by 1 (i.e. increased the simultaneous mob count by 1).
+Trial Spawner
+
+Trial spawners no longer spawn mobs when the doMobSpawning game rule is set to false.
+Ominous trial spawner does not spawn potions and projectiles when there are no valid players in its range.
+The rewards that trial spawners and ominous trial spawners eject is now in parity with Java Edition.
+Projectiles spawned by ominous trial spawner can no longer spawn inside solid blocks.
+
+
+=== Gameplay ===
+Ominous Trials
+
+Removed the bottle o' enchanting from the possible projectiles that can be spawned by an ominous trial spawner.
+Oxygen bar
+
+Added an empty state for air bubbles () along with a wobble when the player is drowning.
+Added a popping sound when bubbles pop on the oxygen bar.
+Trial Chambers
+
+Decorated pots in trial chambers now drop less types of items, in order to ease inventory management.[more information needed]
+Trial spawner mob distribution:
+Spider spawners have been moved from the "small melee" category to the "melee" category.
+Slime spawners have been moved to the "melee" category to the "small melee" category.
+Adjusted the drop chance of the Precipice music disc.
+Removed the TNT trap in the Eruption chamber (chamber/eruption).
+Fixed the seams in corridors so they now match.
+Added new variants of the entrance chamber (corridor/entrance_1).
+Added empty chests to the entrances of some chambers.[more information needed]
+
+
+=== General ===
+Game Tips
+
+Improved game tip interruption handling. Different kinds of interruptions can now be tracked separately.
+Added interruption for when player is in lava.
+Added interruption when input mode is switched.
+Added interruption when mobs are nearby.
+Changed base timing for camera game tip to 15 seconds.
+Changed base timing for movement game tip to 30 seconds.
+Changed base timing for break block game tip to 2 minutes.
+Changed base timing in survival for place block game tip to 5 minutes.
+Deactivated swimming game tip for touch devices.
+Main Menu
+
+Added new cubemap background for 1.21.
+
+
+=== Items ===
+Mace
+
+The mace smash attack no longer creates dirt particles when hitting a target whose center is in the air.
+Doubled the mace's durability from 250 to 500.
+Density is no longer as powerful and the mace now does less damage when falling from great heights.
+See the  New mace damage formula below.
+Reduced the mace's base damage to 5HP. This means the player will do 6HP damage when attack with it.
+Reduced the damage per block per level of Density from 1HP to 0.5HP  0.25 (a quarter heart).
+Increased the mace smash attack's damage for shorter falls, and decreased the damage for longer falls:
+The first 3 blocks fallen increase the damage by 4HP per block
+The next 5 blocks fallen increase the damage by 2HP per block
+Each block fallen after that increases the damage by 1HP
+Density, Breach, Smite, and Bane of Arthropods are now all incompatiable with each other. Each mace can only have 1 of these enchantments.
+
+
+==== New mace damage formula ====
+f(h)={6+(4+0.5D)h,if 0h312+(2+0.5D)h,if 3<h820+(1+0.5D)h,if 8<h
+f(h) is the damage done by the mace when falling from a height of h blocks
+Here is a graph of what that formula means:
+
+
+=== Technical ===
+API
+
+Moved entity from beta to 1.11.0
+Moved EntityTameMountComponent and method tame from beta to 1.11.0.
+Add-Ons and Script Engine
+
+Changed biome documentation to generate with a different system, which will cause the layout and order of those documentation elements to change.
+General
+
+The free camera experiment has been deprecated and the toggle removed as this feature has shipped.
+Future improvements to the free camera preset will be found in new experimental toggles as those capabilities become available. Samples can be found in the document for the camera command.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs" experimental toggle.
+
+
+=== Changes ===
+
+
+==== Technical ====
+API
+
+Added new interface VectorXZ.
+Added method getTopmostBlockwhich will perform a raycast from the top of the world downwards, trying to find the first solid block.
+Added method getBlockAbovewhich will perform a raycast from a given position, trying to find the first solid block above.
+Added method getBlockBelowwhich will perform a raycast from a given position, trying to find the first solid block below.
+EntityAddRiderComponent
+Moved property readonly entityType: string from beta to 1.11.0.
+Moved property readonly spawnEvent: string from beta to 1.11.0.
+EntityRideableComponent
+Moved property readonly setCount: number from beta to 1.11.0.
+Moved property readonly crouchingSkipInteract: boolean from beta to 1.11.0.
+Moved property readonly interactText: string from beta to 1.11.0.
+Moved property readonly controllingSeat: number from beta to 1.11.0.
+Moved property readonly passengerMaxWidth: number from beta to 1.11.0.
+Moved property readonly pullInEntities: boolean from beta to 1.11.0.
+Moved property readonly riderCanInteract: boolean from beta to 1.11.0.
+Moved property readonly seatCount: number from beta to 1.11.0.
+Moved function addRider(rider: Entity): boolean from beta to 1.11.0.
+Moved function ejectRider(rider: Entity): void from beta to 1.11.0.
+Moved function ejectRiders(): void from beta to 1.11.0.
+Moved function getFamilyTypes(): string[] from beta to 1.11.0.
+Moved function getRiders(): Entity[] from beta to 1.11.0.
+Moved function getSeats(): Seat[] from beta to 1.11.0.
+Seat
+Moved property readonly lockRiderRotation: number from beta to 1.11.0.
+Moved property readonly maxRiderCount: number from beta to 1.11.0.
+Moved property readonly minRiderCount: number from beta to 1.11.0.
+Moved property readonly position: Vector3 from beta to 1.11.0.
+Moved property readonly seatRotation: number from beta to 1.11.0.
+EntityRidingComponent
+Moved property readonly entityRidingOn: Entity from beta to 1.11.0.
+
+
+== Fixes ==
+21 issues fixed
+From released versions before 1.21.0
+
+MCPE-37112  Thrown trident hurts perched ender dragon
+MCPE-118433  "Castaway" achievement cannot be unlocked
+MCPE-128908  Large Marketplace Content Creator Hats Display when wearing Mob Heads
+MCPE-139168  Tamed wolfs float when sliding down honey from a high place
+MCPE-176362  Tuff slabs, stairs, and walls use stone sounds instead of tuff sounds
+MCPE-176434  Polished Tuff Slab and Tuff Brick Slab breaks instantly
+MCPE-178574  Navigating to previous chat messages is glitched on iOS and Android
+MCPE-178894  Exiting the water using wind charge causes fall damage
+MCPE-178902  Bogged doesn't retaliate against attacks from other mobs
+MCPE-179379  Breeze's wind charge negates fall damage
+MCPE-180190  Tuff Slabs do not appear on maps
+From the previous development version
+
+MCPE-179928  Fixed issue where block with custom components could not have a block placed onto them without crouching.
+MCPE-180271  Status effect name in the potions of wind charging and infestation tooltip uses a different name on Bedrock, compared to Java
+MCPE-180485  Wind charges can harm the ender dragon while it perches on top of the end portal, unlike arrows
+MCPE-180764  Wind Burst enchantment is obtainable from villager trading
+Others
+
+Crafters now show the correct particle when broken.
+Player-shot Wind Charges' burst sound is no longer affected by the "Hostile Creatures" sound setting.
+Mobs under the Infested status effect no longer spawn Silverfish when blocking damage with a Shield.
+The Breeze can now pathfind close to fire.
+Fixed various broken or incorrect jigsaw data in Trial Chambers.
+Fixed a bug where, if a block and item are registered with the same identifier, the block returns a null item when "picked".
+
+
+== References ==
+
+
+== Navigation ==

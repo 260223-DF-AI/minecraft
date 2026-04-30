@@ -1,0 +1,116 @@
+25w08a is the seventh snapshot for Java Edition 1.21.5, released on February 19, 2025, which adds new sound personalities for wolves, overhauls spawn egg textures, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Mobs ===
+Wolf
+
+Added six new sound variants.
+The variants are called Classic, Big, Cute, Puglin, Angry, Grumpy, and Sad. The existing wolf sounds are used for the Classic variant.
+Wolves receive a random sound variant when they spawn.
+Sound variants are not related to texture variants.
+
+
+=== General ===
+Entity components
+
+wolf/sound_variant
+Namespaced ID from wolf_sound_variant registry.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Leaf litter
+
+Leaf litter is now tinted based on which biome it is in.
+
+
+=== Items ===
+Spawn eggs
+
+Changed the visuals of all spawn eggs to make them easier to distinguish: each type of spawn egg now has its own unique icon instead of all just being colored variants of the same spotted egg.
+Each egg visual varies in shape to reflect the in-world properties of the mob it spawns: for example, smaller mobs tend to have a smaller Spawn Egg icon.
+
+
+=== Mobs ===
+Sheep
+
+Reverted the change from 25w07a that allowed blue, light blue, cyan, yellow, orange and red sheep to spawn naturally in different biomes.
+Common sheep color in cold biomes remains black, and uncommon colors are now gray, light gray, white and brown.
+Common sheep color in warm biomes remains brown, and uncommon colors are now gray, light gray, white and black.
+Pink sheep will still be very rare and able to spawn anywhere where sheep can spawn.
+The wool undercoat of sheep is now also colored when dyed, matching existing behavior in Bedrock Edition.
+Sheep can now eat ferns, matching Bedrock Edition.
+Wandering trader
+
+Some of the new trades have changed from a stock of one single trade to a stock of two trades.
+This applies to the following trades:
+Water Bottle
+Water Bucket
+Milk Bucket
+Fermented Spider Eye
+Baked Potato
+Hay Bale
+
+
+=== Gameplay ===
+Creative mode
+
+The tab icon for the Spawn Eggs inventory tab has changed from the pig spawn egg to the creeper spawn egg.
+
+
+=== General ===
+Biome effects
+
+dry_foliage_color field
+Defines the color used for tinting blocks using dry foliage tinting.
+Data component format
+
+blocks_attacks
+If the blocked damage has no position, the compared angle will be assumed to be the maximum 180 for horizontal_blocking_angle field of damage_reductions.
+Data pack
+
+The pack format version is now 68.
+Equipment Assets
+
+Equipment layers configured to be dyeable will now show if the dyed_color component is present on the item, even if the item is not in the #dyeable tag.
+Resource pack
+
+The version is now 53.
+Added the possibility to tint blocks based on a dry foliage color map.
+Added colormap texture for tinting dry foliage tinted blocks.
+Removed spawn_egg.png and spawn_egg_overlay.png.
+The texture sheep_fur has been renamed to sheep_wool.
+Tags
+
+Added fern to the #edible_for_sheep block tag.
+Added cactus, campfire, dry_out, hot_floor, in_fire, lava, lightning_bolt, and sweet_berry_bush to the #bypasses_shield damage type tag.
+
+
+== Fixes ==
+Note: The bug tracker was offline for most of the preceding week, therefore many bugs from 25w07a may not have been reported on the tracker and are therefore not listed. Bugs were officially reported in the game's Discord server during this week.
+
+4 issues fixed
+From released versions before 1.21
+
+MC-177522  Wolf barking and whining sounds are subtitled as "Wolf pants".
+MC-258253  Spawn egg particles use an uncolored spawn egg overlay.
+From the 1.21.5 development versions
+
+MC-280182  Shields can block some environmental damage sources.
+From the previous development version
+
+MC-280230  DeathLootTable field is incorrectly named DeathLoothTable.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

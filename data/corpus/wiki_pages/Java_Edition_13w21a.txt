@@ -1,0 +1,82 @@
+13w21a is the eighth snapshot for Java Edition 1.6.1, released on May 23, 2013.
+
+
+== Additions ==
+
+
+=== Mobs ===
+Donkeys, horses and mules
+
+Added a UI to control saddle/inventory/armor.
+Can be accessed by sneaking and right-clicking, or by pressing the inventory button while riding.
+Some features of the UI are specific to certain mobs:
+All three mobs have a saddle slot.
+Only horses have an armor slot.
+Donkeys and mules have an inventory of 15 slots when given a chest.
+
+
+=== General ===
+Attribute system
+
+Started to move over various things to a new attribute system:
+Item attributes using NBT data:
+Attributes can be additive, subtractive and multiplicative using a set value.
+Some items have default modifiers in place of previously hard-coded attributes.
+Examples of possible changes players could make: A bow that slows the holder, a helmet that buffs health, etc.
+Entity attributes:
+These properties can now be changed as easily as any other NBT attribute.
+Entity speed, base health, base attack.
+Other properties like weapon damage/bow draw speed/sword swing speed are yet to follow.
+Internal chat system
+
+Lots of messages should be translated now that were not previously.
+Messages are now better modularized.
+Server messages can be sent by their code-defined name, allowing the client to utilize the correct translation according to their language settings.
+Color can be specifically designated, preventing leakage into further messages.
+
+
+== Changes ==
+
+
+=== Items ===
+Horse armor
+
+No longer stackable.
+Tools
+
+Instead of replacing the barehanded damage (1HP), pickaxes, shovels, axes and swords now add their damage onto the barehanded damage.
+
+
+=== General ===
+Resource packs
+
+Lots of work toward a new resource pack system, but not finished yet.
+Currently still compatible with texture packs.
+
+
+== Fixes ==
+12 issues fixed
+From released versions before 1.6.1
+
+MC-1497  Damaged anvils do not show damage in inventory or item frame.
+From the 1.6.1 development versions
+
+MC-13626  XP Bar shows up in creative.
+MC-13640  Hay bales do not burn when set on fire.
+MC-13662  XP, health, and hunger bar are buggy with horses.
+MC-13770  Using a horse spawn egg on a horse works only when riding the horse.
+MC-13852  Can't throw enderpearls while mounting a horse.
+MC-14220  Player appearance not updating in multiplayer (armor, tools).
+MC-14417  No way to remove armor or saddles off a horse.
+MC-14422  Horse name tag is shown while riding.
+MC-15138  Sides of cauldron has compass texture after placing compass in item frame.
+MC-15201  Bottom part of some types of horses-harness is misplaced.
+From the previous development version
+
+MC-15416  Selected item disappears when armor breaks.
+
+
+== References ==
+
+
+== Navigation ==

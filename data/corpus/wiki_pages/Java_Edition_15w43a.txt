@@ -1,0 +1,191 @@
+15w43a is the thirty-fourth snapshot for Java Edition 1.9, released on October 21, 2015. Most notably, Chinese, Japanese and Korean (and likely other IME languages) can now be input into chat thanks to bug MC-2781 being fixed. Igloos were also added in this version.
+
+
+== Additions ==
+
+
+=== World generation ===
+Igloo
+
+Spawns randomly in ice plains and cold taiga (but not the hills variant).
+Spawning parameters are shared with desert pyramids, jungle temples, and witch huts: the fact of a structure spawn is decided, then the biome determines which structure (if any) is spawned.
+Created by Searge (as found in the NBT data).
+An igloo contains: 9 white carpets, 3 light gray carpets, 2 blocks of ice, a redstone torch, a furnace, bed and a crafting table.
+Some igloos have a stone brick basement, with a cauldron, 2 red carpets, a brewing stand, 3 spruce stairs, 2 torches and a loot chest, along with a villager priest and zombie villager priest behind iron bars. An oak trapdoor with ladders leads down into the basement. Cracked and mossy stone bricks can also generate.
+In the loot chest, there is sometimes be a golden apple in the central spot, hinting that the player needs to cure the zombie.
+Always spawns with a splash potion of Weakness, hinting the player to use these on the zombie villager to turn it into the same type of villager next to it.
+The zombie has the PersistenceRequired tag which makes it not despawn.
+Silverfish spawn in some stone brick blocks.
+
+
+=== Command format ===
+NBT format
+
+Chests/minecart chests
+[String] LootTable: Loot table to be used to fill the chest when it is next opened or destroyed. When the chest is part of a double chest, only the half corresponding to the tagged single-chest is affected.
+e.g. /setblock ~ ~1 ~ minecraft:chest 0 replace {LootTable:"minecraft:chests/simple_dungeon"}.
+[Long] LootTableSeed: Seed for generating the loot table. Used in vanilla survival to replicate chest content in new worlds with same seeds. 0 or omitted uses a random seed.
+/setblock x y z minecraft:chest 0 replace {LootTable:"chests/simple_dungeon",LootTableSeed:12345}.
+All mobs
+[String] DeathLootTable (string): Determines which loot table is used when the mob is killed.
+e.g. /summon Creeper ~ ~1 ~ {DeathLootTable:"minecraft:chests/simple_dungeon"}.
+[Long] DeathLootTableSeed (long): The deterministic seed for grabbing data from the loot table. Used in vanilla survival to replicate chest content in new worlds with same seeds. Must not be 0.
+e.g. /summon Creeper ~ ~1 ~ {DeathLootTable:"minecraft:chests/simple_dungeon",DeathLootTableSeed:123l}.
+
+
+=== General ===
+
+
+==== Language ====
+Added LOLCAT.
+Replaced Australian English (Australia) with English (Australia). (Australian English had many jokes/slang, but English (Australia) is a real language.)
+Loot tables
+
+All loot from mobs, chests etc. is now based on loot tables, excluding block drops.
+Can be changed by mapmakers by adding a json file within the "WORLD/data/loot_tables" folder, however, it is broken in 43a.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Heavy weighted pressure plate, light weighted pressure plate, wooden pressure plate, fence gates, iron doors, wooden doors, wooden buttons
+
+Added new sounds.
+Lily pads
+
+Can be placed on ice and frosted ice, but don't stay placed if updated.
+Sugar cane
+
+No longer breaks if its adjacent water is turned to frosted ice.
+Chests
+
+Changed sounds.
+Ender chests still use the old sounds, however, due to MC-91091.
+
+
+=== Mobs ===
+General
+
+Mobs wearing armor or carrying weapons no longer drop the equipment, i.e. HandDropChances and ArmorDropChances are ignored.
+See MC-91147.
+Cave spiders & spiders
+
+Drop eyes more often (now 50% chance, previously a 33% chance normally and 66%/77%/82.5% with Looting) and the amount is now increased by Looting.
+Chickens
+
+Now drop more than one meat item when killed with Looting.
+See MC-91074.
+Elder guardians
+
+No longer rarely drop fish as if from fishing.
+See MC-91152.
+Now drop dry sponges on any kill, rather than wet sponges on a player kill.
+Drop chances for raw fish and prismarine crystals changed. Now it is a 40% chance for fish, 40% for crystals, and 20% of nothing, with the amount increased by Looting. Formerly it was 33% raw fish and 33% of crystals only if the raw fish drop failed, with Looting increasing the chances but not the amount.
+Endermen
+
+No longer drop the held block.
+See MC-91151.
+Ghasts
+
+Now drop 03 gunpowder and 02 ghast tears (up from 02 gunpowder and 01 tears), incremented as usual with Looting.
+See in MC-91156.
+Guardians
+
+No longer rarely drop fish as if from fishing.
+Drop chances for raw fish and prismarine crystals changed. Now it is a 40% chance for fish, 40% for crystals, and 20% of nothing, with the amount increased by Looting. Formerly it was 33% raw fish and 33% of crystals only if the raw fish drop failed, with Looting increasing the chances but not the amount.
+See MC-91152.
+Horses
+
+No longer drop leather, bones, or rotten flesh. Saddles, horse armor, chests, and chest contents are still dropped when applicable.
+See MC-91149
+Pigs
+
+No longer drop worn saddles.
+See MC-91147.
+Rabbits
+
+Now drop more than one meat item when killed with Looting.
+See MC-91074.
+Rabbits no longer rarely drop feet.
+See MC-91098.
+Sheep
+
+Sheared sheep now drop wool when killed.
+See MC-91148.
+Skeletons
+
+Now drop 03 arrows and 03 bones (up from 02 of each), incremented as usual with Looting.
+Wither skeletons
+
+Now drop 03 coal and 03 bones (up from 01 coal with "0" having double chance and 02 bones), incremented as usual with Looting.
+Zombie pigman 
+
+Now drop 02 rotten flesh and 02 gold nuggets (up from 01 of each), incremented as usual with Looting.
+Note: many changes above were reverted or modified in 15w43b and 15w43c, with the exception of the change to the drop chances from guardians, the change of elder guardians dropping dry rather than wet sponges, the addition of Looting affecting chicken and rabbit meat drops, and the change to how Looting affects spider eye drops. Also, as of 15w34c horses again drop their items, but always 1 rather than 02.
+
+
+=== World generation ===
+Stronghold
+
+Increased number of strongholds to 128 per world, rather than 3.
+
+
+=== Command format ===
+/gamemode
+
+Now displays in chat the gamemode the player switched to.
+
+
+=== Gameplay ===
+Brewing
+
+Blaze powder fuel points reduced from 30 to 20.
+Enchantments
+
+Frost Walker no longer works on flowing water.
+Trading
+
+Librarians charge double for books with "treasure" enchantments.
+
+
+=== General ===
+Debug screen
+
+Is now toggled when the F3 key is released, instead of when it is pressed.
+Now shows more information.
+F3 + Q gives help.
+Shows all F3 + key combinations.
+F3 + F now increases render distance by 1 (minimum 2, maximum 32).
+F3 +  Shift + F now decreases render distance by 1 (minimum 2, maximum 32).
+Shows if the pie chart and FPS chart are shown on screen.
+Shows text in chat when you reload chunks, sounds, etc.
+Does not open the F3 screen when you use a specific key combination like F3 + N, F3 + B, etc.
+Removed F3 + S, which previously reloaded sounds.
+F3 + T now reloads all resource pack content, including sounds.
+Sounds
+
+Added 150+ new sound events.
+
+
+== Fixes ==
+4 issues fixed
+From released versions before 1.9
+
+MC-1315  When all 3 end portals have failed to spawn there is no way to get to the end.
+MC-2781  Chinese, Japanese and Korean (and probably other IME entered languages) characters not working.
+MC-72397  Alex model displays items incorrectly.
+MC-72839  F3 + A will always make you walk left slightly.
+
+
+== Videos ==
+
+
+== Trivia ==
+15w43a was previously removed from the launcher for some time, but was added back in September 2018.
+
+
+== References ==
+
+
+== Navigation ==

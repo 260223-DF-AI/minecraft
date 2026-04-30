@@ -1,0 +1,81 @@
+1.15 Pre-release 4 (known as 1.15-pre4 in the launcher) is the fourth pre-release for Java Edition 1.15, released on December 3, 2019, which fixes many issues relating to coordinate precision.
+
+
+== Changes ==
+
+
+=== General ===
+Performance
+
+Performance improvements.
+Floating-point precision
+
+The floating-point precision used for the location of where certain particles and entities appear was increased to 64-bit (double-precision), from 32-bit (single-precision).
+This fixes many issues regarding certain types of particles and entities not appearing at the right places when far away from the center of the world, especially beyond 16,777,216 (224) blocks. The following list includes instances that are known and confirmed to be fixed:
+Particles
+Fishing particles
+Squid ink particles
+End gateway particles
+Conduit particles
+Impact particles when entity has fallen from height on to block
+Sweeping attack particles
+Damage heart particles
+Particles appearing when using the /particle command
+Mycelium particles
+Underwater particles
+Nether portal particles
+End portal particles
+Brewing stand particles
+Monster spawner particles
+Barrier particles
+Armor stand breaking particles
+Suspended gravity affected block particles
+Entities
+Primed TNT entities. However, indirectly ignited TNT from other explosions is still affected.
+Block entities
+The floating book above placed enchanting tables is now correctly rotated towards the direction of where a nearby player is at high coordinates. However, there are still issues with the book not opening early enough.
+The versions in which these issues first appeared, as well as other fixes, can be seen at Java Edition distance effects#History.
+Textures
+
+The checkerboard background for unfilled sections on maps now has its own texture.
+
+
+== Fixes ==
+22 issues fixed
+From released versions before 1.15
+
+MC-81970  Rotating armor stand has a shaking base plate.
+MC-103800  Sometimes armor stands will not update their visual rotation.
+MC-125638  Ignited TNT block has an entity offset at high coordinates.
+MC-146194  Summon and rotation in same tick not working.
+MC-155520  Repeaters do not update properly.
+MC-157426  Command outputs which should be sorted do not get sorted.
+MC-161888  Enchantment tables do not track the player correctly at high distances from the world origin.
+MC-161991  Floating point precision error: Trailing particles from fishing lose precision at high coordinates.
+MC-161993  Floating point precision error: Conduit particles are attracted to the conduit incorrectly at high distances.
+MC-161994  Floating point precision error: Squid ink particles lose precision at high coordinates.
+MC-161999  Floating point precision error: Particles emitted by end gateways gravitate to a point that loses precision at high coordinates.
+MC-166047  Tamed wolves attack tamed parrots.
+From the 1.15 development versions
+
+MC-161394  Skeleton and wither skeleton skull's inside textures are invisible.
+MC-164704  Rendering issue with honey and slime blocks when viewed from under glass.
+MC-164712  Clouds are rendered in front of chunk borders.
+MC-165704  Sky color no longer changes with biome.
+MC-165977  Explosions combine block drops and drop them at the wrong location.
+MC-166300  Pandas sometimes attack players trying to breed them.
+MC-166667  Item frames are not rendered behind unexplored portions of maps.
+From the previous development version
+
+MC-166716  Tridents and shields are rendered too dark in the inventory.
+MC-166800  Removing items from an armor stand with DisabledSlots causes a visual bug.
+MC-167000  Player model in inventory inverts lighting when some items are in hotbar.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

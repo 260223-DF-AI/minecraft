@@ -1,0 +1,109 @@
+15w43c is the thirty-sixth snapshot for Java Edition 1.9, released on October 23, 2015 to make some changes to the loot table system, as well as fix some bugs and crashes.
+
+
+== Changes ==
+
+
+=== Mobs ===
+General
+
+Fixed mobs never dropping equipment.
+Endermen 
+
+Drop the block they are carrying again.
+Pigs 
+
+If equipped with saddle, they drop the saddle again.
+
+
+=== Non-mob entities ===
+Boats
+
+Remapped. They now have a separate texture per oar and per side of the boat.
+
+
+=== World generation ===
+Igloos
+
+The glass bottle in the brewing stand was removed.
+A cobweb generates in the corner of the basement.
+The sign in the igloo dungeon has changed.
+Previously:
+
+Now:
+
+
+=== Gameplay ===
+Fishing
+
+The Lure enchantment no longer affects the chances of catching things, only the delay.
+The Luck of the Sea enchantment is broken due to a typo in the new fishing loot table.
+Fished junk is less damaged (0%90% durability remaining) while treasure is more damaged (0%25% durability remaining).
+Ink sacs now are caught singly with weight 10 (formerly a stack of 10 with weight 1).
+
+
+=== General ===
+Loot tables
+
+The format is updated, so that rather than a 'items' node containing 'item' entries, it is an 'entries' node containing 'type' and 'name' entries.
+Type entries can be 'item', 'loot_table', or 'empty'.
+Name entries can either be item identifier for items, or the location and name of the loot table.
+Example:
+"type": "loot_table",
+"name": "minecraft:gameplay/fishing/treasure",.
+This allows for easier nested loot tables.
+The fishing tables are now available, along with loot for skeleton horses, zombie horses, and sheep without wool.
+Added the function 'set_damage', which is used to change the durability of a tool.
+Fixed some loot tables.
+Guardians and elder guardians have their rare drop of fishing loot again, though it includes fishing junk and fishing treasure as well.
+Elder guardians only drop sponges when killed by the player.
+Horses drop 1 leather. Skeleton and zombie horses drop 1 bone and 1 rotten flesh, respectively.
+Squid reverted back to dropping 13 ink sacs (was changed to 02 in 15w43b).
+Wither skeleton coal drop chance reverted back to earlier behavior: drops 11 (i.e. a 66% chance of 0 and a 33% chance of 1) with the amount increased as usual by Looting.
+Spider and cave spider eye drop chance adjusted, now drops 11 (i.e. a 66% chance of 0 and a 33% chance of 1) with the amount increased as usual by Looting.
+
+
+== Fixes ==
+20 issues fixed
+From released versions before 1.9
+
+MC-162  Ghost boats.
+MC-5120  Fireworks pushed by water/fired horizontally out of loaded chunks cause client to hang.
+MC-32778  Cannot assign keypad 5 key to motion any longer.
+MC-62159  Broken graphic for breaking piston arms/Extended piston head breaking texture is wrong.
+MC-68666  Block breaking uses nearby textures from stitched terrain when using cubes/planes larger than 16px.
+MC-73261  Couldn't jump on an anvil if I directly stand in front of the anvil.(Only in Multiplayer).
+MC-73401  Hopper texture issue.
+From the 1.8.2 development versions
+
+MC-76352  Rain under bedrock/in void.
+From the 1.9 development versions
+
+MC-88324  Minecraft freezes after x times of relogging.
+MC-89926  Elytra can't be set to Chestplate Slot w/ /replaceitem, but can be set to head slot.
+MC-89935  New chunks don't render until they are updated.
+MC-90213  Head has 360 degrees of vertical rotation when using elytra.
+MC-91147  Mobs no longer drop equipment.
+MC-91148  Killing a sheared sheep still drops wool.
+MC-91149  Horses no longer drop leather/bones/rotten flesh.
+MC-91151  Endermen no longer drop carried blocks.
+MC-91152  Guardians and Elder Guardians no longer rarely drop fish/salmon/clownfish/pufferfish.
+MC-91156  Mobs drop different amount of common items than before.
+From the previous development version
+
+MC-91185  Loot tables affect mobs drops/held items.
+MC-91203  Loot table function "set_data" doesn't work with tools.
+
+
+== Videos ==
+
+
+== Trivia ==
+15w43c was previously removed from the launcher for some time, but was added back in September 2018.
+15w43c is the last version to have a crafting recipe for the enchanted golden apple.
+
+
+== References ==
+
+
+== Navigation ==

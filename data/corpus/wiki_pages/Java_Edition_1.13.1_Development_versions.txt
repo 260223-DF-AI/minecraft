@@ -1,0 +1,448 @@
+This is a list of Java Edition 1.13.1 development versions.
+
+
+== 18w30a ==
+18w30a is the first snapshot for Java Edition 1.13.1, released on July 25, 2018, which adds a search bar in the world list and a few other things, and fixes many bugs.
+
+
+=== Additions ===
+Blocks
+
+Re-added punch-to-explode TNT using the unstable state (instead of the explode state in 1.12).
+Gameplay
+
+Added a search bar in the world list.
+Debug screen
+
+Added  Control + F3 + C to force a JVM crash, instead of a regular crash. However, with some keyboards it only triggers with right control.
+
+
+=== Fixes ===
+49 issues fixed
+From released versions before 1.13
+
+MC-33383  Lag while taking screenshot with F2 in singleplayer.
+MC-59517  TNT explode=true blockstate drops TNT item when fused by hit in survival mode.
+MC-84005  Book and quill doesn't save changes when edited in offhand.
+MC-88099  Slimes/Magma cube with NoAI-Tag still can damage the player.
+MC-88356  Bow animation broken in off-hand in third person.
+MC-119971  Various duplications, deletions, and data corruption at chunk boundaries, caused by loading outdated chunks  includes duping and deletion of entities/mobs, items in hoppers, and blocks moved by pistons, among other problems.
+MC-124942  "Invalid book tag" is not translatable.
+From 1.13
+
+MC-122563  Disappearance of the old "punchable" TNT.
+MC-122625  Order of contents of north- and east-facing double chests changed after update 1.12.2 -> 1.13.
+MC-123806  Tab-completion/command suggestions only work for the final argument.
+MC-124543  JSON-Text formatting in CustomNames of container blocks does not work.
+MC-124681  Tab suggestion erroneously suggests second closing square bracket on entity selectors.
+MC-124690  Successful /bossbar set players doesn't give success message in chat.
+MC-124808  Blocks don't pop off when their support blocks are moved by pistons.
+MC-124917  Selector suggestions do not disappear after adding the closing bracket.
+MC-125134  Server crashes while generating new chunks  java.util.concurrent.ExecutionException: We are asking a region for a chunk out of bound.
+MC-125286  Block state suggester does not include '=' for first key.
+MC-129754  Putting down lava freezes everything and then crashes the game when quitting.
+MC-131029  Villager door detection range has changed.
+MC-131462  Coordinate math error causes structure not to generate and possibly other issues.
+MC-131678  Setblock property - block and setblock property - value are reversed in error messages.
+MC-131868  Concrete powder next to waterlogged blocks is not converted to concrete.
+MC-132663  Command blocks kick player when entering certain commands > 256 characters in multiplayer.
+MC-132664  Obfuscated text uses same random character each frame for each input character.
+MC-132703  Iron golems do not spawn in center of village.
+MC-132898  Multiple layers of falling gravity blocks break.
+MC-133251  Curse enchantments don't use red text.
+MC-133260  Obfuscated text characterset limited to simple ASCII.
+MC-133345  Some bolded obfuscated characters causes text to jitter
+MC-133452  Copying, pasting, etc. still insert "c", "v", etc..
+MC-133587  Deleting server format error.
+MC-133715  Thrown tridents cannot be picked up after dying.
+MC-133839  Crash when tp/at world border.
+MC-133871  Waterlogged trapdoors do not update properly when opened.
+MC-133894  Drowned don't drop items that they picked up as zombie then were converted.
+MC-133905  Large oak trees generate without making block under stump dirt.
+MC-133942  1.13 Release is called a snapshot when backing up world.
+MC-133959  Credits don't appear when clicking "Copyright Mojang AB" in the title screen.
+MC-133986  Non [a-z0-9/. _ -] character in path of location: minecraft:EntityHorse.
+MC-133995  Transferring world from 1.12.2 to 1.13 isn't working.
+MC-134166  Villager door detection order has changed.
+MC-134297  Observers detect moved blocks late in 1.13.
+MC-134298  Observers don't detect retracting sticky pistons.
+MC-134300  Inconsistency with update order when pistons retract other pistons.
+MC-134348  Crash while upgrading: bkv{block=Block{minecraft:acacia_slab}, properties=[type, waterlogged]} has no property: half.
+MC-134414  Concrete powder falling onto sea grass just replaces it.
+MC-134468  Map cloning recipe only yields 2 maps.
+MC-134555  Sticky piston does not update gravity blocks
+MC-134570  Door top half missing when updating to new version.
+
+
+== 18w30b ==
+18w30b is the second snapshot for Java Edition 1.13.1, released on July 25, 2018, which fixes many bugs.
+
+
+=== Fixes ===
+30 issues fixed
+From released versions before 1.13
+
+MC-3927  Iron golems can spawn in slabs, glass, farmland and grass path.
+MC-74764  Particle "largeexplode", "hugeexplosion" and "sweepattack" not showing when using the front view (twice F5).
+MC-75465  Vignette effect's visibility is not being updated according to light level when GUI is hidden.
+MC-76615  Lightning bolt summoned by /summon is offset +0.5x and +0.5z.
+MC-78963  Command completion fails with multiple possibilities and other arguments set.
+MC-105512  Cracks appear inside dragon head instead of outside.
+MC-114218  Dispensers and droppers don't offset smoke particles when facing up or down.
+MC-119856  Slime blocks missing cullface argument.
+MC-120664  Tool durability is off by one.
+MC-120780  Chunk data packets are sometimes created unnecessarily.
+MC-121152  WorldClient leaks player and painting entities
+MC-122614  Strange tab completion coloring.
+MC-123586  Debug pie chart uses locale specific number formatting.
+MC-123880  Clientbound play packet 0x0C (Boss Bar) using same byte for different booleans.
+From 1.13
+
+MC-124054  Tab-suggestions don't disappear when moving cursor.
+MC-133154  Placing a slab to stop the water flow doesn't remove the water.
+MC-133273  Normal Pistons also spit out their blocks with a short signal.
+MC-133294  Map Markers blacked out.
+MC-133425  Missing Glyphs for [ (U+FF3B) and ( (U+FF08).
+MC-133453  Players can't stand in "walk-through" blocks after swimming.
+MC-134273  Player Markers on Map after disconnect.
+MC-134274  Map Markers for players holding a different Map.
+MC-134668  Over synchronization in ThreadedAnvilChunkStorage impacts performance
+MC-134903  Mobs can break turtle eggs by standing on them when gamerule mobGriefing is false.
+From the previous development version
+
+MC-134826  Deleting a world doesn't remove it from the list until re-entering world list.
+MC-134828  Server crash - Ticking world entities.
+MC-134833  Fast movement.
+MC-134858  The TNT block state "explode" does not carry over to 1.13.1's "unstable".
+MC-134905  Exception ticking world.
+MC-134919  Crash when blowing up TNT in the Nether
+Other fixes
+
+Fixed issue with rain sounds causing the console to spam errors.
+
+
+== 18w31a ==
+18w31a is the third snapshot for Java Edition 1.13.1, released on August 1, 2018, which adds some new features, changes some existing features, optimizes performance, and fixes many bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Chunks
+
+Added a concept of force-loaded chunks to the game, and a command (/chunk) to toggle force-loading on and off.
+Block tags
+
+Added the tag minecraft:underwater_bonemeals.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Conduits
+
+Are now properly waterlogged.
+
+
+==== Mobs ====
+Fish
+
+Now have a 5% chance of dropping bone meal when killed.
+Squid
+
+Now spawn only in rivers, oceans, or beaches.
+
+
+==== Items ====
+Bone meal
+
+When used in water of warm ocean biomes, it now has a chance to grow coral.
+
+
+==== Command format ====
+Scoreboards
+
+The scoreboard operator %= was changed from using Java's native % to using Math.floorMod. This causes the operator to use floored modulo instead of truncated modulo, so now -1 % 7 wraps to 6 instead of returning -1.
+Functions
+
+Line numbers in function parse error logs now start with 1 (was 0).
+
+
+==== General ====
+Performance has been optimized.
+
+
+=== Fixes ===
+45 issues fixed
+From released versions before 1.13
+
+MC-73  Green arrow bug on maps in frames.
+MC-1528  Maps in item frames' markers aren't persistent.
+MC-96998  End Cities / Woodland Mansions don't generate completely when interrupting generation
+MC-112801  Players on the death screen still cause spawners to spawn.
+MC-122939  Statistics for mining banners and beds never increase.
+MC-128547  Minecraft keeps previously used World in memory if the player has hit any entity in that world.
+From 1.13
+
+MC-121369  Holding ESC while clicking "Multiplayer" returns user to main menu
+MC-123021  Crash on open if "Saves" is a link
+MC-124583  Cannot place structure void block next to another when right clicking on one
+MC-125337  When the double-held trident throws, players will lift both hands
+MC-130258  Maps in item frames show shading problems.
+MC-131397  Sponges cannot remove water from conduits
+MC-132451  Command Parser - invalid value for block property and property name are reversed in error message
+MC-132769  Detecting a 2 redstone tick repeater with an observer block creates a 2 redstone tick pulse
+MC-133181  Observer's cooldown is broken.
+MC-133546  Player becomes "ghost" when dying in the nether or going through the end portal back to the overworld
+MC-134105  Can't return from the end after defeating dragon.
+MC-134159  Saved world causes crash in 1.13.
+MC-134667  Async Chunk Gen dangerously adding entities to world async.
+MC-134889  Iron golems spawn in air blocks.
+MC-134916  Sound event block.pumpkin.carve doesn't play when carving normal pumpkins.
+MC-135049  Old world doesn't save map markers in 1.13.
+MC-135261  /setblock for player heads don't show the texture after the placement.
+From the Java Edition 1.13.1 development versions
+
+MC-134816  Crash: Exception ticking world entities
+MC-134825  Tab completion/suggestions don't work for some non-literal arguments (in chat)
+MC-134832  TNT with unstable=true blockstate is ignited instead of broken in creative mode.
+MC-134898  Pressing Escape no longer returns to main menu from singleplayer menu.
+From the previous development version
+
+MC-134966  Using /setblock to place an "Always Active" command block with a command won't execute the command immediately
+MC-134967  NullPointerException when placing Wither Skeleton Skulls.
+MC-134974  Entities in your world can randomly freeze
+MC-134982  Exception when placing a command block.
+MC-134987  Renaming a world doesn't update its name until re-entering the world list.
+MC-134988  Optimizing a world doesn't update it until re-entering the world list.
+MC-135039  The game crashes when /setblock-ing a spawner with an entity ID containing capital letters
+MC-135053  Sticky pistons get stuck when receiving a 0 gametick pulse.
+MC-135136  Crash when placing a chain command block with set command.
+MC-135147  Loading/saving structures with command blocks in them causes errors
+MC-135172  Under certain conditions pistons can't be powered for the first 2 gameticks after being moved.
+MC-135185  All redstone components can become stuck in a powered state when indirectly unpowered.
+MC-135186  Pistons can only be re-pulsed 5 or more gameticks later.
+MC-135194  Pistons react 1 gametick too late.
+MC-135229  Game crash when opening Furnace
+MC-135268  Switching to spectator mode and back creates ghost player duplicates for other players
+MC-135293  Profiler doesn't exit section when an entity is removed, causing recursive profiling and lag
+Private issues
+
+MC-134716  Minecraft Multiplayer  Player kick exploit.
+
+
+== 18w32a ==
+18w32a is the fourth snapshot for Java Edition 1.13.1, released on August 8, 2018, which adds dead coral and some other features, changes some existing features, optimizes performance, and fixes many bugs.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Dead coral
+
+Dead variants of corals.
+When the live coral is placed on land it'll now turn dead.
+Can be placed on top of blocks.
+
+
+==== Gameplay ====
+Statistics
+
+New statistics:
+"Damage Dealt (Absorbed)"  damage_dealt_absorbed
+"Damage Dealt (Resisted)"  damage_dealt_resisted
+"Damage Blocked By Shield"  damage_blocked_by_shield
+"Damage Absorbed"  damage_absorbed
+"Damage Resisted"  damage_resisted
+"Shulker Box Cleaned"  clean_shulker_box
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Coral
+
+Can now be placed in air.
+Unless adjacent to water, they turn into dead coral after a short moment.
+Purpur stairs and slabs
+
+Can now be crafted using purpur pillars.
+
+
+==== Items ====
+Bone meal
+
+When used in water of warm ocean biomes, it now has a chance to grow coral fans.
+
+
+==== General ====
+Performance has been optimized.
+
+
+=== Fixes ===
+31 issues fixed
+From released versions before 1.13
+
+MC-1489  Dismounting a horse with a fence on the player's right leaves the player on the wrong side of the fence.
+MC-4488  Mobs don't drop cooked meat if last damage is from fire, lava or fire charge.
+MC-73361  Exiting a minecart / boat can put the player outside the border.
+MC-76649  Thrown item in hand and as entity
+MC-81237  stat.damageTaken fails to increment when player has absorption.
+MC-88230  When feeding a tamed horse or llama with a golden apple/carrot or hay bale, the cursor moves to the right.
+MC-112533  Dispenser can equip shield for armor stand without arms.
+MC-114074  Some non-full cube blocks don't cull the faces of the same block next to them
+MC-114246  Item in offhand of armor stand with arms cannot be taken back.
+MC-119607  Llamas, unlike horses, can be kept feeding hay bales even if in love mode.
+MC-130724  stat.damageDealt does not record damage to absorption health.
+From 1.13
+
+MC-132789  Unexpected piston behavior when chaining repeaters
+MC-132806  You cannot grant/revoke specific advancement criteria because of a colon in its name.
+MC-132870  Weird lag with large amounts of entities in 1.13 compared to 1.12.2
+MC-133158  Underwater waterlogged blocks still produce water dripping particles.
+MC-133842  Crash when getting kicked while in Inventory
+MC-134392  Spawers will spawn dolphins inside of solid blocks.
+MC-134402  Statistic for cleaning shulker boxes is missing.
+MC-135079  Purpur stairs and slabs cannot be crafted using purpur pillars.
+MC-135126  Bone meal on underwater grass blocks doesn't spawn sea grass.
+MC-135468  Mooshroom disappears when sheared
+MC-135791  Mobs glitching out
+From the Java Edition 1.13.1 development versions
+
+MC-134817  Collision with shulkers is extremely glitched.
+MC-135048  Misplaced sandstone block on desert temple.
+MC-135457  Strange placing and removing blocks after respawning, especially redstone system and sands
+From the previous development version
+
+MC-135381  Conduits can not be placed outside of water.
+MC-135385  Entities fall through the entire world when they are inside blocks.
+MC-135387  Chunks are not forced/unforced until a player loads it.
+MC-135390  Pistons react inconsistently to certain 4 gametick pulses.
+MC-135423  Can't stand on top of boat anymore without glitching.
+MC-135431  Scoreboard division is inconsistent with modulo.
+
+
+== 18w33a ==
+18w33a is the fifth and final snapshot for Java Edition 1.13.1, released on August 15, 2018.
+
+
+=== Changes ===
+
+
+==== Items ====
+Buckets of tropical fish
+
+Added tooltips.
+
+
+==== General ====
+Improved the performance of liquids.
+
+
+=== Fixes ===
+18 issues fixed
+From released versions before 1.13
+
+MC-1357  Logged out players appear on maps
+MC-3715  Beds and the /teleport command.
+MC-67780  Standing on/flying above a block placed at y:255 makes sky dark
+MC-79697  Entities don't render properly when next to invisible spider, charged creeper, or wither boss with armor.
+MC-86943  Cooldown overlay is solid white on item stacks of more than 1 item.
+MC-90842  Sweep attack knocks back marker armor stands.
+MC-98796  Armor loses durability when blocking damage with shield.
+MC-108592  Witches do not despawn correctly if they have a potion effect.
+MC-118258  Spelling mistakes in the 'Commandblock chain tried to execure more than x steps!' warning message.
+From 1.13
+
+MC-131346  It's possible to place buckets of water, lava or fish in adventure mode.
+MC-132063  Stone item appears when resizing window.
+MC-133098  Loading a world with a corrupted stats file crashes the game.
+MC-133127  Drowned from ocean ruins never spawn with a trident, a nautilus shell or a fishing rod.
+MC-134702  Fish spawned from buckets count toward the aquatic mob cap.
+MC-135816  Trident does not return uppon reload of world.
+MC-135857  Beacon effect icon doesn't have a blue edge if it overwrites a potion effect.
+MC-135893  Upgrading from 1.12.2 to a newer version will cause trapped chests placed in 1.12.2 and earlier to stop triggering redstone through the floor.
+Private issues
+
+MC-136031  Private issue
+
+
+== 1.13.1-pre1 ==
+1.13.1-pre1 is the first pre-release for Java Edition 1.13.1 released on August 16, 2018, which renames /chunk to /forceload, improves performance, and fixes a few bugs.
+
+
+=== Changes ===
+
+
+==== Command format ====
+Renamed /chunk to /forceload.
+
+
+==== General ====
+Improved performance of rendering chunks.
+Improved performance of spawning mobs.
+
+
+=== Fixes ===
+16 issues fixed
+From released versions before Java Edition 1.13.1
+
+MC-31681  Fog and clouds darken when indoors or under trees (<16 Chunk Render Distance).
+MC-51150  Swimming in water, riding a minecart or standing on soul sand and snow layers 8 darkens the sky at day time.
+MC-109311  Woodland mansion failed to generate.
+MC-132457  Advancement and dimension command suggestions require minecraft namespace.
+MC-132496  Passive Mob Spawning Breaks 1.9+.
+MC-132762  Observed signal strength observer abnormality.
+MC-134587  Using F3 + T several times will eventually freeze iMac.
+MC-135484  Pressing Q + right click a block while holding a double block only shows the top of the block.
+MC-135878  Maps delete recently marked banners upon reopening world.
+From the Java Edition 1.13.1 development versions
+
+MC-133713  /spreadplayers and /worldborder <center> suggests X/Y instead of X/Z when nothing is typed.
+MC-135392  Dimension arguments fail to properly serialize, breaking "/chunk in" and "/execute in" in multiplayer.
+MC-135398  /chunk (force|unforce) with /execute store success.
+MC-135424  Relative coordinates cannot be used with /chunk.
+MC-135426  Cannot tab-complete chunk coordinates in /chunk.
+MC-135428  /chunk targets the overworld by default and not the sender's dimension.
+From the previous development version
+
+MC-136051  Mob spawning ignores light level, biomes and block height.
+
+
+== 1.13.1-pre2 ==
+1.13.1-pre2 is the second and final pre-release for Java Edition 1.13.1, released on August 20, 2018, which improves the performance of flowing liquids and fixes a few bugs.
+
+
+=== Changes ===
+
+
+==== General ====
+Performance
+
+Improved performance of flowing liquids.
+
+
+=== Fixes ===
+8 issues fixed
+From released versions before Java Edition 1.13.1
+
+MC-80041  Signs with long text freeze the game.
+MC-134777  Using bone meal on kelp doesn't do anything, but still wastes it.
+MC-136023  Phantoms attack players in spectator.
+MC-136157  Explosion radius increased.
+MC-136208  Scute is not affected by doMobLoot.
+MC-136226  Mobs require 2 blocks of air to spawn at all times now.
+From the previous development version
+
+MC-136107  Water incorrectly flows toward holes/lower levels, even when they're covered.
+MC-136134  Wrong tropical fish variants named.
+
+
+== Notes and references ==
+
+
+== Navigation ==

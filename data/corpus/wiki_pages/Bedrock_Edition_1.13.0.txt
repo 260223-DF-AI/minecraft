@@ -1,0 +1,523 @@
+1.13.0 is a major update for Bedrock Edition released on October 29, 2019. It focuses on adding the final remaining features from Village & Pillage that were not included in previous updates, along with some other features, including a character creator, and makes even more improvements to map-making and commands.
+
+
+== Additions ==
+
+
+=== Blocks ===
+Dead coral
+
+A dead variant of coral that is made when coral is placed on the surface or does not have water.
+Can be placed on top of blocks.
+Flowers
+
+Added the wither rose.
+Drops from mobs killed by the wither.
+Inflicts the Wither effect to nearby players and mobs.
+Can be crafted into black dye.
+Light blocks
+
+Are available only with commands.
+Supports auxiliary data from 0 to 15 for light level.
+Note blocks
+
+Added 11 new note block sounds:
+Bone block = Xylophone
+Block of gold = Bell
+Clay = Flute
+Packed ice = Chime
+Wool = Guitar
+Block of iron = Iron Xylophone
+Soul sand = Cow Bell
+Pumpkin = Didgeridoo
+Block of emerald = Bit
+Hay bale = Banjo
+Glowstone = Pling
+Structure void
+
+It is an intangible block used to indicate to the structure blocks that certain air blocks can be overridden by previously existing blocks in the destination.
+Intended to be a replacement for the function barrier blocks used to convey (during early development), so they can form part of the structure itself.
+They are invisible and have a small hitbox.
+They are visible only when they are inside a structure being saved by a save structure blocks and the toggle option "show invisible blocks" is true.
+Additionally, any placed structure void instantly becomes visible when the player holds the item in their hand, similar to the barrier.
+Allows for empty spaces in a structure.
+Unlike air, it does not overwrite blocks where it is loaded.
+Example: If the player loads a 2 block high structure with air at the top and a structure void at the bottom into a 2 block high area of stone, the top block becomes air but the bottom remains stone.
+Available through Experimental Gameplay.
+
+
+=== Items ===
+Suspicious stew
+
+Can be crafted, milked from brown mooshrooms, found in shipwreck supply chests, or bought from farmer villagers.
+When consumed, gives a status effect depending on what flower it was made from, or a random effect if found in a shipwreck or bought from a farmer villager.
+Spawn eggs
+
+Added fox spawn egg.
+
+
+=== Mobs ===
+Brown mooshroom
+
+A variant of the mooshroom that spawns when a red mooshroom is hit by lightning.
+Can be fed flowers then milked for a suspicious stew.
+Foxes
+
+Spawn as red foxes in snowless taiga biomes, and as snow foxes in snowy taiga biomes
+Can be bred with sweet berries.
+The newborn fox trusts and defends the player.
+Can pick up and carry items in their mouths.
+May eat and drop what they are carrying.
+Wolves and polar bears attack them.
+Attack chickens and rabbits.
+
+
+=== World generation ===
+Villages
+
+Readded abandoned (zombie) villages, but with Village & Pillage architecture.
+
+
+=== Gameplay ===
+Achievements
+
+Added a new achievement:
+Time for Stew - Give someone a suspicious stew (20G)
+
+
+=== Command format ===
+Added tab-complete for writing coordinate commands.
+Added new PersistComponent command for mob persistence.
+Improved many map-making commands.[more information needed]
+Added nameTag argument to /summon, enabling summoning of entities with a name.
+
+
+=== General ===
+Character creator
+
+Allows the player to personalize their avatar in many ways, including body size and shape, limb replacement and tweaking of eyes, mouth, hair styles and colors, facial hair, and skin tones
+More than 100 items are available for free. There is also a range of custom accessories available for purchase.
+Traditional custom skins can still be imported as before on Windows 10 and mobile.
+Accessibility
+
+Accessibility settings can now be accessed from in-game chat and has been revamped.
+Added a new option in Accessibility settings that allows users to not auto-enable Text-To-Speech when their platform has it enabled.
+Chat
+
+Added the ability to disable the chat prompt after entering the world.
+Added the ability to change chat color and font.
+Fonts
+
+Added a new font that can be seen in some menus.
+Credits
+
+Added game credits.
+These can be viewed after defeating the ender dragon, and also through a new button found in the Profile Settings menu.
+General
+
+Added PlayStation-related assets and translation strings into the game files.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Coral
+
+Can now be placed on surface air, but turns to dead coral if it has no water.
+Grass path
+
+Can now be found in the creative inventory.
+Item frames
+
+Can now be placed on the top and bottom of blocks.
+Structure blocks
+
+Added Save and Load behind the Experimental Gameplay toggle.
+Added new textures and other functionalities.
+
+
+=== Items ===
+Armor
+
+Worn armor no longer turns red when a player or mob takes damage.
+Turtle eggs
+
+Now have 2D textures in the inventory.
+Maps
+
+Locked maps now have a unique inventory icon.
+
+
+=== Living Entities ===
+Armor stands
+
+Now have a smoother animation when changing poses.
+Camera
+
+Can no longer be obtained with the /give commands.
+Added functionality. Screenshots took by the camera can now be saved into the screenshots folder.
+Fish
+
+Now drop experience when killed.
+Illager captains
+
+The player now correctly receives the Bad Omen effect whenever the illager captain dies in combat with the player.
+Players
+
+Are now 1.8 blocks tall. (MCPE-31710).
+Default Steve, Alex and character creator skins can now blink.
+Squid
+
+Can now spawn in rivers.
+Villagers
+
+Can now heal if they have bread in their inventory.
+Master-level farmers can now sell suspicious stew. (MCPE-51215).
+Cartographer trades now require 11 glass panes instead of 10.
+Villager trade levels now match Java Edition with 5 profession level badges, rather than 3 level badges. (MCPE-43206)
+
+
+=== General ===
+Players attempting to sleep on villager-occupied beds now succeed, kicking the villager off.
+Improved performance.
+Added a message that informs players whether a Marketplace pack is compatible with their version of Minecraft (specifically if it includes blocks from a newer version of the game).
+Minecraft on iOS no longer shows the "Do you want to Close Minecraft?" pop-up since iOS doesn't support that app behavior.
+Map-making and add-on improvements.
+Map-making and add-ons
+
+New data-driven objects:
+Brewing stand potion recipes.
+Environment damage for entities.
+Turtle and lightning interactions.
+Pufferfish puffed states.
+Fishing hooks.
+Horse models and animations.
+Snow golem trail behavior.
+Dragon breath particles.
+Guardian and elder guardian animation and rendering.
+Elder guardian spike animation.
+Sparkler particles (Minecraft Education).
+Balloons (Education Edition).
+Changed Breathable, RideTick, and Transformation systems to use ViewedEntityContext.
+Added push component that determines whether an entity can be pushed.
+Added persistent component that determines whether an entity should be persistent in the game world.
+Significantly increased the maximum spawnRadius distance.
+Levers now have their own block state.
+Pillar blocks now have their own block state instead of using some values of the direction block state.
+Actor Definition Events can now be triggered from scripts.
+Scripting logs can now be opened and viewed while the game is running.
+Added new scripting Actor tags.
+Added 'container' scripting component for blocks
+Added 'projectile_hit', entity_hurt, entity_sneak, entity_attack, and block_exploded scripting events.
+How to Play 
+
+How to Play menu improvements.
+Added a how to play section for structure blocks.
+Updated the armor section so that it specifies that carved pumpkins should be used as protection from endermen.
+Updated the section about repairing elytra, which now describes using phantom membranes to repair them instead of leather. (MCPE-41608)
+Updated the section regarding raids.
+Updated the section regarding host and player options. (MCPE-28976)
+Updated the section about taming cats. (MCPE-43490)
+Menu screen
+
+Replaced the hanger button with a "Profile" button.
+Moved the "Achievements" button to the "Profile" screen.
+RenderDragon
+
+Xbox One now uses the new rendering engine RenderDragon.
+Raids
+
+Villagers and illagers now celebrate upon failure/completion of a raid, respectively.
+The player no longer receives Bad Omen when all villagers die or all beds are destroyed during a raid.
+Pillager patrols
+
+Can now spawn in any biome except for mushroom fields.
+Delay for patrols to spawn increased to 10-11 minutes, from 5-6 minutes.
+Now attack in swarms.
+
+
+== Fixes ==
+Crashes
+
+Fixed several crashes that could occur during gameplay.
+Fixed several crashes that could occur when loading the game.
+Fixed a crash that could occur while navigating menus.
+Fixed a crash that could occur when trying to create new world or when joining a multiplayer game.
+Fixed a crash that could occur when a player left a multiplayer game.
+Fixed a crash that could occur when signing into a Microsoft account.
+Fixed a crash that could occur when switching profiles on Xbox One.
+Fixed a crash that could occur when launching the game on Xbox One.
+Fixed a crash that could occur when typing certain characters onto a sign.
+Fixed a crash that could occur when exploring world templates.
+Fixed a crash that could occur when choosing certain skins.
+Fixed a crash that could occur when breaking a block underneath a detector rail.
+Fixed a crash that could occur when creating a new world using some Marketplace packs.
+Fixed a crash that could occur when exiting the game on Windows 10.
+Fixed a crash that could sometimes occur when approaching world spawn. (MCPE-46686)
+Fixed a crashing issue on iOS when relaunching the game with a global resource pack applied.
+Fixed a crash that occurred when accepting the storage permission on Android.
+Fixed a crash that could occur when resuming the game on Oculus Rift.
+Fixed a crash that could occur when launching the game on Oculus Rift.
+Fixed a crash that occurred when typing certain characters into chat. (MCPE-44419)
+Fixed a crash that could occur if a split-screen player left the game while an execute command targeted them in a function.
+Fixed a crash that could occur after a player left the game on 3 or 4 player split-screen on the "Wildlife: Jungle" map.
+Fixed a crash that could occur when leaving and rejoining a world whilst an adult panda is eating bamboo.
+Fixed a freezing issue that could occur when resuming the game on Windows 10 Mobile.
+Fixed a crashing issue that affected certain worlds when approaching spawn. (MCPE-46686)
+Fixed a crash that could occur after changing the file storage location on Android devices.
+Fixed a crash that could occur on low and mid-end Android devices.
+Fixed a crash that could occur when trying to double-tap on an item on the beacon screen.
+Fixed a crash that could occur while downloading multiple Marketplace items at the same time on some iOS devices.
+Fixed a crash related to cached resources.
+Performance
+
+Improved world launch time by optimizing network and resource tasks.
+Improved performance when opening the inventory.
+Several performance improvements regarding block rendering.
+Fixed a drop in performance when flying with elytra in the End.
+Optimized terrain light calculation.
+Optimized grass growth block ticking.
+General
+
+The "We are being attacked!" and "I've got a bad feeling about this" achievements can once again be unlocked. (MCPE-45060)
+The "Renewable Energy" achievement is once again unlockable. (MCPE-39661)
+The "Where have you been?" achievement now unlocks correctly on Android.
+Maps are now drawn more quickly when exploring, meaning the "Map Room" achievement now unlocks more consistently. (MCPE-27720)
+Fixed some instances of skin selections not saving and reverting to Alex or Steve. (MCPE-32089)
+Fixed the "Multiplayer Restricted Skin!" error message that would pop up when trying to join a world before the skin had loaded in. (MCPE-48494)
+The world loading screen now closes once an acceptable amount of chunks have loaded. (MCPE-44815)
+Fixed issues related to unloaded chunks that could appear in Realms and local worlds. (REALMS-1553)
+Partially fixed an issue that caused global resources not to be applied after relaunching the game.
+Fixed various text to speech issues.
+Players can now switch between user accounts on Xbox One without restarting the game.
+Fixed the messaging when trying to import a world template created in a newer version.
+Fixed a controller issue when docking the Nintendo Switch.
+Gameplay
+
+Players in water are now knocked back by TNT explosions
+Split-screen players who join a world now spawn in the correct safe place and no longer spawn in the void.
+Fixed an issue that could cause some worlds to become corrupted during gameplay. (MCPE-50496)
+Players now properly receive stored XP from furnaces. (MCPE-47324)
+Eating when using a nether portal no longer causes players to teleport to random locations. (MCPE-39147)
+The player can once again open the inventory correctly while sitting in a boat.
+Using bone meal on a flower now generates more flowers of that type around it, rather than just dandelions and poppies. (MCPE-7979)
+The player now correctly receives the Bad Omen effect whenever the illager captain dies in combat with the player.
+Fixed an issue with block updates on a waterlogged block triggering a redstone update in the same chunk.
+Fire charges launched from dispensers now ignite minecarts with TNT.
+The damage sound is no longer heard when a player falls or lands in Creative mode. (MCPE-515)
+Corrected player sprint/swim state when exiting water.
+Fixed pitch issue with the camera that caused the player to walk backward when looking straight up.
+Players can now teleport on top of non-full or transparent blocks when eating a chorus fruit.
+The camera now rotates correctly when in third-person view.
+The player no longer keeps on rowing when opening the inventory during boat rides. (MCPE-36522)
+Arrows hitting players underwater no longer play multiple hit sounds.
+Lightning from Channelling tridents now affect more than a single mob in a small area. (MCPE-44393)
+Lightning now strikes less frequently. (MCPE-38768)
+Arrows now destroy armor stands properly. (MCPE-47785)
+Fixed an issue that prevented players from moving while sneaking on top of shulkers and boats. (MCPE-44644)
+Area of effect clouds such as Lingering Potions now work correctly if world is set to 'Always Day'. (MCPE-39595)
+World generation
+
+Chests that generate in desert temples now face the correct direction. (MCPE-37393)
+Mobs
+
+Tweaked drowned despawning rules to help prevent too many being present in the world. (MCPE-34032)
+Drowned now despawn if the following conditions are met: The player is at least 54 blocks away, the drowned has not performed any actions in at least 30 seconds, and it is daytime.
+Iron golems are no longer knocked back by explosions. (MCPE-43662)
+Fixed the sitting position for baby zombie jockeys.
+Fixed the death animation of spiders. (MCPE-41417)
+The wither once again has its blue shield.
+Lazy pandas no longer float above the ground when lying on their backs. (MCPE-43164)
+Baby pigs now turn into baby zombie pigmen when struck by lightning. (MCPE-38134)
+Pillagers now spawn around pillager outposts more frequently. (MCPE-43396)
+Fixed player alignment to beds when sleeping.
+Zombies can no longer break iron doors. (MCPE-43725)
+Zombies once again spawn in caves. (MCPE-52743)
+Village mobs (such as iron golems and cats) can no longer spawn inside of blocks. (MCPE-44442, MCPE-41886)
+Ravagers can now pathfind through water.
+Cured zombie villagers now keep their trade level.
+Jockeys no longer get stuck trying to move to unreachable mounts.
+Mobs no longer break turtle eggs when mob griefing is disabled. (MCPE-36245)
+Mobs can now pathfind correctly through waterlogged blocks. (MCPE-37005)
+Mobs can now pathfind correctly on unlit campfires.
+Mobs once again drop armor and equipment as loot. (MCPE-48891)
+Mobs no longer drop fully repaired weapons as loot. (MCPE-45953)
+Leads now connect to mobs at the correct position.
+Mobs no longer attempt to path find over 1.5 block high obstacles. (MCPE-45256)
+Villagers now all go to sleep correctly at night.
+Creepers no longer lose aggro when line of sight is broken briefly.
+Zombies no longer get stuck on doors.
+Mobs standing on slabs are no longer immune to sunlight damage after reloading the world. (MCPE-32822)
+Witches can no longer spawn in 1.8 high gaps. (MCPE-45935)
+Animal breeding cooldowns no longer reset after reloading the world.
+Endermen holding red sand no longer drop regular sand when killed. (MCPE-25926)
+Endermen are correctly affected by the Invisibility effect, when applied. (MCPE-44492)
+Fixed the held sword position for vex mobs.
+Entity hit and collision boxes no longer exist during mob death animations. (MCPE-9999)
+Wither skeletons are no longer affected by the Wither effect. (MCPE-46317)
+Mobs and entities are no longer slowed when walking one block above ice. (MCPE-13852)
+Baby zombies are now able to ride zombie pigmen. (MCPE-20163)
+Increased the speed that phantoms' wings flap. (MCPE-42935)
+Drowned on land now attack based on brightness levels rather than time of day.
+Dolphins once again follow players in boats.
+Nether portals now spawn zombie pigmen on Easy difficulty. (MCPE-45934)
+Fixed creeper farms by adjusting mob height spawning logic. (MCPE-45935)
+Strays and skeletons now show enchanted bows when held.
+Villagers now show angry particles when hit by a player, even if they haven't been traded with yet. (MCPE-29700)
+Parrots can now be picked in Creative mode using pick block.
+Mobs now attack the player correctly while standing on soul sand.
+Villagers now close doors that have been opened by a player or redstone. (MCPE-21946)
+Farmers now correctly harvest crops when their inventory is not full. (MCPE-47166)
+Villagers now hide more consistently during a raid.
+Fixed the "Toast" rabbit easter egg. (MCPE-44510)
+Updated mason trades.
+Blocks
+
+Beacons now play the correct ambient sound. (MCPE-34413)
+TNT no longer falls through blocks when lit. (MCPE-41313)
+Lava now correctly affects mobs that come into contact with it. (MCPE-45531)
+Standing in a cauldron of lava now deals the correct amount of damage to players. (MCPE-39356)
+Falling snow can no longer replace other blocks. (MCPE-44613)
+Using pick block on lit Redstone now gives the player the correct block. (MCPE-43450)
+Frosted ice no longer causes performance issues when it is waiting to melt underground. (MCPE-39698)
+Leaves collected with Silk Touch now stack correctly with other leaves of the same type. (MCPE-32347)
+Shulker boxes can no longer be placed in the same space as the player. (MCPE-39674)
+Wood blocks now have proper directional placement. (MCPE-43367)
+Jukeboxes now stop playing music after being broken. (MCPE-47587)
+Furnaces now play all applicable sounds at the correct pitch. (MCPE-43915)
+The beacon block can now suffocate players and mobs like other opaque blocks.
+Hoppers now pick up items from above correctly. (MCPE-31393)
+Pistons now have the correct textures when placed in any direction. (MCPE-38053)
+Granite, diorite and andesite can no longer be smelted into smooth stone. (MCPE-45914)
+Explosions no longer destroy and drop End gateway blocks. (MCPE-47174)
+Sneaking on redstone ore no longer triggers glow.
+Anvils now take damage correctly after use.
+Water dispensed from a dispenser no longer breaks End portals and gateways.
+Dispensers now place boats correctly.
+Falling snow layers no longer break blocks in redstone contraptions. (MCPE-49773)
+Barrier blocks no longer stop grass growth. (MCPE-41262)
+Farmland blocks once again prevent grass growing underneath.
+Breaking an extended piston in Creative mode no longer drops an item. (MCPE-10853)
+TNT can now be crafted from red sand, in addition to plain old regular sand.
+Campfires can be doused with splash water bottles only, to match Java Edition.
+Coarse dirt is no longer replaced with dirt when a tree is grown on top. (MCPE-26215)
+Invisible bedrock no longer emits stone particles when fallen on.
+Items
+
+Buttons no longer appear rotated in the hotbar. (MCPE-11365, MCPE-42584)
+The durability bar for shields now updates correctly when sustaining damage. (MCPE-44788)
+Enchanted books with three or more enchantments no longer always have Feather Falling IV and/or Blast Protection IV. (MCPE-41944)
+Items that have been smelted can now be crafted and stacked correctly for use in furnaces, stonecutters, etc. (MCPE-47907, MCPE-48421, MCPE-47684)
+Arrows cause sand and gravel to fall again. (MCPE-18257)
+Splash water bottles once again deal damage to blazes and endermen. (MCPE-42589)
+Fixed trident position issues when being held and thrown.
+Fixed Riptide tridents not propelling players forward correctly.
+Loyalty tridents now return to the correct player after bouncing off a shield. (MCPE-44225)
+Equipment on armor stands now renders correctly if the armor stand is affected by the Invisibility effect. (MCPE-39779)
+The LT controller button can once again be used to quickly equip or replace armor. (MCPE-35579)
+Players are now able to use items like fishing rods while aiming at nearby mobs.
+Nether wart now has a chance to drop more items when broken with Fortune tools. (MCPE-31107)
+Fire Aspect swords no longer set Creative players on fire. (MCPE-14036)
+Drinking sound for milk and potions now plays correctly. (MCPE-38340)
+Trapdoor items now have the correct inventory textures. (MCPE-44214)
+Six-sided wood block variants can now be smelted or used as furnace fuel. (MCPE-47170)
+Damaged elytra now have their own texture. (MCPE-47758)
+Fixed an issue that prevented certain items not being suggested in the recipe book correctly.
+Items cooked on the campfire now stack together correctly. (MCPE-47684)
+Fixed the default recipe for beds.
+Players no longer lose items when moving stacks of items into a cartography table.
+Changed how the bell item is held in the player's hand, so that it is held like an item rather than a weapon. (MCPE-43638)
+Graphical
+
+Fixed an issue that could cause the home screen to show black corrupted textures after resuming the game on Android. (MCPE-39031)
+The player model is now visible again while sleeping on a bed.
+Boat paddling animation now matches Java Edition and resynchronizes when paddling stops.
+Fixed an issue with water not rendering correctly on some servers. (MCPE-46813)
+Fix an issue that caused block entities (such as beds) to not render after suspending and resuming the game.
+Arrows now render correctly when held by armor stands.
+Armor stands and players can again wear helmets with secondary layers.
+Fixed elytra position for skins that don't use the standard humanoid model.
+Fixed some graphical errors when launching the game on Oculus Rift.
+Flowers no longer become invisible in flower pots. (MCPE-40806)
+Players no longer show the flying animation when using scaffolding while elytra are equipped.
+Improved the texture for the stonecutter with non-fancy graphics. (MCPE-42487)
+Tweaked first-person hand attack animations.
+Multiple blocks no longer change color to black when moved by pistons.
+Tweaked the position of the shield when held in the off-hand to fix a minor texture clipping issue.
+Fixed hand animation when switching to empty hand from held item.
+User interface
+
+Accessibility color and contrast fixes and tweaks for dropdowns, buttons and the Play screen.
+The text to speech narrator now works correctly with punctuation in text boxes.
+Players using touch screens can no longer break blocks when using touch-and-hold to use a fishing rod.
+Chat instructions no longer appear on screen every time the player travels through a portal. (MCPE-45073)
+Removed duplicate and overlapping progress bars.
+Fixed the safe screen area prompt not appearing, when necessary, on certain devices.
+Keyboard inputs now work correctly when the game loads out of window focus.
+Fixed the "Open Chat" message for touch screen devices.
+Flight controls no longer show when sleeping in a bed in creative. (MCPE-44928)
+Fixed the inventory screens of some blocks not appearing on the first attempt after the block's state has changed, like hoppers and dispensers.
+The wither's health bar no longer disappears during the fight if the player moves away. (MCPE-40881)
+Using 'Place All' (Y) on the cartography table output slot now crafts only as many of the shown result possible.
+Joining a Realm through the 'Joinable Friends' list no longer shows world info. (MCPE-47731)
+The background tint of the player coordinates is now consistent with the chat background. (MCPE-43791)
+Tweaked the controller cursor position when auto-crafting with a full inventory.
+Obfuscated text once again works with the smooth font chat setting.
+Fixed duplicated 'Sign In' messages that were overlapping.
+The correct Marketplace Inventory items are now shown when switching between players.
+Global resource packs in Settings now update to the new chosen language.
+Commands
+
+Execute detect command now uses local coordinates correctly. (MCPE-29942)
+Modified 'CommandPosition' so that an optional offset can be specified to move the rotation point in case of a local coordinate.
+Fixed the 'ExecuteCommand' detect option to correctly use an entity rather than a position so that it can use the entity orientation to calculate camera relative offsets.
+Using '/spreadplayers' no longer permanently loads distant chunks.
+Powered rails placed using '/fill' now work correctly when powered by redstone.
+Using '/setblock' on a piston base no longer leaves an invisible piston arm.
+Cloned active mob spawners now have an animated mob when placed. (MCPE-23106)
+The '/clear' command once again works correctly with damageable items.
+Running the "/clear" command message now shows correct amount of items removed. (MCPE-34750)
+Carpet is now removed correctly when using the '/clear' command.
+Using '/clear @p item' now clears correctly auxiliary values.
+Pistons with data values 6 and 7 can no longer be placed using slash commands. (MCPE-21558)
+Players can no longer use the '/spawnpoint' command in the Nether.
+Using the command '/@s[type=...]' now works correctly. (MCPE-49766)
+Fixed an error message that occurred when using the '/help' command.
+Add-ons and script engine
+
+Fixed MoLang scripting errors that were being logged for older content.
+Endermen with modified behaviors can now be shot and damaged with projectiles.
+Loading packs with lots of custom items now works correctly.
+Custom rideable entities now show the correct action hint when added.
+Fixed the positioning of particles that were showing correctly only when centered on screen.
+The 'timer' component once again functions on vanilla projectiles.
+Fixed an issue with the 'must_see_forget_duration' component not working.
+Fixed humanoid eating animation.
+Fixed the 'scale' component failing to scale certain entities.
+Running the 'tick_world' component now removes ticking areas correctly and consistently.
+Added stone slab aliases to allow backward compatibility on add-on packs.
+The 'spawn_entity' component is now executed when an entity is being ridden.
+Ghasts no longer keep looking at players if the behavior component has been removed.
+Fixed minecart rider rotation not being updated correctly in some packs.
+Particle UVs no longer include lines of textures next to the selected UV.
+Custom entities using 'nearest_attackable_target' now re-evaluate current target validity.
+Fixed mini bows rendering on all mobs other than players in scripting packs.
+The 'has_equipment' filter now works correctly with damageable items.
+Fixed a scripting error that would appear when shooting arrows from a dispenser.
+When a global resource pack is deleted, it now removes itself from the active stack.
+Fixed unparented geometry on pre-1.8 guardians.
+
+
+== Videos ==
+
+
+== Trivia ==
+1.13.0 had the most beta versions of any update to Bedrock Edition prior to 1.16, with a total of 11 beta builds.
+In China Edition, this update is called "Generation Update".
+
+
+== References ==
+
+
+== Navigation ==

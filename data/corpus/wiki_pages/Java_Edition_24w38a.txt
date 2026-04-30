@@ -1,0 +1,125 @@
+24w38a is the sixth snapshot for Java Edition 1.21.2, released on September 18, 2024.
+
+
+== Additions ==
+
+
+=== General ===
+Language
+
+Added support for High Norwegian.
+Recipe
+
+Added the crafting_transmute recipe type.
+When matched, output copies the input item stack, changing the item type but preserving all stack components.
+This completely replaces crafting_special_shulkerboxcoloring.
+Used for shulker boxes and bundles.
+Fields:
+category - crafting book category, one of building, redstone, equipment, misc
+group - optional string
+input - ingredient for item to copy
+material - additional ingredient to use
+result - item type to use for output
+Tags
+
+Introduced new item tag shulker_boxes which includes all shulker boxes.
+
+
+== Changes ==
+
+
+=== Gameplay ===
+Creative mode
+
+Throwing items out of the inventory very quickly is now throttled.
+Recipe book
+
+Shulker box coloring recipes are now shown in the recipe book.
+
+
+=== General ===
+Data pack
+
+The pack format version is now 54.
+Realms
+
+Now uses the normal, fully featured world creation screen.
+Enables game rule customization.
+Enables data pack customization.
+Hardcore mode is now available in Realms and is accessible by creating a new world or recreating an existing one [more information needed]
+Resource pack
+
+The pack format version is now 39.
+The models and UV mapping related to the torch and blocks containing redstone torch have been updated.
+The "inverted" model now uses 6 separate faces creating the same effect as a model with a negative size.
+The UV layout for the inverted model was updated.
+Server
+
+Temporary option for ignoring connection errors on client side (strictErrorHandling) has been removed.
+
+
+== Experiments ==
+
+
+=== Additions ===
+
+
+==== General ====
+Tags
+
+Introduced new item tag bundles which includes all bundles.
+
+
+=== Changes ===
+
+
+==== Items ====
+Bundles
+
+ Now dyeable into 16 colors.
+
+
+== Fixes ==
+25 issues fixed
+From released versions before 1.21
+
+MC-13246  On certain enchanted items, the anvil will display a "too expensive" message before attempting to repair, combine, or rename them.
+MC-116618  Dropping items rapidly inside the "Survival Inventory" tab in creative mode deletes items.
+MC-134626  Squids/glow squids bounce up and down in bubble columns, teleporting high up in the air.
+MC-164258  Recipe book search field is not selected when clicking on the search icon.
+MC-169660  /teleport without <targets> can change the entity's rotation
+MC-204050  Subtitle for shooting amethyst blocks is "Block breaking".
+MC-214625  Unlit redstone torches are unaffected by block shading / are evenly lit on all sides.
+MC-216016  Launching fireworks into a crystal sound block will make the breaking noise.
+MC-225060  Burning entity sound repeats every tick.
+MC-225417  Squids and glow squids can break free from leads when attacked.
+MC-228070  Name tags rendered in blocks have letters brighter depending on your angle.
+From 1.21.1
+
+MC-276007  Players' name tags that are behind blocks or entities are rendered invisible or partly invisible depending on the angle you're facing.
+MC-276459  Item display rotation wrapping does not interpolate cleanly.
+From the 1.21.2 development versions
+
+MC-275347  Minecart with furnace does not travel correctly over curves.
+MC-275413  Squids and glow squids are not affected by the thrust of the bubble column.
+MC-276292  Shift-clicking the "destroy item" slot in the Creative inventory deletes the items server-side but not client-side, causing a desync.
+MC-276372  Player drops 2 items from the hotbar at once when the Survival Inventory tab is not selected.
+MC-276373  Items dropped from the hotbar are sometimes lost when the Survival Inventory tab is not selected.
+MC-276428  Player cannot drink honey bottles when they're not hungry.
+MC-276539  Name tags and text displays render brighter in dark areas when behind blocks or entities.
+MC-276573  Spruce boat item translation key misspells minecaft.
+From the previous development version
+
+MC-276603  No High Norwegian language option.
+MC-276621  Game crashes when opening inventory that renders entity with both Invisibility and Glowing effects.
+MC-276704  Not using a selector in a /teleport command breaks rotation from a completely different /teleport command.
+MC-276722  Teleporting to your current position every tick sometimes doesn't let you move properly.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

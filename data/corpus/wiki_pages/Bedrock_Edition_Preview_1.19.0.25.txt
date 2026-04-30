@@ -1,0 +1,175 @@
+Beta 1.19.0.24 (Windows, Android, Xbox) or Preview 1.19.0.25 (Windows, iOS, iPadOS, Xbox) is the second beta/Preview version for Bedrock Edition 1.19.0, released on April 14, 2022, which adds echo shards and recovery compasses, along with the Swift Sneak enchantment, the removal of copper horn, and bug fixes.
+
+
+== Additions ==
+
+
+=== Items ===
+Echo shard
+
+Currently cannot be found in Survival.
+Can be used to craft recovery compasses.
+Recovery compass
+
+A new type of compass which can point to the last place where player died.
+Randomly spins if not held by a player, the player hasn't died, or when the player is not in the same dimension of the death point.
+Can be crafted with a compass surrounded by 8 echo shards.
+
+
+=== Gameplay ===
+Enchanting
+
+Added the Swift Sneak enchantment.
+Has three levels.
+Can be applied only on leggings.
+Allow the player to walk faster while sneaking.
+Can be found in ancient city chests.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Mangrove propagule
+
+Changed the model to match Java Edition.
+Mud
+
+Now can convert into clay by placing mud above a block which has pointed dripstone underneath.
+Reinforced deepslate
+
+Can no longer be pushed by pistons.
+Sculk sensor
+
+Now drop experience when mined without Silk Touch.
+Sculk shrieker
+
+Added can_summon blockstate, which determines it summon a warden or not.
+Set to true by default for sculk shriekers placed via worldgen.
+Set to false by default for sculk shriekers placed by a player or generated via sculk spread.
+
+
+=== Mobs ===
+Allay
+
+Now have a health of 20HP  10, instead of 16HP  8.
+Now have a natural health regeneration of 2HP per second.
+Wandering trader
+
+Now sells 1 mangrove propagule for 5 emeralds.
+Warden
+
+Wardens now can sniff players from further away (from 16 to 24 blocks).
+
+
+=== World generation ===
+Mangrove swamp
+
+Biome size and placement now matches Java Edition.
+Mud now generates all the way from the surface down to stone.
+Tall mangroves are far more common than short mangroves now.
+Moss carpet now generates on top of some mangrove tree's roots.
+Tropical fish now spawn in water.
+Water color is now cyan instead of yellow like in the normal swamp.
+
+
+=== General ===
+Upgrading of old worlds
+
+Several improvements to level chunk blending to match Java Edition.
+Panorama
+
+Changed to reflect The Wild Update, showing a mangrove swamp.
+The changes are not shown due to the beta/preview panorama showing instead.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Vanilla Experiments" experimental toggle.
+
+
+=== Changes ===
+
+
+==== Items ====
+Copper horns
+
+Removed from the game.
+Goat horns
+
+Sounds played with the tooting animation is now instant.
+Removed the "Fly" and "Dream" sound variant.
+More goat horn variations can be found inside pillager outposts chest.
+
+
+== Fixes ==
+Sculk shrieker
+
+Tweaked the shrieking particles of the sculk shrieker. (MCPE-153007)
+Sculk shriekers should not be triggered by redstone activation.
+Added can_summon blockstate to sculk shriekers that determines whether a shrieker can trigger a warden to spawn. Only sculk shriekers placed during world generation in the deep dark and ancient cities have this state set to true. (MCPE-153801)
+Running away from a sculk shrieker during shrieking is no longer a viable way of preventing the summoning of a warden.
+The sculk shrieker no longer attempts to spawn the Warden in Peaceful mode.
+The sculk shrieker now spreads the highest threat level among players in the vicinity, not the threat level of the closest player.
+Warden
+
+Warden now has a hurt animation when taking damage. (MCPE-153575)
+Fixed a bug where the warden's ribcage UVs were overlapping their right tendril UVs. (MCPE-153797)
+Warden now prioritize players over mobs when angry.
+Improved warden suspect tracking gameplay behavior, and increased the warden's "sniff" range.
+Spawning a warden in Creative mode no longer applies the Darkness effect to the player. (MCPE-153536)
+Reinforced deepslate
+
+Reinforced deepslate can no longer be pushed by pistons. (MCPE-153548)
+Frog
+
+Froglight and frogspawn blocks now have new sounds. (MCPE-153195, MCPE-153193)
+"Frog Spawn" is now called "Frogspawn". (MCPE-153210)
+Goat horn
+
+Goat Horn sound is now instant.
+Added goat horn variations to the pillager outposts.
+Touch controls
+
+Player can now change hotbar item slot while in a boat. (MCPE-153762)
+Allay
+
+Fixed a crash that could occur if a non-owner player takes an item from the allay while it was chasing its owner.
+The allay now regenerates two health each second.
+Boat with chest
+
+The group of boats with chests now has the correct translation in the inventory. (MCPE-153345)
+Mangrove boat with chest now has a crafting recipe. (MCPE-153738)
+Mud bricks
+
+Crafting mud bricks now correctly gives four mud bricks from one craft.
+Gameplay
+
+Set stack limit for brewing station result slot to 1, as to avoid getting input stacks being overwritten when the brew is complete.
+Fix crash in block_placer component when the block parameter is an unknown block.
+Blocks affected by gravity now fall correctly on replaceable blocks. (MCPE-152937)
+Slabs can now be placed continuously. (MCPE-151887)
+General
+
+Fixed an issue where clicking on the top row of pixels of a button in the new Create New World screen didn't properly trigger its action. (MCPE-153239)
+Graphical
+
+Fixed a bug causing the fire animation to flicker when the player is standing in a lava cauldron while in Creative mode. (MCPE-148999)
+Items
+
+Fixed incorrect names for white dye, black dye, brown dye, and blue dye. (MCPE-153522)
+Stability and performance
+
+Fixed enchantment option on Pocket UI Profile not being displayed.
+Technical
+
+Command selectors now correctly identify players by name instead of their name tag.
+Title commands fired before a client was done joining now show instead of being ignored.
+The is_moving filter now returns the correct value when an actor is moving.
+Avoid crashes on certain devices when parsing Molang expressions with many OR or AND operators.
+Tie consume animation to consume duration.
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,245 @@
+18w19a is the thirty-third snapshot for Java Edition 1.13, released on May 8, 2018, which added the Dolphin's Grace effect and changed some IDs, mainly to biomes.
+
+
+== Additions ==
+
+
+=== Gameplay ===
+Effects
+
+ Dolphin's Grace.
+Acquired by swimming near dolphins.
+Makes the player swim faster.
+
+
+=== Fluids ===
+Logic
+
+Separated some of the logic for blocks and fluids.
+Current fluids:
+minecraft:empty
+minecraft:flowing_water
+minecraft:water
+minecraft:flowing_lava
+minecraft:lava
+The fluid at a location is currently dependent on the block at the location; currently there still are water and lava blocks.
+Added two new fluid tags: minecraft:lava and minecraft:water.
+This system is mostly internal; it cannot be directly interacted with yet.
+
+
+=== World generation ===
+Buffet worlds
+
+New generation type: "Caves".
+Creates Nether-like generation.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Block IDs
+
+Changed names and IDs of several blocks:
+
+
+=== Items ===
+Turtle eggs
+
+Changed texture.
+Spawn eggs
+
+Phantom spawn eggs now look more like the mob's updated texture.
+Heart of the sea
+
+Now generates in buried treasure chests (as stacks of 1).
+Item IDs
+
+Changed names of several items:
+
+
+=== Mobs ===
+Swimming
+
+All undead mobs (except for zombie horses) now sink.
+Husks morph into zombies after a while if they are in water.
+Skeleton horses are now rideable underwater.
+Phantoms
+
+Now flap their wings smoother and faster.
+Now drop experience.
+Parrots
+
+Now imitate phantoms and drowned.
+Dolphins
+
+If dolphins start drowning, they now swim to the surface.
+Polar bears
+
+Can now spawn on top of ice.
+Pufferfish
+
+Changed the name and ID of the pufferfish mob:
+
+
+=== World generation ===
+Incompatibilities
+
+Due to changes in world generation, worlds from previous snapshots no longer work.
+Seagrass
+
+Now generates in underwater caves.
+
+
+=== Command format ===
+/seed
+
+The output of the command can now be copied.
+
+
+=== General ===
+Improvements
+
+Improved the upgrade paths from old versions.
+Credits
+
+Updated the credits list.
+Experience orbs
+
+Now floats up in water.
+Advancements
+
+"How Did We Get Here?" now includes the Conduit Power status effect.
+Sounds
+
+New sounds for conduit and beacon.
+Debug screen
+
+The F3 menu now shows the biome ID, rather than name.
+Biomes
+
+Changed the names of several biomes:
+
+
+== Fixes ==
+99 issues fixed
+From released versions before 1.13
+
+MC-7908  Spawning underwater / In the middle of an (lava) ocean
+MC-86016  Some Mojang staff not mentioned in credits.txt
+MC-118072  Redwood Taiga Hills M Biome misnamed
+From the 1.13 development versions
+
+MC-121285  Crash on start when resolution is changed in profile
+MC-121636  Server commands available in singleplayer with weird/bad effects
+MC-121661  Typing /help + unavailable command returns "unexpected error" message
+MC-121799  Cannot summon lightning bolt
+MC-121999  Incorrect /help behavior for non-ops
+MC-122557  Setting the size parameter for the dust particle to 0 or very close to it crashes the game
+MC-122596  Command autocomplete overrides command history navigation
+MC-122630  /help no longer prefixes "/" to commands
+MC-122632  /help entries for subcommands do not print main command prefix
+MC-123053  Game crashes when using an item with a tag in the CanDestroy or CanPlaceOn NBT tag
+MC-123606  Server crash: Ticking entity 'java.lang.ClassCastException: ass cannot be cast to aui'
+MC-123778  Team color doesn't work in playerlist and sidebar before reconnecting
+MC-123813  Team colors no longer show in json results
+MC-123835  Colored sidebar display slots are not visible
+MC-123852  Glowing effect doesn't change depending on team color
+MC-123856  Clicking [Intentional Game Design] on death screen doesn't open a link to MCPE-28723
+MC-124091  Team color doesn't affect name above head
+MC-124092  Some team options don't work
+MC-124098  jeb_ sheep don't change color
+MC-124102  Book signing shows the author name as string representation of the textcomponent
+MC-124147  Zombie horses are invisible and replaced with regular zombies on reload
+MC-124237  Command syntax help doesn't clamp to the right chat line border
+MC-124560  Server says "type help or ?" but ? is not a valid command anymore
+MC-124633  Feedback text for "/team option seeFriendlyInvisibles false" when seeFriendlyInvisibles is already disabled is wrong
+MC-124720  Cannot start server with GUI
+MC-124750  /particle acting strangely across dimensions
+MC-124889  You cannot shift click smeltable items into a furnace
+MC-124894  Chests and dispenser don't spawn in structures on superflat worlds
+MC-124895  Trees generate side by side
+MC-124898  Minerals tab in furnace recipe book displays apple item
+MC-124949  Tree generating in village house and as part of field
+MC-124956  Furnace recipe book availability toggle has wrong tooltip ("Showing craftable")
+MC-125060  Furnace recipe book availability toggle has crafting table icon
+MC-125107  Mineshafts don't generate support blocks when a block is above it
+MC-125115  Command suggestions don't order numbers from least to greatest
+MC-125130  Selector auto-completion tooltips mixed up
+MC-125174  Ore pockets do not generate in superflat worlds
+MC-125232  Phantoms attack players in peaceful mode
+MC-125258  Preparing spawn area spams 0%
+MC-125283  Jungle Biomes are extremely cluttered
+MC-125381  Effects from the turtle master potion don't show amplifier
+MC-125442  Extreme Lag in Jungle Biome
+MC-125466  Fishing drops don't come towards player
+MC-125550  Experience orbs don't float up in water
+MC-125607  Going inside of bubble columns in spectator mode plays bubble column sound
+MC-125803  NoGravity no longers works on items
+MC-125872  Superflat preset "the void" doesn't generate starting platform anymore
+MC-125915  Zombies can destroy turtle eggs through a full block and a half above the egg
+MC-125946  Phantoms can spawn inside/colliding with blocks
+MC-125997  Deep Frozen Ocean isn't frozen
+MC-126086  Salmon and tropical fish hitbox on land is wrongly positioned
+MC-126139  The fins of dying cod and some tropical fish show z-fighting
+MC-126178  Can use the water (with fish) bucket to destroy kelp, sea grass, coral and coral fan
+MC-126190  Salmon mobs often get stuck
+MC-126198  Only players are poisoned by pufferfish
+MC-126218  Held turtle eggs are too low in first person
+MC-126261  Turtle Egg Placement
+MC-126362  Shift-clicking fuel into non-empty furnaces only moves fuel client-side
+MC-126380  Getting an uncarved pumpkin gives recipe for jack o' lantern
+MC-126656  Bubble columns made by Soul Sand only appear every other block
+MC-126734  A tree inside which a village house generated generated without its trunk, possibly missing some leaves
+MC-126762  Red screen when player attack invalid tropical fish variant
+MC-126800  The tropical fish item is named "clownfish".
+MC-126815  Banner and treasure markers on maps show incorrect icons in multiplayer
+MC-126859  Polar bears and rabbits not spawning in Ice Plains
+MC-126950  Riding floating boats underwater
+MC-127069  huge phantom crash
+MC-127166  Parrots don't imitate dolphins, phantoms and drowned
+MC-127253  F3 + Q list isn't sorted alphabetically anymore
+MC-127291  Zombies drowning always drop armor items instead of using random chance
+MC-127295  Zombies can gain tridents or fishing rods when they drown
+MC-127337  F3 + C (copy coordinates) does not copy dimension
+MC-127388  Pufferfish appear with their most inflated model after world load
+MC-127516  Duplication and deletion of ingredients, inventory desync and game freezing caused by faulty handling of firework star recipe
+MC-127593  Waterlogged blocks such as fence sign ladder etc, will not allow bubble columns to spawn next to them
+MC-127924  Slow falling is considered a negative effect
+MC-127969  Sea grass doesn't generate correctly above stairs
+MC-127998  You cannot place sea pickles on top of non solid blocks
+MC-127999  Glitching in sea pickles when standing on them while placing the fourth one in the block
+MC-128039  New Phantom skins do not match spawning egg colors
+MC-128242  Leaving water while swimming causes player's arm to render out of screen
+MC-128264  Mobs can spawn on regular ice
+MC-128285  Dolphins summoned with NoAI take damage and die
+MC-128336  Kelp spawns on trapdoors, stairs, slabs and chests on sunken ships
+MC-128463  The "How Did We Get Here" advancement does not require Conduit Power
+MC-128557  Drowning dolphins don't swim to the surface.
+From the previous development version
+
+MC-128666  Flowing water above magma blocks turns into bubble columns
+MC-128674  Buffet End island puts you in the void
+MC-128712  Phantoms don't drop experience when killed by player
+MC-128733  The ice block tag is missing frosted_ice
+MC-128766  Blue ice doesn't mine fast using pickaxe
+MC-128779  "Debug Mode" comes before "Buffet" in the world creation menu
+MC-128857  Sea pickles change hitbox when increasing count, but turtle eggs don't
+MC-129143  The F3 menu shows the translated biome name, rather than ID.
+Private issues
+
+MC-122684  Connected LAN players are able to kick/ban the server host
+MC-127274  F3 + C to copy coordinates works even when reduced debug info is enabled
+
+
+== Videos ==
+
+
+== Trivia ==
+Unlike most of the first-of-the-week snapshots, this was released on a Tuesday instead of Wednesday.
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,68 @@
+Certain world seeds are known for producing unexpected results when used for generating worlds, often due to interacting with random number generators in certain ways.
+
+
+== Diagonal feature repetition ==
+
+It is possible for feature generation, specifically that which governs objects such as trees, ores, lakes and other similar minor structures, to repeat diagonally if certain values happen to equal each other or one to equal the other's negative. For example, in Java Edition before 1.18, the seed 102496288339226 will cause features to repeat along the positive-positive diagonal, and the seed 74811678275130 will cause them to repeat along the positive-negative diagonal. Prior to Java Edition Beta 1.8, caves were also affected by this diagonal repetition.
+What appears to be the exact same effect can be seen in Bedrock Edition with different seeds. The seeds 1669320484 and 289849025, for example, cause trees, monster rooms, amethyst geodes and world decorations to repeat on the positive-negative diagonal. It is not known if there are any seeds that cause repetition on the positive-positive diagonal.
+
+
+== Zero as output from pRNG function ==
+
+Java's built-in Math.random() function will output a pseudorandom value for any given input value; it is possible for this output value to be 0, just as any other number. In such a case, certain types of population data for adjacent chunks will be changed by zero (i.e. unchanged), resulting in affected structures generating identically in adjacent chunks. The structures primarily affected by this are carvers (caves, canyons, underwater caves and underwater canyons) and mineshafts. Certain aspects of feature placement, such as water lakes, also appear to suffer placement affected to a much more minor extent, which is most pronounced in controlled environments such as superflat worlds with features enabled.[more information needed]
+Random.nextDouble() will return a value of 0 on the first call if the provided value is 107038380838084, on the second call if the value is 164311266871034, and on the third call if the value is 240144965573432.
+
+In vanilla, the seed 107038380838084 will cause affected structures to repeat every chunk on the X-axis, and the seed 164311266871034 will cause affected structures to repeat every chunk on the Z-axis. The seed 240144965573432 does not appear to have any effects.
+When using certain mods such as Tall Worlds or OpenCubicChunks which institute a three-dimensional chunk system, the seed 107038380838084 will cause affected structures to repeat every chunk on the X-axis, and the seed 164311266871034 will cause affected structures to repeat every chunk on the Y-axis, and the seed 240144965573432 will cause affected structures to repeat every chunk on the Z-axis.
+Certain carvers, for unknown reasons, use a salt of either -1 or -2 when generating. As a result, not all carver types will repeat in one given world. If we take the X-axis seed as an example:
+
+107038380838084 causes some carver caves to repeat, most often those near the surface
+107038380838083 generally causes deeper underground carver caves to repeat
+107038380838082 causes canyons to repeat; carver caves appear to be unaffected
+In general, if a data pack is used to add new carvers to generation, each carver type will have its own salt.
+
+
+=== Integer overflow and higher periods ===
+
+
+== Non-orthogonal mineshaft repetition ==
+
+
+== Possible BE biome color corruption ==
+
+
+== Shadow seeds ==
+It is possible for different seeds to share major generational characteristics with other seeds through certain mechanisms.
+
+
+=== Biome shadow seeds ===
+In Java Edition before 1.18, by adding the constant -7379792620528906219 (in calculation) to the world seed, it was possible to obtain a "shadow seed". In this seed, biome arrangements were identical to the ones of the original seed, but locations of features (caves, hills) and generated structures (villages, temples, etc.) were different in the new seed.
+
+
+=== Unused bits ===
+In Java Edition before 1.18, the shapes of the biomes were generated using only the upper 24 bits of the world seed. Additionally, caves and badlands terracotta patterns only use the upper 48 bits of the world seed.
+
+
+== General information ==
+
+
+=== Generation quirks ===
+Through certain seeds, it is possible to observe interesting effects.
+
+
+==== Changing terrain without changing some structures ====
+Only certain sections of the seed are used to generate specific features within the world. It is possible to generate multiple worlds with identical cave systems, Nether biomes and other arrangements of generated structures simply by converting the seed into binary and tweaking the desired bits. An example is the seed generator using only the first 48 bits to generate cave systems and badlands clay banding layers.
+Any seed calculated as 4294967296  n + 1669320484 also generate maps with repeating features.
+
+
+==== Repetition ====
+In Bedrock Edition, Mineshaft generation repeats vertically in the seeds -1171867832 and 1000686894.[more information needed]
+
+
+== History ==
+
+
+== References ==
+
+
+== Navigation ==

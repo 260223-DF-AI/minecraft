@@ -1,0 +1,101 @@
+Villager Trade Rebalance[Java Edition  only] or Villager Trade Rebalancing[Bedrock Edition  only] is an experiment available in both Java Edition and Bedrock Edition that tweaks the trades of several villager professions and wandering traders in an attempt to make them more fair.
+According to Mojang, librarian trades are considered to be too overpowered compared to using an enchanting table or searching for enchanted books. With the new changes, players must explore villages in different biomes and unlock villager tiers instead of relying on random chances. Wandering traders had unfair prices and didn't sell many useful items. With the new changes, their prices are lowered, more trades are added, and they can also purchase items from the player. Additionally, various explorer maps were given to cartographers to make it easier for players to locate specific biomes.
+In Java Edition 1.21.5 and Bedrock Edition 1.21.70, the cartographer and wandering trader changes were fully implemented and moved out of the experiment.
+
+
+== Changes ==
+
+
+=== World generation ===
+Ancient City
+
+Increased the chance of generating enchanted books with Mending.
+Desert Pyramid
+
+Increased the chance of generating enchanted books with Unbreaking (level I to III).
+Jungle Pyramid
+
+Increased the chance of generating enchanted books with Unbreaking (level I to III).
+Mineshaft
+
+Increased the chance of generating enchanted books with Efficiency (level I to V).
+Pillager Outpost
+
+Increased the chance of generating enchanted books with Quick Charge (level I to III).
+
+
+=== Trading ===
+
+
+==== Librarian ====
+Changed the trading mechanism of librarians selling enchanted books.
+Instead of offering every possible enchanted book, librarians now offer specific enchanted books depending on which biome they come from.
+All tradable enchanted books are now split to special books and common books.
+Special books have a specific enchantment with a fixed level, and are available only from master librarians with full XP.
+Common books have a specific enchantment without a fixed level, just like before.
+All enchantments unique to the crossbow, fishing rod, trident, mace, and spear have been removed from trading.
+
+The price of a book in emeralds depends on the enchantment level and "treasure" status. The minimum price of a book is given by 2 + 3 * (enchantment level), while the maximum price is 6 + 13 * (enchantment level), capped at 64. The possible values are 519 emeralds for Lvl I, 832 for Lvl II, 1145 for Lvl III, 1458 for Lvl IV, and 1764 for Lvl V. For treasure enchantments the price is doubled (but still capped at 64). All values are equally probable.
+
+
+==== Armorer ====
+Changed trades of armorers:
+Buying diamond armor now also requires a small amount of diamonds.
+Most master-level armorers buy iron blocks and pay 4 emeralds for them.
+Chainmail armor is exclusively sold by jungle and swamp armorers.
+The savanna armorer sells cursed diamond armor at reduced prices.
+The taiga armorer can swap one piece of diamond armor for another. Damaged, enchanted, and cursed armor are accepted, making 8 the minimum number of diamonds required for a full set.
+
+
+== Former additions and changes ==
+
+
+=== Additions ===
+Tags
+
+Added the following structure tags:[Java Edition  only][verify]
+#on_desert_village_maps: contains village_desert.
+#on_jungle_explorer_maps: contains jungle_pyramid.
+#on_plains_village_maps: contains village_plains.
+#on_savanna_village_maps: contains village_savanna.
+#on_snowy_village_maps: contains village_snowy.
+#on_swamp_explorer_maps: contains swamp_hut.
+#on_taiga_village_maps: contains village_taiga.
+
+
+=== Changes ===
+These changes were previously part of the experiment, but were fully implemented in Java Edition 1.21.5 and Bedrock Edition 1.21.70.
+
+Added seven new maps which cartographers can sell, depending on the biome they come from.
+Village maps point to a village in a specific biome. Jungle explorer map points to a jungle pyramid. Swamp explorer map points to a swamp hut. 
+
+Changed the wandering trader trades.
+Trade list now made up by following trades, in order:
+Buying Trade (new)  2
+Special Selling Trade  2
+Ordinary Selling Trade  5
+Added new buying trades, some selling trades, and changed some existing selling trades:
+
+ Duration: 8:00
+
+ The price of this trade is the base price, 1 emerald, plus the random enchantment level chosen (519).
+
+ When creating an enchantment offer, the game uses a random enchantment level from 5 to 19. The enchantments are never treasure enchantments.
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

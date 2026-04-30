@@ -1,0 +1,181 @@
+Beta 1.20.10.23 (Android) or Preview 1.20.10.23 (Windows, iOS, iPadOS, Xbox) is the third beta/Preview version for Bedrock Edition 1.20.10, released on June 14, 2023, which fixes bugs.
+
+
+== Changes ==
+
+
+=== World generation ===
+Fallen Trees
+
+Now generate with mushrooms again
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs" "Short Sneaking and Crawling" and "Experimental Cameras" experimental toggles.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/camera
+
+Added the "example:example_player_effects" preset to demonstrate this
+
+
+=== Changes ===
+
+
+==== Gameplay ====
+Sneaking and Crawling
+
+Players can now be forced into sneak/crawl state while flying
+
+
+==== Command format ====
+/camera
+
+Camera command can now take a 'facing' option instead of a 'rot' option with a target entity or position specified
+
+
+==== Technical ====
+API
+
+Dynamic Property identifiers are now limited to 1024 characters.
+Removed MinecraftEffectTypes defined in @minecraft/server. See @minecraft/vanilla-data NPM package for an equivalent.
+Moved several APIs to stable 1.30
+Moving tryTeleport(location: Vector3, duration: number, options: ScriptTeleportOptions) to 3.0
+Moving teleport(location: Vector3, options: ScriptTeleportOptions) to 3.0
+Moved function getComponent to 3.0
+Moved world event PlayerJoinAfterEvent to 3.0
+Moved world event PlayerLeaveAfterEvent to 3.0
+Moved world event PlayerSpawnAfterEvent to 3.0
+Moved EntityComponent EntityHealableComponent to 3.0
+Moved EntityComponent EntityHealthComponent to 3.0
+Moved class FeedItem to 3.0
+Moved class FeedItemEffect to 3.0
+Moved addEffect(effectType: string | EffectType, duration: number, options: EntityEffectOptions) to 3.0
+Moved getEffect(effectType: string | EffectType) to 3.0
+Moved getEffects to 3.0
+Moved removeEffect(effectType: string | EffectType) to 3.0
+AfterEvents
+Moved ButtonPushEvent to 3.0
+Moved LeverActivateEvent to 3.0
+Moved function spawnEntity to 3.0
+Moved function spawnItem to 3.0
+Spawnpoint updates
+Removed function clearSpawn
+Removed property spawnDimension
+Added function getSpawnPoint: DimensionLocation | undefined- Returns the player's spawn point
+Added function setSpawnPoint(spawnPoint?: DimensionLocation): void- Sets the player's spawn point, or clears it if spawnPoint is undefined
+Renamed function getDefaultSpawnPosition to getDefaultSpawnLocation
+Renamed function setDefaultSpawn to setDefaultSpawnLocation
+DimensionLocation
+Added new interface DimensionLocation- Represents a location in a dimension
+Added hasParticipantfunction to ScoreboardObjective.
+The following functions in ScoreboardObjective can now accept Entity or string types as participants:
+getScore
+setScore
+removeParticipant
+Removed getScore, setScore from ScoreboardIdentity and Scoreboard.
+Removed the removeFromObjective function from ScoreboardIdentity
+Raycasting
+Changed function getBlockFromRay
+Changed return type from Block to BlockRaycastHit | undefined
+Changed function getEntitiesFromRay
+Changed return type from Entity[] to EntityRaycastHit[]
+Changed function getBlockFromViewDirection
+Changed return type from Block to BlockRaycastHit | undefined
+Changed function getEntitiesFromViewDirection
+Changed return type from Entity[] to EntityRaycastHit[]
+Added interface BlockRaycastHit
+Added interface EntityRaycastHit
+Renamed leverActivate after event to leverAction
+Removed class EntityHitAfterEvent
+Added class EntityHitBlockAfterEvent
+Added class EntityHitEntityAfterEvent
+Class WorldAfterEvents
+Removed property entityHit
+Added property entityHitBlock
+Added property entityHitEntity
+Added helper function isValidto several classes in order to check if the object is valid. This can safely be used on any handle to a native object before accessing or using the object, to ensure the underlying object still exists and is valid to use.
+Block (checks the block is a valid position in bounds and the containing chunk is loaded & ticking)
+Container (checks the relevant container inventory exists and is valid)
+Effect (checks the owning entity is valid and the effect exists on that entity)
+ScreenDisplay (checks the owning player is valid)
+ScoreboardObjective (checks the objective entry exists and is attached to a valid scoreboard)
+Entity (checks that the entity exists in the world. Will return true if the entity is dead)
+Player
+SimulatedPlayer (Note simulated players do not automatically get removed from the world, so isValidwill return true long after they are dead)
+ContainerSlot (checks the item context is valid: Container exists in the world, such as the owning entity, and the slot is within the container bounds)
+Already existed as a readonly property, changed to a method for consistency
+Component
+EntityAttributeComponent (checks the owning entity is valid and the attribute exists on the entity)
+BlockLiquidContainerComponent (checks block exists and is a valid cauldron type)
+Added read only method isValidLiquidwhich checks if the liquid in the cauldron matches the component in question (EG. BlockLavaContainerComponent checks for lava liquid)
+EntityComponent (checks the owning entity exists)
+ItemComponent (checks the owning item exists)
+World
+Renamed getTime to getTimeOfDay
+Renamed setTime to setTimeOfDay
+setTimeOfDay now accepts a TimeOfDay enum as an argument.
+The timeOfDay argument for setTime must now be within 0-23999 (inclusive).
+Added getDay
+Updated the following enums' values to be PascalCase instead of camelCase
+ClipboardMirrorAxis
+ClipboardRotation
+HttpRequestMethod
+FormCancelationReason
+Direction
+DisplaySlotId
+EntityLifetimeState
+FluidType
+ObjectiveSortOrder
+ScoreboardIdentityType
+ScriptEventSource
+SignSide
+WatchdogTerminateReason
+WeatherType
+
+
+== Fixes ==
+23 issues fixed
+From released versions before 1.20.10
+
+MCPE-138333  Fallen trees do not spawn with mushroom anymore
+MCPE-153446  Cape when riding a boat changes its position (folds up) when you turn the camera
+MCPE-156444  Horse / donkey jump meter isn't the same length as the experience bar
+MCPE-164801  Chiseled bookshelf slot interactions aren't symmetrical
+MCPE-166569  Player will sometimes automatically crouch when climbing ladders, vines, twisting vines, weeping vines under full block
+MCPE-167447  Mouse and Keyboard buttons for Attack/Destroy and Interact/Place behave strangely when a controller is detected
+MCPE-168119  Remove an enchanted book from a chiseled bookshelf plays wrong sound
+MCPE-169453  Entities continue to freeze even without powder snow if there is a powder snow block near the west & north side
+MCPE-169772  Boats broken and all mobs exit boats when updated to 1.20 versions
+MCPE-170814  P2P/SIG: no_session(Expired Auth from Discovery)
+MCPE-170885  Crawl speed does not increase with swift sneak enchantment
+From the 1.20.0
+
+MCPE-169732  Conduit is black
+From the 1.20.10 development versions
+
+MCPE-170834  Mounts stop working after switching mounts directly
+MCPE-170838  Player's head uses default rotations when crawling
+MCPE-170848  It's still possible to craft barrels with sticks
+MCPE-170889  Crawling animation is played on top of the gliding one
+MCPE-170983  Mob spawning is not using json-defined collision box when checking for obstructions
+MCPE-171022  Stuck in vines and ladders with the new short sneaking and crawling
+From the previous development version
+
+MCPE-171073  Recipe Unlocking works in spectator
+MCPE-171203  Inventory cursor snaps to a random spot when flicking the left thumbstick in the Creative inventory or recipe book
+Other
+
+Fixed an issue where legacy Crawling was not working correctly with the Sneak and Crawl toggle turned off
+Fixed bug where scoreboard values would not be updated on the client when updated from script
+Fixed a crash.
+
+
+== References ==
+
+
+== Navigation ==

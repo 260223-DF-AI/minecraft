@@ -1,0 +1,41 @@
+1.20 Pre-release 7 (known as 1.20-pre7 in the launcher) is the seventh and final pre-release for Java Edition 1.20, released on May 29, 2023, which adds symbolic link validation, and fixes a bug.
+
+
+== Changes ==
+
+
+=== General ===
+Tag
+
+Added bamboo_mosaic_slab to #slabs block and item tags.
+Added bamboo_mosaic_stairs to #stairs block and item tags.
+General
+
+To improve safety, the game now detects symbolic links used inside world directory.
+If the target of a symbolic link is not on the user-configured allow-list, the game does not proceed with loading the world.
+Note: world directory itself can still be linked.
+The list of allowed symbolic link targets is stored in file allowed_symlinks.txt in client or server top directory.
+The file consists of entries (one per line) with following formats allowed:
+Lines starting with # are comments and are ignored.
+[type]pattern, where type can be glob, regex or prefix.
+prefix matches start of path with given pattern (so for /test paths /test, /test/, and /test/foo.txt would match).
+regex matches regular expression against whole path.
+glob uses OS-specific path matching mechanism (for example *.txt would usually match files with txt extension).
+Note: paths use OS-specific separators.
+pattern, which uses default prefix type.
+
+
+== Fixes ==
+1 issue fixed
+From released versions before 1.20
+
+MC-257778  Bamboo Mosaic Slabs and Stairs are not in the #slabs and #stairs block and item tags.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

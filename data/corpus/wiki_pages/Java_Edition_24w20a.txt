@@ -1,0 +1,119 @@
+24w20a is the fourth snapshot for Java Edition 1.21, released on May 15, 2024, which fixes bugs. 
+
+
+== Changes ==
+
+
+=== Mobs ===
+ Witch 
+
+Now always drops 48 redstone dust on death.
+This is to improve the viability of farms that utilize witch huts to obtain redstone dust.
+
+
+=== Gameplay ===
+ Effects 
+
+Improved player attribute and effect handling.
+Custom set base attributes are now kept when respawning.
+Active effects and modifiers are kept when changing dimension or winning the game.
+ Enchantments 
+
+Wind Burst
+Invalidates the fall damage protection of mace smash attacks once again, reverting the fix of MC-270687.
+
+
+=== Sounds ===
+ Pistons 
+
+Changed sounds to lower their volume and attenuation.
+This was done to address the old sounds being too harsh and loud when used in redstone contraptions.
+
+
+=== General ===
+ Credits 
+
+Have been updated.
+ Data pack 
+
+The pack format version is now 44.
+ Custom structure 
+
+dimension_padding jigsaw structure tag was changed.
+Now it is an object with fields:
+bottom: the vertical padding at the bottom of the dimension, non-negative integer.
+top: the vertical padding at the top of the dimension, non-negative integer.
+Can be written as a single non-negative integer instead to be applied to both top and bottom fields.
+e.g. both dimension_padding: 10 or dimension_padding: { bottom: 10, top: 5 } are valid.
+Data-driven enchantment field weight now has an upper bound of 1024.
+Data-driven enchantment field max_level now has an upper bound of 255.
+New entity sub predicate movement_affected_by - optional location predicate.
+When present, adds requirements on a block at most 0.5 blocks below the entity which can affect its movement.
+
+
+== Fixes ==
+49 issues fixed
+From released versions before 1.21
+
+MC-6431  Status effects are lost when returning to the Overworld from the exit End portal.
+MC-83590  Armor attributes list can be too long.
+MC-101170  Portal sound doesn't get played when returning from the End.
+MC-124177  Teleporting to another dimension loses some client states.
+MC-137719  The player's horizontal motion doesn't affect fired projectiles in certain situations.
+MC-179940  Player's attributes reset back to default values upon respawning.
+MC-181604  Exiting the End portal resets player attributes to their default values.
+MC-252361  Obsidian platform in the End is off by a block from entering from the Nether compared to the Overworld.
+MC-255218  Fly mode is disabled after teleporting from the End to the Overworld through the End portal.
+MC-267230  Hangul fonts are rendered with missing pixels.
+MC-268113  The minecraft:generic.scale attribute is desynchronized when the player leaves the End dimension via an End portal.
+MC-268370  Japanese CJK variants use the same diacritic.
+MC-268598  The "weight" of skeletons in swamp biomes is too high causing less bogged spawns.
+MC-269036  Bogged do not drop mushrooms when sheared with doMobLoot false.
+MC-269147  Shearing a bogged spawns mushrooms at the bogged's feet.
+MC-269574  Client attribute values may desync from the server after leaving the End.
+MC-269951  When the gamerule "doImmediateRespawn" is set to true, the Wind Charged, Oozing or Weaving effects don't function for players.
+MC-270052  Blur levels below 10 % do not appear to actually work.
+MC-270301  The Fire Protection enchantment applied to horse armor no longer decreases the duration of time the horse remains ablaze.
+MC-270539  The Blast Protection enchantment, when applied to horse armor, no longer diminishes the knockback effect from explosions on horse.
+MC-270637  maxEntityCramming set to 0 prevents slime spawning from Oozing effect.
+MC-270789  Only mace smash attacks increment "Times Used" stat.
+MC-271034  List entries in the Social interactions menu are rendered over the background.
+MC-271168  Demo timer does not respect "Text Background" setting.
+MC-271244  Auto-save text does not respect "Text Background" setting in accessibility settings.
+MC-271360  Horse armor and wolf armor are deleted when used on an armor stand.
+MC-271414  /damage command at position applies knockback in random direction.
+MC-271980  Arrows/bee stingers stuck in players disappear when leaving the End.
+From the 1.21 development versions
+
+MC-271462  Buttons make the deactivation sound when pressed.
+MC-271468  Game crashes with custom enchantment's "rotated_block_provider".
+MC-271532  Mace only loses durability during smash attacks.
+MC-271533  Throwing Channeling trident at mobs during thunderstorm in Survival no longer summons lightning.
+MC-271547  The player can't immediately sprint jump into a 2 block ceiling when standing next to it since 24w18a.
+MC-271566  Game crash on insufficient "ammo_use" amount.
+MC-271574  Inlining a painting variant causes players to disconnect when receiving entity data.
+MC-271583  Soul speed no longer works through partial blocks.
+MC-271629  Channeling doesn't work/"post_attack" effect requires enchanted item to be in the mainhand.
+MC-271636  Attempting to modify NBT of killer rabbit throws unexpected error.
+MC-271678  damage_item enchantment entity effect doesn't break items.
+MC-271715  Crash when the sum of enchantments' weights overflow.
+MC-271716  Fraction value provider allows division by zero.
+MC-271803  Custom enchantment with very large max level causes game to hang after opening Creative inventory.
+MC-271863  Crafter recipe gets stuck on an item with a similar recipe.
+MC-271881  Soul speed doesn't make soul particles.
+MC-271896  Using  Shift+F3+I on a villager crashes the game.
+MC-271937  Striking a villager with Channeling trident during thunderstorms doesn't grant the advancement "Very Very Frightening".
+From the previous development version
+
+MC-271853  Random "Failed to store chunk" error.
+MC-271854  Trying to generate new chunks crashes the server.
+MC-271948  Entering the Nether breaks the game.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

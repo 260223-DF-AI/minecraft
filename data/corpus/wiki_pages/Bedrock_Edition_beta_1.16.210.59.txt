@@ -1,0 +1,93 @@
+Beta 1.16.210.59 is the ninth beta version for Bedrock Edition 1.16.210, released on February 11, 2021, which added glow squid behind the experimental toggle, and fixes bugs.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Signs
+
+Using dyes will now change the text color.
+Can now be tinted with glow ink sacs to make the text glow.
+Glowing signs do not affect the light level, only appearing as if the text itself is illuminated.
+Regular ink sacs can be used to remove the glowing effect.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Caves & Cliffs" experimental toggles.
+
+
+=== Blocks ===
+Glow Item Frames
+
+An item frame which appears to glow.
+Do not affect the light level, only appearing as if lit up themselves.
+Items placed inside also glow.
+Crafted using an item frame and a glow ink sac.
+
+
+=== Items ===
+Glow Ink Sacs
+
+Dropped by glow squid when killed.
+Can be used to craft glow item frames.
+Can be used to make text glow on signs.
+Spawn Eggs
+
+Added glow squid spawn egg.
+
+
+=== Mobs ===
+
+Glow Squid
+
+Originates from the mob with the same name from Minecraft Earth.
+Underwater mob that behaves like a regular squid.
+Does not naturally spawn yet.
+Drops glow ink sacs when killed.
+Does not affect the light level, only appearing as if lit up itself.
+Stops glowing for a short time.
+
+
+== Fixes ==
+Accessibility
+
+The screen reader now announces the names of the A/B Button Swap and X/Y Button Swap options correctly.
+Fixed an issue where the screen reader would intermittently fail to announce some button names.
+Performance and Stability
+
+Fixed a number of crashes that could occur during gameplay.
+Fixed a crash that could occur when leaving a world.
+Fixed a crash that occasionally occurred on dedicated servers around villages (BDS-10666).
+Fixed a crashing issue related to corrupted biomes during world load for various Marketplace worlds.
+General
+
+Command blocks no longer censor numbers (MCPE-106296).
+Fixed inability to resume mining with touch controls after being interrupted (MCPE-115507).
+Fixed an issue where crafting a bed with the recipe book unlocked the "Change of Sheets" trophy.
+Minecarts now properly update their effects (looping sound, player coordinates) when the minecart is not being rendered for the rider (MCPE-104044).
+Fixed Skin Preview navigation when using a controller.
+Fixed arrows getting stuck in the air after hitting a player with high latency.
+Fixed template tabs overlapping in Create New menu.
+Fixed missing Incompatible button on the Marketplace Inventory screen.
+Fixed an issue that allowed in-game patch notes to show more than once.
+Fixed some interface issues with scrolling and clearing store filters.
+Graphics
+
+Fog once again correctly displays in the Nether (MCPE-111680).
+Cloud Storage (Xbox)
+
+Resolved an issue where, in certain cases, a world could not be properly synced to the cloud (Xbox only).
+Technical
+
+Fixed an issue with animating structures when chunks were unloaded and the animation not continuing.
+Attachable items created in 1.16.2 and before will not render for their player in first person. Attachable items created after 1.16.2 will render for their player in first person unless they are armor.
+Custom blocks now can only drop default state when broken, even with Silk Touch.
+Fixed validation of 'render_offset' as string in component item JSON schema.
+The /schedule command will once again execute from the entity it originated from if the area was already loaded.
+
+
+== References ==
+
+
+== Navigation ==

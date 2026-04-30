@@ -30,7 +30,7 @@ All smelting recipes can be used in the furnace, but only subsets are available 
 The furnace, blast furnace and smoker keep track of experience for each item as smelting is completed for them, accumulating it in a hidden counter. The counter remembers the total earned experience even if a hopper is used to remove the items from the output slot. Experience is awarded to the player who uses the interface to remove items manually, after which the counter is reset. If the player takes some of the output but leaves some in the slot, the experience corresponding to items left in the furnace is retained and not awarded to the player. For fractional experience values, first multiply this value by the number of smelted items removed from the furnace, then award the player the integer part, and if there is a fractional part remaining, this represents the chance of an additional experience point.
 
 For example, when smelting 1 coal ore and removing the coal, the value is 0.1, so every ten coal removed grants one experience point on average.
-When smelting 6 sea pickles and removing all 6 lime dye, the value is 0.2×6 = 1.2, so this grants 1 point, plus a 20% chance of another 1 point.
+When smelting 6 sea pickles and removing all 6 lime dye, the value is 0.26 = 1.2, so this grants 1 point, plus a 20% chance of another 1 point.
 The fractional experience stays within the furnace when the final total is not an integer, so the leftover experience is attributed to the next round of smelting.
 
 
@@ -55,7 +55,7 @@ These recipes are exclusive to the furnace.
 == Fuel ==
 
 There are multiple fuels that can be used to smelt items.
-A single lava bucket or a block of coal can smelt more items than can fit in the furnace, a lava bucket being able to smelt 100 blocks and a block of coal being able to smelt 80 —both input and output are limited to a maximum of a stack.
+A single lava bucket or a block of coal can smelt more items than can fit in the furnace, a lava bucket being able to smelt 100 blocks and a block of coal being able to smelt 80 both input and output are limited to a maximum of a stack.
 This is the specific table for all the fuels:
 
 

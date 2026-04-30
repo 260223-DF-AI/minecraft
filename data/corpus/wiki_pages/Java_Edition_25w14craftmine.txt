@@ -1,0 +1,606 @@
+25w14craftmine, supposedly the first and only snapshot for The Craftmine Update, is an April Fools' Day joke snapshot for Java Edition, released on April 1, 2025. This snapshot is a fork of 1.21.5 Release Candidate 1.
+25w14craftmine spawns the player next to a mine crafter. The mine crafter can craft "mines" using mine ingredients which change different properties of the mine. Entering a mine brings the player to a new dimension. The mine is won if the player successfully finds and uses a mine exit and the mine is lost if the player dies. Winning a mine grants the player experience points which can be used to purchase player unlocks that grant the player new powers. Every 5th mine is a special event mine that will grant a shimmering key if won. Shimmering keys can be used on shimmering doors in the Overworld to unlock new rooms.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Dimension control
+
+Used to change the style of the sky with the sky box item.
+ Mine crafter
+
+Used for generating custom mines.
+Can be leveled up to unlock new mine ingredient slots. The mine crafter level is stored per world so the level will be the same in all mine crafters.
+The mine ingredient slots cap at 50, achieved at level 48.
+Cannot be mined.
+Can be destroyed by explosions and has a chance to drop as an item when exploded.
+ Mine revisitor
+
+Used to enter already generated mines after making a new mine with the mine crafter.
+Cannot be mined or exploded.
+ Mine travelling block
+
+Can only be found on a mine exit structure or on top of a mine crafter or mine revisitor.
+Although most other blocks and items are in the creative menu, this can only be obtained with commands.
+Used to travel to the mine contained in the mine crafter or mine revisitor.
+ Sky
+
+Spawns naturally in the the hub dimension.
+Has the texture of the current sky box.
+Cannot be broken naturally without creative mode or commands.
+ Shimmering door
+
+When using the door, "Doors yearn for the keys!" shows up in the action bar, and the door does not open.
+When right-clicking the door with a shimmering key in hand, the player can generate new rooms in the hub area.
+These rooms can contain structures such as village houses and end ships.
+ Trophy
+
+Awarded to the player for particular actions and achievements.
+ Mob trophy
+
+There is a 10% chance a mob will drop a trophy when killed by a player.
+Trophies will be transported to the Hub upon successful completion of a mine, as long as they are in the player's inventory and not inside a container (i.e. a bundle).
+Every mob trophy has a grade:
+100/181  55.2% chance of grass grade
+50/181  27.6% chance of stone grade
+25/181  13.8% chance of gold grade
+5/181  2.8% chance of diamond grade
+1/181  0.6% chance of netherite grade
+Additionally, there is a 1% chance that a mob trophy will be shiny.
+The rarest mob trophy, a shiny netherite grade mob trophy, has only a 1/181,000  0.0006% chance of dropping from any mob kill.
+Trophies can also be obtained with the give command, using components to display specific mobs. Below is an example command to spawn a shiny, netherite-grade ender dragon mob trophy:
+/give @s minecraft:mob_trophy[minecraft:mob_trophy/type={shiny:1b,type:"ender_dragon"},minecraft:block_state={grade:"netherite"}]
+The tag shiny:1b will give the trophy the 'shiny' trait. Replace with shiny:0b to remove shininess.
+The tag {grade:"netherite"} will make the trophy netherite-grade.
+The tag type:"ender_dragon" will set the trophy's mob to an ender dragon.
+Right-clicking a mob trophy will play a random sound that the mob makes.
+
+
+=== Items ===
+ Displacement wand
+
+Uses the stick texture with an enchantment glint (similar to the debug stick).
+Shoots an ender pearl when right-clicking in hand.
+ Eye of exit
+
+The item's texture and usage are similar to an eye of ender; the eye of exit instead locates the nearest exit portal of the current mine. They are crafted by surrounding one iron ingot with eight copper ingots in a crafting table. The player unlocks the advancement "Spy Eye" for crafting one. Upon using an eye of exit, it will damage the player (unless the upgrade that prevents this is owned), and floats in the air to indicate the direction of the exit portal.
+The eye of exit replaces the eye of ender in all crafting recipes.
+The eye of exit cannot be used in any special mine.
+ Fire wand
+
+Uses the blaze rod texture with an enchantment glint.
+Shoots a ghast fireball when right-clicking in hand.
+ Grave
+
+The item was added only to act as the icon for the "Oops" advancement.
+Has an item ID of grave_advancement.
+ Shimmering key
+
+Used to open shimmering doors.
+Granted rarely after successful mine completions. Always granted after special mine completions.
+ "And Action!" music disc
+
+Acts as a music disc.
+Only accessible in the warden special event mine and the "Relax Room" hub room.
+ Mine
+
+Represents the upcoming mine after the player adds one or more mine ingredient(s) inside the mine crafter.
+Every 5th mine is unalterable and instead creates a special mine.
+ Mine ingredient
+
+Used when crafting mines.
+Unlock options in the mine crafter when in the inventory as a player leaves a mine. Must not be inside a container (i.e. a bundle) to register.
+Obtained through various actions. While intended to only be found within mines, ingredients can be obtained in the hub and will be unlocked normally upon interaction with the mine crafter.
+To get custom mine ingredients, use these following commands:
+First, give yourself a mine_ingredient using the /give command. To do this, type in /give @s mine_ingredient.
+Next, drop the item on the ground far away from you
+Lastly, use this command. This one is for eternal night, to change it, type in the new ID below in the place of the old one, now type the command and you should get a mine ingredient that isn't eternal night.
+/data merge entity @e[type=item,distance=..10,limit=1,sort=nearest] {Item: {components: {"minecraft:world_effect_unlock": {}, "minecraft:world_modifiers": {effects: ["minecraft:eternal_night"], include_description: 1b} } } }
+ Sky box
+
+Used inside the dimension control block to set the appearance of the sky in the current dimension.
+ Shazboots!
+
+When worn, the player will increasingly gain speed depending on how long the jump button is held, and then gives a proportional upwards boost when jump is released.
+Wearing the boots also grants the player immunity to fall damage.
+A meter similar to the horse jump meter replaces the XP bar to display the current speed boost.
+ Wind wand
+
+Uses the breeze rod texture with an enchantment glint.
+Shoots a wind charge when right-clicking in hand.
+
+
+=== Item model ===
+ Kuiper world
+
+Texture added for the "Spaaaaace!" advancement and "Kuiper World" special event mine.
+An item with this model can be only be obtained with commands, for example using the command /give @p mine[minecraft:item_model="minecraft:kuiper_world"]
+
+
+=== Mobs ===
+ Angry ghast
+
+Modified boss version of the ghast with a slightly different texture.
+Shoots bursts of 3 subsequent fireballs at the player that do significantly more damage to entities and terrain.
+ Spectator villager
+
+Villager with modified AI that spawns in the warden boss fight arena that will talk" to the player.
+Invincible unless the player is in creative mode.
+ Warden
+
+Warden with modified AI who appears in its own boss fight arena.
+It spawns at the center of a stage and always has the Glowing effect.
+Warden remains in a laying position at the center of the stage. It does not react until the player blows a horn following a villager wondering event dialogue, after a certain amount of time.
+
+
+==== Pets ====
+ Pet armadillo
+
+Variant of the armadillo used for the pet system.
+ Pet axolotl
+
+Variant of the axolotl used for the pet system.
+ Pet bee
+
+Variant of the bee used for the pet system.
+ Pet cat
+
+Variant of the cat used for the pet system.
+Does not 'scare' creepers.
+ Pet chicken
+
+Variant of the chicken used for the pet system.
+ Pet cow
+
+Variant of the cow used for the pet system.
+Cannot be milked.
+ Pet creeper
+
+Variant of the creeper used for the pet system.
+ Pet fox
+
+Variant of the fox used for the pet system.
+Cannot pick up items.
+ Pet frog
+
+Variant of the frog used for the pet system.
+ Pet mooshroom
+
+Variant of the mooshroom used for the pet system.
+ Pet polar bear
+
+Variant of the polar bear used for the pet system.
+ Pet slime
+
+Variant of the slime used for the pet system.
+ Pet turtle
+
+Variant of the turtle used for the pet system.
+ Pet wolf
+
+Variant of the wolf used for the pet system. Behaves similarly to tamed wolves, but cannot be damaged by the player.
+Can be upgraded into a large dire wolf.
+Can be upgraded to wield a netherite sword.
+Can be upgraded to wear wolf armor.
+
+
+=== World generation ===
+
+
+==== Dimensions ====
+Each mine generates a separate dimension. These dimensions are located in the world's dimensions/minecraft/ folder and are titled levelN, where N is the number of the mine.
+The Nether and the End have been removed. (Despite this, their biomes continue to exist and they can be added to mines.)
+
+
+==== Biomes ====
+Hub
+
+the center of the room.
+
+
+==== Rooms ====
+Rooms are generated when a shimmering key is right-clicked in hand on a shimmering door.
+Storage (barrels)
+
+A room with 5 barrels in a dark oak plank floor.
+Boiler Room
+
+A room made of copper blocks.
+Contains a chest with all sky boxes and a dimension control block
+Has signs which read Nothing To See Here, Move Along, and Authorized Personnel Only
+Relax Room
+
+Contains a jukebox.
+Contains a barrel with most music discs, including "And Action!". It does not include "otherside" or "Relic", but has two copies of "Stal" and "Mellohi".
+Boring Corridor
+
+Stone hallway with four glass windows.
+Fountain
+
+A room with a water fountain made of sandstone.
+Junction (grass)
+
+A room with grass blocks and grass surrounded by copper blocks.
+Storage (hanging barrels)
+
+A room with four barrels hung on chains from an oak plank structure.
+Wow, A Whole House? At This Price?
+
+A room with cobblestone house. House is based upon the Taiga temple structure.
+Features an unsigned written book on a lectern, which reads:
+Dear Bob
+I hope you are doing well!
+I heard some disturbing news and I wanted to ask what happened to
+Labyrinth
+
+A room with a maze made of sky blocks.
+Contains a chest containing 18 lightning mob trophies. These trophies' models clip significantly outside most UIs.
+Deep Pool
+
+A room with a prismarine topped deep pool of water
+The room contains hidden signs that can be accessed by swimming, which reads:
+.
+nothing
+When reaching the end of the signed passage, there is no return without either a trapdoor to reenter the 1x1 passage or jumping into the void (2x1 ending spot is surrounded by 3 skyblocks tall walls without ceiling).
+Ship
+
+A room with an End city ship.
+Unlike the normal end city ship, this one doesn't have a brewing stand or elytra and has 2 double chests and the back of the ship.
+There is a 1x1 hole above the ship's mast.
+A hanging sign is hidden on the outside of the ship, near the brewing stand, which reads:
+got footprints?
+Test Room Please Ignore
+
+A small room with a floor of emerald and redstone blocks.
+Stairs
+
+A room with brick stairs.
+A tall pillar of sky blocks in the center of the room hides ladders and a chest, accessible from above. The chest contains one shiny netherite-grade llama spit mob trophy.
+Storage (simple)
+
+A room with four double chests, surrounded by oak planks with a 4x3 window at the top.
+Storage (less simple)
+
+A room with four double chests and four single chests.
+In the ceiling there are three signs, which read:
+TODO fix this empty space
+whoops ran out of time let's just cover it
+tell you what I'll give you this block if you don't tell anyone (placed next to a diamond block)
+Junction (cane)
+
+A room with a sand and sugar cane checkerboard surrounded by copper blocks.
+room.minecraft.test
+
+A room with a birch wood arrow. Redstone blocks are on one side, and emerald blocks are on the other.
+Likely used to test room direction functionality.
+Tree
+
+A room with an oak tree and some grass blocks.
+Vintage Trophy Room
+
+A room with a glass wall, cobblestone flooring, and glowstone.
+Line
+
+A room with one tripwire line.
+Useless Room
+
+A room with a gold block beacon base surrounded by iron blocks.
+Junction (wheat)
+
+A room with a wheat farm surrounded by copper blocks.
+Workshop
+
+A cobblestone room with four large exits and glass windows in its ceiling.
+Command to spawn specific shimmering keys:
+Here is an example command to spawn a key with a specific room: 
+
+/summon item ~ ~ ~ {Item:{id:"minecraft:shimmering_key",Count:1,components:{"minecraft:instant_room":{"structure":"<room ID>"}}}}
+
+Where <room ID> should be replaced with one of the following strings:
+barrels, boiler, carpet, corridor_simple, fountain, grassy_h, hanging, house, labyrinth, pool, ship, stairs, storage1, storage2, sugar_h, test, tree, trophy, tunnel, useless, wheat_h, workshop.
+
+
+=== Special events ===
+Special events are mines with unique additions. There are nine different special events.
+Warden special event
+
+Spawns the player near an arena with a sleeping warden and an audience of spectator villagers
+Mine exit appears when the warden is killed, or a sequence of actions is performed by the player:
+Use a goat horn (can be found in a chest in the building behind the warden)
+Play a music disc in a jukebox (found in a different chest in the building)
+Activate a copper bulb (there is one in the building which controls the light show)
+Equip a mob head (also in the goat horn chest)
+Set off a firework (there are firework launchers on the roof)
+These steps must be done in this order, or it will not count. For example, if you're already wearing the mob head before you activate the lights, you'll need to take it off and put it back on again.
+Hints will be shown for what step to do next, however on a multiplayer server they will only appear for one player. Due to a bug, the hint for the fireworks does not appear.
+If the warden is attacked, or you wait too long before doing the next step in the chain, it will become hostile and you will need to kill it to win.
+Once the whole sequence is complete, the player is rewarded with 5 diamonds, and 200 stacks of rose bushes.
+Enderman special event
+
+Generally spawns a user in a desert biome at night.
+Spawns a wave of a single enderman
+Mine exit appears when the enderman is killed
+Ender Dragon special event
+
+The ender dragon, end fountain, and obsidian pillars spawn here
+Mine exit appears when the ender dragon is killed. The credits do not play.
+Spooky Scary Skeletons special event
+
+Generally spawns the player in a desert with cave generation.
+Three waves of skeletons spawn. During the second and third waves, wither skeletons also spawn. After all three waves are completed, an exit appears.
+Kuiper World special event
+
+Many small icy islands floating in space (some with spruce trees)
+Snow golems, polar bears and snowy foxes spawn on the islands
+Player spawns on an island with an igloo
+In the basement of the igloo, the chest contents have been replaced to include a diamond shovel that can be used to get snowballs for bridging
+Also contained in the basement of the igloo is a diamond pickaxe, a water bucket and a lava bucket, everything required to make a basic cobblestone generator
+Small but Deadly special event
+
+Three waves of mobs spawn. From the first wave, 25 silverfish spawn. From the second wave, 3 baby zombies spawn. On the third wave, 3 vexes spawn, and also 5 additional silverfish and 1 additional baby zombie. After all three waves are completed, an exit appears.
+The world is mountainous with the windswept gravelly hills, desert, mangrove swamp, crimson forest and warped forest biomes.
+Angry Ghast special event
+
+Angry ghast boss spawns after countdown
+Wither special event
+
+The player spawns in a cave world with nether forest biomes.
+After a countdown, the wither spawns, and the mine exit is activated upon killing it.
+Raid special event
+
+The player spawns in a plains village with the Raid Omen effect, which will start a raid.
+After the raid is completed, the exit will appear in addition to gaining the Hero of the Village effect.
+
+
+==== Features ====
+Start platform
+
+Where the player spawns upon entering most mines.
+Features a crafter to circumvent the player's temporary inability to craft normally.
+Made up of deepslate tile slabs, deepslate tile walls, stripped pale oak logs, stripped pale oak wood, resin brick slabs, and a shroomlight. This can provide wood to the player in mines that may otherwise not spawn wood.
+Mine exit
+
+Features a mine travelling block in the center that begins a 10-second countdown to leave the mine when right-clicked.
+Made up of deepslate tile slabs, deepslate tile stairs, deepslate tiles, stripped pale oak logs, stripped pale oak wood, and resin brick slabs.
+
+
+=== Player unlocks ===
+Added "Player Unlocks", which are abilities the player can unlock using XP levels.
+The Player Unlocks menu can be opened using the 'U' button or the icon in the top right of the player's inventory.
+The Player Unlocks menu uses the same GUI as advancements.
+
+
+=== Advancements ===
+Removed the Nether, The End, Adventure, and Husbandry advancement tabs. The Minecraft tab is the only original advancement tab that remains.
+From the Minecraft tab, removed the "Enchanter", "Hot Stuff", "Ice Bucket Challenge", "We Need to Go Deeper", "Zombie Doctor", and "The End?" advancements
+Renamed the "Eye Spy" advancement to "Spy Eye" and changed its in-game description from "Follow an Eye of Ender" to "Craft an Eye of Exit"
+Added the "Feats", "Unlocks", and "Down the Hatch" tabs:
+
+
+=== General ===
+Resource pack
+
+Added some files used by this snapshot under the namespace nothingtoseehere, specifically:
+and_action.ogg), the music used by the And Action! music disc,
+Three sound files used by the spectator villager crowd:
+crowd_cheer.ogg
+crowd_start.ogg
+crowd_waiting.ogg
+Loading messages
+
+When loading into a mine, these messages can be shown:
+Entering mine...
+Doing something very important...
+Placing all of the little blocks in the world..
+Hiding stuff...
+Making a mess...
+Trying my best...
+Forgot something, probably not important...
+Turning off and back on again...
+Don't worry about it...
+Introducing jank...
+Absolutely placing the entire world one block at a time...
+This is a reference to the snapshot 22w13oneBlockAtATime.
+All your blocks are exactly where you left them
+Poisoning potatoes...
+This is a reference to the snapshot 24w14potato.
+Voting for mobs...
+This is a reference to the now discontinued Mob Vote, also possibly referencing the snapshot 23w13a_or_b.
+Infinitely creating dimensions...
+This is a reference to the snapshot 20w14.
+Traveling back to the 90's...
+This a reference to the snapshot 3D Shareware v1.34.
+Increasing texture details...
+This is a reference to the 2018 April Fool's Day joke.
+Making a portable console...
+This is a reference to the 2017 April Fool's Day joke.
+Following the trends...
+This is a reference to the pre-release 1.RV-Pre1.
+Adding sugar, spice and everything that is nice...
+This is a reference to the 2015 April Fool's Day Joke
+Turning players into villagers...
+This is a reference to the 2014 April Fool's Day Joke.
+Making collabs...
+This is a reference to the 2013 April Fool's Day Joke
+Acquiring MineCoins[tm]...
+Now in 4D!
+This is a reference to the 2010 April Fool's Day joke.
+Its now NOT safe to turn off your computer
+This is a reference to the "It's now safe to turn off your computer" screen in older Windows versions, which was shown on some computers when Windows is shut down.
+Reticulating splines...
+This is a reference to the videogame The Sims, where this line would show up in loading screens.
+Filling up to the line on a cup...
+Smoking these blocks...
+Adding seven mountains and seven seas...
+Reheating old jokes...
+Letting the cat out...
+Letting the cat in...
+Making everyone confused...
+Not incrementing the version...
+Looking under the couch cushions for extra features...
+Checking if everything Works As Intended...
+This is a reference to the Mojang issue tracker resolution state "Works As Intended".
+Simulating epic histories of underground kingdoms...
+This is likely a reference to the video game Dwarf Fortress, a heavily simulated colony sim, which features an extensive history system. Dwarf Fortress is known to have influenced early versions of Minecraft.
+Spreading the rumors...
+Sprinkling just a pinch of extra blocks on the top...
+Turning the lights on...
+Just wasting time until I remember what to do next...
+Displaying this message...
+Forgetting about something important...
+Ruining the game...
+Walking 500 miles...
+This is a reference to the song I'm Gonna Be (500 Miles).
+Walking 500 more...
+Another line from the song I'm Gonna Be (500 Miles).
+Finding a Programmer to get some Art made...
+A reference to Programmer Art.
+Breaking some farms...
+Spilling out lava from buckets...
+Changing my mind and removing some blocks again...
+
+
+== Changes ==
+This snapshot completely overhauls the game. Instead of spawning in normal overworld, upon creating a world the player spawns in a hub biome inside the overworld with no terrain generated around the spawn other than the place where the player spawns in. The place is centered around a Mine Crafter. On interacting with the Mine Crafter, a window vaguely similar to that of a crafting table opens. The player can use this interface to create Mines, sub worlds with customizable features that the player unlocks through gameplay in the mines. Upon successfully leaving a mine through a Mine Exit, the player is rewarded with experience based on the value and amount of items they have in their inventory. The inventory is separate between different mines, but starting equipment may be purchased with experience levels. The player can also use experience to buy other upgrades (referred to as unlocks in-game), such as more inventory space, increased speed, etc. All of these changes effectively transform the game into a roguelite. Other significant changes to aspects of the game are:
+
+The player cannot craft in any traditional manner (inventory, crafting table) until the ability is unlocked, and must rely on a crafter to craft items.
+Worlds can no longer be created in Creative. The gamemode can still be selected through use of commands.
+The main menu logo has been changed to "Craftmine" in place of "Minecraft".
+
+
+=== Blocks ===
+Andesite, diorite, granite, tuff and end stone
+
+Can be used to craft stone tools and furnaces.
+  Beds
+
+The player may no longer sleep, as indicated by the action bar message, "No sleep for you, not today!"
+  End portal frame
+
+Removed.
+Replaced by blocks of diamond in strongholds.
+End portal
+
+Removed.
+ Nether portal
+
+No longer teleports players to the Nether.
+Cannot be generated naturally, as nether portal frames will not light.
+End gateway
+
+No longer teleports players to the End.
+Cannot be generated naturally, as end portal frames have been removed.
+
+
+=== Items ===
+Shield
+
+Disabled blocking
+Added unlockable bash
+Added unlockable fire-resistance effect on right-click
+Bamboo
+
+Can now be eaten, with the same hunger and saturation values as sweet berries
+
+
+=== Mobs ===
+Villager
+
+Added new 'traitor' profession.
+Uses a lodestone as its job site.
+Buys ores and sells illager mine ingredients.
+Zombie villager
+
+Added new 'traitor' profession.
+
+
+=== General ===
+Splashes
+
+The original splash texts have been replaced with the following entries:
+Mine, you fools!
+This is a reference to a memorable line from The Lord of the Rings.
+As a large language model...
+This is a reference to messages that AI chatbots like ChatGPT send, which will often outline their limitations in responding to a user's prompt.
+Has working fletching tables!
+Craftable Mines!
+Secret Tuesday update!
+This is a reference to Minecraft's early development, during which there were multiple "Secret Friday Updates".
+Now with magic!
+You RAM is the limit!
+Now with sphere-like objects!
+Working as intended!
+Talent trees!
+Clearly not made with AI!
+Unlockable!
+Participation awards!
+Copyright Mojang AB. Do not distribute!
+This is a reference to the copyright message on the title screen.
+The sum of its parts!
+This splash is also present in regular versions of Minecraft.
+Slow acting portals!
+Download more RAM!
+This is a reference to the joke of downloading Random Access Memory (not possible)
+Enter The Mine!
+Craft mines in Minecraft!
+Check out this mine of mine!
+Infinity 2.0: Now more finite!
+Minecraftlike!
+Might be a reference to genres that are named after games and end with "-like".
+Deleting Overworld!
+Now with even less realism!
+How do I dig for mine?
+Contains collectibles!
+Famously unfinished!
+Reduced quality!
+Craft the Earth! In Minecraft!
+Minecraft A La Carte!
+Comparable with leading brands!
+Screens full of excitement!
+<loud portal sounds>
+Programmer Art without extra packs!
+This is a reference to Programmer Art, which is a resource pack.
+Now with many more Mines!
+Unlock ALL the things!
+We joked every other year, but this time we are FOR REAL!
+Over 3 new items!
+Is that... is that a sphere!?
+99% less starch!
+This a reference to the snapshot 24w14potato, released a year prior.
+And they call it a Mine? A MINE!
+This is also a Lord of the Rings reference.
+Mine your own business
+Do you Mine?
+Craft a Mine and then Mine and Craft!
+Just one more Mine
+
+
+== Videos ==
+
+
+== Trivia ==
+This version has no panorama.
+The loading screen is black by default.
+The menu is a reference to The Matrix.
+The text that appears in the background is a mix of the Standard Galactic Alphabet and Illageralt, with the exception of a creeper face. Illageralt is a language that appears often in Minecraft Dungeons.
+The actual font file, titled font.png, contains the creeper faces as fillers.
+The End portal frame textures exist in the game files despite them being removed from this version.
+The advancement "Spaaaaace!" may be a reference to the Space Core's line from Portal 2.
+Similarly, the message "Doors yearn for the keys!" that appears when a shimmering door is used may be a reference to one of Steve's lines in A Minecraft Movie.
+
+
+== Gallery ==
+
+
+=== Mojang screenshots ===
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

@@ -1,0 +1,103 @@
+Beta 1.17.30.23 is the eighth beta version for Bedrock Edition 1.17.30, released on August 25, 2021, which added multinoise world generation from Java Edition 1.18 Experimental Snapshot 1, and fixes bugs.
+
+
+== Changes ==
+
+
+=== Items ===
+Campfires and Soul Campfires
+
+Can now stack to 64.
+
+
+=== Technical ===
+Molang
+
+Added experimental queries for item cooldowns: 'query.is_cooldown_type', 'query.cooldown_time', and 'query.cooldown_time_remaining'.
+Updated many Molang content errors to specify which operator or query was involved.
+Data-Driven Items
+
+Updated documentation for 'IconItemComponent' and it now provides a list of all IDs for the 'legacy_id' field.
+Data-Driven Sounds
+
+Removed the "replace" element from 'sound_definitions.json' for being ambiguous in its usage (and was never used).
+Gameplay
+
+Data-driven blocks can now be added to the Creative menu.
+Knockback Roar is no longer stronger than it used to be.
+
+
+== Experimental ==
+These changes are accessible by enabling the "Caves & Cliffs" experimental toggle.
+
+
+=== World generation ===
+Deep Warm Ocean
+
+Now generates naturally.
+Noodle caves
+
+A thinner, squigglier, tighter variant of spaghetti caves.
+These are an improved version of the mesh caves announced around Minecraft Live.
+Overworld
+
+Now uses the multi-noise biome source type.
+Ore veins
+
+Long and rare ore formations.
+Copper ore veins mixed with granite and raw copper block generate above Y=0.
+Iron ore veins mixed with tuff and raw iron block generate below Y=0.
+Sub-biomes
+
+Wooded hills, birch forest hills, tall birch hills, taiga hills, taiga mountains, gravelly mountains+, desert hills, desert lakes,  shattered savanna plateau, swamp hills, dark forest hills, snowy mountains, snowy taiga hills, snowy taiga mountains, modified jungle, jungle hills, bamboo jungle hills, modified jungle edge, giant tree taiga hills, giant spruce taiga hills, eroded badlands, badlands plateau, modified badlands plateau, modified wooded badlands plateau, and mushroom field shore biomes no longer generate naturally.
+It is unknown whetever jungle edge are unused or not, as Java Edition 1.18 experimental snapshot 5 re-added it.
+The same with savanna plateau, as it currently exist in Java Edition latest experimental snapshot.
+Whether any of the biomes listed will be re-added, or if any will be removed from the game outright, is currently unknown.
+General
+
+Terrain generation is now independent from biomes, with biomes adapting to whatever terrain they happen to generate throughout.
+This allows for natural variation in the terrain of any individual biome, both in terms of shape and elevation.
+For example, forests and deserts could form up on a hill without needing a special biome just for that purpose.
+This additionally allows for smoother transitions between biomes.
+Terrain is now smoother and more extreme.
+
+
+== Fixes ==
+Gameplay
+
+Campfires and Soul Campfires now stack in the inventory (MCPE-67890).
+Candle now drops when Candle Cake is pushed by a Piston (MCPE-130594).
+Collecting Fish or Axolotl no longer immediately releases them (MCPE-44320).
+Renamed Structure Blocks will no longer have the incorrect data mode on creation (MCPE-41625).
+Fall damage is no longer applied when falling into Scaffolding (MCPE-108459).
+Fixed missing rightmost outline pixels on Signs when using l for wide letters and Glow Ink Sac (MCPE-137802).
+The Thorns enchantment now does Knockback to mobs (MCPE-56212).
+Tweaked Iron Golem spawning logic to better match the Java Edition.
+Crimson Roots now have a small chance of growing on Warped Nylium blocks when using Bone Meal (MCPE-83616).
+Commands
+
+The /spawnpoint command can now be used while the player is sleeping and outputs success when setting to the player's existing spawnpoint (MCPE-106720).
+The camera shake command no longer shakes every player's screen when "@s" is used as the selector (MCPE-120383).
+Marketplace
+
+Fixed "CR" characters incorrectly appearing at the end of lines for some display languages.
+User Interface
+
+Fixed a bug that could cause the Sign In button to appear behind the Marketplace button.
+Fixed the Noto Sans Smooth font on Windows and Xbox platforms with the Japanese locale to address legibility and usage of correct characters.
+Technical
+
+Fixed movement prediction interpolating with invalid data in even more scenarios (MCPE-108568).
+Fixed crash after firing a transform item event.
+Fixed particles not emitting when using animation controllers.
+Attachables that are visible in first person will no longer render backwards.
+
+
+== See also ==
+Java Edition 1.18 Experimental Snapshot 1
+
+
+== References ==
+
+
+== Navigation ==

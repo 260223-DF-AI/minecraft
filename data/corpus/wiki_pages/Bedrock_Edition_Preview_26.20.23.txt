@@ -1,0 +1,244 @@
+Preview 26.20.23 (Windows, iOS, iPadOS, Xbox, PlayStation), or Beta 26.20.24 (ChromeOS, Android) is the fourth beta/Preview for Bedrock Edition 26.20, released on March 31, 2026, which adds the sulfur caves, sulfur and cinnabar block sets, and sulfur cube behind an experiment, and fixes bugs.
+
+
+== Changes ==
+
+
+=== General ===
+Mobs
+
+Ravagers can only destroy leaves and crops when running into them, and can no longer destroy snow, turtle eggs or various plant blocks. This better matches their behavior in Java Edition.
+Unlike Java Edition, they are still able to destroy pumpkin stems and melon stems.
+Graphical
+
+minecraft:atmosphere_settings and minecraft:atmosphere_settings/description are now required in the 1.26.20 version of the atmospherics config file.
+Accessing atmospherics graphics overrrides through scripting is now done from getBiomeAtmospherics.
+Realms
+
+Added functionality for the "Resource packs" and "Behavior packs" tabs in the new edit world screen.
+Replaced the development notice for the upcoming "Admin log" with a message that settings, community, and world changes will be logged here, but it is not functional yet.
+
+
+=== Technical ===
+AI Goals
+
+Made schemas for the following goals stricter when parsing and will fail to load an entity json that has invalid data in versions 1.26.20 and newer:
+minecraft:behavior.pet_sleep_with_owner
+minecraft:behavior.pickup_items
+minecraft:behavior.player_ride_tamed
+Refactored minecraft:behavior.follow_target_captain to minecraft:behavior.follow_target_leader. The following fields have been added to the behavior:
+always_look_for_leader: If true, the mob will always search for a valid leader to follow if none is found or current leader is not valid anymore.
+leader_filters: The filters to use when determining if a mob is a suitable leader or not.
+search_cooldown: (default: 20) Number of ticks that must pass before a new search is initiated after a target is not found, lost, or becomes invalid.
+API
+
+Added beta read-only property partyInfo to Player that returns a PartyInfo object { partyId: string, isLeader: boolean } or undefined if the player is not in a party.
+Added settings under "Creator" section to configure text filtering debug delay.
+Moved function Entity.addItem from beta to v2.7.0.
+Moved class InvalidEntityComponentError from beta to v2.7.0.
+Biomes
+
+Added minecraft:subsurface_builder field to Biome Json API.
+Sub Surface Builders allow specifying a minecraft:surface_builder to be applied to biomes located underneath the Overworld's terrain surface.
+Added minecraft:noise_gradient sub surface builder type, which places continuous bands of blocks according to a noise distribution.
+This surface builder has the following parameters:
+non_replaceable_blocks: a list of blocks that the surface builder is not allowed to replace.
+Leaving this list empty or unspecified will allow the replacement of any block type.
+gradient_blocks: a list of block names that will be sampled according to a Perlin noise distribution.
+Specifying minecraft:air-blocks is permitted, and will result in the original block not being replaced, meaning it is possible to adjust the density/intensity of block replacement in the biome using this surface builder type.
+Entity components
+
+Added the minecraft:bounciness component, which controls how an entity bounces when colliding with surfaces.
+Contains a single field, value, defining the bounce strength:
+0 results in no bounce.
+1 results in a perfectly elastic collision with full energy preservation.
+If the component is not present, bounciness defaults to 0.
+Only available if the entity's format_version is set to beta.
+Added the minecraft:apply_knockback_rules component, which controls how an entity applies knockback to a target.
+horizontal_power defines how much the target is hit backwards.
+Defaults to 1.0 if not defined.
+vertical_power defines how much the target is hit upwards.
+Defaults to 0.4 if not defined.
+vertical_velocity_cap defines the target's maximum vertical upwards velocity after the target's knockback rules have been evaluated.
+Defaults to 0.4 if not defined.
+check_if_target_is_immersed_in_water defines whether the target should be fully immersed in water for the knockback rules to apply.
+Defaults to false if not defined.
+Added the minecraft:air_drag_modifier component.
+The higher its value, the more air drag affects an entity:
+0.0 means no air drag.
+1.0 means regular air drag.
+2.0 means double air drag.
+Only available if the entity's format_version is set to beta.
+The minecraft:knockback_resistance component now accepts negative values down to a minimum of -2, resulting in knockback being increased instead of being diminished.
+Network Protocol
+
+Added the bool Filter Profanity Change to the Packet UpdateClientOptionsPacket.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs", "Upcoming Creator Features", "Render Dragon Features for Creators", "Experimental Voxel Shape Features", the new "Drop 2 of 2026", and "Experimental Custom Projectile Features" experimental toggles.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Cinnabar
+
+A red-colored block that generates in sulfur caves.
+Used to craft or cut cinnabar  stairs,  slabs,  walls,  polished cinnabar,  stairs,  slabs,  walls,  cinnabar bricks,  brick stairs,  brick slabs,  brick walls, and  chiseled cinnabar.
+ Sulfur
+
+A yellow-colored block that generates in sulfur caves.
+Used to craft or cut sulfur  stairs,  slabs,  walls,  polished sulfur,  stairs,  slabs,  walls,  sulfur bricks,  brick stairs,  brick slabs,  brick walls, and  chiseled sulfur.
+ Potent sulfur
+
+A variant of sulfur that emits bubbles when placed underwater. It also produces a cluster of noxious gas particles in the water's surface.
+Players and mobs get Nausea when they enter water that is near and directly or indirectly connected to the block.
+
+
+==== Items ====
+ Sulfur cube spawn egg
+
+Used to spawn a sulfur cube.
+ Bucket of sulfur cube
+
+Obtained by using a bucket on a sulfur cube.
+When used, spawns a sulfur cube.
+
+
+==== Mobs ====
+ Sulfur cube
+
+A passive slime-like mob that spawns in sulfur caves.
+Immune to fall damage.
+When killed, it will split into 2 small cubes, like other slime-like mobs.
+Unlike the slime and magma cube, the small versions can grow up into the large version, like how a baby mob works.
+It is attracted to the dropped item form of full blocks. The cube can pick up a block, or a player can use a full block on the cube, causing the cube to absorb it into its body.
+ In this state, they become immobile and cannot be damaged by most entities. Instead it will be knocked back when attacked.
+The knockback also depends on the damage that would have been dealt, with stronger attacks sending the cube further.
+Shearing it removes and drops the block, reverting back to normal.
+Depending on the full block, they will behave differently when punched while in its immobile state, examples are:
+Blocks of iron make it heavy, i.e. it will have higher gravity.
+Wool makes it floaty, i.e. it will have lower gravity.
+Wooden logs and stems make it bouncy.
+Ice reduces its friction, making it slide more.
+Can be caught in buckets to move it.
+
+
+==== Technical ====
+Items
+
+Added tags for sulfur cubes to make use of for physics determination and absorbing
+minecraft:sulfur_cube_archetype_bouncy
+minecraft:sulfur_cube_archetype_regular
+minecraft:sulfur_cube_archetype_slow_flat
+minecraft:sulfur_cube_archetype_fast_flat
+minecraft:sulfur_cube_archetype_light
+minecraft:sulfur_cube_archetype_fast_sliding
+minecraft:sulfur_cube_archetype_slow_sliding
+minecraft:sulfur_cube_archetype_sticky
+minecraft:sulfur_cube_archetype_high_resistance
+
+
+==== World generation ====
+Sulfur Caves
+
+A cave biome composed of sulfur and cinnabar blocks.
+Sulfur cubes spawn here.
+Have a high concentration of glow lichen.
+Sulfur pools also generate here.
+Sulfur Pool
+
+Greenish pools that generate in sulfur caves.
+Consists of a body of water surrounded by sulfur blocks and cinnabar with potent sulfur generating at the bottom, which inflicts Nausea to mobs in the pool.
+Sulfur Spring
+
+A pile of sulfur with a small sulfur pool on the surface.
+Generates on the surface indicating the presence of sulfur caves below.
+
+
+=== Changes ===
+
+
+==== Technical ====
+Add-Ons
+
+Added experimental toggle "Custom Projectiles" which enables improvements around custom projectiles in add-ons without the use of runtime identifiers.
+Adds isolated_physics property to minecraft:projectile component for easier trajectory control.
+fire_at_target goal now applies projectile offsets relative to entity rotation.
+Custom projectiles now:
+Can be reflected.
+Update their owner upon launch and reflection.
+No longer collide with their owner on launch.
+Apply their offsets on launch.
+Remain at their point of impact when using stick_in_ground.
+API
+
+Added maximumRenderDistance to DebugShape in minecraft@debug-utilities could be invisible.
+Added the Script Entity property nameplateDepthTested to beta.
+Added the Script Entity property nameplateRenderDistance to beta.
+Added EntityHealCause.TotemOfUndying to beta.
+Added minecraft:totem_of_undying support to entity heal before/after events.
+Added Player.chatNamePrefix to beta - an optional string prepended to the player's name in chat messages.
+Added Player.chatNameSuffix to beta - an optional string appended to the player's name in chat messages.
+Added Player.chatDisplayName to beta - a read-only property returning the composed chat name (chatNamePrefix + name + chatNameSuffix).
+Added Player.chatMessagePrefix to beta - an optional string prepended to the text of the player's chat messages, useful for applying color/formatting codes.
+Added BlockComponentBlockStateChangeEvent to beta using onBlockStateChange allows custom components to read a state change.
+Added BETA Boolean property firstUpdate to BlockComponentRedstoneUpdateEvent.
+DDUI
+
+Class Observable.
+Added the method getFilteredText. Gets filtered data from the Observable (only available for strings). -getFilteredText(this: Observable<T & string>, player: Player): Promise<string | TextFilteringError>;
+Added the enum TextFilteringError. An enum representing the errors that can occur during text filtering. This is used at Observable.getFilteredText to provide more context about the filtering process.
+Scripting
+
+Added scripting method that allows creators to check the snow logging behavior of a block.
+Voxel Shapes
+
+Added non-unit-cube voxel shapes for 70 blocks when the Voxel Shapes experiment is enabled.
+These shapes improve face culling so that hidden faces between adjacent blocks are correctly removed.
+Slab shapes (62 blocks)
+Other shapes (8 blocks): calibrated sculk sensor, end portal frame, comparator (powered and unpowered), repeater (powered and unpowered), snow, and stonecutter.
+
+
+== Fixes ==
+26 issues fixed
+From released versions before 26.20
+
+MCPE-129262  Moss can convert polished andesite, diorite & granite into moss.
+MCPE-169375  Ravager doesn't destroy plants added since 1.19.
+MCPE-185887  Any failure in a branch breaks/jumps out of the whole /execute command with /loot
+MCPE-189928  Pale moss blocks can convert polished andesite, polished diorite & polished granite into pale moss blocks.
+MCPE-235735  Texture streaming is causing bows and crossbows to load a lower LOD model in first person.
+MCPE-235748  Mouse camera sensitivity is significantly higher than in previous versions.
+MCPE-235972  Cobwebs do not dither when moving close to them.
+MCPE-236391  Beta Feedback link shows a message box for Minecraft Education Support Center.
+From the 26.20 development versions
+
+MCPE-237205  Missing Closed Captions for New Baby Mobs.
+MCPE-237211  Fall damage on non-player entities sometimes is very delayed.
+MCPE-237281  Master Librarian villager still offers name tags when experimental trade rebalance is enabled.
+MCPE-237327  Block placement on leaves frequently fails on first attempt.
+Other
+
+Fixed custom components not parsing with modern block definition loader.
+Pixelated shadows in Vibrant Visuals no longer experience artifacts in Xbox One X/S.
+Fixed empty space appearing on screens with text input when using a physical keyboard on iOS.
+Fixed several issues with text input on iOS when using a physical keyboard.
+Fixed a bug where minecarts on the same track would not properly transfer momentum when colliding with each other.
+Fixed incorrect variation in block lighting during slime jump animations in Vibrant Visuals.
+Fixed a crashing issue when going back from Realms Plan Picker screen before it finishes loading.
+Fixed a bug where removing the movement controller from an entity entirely did not reset the input velocity given by the controller.
+Fixed a bug that caused the minecraft:behavior.delayed_attack AI behavior to sometimes fail to exit after killing a target.
+Fixed actor textures not loading properly when applying packs with an older min engine version.
+Fixed a bug when attachedTo on a ShapePrimitive or DebugShape would not update if the attached entity was unloaded and reloaded.
+Fixed a bug where DebugText in minecraft@debug-utilities could be invisible.
+Fixed slab face culling so that the top face of a block directly above or below a slab is now correctly culled against the slab's shape.
+Blocks with a missing menu_category will correctly be accepted again instead of giving the error: "Menu Category should not have an empty value."
+
+
+== References ==
+
+
+== Navigation ==

@@ -28,7 +28,7 @@ Boats, boats with chests and minecarts appear to recover health over time. For e
 
 Gravity-affected blocks include sand, gravel, anvils, red sand, dragon eggs, concrete powder, scaffolding, and pointed dripstone, along with snow layers in Bedrock Edition.
 A gravity-affected block normally exists as a block, but when its support is removed, it becomes a falling block entity and falls down until hitting the top surface of another block. If there is valid space, it places itself as a block at the nearest on-grid position, or drops as an item if that position is occupied by a block without a solid top surface, such as a torch or a bottom slab.
-While a falling block ordinarily falls straight down, its trajectory can be affected by explosions, bubble columns, pistons, reeling it in, and moving slime blocks, and can slide down the side of honey blocks. It is also possible to modify the velocity and direction of a falling block by using commands such as /data‌[Java Edition  only] or third-party programs. A falling block despawns and drops as an item if it does not land after existing for 600 ticks (30 seconds), or 100 ticks (5 seconds) if falling into the void[verify].
+While a falling block ordinarily falls straight down, its trajectory can be affected by explosions, bubble columns, pistons, reeling it in, and moving slime blocks, and can slide down the side of honey blocks. It is also possible to modify the velocity and direction of a falling block by using commands such as /data[Java Edition  only] or third-party programs. A falling block despawns and drops as an item if it does not land after existing for 600 ticks (30 seconds), or 100 ticks (5 seconds) if falling into the void[verify].
 If a cave generates underneath sand, gravel, or red sand, the blocks remain stationary until they receive a block update. If a single block is updated and falls down, neighboring blocks are updated in a chain reaction that can cause the collapse of an entire region of gravity-affected blocks.
 
 
@@ -38,15 +38,15 @@ Entities with use interactions (such as boats, boat with chests, minecarts, cats
 
 == Riding ==
 
-Entities can ride on, or be attached to, other entities. When this is the case, only the lower/"outer" entity's volume collides with other things, and only that entity can control movement.‌[Java Edition  only] However, there are exceptions: players riding minecarts, boats, boats with chests, saddled horses, a happy ghast, a nautilus, a donkey, a mule, a camel, or baby zombies riding chickens, or skeletons riding horses or boats.
+Entities can ride on, or be attached to, other entities. When this is the case, only the lower/"outer" entity's volume collides with other things, and only that entity can control movement.[Java Edition  only] However, there are exceptions: players riding minecarts, boats, boats with chests, saddled horses, a happy ghast, a nautilus, a donkey, a mule, a camel, or baby zombies riding chickens, or skeletons riding horses or boats.
 The only current legitimate combinations of riding entities are:
 
 A mob or player in a minecart, boat or boat with chests.
-A boat or boat with chest in a minecart‌[Java Edition  only].
+A boat or boat with chest in a minecart[Java Edition  only].
 A player on a saddled pig, horse, donkey, mule, skeleton horse, zombie horse, llama, strider, camel, camel husk, nautilus or zombie nautilus.
 A player on a happy ghast with a harness.
-Any type of skeleton on a spider or cave spider‌[Bedrock Edition  only]; also known as a spider jockey.
-Any type of baby zombie or zombified piglin‌[Java Edition  only] on a chicken or other mobs‌[Bedrock Edition  only]; also known as a chicken jockey.
+Any type of skeleton on a spider or cave spider[Bedrock Edition  only]; also known as a spider jockey.
+Any type of baby zombie or zombified piglin[Java Edition  only] on a chicken or other mobs[Bedrock Edition  only]; also known as a chicken jockey.
 A drowned riding a zombie nautilus, known as a zombie nautilus jockey.
 Skeletons riding skeleton horses.
 Pillager, vindicator, or evoker riding a ravager.
@@ -60,8 +60,8 @@ A player riding a zombified piglin (by turning a ridden pig into a zombified pig
 A parrot perched on player's shoulder isn't considered as riding.
 It is possible to have even more levels, such as a baby piglin on another baby piglin who is riding a hoglin in a boat in a minecart.
 Entities can also be stacked on top of each other with the use of the /summon and /data commands in Java Edition. For example, using /summon spider ~ ~ ~ {Passengers:[{id:skeleton}]} summons a spider jockey, or using /ride in Bedrock Edition.
-If an entity is riding another entity, the top entity cannot teleport because as soon as the teleport is made, the entity is teleported back to riding the other entity.‌[Java Edition  only]
-Starting from the Nether Update, entities that are riders or passengers of other entities cannot despawn.[verify]‌[Java Edition  only]
+If an entity is riding another entity, the top entity cannot teleport because as soon as the teleport is made, the entity is teleported back to riding the other entity.[Java Edition  only]
+Starting from the Nether Update, entities that are riders or passengers of other entities cannot despawn.[verify][Java Edition  only]
 
 
 == Appearance ==
@@ -95,9 +95,9 @@ It can be useful to have a closed-form formula for and entity's position and vel
 Applying an initial velocity initialVelocity on an entity, the entity's velocity after travelling for a number of ticks ticksPassed can be given by the formulas:
 
 Drag applied before acceleration:
-finalVelocity=dragticksPassed×(initialVelocity−acceleration1−drag)+acceleration1−drag
+finalVelocity=dragticksPassed(initialVelocityacceleration1drag)+acceleration1drag
 Drag applied after acceleration :
-finalVelocity=dragticksPassed×(initialVelocity−drag × acceleration1−drag)+drag × acceleration1−drag
+finalVelocity=dragticksPassed(initialVelocitydrag  acceleration1drag)+drag  acceleration1drag
 Initial velocity and acceleration should be interpreted as vectors, and drag as a diagonal matrix. This means that the formulas work for each X, Y, and Z component separately if drag, initialVelocity, and acceleration are replaced with their corresponding X, Y, or Z components.
 
 
@@ -105,17 +105,17 @@ Initial velocity and acceleration should be interpreted as vectors, and drag as 
 Here d is drag, a is acceleration, t is ticksPassed, and v0 is initialVelocity. Then an entity starting at initialPosition will end at a finalPosition given by:
 
 Position, Drag, Acceleration:
-finalPosition=initialPosition+1−dt1−d(v0−11−da)+t1−da
+finalPosition=initialPosition+1dt1d(v011da)+t1da
 Position, Acceleration, Drag:
-finalPosition=initialPosition+1−dt1−d(v0−d1−da)+dt1−da
+finalPosition=initialPosition+1dt1d(v0d1da)+dt1da
 Acceleration, Position, Drag:
-finalPosition=initialPosition+1−dt1−d(v0−d1−da)+t1−da
+finalPosition=initialPosition+1dt1d(v0d1da)+t1da
 Drag, Acceleration, Position:
-finalPosition=initialPosition+d(1−dt)1−d(v0−11−da)+t1−da
+finalPosition=initialPosition+d(1dt)1d(v011da)+t1da
 Drag, Position, Acceleration:
-finalPosition=initialPosition+d(1−dt)1−d(v0−11−da)+dt1−da
+finalPosition=initialPosition+d(1dt)1d(v011da)+dt1da
 Acceleration, Drag, Position:
-finalPosition=initialPosition+d(1−dt)1−d(v0−d1−da)+dt1−da
+finalPosition=initialPosition+d(1dt)1d(v0d1da)+dt1da
 Like before, initial position, initial velocity and acceleration should be treated as vectors and drag as a diagonal matrix.
 
 
@@ -147,7 +147,7 @@ Like before, initial position, initial velocity and acceleration should be treat
 
 
 == Trivia ==
-When an entity is moving away from its block radius, the solid block can be placed but it does not emit a place sound effect or the player's placing animation.‌[Java Edition  only]
+When an entity is moving away from its block radius, the solid block can be placed but it does not emit a place sound effect or the player's placing animation.[Java Edition  only]
 in Bedrock Edition however, the block place sound effect can be played and emitted and the player's placing animation plays but it does not when using a controller or keyboard and mouse connection.
 
 
@@ -156,14 +156,14 @@ Issues relating to "Entity" are maintained on the bug tracker. Issues should be 
 
 
 == See also ==
-Block entity – unlike the entities mentioned above, these are simply blocks that store additional data.
+Block entity  unlike the entities mentioned above, these are simply blocks that store additional data.
 
 
 == References ==
 
 
 == External links ==
-MinecraftMotionTools – a GitHub repository with some in-depth explanation about motion in-game.
+MinecraftMotionTools  a GitHub repository with some in-depth explanation about motion in-game.
 
 
 == Navigation ==

@@ -1,0 +1,87 @@
+17w49a is the ninth snapshot for Java Edition 1.13, released on December 6, 2017, which added block and item tags.
+
+
+== Additions ==
+
+
+=== General ===
+Tags
+
+Items and blocks can now be "tagged" with an ID.
+Block tags can be used when testing for blocks in the world.
+Items tags can be used when testing for items in inventories.
+Tags are created using data packs in data/(namespace)/tags/blocks or data/(namespace)/tags/items.
+For example: data/(namespace)/tags/blocks/foo.json.
+This creates a block tag called (namespace):foo.
+The json file contains a list of all blocks that should be "tagged".
+There are two default tags for both the item form and the block form: minecraft:wool for all wool blocks and minecraft:planks for all wood plank blocks.
+
+
+== Changes ==
+
+
+=== General ===
+Crafting
+
+Recipes can now refer to a tag instead of an item.
+
+
+== Fixes ==
+42 issues fixed
+From released versions before 1.13
+
+MC-36191  Missing stat.mineBlock for various blocks (mob spawners, cauldrons, beds, etc.).
+MC-58189  Breaking piston extension gives missing texture particles.
+MC-58556  Breaking a block being moved by a piston creates missing texture particles.
+MC-98823  Tipped arrows do not have a stat.craftItem statistic.
+MC-99321  Hoppers cannot pull items from double chests if second chest is blocked.
+From the 1.13 development versions
+
+MC-121631  Taking items from the creative inventory search tab no longer resets search text.
+MC-121632  Pressing "chat" key selects search in creative inventory/recipe book and types the letter.
+MC-121648  "Difficulty" in settings is untranslated and lowercase.
+MC-121665  Key "None" display string as "key.keyboard.-1".
+MC-121705  Cursor is offset from actual mouse location when opening GUIs while moving mouse.
+MC-121709  Clickable area to sort statistics menu are not in the right place
+MC-121714  Unable to save screenshot of PNG format.
+MC-121718  The player cannot select the spectator menu.
+MC-121808  Command argument validation for single entity says player in some error messages.
+MC-121873  Dark background missing from beacon GUI.
+MC-122148  No Block, Item, Mob, GUI, or any other texture renders -- No sounds play.
+MC-122173  Creating scoreboard objectives for stats is impossible due to the ":".
+MC-122270  Pushing blocks with connections doesn't update them.
+MC-122295  Backups folder is created outside of the server directory when using a dedicated server.
+MC-122309  '/gamerule gameLoopFunction' does not tab complete function names.
+MC-122314  All maps created in earlier versions are now the same.
+MC-122355  Crash on breaking banner: java.lang.ClassCastException: arw cannot be cast to aru.
+MC-122383  Pre-existing chests invisible, overlapping.
+MC-122395  Custom player heads are called "block.minecraft.player_headnamed".
+MC-122410   Shift +  Tab doesn't go backwards in tab-completion list.
+MC-122521  Damaged anvil always turns to the North.
+MC-122536  "set_nbt" function in loot table does not merge NBT to item.
+MC-122558  Health criteria scoreboard objectives do not use hearts to display value anymore.
+MC-122573  Crash due to carpet and sticky pistons.
+MC-122584  Incorrect format string order in statistics.
+MC-122666  lang:en_US capitalisation in options.txt prevents resources from being loaded.
+MC-122944  Scoreboard objective can't update the display name .
+From the previous development version
+
+MC-122618  Recipes are not tab-completed.
+MC-122624  Pressing  Tab no longer cycle through possible command values.
+MC-122625  Order of contents of north- and east-facing double chests changed after update.
+MC-122639  Can't place lily pads on ice.
+MC-122643  Snow, carpet and daylight detectors culling adjacent upper slabs.
+MC-122644  Datapacks cannot replace vanilla crafting recipes.
+MC-122646  Cullface on the tops and bottoms of glass panes doesn't work
+MC-122650  Player heads aren't affected by upgrade paths, renamed to "block.minecraft.player_headnamed" + head texture does not show, only when placed.
+MC-122718  Dirt border of "video settings" menu encroaching too far on settings.
+MC-122907  An enormous graphical duplicating custom recipe bug.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

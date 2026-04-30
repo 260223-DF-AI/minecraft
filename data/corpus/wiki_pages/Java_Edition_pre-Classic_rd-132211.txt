@@ -1,0 +1,57 @@
+The first labeled pre-Classic version was made on May 13, 2009, at 20:11 UTC. It is the oldest version available in the Minecraft Launcher and the current oldest archived version of Minecraft.
+The copy in the launcher was last modified on August 6, 2013, making it technically not original.
+
+
+== Additions ==
+
+
+=== Gameplay ===
+Controls
+
+Placing and destroying blocks.
+Left-clicking places a block. Right-clicking destroys a block.
+Blocks cannot be placed past the existing border.
+Players can place blocks on the space they are occupying.
+Added a flashing white overlay that displays on the side of a block that the player has their mouse over.
+The level can be saved by pressing  Enter or leaving the game.
+
+
+== Changes ==
+
+
+=== World generation ===
+General
+
+Level generation improved to be not so messy and random, as shown in the Cave game tech test video, but instead completely flat, which was similar to a superflat world.
+The build limit is Y=64.
+Blocks generate from Y=0 to Y=43, below Y=0 is essentially the void.
+Visually, Y=43 are always grass blocks, with all other blocks being stone.
+Caves
+
+Caves no longer generate.
+
+
+== Bugs ==
+ 3 bugs reported
+
+Blocks can be placed directly within the space occupied by the player. This bug remained in the game until Classic 0.0.9a.
+Some players experience extreme levels of lag when getting close to the ground after booting up the game, making it unplayable. The FPS becomes moderately stable and somewhat smoother when the player builds up using blocks, though not completely. A tutorial on how to fix this can be found here.
+The camera pivot bug causes the view to rotate around a fixed point in the world instead of rotating on the player's axis. This causes the player's perspective to physically shift when looking around.
+
+
+== Trivia ==
+The "rd" before the version number old_alpha rd-132211 stands for RubyDung, a game Notch was working on before Minecraft, whose codebase was later reused for Minecraft.
+Level data is saved in a single level.dat file inside the game's root directory, unlike future versions that have dedicated folders.
+While the intended level size is 25664256, technically a world of any size can be loaded. However, worlds that are too small will have generation put on top of them, and worlds that are too large will fill the entire world and then get cut off.
+Grass blocks are stored using the same block ID as stone; the difference between them is purely visual.
+Despite normally only using 2 block IDs (0 and 1), 0255 are all possible IDs. Invalid IDs appear as air, but do not get converted into it.
+Because of all of the above, theoretically any gzipped file called level.dat can be loaded as a world without issue, including a modern level.dat file. Note this will likely corrupt the file upon saving, due to the extra generation when the world is undersized, or the trimming applied when it is oversized, or simply any blocks placed/broken.
+
+
+== Gallery ==
+
+
+== References ==
+
+
+== Navigation ==

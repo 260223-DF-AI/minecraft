@@ -1,0 +1,21 @@
+Bedrock Editor v0.9.3 is a minor beta release for the Bedrock Editor released on March 26, 2025, which adds magic selection and fixes bugs.
+
+
+== Additions ==
+Added "Magic Select" to selection modes.
+This mode allows users to quickly select non-air blocks at and above a selected block. This is extremely useful when working with structures. The current implementation is prototype and only has an 8-block search radius, upward from the point of click. Holding  Shift while clicking will make the selection additive to any existing selections.
+Added a missing string when there is an empty slot in the Realms slot dropdown.
+
+
+== Fixes ==
+Fixed Publish to Realms bug by cleaning up local world copy that's created during publish process.
+Fixed a bug where passing a complex volume with non-contiguous voxels was copying only the contents of the bounding rectangle to the clipboard. Only the specified voxels should have been copied. This now allows us to create structures where air and structure voids are stripped out.
+
+
+== Gallery ==
+
+
+== References ==
+
+
+== Navigation ==

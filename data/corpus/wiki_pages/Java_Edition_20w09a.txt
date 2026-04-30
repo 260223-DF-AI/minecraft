@@ -1,0 +1,226 @@
+20w09a is the fourth snapshot for Java Edition 1.16, released on February 26, 2020, which adds crying obsidian and target blocks and renames zombie pigmen, among other changes.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Crying obsidian
+
+Is only decorative for now, but will have uses in the future.
+Can be obtained by bartering with piglins.
+Has a light level of 10.
+Emits purple particles.
+Can be moved by pistons.
+ Targets
+
+Redstone component that can be activated by shooting projectiles into it.
+The closer to the center the projectile hits on one of its faces, the stronger the redstone signal.
+Can be crafted using a hay bale and 4 redstone dust pieces.
+
+
+=== Gameplay ===
+Advancements
+
+Added new "Bullseye" advancement.
+To complete this advancement, the player has to shoot a projectile into the center of one face of a target block.
+Found in the "Adventure" tab.
+Recipe book
+
+The recipes for crimson and warped signs have been added to the recipe book and are unlocked by having the respective planks.
+Tags
+
+Added new climbable block tag.
+Includes ladders, vines, scaffolding, and weeping vines.
+Used in mob pathfinding and to determine what blocks the player can climb.
+Added new impact_projectiles entity tag.
+Includes the arrows tag, snowballs, fireballs, small fireballs, eggs, tridents, dragon fireballs, and wither skulls.
+Used to determine what entities break chorus flowers when hit.
+
+
+=== General ===
+Particles
+
+Added three particles for crying obsidian: dripping_obsidian_tear, falling_obsidian_tear, and landing_obsidian_tear.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Crimson and warped signs
+
+Can now be crafted.
+Made obtainable in Survival mode.
+Nether Fungi
+
+Renamed to "Fungus".
+Can now be planted in flower pots.
+Can now only be grown in huge fungi when on the same type of nylium.
+Lava
+
+Now pushes entities.
+Nether sprouts
+
+Now have the replaceable plant material.
+Purpur pillar
+
+Changed the top texture.
+Crimson and warped roots
+
+Can now be placed into flower pots.
+Warped roots now have the replaceable plant material.
+Stripped crimson and warped stems
+
+Changed the top texture.
+Weeping vines
+
+Are now climbable.
+Now have the replaceable plant material.
+
+
+=== Items ===
+Diamond axe, diamond boots, diamond helmet, diamond hoe, diamond leggings, diamond pickaxe, diamond shovel, diamond sword, golden hoe, golden pickaxe, netherite pickaxe, wooden hoe, and wooden pickaxe
+
+Changed their textures slightly, fixing some texture inconsistencies.
+Hoes
+
+Can now break nether wart blocks and warped wart blocks quickly.
+Shovels
+
+Can now break soul soil quickly.
+
+
+=== Mobs ===
+Hoglin
+
+Slightly tweaked the texture. Some colors were tweaked and transparent pixels were removed.
+Piglin
+
+Now have an IsImmuneToZombification data value that prevents them from zombifying in the Overworld.
+Baby piglins now ride on the back of baby hoglins.
+Skeleton horses and zombie horses
+
+Can now be leashed.
+Zombified Piglin
+
+Has been renamed from "Zombie Pigman".
+Updated model and texture.
+The texture used is the same texture added in 20w07a.
+Sound effects got reimplemented.
+
+
+=== Non-mob entities ===
+Minecart
+
+Now checks dismount position height against entity height.
+
+
+=== Gameplay ===
+Bartering
+
+Bartering loot has been restructured to be more appealing to survival players.
+The new loot for bartering consists of:
+Common barters (20226 chance or about 8.85%): 610 shroomlight, 1 fire charge, 816 gravel, 410 leather, 410 warped fungus, 416 nether brick, 1 obsidian, or 13 crying obsidian.
+Uncommon barters (10226 chance or about 4.42%): 816 nether quartz, 512 glowstone dust, 26 magma cream, 48 ender pearl, or 824 string.
+Rare barters (5226 chance or about 2.21%): 1 warped nylium, 1 Fire Resistance potion or 1 Fire Resistance splash potion.
+Very rare barter (1226 chance or about 0.44%): 1 netherite hoe.
+In this snapshot, all item amounts are 15 due to a bug.
+Piglins now inspect gold ingots first before throwing out the item they choose to barter for the player if they're still around.
+Recipe book
+
+Stained glass pane recipes now only unlock when the player has the same color of stained glass in their inventory.
+Sounds
+
+block.portal.travel and block.portal.trigger sounds are now part of the "ambient/environment" sound category adjustable in options.
+Shearing sound category was changed from "friendly creatures" to "players" for players using shears and "blocks" for dispenser using shears.
+Tags
+
+Added potted crimson fungus, warped fungus, crimson roots, and warped roots to the flower_pots block tag.
+
+
+=== General ===
+Nether fog
+
+Color now transitions smoothly between biomes.
+The Nether
+
+Changed the ambient lighting in the Nether, it is now lighter and more similar to Bedrock Edition.
+Textures
+
+Removed duplicate and unused textures for stripped warped logs.
+
+
+== Fixes ==
+58 issues fixed
+From released versions before 1.16
+
+MC-7424  Fall damage death messages do not show the block players fall from correctly (ladders, vines, water).
+MC-102319  Nether portal trigger and travel sounds are not assigned to any sound category.
+MC-111726  Minecart dismount position always above the minecart, even if there's space next to it.
+MC-135106  Upwards bubble columns allow for infinite flight in Survival at y256.
+MC-135831  Low gravity bug at world height.
+MC-137554  Shearing sound is in the "friendly creatures" sound category.
+MC-146834  Zombie pigman's head bottom texture is flipped.
+MC-147601  Purpur pillar block top texture has not changed to a new texture.
+MC-148869  Player can clip through the ground when exiting a minecart or a boat.
+MC-149042  Minecart dismount position is not consistent.
+MC-153750  Gravity decreases at y=256 when the player hops into water at y=255.
+MC-164435  Stream sounds do not loop properly.
+MC-166246  Skeleton horses cannot be leashed.
+MC-170273  Diamond swords use the wrong pallet.
+MC-170274  Pickaxe textures are inconsistent.
+MC-170556  Hoe textures are inconsistent.
+From the 1.16 development versions
+
+MC-170815  Soul sand valley fossils generate duplicated/stacked.
+MC-170823  Crimson and Warped trees spawn on top of the Nether roof.
+MC-170833  Crimson fungi and warped fungi cannot be placed in flower pots.
+MC-170834  Cannot replace warped forest foliage with other blocks.
+MC-170835  Nether large fungi do not kill nylium underneath them.
+MC-170842  Potted plant models are still missing their bottom due to faulty UV.
+MC-170844  Nether sprouts do not break when their supporting block is removed.
+MC-170879  Nether fog abruptly changes color when moving across biomes.
+MC-170890  Users can get normal fire on soul soil.
+MC-170904  When viewed in 3rd person mode, the cape renders incorrectly when sneaking while wearing a chest plate.
+MC-170915  Hoglins have inconsistent texture.
+MC-170932  Cave generator will not cut through crimson_nylium and warped_nylium, leading to lots of floating nylium.
+MC-170954  Lava spreads blue fire at invalid locations.
+MC-170961  Mining speeds for breaking crimson and warped doors, trapdoors, fences, signs, stairs, and slabs are not faster with an axe.
+MC-170968  Crimson and warped fungi replace certain blocks when growing.
+MC-170986  Lava fire spread creates normal fire on soul soil.
+MC-171025  Netherite items are not pushed in flowing lava.
+MC-171048  HugeFungiConfiguration has an unused planted field.
+MC-171077  Soul fire can be /setblock on air, while normal fire cannot.
+MC-171130  Hoglin spawn egg is not sorted alphabetically in the Creative menu.
+MC-171245  Warped and crimson signs cannot be crafted.
+MC-171448  The top textures of stripped stems do not match the normal stem top textures.
+MC-171457  New fungi wrongly named.
+MC-171491  Fossils generate floating in the sky in buffet worlds.
+MC-171502  In the texture files there is 2 sets of textures for the stripped warped stem.
+MC-171517  Nylium, wart bushes, soul soil, or soul sand generate slightly below the Nether ceiling.
+MC-171548  Soul soil is not mined quicker with a shovel.
+MC-171640  Villagers, vindicators, and zombies do not properly interact with the new crimson/warped doors
+MC-171731  Huge fungi generate on the lowest nylium block.
+MC-171961  Nether wart block and warped wart block do not have a tool assigned.
+MC-172084  Soul sand and soul soil have no sounds.
+MC-172090  Piglins would rather hold a golden item than a crossbow.
+MC-172096  Baby hoglins and baby piglins do not seem to play with each other.
+MC-172112  Hoglin walking sound is subtitled as "Hoglin dies" instead of "Footsteps".
+MC-172151  Dark oak saplings are called "Jukebox/Note Blocks" in English (United Kingdom).
+MC-172203  Soul sand and soul soil have no subtitles for breaking, placing and when being walked on.
+MC-172356  Piglin admiring held gold ingot drops it when killed.
+MC-172363  Piglins are not attracted to certain golden items.
+MC-172434  Baby piglins do not sound high-pitched when zombified.
+MC-172486  Piglins drop two shields when killed while holding one in their offhand.
+MC-172516  Piglins/hoglins become persistent when within 16 blocks of a player, causing massive lag due to piling up entities.
+MC-172580  Piglin can no longer pick up items when equipped with a shield.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

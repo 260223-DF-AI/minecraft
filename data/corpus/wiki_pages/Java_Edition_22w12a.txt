@@ -1,0 +1,208 @@
+22w12a is the second snapshot for Java Edition 1.19, released on March 24, 2022, which adds boats with chests, the warden, along with the Darkness effect and Swift Sneak enchantment, makes leaves waterloggable, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Items ===
+Spawn eggs
+
+ Warden spawn egg
+
+
+=== Mobs ===
+ Warden
+
+The first fully blind mob (bats have basic vision, both in game and in real life).
+Has a sense of smell. It can detect and path find toward the general location of a player or mob through a "smelling" action.
+Prioritizes smelling the player or mob that it is most suspicious of, rather than the one closest to it.
+Has a sense of vibration. When sensing movement, it path finds toward the source of the movement.
+It follows and attacks players, mobs, and other entities that make vibrations.
+When it detects a vibration, the growths on its head rattle and light up, similar to the sculk sensor.
+If any projectile (e.g. egg, snowball, arrow) lands near it, the warden inspects the location where the projectile landed, due to the projectile creating significant vibrations. This feature can be used in order to cause a distraction.
+Does not detect players that are sneaking.
+Can detect players or mobs that have the Invisibility effect.
+Becomes more suspicious of a player or mob as it detects its location more through vibrations and/or smelling. When it suspects the target enough, it identifies its exact location, which aggravates it, causing it to pathfind toward the target to attack regardless of outside distractions.
+Spawns when a player activates sculk shriekers three times.
+It is the only mob that spawns in the deep dark biome.
+"Emerges" from the ground when spawned by sculk shriekers.
+Digs back into the ground when it doesn't sense any vibration after 60 seconds.
+Like how name tags prevent despawning, name tags can also prevent wardens from being able to burrow back to the ground.
+Wardens don't dig back when they're in water.
+Has 500HP  250 health points and does 30HP  15 damage on Normal difficulty, bringing players wearing full netherite armor from full health to 7HP health points.
+Is about 3.5 blocks tall, making it one of the tallest mobs in the game, exceeding the iron golem and enderman in height and width (the same).
+Wardens have long melee reach, being able to hit the player when on top of a four block pillar, thus making it capable of countering certain cheese tactics, such as pillaring.
+Wardens disable shields when they hit the players with their fists.
+The warden doesn't qualify as a target for the advancement "Monster Hunter" and isn't needed to receive the advancement "Monsters Hunted" due to its role.
+Warden's chest has a glowing core that appears to brighten and dim in tandem with the Darkness effect.
+The core creates a low throbbing or "heartbeat" sound as it pulses. The sound and animation speed up rapidly as the warden gets more suspicious of or closer to attacking a player or mob.
+Is immune to lava and can float up lava columns very fast.
+Is immune to knockback and never slows down in water.
+
+
+=== Non-mob entities ===
+ Boat with chest
+
+Function similarly to minecart with chests, but in boats instead, so player can take a journey on the water and carry things.
+Crafted by combining a chest with any boat.
+Opening its inventory or breaking it makes nearby adult piglins angry.
+Breaking it drops itself (as opposed to a minecart with chest, which splits into its components), and all its items.
+Can hold only one entity.
+The chest on the "Boat with Chest" is 1 pixel smaller then a normal chest.
+
+
+=== Gameplay ===
+Effects
+
+ Darkness
+A status effect triggered by the sculk shrieker, causing the player's camera to dim in brightness, thus limiting the vision of players.
+Lowers the gamma down at an equivalent of Moody while having this effect.
+Enchanting
+
+Added the Swift Sneak enchantment.
+Has three levels.
+Can only be applied on leggings.
+Allow the player to walk faster while sneaking, up to 75% of normal speed at level III.
+Currently cannot be obtained in Survival.
+
+
+=== General ===
+Options
+
+A new accessibility slider has been added in the options menu called Darkness Pulsing.
+It controls how dark the Darkness effect gets when a warden or sculk shrieker gives it to the player.
+Particles
+
+Added a new particle: shriek, for the pulse that is admitted when triggering a sensor.
+Tags
+
+Added the chest_boats item tag.
+Contains all types of boat with chests.
+Added the warden_events_can_listen game event tag.
+Contains the contents of the #vibrations event tag (except flap), sculk_sensor_tendrils_clicking and shriek.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Leaves
+
+Are now waterloggable.
+Mangrove leaves are now compostable.
+Sculk catalyst
+
+Can no longer generate sculk shriekers.
+Sculk sensor
+
+Now always activate when stepped on, even when sneaking.
+Sculk shrieker
+
+Added functionality.
+Has the ability to "shriek", emitting ring-like/sonic particles.
+Is activated by a sculk sensor, redstone signal or player's stepping.
+Sculk shriekers summon wardens only if there isn't one within 48 blocks.
+Gives players the Darkness effect when activated.
+If activated three times, a warden is summoned from the ground.
+Player has 4 levels of [Int] warning_level (0-3). Every time a shrieker is activated, the level increases by 1, and never decreases.
+If a player had successfully summoned a warden, only one activation is required to summon a warden next time.
+Currently does not drop when broken, even when using Silk Touch.
+
+
+=== Items ===
+Boats
+
+Changed item textures of all boats, except mangrove.
+Now their paddles represent their respective wood color and their inside rims of the boats are darker, to match Bedrock Edition.
+Oak boat item texture in Java Edition and Bedrock Edition still have differences.
+
+
+=== Mobs ===
+Parrots
+
+Can now imitate wardens.
+
+
+=== World generation ===
+Deep dark
+
+Now less flooded than surrounding areas.
+
+
+=== Command format ===
+/locatebiome
+
+Now searches in 3D properly, which means it locates cave biomes correctly.
+Now returns all three coordinates in the output.
+
+
+=== General ===
+Debug keys
+
+Removed debug hotkey cycling render distance (F3 + F).
+Particles
+
+The parameters to the vibration particle have changed: instead of specifying the start position as an extra parameter, the regular source of the particle is now used.
+Shaders
+
+There are now shader files for translucent entity rendering.
+Tags
+
+Mangrove boat and the #chest_boats item tag are now part of the #boats item tag.
+Mangrove leaves is now part of the #mineable/hoe block tag.
+
+
+== Fixes ==
+39 issues fixed
+From released versions before 1.19
+
+MC-11783  Stacking snow lighting inconsistency (smooth lighting).
+MC-51418  Changing brightness/gamma above in-game limit using options.txt.
+MC-88677  High FoV (manually changed in options.txt) causes X-ray effect.
+MC-94161  Boat paddles in the inventory are oak instead of their respective wood type.
+MC-100923  Entities with knockback resistance can get knocked back using Punch.
+MC-143209  All mobs with passengers float in the air, but not horses with passengers.
+MC-149805  While editing a book, player cannot use Ctrl + Home or Ctrl + End to jump to the beginning or end of the text.
+MC-165503  Fence gates (between walls) aren't affected by ambient occlusion/smooth lighting.
+MC-176081  Striders with NoAI still get cold.
+MC-177321  Soul sand doesn't have smooth lighting / ambient occlusion.
+MC-179916  Foxes path towards origin (0,0) during a thunderstorm.
+MC-189214  Modifying the type compound of the end dimension erases the dragon fight.
+MC-190661  Pressing Esc or using the Cancel button in the "Experimental Settings" warning returns to main menu.
+MC-197854  Cannot use Ctrl +  Backspace to delete entire words in Edit sign GUI.
+MC-201626  Taking saddle off of a horse makes the horse move.
+MC-207260  Casting issue: Sculk vibrations come from the wrong positions at high coordinates.
+MC-236149  Cannot use Ctrl +  Backspace to delete words in the book and quill GUI.
+MC-236212  Cannot use Ctrl + Arrow to navigate the cursor between words in the book and quill GUI.
+MC-238009  Some end cities can generate floating above the ground.
+MC-239019  /locatebiome command doesn't consistently locate the nearest cave biome.
+MC-248621  TagKey creation leads to memory leak.
+From the previous development version
+
+MC-249073  Mangrove Fence Gate & Mangrove Fence are in the wrong tab in the creative inventory.
+MC-249081  Placing water inside the mangrove propagule breaks it.
+MC-249098  Mud brick slabs uses generic stone sound.
+MC-249112  Ender dragon fight is not triggered upon entering the End.
+MC-249134  Subtitle "Frog hatches" should be "Tadpole hatches".
+MC-249143  Mud, Mangrove Roots, and their variants are too loud in comparison with other blocks.
+MC-249171  Map color for mangrove log is incorrect.
+MC-249172  Map color for mangrove slab is incorrect.
+MC-249173  Map color for mangrove trapdoor is incorrect.
+MC-249174  Map color for mud bricks, mud brick stairs, and mud brick walls is incorrect.
+MC-249181  Powered rail / activator rail update order is reversed.
+MC-249184  The mangrove fence recipe is not grouped with the fence recipes of other wood types.
+MC-249195  Some Mangrove Propagules float after leaves decayed.
+MC-249253  Bee tries to pollinate a waterlogged mangrove propagule and dies.
+MC-249270  Mangrove leaves do not have a hoe as their preferred tool.
+MC-249303  Mangrove Leaves cannot be composted.
+MC-249312  Mud Brick Slab has a slower mining speed then other mud bricks.
+MC-249316  Mangrove fence, fence gate and boat cannot be used for fuel.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

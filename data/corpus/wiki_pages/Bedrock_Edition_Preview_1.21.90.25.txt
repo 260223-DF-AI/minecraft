@@ -1,0 +1,192 @@
+Beta 1.21.90.25 (ChromeOS, Android), or Preview 1.21.90.25 (Windows, iOS, iPadOS, Xbox, PlayStation) is the fourth beta/Preview version for Bedrock Edition 1.21.90, released on May 13, 2025, which makes saddles craftable, adds new music, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Items ===
+Music Disc
+
+ Added the "Tears" music disc by Amos Roddy.
+Obtained by killing a ghast with a fireball deflected by a player.
+Has a comparator output of 10 when played in a jukebox.
+
+
+=== Gameplay ===
+Music
+
+Added 5 new background music tracks by Amos Roddy to Cherry Groves, Forest, Desert, Grove, and Lush Caves Biomes:
+"Below and Above"
+"Broken Clocks"
+"Fireflies"
+"Lilypad"
+"O's Piano"
+
+
+== Changes ==
+
+
+=== Blocks ===
+Dried Ghast
+
+It will now block flowing water instead of popping.
+Updated dried ghast block sounds for step, place and fall from wood-sounds to custom sounds. Changed the ambient and break sound to sound less alive. Removed the hit-sound and sound event for that since it breaks immediately.
+Grass Block
+
+Sound files for breaking and placing Grass blocks are now slightly louder.
+
+
+=== Items ===
+Lead
+
+Attaching a leashed entity to another entity and using Shears to cut leashes now take precedence over other interactions
+Example: Attempting to shear a leashed Sheep will now un-leash it instead of shearing it
+Leash break distance is now calculated between the centers of the two entities' collision boxes, aligning with the rest of the leash physics calculations
+Leather
+
+Can now be found in monster room, ancient city, desert temple, jungle temple and stronghold altar chests in quantities 1-5.
+Saddle
+
+Can be removed from mobs wearing them by using shears on the mob.
+Cannot be removed this way from ravagers or mobs with riders.
+Shears in a dispenser don't work.
+Saddles can now be crafted with 3 leather and 1 iron ingot.
+The recipe unlocks when a player picks up their first leather.
+
+No longer found in chests in monster rooms, ancient cities, desert temples, jungle temples and in stronghold altar chests.
+Shears
+
+Can now remove saddles, horse armor, harnesses and carpets from mobs.
+They cannot be removed if the mob has a rider.
+They cannot be removed if the player is crouching.
+Saddles cannot be removed from ravagers.
+Dispensers with shears cannot remove saddles, horse armor, harnesses and carpets equipped on mobs.
+Spawn Egg
+
+Now the mooshroom spawn egg uses its own colors and no longer has two pixels that are the same as the cow spawn egg texture.
+
+
+=== Mobs ===
+Happy Ghast
+
+Its detection of players now extend 1 block outwards from themselves in x,z direction and 2 blocks above them.
+
+
+=== General ===
+UI
+
+The Text Background Opacity accessibility setting now defaults to 60% opacity.
+The vertical angle upon which the locator bar arrow icons become visible now corresponds to the player's FOV setting.
+Title screen
+
+The panorama has changed to reflect the Chase the Skies drop.
+The above change has not been mentioned in the change log.
+
+
+=== Technical ===
+API
+
+Added a new condition damaged_by_entity that allows checking which entity type applied damage to an entity that is dropping loot.
+Similar to the killed_by_entity and entity_killed conditions, allows specifying an entity_type field to check against when deciding which entry in a loot table to select.
+Block Components
+
+UV locking will not be supported for geometry using Box UVs if the box sides are not equal, in other words the box has non square UVs. Geometry with per-face UVs and non square faces will be supported.
+UV locking will not be supported if Block Json format_version is less than 1.19.80.
+Blocks
+
+culling_layer field in the block's geometry component has been moved out of experimental.
+condition field in rules for culling has been moved out of experimental.
+Camera
+
+Unlocked over the shoulder is now unlocked by using the camera_relative control scheme with the follow_orbit preset.
+Components
+
+Content warnings will log missing block and biome references in Biome JSON.
+The minecraft:interact component's spawn_items field now has a y_offset subfield, which allows to adjust the vertical spawn position of items.
+The minecraft:remove_in_peaceful component was removed from vanilla hostile mobs, making them despawn on peaceful difficulty hardcoded again, however it still exists.
+This change was not mentioned in the changelog.
+Entity Filters
+
+Added the new is_riding_self entity filter
+Returns true if the subject entity is riding the calling entity on which the filter is used.
+Graphical
+
+Changed shadows in Vibrant Visuals so that they cast further at sunrise and sunset. Prior to this change, shadows were clamped at a 30 degree angle relative to the horizon. This clamp has now been reduced to 10 degrees. This also improves an issue where specular highlights, light rays and volumetric fog were not properly occluded when the sun or moon was behind a mountain at a low angle.
+Added temperature grading settings to the color grading json files for Vibrant Visuals. Schemas must specify a format version of 1.21.90 to access this new setting.
+New temperature object added to color_grading
+enabled set to true or false controls if temperature grading is enabled
+type set to either white_balance or color_temperature controls the type of grading applied
+white_balance uses the temperature value to adjust the camera's white point. Lower temperature values will cause the scene to appear more blue.
+color_temperature is the inverse of the white balance operation. Lower temperature values will cause the scene to appear more red.
+temperature sets the temperature in kelvin
+Example:
+
+Particles rendered without the minecraft:particle_appareance_lighting component are now renderered as expected in Vibrant Visuals.
+Removed ; debug feature for toggling graphics modes.
+Items
+
+Extended minecraft:wearable item component to allow hiding players' locations, similar to mob heads and the carved pumpkin.
+The new hides_player_location boolean field defines whether players are hidden on the locator bar and locator maps when eqipped in the appropriate wearable slot, defined by the slot field.
+The default value of hides_player_location is false.
+All minecraft:wearable item components defined previously will have the value of hides_player_location default to false.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs" experimental toggle.
+
+
+=== Changes ===
+
+
+==== Technical ====
+API
+
+@minecraft/diagnostics
+Updated SentryOptions properties:
+dsn: Updated to allow the usage of SecretString, allowing for secrets from @minecraft/server-admin to be used to initialize Sentry.
+(new) maxBreadcrumbs: The maximum number of breadcrumbs to store and report per error event to Sentry. Default is 20, supported values range from 0 (no breadcrumbs) to 100.
+(new) sampleRate: A number between 0 and 1 that indicates the percentage of events that should be sent to Sentry. For example, a value of 0.5 means that 50% of events will be sent. Default is 1 (100% of events). 0 means no events will be sent.
+(new) debug: When set to true, additional content logging from the Sentry system will be enabled. Defaults to false.
+Experimental
+
+Deprecated align_target_and_camera_forward. Use control_scheme to switch between control schemes instead.
+
+
+== Fixes ==
+24 issues fixed
+From released versions before 1.21.90
+
+MCPE-74632  Nether fossils spawn infrequently
+MCPE-127677  Placing Water Onto A Spore Blossom Deletes The Spore
+MCPE-174465  Player is teleported to the void when using an end gateway
+MCPE-177722  Long /tellraw Commands cause the Game to Freeze when run in Chat
+MCPE-194284  /testforblock ignoring block states after 1.21.70 update
+MCPE-199256  Vibrant Visuals: The adjust brightness slider doesn't work properly
+MCPE-203239  Vibrant Visuals: Water disappears above Y coordinate 190
+MCPE-216786  Happy Ghast will spin when tied to fence
+MCPE-217394  "Game is paused" text can overflow
+From the previous development version
+
+MCPE-217604  Leash is not connected properly to happy ghasts
+MCPE-217870  Hotbar tooltip text does not have shadows, making the text difficult to see when setting Text Background Opacity to 0
+Other
+
+Fixed sculk vein block looking small and elongated when held or in an item frame.
+Now the cold cow variant has the correct mirroring of its horn texture.
+Flying mobs no longer make footstep sounds when moving close to the ground.
+Happy Ghasts will now correctly detect players on a different mount on top of them.
+Fix a crash in split-screen mode when a player would destroy a chest or book an other player had open.
+Fixed an issue where a resource pack error could be encountered when transfering between servers that use different versions of the same resource pack.
+Fixed an issue where downloading server resources would infinitely hang if another device requested to download the same resources at the same time.
+Fixed blocks in minecarts not being lit properly.
+Fixed a crash that could occur when a block's textures are configured to point to an empty atlas entry.
+Fixed incorrect content warnings for missing block textures in minecraft:material_instances component.
+Fixed an issue with the player_relative control scheme that made it really hard to travel directly forward or directly backwards.
+Fixed an issue where the player's head would sometimes jitter when using certain control schemes.
+Fixed the camera_relative_strafe control scheme.
+
+
+== References ==
+
+
+== Navigation ==

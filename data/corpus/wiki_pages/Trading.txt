@@ -3,17 +3,17 @@ Trading is a gameplay mechanic that allows players to exchange emeralds for item
 
 == Mechanics ==
 Pressing use on an adult villager with a profession, or on a wandering trader, opens a menu, allowing a player to trade with that merchant. This action pauses any pathfinding the merchant was doing and makes it face you. If the merchant takes damage while trading, the trading menu closes. The same thing happens if they walk or are transported far enough away.
-All transactions involve emeralds. Trading is the only method of acquiring the globe banner pattern, arrows of Decay‌[BE  only], as well as all types of explorer maps except buried treasure maps in Survival mode. It is also the only renewable way to obtain bells, diamond gear , lapis lazuli‌[BE  only], bottles o' enchanting, glass, sand, red sand, coral blocks, and small dripleaves.
+All transactions involve emeralds. Trading is the only method of acquiring the globe banner pattern, arrows of Decay[BE  only], as well as all types of explorer maps except buried treasure maps in Survival mode. It is also the only renewable way to obtain bells, diamond gear , lapis lazuli[BE  only], bottles o' enchanting, glass, sand, red sand, coral blocks, and small dripleaves.
 
 
 === Level ===
-Villagers have five career levels that can be increased by trading with them. Each villager starts at the novice level. A villager's level can be seen in the trading menu. The badge that a villager wears can also be identified: stone for a novice, iron for an apprentice, gold for a journeyman, emerald for an expert, and diamond for a master. Trading until the villager's trading bar gets full unlocks the next level of trades. When a player trades with a villager, both the villager and the player gain experience. All villager trades reward the player with 3–6 experience plus an additional 5 experience if the villager levels up with the trade. Trading with a wandering trader also rewards the player with some experience, although the trader does not have experience levels to gain. A villager levels up when its experience bar becomes full and gains up to two‌[JE  only] or three‌[BE  only] new trades and retains its existing trades.
+Villagers have five career levels that can be increased by trading with them. Each villager starts at the novice level. A villager's level can be seen in the trading menu. The badge that a villager wears can also be identified: stone for a novice, iron for an apprentice, gold for a journeyman, emerald for an expert, and diamond for a master. Trading until the villager's trading bar gets full unlocks the next level of trades. When a player trades with a villager, both the villager and the player gain experience. All villager trades reward the player with 36 experience plus an additional 5 experience if the villager levels up with the trade. Trading with a wandering trader also rewards the player with some experience, although the trader does not have experience levels to gain. A villager levels up when its experience bar becomes full and gains up to two[JE  only] or three[BE  only] new trades and retains its existing trades.
 When a villager levels up its profession, it receives 10 seconds of Regeneration I (totaling to 4HP of restoration), which emits pink particles. The villager also emits green plus-shaped particles.
 Trades from the master level would still reward the villager with experience, but it has no actual effect as the villager can't level up any further.
 Each badge is 2x3 pixels except the novice (stone) badge, which is 4x4 pixels.
 
 In Java Edition, villagers have a maximum of 10 trades. Each level unlocks a maximum of two new trades. If a level has a pool of more than two trades, the two offered trades are chosen randomly from the set. For example, a novice farmer randomly picks 2 out of 5 possible trades (buy wheat, buy potatoes, buy carrots, buy beetroots, or sell bread). Master librarians are currently the only exception, as they pick 3 trades; this however is only visible when the Villager Trade Rebalance experiment is enabled, as the default pool contains only two possible choices and thus only those two trades are offered.
-In Bedrock Edition, each level unlocks 1, 2 or 3 trade slots; the amount of slots unlocked is fixed and depends on the profession and its level. Overall, villagers have 7–10 trade slots. For each slot, one trade is chosen randomly from a pool. For example, a novice farmer has two trade slots: for the first slot, it picks 1 out of 4 possible trades (buy wheat, buy potatoes, buy carrots or buy beetroots); for the second slot, only 1 trade is available (sell bread), so it is always offered. Cartographers are currently the only exception; for the apprentice, journeyman, and expert levels 2 trades are randomly chosen from the respective pools without being bound to specific trade slots. 
+In Bedrock Edition, each level unlocks 1, 2 or 3 trade slots; the amount of slots unlocked is fixed and depends on the profession and its level. Overall, villagers have 710 trade slots. For each slot, one trade is chosen randomly from a pool. For example, a novice farmer has two trade slots: for the first slot, it picks 1 out of 4 possible trades (buy wheat, buy potatoes, buy carrots or buy beetroots); for the second slot, only 1 trade is available (sell bread), so it is always offered. Cartographers are currently the only exception; for the apprentice, journeyman, and expert levels 2 trades are randomly chosen from the respective pools without being bound to specific trade slots. 
 A villager's profession dictates the trading pool used to determine its trades. For example, villagers wearing straw hats are farmers, so their trades are based on the Farmer trade pool. Each profession unlocks a predefined and finite set of offers. Different professions are assigned to each villager based on their job-site block. This profession is indicated by their appearance and in the trading interface. Novice villagers who have not traded can lose their profession and change back into unemployed villagers if their claimed job site block is removed. Removing and then replacing a job site block can alter the trades offered, and a villager with no experience resets its trades every so often. Once a player trades with a villager, the villager keeps its profession forever and subsequently locks in the offered trades.
 
 
@@ -30,7 +30,7 @@ Demand is tracked per item and is initially minus two times the number of times 
 Reputation is tracked per player by each villager, though villagers can share the reputation of players. Positive reputation gives price discounts and in Java Edition negative reputation gives price penalties. Curing a zombie villager gives permanent major positive reputation, trading gives temporary positive reputation, and attacking or killing villagers gives temporary negative reputation. The price is decreased by the price multiplier times the reputation, rounded down, though it can result in an overall price increase only in Java Edition.
 The Hero of the Village effect, gained from completing a raid, reduces the price of all villagers by 30% of the initial price, rounded down but at least 1, and 6.25% per additional level.
 The formula for the full price in Java Edition can be written as:
-Final Price=min⁡(max⁡(⌊p⋅(m⋅max⁡(0,d)+1)⌋−⌊m⋅r⌋−sign(h)⋅max⁡(1,⌊p⋅(0.3+0.0625⋅(h−1))⌋),1),Stack Size)
+Final Price=min(max(p(mmax(0,d)+1)mrsign(h)max(1,p(0.3+0.0625(h1))),1),Stack Size)
 where p is the initial price, m is the price multiplier, d is the demand, r is the reputation and h is the Hero of the Village level.
 
 
@@ -54,7 +54,7 @@ The appearance of baby villagers is similar to the corresponding adult unemploye
 
 == Trade offers ==
 
-The villager pictured on the right is from the plains biome. To see villager professions dressed for other biomes, see Villagers § Professions.
+The villager pictured on the right is from the plains biome. To see villager professions dressed for other biomes, see Villagers  Professions.
 In Java Edition, starting from Novice, at each level, two additional trades become available, unless there is only one trade within that level. If there are more than two possible trades, two are randomly selected.
 In Bedrock Edition, one trade is chosen randomly from each slot available. For example, if there are two items in the same slot, then only one of them will show up in the trade.
 
@@ -203,7 +203,7 @@ Wandering Trader
 
 
 == External links ==
-"All villager jobs – Ranked"     by James Nouch  – Minecraft.net, August 19, 2025.
+"All villager jobs  Ranked"     by James Nouch   Minecraft.net, August 19, 2025.
 
 
 == Navigation ==

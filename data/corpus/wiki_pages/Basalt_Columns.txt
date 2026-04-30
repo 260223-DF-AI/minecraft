@@ -1,0 +1,67 @@
+Basalt columns are vertical clusters of basalt blocks found within basalt delta biomes. They may also contain lava and magma in the many gaps between the towers.
+
+
+== Generation ==
+Basalt columns generate as part of the surface structure generation in the Basalt Deltas biome. They appear in two variations: small basalt columns and large basalt columns. These formations are placed during the Surface Structures decoration step and contribute to the biome's rugged, volcanic terrain.
+The game defines their generation using the following features:
+
+Small Basalt Columns  Controlled by NetherPlacements.SMALL_BASALT_COLUMNS
+Large Basalt Columns  Controlled by NetherPlacements.LARGE_BASALT_COLUMNS
+Basalt columns are defined as Placed Features, which determine their spawning frequency and location. The generation process follows these steps:
+
+Configured Features:
+The game references pre-defined basalt column structures from NetherFeatures.SMALL_BASALT_COLUMNS and NetherFeatures.LARGE_BASALT_COLUMNS.
+These features define the basic shape and formation of the columns.
+Placement Registration (NetherPlacements.bootstrap()):
+The basalt column features are registered with specific placement rules:
+Small Basalt Columns spawn 4 times per chunk (CountOnEveryLayerPlacement.of(4)).
+Large Basalt Columns spawn 2 times per chunk (CountOnEveryLayerPlacement.of(2)).
+The placement occurs using the BiomeFilter.biome() rule, ensuring they only appear in the Basalt Deltas biome.
+World Generation Step (GenerationStep.Decoration.SURFACE_STRUCTURES):
+During terrain decoration, the game places basalt columns in randomized locations.
+Their height, clustering, and spread are determined by internal noise functions and world height layers.
+
+
+==== Interaction with other features ====
+Basalt columns often generate alongside Basalt Blobs (NetherPlacements.BASALT_BLOBS), which contribute to the rugged terrain.
+The presence of Blackstone Blobs (NetherPlacements.BLACKSTONE_BLOBS) adds variation to the biomes rocky surface.
+
+
+== Data values ==
+
+
+=== ID ===
+Java Edition:
+
+Bedrock Edition:
+
+
+=== Config ===
+
+Java Edition:
+
+
+== History ==
+
+
+=== Java Edition ===
+
+
+=== Bedrock Edition ===
+
+
+== Issues ==
+Issues relating to "Basalt Columns" are maintained on the bug tracker. Issues should be reported and viewed there.
+
+
+== Trivia ==
+In real life, columnar jointing is the phenomenon that causes rocks to form arrays of columns. Other rocks featured in Minecraft that can be subject to columnar jointing include andesite, tuff, and quartz.
+
+
+== Gallery ==
+
+
+=== Screenshots ===
+
+
+== Navigation ==

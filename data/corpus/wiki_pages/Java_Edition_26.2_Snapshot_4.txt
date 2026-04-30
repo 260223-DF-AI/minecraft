@@ -1,0 +1,110 @@
+26.2 Snapshot 4 (known as 26.2-snapshot-4 in the launcher) is the fourth snapshot for Java Edition 26.2, released on April 21, 2026, which adds two new languages, makes technical changes, and fixes some bugs and issues.
+
+
+== Additions ==
+
+
+=== General ===
+Attributes
+
+Added minecraft:nameplate_distance.
+Controls how far away in blocks the nameplate of an entity is visible.
+The nameplate cannot be visible if the entity is not visible.
+Accepts values between 0.0 and 512.0.
+Default value: 64.0.
+Added minecraft:below_name_distance.
+Controls how far away in blocks the below_name scoreboard display is visible.
+The nameplate cannot be visible if the entity is not visible.
+Accepts values between 0.0 and 512.0.
+Default value: 10.0.
+Languages
+
+Added support for Swiss French and Chuvash languages.
+
+
+== Changes ==
+
+
+=== Mobs ===
+Hoglins, Ocelots, Sulfur Cubes, and piglins 
+
+Can now spawn on Peaceful difficulty.
+Sulfur cube
+
+Naturally-spawned small sulfur cubes now have the correct size.
+The outer texture of the sulfur cube has been updated to include more detailed eyes.
+Can now spawn on Peaceful difficulty.
+Added sounds for picking up a sulfur cube with a bucket.
+
+
+=== World generation ===
+Sulfur caves
+
+Granite and tuff are now dispersed between sulfur and cinnabar.
+Sulfur spike
+
+Sulfur spike clusters have been made slightly shorter on average.
+
+
+=== General ===
+Data pack
+
+The pack format version is now 103.0.
+Predicates
+
+Entity Predicates
+Slime sub-predicate has been renamed from minecraft:type_specific/slime to minecraft:type_specific/cube_mob.
+Resource pack
+
+The version is now 86.1.
+Telemetry
+
+New required events: graphics_capabilities
+This is a new event that posts on startup, and informs developers of the capabilities of the graphics device used to play the game.
+Added new property: backend_name
+This will be Vulkan or OpenGL, and will help developers understand which graphics API players are using.
+Added new property: backend_failure_reason
+This will be a list of short error codes, for example vulkan_device_version_too_low, which will help developers identify any issues with the targeted Vulkan requirements.
+Added new property: backend_failure_message
+This will be a short and vague messages, such as Failed to find the GLFW platform surface extensions, which will help developers narrow down issues if players are experiencing issues running with Vulkan.
+Added new property: backend_failure_missing_capabilities
+This will be a list of missing capabilities from Vulkan, for example VULKAN_CORE_1_2, VK_KHR_dynamic_rendering, which will help developers know which capabilities players would need in order to use Vulkan.
+Texture atlas
+
+The minecraft:beds atlas has been removed.
+
+
+== Fixes ==
+17 issues fixed
+From released versions before 26.2
+
+MC-1788  Ocelots do not spawn naturally on peaceful difficulty in jungle and bamboo jungle biomes.
+MC-186131  Piglins and hoglins cannot spawn naturally on Peaceful difficulty.
+MC-296343  Using the mouse wheel to switch between cast fishing rods briefly displays the uncast texture in first-person.
+MC-307002  Using the /kill command on one of the End crystals used to respawn the ender dragon no longer aborts the respawn sequence.
+From the 26.2 development versions
+
+MC-307301  No sounds are produced when emptying or scooping up sulfur cubes into buckets.
+MC-307327  VSync limits the framerate inconsistently in fullscreen with the Vulkan rendering backend on some Mac systems.
+MC-307378  The glowing effect is not visible with the Vulkan rendering backend on some graphics.
+MC-307423  JVM crash when launching the game with the Vulkan rendering backend.
+MC-307434  Sulfur cubes cannot spawn naturally on Peaceful difficulty.
+MC-307626  The selection lists in the pack selection screen can extend outside the bounds of the game window, violating the Vulkan specification.
+From the previous development version
+
+MC-307532  Lava buckets now remain filled server-side when emptied into flowing water.
+MC-307539  The game crashes upon startup on some Mac systems.
+MC-307545  The "High Contrast" resource pack is listed as incompatible.
+MC-307549  beds.png-atlas still exists.
+MC-307587  Wet sponges are no longer removed from the inventory server-side when placed in the Nether.
+MC-307624  The cube mob entity sub-predicate is called type_specific/slime rather than cube_mob.
+MC-307647  Crash on startup with the Vulkan validation layer enabled  the NORMAL vertex attribute uses a format without guaranteed VERTEX_BUFFER_BIT support.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

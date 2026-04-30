@@ -1,0 +1,121 @@
+In older versions of Minecraft, the textures for animated blocks were generated on-the-fly using certain algorithms, rather than being predefined image files.
+In cases where these textures failed to generate or were intentionally disabled, dedicated placeholder textures would be used instead.
+
+
+== Blocks ==
+
+
+=== Fire ===
+Detailed information is limited, however an implementation has been made in MC-TextureGen: https://github.com/NeRdTheNed/MC-TextureGen/blob/main/mc-texture-gen-impl/src/main/java/com/github/nerdthened/mctexturegen/generators/FireGenerator.java
+The generated texture is 16x20; the bottom 4 pixels are cropped, leaving a 16x16 texture.
+
+
+=== Nether portals ===
+
+Due to the large number of Atan2 and Sine operations, the nether portal frames are not generated in real time; instead, 32 frames of animation (at a resolution of 1616) are generated once at startup and stored into an internal animation strip. The random shimmer is the same every time, as the game always uses a random number generator with a seed of 100.
+To generate one frame of the nether portal animation:
+
+Due to internally using a looping animation already, the nether portal is the only one of the procedural textures that is ported 1:1 in the 1.5 resource pack changes. Unlike the water animations, the alpha channel was not made uniform in the 1.15 texture update.
+
+
+=== Gears ===
+
+Code which generates the frames of the gear texture can be found here.
+The animation for gears was generated using two predefined image files - misc/gear.png for the rotating gear and misc/gearmiddle.png for the stationary center.
+
+The animation, updated every game tick, is rendered as a 1616 texture like most other blocks. The resulting gear has 18.75 RPM.
+There are two different animations used for gears - one for clockwise rotation, and another for anticlockwise rotation, to allow for logical meshing. These are generated effectively identically, with the only difference being the direction of rotation; both start on the same frame, but cycle through them in the opposite direction.
+
+
+== Fluids ==
+Fluid textures are generated via 3-layer non-deterministic cellular automata, which modify the RGB and alpha values of the texture accordingly, along with shifting of the texture to emulate flowing. Each layer is represented as an array of floats, each with 256 elements, corresponding to the 256 (1616) texture pixels within the block.
+As can be seen when loading up a world with water or lava in view, the textures start as a solid color before the cellular automaton starts generating the texture.
+Indexes which end up outside of the bounds of the texture reappear at the opposite respective side.
+For the purposes of explanation, the variables used have been named (arbitrarily) as attributes of a boiling pot of soup over a fire. The first layer represents the flame_heat value (which can be either negative or positive), the second layer represents the pot_heat value and the third layer represents the soup_heat value.
+Note that Java Edition and Bedrock Edition used different pseudorandom generators for generating all random numbers in the game (Java Edition using a LCG whereas Pocket Edition used a MT19937), which includes the random numbers used for water and lava. Due to being random, however, this likely has negligible visual impact.
+
+
+=== Water ===
+
+
+==== Still water ====
+Adapted from https://github.com/UnknownShadow200/ClassiCube/wiki/MInecraft-Classic-lava-animation-algorithm#water
+Every frame, for each position in the still water texture array, the respective values for soup_heat, pot_heat and flame_heat are calculated as detailed below:
+
+Calculates a local_soup_heat equal to the sum of the 3x1 soup_heat neighborhood around the current element.
+Calculates the new soup_heat as the sum of the local_soup_heat divided by 3.3F plus the pot_heat times 0.8F
+Calculates the new pot_heat as the current pot_heat plus the flame_heat times 0.05. pot_heat is clamped to a minimum of 0.
+Calculates the new flame_heat as the current flame_heat minus 0.1F.
+However, there is a 0.05 in 1 random chance that flame_heat is set to 0.5.
+Once the above arrays have been updated, for each pixel in the water texture, the color and alpha values are calculated based on soup_heat:
+
+Calculates a color_heat as the soup_heat clamped between 0 and 1 inclusive.
+Then it calculates the color components of the pixel as follows:
+float red = 32 + color_heat^2 * 32
+float green = 50 + color_heat^2 * 64
+float blue = 255
+float alpha = 146 + color_heat^2 * 50
+The red, green and blue values are then converted to bytes and assigned to the texture accordingly.
+
+
+==== Flowing water ====
+
+In addition, the flowing water texture also uses a spatial translation to give the appearance of movement. This transformation moves the flowing water texture downwards by one pixel after a fixed amount of time,[more information needed] wrapping the bottom layer of the texture back to the top.
+
+
+=== Lava ===
+
+
+==== Still lava ====
+Adapted from https://github.com/UnknownShadow200/ClassiCube/wiki/MInecraft-Classic-lava-animation-algorithm#lava
+Every frame, for each position in the still water texture array, the respective values for soup_heat, pot_heat and flame_heat are calculated as detailed below:
+
+Calculates a local_soup_heat equal to the sum of the 33 soup_heat neighborhood around the current element but offset vertically by colSin******* and offset horizontally by rowSin*********.
+rowSin is 1.2 times the sign of an angle that starts at 0 and changes by 22.5 degrees every row.
+colSin is 1.2 times the sign of an angle that starts at 0 and changes by 22.5 degrees every column.
+Calculates a local_pot_heat equal to the sum of a 22 pot_heat neighborhood around the current pot_heat, with the current position being the upper left of the 22 neighborhood.
+Calculates the new soup_heat as the sum of the local_soup_heat divided by 10 plus the local_pot_heat divided by 4 times 0.8.
+Calculates the new pot_heat as the current pot_heat plus the flame_heat times 0.01***************. pot_heat is clamped to a minimum of 0.
+Calculates the new flame_heat as the current flame_heat minus 0.06.
+However, there is a 0.005 in 1 random chance that flame_heat is set to 1.5.
+Once the above arrays have been updated, for each pixel in the lava texture, the color values are calculated based on soup_heat (alpha is always opaque for lava):
+
+Calculates a color_heat as double the soup_heat clamped between 0 and 1 inclusive.
+Then it calculates the color components of the pixel as follows:
+float red = color_heat * 100F + 155F
+float green = color_heat^2 * 255F
+float blue = color_heat^4 * 128F
+The red, green and blue values are then converted to bytes and assigned to the texture accordingly.
+
+
+==== Flowing lava ====
+Flowing lava uses the exact same algorithm as still lava to generate its texture, however there is also a spatial translation to give the appearance of movement. This transformation moves the lava texture downward by one pixel every 3 game ticks, wrapping the bottom layer of the texture back to the top.
+
+
+== Items ==
+
+
+=== Clocks ===
+
+To generate its appearances, the clock combined 2 textures, one being the actual clock, and the other being the dial. 
+
+The logic solely for mixing the two (as there is additional logic for moving the dial in a wobbly fashion that isn't pertinent here) is as follows:
+
+This results in the item and dial sprites being mixed by fuchsia areas of the clock sprite, as well as being shaded by them (contrary to the popular belief that they were mixed solely on the two shades found on the vanilla sprite).
+This allowed for the clock to be animated precisely, having 230 visually distinct frames, in an era where block and item sprites couldn't be animated individually without mods. The pre-rendered animated approach, used in 1.5 onward, is far less precise, with only 64 different frames.
+
+Due to an oversight with how assets were loaded however, the item sprite for clocks couldn't be overridden by texture packs (as they are set to always load from the vanilla gui/items.png atlas, stored in minecraft.jar, rather than the one of the currently active texture pack.
+
+
+=== Compasses ===
+
+Compasses simply draw two lines over the item sprite to form the needle.
+Much like clocks, the code responsible for moving the needle is also present with the "setup" code, however it is omitted here as it is not pertinent to the actual drawing of the sprite. Also like clocks, an oversight in how the compass sprite is set to be loaded prevents texture packs from overriding the compass's base sprite.
+
+The generated compass sprite has 102 possible unique frames, while the pre-rendered compass has significantly less, at only 32 frames.
+
+
+== References ==
+
+
+== Navigation ==

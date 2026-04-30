@@ -1,0 +1,45 @@
+The first 16 levels are linear (17 XP points per level), while level 17+ require more points per level compared to the prior level.
+Note that when enchanting, the experience levels used will be subtracted from your current level, not your current XP total. This has important implications for leveling above 30the levels gained will have a high XP cost, but this will not be preserved. For example, if you are enchanting anything at level 30: if you earn enough experience to get to level 31, then enchant, you will be left at level 1. If you had enchanted first, and collected the same amount of experience afterwards, you would have almost reached level 4. Because of this, there is no useful purpose to earning experience past level 39, as this is the maximum level an anvil will require before an item is "too expensive" to enchant or repair.
+
+
+==== Formulas & tables ====
+The experience cost for gaining a level is equivalent to:
+
+int expCost(int currentLevel) {
+    if (currentLevel >= 30) {
+        return 62 + (currentLevel - 30) * 7;
+    }
+    if (currentLevel >= 15) {
+        return 17 + (currentLevel - 15) * 3;
+    }
+    return 17;
+}
+
+This works out as follows:
+
+If your current level is 14 or below, you need a static 17 experience to gain the next level.
+For current levels from 15 to 29, each level takes 3 more experience, amounting to (17 + (currentLevel - 15) * 3) experience to gain another level.
+At and above level 30, each new level takes 7 more experience, totaling (62 + (currentLevel - 30) * 7).
+The total XP required for a given level (x) can be calculated as follows:
+
+for x<=15: 17x
+for 16x<30: 1.5x2 - 29.5x + 360
+for x30: 3.5x2 - 151.5x + 2220
+
+
+==== Useful numbers ====
+Killing one large slime and all the slimes that split from it will yield from 12 to 28 experience, with an average of 19.
+The maximum that can be used on a single enchantment is 30 levels, while the anvil will accept jobs up to level 39 (in creative mode the anvil limit is lifted).
+Level 16 is a third of the way to level 30, while level 22 is about halfway there. Level 30 in turn, is halfway to level 39.
+One can determine how much experience has been collected to reach a level using the equations:
+Total Experience = 17[Level] (at levels 0-15)
+1.5[Level]2 - 29.5[Level] + 360 (at levels 16-30)
+3.5[Level]2 - 151.5[Level] + 2220 (at level 31+)
+This equation does not include any experience that is currently filling the experience bar.
+Additionally, the amount of experience required to advance to the next level can be calculated using the equations:
+Experience Required = 17 (at levels 0-14)
+3[Current Level] -28 (at levels 15-29)
+7[Current Level] - 148 (at level 30+)
+Killing the Ender Dragon will give approximately 78 XP levels. The Ender Dragon actually drops 10 orbs worth 1,000 experience points, and another worth 2,000. Taken separately, the smaller orbs could take a player from zero to level 32, while the big orb would take a player from zero to level 41.
+Maximum xp value can be gained by /xp command is 2147483647 (which is 2^31 - 1.  Likely a limitation due to the 32 bit nature of Minecraft.)
+Maximum level is 24791

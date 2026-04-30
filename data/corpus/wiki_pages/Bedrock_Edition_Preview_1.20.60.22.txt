@@ -1,0 +1,88 @@
+Beta 1.20.60.22 (Android) or Preview 1.20.60.22 (Windows, iOS, iPadOS, Xbox) is the third beta/Preview version for Bedrock Edition 1.20.60, released on December 6, 2023, which fixes bugs.
+
+
+== Changes ==
+
+
+=== Technical ===
+API
+
+Made the display name parameter optional in Scoreboard addObjective.
+Components
+
+Added a "drop_item_slot" field to the "interact" component, which allows to specify an inventory slot to remove and drop items from
+Stability and Performance
+
+Send "material" for vanilla data-driven blocks in the StartGamePacket blockProperties. "block_id" is also moved to the "vanilla_block_data" object
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Update 1.21" and "Beta APIs" experimental toggles.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Copper Door
+
+Updated Copper Door textures, including oxidized variations.
+Copper Doors and Trapdoors have now correct breaking time and blast resistance.
+
+
+==== Mobs ====
+Breeze
+
+Breeze ground particles now stop playing when they're riding other entities.
+Separated the Breeze diffuse and emissive textures.
+
+
+=== Technical ===
+API
+
+Added method eatItem(itemStack: ItemStack): void;.
+BlockSignComponent
+Changed signature of function setWaxed to setWaxed(waxed: boolean)
+Removed event/property pistonActivate
+Added enum BlockPistonState export enum BlockPistonState { Expanded = "Expanded", Expanding = "Expanding", Retracted = "Retracted", Retracting = "Retracting" }
+Class BlockPistonComponent
+Removed property isExpanded
+Removed property isExpanding
+Removed property isRetracted
+Removed property isRetracting
+Added property readonly state: BlockPistonState
+Changed function getAttachedBlocks to return type Block[]
+Added function getAttachedBlocksLocations(): Vector3[]
+Removed class PistonActivateBeforeEvent
+Removed class PistonActivateBeforeEventSignal
+Types
+Moved BlockType from beta to 1.8.0
+Moved FluidType from beta to 1.8.0
+Moved NavigationResult from @minecraft/server to @minecraft/server-gametest
+Graphical
+
+Adjusted the falloff of point light sources (e.g., torches, lanterns, etc...) to use a square, Manhattan-based distance metric in the Deferred Technical Preview.
+Tinted ambient light color with point light color for better multi-colored lighting over large distances in the Deferred Technical Preview
+
+
+== Fixes ==
+9 issues fixed
+From released versions before 1.20.0
+
+MCPE-167836  Cannot change brightness_gamma setting in blocks.json
+MCPE-170377  Buttons can be accidentally clicked, when clicking out of window and into the background of game
+Others
+
+Containers being cloned over no longer keep their container screens open and no longer cause crashes.
+Fixed a rare crash that could occur with the Seven Seas achievement.
+Fixed a bug that kept the previewed item on the paper doll even after navigating back using the sidebar.
+All unowned and owned emotes should now be discoverable within the emotes section of Dressing Room.
+The Friends drawer on the Play screen now makes sounds when opened and closed.
+Fixed a crash that could occur when players placed or destroyed any block and then Save & Quit with Ray Tracing enabled.
+Fixed issue where ActionFormData buttons could not be clicked if there were more than 255 buttons in the form
+
+
+== References ==
+
+
+== Navigation ==

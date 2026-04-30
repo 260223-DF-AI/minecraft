@@ -1,0 +1,466 @@
+1.20.10 (1.20.11 on Xbox) is a minor update to Bedrock Edition released on July 11, 2023, which brings more parity from Java Edition and fixes bugs.
+
+
+== Additions ==
+
+
+=== General ===
+Experiments
+
+Added "Crawling" experimental toggle.
+Allow players crawl under 1 block gaps.
+Added "Recipe Unlocking" experimental toggle.
+Enable the new recipe unlocking system and the /recipe command.
+Settings
+
+Added the slider "GUI Scale Modifier" to the accessibility section.
+Added "Extra Large GUI Scaling" accessibility and video option, to make the UI "bigger" (only works on some devices).
+Splashes
+
+Added a new splash text:
+Joule is neat too!
+
+
+=== Technical ===
+JSON
+
+Released the following components out of experimental in JSON formats 1.20.10 and higher:
+minecraft:cooldown item component.
+minecraft:repairable item component.
+minecraft:max_stack_size item component.
+minecraft:block_placer item component.
+minecraft:record item component.
+minecraft:shooter item component.
+minecraft:throwable item component.
+minecraft:projectile item component.
+minecraft:can_destroy_in_creative item component.
+minecraft:hover_text_color item component.
+Added unlock field to the recipe JSON format.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Barrel
+
+Recipe now use planks instead of sticks to match Java Edition.
+Concrete
+
+The IDs of concrete have now been split up into their own IDs.
+Decorated Pot
+
+If they crafted with at least one pottery sherd now have a hover tooltip displaying the pottery sherd and brick ingredients.
+Note Block
+
+Now produces the "harp" sound instead of "snare" using soul soil.
+Packed Mud 
+
+Can no longer mine faster with a shovel.
+Sculk Sensor
+
+Can now detect the following events:
+Placing, rotating, or removing an item in an item frame or a glow item frame.
+Charging a respawn anchor.
+Scraping or applying wax to blocks of the copper block set.
+Switching a daylight detector to an inverted daylight detector or vice-versa.
+Adding food to a campfire.
+Adding or removing a music disc to a jukebox.
+Mud turning into clay.
+Harvesting sweet berries.
+Placing an eye of ender in an end portal frame.
+Bees entering or exiting a beehive or a bee nest.
+Interacting with composter.
+Attaching or detaching a lead from a fence.
+Attaching or detaching a lead from a mob.
+Dying a sheep.
+Picking glow berries.
+Farmland turning into dirt.
+Using a spawn egg on a monster spawner.
+Silverfish merging with blocks.
+Using a hoe on rooted dirt.
+Using a shovel to create dirt paths.
+Placing a door.
+Planting seeds in farmland.
+Shulker Box
+
+The IDs of shulker_box have now been split up into their own IDs.
+
+
+=== Command format ===
+Block states
+
+Now "equals" (=) are used instead of "colons" (:) to match Java Edition.
+Example: oak_log["pillar_axis":"x"] -> oak_log["pillar_axis"="x"]
+Observer
+
+Now uses the minecraft:facing_direction block state instead of facing_direction.
+minecraft:facing_direction has six values ["down", "up", "north", "south", "east", "west"].
+
+
+=== Gameplay ===
+Sneaking
+
+Sneak under 1.5 blocks tall is now available without the "Short Sneaking/Short Sneaking and Crawling" experimental toggle.
+Players can now be forced into sneak state while flying.
+Sound
+
+Camera position is now used for audio listening and ambient sounds.
+Previously the player position and rotation were sometimes used for audio listening.
+Rendering engine 
+
+Rendering of snow or rain is now based on camera position instead of player position.
+
+
+=== General ===
+Experiments
+
+Renamed the "Short Sneaking" experimental toggle to "Short Sneaking and Crawling". ("Removed/Changed" later in beta/preview 1.20.10.23)
+Now also contains the ability to crawl.
+Fog 
+
+Underwater and fog effects are now based on camera position rather than player position.
+Settings
+
+"Chat message duration" accessibility option is now set to 10 seconds by default.
+"Text to Speech" narrator now reads item names when selecting items in the hotbar and the "/" button in the chat screen.
+
+
+=== Items ===
+Boats
+
+Recipe no longer needs a shovel to match Java Edition.
+Cobweb
+
+Now can't craft into strings to match Java Edition.
+
+
+=== Mobs ===
+Horse, Mule, and Donkey
+
+Can now be tempted using a golden apple, golden carrot, or enchanted golden apple.
+Llama
+
+Can now be tempted using a hay bale.
+Magma Cube
+
+Can now be affected from Jump Boost.
+
+
+=== World generation ===
+Chiseled Deepslate and Polished Basalt
+
+Can no longer be replaced by sculk.
+Polished Deepslate
+
+Can now be replaced by sculk.
+Fallen Trees
+
+Now generate with mushrooms again.
+
+
+=== Technical ===
+JSON
+
+Added deprecation error message for the part_visibility component.
+Fixed an issue where adding a minecraft:peek component to a custom entity would cause the game to crash.
+Updated the minecraft:geometry block component to allow bone visibility to be defined with a molang expression.
+Added a content error when minecraft:balloonable is used on minecraft:player to prevent issues as this component is not supported in this way.
+Invalid JSON objects within the entity component minecraft:behavior.nearest_attackable_target will no longer crash the game.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Crawling", "Recipe Unlocking", "Beta APIs", and "Experimental Cameras" experimental toggles.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/recipe 
+
+A new command that gives or takes (unlocks or locks) recipes for a player.
+Syntax:
+/recipe <victim: target> give <recipe: string>
+Gives (unlocks) a specified recipe to a player.
+/recipe <victim: target> take <recipe: string>
+Takes (locks) a specified recipe from a player.
+If * is specified in recipe: string, it will unlock or lock all recipes for the player.
+
+
+==== Gameplay ====
+Crawling
+
+Added the ability to crawl.
+Created new player crawling animation.
+Players will now begin crawling when in a 1 block gap, similar to sneaking.
+Crawling is the same speed as sneaking.
+Players will automatically stand up or begin sneaking if they leave the 1 block gap.
+Players can now be forced into crawl state while flying.
+
+
+=== Changes ===
+
+
+==== Command format ====
+/camera
+
+Changed camera command fade color to take integer values from 0 to 255 rather than 0.0 to 1.0 fractional values.
+Camera fade command now enforces fade duration limits; fade in, hold, and fade out must be between 0 and 10 seconds.
+Ensuring camera pitch can only be between -90 and 90 degrees.
+Added example:example_player_listener camera preset.
+Added example:example_player_effects camera preset.
+Rendering of experimental minecraft:free camera no longer affected by player state like night vision.
+
+
+==== Gameplay ====
+Recipe book
+
+Recipes are now unlocked when the player collect materials for it.
+Picking up an item teaches the player how to craft that item.
+A new notification appears when the player find a new crafting material.
+
+
+==== Technical ====
+API 
+
+Dynamic properties can now optionally have default values.
+Increased dynamic property registration limits:
+Actors: ~1KB -> 128KB
+World: ~10KB -> 1MB
+ScreenDisplay
+Removed clearTitle()- Use setTitle with an empty string to clear the title.
+Updated fadeInSeconds, staySeconds, fadeOutSeconds to fadeInDuration, stayDuration, fadeOutDuration on TitleDisplayOptions (seconds to ticks).
+Updated setTitle to reset the times per each new title.
+Added RawMessage support for setTitle, updateSubtitle, and setActionBar.
+Entity
+Added read-only property isGliding- Returns whether the player is gliding with elytra.
+Added read-only property isJumping- Returns whether the player is using the jump action.
+Added read-only property sFlying- Returns whether the player is flying (e.g. creative or spectator mode).
+Added read-only property isSprinting- Returns whether the entity is sprinting.
+Added read-only property isSwimming- Returns whether the entity is swimming.
+Added read-only property isClimbing- Returns whether the entity is climbing (e.g. player on a ladder or spider on a wall).
+Added read-only property isOnGround- Returns whether the entity is on the ground.
+Added read-only property isInWater- Returns whether the entity is in water.
+Added read-only property isFalling- Returns whether the entity is falling.
+Added read-only property fallDistance- Returns the current fall distance (used for calculating fall damage).
+Added function fly- Makes the player fly (e.g. creative or spectator mode).
+Added function stopFlying- Makes the player stop flying (e.g. creative or spectator mode).
+Added function glide- Makes the player glide with elytra.
+Added function stopGliding- Makes the player stop gliding with elytra.
+Added function swim- Makes the player swim.
+Added function stopSwimming- Makes the player stop swimming.
+Entity effects
+Updated function addEffect(effectType: EffectType | string, duration: number, options?: EntityEffectOptions): void to return void and to throw if the effect does not exist or the parameters are out of bounds.
+Updated function getEffect(effectType: EffectType | string): Effect | undefined to throw if the effect does not exist.
+Updated function removeEffect(effectType: EffectType | string): boolean to throw if the effect does not exist.
+BlockEvents
+Added events PressurePlatePushEvent, PressurePlatePopEvent, TargetBlockHitEvent, and TripWireTripEvent.
+ContainerSlot
+Removed function clone-.
+EntityHealableComponent
+Removed filters: FilterGroupproperty.
+EntityAttributeComponent
+Added effectiveMin: number Returns the minimum possible value for the component.
+Added effectiveMax: number Return the maximum possible value for the component.
+Renamed value property to defaultValue.
+Renamed current property to currentValue.
+Renamed setCurrent method to setCurrentValue.
+Added EntityHealthChangedAfterEvent It is triggered when any health change happens for an entity.
+System
+Replaced events with system.beforeEvents and system.afterEvents.
+Renamed event beforeWatchdogTerminate to watchdogTerminate and moved it to beforeEvents.
+Moved scriptEventReceive to afterEvents.
+MessageReceiveAfterEvent
+Removed property sourceType.
+ScriptEventSource
+Replaced enum MessageSourceTypewith a new enum ScriptEventSource.
+ScriptEventCommandMessageAfterEvent
+Changed property sourceType from MessageSourceType to ScriptEventSource.
+Increased maximum message length from 256 to 2048 characters.
+Dynamic Property identifiers are now limited to 1024 characters.
+Removed MinecraftEffectTypes defined in @minecraft/server.
+Moved several APIs to stable 1.30.
+Moving tryTeleport(location: Vector3, duration: number, options: ScriptTeleportOptions) to 3.0.
+Moving teleport(location: Vector3, options: ScriptTeleportOptions) to 3.0.
+Moved function getComponent to 3.0.
+Moved world event PlayerJoinAfterEvent to 3.0.
+Moved world event PlayerLeaveAfterEvent to 3.0.
+Moved world event PlayerSpawnAfterEvent to 3.0.
+Moved EntityComponent EntityHealableComponent to 3.0.
+Moved EntityComponent EntityHealthComponent to 3.0.
+Moved class FeedItem to 3.0.
+Moved class FeedItemEffect to 3.0.
+Moved addEffect(effectType: string | EffectType, duration: number, options: EntityEffectOptions) to 3.0.
+Moved getEffect(effectType: string | EffectType) to 3.0.
+Moved getEffects to 3.0.
+Moved removeEffect(effectType: string | EffectType) to 3.0.
+AfterEvents
+Moved ButtonPushEvent to 3.0.
+Moved LeverActivateEvent to 3.0.
+Moved function spawnEntity to 3.0.
+Moved function spawnItem to 3.0.
+Spawnpoint updates
+Removed function clearSpawn.
+Removed property spawnDimension.
+Added function getSpawnPoint: DimensionLocation | undefined - Returns the player's spawn point.
+Added function setSpawnPoint(spawnPoint?: DimensionLocation): void - Sets the player's spawn point, or clears it if spawnPoint is undefined.
+Renamed function getDefaultSpawnPosition to getDefaultSpawnLocation.
+Renamed function setDefaultSpawn to setDefaultSpawnLocation.
+DimensionLocation
+Added new interface DimensionLocation - Represents a location in a dimension.
+Added hasParticipantfunction to ScoreboardObjective.
+The following functions in ScoreboardObjective can now accept Entity or string types as participants:
+getScore
+setScore
+removeParticipant
+Removed getScore, setScore from ScoreboardIdentity and Scoreboard.
+Removed the removeFromObjective function from ScoreboardIdentity.
+Raycasting
+Changed function getBlockFromRay.
+Changed return type from Block to BlockRaycastHit | undefined.
+Changed function getEntitiesFromRay.
+Changed return type from Entity[] to EntityRaycastHit[].
+Changed function getBlockFromViewDirection.
+Changed return type from Blockto BlockRaycastHit | undefined.
+Changed function getEntitiesFromViewDirection.
+Changed return type from Entity[] to EntityRaycastHit[].
+Added interface BlockRaycastHit.
+Added interface EntityRaycastHit.
+Renamed leverActivate after event to leverAction.
+Removed class EntityHitAfterEvent.
+Added class EntityHitBlockAfterEvent.
+Added class EntityHitEntityAfterEvent.
+Class WorldAfterEvents.
+Removed property entityHit.
+Added property entityHitBlock.
+Added property entityHitEntity.
+Added helper function isValid to several classes in order to check if the object is valid. This can safely be used on any handle to a native object before accessing or using the object, to ensure the underlying object still exists and is valid to use.
+Block (checks the block is a valid position in bounds and the containing chunk is loaded & ticking).
+Container (checks the relevant container inventory exists and is valid).
+Effect (checks the owning entity is valid and the effect exists on that entity).
+ScreenDisplay (checks the owning player is valid).
+ScoreboardObjective (checks the objective entry exists and is attached to a valid scoreboard).
+Entity (checks that the entity exists in the world. Will return true if the entity is dead).
+Player
+SimulatedPlayer (Note simulated players do not automatically get removed from the world, so isValid will return true long after they are dead).
+ContainerSlot (checks the item context is valid: Container exists in the world, such as the owning entity, and the slot is within the container bounds).
+Already existed as a readonly property, changed to a method for consistency.
+Component
+EntityAttributeComponent (checks the owning entity is valid and the attribute exists on the entity).
+BlockLiquidContainerComponent (checks block exists and is a valid cauldron type).
+Added read only method isValidLiquidwhich checks if the liquid in the cauldron matches the component in question (EG. BlockLavaContainerComponent checks for lava liquid).
+EntityComponent (checks the owning entity exists).
+ItemComponent (checks the owning item exists).
+World
+Renamed getTime to getTimeOfDay.
+Renamed setTime to setTimeOfDay.
+setTimeOfDay now accepts a TimeOfDay enum as an argument.
+The timeOfDay argument for setTime must now be within 0-23999 (inclusive).
+Added getDay.
+Updated the following enums' values to be PascalCase instead of camelCase.
+ClipboardMirrorAxis
+ClipboardRotation
+HttpRequestMethod
+FormCancelationReason
+Direction
+DisplaySlotId
+EntityLifetimeState
+FluidType
+ObjectiveSortOrder
+ScoreboardIdentityType
+ScriptEventSource
+SignSide
+WatchdogTerminateReason
+WeatherType
+JSON
+
+Items with the minecraft:block_placer component will now place blocks with correct orientation.
+Items in format version 1.20.10 and above with the minecraft:throwable component will trigger "item use" events when thrown.
+Custom items with minecraft:block_placer will no longer place certain blocks in the wrong location.
+Changed minecraft:shooter to only consume ammo when charging the item if charge_on_draw is set true.
+Deprecate minecraft:render_offsets component in JSON formats 1.20.10 and higher.
+
+
+== Fixes ==
+70 issues fixed
+From released versions before v1.20.10
+
+MCPE-46795  Cannot move items if "Quick Move" isn't canceled.
+MCPE-54294  Jump boost has no effect on magma cubes.
+MCPE-122663  Player model isn't centered when swimming.
+MCPE-123608  Transparent leaves overlap with opaque leaves.
+MCPE-138333  Fallen trees do not spawn with mushroom anymore
+MCPE-142918  Holding two shields in RTX only shows you one.
+MCPE-152002  hasitem doesn't check items in the cursor, unlike /clear.
+MCPE-153446  Cape when riding a boat changes its position (folds up) when you turn the camera.
+MCPE-155371  Sculk sensor doesn't detect composter changes.
+MCPE-155372  Placing an eye of ender doesn't produce a vibration.
+MCPE-156199  Sculk sensors don't detect most game events post-Java 1.19 Pre-release 1.
+MCPE-156444  Horse / donkey jump meter isn't the same length as the experience bar.
+MCPE-156575  Xbox: On screen keyboard won't move and is in front of the sign and chat.
+MCPE-157409  Sculk sensors do not detect respawn anchors charging.
+MCPE-160189  Item drop location for inventory contents of storage entities is offset to the southeast.
+MCPE-160238  Sculk patches don't replace polished deepslate upon world gen inside ancient city.
+MCPE-161207  Packed mud can be mined faster with a shovel.
+MCPE-162785  Blocks are placed upwards when continuing to build.
+MCPE-163670  Zombie villagers don't drop armor or held items when converting to a regular villager.
+MCPE-164064  Camel's dash sound continues playing.
+MCPE-164801  Chiseled bookshelf slot interactions aren't symmetrical.
+MCPE-166411  Blocks push the player when automatically initiated to sneaking.
+MCPE-166566  Camels don't play their walking animations when they are damaged.
+MCPE-166569  Player will sometimes automatically crouch when climbing ladders, vines, twisting vines, weeping vines under full block.
+MCPE-166741  Sculk sensors do not detect item frame & glow item frame interactions.
+MCPE-167447  Mouse and Keyboard buttons for Attack/Destroy and Interact/Place behave strangely when a controller is detected.
+MCPE-168054  Block state autocomplete does not work unless you put a space between block name and first bracket.
+MCPE-168056  Block state values don't autocomplete unless you type a space after the colon.
+MCPE-168119  Remove an enchanted book from a chiseled bookshelf plays wrong sound.
+MCPE-168129  Invalid objects in entitiy component minecraft:behavior.nearest_attackable crash the game.
+MCPE-168368  /inputpermission doesn't send you successful messages after executing it.
+MCPE-169313  Freshly generated chunks cause boats and chestboats to disappear when riding in them.
+MCPE-169453  Entities continue to freeze even without powder snow if there is a powder snow block near the west & north side.
+MCPE-169693  Sniffers can still dig when using levitation status effect.
+MCPE-169732  Conduit is black.
+MCPE-169758  Villagers cannot pickup, plant or harvest torchflower seeds and pitcher pods.
+MCPE-169772  Boats broken and all mobs exit boats when updated to 1.20 versions.
+MCPE-169937  Decorated Pot combined with pottery sherds doesn't have additional information in the description.
+MCPE-169974  /execute positioned gets syntax error after 1.19.80 update.
+MCPE-170031  Sniffers continue digging after their target block is destroyed.
+MCPE-170208  30 second despawn immunity is broken again.
+MCPE-170427  When water is put in the cauldron, the water looks like lava.
+MCPE-170610  Forced crouch interacts with entities as if the sneak button was being held.
+MCPE-170613  Player is able to crouch while riding a camel.
+MCPE-170645  Game crashes when changing a mob's scale would make it collide with blocks.
+MCPE-170814  P2P/SIG: no_session(Expired Auth from Discovery).
+MCPE-170885  Crawl speed does not increase with swift sneak enchantment.
+MCPE-171429  Pressure plates have become broken and inconsistent.
+MCPE-171798  Mobs dismount from chest boats.
+Others
+
+Players will now always spawn projectiles from the camera position when sneaking, swimming, or gliding.
+Loyalty tridents will always return to the player's camera.
+Players will now spawn particle effects when eating in the correct position if they are sneaking, swimming, or gliding.
+Players will no longer suffocate when short sneaking in certain scenarios.
+Players without permission to open/close containers can no longer interact with chiseled bookshelves.
+Switch: Fixed issues with highlighted blocks and mob shadows appearing through the pumpkin head overlay.
+Shields no longer flicker when held in both hands on RTX.
+Fixed sleep and camera fade effect not covering the screen until after first-person rendering happens.
+Fixed black pixels being generated on maps when "Client-Side Chunk Generation" is enabled.
+Command positions will now use the current position/rotation when running mcfunctions via execute.
+The paper doll will now show up properly when crawling.
+Suspicious blocks now display correctly on maps.
+Shield no longer clips inside the armor stand model while in the riposte pose.
+Sniffer can no longer dig up seeds in the air.
+Fixed a crash that could happen when running the go_and_give_items_to_noteblock goal.
+Custom items with minecraft:block_placer will no longer place certain blocks in the wrong location.
+Fixed /camerashake command to shake camera without also shaking player.
+Reordered the gamepad tooltips for UI screens so that the buttons align with the same side as a controller.
+Fixed an issue where legacy crawling was not working correctly with the sneak and crawl toggle turned off.
+Fixed a bug where scoreboard values would not be updated on the client when updated from script.
+Fixed a crash.
+
+
+== References ==
+
+
+== Navigation ==

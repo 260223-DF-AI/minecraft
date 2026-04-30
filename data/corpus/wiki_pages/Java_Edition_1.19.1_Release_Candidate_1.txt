@@ -1,0 +1,61 @@
+1.19.1 Release Candidate 1 (known as 1.19.1-rc1 in the launcher) is the first release candidate for Java Edition 1.19.1, released on June 23, 2022, which updates the categories for chat reporting and fixes bugs.
+
+
+== Changes ==
+
+
+=== Command format ===
+General
+
+The run_command click event for text components no longer supports sending chat messages directly.
+Only commands are supported, so a command such as /say should be used instead.
+This means values now always need to be /-prefixed.
+
+
+=== General ===
+Debug screen
+
+The "Blending" row now disappears when chuck that the player is in uses the new method, instead of displaying "Blending: New".
+Social interactions screen
+
+Updated the categories for chat reporting.
+Removed the "Extreme violence or gore", "Nudity or pornography", and "Profanity" categories.
+Updated descriptions of the following categories:
+Defamation, impersonation, or false information
+Someone is damaging someone else's reputation, pretending to be someone they're not, or sharing false information with the aim to exploit or mislead others.
+Drugs or alcohol
+Someone is talking about or otherwise promoting drugs or alcohol encouraging others to partake in illegal drug related activities or encouraging underage drinking.
+Harassment or bullying
+Someone is shaming, attacking, or bullying you or someone else. This includes when someone is repeatedly trying to contact you or someone else without consent  or posting private personal information about you or someone else without consent.
+Terrorism or violent extremism
+Someone is talking about, promoting, or threatening with to commit acts of terrorism or violent extremism for political, religious, ideological, or other reasons.
+Decreased the maximum number of selected messages from 10 to 4, and changed the amount of chat context sent with each chat report from 4 older messages and 2 newer messages to 7 older messages and 2 newer messages.
+
+
+== Fixes ==
+10 issues fixed
+From 1.19
+
+MC-93254  Color in text prompt using commands.
+MC-250020  Allay doesn't ignore items when mobGriefing is set to false.
+MC-252511  Bedrock not generating on the new blending border between old and new blending.
+MC-252987  Illegal character \n in text component clickEvent.
+MC-253336  Using the eye of ender "crashes" game in the seed: -3721742095548798177.
+From the 1.19.1 development versions
+
+MC-253114  Selection boxes within the "Select Chat Messages to Report" menu don't disappear when deselecting fields after reentering the menu.
+MC-253188  Selection boxes within the "Select Chat Messages to Report" menu differ in size ever so slightly depending on how they're selected.
+MC-253225  Selection boxes of fields within player reporting menu lists don't contain white outlines when selected using the  Tab key.
+MC-253227  Players can only be reported using the reporting system if they're present within the world.
+From the previous development version
+
+MC-253422  The selection of the "Please report breaches of our Community Standards" text within the "Select Report Category" menu is slightly confusing due to the words "Community Standards" being underlined by default.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

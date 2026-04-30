@@ -21,16 +21,16 @@ The base time in seconds is the block's hardness multiplied by:
 Assuming that the player can harvest the block, the next check is whether the player's tool increases the breaking speed for the block. See Best tools for a full list.
 If the tool helps, then it increases digging speed by a constant multiplier, given in the following table:
 
-If a proper tool is used, the tool speed is further increased by the Efficiency enchantment. If the level of Efficiency is not 0, then the level squared plus 1 is added to the tool speed. For example, Efficiency I adds 2 to the value, while Efficiency V adds 26. The speed is also increased by (20×level)% of Haste in Java Edition or multiplied by (0.2×level+1)×(1.2level) in Bedrock Edition.
-Mining Fatigue decreases the speed by multiplying by (0.3min(level,4)) in Java Edition or by (0.3level)×(0.7level) in Bedrock Edition. In Java Edition, increasing the effect level from II to III reduces the mining speed by a factor of 0.03 rather than 0.3. Therefore, with level III the speed is reduced to 0.0027× of normal speed instead.
-If the player's head is underwater and they are not wearing a helmet with the Aqua Affinity enchantment, breaking a block takes 5 times as long. If the player's feet are not touching the ground, an additional 5× penalty is added; this causes players floating in water to break blocks 25× slower than if they had been standing on land.
-The total time to break a block is always a multiple of 1⁄20 of a second, or 1 game tick; any remainder is rounded up to the next tick.
+If a proper tool is used, the tool speed is further increased by the Efficiency enchantment. If the level of Efficiency is not 0, then the level squared plus 1 is added to the tool speed. For example, Efficiency I adds 2 to the value, while Efficiency V adds 26. The speed is also increased by (20level)% of Haste in Java Edition or multiplied by (0.2level+1)(1.2level) in Bedrock Edition.
+Mining Fatigue decreases the speed by multiplying by (0.3min(level,4)) in Java Edition or by (0.3level)(0.7level) in Bedrock Edition. In Java Edition, increasing the effect level from II to III reduces the mining speed by a factor of 0.03 rather than 0.3. Therefore, with level III the speed is reduced to 0.0027 of normal speed instead.
+If the player's head is underwater and they are not wearing a helmet with the Aqua Affinity enchantment, breaking a block takes 5 times as long. If the player's feet are not touching the ground, an additional 5 penalty is added; this causes players floating in water to break blocks 25 slower than if they had been standing on land.
+The total time to break a block is always a multiple of 120 of a second, or 1 game tick; any remainder is rounded up to the next tick.
 
 
 === Instant breaking ===
 
-When breaking a block, a tool and its enchantments do its speed value as "damage" to a block every game tick, and when that value exceeds the block's hardness times 30, the block breaks. If the tool and enchantments immediately exceed the hardness times 30, the block breaks with no delay; otherwise a 6 tick (3⁄10 second) delay occurs before the next block begins to break.
-For example, a player with Haste II holding an Efficiency V diamond pickaxe (or netherite pickaxe) can break stone instantly, as the damage is (8+26)×(1+0.4)=47.6, which is greater than the base hardness of stone (1.5) times 30 (which is 45). Players in Creative mode always break blocks instantly regardless of tools or status effects, except for when wielding a sword, spear, debug stick, trident or a mace, in which case the player is unable to break anything.
+When breaking a block, a tool and its enchantments do its speed value as "damage" to a block every game tick, and when that value exceeds the block's hardness times 30, the block breaks. If the tool and enchantments immediately exceed the hardness times 30, the block breaks with no delay; otherwise a 6 tick (310 second) delay occurs before the next block begins to break.
+For example, a player with Haste II holding an Efficiency V diamond pickaxe (or netherite pickaxe) can break stone instantly, as the damage is (8+26)(1+0.4)=47.6, which is greater than the base hardness of stone (1.5) times 30 (which is 45). Players in Creative mode always break blocks instantly regardless of tools or status effects, except for when wielding a sword, spear, debug stick, trident or a mace, in which case the player is unable to break anything.
 
 
 === Calculation ===
@@ -55,15 +55,15 @@ if (haste or conduitPower):
 
 if (miningFatigue):
   # In Java Edition, Mining Fatigue actually follows hardcoded values for levels I, II, III, and IV. They are 0.3, 0.09, 0.0027, and 0.00081 respectively.
-  speedMultiplier *= 0.3 ^ min(miningFatigueLevel, 4)‌[Java Edition  only]
-  speedMultiplier *= 0.3 ^ miningFatigueLevel‌[Bedrock Edition  only]
+  speedMultiplier *= 0.3 ^ min(miningFatigueLevel, 4)[Java Edition  only]
+  speedMultiplier *= 0.3 ^ miningFatigueLevel[Bedrock Edition  only]
 
-speedMultiplier *= attribute(block_break_speed)‌[Java Edition  only] # normally 1
+speedMultiplier *= attribute(block_break_speed)[Java Edition  only] # normally 1
 
 if (inWater):
-  speedMultiplier *= attribute(submerged_mining_speed)‌[Java Edition  only] # normally 0.2, or 1 with aqua affinity
+  speedMultiplier *= attribute(submerged_mining_speed)[Java Edition  only] # normally 0.2, or 1 with aqua affinity
    if (not hasAquaAffinity):
-     speedMultiplier /= 5‌[Bedrock Edition  only]
+     speedMultiplier /= 5[Bedrock Edition  only]
 
 if (not onGround):
   speedMultiplier /= 5
@@ -76,10 +76,10 @@ else:
   damage /= 100
 
 if (haste or conduitPower):
-  damage *= 1.2 ^ max(hasteLevel, conduitPowerLevel)‌[Bedrock Edition  only]
+  damage *= 1.2 ^ max(hasteLevel, conduitPowerLevel)[Bedrock Edition  only]
 
 if (miningFatigue):
-  damage *= 0.7 ^ miningFatigueLevel‌[Bedrock Edition  only]
+  damage *= 0.7 ^ miningFatigueLevel[Bedrock Edition  only]
 
 # Instant breaking
 if (damage >= 1):
@@ -102,7 +102,7 @@ The following table shows the most efficient tools to break specific blocks.
 
 == Blocks by hardness ==
 
-The following table shows the time it takes to break each type of block. If there is no tool that helps speed up mining that block, the "tool" column is left empty. A few blocks are harvested faster with shears or a sword; these speeds are listed in the last two columns if different than "nothing". Any blocks with a breaking time of 0.05 seconds or less can be broken without the 3⁄10 second (or 6 ticks) delay that occurs between each broken block; see instant breaking above. Any block that has a hardness of infinity ∞ actually has a hardness of -1. However, the breaking ticks start from 0, which means that effectively it can never break. 
+The following table shows the time it takes to break each type of block. If there is no tool that helps speed up mining that block, the "tool" column is left empty. A few blocks are harvested faster with shears or a sword; these speeds are listed in the last two columns if different than "nothing". Any blocks with a breaking time of 0.05 seconds or less can be broken without the 310 second (or 6 ticks) delay that occurs between each broken block; see instant breaking above. Any block that has a hardness of infinity  actually has a hardness of -1. However, the breaking ticks start from 0, which means that effectively it can never break. 
 Legend:
 
 italicized can be instant mined

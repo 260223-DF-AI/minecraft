@@ -11,9 +11,9 @@ In Java Edition, raids can be disabled by setting the game rule raids to false.
 
 
 === Starting ===
-In Java Edition, any subchunk containing a POI (point of interest: a bed, job site, or bell) claimed by a villager counts as a village. When a player with Bad Omen enters a 3×3×3 subchunk region around a village, the effect transforms into Raid Omen that disappears after 30 seconds, and then the raid starts if the dimension allows it (currently, only the Nether disallows raids). The raid center is initially the average position of all claimed POIs within 64 block radius of the player when the raid triggers. A bossbar labeled "Raid" appears and begins charging taking 15 seconds to complete; a villager runs to ring the bell and all other villagers within 96 blocks (spherical) from the raid center start panicking until the bar is full. The bossbar is visible to players up to 96 blocks away (spherical) from the raid center. The bar is red and represents the total remaining health of the raid mobs (each segment is 1/10 of the bar). The number of mobs still alive displays when there are fewer than three.
-Raid waves spawn some distance away from the raid center and navigate toward it, although they can spawn much closer to the center if the only valid spots are there. A horn sounds at the start of each wave, from the direction of the wave spawn and 13 blocks away from the player. Each subsequent wave is larger, with more mobs, including pillagers, witches, evokers, ravagers, and vindicators. If during the course of the raid, all the POIs inside the subchunk around the raid center are lost (either because the villagers are killed or the blocks themselves are somehow destroyed), the raid center moves to the center of the nearest subchunk that still counts as a village within the surrounding 5×5×5 subchunk region (if there are none, the raid ends in defeat for the player).
-In Bedrock Edition, when a player with Bad Omen enters a 64×23×64 region around a village center (technically 1.12 blocks below the center), the effect transforms into Raid Omen that disappears after 30 seconds, and then the raid starts. A bossbar labeled "Raid" appears and begins charging. The bossbar is visible in a 128×88×128 region around the village center (technically 1.12 blocks below the center). The bar is red, and represents the number of remaining mobs. While a wither is already present in the village and a raid starts, the bar is red and black. The number of mobs still alive displays when there are fewer than three. A horn sounds at the start of each wave, and plays again at intervals until the wave has been defeated, or the player has lost. The horn plays from the direction of one of the illagers, which can help players locate it. The bell rings while the bossbar charges. Each subsequent wave is larger, with more mobs, including pillagers, witches, evokers, ravagers, and vindicators.
+In Java Edition, any subchunk containing a POI (point of interest: a bed, job site, or bell) claimed by a villager counts as a village. When a player with Bad Omen enters a 333 subchunk region around a village, the effect transforms into Raid Omen that disappears after 30 seconds, and then the raid starts if the dimension allows it (currently, only the Nether disallows raids). The raid center is initially the average position of all claimed POIs within 64 block radius of the player when the raid triggers. A bossbar labeled "Raid" appears and begins charging taking 15 seconds to complete; a villager runs to ring the bell and all other villagers within 96 blocks (spherical) from the raid center start panicking until the bar is full. The bossbar is visible to players up to 96 blocks away (spherical) from the raid center. The bar is red and represents the total remaining health of the raid mobs (each segment is 1/10 of the bar). The number of mobs still alive displays when there are fewer than three.
+Raid waves spawn some distance away from the raid center and navigate toward it, although they can spawn much closer to the center if the only valid spots are there. A horn sounds at the start of each wave, from the direction of the wave spawn and 13 blocks away from the player. Each subsequent wave is larger, with more mobs, including pillagers, witches, evokers, ravagers, and vindicators. If during the course of the raid, all the POIs inside the subchunk around the raid center are lost (either because the villagers are killed or the blocks themselves are somehow destroyed), the raid center moves to the center of the nearest subchunk that still counts as a village within the surrounding 555 subchunk region (if there are none, the raid ends in defeat for the player).
+In Bedrock Edition, when a player with Bad Omen enters a 642364 region around a village center (technically 1.12 blocks below the center), the effect transforms into Raid Omen that disappears after 30 seconds, and then the raid starts. A bossbar labeled "Raid" appears and begins charging. The bossbar is visible in a 12888128 region around the village center (technically 1.12 blocks below the center). The bar is red, and represents the number of remaining mobs. While a wither is already present in the village and a raid starts, the bar is red and black. The number of mobs still alive displays when there are fewer than three. A horn sounds at the start of each wave, and plays again at intervals until the wave has been defeated, or the player has lost. The horn plays from the direction of one of the illagers, which can help players locate it. The bell rings while the bossbar charges. Each subsequent wave is larger, with more mobs, including pillagers, witches, evokers, ravagers, and vindicators.
 
 
 === Raiders ===
@@ -64,7 +64,7 @@ This generally does not happen without artificial setups, as the raiders attempt
 
 ==== Bedrock Edition ====
 
-The raid spawns several waves of raider mobs. If a raid wave begins while an illager or witch is  already present inside the village, the wave spawns as normal and the extra mobs join the raid. The exact spawning mechanics are unknown, but the raid can spawn in the 128×32×128 region around the village center. Spawns may occur above or below ground. 
+The raid spawns several waves of raider mobs. If a raid wave begins while an illager or witch is  already present inside the village, the wave spawns as normal and the extra mobs join the raid. The exact spawning mechanics are unknown, but the raid can spawn in the 12832128 region around the village center. Spawns may occur above or below ground. 
 Valid spawn blocks in Bedrock Edition are any block except leaves and scaffolding (inside scaffolding is fine, as usual) with enough space on top. This includes on top of unusual blocks like redstone components, fences and beds. Any light level is fine and player proximity does not matter. If the spawn attempt fails, the wave is immediately declared over and the game moves on to the next wave, victory, or cancels the raid.  Once a valid location is found, the horn sounds and all raider mobs for that wave spawn there at once. They then spread out and move toward the village. Once all raiders are killed, there is a 15-second cooldown before the next wave. Raiders that are part of a raid do not despawn naturally and do not contribute to the mob cap, but resume despawning once the raid is over.
 
 
@@ -110,29 +110,29 @@ In addition to regular loot, pillagers and vindicators can drop:
 0-1 Emerald
 Additionally, depending on difficulty, they have a 65% chance of dropping on Easy and Normal, while 80% chance of dropping on Hard:
 
-0-1 Emerald (10⁄39 chance)
-2-3 Emerald (5⁄39 chance)
-4-5 Emerald (2⁄39 chance)
-1 Enchanted Book (2⁄39 chance)
-1 Iron Axe (5⁄78 chance)
-1 Iron Shovel (5⁄78 chance)
-1 Iron Pickaxe (5⁄78 chance)
-1 Iron Sword (5⁄78 chance)
-1 Iron Helmet (5⁄78 chance)
-1 Iron Chestplate (5⁄78 chance)
-1 Iron Leggings (5⁄78 chance)
-1 Iron Boots (5⁄78 chance)
+0-1 Emerald (1039 chance)
+2-3 Emerald (539 chance)
+4-5 Emerald (239 chance)
+1 Enchanted Book (239 chance)
+1 Iron Axe (578 chance)
+1 Iron Shovel (578 chance)
+1 Iron Pickaxe (578 chance)
+1 Iron Sword (578 chance)
+1 Iron Helmet (578 chance)
+1 Iron Chestplate (578 chance)
+1 Iron Leggings (578 chance)
+1 Iron Boots (578 chance)
 Note:
 
-Iron equipment from raider drops has 50% chance of being enchanted with random enchantment(s) at a low-to-medium level.​[more information needed]
+Iron equipment from raider drops has 50% chance of being enchanted with random enchantment(s) at a low-to-medium level.[more information needed]
 Iron equipment from raider drops is always damaged.
-Enchanted books from raider drops have random enchantments at a high level, including treasure enchantments (but not Soul Speed or Swift Sneak).​[more information needed]
+Enchanted books from raider drops have random enchantments at a high level, including treasure enchantments (but not Soul Speed or Swift Sneak).[more information needed]
 Emerald is both a regular raid drop and an additional drop.
 Only emerald drops are affected by looting enchantment, increased by 1% per looting level.
 
 
 === Defeat ===
-If the attacked village no longer registers as a village (i.e., all villagers were killed or all claimed beds, bells, and profession blocks were destroyed), the raid ends, the raid bar displays "Raid - Defeat", and all of the raiders celebrate: The evokers, pillagers, and vindicators raise their hands, the pillagers jump up and down‌[JE  only] or[verify] raise their hands‌[BE  only], the witches and ravagers jump up and down, and all of them emit "celebration sounds".
+If the attacked village no longer registers as a village (i.e., all villagers were killed or all claimed beds, bells, and profession blocks were destroyed), the raid ends, the raid bar displays "Raid - Defeat", and all of the raiders celebrate: The evokers, pillagers, and vindicators raise their hands, the pillagers jump up and down[JE  only] or[verify] raise their hands[BE  only], the witches and ravagers jump up and down, and all of them emit "celebration sounds".
 Java Edition
 
 Bedrock Edition:
@@ -140,7 +140,7 @@ Bedrock Edition:
 
 === Victory ===
 The village is victorious when the last raid member in the final wave has been defeated. When this happens, the villagers exit their homes and shoot off fireworks to celebrate, and the Raid bar displays "Raid - Victory".
-In some cases a raid ends after a set amount of time, if all left over raiders cannot move.​[more information needed]
+In some cases a raid ends after a set amount of time, if all left over raiders cannot move.[more information needed]
 
 
 ==== Hero of the Village ====
@@ -149,7 +149,7 @@ If all raiders are killed in the final wave, any player who has killed a raid me
 
 
 === Villagers ===
-In Java Edition during a raid, villagers emit "sweat particles". At least one villager rushes to the village meeting point and rings the bell to alert other villagers to get inside their houses during the warmup of an upcoming raid wave‌[JE  only]. 
+In Java Edition during a raid, villagers emit "sweat particles". At least one villager rushes to the village meeting point and rings the bell to alert other villagers to get inside their houses during the warmup of an upcoming raid wave[JE  only]. 
 After successfully defending a village from a raid, the villagers emerge from their houses and celebrate, by setting off firework rockets and cheering, although the villagers do not have celebration sounds like the raiders do.
 
 
@@ -163,7 +163,7 @@ Vexes summoned by evokers do not count as part of the raid. Killing them has no 
 
 
 === Expiring ===
-If a raid goes on for 48,000 ticks (40 minutes in real time) the raid bossbar disappears, and in Bedrock Edition a message appears reading “Raid Expired”. Any raiders alive when the raid expires stay until they are killed.
+If a raid goes on for 48,000 ticks (40 minutes in real time) the raid bossbar disappears, and in Bedrock Edition a message appears reading Raid Expired. Any raiders alive when the raid expires stay until they are killed.
 
 
 == Sounds ==

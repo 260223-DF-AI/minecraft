@@ -1,0 +1,74 @@
+This is a list of Java Edition 1.18.1 development versions.
+
+
+== 1.18.1 Pre-release 1 ==
+1.18.1 Pre-release 1 (known as 1.18.1-pre1 in the launcher) is the first and only pre-release for Java Edition 1.18.1, released on December 3, 2021, which makes changes to the fog and fixes bugs. This is the final pre-release released in 2021.
+
+
+=== Changes ===
+
+
+==== General ====
+Fog
+
+World fog now starts further away from the player, to make distant terrain more visible.
+Instead of applying fog as a spherical volume it is now applied as a cylindrical volume.
+
+
+=== Fixes ===
+4 issues fixed
+From released versions before 1.18
+
+MC-219507  Beacon's power reverts back to previous one on world reload.
+From 1.18
+
+MC-242729  Observer activating without any updates nearby, caused by /clone.
+MC-243216  Chunk render distance on servers seems shorter than in 1.17.1.
+Other
+
+Fixed an issue that would cause players on low-bandwidth connections to get timeout errors when connecting to a server.
+
+
+== 1.18.1 Release Candidate 1 ==
+1.18.1 Release Candidate 1 (known as 1.18.1-rc1 in the launcher) is the first release candidate for Java Edition 1.18.1, released on December 7, 2021, which fixes some bugs.
+
+
+=== Fixes ===
+3 issues fixed
+From released versions before 1.18
+
+MC-152198  Actual render distance is 2 chunks lower than render distance setting.
+From 1.18
+
+MC-243796  Random non fatal exceptions in console: Failed to store chunk ConcurrentModificationException.
+From the previous development version
+
+MC-244190  Entity fog doesn't match the fog of blocks around them.
+
+
+== 1.18.1 Release Candidate 2 ==
+1.18.1 Release Candidate 2 (known as 1.18.1-rc2 in the launcher) is the second release candidate for Java Edition 1.18.1, released on December 8, 2021, which fixes a bug that caused chunk loading issues.
+
+
+=== Fixes ===
+1 issue fixed
+From the previous development version
+
+MC-245010  Sometimes certain chunks will never load.
+
+
+== 1.18.1 Release Candidate 3 ==
+1.18.1 Release Candidate 3 (known as 1.18.1-rc3 in the launcher) is the third and final release candidate for Java Edition 1.18.1, released on December 10, 2021, which fixes a critical security issue. This is the final release candidate released in 2021.
+
+
+=== Fixes ===
+1 issue fixed
+Other
+
+Fixed a critical security issue in which attackers are able to execute code on others' devices (RCE exploit) via in-game messaging or other methods where the game logs a certain exploitable string formatted as ${jndi:ldap://<url>}, due to an upstream vulnerability in log4j2.
+
+
+== Notes and references ==
+
+
+== Navigation ==

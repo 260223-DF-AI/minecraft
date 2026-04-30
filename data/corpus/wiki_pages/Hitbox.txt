@@ -1,6 +1,6 @@
 A hitbox defines the physical boundary (or an approximation) of a block or entity. Hitboxes are used in the calculations of collisions and targeting.
 Unlike with block models, all hitboxes' sizes are hard-coded and cannot be changed independently without modification.
-In Java Edition, hitboxes can be seen through the F3 + B debug hotkey.
+In Java Edition, hitboxes can be seen through the F3 + B debug hotkey.
 
 
 == Entity hitboxes ==
@@ -44,13 +44,13 @@ In Java Edition, it is possible to visualize the collision boxes by enabling vis
 === Interaction box ===
 
 The interaction box manages block interactions with players, such as block placement, destruction, use actions, etc. When looking at the given block, the interaction box is shown as a black outline around the block's edges; this is especially visible in the barrier block. The interaction box appears only if the block the player is looking at is inside of the interaction range.
-A block's interaction box is usually contained within its own 1×1×1 cube space. However, some blocks, such as the ones reported below, are capable of extending outside of this space.
+A block's interaction box is usually contained within its own 111 cube space. However, some blocks, such as the ones reported below, are capable of extending outside of this space.
 
-The arm of an extended piston – specifically the part that protrudes into the piston's block space.
-The very top part of a lectern's head.‌[Java Edition  only] This is particularly noticeable when a block is placed above the lectern, making the lectern's outline overlap with the block.
+The arm of an extended piston  specifically the part that protrudes into the piston's block space.
+The very top part of a lectern's head.[Java Edition  only] This is particularly noticeable when a block is placed above the lectern, making the lectern's outline overlap with the block.
 The extended top of an opened shulker box.
 The interaction box isn't visible when aiming the crosshair at the part that extends outside of the cube.
-In Java Edition, the interaction box outline is cyan ( #57ffe1) with a small black outline if "Options" → "Accessibility Settings" → "High Contrast Block Outlines" is enabled. When the debug property SHAPES is enabled, the interaction box outline is white.
+In Java Edition, the interaction box outline is cyan ( #57ffe1) with a small black outline if "Options"  "Accessibility Settings"  "High Contrast Block Outlines" is enabled. When the debug property SHAPES is enabled, the interaction box outline is white.
 
 
 == Miscellaneous hitboxes ==
@@ -73,7 +73,7 @@ Ominous item spawner: When an ominous item spawner spawns above an entity, it fi
 === Particle collision box ===
 Some particles have physics: for example, the smoke particles from campfires. Particles with physics have a collision box that collides with collision box of blocks. Upon collision, the particle's motion is brought to zero along one of the axes, depending on the direction of the collision.
 However, particles are generated even if their collision box intersects the collision box of a block. When this happens, the particle ignores the collision box. 
-A lit campfire creates smoke particles between 0 and 2 blocks above it, with a symmetric triangular distribution, by the formula pos.getY() + random.nextDouble() + random.nextDouble(), when pos.getY() is the Y coordinates of the campfire and random.nextDouble() is a random number between 0 and 1. Each particle has a 4×4×4 pixels (0.25×0.25×0.25 blocks) collision box. Therefore, the closer a collision box is above the campfire, the more likely a smoke particle is to pass through it, and when the collision box is at 2.25 blocks or more, no particle will pass through it. 
+A lit campfire creates smoke particles between 0 and 2 blocks above it, with a symmetric triangular distribution, by the formula pos.getY() + random.nextDouble() + random.nextDouble(), when pos.getY() is the Y coordinates of the campfire and random.nextDouble() is a random number between 0 and 1. Each particle has a 444 pixels (0.250.250.25 blocks) collision box. Therefore, the closer a collision box is above the campfire, the more likely a smoke particle is to pass through it, and when the collision box is at 2.25 blocks or more, no particle will pass through it. 
 For example, 71.9% of smoke particles pass through a full collidable block one block above the campfire, 28.1% pass through a top slab one block above the campfire, 3.13% pass through a full collidable block two blocks above the campfire, only 0.195% pass through a cauldron two blocks above the campfire, and no particle passes through a top slab two block above the campfire.
 
 
@@ -84,12 +84,12 @@ Most entities' bounding boxes are shaped in cuboids, and do not always overlap w
 
 === Base hitbox size ===
 Below is a table of every entities' hitboxes, mainly sourced from Java Edition, unless stated otherwise. The list shows sizes of the entities' base bounding box size; other hitboxes may be noted.
-Some entities' hitbox size is marked with "Varies", this indicates that the entity has variable hitbox sizes, see § Variable hitbox size. For others, "None" marks that the entity does not have hitbox, and "N/A" indicates no data is available yet for the entity in the wiki. An empty cell indicates that the entity may not have hitbox or no data is available yet ("None" or "N/A").
+Some entities' hitbox size is marked with "Varies", this indicates that the entity has variable hitbox sizes, see  Variable hitbox size. For others, "None" marks that the entity does not have hitbox, and "N/A" indicates no data is available yet for the entity in the wiki. An empty cell indicates that the entity may not have hitbox or no data is available yet ("None" or "N/A").
 
 
 === Variable hitbox size ===
 
-The size of an entity's hitbox is not necessarily static and may change depending on certain situations. For instance, a player's hitbox gets smaller while crouching, and a pufferfish's hitbox changes while its puffing. Some entities may also spawn in different sizes, like slime, magma cube, and salmon‌[Bedrock Edition  only].
+The size of an entity's hitbox is not necessarily static and may change depending on certain situations. For instance, a player's hitbox gets smaller while crouching, and a pufferfish's hitbox changes while its puffing. Some entities may also spawn in different sizes, like slime, magma cube, and salmon[Bedrock Edition  only].
 Below is the list of entities whose hitbox can change sizes given specific situations or states:
 
 
@@ -116,8 +116,8 @@ Issues relating to "Hitbox" are maintained on the bug tracker. Issues should be 
 
 
 == Trivia ==
-In Java Edition, the visually shown entity hitboxes that appear when F3 + B sometimes do not render where the hitbox actually is, as it is just highlighting the area relative to the position of the entity that has the hitbox. This can be quite prominent if the player runs /tick freeze when a mob is moving.
-In Java Edition, if an entity has the Invisibility effect, its hitbox is not visually shown when F3 + B is pressed.
+In Java Edition, the visually shown entity hitboxes that appear when F3 + B sometimes do not render where the hitbox actually is, as it is just highlighting the area relative to the position of the entity that has the hitbox. This can be quite prominent if the player runs /tick freeze when a mob is moving.
+In Java Edition, if an entity has the Invisibility effect, its hitbox is not visually shown when F3 + B is pressed.
 
 
 == Gallery ==

@@ -1,4 +1,4 @@
-A chunk is a 16×16 segment of a world. Chunks are the method used by the game to divide maps into manageable pieces. They are further divided in 16-block tall sections, which are also often called "subchunks".
+A chunk is a 1616 segment of a world. Chunks are the method used by the game to divide maps into manageable pieces. They are further divided in 16-block tall sections, which are also often called "subchunks".
 
 
 == Description ==
@@ -8,7 +8,7 @@ Chunks generate with the help of the map seed, which means that each chunk gener
 
 
 == Chunk loading ==
-Since Minecraft worlds are 30 million blocks in each cardinal direction‌[Java Edition  only] and contain an extreme number of chunks, the game loads only certain chunks in order to make the game playable. Unloaded chunks are unprocessed by the game and do not process any of the game aspects.
+Since Minecraft worlds are 30 million blocks in each cardinal direction[Java Edition  only] and contain an extreme number of chunks, the game loads only certain chunks in order to make the game playable. Unloaded chunks are unprocessed by the game and do not process any of the game aspects.
 The game always loads the entire chunk when it decides a chunk needs to be processed. The division into sections is only used for display purposes (e.g. to limit the amount of data to transfer to the game client) and certain game mechanics (e.g. village mechanics).
 
 
@@ -35,11 +35,11 @@ The chunks that get load level from level propagation activate the assigned load
 There are different ticket types, which come from various sources. If a ticket type defines a non-zero timeout, tickets of that type expire after that number of ticks. Each ticket type also has one or more flags that define how tickets of that type are handled.
 The possible flags are:
 
-Persist – The ticket is persisted when the world is shut down, meaning when the world starts up again, the ticket is restored. This flag is set only for force-loading and portal tickets.
-Does load – Tickets with this flag load chunks. This flag is set for all ticket types.
-Does simulate – Tickets with this flag define an area where blocks and entities are updated.
-Should keep dimension active – Tickets with this flag prevent a dimension from stopping entity and block entity ticking altogether.
-Can expire if unloaded – Tickets with this flag, which is only the "unknown" ticket type, count down their remaining ticks even when their chunks are not fully loaded yet (or at all).
+Persist  The ticket is persisted when the world is shut down, meaning when the world starts up again, the ticket is restored. This flag is set only for force-loading and portal tickets.
+Does load  Tickets with this flag load chunks. This flag is set for all ticket types.
+Does simulate  Tickets with this flag define an area where blocks and entities are updated.
+Should keep dimension active  Tickets with this flag prevent a dimension from stopping entity and block entity ticking altogether.
+Can expire if unloaded  Tickets with this flag, which is only the "unknown" ticket type, count down their remaining ticks even when their chunks are not fully loaded yet (or at all).
 The following ticket types exist:
 
 Player spawn
@@ -81,9 +81,9 @@ In multiplayer, "simulation-distance" configured in server.properties decides th
 Chunk loading caused by a player ticket allows block entities to be ticked and scheduled tick and chunk tick (without mob spawning) to be processed only if the chunk is in the aforementioned square region along with a one-chunk-thick square frame surrounding this region. That is, a square region with side length of l=min(2s+3,65).
 For example,
 
-With a simulation distance of 5 and a render distance of 10, entities move normally within a 11×11 chunk column around the player chunk. One more chunk out, within a one-chunk-thick square frame surrounding this region, redstone and command blocks still run, fluids flow, and crops grow. Zombies stop despawning naturally beyond 21×21 chunks.
-With a simulation distance of 5 and a render distance of 5, entities move normally within a 11×11 chunk column around the player chunk. One more chunk out, within a one-chunk-thick square frame surrounding this region, redstone and command blocks still run and fluids still flow, but crops stop growing. Zombies won't despawn because they are unloaded before being 128 blocks away from the player.
-With a simulation distance of 5 and a render distance of 2, entities move normally within a 5×5 chunk column around the player chunk. One more chunk out, within a one-chunk-thick square frame surrounding this region, redstone and command blocks still run and fluids still flow, but crops stop growing. Zombies won't despawn.
+With a simulation distance of 5 and a render distance of 10, entities move normally within a 1111 chunk column around the player chunk. One more chunk out, within a one-chunk-thick square frame surrounding this region, redstone and command blocks still run, fluids flow, and crops grow. Zombies stop despawning naturally beyond 2121 chunks.
+With a simulation distance of 5 and a render distance of 5, entities move normally within a 1111 chunk column around the player chunk. One more chunk out, within a one-chunk-thick square frame surrounding this region, redstone and command blocks still run and fluids still flow, but crops stop growing. Zombies won't despawn because they are unloaded before being 128 blocks away from the player.
+With a simulation distance of 5 and a render distance of 2, entities move normally within a 55 chunk column around the player chunk. One more chunk out, within a one-chunk-thick square frame surrounding this region, redstone and command blocks still run and fluids still flow, but crops stop growing. Zombies won't despawn.
 Technically, the above game aspects are controlled by another different ticket system named ticking ticket.
 
 
@@ -156,16 +156,16 @@ The X of a chunk is floor(X coordinate / 16)
 The Z of a chunk is floor(Z coordinate / 16)
 Where floor is the largest previous integer. E.g. floor( 27.18 ) is 27, and floor( -3.14 ) is -4.
 Also, the coordinates of a block within a chunk can be found by taking the coordinate mod 16.
-For example, if the X coordinate of a player is 27, Z coordinate is −15, that player is on chunk (Floor(27/16), Floor(−15/16)), or chunk (1, −1), and at (27 mod 16, −15 mod 16), or (11, 1) within the chunk.
+For example, if the X coordinate of a player is 27, Z coordinate is 15, that player is on chunk (Floor(27/16), Floor(15/16)), or chunk (1, 1), and at (27 mod 16, 15 mod 16), or (11, 1) within the chunk.
 
-In Java Edition, the key F3 + G can be used to display chunk boundaries. Alternately, pressing the "F3" button opens the Debug screen that shows the player's X, Y, and Z coordinates, in addition to the "chunk" variable. These coordinates change as the player moves around. The player can know the chunk they are in by the variable "chunk".
+In Java Edition, the key F3 + G can be used to display chunk boundaries. Alternately, pressing the "F3" button opens the Debug screen that shows the player's X, Y, and Z coordinates, in addition to the "chunk" variable. These coordinates change as the player moves around. The player can know the chunk they are in by the variable "chunk".
 In Bedrock Edition, when toggling fancy graphics, the world renders again, loading only the chunk the player is in for a split second, briefly showing the chunk boundaries. When the player changes the render distance rapidly, chunk barriers appear as a blue line.
 Also, if in mid-air and bridging with full blocks, the next block placed fades into view when a chunk border is intersected, showing the chunk border. This is sometimes unreliable, and it happens only on chunk borders. This does not happen underground or when the block placed is close to more than one block.
 
 
 == Slime chunks ==
 
-Each chunk has a 1⁄10 chance of generating as a slime chunk, a chunk that slimes are able to spawn in below Y=40 and regardless of light level. These chunks are otherwise identical to normal chunks.
+Each chunk has a 110 chance of generating as a slime chunk, a chunk that slimes are able to spawn in below Y=40 and regardless of light level. These chunks are otherwise identical to normal chunks.
 In Java Edition, whether a chunk at a particular set of coordinates becomes a slime chunk is determined by the world's seed. In Bedrock Edition, however, they are generated at the same coordinates in every world.
 
 
@@ -184,7 +184,7 @@ Issues relating to "Chunk" are maintained on the bug tracker. Issues should be r
 
 == Trivia ==
 If a player stands in a chunk that has not generated yet, the world immediately becomes invisible until they are in a valid chunk. This does not happen if the Y coordinates are beyond the chunk boundaries.
-In Bedrock Edition, if one of the sixteen 16×16×16 sections of a chunk doesn't have any blocks in it, placing a block there shows the same animation as a chunk loading. This bug makes the block that the player placed to turn to the same color of the sky in the direction the player is facing for about 1 second and starts fading away into the normal block texture. If the time is sunrise or sunset and the player places a block there, it actually changes colors constantly for 1 second if the player keeps bobbing their head up and down. The block also makes blocks behind it appear invisible.
+In Bedrock Edition, if one of the sixteen 161616 sections of a chunk doesn't have any blocks in it, placing a block there shows the same animation as a chunk loading. This bug makes the block that the player placed to turn to the same color of the sky in the direction the player is facing for about 1 second and starts fading away into the normal block texture. If the time is sunrise or sunset and the player places a block there, it actually changes colors constantly for 1 second if the player keeps bobbing their head up and down. The block also makes blocks behind it appear invisible.
 
 
 == See also ==

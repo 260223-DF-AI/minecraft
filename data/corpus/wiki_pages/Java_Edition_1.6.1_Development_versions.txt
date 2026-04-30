@@ -1,0 +1,1074 @@
+This is a list of Java Edition 1.6.1 development versions.
+
+
+== 13w16a ==
+13w16a is the first snapshot for Java Edition 1.6.1, released on April 18, 2013, which adds some new features including horses and their relatives, leads, and carpets. To run this snapshot, it was required to use a new launcher, the initial version of which was released at the same time.
+The client of 13w16a was reuploaded three times: once 13 minutes after release and twice the day after release.[more information needed]
+The server of 13w16a was reuploaded once.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Carpets
+
+Made using 2 of the player's desired colors of wool in a horizontal line.
+ Hay blocks
+
+Can be placed in all orientations, just like wood.
+
+
+==== Items ====
+ Horse armor
+
+Exist in diamond, iron and gold variants.
+Crafted with six iron/gold/diamond and a wool block.
+
+ Leads
+
+Can be used to bind mobs to fences or lead them around.
+Right-click mob first, then right-click fence or right-click the mob again to get the lead back.
+ Horse saddle
+
+Stacks to 32.
+Crafted with five leather and three iron ingots.
+
+ Horse spawn egg
+
+When used, a different horse breed is created each time.
+Works like any other spawn egg.
+
+
+==== Mobs ====
+ Horses
+
+Ridable by right-clicking them, move with usual movement keys, maximum speed, and jump height differ between horses.
+Have various amounts of maximum health, use wheat and carrots to heal them.
+Drop leather when killed.
+Can be bred using wheat  baby horses can be grown using apples, golden apples, wheat, and hay bales.
+Players can make them jump by pressing and holding the space bar.
+They naturally step up over 1 block, which enables rider to walk up hills.
+They can also use ladders, when steered towards them.
+Creation assisted by DrZhark (creator of the Mo' Creatures mod).
+ Donkeys
+
+Like horses, but can carry chests on their back although no inventory is currently available.
+Can be bred with horses to make a mule.
+ Mules
+
+Mules can be obtained by breeding a donkey and a horse.
+ Skeleton horses
+
+Require NBT editing to view in-game.
+An unused mob.
+ Zombie horses
+
+Require NBT editing to view in-game.
+An unused mob.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+General 
+
+Changed the idea of mob difficulty.
+Regional difficulty: The longer the player stays in one area, the harder it gets.
+Scales with difficulty  Items, enchants or AI improve with difficulty.
+
+
+==== Gameplay ====
+Enchanting
+
+Improved Respiration.
+Now also helps seeing underwater (depends on the enchantment level).
+Riding
+
+Add mob's health bar to the heads-up display when riding on it (both pigs and horses).
+When riding something, like a mob or a boat, dismounting is only possible using the sneak key.
+
+
+==== General ====
+Credits
+
+Added Mo' Creatures developers to credits.txt.
+Game window
+
+Now displays the client's version in the window title (for example: "Minecraft 13w16a").
+Directory structure
+
+.minecraft directory structure is changed:
+assets folder; stores resources such as language packs and sounds.
+All music discs now use .ogg format instead of .mus format.
+library folder; stores Java libraries such as LWJGL and jinput.jar.
+versions folder; there are files version.json (meta data) and folders that stores minecraft.jar for each versions (but its name is the same as its version; the jar for 13w16a is versions/13w16a/13w16a.jar).
+Game directory
+
+Both the game's main class (net.minecraft.client.main.Main) and the new launcher began to support an optionally specified game directory, where the game stores its files (/saves, options.txt, etc.). The main class' parameter for the game directory was named as (a misleading) --workDir, and it was later changed (in 13w24a) to a more adequate --gameDir.
+
+
+=== Trivia ===
+This is the earliest snapshot available in the Minecraft launcher. Although earlier snapshots are not available in the launcher, almost all of them have been archived.
+This is the first snapshot to require Java 6 and is also able to launch with Java 9 and up.
+This is the first snapshot of the older snapshots and versions that are available in the Minecraft launcher to not require be launched by a helper-wrapper class (net.minecraft.launchwrapper.Launch) that was used for pre-1.6 versions to tweak the old code to the modern launcher's needs. This and the later snapshots and versions are being launched normally, by their main class (net.minecraft.client.main.Main).
+
+
+=== Fixes ===
+6 issues fixed
+From released versions before Java Edition 1.6.1
+
+MC-3090  Unable to play game unless LWJGL is manually replaced.
+MC-4253  Endermen are rendered hostile if they take environmental damage.
+MC-5674  Client can control if they take damage and abuse this / ALT or F10 freezes client in windowed mode.
+MC-11229  Using the anvil for free.
+MC-12017  Can get permanently stuck in a minecart in a nether portal.
+MC-12369  Minecraft crashing on 1.5.1 prerelease server.
+
+
+== 13w16b ==
+13w16b is the second snapshot for Java Edition 1.6.1, released on April 23, 2013, which adds name tags and fixes some of the bugs and crashes in 13w16a.
+13w16b was reuploaded soon after release to fix the tooltips for hay bales and leads.
+
+
+=== Additions ===
+
+
+==== Items ====
+Name tags
+
+Found in dungeon chests.
+Used to rename mobs.
+
+
+==== General ====
+Tooltips
+
+Added tooltips for hay bale and lead.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Horse
+
+Is now slower.
+Doesn't glide as much as it did last snapshot.[more information needed]
+
+
+==== General ====
+Crash reporting
+
+Re-enabled crash reporting.
+
+
+=== Fixes ===
+17 issues fixed
+From the launcher
+
+MC-11713  Unintended debug output to console if .minecraft does not exist.
+MC-13711  Icon in the taskbar shows LWJGL default icon while loading Minecraft.
+MC-13870  New launcher fails to launch on certain linux setups.
+MC-14035  New Launcher 0.2 not starting on OS X.
+MC-14460  no lwjgl in java.library.path.
+MC-14513  The new snapshot doesn't run under Linux.
+From the previous development version
+
+MC-13599  Leash and hay bale do not have a name.
+MC-13601  When going fullscreen, character looks up into the sky and spins around quickly.
+MC-13610  Players do not activate stone pressure plates anymore.
+MC-13623  Nullpointer exception when entering boat/minecart/riding horse.
+MC-13625  Color of the experience bar while having spawn eggs, enchantment bottles, enchanted books and nether stars in the inventory.
+MC-13627  When killing a horse you will get a normal saddle back.
+MC-13628  SMP/LAN: NPE when right clicking horses.
+MC-13638  Boats do not work in 13w16a.
+MC-13660  Mobs become stuck on carpet.
+MC-13929  Mouse cursor no longer snaps back to center of window after exiting inventories/menus.
+MC-14321  Carpets obstruct bed spawns / stuck in ceiling after leaving bed.
+
+
+== 13w17a ==
+13w17a is the third snapshot for Java Edition 1.6.1, released on April 25, 2013.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Hardened clay
+
+Obtained by smelting a clay block.
+
+
+==== Gameplay ====
+Tooltips
+
+Added extra tooltip info in the search tab for the Creative inventory.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Carpets
+
+Crafting recipe now gives three carpet blocks.
+
+
+==== Mobs ====
+Zombies
+
+Now have a low chance to spawn more zombies when they take damage.
+This is an early version of the function; in the future, this will mainly apply to spawning zombies out of sight in enclosed spaces.
+
+
+==== World generation ====
+Lakes
+
+No longer generate in deserts.
+Water lakes only generate on the edge of desert and desert hills biomes; lava lakes still will, however.
+
+
+==== Gameplay ====
+Tooltips
+
+Shows what category a block/item is in.
+
+
+=== Fixes ===
+9 issues fixed
+From the launcher
+
+MC-13692  Launcher Beta - OS X with Retina Display is pixelated.
+MC-14606  New Minecraft Launcher unable to play/download snapshot.
+From released versions before Java Edition 1.6.1
+
+MC-22  Jukebox audio volume doesn't decrease.
+MC-1407  Tamed wolves and cats despawn.
+MC-7134  Silverfish breaking blocks when "mobGriefing" is set to false.
+MC-8112  Pick-block and furnaces bug.
+MC-8260  Achievement "Hot Topic" uses faceless furnace icon.
+MC-12133  Arrows visually float when shot into a block.
+From the Java Edition 1.6.1 development versions
+
+MC-14618  Custom language-pack removal.
+
+
+== 13w18a ==
+13w18a is the fourth snapshot for Java Edition 1.6.1, released on May 2, 2013.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Block of coal
+
+Crafted with coal in a 33 space.
+The block cannot be crafted with charcoal.
+Can be used as furnace fuel and smelts 72 items, the equivalent to 9 coal.
+Can be used as a storage block for large amounts of coal, similarly to blocks of iron and related blocks.
+
+
+==== Items ====
+Leads
+
+New crafting recipe: 4 string and 1 slimeball.
+
+
+==== World generation ====
+Nether fortresses
+
+Added chest generation.
+Chests generate in corners of interior corridors.
+
+
+==== General ====
+Texture pack system
+
+Start of a new texture loading system.
+New "missing texture" texture.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Carpets
+
+Can now be placed on translucent blocks.
+This includes glowstone, glass, glass panes, and beacons.
+Beacons still function under carpets.
+Hay blocks
+
+New crafting recipe.
+Hay blocks are crafted with wheat similarly to mineral blocks.
+Hay blocks cannot be crafted back into wheat.
+Locked chests 
+
+Texture changed to missing texture, due to the new texture pack loading system.
+Redstone comparators 
+
+Now output a signal for cauldrons and end portal frames.
+A cauldron gives signal strengths that range from zero (empty) to three (full) depending on the amount of water contained inside.
+An end portal frame would give a signal strength of either zero or fifteen, depending on if an eye of ender has been inserted into it.
+
+
+==== Items ====
+Cocoa beans
+
+Removed from dungeon chests.
+Horse armor
+
+No longer craftable.
+Can be found in dungeons.
+Horse saddles
+
+Removed from the game.
+Saddles
+
+Can now be found in most generated chests.
+
+
+==== Mobs ====
+Horses
+
+Tweaked horse equipment obtainability.
+Normal saddles are now required to ride horses.
+Horses now use the same saddle that pigs use.
+Adjustments related to horses makes them more practical later in the game.
+Zombies
+
+Mechanic whereby zombies spawn more zombies adjusted to be subtle and not as easily visible to the player.
+Zombies spawn in dark areas far from the player or in caves.
+No longer attack when provoked by players in Creative mode.
+Creepers, skeletons, witches and wolves
+
+No longer attack when provoked by players in Creative mode.
+
+
+=== Fixes ===
+7 issues fixed
+From released versions before Java Edition 1.6.1
+
+MC-590  Mobs not realizing they killed their attacker and trying to attack empty space.
+MC-1320  [Wolves] wont stop snarling after punched by someone else.
+MC-1980  Zombie villagers are able to despawn during curing process.
+MC-4631  Lava decay fails to schedule block update.
+MC-14221  Blocks stop updating one minute after entering the Nether or the End.
+From the Java Edition 1.6.1 development versions
+
+MC-14586  The player can pick up command blocks with any pickaxe.
+From the previous development version
+
+MC-14786  Can't place carpet on translucent blocks.
+
+
+== 13w18b ==
+13w18b is the fifth snapshot for Java Edition 1.6.1, released on May 2, 2013 to fix some of the bugs and crashes in the 13w18a snapshot.
+
+
+=== Fixes ===
+5 bugs fixed
+
+MC-15020  Animations are not working.
+MC-15022  FPS drop due to new texture system while looking at horses.
+MC-15027  Crash on world load.
+MC-15034  Texture pack descriptions do not load.
+MC-15036  Riding horses into obstacles crashes the game.
+
+
+== 13w18c ==
+13w18c is the sixth snapshot for Java Edition 1.6.1, released on May 2, 2013 to fix some of the bugs and crashes in the 13w18a and 13w18b snapshots.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+ Block of Coal
+
+Smelting time was changed from 720 to 800 seconds.
+Smelts 80 items, the same number of items that 10 coal can smelt.
+
+
+=== Fixes ===
+7 issues fixed
+From the Java Edition 1.6.1 development versions
+
+MC-14632  Enchanted books don't show what tab it is in.
+MC-15035  Skins not loading for players.
+MC-15041  Breaking Item Frames causes a null pointer exception and crash.
+MC-15058  Internal exception: java.lang.NullPointerException.
+From the previous development version
+
+MC-14979  Wrong particle texture when changing texture packs in-game.
+MC-15095  Coal blocks and note blocks do not show up in creative tabs.
+MC-15096  Game crashes on startup.
+
+
+== 13w19a ==
+13w19a is the seventh snapshot for Java Edition 1.6.1, released on May 10, 2013.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Stained Clay
+
+Added to coordinate with the array of wool colors.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+ Block of Coal
+
+Texture changed from .
+ Command Blocks
+
+Are no longer mineable in Survival.
+ Block of Lapis Lazuli
+
+Texture changed from .
+
+
+==== Items ====
+ Charcoal
+
+Texture changed from .
+ Horse Armor
+
+Can be stacked to 32 instead of 64.
+
+
+==== Mobs ====
+General 
+
+Mobs spawn in groups again.
+ Donkeys and Mules
+
+Can have their inventories accessed if they have a chest on.
+Right-click while sneaking to open it.
+The name of the donkey or mule shows in their inventory GUI similarly to other renamed containers.
+
+
+=== Fixes ===
+4 issues fixed
+From released versions before Java Edition 1.6.1
+
+MC-671  Minecarts with furnace consume coal in creative mode.
+MC-3960  After the last use of a bow you get a glitch bow that when dropped and picked up again duplicates.
+From the Java Edition 1.6.1 development versions
+
+MC-15061  Coal blocks do not burn away.
+From the previous development version
+
+MC-15148  Blurred menu background textures.
+
+
+== 13w21a ==
+13w21a is the eighth snapshot for Java Edition 1.6.1, released on May 23, 2013.
+
+
+=== Additions ===
+
+
+==== Mobs ====
+Donkeys, horses and mules
+
+Added a UI to control saddle/inventory/armor.
+Can be accessed by sneaking and right-clicking, or by pressing the inventory button while riding.
+Some features of the UI are specific to certain mobs:
+All three mobs have a saddle slot.
+Only horses have an armor slot.
+Donkeys and mules have an inventory of 15 slots when given a chest.
+
+
+==== General ====
+Attribute system
+
+Started to move over various things to a new attribute system:
+Item attributes using NBT data:
+Attributes can be additive, subtractive and multiplicative using a set value.
+Some items have default modifiers in place of previously hard-coded attributes.
+Examples of possible changes players could make: A bow that slows the holder, a helmet that buffs health, etc.
+Entity attributes:
+These properties can now be changed as easily as any other NBT attribute.
+Entity speed, base health, base attack.
+Other properties like weapon damage/bow draw speed/sword swing speed are yet to follow.
+Internal chat system
+
+Lots of messages should be translated now that were not previously.
+Messages are now better modularized.
+Server messages can be sent by their code-defined name, allowing the client to utilize the correct translation according to their language settings.
+Color can be specifically designated, preventing leakage into further messages.
+
+
+=== Changes ===
+
+
+==== Items ====
+Horse armor
+
+No longer stackable.
+Tools
+
+Instead of replacing the barehanded damage (1HP), pickaxes, shovels, axes and swords now add their damage onto the barehanded damage.
+
+
+==== General ====
+Resource packs
+
+Lots of work toward a new resource pack system, but not finished yet.
+Currently still compatible with texture packs.
+
+
+=== Fixes ===
+12 issues fixed
+From released versions before Java Edition 1.6.1
+
+MC-1497  Damaged anvils do not show damage in inventory or item frame.
+From the Java Edition 1.6.1 development versions
+
+MC-13626  XP Bar shows up in creative.
+MC-13640  Hay bales do not burn when set on fire.
+MC-13662  XP, health, and hunger bar are buggy with horses.
+MC-13770  Using a horse spawn egg on a horse works only when riding the horse.
+MC-13852  Can't throw enderpearls while mounting a horse.
+MC-14220  Player appearance not updating in multiplayer (armor, tools).
+MC-14417  No way to remove armor or saddles off a horse.
+MC-14422  Horse name tag is shown while riding.
+MC-15138  Sides of cauldron has compass texture after placing compass in item frame.
+MC-15201  Bottom part of some types of horses-harness is misplaced.
+From the previous development version
+
+MC-15416  Selected item disappears when armor breaks.
+
+
+== 13w21b ==
+13w21b is the ninth snapshot for Java Edition 1.6.1, released on May 27, 2013 to fix some of the bugs and crashes in the 13w21a snapshot.
+
+
+=== Fixes ===
+7 issues fixed
+From released versions before Java Edition 1.6.1
+
+MC-11605  Certain death message will print "null" as the player/mob name that caused the death.
+MC-16554  lang files for en_US is grammatically incorrect at death.fell.finish.item.
+From the Java Edition 1.6.1 development versions
+
+MC-15815  Enchanted items stored in a donkey / mule lose enchantments on its death.
+From the previous development version
+
+MC-16143  Sprinting and speed effect not working.
+MC-16144  Server doesn't translate strings.
+MC-16150  No sounds after a while/music corrupting sound.
+MC-16353  Crash: IllegalArgumentException.
+
+
+== 13w22a ==
+13w22a is the tenth snapshot for Java Edition 1.6.1, released on May 30, 2013.
+The server version of 13w22a was reuploaded.
+
+
+=== Additions ===
+
+
+==== Mobs ====
+Donkeys, horses, mules, skeleton horses
+
+New sounds implemented.
+Villager 
+
+Sounds implemented.
+This includes several variants of idle, yes, no, haggle, and hit sounds, as well as a single death sound.
+Zombie horse
+
+Sounds implemented.
+
+
+=== Changes ===
+
+
+==== Items ====
+Leads
+
+Have a higher tolerance to stress, making it more difficult for leads to break.
+
+
+=== Fixes ===
+20 issues fixed
+From released versions before Java Edition 1.6.1
+
+MC-2200  Sleeping while in a minecart produces a graphical glitch.
+MC-9355  Argument "team" do not work with "!" for other players.
+MC-11385  Scoreboard problem with "seeFriendlyInvisibles".
+MC-14757  Stacked entity spawner creating mass duplicate ghost entities.
+From the Java Edition 1.6.1 development versions
+
+MC-13723  The horses do not make any sound but do open their mouths.
+MC-13731  Horse can climb ladders/vines.
+MC-13788  Horses graze on non-grass blocks, also underwater.
+MC-14114  Leashes break when riding a horse.
+MC-14604  Cannot tie wild horses and foals.
+MC-14930  Horse armor not keeping enchantments when dropping from a horse.
+MC-15423  Crash due to corrupt pack.png in texture pack.
+MC-16051  horses break lead when being lead when they stop to eat grass.
+MC-16156  Unable to move previously ridden horses after reloading the world.
+MC-16168  Opening inventory on wild horse allows you to saddle it up.
+MC-16182  Problem with horse movement.
+MC-16196  Horses not running fast in creative.
+MC-16229  Horse  shift key locking.
+MC-16381  Tamed donkey/mule drops 2 saddles on death.
+MC-16415  IllegalStateException: Server tried to update attributes of a non-living.
+MC-16421  Horse speed does not remain constant.
+
+
+== 13w23a ==
+13w23a is the eleventh snapshot for Java Edition 1.6.1, released on June 7, 2013.
+
+
+=== Additions ===
+
+
+==== Command format ====
+naturalRegeneration
+
+For natural health regeneration.
+/spreadplayers
+
+Spreads certain players from an origin point.
+Has a max spread and minimum distance from player to player.
+Can put teams together.
+
+
+==== General ====
+Splash screens
+
+2 new splash screens including:
+"HURNERJSGER"
+"What's up Doc?"
+
+
+=== Changes ===
+
+
+==== Items ====
+Glistering melons
+
+Crafting recipe requires 8 gold nuggets.
+Golden apples
+
+Now requires gold ingots instead of gold nuggets to craft.
+
+
+==== Gameplay ====
+Status effects
+
+Are now balanced to improve gameplay.
+Instant Health nerfed by 33% (heals only 4 health points/2 hearts at level I).
+Regeneration nerfed by 50% (takes 50 ticks/2.5 seconds to restore 1 health point/.5 heart at level I).
+Natural health regeneration now costs hunger points/saturation points.
+
+
+==== General ====
+Resource packs
+
+Still not quite ready yet.
+
+
+=== Fixes ===
+4 issues fixed
+From the Java Edition 1.6.1 development versions
+
+MC-13880  Cows eat buckets.
+MC-16074  Teleporting to "NaN" (not a number) crashes the game.
+MC-16290  [crash] mob spawner crashing game.
+From the previous development version
+
+MC-17051  [Wolves] attack horses.
+
+
+== 13w23b ==
+13w23b is the twelfth snapshot for Java Edition 1.6.1, released on June 7, 2013 to fix some of the bugs and crashes in the 13w23a snapshot.
+13w23b was reuploaded half an hour after release.[more information needed]
+
+
+=== Additions ===
+
+
+==== Items ====
+Golden apples
+
+Now give the new Health Boost effect.
+
+
+==== Gameplay ====
+Status effects
+
+Added Health Boost effect.
+Also, both the attribute and the potion effect now show the hearts.
+
+
+=== Changes ===
+
+
+==== Items ====
+Golden apples
+
+Normal golden apples now give Regeneration II for 10 seconds.
+
+
+==== Mobs ====
+Zombies
+
+New mechanics and AI.
+Able to lock onto the player from much further away.
+Mobbing zombies can now move when further than 32 blocks from the player.
+Spawn additional zombies when not being looked at.
+
+
+=== Fixes ===
+4 issues fixed
+From released versions before Java Edition 1.6.1
+
+MC-13177  New Client and Server Outputs Increase Loading Time.
+From the Java Edition 1.6.1 development versions
+
+MC-16418  Extra Hearts Not Displayed.
+MC-17222  ALL spawners with ActiveEffects crash the game, breaking hundreds of custom maps and servers.
+From the previous development version
+
+MC-17403  Golden apples only heal one heart compared to two in version 1.5.2.
+
+
+== 13w24a ==
+13w24a is the thirteenth snapshot for Java Edition 1.6.1, released on June 13, 2013.
+
+
+=== Additions ===
+
+
+==== Command format ====
+doDaylightCycle
+
+Added new gamerule for daylight cycle.
+Stops time relative to day changing from incrementing, pausing the sky in place.
+
+
+=== Changes ===
+
+
+==== Items ====
+Spawn eggs
+
+Now work on water.
+Skis
+
+Removed the skis texture, which was a red herring added by Dinnerbone in 12w50a.
+
+
+==== Mobs ====
+Spiders
+
+Now have a chance to spawn with potion effects.
+
+
+==== Non-mob entities ====
+Fireball
+
+The texture of the fireball was accidentally changed to 
+
+
+==== General ====
+Resource packs
+
+The game now uses resource packs instead of texture packs.
+The Texture Ender was released to convert 1.5-compatible texture packs into resource packs.
+Game directory
+
+Renamed the game directory parameter for the game's main class (net.minecraft.client.main.Main): from --workDir to a more adequate --gameDir.
+Sounds
+
+The level-up sound is shortened from  to .
+
+
+=== Fixes ===
+11 issues fixed
+From released versions before Java Edition 1.6.1
+
+MC-1126  Server command "/whitelist list" doesn't display the full list of players.
+MC-1202  Mobs spawn and then quickly despawn in peaceful. Looks like the "ender-porting-out-of-water" effect.
+MC-2097  Players can't get "The End?" achievement.
+MC-2419  Persistence required tag freezes mobs.
+MC-2692  Hard to spawn squids.
+MC-15732  Achievement "We Need to Go Deeper" rewarded for going through an end portal.
+From the Java Edition 1.6.1 development versions
+
+MC-11199  Eye of ender does not always lead to the nearest stronghold.
+MC-14690  ScoreBoard health objective crashes game.
+MC-15058  Scoreboard "health" objective set to display "belowname" disconnecting player on multiplayer with end of stream.
+MC-16149  Lava texture animation moves too fast/animated textures ignoring text files.
+From the previous development version
+
+MC-17573  Witches targeting themselves under certain circumstances.
+
+
+== 13w24b ==
+13w24b is the fourteenth snapshot for Java Edition 1.6.1, released on June 14, 2013 to fix some of the bugs and crashes in the 13w24a snapshot.
+
+
+=== Additions ===
+
+
+==== Gameplay ====
+Status effects
+
+Added Absorption effect.
+Replaces Health Boost effect in golden apples.
+Also added to effects of enchanted golden apples.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+ Carpet 
+
+Can now be placed on top of any block.
+This includes blocks such as water source blocks, saplings, torches, chests, other carpets, etc.
+This is part of the fix for being unable to place carpet on iron bars.
+
+
+==== Commands ====
+The damage dealt by /kill is changed from 1000HP  500 to 3.41038
+
+
+=== Fixes ===
+25 issues fixed
+From released versions before Java Edition 1.6.1
+
+MC-552  Command block choosing wrong people / Selecting players cross-dimensional.
+MC-9917  In multiplayer screen holding shift and pressing "down" without selecting any server crashes the game.
+MC-13276  Zombies with increased health don't deal damage.
+MC-16530  When under resistance effects above 5, /kill command does not work.
+MC-17037  No error report when minecraft crashes.
+MC-17701  Fire Animation Jumps and skips frames.
+MC-18088  Sticky and unregistering keys during normal Minecraft play only, AMD processor driver conflict?
+From the Java Edition 1.6.1 development versions
+
+MC-16183  Using the autocomplete function in chat (tab) disconnects clients in multiplayer.
+MC-16639  Game tick speed issue.
+MC-17295  Scoreboard objectives disappears when logging out.
+MC-17444  Health scoreboard doesn't display hearts from health boost.
+MC-17454  Take damage when removing health boost effect.
+MC-17558  17608
+MC-17656  No server connection bars in Multiplayer menu or ingame.
+MC-17660  Ressources packs still named Texture packs in options.
+MC-17663  "Health Boost" Potion Effect shows "potion.healthBoost".
+MC-17666  Minecarts do not have the correct texture pack.
+MC-17700  Firecharge texture is green.
+MC-17731  GUI broken when Boss health bar is visible.
+MC-17747  Carpet can be placed ontop of glass panes but not ontop of iron bars.
+MC-17753  Texts for "credits" and "end" not showing up properly in default or with a resource pack on.
+MC-17757  Resource pack's/mcmeta's "frametime" is ignored when "time": 1.
+MC-17784  DoDaylightCycle bed bug.
+MC-17803  Biome colormaps are not updating on texture pack change.
+MC-17827  Ghasts shoot with end portal frames.
+
+
+== 13w25a ==
+13w25a is the fifteenth snapshot for Java Edition 1.6.1, released on June 17, 2013.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+General
+
+Mobs named "Dinnerbone" or "Grumm" are now flipped upside down.
+
+
+==== Items ====
+Golden apples
+
+Absorption time has been increased from 1 minute and 30 seconds to 2 minutes.
+
+
+=== Fixes ===
+15 issues fixed
+From released versions before Java Edition 1.6.1
+
+MC-1124  Mouse "Back" and "Forward" open menu in windowed mode.
+MC-15145  Receiving very high amount of damage at once creates ghost mode in multiplayer.
+From the Java Edition 1.6.1 development versions
+
+MC-16003  Possible to create a scoreboard objective without a name, but unable to use and/or delete it.
+MC-17797  Birch leaves don't use leaves_birch.png.
+From the previous development version
+
+MC-17830  Last played singleplayer world changes date last opened to 1/1/70.
+MC-17831  Crash selecting resource pack [13w24b].
+MC-17910  Server crash/hang after typing /kill.
+MC-17917  Flowing water/lava color corrupted after switching off 3D anaglyphs.
+MC-17935  Igniting TNT doesn't reduce flint and steel durability.
+MC-17936  Some animated textures only show the placeholder texture.
+MC-17941  Crash uploading textures to graphics card.
+MC-18010  Armor bar shown too high during health boost or absorption.
+MC-18011  Health and absorption is confusing when displayed on the same line.
+MC-18164  Resource packs not effective until after restart.
+MC-18228  Resource pack not working.
+
+
+== 13w25b ==
+13w25b is the sixteenth snapshot for Java Edition 1.6.1, released on June 18, 2013 which makes swords no longer break blocks in Creative mode and fixes some of the bugs and crashes in the 13w25a snapshot.
+
+
+=== Changes ===
+
+
+==== Items ====
+Swords
+
+It is no longer possible to break blocks with swords in Creative mode.
+
+
+=== Fixes ===
+8 issues fixed
+From released versions before Java Edition 1.6.1
+
+MC-1903  Console command and set console for block in command block merges when in windowed mode.
+MC-3737  Placing water source into some blocks yields no drops.
+MC-3798  3D anaglyph biome color corruption.
+MC-18324  Text misplaced on direct connect, rename world screen
+From the Java Edition 1.6.1 development versions
+
+MC-17456  Objective health does not update with health boost effect.
+MC-18277  Crash with the mcmeta reading of unicode font.
+From the previous development version
+
+MC-18257  Knockback resistance attribute doesn't prevent knockback from fall damage.
+MC-18306  Minecraft crash on clicking the "Texture pack" button.
+
+
+== 13w25c ==
+13w25c is the seventeenth snapshot for Java Edition 1.6.1, released on June 20, 2013 to fix some of the bugs and crashes in the 13w25a and 13w25b snapshots.
+
+
+=== Fixes ===
+13 issues fixed
+From released versions before Java Edition 1.6.1
+
+MC-188  doFiretick makes fire to not extinguish.
+MC-607  Running at a high resolution causes large portions of the screen to be unclickable.
+MC-4266  Death counter does not update.
+MC-13559  Pick block from inventory in creative doesn't preserve size of stacks.
+MC-16075  Entities other than the player can't leave the End.
+From the Java Edition 1.6.1 development versions
+
+MC-13745  Tamed wolves/cats teleporting when leashed to a fence.
+MC-16861  Enchantments on a mob's weapon does not affect other mobs.
+MC-17537  Other players cats can be tied to a lead and dragged away.
+MC-17849  Resource packs not converting correctly.
+MC-17856  Unable to load resource pack with missing directory-ZipEntries.
+MC-17864  Credits end too fast.
+MC-18158  Messed up textures of some items.
+From the previous development version
+
+MC-18468  Turning on sound after previously not hearing it crashes the game.
+
+
+== 13w26a ==
+13w26a is the eighteenth and final snapshot for Java Edition 1.6.1, released on June 24, 2013.
+
+
+=== Fixes ===
+23 issues fixed
+From released versions before Java Edition 1.6.1
+
+MC-1038  Beacon block incorrect texture when surrounded by blocks.
+MC-2453  Jack-o-lantern name is mispunctuated.
+MC-6828  Brewing stand feet's sides are transparent when placed against a wall.
+MC-9026  Splash potions particles are incorrect.
+MC-9584  Cactus texture error when near a wall.
+MC-10976  Single player: "java.io.IOException: Stream Closed" when quitting game.
+MC-18640  Crash when language file of currently selected language is missing.
+From the Java Edition 1.6.1 development versions
+
+MC-13737  Ridden Horse / Mule / Donkey duplicates when reloading the world.
+MC-13774  Mounting rideable entities (horses/boats/minecarts/pigs) underwater desyncs client/server (ghost mode).
+MC-14944  Weighted pressure plates' names are too long to be renamed.
+MC-16413  Boats toss the player off like horses.
+MC-16828  Horses make the galloping sound + their original walking sound at the same time.
+MC-16847  Horse jump bar becomes stuck if player is kicked off / dismounts while charging a jump.
+MC-16887  Jumping sideways on an unsaddled horse.
+MC-17571  Health overflow isn't removed when health boost ends.
+MC-17675  Sun jitters when time is set to zero and doDaylightCycle is false.
+MC-17997  Horse "Gelding" bug.
+MC-18505  Sitting direction does not fit when riding a horse.
+MC-18522  3D anaglyth sometimes crashing Minecraft upon toggle in the options menu.
+From the previous development version
+
+MC-18632  Player induced horse jumps negate the horse's jump boost effect.
+MC-18633  Lag then crash on LAN world.
+From TextureEnder.jar
+
+MC-17667  Resource pack conversion bug: Stone brick texture given to cobble. Stone bricks don't get a texture.
+MC-17938  Converter not converting some animations correctly.
+
+
+== 1.6 ==
+1.6 is the first pre-release for Java Edition 1.6.1, released on June 25, 2013.
+1.6 was reuploaded just two hours after its release to fix a crash bug with brewing potions.
+
+
+=== Changes ===
+Ghasts and zombie pigmen no longer visibly catch fire when going into fire or lava.
+Potion of Weakness now reduces damage by one-half heart, instead of one heart as it was before.
+
+
+=== Fixes ===
+25 issues fixed
+From released versions before Java Edition 1.6.1
+
+MC-137  Ping packet doesn't include host information.
+MC-12241  Minecart collision boxes are briefly positioned wrong.
+MC-12526  Minecarts off track float.
+MC-12569  Sitting in minecart is higher than it should be.
+MC-12733  Minecart hit box too large.
+MC-18713  If a team name has "-" in it, the argument for seeing if anyone is in the team doesn't work.
+MC-19029  Instant health effect set to a 29, 61, 93...253 value kills any player without any death message.
+From the Java Edition 1.6.1 development versions
+
+MC-13754  Unable to tie mobs to fence with less than 2 leads.
+MC-14126  Binding "sneak" to any mouse button and trying to mount an entity crashes the game.
+MC-14355  Can't hit mobs while jumping on horses.
+MC-14524  Right clicking on minecart/pig/boat while riding in it tries to remove the player.
+MC-14795  Wither is still named "Withern" in German.
+MC-16145  Potion of weakness tooltip.
+MC-16467  Attribute modifiers randomly run out when given via items.
+MC-17867  "Resource packs" translation missing on crowdin.net.
+MC-17908  Tamed wolf's health depleted upon world loading.
+MC-18247  Health boost and absorption potions names do not show correctly.
+MC-18578  Water sounds when placing water from a bucket to water source reproduce twice.
+MC-18645  Game crashes with a single frame compass.
+MC-18661  Strength Potions being nerfed unintentionally (not related to other strength issues).
+MC-18730  Superflat customization screen have format errors in Australian English/string is missing at crowdin.net.
+MC-18845  Scoreboard Health out of sync (rounds down).
+MC-18997  Crash at launch of game with invalid language selection.
+MC-18999  Using /kill sets health to the 32-bit signed integer limit.
+From the current version, hotfixed
+
+MC-19061  Crash whilst brewing in 1.6.
+
+
+== Notes and references ==
+
+
+== Navigation ==

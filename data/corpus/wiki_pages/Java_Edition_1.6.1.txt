@@ -1,0 +1,393 @@
+1.6.1, the release of the Horse Update, is a major update to Java Edition released on July 1, 2013, which added many new features including horses and their relatives, leads, coal blocks, carpets, new commands, resource packs and a new launcher.
+A pre-release version of 1.6.1 was released on June 28, 2013. This pre-release is identical to the full release of 1.6.1.
+
+
+== Additions ==
+
+
+=== Blocks ===
+ Carpets
+
+Crafted with 2 matching colors of wool in a horizontal line, yields 3 carpets.
+Can be placed on any block.
+ Hay bale
+
+Can be placed in all orientations.
+Crafted with wheat placed in a 33 arrangement.
+ Hardened clay
+
+Obtained by smelting a clay block in a furnace.
+ Block of coal
+
+Crafted with coal placed in a 33 arrangement.
+Charcoal cannot be used to craft this block.
+Can be used as furnace fuel and smelts 80 items, more than 9 coal (72 smelted items).
+Was originally added in an April Fools' update, 2.0.
+ Stained clay
+
+Comes in 16 colors, one for each dye.
+Crafted by surrounding any dye with hardened clay in a crafting table.
+
+
+=== Items ===
+  Horse armor
+
+Comes in diamond, iron, and gold variants.
+Cannot be crafted and can only be found in most types of generated chests, including in dungeons, mineshafts, Nether fortresses, desert temples, and jungle temples.
+ Lead
+
+Can be used to bind mobs to fences or lead them around.
+Right-click mob first, then right-click fence or right-click the mob again to get the leash back.
+Crafted with 4 string and 1 slimeball, yields 2 leads.
+ Horse spawn egg
+
+Can be used to spawn horses and donkeys.
+ Name tag
+
+Found in dungeon chests.
+Name it on an anvil, then right-click a mob to name it.
+
+
+=== Mobs ===
+ Horses
+
+Creation assisted & inspired by DrZhark's Mo' Creatures mod.
+To tame, ride them, and get thrown off a few times until hearts appear.
+Can be bred using golden apples and golden carrots.
+Drop leather when killed.
+Health can be restored using bread, sugar, hay bales, wheat, apples, golden apples, and golden carrots.
+Baby horses can be grown the same way.
+Players riding saddled horses are granted full control over the horses' movement.
+Color, markings, maximum health, jump height, and speed vary between horses.
+Press the inventory control while mounting a horse, or press the using control while sneaking and looking at a horse to access its inventory to deal with its storage, armor, and saddle.
+Rarely spawn in small groups.
+ Donkeys
+
+Like horses, but smaller and gray, and can carry chests with 15 slots on their saddles.
+ Mules
+
+Obtained by breeding a horse with a donkey.
+Can wear chests on their saddles, just like donkeys.
+Not breedable with horses, donkeys, or other mules.
+ Skeleton and  zombie horses
+
+Require third-party modifications to be used in-game.
+
+
+=== Gameplay ===
+Status effects
+
+Health Boost
+Gives a player 4HP base health; extra health vanishes when the effect ends.
+Can be acquired in-game using the command /effect <playername> 21 <duration in seconds> <amplifier>.
+Absorption
+Gives a player 4HP "absorption" health that cannot be replenished by natural regeneration or other effects, but would return every 30 seconds, regardless of the state of the rest of the health bar; absorption health vanishes when the effect ends.
+Can be acquired in-game using the command /effect <playername> 22 <duration in seconds> <amplifier> or by eating either tier of golden apple.
+Saturation
+Causes food meter to be replenished by 1 () per tick.
+Can be acquired in-game using the command /effect <playername> 23 <duration in seconds> <amplifier>.
+Affects the hunger bar.
+Does nothing if hunger bar is full.
+
+
+=== Command format ===
+/spreadplayers
+
+Spreads certain players from an origin point.
+Has a max spread and minimum distance from player to player.
+Can be used with the team's scoreboard functionality to spread team members to the same location.
+/playsound
+
+Can be used to play sounds to players.
+The pitch and volume of sounds played using this command can be customized.
+Can use sounds from resource packs.
+/gamerule arguments
+
+naturalRegeneration
+Toggles natural health regeneration.
+doDaylightCycle
+Toggles the day-night cycle.
+
+
+=== General ===
+Resource pack system
+
+Replaces the texture pack system.
+A conversion tool that converts texture packs into resource packs was released by Dinnerbone and is available here.
+Contains:
+Textures
+Sounds
+Fonts (partially)
+Language files
+Credits
+End Poem
+Splash text
+New "missing texture" texture
+Attribute system
+
+Item attributes using NBT tags:
+Attributes can be additive, subtractive, and multiplicative using a set value.
+Some items have default modifiers in place of previously hard-coded attributes.
+Examples of possible changes players could make: a bow that slows the holder, a helmet that buffs health, etc.
+Entity attributes:
+These properties can now be changed as easily as any other NBT attribute.
+Entity speed, base health, base attack.
+Other properties like weapon damage/bow draw speed/sword swing speed are yet to follow.
+Splash screens
+
+"HURNERJSGER?"
+"What's up Doc?"
+
+
+== Changes ==
+
+
+=== Blocks ===
+ Lapis lazuli block
+
+Retextured subtly; it now has a border around it.
+ Redstone comparator
+
+Now gives out a signal for cauldrons and end portal frames depending on their state.
+Cauldrons give from zero signal (empty) to three signal strength (full) depending on the water level inside.
+End portal frame varies between zero and fifteen signal strength, depending on if an eye of ender is present.
+ Command blocks
+
+Can no longer be mined or destroyed in Survival mode.
+ Lava
+
+Now decays properly.
+
+
+=== Items ===
+ Charcoal
+
+Retextured, with more brown shading to differentiate from coal.
+ Saddle
+
+The player can now put a saddle on a horse.
+ Golden apple
+
+Now requires gold ingots instead of gold nuggets to craft.
+Now gives Regeneration II for 10 seconds and both tiers give Absorption for 1 minute and 30 seconds.
+ Glistering melon
+
+Now requires 8 gold nuggets.
+ Spawn eggs
+
+Now work on water.
+ Flint and steel
+
+Now loses durability when igniting TNT.
+
+
+=== Mobs ===
+All mobs
+
+Mobs named "Dinnerbone" or "Grumm" are now flipped upside down.
+Now spawn in groups again.
+ Zombies
+
+Now have a small chance to spawn additional zombies when damaged or not being looked at.
+Able to lock onto a player from 40 blocks away (formerly 16 blocks).
+Mobbing zombies can now move when further than 32 blocks from a player.
+No longer attack when provoked by players in Creative mode.
+Villagers
+
+Now have sounds for trading, getting hurt and other things.
+ Withers
+
+Armor has been retextured.
+ Spiders
+
+Now have a chance to spawn with potion effects.
+ Creepers,  skeletons,  witches and  wolves
+
+No longer attack when provoked by players in Creative mode.
+ Ghasts and  zombie pigmen 
+
+No longer visibly catch fire when going into fire or lava.
+
+
+=== World generation ===
+Deserts
+
+No longer contain water lakes.
+Nether
+
+Added chest generation in nether fortresses.
+
+
+=== Gameplay ===
+Riding mounts
+
+When riding a mob, its health is on the heads-up display.
+When riding an entity, dismounting has changed from right-clicking the entity to using the sneaking control.
+New boat physics with lower inertia.
+Boat controls have been changed from the A, S, and D keys to mouse control.
+Boats now take damage and break when colliding with many lily pads in a short time.
+Respiration enchantment
+
+Now also helps seeing underwater.
+Changed the idea of mob difficulty
+
+Regional difficulty: the longer player spend in one area, the harder it gets.
+Scales with difficulty - items, enchants, or AI improve with difficulty.
+Tooltips
+
+Added extra tooltip info in the search tab for the creative inventory, which shows what category a block/item is in.
+Tooltips for swords, pickaxes, shovels, axes, and potions show how much damage the sword/tool does and what effect a potion gives.
+Status effects
+
+Balanced to improve gameplay:
+Instant Health nerfed by 33% (heals only 4 health points/2 hearts at level I).
+Regeneration nerfed by 50% (takes 50 ticks/2.5 seconds to restore 1 health point/.5 heart at level I).
+ Hunger
+
+Natural health regeneration now costs hunger/saturation points.
+Creative mode
+
+It is no longer possible to break blocks with swords in Creative mode.
+The experience level is no longer displayed in Creative mode.
+
+
+=== General ===
+Technical
+
+Support for Java 5 and PowerPC users was dropped.
+Internal chat system
+
+Lots of messages should be translated now that were previously not.
+Messages are now better modularized.
+Server messages can be sent by their code-defined name, allowing the client to utilize the correct translation according to their language settings.
+Color can be specifically designated, preventing leakage into further messages.
+Updated language files and fixed missing strings.
+New launcher
+
+Increases performance and stability.
+Minecraft game icon changed to a crafting table, presumably to differentiate between game and launcher.
+Allows LWJGL to be updated, fixing many launcher bugs.
+Supports multiple versions/installs.
+Self-updatable.
+New password storing system.
+More user-friendly.
+A major step towards the Plugin API.
+New authentication system - "Yggdrasil", which is more secure and has more features.
+If downloaded for free, it only lets users play the demo world.
+Accounts are mandatory.
+Realms
+
+Added handling of invitations.
+Added resetting realm with one of the provided realm templates.
+Added viewing backups for a realm and the ability to restore them.
+Added setting the owner of a realm as game master operator.
+Added confirmation screens for various actions such as deleting a realm.
+Ability to leave someone else's realm that previously accepted an invitation for.
+Fixed game mode and game difficulty issue.
+Minor GUI fixes for better usability.
+NBT
+
+Saddle to EntityHorse has now been re-added.
+
+
+== Fixes ==
+86 issues fixed
+From released versions before 1.7.4
+
+MC-137  Ping packet doesn't include host information.
+MC-188  'doFiretick' makes fire to not extinguish. Lighting makes fire all over the place!
+MC-483  Keyboard Unresponsive on OS X.
+MC-505  Boats float in middle of air after logout and re-login.
+MC-507  Teleporting to Large Numbers Creates a Broken Error.
+MC-552  Command block choosing wrong people / Selecting players cross-dimensional.
+MC-560  Sound made by mobs in water causes massive FPS drop.
+MC-590  Mobs not realizing they killed their attacker and trying to attack empty space.
+MC-607  Running at a high resolution causes large portions of the screen to be unclickable.
+MC-671  Minecarts with Furnace consume coal in creative mode.
+MC-820  Death messages in English regardless of the selected language (Multiplayer).
+MC-1038  Beacon Block Incorrect Texture When Surrounded by Blocks.
+MC-1124  Mouse "Back" and "Forward" open menu in windowed mode.
+MC-1126  Server command "/whitelist list doesn't display the full list of players.
+MC-1159  Mouse wrongly positioned in fullscreen.
+MC-1202  Mobs spawn and then quickly despawn in peaceful. Looks like the "ender-porting-out-of-water" effect.
+MC-1229  Compasses in item frames move with the player.
+MC-1320  [Wolves] won't stop snarling after being punched by someone else.
+MC-1497  Damaged Anvils do not show damage in inventory or item frame.
+MC-1598  Zombie pigmen burn for a moment in daylight.
+MC-1903  Console command and set console for a block in Command Block merge when in windowed mode.
+MC-1980  Zombie villagers are able to despawn during the curing process.
+MC-2097  You can't get "The End?" achievement.
+MC-2200  Sleeping while in a minecart produces a graphical glitch.
+MC-2419  PersistenceRequired tag freezes mobs.
+MC-2453  Jack-o-lantern name is mispunctuated.
+MC-2476  Regeneration increases the speed at which damage is taken from cacti, lava, and fire.
+MC-2559  Squid taking damage while in water.
+MC-2692  Hard to spawn squid.
+MC-2758  Derailed minecarts float when reloading the world.
+MC-3008  Regular skeleton's melee damage is unaffected by the sword type.
+MC-3090  Unable to play the game unless LWJGL is manually replaced.
+MC-3695  Boats/Minecarts and Ender Pearls don't mix.
+MC-3737  Placing water sources into some blocks yields no drops.
+MC-3798  3D Anaglyph biome color corruption.
+MC-3914  Grass can't be tilled under plants/signs while dirt can.
+MC-3960  After the last use of a bow you get a glitch bow that when dropped and picked up again duplicates.
+MC-4266  Death counter does not update.
+MC-4631  Lava decay fails to schedule block update.
+MC-4822  Skeletons attack like zombies when hit in creative.
+MC-6721  Ctrl + Alt + Esc crashes Minecraft.
+MC-6828  Brewing stand feet' sides are transparent when placed against a wall.
+MC-7134  Silverfish breaking blocks when "mobGriefing" is set to false.
+MC-8073  Switching from windowed to fullscreen and back moves the point of view.
+MC-9026  Splash potions particles are incorrect.
+MC-9317  /scoreboard syntax missing (/help scoreboard).
+MC-9355  Argument "team" does not work with "!" for other players.
+MC-9584  Cactus texture error when near a wall.
+MC-9917  In multiplayer screen holding shift and pressing "down" without selecting any server crashes the game.
+MC-10601  Can't use the scroll wheel in crash reports.
+MC-11033  Item count/numbers randomly flickering in item bar, inventory, workbench.
+MC-11199  Eye of Ender does not always lead to the nearest Stronghold.
+MC-11385  Scoreboard problem with "seeFriendlyInvisibles".
+MC-11439  Memory leak switching texture packs.
+MC-11595  1.5 HD Texture pack stitched images greater than 2048 resolution result in massive performance drops.
+MC-11605  Certain death messages will print "null" as the player/mob name that caused the death.
+MC-11765  Command Blocks breaking easily in survival.
+MC-12017  Can get permanently stuck in a minecart in a nether portal.
+MC-12241  Minecart collision boxes are briefly positioned wrong.
+MC-12526  Minecarts off-track float.
+MC-12569  Sitting in minecart is higher than it should be.
+MC-12733  Minecart hitbox too large.
+MC-12906  in the /help menu, the /debug option does not show the <start/stop>.
+MC-13177  New Client and Server Outputs Increase Loading Time.
+MC-13276  Zombies with increased health don't deal damage.
+MC-13330  Mob armor percentage likely error.
+MC-13559  Pick block from inventory in creative doesn't preserve the size of stacks.
+MC-14218  Minecraft can't handle 4096x4096 or larger cloud textures.
+MC-14757  Stacked Entity Spawner creating mass duplicate ghost entities.
+MC-14795  Wither is still named "Withern" in German.
+MC-14926  Cannot use resolution clock and compass textures with resolutions higher than 16x16.
+MC-15145  Receiving a very high amount of damage at once creates ghost mode in multiplayer.
+MC-15732  Achievement "We Need to Go Deeper" rewarded for going through an End Portal.
+MC-16075  Entities other than the player can't leave the end.
+MC-16530  When under resistance effects above 5, /kill command does not work.
+MC-16554  lang files for en_US is grammatically incorrect at death.fell.finish.item.
+MC-17037  No error report when Minecraft crashes.
+MC-17280  Freezes When Moving.
+MC-17701  Fire Animation Jumps and skips frames.
+MC-18088  Sticky and unregistering keys during normal Minecraft play only, AMD processor driver conflict?
+MC-18324  Text misplaced on Direct connect, Rename World screen.
+MC-18483  Shift clicking on the destroy item button in multiplayer doesn't work.
+MC-18640  Crash when language file of currently selected language is missing.
+MC-18713  If a team name has "-" in it, the argument for seeing if anyone is in the team doesn't work.
+MC-19029  Instant health effect set to a 29, 61, 93...253 value kills any player without any death message.
+From the current version, hotfixed
+
+MC-19849  The game starts and has the Mojang title, but then the next slide is black except the bottom left corner, which is dirt.
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

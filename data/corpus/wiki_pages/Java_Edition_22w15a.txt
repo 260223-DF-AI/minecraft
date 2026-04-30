@@ -1,0 +1,236 @@
+22w15a is the fifth snapshot for Java Edition 1.19, released on April 13, 2022, which adds ranged attack for wardens, two new advancements, and fixes bugs.
+
+
+== Additions ==
+
+
+=== Gameplay ===
+Advancements
+
+Added two new advancements:
+"Sneak 100"
+Sneak near a sculk sensor, sculk shrieker or warden to prevent it from hearing you
+"When the Squad Hops into Town"
+Get each frog variant on a lead
+Added avoid_vibration advancement trigger.
+Triggered when a vibration event is ignored because the source player is holding the sneak key, with following conditions:
+player: a player for which this trigger runs
+Added thrown_item_picked_up_by_player advancement trigger.
+Triggered when a player picks up an item that was thrown by an entity, with following conditions:
+player: a predicate for the player picking up the item.
+entity: a predicate for the entity that threw the item.
+item: a predicate for the item.
+
+
+=== General ===
+Particles
+
+Added a new particle: sonic_boom.
+Tags
+
+Added following block tags:
+#completes_find_tree_tutorial: #logs, #leaves, and #wart_blocks.
+#dampens_vibrations: #wool and #wool_carpets.
+#nether_carver_replaceables: #base_stone_overworld, #base_stone_nether, #dirt, #nylium, #wart_blocks, soul_sand, and soul_soil.
+#overworld_carver_replaceables: #base_stone_overworld, #dirt, #sand, #terracotta, #iron_ores, #copper_ores, water, gravel, sandstone, red_sandstone, calcite, snow, packed_ice, raw_iron_block, and raw_copper_block.
+Added following item tags:
+#completes_find_tree_tutorial: #logs, #leaves, and #wart_blocks.
+#wart_blocks: nether_wart_block and warped_wart_block.
+
+
+== Changes ==
+
+
+=== Blocks ===
+ Carpets
+
+Now dampen the vibrations caused by their placing, breaking or dropping as items, just like wool.
+Now also dampen the vibrations caused by running and jumping over them.
+  Glow Lichen and Sculk Veins
+
+Can now be placed on the top and sides of soul sand, mud and maximum height snow.
+ Mangrove Leaves
+
+Texture changed from .
+Are now able to drop when using Silk Touch tools.
+ Mangrove Roots
+
+Can now be composted.
+ Mud
+
+Now allows sugar cane, bamboo, and big dripleaves to be planted on top of it.
+ Muddy Mangrove Roots
+
+Now allows flowers, saplings and grass to be planted on top of it.
+ Note Block
+
+Reverted the change made in 22w13a in which only wool and wool carpets would block sounds.
+ Sculk Shrieker
+
+Changed model and side texture.
+ Vines
+
+Can now be placed on the sides of soul sand, mud and maximum height snow.
+
+
+=== Gameplay ===
+Advancements
+
+Changed "You Got a Friend in Me" to "You've Got a Friend in Me".
+Fixed capitalization issues in several advancements.
+
+
+=== Items ===
+Boats and Boats with Chests
+
+Changed item textures of all types of boats and boats with chests.
+ Recovery Compass
+
+Can no longer be used on a lodestone.
+
+
+=== Mobs ===
+ Allay
+
+Now have a natural health regeneration of 2HP per second.
+ Wandering Trader
+
+Now sells 1 mangrove propagule for 5 emeralds.
+ Warden
+
+Can now charge a ranged attack when the player is building high, hiding behind walls or being out of range of their melee attack.
+Their rib cages open up to shriek a sonically charged ranged attack that can penetrate walls.
+The ranged attack deals 30HP  15 damage in Normal and can hit at a horizontal distance of 15 blocks.
+The ranged attack can only hit one target at a time.
+Can now smell players from further away.
+The vertical range wardens get angry at a target while sniffing is now 20 blocks instead of 6 blocks.
+
+
+=== Non-mob entities ===
+ Boats with Chests
+
+Now, the inventory can be accessed by right click directly when there is already a passenger inside of it.
+ Item Frame
+
+Now adjusts its hitbox to account for the larger size of a framed map.
+
+
+=== World generation ===
+Mangrove swamp
+
+Mud now generates all the way from the surface down to stone.
+Cave carvers can now cut through mud.
+Tall mangroves are far more common than short mangroves now.
+Moss carpet now generates on top of some mangrove tree's roots.
+Tropical fish now spawn in water.
+Water fog color is now cyan instead of yellow like in the normal swamp.
+
+
+=== Gameplay ===
+Advancements
+
+The Darkness effect is now required for the "How Did We Get Here" advancement.
+The parent advancement of the "With our powers combined!" advancement is changed from "Bukkit bukkit" to "When the Squad Hops into Town".
+The ID of the "Birthday Song" advancement is changed from allay_deliver_cake_to_noteblock to allay_deliver_cake_to_note_block.
+Removed item_delivered_to_player advancement trigger.
+
+
+=== General ===
+Bonus chest
+
+Now has a chance to contain mangrove logs.
+Creative inventory
+
+All types of wooden stairs are now found together in the same order as other wooden blocks.
+The recovery compass is now found next to the regular compass.
+Panorama
+
+Changed to reflect The Wild Update, showing a mangrove swamp.
+Tags
+
+Renamed #ignore_vibrations_on_occluding_block game event tag to #dampenable_vibrations.
+Renamed #occludes_vibration_signals item tag to #dampens_vibrations, and added #wool_carpets to it.
+Mud is no longer part of the #dead_bush_may_place_on and #enderman_holdable block tags.
+Mud and muddy mangrove roots are now part of the #dirt block and item tag.
+This change effectively keeps mud in, and adds muddy mangrove roots, to the #dead_bush_may_place_on and #enderman_holdable block tags.
+Moss carpet and vine are now part of the #mangrove_logs_can_grow_through block tag.
+Moss carpet, vine, mangrove propagule and snow are now part of the #mangrove_roots_can_grow_through block tag.
+
+
+== Fixes ==
+60 issues fixed
+From released versions before 1.19
+
+MC-147686  Joining a world that uses custom resources shows default resources until fully loaded.
+MC-183520  Phantoms with [Byte] NoAI can go through blocks.
+MC-210805  Wool incorrectly occludes the vibration of walking along blocks placed on top of it that are under 516 blocks tall.
+MC-210868  Wool occlusion doesn't work as it should when combining both vertical and horizontal motion.
+MC-212610  Glow lichens cannot be put on soul sand.
+MC-212629  Leashes from two or more invisible entities connect to each other.
+MC-216567  Vines cannot be placed on the sides of 8 layers of snow.
+MC-216569  Glow lichen cannot be placed on the side of 8 layers of snow.
+MC-219642  Vines cannot be placed on the sides of soul sand.
+MC-226430  Several 1.17 advancement strings are improperly capitalized.
+MC-228862  Game freezes when client fails to download server resource pack.
+MC-231458  The word "ingot" within the "Serious Dedication" advancement description is improperly capitalized.
+MC-235035  Sleeping in a custom dimension with [Boolean] natural set to false causes crash.
+MC-237920  "Feels like home" advancement is incorrectly capitalized.
+MC-237922  "Jukebox" in Sound of Music description is incorrectly capitalized.
+MC-237924  The word "villager" within the "Star Trader" advancement description is improperly capitalized.
+From the 1.19 development versions
+
+MC-249072  Sculk shriekers replace water blocks.
+MC-249087  The inside texture of mangrove roots darkens when solid blocks are placed adjacent to them.
+MC-249111  sculk_charge cannot be used in /particle command.
+MC-249208  Vines, glow lichens, and sculk veins cannot be placed on the side or top faces of mud.
+MC-249315  Mangrove Roots cannot be composted.
+MC-249347  Map color for mangrove sign and mangrove wall sign is incorrect.
+MC-249423  Player can't open the boat with chests without a  Shift, even when player can't get into the boat.
+MC-249424  Hand animation still plays when trying to get into a boat with chest that already has an entity in it.
+MC-249445  Activated sculk shriekers fail to summon the warden when broken.
+MC-249488  Darkness pulsing option is not saved.
+MC-249495  Inconsistent shading in boat item sprites.
+MC-249632  The Darkness effect is not required for the "How Did We Get Here?" advancement.
+MC-249664  Warden despawns when far away.
+MC-249688  Mangrove stairs come after nether wood stairs in the Building Blocks tab.
+MC-249737  Allay can be pushed around with {NoAI:1b}.
+MC-249741  New advancement names are not properly capitalized.
+MC-249785  Warden can be pushed when emerging and digging.
+MC-249824  Allays can pass through walls client-side as a result of them not colliding with entities properly.
+From the previous development version
+
+MC-249917  Mangrove trees don't replace certain blocks with roots.
+MC-249923  Recovery compass isn't sorted with regular compass in creative inventory.
+MC-249927  Player can use a Recovery Compass on a Lodestone.
+MC-249931  Growing a Mangrove Tree with bone meal creates a ghost block.
+MC-249933  Game crash related to the frog occurred (Accessing LegacyRandomSource from multiple threads).
+MC-249934  Mangrove roots sometimes don't generate waterlogged when generating within water.
+MC-249936  Cave carvers don't cut through mud.
+MC-249938  Mangrove Leaves do not drop from Silk Touch tools.
+MC-249942  Water got removed after waterlogged Mangrove Propagule grows.
+MC-249947  Top of Sculk Shrieker model is vertically squished.
+MC-249968  Powering a beacon disconnects player from server.
+MC-249977  Harsh chunk borders appear when upgrading a 1.18.2 world.
+MC-249979  Chance to have mangrove roots not waterlogged when growing from a sapling while underwater.
+MC-249984  "note_block" is inconsistently spelled as "noteblock" in the allay_deliver_cake_to_noteblock advancement.
+MC-250017  [Int Array] UUID launch argument required.
+MC-250025  The "You Got a Friend in Me" advancement is incorrectly presented in the past tense.
+MC-250063  Warden doesn't attack anything after dismounting as a passenger.
+MC-250081  Wandering trader doesn't trade mangrove propagule.
+MC-250099  Mangrove Log and Mangrove Planks don't spawn in bonus chest.
+MC-250101  Can't plant sugar cane on mud.
+MC-250103  Can't plant bamboo on mud.
+MC-250104  Can't plant big dripleaf on mud.
+MC-250106  Overworld vegetation cannot be placed on muddy mangrove roots.
+MC-250115  Mud does not generate underwater in mangrove swamps.
+MC-250135  Sculk veins cannot be placed on the top or sides of soul sand.
+MC-250136  Sculk veins cannot be placed on eight layers of snow.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

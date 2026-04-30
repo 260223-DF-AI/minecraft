@@ -1,0 +1,135 @@
+Minecraft displays the player inventory differently, according to how the window was opened. Ranges of slot indices vary in meaning between different windows.
+
+
+== Types ==
+
+The slot number is calculated starting at 0, counting up through the window's unique slots, and then counting through the players inventory.
+For all windows, the slot in the upper-left corner of the player's inventory is slot n where n is the number of unique slots, and slot number -999 is always used for clicking outside the window.
+The default inventory window, which is never explicitly opened by the server, has 10 unique slots.
+Rectangular regions are always indexed starting with the upper-left corner and scanning across rows. If a window has a crafting region, the output slot is always slot 0 followed immediately by the input region.
+Each window type is described in the following sections. All slot index ranges are inclusive and reflect the indices observed in the Minecraft protocol.
+For the window properties (additional data in each window, e.g. smelting progress or enchantments), refer to the table in the Set Container Property packet.
+
+
+== Player Inventory ==
+
+This is the inventory window that the player can always open, typically by pressing E since Beta 1.4. Before, you had to press I.
+
+
+== Horse ==
+
+The GUI that appears when interacting with a tamed horse, or when opening the player's inventory while riding a tamed horse.
+
+
+=== Donkey ===
+
+The GUI that appears when interacting with a tamed donkey or mule, or when opening the player's inventory while riding a tamed donkey or mule.
+
+
+=== Llama ===
+
+The GUI that appears when interacting with a tamed llama or trader llama that has a chest, or when opening the player's inventory while riding a tamed llama.
+Depending on the value of the strength field, the number of chest rows may vary (max is 5, so 15 slots).
+
+
+== Chest ==
+
+The generic_9x3 GUI appears when interacting with a single chest, minecart with chest, ender chest, or barrel.
+
+
+== Dispenser ==
+
+The generic_3x3 GUI appears when interacting with a dispenser or dropper.
+
+
+== Crafter ==
+
+The crafter GUI appears when interacting with a crafter.
+
+
+== Anvil ==
+
+The anvil GUI appears when interacting with an anvil.
+
+
+== Beacon ==
+
+The beacon GUI appears when interacting with a beacon.
+
+
+== Furnace ==
+
+The furnace GUI appears when interacting with a furnace.
+
+
+=== Blast Furnace ===
+
+The blast_furnace GUI appears when interacting with a blast furnace.
+Same layout as a furnace; however, the recipe book displays blast furnace recipes instead of regular furnace recipes.
+
+
+=== Smoker ===
+
+The smoker GUI appears when interacting with a smoker.
+Same layout as a furnace; however, the recipe book displays smoker recipes instead of regular furnace recipes.
+
+
+== Brewing Stand ==
+
+The brewing_stand GUI appears when interacting with a brewing stand.
+
+
+== Crafting ==
+
+The crafting GUI appears when interacting with a crafting table.
+
+
+== Enchantment ==
+
+The enchantment GUI appears when interacting with an enchanting table.
+
+
+== Grindstone ==
+
+The grindstone GUI appears when interacting with a grindstone.
+
+
+== Hopper ==
+
+The hopper GUI appears when interacting with a hopper or minecart with hopper.
+
+
+== Lectern ==
+
+The lectern GUI appears when interacting with a lectern with a book.
+The player inventory is not included.
+
+
+== Loom ==
+
+The loom GUI appears when interacting with a loom.
+
+
+== Merchant ==
+
+The merchant GUI appears when interacting with a villager or wandering trader.
+
+
+== Shulker Box ==
+
+The shulker_box GUI appears when interacting with a shulker box.
+
+
+== Smithing ==
+
+The smithing GUI appears when interacting with a smithing table.
+
+
+== Cartography Table ==
+
+The cartography_table GUI appears when interacting with a cartography table.
+
+
+== Stonecutter ==
+
+The stonecutter GUI appears when interacting with a stonecutter.

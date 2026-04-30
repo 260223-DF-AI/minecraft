@@ -13,7 +13,7 @@ the current day-time in the Overworld:
 At midnight, fog is always dark blue regardless of other colors.
 During sunrise and after sunset, the biome fog color gets gradually mixed with the black.
 When looking in the direction of the sun during sunrise or sunset, the fog gradually turns orange.
-the current sky color, and the render distance‌[Java Edition  only]
+the current sky color, and the render distance[Java Edition  only]
 The smaller the render distance, the closer the color of the fog is adjusted to the sky color.
 When the render distance is 32, the color of the fog is not affected by the sky color.
 the current weather
@@ -25,7 +25,7 @@ In Bedrock Edition, a separate type of render distance fog is used during precip
 
 With Vibrant Visuals, the Overworld sky box does not exist and render distance fog entirely replaces its purpose for dynamic atmospherics. Atmospherics have different colors for a zenith and horizon region, which are being illuminated by rayleigh scattering. 
 The atmospherics constantly change color as the daylight cycle progresses. In general, zenith is blue at daytime and dark blue at nighttime with less rayleigh scattering illuminating it. The horizon has unique shades of purple, pink, blue, orange, brown, and light gray for each part of the daylight cycle, and it is positioned lower at nighttime. Around sunrise and sunset, an additional mie scattering shades the area around the sun with a mix of fog colors and sunlight colors. 
-Several biomes (as well as the End) have unique atmospherics, including some unique zenith and horizon colors at daytime, brighter night sky colors in warmish biomes, and some use entirely unique colors. Because many biomes also have unique lighting and color grading settings, there are more variations of the final scene. See Vibrant Visuals/Configurations § Atmospherics for all details. 
+Several biomes (as well as the End) have unique atmospherics, including some unique zenith and horizon colors at daytime, brighter night sky colors in warmish biomes, and some use entirely unique colors. Because many biomes also have unique lighting and color grading settings, there are more variations of the final scene. See Vibrant Visuals/Configurations  Atmospherics for all details. 
 During precipitation, the denser weather fog takes on the same colors as the sky box without Vibrant Visuals, while mie scattering is still applied around the sun. Unlike the classic sky, this is not applied in dry biomes or with a wither. 
 
 During rainfall or snowfall at day:  rgb(103, 103, 103) for 100%
@@ -49,7 +49,7 @@ This refers to fog used in special cases, which does not change with render dist
 
 ==== Water fog ====
 
-When the camera is in water, a dedicated fog is applied to simulate this. Underwater fog progressively recedes with time spent underwater. The color and distance‌[BE  only] depends on the biome the camera is in (see Water § Appearance for a full list). In Java Edition, swamps and mangrove swamps have a thicker fog than most other biomes, which is controlled by the biome tag has_closer_water_fog.
+When the camera is in water, a dedicated fog is applied to simulate this. Underwater fog progressively recedes with time spent underwater. The color and distance[BE  only] depends on the biome the camera is in (see Water  Appearance for a full list). In Java Edition, swamps and mangrove swamps have a thicker fog than most other biomes, which is controlled by the biome tag has_closer_water_fog.
 When the camera descends into water, a much thicker initial fog is applied first, with the same color but obscuring the distance at 0.01 blocks, which is blended for 25% with regular fog at the start. The transition fog slowly disappears, being blended for 60% at 5 seconds and removed at 30 seconds.
 Vibrant Visuals modifies underwater fog by brightening it more at the top and bottom of the sphere, while it appears almost black in horizontal directions. It is illuminated by directional lighting, and looking at a lit area when the camera is in the dark dynamically brightens it where light falls down.
 
@@ -164,17 +164,17 @@ Most things in the world are affected by fog. There are exceptions, most to all 
 Clouds, stars, the sun, moon, End sky, and End flash are not affected by air and weather fog.
 Clouds are faded by themselves (except on Simple graphics), which depends on the cloud range setting or render distance.
 The End sky is also not faded by water and lava fog. It is slightly transparent in Bedrock Edition, making fog visible through the texture.
-The classic sky box is also not affected by air and weather fog but it is gradually faded until 7° above the horizon where it gets fully transparent.
+The classic sky box is also not affected by air and weather fog but it is gradually faded until 7 above the horizon where it gets fully transparent.
 Lightning
-The world border‌[JE  only]
+The world border[JE  only]
 Render distance fog is not used for the world border. It uses its own draw distance algorithm, which introduces inconsistencies. It being unaffected by fog is mainly visible via water, lava, powder fog, blindness and darkness fog.
-Chunk border lines‌[JE  only]
+Chunk border lines[JE  only]
 The core shader used for rendering these differs only from the normal shader used for translucent blocks in that it ignores fog. It is unknown if this was done intentionally, or is an oversight.
 Charged creeper armor
 Wither anti-projectile armor
 Water with Vibrant Visuals. The tint from underwater fog and reflections are faded at the edge of the render distance, but the MERS texture not.
 Objects underwater with Vibrant Visuals are not faded by lava fog.
-Entity shadows on Fancy graphics‌[BE  only]
+Entity shadows on Fancy graphics[BE  only]
 In addition, the beams emitted by beacons and end gateways use an outdated spherical fog boundary, rather than the modern cylinder shape. The intended behavior may be for beacon beams to be unaffected by fog, at least of certain types and in some directions.
 When these objects are in conjunction with objects that are faded by fog (like blocks) fully take on the fog's color while the other objects, like the sky, do not, making them easily distinguishable.
 
@@ -210,7 +210,7 @@ minecraft:fog_deep_frozen_ocean
 minecraft:fog_deep_lukewarm_ocean
 minecraft:fog_deep_cold_ocean
 minecraft:fog_deep_warm_ocean
-minecraft:fog_default (used by old growth birch forest, tall birch hills, deep dark, dripstone caves, grove, meadow, shattered savanna plateau, snowy slopes, stony peaks, and sulfur caves)​[upcoming: Chaos Cubed]
+minecraft:fog_default (used by old growth birch forest, tall birch hills, deep dark, dripstone caves, grove, meadow, shattered savanna plateau, snowy slopes, stony peaks, and sulfur caves)[upcoming: Chaos Cubed]
 minecraft:fog_desert
 minecraft:fog_desert_hills
 minecraft:fog_dry (used by desert lakes, frozen peaks, jagged peaks, legacy frozen ocean, modified badlands plateau, and modified wooded badlands plateau)

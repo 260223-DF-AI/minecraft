@@ -1,0 +1,120 @@
+14w29a is the thirty-sixth snapshot for Java Edition 1.8, released on July 16, 2014.
+This snapshot contains a lot of optimizations specifically targeting render performance.
+
+
+== Additions ==
+
+
+=== Command format ===
+Gamerules
+
+reducedDebugInfo
+Gamerule to enable/disable reduced information on the F3 debug screen.
+Op-only unlike the 'Reduced debug info' toggle in multiplayer settings.
+Overrides 'reduced debug info' settings in clients.
+The ability to create gamerule variables.
+These are dummy gamerules which don't actually affect the world, but can be used with /stats with the new QueryResults argument to update a scoreboard objective based on the value of that gamerule.
+Declare using /gamerule <newRuleName> <value>.
+Access using /gamerule <newRuleName>.
+
+
+=== Options ===
+Multiplayer settings
+
+'Reduced debug info' toggle to enable/disable reduced information on the F3 debug screen.
+Video settings
+
+'Use VBOs' toggle to enable/disable vertex buffer objects.
+Offers a ~10% performance increase when set to ON.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Beacons, beds, chests, ender chests, heads, signs
+
+Now display the cracking animation.
+Beds did display the cracking animation previously, but not on their top and bottom.
+Stairs
+
+Flipped inventory texture back to original orientation.
+
+
+=== World generation ===
+Ore generation
+
+More than twice as fast.
+
+
+=== Command format ===
+/particle
+
+Additionally has a force argument after the count which can be set to normal or force.
+This forces particles to show even if the player's 'Particle' toggle is set to minimal or decreased.
+/time
+
+/time query <value> argument to check the time.
+Has an another argument after that which can be daytime or gametime to check either the number of ticks since the start of the day or the number of ticks since the world was created, respectively.
+/worldborder
+
+/worldborder get argument to see the current size of the border.
+Scoreboard
+
+Sidebar is now also secondarily sorted by alphabetical order on the name.
+
+
+== Fixes ==
+36 issues fixed
+From released versions before 1.8
+
+MC-71  Mobs don't spawn next to water streams if the x and z coordinates are negative.
+MC-393  Starvation prevents sleeping in bed on peaceful.
+MC-404  Viewing a map while invisible still shows both hands holding it.
+MC-455  Standing on exact x = 0, z = 0 coordinates prevents breaking / placing block in northwest.
+MC-486  Zombies and skeletons don't burn on slabs.
+MC-506  You can make smooth sandstone into smooth sandstone.
+MC-665  Minecarts and TNT are not moved by water currents.
+MC-676  Signs and chests do not display cracking animation.
+MC-1677  Retracting piston shows ghost hitbox of technical block.
+MC-14800  Sociable zombies spawn in the nether upon pigman damage.
+MC-61586  Client freezes for ~1 second in multiplayer when opacity of a block changes next to unloaded chunk.
+From the 1.8 development versions
+
+MC-46531  Weird texture overlay while spectating squid underwater.
+MC-48106  Entity teleportation bug.
+MC-53033  Unable to disable nameTagVisilibity for someone in spectator mode.
+MC-54012  Piston arm is visible sticking through the back of the piston.
+MC-57516  CanPickUpLoot and CustomNameVisible not working.
+MC-57876  Furnaces don't get placed correctly when a village is generated on server.
+MC-57939  Wrong orientation for fire created on nonflammable block's side.
+MC-58037  Items being held improperly.
+MC-59052  Cannot add fake players or named entities to scoreboard teams.
+MC-59634  Players get the message "Your game mode has been updated" even when sendCommandFeedback =false.
+MC-59923  Trapdoors are open when a player places them.
+MC-59946  Iron trapdoors appear on the opposite side of where they are placed when open (east-west orientation).
+MC-60279  Detector rails render as unpowered, even when powered.
+MC-61033  /particle command doesn't work.
+MC-61449  Piston hitbox.
+MC-61454  Ping indicator extends over the right side of the tab list.
+MC-62024  Block on Zombie Villager's head is rendered in relation to the body.
+From the previous development version
+
+MC-61451  Frame-rate drop in 14w28b.
+MC-61453  /title command writing errors on the server log.
+MC-61505  Mob spawners count min/max spawn delay with a rate of 10 instead of 1.
+MC-61519  Chests that should be oriented east/west are oriented north in desert temples.
+MC-61577  CommandStats are not used when a command sign is right-clicked by non-OPs.
+MC-61666  Cannot /setblock or fill ender chests.
+MC-61711  Sidebar scoreboard shows the lowest scores and not the best when hitting the limit of the sidebar.
+MC-61795  Rails (any) crash nearby clients when pushed by sticky pistons repeatedly / pushed into entities.
+
+
+== Trivia ==
+14w29a was previously removed from the launcher for some time, but was added back in September 2018.
+
+
+== References ==
+
+
+== Navigation ==

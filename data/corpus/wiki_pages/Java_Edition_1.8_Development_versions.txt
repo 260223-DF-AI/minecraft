@@ -1,0 +1,4624 @@
+This is a list of Java Edition 1.8 development versions.
+
+
+== 14w02a ==
+14w02a is the first snapshot for Java Edition 1.8, released on January 9, 2014, which adds new stone blocks, the /blockdata and /difficulty commands, and the @e selector. This is the first snapshot released in 2014.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Andesite
+
+Generates within stone terrain below Y=80, each in blobs similar in size and abundance to gravel or dirt.
+Can be crafted with 1 cobblestone and 1 diorite.
+Can be crafted, with 4 of the raw stone in a 22 configuration into polished andesite.
+Have the same data value, blast resistance, mining time, and other properties as stone.
+ Diorite
+
+Generates within Stone terrain below Y=80, each in blobs similar in size and abundance to gravel or dirt.
+Can be crafted with 2 cobblestone and 2 nether quartz in a checkboard pattern.
+Can be crafted, with 4 of the raw stone in a 22 configuration into polished diorite.
+Have the same data value, blast resistance, mining time, and other properties as stone.
+ Granite
+
+Generates within Stone terrain below Y=80, each in blobs similar in size and abundance to gravel or dirt.
+Can be crafted with 1 nether quartz and 1 diorite.
+Can be crafted, with 4 of the raw stone in a 22 configuration into polished granite.
+Have the same data value, blast resistance, mining time, and other properties as stone.
+ Polished andesite, polished diorite, polished granite
+
+Can be crafted with four of the respective raw stones in a 22 configuration.
+Polished forms have the same data value, blast resistance, mining time, and other properties as stone.
+ Slime block
+
+Crafted with 9 slimeballs, can also be crafted back into 9 slimeballs.
+Players, mobs and particles that land on their top side bounce, as if on a trampoline.
+Bounce rebound velocity is scaled by impact velocity.
+A bounce can be avoided by holding spacebar.
+Prevents fall damage.
+Walking on them is slower than walking on soul sand, about the speed of sneaking.
+
+
+==== Command format ====
+/blockdata
+
+Can amend and modify the NBT data of the block at specified coordinates.
+Usage: /blockdata <x> <y> <z> <dataTag>
+/difficulty
+
+Can be used to change the difficulty.
+Target selectors
+
+Added @e.
+Can select entities.
+Can specify type of entity by entity ID to either include or exclude with [type=Chicken] or [type=!Skeleton].
+Example: /kill @e[r=50,type=Chicken].
+
+
+==== General ====
+NBT format
+
+Added a tag that can lock containers.
+Mostly useful for (adventure) maps in Adventure mode.
+Tag in JSON format: {Lock:Key}, containers can be unlocked by clearing their string for Lock (changing it to {Lock:}).
+The lock can be cleared with the command /blockdata.
+Locked containers can only be opened while holding an item renamed to the given string.
+Example: If the value of the lock tag is "Key" ({Lock:Key}), a player is not able to open the chest unless they are holding an item named Key.
+Item is not removed on use.
+Only works if the item has a custom name (default names do not work).
+Example: a chest with the tag {Lock:Diamond} cannot be opened when holding a diamond; the item held must be renamed Diamond.
+Splashes
+
+Added "That's Numberwang!"
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Mossy stone bricks
+
+Now can be crafted using 1 vine and 1 stone bricks.
+Chiseled stone bricks
+
+Can now be crafted using 2 stone brick slabs on top of each other, similar to chiseled sandstone.
+Anvils
+
+The cost of experience is now reduced.
+Renaming items now only costs 1 level, repairing now starts out with 2 to 5 levels and tools can be repaired longer and with better enchantments, repairing costs can no longer be kept down by renaming items.
+Furnaces
+
+When a furnace runs out of fuel, the smelting progress pauses instead of resetting.
+Will be changed in a later snapshot.
+Doors
+
+Can now stack to 64.
+Crafting recipe now gives 3 doors.
+
+
+==== Items ====
+Baked potatoes
+
+Now restore 5 hunger points instead of 6.
+Carrots
+
+Now restore 3 hunger points instead of 4.
+
+
+==== Mobs ====
+Baby animals (sheep, pig, cow, chicken, cat, wolf, horse)
+
+All baby animal growth can now slowly be accelerated using the animal's breeding item.
+Baby animals make particles when right-clicked with the proper food.
+It appears holding the right mouse button speeds up the growth-acceleration process.
+They randomly grow up instantly.
+Villagers
+
+Now only breed when willing.
+The first time a specific trade is done, the villager becomes willing, any other time there's a 1 in 5 chance the villager becomes willing.
+When a baby villager is born, both parents lose their willingness.
+Finding out a villager's willingness in Survival is difficult: the only way to tell is the amount of XP they give when trading. Normal trading yields 3-6 experience points, trading and making a villager willing yields 8-11 experience points.
+
+
+==== Non-mob entities ====
+Boats
+
+Now break (into sticks and wooden planks) when landing on a solid surface after falling more than 3 blocks.
+
+
+==== Command format ====
+/clear
+
+Can be used to clear only a specific number of items and can be restricted to certain NBT data.
+Example: /clear @p 383 120 34 {display:{Name:Michael}} removes up to 34 villager spawn eggs named Michael from player. Note: maximum removal item count does not work correctly (fixed in 14w02c).
+/kill
+
+Now has a target selector argument.
+Can kill entities (including players) other than the player that ran the command.
+Can now be used by command blocks.
+/testfor
+
+Can now also check for dataTags.
+Example: /testfor @p {foodLevel:20}.
+No longer is exclusively usable in command blocks.
+/tellraw
+
+A new tag called "insertion" allows text to be inserted into the chat that, when shift-clicked, inserts more text into the players' chat input.
+Example: /tellraw @a {text:"CLICK",insertion:"This is a test"}.
+Item IDs
+
+Changed from using numbers (for example, TNT's id was 46) to namespaced IDs of the form minecraft:item_name. (Example: minecraft:tnt)
+
+
+==== Gameplay ====
+Adventure mode
+
+Block interaction is now impossible by default.
+Block outlines do not show unless block can be interacted with.
+Added CanDestroy tag for tools.
+Items with this tag display the names of the blocks that they can destroy in the item tooltip.
+Example: /give @p diamond_shovel 1 0 {CanDestroy:["sand","grass"]} to give a Diamond Shovel that can break grass and sand).
+Enchanting
+
+Enchanting now costs 1 to 3 levels of experience and lapis lazuli, depending on the tier.
+Player still needs the same minimum levels displayed on the enchantment table to enchant.
+The actual enchantment calculation is the same.
+One of the enchantments is displayed in the tooltip.
+The enchantments player would get do not change until they enchant it, or enchant something else.
+This enchantment seed is stored per player.
+Experience
+
+Leveling up now takes more experience.
+Teleporting
+
+Relative teleporting is smoother and no longer brings players to a stop.
+Preserves their velocity from before the teleport.
+Trading
+
+Offers are less random and more useful.
+Existing villagers are not affected.
+Trading now gives experience.
+Villager profession is now displayed in trade GUI.
+Villagers start out with 2-4 trades unlocked.
+The disabled trade arrow now has a descriptive tooltip.
+Trades are now unlocked more freely (no longer requires trading last trade).
+There are now more villager professions (only notable trade changes and additions listed).
+
+
+==== General ====
+Chat
+
+Messages are now either chat, system or action bar messages.
+Action bar messages are always shown, chat and system messages are only shown if chat settings are configured that way.
+Some instances of usernames in the chat now show the player's UUID when hovered on when debug tooltips are enabled.
+Debug screen
+
+Now shows which axis players are facing after the cardinal direction: "Towards positive/negative X/Z".
+Difficulty
+
+Now saved per world.
+Defaults to Normal instead of Easy.
+Can be locked in a specific difficulty per world.
+Locking cannot be undone without external tools.
+The difficulty may still be changed when locked by using /difficulty.
+
+
+=== Removals ===
+
+
+==== General ====
+Distance effects
+
+Ember particles emitted by lava no longer are generated at the wrong positions at high coordinates.
+This bug would later return in Java Edition 18w10c.
+Suspension particles formed inside water no longer are generated at the wrong positions at high coordinates.
+This bug would also later return in 18w10c.
+Water and lava dripping particles (formed from when such a fluid is above a block with air beneath) are no longer generated at the wrong positions.
+Piston arms no longer visually break down at high coordinates.
+Tripwire (including that which appears on tripwire hooks) no longer appears abnormally stretched at high coordinates.
+The inside faces of cauldrons, hoppers and flower pots no longer appear at the wrong positions or outside the block entirely at high coordinates.
+
+
+=== Fixes ===
+3 issues fixed
+From released versions before Java Edition 1.8
+
+MC-1178  Invalid biome ID in Superflat crashes Minecraft.
+MC-2367  Players can place and remove arbitrary blocks in Adventure mode, breaking pre-1.4.2 maps.
+MC-11207  Clicking hotbar hotkey (1-9) to move a stack of items/blocks to enchanting table deletes all but one of a stack.
+
+
+== 14w02b ==
+14w02b is the second snapshot for Java Edition 1.8, released on January 9, 2014, to fix some of the bugs and crashes in the 14w02a snapshot.
+
+
+=== Fixes ===
+5 issues fixed
+From released versions before Java Edition 1.8
+
+MC-3066  Players could break transparent blocks in Adventure Mode.
+MC-42475  Not able to pick up item if given to a dead player.
+From the previous development version
+
+MC-44338  Use/Break/Place/Do anything with the upper part of a door crashes the game.
+MC-44339  Trade glitching out and crashing game.
+MC-44340  Bugged giant mushrooms.
+
+
+== 14w02c ==
+14w02c is the third snapshot for Java Edition 1.8, released on January 9, 2014, to fix some of the bugs and crashes in 14w02a and 14w02b.
+
+
+=== Fixes ===
+20 issues fixed
+From released versions before Java Edition 1.8
+
+MC-2789  Unbreakable blocks in adventure mode: Hay Block, TNT, Silverfish, Piston, Cactus, Bed, Fire, Sponge.
+MC-3583  java.lang.NullPointerException: Exception ticking world (at ml.c(SourceFile:199)) (Corrupted Nether chunks).
+MC-5506  Villagers offer enchanted book trades players can't possibly do.
+MC-9539  /kill command still doesn't work from multiplayer server console.
+MC-9787  the game crashes when trading with villagers.
+MC-14617  Difficulty settings from one single player world carry over into another.
+MC-17624  Breaking stairs graphical glitch.
+MC-29588  Hopper: java.lang.NullPointerException - Invalid Biome id.
+MC-30135  Hopper: java.lang.NullPointerException: Getting biome.
+MC-33071  "Data tag parsing failed: Unbalanced quotation" when parsing strings with semicolons.
+MC-37075  Hopper: java.lang.NullPointerException: Exception generating new chunk.
+MC-38637  Maps framed on east or west sides of blocks are darker than north or south sides.
+From the Java Edition 1.8 development versions
+
+MC-44370  Item entity falling on farmland destroys the farmland.
+MC-44371  /kill @e does not kill arrows.
+MC-44390  @a doesn't work with all commands.
+From the previous development version
+
+MC-44400  /clear does not respect "max count" when above 0.
+MC-44409  /blockdata with command blocks not updating.
+MC-44442  Water/Lava not flowing right.
+MC-44468  Using @a with scoreboard assigns things per UUID not name.
+MC-44680  Jungle pyramids generate in plains biome.
+
+
+== 14w03a ==
+14w03a is the fourth snapshot for Java Edition 1.8, released on January 16, 2014, which adds the /clone and /fill commands as well as /gamerule logAdminCommands.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/clone
+
+Clones all the blocks (not entities) from a given area to a different given area.
+Up to 4096 blocks can be copied.
+The clone can be masked or replace - replace copies every block, masked only copies non-air blocks.
+Usage: /clone <x1> <y1> <z1> <x2> <y2> <z2> <x> <y> <z> [mode].
+Example: /clone 1001 3 1002 1011 3 992 1001 5 992 masked.
+/fill
+
+Fills a given volume with a specified block.
+Up to 4096 blocks can be filled.
+oldBlockHandling works like with /setblock, but with additional options: hollow to only fill the outer layer of blocks and fill the inner part with air, outline to fill the outer layer of blocks and ignore the inner part.
+Works similarly to /setblock
+Usage: /fill <x1> <y1> <z1> <x2> <y2> <z2> <TileName> [dataValue] [oldBlockHandling] <dataTag>.
+Example: /fill 1001 3 1002 1011 5 992 wool 6 replace.
+Gamerules
+
+logAdminCommands
+If set to false, prevents all command blocks from outputting to the client console.
+If used on a server, it also does not log player executed commands in the server's log.
+Players still see other players' executed commands in chat.
+
+
+=== Changes ===
+
+
+==== Items ====
+Player heads
+
+No longer only have one layer.
+
+
+==== Mobs ====
+Iron golems
+
+Now only drop iron ingots when killed by the player, either through combat or potions, or player-activated mechanisms such as manually lit TNT.
+If killed without player intervention, only drops poppies.
+Villagers
+
+When struck by lightning, now transform into witches, similar to pigs transforming to zombie pigmen and creepers to charged creepers.
+Zombie pigmen
+
+Now only drop gold nuggets and rare drops when killed by the player, either through combat or potions, or player-activated mechanisms such as manually lit TNT.
+If killed without player intervention, only drops rotten flesh.
+
+
+==== World generation ====
+Desert pyramids
+
+Now spawn with stained clay  rather than wool .
+Villages
+
+Now spawn with cobblestone under the gravel pathways.
+
+
+==== Command format ====
+/tp
+
+Now supports rotation arguments.
+Example: /tp @p ~ ~ ~ ~20 ~40 teleports the player so that they face 20 degrees to the right and 40 degrees downwards.
+Target selectors
+
+Now supports cubic areas.
+Example: @e[x=0,y=0,z=0,dx=10,dy=10,dz=10] gets all entities between 0,0,0 and 10,10,10.
+The radius value in selectors is now based on the block center.
+A radius of 0 works for exact block positions.
+
+
+==== Gameplay ====
+Item tooltips
+
+Now shows the internal name for use in commands (F3 + H mode).
+
+
+==== General ====
+Block IDs
+
+NBT data in commands can now use block/item names in place of numerical IDs.
+Old IDs still work, but are being phased out slowly.
+Other occurrences of blocks/items now need to be named IDs.
+Regular IDs in commands no longer work. /give [player] 1 is now /give [player] stone.
+F3 hotkeys
+
+F3 + D: Clear chat history (including previously typed commands).
+Skin customization
+
+Uses a char.png file with new layout and new dimensions.
+Dimensions for the file are now 6464.
+Right and left arms and legs are now editable independently.
+The hat layer is now full-body, can be transparent.
+Overlays for arms, legs, head, and body are called sleeves, pants legs, hat, and jacket respectively.
+Backward-compatible with older skins.
+Old skins still work, but do not have the new features.
+New skins when used in pre-14w02a versions act like old skins.
+New "Skin Customization" button in the options menu.
+Cape visibility is now toggled from here.
+Players can toggle the visibility of overlays, independent for each limb/body part.
+
+
+=== Fixes ===
+14 issues fixed
+From released versions before Java Edition 1.8
+
+MC-14671  1-Tick pulse sustaining with repeaters.
+MC-26572  Mob/player head blocks don't render the hat layer.
+MC-34919  Hopper: java.lang.NullPointerException: Rendering screen.
+MC-36494  /setworldspawn does not update compass.
+MC-42312  Range with command blocks subtly messed up.
+MC-44881  Command block custom radius.
+From the Java Edition 1.8 development versions
+
+MC-44389  Leaves not changing color depending on biome.
+MC-44556  /clear doesn't clear items in armor slot (NPE).
+MC-44684  14w02a teleporting changes cause side effects to endermen teleportation.
+From the previous development version
+
+MC-44618  Spawn point @a/@p/@r not working.
+MC-44758  CommandBlock @ selectors are offcentered.
+MC-44785  r=65536 in command block doesn't work anymore.
+MC-44824  Hopper: java.lang.NullPointerException: Rendering Block Entity.
+MC-44848  Hopper: java.lang.NullPointerException: Unexpected error.
+
+
+== 14w03b ==
+14w03b is the fifth snapshot for Java Edition 1.8, released on January 16, 2014, to fix some of the bugs and crashes in the 14w03a snapshot.
+
+
+=== Fixes ===
+18 issues fixed
+From released versions before Java Edition 1.8
+
+MC-17156  /give command throws ArrayIndexOutOfBoundsException on high Item ID values.
+MC-40420  MAJOR texture/rendering glitch.
+MC-45254  Bold text is not correctly (right/center) aligned (invalid string length).
+From the Java Edition 1.8 development versions
+
+MC-44533  Piston copies appear when pistons retract.
+MC-44606  Door replacing block.
+MC-44673  Duplication bug of doors using redstone torches.
+MC-44702  Selector arguments not working in the expected location.
+MC-44870  Name IDs don't work in most data tags.
+MC-44886  Can't do /spawnpoint.
+From the previous development version
+
+MC-44990  Iron bars, regular glass panes and cauldrons aren't transparent.
+MC-44993  Custom player heads are messed up.
+MC-45004  Placing flower pots crashes game.
+MC-45014  Realms invited player skins are messed up.
+MC-45018  Being killed makes the player's character lose their hat.
+MC-45026  Hopper: java.lang.NullPointerException: Rendering screen.
+MC-45032  Ender chest bug (using /fill).
+MC-45034  Graphical glitch in the sky
+MC-45065  Game crashes when a player dies in the End and respawns at their bed.
+
+
+== 14w04a ==
+14w04a is the sixth snapshot for Java Edition 1.8, released on January 23, 2014, which adds the /particle command.
+14w04a was reuploaded an hour and a half later to fix the server not working.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/particle
+
+Spawns particles in a given area.
+It can also be relative to entities.
+Usage: /particle <name> <x> <y> <z> <xd> <yd> <zd> <speed> [count] [player:entity].
+Example: /particle lava ~ ~1 ~ 1 1 1 0.5 2 @e[type=Chicken].
+List of particles: hugeexplosion, largeexplode, fireworksSpark, bubble, suspended, depthsuspend, townaura, crit, magicCrit, smoke, mobSpell, mobSpellAmbient, spell, instantSpell, witchMagic, note, portal, enchantmenttable, explode, flame, lava, footstep, splash, wake, largesmoke, cloud, reddust, snowballpoof, dripWater, dripLava, snowshovel, slime, heart, angryVillager, happyVillager, iconcrack_(ID)_(DATA), blockcrack_(ID)_(DATA), blockdust_(ID)_(DATA).
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Anvils
+
+Prior work cost increase changed from linear (1 per repair) to exponential (times 2 plus 1 per repair).
+Repairing with a "sacrifice" now costs 2 levels rather than only 1.
+Button
+
+Can now be placed on ceiling/floors.
+Dead bushes
+
+Now flammable.
+Furnaces
+
+When a furnace runs out of fuel, the smelting progress reverses at twice the normal speed.
+Item frames
+
+Items in item frames can now be rotated by 45 degrees (eight possible orientations).
+Item frames can give off a signal detected by comparators, based on the item's current orientation.
+Signal strength is as follows: 0: empty; 1: item; 2: item rotated once; 3: item rotated twice; ...; 8: item rotated 7 times.
+Moss stone
+
+Now craftable in a shapeless recipe with one cobblestone and one vine.
+
+
+==== Mobs ====
+Iron golem
+
+Can drop iron ingots again by any means of death.
+Can be spawned with pumpkins + dispenser.
+Snow golem 
+
+Can be spawned with pumpkins + dispenser.
+Withers
+
+Can be spawned with skulls + dispenser.
+Villagers
+
+Now harvest, collect and replant grown potatoes, wheat, and carrots.
+They do not have unlimited seeds; seeds must be replenished to replant crops.
+Craft wheat into bread, and drop it to other villagers.
+Can now become willing to breed by consuming food: 3 bread, 12 potatoes or 12 carrots.
+Zombie pigman
+
+Can drop gold nuggets again by any means of death.
+
+
+==== Command format ====
+/fill
+
+Added the ability to filter block types, as long as the filler block is not a tile entity
+Only if it's used to fill in replace mode with "normal" blocks.
+Syntax: /fill [x] [y] [z] [x] [y] [z] [BlockName] [Data] replace [filterBlockName] [filterData].
+
+
+==== Gameplay ====
+Enchantments
+
+Looting now gives an extra 1% chance of getting rare loot per level.
+Village mechanics
+
+Doors are now added to the closest village.
+This does not break iron farms, but change them a little, enough to make them "practically pointless".
+
+
+==== General ====
+Debug screen
+
+The x coordinate line is now bold when looking east/west, similarly the z coordinate line is now bold when looking south/north.
+The crosshair displays 3 short colored lines to indicate the direction of each axis: x/red, y/green, z/blue.
+Rendering & performance
+
+Only transparent blocks now render as transparent (eliminates the use of x-ray texture packs).
+Skin customization
+
+Now displays the right arm's second layer in first person view.
+Skins and capes are now distributed through servers.
+Skins server outages will occur less frequently and have less impact.
+Server-altered skins/capes are not possible  only signed URLs are stored server-side.
+Skin changes will no longer require client restarting, at worst re-logging will update the skin for everybody.
+Duplicate skins no longer need to be downloaded twice.
+Server traffic will barely be affected.
+
+
+=== Fixes ===
+37 issues fixed
+From released versions before Java Edition 1.8
+
+MC-78  Villagers crowd into a single building.
+MC-888  /difficulty command doesn't change the default difficulty in the ESC menu (singleplayer).
+MC-1253  Ladder, sign, fence, gate, trapdoor causes block it is placed in to darken.
+MC-1580  Ghost items from trading with SHIFT-click.
+MC-3668  When going through nether portals with (potion) effects, the effect animations (particles, fire, visibility, additional hearts) are lost.
+MC-5824  Cactus can grow next to blocks.
+MC-8662  Items are not centered correctly within frames.
+MC-9582  Whole-word selection behaves erratically in chat.
+MC-16457  Pumpkin texture flips when made into snowman.
+MC-18284  New AI mobs see through invisibility.
+MC-25370  Mouse is centered when going to previous menu with ESC.
+MC-29999  Realms button is still visible even though the client is a snapshot.
+MC-30995  /setblock replace doesn't replace same block with different tile entity/NBT data.
+MC-31081  Stone monster eggs spawn 2 silverfish.
+MC-31203  Furnace progress remains after changing ingredient.
+MC-32301  Lava fizz sound plays whenever a flowing lava block destroys an air block.
+MC-36847  No colon after game mode in world options.
+MC-37355  server-icon.png alpha channel display.
+MC-45087  Id for cooked fish is "minecraft:cooked_fished".
+MC-45235  Double Shift = Sprint .
+From the Java Edition 1.8 development versions
+
+MC-44368  After setting the difficulty lock, and changing it with a command block, the lock would not revert to what the command block says.
+MC-44467  Overpopulated flowers near lake
+MC-44551  Silverfish can infest granite/andesite/diorite.
+MC-44592  Fire from lava spreads further than it should.
+MC-44700  /me @e crash.
+MC-44890  Doors get added to the list of village doors over and over a.gain.
+MC-44893  /kill not killing invulnerable entity.
+MC-45011  /clone doesn't clone TileEntity orientation.
+MC-45063  Tripwire is invisible.
+MC-45071  The world freezes if an Enderman is being hit.
+MC-45084  Skin's second layers invisible in first person.
+From the previous development version
+
+MC-45172  New skin layer jacket acts enchanted when enchanted pants equipped.
+MC-45278  /spawnpoint won't update to chosen coordinates second time unless world file is reloaded.
+MC-45345  /fill Tile Entity: java.lang.ClassCastException.
+MC-45459  Debug code streaming in console.
+MC-45557  Server does no longer produce a logfile.
+MC-45595  Server seems locked in debug mode, spams console.
+
+
+== 14w04b ==
+14w04b is the seventh snapshot for Java Edition 1.8, released on January 24, 2014, to fix some of the bugs and crashes in 14w04a.
+14w04b was reuploaded a few minutes later to fix issues with items and item frames.
+
+
+=== Fixes ===
+14 issues fixed
+From the Java Edition 1.8 development versions
+
+MC-44039  Hidden capes reappear when going through a portal.
+MC-45041  setblock on a tile entity with "replace" doesn't seem to work.
+From the previous development version
+
+MC-45082  Skin layers appear to be off when traveling through portals.
+MC-45238  Minecraft 14w03b - No Anvildamage to Players in any gamemode.
+MC-45281  Cloned command block crashes.
+MC-45482  Killing a mob always gives you a rare loot (100% chance).
+MC-45496  Server disconnects player when player takes damage from mob.
+MC-45516  Furnaces stop operating between launches.
+MC-45528  Grass under snow doesn't have the snowy texture.
+MC-45552  Item frames duplicate on (re)loading.
+MC-45605  Item frames do not give off a signal if placed on snow.
+MC-45628  Monster dungeons not spawning.
+MC-45689  Clock not showing in item frame.
+MC-45747  Item frames can't be placed and already placed drop down.
+
+
+== 14w05a ==
+14w05a is the eighth snapshot for Java Edition 1.8, released on January 30, 2014, which adds Spectator mode and barrier blocks.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Barriers
+
+Act like a solid block but are completely transparent.
+Can transfer redstone signals and allow blocks to be placed on it.
+Indestructible like bedrock.
+Can only be obtained using /give @p minecraft:barrier.
+Use the lava texture as its breaking particle.
+
+
+==== Gameplay ====
+Spectator
+
+New game mode.
+Usage: /gamemode spectator, /gamemode sp or /gamemode 3.
+No interaction with the world.
+Player can move through any entity or block without interfering with it (commonly referred to as 'noclip' or as if in the far lands because they have fake chunks).
+Collecting or using items is impossible, as is placing, destroying or interacting with blocks in any way.
+A bug in this version allows the selected item from the hotbar to be dropped.
+Viewing inventories and GUIs is possible, but it is not possible to interact with them.
+The heads-up display is disabled, except for the cross hair when looking at a mob.
+Player selectors (in commands) can target spectators.
+Using /give on a spectator causes the item(s) to drop at their location.
+Spectators are not noticed by mobs, and do not trigger spawners or spawning.
+A spectator's presence keeps a mob from despawning.
+Only the void and /kill can damage a spectator.
+Flying mode.
+Landing is not possiblethe player can fly through the ground.
+The mouse scroll wheel, the sprint key, and the Slowness and Speed effects all affect the flying speed.
+First-person view through another player or mob's eyes.
+Left-clicking an entity locks the player's position and camera to the entity's.
+The spectator cannot control where the entity moves or looks.
+Certain mobs have a different vision.
+Creeper applies the new creeper.json shader.
+Endermen applies the invert.json shader.
+Spider and cave spider apply the new spider.json shader.
+Viewing oneself using F5 shows the entity.
+Pressing the dismount key ( Shift by default) returns the player to flying mode.
+Viewing privileges.
+Spectators can see other spectators.
+Appear as a translucent disembodied head.
+The selected item from the hotbar is also visible.
+Invisible players and mobs appear visible, but translucent.
+
+
+==== General ====
+Shaders
+
+creeper.json.
+Shows the world in pixelated shades of green, similar to green.json.
+Is applied when the player uses Spectator mode on a creeper.
+spider.json.
+A segmented-eyes effect.
+Is applied when the player uses Spectator mode on a spider.
+Splashes
+
+Added the following splashes:
+"pls rt"
+"Do you want to join my server?"
+"Put a little fence around it!"
+"Throw a blanket over it!"
+"One day, somewhere in the future, my work will be quoted!"
+"Now with additional stuff!"
+"Extra things!"
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Activator rail
+
+Powered activator rails now shake minecarts, causing riders to dismount.
+End portal (block)
+
+Inventory image is now the missing texture instead of the nether portal.
+
+
+==== Items ====
+Armor
+
+No longer gets colored when mobs/players are hurt.
+Written books
+
+Copying written books now marks them as copies/copies of copies.
+The copying status of a book (i.e. original, copy of original or copy of a copy) is denoted in a separate line in the tooltip, beneath the author's name.
+Copies of copies cannot be copied.
+
+
+==== General ====
+Debug screen
+
+Text now has a background.
+Replaced x, y, z, b, bl and other labels with more understandable labels.
+"Light" is now the light levels at feet, not eyes.
+Currently missing LC value.
+Redwood Taiga Hills M biome now shows its name in worlds created since 13w49a.
+Worlds created from 13w36a to 13w48b that already generated chunks with the biome don't show it in the debug screen, as they show Mega Spruce Taiga instead. In these worlds, Redwood Taiga Hills M generates normaly but it only shows in the debug screen in newly chunks generated since 13w49a.
+GUI code
+
+Improvements to allow "cooler things".
+
+
+=== Fixes ===
+15 issues fixed
+From released versions before Java Edition 1.8
+
+MC-9752  The command block will detect players who are dead, but have not yet hit respawn.
+MC-38944  Joining Realms world "cancel" button misplaced.
+From the Java Edition 1.8 development versions
+
+MC-44521  @a, @e, and any UUID references work incorrectly after a player dies.
+MC-45041  /setblock on a tile entity with "replace" doesn't seem to work.
+MC-45050  /fill ... skull | Hitbox bug.
+MC-45159  Blocks with tile entities don't get removed when you clone / fill an airblock to their position.
+MC-45239  /clear @a does not work in Minecraft 14w03b.
+MC-45453  Items & Blocks placed in item frames are rendered incorrectly.
+MC-45470  Items don't render on the ground properly.
+MC-45478  Pre-snapshot14w04a villagers break crops but don't replant them.
+MC-45492  Transparent blocks are much darker.
+MC-45554  Two tall flowers variants are not generating.
+From the previous development version
+
+MC-45764  Map will not show in item frame.
+MC-45795  Villagers can not place or pick up any crops.
+MC-45847  /summon Villager farmer NBT tag canPickUpLoot will default to 0.
+
+
+== 14w05b ==
+14w05b is the ninth snapshot for Java Edition 1.8, released on January 31, 2014, to fix some of the bugs and crashes in 14w05a.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Mooshrooms
+
+Mushrooms no longer show when the mob has the Invisibility effect.
+Sheep
+
+Wool no longer shows when the mob has the Invisibility effect.
+Snow golem
+
+Pumpkin heads no longer show when the mob has the Invisibility effect.
+Wolf
+
+Collars no longer show when the mob has the Invisibility effect.
+
+
+==== General ====
+Shaders
+
+Now removed from view when changing perspective and changing perspective whilst spectating a mob.
+F4 now toggles different shaders rather than turning them off.
+
+
+=== Fixes ===
+39 issues fixed
+From released versions before Java Edition 1.8
+
+MC-1769  X-Ray by standing inside TNT/glowstone/block of redstone/leaves (fast).
+MC-4476  Endermen don't teleport when battling other mobs up close.
+MC-4546  Sheep spawn eggs have the wrong texture when thrown on the ground (fast graphics).
+MC-12640  Scoreboard disappears when there are too many entries.
+MC-19313  Wet-tamed and wet hostile untamed wolves use texture from untamed, unhostile wolves.
+MC-22395  The player can place a block inside themselves by placing blocks next to fences.
+MC-30543  Particle effect when landing doesn't work on walls or fences.
+MC-31147  Some blocks are invisible in enderman's hands.
+MC-31382  /summon command (with enchantment IDs higher than 255) crashed Minecraft.
+MC-31574  /tellraw translate on string with arguments without a with argument crashes server.
+MC-33246  Multicolor fireworks crash game when given using /give, or summoned using /summon.
+MC-33467  Summoning fireworks crashes when using non-decimal color values.
+MC-37398  Clicking super secret settings in the main menu throws an exception (but does not crash).
+MC-38915  The player can place blocks on top of cauldrons when standing inside or on top of them.
+MC-40484  Game crash when summoning MinecartRideable riding Villager.
+From the Java Edition 1.8 development versions
+
+MC-44569  Level bar not showing off when getting negative levels.
+MC-44757  Hand in Adventure mode shows hitbox.
+MC-45102  /clear not working.
+MC-45503  /particle returns success message even if chosen particle doesn't exist.
+MC-45762  Paintings placed incorrectly.
+MC-45826  Item frames pop off/rendered on the wrong side of the block when upgrading to 14w04b.
+MC-46004  Tall grass replaced with flowers.
+MC-46084  Paintings destroyed upon loading new world.
+From the previous development version
+
+MC-46402  Flying in Spectator Mode counts as Flying in Survival Mode and kicks the player off the server.
+MC-46416  Hopper: java.lang.NullPointerException: Unexpected error.
+MC-46420  Hopper: java.lang.ArrayIndexOutOfBoundsException: 44339.
+MC-46442  Hopper: java.lang.ArrayIndexOutOfBoundsException: -1.
+MC-46444  The player cannot pass through entities when the player disconnects/reconnects while in spectator mode.
+MC-46447  Repairing tools no longer work.
+MC-46465  Changing the language breaks the shader when looking through an entity's camera.
+MC-46467  Hopper: java.lang.RuntimeException: Already decorating.
+MC-46472  Spectator mode - speeding up/down works only the first time.
+MC-46485  'Flip' shader pack shows a black screen.
+MC-46489  Summoning Barrier as FallingSand entity crashes the game.
+MC-46510  The player can push slimes in Spectator mode.
+MC-46552  [Spectator Mode] Spectate dead mob.
+MC-46563  When a spectating mob in F5 mode, the perspective effect remains.
+MC-46568  Can't move in spectator mode.
+MC-46576  Crash when inside a barrier block.
+
+
+== 14w06a ==
+14w06a is the tenth snapshot for Java Edition 1.8, released on February 6, 2014, which adds /trigger and the CanPlaceOn tag.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/trigger
+
+Syntax: /trigger <objective> <add:set> <value>.
+Functions the same way as /scoreboard players set or /scoreboard players add, but can only modify objectives with the trigger criteria (referred to as "triggers") and can only modify the score of the player running the command.
+Can be used by non-operator players.
+For a player to run this command, the trigger must be enabled for that player.
+/scoreboard players enable <player> <trigger> enables the specified player to use the specified trigger objective.
+Trigger availability is stored per player, per trigger.
+One trigger may be disabled for a player, but that player can use a different trigger.
+One player may be unable to use a trigger, but another player can use the same trigger.
+Disabled after the trigger has been used (must be re-enabled to use the trigger again).
+Mostly for use with /tellraw.
+NBT format 
+
+CanPlaceOn
+Allows placing of certain blocks against other blocks in Adventure mode.
+Example: /give @p minecraft:stone 16 0 {CanPlaceOn:[minecraft:diamond_block]}.
+HideFlags.
+Allows hiding of certain parts of the tooltip.
+Bit field of 1/enchantments, 2/modifiers, 4/unbreakable, 8/candestroy, 16/canplace.
+ShowParticles
+Option to show or hide all particles for a potion effect, while the 'Ambient' tag only shows fewer particles. Set to true to show, false to hide.
+PickupDelay
+The number of ticks before an item entity can be picked up.
+Setting to 32767 prevents the duration from decreasing, thus making the item incapable of being picked up.
+Scoreboard 
+
+A new argument for /scoreboard: [objective].
+Allows objectives to be reset one by one.
+Example: /scoreboard players reset <player> [objective].
+New objective criteria for team-specific kills, e.g.: teamkill.red, killedByTeam.blue.
+New objective criteria: trigger.
+Acts like the dummy criteria.
+Mostly for use with /tellraw.
+The ability to iterate over every scoreboard player with *.
+
+
+==== Gameplay ====
+Achievement 
+
+New achievement Overpowered.
+Obtained by crafting an enchanted golden apple.
+Requires obtaining Getting an Upgrade first.
+
+
+==== General ====
+Splash 
+
+Added "Yay, puppies for everyone!"
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Barrier
+
+Now becomes visible when a player in Creative mode is holding a barrier in their hand.
+The block itself is not rendered, a particle appears in its place.
+Now uses block of redstone breaking particles instead of lava.
+Ender crystals
+
+Now generate one block lower, without bedrock underneath.
+
+
+==== Items ====
+Animation
+
+When items are collected, rather than "zooming" into the player's chest, it appears to move to the player's feet instead.
+
+
+==== Mobs ====
+General
+
+All mobs now use the 'new' AI.
+Mobs now show a glow of a slightly different color when hurt.
+Mobs that can ride boats can now control the boats.
+Except for ghasts and bats.
+Blazes
+
+Now shoot the player even if there are solid blocks between them.
+Cave spiders and spiders
+
+Can no longer draw its line of sight through opaque blocks.
+Chickens
+
+Are slightly taller (0.4 blocks tall rather than 0.3).
+Endermen
+
+Now pathfind to the player when aggravated.
+Giants
+
+Worn armor is now rendered.
+AI is removed.
+Are slightly taller (11.7 blocks tall rather than 10.8).
+Mobs
+
+Leftover AI is removed.
+Monsters
+
+Leftover AI is removed.
+Magma cubes and slimes
+
+Now swim, and randomly change direction every so often, reducing the chance of them getting stuck at walls or corners.
+Now randomly despawn over time if no player is within a 32-meter range.
+Are slightly smaller (smallest variant is 0.51 blocks tall rather than 0.6).
+Ocelots
+
+Are slightly shorter (0.7 blocks tall rather than 0.8).
+Silverfish
+
+Are significantly smaller (0.3 blocks tall and 0.4 blocks wide rather than 0.7 blocks tall and 0.3 blocks wide).
+Skeletons, witches, zombies and zombie villagers
+
+Are slightly taller (1.95 blocks tall rather than 1.8)
+Snow golems
+
+Are significantly larger (1.9 blocks tall and 0.7 blocks wide rather than 1.8 blocks tall and 0.4 blocks wide).
+Withers
+
+Are slightly shorter (3.5 blocks tall rather than 4.0)
+Wither skeletons
+
+Are slightly taller (2.353 blocks tall rather than 2.34)
+Zombie pigmen
+
+Now pathfind to the player when aggravated.
+Are slightly taller (1.95 blocks tall rather than 1.8).
+
+
+==== Command format ====
+/effect
+
+Can now also specify whether particles are to be shown:
+Usage: /effect <player> <effect> [seconds] [amplifier] [hideParticles].
+Use 'true' to hide particles and 'false' to show; if value not given, defaults to false.
+/particle
+
+Added the barrier particle.
+Uses the barrier item texture.
+Used for indicating barrier blocks.
+Data Tags
+
+Age
+Setting Age to a value of -32768 makes items which never expire
+
+
+==== Gameplay ====
+Spectator mode
+
+An optional hotkey to show outlines on players whilst spectating.
+Can be color coded to teams.
+Can be set/canceled in Controls option.
+Outline seen when the key is held down (like sneaking when Shift is held down).
+
+
+==== General ====
+Block IDs
+
+Statistics for items/blocks can now be referenced per name, instead of ID.
+Example: stat.mineBlock.minecraft.stone.
+Debug screen
+
+X, Y, and Z title has been changed from 'Feet' in the previous snapshot, to 'XYZ'.
+Day counter added.
+Increases by 1 every dawn.
+Now displays difficulty.
+Peaceful- 0.00, Easy- 0.75, Normal- 1.50, Hard 2.25 (but numbers slowly increase the longer you are in an area).
+Now displays player rotation again.
+However now it displays it in degrees and quadrants.
+F3 hotkeys
+
+Now display entity eye level in red.
+Resource packs
+
+Block models in resource packs can now be customized.
+Replaces the files in /assets/minecraft/models/.
+After loading the resource pack, the game may have to be reloaded.
+Splash
+
+Splash changed - "OpenGL 1.2!" changed to "OpenGL 2.1 (if supported)!"
+
+
+=== Fixes ===
+32 issues fixed
+From released versions before Java Edition 1.8
+
+MC-2947  Ghasts and witches do not aim properly.
+MC-4222  While under the effect of a night vision potion, enemies no longer flash red upon taking damage.
+MC-10099  Angry Zombie pigmen usually won't jump over 1-high transparent blocks to get to enemies.
+MC-12061  Witch hitbox is shorter than the witch mob itself.
+MC-12730  TNT placed on fence / nether fence/cobble wall/mossy wall and ignited has TNT fall through floor.
+MC-19886  Plants don't cause an update when the block beneath is broken/light level changed.
+MC-32579  Attribute "followRange" not working thoroughly.
+MC-33110  Spiders (and some other mobs) are not affected by speed effects or movementSpeed attributes.
+MC-36151  stat.leaveGame does not increment when game is closed.
+MC-39139  walkOneCm stat doesn't accurately measure distance.
+MC-41839  Chicken jockeys with baby zombie pigmen do not work.
+MC-47705  Blaze mobs attack creative mode player.
+MC-56363  Crash on auto-complete name of scoreboard objective.
+From the Java Edition 1.8 development versions
+
+MC-44688  /clear fails on strings containing spaces.
+MC-45261  Sneaking while teleporting changes player position to face -z.
+MC-46404  Hearts, food, armor and crosshair are the wrong color (overlay) when holding certain items.
+MC-46427  Breaking barriers create lava and water particles.
+MC-46435  Reticle (now hitbox) appears on tile entities in spectator mode.
+MC-46473  Cannot open minecart with chest in spectator mode.
+MC-46492  Texture issues with invisible slime.
+MC-46535  Can control minecarts in spectator mode.
+MC-46550  The head of the sheep is bugged.
+MC-46560  When certain mobs take damage, the red damage indicator is not displayed properly.
+MC-46599  Trapped chests display triple chests in spectator mode.
+From the previous development version
+
+MC-46694  Item frames, knots and paintings displaying void particle.
+MC-46695  "flyingSpeed" flood in the dev console when flying in gamemode 1 and 3.
+MC-46711  Spectating baby zombies has wrong eye level.
+MC-46715  Item repair duplicating item.
+MC-46751  Cardinal direction in debug screen change with mouse while spectating a mob.
+MC-46761  Zombies and zombie pigmen do not show holding items.
+MC-46950  Can see the item name when pressing hotbar shortcut key in spectator mode.
+MC-47268  Attempting to use a post-processing effect crashes on old Mac hardware.
+
+
+== 14w06b ==
+14w06b is the eleventh snapshot for Java Edition 1.8, released on February 6, 2014, to fix some of the bugs and crashes in the 14w06a snapshot.
+
+
+=== Fixes ===
+46 issues fixed
+From released versions before Java Edition 1.8
+
+MC-1893  If a player sneaks, buckets will place water/lava/lily pads at the position the player would point at if the person wouldn't sneak
+MC-3230  Black (squares?) on 3rd person view.
+MC-4077  Player hitboxes in debug mode are rendered too high.
+MC-4767  Shadow on the block above your head.
+MC-8898  Player hitbox is rendered in inventory.
+MC-19886  Plants don't cause an update when the block beneath is broken/light level changed.
+MC-29515  When tracking stat.craftItem shift-clicking counts 2.
+MC-29796  Snowing causes water drips.
+MC-40367  /tellraw @a throwing NPE when no players online.
+MC-41917  Unable to play sound: "minecraft.damage" (When attacking other players) (Multiplayer and in Singleplayer).
+MC-41962  Water texture bug.
+MC-44166  Scoreboard objectives inaccurate in smelting objectives.
+MC-44727  Block IDs that don't exist as an item crash Superflat customization GUI.
+From the Java Edition 1.8 development versions
+
+MC-46410  Changing gamemode while in the view of a mob in spectator mode does not perform as expected.
+MC-46411  Spectator Mode Remaining in Mob and "Attempting to attack an invalid entity".
+MC-46413  Exiting spectator mode does not restore UI.
+MC-46422  Barrier have shadows.
+MC-46511  Double renamed trapped chest not double in spec mode.
+MC-46847  Item frame perspective in spectator mode is too high.
+MC-46883  Andesite looks like desert on the map.
+MC-46970  /scoreboard objectives add ~ stat.damageTaken ~ Doesn't work.
+From the previous development version
+
+MC-47427  Game crashes when breaking some blocks.
+MC-47428  Weird slimeblock texture bug.
+MC-47429  Random crashes when flying in world.
+MC-47430  Upon loading a world from a previous 1.8 snapshot, the game crashes.
+MC-47434  Wrong dirt texture.
+MC-47438  Game crash while killing slimes.
+MC-47440  Hopper: java.lang.IllegalArgumentException: n must be positive.
+MC-47442  Shadow in inventory.
+MC-47448  Standing in minecarts.
+MC-47457  Mining blocks causes crash.
+MC-47459  Pistons not placing correctly.
+MC-47464  Block side shading not being applied in fast with no smooth lighting.
+MC-47466  Crash "Tesselating block in world" with following world seed.
+MC-47468  Constant crash back to MC launcher screen.
+MC-47469  Cactus in pot shows incorrect texture.
+MC-47470  Two tall flowers variants are not generating.
+MC-47471  Weird visual flash bug when mining glowstone/block mine crash.
+MC-47477  Game crashes when smooth lighting is turned off.
+MC-47482  Signs display redstone block particle when broken.
+MC-47489  Fishing rod does not cast.
+MC-47492  Shading on the game isn't right.
+MC-47505  Slimes shadow bug.
+MC-47539  No break texture when mining stone.
+MC-47542  Capes don't display correctly when crouched.
+MC-47560  Crash sometimes when placing torches.
+
+
+== 14w07a ==
+14w07a is the twelfth snapshot for Java Edition 1.8, released on February 14, 2014, which adds iron trapdoors and the /execute and /testforblocks commands.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Iron trapdoor
+
+Can only be opened and closed using redstone, similar to an iron door.
+Crafted by placing iron ingots in a 22 pattern, yields 1 iron trapdoor.
+
+
+==== Command format ====
+/execute 
+
+Allows commands to be run from the position of specified entities using.
+Example: /execute @e[type=Chicken] ~ ~ ~ fill ~-1 ~-1 ~-1 ~1 ~1 ~1 minecraft:glass.
+/testforblocks
+
+Compares two areas of a world.
+Example: /testforblocks 100 64 100 107 69 107 0 64 0 masked.
+Scoreboard
+
+Scoreboard objectives for fake players with a name starting with # never show up on the sidebar.
+New /scoreboard subcommands: /scoreboard operation and /scoreboard test.
+The operation subcommand can apply arithmetic operation to scores (+  * / %) and accumulate player scores.
+Example: /scoreboard players operation #teamscores redScore += @a[team=red] blueKills adds every red player's count of kills on blue to the red team's score of kills.
+The test subcommand can be used to test if a scoreboard value is between a min and a max value.
+Example: /scoreboard players test #global anObjective 12 19 checks whether the global score of the given objective is between 12 and 19, inclusive.
+Different teams can now have different objectives displayed in the sidebar.
+Example: /scoreboard objectives set display sidebar.team.yellow objectiveName (referring to team color, not team name).
+Teams can now have settings on how the nametags are to be shown - /scoreboard teams option red nametagVisibility hideForOtherTeam. Also possible: hideForOwnTeam, never, always (default).
+Target selectors 
+
+New selector parameters for entity selectors to detect entity rotations with rxm  x rot min, rx  x rot max, rym  y rot min, ry  y rot max.
+Example: @a[rxm=-15,rx=15,rym=-45,ry=45], /say @a[rxm=30,rx=90] , don't look down!.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+General
+
+Updated the block model format.
+Now less exploitable.
+UV has to be [0,1] (Textures can no longer be "borrowed" from neighboring block textures).
+Planes need to have 1 axis 'identical' (so aligned to either x, y, or z).
+Plane rotation can only be -45/45 on a single axis.
+From/to and uv coordinates are now in 'pixelspace' (multiples of 1/16th of a block).
+Cocoa
+
+Invalid metadata versions now have no model.
+Command blocks
+
+Now show the @e target selector variable.
+Dispensers
+
+Can now place command blocks with pre-configured commands, rather than dispensing it
+Ladders
+
+Invalid metadata versions now have no model.
+End portal frames
+
+Invalid metadata versions now have no model.
+Redstone torches, torches
+
+Now have an angled top side when placed on walls.
+
+
+==== Items ====
+Blaze rods
+
+Are now held similarly to tools.
+
+
+==== Command format ====
+/testfor, /testforblock, /clear
+
+Can now test for partial matches of NBT lists.
+Example: /testfor @p {Inventory:[{Slot:6b,id:"minecraft:diamond_sword"}],SelectedItemSlot:6}.
+/tellraw
+
+Can now insert values from scoreboards into messages.
+Example: /tellraw @p {text:"Have ",extra:[{score:{name:"Searge",objective:"reward"}},{text:" diamonds"}]}.
+
+
+==== Gameplay ====
+Creative mode
+
+Players can create a copy of a block entity in their hotbar, including all NBT data, with ctrl+pick block.
+Spectator mode
+
+Players can now share LAN.
+
+
+==== General ====
+Debug screen
+
+Looking at a block in the world shows the coordinates of that block on the debug screen.
+BlockItem instances can now hold a custom tag that is merged into a block entity when it's placed.
+Example: /give @p command_block 1 0 {BlockEntityTag:{Command:"setblock ~ ~ ~ minecraft:diamond_block"}}.
+Inventory system
+
+Rewrote the inventory system.
+Reverted before the full release of Java Edition 1.8.
+Fixes some bugs, improves performance and allows easier improvements.
+Allows custom NBT that isn't handled by the game to be added onto items.
+Custom tags remain even if the item's NBT is changed in-game. (i.e. by renaming).
+Resource packs
+
+Resource packs can now be bundled with a world, put it in the map save directory and name it "resources.zip".
+Example: .minecraft/saves/TheMapWithTheThing/resources.zip.
+
+
+=== Fixes ===
+33 issues fixed
+From released versions before Java Edition 1.8
+
+MC-1818  Skullowner is lost when "picking" the skull in Creative.
+MC-4837  Zombie/player held beacon experience Z-fighting.
+MC-7133  Texture of burning furnace (ID62) shows no face in Inventory.
+MC-11270  Scoreboard don't work with offline / non-existant players.
+MC-36947  /weather clear <time in seconds> doesn't clear weather for anywhere near the amount given.
+MC-41594  Game crashes when Ender crystal is stacked on top of horse.
+MC-44829  Unable to load Twitch libraries.
+MC-46431  Iron golem breaks lead.
+From the Java Edition 1.8 development versions
+
+MC-46696  Too many flowers near lake .
+From the previous development version
+
+MC-44489  /kill @e doesn't kill ender dragons.
+MC-45106  Mipmapping strength is not applied to non-standard blocks.
+MC-45571  Farmer type villagers don't generate on superflat without grass.
+MC-45773  Chest not spawning in monster dungeons.
+MC-46400  Player arm invisible after using F5 in spectator mode and switching to creative.
+MC-46559  Spectating a mob leaves the player at two blocks tall view.
+MC-46838  /testfor NBT parsing error.
+MC-47212  /testfor + inventory bug.
+MC-47520  Standing under block with water/lava on top will apply blue/red filter.
+MC-47543  Items stacked with items that have PickupDelay set to 32767 can no longer be picked up.
+MC-47545  CanPlaceOn does not work with wooden doors.
+MC-47555  Cannot place boats.
+MC-47596  Items of the same type (IE, stone, and stone) ignore data values and stack anyway.
+MC-47598  The color of sugar canes doesn't change depending on the biome.
+MC-47642  Hopper: java.lang.ArrayIndexOutOfBoundsException: 4.
+MC-47653  Torches causing missing texture when placed on bottom side of block.
+MC-47685  Hopper: java.lang.ArrayIndexOutOfBoundsException: 3.
+MC-47796  Leaves, grass, and tall grass all have a more brightly colored tint.
+MC-47817  Baby zombie pigman running with strange speed.
+MC-47821  Ghasts do not despawn in Peaceful mode
+MC-48043  Held blaze rod not in hand.
+MC-48341  Locking chests, furnaces, etc.
+MC-48357  Cubic selectors return out-of-order (per-chunk?) results. (/kill).
+MC-48784  Duplication of items using gravity.
+
+
+== 14w08a ==
+14w08a is the thirteenth snapshot for Java Edition 1.8, released on February 19, 2014.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Trapdoors
+
+Now called "Wooden Trapdoor".
+
+
+==== Command format ====
+/execute
+
+Now pass their success value back to the command block running them.
+
+
+==== Gameplay ====
+Superflat worlds
+
+Presets now use the new block ID format.
+Block ID/number of layers format changed from NumberxID to Number*ID.
+Preset code version number changed to "3".
+
+
+==== General ====
+Player list
+
+Improved the health objective display on the player list.
+Falls back to textual display if space is scarce, with colors (green/yellow/red) to show different health levels.
+Additional health squashes the display together to fit.
+
+
+=== Fixes ===
+42 issues fixed
+From released versions before Java Edition 1.8
+
+MC-19  Having FOV over 100 and sleeping in bed will cause you to look inside your head.
+MC-107  Potion of night vision: total blackout.
+MC-1458  Zombie/skeleton wearing a chestplate not displaying the sleeves of the chestplate properly.
+MC-3599  Sleeping in beds above layer 128 in multiplayer causes the player to fall into the void (visually only).
+MC-5653  Enchanted book offers will only ever get worse with villager trades.
+MC-8201  Lit TNT falls into floor on reload.
+MC-9562  Double clicking in creative inventory doesn't auto-stack the items.
+MC-9866  Upper part of a Door does not open when placing a Block of Redstone beside it.
+MC-11170  F3 pie graph bug.
+MC-13381  Spawner shows activity when eyes pos in range, but actually only produces mobs when feet pos in range.
+MC-18245  Renaming + enchanting cost bug.
+MC-30350  Superflat Swampland doesn't generate lilypad.
+MC-30450  /give command creates crash-inducing items with incomplete dataTag.
+MC-32434  Various ocelot spawning problems, again.
+MC-32867  Stained clay blocks act as wood if a fence is underneath.
+MC-38014  When /setblock oldblockhandler is set to replace, it still drops container items.
+MC-40986  Tellraw command crash (stat.entityKilledBy).
+MC-47857  Realms Backup "No" button doesn't work.
+From the Java Edition 1.8 development versions
+
+MC-44347  Structures spawn in the incorrect biome.
+MC-44382  /blockdata command with signs.
+MC-44613  Wrong text for opening a locked beacon.
+MC-44651  For @e is no description inside commandblocks.
+MC-45079  Missing string when running /clone commands.clone.success.
+MC-45114  Superflat customization still uses block IDs.
+MC-45327  Grass blocks don't mipmap properly.
+MC-45674  Villagers only plant wheat.
+MC-46329  Realms player count is no longer updating.
+MC-46417  Sprint particles in Spectator mode.
+MC-46457  Players are stuck in the map barrier.
+From the previous development version
+
+MC-48386  Iron Trapdoor has the name "tile.ironTrapdoor.name".
+MC-48395  When swimming in water, players do not drown.
+MC-48399  /execute not obeying the gamerule commandBlockOutput false rule.
+MC-48408  Hopper: java.lang.NullPointerException: Handling packet.
+MC-48411  java.lang.NullPointerException: Exception in server tick loop.
+MC-48414  Nametag shown in inventory screen.
+MC-48449  Commands in the form /execute testforblock do not update comparators correctly.
+MC-48464  "/scoreboard players test playername" will not tab-complete the objective argument.
+MC-48507  /testforblock command not working with execute command.
+MC-48509  No way to hide commands executed by entities for OPs.
+MC-48515  Moving in water bug of light.
+MC-48955  Cave spiders can breathe underwater.
+MC-49019  Partial NBT data matching breaks checking for empty containers.
+
+
+== 14w10a ==
+14w10a is the fourteenth snapshot for Java Edition 1.8, released on March 6, 2014, which adds the showDeathMessages game rule.
+
+
+=== Additions ===
+
+
+==== Command format ====
+Gamerule
+
+showDeathMessages
+Toggles whether or not death messages are visible (in chat).
+
+
+==== General ====
+Splashes
+
+Added "So sweet, like a nice bon bon!"
+Added "Popping tags!"
+Statistics
+
+stat.crouchOneCm
+Detects how many centimeters (0.01 blocks) that the player has moved while crouching.
+stat.sprintOneCm
+Detects how many centimeters (0.01 blocks) the player has moved while sprinting.
+stat.timeSinceDeath
+Detects how much time has passed (in ticks) since the player's last death.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Block models
+
+Converted more blocks: repeaters, comparators, beds, hoppers, doors, melon/pumpkin stems, cake, and lily pads.
+Changed trapdoor models.
+Rotation can now be done in increments of 22.5 degrees on a single axis.
+Being able to override not just a model, not just a block's model, but an individual block variant's model.
+F3+T and F3+S now reload models.
+The missing model has changed from   to  , and is now much more widely used as many more blocks have been converted to use models.
+Iron bars now render their top/bottom texture even when connected to other iron bars from above or below.
+Item frames, paintings
+
+Improved position handling.[more information needed]
+
+
+==== Mobs ====
+Cats
+
+Now display death messages in chat to their owner.
+Skeletons
+
+Flee when being attacked by wolves, instead of fighting back.
+Wolves
+
+Now attack skeletons automatically, like how they attack sheep automatically.
+Now display death messages in chat to their owner.
+
+
+==== Command format ====
+/clone
+
+Minor tweaks to make it more reliable.
+Scoreboard
+
+Testing for scores now also works in @e entity selector.
+Added scoreboard team property to disable death messages: /scoreboard teams option <name> deathMessageVisibility with options never, hideForOtherTeams, hideForOwnTeam, always.
+Command /scoreboard players can now filter by NBT data.
+
+
+==== Gameplay ====
+Creative mode
+
+Players in creative mode can now damage entities even if they are flagged invulnerable.
+Item tooltips
+
+The NBT HideFlags now has a 5th bit (value of 32) that hides potion effects
+Villager trading
+
+A new NBT rewardExp, which can be set to true or false, that controls villagers giving xp for trading.
+
+
+==== General ====
+Twitch broadcasting
+
+Now requires a confirmation before starting.
+UUID
+
+All player lists now are converted to be UUID-based automatically.
+
+
+=== Removals ===
+
+
+==== General ====
+Distance effects
+
+Almost certaintly as a result of the block model conversion, lily pads no longer appear glitched at exactly 8,388,608 blocks out and invisible from 8,388,609 blocks and beyond.
+
+
+=== Fixes ===
+32 issues fixed
+From released versions before Java Edition 1.8
+
+MC-208  Paintings & item frames can overlap / Z-fighting when overlapping.
+MC-3450  While lying in bed nearby mobs will look above the player.
+MC-3493  Item frames "jumping" (actually fixed in 1.7)
+MC-6095  There is a very small gap at the hopper block model.
+MC-10387  The bottom of a Hopper becomes dark while being broken.
+MC-11681  Players' nameplates are too low while sleeping in beds.
+MC-31047  Use item stat corresponds to left-click, not right-click.
+MC-45375  Improper cake texture.
+From the Java Edition 1.8 development versions
+
+MC-44851  Wither cant be killed with /kill while invulnerable.
+MC-46207  Phantom floating mobs are generated by any spawner (including natural dungeon spawners).
+MC-46223  @a, @p, @e or @r doesn't include dead player.
+MC-46426  Held items in spectator mode are visible in third-person.
+MC-46428  Armor doesn't hide for the player, themself, in spectator mode.
+MC-46430  Spectator mode can throw item in every place, but can't take them.
+MC-46596  In spectator mode, mobs can still follow the player.
+MC-47028  @e selector does not accept scoreboard parameters in non-player entities.
+MC-47431  Hand shifts to the side when crouching/sneaking.
+MC-47571  Fishing line casts below the player.
+MC-47646  Player 2 blocks higher when sleeping in bed and noclip.
+MC-47656  Other player's arms aren't moving when watching them mining/placing blocks.
+MC-47696  Block sounds are distorted if walking with left and right keys.
+MC-47736  When in spectator mode, items in your hand are misplaced.
+MC-47744  Cannot disable experience from villager trades.
+MC-47967  Workbench destroying animation is bugged.
+MC-48160  Cannot hide potion effect tooltips using HideFlags.
+MC-48476  Falling sand doesn't display when summoned.
+MC-48503  Placing a sign with NBT tags doesn't apply the tags to sign.
+MC-48512  Vines no longer have a back face texture.
+MC-48544  Baby cow eye height is misplaced and causes them to suffocate in 1-high areas.
+MC-49057  Command block T flip flop (command crash game).
+From the previous development version
+
+MC-49142  /fill wrong comparator output.
+MC-49375  Brewing stand ctrl+middle click copy derp.
+Other fixes
+
+Fixed stat.useItem for many items.
+Foods, milk, potions, bows, carrots on a stick, fishing rods work with stat.useItem.
+Empty buckets augment stat.useItem when used to pick up water or lava, but not when milking a cow.
+Armors, leads, saddles, taming, breeding, lava and water buckets, and wooden bowls still don't work with stat.useItem.
+Fixed debug rendering of bounding boxes for many entities.
+Fixed potential "infinite" recursion issue with the /blockdata command in command blocks.
+
+
+== 14w10b ==
+14w10b is the fifteenth snapshot for Java Edition 1.8, released on March 6, 2014, to fix some of the bugs and crashes in the 14w10a snapshot.
+
+
+=== Fixes ===
+23 issues fixed
+From released versions before Java Edition 1.8
+
+MC-4410  Floating in 3rd person while sneaking.
+MC-32284  Placing an enchanted item with a non-existent ench ID will crash when placing it in the first slot of an anvil.
+From the Java Edition 1.8 development versions
+
+MC-48461  Brewing stands do not copy their NBT.
+MC-48539  Vines briefly display missing model when breaking supporting block.
+MC-50155  Crops float above farmland.
+From the previous development version
+
+MC-50220  "Nether Brick Fence" is not rendered correctly in inventory.
+MC-50222  Dirt texture on Grass Blocks is green.
+MC-50223  14w10a dedicated server crash at startup.
+MC-50226  Jukebox is missing the textures when disc is inside.
+MC-50229  /scoreboard team option deathMessageVisibility error message lists wrong options when ran without option parameter.
+MC-50232  Wheat appears as purple and black checker box.
+MC-50233  Double Stone Slabs have the "missing texture" texture.
+MC-50241  Cannot add or set scores of offline or "fake" players.
+MC-50242  Powered Repeaters don't emit flame particles around torches.
+MC-50246  Beds legs are missing when there is a chest to the left or right of bed, with a solid block on opposite side.
+MC-50250  Texture of nether wart is broken.
+MC-50254  Full snow layer block has a missing model/texture.
+MC-50259  Upward facing dispenser texture bug.
+MC-50267  Hopper: java.lang.ClassCastException: atf cannot be cast to aoc.
+MC-50270  Hopper: java.lang.ClassCastException: atf cannot be cast to arj.
+MC-50273  Hopper: java.lang.ArrayIndexOutOfBoundsException: -1.
+MC-50284  /scoreboard players set FAKEPLAYER not working (14w10A, not B).
+MC-50287  Going back to a previously held map after a crash crashes the game again.
+
+
+== 14w10c ==
+14w10c is the sixteenth snapshot for Java Edition 1.8, released on March 7, 2014, to fix some of the bugs and crashes in the 14w10a and 14w10b snapshots.
+14w10c was reuploaded an hour or so later to fix a server crash bug.
+
+
+=== Fixes ===
+38 issues fixed
+From released versions before Java Edition 1.8
+
+MC-1305  Iron bar hit-boxes misaligned
+MC-2487  lighting cocoa | glowing when hit
+MC-3084  Models improperly shaded at certain angles
+MC-3151  New Mob AI doesn't take world limit/Void into account for pathing
+MC-3493  Item frames "jumping"
+MC-7001  Items in Item frame get dark when rotated (fast graphics)
+MC-8509  Iron bars texture gap
+MC-25378  Back of ladder missing - stronghold generation
+MC-33030  Mobs (Endermen) don't flash red when hit in the end
+MC-43012  glass pane z-fighting with itself
+MC-44607  Increased Suffocation Rate While In Vehicle
+MC-50916  Zombie pigmen villagers are missing their inner head when spawned with {IsVillager:1}
+From the Java Edition 1.8 development versions
+
+MC-45327  Grass blocks don't mipmap
+MC-45346  Cake's Hitbox is Off
+MC-45869  Summon Command Leash Knot crash
+MC-46432  Fences connects to Barrier block
+MC-47650  Block drops appear in wrong location or behind walls
+MC-48284  Dropped items also have red lines
+MC-48831  "Reeds" Model Displays Incorrectly
+MC-50219  "Slightly Damaged Anvil" Faces the wrong way in Inventory
+MC-50221  Exception on server start "Name and ID cannot both be blank" when started with online-mode=false
+MC-50235  End Portal Frame Texture Bug
+From the previous development version
+
+MC-50276  Planted Nether Wart appears as purple and black checkerbox .
+MC-50280  Missing cauldron inner side
+MC-50288  Player data cleared after switching to 14w10b
+MC-50296  Cobblestone wall not stacking correctly / Missing Post / Floating Torch
+MC-50309  Pressure Plates use the "pressed down" graphic for their inventory icon
+MC-50322  Z-fighting in iron bars with Glass blocks
+MC-50335  Fences partialy lose texture when connected to stonebrick
+MC-50351  Double Sandstone Slab texture broken
+MC-50367  Bad hit boxes and eye positions
+MC-50370  Model Warning Console Spam When Switching Resource Packs
+MC-50373  Certain Blocks Rendered Too Bright
+MC-50396  Can't model top and bottom half of doors separately
+MC-50432  Tile Entities in a CLONE ... REPLACE FORCE region are replaced by barrier blocks on the second clone operation
+MC-50448  Rails are floating above the ground
+MC-50453  Server crashing
+MC-50460  Cobblestone wall connecting with barrier blocks
+
+
+== 14w11a ==
+14w11a is the seventeenth snapshot for Java Edition 1.8, released on March 13, 2014, which adds endermites.
+
+
+=== Additions ===
+
+
+==== Items ====
+Spawn eggs
+
+Added endermite spawn eggs.
+
+
+==== Mobs ====
+ Endermites
+
+Appearance is similar to a silverfish's appearance, except they are purple and emit ender particles.
+Endermen are hostile toward them.
+Sometimes spawn in place of an enderman teleporting away.
+Despawn after 2 minutes.
+Spawn with a 5 percent chance when an ender pearl lands.
+Model will be changed in the next snapshot.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+General
+
+Now internally use states instead of metadata.
+Metadata will still be used for a while.
+Block states of the block being looked at are now displayed on the debug screen - examples: redstone, door.
+Internally, metadata no longer needs to be calculated out of the 4-bit data value, instead, the values of specified properties can now be easily gotten and set.
+Block models
+
+Converted fence gates, brewing stands.
+Lighting now works with models (most models for some users).
+Graphics
+
+Dropped items now face the player in all three directions on fast graphics.
+Fence gates
+
+Show two holes in their item icon.
+
+
+==== Mobs ====
+Creepers, skeletons, witches, zombies, zombie pigmen
+
+Now run away from exploding creepers.
+Endermen
+
+Walk slightly faster.
+Silverfish
+
+Occasionally stop before moving again (similar to most mobs).
+Slime
+
+Seem to jump a bit more randomly.
+
+
+==== Non-mob entities ====
+Minecarts
+
+Changed minecart physics.
+Minecarts now go faster and farther.
+Improved collision and position handling.
+Minecarts can derail at corners if going too fast, as well as refuse to go uphill.
+Minecarts with furnaces
+
+They now give a much greater boost to other minecarts.
+When powered, they can move on non-powered rails without decelerating.
+Minecart with TNT
+
+Explosions no longer stack.
+
+
+==== General ====
+Debug screen
+
+On the right hand side, a display shows up if you are looking at a block, giving various pieces of information and NBT data about it.
+Looking at a door and redstone shows you the state of the block.
+Door: which way it is facing, if it is open, which half you are looking at, if it is powered, and what side the hinge is.
+Redstone: power direction (up, down, side, none) for all compass directions (north, south, east, west) and power level.
+Not 100% complete, data for a lot of blocks still missing.
+
+
+=== Fixes ===
+6 issues fixed
+From released versions before Java Edition 1.8
+
+MC-36822  Minecart with command block merging.
+From the Java Edition 1.8 development versions
+
+MC-47695  Minecart hitbox is too tall.
+MC-50413  Custom UUIDLeast/UUIDMost pair yields error.
+From the previous development version
+
+MC-50452  Rails don't render from below.
+MC-50838  Entity UUID WitherSkull.
+MC-50904  ender man acting weird.
+
+
+== 14w11b ==
+14w11b is the eighteenth snapshot for Java Edition 1.8, released on March 13, 2014, to fix some of the bugs and crashes in 14w11a.
+This snapshot was reuploaded.[more information needed]
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Block models
+
+Generic blocks now load models and not predefined block shapes.
+
+
+==== Mobs ====
+Endermites
+
+No longer despawn when named, though PersistenceRequired is still ignored.
+
+
+=== Fixes ===
+27 issues fixed
+From released versions before Java Edition 1.8
+
+MC-816  'Drowning' meter doesn't reset when there's a block overhead, in running water.
+MC-4402  Brewing stands become bright when punched.
+MC-8648  Upon naming an item, it no longer grows in base value after being repaired on an anvil.
+MC-10206  Breaking animation displayed on top of cauldron and hopper.
+MC-13799  Selection box of fence is hidden when a leash/lead is tied to it.
+MC-16587  Glass pane/iron bar graphical bug.
+MC-32997  If you try to give yourself air repeatedly it will crash your game.
+MC-37215  You are able to place a glass pane where you should not be able to.
+MC-51214  Fireworks given with empty FadeColors crashes the client when hovered.
+MC-52357  /setworldspawn changes thrown ender pearl target.
+From the Java Edition 1.8 development versions
+
+MC-45070  Can't use @p[type=Player] {SelectedItemSlot:0} as a target.
+MC-46583  "WASD + Sprint"/ lockup glitch, (Mac only).
+MC-50312  variants ( in block files ) will not accept any changes.
+MC-50585  Brewing stand rod texture bug.
+From the previous development version
+
+MC-50948  Tripwire hook texture messed up.
+MC-50950  Hopper: java.lang.NullPointerException: Ticking entity.
+MC-50951  Flickering world menu.
+MC-50958  Name and ID cannot both be blank.
+MC-50964  Endermite Spawn Egg has the wrong name.
+MC-50975  When iron bars are placed on a block, the lower part is black.
+MC-50996  Existing player heads only show the default Steve head.
+MC-51009  No podzol in creative inventory.
+MC-51014  Hopper: java.lang.ArrayIndexOutOfBoundsException: 7.
+MC-51016  EnderMites don't move.
+MC-51037  tile.sapling.big_oak.name.
+MC-51044  Block information in F3 debug screen shows incomplete names: tile.x.name.
+MC-51045  Brewing stand graphic shows different things depending on which angle the player look at it.
+
+
+== 14w17a ==
+14w17a is the nineteenth snapshot for Java Edition 1.8, released on April 24, 2014.
+
+
+=== Additions ===
+
+
+==== World generation ====
+Customized world type
+
+Highly customizable terrain generation.
+To use, select the new 'customized' world type, and then press the 'customize' button beneath.
+There are 4 pages to customize the world:
+Page 1: customizes the generation of structures, chance of lake generation, size of certain structures, and biome type and size, and sea level.
+There are 17 customization options that affect whether generated structures will spawn in, as well as other environmental factors. Some of these presets are Yes/No inputs or sliders.
+Sea level height, toggles for cave, village, temple, dungeon, water lake, lava lake, stronghold, mineshaft and ravine generation, sliders to control water lake, lava lake, and dungeon rarity, toggle to turn oceans into lava oceans, biome selection, biome and river size sliders.
+Page 2: customizes the ore distribution for dirt, gravel, granite, diorite, andesite, coal, iron, gold, redstone, diamond and lapis.
+Rarity, height range and blob size.
+Pages 3 & 4: expert customization of the terrain generation.
+There are 16 customization options that can be used to affect various aspects of Minecraft's terrain generator. These can be changed by moving sliders or by typing in values directly.
+Main noise scale X/Y/Z to smooth out terrain, larger values for smoother terrain.
+Biome scale/depth weight and biome scale/depth offset to stretch/squash terrain vertically based on the biomes default height settings.
+Upper/lower limit scale to make terrain more solid/riddled with holes, depending on how close the values are to each other.
+Height stretch to pull terrain upward, with smaller values causing more extreme stretching.
+Height scale, coordinate scale, depth base size, depth noise exponent, depth noise scale.
+There are seven presets:
+Water world, isle land, caver's delight, mountain madness, drought, caves of chaos, good luck
+There is a button for most pages to randomize the various values.
+Uses the 'generator-settings' string known from superflat presets for server.properties and world data.
+Generate structures button disappears when selected.
+
+
+==== Command format ====
+/worldborder <set|center>
+
+Used to set size of border
+set: sets the size of the border /worldborder set <sizeInBlocks> [timeInSeconds]
+center: sets the center of where the border will be placed /worldborder center <x> <z>.
+Game rules
+
+randomTickSpeed [value]
+A new gamerule that controls how often a random tick occurs.
+Influences how fast plants and crops grow, how fast zombie pigmen spawn from portals, how fast farmland updates, how fast grass and mycelium grow and decay and more.
+If set to 0, random ticks never occur.
+Set to 3 by default.
+
+
+==== General ====
+Splash
+
+Added the following splashes:
+"Now with multiplayer!"
+"Very influential in its circle!"
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Block models
+
+Converted the remaining blocks to use block states.
+
+
+==== Mobs ====
+Endermites
+
+New model (currently bugged).[more information needed]
+Endermen are no longer aggressive toward non-pearl-spawned endermites.
+
+
+==== Non-mob entities ====
+Minecarts
+
+Reverted to the way they were before 14w11a.
+
+
+==== World generation ====
+The End
+
+Biome name is now "The End" instead of "Sky".
+World borders
+
+The default world border is now an animated texture rather than an invisible bedrock[verify] barrier.
+There is now nothing beyond the world border.
+Can be changed with /worldborder to prevent players from leaving the specified area.
+Is set at 60 million by default (+30 million to -30 million), divided by 8 for the nether.
+Mobs and players can't pass through it and take damage when outside, however, in the future players will be able to go back inside if the player accidentally find outside.
+
+
+==== General ====
+Debug screen
+
+All targeted blocks now have their info displayed on the right-hand side of the F3 debug screen.
+Removed the "Facing negative/positive x/z" from the F3 menu
+Improves performance.
+Some block id/metadata combinations were broken by this, such as 33/7 (6-sided piston) and 170/12 (6-sided hay bale), though all-sided logs were kept.
+List of block states.
+Model format improvements
+
+Converted most of the remaining static blocks to the model format.
+Added "rotateVariantTextures": to preserve UV details through rotation.
+Servers
+
+New server icons, displayed with 3 buttons.
+Up and down arrows to move the servers' order.
+Third button is to join the server.
+There is now a default server icon.
+Resembles the unknown resource pack icon.
+When editing and adding servers, the player can now set how it handles resource packs: Prompt, Enabled or Disabled.
+
+
+=== Removals ===
+
+
+==== General ====
+Distance effects
+
+Redstone wire (when flat on the ground) no longer appears extremely stretched at high distances
+Fire (when on the side or bottom of a block) will also no longer appear weird at high distances from the world origin
+
+
+=== Fixes ===
+33 issues fixed
+From released versions before Java Edition 1.8
+
+MC-9177  Tripwire doesn't have two sided faces.
+MC-11023  Retracting piston arm incorrect lighting.
+MC-11607  Right click with undyed Leather armor part on cauldron with water still lower water layer.
+MC-13485  Tripwire hook texture looks weird.
+MC-17868  Zombies in water A.I. glitch.
+MC-29475  Arrow sound plays twice when shot into blocks.
+MC-30527  Achievement "Adventuring Time" does not work right.
+MC-31468  Holes in bedrock and Replaced any block using Arbitrary tnt and flame bows.
+MC-33086  Save-all causes lagspikes on larger maps.
+MC-33109  scrolling with mouse wheel in server list is unresponsive.
+MC-40615  Child animals obsessed about their parents, even after growing up.
+MC-48826  "replace" directive in sounds.json does not work.
+MC-49656  Cobblestone walls texture glitch.
+MC-51953  Almost instant motion sickness due to distorted rendering.
+MC-54386  There is a small gap in the iron bar corner.
+From the Java Edition 1.8 development versions
+
+MC-45160  When holding a map you have two right arms.
+MC-47455  When hitting a mob, the mob becomes lighter for short.
+MC-47723  Broadcast settings - report to Mojang, links to previous bug reporting facility.
+MC-49150  "/scoreboard players reset *" produces error if tracking multiple players.
+MC-50528  Cloning trees with decay-able leaves changes the data values on the cloned products leaves.
+MC-50588  East/west pillars have shading error.
+MC-50974  Furnaces cause minecarts to fly off of the track.
+MC-51125  Minecarts are shooting off of the corners of rails.
+MC-51131  Placing minecart on powered tracks sinks the minecart.
+MC-51155  Minecart going up an incline of Powered Rail reverses direction at 5-15 vertical blocks.
+MC-51182  Endermite rides below minecart.
+MC-51216  Stacked minecarts glitch through rails.
+MC-51338  Endermen AI problem: walking into water to kill endermites.
+MC-51368  Minecarts traveling at full speed on diagonal track don't slow down.
+MC-52852  setting negative variable in the /particle effect crashes the game.
+From the previous development version
+
+MC-51206  Hopper: java.lang.NullPointerException: Can't place skulls in multiplayer.
+MC-51241  When loading a resource pack weird dev concole message.
+MC-51364  Slabs lighting bug in 14w11b (new one).
+
+
+== 14w18a ==
+14w18a is the twentieth snapshot for Java Edition 1.8, released on April 30, 2014.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Pistons and slime blocks
+
+Slime blocks now push and pull blocks adjacent when connected to sticky pistons.
+Connected to normal pistons, slime blocks only push blocks, but don't pull them.
+Up to 12 slime blocks connected to a piston in any arrangement can be moved as long as the following conditions are met: blocks do not disrupt the chain, non-moveable blocks are not in the way and slime blocks are not attached to the piston itself.
+Follows all the rules that pistons follow, for example, blocks which can normally be moved by pistons can be moved if attached to slime blocks.
+Extending a piston with a slime block on top of it launches the entity (mobs, players, items, launched arrows, etc.) into the air.
+Torches
+
+Can now be placed on stained glass.
+
+
+=== Fixes ===
+38 issues fixed
+From released versions before Java Edition 1.8
+
+MC-2346  Hitbox of anvil not proportional.
+MC-3631  Creepers float one-eighth of a block above the ground.
+MC-9553  Wrong rendering order of particles, hitboxes, clouds, transparent blocks and breaking animations.
+Fixed partially: Only particle rendering is fixed.
+MC-31728  Resource pack glitch on shaders.
+MC-32017  Maps issue + super secret settings.
+MC-34648  Torch not placeable on stained glass.
+MC-36103  Nether portal block invisible in front of another nether portal block.
+MC-47811  The bottom texture of non-full blocks is flipped vertically.
+From the Java Edition 1.8 development versions
+
+MC-46776  When only a Spectator stays near mobs, they don't despawn.
+MC-48831  "Reeds" model displays incorrectly.
+MC-48954  When you kill invisible horse variants, the screen will turn red/black.
+MC-50073  It is possible to change the missing block model.
+MC-50201  Minecart glitch on rails.
+MC-50239  Pick block on hydrated farmland gives dirt block with invalid data value (missing texture).
+MC-50510  Burning furnace (Block 62) has wrong inventory image.
+MC-51379  Rails render from below, but not correctly.
+MC-51934  Lapis-Lazuli ore pick block.
+MC-52814  dropper spawns items inside of itself with no velocity causing them to fly everywhere.
+From the previous development version
+
+MC-53370  Any stone slabs on top of one another creates a double stone block.
+MC-53371  Respawn button does not work if spawnpoint is outside of the world border.
+MC-53375  Sheep give other color when sheared.
+MC-53381  Player takes damage when world border is nearer than 179 blocks
+MC-53390  Maximum value for the /worldborder command too low (30 million instead of 60 million).
+MC-53401  redstone overlay gets tinted.
+MC-53405  Singleplayer menu: only one click loads world.
+MC-53412  The world border stops the player one block further away from the center in south/east direction.
+MC-53419  Unable to create/load new heavily customized world.
+MC-53434  Can place blocks outside world border.
+MC-53442  /worldborder missing string: commands.worldborder.setSlowly.success.
+MC-53460  Redstone gives off no particles when being broken.
+MC-53464  Scrollbar in all lists act weird/unresponsively.
+MC-53493  Minecraft crashes when setting FixedBiome to hell.
+MC-53514  Lava oceans setting does not work in customized world type.
+MC-53570  Barrier particles fight for attention.
+MC-53580  Crafting wool/clay/glass/[wolf] collars results in the wrong color.
+MC-53616  River generation dramatically increased in default world generation.
+MC-53773  Cannot respawn outside world border.
+MC-53918  Double-clicking server in server list no longer does anything.
+
+
+== 14w18b ==
+14w18b is the twenty-first snapshot for Java Edition 1.8, released on May 2, 2014, to fix some of the bugs and crashes in 14w18a.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Endermen and endermites
+
+No longer attack each other.
+
+
+==== Blocks ====
+Slime blocks
+
+Are no longer bouncy when sneaking.
+
+
+=== Fixes ===
+3 issues fixed
+From the Java Edition 1.8 development versions
+
+MC-48899  TNT produces damage when triggered in water.
+MC-51168  Downward-facing droppers and dispensers only shoot items west.
+From the previous development version
+
+MC-54008  Minecraft crashes when loading the world with item frames/placing item frames.
+
+
+== 14w19a ==
+14w19a is the twenty-second snapshot for Java Edition 1.8, released on May 8, 2014.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Pistons & slime blocks
+
+Slime blocks can now push entities sideways and downwards when attached to a piston.
+When they are on the ground, entities are pushed less.
+
+
+==== World generation ====
+World border
+
+The warning, a red-colored aura seen when within a certain distance of the world border.
+Only visible on "Fancy" graphics.
+Outside the border, the warning is at full strength.
+Inside the border, the warning gradually gets stronger as the player approaches the border.
+If the border is stationary, the warning is first seen as the player passes the warning distance, default 5 blocks from the player's location.
+If the border is shrinking quickly enough, the warning is first visible at the warning time, default 15 seconds from the player's location.
+New options:
+/worldborder damage <buffer|amount>
+buffer (default 5) is the distance (in blocks) into the barrier before a player starts to become damaged.
+amount (default 0.2) is the amount (per block) of damage a player takes, for each block-distance the player is past the barrier's buffer.
+/worldborder warning <time|distance>
+time (default 15) is the advance notice given (in seconds) to a player, using the red warning, that a shrinking world border is approaching their location.
+distance (default 5) is the distance (in blocks) at which the red warning starts to appear, as a player approaches the barrier.
+The border in the Nether is now the same size as that of the Overworld.
+Traveling to the Nether now doesn't create new portals outside the boundary.
+It is still possible to emerge at an existing portal outside the boundary.
+
+
+==== Gameplay ====
+Spectator mode
+
+Spectators now have a UI to teleport to other players.
+Activated by mouse middle-click, or pressing a number key.
+When more than 8 players are available to choose, the sides are replaced by arrows.
+When teams are set up, teams can be selected individually to only display that team's players.
+Both number keys and the 'pick block'-button together with the scroll wheel can be used to control the interface.
+Teleportation works across dimensions.
+"Far from complete".
+
+
+=== Fixes ===
+5 issues fixed
+From the Java Edition 1.8 development versions
+
+MC-51109  mob_spawner.json is missing.
+MC-53555  Portal in Nether was set outside the border.
+MC-53557  World border stops growing/shrinking when you exit and re-enter a world.
+MC-54125  /worldborder set 100 10 says "10000 seconds" instead of 10.
+MC-54358  Sticky piston break unmovable blocks, such as saplings, crops, leaves, liquids, melons, and pumpkins when pulled.
+
+
+== 14w20a ==
+14w20a is the twenty-third snapshot for Java Edition 1.8, released on May 15, 2014, which adds the /title command.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/title
+
+Can make text display on a players screen in the form of a title and/or subtitle.
+/title <player> times <fadeIn> <stay> <fadeOut>
+Set the fade in time, the stay on screen time and the fade out time for the title.
+/title <player> title <raw json message>
+Set and start showing the title.
+/title <player> subtitle <raw json message>
+Set and start the subtitle.
+/title <player> clear
+Clear titles immediately.
+/title <player> reset
+Reset all title parameters to defaults (fade times).
+
+
+==== General ====
+Splashes
+
+Added the following splashes:
+"Run, coward! I hunger!"
+"Blue warrior shot the food!"
+"Warning! A huge battleship "STEVE" is approaching fast!"
+"Rise from your grave!"
+
+
+=== Changes ===
+
+
+==== Blocks ====
+General
+
+Blocks no longer have bits for metadata, the freed up bits are now used for block ids (dynamically).
+
+
+==== Mobs ====
+Slimes
+
+"Slime sizing was moved to a post-spawn method, so the slime's canSpawn() method would report spawnability based on the initial size, not the final size. There is an added secondary check which fixes the issue."
+
+
+==== World generation ====
+Caverns
+
+Now generate on the surface of desert, mesa, mega taiga and mushroom biomes.
+World border
+
+If a player is stuck outside the world border, it is possible for them to freely fly/walk around (not possible to freely walk through the border).
+
+
+==== Command format ====
+/tellraw
+
+Now has a selector argument.
+Allows to print player's names.
+Example: /tellraw @a {selector:"@a[team=TeamRed]"} prints everyone who is on TeamRed.
+Also works with /title.
+
+
+==== Gameplay ====
+Spectator mode
+
+Adjusting fly speed in Spectator mode now works vertically too.
+Player list
+
+Made tab-list more consistent and a little prettier when using health display objective.
+Now groups together teams.
+Now sorts players by name.
+
+
+==== General ====
+Debug screen
+
+The 'Towards Positive/Negative X/Z' was re-added.
+
+
+=== Fixes ===
+23 issues fixed
+From released versions before Java Edition 1.8
+
+MC-8881  Mobs treat any layered snow as non-solid.
+MC-26203  Scoreboard: player does not appear in sidebar after setting initial score to zero.
+MC-33084  /give command at dead players.
+MC-41234  "/summon"ed or spawned LeashKnots always spawn at 0, 0, 0.
+MC-51776  32000 Command block character limit only works as a 16000 character limit within Minecraft.
+MC-52881  Knockback distance incorrect, depends on login order.
+From the Java Edition 1.8 development versions
+
+MC-44331  Interacting with invalid villagers crashes the game.
+MC-45303  Surface dungeons generating without spawner, chests, and most of floor.
+MC-46765  Leaves, Block of Redstone, TNT and Glowstone cause suffocation damage.
+MC-48442  Mob Dungeon spawning without floor / with broken chests / overwritten spawner.
+MC-48535  Creeper explosion animation missing if mobGriefing set to false.
+MC-49577  Slime spawning bug.
+MC-50275  Leads don't show knot on fence posts and cannot be right clicked.
+MC-50323  Chest not openable with item frame on, standing too close.
+MC-50852  /scoreboard players reset * objective clears sidebar for other scoreboard objectives.
+MC-50974  Renamed items not displaying name in item frames after respawn.
+MC-51080  Endermite ignore PersistenceRequired tag.
+MC-53380  Staying outside border makes you unable to move at all.
+MC-53435  Debug screen: Facing towards negative/Positive X/Z removed.
+MC-53469  Sliders have incorrect values causing world to never be created (java.lang.IllegalArgumentException: n must be positive).
+MC-54164  footstep, hugeexplosion and largeexplode particles don't appear.
+MC-54228  Respawning after death outside of world border places player at Y=256.
+MC-54381  /scoreboard players operation doesn't work on a player that's not on a scoreboard, but also does work.
+
+
+== 14w20b ==
+14w20b is the twenty-fourth snapshot for Java Edition 1.8, released on May 15, 2014, to fix some of the bugs and crashes in 14w20a.
+
+
+=== Fixes ===
+3 issues fixed
+From released versions before Java Edition 1.8
+
+MC-51758  Some users have multiple UUID records for agent:minecraft.
+From the previous development version
+
+MC-55204  Mob entities appear to spawn then despawn rapidly.
+MC-55220  Scoreboard objectives no longer show in list.
+
+
+== 14w21a ==
+14w21a is the twenty-fifth snapshot for Java Edition 1.8, released on May 22, 2014.
+
+
+=== Changes ===
+
+
+==== Entities ====
+General
+
+Tags CustomName and CustomNameVisible now work on all entities.
+
+
+==== Command format ====
+/clone
+
+Mode now can additionally be move or force.
+move moves the selection from the first location to the second location, which may overlap.
+force forces the cloning operation, even if the areas overlap; to use this option, either replace or masked must be specified.
+
+
+=== Fixes ===
+14 issues fixed
+From released versions before Java Edition 1.8
+
+MC-99  Skins sometimes disappear after death
+MC-30192  stat.useItem.<Item#> glitching with scoreboard.
+MC-30877  Crops (Wheat/Carrots/Potatoes) not popping off in light level 0.
+MC-36867  /tellraw @a null causes game crash.
+MC-51238  Tamed ocelots (cats) run away from player.
+MC-51970  Players sleep outside of bed.
+From the Java Edition 1.8 development versions
+
+MC-48376  Baby chicken hitbox taller than 1/2 block.
+MC-48739  Killing zombie villager aggravates zombie pigmen.
+MC-50046  Mobs not responsive after player death.
+MC-50678  Summoning Items creates substantial frame rate drop.
+MC-50821  Cats and [wolves] teleporting into transparent-solid blocks (redstone_block, glowstone, TNT), causing them to suffocate.
+MC-54858  Players suffocate 1/2 heart when pushed sideways by slimeblocks/piston.
+MC-54864  Spectator mode as default game mode crashes world list.
+MC-55333  "selector" Tag Not Usable in "translate" Arguments for /tellraw and /title.
+
+
+== 14w21b ==
+14w21b is the twenty-sixth snapshot for Java Edition 1.8, released on May 22, 2014, to fix a crash relating to item frames in 14w21a.
+
+
+=== Fixes ===
+1 issue fixed
+From the previous development version
+
+MC-55627  Hopper: java.lang.IllegalArgumentException: Duplicate id value for 3!
+
+
+== 14w25a ==
+14w25a is the twenty-seventh snapshot for Java Edition 1.8, released on June 18, 2014, which adds ocean monuments and all the blocks, items and mobs associated with the structure. It also adds coarse dirt.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+ Prismarine
+
+Generates in ocean monuments.
+Can be crafted with prismarine shards.
+The cracks in prismarine appear to slowly change color between brown, blue, gray and purple.
+ Prismarine bricks
+
+Generate in ocean monuments.
+Can be crafted with prismarine shards.
+ Dark prismarine
+
+Generates in ocean monuments.
+Can be crafted with prismarine shards and an ink sac.
+ Sea lanterns
+
+Generates in ocean monuments.
+Can be crafted with prismarine shards and prismarine crystals.
+Emit light at a light level of 15 and have an animated texture.
+ Coarse dirt
+
+Replacement for grassless dirt.
+Slightly darker texture than regular dirt.
+Can be crafted with two dirt and two gravel in a checker-board pattern.
+ Wet sponge
+
+Obtained when a sponge soaks up water.
+Smelt wet sponge to remove water and get sponge.
+Wet sponge emits water dripping particles.
+Dropped by elder guardians when killed by a player.
+
+
+==== Items ====
+ Prismarine crystals
+
+Drop from guardians and sea lanterns.
+Can be crafted into sea lanterns.
+ Prismarine shard
+
+Drop from guardians.
+Can be crafted into all three kinds of prismarine blocks and sea lanterns.
+ Guardian spawn egg
+
+Spawns the new guardian mob.
+
+
+==== Mobs ====
+ Guardian
+
+Spawns in ocean monuments.
+Attacks squid and players with a laser.
+When on land, it flops around and doesn't suffocate, unlike squid.
+Drops prismarine shards, prismarine crystals and raw fish.
+ Elder guardian
+
+Is a boss-like variant of guardians.
+There are 3 elders in each monument.
+A flashing elder guardian appears on screen when close to the mob, and Mining Fatigue III is inflicted on the player for 5 minutes.
+Mining Fatigue III makes mining really slow, but not impossible.
+Drops a wet sponge when killed by a player.
+
+
+==== World generation ====
+Ocean monuments
+
+New underwater generated structure made out of prismarine, prismarine bricks, dark prismarine, and sea lanterns.
+8 blocks of gold can be found at the center of the monument.
+Also generates in old worlds.
+Can be toggled for a customized world.
+
+
+==== Gameplay ====
+Enchantments
+
+Depth Strider
+Allows the player to move faster in water.
+Can be applied only to boots.
+Can go up to level III.
+
+
+==== General ====
+Splashes
+
+"Flavor with no seasoning!"
+"Strange, but not a stranger!"
+"Tougher than diamonds, rich like cream!"
+"Getting ready to show!"
+"Getting ready to know!"
+"Getting ready to drop!"
+"Getting ready to shock!"
+"Getting ready to freak!"
+"Getting ready to speak!"
+"It swings, it jives!"
+"Cruising streets for gold!"
+"Take an eggbeater and beat it against a skillet!"
+"Make me a table, a funky table!"
+"Take the elevator to the mezzanine!"
+
+
+=== Changes ===
+
+
+==== Blocks ====
+General
+
+Rewrote how blocks are rendered.
+Rewrote how block data is handled.
+Removed the previously-accessible item forms of flowing and stationary water and lava blocks (8, 9, 10 & 11), double stone and wooden slabs (43 & 125), fire blocks (51), nether portal and end portal blocks (90 & 119), cocoa pods (127), and potato and carrot crops (141 & 142).  They are no longer available as item forms through the /give or /summon commands, but are still placeable through commands such as /setblock. This removal has made by adding method registerItemBlock(block), which registers an ItemBlock for respective block. The previously-accessible item forms of these blocks is not in the registerItemBlock list, this means they do not have any registered direct item form and therefore, they are unobtainable.
+Cracked stone bricks
+
+Can be obtained by smelting stone bricks.
+Podzol
+
+No longer displays dirt as its side texture when a block is placed above.
+Tall grass & grass
+
+Texture is now brighter.
+Huge mushrooms blocks
+
+When harvested with Silk Touch, they drop blocks with corresponding mushroom texture (red or brown) on all sides rather than the one with spores.
+Redstone torches
+
+No longer randomly fix themselves.
+Melon and pumpkin stems
+
+ Now composed of two planes.
+Signs
+
+Use the JSON text components Text1, Text2, Text3, Text4 instead of plain text.
+Can be used to show scores towards players by using the selector and score tags.
+Previously, text formatting could only be accomplished using the section symbol via Formatting codes.
+Character limit is based on character width. Previously, it was capped at exactly 15 characters.
+Might need some time before it can work in Survival.
+Sponge
+
+Introduced sponge to Survival mode, with new behavior and looks.
+Turns into wet sponge when it soaks up water.
+Water particles appear around the sponge when this happens.
+Destroys water blocks from 5 blocks away in a kind of sphere.
+Soaks up water only when water is touching it.
+Stairs
+
+All icons for stairs in the inventory are now viewed at a different angle.
+
+
+==== Items ====
+General
+
+All items are models, some are still generated from item icons.
+Resource packs can make models for all items.
+Arrows
+
+Work differently underwater.
+They lose all velocity after a few blocks and slowly fall.
+Fire arrows are extinguished.
+Written books
+
+Use JSON text components instead of plain text with the new pages tag.
+Capable of using the clickEvent and hoverEvent tags.
+Previously, text formatting could only be accomplished using the section symbol via formatting codes.
+Might need some time before it can work in Survival.
+
+
+==== Mobs ====
+Iron golems
+
+Can be spawned by arranging the blocks in any orientation.
+This does not affect the orientation of the spawned mob.
+Now require air blocks in the corners to be built.
+Snow golems
+
+Can be spawned by arranging the blocks in any orientation.
+This does not affect the orientation of the spawned mob.
+Withers
+
+Can be spawned by arranging the blocks in any orientation.
+This does not affect the orientation of the spawned mob.
+Can now move around during the invulnerability stage right after they are spawned.
+Now require air blocks next to the base soul sand to be built.
+Wither skeletons
+
+No longer visibly catch fire when going into fire or lava.
+Can now spawn anywhere on nether brick within the bounds of every nether fortress, even outside of specific segments.
+Prior to this version, wither skeletons would only spawn this way in the first fortress loaded into the game due to a bug.
+Spawning within specific segments remains unchanged and was not affected by the bug.
+
+
+==== Command format ====
+/scoreboard operation
+
+Added three scoreboard operators: <, >, =.
+Can be tested with a comparator to see if two scores are greater than, smaller than or equal to each other.
+Model format improvements
+
+New tag "textures" to specify the textures used by the model.
+Removed the directional attribute from the uv definition and replaced it with explicit texture references.
+"textureFacing" renamed to "texture", it is prepended with the hash symbol (#).
+"useAmbientOcclusion" renamed to "ambientocclusion".
+"rotateVariantTextures" renamed to "UV lock".
+"cull" renamed to "cullface", specifies the opposite of which neighboring face causes culling to occur.
+Example: if one has an east-facing face but wants it to be culled along a different axis (let's say Z), one would specify "cullface": "north" or "cullface": "south".
+Rotation made more verbose, it is now more clear that it can only occur on a single axis.
+Example, the rotation for one of the two faces of the "cross" model is now: "rotation": { "origin": [ 8, 8, 8 ], "axis": "y", "angle": 45, "rescale": true },.
+The folder models/blocks/meshes was removed and model files are now stored in models/blocks.
+The folder blockstates was added and stores the model selection files previously found in models/blocks.
+
+
+==== Gameplay ====
+Inventory
+
+Text color darkened to  #404040, the same color as before 1.2.4.
+Potion effects
+
+Players now see better with Night Vision and Water Breathing at the same time underwater.
+Player list
+
+Shows the faces of players.
+
+
+==== General ====
+Debug screen
+
+F3 + B now also shows which direction entities are looking in using a blue line.
+Items in first-person view now move up and down when its data changes.
+Animations
+
+Block-hit animation that was used prior (from previous snapshots and 1.7.x) was removed.
+
+
+=== Removals ===
+
+
+==== General ====
+Distance effects
+
+Falling block entities are now generated at the correct positions.
+Options
+
+Anisotropic filtering has been removed.
+This also means that the four-by-four checker variant of the missing texture no longer exists.
+
+
+=== Fixes ===
+54 issues fixed
+From released versions before Java Edition 1.8
+
+MC-1298  Slightly damaged and very damaged anvils lose broken texture when falling.
+MC-1499  Can see the water lighter in a certain position.
+MC-3615  Seeing through lava bug.
+MC-4239  Redstone and string in a cobble generator turn into obsidian.
+MC-5018  Wide characters (e.g. tildes ~) overflow on signs.
+MC-5306  Enchanted blocks don't show enchantment in hand, inventory, as headwear (skulls/pumpkins) or when dropped on the ground.
+MC-7432  Real zombie sieges fail to start (fix included).
+MC-7488  Village siege's spawn location is calculated incorrectly (fix included).
+MC-9173  Side of dropped items and items in item frames don't appear enchanted.
+MC-11524  Slime & minecart glitch.
+MC-18752  Entity shadows not rendered correctly after getting GL error due to compass in item frame.
+MC-19205  Tall grass particles are gray when destroyed by placing water through another tall grass.
+MC-29777  Grass Block's sides use fast version of texture when held in hand regardless of graphical settings.
+MC-30484  Giving items with unknown (high) data value crashes and leaves the world unusable.
+MC-30897  Nether portal doesn't fully break when one or more blocks are destroyed.
+MC-31615  Mipmapping: seeing green and brown "blocks" at the horizon.
+MC-44363  Anvil rendering glitch in inventory.
+MC-45264  Item textures with overlays cause potion display box to turn invisible in a 16x16 pixel area.
+MC-48688  Anisotropic filtering bug.
+MC-52540  Lack of shading on east/west block variants using the x rotation argument.
+MC-55382  Glow effect doesn't work for dropped items with data tag in fast graphics.
+MC-56541  Redstone torches (and other redstone components) have inconsistent timings.
+MC-67168  Setting anisotropic filtering above 0 on some Intel graphics systems makes some textures appear fuzzy.
+From the Java Edition 1.8 development versions
+
+MC-46591  Ender dragon destroys barriers when it flies through them.
+MC-47437  Endermen do not teleport out of water, lava or when on fire.
+MC-47475  Floating mushrooms on mooshrooms.
+MC-48435  Beacon is not transparent like before in inventory.
+MC-49110  Arrow's inGround NBT tag does not update when fired into some blocks.
+MC-49839  .json shading filters rendered after red/blue anaglyph mod.e
+MC-50290  Beacon shadows are incorrect in hand and inventory.
+MC-50322  Z-fighting in iron bars with glass blocks.
+MC-50509  Item hitbox in frame is displayed incorrectly.
+MC-50598  Unlit redstone comparators gives off lit redstone torch particles.
+MC-50729  Vines orienting improperly in inside corners.
+MC-50732  Anvil, beacons, pistons, end portal frames etc. are incorrectly shadowed in inventory.
+MC-51003  Custom player skulls show as the default skin's head on mobs or players.
+MC-51134  Anvil texture doesn't change in hand.
+MC-51198  When player's head is inside a full block, the player see the texture of the block below their feet.
+MC-51236  Same door model on mirrored doors.
+MC-51717  Brewing stand bottles model error.
+MC-52076  End portal frame (falling sand) texture render glitch.
+MC-53374  Piston, end portal frame, beacon, and anvil items are darker than the block form.
+MC-53478  "Round Trip Different" error with stained glass, ender chests, quartz.
+MC-53587  When powering a piston, the piston head quickly appears as a full block.
+MC-53675  Non-full blocks occupy a full block when moved by piston.
+MC-54039  Sugar cane next to a block turns black.
+MC-54053  Blocks moved by pistons/slime block have their textures temporarily rotated 180 or 90.
+MC-54075  The side face of a piston arm doesn't renders when a block is placed next to it.
+MC-54602  Invulnerable mobs still drown.
+MC-55145  Pumpkin top textures don't rotate depending on direction.
+MC-56744  Baby pigmen cannot attack.
+From the previous development version
+
+MC-55684  /clone with move on structure with dispensers vomits dispenser contents onto ground.
+MC-55702  /clone command move: NBT containing blocks drop item.
+MC-56689  /move command with containers on positive axis deletes items.
+
+
+== 14w25b ==
+14w25b is the twenty-eighth snapshot for Java Edition 1.8, released on June 19, 2014, to fix some of the bugs and crashes in the 14w25a snapshot.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Wet sponges
+
+When smelted, fill empty buckets in the 'fuel' slot with water.
+
+
+==== Command format ====
+/clone
+
+Added new filtered mode.
+Filters out unnecessary blocks.
+Added new normal mode.
+
+
+==== General ====
+Debug screen
+
+Removed the line on the right-hand side which had displayed the name of the block model the player was looking at.
+
+
+=== Fixes ===
+52 issues fixed
+From released versions before Java Edition 1.8
+
+MC-44649  Minecraft on Mac is called java.
+MC-58557  Hopper: fs: Invalid index 0 requested for TranslatableComponent{key='multiplayer.player.left', args=[], siblings=[], style=Style{hasParent=true, color=null, b.
+From the Java Edition 1.8 development versions
+
+MC-47513  Black line at the horizon when using shaders.
+MC-51235  Various blocks don't display their metadata in the F3 screen.
+MC-54131  Model names of tall flowers are mixed up.
+MC-54485  Models names of colored wool wrong.
+MC-55260  Slimes despawn instantly.
+From the previous development version
+
+MC-56852  Placeholder texture showing for burning player instead of fire.
+MC-56853  F3 hovering over grass and log model: IDUNNOMYNAME:*C.
+MC-56858  Water and Lava textures messed up after changing resource pack.
+MC-56865  Stairs place the wrong way.
+MC-56868  Missing map texture.
+MC-56880  Thrown splash potions have missing texture.
+MC-56887  Jungle leaves have oak leaves texture.
+MC-56893  Crash when placing log.
+MC-56898  Missing texture for Enderman-handled block.
+MC-56899  Chickens constantly flap their wings.
+MC-56905  When placing a pumpkin, its face does not face the player.
+MC-56914  Fast Graphics leaves texture.
+MC-56921  Repeater not rendering delay length correctly.
+MC-56922  Bed doesn't drop when broken.
+MC-56947  Dragon egg item rendering incorrectly.
+MC-56951  Repeaters and comparators are placed in the wrong orientation.
+MC-56952  Trapdoor duplication glitch.
+MC-56957  Dispenser and dropper direction issue.
+MC-56981  Acacia/dark oak wood log being dropped as oak wood with missing texture.
+MC-56982  Rendering bug with pistons.
+MC-56984  Floating items dropped on floor.
+MC-56990  Chiseled quartz block turns into regular quartz.
+MC-57020  Burning furnaces change orientation.
+MC-57023  Wrong animation while breaking blocks in Survival.
+MC-57041  Missing barrier texture.
+MC-57045  Comparators appear as powered when put into subtraction mode.
+MC-57075  Customitemnames don't get displayed in item frames.
+MC-57079  Elder guardian able to apply mining fatigue to someone in spectator mode.
+MC-57102  Grass all neatly lined up.
+MC-57112  Use damage splash potion to kill guardian crash the game.
+MC-57121  Superflat world customization visually replaces water ID with air ID.
+MC-57134  Items in item frames facing wrong way.
+MC-57178  Vines are placed on opposite side.
+MC-57234  placing ladders causes a crash.
+MC-57312  Minecraft default world generator crashes.
+MC-57374  Stacked "Enchanted" items render incorrectly.
+MC-57378  Slimes have no particles, even if all particles are on.
+MC-57385  End portal frames must be placed in reverse to work correctly.
+MC-57415  Scoreboard setdisplay won't show up in tab menu.
+MC-57429  Magma cubes rendering wrong.
+MC-57555  Blocks are held wrong.
+MC-57570  Powered rail now in powered state in creative inventory.
+MC-57574  Mipmapping does not work in inventory.
+MC-57689  Map #1 looks like purple/black cube in inventory.
+MC-57728  Blazes missing their black smoke texture.
+
+
+=== Trivia ===
+Between snapshot 14w21b and 14w25b in total 2651 files changed, 41995 insertions, 43425 deletions for a grand total of 285408 lines of diffs.
+14w25a had a notably high incidence of new bugs, which Michael Stoyke (@SeargeDP) attributed to the fact that each developer was contributing a substantial amount of work that had not yet been combined in a snapshot.
+
+
+== 14w26a ==
+14w26a is the twenty-ninth snapshot released for 1.8, released on June 25, 2014, which adds the debug mode world type and the /replaceitem command.
+It was strongly advised to make a backup of a world before using this snapshot, because of block-corrupting problems that were not corrected until 14w26c.
+A potential means of recovering corrupted worlds using MCEdit is available.
+This snapshot is the first after a decision to release snapshots on Wednesdays rather than on Thursdays.
+
+
+=== Additions ===
+
+
+==== World generation ====
+Debug mode world type
+
+Useful for resource pack makers.
+Hold  Shift and cycle through "World Type" to select it.
+Spectator mode recommended to avoid crashes (Creative mode can also be used without any effect on some machines).
+All possible blocks with all possible data values are generated.
+They are arranged in a grid across height Y=70, with a barrier floor at Y=60.
+Blocks placed are deleted, and blocks destroyed are restored.
+There is a special generator option preventing this. It is called "debug_all_block_states". If the player changes this to "flat" or "default" in NBTexplorer, they are able to interact with the world. (Only for a short period though, on most machines there is a lot of lag or the game crashes - not recommended to play Survival on)
+
+
+==== Command format ====
+/replaceitem <entity|block> ...
+
+Can replace items in any inventory, including the inventories of mobs such as zombies.
+Full syntax:
+/replaceitem entity <entity> <slot> <item> [amount] [data value].
+/replaceitem block <x> <y> <z> <slot> <item> [amount] [data value].
+Example: /replaceitem entity @e[type=Zombie] slot.weapon minecraft:iron_sword 1 0 gives all the zombies iron swords.
+Example: /replaceitem entity @p slot.hotbar.0 minecraft:fish 4 2 puts 4 clownfish in the players first hotbar slot.
+Example: /replaceitem block ~ ~-1 ~ slot.container.5 minecraft:redstone_block 1 0 puts a redstone block in the 6th slot of a container 1 block beneath the player.
+Gamerules
+
+sendCommandFeedback
+If set to false, player-run commands don't show a success message.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+General
+
+Switched to only/mostly using blockstates in the code, though not all block combinations are blockstates yet.
+Command blocks
+
+X/O button next to "Last output" in command block to turn off the last output string.
+Furnace
+
+Empty furnaces now only accept fuel and empty buckets in the fuel slot.
+Item frames
+
+The wood part of the frame now uses the oak texture rather than the birch texture.
+Melon stems
+
+Changed model from  to 
+Pumpkin stems
+
+Changed model from  to 
+
+
+==== World generation ====
+Customized world type
+
+Has an ocean monument toggle.
+Swampland
+
+Re-added marsh-like areas which were removed in 13w38b after initially being introduced in 13w36a.
+Witch huts
+
+No longer have a red mushroom inside the flower pot.
+
+
+==== Command format ====
+/execute 
+
+Now has a detect argument (sub-command, only works when used with execute).
+Allows the execute command to run only if a block is detected at a specific location relative to the target.
+Example: /execute @a ~ ~ ~ detect ~ ~-1 ~ minecraft:grass 0 say You are standing on grass..
+/fill 
+
+Block limit changed from 4096 to 32768 blocks.
+/worldborder
+
+Now has an add argument.
+Similar to the set argument, but can be used to add (or remove) a certain number of blocks to the world border distance.
+Negative numbers can be used to remove blocks.
+Example: /worldborder add -75  shrinks the world border width by 75 blocks.
+
+
+==== General ====
+Block models
+
+Instead of specifying uvs, the player can now choose textures to be projected onto the model.
+Resources
+
+Reworked 3D resources, adding the possibility of new blocks with multiple textures.
+Items in first-person view no longer move up and down when switching between 2 identical items by changing the selected hotbar slot.
+
+
+=== Fixes ===
+47 issues fixed
+From released versions before Java Edition 1.8
+
+MC-5164  Strength and weakness potions do not work on aggressive wolves.
+MC-5525  Some sounds play at a low volume.
+MC-8987  Flame-enchanted bows don't activate TNT minecarts.
+MC-22586  /spreadplayers command doesn't accept relative coords for x and z parameters.
+MC-35431  /tellraw commandblockoutput.
+From the Java Edition 1.8 development versions
+
+MC-46244  Command block bug - new particle feature.
+MC-46851  Potion effect particles stay in spectator mode.
+MC-51788  /playsound doesn't work with relative coords.
+MC-55589  /particle doesn't work with some entities.
+MC-55625  /playsound relative to entity does not work.
+MC-56294  "Are you sure you want to open the following website?" buttons are offset.
+MC-56862  Guardian doesn't die on land and can swim in lava.
+MC-56877  Snow golem has a broken head.
+MC-56941  Floating torch bug.
+MC-57033  Game crashes when new chunks are loaded.
+MC-57117  Item frame backgrounds are black on server.
+MC-57188  Wearing Pumpkins on your head, pumpkins are huge and upside down.
+MC-57256  Placed anvil is rotated by 90.
+MC-57670  The player no longer sinks into the first layer of stacked snow.
+MC-57685  Water dungeons cannot be turned off using world customization.
+MC-57854  Stained glass panes particles uncolored.
+MC-57966  Block icons in statistics and flatland GUI rendering wrong.
+MC-58130  Chunks only render in the direction player is facing.
+MC-58136  Pumpkin / melon stems rendering incorrectly.
+MC-58537  Supplemental selectors in /scoreboard teams join & leave don't work with the @e selector.
+MC-58637  FallingSand - only top side of block has a texture.
+From the previous development version
+
+MC-57822  Cocoa beans have wrong orientation.
+MC-57829  Lever on slab is upside down.
+MC-57841  /give'ing written book with JSON data will show "Invalid Item" when hovered on in chat.
+MC-57843  Written book with JSON data not formatting right.
+MC-57866  Written books with JSON don't get created correctly (no color and styles).
+MC-57868  Stained glass pane are dropping white glass pane.
+MC-57870  /testforblocks broken.
+MC-57882  Empty line in creative inventory.
+MC-57883  The barrier blocks particles for being broken are purple and black checkered.
+MC-57916  Iron Golems don't require air blocks to be besides their head when placing the head block.
+MC-57917  Drying a wet sponge in furnace with a stack of buckets below will cause them to disappear and leave a singular water bucket.
+MC-57986  Stacked buckets bug.
+MC-58025  Losing buckets from sponge block.
+MC-58048  Acacia and dark oak logs mined with silk touch show the MissingTexture.
+MC-58060  Summoning FallingSand with TileID as chest, trapped chest, ender chest, lava, and water crashes game.
+MC-58066  Right-click with bow when no arrows in inventory.
+MC-58140  Repeater will show comparator texture when unpowered, delay:4 and locked.
+MC-58191  Can walk through snow layer (block meta 7).
+MC-58196  Fishing rod and carrot on a stick rendering incorrectly in 3rd person.
+MC-58229  Scores in written books don't work properly when on a server.
+MC-58493  BUD creates double redstone drops when activated.
+
+
+== 14w26b ==
+14w26b is the thirtieth snapshot for Java Edition 1.8, released on June 25, 2014, to fix a major bug pertaining to the lack of chunk rendering in multiplayer introduced in 14w26a.
+It was strongly advised to make a backup of a world before using this snapshot, because of block-corrupting problems that were not corrected until 14w26c.
+A potential means of recovering corrupted worlds using MCEdit is available.
+
+
+=== Additions ===
+
+
+==== General ====
+Splashes
+
+Added the following splashes:
+"Stop being reasonable, this is the Internet!"
+"/give @a hugs 64".
+
+
+=== Fixes ===
+4 issues fixed
+From the Java Edition 1.8 development versions
+
+MC-7463  Mooshrooms need grass to spawn from mob spawners instead of mycelium.
+From the previous development version
+
+MC-58881  World not loading due to invisible blocks.
+MC-58884  Placing glass blocks in creative actually places a grass block.
+MC-58887  Can walk through fences.
+
+
+== 14w26c ==
+14w26c is the thirty-first snapshot for Java Edition 1.8, released on June 26, 2014, to fix some critical bugs and a major world-save corrupting problem in the 14w26a and 14w26b snapshots.
+It is strongly advised not to use a world that had been last saved with 14w26a or 14w26b; to avoid problems it is advised to use a world backup that was saved with a pre-14w26a version.
+A potential means of recovering corrupted worlds using MCEdit was made available by a Reddit user.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Hay bale
+
+Rebalanced how they heal and accelerate the growth of horses.
+Jack o'lanterns
+
+Cannot be used to build golems.
+
+
+==== Mobs ====
+Villagers
+
+Now have a head slot where armor or blocks can be put, using the /replaceitem command.
+
+
+==== General ====
+Block models
+
+Items can now specify rotation and translation in their file.
+
+
+=== Fixes ===
+21 issues fixed
+From released versions before Java Edition 1.8
+
+MC-92  Slab and stairs lighting incorrect.
+MC-4855  Mob spawners miss a row on x and z axis for the spawn range.
+MC-5270  Suffocation screen is buggy while standing in lava.
+MC-7157  Minecart with furnace texture shows active furnace without powering it.
+MC-8255  TNT does not make fuse sound when dispensed out of dispenser.
+MC-15370  Hay Bale: horses heal + speed growth mismatch if crafted with 9 wheat.
+MC-34772  Efficiency does not work on packed ice.
+From the Java Edition 1.8 development versions
+
+MC-53384  When using resource packs: Redstone dust line is rotated the wrong way when connected to another.
+MC-55383  Redstone overlay doesn't render well when going up negative z and positive x.
+MC-57584  Scoreboard team color displays disappear when resetting a different scoreboard objective.
+MC-58336  Bottom side of sand block invisible when falling.
+MC-58895  Invisible "wall" at iron bars and glass panes.
+MC-58918  Repeater blinking/powering itself.
+MC-58920  Redstone torch breaks when receiving update.
+MC-58923  Custom player heads will not render.
+MC-58959  Players can sneak off a full block onto snow.
+MC-58975  Nether generates in strips if it doesn't crash.
+MC-59021  Item frames with rotated items disappear after reloading the world.
+MC-59022  /summon problem.
+MC-59092  half-sunflower bug.
+MC-59344  Nether portal created on air.
+
+
+== 14w27a ==
+14w27a is the thirty-second snapshot released for Java Edition 1.8, released on July 2, 2014, which adds rabbits and rabbit-related items as well as raw and cooked mutton.
+
+
+=== Additions ===
+
+
+==== Items ====
+ Raw mutton
+
+Restores 2 ().
+Drops from sheep.
+Can be cooked to make cooked mutton.
+ Cooked mutton
+
+Restores 6 ().
+ Raw rabbit
+
+Restores 3 ().
+Can be cooked to make cooked rabbit.
+Drops from rabbits.
+ Cooked rabbit
+
+Restores 5 ().
+  Potion of Leaping
+
+Applies the Jump Boost effect.
+Brewed with a rabbit's foot and an awkward potion.
+The potion and bubbles are bright green colored.
+Prior to this version, the particles were lavender.
+ Rabbit's foot
+
+Used to brew potions of Leaping.
+Drops from rabbits.
+ Rabbit hide
+
+Can be put in a 22 arrangement to receive 1 leather.
+Drops from rabbits.
+ Rabbit stew
+
+Restores 10 ().
+Recipe: 1 cooked rabbit, 1 mushroom, 1 carrot, 1 baked potato, and 1 bowl in a shaped recipe.
+ Rabbit spawn egg
+
+Spawns rabbits.
+Brown colored with brown spots.
+Has a random chance of spawning 3 rabbits.
+
+
+==== Mobs ====
+ Rabbits
+
+Have 8 skins including black, white, brown, gold, black & white, salt & pepper, Toast, and the Killer Rabbit of Caerbannog.
+Naming a rabbit spawn egg "Toast", or using a name tag with that name on a rabbit, results in a special skin as a memorial to user xyzen420's girlfriend's lost rabbit 'Toast'.
+The Killer Rabbit of Caerbannog:
+11000 chance of spawning; it is hostile and deals 5HP on Easy difficulty, 8HP on Normal and 12HP  6 on Hard.
+A reference to the movie Monty Python and the Holy Grail.
+It is perfectly white except for its mouth, which has a blood red outline.
+It can be directly spawned in with the command /summon Rabbit ~ ~ ~ {RabbitType:99}.
+Can be tamed/bred using carrots, golden carrots or dandelions.
+Cannot be bred unless tamed.
+Are scared of the player and run away from it when untamed, similarly to ocelots.
+
+
+==== Command format ====
+NBT format
+
+New {CommandStats:} tag for command blocks and signs.
+Allows a command block or sign to increase a certain score in the scoreboard when it runs successfully.
+The command increases the score based on the number of items/blocks/entities/successes.
+For example, a command block with this tag running a command which affects items (e.g. /give) causes it to update the score based on the number of items given.
+Usage: {CommandStats:{AffectedItemsName:"playername", AffectedItemsObjective:"objective", AffectedBlocksName:"playername", AffectedBlocksObjective:"objective", AffectedEntitiesName:"playername", AffectedEntitiesObjective:"objective", SuccessCountName:"playername", SuccessCountObjective:"objective"}}.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+ Cakes 
+
+Now have 7 slices instead of 6.
+
+
+==== World generation ====
+Debug mode world type
+
+Tweaked world creation.
+Other world options are not available.
+Only Spectator mode can be enabled.
+Now includes all block states rather than all data values.
+This includes all possible states of redstone wire, fire, tripwire, stairs, etc.
+Arrangement of blocks is very different and a lot smaller, every block state only generates once.
+Nether fortresses
+
+They are now affected by the "generated structures" option.
+
+
+==== Gameplay ====
+Particles
+
+Changed the particle effect when landing on a block, looks a lot more scattered.
+Effects
+
+Changed the effect color of Jump Boost from  #786297 to  #22FF4C.
+
+
+==== General ====
+Block models
+
+Replaced block state names with the actual block state data, separated by commas.
+Debug screen
+
+Now shows variant states after the item (e.g. minecraft:cauldron[level=1]).
+
+
+=== Fixes ===
+12 issues fixed
+From released versions before Java Edition 1.8
+
+MC-15202  Player can be pushed around by mobs while on horseback.
+MC-16387  Nether fortresses are ignoring "Generate Structure" setting at world creation.
+MC-26987  Horse tries to breed with another horse that is not yet in Love mode.
+MC-29558  Double plants cannot be broken by placing a different block on the block it occupies.
+MC-29803  Statistics doesn't resize/buttons missing after resize.
+MC-30002  Falling/landing particles/particles applied to the player centered on the block rather than the player.
+MC-36489  Mooshrooms lose their name (from name tag) when sheared.
+MC-37416  when the disc is put in jukebox the name does not appear.
+From the Java Edition 1.8 development versions
+
+MC-58935  Breaking dirt & coarse dirt has podzol particles.
+MC-59146  Dirt in achievement background has podzol texture.
+MC-59250  Enderman picking up dirt turns into podzol.
+MC-59402  Fences and iron bars show "false"/redstone shows "up" in all cardinal directions regardless if other blocks connected or not.
+
+
+== 14w27b ==
+14w27b is the thirty-third snapshot for Java Edition 1.8, released on July 2, 2014, to fix some bugs and crashes in the 14w27a snapshot.
+14w27b was reuploaded as the original version featured an incorrect version label of '14w27a'.
+
+
+=== Changes ===
+
+
+==== General ====
+Block models
+
+The block state files now support an array of models allowing for random models.
+As a result of this, grass blocks, dirt, sand, red sand, stone, netherrack, bedrock, and TNT all have their top texture randomly rotated.
+
+
+=== Fixes ===
+11 issues fixed
+From the Java Edition 1.8 development versions
+
+MC-59178  Debug screen says that redstone repeaters are not locked, even if they are.
+MC-59580  Lower right hinged door reports "hinge:left".
+From the previous development version
+
+MC-59850  IllegalArgumentException - Crash when rendering MinecartChest.
+MC-59853  Buttons positions are wrong.
+MC-59854  Torches and buttons: wrong orientation.
+MC-59868  Buttons are always pressed.
+MC-59869  Levers spawn powered on floors or walls.
+MC-59886  Piston bug.
+MC-59908  Comparator texture flipped.
+MC-59915  Comparators are default "powered".
+MC-59986  IllegalArgumentException after breaking tall flower.
+
+
+== 14w28a ==
+14w28a is the thirty-fourth snapshot for Java Edition 1.8, released on July 9, 2014.
+
+
+=== Additions ===
+
+
+==== Command format ====
+/stats <entity|block> ...
+
+Usage:
+/stats entity <selector> <mode>.
+/stats block [x] [y] [z] <mode>.
+Alternative and more featureful way of interacting with CommandStats.
+Updates a scoreboard objective based on the number of entities/blocks which has been affecting the command, it updates the objective for the entity that ran the command, fake players can be used when run in a command block.
+After the mode there are currently 4 possible stats that can be updated: SuccessCount, AffectedBlocks, AffectedEntities and AffectedItems.
+For example: /stats entity @a set AffectedBlocks @a Test updates a scoreboard objective named 'Test' for all players whenever a command is performed relative to them, the objective updates by the number of blocks affected by the command since the stat was set to AffectedBlocks.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+ Cakes
+
+Produce a signal for comparators to detect.
+Each slice is equivalent to 2 redstone signal strength, for a maximum of 14.
+ Sloped Powered Rails, Activator Rails and Detector Rails
+
+No longer decrease their hitbox height to be 2 pixels high when activated.
+
+
+==== Gameplay ====
+Enchantments & effects
+
+Now accept named IDs as well as numerical IDs.
+
+
+==== General ====
+Block states
+
+Chunks now use block states instead of metadata.
+Performance & rendering
+
+Improved performance with rendering.
+Many optimizations to both the server (including singleplayer) and the client.
+Servers
+
+Can now customize network compression in server.properties.
+Video settings
+
+Added "Alternative Block" option to disable (or enable) weighted alternative block models.
+When turned off, the least complex highest priority model is always used for each block.
+
+
+==== Mobs ====
+ Rabbit
+
+The chance of a killer bunny spawning was reduced from 1/1000 to 1/2500.
+
+
+=== Removals ===
+
+
+==== General ====
+Distance effects
+
+When breaking a container such as a chest or furnace, the item entities are now dropped at the correct position.
+
+
+=== Fixes ===
+43 issues fixed
+From released versions before Java Edition 1.8
+
+MC-1532  TNT flashing graphic when lit looks cut up and faded./Z-fighting.
+MC-2990  Heads, beds, and doors can't be placed where there is thin snow.
+MC-8858  Rain goes through upside-down stairs.
+MC-13633  Horse's jump bar appears even when the horse isn't saddled yet.
+MC-16608  Text color in hopper and brewing stand GUI changes.
+MC-18477  Iron golems can see and attack invisible hostile mobs.
+MC-23940  If a player sleeps in a bed near a transparent block, said player can get in the block.
+MC-36718  New fragmented sentences in translation.
+MC-43984  Normal players can use player selectors.
+MC-53166  Horses do not convert their owner to UUID.
+MC-55490  Spawning cows on mooshrooms.
+From the Java Edition 1.8 development versions
+
+MC-45046  Player skin doesn't render at Y:254.3 or more.
+MC-45067  Player skin (model) disappears when under -1.8 height level (void).
+MC-45512  Entities disappear in the void.
+MC-46674  Tools can't break packed ice faster.
+MC-49407  /effect and /enchant still uses IDs.
+MC-53022  Mobs not being targeted by team selector.
+MC-54845  Rain particles not rendering.
+MC-55515  sign.edit with (color) changes the sign color.
+MC-56041  Wheat sprouts revert to seed at low light level blocks at night.
+MC-56251  "/weather rain" executed when weather is clear sets the weather to thunder.
+MC-56835  Pressure plate /fill disappearing glitch.
+MC-56884  Negative color crosshair when using resource pack.
+MC-58067  Smooth & chiseled sandstone & chiseled quartz has incorrect bottom texture.
+MC-59491  Performance on Linux server tick-rate.
+MC-59848  Grass blocks held by endermen have wrong texture.
+MC-59897  Logs not generating in the right position in structures.
+MC-59996  Falling sand entities are invisible or show a solid colored (red/green/black) texture.
+MC-60035  Double slabs become seamless.
+MC-60039  Server logging broken.
+MC-60077  End portals (end_portal_frame) has eye in it.
+From the previous development version
+
+MC-60093  Blacksmith roof slabs oriented wrong.
+MC-60126  Pistons retract on placement as if they were powered.
+MC-60150  Fence gates placed open.
+MC-60151  Redstone repeaters are inverted.
+MC-60152  Powered rail, detector rail, and activator rail are flipped when on an east/west slope.
+MC-60153  Iron door and wood door.
+MC-60156  Command blocks don't trigger when dispensed onto a redstone block.
+MC-60193  Doors generating weirdly in strongholds.
+MC-60208  Pumpkin/melon seeds fully grown when planted.
+MC-60349  TNT spawns ignited on desert temples.
+MC-60483  When placing fire on side of TNT it only renders on the side.
+MC-60523  Tripwire hook block placed sound bug.
+
+
+== 14w28b ==
+14w28b is the thirty-fifth snapshot for Java Edition 1.8, released on July 10, 2014, to some of bugs and crashes in 14w28a.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+ Monster Spawners
+
+Can be right-clicked with a spawn egg in hand, to change what the spawner produces.
+
+
+=== Fixes ===
+65 issues fixed
+From released versions before Java Edition 1.8
+
+MC-8785  Placing snow cover to side of block replaces current cover regardless of thickness.
+MC-9473  Unnecessary delay of "Done" button in the resource pack selection menu.
+MC-30548  stat.fallOneCm does not display proper amount.
+MC-31365  /summon and /setblock cannot specify chests', furnaces', dispensers', rails' and dropper's orientation.
+MC-48471  Stained glass and other tinted objects turn completely transparent while pushed by a piston.
+MC-56599  On the /help menu it shows /clear <player>, but just "/clear" works, so it should be /clear [player].
+From the Java Edition 1.8 development versions
+
+MC-46626  Spectators are affected by vines and ladders.
+MC-47647  Blocks worn as heads float at standing height when sneaking.
+MC-48563  /tellraw score function in multiplayer displays the last-loaded singleplayer score.
+MC-52261  /setblock'ed "half door" modifies damage value of block below.
+MC-53277  Fence gates, when powered, do not show correct texture (showing it is open while it is closed).
+MC-55510  @p not targetting closest player correctly.
+MC-55604  Changing difficulty bug (mobs).
+MC-56461  Shadows rendering in stained glass using "Super secret settings" that changes rendering.
+MC-57470  Crash loading world containing blocks with removed data values: java.lang.IllegalArgumentException: Cannot set property.
+MC-57831  Monsters spawning inside blocks/spawner ignoring light levels.
+MC-57973  Dark oak/acacia leaves missing texture.
+MC-58102  Brewing stands look empty on relogging until you open them.
+MC-58255  Fire model missing a texture.
+MC-58444  Item frames use oak wood texture.
+MC-59258  Breaking grass or tall grass can drop seeds with a missing texture.
+MC-59327  Breaking bottom block / replacing top block of double-tall plants yields double-tall plant item.
+MC-59401  I've tried to open a wooden door that only had the upper half there, game crashed.
+MC-59852  Certain slabs have incorrect names.
+MC-59872  Dark oak leaves have no name.
+MC-60009  Red mushroom block variants reversed/misnamed.
+MC-60151  Redstone repeaters are inverted.
+MC-60296  Crash when cutting grass: values=[sunflower, syringa, double_grass, double_fern, double_rose, paeonia]}.
+MC-60556  Crash when generating chunks containing strongholds.
+MC-60814  Giant mushroom has right texture in inventory & drop, but not when placed.
+MC-60983  Mismatching tree generation.
+MC-61122  fire_nsewu has a misplaced face.
+From the previous development version
+
+MC-61029  Snow layers have incorrect hitboxes
+MC-61031  GUI and blocks turn white when changing mipmap levels.
+MC-61043  Ladders take up full block, cannot climb.
+MC-61058  Tripwire stays activated, even after entities have moved away from activation zone.
+MC-61059  Growing crops give error about unknown property on farmland.
+MC-61066  Ladders accidentally get Facing from a block that is not a ladder.
+MC-61080  Hostile mobs despawn when changed to spectator mode.
+MC-61082  Placing wooden slabs crash the game.
+MC-61083  Client crashes when entering the Nether.
+MC-61091  Minecraft world flickering.
+MC-61093  Game crash when right clicking with empty bucket.
+MC-61107  Crash with F3 on tripwire.
+MC-61112  When a sign clickEvent is used to give items, the items don't show up until the world is reloaded.
+MC-61125  Tripwire not attaches to hooks visually, F3 crash.
+MC-61128  Connection lost when connecting to server.
+MC-61140  Slabs can't be placed next to slabs.
+MC-61148  Invalid age set on Cocoa during generation.
+MC-61155  Water texture bug.
+MC-61156  Chunk distance sorter violating contact.
+MC-61163  /clone move does not update redstone.
+MC-61167  All the symbols on an enchanting table are blocks.
+MC-61216  /setblock gives an unknown error when a block does not have 0 as a damage value.
+MC-61247  Dropped items going into the ground.
+MC-61315  soundEvent with no name - [Client thread/WARN]: Unable to play unknown soundEvent: minecraft:.
+MC-61344  Mipmap Bugs with dragging the slider.
+MC-61354  Hopper: java.lang.IllegalArgumentException: Cannot get property bci{name=extended, clazz=class java.lang.Boolean, values=[true, false]} as it does not exist!
+MC-61355  Hopper: java.lang.IllegalArgumentException: Cannot get property bci{name=north, clazz=class java.lang.Boolean, values=[true, false]} as it does not exist!
+MC-61357  Hopper: java.lang.IllegalArgumentException: Cannot get property bci{name=open, clazz=class java.lang.Boolean, values=[true, false]} as it does not exist!
+MC-61358  Hopper: java.lang.IllegalArgumentException: Cannot get property bci{name=occupied, clazz=class java.lang.Boolean, values=[true, false]} as it does not exist!
+MC-61359  Hopper: java.lang.IllegalArgumentException: Cannot get property bcj{name=half, clazz=class auu, values=[top, bottom]} as it does not exist!
+MC-61360  Hopper: java.lang.IllegalArgumentException: Cannot get property bcj{name=variant, clazz=class ati, values=[dirt, coarse_dirt, podzol]} as it does not exist!
+MC-61371  Hopper: java.lang.IllegalArgumentException: Cannot set property bck{name=facing, clazz=class ei, values=[down, up, north, south, west, east]} to null on block.
+MC-61372  Crash by moving half slabs with piston.
+
+
+== 14w29a ==
+14w29a is the thirty-sixth snapshot for Java Edition 1.8, released on July 16, 2014.
+This snapshot contains a lot of optimizations specifically targeting render performance.
+
+
+=== Additions ===
+
+
+==== Command format ====
+Gamerules
+
+reducedDebugInfo
+Gamerule to enable/disable reduced information on the F3 debug screen.
+Op-only unlike the 'Reduced debug info' toggle in multiplayer settings.
+Overrides 'reduced debug info' settings in clients.
+The ability to create gamerule variables.
+These are dummy gamerules which don't actually affect the world, but can be used with /stats with the new QueryResults argument to update a scoreboard objective based on the value of that gamerule.
+Declare using /gamerule <newRuleName> <value>.
+Access using /gamerule <newRuleName>.
+
+
+==== Options ====
+Multiplayer settings
+
+'Reduced debug info' toggle to enable/disable reduced information on the F3 debug screen.
+Video settings
+
+'Use VBOs' toggle to enable/disable vertex buffer objects.
+Offers a ~10% performance increase when set to ON.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Beacons, beds, chests, ender chests, heads, signs
+
+Now display the cracking animation.
+Beds did display the cracking animation previously, but not on their top and bottom.
+Stairs
+
+Flipped inventory texture back to original orientation.
+
+
+==== World generation ====
+Ore generation
+
+More than twice as fast.
+
+
+==== Command format ====
+/particle
+
+Additionally has a force argument after the count which can be set to normal or force.
+This forces particles to show even if the player's 'Particle' toggle is set to minimal or decreased.
+/time
+
+/time query <value> argument to check the time.
+Has an another argument after that which can be daytime or gametime to check either the number of ticks since the start of the day or the number of ticks since the world was created, respectively.
+/worldborder
+
+/worldborder get argument to see the current size of the border.
+Scoreboard
+
+Sidebar is now also secondarily sorted by alphabetical order on the name.
+
+
+=== Fixes ===
+36 issues fixed
+From released versions before Java Edition 1.8
+
+MC-71  Mobs don't spawn next to water streams if the x and z coordinates are negative.
+MC-393  Starvation prevents sleeping in bed on peaceful.
+MC-404  Viewing a map while invisible still shows both hands holding it.
+MC-455  Standing on exact x = 0, z = 0 coordinates prevents breaking / placing block in northwest.
+MC-486  Zombies and skeletons don't burn on slabs.
+MC-506  You can make smooth sandstone into smooth sandstone.
+MC-665  Minecarts and TNT are not moved by water currents.
+MC-676  Signs and chests do not display cracking animation.
+MC-1677  Retracting piston shows ghost hitbox of technical block.
+MC-14800  Sociable zombies spawn in the nether upon pigman damage.
+MC-61586  Client freezes for ~1 second in multiplayer when opacity of a block changes next to unloaded chunk.
+From the Java Edition 1.8 development versions
+
+MC-46531  Weird texture overlay while spectating squid underwater.
+MC-48106  Entity teleportation bug.
+MC-53033  Unable to disable nameTagVisilibity for someone in spectator mode.
+MC-54012  Piston arm is visible sticking through the back of the piston.
+MC-57516  CanPickUpLoot and CustomNameVisible not working.
+MC-57876  Furnaces don't get placed correctly when a village is generated on server.
+MC-57939  Wrong orientation for fire created on nonflammable block's side.
+MC-58037  Items being held improperly.
+MC-59052  Cannot add fake players or named entities to scoreboard teams.
+MC-59634  Players get the message "Your game mode has been updated" even when sendCommandFeedback =false.
+MC-59923  Trapdoors are open when a player places them.
+MC-59946  Iron trapdoors appear on the opposite side of where they are placed when open (east-west orientation).
+MC-60279  Detector rails render as unpowered, even when powered.
+MC-61033  /particle command doesn't work.
+MC-61449  Piston hitbox.
+MC-61454  Ping indicator extends over the right side of the tab list.
+MC-62024  Block on Zombie Villager's head is rendered in relation to the body.
+From the previous development version
+
+MC-61451  Frame-rate drop in 14w28b.
+MC-61453  /title command writing errors on the server log.
+MC-61505  Mob spawners count min/max spawn delay with a rate of 10 instead of 1.
+MC-61519  Chests that should be oriented east/west are oriented north in desert temples.
+MC-61577  CommandStats are not used when a command sign is right-clicked by non-OPs.
+MC-61666  Cannot /setblock or fill ender chests.
+MC-61711  Sidebar scoreboard shows the lowest scores and not the best when hitting the limit of the sidebar.
+MC-61795  Rails (any) crash nearby clients when pushed by sticky pistons repeatedly / pushed into entities.
+
+
+=== Trivia ===
+14w29a was previously removed from the launcher for some time, but was added back in September 2018.
+
+
+== 14w29b ==
+14w29b is the thirty-seventh snapshot for Java Edition 1.8, released on July 16, 2014, which fixes some of the bugs and crashes in 14w29a and introduces threaded chunk rendering.
+
+
+=== Changes ===
+
+
+==== General ====
+Optimizations
+
+Threaded chunk rendering.
+
+
+=== Fixes ===
+18 issues fixed
+From released versions before Java Edition 1.8
+
+MC-1677  Retracting piston shows ghost hitbox of technical block.
+MC-2947  Ghasts and witches don't aim properly.
+MC-33110  Spiders (and some other mobs) are not affected by speed effects or movementSpeed attributes.
+MC-33677  Multiplayer: Clickable text in /tellraw not working if OptionsMultiplayerWeblinks are off.
+From the Java Edition 1.8 development versions
+
+MC-46531  Weird texture overlay while spectating squid underwater.
+MC-48106  Entity teleportation bug.
+MC-54012  Piston arm is visible sticking through the back of the piston.
+MC-57876  Furnaces don't get placed correctly when a village is generated on server.
+MC-57939  Wrong orientation for fire created on nonflammable block's side.
+MC-58037  Items being held improperly.
+MC-58130  Chunks only render in the direction you are facing.
+MC-59923  Trapdoors are open when player places them.
+MC-59986  IllegalArgumentException after breaking tall flower.
+MC-61449  piston hitbox.
+MC-61454  Ping indicator extends over the right side of the tab list.
+MC-62024  Block on zombie villager's head is rendered in relation to the body.
+From the previous development version
+
+MC-62116  Players loses CommandStats{} after death.
+MC-62134  #players are taking up space on the sidebar display.
+
+
+== 14w30a ==
+14w30a is the thirty-eighth snapshot for Java Edition 1.8, released on July 23, 2014, which adds banners.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+Banners
+
+Over 164006 possible combinations  6.55361016.
+Crafted like a sign, just with one color of wool instead of planks.
+Can be stacked to 16.
+Most patterns are created by arranging dyes in certain ways around a banner on a crafting table.
+The dyes cannot be shifted or flipped even if there is space, known as a fixed recipe.
+Additional patterns: creeper, skull & crossbones, brick, and flower - making these without dyes results in a black pattern, one can use dyes to get different colors (items: creeper skull, wither skeleton skull, brick block, oxeye daisy).
+33 crafting recipes which produce different patterns.
+Up to 6 layers of patterns possible.
+Can be placed on walls or on the ground (16 rotations possible).
+Sway as if blown by wind.
+Can be cloned by crafting them together with a blank banner.
+Can be worn as headgear (but only using commands).
+Top-most layer can be removed using cauldrons.
+
+
+==== Command format ====
+NBT format
+
+New Silent tag for entities.
+Setting to 1 disables sound produced by that entity, such as idle and hurt sounds.
+
+
+==== General ====
+Statistics
+
+stat.talkedToVillager
+Detects how many times the player has talked to villagers (opened the trading GUI).
+stat.tradedWithVillager
+Detects how many times the player has traded with villagers.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Mob heads
+
+Made creeper, skeleton and zombie heads available in Survival.
+Creepers, skeletons, wither skeletons, and zombies drop their heads when killed by charged creepers. Wither skeletons continue to have heads as rare drops.
+Skulls worn on heads are now bigger so the second skin layer no longer peeks through.
+Player and mob heads in inventories and held by mobs/players now display the actual head.
+
+
+==== Command format ====
+/summon
+
+/summon command can now summon lightning using /summon LightningBolt.
+
+
+==== Gameplay ====
+Lighting
+
+Completely fixed black spots.
+Players need to reload old worlds for them to be fixed.
+
+
+==== World generation ====
+Nether fortress
+
+Chests now have the possiblity of containing obsidian.
+
+
+==== General ====
+F3 debug screen
+
+Now displays how many chunk sections are being rendered currently and how many chunk sections are out of view in percent, the OpenGL version, display size, vendor and GPU.
+"Vanilla" added to the version number. e.g., "Minecraft 14w30b (14w30b/Vanilla)".
+Presumably this says something different if modded.[more information needed]
+F3 + H tooltips now show how many NBT tags an item has.
+Block names no longer contain blockstate data in brackets next to their name (in the view of a block's name and data along the right side of the screen).
+Data is still shown in separate rows beneath the name.
+Animations
+
+Third person sword blocking position slightly tweaked
+Block hitting animation redone
+Punching while blocking, shooting an arrow, drinking a potion, and eating removed
+Rod scaling tweaked
+Removed armor turning red when hit
+Items are now positioned a little higher and further left during their eating/drinking animation in first person view
+Video settings
+
+Render distance slider now goes up to 32 when using 64-bit Java.
+Requires 2 GB of allocated RAM.
+Removed Advanced OpenGL.
+Performance improvements
+
+Rewrote chunk sorting.
+Ported over the visibility culling code from MCPE to avoid rendering invisible stuff.
+Threaded chunk rebuilds.
+
+
+=== Bugs ===
+Distance effects
+
+Chunks detach and jitter at high coordinates if VBOs are disabled.
+
+
+=== Fixes ===
+32 issues fixed
+From released versions before Java Edition 1.8
+
+MC-7508  Lighting error due to Chunk.heightMap ignoring block at the top level of an ExtendedBlockStorage instance (off by 1 error).
+MC-30568  /summon command can't summon lightning.
+MC-32514  The well in a desert village is made out of the wrong material/cobblestone.
+MC-58823  options.txt has advancedOpengl:true also for graphic cards without Advanced OpenGL in video settings.
+From the Java Edition 1.8 development versions
+
+MC-46225  Falling sand can replace pistons, destroying them.
+MC-56897  Chunks don't render.
+MC-57895  Stairs are backwards in the creative inventory and hotbar.
+MC-58790  Sign with /give / /replaceitem doesn't update player inventory.
+MC-59259  Breaking block below tall plants causes them to drop two items.
+MC-59979  Bug in the F3 menu.
+MC-60301  Broken resource packs: game crashes when I try to load 14w27a/b.
+MC-60552  Flower pots with metadata placed in 1.7 will not render in 1.8 snapshots/metadata not removed.
+MC-61191  Sandstone stairs bug in desert villages.
+MC-62127  Turning off VSync crashes the game.
+MC-62138  "#PLAYER" appears on sidebar.
+MC-62180  /testfor @p doesn't consider x, y, z anymore.
+MC-62493  "/worldborder get" can display invalid size using "/worldborder add".
+MC-62655  Cubic player selector always finds player if there are more than 31 entities around.
+From the previous development version
+
+MC-62170  Carpet has incorrect height.
+MC-62223  Crash in Video Settings menu.
+MC-62240  Command selector parameters dx, dy and dz don't work.
+MC-62267  Game crashes when trying to enable VSync.
+MC-62342  Slabs can not be placed in adventure mode with tag CanPlaceOn.
+MC-62349  Hopper: java.lang.NullPointerException: Saving entity NBT.
+MC-62379  Spawners (dungeons, strongholds, etc...) can spawn mobs outside of worldborder.
+MC-62419  Hopper: java.lang.IllegalArgumentException: Cannot get property bcy{name{{=}}half, clazz=class ats, values{{=}}[upper, lower]} as it does not exist in bch{block=minec.
+MC-62499  /replaceitem block has incorrect syntax.
+MC-62504  /kill adds 214748364 / 0xCCCCCCC to "Damage Taken" statistics.
+MC-62507  Overlapping dungeons don't spawn correctly.
+MC-62558  Rendering empty chunks/cubes in 14w29b (or number of rendered chunks on debug screen (C) is wrong).
+MC-62736  /replaceitem command not updated when the command was executed with a sign.
+MC-62789  Chunks containing paintings may be wiped and regenerated upon load.
+
+
+== 14w30b ==
+14w30b is the thirty-ninth snapshot for Java Edition 1.8, released on July 23, 2014, fix some bugs and crashes in 14w30a.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Creepers, skeletons, zombies
+
+A charged creeper explosion no longer yields more than one mob head.
+
+
+==== General ====
+Options
+
+Video settings
+Changed the 3D anaglyph effect to look more accurate close up.
+
+
+=== Fixes ===
+12 issues fixed
+From released versions before Java Edition 1.8
+
+MC-229  The fullscreen/windowed mode toggle status is inconsistent when using hotkeys.
+MC-36883  Game freezes sporadically (0-3 fps) for varying periods of time.
+MC-49292  Can't place End portal block in the End using commands.
+From the Java Edition 1.8 development versions
+
+MC-58869  Not powered Iron Door has status 'powered: true'.
+MC-59035  Damage tag not working in /testfor.
+MC-59262  Water flows the speed of lava.
+MC-59668  /setblock clocks aren't working.
+MC-62202  Debug profiling crash: Ticking Entity: java.lang.ArrayIndexOutOfBoundsException: -1.
+MC-62582  Chests, signs, and ender chests do not render in empty chunks.
+MC-62583  Destroying the last block model in a chunk causes ghost blocks.
+MC-62896  Keep dying just after respawning.
+From the previous development version
+
+MC-63025  Chunks don't reload until the mouse moves.
+
+
+== 14w30c ==
+14w30c is the fortieth snapshot for Java Edition 1.8, released on July 24, 2014, to fix some of the bugs and crashes in 14w30a and 14w30b.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Banners
+
+Now have some new patterns.
+'Cross' which puts a cross on the banner (slightly thinner than when using stripes).
+'Border' which adds a border to the banner (again thinner than when using stripes).
+'Curly border' which adds a more decorative border.
+'Mojang logo' which adds the Mojang logo.
+
+
+==== Gameplay ====
+Lighting
+
+Some black spots now occur.
+The black spots bug-fix was responsible for MC-62993, which was causing trees in certain biomes to not generate.
+
+
+=== Removals ===
+
+
+==== General ====
+Distance effects
+
+Fixed a very major rendering bug that occurred in 14w30a and 14w30b at high coordinates for many GPUs[verify] if VBOs were disabled.
+
+
+=== Fixes ===
+59 issues fixed
+From released versions before Java Edition 1.8
+
+MC-4008  Pick block item duplication.
+MC-9097  /testfor producing true comparator signal with invalid parameters.
+MC-13771  Carpet and layered snow blocks not properly visible in hand.
+MC-29518  "stat.damageTaken" and "stat.damageDealt" track # of hits vs # of hp damage.
+MC-31572  /setblock ladder creates transparent block instead.
+MC-32930  Thunderstorms light level is still as bright as normal rainstorms.
+MC-37818  One block has no backface culling whilst others do.
+MC-38127  Wrong texture of a bottle.
+MC-44801  Excessive client-side chunk ticking 1.7.4+.
+MC-45222  Trapdoor locks in position.
+MC-47974  Villagers walk normally when farming, but speed around when not.
+MC-48904  Words in chat do not wrap correctly and do not make a new line.
+MC-53206  Realms join from other location - bug.
+MC-60665  Creeper vs potato crop.
+From the Java Edition 1.8 development versions
+
+MC-45882  Villagers don't farm crops [Multiplayer].
+MC-46365  Server crash when pushing villager through Nether portal.
+MC-46632  Ice Spikes: floating towers.
+MC-47689  CanPlaceOn with items such as wheat seeds.
+MC-47974  Villagers walk normally when farming, but speed around when not.
+MC-50306  Player skulls with SkullOwner do not use UUIDs; can break after name-changes.
+MC-50376  Given Item (/give) adding to stat.drop.
+MC-50517  Certain Items are rotated 90/180 in hand and in hotbar/inventory/item frames.
+MC-51239  The beacon light/laser is bugged.
+MC-52084  Performance drop after about 20-30min gameplay.
+MC-52547  Selectors on commands run by /execute are not run as if by /execute's target.
+MC-53500  Sea level problems, customized world.
+MC-55253  The new {selector:"@..."} /tellraw feature fails on failing selectors.
+MC-56041  Wheat sprouts revert to seed at low light block levels at night.
+MC-56917  Any block in any empty chunk section (16x16x16) is invisible on some graphics cards.
+MC-57992  Broken sunflower model (upper block part of stem missing).
+MC-58512  Multiplayer: entity rendering weird while using player heads/spawned mobs with player heads.
+MC-59704  In F3 mode the variant of Dark Oak planks says big_oak.
+MC-60529  Horrendous GC activity.
+MC-61603  When you look down, the textures glitch out.
+MC-61824  Glass pane texture.
+MC-62017  Texture of dark acacia and dark oak leaves are missing when you break them with a tool with silk touch.
+MC-62184  Water rendering oddly.
+MC-62331  Debug start, crashes the server.
+MC-62514  4x4 resourcepacks cause screen flicker.
+MC-62981  Sun/moon/stars disappear when looking at them with render distance < 7.
+MC-62984  Crash "Tesselating block model" (java.lang.IndexOutOfBoundsException @ java.util.ArrayList.rangeCheck).
+MC-62989  Skin on player head doesn't show unless put in the helmet slot or placed down.
+MC-62993  Some trees are not / rarely / improperly generating in certain biomes.
+MC-63008  When having a mob head in the hot bar/inventory/UI, transparent blocks change texture in the hot bar/inventory/UI.
+MC-63012  Crash when press F3+A (java.lang.NullPointerException: Batching chunks).
+MC-63107  Player head bugs (2.0).
+MC-63288  Launcher treats crash report as modded/bottom part of crash report missing.
+MC-63333  Terrain behaves very strangely near world edge.
+From the previous development version
+
+MC-63072  Hopper: java.util.ConcurrentModificationException.
+MC-63148  LightningBolt not listed when using  Tab on /summon.
+MC-63188  Another crash in 14w30b.
+MC-63197  Crash "Tesselating block model" (java.lang.IndexOutOfBoundsException @ at java.nio.Buffer.checkIndex).
+MC-63246  Throwing an eye of ender outside of the world border crashes the game.
+MC-63290  Texture flickering.
+MC-63305  When rendering chunks, game crashes when loading ocean.
+MC-63345  Minecraft started crashing every 15 minutes or so repeatedly.
+MC-63369  Lightning tesselating block model crash.
+MC-63376  Client crashing every 1-2 minutes.
+MC-63395  Game crashes randomly on launcher.
+
+
+== 14w31a ==
+14w31a is the forty-first snapshot released for Java Edition 1.8, released on July 30, 2014.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Banners
+
+Added missing upward gradient and right solid half patterns, upside-down diagonal halves, bottom half, and right half.
+Changed the name of existing patterns according to Vexillology.
+Can be used as fuel in furnaces.
+Cobblestone stairs
+
+Renamed "Stone Stairs" to "Cobblestone Stairs".
+Daylight sensors
+
+Can be inverted with a right click.
+Reaches full strength at the opposite time than it would when set to normal.
+This can allow for a light that turns on at night rather than day without the need of a NOT gate.
+Ladders & melons
+
+Mined faster using axes.
+
+
+==== Items ====
+Maps
+
+Zoomed maps now snap to a grid rather than being centered on the original map.
+
+
+==== Mobs ====
+Rabbits
+
+Now take fall damage.
+Now have sounds.
+Have 'hurt', 'death', 'hop', and 'idle' sounds.
+The 'hop' and 'idle' sounds are barely audible.
+Changed model.
+Added tail.
+
+
+==== World generation ====
+World border
+
+The time parameter of the world border size changing can now be larger.
+Only players get damage outside of the world border.
+
+
+==== Command format ====
+/debug
+
+Can now be run in single player.
+New arguments for debug /debug <start|stop|chunk> [<x> <y> <z>].
+x/y/z are required and valid only for chunk mode.
+May be removed, as the command was supposed to be dev only.
+
+
+==== Gameplay ====
+Inventory
+
+Items which have been renamed have their tooltips displayed as italic when highlighted, rather than just being straight.
+Trading
+
+Clerics now sell bottles o' enchanting, prices range from 3 to 11 emeralds each.
+
+
+==== General ====
+Optimizations
+
+Threaded mob pathfinding.
+More optimizations.[more information needed]
+
+
+=== Fixes ===
+88 issues fixed
+From released versions before Java Edition 1.8
+
+MC-129  Chunks not loading surface, revealing caves, etc.
+MC-1831  Incorrect fire charge noise.
+MC-2053  Inconsistent door texture.
+MC-2071  Pausing the game or opening any GUI in a nether portal does not work.
+MC-3100  Stone stairs are named incorrectly. They should be called cobblestone stairs.
+MC-5206  Renamed items' name isn't shown in italic or colored on item switching.
+MC-5585  The Ender dragon is not affected by the sharpness and power enchantment.
+MC-5991  Hoppers use wood sounds for placing/breaking.
+MC-6773  Renaming a slime or magma cube, once it splits it no longer has its custom name.
+MC-7443  Temporary floating minecart by pistons.
+MC-7807  Thrown eggs look like snowballs when hitting something.
+MC-9275  TNT is not ignited when right-clicked by a fire charge.
+MC-9406  Underwater effect on held item at high aspect ratios.
+MC-9664  Blaze / ghast fireballs can make fire with MobGriefing off.
+MC-9806  No name color when using /say.
+MC-11651  UTF-8 domaine name support.
+MC-15084  Leads not dropping when a leashed mob is killed.
+MC-15707  Wild and hostile wolves can be leashed.
+MC-17035  Can teleport dead and unrespawned player.
+MC-17047  Placing heads doesn't cause block updates.
+MC-19702  Wither armor has wrong texture.
+MC-24778  Opening and closing sound bug.
+MC-29518  "stat.damageTaken" and "stat.damageDealt" track # of hits vs # of hp damage.
+MC-29559  2 block tall grass/fern does not produce seeds when broken.
+MC-30589  Item frame only drops item upon explosion.
+MC-33558  Agro tags don't work with neutral mobs that have new AI.
+MC-35617  Cactus has incorrect inventory image.
+MC-36639  Zoomed out maps do not properly align.
+MC-37661  DataTag parsing/escaping issue.
+MC-39825  Floating anvil using TNT.
+MC-43010  Non-standard texture resolutions cause rendering errors with mipmap.
+MC-44597  Unable to play unknown soundEvent: minecraft:mob:witch.idle.
+MC-50176  Asterisk as name for score chat component not effective as translatable argument.
+MC-51655  Ladders don't break faster with an axe.
+MC-53215  TNT destruction nerfed.
+MC-54584  Crash when creating an item with an AttributeModifier with an Operation of > 2.
+MC-58322  Connecting to server that uses resource pack displays "Texture pack".
+MC-64287  Incorrect display for Failed to Login screen.
+MC-64851  Getting off of Horse while jumping makes a player fly (In Creative).
+MC-65060  Heads glitch.
+From the Java Edition 1.8 development versions
+
+MC-44413  Villagers no longer trade xp bottles with the player.
+MC-46051  Item frame block/item entities are lit incorrectly.
+MC-46365  Server crash when pushing villager through Nether portal.
+MC-46460  Spectators show burning effect in lava.
+MC-46470  Flying through water in spectator mode plays the splashing sound.
+MC-47878  /spreadplayers not working with entities.
+MC-48294  Items a player holding go black when players walk on soul sand.
+MC-48372  Crash when using /clone on complex structure (command block and pulser).
+MC-48538  Monsters can spawn on barriers.
+MC-49305  Server scoreboard "36>16" bug.
+MC-49580  Swimming in water causes held items to "darken".
+MC-49590  stat.damageTaken bug.
+MC-50176  Asterisk as name for score chat component not effective as translatable argument.
+MC-50572  Upward facing droppers/dispensers only shoot items west.
+MC-51754  Fully grown cocoa beans only drop 1 item when wood log they're attached to is retracted.
+MC-53430  when /gamerule randomTickSpeed is typed in gives wrong tab completion.
+MC-53638  Pigs spawned inside gravel, invisible on layer 256.
+MC-55191  /clone, /fill, and /setblock do not set blocks outside world border.
+MC-55253  The new {selector:"@..."} tellraw feature fails on failing selectors.
+MC-57159  2d rendered objects (tall grass, plants, fire, etc) are darker on one side.
+MC-57524  Nether portals don't generate or generate unlit.
+MC-57861  Projectiles going north or south appear sideways.
+MC-58524  Using shears on double fern results in pink and black box in inventory. When placing said box on dirt, player would get dead grass *(i.e. desert).
+MC-58838  Breaking an active jukebox doesn't destroy the block.
+MC-58985  Blocks pushed by pistons above Y=256 are deleted.
+MC-59043  Using "Pick Block" on lapis lazuli ore creates missing texture.
+MC-59472  Item frames drop as an item when not supported by block even when game rules say not to.
+MC-59556  Wearing a skull loses its name.
+MC-59602  Hoppers can't take water bucket out of furnace.
+MC-59845  Rabbits do not take damage from falling.
+MC-59962  Rabbits have no sounds.
+MC-60306  Rabbit foot in incorrect creative tab.
+MC-60331  Pie chart debug menu doesn't disappear in F1 mode.
+MC-61794  Damaged anvils are placed as undamaged ones.
+MC-62972  Hoppers doesn't take empty bucket from furnace.
+MC-63026  Spectator gamemode (gamemode 3) is useless underground.
+MC-63157  Fishing rod/carrot on a stick not held correctly/line not attached to pole.
+MC-63310  Several mirror banner crafting recipes not in game.
+MC-63357  Sleeping in bed underground and saw sky.
+MC-63592  /replaceitem not working twice.
+MC-63735  Natural world border 14w30b (30000000 block).
+From the previous development version
+
+MC-63492  Guardians deal damage when hit with TNT.
+MC-63506  Hopper: java.lang.ArrayIndexOutOfBoundsException: -1.
+MC-63507  Clicking 'Snooper Settings' crashes Minecraft.
+MC-63595  Endermen get angry when hit in Creative.
+MC-63785  comparator_unlit has invalid cullface.
+MC-64362  Anvil durability is restored when anvil is broken and placed back down.
+MC-64395  Tamed rabbits would teleport to the player as wolves and cats.
+
+
+== 14w32a ==
+14w32a is the forty-second snapshot for Java Edition 1.8, released on August 6, 2014, which adds red sandstone, armor stands, and the NoAI tag.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+Red sandstone
+
+Can be crafted with 4 red sand in a square.
+Can be crafted into chiseled, smooth, stair and slab forms.
+Chiseled variant has a wither pattern to complement the normal creeper pattern.
+Slabs have (like stone and sandstone) a smooth variant.
+Comes as a smooth double slab - minecraft:double_stone_slab2:8.
+Generated only in mesa biomes at cave entrances.
+
+
+==== Entities ====
+Armor stands
+
+Can be used to decoratively display armor (including pumpkins, mob heads, and player heads).
+Armor can be right-clicked to be applied to the armor stand and can be applied by dispensers.
+Armor can be applied by dispensers aimed at any part of the stand.
+Armor can be removed by right-clicking on the piece of armor player wants to remove.
+Can render enchanted and dyed armor.
+Crafted using any stone-type slab and 6 sticks.
+Stacks up to 16.
+Armor stands are actually entities not blocks and can, therefore, be summoned using /summon ArmorStand and put in minecarts.
+NBT data can be used to create armor stands which are small (Small), invisible (Invisible), have arms (ShowArms), have disabled slots (DisabledSlots), have no gravity (NoGravity) and are in a preconfigured position (Pose).
+
+
+==== Command format ====
+NBT format
+
+NoAI tag can be applied to entities to disable their AI.
+Entities without AI do not attack players or move or rotate on their own, and do not despawn, they also do not respond to gravity or collision with other mobs, but can still take damage, die, and ride other entities.
+
+
+==== General ====
+Splash
+
+Added "This is good for realms."
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Beacons
+
+Beacon beams are colored when going through stained glass and stained glass panes.
+Making it feed into multiple stained glass blocks/panes combines the colors.
+Coarse dirt
+
+Tilling coarse dirt with a hoe turns it to regular dirt.
+
+
+==== Gameplay ====
+Health bar
+
+Has a new animation for the damage, that additionally shows how many hearts a player loses.
+
+
+=== Fixes ===
+25 issues fixed
+From released versions before Java Edition 1.8
+
+MC-268  "Jump Boost" does not reduce fall damage.
+MC-2911  Gamerule commands allow parameters other than true/false.
+MC-2930  Heart bar doesn't show how much damage is dealt to the player.
+MC-3664  Golden carrot Creative misplacement.
+MC-3718  Textures and effects are off when far away from the center of the map.
+MC-3818  Playing stacked music discs in jukebox will duplicate them.
+MC-3884  No splash sound when items dropped in water.
+MC-3995  Dry sponges don't suck up water blocks around it.
+MC-4772  Head items not rendered properly in 3D.
+MC-29431  Search function returns some extra potion results.
+MC-37946  Pick block on grassless dirt gives dirt.
+MC-48760  Redundant code.
+MC-50039  Only get the "Overkill" achievement if player deals at least 9 hearts of damage, even though the description says 8 hearts.
+MC-50848  Enderpearl thrown before death teleports after respawn.
+MC-64571  Ender dragon destroys command blocks.
+From the Java Edition 1.8 development versions
+
+MC-55228  Sandstone spawning in mesa biome at cave entrances.
+MC-56799  Portals sometimes multiply by 8 twice.
+MC-58503  Trapdoor in inventory/in the distance has white edges around holes.
+MC-60925  Falling sand with chest as block ID crashes the game.
+MC-61565  Spectator mode description.
+MC-63226  Grass block doesn't block the sunlight.
+MC-64260  Death by lightning bolt claims players go up in flames.
+From the previous development version
+
+MC-64409  Item names are in brackets.
+MC-64472  Crash while playing 14w31a.
+MC-64497  Led animals cannot jump up 1 block.
+
+
+== 14w32b ==
+14w32b is the forty-third snapshot for Java Edition 1.8, released on August 7, 2014, to fix some bugs and crashes from 14w32a.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+Fences
+
+New types of fences for all the different types of wood.
+Different types can connect to each other.
+Original fence renamed to oak fence.
+New crafting recipe using 2 sticks and 4 planks to make 3 fences.
+Fence gates
+
+New types of fence gates for all the different types of wood.
+Different types can connect to each other.
+Original fence gate renamed to oak fence gate.
+Can now catch fire.
+
+
+==== Command format ====
+/entitydata
+
+Works similarly to /blockdata but can be targeted to entities.
+Does not work on players.
+Usage: /entitydata <entity> <dataTag>.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Armor stand
+
+Can now use pick-block on armor stands (gives the stand, not the armor equipped).
+Now craftable using only stone slabs instead of any stone-type slab.
+Beacon
+
+Beacon beam changes color instantly.
+Beam now goes through all blocks that don't completely block light: ice, water, and leaves.
+
+
+=== Fixes ===
+13 issues fixed
+From released versions before Java Edition 1.8
+
+MC-586  Beacon light does not travel through water.
+MC-3337  Cannot walk through 2 high hole with chest/soul sand/portal frames in floor.
+MC-3444  The give command stacks any item.
+MC-34815  Hearts do not blink when regenerating.
+MC-52653  Player skull lag.
+From the Java Edition 1.8 development versions
+
+MC-59533  Beacon beam shows but effect is not applied and can't be edited.
+MC-59889  Crash when seeing mobapperance particles.
+MC-63174  Heads face wrong way in item frames.
+MC-64024  Crash report (Batching chunks java.util.ConcurrentModificationException).
+MC-64188  /execute with relative coordinates commands are forced to the center of the x and z-axis of the block the target is in, not the target itself.
+MC-64536  Entities darken when items in frames are rendered
+From the previous development version
+
+MC-65512  Pick block on double red sandstone slab crashes the game.
+MC-65524  Unable to pick block on armor stand.
+
+
+== 14w32c ==
+14w32c is the forty-fourth snapshot for Java Edition 1.8, released on August 8, 2014, to fix some bugs and crashes from 14w32a and 14w32b.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Armor stands
+
+Added NoBasePlate tag - disables the base plate.
+Slime blocks
+
+Changed placing/breaking sounds.
+Use hurt sounds of slimes.
+
+
+=== Fixes ===
+10 issues fixed
+From released versions before Java Edition 1.8
+
+MC-51461  Items do not go into chest from a hopper while it is receiving items from two directions/inputs.
+From the Java Edition 1.8 development versions
+
+MC-44859  Breaking / placing a slime block sounds like stone.
+MC-64425  Can't place blocks on TNT.
+MC-64513  Cannot go upstairs if there is a carpet above a step.
+MC-65230  Collision bug when player is moving up a slope adjacent to a 3-high wall.
+From the previous development version
+
+MC-65872  No book on enchantment table.
+MC-65874  Existing/old chests are invisible.
+MC-65876  Jungle planks craft spruce fences/gates.
+MC-65935  /entitydata doesn't change the pose tag on armor stands until player relogs.
+MC-65938  End portal blocks are invisible albeit the smoke particles.
+
+
+== 14w32d ==
+14w32d is the forty-fifth snapshot for Java Edition 1.8, released on August 8, 2014, which adds new doors and fixed a bug in 14w32c that kicked the client when joining dedicated servers.
+
+
+=== Additions ===
+
+
+==== Blocks ====
+Wooden doors
+
+         Added new types of doors for all the different wood types: spruce, birch, jungle, acacia and dark oak doors.
+Door recipes now require all six planks to be of the same type.
+
+
+=== Fixes ===
+9 issues fixed
+From released versions before Java Edition 1.8
+
+MC-2117  Beacon beam not viewable on low render distance.
+MC-54818  A powered rail that should be unpowered.
+MC-66316  /list appears twice in /help 3.
+From the Java Edition 1.8 development versions
+
+MC-45091  Powered rails not updating.
+MC-48797  Blocks that are covered by barrier blocks are given 15 skylight value. Also, hostile mobs that are underneath barrier blocks still get affected by the sun
+MC-59681  Glass block has a weird texture in inventory/UI.
+MC-62980  Crash when render distance is 16 chunks.
+MC-64399  Weird arrow behavior.
+From the previous development version
+
+MC-66143  io.netty.channel.AbstractChannelHandlerContext invokeExceptionCaught - Unable to join any server.
+
+
+== 14w33a ==
+14w33a is the forty-sixth snapshot for Java Edition 1.8, which was released on August 13, 2014.
+
+
+=== Additions ===
+
+
+==== Command format ====
+NBT format
+
+SelectedItem
+Contains the item data of the item currently held in the player's hand.
+Added to compact the process of testing if a player is holding a specific item.
+Previous method required nine commands in command blocks; now requires only one command.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Wooden doors
+
+Original wooden door was renamed to "Oak Door".
+ The models of jungle and acacia doors no longer have inner faces in the holes in their models.
+Stone slabs
+
+No longer craftable from granite, diorite or andesite, or their polished variants.
+
+
+==== Items ====
+Wooden doors
+
+    The item textures of the new doors have been changed to match the dimensions of oak wood doors.
+
+
+==== Mobs ====
+Iron golems
+
+Now attack creepers.
+Now gets attacked by skeletons, zombies, spiders, cave spiders, slimes and magma cubes.
+Snow golems
+
+Now attack creepers.
+
+
+==== Command format ====
+General
+
+Tab-completing coordinate arguments now fill in the coordinates of the block currently being looked at.
+
+
+==== General ====
+Splashes
+
+"This is good for realms." changed to "This is good for Realms."
+
+
+=== Fixes ===
+40 issues fixed
+From released versions before Java Edition 1.8
+
+MC-2559  Squid taking damage while in water.
+MC-29408  Tab support is not possible with player names when using the /playsound command.
+MC-31344  /summon mob and /summon monster bug.
+MC-51856  Torch placed on half block when placed against half-slab.
+MC-66347  Beds make incorrect sounds.
+From the Java Edition 1.8 development versions
+
+MC-57714  Placing torches on other torches.
+MC-58740  Torches can be placed on transparent blocks, technical blocks, and slabs.
+MC-61245  Upside down stairs have hitbox of regular stairs/regular stairs have wrong hitbox.
+MC-63319  Heads dropped from charged creeper explosion ignore gamerules.
+MC-64626  Unsmooth teleportation.
+MC-65162  paintings placed with summon do not follow correct Y coordinate.
+MC-65522  Tooltip for regular sandstone slab is incorrect.
+MC-65523  If a colored glass is placed onto the beacon just as the beacon's beam color updates, the beam will be white, instead of the color of the glass.
+MC-65546  Beacon lighting bug.
+MC-65790  If player places a block on two-block-tall plants, it will destroy them
+MC-65909  Skulls too small in item frames.
+MC-65994  Polygons (faces) in block models not using designated textures.
+MC-66227  Helmets can't be taken off of armor stands while flying above them in Creative mode.
+MC-66350  Selecting "Hardcore" prior creating a debug world yields a "hardcore debug world".
+MC-66413  Baby bunny's name tags.
+MC-66503  Floating diamond sword.
+MC-66543  Fence gates lock closed, and will not open from pressure plate activation.
+MC-66674  Summoning a FallingSand entity with {Block:"leaves"} crashes the client.
+MC-66742  Splash text capitalized wrongly.
+MC-66791  Iron golems do not target creepers.
+MC-66862  Falling sand summoned as redstone wire crashes the game.
+From the previous development version
+
+MC-66163  Using pick block on a colored door returns a regular door.
+MC-66166  Breaking colored doors turns them into regular doors.
+MC-66169  Old oak doors still called 'Wooden Door' instead of 'Oak Door'.
+MC-66504  The lower hinge part of left-hinged open jungle doors show texture of the door leaf.
+MC-66532  /entitydata tab autocomplete keeps entering player's name.
+MC-66685  Hopper: java.lang.IllegalArgumentException: Cannot get property ben{name=half, clazz=class auz, values=[upper, lower]} as it does not exist in bdw{block=minec.
+MC-66687  Hopper: java.lang.NullPointerException: Rendering entity in world.
+MC-66722  Hopper: java.lang.ClassCastException: ayv cannot be cast to azh.
+MC-66816  Crash: /give @p skull 1 3 {SkullOwner:<playername>} [SMP].
+MC-66819  Hopper: java.util.ConcurrentModificationException.
+MC-66822  Hopper: java.lang.NullPointerException: Batching chunks.
+MC-66824  Hopper: java.lang.IllegalArgumentException: Cannot get property ben{name=shape, clazz=class ate, values=[north_south, east_west, ascending_east, ascending_wes.
+MC-66835  /execute coordinates don't work.
+MC-66915  Only smooth stone should make stone slabs.
+
+
+== 14w33b ==
+14w33b is the forty-seventh snapshot for Java Edition 1.8, released on August 15, 2014, which adds new food textures and fixes some bugs and crashes from 14w33a.
+
+
+=== Changes ===
+
+
+==== Items ====
+
+Cooked mutton, cooked rabbit, rabbit's foot, rabbit hide, raw mutton, raw rabbit
+
+Changed textures.
+Doors
+
+Changed item textures to be more accurate and consistent.
+
+
+=== Fixes ===
+10 issues fixed
+From released versions before Java Edition 1.8
+
+MC-4490  Fishing rod not attached in 3rd person while crouching.
+From the Java Edition 1.8 development versions
+
+MC-50321  Fishing line not connected to the rod in third person view.
+MC-64456  Fishing rod bug in 3rd person.
+MC-65112  Grass block shows a damage value of 0 when tooltips are enabled.
+MC-65521  Armor stands consume whole stack of items in Survival.
+MC-65533  Efficiency enchantment does not work on shovels and axes.
+From the previous development version
+
+MC-66970  Major texture disortion for redstone, stairs, cobblestone walls, fences and fence gates.
+MC-66983  Game crashes when placing a torch or redstone torch on the bottom of a block.
+MC-67141  Hopper: java.lang.IllegalArgumentException: Name and ID cannot both be blank.
+MC-67142  Hopper: java.lang.IllegalArgumentException: Cannot set property ben{name=has_bottle_0, clazz=class java.lang.Boolean, values=[true, false]} as it does not exist.
+
+
+== 14w33c ==
+14w33c is the forty-eighth snapshot for Java Edition 1.8, released on August 15, 2014, to fix a bug from 14w33b that was creating holes in terrain generation.
+
+
+=== Fixes ===
+14 issues fixed
+From released versions before Java Edition 1.8
+
+MC-5962  When first loading a world, chests and trapped chests have a visual glitch in hotbar.
+MC-27538  Sand landing on snow slabs is inconsistent.
+From the Java Edition 1.8 development versions
+
+MC-49937  Mobs can't swim.
+MC-50506  Interblock culling not respecting rotation.
+MC-53691  Game crashes when killed by /worldborder.
+MC-58186  Detector rail does not change texture if activated.
+MC-62185  Whitelisting broken.
+MC-63346  Lighting error at heights with multiples of 16.
+MC-63365  L chest bug.
+MC-63688  Game crashes when running world generated before 14w30a.
+MC-64453  Armor doesn't render when looking from the inside.
+MC-66238  The new doors have bigger items.
+MC-67189  Wooden door types item texture has door knobs on opposite side.
+From the previous development version
+
+MC-67563  Missing areas in terrain generation.
+
+
+== 14w34a ==
+14w34a is the forty-ninth snapshot for Java Edition 1.8, released on August 18, 2014, which makes changes to rabbits.
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Killer rabbit
+
+Texture of the killer rabbit changed from  to .
+It is now more bloody and has darker and differently shaped eyes, making it much more distinct from the white textured rabbit.
+Automatically spawns with a name tag 'The Killer Bunny'.
+No longer tries to attack the player in Creative mode.
+No longer spawns naturally.
+Changed the black and white mottled fur rabbit's eye color from pink to black.
+Rabbits
+
+Now use the AI of regular passive mobs.
+They cannot be tamed, and do not flee from the player.
+When hit, they leap in random directions.
+
+
+=== Fixes ===
+13 issues fixed
+From released versions before Java Edition 1.8
+
+MC-36812  Chat Opacity option is not working.
+MC-51298  Sign/banner darkens when displaying tooltips (tellraw hover text, inventory, player UUID in chat).
+MC-67854  Custom names on spiders, Endermen and Ender Dragons are displayed incorrectly.
+From the Java Edition 1.8 development versions
+
+MC-50875  "Can't see up thru clouds" effect starting 1 block too high.
+MC-51610  Item frame causing duplication when loading map (causing/caused by stack overflow).
+MC-56514  Potion effect particles go to the east from a mob, instead of up.
+MC-61946  Rabbits sometimes have the name "entity.KillerBunny.name".
+MC-63418  /achievement take" command not showing when using  Enter for more parameters.
+MC-67872  Furnace progress reset on left/right-click drag.
+MC-67956  3D anaglyph is flat.
+From the previous development version
+
+MC-67890  Heads on  Tab menu.
+MC-67940  Border of the reset button in the custom world option has incorrect limits.
+MC-67947  Podzol does not change into the dirt when the sapling grows into a tree.
+
+
+== 14w34b ==
+14w34b is the fiftieth snapshot for Java Edition 1.8, released on August 18, 2014, to fix some bugs and crashes from 14w34a.
+
+
+=== Fixes ===
+9 issues fixed
+From the Java Edition 1.8 development versions
+
+MC-59851  Rabbits are watching the player permanently.
+MC-65591  Changing armor and heads on armor stands in spectator mode.
+MC-67873  Bunnies react to players in Creative.
+MC-67915  written_book item page text not backward-compatible with v1.7 saves.
+MC-67936  Tamed rabbits teleport to player after switching to spectator mode.
+From the previous development version
+
+MC-67974  Crash when reaching y=254.
+MC-67976  Cannot place armor stands.
+MC-67981  Furnace inventory is not being updated correctly / Furnace is generally unusable.
+MC-67983  Hopper: java.lang.NullPointerException: Ticking block entity.
+
+
+== 14w34c ==
+14w34c is the fifty-first snapshot for Java Edition 1.8, released on August 19, 2014,  which fixes bugs and crashes from 14w34a and 14w34b and removes the void fog.
+This version was reuploaded to fix a crash with experience.
+
+
+=== Changes ===
+
+
+==== Gameplay ====
+Void fog
+
+Removed void fog and the void particles.
+
+
+=== Fixes ===
+22 issues fixed
+From released versions before Java Edition 1.8
+
+MC-16753  Glass bottle is consumed upon right-click on a water source or cauldron in creative.
+MC-30704  Unsupported keys with foreign keyboard on Linux.
+MC-33872  All humanoid mobs except skeletons float too high above ridden entities.
+From the Java Edition 1.8 development versions
+
+MC-44610  Speeding up baby animal growth does not consume growth/breeding item.
+MC-47369  Fill command causes specific blocks to drop as items.
+MC-49077  Hoe {CanPlaceOn:[dirt]} adventure mode.
+MC-51123  Endermites spawn from thrown ender pearls even when doMobSpawning gamerule is false.
+MC-57247  Creative inventory screen causes FPS drop.
+MC-57525  Sponge absorbing bug.
+MC-63686  The killer bunny doesn't damage players in water.
+MC-64161  Dynamically changing parts of blocks are not disappearing when they're no longer rendered.
+MC-65815  Baby villagers display blocks on their head in the wrong location.
+MC-67616  Using stacked skulls on an armor stand with a skull already equipped deletes the skull.
+MC-67659  Experience orbs attracted to spectators.
+MC-67704  Chunks not loading properly in previously created worlds: massive chunk updates.
+MC-67830  Ladder, torch and redstone torch textures are darker.
+MC-67916  Sign doesn't update with /clone within /tellraw sign.
+MC-67923  /clone and /fill sometimes leave behind ghost tile entities.
+From the current version, hotfixed
+
+MC-68233  The skin does not show up on the player, instead shows the invalid texture.
+MC-68234  Hopper: java.lang.NullPointerException: Ticking entity.
+MC-68235  Hopper: java.lang.NullPointerException: Ticking entity.
+Fixed the game crashing when experience orbs are picked up.
+
+
+== 14w34d ==
+14w34d is the fifty-second and final snapshot for Java Edition 1.8, released on August 20, 2014, which fixes some bugs and crashes from 14w34a, 14w34b, and 14w34c. It was announced that it would likely be the last snapshot before the 1.8 pre-release. This is also the final snapshot released in 2014.
+
+
+=== Fixes ===
+39 issues fixed
+From released versions before Java Edition 1.8
+
+MC-2292  OS X: Ctrl modifier key instead of  Command.
+MC-2713  Occasionally players can't hit entities with anything.
+MC-3716  Ender pearls and beds bug.
+MC-4329  Parts of enchanted leather armor, when held, don't shimmer.
+MC-4934  Squids make footstep sounds.
+MC-5215  Mob spawner "MaximumNearbyEntity" tag only has maximum range of 4 above and 4 below.
+MC-9164  Chickens can be bred with nether wart, melon seeds, and pumpkin seeds.
+MC-19996  Statistics menu item names.
+MC-29711  Sprinting while flying.
+MC-36329  Rendering glitch when looking at river through stained glass.
+MC-48270  Slimes appear for 1/2 a second in Peaceful.
+MC-54799  Bad rendering: Spiders/cave spiders name above them.
+MC-55045  Race condition in Linux fullscreen toggle.
+MC-55172  Mobs do not spawn at the heights 16, 32, 48, 64, 80... (multiples of 16).
+From the Java Edition 1.8 development versions
+
+MC-44554  Mushrooms spawning in deserts.
+MC-44655  /spawnpoint bug.
+MC-44799  Slimes cannot jump on slime blocks
+MC-44808  Superflat slime block world is causing "Already Tesselating!" crash/major lag when using a big amount of slime blocks.
+MC-44907  Beacon interface grayed out.
+MC-44957  Teleporting just spawned items doesn't visually teleports them.
+MC-45855  Minecraft crashes with this command.
+MC-47591  Held items are black hile riding a minecart/boat.
+MC-47768  Specifying distance for village generation in superflat preset fails to make the world.
+MC-48030  Changing resource packs doesn't reload custom block models.
+MC-48613  Comparator still gives off success signal when "The entity UUID provided is in an invalid format".
+MC-48892  /tp rotation not working on mobs.
+MC-54827  Internal error occurs when summoning falling sand riding an item frame.
+MC-59928  Torches placed by world gen are unattached (villages, stronghold, mineshaft, end exit portal).
+MC-60036  Killer rabbits are hostile to people in Creative mode.
+MC-61506  Rabbits notice/follow spectating players.
+MC-61601  Bone meal used up when applying to fully grown crops.
+MC-62165  Chunks near spawn don't render with VBOs activated.
+MC-62359  /enchant bug.
+MC-63621  Dispensers consume bonemeal even if there is no crop to grow in front.
+MC-64567  Crash when spawning many silverfishes.
+MC-64697  Continual Ticking Entity Crash. Hostile MOB, Passive & NULL Entities.
+MC-68154  Sound delay when placing blocks.
+MC-68232  Some items are missing pixels in 3D models.
+From the previous development version
+
+MC-68358  Game doesn't open when player shows desktop.
+
+
+== 1.8-pre1 ==
+1.8-pre1 is the first pre-release for Java Edition 1.8, released on August 22, 2014, which adds new alternative skin named 'Alex' and fixes bugs.
+
+
+=== Additions ===
+
+
+==== General ====
+Skins
+
+New alternative default skin: Alex.
+The Alex skin features what appears to be a human with long ginger hair, a green top, brown pants, and black boots as well as 3-pixel wide arms.
+All accounts are assigned the Steve or Alex skin based on its random user ID.
+There will be a choice to select 4 or 3-pixel arms on minecraft.net/profile in the future.
+However, there is a bug in the pre-release which sometimes displays the wrong model.
+Splashes
+
+Added "Any computer is a laptop if you're brave enough!"
+
+
+=== Changes ===
+
+
+==== Mobs ====
+Killer bunny
+
+Texture changed (it no longer has blood).
+
+
+=== Fixes ===
+21 issues fixed
+From released versions before Java Edition 1.8
+
+MC-5312  Thorns not working against some monsters.
+MC-5313  Durability on shears does not go down when used on wool blocks.
+MC-5477  Fireworks and given dye beyond id 15.
+MC-5610  Redstone dust on tall grass (placement bug).
+MC-5860  Endermen can place cacti in illegal places.
+MC-6179  Chickens don't save their egg lay timer.
+MC-48340  Lava pools change leaves.
+MC-68341  Cinematic camera keeps momentum.
+MC-68524  Java not properly capitalized in splash "Now java 6!"
+From the Java Edition 1.8 development versions
+
+MC-55549  Snow (cover) makes mobs jump but do not move.
+MC-56771  Baby zombie pigmen don't forgive, while adults do.
+MC-58120  "DoMobSpawning" is causing reduced tick speed, causing general tick lag.
+MC-60428  Yellow/gold rabbits don't spawn naturally.
+MC-61676  Tab list expands too far and is unreadable.
+MC-63381  Constant crash - Locked out of world.
+MC-63388  Player heads do not render in inventory or when equipped.
+MC-63896  High CPU load on superflat.
+MC-63973  Multiplayer: giving yourself a player-skull crashes the game.
+MC-65237  When invisible, endermen can see you when you stare at them.
+MC-68140  Opening a command block doesn't pause the game.
+MC-68350  Dispenser TNT summon position offset.
+
+
+== 1.8-pre2 ==
+1.8-pre2 is the second pre-release for Java Edition 1.8, released on August 25, 2014, which fixes bugs.
+
+
+=== Fixes ===
+16 issues fixed
+From released versions before Java Edition 1.8
+
+MC-46082  Crashes when populating a chunk with empty (void) columns.
+MC-59566  Realms - error uploading world - Upload Failed! (Reams (404)).
+From the Java Edition 1.8 development versions
+
+MC-56551  Item frame cannot be placed or is unusable at certain coordinates/directions.
+MC-57926  Thrown splash potions have the color of water.
+MC-60502  Fire renders incorrectly with a flammable block above and below it.
+MC-62124  Cracks remain on blocks if the mouse is getting moved to or from a chest or a sign.
+MC-64521  Inverted daylight sensor doesn't drop anything when mined.
+MC-64662  java.lang.NullPointerException: Ticking entity (Entity Type: Zombie).
+MC-65580  Armor stands can be set on fire without being destroyed.
+MC-67722  Rideable entities given entitydata will teleport to the void when ridden.
+MC-68718  Placing redstone dust on certain other objects destroy the object.
+MC-68726  Skin is using wrong model.
+MC-68740  Cannot summon fireball/wither skull with/without direction (unable to summon object).
+MC-68748  Crash: Command "/summon SmallFireball" on mobs!
+MC-69389  Hopper: java.lang.NullPointerException: Post-rendering entity in world.
+MC-69394  Placing sign in the same block as head replaces it.
+
+
+== 1.8-pre3 ==
+1.8-pre3 is the third and final pre-release for Java Edition 1.8, released on August 28, 2014, which fixes bugs.
+
+
+=== Fixes ===
+8 issues fixed
+From released versions before Java Edition 1.8
+
+MC-10323  Enchanted items close to the screen drop FPS.
+From the Java Edition 1.8 development versions
+
+MC-51323  Water doesn't put burning silverfish out.
+MC-61050  Fullscreen mode displays the actual game, only in much lower resolution in the corner.
+MC-61246  OSX: Retina and F11 Fullscreen broken.
+MC-62066  String duplication glitch.
+MC-66511  Creeper's new attack golem AI takes priority over avoid ocelot/cat.
+MC-69052  Hang up when move out of 30,000,000.
+MC-69638  Combined minecart explosions duplicating destroyed armor stands' items and creating ghost items.
+
+
+== Notes and references ==
+
+
+== Navigation ==

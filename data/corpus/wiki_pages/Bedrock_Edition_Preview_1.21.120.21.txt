@@ -1,0 +1,99 @@
+Beta 1.21.120.21 (ChromeOS, Android) or Preview 1.21.120.21 (Windows, iOS, iPadOS, Xbox, PlayStation) is the second beta/Preview version for Bedrock Edition 1.21.120, released on September 9, 2025, which redesigns the pause menu and fixes some bugs.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Copper Lantern and Copper Torch
+
+Copper lantern and copper torch have new textures to make them easier to distinguish from regular lantern and torch.
+Glass and Glass Pane
+
+Glass blocks and panes will now become slightly transparent if the camera is very close to them.
+
+
+=== Mobs ===
+Copper Golem
+
+A copper golem with a flower on its head now drops a poppy when becoming a statue.
+
+
+=== General ===
+
+Pause menu
+
+The pause menu has been updated with a new layout and design.
+
+
+=== Technical ===
+AI Goals
+
+Made the schemas for the minecraft:behavior.dig, minecraft:behavior.drink_milk, minecraft:behavior.avoid_block, and minecraft:behavior.avoid_mob_type stricter when parsing and will fail to load an entity JSON that has invalid data in versions 1.21.120 and newer.
+Blocks
+
+Custom blocks with textures in the variations array no longer require the Upcoming Creator Features experiment toggle to work properly.
+The parameter sampleWidth was removed from the water configuration JSON file, and consequently the file has a new format and was upgraded to version 1.21.120.
+GDK
+
+Minecraft Preview for Windows now runs on the latest GDK (Game Development Kit).
+This update aligns the game with the standard distribution model on Windows platforms.
+File paths have been updated and upon first install load of this version of Minecraft Preview, existing Minecraft worlds and content will shift to: %APPDATA%\Minecraft Bedrock Preview.
+Some players will still receive the UWP version of Minecraft Preview as this slowly rolls out for testing.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the "Beta APIs", and "Render Dragon Features for Creators" experimental toggles.
+
+
+=== Additions ===
+
+
+==== Techincal ====
+API
+
+Added the BlockRedstoneProducerComponent to beta.
+Added power read-only property.
+Added getStronglyPoweredFace method.
+Added getConnectedFaces method.
+
+
+=== Changes ===
+
+
+==== Techincal ====
+API
+
+Dimension
+Removed CompoundBlockVolume parameter from fillBlocks in beta.
+Loot table discovery API now includes information about Loot Item Conditions.
+Graphical
+
+Updated point light tracking to be able to link to custom blocks.
+
+
+== Fixes ==
+13 issues fixed
+From released versions before 1.21.120
+
+MCPE-147418  Shield does not glow in glow item frame.
+MCPE-154318  Tadpole shadow is too big.
+MCPE-220700  Vibrant Visuals: Water reflections incorrect with Nausea effect.
+MCPE-221279  [Vibrant Visuals] Water surface appears noisy and jittery when using packs with water waves enabled.
+MCPE-225213  Copper golem statue item is offset when dropped.
+MCPE-225669  Parity Issue: Copper golem statue hitbox is too large.
+MCPE-226081  Sleeping in a bed after dying shows the death screen for a few ticks.
+MCPE-226332  Copper chest loses its unique name when the world is reloaded.
+MCPE-226999  Can't delete miscellaneous in storage.
+MCPE-227208  Lead does not moves with copper golem head.
+Other
+
+Weathered copper bars no longer have pixels that look out of place.
+Tilling coarse dirt no longer sometimes tills the block twice converting it directly to farmland.
+Copper golem statues now glow when placed in glow item frames.
+
+
+== References ==
+
+
+== Navigation ==

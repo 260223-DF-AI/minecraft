@@ -1,0 +1,108 @@
+Beta 1.21.110.24 (ChromeOS, Android) or Preview 1.21.110.24 (Windows, iOS, iPadOS, Xbox, PlayStation) is the fourth beta/Preview version for Bedrock Edition 1.21.111, released on August 12, 2025, which fixes some bugs.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Copper Torch
+
+The crafting recipe now produces 4 copper torches instead of 1.
+
+Shelf
+
+Updated shelf block model to remove overlapping texture UVs.
+Wall
+
+Prevented wall blocks from connecting to crimson fungus, warped fungus and bamboo.
+
+
+=== Mobs ===
+Copper Golem
+
+The copper golem will now queue next to the chest or copper chest when it is opened by a player.
+The copper golem will now look toward the container it is walking toward.
+Decorative flowers can now be planted on them by iron golems.
+These flowers can be removed with shears.
+Drop upon turning into a statue.
+Iron Golem
+
+They will sometimes plant a decorative flower onto a nearby copper golem.
+
+
+=== General ===
+UI
+
+Updated the Marketplace Pass chevron on tiles and the purchase buttons to have the correct scaling.
+Resized the icons on the marketplace sidebar to match the icon's proper size.
+Resized the icons on the inventory category selection to match the icon's proper size.
+Added a properly sized "My Library" button for the top bar to use.
+Changed a couple locations where the information bulb appears to be the correct resolution.
+Updated the Marketplace error animations to display at the correct resolution.
+Added new icons for the Sale banners to fit the pixelated style of the UI.
+
+
+=== Technical ===
+AI Goals
+
+Transport Items Goal
+Mobs with the goal will now queue when players are interacting with their target container if allow_simultaneous_interaction is true.
+
+
+== Experimental ==
+These additions and changes are accessible by enabling the Beta APIs experimental toggle.
+
+
+=== Additions ===
+
+
+==== Technical ====
+API
+
+@minecraft/server
+Added Dimension.getBiome(location: Vector3) which can be used to locate the biome of a given location.
+Added Entity.getBlockStandingOn(options?: GetBlocksStandingOnOptions): Block undefined method to beta.
+Added Entity.getAllBlocksStandingOn(options?: GetBlocksStandingOnOptions): Block[]; methods to beta.
+Added GetBlocksStandingOnOptions interface:
+Optional parameter blockFilter?: BlockFilter filters the block being returned.
+Optional parameter ignoreThinBlocks?: boolean determines if blocks of height 0.2 or lower are ignored.
+Added method Camera.setCameraWithEase(cameraPreset: string, easeOptions: EaseOptions): void to beta.
+General
+
+Adding custom biomes to a world that already has custom biomes is more stable now.
+
+
+== Fixes ==
+17 issues fixed
+From released versions before 1.21.111
+
+MCPE-63099  Arrow icon in furnace still appears filled after smelting an item
+MCPE-189611  Copper block group order in creative inventory is wrong
+MCPE-220172  Using right click to equip armor while aiming at an entity will create a ghost item in hand
+MCPE-222162  Music Disc "Tears" audio is not categorized as "Jukebox/Note Blocks" when played from a jukebox
+MCPE-223747  Copper golems make equipping sounds when picking up equippable items
+MCPE-223867  You can hear the sounds of the copper golems from too far
+MCPE-223966  The closing sound of copper chests isn't perfectly synced with their animations
+MCPE-224011  Copper chest opening and closing sounds are too loud
+MCPE-224504  Music Disc "Lava Chicken" audio is not categorized as "Jukebox/Note Blocks" when played from a jukebox
+From the 1.21.111 development versions
+
+MCPE-225265  When pick blocking the copper golem statue will select incorrect data.
+MCPE-225461  Observers do not detect shelf contents changing
+Other
+
+Fixed the copper torch recipe only giving one torch instead of four.
+Fixed an issue where the control scheme set via control scheme commands would not be retained if a later-activated camera did not support it. The scheme will now persist as intended until explicitly cleared via /controlscheme clear, beginning since base game version 1.21.110.
+Fixed block breaking texture being double the size for shelf blocks.
+Fixed an issue preventing /place from working correctly in flat worlds.
+Fixed an issue where using /reload in the command console throws a Gametest error if using the GameTest.setAfterBatchCallback method.
+Fix for biome music component being removed from some biomes.
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Navigation ==

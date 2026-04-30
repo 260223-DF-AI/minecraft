@@ -1,0 +1,156 @@
+20w30a is the fourth and final snapshot for Java Edition 1.16.2, released on July 22, 2020, which allows lanterns to be waterlogged and fixes several bugs.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Lanterns and soul lanterns
+
+Can now be waterlogged.
+Signs
+
+The sign editing screen is now initialized with the existing sign text when the sign is re-edited using third-party tools.
+
+
+=== Mobs ===
+Vexes
+
+The attack animation of unarmed vexes has been changed.
+
+
+=== World generation ===
+Bastion remnants
+
+Chest loot has been changed.
+Loot overall was improved; rarer items had their weights increased and many item amounts were increased. Many pools had their rolls increased as well.
+Removed all "empty" loot entries.
+Most items with damage had their average durability increased.
+Added enchanted golden axes, golden carrots, enchanted golden apple and blocks of iron to various loot tables.
+Hoglin stable chests may contain an enchanted diamond pickaxe.
+Removed iron nuggets from treasure chests.
+Unenchanted diamond armor in treasure chests is no longer damaged.
+Chests in bastion remnants are now more likely to be located on top of gilded blackstone.
+
+
+=== Command format ===
+/summon
+
+Added an error for attempting to summon an entity with a duplicate UUID: "Unable to summon entity due to duplicate UUIDs."
+
+
+=== Gameplay ===
+Advancements
+
+Can now modify the ":(" (advancements.sad_label) under the description of the empty advancement screen.
+Changed the capitalization of "Beacon" to "beacon" in the description of "Bring Home the Beacon."
+Changed the capitalization of "Compass" to "compass" in the description of "Country Lode, Take Me Home."
+Death messages
+
+Changed the death message for being shot by a skull from "<player> was shot by a <entity>'s skull" to "<player> was shot by a skull from <entity>."
+Respawning
+
+Changed how respawn positions are chosen for beds and respawn anchors.
+Respawn anchors now prioritize cardinal directions over corners.
+Beds now prioritize the side of the bed the player entered from, and then spaces circling around the foot of the bed up to the head of the bed.
+Respawning players now face the block they respawned at.
+Placing players onto dangerous blocks is now avoided when possible.
+
+
+=== General ===
+Data packs
+
+Changed some GUI text strings.
+Changed the second line of the data pack error message from "You can either try to load only with vanilla data pack ("safe mode") or go back to title screen and fix it manually." to "You can either try to load it with only the vanilla data pack ("safe mode"), or go back to the title screen and fix it manually."
+Minor grammatical changes were made.
+Changed "This pack was made for a newer version of Minecraft and may no longer work correctly." to "This pack was made for a newer version of Minecraft and may not work correctly." (pack.incompatible.confirm.new).
+Changed "Do you want to add following packs to Minecraft?" to "Do you want to add the following packs to Minecraft?" (pack.dropConfirm).
+Recipe book
+
+Changed capitalization in various text strings:
+"Right Click for more" to "Right Click for More."
+"Showing all" to "Showing All."
+"Showing craftable" to "Showing Craftable."
+"Showing smeltable" to "Showing Smeltable."
+"Showing blastable" to "Showing Blastable."
+"Showing smokable" to "Showing Smokable."
+"You died!" to "You Died!".
+"Game over!" to "Game Over!".
+"Title screen" to "Title Screen".
+"Spectate world" to "Spectate World".
+Subtitles
+
+Changed "Turtle shell thunks" to "Turtle Shell thunks" (subtitles.item.armor.equip_turtle).
+Tags
+
+Entries can now be marked as optional using "required": false.
+For example, values: ["#minecraft:beds", "minecraft:stone"] allows all beds and stone in the tag. This can also be written as values: [{id: "#minecraft:beds", "required": true}, {id: "minecraft:stone", "required": true}].[verify for Java Edition] Setting "required" to false makes either entry optional.
+Translation strings
+
+Capitalized various text strings.
+
+Corrected punctuation in various text strings.
+Changed the description of Fabulous graphics: "Fabulous! graphics uses screen shaders for drawing weather, clouds and particles behind translucent blocks and water.[New Line]This may severely impact performance for portable devices and 4K displays." to "Fabulous! graphics uses screen shaders for drawing weather, clouds,  and particles behind translucent blocks and water.[New Line]This may severely impact performance for portable devices and 4K displays."
+Changed the description of Fancy graphics: "Fancy graphics balances performance and quality for the majority of machines.[New Line]Weather, clouds and particles may not appear behind translucent blocks or water." to "Fancy graphics balances performance and quality for the majority of machines.[New Line]Weather, clouds, and particles may not appear behind translucent blocks or water."
+Changed "Multiplayer is disabled, please check your launcher settings." to "Multiplayer is disabled. Please check your launcher settings." (title.multiplayer.disabled).
+Changed "Unable to switch gamemode, no permission" to "Unable to switch gamemode; no permission" (debug.creative_spectator.error).
+Changed "Unable to open game mode switcher, no permission" to "Unable to open game mode switcher; no permission" (debug.gamemodes.error).
+Changed "Reload failed, keeping old data" to "Reload failed; keeping old data" (commands.reload.failure).
+Corrected "Mojang" to "Mojang Studios" in the multiplayer warning message.
+Changed the description of Fast graphics to say "leaves" instead of "tree-leaves."
+
+
+== Fixes ==
+29 issues fixed
+From released versions before 1.16
+
+MC-35765  Text viewed in a right-to-left language while the game is set to another language renders backward and disconnected.
+MC-57869  Some item tooltips use  for coloring, rendering them incorrect in right-to-left languages.
+MC-111702  Memory leak with complex JSON text while chat is open.
+MC-116857  Advancement descriptions use unnecessary capitalization on generic resource names.
+MC-148447  Villagers often get stuck while trying to go through a door at the same time.
+MC-149060  Villagers "spam" doors by opening and closing them really fast.
+MC-153195  Mobs can drop items with duplicate enchantments.
+MC-181925  Unarmed vexes raise their arms in an offensive way when attacking.
+From 1.16
+
+MC-187344  Fast graphics tooltip has incorrect "tree-leaves" spelling.
+MC-187379  Text for pack.incompatible.confirm.new makes no sense.
+MC-187380  Incorrect grammar in en_us translation of pack.dropConfirm.
+MC-188389  Several minor errors in datapackFailure.title.
+MC-188390  Comma splices in four strings.
+MC-188392  Death message for getting shot by a skull is not grammatically correct in all situations.
+MC-188621  Mojang "Production Manager" credit is indented further than other credits.
+MC-188880  Baby zombified piglins riding on chickens are not positioned properly.
+MC-189918  Multiplayer warning uses "Mojang" instead of "Mojang Studios."
+MC-190102  Some UI strings are not consistently capitalized.
+MC-190288  Fabulous and Fancy graphics tooltips have missing commas.
+MC-191441  Right-to-left text is rendered bottom-up in some cases.
+From 1.16.1
+
+MC-191562  "Cancel" button overlaps "Done" button when uploading a world to Realms, making users unable to upload world.
+MC-192296  Spider jockey from a spawner minecart crashes with java.lang.IllegalStateException: Entity is already tracked.
+MC-193276  Player floats slightly above a strider while riding it.
+MC-193339  NullPointerException during shutdown when rcon enabled with no password.
+From the 1.16.2 development versions
+
+MC-194273  Save data of new Nether biomes is lost when upgrading a world to 20w28a or above.
+MC-194350  Some feature configurations do not load in a datapack (java.lang.IllegalArgumentException: value already present: clh@77f95e19).
+From the previous development version
+
+MC-195052  The angle argument in the /spawnpoint command does not use the minecraft:rotation parser.
+MC-195119  Villages no longer generate in "Classic Flat" Superflat preset.
+MC-195582  Typing a colon twice or after a slash in chat when specifying a function/item/block/etc. in a command crashes the game.
+
+
+== Videos ==
+
+
+== Trivia ==
+This snapshot, being the last for 1.16.2, was released on the same week of the year as the last snapshot for 1.3.1, 12w30e.
+
+
+== References ==
+
+
+== Navigation ==

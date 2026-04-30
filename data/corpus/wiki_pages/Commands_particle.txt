@@ -17,18 +17,18 @@ In Java Edition, it must be in the format of particle_type_id{configuration tags
 JE: <pos>: vec3BE: position: x y z: CommandPositionFloat
 
 Specifies the position at which to create particle. If not specified, defaults to the position of the commmand execution.
-Must be three-dimensional coordinates with double-precision floating-point number‌[Java Edition  only] or single-precision floating-point number‌[Bedrock Edition  only] elements. Accepts tilde and caret notations.
+Must be three-dimensional coordinates with double-precision floating-point number[Java Edition  only] or single-precision floating-point number[Bedrock Edition  only] elements. Accepts tilde and caret notations.
 JE: <count>: integer
 
 Specifies the number of particle effects to create. If 0, see below for what it results in.
 Must be a [Int]32-bit integer number (from -2147483648 (-231) to 2147483647 (231-1) ). And it must be between 0 and 2147483647 (inclusive).
-JE: <delta>: vec3 — Must be three-dimensional coordinates with double-precision floating-point number elements. Accepts tilde and caret notations.
-JE: <speed>: float — Must be a [Float]Single-precision floating-point number (from -(2-2-23)×2127 (≈-3.4×1038) to (2-2-23)2×127 (≈3.4×1038) ). And it must be greater than or equal to 0.0.
+JE: <delta>: vec3  Must be three-dimensional coordinates with double-precision floating-point number elements. Accepts tilde and caret notations.
+JE: <speed>: float  Must be a [Float]Single-precision floating-point number (from -(2-2-23)2127 (-3.41038) to (2-2-23)2127 (3.41038) ). And it must be greater than or equal to 0.0.
 
 <delta> and <speed> parameters determine where the particles are created and the parameters to pass into the particles (see the table Extra parameters of particle types below). Based on whether <count> is 0 or not, the two parameters have different meanings.
 if <count> is 0, creates a single particle at the <pos>. Multiplies each of the three values in<delta> by <speed> value, then passes them into the particles as three parameters.
 This means that for most particles that receive parameters, if <count> is 0, the <delta> acts as motion values for the particle, with <speed> acting as a multiplier, so the particle move in the direction of <delta>.
-If <count> is not 0, the specified count of particles are created at random positions. The positions obey normal distributions in each of the X, Y, and Z directions. Each normal distribution has a mean value of each value in <pos>, meaning that particles are more likely to be created closer to the <pos>. Each normal distribution has a standard deviation of each value in <delta> (e.g. 1 1 1 means that the coordinates on X, Y, and Z axes obey three standard normal distributions, meaning that there is a 99.7% probability that the particle is created in a 6×6×6 cuboid region centered at the <pos>; 2 2 2 means that the particle has a 99.7% probability of being created in a 12×12×12 cuboid region centered at the <pos>). Negative values are accepted in <delta>, but have the same effect as their positive counterparts (e.g. -1 -1 -1 has the same effect as 1 1 1). Each of the extra parameters to be passed into the particles also follows a normal distribution, with a mean of 0 and a standard deviation of each value in <speed>.
+If <count> is not 0, the specified count of particles are created at random positions. The positions obey normal distributions in each of the X, Y, and Z directions. Each normal distribution has a mean value of each value in <pos>, meaning that particles are more likely to be created closer to the <pos>. Each normal distribution has a standard deviation of each value in <delta> (e.g. 1 1 1 means that the coordinates on X, Y, and Z axes obey three standard normal distributions, meaning that there is a 99.7% probability that the particle is created in a 666 cuboid region centered at the <pos>; 2 2 2 means that the particle has a 99.7% probability of being created in a 121212 cuboid region centered at the <pos>). Negative values are accepted in <delta>, but have the same effect as their positive counterparts (e.g. -1 -1 -1 has the same effect as 1 1 1). Each of the extra parameters to be passed into the particles also follows a normal distribution, with a mean of 0 and a standard deviation of each value in <speed>.
 <delta> accepts relative coordinates and local coordinates, which are converted to absolute coordinates, so relative coordinates and local coordinates are generally useless here.
 If not specified, <delta> defaults to 0 0 0; <speed> defaults to 0.
 JE: force|normal
@@ -81,7 +81,7 @@ The same command with <count> nonzero instead uses <delta> to determine particle
 
 
 == External links ==
-"/particle Command"     – Microsoft Learn, October 11, 2023.
+"/particle Command"      Microsoft Learn, October 11, 2023.
 
 
 == Navigation ==

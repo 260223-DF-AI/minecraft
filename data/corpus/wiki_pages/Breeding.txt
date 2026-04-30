@@ -4,21 +4,21 @@ Some mobs have similar mechanics that are not classified as breeding.
 
 == Mechanics ==
 
-Most animals that can be bred have food items that can be used to lead and breed them (there are a few special cases, described below). Villagers have their own breeding mechanics (see Villager § Breeding). 
+Most animals that can be bred have food items that can be used to lead and breed them (there are a few special cases, described below). Villagers have their own breeding mechanics (see Villager  Breeding). 
 Once an animal notices a player holding its food, it follows the player until either the player is out of range, the player stops holding the item, it begins the breeding process, or it is attacked. Baby animals behave the same way. Most animals are uninterested in food lying on the ground, and those that are do not breed from eating this food.
 Any two adult animals of the same species can breed with each other, even if one animal is the parent of the other.
 
 
 === Love mode ===
 Animals only breed when a player feeds them. One food item needs to be fed to each parent to breed a single baby.
-When an animal is fed its food, it enters "love mode", preparing to breed with another animal of the same species that is also in love mode. Animals that are in love mode emit heart particles constantly‌[Bedrock Edition  only] (see MC-93826). When both animals are fed, they pathfind toward each other, up to eight blocks away. The two animals walk into each other for about two and a half seconds, which simulates kissing, and then drop 1–7XP and end love mode to produce their offspring, the method of which depends on the animal. Most animals immediately spawn a baby animal at the feet of the parents, usually of the same species as their parents. Some animals lay eggs, but the method and location they perform this varies from animal to animal. Chickens are the only animals that can both directly produce babies and lay eggs, as well as the only animals that lay eggs without being fed. After breeding, the parents cannot be fed to breed again for five minutes, but they (and their babies) always follow players holding breeding items. An animal exits love mode if it does not breed 30 seconds after being fed, but it immediately becomes able to be fed and enter love mode again.
+When an animal is fed its food, it enters "love mode", preparing to breed with another animal of the same species that is also in love mode. Animals that are in love mode emit heart particles constantly[Bedrock Edition  only] (see MC-93826). When both animals are fed, they pathfind toward each other, up to eight blocks away. The two animals walk into each other for about two and a half seconds, which simulates kissing, and then drop 17XP and end love mode to produce their offspring, the method of which depends on the animal. Most animals immediately spawn a baby animal at the feet of the parents, usually of the same species as their parents. Some animals lay eggs, but the method and location they perform this varies from animal to animal. Chickens are the only animals that can both directly produce babies and lay eggs, as well as the only animals that lay eggs without being fed. After breeding, the parents cannot be fed to breed again for five minutes, but they (and their babies) always follow players holding breeding items. An animal exits love mode if it does not breed 30 seconds after being fed, but it immediately becomes able to be fed and enter love mode again.
 
 
 === Growing a population ===
 Animals can be bred repeatedly to grow a large population of them. The number of animals that are produced starting from a single pair of animals, assuming the offspring are fully grown before breeding again, is represented by this sequence (OEIS A061418):
-a1=2a2=3a3=4a4=6a5=9a6=13a7=19⋮an+1=⌊32an⌋⋮
-where ⌊x⌋ is the floor function.
-The nth term of the sequence can also be computed with this formula: an=⌈K×(3/2)n⌉ where K=1.08151366859... and ⌈x⌉ is the ceiling function. The constant K is defined to be (2/3)×K(3) (see OEIS A083286).
+a1=2a2=3a3=4a4=6a5=9a6=13a7=19an+1=32an
+where x is the floor function.
+The nth term of the sequence can also be computed with this formula: an=K(3/2)n where K=1.08151366859... and x is the ceiling function. The constant K is defined to be (2/3)K(3) (see OEIS A083286).
 
 
 === Breeding foods ===
@@ -48,7 +48,7 @@ The following conditions must be met:
 
 When the shulker gets hit and then has less than half its health remaining, there is a 25% chance for it to teleport without spawning a new shulker instead of checking the conditions below.
 The hit shulker must have its lid open.
-The hit shulker needs to find somewhere to teleport. For this, it takes a random block in a 17×17×17 cuboid centered on the shulker and then checks if the block has a valid face to teleport to. If not it proceeds to try this up to 4 more times. If no valid face is found, the attempt fails.
+The hit shulker needs to find somewhere to teleport. For this, it takes a random block in a 171717 cuboid centered on the shulker and then checks if the block has a valid face to teleport to. If not it proceeds to try this up to 4 more times. If no valid face is found, the attempt fails.
 Each other shulker within 8 blocks of the hit shulker decreases the odds of success by 20%. When five or more other shulkers are nearby, no shulkers can spawn, but the hit shulker still teleports.
 If the attempt succeeds a new shulker spawns where the old shulker was before it teleported. Shulkers do not have a baby form, and, other than the above criteria, have no duplication cooldown.
 

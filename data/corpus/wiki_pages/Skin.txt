@@ -6,16 +6,16 @@ The default skins are always available in the Minecraft Launcher or Dressing Roo
 
 
 == Features ==
-Skins are divided into areas that act as the surface area of the character (e.g., front head area, left leg area, etc.) They are stored as 64×64 pixels templates, consisting of an inner and outer layer; each layer consisting 1,632 usable pixels, making 3,264 total. In Bedrock Edition, players can also use 128×128 pixels templates, consisting of two layers of 6,528 usable pixels, making 13,056 total. 
+Skins are divided into areas that act as the surface area of the character (e.g., front head area, left leg area, etc.) They are stored as 6464 pixels templates, consisting of an inner and outer layer; each layer consisting 1,632 usable pixels, making 3,264 total. In Bedrock Edition, players can also use 128128 pixels templates, consisting of two layers of 6,528 usable pixels, making 13,056 total. 
 The outer layer of the skin is 0.5 pixels bigger than the inner layer on the body, arms, and legs; and is 1 pixel bigger than the inner layer on the head. This layer is usually used to give the character glasses, hats, or other accessories (even a bigger head).
-Skins set to "slim" model lose 25% of their arms' width, and the rightmost pixels in the skins' images are ignored. Slim skins from 64×64 templates have two layers of 1,568 usable pixels, making 3,136 total, and slim skins from 128×128 templates have two layers of 6,272 usable pixels, making 12,544 total. In Bedrock Edition, the arms of slim skins' model are lower than the torso by about 0.5 pixel.
+Skins set to "slim" model lose 25% of their arms' width, and the rightmost pixels in the skins' images are ignored. Slim skins from 6464 templates have two layers of 1,568 usable pixels, making 3,136 total, and slim skins from 128128 templates have two layers of 6,272 usable pixels, making 12,544 total. In Bedrock Edition, the arms of slim skins' model are lower than the torso by about 0.5 pixel.
 
 
 === Transparency ===
 On both editions, a pixel on the skin's outer layer can be completely transparent. Semitransparent pixels, which are pixels with opacity between 0 and 255, and inner layer's transparency are dictated by each of the editions' color calculation:
 
 In Java Edition, the skin's inner layer cannot be transparent. Any pixels that are semitransparent are forced to be fully opaque while reducing their color detail, matching its original opacity level; instead of having 256 possible shades of RGB colors, the pixel is rounded to a smaller set of values by parts per the opacity value. For example, with an opacity of 2, the RGB color values are rounded to parts per two, as one of 0/2, 1/2, or 2/2 of 255, that is 0, 128, and 255; if we apply this to an RGB colors of (255, 13, 142), it becomes (255, 0, 128), with an opacity of 255. An exception to this mechanic is a pixel with an opacity of 0, simply becoming a solid black.
-In Bedrock Edition, if players set any of their skin's outer or inner layer pixels opacity to 25 (≈10%) or lower, those pixels appear invisible, otherwise, for opacity to 26 or greater, they appear visible.
+In Bedrock Edition, if players set any of their skin's outer or inner layer pixels opacity to 25 (10%) or lower, those pixels appear invisible, otherwise, for opacity to 26 or greater, they appear visible.
 
 
 === Character Creator ===
@@ -24,7 +24,7 @@ In Bedrock Edition, there are two types of skin which the players can choose fro
 Character Creator skins are made in the Dressing Room with a range of cosmetic items that can be applied to specific parts of the character's model, such as facial features or individual body parts, or clothing items. There are two types of cosmetic item depending on the parts they are applied: body items, which apply to their body parts/features; and style items, which are worn like accessories or apparels. They can appear three-dimensional, that is, they can be built on top of the character's body in 3D space, or completely replace specific body parts (like the arms or legs) with custom models. The eyes part of Character Creator skins also blink occasionally.
 Cosmetic items are usually made by Marketplace creators, and are obtained from the featured items or the Marketplace Pass selection on the Character Creator menu, which can be free or paid costing Minecoins (or Tokens on PlayStation versions). Body items are mostly reserved by Minecraft and can be equipped for free, except the arms and legs, which are obtainable previously. Some cosmetic items can be earned by completing certain achievements, and historically, limited-time challenges and in-game live events, which make these items only obtainable during specific time periods.
 
-Players can adjust the character's height and arms size of Character Creator skins, where the character's model gets resized along with the texture pixels. It has no effect on the hitbox size, although the camera eye height does change.​[more information needed]
+Players can adjust the character's height and arms size of Character Creator skins, where the character's model gets resized along with the texture pixels. It has no effect on the hitbox size, although the camera eye height does change.[more information needed]
 The "Classic Skins" are standard wide or slim character models with a skin texture applied from a skin pack (from Marketplace or a custom skin pack), or a custom PNG image imported from the player's device. They do not have an ability to use 3D models, as this feature is restricted to the Character Creator skins. For imported custom skins outside the Marketplace, they have limited visibility for players with "Only Allow Trusted Skins" option turned off in the Settings.
 In other tabs, all skin types can be modified in the Dressing Room using capes, and emotes can be selected and obtained similarly to body or style items.
 
@@ -39,7 +39,7 @@ When a player wears a new skin, the signature for that skin is generated alongsi
 
 
 === Java Edition ===
-Only players who have purchased Minecraft can change their character's skin. This is done on the profile page or in the Minecraft Launcher by uploading a valid PNG image that is 64×64 pixels, or a legacy texture that is 64×32 pixels, which then replaces the default skin.
+Only players who have purchased Minecraft can change their character's skin. This is done on the profile page or in the Minecraft Launcher by uploading a valid PNG image that is 6464 pixels, or a legacy texture that is 6432 pixels, which then replaces the default skin.
 
 Skins also have the option of having either 3 or 4 pixel wide arms, which can be changed on the profile page as well.
 The steve.png and alex.png files in client.jar can also be changed and replaced via a resource pack, but the effects are visible only to players using the resource pack, and affects all players with the default skin.
@@ -58,7 +58,7 @@ Skin packs are collections of multiple wearable skins and available in Bedrock E
 
 The Marketplace, which officially hosts a large number of skin packs by Mojang Studios and their partners. Most of them cost Minecoins (Tokens on PS4), but some have been released for free.
 The .mcskin files put in the skin_packs or development_skin_packs folder in the game files (inaccessible on consoles).
-External sources such as community hosted repositories for skin packs, which are automatically imported with .mcpack files (not on consoles). For information about the contents of a custom skin pack, see Skin pack § Package format.
+External sources such as community hosted repositories for skin packs, which are automatically imported with .mcpack files (not on consoles). For information about the contents of a custom skin pack, see Skin pack  Package format.
 
 
 === Java Edition skin packs ===
@@ -110,16 +110,16 @@ In April 2018, malware code was discovered inside of several downloadable user-m
 The total number of possible unique player skins varies immensely, depending on version, as well as what is considered unique. Below are tables with the number of unique skins on Java and Bedrock Edition, with cells within rows and columns that correspond to different rules. Cells in the left columns consider all completely transparent pixels to be the same, while the ones on the right consider them to be unique.
 
 The formulae below can be used to find the number of skins with a given width, template dimensions, etc. It essentially finds the number of potential states for pixels on the bottom layer, multiplies that by the number of potential states for pixels on the top layer, then sets that to the power of the total number of pixels on each layer.
-(vb×vt)(86+16A)×t2, where:
-vb={224(αb−1)+1if s∧αb≠1224αbotherwise is the number of possible values for each bottom layer pixel
-vt={224(αt−1)+1if s∧αt≠1224αtotherwise is the number of possible values for each bottom layer pixel
-αb is the number of possible opacity values for each bottom layer pixel
+(vbvt)(86+16A)t2, where:
+vb={224(b1)+1if sb=1224botherwise is the number of possible values for each bottom layer pixel
+vt={224(t1)+1if st=1224totherwise is the number of possible values for each bottom layer pixel
+b is the number of possible opacity values for each bottom layer pixel
 at is the number of possible opacity values for pixels on the top layer.
-t is the thickness, equal to the number of pixels wide legs are: 4 for 64×64, 8 for 128×128 
+t is the thickness, equal to the number of pixels wide legs are: 4 for 6464, 8 for 128128 
 A is the arm thickness/thickness ratio: 1 for wide, 0.75 for slim
 s is the "sameness" of 0-alpha pixels: True if all 0-alpha pixels are considered the same regardless of color, False otherwise
 
-In an AntVenom video, he calculated a total of 281600 × 53264 (≈3.060 133 2201 × 1026845) skins. The rules he used were to include only wide skins, allow transparent pixels only on the top layer, consider all fully transparent pixels to be unique, and include only 100 possible opacity values (αb = 1, αt = 100, t = 4, A = 1, s = 0).
+In an AntVenom video, he calculated a total of 281600  53264 (3.060 133 2201  1026845) skins. The rules he used were to include only wide skins, allow transparent pixels only on the top layer, consider all fully transparent pixels to be unique, and include only 100 possible opacity values (b = 1, t = 100, t = 4, A = 1, s = 0).
 
 
 == Gallery ==
@@ -143,7 +143,7 @@ Skin pack
 
 
 == External links ==
-How to Make a Custom Skin in Minecraft: Java Edition – Minecraft Help Center
+How to Make a Custom Skin in Minecraft: Java Edition  Minecraft Help Center
 Skin editors:
 
 SkinsCollection

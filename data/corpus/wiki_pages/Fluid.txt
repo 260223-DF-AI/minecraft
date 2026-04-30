@@ -1,6 +1,6 @@
 Fluids (also known by players as liquids) are blocks that are able to flow over the terrain, forming rivers or falls. There are only two fluid blocks: water and lava.
 
-There are other in-game substances that show fluid properties but cannot be placed as fluid blocks, mainly potions, dyed water,‌[Bedrock Edition  only] milk, and honey.
+There are other in-game substances that show fluid properties but cannot be placed as fluid blocks, mainly potions, dyed water,[Bedrock Edition  only] milk, and honey.
 
 
 == Properties ==
@@ -12,9 +12,9 @@ Fluids can interact with each other, and with other blocks they are placed next 
 Flowing fluids exert pressure on entities pushing them in the direction of the flow. Items that are thrown or dropped into flowing water are carried along until they get caught in an eddy or the flow reaches its maximum extent. Being carried in a flow does not prevent de-spawning. Mobs that are able to float in fluids do not drown, but cannot swim upstream. The minority of mobs that swim (such as fish and axolotl) can also swim upstream.
 Flowing lava transports netherite items ( scraps, ingots, blocks, or made items only ) in the same way, but all other items burn up before they can be carried any distance and are thus lost.
 Fluid blocks are replaceable in the same way that air is, so placing a solid block into a liquid source replaces it.
-Placing most blocks that can be waterlogged into a water source block does not destroy the source block, or stop water from flowing from the source block. Full blocks that can be waterlogged, such as leaves, mangrove roots, and copper grates, do stop water from flowing from a source block.‌[Java Edition  only] Other waterlogged blocks with a full square surface, such as stairs and trapdoors, block water flow in the direction of the square surface. No block can occupy the same space as a lava source block; placing any block into a lava source block destroys the source block.
+Placing most blocks that can be waterlogged into a water source block does not destroy the source block, or stop water from flowing from the source block. Full blocks that can be waterlogged, such as leaves, mangrove roots, and copper grates, do stop water from flowing from a source block.[Java Edition  only] Other waterlogged blocks with a full square surface, such as stairs and trapdoors, block water flow in the direction of the square surface. No block can occupy the same space as a lava source block; placing any block into a lava source block destroys the source block.
 Placing any type of block into any flow blocks it, redirecting or stopping it.
-Normally, water cannot be placed in the Nether. The only ways to get water into the Nether is by using the /setblock or /fill commands, and using the water item.‌[BE  only]
+Normally, water cannot be placed in the Nether. The only ways to get water into the Nether is by using the /setblock or /fill commands, and using the water item.[BE  only]
 
 
 ==== Self generation of water and lava sources ====
@@ -30,13 +30,13 @@ In Java Edition, source generation is controlled by the game rules for waterSour
 
 
 ==== Level ====
-Fluid blocks have a level (or liquid depth‌[BE  only]) value that measures how "empty" it is. A source block is "full" with a level of 0. Water and lava in the Nether have a level equal to the level of the fluid that generated them +1, with a maximum possible "emptiness" value of 7, where the flow stops. Thus, a flowing block next to a source has level value 1, the next further away has level value 2, and so on until level 7. Lava in the Overworld or the End increases two levels per flowing block instead, with a maximum emptiness value of 6. In Java Edition, a flowing fluid that has source or another flowing fluid of the same kind above itself is assigned the level value 8 instead. In Bedrock Edition, if a flowing fluid has a fluid of the same kind above itself, the level of the former fluid is 8 + the level of the latter, wrapping back to 8 for values higher than 15. Flowing fluids can never have a level value of 0.
+Fluid blocks have a level (or liquid depth[BE  only]) value that measures how "empty" it is. A source block is "full" with a level of 0. Water and lava in the Nether have a level equal to the level of the fluid that generated them +1, with a maximum possible "emptiness" value of 7, where the flow stops. Thus, a flowing block next to a source has level value 1, the next further away has level value 2, and so on until level 7. Lava in the Overworld or the End increases two levels per flowing block instead, with a maximum emptiness value of 6. In Java Edition, a flowing fluid that has source or another flowing fluid of the same kind above itself is assigned the level value 8 instead. In Bedrock Edition, if a flowing fluid has a fluid of the same kind above itself, the level of the former fluid is 8 + the level of the latter, wrapping back to 8 for values higher than 15. Flowing fluids can never have a level value of 0.
 The rendering of fluids is partially based on the level values, specifically the height of the fluid and the direction of flow displayed.
 
 
 ==== Spread ====
 
-Once a source block is placed, the fluid spreading procedure begins. Sources in waterlogged blocks, except for ones that are full blocks,‌[JE  only] work the same way. Additionally, waterlogged stairs don't spread water from the back and the bottom, as they are full sides surfaces.
+Once a source block is placed, the fluid spreading procedure begins. Sources in waterlogged blocks, except for ones that are full blocks,[JE  only] work the same way. Additionally, waterlogged stairs don't spread water from the back and the bottom, as they are full sides surfaces.
 This block is the first of a list of blocks involved in the spreading procedure.
 The fluid spreading procedure may need the source to receive a block update signal if it was created without being placed.
 First, each open side of a fluid block starts to flow. A water block in a flat area spreads out in all four directions until it reaches the depth limit, forming a diamond shape spanning fifteen blocks point-to-point. A water source floating in midair starts to flow downwards and then, 5 ticks later, flows out to its four sides. Each flowing block created is added to a list of blocks to be considered for further spreading.
@@ -44,8 +44,8 @@ Now the blocks directly below each source or flowing blocks on the "spreading li
 
 If that block is air, it is replaced by a flowing fluid block with a depth value of 0. This new block is also added to the "spreading list".
 Because of this, a fluid can flow much farther if it flows downward occasionally than if it remains on a flat surface.
-If the block below is a waterlogged and exposes its liquid phase on its top,‌[JE  only] then checking stops as the waterlogged source block has its own "spreading list".
-If the block below is a type of non-solid block that is affected by the fluid, cobweb‌[JE  only] or a bamboo shoot then it may be converted into a dropped item. The block is then replaced by a flowing block with depth value 1 greater that the block above and is added to the spreading list. The block above is removed from the "spreading list".
+If the block below is a waterlogged and exposes its liquid phase on its top,[JE  only] then checking stops as the waterlogged source block has its own "spreading list".
+If the block below is a type of non-solid block that is affected by the fluid, cobweb[JE  only] or a bamboo shoot then it may be converted into a dropped item. The block is then replaced by a flowing block with depth value 1 greater that the block above and is added to the spreading list. The block above is removed from the "spreading list".
 If the block below is a solid block, or one of a few non-solid blocks (e.g. ladders) that are unaffected by fluids, flow spreads out to all open sides. These additional flowing blocks are added to the list.
 If all four of the surrounding blocks are also solid or fluid sources, the spreading procedure stops. This is how a lava or water column that does not spread over the ground can be created.
 If the block below is a fluid block of another type, the rules for mixing fluids are considered. If new flowing blocks are created they are added to the list.

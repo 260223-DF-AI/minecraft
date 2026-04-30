@@ -1,0 +1,108 @@
+1.12-pre1 is the first pre-release for Java Edition 1.12, released on May 10, 2017, which adds four new advancements, optimizes the recipe book and fixes bugs. This is the first pre-release released in 2017.
+
+
+== Additions ==
+
+
+=== Mobs ===
+Parrot
+
+Added new attribute: generic.flyingSpeed.
+
+
+=== Gameplay ===
+Gamerule
+
+gameLoopFunction <namespace:path/to/function/file>
+Runs a function every tick through the server.
+
+
+=== Command format ===
+/function <namespace:path/to/function/file>
+
+Runs a function once through the entity or command block which ran the /function command.
+
+
+=== General ===
+Advancements
+
+Added 4 new advancements:
+
+Added [Boolean] hidden field to advancement display info, defaults to false.
+Added new effects_changed, used_totem, nether_travel advancements triggers.
+Added [String] function to advancement rewards.
+Functions
+
+Added new function system, which are plaintext files in world/data/functions/namespace/file.txt.
+Functions are a list of commands, one line per command, with // or # comment support.
+NBT format
+
+Added the [NBT Compound / JSON Object] enteredNetherPosition tag for players.
+
+
+== Changes ==
+Advancements
+
+Advancement trees are now centered in the UI.
+Items & entities in advancements have an extra NBT field (string NBT, like in commands).
+Entities in advancements have an extra effects and location field.
+Removed commands from advancement rewards.
+Removed arbitrary_player_tick advancement trigger.
+Recipe books
+
+Optimized the recipe book.
+
+
+== Fixes ==
+34 issues fixed
+From released versions before 1.12
+
+MC-11240  Ignited TNT can be set on fire by a Flame Bow.
+MC-50166  Game states that "The block couldn't be placed" when using /setblock to place air in a space occupied by a tile entity, despite working
+MC-95367  Tamed [wolf], cat or parrot in a minecart teleports to a player (not visually)
+MC-100468  [Wolves], cats and parrots teleport to player despite being in a boat (yet not visually)
+MC-111699  Can't rename stacked items
+MC-111744  Anvil outputs only 1 item when renaming
+From the 1.12 development versions
+
+MC-113380  Concrete powder won't turn into concrete when replacing water
+MC-113434  The color of white wool sheep is light gray
+MC-114235  Concrete powder texture is not randomly rotated
+MC-114534  Beacon beam is darker than it should be
+MC-115070  Issue with crafting table UI on non-16:9 instances
+MC-115206  Parrots stare at bats over 30 blocks away, through the ground
+MC-115460  Recipe advancements for yellow dye have reversed unlock conditions
+MC-115813  Old (non-dyed) beds are invisible
+MC-116024  Pre-17w15a beds become red if in-world but white in chests
+MC-116459  Parrots suffocate when getting in a bed with a solid block behind it
+MC-116760  @a selector doesn't work with the /recipe command in multiplayer
+MC-116945  Knowledge book gives recipe before removing itself from inventory causing unexpected advancement behavior
+MC-116952  Can't read CPU info and shows 'CPU: <unknown>' in the debug screen (F3)
+MC-116957  Advancement doesn't get revoked when /reload is quickly executed afterwards
+MC-116963  Changing dimension prints debug message in log
+MC-116964  Parrots sometimes run in circles instead of pathfinding normally.
+MC-117001  "Serious dedication" challenge is granted when breaking any tool
+MC-117007  milk_bucket can't trigger consume_item of advancements
+MC-117008  Vines under trapdoors block them
+MC-117015  Glass panes & iron bars no longer connect to glass
+MC-117019  Tripwire hooks break off of backs and sides of stairs upon receiving a block update
+MC-117036  17w18b Crafting book glitch
+MC-117063  Snow layers on barriers
+MC-117069  Door in Recipe Book when hold click shows the trapdoor recipe
+MC-117118  Levers / buttons placed on the trapdoor are dropped if pressed
+MC-117160  Parrots follow and watch invisible mobs
+MC-117161  Parrots imitate silent mobs
+MC-117167  Error message for player advancement data containing only "null" calls advancements "achievement"
+
+
+== Videos ==
+
+
+== Trivia ==
+1.12-pre1 was previously removed from the launcher for some time, but was added back in September 2018.
+
+
+== References ==
+
+
+== Navigation ==

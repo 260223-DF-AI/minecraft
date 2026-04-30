@@ -1,0 +1,43 @@
+1.9-pre2 is the second pre-release for Java Edition 1.9, released on February 18, 2016.
+
+
+== Changes ==
+
+
+=== Gameplay ===
+Mob spawning
+
+Pack spawning is less likely to spawn the full pack, and less likely to spread them out.
+Previously, spawning a pack would start from the center three times and cumulatively adjust the coordinates four times by up to 5 in X and Z, trying to spawn a mob each time, for a total of twelve spawn attempts (although it stops early if a full pack has spawned). Now that "four times" is a random number 14, meaning fewer total spawn attempts and less chance for the attempt coordinates to get far from the pack center.
+
+
+== Fixes ==
+11 issues fixed
+From released versions before 1.9
+
+MC-27485  Painting / item frame spawners crash the game, regardless of data provided.
+MC-35127  Wrong NBT TAG Type for fallTime in FallingSand entities.
+MC-35714  Sounds loop/restart when exiting screens.
+MC-37516  Items with attributes e.g. generic.movementSpeed will not work after deselecting and wearing them.
+MC-77880  New 1.8.x statistics are not translatable.
+From the 1.9 development versions
+
+MC-87525  Creeper explosion radius is unchanged when mobGriefing is off.
+MC-89928  End portals do not place the player at the correct coordinates.
+MC-90101  Mob spawner is overwriting (ignoring?) Pos[x,y,z] data of entity.
+MC-91290  Skeletons with no AI are spawning naturally.
+MC-95538  /playsound command doesn't work with selectors not resolving to exactly one entity.
+MC-97523  Nether portals briefly teleport players to original location in alternate dimension.
+
+
+== Videos ==
+
+
+== Trivia ==
+1.9-pre2 was previously removed from the launcher for some time, but was added back in September 2018.
+
+
+== References ==
+
+
+== Navigation ==

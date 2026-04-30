@@ -1,0 +1,72 @@
+17w17b is the ninth snapshot for Java Edition 1.12, released on April 27, 2017.
+
+
+== Additions ==
+
+
+=== General ===
+NBT format
+
+[Long] LoveCauseLeast, [Long] LoveCauseMost for breedable entities.
+Together these record the UUID of the entity that caused a given animal to breed.
+Advancements
+
+Added a new number display to track progress while completing certain advancements (as of this version, only Monsters Hunted and Adventuring Time).
+Added the changed_dimension trigger.
+Takes two optional conditions: to and from, both being strings that accept "overworld", "the_nether", or "the_end".
+Without the conditions, you can check if the player travels to any dimension from any dimension.
+The "location" shared object has a new dimension string (same values as above).
+
+
+== Changes ==
+
+
+=== Mobs ===
+Illusioners
+
+The regional difficulty requirement for them to cast their Blindness spell is decreased from 3 to 2.
+
+
+=== General ===
+Advancements
+
+The default advancements now all receive their titles and descriptions from the localization files.
+"We Need to Go Deeper", "The End?", "Nether" and "The End" advancements use the new changed_dimension trigger.
+
+
+== Fixes ==
+15 issues fixed
+From released versions before 1.12
+
+MC-108175  Villagers sent through an end gateway portal in a minecart lose their AI.
+From the 1.12 development versions
+
+MC-114971  Missing usage translation for /advancement test command
+MC-115392  Only host can unlock advancements on LAN
+MC-115505  Advancement background does not find texture from resources.zip embedded in world folder
+MC-115710  Rapidly pressing jump while riding a vehicle will make the parrot on your shoulder invisible
+MC-116143  Don't have to enter the Nether to get the "Nether" advancement
+MC-116616  The bred_animals trigger doesn't work when saving & re-entering after breeding
+MC-116683  The @s selector not mentioned in command block interface
+From the previous development version
+
+MC-116654  "Spooky Scary Skeleton" (nether/get_wither_skull.json) advancement tests for blaze rod instead of wither skull
+MC-116656  Closing world during ender dragon respawn and reopening it causes crash
+MC-116661  Long advancement titles are cut off in toasts
+MC-116665  Recipe command tab completes string representation of recipe objects
+MC-116671  The "durability" option for item-based triggers fails for items with durability
+MC-116676  Parrots don't imitate illusioners
+MC-116700  "The End" is granted to the player when they step on the portal
+
+
+== Videos ==
+
+
+== Trivia ==
+17w17b was previously removed from the launcher for some time, but was added back in September 2018.
+
+
+== References ==
+
+
+== Navigation ==

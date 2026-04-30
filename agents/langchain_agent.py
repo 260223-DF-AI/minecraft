@@ -13,7 +13,7 @@ from langchain_pinecone import PineconeVectorStore
 import os
 from dotenv import load_dotenv
 
-
+load_dotenv()
 # make pinecone db
 pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
 
@@ -28,26 +28,13 @@ embedding_model = OllamaEmbeddings(model="nomic-embed-text")
 vectorstore = PineconeVectorStore(
     index=index,
     embedding=embedding_model,
-    namespace="primary-corpus"
+    namespace="primary-corpus",
 )
 
 
-# allow the llm to call our vectorDB
-retriever = vectorstore.as_retriever(
-    search_type="similarity",
-    search_kwargs={"k": 7}
-)
 
 
-# me when claude fixes my errors
-retriever_tool = create_retriever_tool(
-    retriever,
-    name="minecraft_search",
-    description="Search Minecraft wiki and is the ground truth for Minecraft mechanics."
-)
 
-
-tools = [retriever_tool]
 
 
 # ooga booga
@@ -56,26 +43,48 @@ llm = ChatOllama(
     temperature=0.2
 )
 
-
 # system prompt
-prompt = ChatPromptTemplate.from_messages([
-    ("system",
-     "You are a Minecraft redstone expert. "
-     "Use the retrieval tool when needed. "
-     "Always base answers on retrieved context when available."),
-    ("human", "{input}"),
-    ("placeholder", "{agent_scratchpad}")
-])
+system_prompt = """
+You are a Minecraft expert.
+Use the retrieval tool when needed.
+Always base answers on retrieved context when available.
+List the context you are using to base your answer off of.
+if asked on creating structures,redstone creations, or crafting, use ASCII to draw the query answer
+anything in <> are instructions, do not show in output
+Your answer should consist of the following:
+
+
+<your answer to the query in plain text in conversational format>
+
+<reasoning>
+
+<drawing>
+
+<context>
+"""
 
 
 # make agent
-agent = create_agent(model=llm, tools=tools, system_prompt=prompt)
+agent = create_agent(model=llm, system_prompt=system_prompt)
 
 # wrapper to ask question
 def ask(question: str):
-    
+    docs = vectorstore.similarity_search(question, k=7)
+    documents = "\n".join(doc.page_content for doc in docs)
+    print("found:",documents)
+    query = f"""
+    The following is the user's question, answer it using the retrieved documents as context:{question}
+
+
+    =====================
+    Context:
+    {documents}
+
+
+
+    """
     result = agent.invoke({
-        "messages": [("human", question)]
+        "messages": [("human", query)]
     })
 
     return result["messages"][-1].content
@@ -84,6 +93,7 @@ def ask(question: str):
 
 # unga bunga
 if __name__ == "__main__":
-    response = ask("How does a redstone comparator work in subtraction mode?")
+    response = ask("How do I beat Herdcraft 2026 April fools update?")
+    #response = ask("how do I make a nether portal")
     print("\n\nOUTPUT:\n\n")
     print(response)

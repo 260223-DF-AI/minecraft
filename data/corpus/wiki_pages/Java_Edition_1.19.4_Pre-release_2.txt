@@ -1,0 +1,102 @@
+1.19.4 Pre-release 2 (known as 1.19.4-pre2 in the launcher) is the second pre-release for Java Edition 1.19.4, released on February 27, 2023, which updates models and textures of some items and fixes bugs.
+
+
+== Additions ==
+
+
+=== General ===
+Tag
+
+Added following entity tag:
+#dismounts_underwater: contains camel, chicken, donkey, horse, llama, mule, pig, ravager, spider, strider, trader_llama, and zombie_horse.
+Only mobs in this tag now force the rider to dismount when underwater.
+
+
+== Changes ==
+
+
+=== Command format ===
+/damage
+
+Striders and blazes now have a weakness to freezing damage.
+/execute
+
+A zombie or spider jockey is now considered the controller for the purpose of the on controller sub-command.
+
+
+=== General ===
+Create New World
+
+The save location for the new world now shows up in a tooltip when placing the cursor over the world name.
+Options
+
+It is now possible to scroll using the arrow keys in the telemetry screen.
+
+
+== Experimental ==
+These changes only take effect when the 1.20 experimental data pack is enabled.
+
+
+=== Changes ===
+
+
+==== Blocks ====
+Cherry door
+
+Changed its block and item textures.
+Cherry sapling and pink petals
+
+Changed their textures.
+Decorated pot
+
+Updated the neck of the model.
+The pot's neck now clip with blocks.
+Now uses the new and more complex block model.
+
+
+==== Non-mob entities ====
+Cherry boat with chest
+
+Changed its item texture.
+
+
+== Fixes ==
+23 issues fixed
+From released versions before 1.19
+
+MC-137552  Loaded crossbows look unloaded in item frames and when dropped on the ground.
+MC-153838  Entities that don't require air dismount each other in water.
+MC-229293  Casting issue: Broken blocks drop items in the wrong position at high distances.
+From the 1.19.4 development versions
+
+MC-259208  Zombie riding chicken or skeleton riding spider not considered controllers by /execute on controller command.
+MC-259609  Tooltips from selected buttons and sliders don't disappear when expected.
+MC-259831  UI Buttons break certain resource packs as of 23w06a.
+MC-259839  Duplicated minecraft:freeze in damage_type tag bypasses_armor.
+MC-259885  Upon entering the credits screen while in F1 mode, the Minecraft: Java Edition logo does not display correctly.
+MC-259961  item_display does not take some nbt tags into account.
+MC-259979  Striders and blazes do not take five times the damage when using /damage with freeze type.
+MC-260066  Z-fighting when placing several blocks on a decorated pot.
+MC-260208  Display entities in spawn chunks with interpolation_duration greater than 0 visually reset to default transformation on rejoin.
+MC-260268  Can't scroll using arrows in "Telemetry Data Collection" screen.
+MC-260324  Cherry Boat with Chest item texture has a misplaced pixel.
+MC-260335  Clicking with an item that is out of stock in the villager trading menu with sufficient payment will allow purchase of the item regardless.
+MC-260364  Cherry Door inconsistent item texture.
+MC-260434  There is no "Will be saved in..." text in the new world creation menu.
+From the previous development version
+
+MC-260427  Button text is visible outside menus.
+MC-260436  Item Tags in 1.19.4-pre1 have extra entries.
+MC-260438  Items are not rendered in the bundle UI.
+MC-260443  Loading a snapshot 23w07a experimental world says it can be opened in "safe mode" and clicking "safe mode" does nothing.
+MC-260445  Player can climb up one block while riding a boat or raft.
+MC-260461  Water mobs cannot be ridden in water.
+
+
+== Videos ==
+
+
+== References ==
+
+
+== Navigation ==

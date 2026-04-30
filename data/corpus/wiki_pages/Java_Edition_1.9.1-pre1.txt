@@ -1,0 +1,90 @@
+1.9.1-pre1 is the first pre-release for Java Edition 1.9.1, released on March 9, 2016.
+
+
+== Additions ==
+
+
+=== Items ===
+Armor
+
+New armor attribute: generic.armorToughness.
+Damage formula is now totalDamage=damage(1max(defensePoints5,defensePointsdamage2+toughness4)25), i.e. increased toughness means less armor defense point reduction from strong attacks.
+Diamond armor has toughness 2, all other armor has toughness 0. A full set of diamond armor, therefore gives a toughness attribute of 8.
+New option enableWeakAttacks in options.txt.
+Defaults to false. When false, the client will ignore attempts to attack when weapon cooldown is less than 75% recharged.
+The effect was removed in the final release, however the option itself remains.
+Elytra
+
+Added sound effects, while gliding in the Elytra.
+Sound event item.elytra.flying.
+
+
+== Changes ==
+
+
+=== Blocks ===
+Dispensers
+
+Increased limit per tick for scheduled tile ticks from 1,000 to 65,536.
+Hoppers
+
+Can now push and pull items to and from chests, that are blocked from opening.
+
+
+=== Mobs ===
+General
+
+Improved AI.
+
+
+=== Command format ===
+Target selectors
+
+Entity selector c (count) now sorts on proximity using true coordinates, not coordinates snapped to the grid.
+
+
+=== Gameplay ===
+Combat
+
+Missing an attack no longer triggers the weapon cooldown (later reverted in final release.)
+
+
+=== General ===
+Loot tables
+
+Now also work with dispensers and droppers.
+Dispensers with arrows in jungle temples now use loot tables.
+Session IDs
+
+Now no longer printed by the game to the log files or to the launcher.
+
+
+== Fixes ==
+7 issues fixed
+From released versions before 1.9.1
+
+MC-7961  Hopper can't fill or empty a chest if the chest is blocked from opening.
+MC-56162  Setting /worldborder damage amount 0 doesn't work.
+MC-95352  Spatial target arguments c, dx, dy, dz behave unexpectedly and inconsistently.
+From version 1.9
+
+MC-90257  A chain of command blocks may takes more than 1 tick to traverse.
+MC-96219  Block duplication bug with pistons (ghost blocks).
+MC-96927  Selector c targeting inaccurate entity position.
+MC-98327  Elytra texture transparency issues.
+Other fixes:
+
+Fixed game engine adding non-existent entities (failed mob spawns, etc.) to its internal lists, increasing instability.
+
+
+== Videos ==
+
+
+== Trivia ==
+This version was previously removed from the launcher for some time, but was added back in September 2018.
+
+
+== References ==
+
+
+== Navigation ==
