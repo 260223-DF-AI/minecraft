@@ -40,7 +40,7 @@ vectorstore = PineconeVectorStore(
 # ooga booga
 llm = ChatOllama(
     model="llama3.1:8b",
-    temperature=0.2
+    temperature=0.1
 )
 
 # system prompt
@@ -69,19 +69,25 @@ agent = create_agent(model=llm, system_prompt=system_prompt)
 
 # wrapper to ask question
 def ask(question: str):
-    docs = vectorstore.similarity_search(question, k=7)
+    docs = vectorstore.similarity_search(question, k=50)
     documents = "\n".join(doc.page_content for doc in docs)
-    print("found:",documents)
+    #print("found:",documents)
     query = f"""
-    The following is the user's question, answer it using the retrieved documents as context:{question}
+    Instructions:
+    - Use the retrieved context ONLY if it is relevant to the question.
+    - If the context is not relevant, ignore it completely and answer using your own knowledge.
+    - Do NOT force information from the context into your answer.
+    - If you use the context, base your answer strictly on it and do not invent additional details.
+    - If multiple documents are provided, use only the ones that are relevant.
+    - If none of the documents are relevant, clearly ignore them and answer normally.
 
-
-    =====================
-    Context:
+    Retrieved Context:
     {documents}
 
+    Question:
+    {question}
 
-
+    Answer:
     """
     result = agent.invoke({
         "messages": [("human", query)]
@@ -93,7 +99,12 @@ def ask(question: str):
 
 # unga bunga
 if __name__ == "__main__":
-    response = ask("How do I beat Herdcraft 2026 April fools update?")
-    #response = ask("how do I make a nether portal")
+    #response = ask("How do I beat 26w14a the april fools update in 2026?")
+    #response = ask("What are the drop tables for chests in the ancient cities")
+    #response = ask("I want to speedrun a bastion, it is the housing pattern")
+    #response = ask("What's the drop percentage of an apple?")
+    #response = ask("What's a moobloom in Minecraft?")
+    #response = ask("How do I get the Xbox Cape?")
+    response = ask("What's eternal fire and how do we get it?")
     print("\n\nOUTPUT:\n\n")
     print(response)
