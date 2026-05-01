@@ -67,10 +67,105 @@ Your answer should consist of the following:
 # make agent
 agent = create_agent(model=llm, system_prompt=system_prompt)
 
+
+
+def ollama_rerank(query: str, doc_text: str) -> float:
+    """
+    Uses LLM as a reranker.
+    Returns score from 0–1.
+    """
+
+    prompt = f"""
+You are a relevance scoring system.
+
+Score how relevant the DOCUMENT is to the QUESTION.
+
+Return ONLY a number between 0 and 1.
+
+QUESTION:
+{query}
+
+DOCUMENT:
+{doc_text}
+
+SCORE:
+"""
+
+    try:
+        response = llm.invoke(prompt).content.strip()
+
+        # extract float safely
+        score = float(response)
+        return max(0.0, min(1.0, score))
+
+    except Exception:
+        return 0.0
+
+# ask but with pinecone's reranking
+def ask2(question:str):
+    docs = vectorstore.similarity_search_with_score(question, k=100)
+
+    reranked_docs = sorted(
+        docs,
+        key=lambda d: d[1],
+        reverse=True
+    )[:20]
+
+    for doc_tuple in reranked_docs:
+        #print(doc)
+        doc = doc_tuple[0]
+        print(doc.metadata["source"])
+
+    documents = "\n".join(doc[0].page_content for doc in reranked_docs)
+    #print("found:",documents)
+    query = f"""
+    Instructions:
+    - Use the retrieved context ONLY if it is relevant to the question.
+    - If the context is not relevant, ignore it completely and answer using your own knowledge.
+    - Do NOT force information from the context into your answer.
+    - If you use the context, base your answer strictly on it and do not invent additional details.
+    - If multiple documents are provided, use only the ones that are relevant.
+    - If none of the documents are relevant, clearly ignore them and answer normally.
+
+    Retrieved Context:
+    {documents}
+
+    Question:
+    {question}
+
+    """
+    result = agent.invoke({
+        "messages": [("human", query)]
+    })
+
+    return result["messages"][-1].content
+
+
 # wrapper to ask question
 def ask(question: str):
-    docs = vectorstore.similarity_search(question, k=50)
-    documents = "\n".join(doc.page_content for doc in docs)
+    docs = vectorstore.similarity_search(question, k=100)
+    # for doc in docs:
+    #     #print(doc)
+    #     print(doc.metadata["source"])
+
+    # Sort by rerank score
+    scored_docs = []
+    for doc in docs:
+        score = ollama_rerank(question, doc.page_content)
+        doc.metadata["rerank_score"] = score
+        scored_docs.append(doc)
+
+    reranked_docs = sorted(
+        scored_docs,
+        key=lambda d: d.metadata["rerank_score"],
+        reverse=True
+    )[:10]
+
+    for doc in reranked_docs:
+        #print(doc)
+        print(doc.metadata["source"])
+
+    documents = "\n".join(doc.page_content for doc in reranked_docs)
     #print("found:",documents)
     query = f"""
     Instructions:
@@ -105,6 +200,7 @@ if __name__ == "__main__":
     #response = ask("What's the drop percentage of an apple?")
     #response = ask("What's a moobloom in Minecraft?")
     #response = ask("How do I get the Xbox Cape?")
-    response = ask("What's eternal fire and how do we get it?")
+    #response = ask("What's eternal fire and how do we get it?")
+    #response = ask2("How do I beat 26w14a the april fools update in 2026?")
     print("\n\nOUTPUT:\n\n")
     print(response)

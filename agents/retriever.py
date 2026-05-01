@@ -108,7 +108,7 @@ def retriever_node(state: ResearchState) -> dict:
         namespace="primary-corpus",
     )
 
-    docs = vectorstore.similarity_search(state["question"], k=20)
+    docs = vectorstore.similarity_search(state["question"], k=100)
 
     if not docs:
         state["retrieved_chunks"] = []
@@ -136,7 +136,7 @@ def retriever_node(state: ResearchState) -> dict:
         scored_docs,
         key=lambda d: d.metadata["rerank_score"],
         reverse=True
-    )
+    )[:10]
 
     # --- Format output ---
     results = []
