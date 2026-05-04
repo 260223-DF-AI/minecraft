@@ -3,34 +3,37 @@ ResearchFlow — Fact-Checker Agent
 
 Cross-references the Analyst's claims against the fact-check
 namespace in Pinecone and produces a verification report.
-Triggers HITL interrupt when confidence is below threshold.
 """
 
 from pydantic import BaseModel
 from agents.state import ResearchState
 from langchain_ollama import ChatOllama, OllamaEmbeddings
 from langchain_pinecone import PineconeVectorStore
-from dotenv import load_dotenv
 from pinecone import Pinecone
+from dotenv import load_dotenv
+
 import json
 import os
 import re
+
 os.environ["LANGCHAIN_TRACING_V2"] = "false"
 os.environ["LANGCHAIN_ENDPOINT"] = ""
 os.environ["LANGCHAIN_API_KEY"] = ""
-llm = ChatOllama(model="qwen3.5:9b", temperature=0, timeout=30, format="json")
+
+llm = ChatOllama(model="qwen3.5:9b", temperature=0,format="json")
 
 
+# -----------------------------
+# Models
+# -----------------------------
 
 class ClaimVerdict(BaseModel):
-    """Verification result for a single claim."""
     claim: str
-    verdict: str  # "Supported" | "Unsupported" | "Inconclusive"
+    verdict: str  # Supported | Unsupported | Inconclusive
     evidence: str | None = None
 
 
 class FactCheckReport(BaseModel):
-    """Full verification report across all claims."""
     verdicts: list[ClaimVerdict]
     overall_confidence: float
 
@@ -140,25 +143,175 @@ def compute_confidence(verdicts: list, weights: list[float] | None = None) -> fl
     return total / weight_sum if weight_sum else 0.0
 
 
+# -----------------------------
+# Robust JSON extraction
+# -----------------------------
+
+def extract_json(text: str):
+    """
+    Extracts first valid JSON object from messy LLM output.
+    """
+    if not text:
+        return None
+
+    # remove markdown fences
+    text = re.sub(r"```json|```", "", text).strip()
+
+    start = text.find("{")
+    if start == -1:
+        return None
+
+    brace_count = 0
+    for i in range(start, len(text)):
+        if text[i] == "{":
+            brace_count += 1
+        elif text[i] == "}":
+            brace_count -= 1
+
+        if brace_count == 0:
+            return text[start:i + 1]
+
+    return None
+
+
+# -----------------------------
+# Fact checking prompt
+# -----------------------------
+
+def verify_claim(llm, claim: str, context: str) -> ClaimVerdict:
+    prompt = f"""
+    You are a strict fact-checking system.
+
+    Your job is to evaluate whether a claim is supported by the context.
+
+    Return ONLY valid JSON.
+    Do not include markdown or explanations.
+
+    ---
+
+    OUTPUT FORMAT:
+
+    {{
+    "verdict": "Supported",
+    "evidence": ""
+    }}
+
+    ---
+
+    RULES:
+
+    - verdict must be one of:
+    "Supported", "Unsupported", "Inconclusive"
+
+    - evidence must ALWAYS be a string
+    - if no evidence exists, use ""
+
+    - no extra keys allowed
+
+    ---
+
+    DEFINITIONS:
+
+    - Supported = context directly supports claim
+    - Unsupported = context contradicts claim
+    - Inconclusive = not enough information
+
+    ---
+
+    CLAIM:
+    {claim}
+
+    CONTEXT:
+    {context}
+    """
+
+    raw = llm.invoke(prompt)
+    content = raw.content
+
+    print("\n=== RAW LLM OUTPUT ===\n", repr(content))
+
+    json_str = extract_json(content)
+
+    if not json_str:
+        print("BAD RAW OUTPUT:", content)
+        return ClaimVerdict(
+            claim=claim,
+            verdict="Inconclusive",
+            evidence="Empty JSON, Model can't find supporting evidence"
+        )
+
+    try:
+        data = json.loads(json_str)
+    except Exception as e:
+        print("JSON PARSE ERROR:", e)
+        return ClaimVerdict(
+            claim=claim,
+            verdict="Inconclusive",
+            evidence="BAD_JSON"
+        )
+
+    verdict = data.get("verdict", "Inconclusive")
+    evidence = data.get("evidence")
+    #confidence = data.get("confidence", 0.01)
+
+    allowed = {"Supported", "Unsupported", "Inconclusive"}
+    if verdict not in allowed:
+        verdict = "Inconclusive"
+
+    return ClaimVerdict(
+        claim=claim,
+        verdict=verdict,
+        evidence=evidence
+    )
+
+
+# -----------------------------
+# Confidence scoring
+# -----------------------------
+
+def compute_confidence(verdicts: list[ClaimVerdict]) -> float:
+    score_map = {
+        "Supported": 1.0,
+        "Inconclusive": 0.0,
+        "Unsupported": .75
+    }
+
+    if not verdicts:
+        return 0.0
+
+    total = 0.0
+    count = 0
+
+    for v in verdicts:
+        if not v or not hasattr(v, "verdict"):
+            continue
+        if v.verdict not in score_map:
+            continue
+
+        total += score_map[v.verdict]
+        count += 1
+
+    return total / count if count else 0.0
+
+
+
+def confidence_calc2(verdicts: list[ClaimVerdict]) -> float:
+    total = 0.0
+    for v in verdicts:
+        total += v.confidence
+    return total/len(verdicts)
+
+# -----------------------------
+# Main node
+# -----------------------------
+
+
 def fact_checker_node(state: ResearchState) -> dict:
-    """
-    Verify the Analyst's response against trusted reference sources.
-
-    TODO:
-    - Extract claims from state["analysis"].
-    - Query the 'fact-check-sources' Pinecone namespace for each claim.
-    - Produce per-claim verdicts.
-    - If confidence < threshold, trigger HITL interrupt.
-    - Support Time Travel via state checkpointing.
-    """
-
     load_dotenv()
-    # make pinecone db
-    pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
 
+    pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
     index = pc.Index("mcdb")
 
-    # embedding model (same as our ingestion)
     embedding_model = OllamaEmbeddings(model="nomic-embed-text")
 
     vectorstore = PineconeVectorStore(
@@ -168,9 +321,8 @@ def fact_checker_node(state: ResearchState) -> dict:
     )
 
     analysis = state["analysis"]
-
-    claims = analysis["claims"]
-    citations = analysis["citations"]
+    claims = analysis.get("claims", [])
+    citations = analysis.get("citations", [])
 
     verdicts = []
 
@@ -178,19 +330,22 @@ def fact_checker_node(state: ResearchState) -> dict:
         docs = vectorstore.similarity_search(
             query=claim,
             k=10,
-            filter={
-                "source": citation["source"],
-        }
+            filter={"source": citation["source"]}
         )
+
         if not docs:
             docs = vectorstore.similarity_search(claim, k=10)
 
-        context = "\n".join(f"[DOC {i}]\n{d.page_content}\n"for i, d in enumerate(docs))
+        context = "\n".join(
+            f"[DOC {i}]\n{d.page_content}\n"
+            for i, d in enumerate(docs)
+        )
 
         verdict = verify_claim(llm, claim, context)
         verdicts.append(verdict)
 
     confidence = compute_confidence(verdicts)
+    #confidence = confidence_calc2(verdicts)
 
     state["fact_check_report"] = {
         "verdicts": verdicts,
@@ -203,30 +358,17 @@ def fact_checker_node(state: ResearchState) -> dict:
     return state
 
 
+# -----------------------------
+# Test harness
+# -----------------------------
 
 if __name__ == "__main__":
-
-    # -----------------------------
-    # 1. Mock analyst output
-    # -----------------------------
-    sample_analysis = {
+    sample_unsupported = {
         "answer": "Apples in Minecraft drop from oak and dark oak leaves.",
         "claims": [
-            "Apples drop from oak leaves in Minecraft.",
-            "Apples drop from dark oak leaves in Minecraft.",
             "Apples can be obtained by breaking any tree leaf."
         ],
         "citations": [
-            {
-                "source": "Minecraft Wiki",
-                "page_number": 1,
-                "excerpt": "Apples are dropped by oak leaves when decayed or broken."
-            },
-            {
-                "source": "Minecraft Wiki",
-                "page_number": 1,
-                "excerpt": "Dark oak leaves also have a chance to drop apples."
-            },
             {
                 "source": "Minecraft Wiki",
                 "page_number": 1,
@@ -235,9 +377,8 @@ if __name__ == "__main__":
         ],
         "confidence": 0.0
     }
-
-    sample_analysis1 = {
-        "answer": "Apples in Minecraft drop from oak and dark oak leaves.",
+    sample_analysis = {
+        "answer": "Apples in Minecraft drop from oak leaves.",
         "claims": [
             "Apples drop from oak leaves in Minecraft."
         ],
@@ -250,23 +391,40 @@ if __name__ == "__main__":
         ],
         "confidence": 0.0
     }
+    sample_analysis1 = {
+    "answer": "Apples in Minecraft drop from oak and dark oak leaves.",
+    "claims": [
+        "Apples drop from oak leaves in Minecraft.",
+        "Apples drop from dark oak leaves in Minecraft.",
+        "Apples can be obtained by breaking any tree leaf."
+    ],
+    "citations": [
+        {
+            "source": "Minecraft Wiki",
+            "page_number": 1,
+            "excerpt": "Apples are dropped by oak leaves when decayed or broken."
+        },
+        {
+            "source": "Minecraft Wiki",
+            "page_number": 1,
+            "excerpt": "Dark oak leaves also have a chance to drop apples."
+        },
+        {
+            "source": "Minecraft Wiki",
+            "page_number": 1,
+            "excerpt": "Only oak and dark oak leaves can drop apples."
+        }
+    ],
+    "confidence": 0.0
+}
 
-    # -----------------------------
-    # 2. Build initial state
-    # -----------------------------
     state = ResearchState()
     state["question"] = "How do you get apples in Minecraft?"
-    state["analysis"] = sample_analysis
+    state["analysis"] = sample_unsupported
     state["scratchpad"] = []
 
-    # -----------------------------
-    # 3. Run fact checker
-    # -----------------------------
     result_state = fact_checker_node(state)
 
-    # -----------------------------
-    # 4. Print results
-    # -----------------------------
     print("\n=== FACT CHECK REPORT ===\n")
 
     report = result_state.get("fact_check_report", {})
@@ -278,4 +436,4 @@ if __name__ == "__main__":
         print("-" * 40)
 
     print("\nOverall Confidence:", report.get("overall_confidence"))
-    print("\nNeeds Review:", result_state.get("needs_review", False))
+    print("Needs Review:", result_state.get("needs_review", False))

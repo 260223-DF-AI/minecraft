@@ -25,4 +25,10 @@ def mask_pii(text: str) -> str:
     - Return the sanitized text.
     - Consider logging redaction counts to the scratchpad.
     """
-    raise NotImplementedError
+
+    # use the PII patterns given to us to replace PII
+    text = re.sub(PII_PATTERNS["email"], "[REDACTED_EMAIL]", text)
+    text = re.sub(PII_PATTERNS["phone"], "[REDACTED_PHONE]", text)
+    text = re.sub(PII_PATTERNS["ssn"], "[REDACTED_SSN]", text)
+
+    return text
