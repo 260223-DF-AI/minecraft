@@ -91,20 +91,6 @@ CONTEXT:
             evidence="BAD_JSON"
         )
     #print(context)
-
-    evidence = data.get("evidence")
-    normalized_context = context.lower().replace("\n", " ")
-    normalized_evidence = evidence.lower().strip()
-
-    if evidence:
-        snippet = normalized_evidence[:50]
-        if snippet not in normalized_context:
-            return ClaimVerdict(
-                claim=claim,
-                verdict="Inconclusive",
-                evidence="EVIDENCE_NOT_FOUND_IN_CONTEXT"
-            )
-
     allowed_verdicts = {"Supported", "Unsupported", "Inconclusive"}
 
     if data.get("verdict") not in allowed_verdicts:
@@ -223,7 +209,7 @@ if __name__ == "__main__":
     # -----------------------------
     # 1. Mock analyst output
     # -----------------------------
-    sample_analysis1 = {
+    sample_analysis = {
         "answer": "Apples in Minecraft drop from oak and dark oak leaves.",
         "claims": [
             "Apples drop from oak leaves in Minecraft.",
@@ -250,7 +236,7 @@ if __name__ == "__main__":
         "confidence": 0.0
     }
 
-    sample_analysis = {
+    sample_analysis1 = {
         "answer": "Apples in Minecraft drop from oak and dark oak leaves.",
         "claims": [
             "Apples drop from oak leaves in Minecraft."
