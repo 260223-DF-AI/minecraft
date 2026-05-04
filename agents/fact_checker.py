@@ -20,7 +20,7 @@ os.environ["LANGCHAIN_TRACING_V2"] = "false"
 os.environ["LANGCHAIN_ENDPOINT"] = ""
 os.environ["LANGCHAIN_API_KEY"] = ""
 
-llm = ChatOllama(model="qwen3.5:9b", temperature=0,format="json")
+llm = ChatOllama(model="qwen2.5:3b", temperature=0,format="json")
 
 
 # -----------------------------
@@ -209,10 +209,12 @@ def fact_checker_node(state: ResearchState) -> dict:
 
     embedding_model = OllamaEmbeddings(model="nomic-embed-text")
 
+    namespace = "factchecker-corpus"
+
     vectorstore = PineconeVectorStore(
         index=index,
         embedding=embedding_model,
-        namespace="primary-corpus",
+        namespace=namespace,
     )
 
     analysis = state["analysis"]

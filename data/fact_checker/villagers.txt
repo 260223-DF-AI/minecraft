@@ -1,0 +1,308 @@
+Minecraft Villagers — Fact-Check Knowledge Document
+
+1. OVERVIEW
+Villagers are passive humanoid NPCs in Minecraft that live in villages and participate in a trading system. Their behavior is governed by profession, workstations, schedules, and village mechanics.
+
+Core functions:
+- Trading with players
+- Using workstations
+- Sleeping and working on schedules
+- Participating in village mechanics (breeding, gossip, panic)
+
+------------------------------------------------------------
+
+2. VILLAGER TYPES
+
+Villagers have professions based on workstation blocks:
+
+- None (Unemployed)
+- Farmer
+- Librarian
+- Cleric
+- Armorer
+- Weaponsmith
+- Toolsmith
+- Fletcher
+- Butcher
+- Leatherworker
+- Mason (Stone Mason)
+
+Nitwit:
+- Cannot trade
+- Has green robe
+- No profession assignment
+
+ASCII:
+
+        [VILLAGER]
+             |
+   +---------+---------+
+   |                   |
+[PROFESSION]       [NITWIT]
+   |                   |
+ TRADING            NO TRADE
+
+------------------------------------------------------------
+
+3. PROFESSION ASSIGNMENT SYSTEM
+
+Villagers acquire professions based on nearby workstation blocks:
+
+Example mapping:
+- Composter → Farmer
+- Lectern → Librarian
+- Blast Furnace → Armorer
+- Grindstone → Weaponsmith
+- Smithing Table → Toolsmith
+- Fletching Table → Fletcher
+
+ASCII FLOW:
+
+[VILLAGER]
+     |
+     v
++----------------------+
+| Detect Workstation   |
++----------------------+
+     |
+     v
+[Assign Profession]
+
+Important rules:
+- Must be unclaimed workstation
+- Villager must be unemployed or not locked
+- Profession locks after first trade
+
+------------------------------------------------------------
+
+4. TRADING SYSTEM
+
+Villager trading is a barter system:
+
+PLAYER → ITEM → VILLAGER → EMERALDS / ITEMS
+
+ASCII:
+
+[PLAYER]
+   |
+   v
++----------------+
+| Trade Menu     |
++----------------+
+   |
+   v
+[Exchange Items]
+
+Example:
+- Player gives emerald → receives enchanted book
+- Villager gives item → receives emerald
+
+------------------------------------------------------------
+
+5. TRADE LOCKING RULE
+
+Once a trade is used:
+- It becomes locked (cannot change trades)
+- Experience increases villager level
+- New trades unlock over time
+
+Villager levels:
+- Novice
+- Apprentice
+- Journeyman
+- Expert
+- Master
+
+ASCII:
+
+Novice → Apprentice → Journeyman → Expert → Master
+   |         |            |           |         |
+ new trades unlock progressively
+
+------------------------------------------------------------
+
+6. WORKDAY SCHEDULE
+
+Villagers follow a daily cycle:
+
+- Morning: Go to workstation
+- Day: Work and trade
+- Evening: Return home
+- Night: Sleep in bed
+
+ASCII:
+
+MORNING → WORK → EVENING → SLEEP
+   ↑                         ↓
+   +-------------------------+
+
+Important:
+- They must reach workstation to restock trades
+- They must sleep in a claimed bed
+
+------------------------------------------------------------
+
+7. BREEDING SYSTEM
+
+Villagers can breed if conditions are met:
+
+Requirements:
+- Food (bread, carrots, potatoes, beetroots)
+- Available beds
+- Willingness state
+
+ASCII:
+
+[VILLAGER] + [VILLAGER]
+        |
+        v
++------------------+
+| Willingness OK?  |
++------------------+
+        |
+        v
+     BABY VILLAGER
+
+------------------------------------------------------------
+
+8. GOSSIP SYSTEM (BEHAVIOR AI)
+
+Villagers share “gossip” that affects trading prices:
+
+Types:
+- Trading gossip
+- Negative gossip (attacks, crimes)
+- Positive reputation gossip
+
+Effect:
+- Influences emerald prices
+- Affects villager trust
+
+ASCII:
+
+[VILLAGER] → GOSSIP → [OTHER VILLAGERS]
+      ↓                     ↓
+  PRICE CHANGE        REPUTATION UPDATE
+
+------------------------------------------------------------
+
+9. PANIC AND PROTECTION BEHAVIOR
+
+Villagers react to threats:
+
+Triggers:
+- Zombie nearby
+- Raid event
+- Damage sources
+
+Response:
+- Run away
+- Hide in houses
+- Iron Golems spawn during raids
+
+ASCII:
+
+[THREAT DETECTED]
+        |
+        v
++------------------+
+| Panic State      |
++------------------+
+   |         |
+Run away   Hide
+
+------------------------------------------------------------
+
+10. ZOMBIFICATION MECHANIC
+
+If a villager is killed by a zombie:
+- It may convert into a zombie villager
+
+Recovery:
+- Splash Potion of Weakness
+- Golden Apple
+
+ASCII:
+
+[VILLAGER] → [ZOMBIE KILL] → [ZOMBIE VILLAGER]
+                                        |
+                                        v
+                             CURE PROCESS (Potion + Apple)
+
+------------------------------------------------------------
+
+11. IRON GOLEM RELATIONSHIP
+
+Villagers can cause iron golem spawning:
+
+Conditions:
+- Enough villagers
+- Enough beds
+- Recent panic events
+
+ASCII:
+
+[VILLAGE STATE]
+      |
+      v
++------------------+
+| Spawn Conditions |
++------------------+
+      |
+      v
+ [IRON GOLEM]
+
+Role:
+- Village protection
+- Hostile mob defense
+
+------------------------------------------------------------
+
+12. TRADING ECONOMY MECHANICS
+
+Prices are influenced by:
+- Supply/demand
+- Reputation
+- Hero of the Village effect
+- Cure discounts
+
+ASCII:
+
+BASE PRICE
+    ↓
++------------------+
+| Modifiers        |
++------------------+
+| gossip           |
+| discounts        |
+| demand           |
++------------------+
+    ↓
+FINAL PRICE
+
+------------------------------------------------------------
+
+13. KEY RULES
+
+- Villagers require workstations to maintain profession
+- Trades are deterministic once locked but cost varies
+- Beds define village existence
+- AI behavior is schedule-based
+- Reputation affects economy significantly
+
+------------------------------------------------------------
+
+14. FACT-CHECK TAGS
+
+minecraft_villagers
+villager_trading_system
+minecraft_economy
+workstation_professions
+zombie_villager_mechanics
+iron_golem_spawning
+minecraft_ai_behavior
+gossip_system
+minecraft_npc_system
+
+------------------------------------------------------------
+END OF DOCUMENT
