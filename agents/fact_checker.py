@@ -37,6 +37,111 @@ class FactCheckReport(BaseModel):
     verdicts: list[ClaimVerdict]
     overall_confidence: float
 
+def extract_json(text: str):
+    # remove markdown fences
+    text = re.sub(r"```json|```", "", text).strip()
+
+    # find first '{'
+    start = text.find("{")
+    if start == -1:
+        return None
+
+    # walk forward and balance braces
+    brace_count = 0
+    for i in range(start, len(text)):
+        if text[i] == "{":
+            brace_count += 1
+        elif text[i] == "}":
+            brace_count -= 1
+
+        if brace_count == 0:
+            return text[start:i+1]
+
+    return None
+
+
+def verify_claim(llm, claim: str, context: str) -> ClaimVerdict:
+    prompt = f"""
+You are a STRICT fact-checker. Given a claim and supporting evidence, decide one of: Supported, Unsupported, Inconclusive.
+Supported = the evidence directly states or strongly implies the claim.
+Unsupported = the evidence contradicts the claim.
+Inconclusive = the evidence is silent on the claim.
+
+Quote a short snippet from the evidence as your justification.
+
+Output schema: return ONLY a JSON with 'verdict' (one of the three labels above, exactly as spelled) and 'evidence' (a short string snippet from the input):
+{{
+  "verdict": "Supported" | "Unsupported" | "Inconclusive",
+  "evidence": string or null
+}}
+
+CLAIM:
+{claim}
+
+CONTEXT:
+{context}
+"""
+    raw = llm.invoke(prompt)
+    print("\n=== RAW LLM OUTPUT ===\n", repr(raw.content))
+
+    try:
+        data = json.loads(raw.content)
+    except Exception:
+        print("BAD RAW OUTPUT:", raw.content)
+        return ClaimVerdict(
+            claim=claim,
+            verdict="Inconclusive",
+            evidence="BAD_JSON"
+        )
+    #print(context)
+    allowed_verdicts = {"Supported", "Unsupported", "Inconclusive"}
+
+    if data.get("verdict") not in allowed_verdicts:
+        return ClaimVerdict(
+            claim=claim,
+            verdict="Inconclusive",
+            evidence="INVALID_VERDICT_SCHEMA"
+        )
+
+    return ClaimVerdict(
+        claim=claim,
+        verdict=data.get("verdict", "Inconclusive"),
+        evidence=data.get("evidence")
+    )
+
+
+
+
+def compute_confidence(verdicts: list, weights: list[float] | None = None) -> float:
+    score_map = {
+        "Supported": 1.0,
+        "Inconclusive": 0.5,
+        "Unsupported": 0.0
+    }
+
+    if not verdicts:
+        return 0.0
+
+    if weights is None:
+        weights = [1.0] * len(verdicts)
+
+    total = 0.0
+    weight_sum = 0.0
+
+    for v, w in zip(verdicts, weights):
+
+        if v is None:
+            continue
+        if not hasattr(v, "verdict"):
+            continue
+        if v.verdict not in score_map:
+            continue
+
+        total += score_map[v.verdict] * w
+        weight_sum += w
+
+    return total / weight_sum if weight_sum else 0.0
+
 
 # -----------------------------
 # Robust JSON extraction
