@@ -222,6 +222,7 @@ if __name__ == "__main__":
         "page_number": "1",
     },
     )
+    print(bad_doc.metadata['source'])
 
     # test the agent with correct context
     state = {

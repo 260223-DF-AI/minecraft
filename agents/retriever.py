@@ -139,6 +139,7 @@ def retriever_node(state: ResearchState) -> dict:
     )[:10]
 
     # --- Format output ---
+    """
     results = []
     for doc in reranked_docs:
         results.append({
@@ -147,9 +148,12 @@ def retriever_node(state: ResearchState) -> dict:
             "source": doc.metadata.get("source", "unknown"),
             "page_number": doc.metadata.get("page", "1"),
         })
+    """
 
-    state["retrieved_chunks"] = results
-    print(results)
+    #state["retrieved_chunks"] = results
+    #print(results)
+    state["retrieved_chunks"] = reranked_docs
+    print(reranked_docs)
 
     state["scratchpad"].append("Retrieved relevant documents from Pinecone.")
 
