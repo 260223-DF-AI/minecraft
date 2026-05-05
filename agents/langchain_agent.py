@@ -10,6 +10,11 @@ from langchain_ollama import ChatOllama, OllamaEmbeddings
 from pinecone import Pinecone, ServerlessSpec
 from langchain_pinecone import PineconeVectorStore
 
+from ragas import evaluate
+from datasets import Dataset
+from ragas.metrics import faithfulness, answer_relevancy, context_precision
+#from ragas.metrics.collections import Faithfulness, AnswerRelevancy, ContextPrecision
+
 import os
 from dotenv import load_dotenv
 
@@ -141,8 +146,29 @@ def ask2(question:str):
     return result["messages"][-1].content
 
 
+def run_ragas(question: str, answer: str, contexts: list[str], ground_truth: str):
+    if not ground_truth:
+        print("No ground truth provided, skipping evaluation.")
+        return None
+    dataset = Dataset.from_dict({
+        "question": [question],
+        "answer": [answer],
+        "contexts": [contexts],
+        "ground_truth": [ground_truth]
+    })
+    result = evaluate(
+        dataset,
+                metrics=[
+                    faithfulness,
+                    answer_relevancy,
+                    context_precision
+                ],
+                llm = llm
+    )
+    return result
+
 # wrapper to ask question
-def ask(question: str):
+def ask(question: str, gt:str):
     docs = vectorstore.similarity_search(question, k=100)
     # for doc in docs:
     #     #print(doc)
@@ -188,6 +214,15 @@ def ask(question: str):
         "messages": [("human", query)]
     })
 
+    contexts = [doc.page_content for doc in reranked_docs]
+    ragas_result = run_ragas(
+        question=question,
+        answer=result["messages"][-1].content,
+        contexts=contexts,
+        ground_truth=gt
+    )
+    print("RAGAS:", ragas_result)
+    print("\n\n")
     return result["messages"][-1].content
 
 
@@ -202,5 +237,19 @@ if __name__ == "__main__":
     #response = ask("How do I get the Xbox Cape?")
     #response = ask("What's eternal fire and how do we get it?")
     #response = ask2("How do I beat 26w14a the april fools update in 2026?")
+
+    truth = """
+    10. IGNITION OPTIMIZATION
+
+    Fastest ignition priorities:
+
+    1. Flint and Steel (best consistent)
+    2. Fire Charge (inventory-based instant use)
+    3. Lava spread (situational)
+    4. Fire arrow (rare)
+    5. Ghast fireball (Nether setup only)
+    """
+
+    response = ask("What's the best way to ignite a nether portal in a minecraft speedrun?", gt=truth)
     print("\n\nOUTPUT:\n\n")
     print(response)

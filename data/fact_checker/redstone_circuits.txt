@@ -1,0 +1,305 @@
+Minecraft Redstone Circuits — ASCII + Build Guide
+
+LEGEND:
+[ ] = component
+==== = redstone dust
+> = repeater direction
+T = redstone torch
+B = block
+L = lever/button (input)
+O = output (lamp/door/etc.)
+
+------------------------------------------------------------
+
+1. SIMPLE LINE (BASIC POWER)
+
+ASCII:
+[L] ==== ==== ==== [O]
+
+BUILD:
+1. Place lever
+2. Place redstone dust line
+3. Connect to output (lamp/door)
+
+USE:
+Basic on/off control
+
+------------------------------------------------------------
+
+2. REPEATER EXTENSION (LONG DISTANCE)
+
+ASCII:
+[L] ==== > ==== > ==== [O]
+
+BUILD:
+1. Place dust line
+2. Insert repeater every ~15 blocks
+3. Face repeater toward output
+
+USE:
+Prevents signal loss
+
+------------------------------------------------------------
+
+3. REDSTONE TORCH (POWER SOURCE / INVERTER)
+
+ASCII:
+[B]
+[T]
+ |
+ O
+
+BUILD:
+1. Place block
+2. Attach torch to side
+3. Output is ON unless block is powered
+
+USE:
+Basic inversion logic
+
+------------------------------------------------------------
+
+4. NOT GATE (INVERTER)
+
+ASCII:
+[L] ---> [B]
+           |
+           T
+           |
+           O
+
+BUILD:
+1. Input powers block
+2. Torch attached to block
+3. Output taken from torch
+
+LOGIC:
+Input ON → Output OFF
+Input OFF → Output ON
+
+------------------------------------------------------------
+
+5. AND GATE
+
+ASCII:
+A ----\
+        >====[O]
+B ----/
+
+BUILD (simple version):
+1. Inputs A and B feed into block line
+2. Use torch inversion or diode setup
+3. Output only powers when BOTH active
+
+SIMPLER PRACTICAL VERSION:
+Use 2 inputs into same line via repeaters facing output
+
+------------------------------------------------------------
+
+6. OR GATE
+
+ASCII:
+A ----\
+        ==== [O]
+B ----/
+
+BUILD:
+1. Connect both inputs into same dust line
+2. Output activates if ANY input is ON
+
+------------------------------------------------------------
+
+7. XOR GATE (ADVANCED)
+
+ASCII:
+A ----\
+        >====\
+             >====[O]
+        >====/
+B ----/
+
+BUILD (concept):
+1. Combine AND + NOT logic
+2. Output only when inputs differ
+
+USE:
+Toggle systems
+
+------------------------------------------------------------
+
+8. RS NOR LATCH (MEMORY)
+
+ASCII:
+      +------+
+S --->|      |----> Q
+      |      |
+R --->|      |----> NOT Q
+      +------+
+
+PRACTICAL ASCII:
+      T----B----T
+      |         |
+      +----+----+
+           |
+         OUTPUT
+
+BUILD:
+1. Two blocks facing each other
+2. Torch on each block
+3. Cross-connect outputs
+4. Add input lines for Set (S) and Reset (R)
+
+USE:
+Stores ON/OFF state
+
+------------------------------------------------------------
+
+9. T FLIP-FLOP (TOGGLE BUTTON)
+
+ASCII:
+[BUTTON] ---> [CIRCUIT] ---> [O]
+
+SIMPLIFIED:
+Button press toggles output each time
+
+BUILD (simple piston version):
+1. Button input
+2. Sticky piston + block + torch combo
+3. Alternates state each pulse
+
+USE:
+Toggle lights/doors
+
+------------------------------------------------------------
+
+10. REDSTONE CLOCK (LOOP)
+
+ASCII:
+   >---->
+  ^      |
+  |      v
+   <----<
+
+BUILD:
+1. Place 4 repeaters in a loop
+2. Connect dust between them
+3. Power once to start loop
+
+USE:
+Creates repeating pulse
+
+------------------------------------------------------------
+
+11. MONOSTABLE CIRCUIT (PULSE GENERATOR)
+
+ASCII:
+[L] ---> > ---> T ---> [O]
+
+BUILD:
+1. Input goes into repeater
+2. Torch + delay creates short pulse
+3. Output briefly activates
+
+USE:
+Short button pulse regardless of input duration
+
+------------------------------------------------------------
+
+12. PISTON DOOR (2x2 BASIC)
+
+ASCII FRONT VIEW:
+[P][ ]
+[P][ ]
+
+SIDE LOGIC:
+[L] ==== > ==== [P]
+
+BUILD:
+1. Place 4 pistons in door shape
+2. Wire redstone to sides
+3. Add lever/button input
+
+USE:
+Hidden entrances
+
+------------------------------------------------------------
+
+13. OBSERVER CLOCK (FAST CLOCK)
+
+ASCII:
+[OBS] <--> [OBS]
+   |        |
+   +--------+
+       |
+       O
+
+BUILD:
+1. Place 2 observers facing each other
+2. Take output from either
+3. Connect to device
+
+USE:
+Fast pulsing systems
+
+------------------------------------------------------------
+
+14. ITEM SORTER (BASIC)
+
+ASCII:
+[CHEST]
+   |
+ [HOPPER] ---> [CHEST]
+    |
+   [FILTER]
+
+BUILD:
+1. Hopper line into storage
+2. Comparator reads item count
+3. Redstone locks/unlocks hopper
+
+USE:
+Automatic sorting
+
+------------------------------------------------------------
+
+15. LOCKED REPEATER (SIGNAL LOCK)
+
+ASCII:
+INPUT ---> > ---> OUTPUT
+             ^
+             |
+           LOCK
+
+BUILD:
+1. Place repeater
+2. Power side of repeater to lock it
+3. Prevents signal change
+
+USE:
+Memory stabilization
+
+------------------------------------------------------------
+
+16. KEY PRINCIPLES
+
+- Signal strength max = 15
+- Repeaters refresh signal
+- Torches invert signals
+- Observers detect updates
+- Redstone = binary logic system
+
+------------------------------------------------------------
+
+17. FACT-CHECK TAGS
+
+minecraft_redstone
+logic_gates
+redstone_circuits
+memory_latch
+minecraft_engineering
+redstone_clock
+piston_mechanics
+signal_transmission
+
+------------------------------------------------------------
+END OF DOCUMENT
