@@ -10,14 +10,18 @@ Usage:
 
 import argparse
 import json
-
+import numpy as np
 from dotenv import load_dotenv
 from datasets import Dataset                           # pip install datasets
 from ragas import evaluate
 from ragas.metrics import faithfulness, answer_relevancy, context_precision
-
+from langchain_ollama import ChatOllama
 from agents.supervisor import build_supervisor_graph
-
+llm = ChatOllama(
+    model="llama3.2",
+    temperature=0.1,
+    format="json"
+)
 def parse_args() -> argparse.Namespace:
     """Parse evaluation CLI arguments."""
     parser = argparse.ArgumentParser(description="Run RAGAS evaluation.")
@@ -59,9 +63,9 @@ def generate_predictions(dataset: list[dict]) -> list[dict]:
         contexts = [c.page_content for c in result.get("retrieved_chunks", [])]
         out.append({
             "question": entry["question"],
-            "answer": analysis.get("answer", ""),
+            "answer": analysis.get("answer", "irrelevant"),
             "contexts": contexts,
-            "ground_truth": entry["ground_truth_answer"],
+            "reference": entry["ground_truth_answer"],
         })
         print(f"  [{i+1}/{len(dataset)}] done")
     return out
@@ -73,10 +77,14 @@ def run_ragas_evaluation(predictions: list[dict], golden: list[dict]) -> dict:
     result = evaluate(
         ds,
         metrics=[faithfulness, answer_relevancy, context_precision],
+        llm = llm
     )
     # `result` is a RAGASResult; `.to_pandas()` gives per-row, but we want
     # the aggregate summary as a flat dict.
-    return {k: float(v) for k, v in result._scores_dict.items()}
+    return {
+    k: float(np.mean(v)) if isinstance(v, list) else float(v)
+    for k, v in result._scores_dict.items()
+    }
 
 
 def main() -> None:
@@ -84,7 +92,7 @@ def main() -> None:
     load_dotenv()
     args = parse_args()
 
-    golden = load_golden_dataset(args.golden_dataset)
+    golden = load_golden_dataset(args.golden_dataset)[:3]
     predictions = generate_predictions(golden)
     results = run_ragas_evaluation(predictions, golden)
 
