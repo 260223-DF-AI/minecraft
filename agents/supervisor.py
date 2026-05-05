@@ -5,7 +5,7 @@ Builds and returns the main LangGraph StateGraph that orchestrates
 the Planner, Retriever, Analyst, Fact-Checker, and Critique nodes.
 """
 
-from langchain_community.chat_models import ChatOllama
+from langchain_ollama import ChatOllama
 from langchain_core.messages import SystemMessage, HumanMessage
 from langgraph.graph import StateGraph, END
 import json
@@ -226,7 +226,7 @@ graph = build_supervisor_graph()
 config = {"configurable": {"thread_id": "demo-1"}}
 
 result = graph.invoke(
-    {"question": "A real question your corpus can answer.", "user_id": "alice"},
+    {"question": "How do you get apples in Minecraft?", "user_id": "lucas"},
     config=config,
 )
 print("FINAL ANSWER:")
