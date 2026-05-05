@@ -8,15 +8,56 @@ the Planner, Retriever, Analyst, Fact-Checker, and Critique nodes.
 from langchain_community.chat_models import ChatOllama
 from langchain_core.messages import SystemMessage, HumanMessage
 from langgraph.graph import StateGraph, END
-
 import json
 from agents.state import ResearchState
+import os
+from langgraph.graph import StateGraph, START, END
+from langgraph.checkpoint.memory import MemorySaver
+from langgraph.errors import NodeInterrupt
+from langchain_aws import ChatBedrock
+from langchain_core.prompts import ChatPromptTemplate
+from pydantic import BaseModel, Field
 
-llm = ChatOllama(
-    model="llama3.2",   # or mistral, phi3, etc.
-    temperature=0
+from agents.state import ResearchState
+from agents.retriever import retriever_node
+from agents.analyst import analyst_node
+from agents.fact_checker import fact_checker_node
+from memory.store import (
+    get_user_preferences,
+    get_query_history,
+    append_query,
 )
+from dotenv import load_dotenv
 
+#llm = ChatOllama(
+#    model="llama3.2",   # or mistral, phi3, etc.
+#    temperature=0
+#)
+
+
+class _Plan(BaseModel):
+    """Structured output schema for the planner."""
+    subtasks: list[str] = Field(
+        description=(
+            "An ordered JSON array of sub-task strings (1–4 entries). "
+            "Each element MUST be a string. Do NOT return a single concatenated string."
+        ),
+    )
+
+
+_PLANNER_PROMPT = ChatPromptTemplate.from_messages([
+    ("system",
+     "You decompose research questions into 1–4 ordered, independently-"
+     "answerable sub-tasks. Prefer fewer, larger sub-tasks over many tiny "
+     "ones. Each sub-task should be answerable from a single retrieval.\n\n"
+     "Output schema: return JSON with a single key 'subtasks' whose value is "
+     "a JSON array of strings. Never return a single concatenated string."),
+    ("human",
+     "User preferences: {preferences}\n"
+     "Recent past questions from this user: {history}\n\n"
+     "New question: {question}\n\n"
+     "Return the sub-tasks as a JSON list of strings."),
+])
 
 def planner_node(state: ResearchState) -> dict:
     """
@@ -27,47 +68,35 @@ def planner_node(state: ResearchState) -> dict:
     - Return a list of sub-tasks (Plan-and-Execute pattern).
     - Write to the scratchpad for observability.
     """
-    question = state["question"]
+    user_id = state.get("user_id", "default")
+    prefs = get_user_preferences(user_id)
+    history = get_query_history(user_id, limit=3)
+    append_query(user_id, state["question"])
 
-    system_prompt = """You are a planning agent.
+    #llm = ChatBedrock(
+    #    model_id=os.environ["BEDROCK_MODEL_ID"],
+    #    region_name=os.environ["AWS_REGION"],
+    #    model_kwargs={"max_tokens": 512, "temperature": 0.0},
+    #)
 
-    Break the user's question into a concise sequence of actionable steps.
+    llm = ChatOllama(
+        model="llama3.2",   # or mistral, phi3, etc.
+        temperature=0
+    )
 
-    Rules:
-    - Return ONLY valid JSON
-    - Format: {"steps": ["step 1", "step 2", ...]}
-    - Steps should map to: search, analyze, fact-check, synthesize
-    - Keep it short (3–6 steps max)
-    """
-
-    user_prompt = f"Question: {question}"
-
-    response = llm.invoke([
-        SystemMessage(content=system_prompt),
-        HumanMessage(content=user_prompt)
-    ])
-
-    content = response.content.strip()
-
-    # ---- Safe parsing ----
-    try:
-        parsed = json.loads(content)
-        steps = parsed.get("steps", [])
-    except Exception:
-        # fallback if model fails JSON
-        steps = [
-            f"Search for information about: {question}",
-            "Analyze the findings",
-            "Fact-check key claims",
-            "Generate final answer"
-        ]
+    chain = _PLANNER_PROMPT | llm.with_structured_output(_Plan)
+    plan = chain.invoke({
+        "question": state["question"],
+        "preferences": prefs,
+        "history": history or ["<none>"],
+    })
 
     return {
-        "plan": steps,
-        "current_step": 0,
-        "scratchpad": state.get("scratchpad", []) + [
-            f"Generated plan: {steps}"
-        ]
+        "plan": plan.subtasks,
+        "current_subtask_index": 0,
+        "iteration_count": 0,
+        "needs_hitl": False,
+        "scratchpad": [f"[planner] decomposed into {len(plan.subtasks)} sub-tasks"],
     }
 
 
@@ -79,22 +108,13 @@ def router(state: ResearchState) -> str:
     - Inspect the current plan and state to choose the next node.
     - Return the node name as a string (used by add_conditional_edges).
     """
-    step = state.get("current_step", 0)
-    plan = state.get("plan", [])
-
-    if step >= len(plan):
-        return "critique"
-
-    task = plan[step].lower()
-
-    if "search" in task:
+    if not state.get("retrieved_chunks"):
         return "retriever"
-    elif "analyze" in task:
+    if not state.get("analysis"):
         return "analyst"
-    elif "fact" in task:
+    if not state.get("fact_check_report"):
         return "fact_checker"
-    else:
-        return "analyst"
+    return "critique"
 
 
 def critique_node(state: ResearchState) -> dict:
@@ -108,33 +128,47 @@ def critique_node(state: ResearchState) -> dict:
     - If above threshold, accept and route to END.
     - Increment iteration_count.
     """
-    confidence = state.get("confidence_score", 0.5)
-    iteration = state.get("iteration_count", 0)
-    max_iter = state.get("max_iterations", 3)
-    threshold = state.get("hitl_threshold", 0.8)
+    """Decide: accept, retry, or escalate to HITL."""
+    iteration = state.get("iteration_count", 0) + 1
+    confidence = state.get("confidence_score", 0.0)
+    threshold = float(os.environ.get("HITL_CONFIDENCE_THRESHOLD", 0.6))
+    max_iter = int(os.environ.get("MAX_REFINEMENT_ITERATIONS", 3))
 
-    iteration += 1
+    log = [f"[critique] iter={iteration}, conf={confidence:.2f}, "
+           f"threshold={threshold}, max_iter={max_iter}"]
 
-    # Accept
-    if confidence >= threshold:
-        return {
-            "iteration_count": iteration,
-            "scratchpad": state["scratchpad"] + ["Accepted response."]
-        }
+    # Path 1: confident enough → accept.
+    if confidence >= threshold and not state.get("needs_hitl"):
+        log.append("[critique] accepted")
+        return {"iteration_count": iteration, "scratchpad": log}
 
-    # Retry loop
-    if iteration < max_iter:
-        return {
-            "iteration_count": iteration,
-            "current_step": 0,  # restart plan
-            "scratchpad": state["scratchpad"] + ["Retrying with refinement."]
-        }
+    # Path 2: budget exhausted → escalate.
+    if iteration >= max_iter:
+        log.append("[critique] max iterations reached — escalating to HITL")
+        # NodeInterrupt pauses the graph; resume by graph.update_state(...).
+        raise NodeInterrupt(
+            f"Confidence {confidence:.2f} below threshold {threshold} "
+            f"after {iteration} iterations. Human review required."
+        )
 
-    # Escalate (HITL)
+    # Path 3: retry — clear downstream state so the router re-runs them.
+    log.append("[critique] retrying — clearing analysis & fact_check")
     return {
         "iteration_count": iteration,
-        "scratchpad": state["scratchpad"] + ["Escalating to human."]
+        "retrieved_chunks": [],  # forces retriever to re-fetch
+        "analysis": {},  # forces analyst to re-synthesize
+        "fact_check_report": {},
+        "scratchpad": log,
     }
+
+
+def _critique_router(state: ResearchState) -> str:
+    """Edge after critique_node — END if accepted, else loop."""
+    confidence = state.get("confidence_score", 0.0)
+    threshold = float(os.environ.get("HITL_CONFIDENCE_THRESHOLD", 0.6))
+    if confidence >= threshold and not state.get("needs_hitl"):
+        return END
+    return "retriever"
 
 
 def build_supervisor_graph():
@@ -153,37 +187,51 @@ def build_supervisor_graph():
     """
     graph = StateGraph(ResearchState)
 
-    # Add nodes
     graph.add_node("planner", planner_node)
-    graph.add_node("retriever", lambda s: {"current_step": s["current_step"] + 1})
-    graph.add_node("analyst", lambda s: {"current_step": s["current_step"] + 1})
-    graph.add_node("fact_checker", lambda s: {"current_step": s["current_step"] + 1})
+    graph.add_node("retriever", retriever_node)
+    graph.add_node("analyst", analyst_node)
+    graph.add_node("fact_checker", fact_checker_node)
     graph.add_node("critique", critique_node)
 
-    # Entry point
-    graph.set_entry_point("planner")
+    graph.add_edge(START, "planner")
+    # After planner, the router picks whichever specialist is needed first
+    # (almost always the retriever). Listed below so LangGraph knows the
+    # full set of valid destinations.
+    graph.add_conditional_edges(
+        "planner", router,
+        {"retriever": "retriever", "analyst": "analyst",
+         "fact_checker": "fact_checker", "critique": "critique"},
+    )
+    # Linear within a sub-task: retriever → analyst → fact_checker → critique
+    graph.add_edge("retriever", "analyst")
+    graph.add_edge("analyst", "fact_checker")
+    graph.add_edge("fact_checker", "critique")
 
-    # Flow
-    graph.add_conditional_edges("planner", router)
+    # Critique decides whether to loop or end.
+    graph.add_conditional_edges(
+        "critique", _critique_router,
+        {"retriever": "retriever", END: END},
+    )
 
-    graph.add_conditional_edges("retriever", router)
-    graph.add_conditional_edges("analyst", router)
-    graph.add_conditional_edges("fact_checker", router)
+    # MemorySaver = in-process checkpointer; switch to a persistent saver
+    # (PostgresSaver / DynamoDBSaver) when deploying to Lambda.
+    return graph.compile(checkpointer=MemorySaver())
 
-    # Critique branching
-    def critique_router(state: ResearchState):
-        confidence = state.get("confidence_score", 0.5)
-        iteration = state.get("iteration_count", 0)
-        max_iter = state.get("max_iterations", 3)
-        threshold = state.get("hitl_threshold", 0.8)
 
-        if confidence >= threshold:
-            return END
-        elif iteration < max_iter:
-            return "planner"
-        else:
-            return END  # or "hitl_node" if you add one
+load_dotenv()
 
-    graph.add_conditional_edges("critique", critique_router)
+from agents.supervisor import build_supervisor_graph
 
-    return graph.compile()
+graph = build_supervisor_graph()
+config = {"configurable": {"thread_id": "demo-1"}}
+
+result = graph.invoke(
+    {"question": "A real question your corpus can answer.", "user_id": "alice"},
+    config=config,
+)
+print("FINAL ANSWER:")
+print(result["analysis"]["answer"])
+print("\nCONFIDENCE:", result["confidence_score"])
+print("\nSCRATCHPAD:")
+for line in result["scratchpad"]:
+    print(" ", line)
