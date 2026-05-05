@@ -250,6 +250,6 @@ if __name__ == "__main__":
     5. Ghast fireball (Nether setup only)
     """
 
-    response = ask("What's the best way to ignite a nether portal in a minecraft speedrun?", gt=truth)
+    response = ask("What's the best way to ignite a nether portal in a minecraft speedrun? Let me know the decision for early-game and mid-game.", gt=truth)
     print("\n\nOUTPUT:\n\n")
     print(response)
