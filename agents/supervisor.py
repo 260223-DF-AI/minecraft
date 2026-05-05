@@ -219,20 +219,19 @@ def build_supervisor_graph():
     # MemorySaver = in-process checkpointer; switch to a persistent saver
     # (PostgresSaver / DynamoDBSaver) when deploying to Lambda.
     return graph.compile(checkpointer=MemorySaver())
+if __name__ == "__main__":
+    from agents.supervisor import build_supervisor_graph
 
+    graph = build_supervisor_graph()
+    config = {"configurable": {"thread_id": "demo-1"}}
 
-from agents.supervisor import build_supervisor_graph
-
-graph = build_supervisor_graph()
-config = {"configurable": {"thread_id": "demo-1"}}
-
-result = graph.invoke(
-    {"question": "How can I obtain a golden apple in Minecraft?", "user_id": "lucas"},
-    config=config,
-)
-print("FINAL ANSWER:")
-print(result["analysis"]["answer"])
-print("\nCONFIDENCE:", result["confidence_score"])
-print("\nSCRATCHPAD:")
-for line in result["scratchpad"]:
-    print(" ", line)
+    result = graph.invoke(
+        {"question": "How can I obtain a golden apple in Minecraft?", "user_id": "lucas"},
+        config=config,
+    )
+    print("FINAL ANSWER:")
+    print(result["analysis"]["answer"])
+    print("\nCONFIDENCE:", result["confidence_score"])
+    print("\nSCRATCHPAD:")
+    for line in result["scratchpad"]:
+        print(" ", line)

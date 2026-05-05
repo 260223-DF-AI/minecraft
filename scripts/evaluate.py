@@ -56,7 +56,7 @@ def generate_predictions(dataset: list[dict]) -> list[dict]:
             out.append({"question": entry["question"], "answer": "", "contexts": []})
             continue
         analysis = result.get("analysis", {}) or {}
-        contexts = [c["content"] for c in result.get("retrieved_chunks", [])]
+        contexts = [c.page_content for c in result.get("retrieved_chunks", [])]
         out.append({
             "question": entry["question"],
             "answer": analysis.get("answer", ""),
