@@ -1,0 +1,315 @@
+Minecraft Drop Tables — Fact-Check Knowledge Document
+
+1. OVERVIEW
+Drop tables in Minecraft define what items entities (mobs), blocks, or game events produce when broken, killed, or triggered. Drops can depend on conditions such as tool type, enchantments, and randomness.
+
+Drop types:
+- Guaranteed drops (always occur)
+- Random drops (chance-based)
+- Conditional drops (depend on tool/enchant/biome/state)
+- No-drop cases
+
+------------------------------------------------------------
+
+2. MOB DROP TABLE BASICS
+
+When a mob is killed, it may drop:
+- Items (loot)
+- Experience orbs
+- Rare drops (low probability items)
+
+General structure:
+
+[MOB DEFEATED]
+      |
+      v
++------------------+
+| Drop Table Check |
++------------------+
+      |
+      v
+[Roll RNG → Items]
+
+------------------------------------------------------------
+
+3. BASIC MOB DROP EXAMPLE
+
+Zombie:
+- Rotten Flesh (common drop)
+- Rare drops: Iron Ingot, Carrot, Potato
+- Experience: Yes
+
+ASCII:
+Zombie Kill
+     |
+     v
++-----------+
+| RNG Roll  |
++-----------+
+  |   |   |
+  F   R   XP
+  |   |   |
+Flesh Rare XP
+
+F = Common drop
+R = Rare drop
+XP = Experience
+
+------------------------------------------------------------
+
+4. COW DROP TABLE
+
+Cow:
+- Raw Beef (or Steak if killed by fire)
+- Leather (guaranteed drop)
+
+ASCII:
+[COW]
+  |
+  v
++----------------+
+| Drop Decision  |
++----------------+
+   |         |
+ Beef     Leather
+   |         |
+ Item     Crafting
+
+------------------------------------------------------------
+
+5. SHEEP DROP TABLE
+
+Sheep:
+- Wool (drops only if not sheared)
+- Mutton (raw/cooked depending on kill method)
+
+ASCII:
+[SHEEP]
+   |
+   v
++------------------+
+| Sheared check?   |
++------------------+
+   |YES        |NO
+   v           v
+ No wool     Wool + Meat
+
+------------------------------------------------------------
+
+6. CREEPER DROP TABLE
+
+Creeper:
+- Gunpowder (0–2 typically)
+- Music discs (if killed by skeleton arrow)
+
+ASCII:
+[CREEPER]
+   |
+   v
++----------------------+
+| Death Condition      |
++----------------------+
+   |         |
+Normal     Skeleton kill
+   |         |
+Gunpowder   Music Disc
+
+------------------------------------------------------------
+
+7. SKELETON DROP TABLE
+
+Skeleton:
+- Bones
+- Arrows
+- Bow (rare drop from equipment)
+
+ASCII:
+[SKELETON]
+   |
+   v
++------------------+
+| RNG Roll         |
++------------------+
+  |     |      |
+Bones  Arrows  Bow
+
+------------------------------------------------------------
+
+8. BLOCK DROP TABLES
+
+Blocks may drop:
+- Themselves (if correct tool used)
+- Modified item (e.g., ore → resource)
+- Nothing (destroyed)
+
+------------------------------------------------------------
+
+9. ORE DROP SYSTEM
+
+Iron Ore:
+- Drops Raw Iron (not block itself)
+
+Diamond Ore:
+- Drops Diamond
+
+ASCII:
+[ORE BLOCK]
+     |
+     v
++------------------+
+| Tool Check       |
++------------------+
+     |
+     v
+[Resource Item]
+
+Examples:
+- Iron Ore → Raw Iron
+- Gold Ore → Raw Gold
+- Diamond Ore → Diamond
+
+------------------------------------------------------------
+
+10. SILK TOUCH VS NORMAL DROP
+
+Without Silk Touch:
+- Ore drops resources
+
+With Silk Touch:
+- Ore drops itself
+
+ASCII:
+         +------------------+
+         | Silk Touch Tool? |
+         +------------------+
+            |YES      |NO
+            v         v
+        [Block]   [Resource]
+
+------------------------------------------------------------
+
+11. FORTUNE ENCHANTMENT EFFECT
+
+Fortune increases drop quantity probability:
+
+Example (Diamond Ore):
+- No Fortune → 1 diamond
+- Fortune → 1–4 diamonds possible
+
+ASCII:
+[ORE]
+  |
+  v
++------------------+
+| Fortune Level    |
++------------------+
+ L0   L1   L2   L3
+ 1    1-2  1-3  1-4
+
+------------------------------------------------------------
+
+12. FARM AND PLANT DROPS
+
+Wheat:
+- Seeds (planting)
+- Wheat (harvest)
+
+Carrots / Potatoes:
+- Crop item (multiple yield possible)
+
+ASCII:
+[PLANT]
+   |
+   v
++------------------+
+| Growth Stage     |
++------------------+
+   |
+   v
+[Harvest → Items]
+
+------------------------------------------------------------
+
+13. LOOT TABLE STRUCTURE (GENERALIZED)
+
+All drop tables follow a logic structure:
+
+Entity/Block Trigger
+        |
+        v
++------------------+
+| Loot Table Roll  |
++------------------+
+        |
+        v
++------------------------------+
+| Conditions (tool, luck, RNG) |
++------------------------------+
+        |
+        v
+[Final Items Dropped]
+
+------------------------------------------------------------
+
+14. RANDOMNESS (RNG SYSTEM)
+
+Minecraft uses pseudo-random number generation for drops:
+- Each drop has a probability weight
+- Some drops are mutually exclusive
+- Some items scale with modifiers (Looting, Fortune)
+
+ASCII:
+Random Roll (0–100)
+   |
+   +--> 0–50   Common drop
+   +--> 51–90  Uncommon
+   +--> 91–100 Rare
+
+------------------------------------------------------------
+
+15. LOOTING ENCHANTMENT (MOBS)
+
+Looting increases quantity of drops:
+
+Example:
+- Zombie:
+  Base: 0–2 rotten flesh
+  With Looting: increased max + chance for extra drops
+
+ASCII:
+[Mob Kill]
+   |
+   v
++------------------+
+| Looting Check    |
++------------------+
+   |
+   v
+[Increased Drops]
+
+------------------------------------------------------------
+
+16. KEY RULES
+
+- Drops depend on loot tables defined per entity/block
+- RNG determines variation
+- Enchantments modify drop outcomes
+- Tool type can change drop completely
+- Some drops are exclusive to specific conditions
+
+------------------------------------------------------------
+
+17. FACT-CHECK TAGS
+
+minecraft_drop_tables
+loot_tables
+minecraft_mobs
+item_drops
+rng_system
+fortune_enchantment
+looting_enchantment
+block_drops
+minecraft_mechanics
+
+------------------------------------------------------------
+END OF DOCUMENT

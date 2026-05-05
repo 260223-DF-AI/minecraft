@@ -1,0 +1,128 @@
+Minecraft Redstone Circuits — Fact-Check Knowledge Document
+1. Overview of Redstone Circuits
+
+Redstone circuits are systems built using redstone components that transmit, process, or store redstone signals. They function similarly to electrical circuits and are used to create automation such as farms, logic systems, and machines.
+
+Redstone circuits can be broadly categorized into:
+
+Combinational logic circuits: Output depends only on current inputs.
+Sequential (memory) circuits: Output depends on current inputs and previous state.
+2. Core Redstone Signal Concepts
+Redstone Signal
+
+A redstone signal is a binary state:
+
+ON (powered)
+OFF (unpowered)
+
+Signals can also have strength levels (0–15) depending on distance or components.
+
+Signal Transmission
+Redstone dust transmits signals up to 15 blocks
+Repeaters are used to extend signal range beyond 15 blocks
+Powering Behavior
+Powered blocks can activate adjacent components.
+Strongly powered blocks can power redstone dust.
+Weakly powered blocks cannot power dust.
+3. Types of Redstone Components
+Power Components (Signal Sources)
+
+These generate redstone signals:
+
+Lever (constant ON/OFF)
+Button (temporary pulse)
+Pressure plate (environment-triggered)
+Redstone block (constant power source)
+Transmission Components
+
+Used to carry or modify signals:
+
+Redstone dust (wire)
+Redstone repeater (extends signal + adds delay)
+Redstone comparator (signal comparison / analog logic)
+Mechanism Components
+
+Triggered by redstone signals:
+
+Pistons
+Doors
+Lamps
+Droppers / dispensers
+4. Signal Behavior Types
+Continuous Signal
+Stable ON or OFF state
+Pulse
+
+A pulse is a temporary ON/OFF change in signal state:
+
+On-pulse: OFF → ON → OFF
+Off-pulse: ON → OFF → ON
+5. Logic Circuits
+
+Logic circuits process inputs into outputs.
+
+Basic Logic Gates
+AND: output ON only if all inputs are ON
+OR: output ON if any input is ON
+NOT: inverts signal (ON → OFF)
+XOR Gate
+Output ON if exactly one input is ON
+Used for toggling mechanisms and multi-control systems
+6. Memory Circuits (Sequential Logic)
+
+Memory circuits store state and retain output until changed.
+
+Key characteristics:
+
+Output depends on past inputs
+Used for storage, counters, clocks, and state machines
+Common Types
+Latches: hold state until changed
+Flip-flops: change state on signal edge (toggle behavior)
+Inputs in memory circuits:
+S (Set): turns ON
+R (Reset): turns OFF
+T (Toggle): switches state
+C (Clock): controls update timing
+D (Data): defines stored value
+7. Circuit Categories
+7.1 Logic Circuits
+Perform boolean operations
+Used in computation and decision systems
+7.2 Transmission Circuits
+Move signals between locations
+Include wiring, repeaters, and bridges
+7.3 Pulse Circuits
+Generate or modify short signal changes
+Used in timing systems, clocks, and triggers
+7.4 Memory Circuits
+Store information
+Used in counters, registers, and computing systems
+8. Key Properties of Redstone Systems
+Fully deterministic (same input → same output)
+Can include delay (ticks introduced via repeaters)
+Can simulate digital logic systems
+Supports analog-like behavior via signal strength
+Enables construction of computational systems
+9. Practical Uses
+
+Redstone circuits are used to build:
+
+Automated farms
+Doors and security systems
+Logic processors (adders, ALUs)
+Clocks and timers
+Storage and memory systems
+Simple computers
+10. Fact-Checking Relevance Tags (for vector DB)
+
+Use these tags when embedding:
+
+redstone_logic
+minecraft_circuits
+logic_gates
+memory_circuits
+signal_transmission
+pulse_behavior
+redstone_components
+minecraft_redstone_mechanics
