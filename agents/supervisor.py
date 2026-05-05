@@ -29,10 +29,13 @@ from memory.store import (
 )
 from dotenv import load_dotenv
 
-#llm = ChatOllama(
-#    model="llama3.2",   # or mistral, phi3, etc.
-#    temperature=0
-#)
+load_dotenv()
+
+
+llm = ChatOllama(
+    model="llama3.2",   # or mistral, phi3, etc.
+    temperature=0
+)
 
 
 class _Plan(BaseModel):
@@ -218,15 +221,13 @@ def build_supervisor_graph():
     return graph.compile(checkpointer=MemorySaver())
 
 
-load_dotenv()
-
 from agents.supervisor import build_supervisor_graph
 
 graph = build_supervisor_graph()
 config = {"configurable": {"thread_id": "demo-1"}}
 
 result = graph.invoke(
-    {"question": "How do you get apples in Minecraft?", "user_id": "lucas"},
+    {"question": "How can I obtain a golden apple in Minecraft?", "user_id": "lucas"},
     config=config,
 )
 print("FINAL ANSWER:")

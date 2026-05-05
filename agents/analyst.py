@@ -6,13 +6,16 @@ response using AWS Bedrock, with Pydantic-validated output.
 """
 
 from pydantic import BaseModel
-
+import os
 from agents.state import ResearchState
 
+from langchain_aws import ChatBedrock
 from langchain_ollama import ChatOllama
 from langchain_core.documents import Document
 
 import json
+from dotenv import load_dotenv
+load_dotenv()
 # ---------------------------------------------------------------------------
 # Structured Output Schema
 # ---------------------------------------------------------------------------
@@ -93,7 +96,12 @@ from langchain_ollama import ChatOllama
 def stream_ollama(prompt: str, model: str = "llama3.1:8b") -> str:
     #print("Streaming response from Ollama... with prompt:", prompt)
 
-    llm = ChatOllama(model=model)
+    llm = ChatOllama(model=model, temperature=0)
+    #llm = ChatBedrock(
+    #    model_id=os.environ["BEDROCK_MODEL_ID"],
+    #    region_name=os.environ["AWS_REGION"],
+    #    model_kwargs={"max_tokens": 512, "temperature": 0.0},
+    #)
 
     stream = llm.stream(prompt)
 

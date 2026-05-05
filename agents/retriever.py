@@ -7,7 +7,7 @@ structured retrieval results to the Supervisor.
 """
 
 from agents.state import ResearchState
-
+from langchain_aws import ChatBedrock
 from langchain_ollama import ChatOllama, OllamaEmbeddings
 from pinecone import Pinecone, ServerlessSpec
 from langchain_pinecone import PineconeVectorStore
@@ -16,9 +16,15 @@ os.environ["LANGCHAIN_TRACING_V2"] = "false"
 os.environ["LANGCHAIN_ENDPOINT"] = ""
 os.environ["LANGCHAIN_API_KEY"] = ""
 from dotenv import load_dotenv
+load_dotenv()
 
 
-llm = ChatOllama(model="llama3.2")
+llm = ChatOllama(model="llama3.2", temperature = 0)
+#llm = ChatBedrock(
+#        model_id=os.environ["BEDROCK_MODEL_ID"],
+#        region_name=os.environ["AWS_REGION"],
+#        model_kwargs={"max_tokens": 512, "temperature": 0.0},
+#    )
 
 
 def ollama_rerank(query: str, doc_text: str) -> float:
