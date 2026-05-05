@@ -11,16 +11,25 @@ from langchain_ollama import ChatOllama, OllamaEmbeddings
 from langchain_pinecone import PineconeVectorStore
 from pinecone import Pinecone
 from dotenv import load_dotenv
+from langchain_aws import ChatBedrock
+
 
 import json
 import os
 import re
+load_dotenv()
+
 
 os.environ["LANGCHAIN_TRACING_V2"] = "false"
 os.environ["LANGCHAIN_ENDPOINT"] = ""
 os.environ["LANGCHAIN_API_KEY"] = ""
 
 llm = ChatOllama(model="qwen2.5:3b", temperature=0,format="json")
+#llm = ChatBedrock(
+#        model_id=os.environ["BEDROCK_FACTCHECKING_ID"],
+#        region_name=os.environ["AWS_REGION"],
+#        model_kwargs={"max_tokens": 512, "temperature": 0.0},
+#    )
 
 
 # -----------------------------
@@ -272,8 +281,8 @@ def verify_claim(llm, claim: str, context: str) -> ClaimVerdict:
 def compute_confidence(verdicts: list[ClaimVerdict]) -> float:
     score_map = {
         "Supported": 1.0,
-        "Inconclusive": 0.0,
-        "Unsupported": .75
+        "Inconclusive": 0.5,
+        "Unsupported": 0.0
     }
 
     if not verdicts:
