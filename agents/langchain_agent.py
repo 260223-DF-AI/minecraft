@@ -14,6 +14,7 @@ from ragas import evaluate
 from datasets import Dataset
 from ragas.metrics import faithfulness, answer_relevancy, context_precision
 #from ragas.metrics.collections import Faithfulness, AnswerRelevancy, ContextPrecision
+from ragas.llms import LangchainLLMWrapper
 
 import os
 from dotenv import load_dotenv
@@ -39,13 +40,20 @@ vectorstore = PineconeVectorStore(
 
 
 
-
+total_faith = 0
+total_relevancy = 0
+total_precision = 0
 
 
 # ooga booga
 llm = ChatOllama(
     model="llama3.1:8b",
-    temperature=0.1
+    temperature=0.1,
+    format="json"
+)
+reranker = ChatOllama(
+    model="llama3.2",
+    temperature=0
 )
 
 # system prompt
@@ -97,7 +105,7 @@ SCORE:
 """
 
     try:
-        response = llm.invoke(prompt).content.strip()
+        response = reranker.invoke(prompt).content.strip()
 
         # extract float safely
         score = float(response)
@@ -144,8 +152,16 @@ def ask2(question:str):
     })
 
     return result["messages"][-1].content
+import json
+def load_golden_dataset(filepath: str) -> list[dict]:
+    """
+    Load the golden dataset from a JSON file.
 
-
+    Expected format: see data/golden_dataset.json for the schema.
+    """
+    with open(filepath, "r", encoding="utf-8") as f:
+        return json.load(f)
+ragas_llm = LangchainLLMWrapper(llm)
 def run_ragas(question: str, answer: str, contexts: list[str], ground_truth: str):
     if not ground_truth:
         print("No ground truth provided, skipping evaluation.")
@@ -163,7 +179,7 @@ def run_ragas(question: str, answer: str, contexts: list[str], ground_truth: str
                     answer_relevancy,
                     context_precision
                 ],
-                llm = llm
+                llm = ragas_llm,
     )
     return result
 
@@ -181,15 +197,18 @@ def ask(question: str, gt:str):
         doc.metadata["rerank_score"] = score
         scored_docs.append(doc)
 
-    reranked_docs = sorted(
+    reranked_docs_temp = sorted(
         scored_docs,
         key=lambda d: d.metadata["rerank_score"],
         reverse=True
-    )[:10]
-
-    for doc in reranked_docs:
+    )[:5]
+    reranked_docs = []
+    for doc in reranked_docs_temp:
+        if doc.metadata["rerank_score"] > 0.65:
+            reranked_docs.append(doc)
+    #for doc in reranked_docs:
         #print(doc)
-        print(doc.metadata["source"])
+        #print(doc.metadata["source"])
 
     documents = "\n".join(doc.page_content for doc in reranked_docs)
     #print("found:",documents)
@@ -214,7 +233,7 @@ def ask(question: str, gt:str):
         "messages": [("human", query)]
     })
 
-    contexts = [doc.page_content for doc in reranked_docs]
+    contexts = [doc.page_content.strip() for doc in reranked_docs if doc.page_content and doc.page_content.strip()]
     ragas_result = run_ragas(
         question=question,
         answer=result["messages"][-1].content,
@@ -238,18 +257,26 @@ if __name__ == "__main__":
     #response = ask("What's eternal fire and how do we get it?")
     #response = ask2("How do I beat 26w14a the april fools update in 2026?")
 
-    truth = """
-    10. IGNITION OPTIMIZATION
+    # truth = """
+    # 10. IGNITION OPTIMIZATION
 
-    Fastest ignition priorities:
+    # Fastest ignition priorities:
 
-    1. Flint and Steel (best consistent)
-    2. Fire Charge (inventory-based instant use)
-    3. Lava spread (situational)
-    4. Fire arrow (rare)
-    5. Ghast fireball (Nether setup only)
-    """
+    # 1. Flint and Steel (best consistent)
+    # 2. Fire Charge (inventory-based instant use)
+    # 3. Lava spread (situational)
+    # 4. Fire arrow (rare)
+    # 5. Ghast fireball (Nether setup only)
+    # """
 
-    response = ask("What's the best way to ignite a nether portal in a minecraft speedrun? Let me know the decision for early-game and mid-game.", gt=truth)
-    print("\n\nOUTPUT:\n\n")
-    print(response)
+    #response = ask("What's the best way to ignite a nether portal in a minecraft speedrun? Let me know the decision for early-game and mid-game.", gt=truth)
+    
+    golden = load_golden_dataset("./data/golden_dataset.json")
+    for g in golden:
+        print("question:", g["question"])
+        response = ask(g["question"], gt=g["ground_truth_answer"])
+        print()
+        #print("answer:", g["ground_truth_answer"])
+        #print(response)
+    #print("\n\nOUTPUT:\n\n")
+    #print(response)

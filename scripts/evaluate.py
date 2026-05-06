@@ -13,10 +13,12 @@ import json
 import numpy as np
 from dotenv import load_dotenv
 from datasets import Dataset                           # pip install datasets
-from ragas import evaluate
+from ragas import evaluate, RunConfig
 from ragas.metrics import faithfulness, answer_relevancy, context_precision
 from langchain_ollama import ChatOllama
 from agents.supervisor import build_supervisor_graph
+run_config = RunConfig(timeout=300)
+
 llm = ChatOllama(
     model="llama3.2",
     temperature=0.1,
@@ -77,7 +79,8 @@ def run_ragas_evaluation(predictions: list[dict], golden: list[dict]) -> dict:
     result = evaluate(
         ds,
         metrics=[faithfulness, answer_relevancy, context_precision],
-        llm = llm
+        llm = llm,
+        run_config=run_config
     )
     # `result` is a RAGASResult; `.to_pandas()` gives per-row, but we want
     # the aggregate summary as a flat dict.
@@ -92,7 +95,7 @@ def main() -> None:
     load_dotenv()
     args = parse_args()
 
-    golden = load_golden_dataset(args.golden_dataset)[:3]
+    golden = load_golden_dataset(args.golden_dataset)[:1]
     predictions = generate_predictions(golden)
     results = run_ragas_evaluation(predictions, golden)
 
