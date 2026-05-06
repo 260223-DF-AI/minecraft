@@ -1,308 +1,294 @@
-Minecraft Villagers — Fact-Check Knowledge Document
+Minecraft Bastion Speedrun Guide — Fact-Check Knowledge Document
 
 1. OVERVIEW
-Villagers are passive humanoid NPCs in Minecraft that live in villages and participate in a trading system. Their behavior is governed by profession, workstations, schedules, and village mechanics.
+A Bastion Remnant is a Nether structure containing Piglins, loot chests, gold blocks, and dangerous terrain. In speedrunning, Bastions are critical for acquiring:
+- Gold
+- Ender Pearls (via bartering)
+- Diamond gear (rare loot)
+- Obsidian or utility items (varies by loot type)
 
-Core functions:
-- Trading with players
-- Using workstations
-- Sleeping and working on schedules
-- Participating in village mechanics (breeding, gossip, panic)
-
-------------------------------------------------------------
-
-2. VILLAGER TYPES
-
-Villagers have professions based on workstation blocks:
-
-- None (Unemployed)
-- Farmer
-- Librarian
-- Cleric
-- Armorer
-- Weaponsmith
-- Toolsmith
-- Fletcher
-- Butcher
-- Leatherworker
-- Mason (Stone Mason)
-
-Nitwit:
-- Cannot trade
-- Has green robe
-- No profession assignment
-
-ASCII:
-
-        [VILLAGER]
-             |
-   +---------+---------+
-   |                   |
-[PROFESSION]       [NITWIT]
-   |                   |
- TRADING            NO TRADE
+Goal of bastion speedrun strategy:
+- Enter safely
+- Locate treasure quickly
+- Secure gold/loot
+- Barter efficiently
+- Exit without dying
 
 ------------------------------------------------------------
 
-3. PROFESSION ASSIGNMENT SYSTEM
+2. BASTION TYPES
 
-Villagers acquire professions based on nearby workstation blocks:
+There are 4 main Bastion variants:
 
-Example mapping:
-- Composter → Farmer
-- Lectern → Librarian
-- Blast Furnace → Armorer
-- Grindstone → Weaponsmith
-- Smithing Table → Toolsmith
-- Fletching Table → Fletcher
+1. Treasure Bastion
+- Central treasure room
+- Contains magma cube spawner
+- Highest-value loot
 
-ASCII FLOW:
+2. Bridge Bastion
+- Large open structure
+- Dangerous Piglin Brute patrols
 
-[VILLAGER]
-     |
-     v
-+----------------------+
-| Detect Workstation   |
-+----------------------+
-     |
-     v
-[Assign Profession]
+3. Hoglin Stable Bastion
+- Contains Hoglins (food + threat)
+- Good for food farming
 
-Important rules:
-- Must be unclaimed workstation
-- Villager must be unemployed or not locked
-- Profession locks after first trade
+4. Housing Units Bastion
+- Multiple rooms
+- Moderate loot spread
+
+ASCII (generic bastion layout):
+
+        [STRUCTURE]
+     +----------------+
+     |  ROOM  | ROOM  |
+     |--------+--------|
+     |  GOLD  | CHEST  |
+     |--------+--------|
+     | BRUTES | TREASURE|
+     +----------------+
 
 ------------------------------------------------------------
 
-4. TRADING SYSTEM
+3. ENTRY STRATEGY (FIRST 30 SECONDS)
 
-Villager trading is a barter system:
+Primary objectives on entry:
+- Avoid Piglin Brutes
+- Identify chest locations
+- Secure safe high ground
+- Do NOT open chests immediately if Piglins are nearby
 
-PLAYER → ITEM → VILLAGER → EMERALDS / ITEMS
+ASCII ENTRY FLOW:
+
+[ENTER BASTION]
+       |
+       v
++------------------+
+| Immediate Scan   |
++------------------+
+   |       |      |
+Loot   Threat   Exit route
+
+------------------------------------------------------------
+
+4. PIGLIN BEHAVIOR RULES
+
+Piglins:
+- Neutral unless provoked
+- Aggro if:
+  - Player opens chest
+  - Player breaks gold
+  - Player wears non-gold armor
+
+Piglin Brutes:
+- Always hostile
+- High damage
+- Cannot be bribed with gold armor
 
 ASCII:
 
 [PLAYER]
    |
    v
-+----------------+
-| Trade Menu     |
-+----------------+
-   |
-   v
-[Exchange Items]
-
-Example:
-- Player gives emerald → receives enchanted book
-- Villager gives item → receives emerald
++----------------------+
+| GOLD ARMOR CHECK     |
++----------------------+
+   |YES        |NO
+   v           v
+Neutral     Aggro Piglins
 
 ------------------------------------------------------------
 
-5. TRADE LOCKING RULE
+5. LOOT PRIORITY SYSTEM
 
-Once a trade is used:
-- It becomes locked (cannot change trades)
-- Experience increases villager level
-- New trades unlock over time
+Speedrun loot priority:
 
-Villager levels:
-- Novice
-- Apprentice
-- Journeyman
-- Expert
-- Master
+1. Gold blocks
+2. Treasure chest loot
+3. Bartering gold
+4. Obsidian / utility items
 
 ASCII:
 
-Novice → Apprentice → Journeyman → Expert → Master
-   |         |            |           |         |
- new trades unlock progressively
+LOOT VALUE PRIORITY:
+GOLD BLOCKS >>> CHESTS >>> BARTER >>> RANDOM ITEMS
 
 ------------------------------------------------------------
 
-6. WORKDAY SCHEDULE
+6. TREASURE CHEST STRATEGY
 
-Villagers follow a daily cycle:
-
-- Morning: Go to workstation
-- Day: Work and trade
-- Evening: Return home
-- Night: Sleep in bed
+Steps:
+1. Locate central/hidden chest
+2. Clear Piglins or isolate area
+3. Open chest quickly
+4. Grab high-value items first
 
 ASCII:
 
-MORNING → WORK → EVENING → SLEEP
-   ↑                         ↓
-   +-------------------------+
++------------------+
+| CHEST ROOM       |
++------------------+
+        |
+        v
+[OPEN → LOOT → EXIT]
 
 Important:
-- They must reach workstation to restock trades
-- They must sleep in a claimed bed
+- Opening chests triggers Piglin aggression
+- Always prepare escape path first
 
 ------------------------------------------------------------
 
-7. BREEDING SYSTEM
+7. GOLD FARMING INSIDE BASTION
 
-Villagers can breed if conditions are met:
+Gold blocks can be mined:
+- Used for bartering
+- Attract Piglin attention
 
-Requirements:
-- Food (bread, carrots, potatoes, beetroots)
-- Available beds
-- Willingness state
+Strategy:
+- Mine gold quickly
+- Drop gold to bait Piglins away
 
 ASCII:
 
-[VILLAGER] + [VILLAGER]
-        |
-        v
+[GOLD BLOCK]
+     |
+     v
 +------------------+
-| Willingness OK?  |
+| Mine → Drop bait |
 +------------------+
-        |
-        v
-     BABY VILLAGER
+     |
+     v
+[Piglins distracted]
 
 ------------------------------------------------------------
 
-8. GOSSIP SYSTEM (BEHAVIOR AI)
+8. BARTERING SYSTEM
 
-Villagers share “gossip” that affects trading prices:
+Bartering with Piglins:
 
-Types:
-- Trading gossip
-- Negative gossip (attacks, crimes)
-- Positive reputation gossip
+PLAYER gives:
+- Gold ingot
 
-Effect:
-- Influences emerald prices
-- Affects villager trust
+Piglin returns random loot:
+- Ender pearls (key speedrun item)
+- Fire resistance potions
+- Obsidian
+- Gravel / arrows / junk
 
 ASCII:
 
-[VILLAGER] → GOSSIP → [OTHER VILLAGERS]
-      ↓                     ↓
-  PRICE CHANGE        REPUTATION UPDATE
+[PLAYER GOLD]
+       |
+       v
++------------------+
+| PIGLIN BARTER    |
++------------------+
+       |
+       v
+[RANDOM LOOT POOL]
+
+Key speedrun goal:
+- Maximize ender pearl output
 
 ------------------------------------------------------------
 
-9. PANIC AND PROTECTION BEHAVIOR
+9. PIGLIN BRUTE MANAGEMENT
 
-Villagers react to threats:
+Brutes:
+- Always hostile
+- High damage
+- Dangerous in tight spaces
 
-Triggers:
-- Zombie nearby
-- Raid event
-- Damage sources
-
-Response:
-- Run away
-- Hide in houses
-- Iron Golems spawn during raids
+Strategy:
+- Avoid direct combat
+- Use terrain separation
+- Block paths or isolate
 
 ASCII:
 
-[THREAT DETECTED]
-        |
-        v
+[BRUTE]
+   |
+   v
 +------------------+
-| Panic State      |
+| DO NOT ENGAGE    |
 +------------------+
-   |         |
-Run away   Hide
+   |
+   v
+[BLOCK / ESCAPE]
 
 ------------------------------------------------------------
 
-10. ZOMBIFICATION MECHANIC
+10. MOVEMENT AND PATHING
 
-If a villager is killed by a zombie:
-- It may convert into a zombie villager
+Efficient movement rules:
+- Stay elevated when possible
+- Avoid lava floor areas
+- Use blocks for bridging gaps
+- Minimize vertical drops
 
-Recovery:
-- Splash Potion of Weakness
-- Golden Apple
+ASCII PATH:
+
+SAFE ROUTE:
+START → HIGH GROUND → CHEST → GOLD → EXIT
+
+------------------------------------------------------------
+
+11. EXIT STRATEGY
+
+Exit immediately after:
+- Obtaining enough gold
+- Getting pearls or key loot
+- Losing control of area
 
 ASCII:
 
-[VILLAGER] → [ZOMBIE KILL] → [ZOMBIE VILLAGER]
-                                        |
-                                        v
-                             CURE PROCESS (Potion + Apple)
+[LOOT SECURED]
+       |
+       v
++------------------+
+| EXIT BASTION     |
++------------------+
+       |
+       v
+[NETHER TRANSITION]
 
 ------------------------------------------------------------
 
-11. IRON GOLEM RELATIONSHIP
+12. SPEEDRUN OPTIMIZATION RULES
 
-Villagers can cause iron golem spawning:
+- Do NOT fully clear bastion
+- Do NOT fight all mobs
+- Focus only on:
+  - gold
+  - bartering
+  - treasure chest
 
-Conditions:
-- Enough villagers
-- Enough beds
-- Recent panic events
-
-ASCII:
-
-[VILLAGE STATE]
-      |
-      v
-+------------------+
-| Spawn Conditions |
-+------------------+
-      |
-      v
- [IRON GOLEM]
-
-Role:
-- Village protection
-- Hostile mob defense
+Core principle:
+SURVIVAL + VALUE EXTRACTION > FULL CLEAR
 
 ------------------------------------------------------------
 
-12. TRADING ECONOMY MECHANICS
+13. COMMON FAILURE MODES
 
-Prices are influenced by:
-- Supply/demand
-- Reputation
-- Hero of the Village effect
-- Cure discounts
-
-ASCII:
-
-BASE PRICE
-    ↓
-+------------------+
-| Modifiers        |
-+------------------+
-| gossip           |
-| discounts        |
-| demand           |
-+------------------+
-    ↓
-FINAL PRICE
-
-------------------------------------------------------------
-
-13. KEY RULES
-
-- Villagers require workstations to maintain profession
-- Trades are deterministic once locked but cost varies
-- Beds define village existence
-- AI behavior is schedule-based
-- Reputation affects economy significantly
+- Opening chest without clearing Piglins
+- Fighting Brutes directly
+- Falling into lava
+- Losing gold control (no bartering fuel)
+- Staying too long in structure
 
 ------------------------------------------------------------
 
 14. FACT-CHECK TAGS
 
-minecraft_villagers
-villager_trading_system
-minecraft_economy
-workstation_professions
-zombie_villager_mechanics
-iron_golem_spawning
-minecraft_ai_behavior
-gossip_system
-minecraft_npc_system
+minecraft_bastion
+nether_structures
+piglin_behavior
+piglin_bartering
+speedrun_strategy
+minecraft_loot_system
+nether_navigation
+minecraft_brutes
+minecraft_speedrunning
 
 ------------------------------------------------------------
 END OF DOCUMENT

@@ -10,10 +10,20 @@ Usage:
 
 import argparse
 import json
-
+import numpy as np
 from dotenv import load_dotenv
+from datasets import Dataset                           # pip install datasets
+from ragas import evaluate, RunConfig
+from ragas.metrics import faithfulness, answer_relevancy, context_precision
+from langchain_ollama import ChatOllama
+from agents.supervisor import build_supervisor_graph
+run_config = RunConfig(timeout=300)
 
-
+llm = ChatOllama(
+    model="llama3.2",
+    temperature=0.1,
+    format="json"
+)
 def parse_args() -> argparse.Namespace:
     """Parse evaluation CLI arguments."""
     parser = argparse.ArgumentParser(description="Run RAGAS evaluation.")
@@ -37,27 +47,47 @@ def load_golden_dataset(filepath: str) -> list[dict]:
 
 
 def generate_predictions(dataset: list[dict]) -> list[dict]:
-    """
-    Run each question through the ResearchFlow pipeline and collect predictions.
-
-    TODO:
-    - For each entry in the dataset, invoke the Supervisor graph.
-    - Capture the generated answer and the retrieved contexts.
-    - Return a list of dicts with keys: question, answer, contexts.
-    """
-    raise NotImplementedError
+    """Run the Supervisor graph on every golden question, capture answer + contexts."""
+    graph = build_supervisor_graph()
+    out = []
+    for i, entry in enumerate(dataset):
+        config = {"configurable": {"thread_id": f"eval-{i}"}}
+        try:
+            result = graph.invoke(
+                {"question": entry["question"], "user_id": "evaluator"},
+                config=config,
+            )
+        except Exception as e:
+            print(f"  [warn] entry {i} failed: {e}")
+            out.append({"question": entry["question"], "answer": "", "contexts": []})
+            continue
+        analysis = result.get("analysis", {}) or {}
+        contexts = [c.page_content for c in result.get("retrieved_chunks", [])]
+        out.append({
+            "question": entry["question"],
+            "answer": analysis.get("answer", "irrelevant"),
+            "contexts": contexts,
+            "reference": entry["ground_truth_answer"],
+        })
+        print(f"  [{i+1}/{len(dataset)}] done")
+    return out
 
 
 def run_ragas_evaluation(predictions: list[dict], golden: list[dict]) -> dict:
-    """
-    Evaluate predictions against the golden dataset using RAGAS.
-
-    TODO:
-    - Construct a RAGAS Dataset from predictions and ground truth.
-    - Evaluate with metrics: faithfulness, answer_relevancy, context_precision.
-    - Return a dict of metric_name → score.
-    """
-    raise NotImplementedError
+    """Score predictions with RAGAS — faithfulness, relevancy, precision."""
+    ds = Dataset.from_list(predictions)
+    result = evaluate(
+        ds,
+        metrics=[faithfulness, answer_relevancy, context_precision],
+        llm = llm,
+        run_config=run_config
+    )
+    # `result` is a RAGASResult; `.to_pandas()` gives per-row, but we want
+    # the aggregate summary as a flat dict.
+    return {
+    k: float(np.mean(v)) if isinstance(v, list) else float(v)
+    for k, v in result._scores_dict.items()
+    }
 
 
 def main() -> None:
@@ -65,7 +95,7 @@ def main() -> None:
     load_dotenv()
     args = parse_args()
 
-    golden = load_golden_dataset(args.golden_dataset)
+    golden = load_golden_dataset(args.golden_dataset)[:1]
     predictions = generate_predictions(golden)
     results = run_ragas_evaluation(predictions, golden)
 

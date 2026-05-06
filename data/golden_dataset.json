@@ -1,17 +1,96 @@
 [
-  {
-    "question": "REPLACE with a research question relevant to your corpus.",
-    "ground_truth_answer": "REPLACE with the expected correct answer.",
-    "ground_truth_contexts": [
-      "REPLACE with the exact passage(s) from your corpus that support the answer."
-    ]
-  },
-  {
-    "question": "What are the primary differences between X and Y?",
-    "ground_truth_answer": "X differs from Y in three key ways: ...",
-    "ground_truth_contexts": [
-      "Passage from document A that discusses X...",
-      "Passage from document B that discusses Y..."
-    ]
-  }
+{
+  "question": "What's the best way to ignite a nether portal in a minecraft speedrun? Let me know the decision for early-game and mid-game.",
+  "ground_truth_answer": "In early-game speedruns, the most reliable and fastest method to ignite a Nether portal is Flint and Steel due to its consistency and immediate use once obtained. If Flint and Steel is not available, Fire Charge can serve as an instant-use alternative when already in the inventory. In mid-game scenarios, Flint and Steel remains the preferred method, but Fire Charges and environmental methods like lava spread may be used situationally depending on available resources and setup constraints.",
+  "ground_truth_contexts": [
+    "10. IGNITION OPTIMIZATION\n\nFastest ignition priorities:\n\n1. Flint and Steel (best consistent)\n2. Fire Charge (inventory-based instant use)\n3. Lava spread (situational)\n4. Fire arrow (rare)\n5. Ghast fireball (Nether setup only)",
+    "3. PORTAL ACTIVATION METHODS\n\nCommon ignition methods:\n\n- Flint and Steel (standard)\n- Fire Charge\n- Lava spread + flammable block\n- Burning entity contact\n- Lightning (rare)\n- Ghast fireball (Nether-side setups)"
+  ]
+},
+{
+  "question": "What are the ways I can get an apple in Minecraft?",
+  "ground_truth_answer": "Apples can be obtained primarily by breaking oak or dark oak leaves, which have a small chance to drop apples when decaying or when manually broken. They can also be found as loot in certain structure chests depending on world generation. Apples are commonly used as food or as a crafting ingredient for golden apples.",
+  "ground_truth_contexts": [
+    "Apples can drop from oak and dark oak leaves when they decay naturally or are broken, with a low probability per leaf block.",
+    "Apples are not guaranteed drops and depend on RNG-based leaf decay mechanics and the presence of trees in the world.",
+    "Apples may also appear in loot chests from certain generated structures depending on the world and version.",
+    "Apples are used as a food item and can be crafted with gold ingots to create golden apples, which provide additional effects."
+  ]
+},
+{
+  "question": "What are the behaviors of different Piglin in the nether bastion?",
+  "ground_truth_answer": "Piglins in Nether Bastions behave differently depending on their type. Regular piglins are neutral by default but become hostile if provoked, such as when the player opens containers, breaks gold-related blocks, or is not wearing at least one piece of gold armor. Piglin brutes, however, are always hostile regardless of player equipment and deal significantly higher damage, making them a major threat that cannot be avoided through gold armor or bartering.",
+  "ground_truth_contexts": [
+    "4. PIGLIN BEHAVIOR RULES\n\nPiglins:\n- Neutral unless provoked\n- Aggro if:\n  - Player opens chest\n  - Player breaks gold\n  - Player wears non-gold armor\n\nPiglin Brutes:\n- Always hostile\n- High damage\n- Cannot be bribed with gold armor\n\nASCII:\n\n[PLAYER]\n  |\n  v\n+----------------------+\n| GOLD ARMOR CHECK     |\n+----------------------+\n  |YES        |NO\n  v           v\nNeutral     Aggro Piglins"
+  ]
+},
+{
+  "question": "explain to me how the rng system works for minecraft drops.",
+  "ground_truth_answer": "Minecraft uses a pseudo-random number generator (RNG) to determine item drops. When an entity or block is broken, the game rolls against a weighted loot table where each possible drop has a defined probability. Some drops are mutually exclusive, meaning only one outcome can be selected from a pool. Other outcomes are modified by game mechanics such as Looting or Fortune, which increase drop quantity or improve chances of higher-value items.",
+  "ground_truth_contexts": [
+    "14. RANDOMNESS (RNG SYSTEM)\n\nMinecraft uses pseudo-random number generation for drops:\n- Each drop has a probability weight\n- Some drops are mutually exclusive\n- Some items scale with modifiers (Looting, Fortune)\n\nASCII:\nRandom Roll (0–100)\n   |\n   +--> 0–50   Common drop\n   +--> 51–90  Uncommon\n   +--> 91–100 Rare"
+  ]
+},
+{
+  "question": "how do I make a cake?",
+  "ground_truth_answer": "To make a cake in Minecraft, you craft it using 3 milk buckets, 2 sugar, 1 egg, and 3 wheat arranged in a crafting table. Once crafted, the milk buckets are returned empty, and the cake can be placed as a block and eaten in slices.",
+  "ground_truth_contexts": [
+    "Cake: +---+---+---+ | M | M | M | +---+---+---+ | S | E | S | +---+---+---+ | W | W | W | +---+---+---+  M = Milk, S = Sugar, E = Egg, W = Wheat"
+  ]
+},
+{
+  "question": "What's a redstone repeater and how can I make a quick circuit with it?",
+  "ground_truth_answer": "A redstone repeater is a component used in redstone circuits to extend signal strength beyond the 15-block limit of redstone dust and to add controlled delay to signal timing. A simple circuit uses repeaters placed along a redstone dust line every ~15 blocks to maintain signal strength from input to output, ensuring the signal does not decay and allowing longer or more reliable connections.",
+  "ground_truth_contexts": [
+    "Signal Transmission\nRedstone dust transmits signals up to 15 blocks\nRepeaters are used to extend signal range beyond 15 blocks\nPowering Behavior",
+    "2. REPEATER EXTENSION (LONG DISTANCE)\n\nASCII:\n[L] ==== > ==== > ==== [O]\n\nBUILD:\n1. Place dust line\n2. Insert repeater every ~15 blocks\n3. Face repeater toward output\n\nUSE:\nPrevents signal loss"
+  ]
+},
+{
+  "question": "draft a full plan to clear a nether bastion in minecraft quickly for speed runs",
+  "ground_truth_answer": "A fast bastion clear in a speedrun focuses on minimizing combat, securing gold quickly, and converting it into piglin bartering for ender pearls and utility items. The player should enter using safe elevated movement, avoid piglin brutes entirely by blocking or pathing around them, and prioritize gold blocks and nearby loot chests. After collecting enough gold, the player should immediately barter with piglins to obtain ender pearls, fire resistance potions, and other useful items. Once key resources are obtained or control of the area becomes unsafe, the player should exit the bastion immediately to reduce risk and time loss.",
+  "ground_truth_contexts": [
+    "8. BARTERING SYSTEM\n\nBartering with Piglins:\n\nPLAYER gives:\n- Gold ingot\n\nPiglin returns random loot:\n- Ender pearls (key speedrun item)\n- Fire resistance potions\n- Obsidian\n- Gravel / arrows / junk\n\nASCII:\n\n[PLAYER GOLD]\n       |\n       v\n+------------------+\n| PIGLIN BARTER    |\n+------------------+\n       |\n       v\n[RANDOM LOOT POOL]\n\nKey speedrun goal:\n- Maximize ender pearl output\n\n------------------------------------------------------------\n\n9. PIGLIN BRUTE MANAGEMENT\n\nBrutes:\n- Always hostile\n- High damage\n- Dangerous in tight spaces\n\nStrategy:\n- Avoid direct combat\n- Use terrain separation\n- Block paths or isolate\n\nASCII:\n\n[BRUTE]\n   |\n   v\n+------------------+\n| DO NOT ENGAGE    |\n+------------------+\n   |\n   v\n[BLOCK / ESCAPE]\n\n------------------------------------------------------------\n\n10. MOVEMENT AND PATHING\n\nEfficient movement rules:\n- Stay elevated when possible\n- Avoid lava floor areas\n- Use blocks for bridging gaps\n- Minimize vertical drops\n\nASCII PATH:\n\nSAFE ROUTE:\nSTART → HIGH GROUND → CHEST → GOLD → EXIT\n\n------------------------------------------------------------\n\n11. EXIT STRATEGY\n\nExit immediately after:\n- Obtaining enough gold\n- Getting pearls or key loot\n- Losing control of area\n\nASCII:\n\n[LOOT SECURED]\n       |\n       v\n+------------------+\n| EXIT BASTION     |\n+------------------+\n       |\n       v\n[NETHER TRANSITION]"
+  ]
+},
+{
+  "question": "How does armor durability loss work when taking damage from different sources like lava, mobs, and explosions?",
+  "ground_truth_answer": "Armor durability decreases only when damage is reduced by armor mitigation. Each armor piece loses 1 durability per 4 HP of damage absorbed (rounded down, minimum 1). This applies to most blocked damage sources including mob attacks, projectiles, explosions, and environmental hazards like fire and lava. However, some exceptions exist: fall damage is not reduced by armor, non-player mobs do not lose armor durability when damaged, and netherite armor does not lose durability from fire or lava. Different armor pieces also have different durability scaling, and durability loss is independent of armor tier beyond these fixed ratios.",
+  "ground_truth_contexts": [
+    "Armor durability depends on armor type (head, torso, legs, feet) and material (leather, gold, chain mail, copper, iron, diamond, netherite). When a player takes damage reduced by armor, each armor piece loses 1 durability per 4 HP of incoming damage (rounded down, minimum 1). Armor reduces damage from mobs and players (including Strength/Weakness effects and enchantments), projectiles like arrows, shulker bullets, tridents, eggs, snowballs, llama spit, fireballs, and wither skulls (including enchanted variants), guardian laser attacks, Thorns damage, lightning strikes, falling anvils or stalactites, fire, lava, magma blocks (netherite excluded from lava/fire damage), cactus, sweet berry bushes, explosions (including fireworks, often costing more durability), and pointed dripstone impacts (excluding fall damage which bypasses armor).",
+    "Any hit from a damage source that can be blocked by armor removes 1 durability from each worn armor piece per 4 HP of incoming damage (rounded down, minimum 1). Armor durability differs by piece type and material efficiency: helmet, chestplate, leggings, and boots have different durability-per-unit values (approximately 68%, 61%, 66%, and 100% respectively relative to boots), meaning boots last longer per material unit while chestplates and leggings provide better protection per unit. Overall armor durability scaling also follows fixed ratios relative to chestplates (helmet 68.75%, chestplate 100%, leggings 93.75%, boots 81.25%), with max durability values tied to specific multiples per armor type (e.g., helmets 11, boots 13, leggings 15, chestplates 16). Armor worn by non-player mobs does not lose durability from damage, except helmets worn by undead mobs, which can lose durability in sunlight due to repeated fire exposure checks (50% chance per tick). Netherite armor does not lose durability from fire or lava damage."
+  ]
+},
+{
+  "question": "how do i get the mending enchant?",
+  "ground_truth_answer": "Mending is a treasure enchantment that cannot be obtained through the enchanting table and must be acquired through villager trading, fishing loot, or rare structure chests. The most consistent method is trading with librarian villagers, while fishing and loot chests provide less reliable sources.",
+  "ground_truth_contexts": [
+    "Mending is a treasure enchantment, meaning it cannot be obtained through the enchanting table under normal conditions and must be found or traded for.",
+    "The most reliable method to obtain Mending is by trading with librarian villagers, who can offer enchanted books in exchange for emeralds.",
+    "Mending books can also be obtained as rare loot from certain treasure sources such as fishing treasure loot and structure chests.",
+    "When applied, Mending uses experience orbs collected by the player to repair the durability of equipped or held items instead of adding to the experience bar."
+  ]
+},
+{
+  "question": "How do fishing drops work in Minecraft 1.16, and what changes make AFK fish farms different from earlier versions?",
+  "ground_truth_answer": "In Minecraft 1.16, fishing loot is divided into fish, junk, and treasure categories, each with different weighted chances. Treasure items like enchanted books, name tags, and saddles are significantly rarer and require specific conditions such as open water fishing. AFK fish farms in earlier versions could reliably generate treasure loot using compact designs, but in 1.16+ these farms are restricted because treasure drops only occur under open water conditions, making small automated setups much less effective and reducing overall efficiency.",
+  "ground_truth_contexts": [
+    "In Minecraft 1.16, fishing loot is divided into categories such as fish, junk, and treasure, with each category having different probability weights that determine what is caught.",
+    "Treasure items include rare enchanted books, name tags, saddles, and other valuable items, but their chance is reduced when fishing without optimal conditions.",
+    "In 1.16 and later, AFK fish farms are significantly limited because treasure loot can only be obtained when certain conditions are met, including open water fishing requirements.",
+    "Open water mechanics require the fishing bobber to be in a sufficiently large body of water, preventing compact automated setups from producing full treasure loot as efficiently as in older versions.",
+    "Because of these changes, modern AFK fish farms in 1.16 are generally slower and less efficient compared to earlier versions where compact designs could generate frequent treasure drops."
+  ]
+},
+{
+  "question": "What is the absolute fastest way to get a full set of diamond armor in survival Minecraft?",
+  "ground_truth_answer": "There is no single absolute fastest method, as optimal strategies depend on world generation, loot luck, and player conditions.",
+  "ground_truth_contexts": [
+    "Diamond armor can be obtained through mining diamonds and crafting, but generation rates vary based on world seed, biome distribution, and mining strategy.",
+    "Alternatively, diamond armor can be acquired through villager trading, chest loot in structures, or mob drops in certain circumstances, but each method depends on RNG and availability.",
+    "Speed depends heavily on factors such as spawn location, access to caves or ravines, and early access to villages or structures.",
+    "Because Minecraft progression is highly variable, there is no universally optimal method that is guaranteed to be fastest in all worlds or runs."
+  ]
+}
+
 ]

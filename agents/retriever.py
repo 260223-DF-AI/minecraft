@@ -138,11 +138,17 @@ def retriever_node(state: ResearchState) -> dict:
         doc.metadata["rerank_score"] = score
         scored_docs.append(doc)
 
-    reranked_docs = sorted(
+    reranked_docs_temp = sorted(
         scored_docs,
         key=lambda d: d.metadata["rerank_score"],
         reverse=True
     )[:10]
+
+    # I added this to reduce documents we needed to process
+    reranked_docs =[]
+    for doc in reranked_docs_temp:
+        if doc.metadata["rerank_score"] > 0.65:
+            reranked_docs.append(doc)
 
     # --- Format output ---
     """
