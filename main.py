@@ -23,18 +23,14 @@ st.markdown(
     ===================================================== */
     @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+    /* SAFE GLOBAL TEXT FONT (DO NOT USE *) */
     html, body, [class*="css"] {
         font-family: 'Press Start 2P', cursive !important;
         color: white !important;
     }
 
-    /* FORCE FONT INSIDE EVERYTHING (IMPORTANT FIX) */
-    * {
-        font-family: 'Press Start 2P', cursive !important;
-    }
-
     /* =====================================================
-       BACKGROUND
+       BACKGROUND IMAGE
     ===================================================== */
     [data-testid="stAppViewContainer"] {
         background: url("https://imgs.search.brave.com/4kwaWEiKKkhzl4O4ziHxZ3rSYpQ5FvBk9YD4xM6T6VM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRpYS5mb3JnZWNkbi5u/ZXQvYXR0YWNobWVu/dHMvNzYwLzEzLzIw/MjMtMTEtMTZfMTAu/cG5n");
@@ -59,56 +55,15 @@ st.markdown(
     }
 
     /* =====================================================
-       TITLE
+       TITLE (FIXED + CLEAN)
     ===================================================== */
     h1 {
         color: #7CFC00 !important;
         text-shadow: 3px 3px 0 black;
         text-align: center;
-        font-size: 24px !important;
-    }
 
-    /* =====================================================
-       CHAT BUBBLES (GLASS)
-    ===================================================== */
-    [data-testid="stChatMessage"] {
-        background: rgba(255,255,255,0.08) !important;
-        border: 1px solid rgba(255,255,255,0.15) !important;
-
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-
-        border-radius: 16px;
-        padding: 1rem;
-        margin-bottom: 1rem;
-
-        box-shadow: 0 8px 30px rgba(0,0,0,0.4);
-    }
-
-    /* user bubble */
-    [data-testid="stChatMessage"]:has(div[data-testid="chatAvatarIcon-user"]) {
-        background: rgba(50,205,50,0.15) !important;
-        border: 1px solid rgba(50,205,50,0.35) !important;
-    }
-
-    /* assistant bubble */
-    [data-testid="stChatMessage"]:has(div[data-testid="chatAvatarIcon-assistant"]) {
-        background: rgba(255,255,255,0.07) !important;
-    }
-
-    /* =====================================================
-       FORCE TEXT INSIDE CHAT (CRITICAL FIX)
-    ===================================================== */
-    [data-testid="stChatMessage"] * {
         font-family: 'Press Start 2P', cursive !important;
-        color: white !important;
-    }
-
-    [data-testid="stChatMessage"] p,
-    [data-testid="stChatMessage"] span,
-    [data-testid="stChatMessage"] div {
-        font-family: 'Press Start 2P', cursive !important;
-        color: white !important;
+        letter-spacing: 1px;
     }
 
     /* =====================================================
@@ -121,8 +76,8 @@ st.markdown(
     }
 
     [data-testid="stChatInput"] textarea {
-        font-family: 'Press Start 2P', cursive !important;
-        font-size: 10px !important;
+        font-size: 12px !important;
+        line-height: 1.4 !important;
 
         background: rgba(255,255,255,0.08) !important;
         color: white !important;
@@ -147,7 +102,7 @@ st.markdown(
     }
 
     /* =====================================================
-       SCROLLBAR
+       SCROLLBAR (MINECRAFT GREEN)
     ===================================================== */
     ::-webkit-scrollbar {
         width: 10px;
@@ -217,7 +172,7 @@ if user_input:
     # Extract Response
     # -------------------------------------------------
     answer = data["analysis"]["answer"]
-    sources = data["analysis"]["citations"]
+    sources = data["retrieved_chunks"]
 
     # -------------------------------------------------
     # Assistant Message
