@@ -18,103 +18,137 @@ st.markdown(
     """
     <style>
 
-    /* Pixel Font */
+    /* =====================================================
+       PIXEL FONT
+    ===================================================== */
     @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-    /* Main Background */
-    .stApp {
-        background-image: url("https://imgs.search.brave.com/4kwaWEiKKkhzl4O4ziHxZ3rSYpQ5FvBk9YD4xM6T6VM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRpYS5mb3JnZWNkbi5u/ZXQvYXR0YWNobWVu/dHMvNzYwLzEzLzIw/MjMtMTEtMTZfMTAu/cG5n");
+    html, body, [class*="css"] {
+        font-family: 'Press Start 2P', cursive !important;
+        color: white !important;
+    }
+
+    /* FORCE FONT INSIDE EVERYTHING (IMPORTANT FIX) */
+    * {
+        font-family: 'Press Start 2P', cursive !important;
+    }
+
+    /* =====================================================
+       BACKGROUND
+    ===================================================== */
+    [data-testid="stAppViewContainer"] {
+        background: url("https://imgs.search.brave.com/4kwaWEiKKkhzl4O4ziHxZ3rSYpQ5FvBk9YD4xM6T6VM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRpYS5mb3JnZWNkbi5u/ZXQvYXR0YWNobWVu/dHMvNzYwLzEzLzIw/MjMtMTEtMTZfMTAu/cG5n");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
     }
 
-    /* Dark Overlay */
-    .stApp::before {
+    /* dark overlay */
+    [data-testid="stAppViewContainer"]::before {
         content: "";
         position: fixed;
         inset: 0;
-        background: rgba(0, 0, 0, 0.45);
-        z-index: -1;
+        background: rgba(0,0,0,0.55);
+        z-index: 0;
     }
 
-    /* Global Text Styling */
-    html, body, [class*="css"] {
-        font-family: 'Press Start 2P', cursive;
-        color: white;
+    .main {
+        position: relative;
+        z-index: 1;
     }
 
-    /* Title */
+    /* =====================================================
+       TITLE
+    ===================================================== */
     h1 {
         color: #7CFC00 !important;
-        text-shadow: 3px 3px 0px black;
+        text-shadow: 3px 3px 0 black;
         text-align: center;
-        margin-bottom: 2rem;
-        font-size: 2rem !important;
+        font-size: 24px !important;
     }
 
-    /* Chat Message Containers */
+    /* =====================================================
+       CHAT BUBBLES (GLASS)
+    ===================================================== */
     [data-testid="stChatMessage"] {
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255,255,255,0.15);
+        background: rgba(255,255,255,0.08) !important;
+        border: 1px solid rgba(255,255,255,0.15) !important;
 
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
 
+        border-radius: 16px;
         padding: 1rem;
-        border-radius: 20px;
-
         margin-bottom: 1rem;
 
-        box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.4);
     }
 
-    /* User Bubble */
+    /* user bubble */
     [data-testid="stChatMessage"]:has(div[data-testid="chatAvatarIcon-user"]) {
-        background: rgba(50, 205, 50, 0.18);
-        border: 1px solid rgba(50,205,50,0.35);
+        background: rgba(50,205,50,0.15) !important;
+        border: 1px solid rgba(50,205,50,0.35) !important;
     }
 
-    /* Assistant Bubble */
+    /* assistant bubble */
     [data-testid="stChatMessage"]:has(div[data-testid="chatAvatarIcon-assistant"]) {
-        background: rgba(255,255,255,0.08);
+        background: rgba(255,255,255,0.07) !important;
     }
 
-    /* Chat Input Area */
-    .stChatInputContainer {
-        background: rgba(0,0,0,0.55);
-        border-top: 1px solid rgba(255,255,255,0.1);
-
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
+    /* =====================================================
+       FORCE TEXT INSIDE CHAT (CRITICAL FIX)
+    ===================================================== */
+    [data-testid="stChatMessage"] * {
+        font-family: 'Press Start 2P', cursive !important;
+        color: white !important;
     }
 
-    /* Input Box */
-    .stChatInputContainer textarea {
+    [data-testid="stChatMessage"] p,
+    [data-testid="stChatMessage"] span,
+    [data-testid="stChatMessage"] div {
+        font-family: 'Press Start 2P', cursive !important;
+        color: white !important;
+    }
+
+    /* =====================================================
+       CHAT INPUT
+    ===================================================== */
+    [data-testid="stChatInput"] {
+        background: rgba(0,0,0,0.6) !important;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    [data-testid="stChatInput"] textarea {
+        font-family: 'Press Start 2P', cursive !important;
+        font-size: 10px !important;
+
         background: rgba(255,255,255,0.08) !important;
         color: white !important;
 
-        border-radius: 12px !important;
-        border: 1px solid rgba(255,255,255,0.15) !important;
+        border: 1px solid rgba(124,252,0,0.4) !important;
+        border-radius: 10px !important;
 
-        font-size: 12px !important;
+        padding: 10px !important;
     }
 
-    /* Expander */
+    [data-testid="stChatInput"] textarea::placeholder {
+        font-family: 'Press Start 2P', cursive !important;
+        color: rgba(255,255,255,0.6) !important;
+    }
+
+    /* =====================================================
+       EXPANDER
+    ===================================================== */
     .streamlit-expanderHeader {
         background: rgba(255,255,255,0.08);
         border-radius: 10px;
     }
 
-    /* Markdown text */
-    p, div, span {
-        color: white !important;
-        line-height: 1.8;
-        font-size: 11px;
-    }
-
-    /* Scrollbar */
+    /* =====================================================
+       SCROLLBAR
+    ===================================================== */
     ::-webkit-scrollbar {
         width: 10px;
     }
@@ -182,8 +216,8 @@ if user_input:
     # -------------------------------------------------
     # Extract Response
     # -------------------------------------------------
-    answer = data.get("answer", "No answer returned.")
-    sources = data.get("retrieved_chunks", [])
+    answer = data["analysis"]["answer"]
+    sources = data["analysis"]["citations"]
 
     # -------------------------------------------------
     # Assistant Message
