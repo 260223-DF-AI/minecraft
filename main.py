@@ -1,59 +1,75 @@
-"""
-ResearchFlow — Main Entry Point
+import streamlit as st
+import requests
 
-Parses CLI arguments and invokes the Supervisor graph to answer
-a research question against the ingested document corpus.
-"""
+API_URL = "http://127.0.0.1:8000/research"
 
-import argparse
-import os
+st.set_page_config(page_title="Minecraft RAG Assistant", layout="wide")
 
-from dotenv import load_dotenv
+st.title("Minecraft RAG Assistant")
 
+# -------------------------
+# Session state
+# -------------------------
+if "messages" not in st.session_state:
+    st.session_state.messages = []
 
-def parse_args() -> argparse.Namespace:
-    """Parse command-line arguments."""
-    parser = argparse.ArgumentParser(
-        description="ResearchFlow: Adaptive Multi-Agent Research Assistant"
-    )
-    parser.add_argument(
-        "--question",
-        type=str,
-        required=True,
-        help="The research question to answer.",
-    )
-    parser.add_argument(
-        "--user-id",
-        type=str,
-        default="default",
-        help="User ID for cross-thread memory (Store interface).",
-    )
-    parser.add_argument(
-        "--verbose",
-        action="store_true",
-        help="Enable step-wise scratchpad logging.",
-    )
-    return parser.parse_args()
+# -------------------------
+# Render chat history
+# -------------------------
+for msg in st.session_state.messages:
+    with st.chat_message(msg["role"]):
+        st.markdown(msg["content"])
 
+# -------------------------
+# User input
+# -------------------------
+user_input = st.chat_input("Let me pick your brain...")
 
-def main() -> None:
-    """
-    High-level flow:
-    1. Load environment variables.
-    2. Initialize the Supervisor graph (see agents/supervisor.py).
-    3. Invoke the graph with the user's question.
-    4. Print the structured research report.
-    """
-    load_dotenv()
-    args = parse_args()
+if user_input:
 
-    # TODO: Initialize the Supervisor StateGraph
-    # TODO: Build the initial graph state from args
-    # TODO: Invoke the graph and collect the final state
-    # TODO: Pretty-print the structured research report
+    # show user message
+    st.session_state.messages.append({
+        "role": "user",
+        "content": user_input
+    })
 
-    raise NotImplementedError("Wire up the Supervisor graph here.")
+    with st.chat_message("user"):
+        st.markdown(user_input)
 
+    # -------------------------
+    # Call backend
+    # -------------------------
+    with st.spinner("Steve is thinking..."):
+        response = requests.post(
+            API_URL,
+            json={"question": user_input}
+        )
 
-if __name__ == "__main__":
-    main()
+        data = response.json()
+
+    # -------------------------
+    # Extract response safely
+    # -------------------------
+    answer = data.get("answer", "No answer returned.")
+    sources = data.get("retrieved_chunks", [])
+
+    # -------------------------
+    # Show assistant message
+    # -------------------------
+    with st.chat_message("assistant"):
+        st.markdown(answer)
+
+        with st.expander("Sources"):
+            for chunk in sources:
+                metadata = chunk.get("metadata", {})
+                st.markdown(f"**{metadata.get('source', 'unknown')}**")
+                st.write(chunk.get("page_content", ""))
+                st.divider()
+
+    # -------------------------
+    # Save assistant message
+    # -------------------------
+    st.session_state.messages.append({
+        "role": "assistant",
+        "content": answer
+    })
